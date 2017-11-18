@@ -1,0 +1,9 @@
+import request from 'axios';
+
+request.defaults.baseURL = 'https://jsonplaceholder.typicode.com/';
+
+export const get{{properCase moduleName}} = ({ commit, state }: any) => {
+  return request.get('posts').then((response: any) => {
+    commit('{{upperCase moduleName}}', response.data);
+  });
+};

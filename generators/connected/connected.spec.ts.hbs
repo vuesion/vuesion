@@ -1,0 +1,33 @@
+import { mount, createLocalVue } from 'vue-test-utils';
+import Vuex from 'vuex';
+import {{properCase componentName}} from './{{properCase componentName}}.vue';
+
+const localVue = createLocalVue();
+
+localVue.use(Vuex);
+
+describe('{{properCase componentName}}.vue', () => {
+
+  test('renders component', () => {
+    const store = new Vuex.Store({
+      getters: {
+        get{{properCase moduleName}}: () => [],
+      },
+    });
+    const wrapper = mount({{properCase componentName}}, { store, localVue });
+
+    expect(wrapper.find('h1').text()).toBe('{{properCase componentName}}');
+  });
+
+  test('fetches data on the server', () => {
+    const store = {
+      dispatch: jest.fn(),
+    };
+
+    {{properCase componentName}}.prefetch({ store });
+
+    expect(store.dispatch).toHaveBeenCalled();
+    expect(store.dispatch).toHaveBeenCalledWith(`get{{properCase moduleName}}`);
+  });
+
+});
