@@ -1,9 +1,7 @@
-import request from 'axios';
-
-request.defaults.baseURL = 'https://jsonplaceholder.typicode.com/';
+import axios from 'axios';
 
 export const getHome = ({ commit, state }: any) => {
-  return request.get('posts').then((response: any) => {
+  return axios.get('https://jsonplaceholder.typicode.com/posts').then((response: any) => {
     commit('HOME', response.data);
   });
 };

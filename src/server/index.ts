@@ -35,6 +35,7 @@ const serve = (servePath: string, cache: boolean) => Express.static(resolve(serv
   maxAge: cache && isProd ? 60 * 60 * 24 * 30 : 0,
 });
 
+app.use('/i18n', serve('../../i18n', false));
 app.use('/client', serve('../../dist/client', true));
 app.use(favicon(path.resolve(__dirname, '../client/assets/logo.png')));
 
@@ -64,6 +65,7 @@ app.get('*', (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 });
