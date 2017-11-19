@@ -1,17 +1,46 @@
 <template>
   <div id="app">
     <img src="/client/assets/logo.png">
+
+    <vue-button @click="langSwitch('en')" :isActive="lang === 'en'">EN</vue-button>
+    <vue-button @click="langSwitch('de')" :isActive="lang === 'de'">DE</vue-button>
+
     <ul :class="$style.nav">
       <li>
-        <router-link to="/" exact>Home</router-link>
+        <router-link to="/" exact>{{ $t("App.nav.home") }}</router-link>
       </li>
       <li>
-        <router-link to="/counter">Counter</router-link>
+        <router-link to="/counter">{{ $t("App.nav.counter") }}</router-link>
       </li>
     </ul>
     <router-view class="view"></router-view>
   </div>
 </template>
+
+<script lang="ts">
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  import VueButton from './shared/VueButton/VueButton.vue'
+  import { loadLanguageAsync } from '../i18n';
+
+  @Component({
+    components: {
+      VueButton
+    }
+  })
+  class App extends Vue {
+    lang: string = 'en';
+
+    langSwitch(lang: string): void {
+      this.lang = lang;
+
+      loadLanguageAsync(lang)
+        .catch((error: Error) => console.log(error))
+    }
+  }
+
+  export default App;
+</script>
 
 <style lang="scss" module>
   @import "./shared/variables";
@@ -34,7 +63,7 @@
 
     li {
       display: inline-block;
-      margin: 0;
+      margin:  0;
 
       a {
         display: inline-block;
