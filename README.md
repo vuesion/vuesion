@@ -4,13 +4,13 @@
 
 ### Setup
 
-- Install Node.js 8.7.x. Use [nvm](https://github.com/creationix/nvm) to maintain multiple Node.js versions.
-- Install npm version 5.4.x
+- Install Node.js 8.7.x or higher. Use [nvm](https://github.com/creationix/nvm) to maintain multiple Node.js versions.
+- Install npm version 5.4.x or higher
 - Install dependencies: `npm install`
 
 ### Running the application
 
-Run `npm run dev`. The server runs on port 3000 by default, set `PORT` environment variable to configure a different port.
+Run `npm run dev`. The server runs on port `3000` by default, set `PORT` environment variable to configure a different port.
 
 ### Running unit tests
 
@@ -34,3 +34,9 @@ To release a new version of this project run one of the following commands:
 - `npm run release:patch`
 
 This will also automatically generate a change log.
+
+## Thanks to
+
+- [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate)
+- [vue-ssr-starter-kit](https://github.com/doabit/vue-ssr-starter-kit)
+- [Angular](https://github.com/angular/angular)
