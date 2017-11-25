@@ -1,6 +1,8 @@
 import { mount, createLocalVue } from 'vue-test-utils';
 import Vuex from 'vuex';
+import { i18n } from '../../../i18n';
 import Counter from './Counter.vue';
+import $style from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -18,7 +20,12 @@ describe('Counter.vue', () => {
         decrement: jest.fn(),
       },
     });
-    const wrapper = mount(Counter, { store, localVue });
+    const wrapper = mount(Counter, {
+      store,
+      localVue,
+      i18n,
+      mocks: { $style },
+  });
 
     expect(wrapper.find('h1').text()).toBe('Counter');
   });
@@ -34,12 +41,17 @@ describe('Counter.vue', () => {
       },
       actions,
     });
-    const wrapper: any = mount(Counter, { store, localVue });
+    const wrapper: any = mount(Counter, {
+      store,
+      localVue,
+      i18n,
+      mocks: { $style },
+    });
 
-    wrapper.findAll('button').at(0).trigger('click');
+    wrapper.vm.increment();
     expect(actions.increment).toHaveBeenCalled();
 
-    wrapper.findAll('button').at(1).trigger('click');
+    wrapper.vm.decrement();
     expect(actions.decrement).toHaveBeenCalled();
   });
 

@@ -1,12 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
   stats: {
     assets: true,
-    children: true,
+    children: true
   },
-  devtool: process.env.NODE_ENV === 'production' ? '#source-map' :'#eval-source-map',
+  devtool: isProd ? '#source-map' : '#eval-source-map',
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json', '.node', '.scss'],
     modules: [
@@ -15,7 +16,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(true)
+    new webpack.optimize.OccurrenceOrderPlugin(true),
+    new webpack.DefinePlugin({
+      PRODUCTION: isProd,
+      DEVELOPMENT: !isProd,
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    })
   ],
   module: {
     rules: [

@@ -1,63 +1,219 @@
 <template>
-  <button :class="[$style.button, $style.ripple, isActive ? $style.active : '']" @click="onClick">
-    <slot></slot>
+  <button :class="cssClasses" @click="onClick">
+    <slot v-if="!loading" />
+    <vue-loader v-if="loading"></vue-loader>
   </button>
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+  import VueLoader from '../VueLoader/VueLoader';
 
-  @Component({
+  export default {
     props: {
-      isActive: {
+      primary: {
         type: Boolean,
-        required: false
-      }
+        required: false,
+        default: false,
+      },
+      accent: {
+        type: Boolean,
+        required: false,
+        default: false,
+      },
+      warn: {
+        type: Boolean,
+        required: false,
+        default: false,
+      },
+      disabled: {
+        type: Boolean,
+        required: false,
+        default: false,
+      },
+      loading: {
+        type: Boolean,
+        required: false,
+        default: false,
+      },
+      pulse: {
+        type: Boolean,
+        required: false,
+        default: false,
+      },
     },
-  })
-  class VueButton extends Vue {
-    onClick(e: Event) {
-      this.$emit('click', e);
-    }
-  }
+    components: {
+      VueLoader,
+    },
+    methods: {
+      onClick(e: Event) {
+        if (this.disabled === false && this.loading === false) {
+          this.$emit('click', e);
+        }
+      },
+    },
+    computed: {
+      cssClasses() {
+        const classes = [this.$style.button, this.$style.ripple];
 
-  export default VueButton;
+        if (this.primary) {
+          classes.push(this.$style.primary);
+        }
+
+        if (this.accent) {
+          classes.push(this.$style.accent);
+        }
+
+        if (this.warn) {
+          classes.push(this.$style.warn);
+        }
+
+        if (this.disabled || this.loading) {
+          classes.push(this.$style.disabled);
+        }
+
+        if (this.pulse) {
+          classes.push(this.$style.pulse);
+        }
+
+        return classes;
+      },
+    },
+  };
 </script>
 
 <style lang="scss" module>
   @import "../variables";
 
+  button,
+  button:active,
+  button:focus,
+  button:hover {
+    outline: none !important;
+  }
+
   .button {
-    display:          inline-block;
-    margin-bottom:    0;
-    text-align:       center;
-    vertical-align:   middle;
-    touch-action:     manipulation;
-    cursor:           pointer;
-    background-image: none;
-    border:           1px solid transparent;
-    white-space:      nowrap;
-    letter-spacing:   0.5px;
-    height:           32px;
-    text-transform:   uppercase;
-    min-width:        80px;
-    position:         relative;
-    overflow:         hidden;
-    font-size:        16px;
-    font-weight:      400;
-    border-radius:    3px;
+    color:                       $button-default-color;
+    display:                     inline-block;
+    margin:                      $button-margin;
+    padding:                     $button-padding;
+    text-align:                  center;
+    vertical-align:              middle;
+    touch-action:                manipulation;
+    cursor:                      pointer;
+    border:                      1px solid transparent;
+    white-space:                 nowrap;
+    text-transform:              uppercase;
+    min-width:                   $button-min-width;
+    position:                    relative;
+    overflow:                    hidden;
+    font-family:                 $button-font-family;
+    font-size:                   $button-font-size;
+    font-weight:                 $button-font-weight;
+    border-radius:               $button-border-radius;
+    background-color:            $button-default-bg;
+    box-shadow:                  $button-shadow;
+    transition:                  $button-transition;
+    transition-property:         box-shadow, background-color;
+    height:                      $button-height;
+    -webkit-tap-highlight-color: transparent;
+
+    &:active {
+      background-color: $button-default-hover-bg;
+      box-shadow:       $button-active-shadow;
+    }
+
+    &.primary {
+      color:            $button-primary-color;
+      background-color: $button-primary-bg;
+
+      &:hover {
+        background-color: $button-primary-hover-bg;
+      }
+
+      :global {
+        .vue-loader-path {
+          stroke: $button-primary-color;
+        }
+      }
+    }
+
+    &.accent {
+      color:            $button-accent-color;
+      background-color: $button-accent-bg;
+
+      &:hover {
+        background-color: $button-accent-hover-bg;
+      }
+
+      :global {
+        .vue-loader-path {
+          stroke: $button-accent-color;
+        }
+      }
+    }
+
+    &.warn {
+      color:            $button-warn-color;
+      background-color: $button-warn-bg;
+
+      &:hover {
+        background-color: $button-warn-hover-bg;
+      }
+
+      :global {
+        .vue-loader-path {
+          stroke: $button-warn-color;
+        }
+      }
+    }
 
     &.disabled,
     &[disabled],
     fieldset[disabled] & {
-      cursor: not-allowed;
+      opacity:    .6;
+      cursor:     not-allowed;
+      box-shadow: none;
+
+      &:hover {
+        box-shadow: none;
+      }
     }
 
-    &.active {
-      background-color: $link-active-color;
-      color:            #FFF;
-      font-weight:      700;
+    &.pulse {
+      animation: loading-animation 1s infinite ease-in-out both;
+
+      @keyframes loading-animation {
+        0% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(0.98);
+        }
+        50% {
+          transform: scale(1);
+        }
+        75% {
+          transform: scale(0.98);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    }
+
+    :global {
+      .vue-loader {
+        position:    absolute;
+        left:        50%;
+        margin-left: -($grid-unit * 2);
+        top:         $grid-unit;
+
+        .vue-loader-circle {
+          &:before {
+            background-color: $button-default-color;
+          }
+        }
+      }
     }
   }
 
@@ -66,7 +222,7 @@
     overflow:  hidden;
     transform: translate3d(0, 0, 0);
 
-    &:after {
+    &:before {
       content:             "";
       display:             block;
       position:            absolute;
@@ -83,7 +239,7 @@
       transition:          transform .5s, opacity .5s;
     }
 
-    &:active:after {
+    &:active:before {
       transform:  scale(0, 0);
       opacity:    .2;
       transition: 0s;

@@ -9,9 +9,10 @@ const resolve = (file: string) => path.resolve(__dirname, file);
 const isProd = process.env.NODE_ENV === 'production';
 const app = Express();
 
-function createRenderer(bundle: string, template: string) {
+function createRenderer(bundle: string, template: string, clientManifest: string) {
   return nodeRequire('vue-server-renderer').createBundleRenderer(bundle, {
     template,
+    clientManifest,
     cache: nodeRequire('lru-cache')({
       max: 1000,
       maxAge: 1000 * 60 * 15,
@@ -23,11 +24,14 @@ let renderer: any;
 if (isProd) {
   const bundle = nodeRequire('../../dist/server/vue-ssr-bundle.json');
   const template = fs.readFileSync(resolve('../../dist/client/index.html'), 'utf-8');
-  renderer = createRenderer(bundle, template);
+  const clientManifest = nodeRequire('../../dist/server/vue-ssr-client-manifest.json');
+
+  renderer = createRenderer(bundle, template, clientManifest);
 } else {
   const devServer = nodeRequire('../../dist/server/dev-server.js').default;
-  devServer(app, (bundle: string, template: string) => {
-    renderer = createRenderer(bundle, template);
+
+  devServer(app, (bundle: string, template: string, clientManifest: string) => {
+    renderer = createRenderer(bundle, template, clientManifest);
   });
 }
 

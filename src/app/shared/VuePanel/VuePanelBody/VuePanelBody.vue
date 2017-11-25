@@ -1,0 +1,26 @@
+<template>
+  <div :class="$style.vuePanelBody">
+    <slot />
+  </div>
+</template>
+
+<script lang="ts">
+  export default {
+    components: {},
+    props: {},
+    data: function () {
+      return {};
+    },
+    computed: {},
+    methods: {},
+  };
+</script>
+
+<style lang="scss" module>
+  @import "../../variables";
+
+  .vuePanelBody {
+    display: block;
+    padding: $panel-body-padding;
+  }
+</style>

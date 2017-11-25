@@ -1,31 +1,36 @@
 <template>
-  <div>
-    <h1>Home</h1>
-    <div v-for="item in home">
-      <p>{{item.title}}</p>
-    </div>
-  </div>
+  <vue-grid>
+    <vue-grid-item fill>
+      <h1>{{ $t('App.nav.home') }}</h1>
+    </vue-grid-item>
+
+    <vue-grid-item fill>
+      <div v-for="item in home">
+        <p>{{item.title}}</p>
+      </div>
+    </vue-grid-item>
+  </vue-grid>
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
   import { mapGetters } from 'vuex';
+  import VueGrid from '../../shared/VueGrid/VueGrid';
+  import VueGridItem from '../../shared/VueGridItem/VueGridItem';
 
-  @Component({
+  export default {
+    components: {
+      VueGrid,
+      VueGridItem,
+    },
     computed: {
       ...mapGetters({
-        home: 'getHome'
-      })
+        home: 'getHome',
+      }),
     },
-  })
-  class Home extends Vue {
-    static prefetch = ({ store }: any) => {
+    prefetch: ({ store }: any) => {
       return store.dispatch(`getHome`);
-    }
-  }
-
-  export default Home;
+    },
+  };
 </script>
 
 <style lang="scss" module>

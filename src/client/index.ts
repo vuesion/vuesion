@@ -9,12 +9,12 @@ if (window.__INITIAL_STATE__) {
 router.onReady(() => {
 
   router
-    .beforeResolve((to, from, next) => {
+    .beforeResolve((to: any, from: any, next: any) => {
       const matched = router.getMatchedComponents(to);
       const prevMatched = router.getMatchedComponents(from);
       let diffed = false;
 
-      const activated = matched.filter((c, i) => {
+      const activated = matched.filter((c: any, i: any) => {
         return diffed || (diffed = (prevMatched[i] !== c));
       });
 

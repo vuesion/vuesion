@@ -1,23 +1,23 @@
 import { mount, createLocalVue } from 'vue-test-utils';
 import Vuex from 'vuex';
-import {{properCase componentName}} from './{{properCase componentName}}.vue';
+import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
 import $style from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
 
-describe('{{properCase componentName}}.vue', () => {
+describe('{{ properCase componentName }}.vue', () => {
 
   test('renders component', () => {
     const store = new Vuex.Store({
       getters: {
-        get{{properCase moduleName}}: () => [],
+        get{{ properCase moduleName }}: () => [],
       },
     });
-    const wrapper = mount({{properCase componentName}}, { store, localVue, mocks: { $style } });
+    const wrapper = mount({{ properCase componentName }}, { store, localVue, mocks: { $style } });
 
-    expect(wrapper.find('h1').text()).toBe('{{properCase componentName}}');
+    expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
   });
 
   test('fetches data on the server', () => {
@@ -25,10 +25,10 @@ describe('{{properCase componentName}}.vue', () => {
       dispatch: jest.fn(),
     };
 
-    {{properCase componentName}}.prefetch({ store });
+    {{ properCase componentName }}.prefetch({ store });
 
     expect(store.dispatch).toHaveBeenCalled();
-    expect(store.dispatch).toHaveBeenCalledWith(`get{{properCase moduleName}}`);
+    expect(store.dispatch).toHaveBeenCalledWith(`get{{ properCase moduleName }}`);
   });
 
 });

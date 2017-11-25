@@ -1,21 +1,31 @@
 <template>
-  <div>
-    <h1>{{properCase componentName}}</h1>
+  <div :class="$style.{{ camelCase componentName }}">
+    <h1>{{ properCase componentName }}</h1>
   </div>
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+  export default {
+    components: {
 
-  @Component({})
-  class {{properCase componentName}} extends Vue {
+    },
+    props: {
 
-  }
+    },
+    data: function () {
+      return {};
+    },
+    computed: {
 
-  export default {{properCase componentName}};
+    },
+    methods: {
+
+    },
+  };
 </script>
 
 <style lang="scss" module>
-
+  .{{ camelCase componentName }} {
+    display: block;
+  }
 </style>
