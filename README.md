@@ -1,5 +1,7 @@
 # vue-starter
 
+[![Build Status](https://travis-ci.org/devCrossNet/vue-starter.svg?branch=master)](https://travis-ci.org/devCrossNet/vue-starter)
+
 ## Development
 
 ### Setup
