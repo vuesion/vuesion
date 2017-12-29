@@ -10,3 +10,9 @@ cache:
 node_js:
   - "8"
   - "9"
+
+install:
+  - npm install --dev
+
+script:
+  - npm run ci
