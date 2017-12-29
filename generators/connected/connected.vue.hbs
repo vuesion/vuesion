@@ -1,31 +1,37 @@
 <template>
   <div>
-    <h1>{{properCase componentName}}</h1>
-    <div v-for="item in {{camelCase moduleName}}">
-      <p>\{{item.title}}</p>
+    <h1>{{ properCase componentName }}</h1>
+    <div v-for="item in {{ camelCase moduleName }}">
+      <p>\{{ item.title }}</p>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
   import { mapGetters } from 'vuex';
 
-  @Component({
+  export default {
+    components: {
+
+    },
+    props: {
+
+    },
+    data: function () {
+      return {};
+    },
     computed: {
       ...mapGetters({
-        {{camelCase moduleName}}: 'get{{properCase moduleName}}'
+        {{ camelCase moduleName }}: 'get{{ properCase moduleName }}'
       })
-    }
-  })
-  class {{properCase componentName}} extends Vue {
-    static prefetch = ({ store }: any) => {
-      return store.dispatch(`get{{properCase moduleName}}`);
-    }
-  }
+    },
+    methods: {
 
-  export default {{properCase componentName}};
+    },
+    prefetch: ({ store }: any) => {
+      return store.dispatch(`get{{ properCase moduleName }}`);
+    },
+  };
 </script>
 
 <style lang="scss" module>

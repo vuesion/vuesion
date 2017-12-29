@@ -1,2 +1,135 @@
-$bg-color: #E2E2E2;
-$link-active-color: #FF5498;
+/* Brand */
+$brand-dark: #2C3E50;
+$brand-light: #ECF0F1;
+$brand-primary: #2ECC71;
+$brand-accent: #3498DB;
+$brand-warn: #E74C3C;
+
+$gray-light: #BDC3C7;
+
+/* General */
+$google-font: 'https://fonts.googleapis.com/css?family=Alegreya+Sans';
+$font-family: 'Alegreya Sans', Helvetica, sans-serif;
+$font-size: 16px;
+$font-color: $brand-dark;
+$font-weight: 300;
+$grid-unit: 8px;
+$bg-color: $brand-light;
+$link-active-color: $brand-primary;
+
+/* Headings */
+$font-size-h1: 42px;
+$font-size-h2: 36px;
+$font-size-h3: 30px;
+$font-size-h4: 26px;
+$font-size-h5: 22px;
+$font-size-h6: 18px;
+
+/* Grid */
+$screen-phone: 320px;
+$screen-phone-max: $screen-phone - 1;
+$screen-tablet-portrait: 768px;
+$screen-tablet-portrait-max: $screen-tablet-portrait - 1;
+$screen-tablet-landscape: 1024px;
+$screen-tablet-landscape-max: $screen-tablet-landscape - 1;
+$screen-small-desktop: 1200px;
+$screen-small-desktop-max: $screen-small-desktop - 1;
+$screen-large-desktop: 1440px;
+$screen-large-desktop-max: $screen-large-desktop - 1;
+$screen-phone-gutter: 16px;
+$screen-tablet-portrait-gutter: 32px;
+$screen-tablet-landscape-gutter: 32px;
+$screen-small-desktop-gutter: 32px;
+$screen-large-desktop-gutter: 32px;
+
+/* AppNavBar*/
+$nav-bar-bg: $brand-dark;
+$nav-bar-color: $brand-light;
+$nav-bar-width: 100%;
+$nav-bar-height: $grid-unit * 10;
+$nav-bar-padding: 0;
+$nav-bar-index: 1000;
+$nav-bar-bg-transition: opacity 100ms ease-in-out;
+
+/* Button */
+$button-font-family: $font-family;
+$button-padding: $grid-unit * 2 $grid-unit * 2;
+$button-margin: 0 $grid-unit $grid-unit * 2 0;
+$button-min-width: $grid-unit * 14;
+$button-height: $grid-unit * 6;
+$button-font-size: $font-size;
+$button-font-weight: 400;
+$button-border-radius: 0;
+$button-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.4);
+$button-transition: all 300ms cubic-bezier(.25, .8, .25, 1);
+$button-active-shadow: 0 12px 20px rgba(0, 0, 0, 0.20), 0 10px 10px rgba(0, 0, 0, 0.18);
+
+$button-default-color: $brand-dark;
+$button-default-bg: lighten($gray-light, 10%);
+$button-default-hover-bg: $button-default-bg;
+
+$button-primary-color: $brand-light;
+$button-primary-bg: $brand-primary;
+$button-primary-hover-bg: $button-primary-bg;
+
+$button-accent-color: $brand-light;
+$button-accent-bg: $brand-accent;
+$button-accent-hover-bg: $button-accent-bg;
+
+$button-warn-color: $brand-light;
+$button-warn-bg: $brand-warn;
+$button-warn-hover-bg: $button-warn-bg;
+
+/* Loader */
+$loader-size: $grid-unit * 4;
+$loader-medium-size: $grid-unit * 8;
+$loader-large-size: $grid-unit * 16;
+
+/* Panel */
+$panel-bg: #FFF;
+$panel-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+$panel-border-radius: 0;
+$panel-margin: 0 0 $grid-unit * 5 0;
+
+$panel-header-padding: $grid-unit * 3 $grid-unit * 3 $grid-unit * 2;
+$panel-header-image-size: $grid-unit * 5;
+$panel-header-image-border-radius: 50%;
+$panel-header-image-margin: $grid-unit $grid-unit * 2 0 0;
+$panel-header-title-font-size: $font-size-h6;
+$panel-header-title-font-weight: 500;
+$panel-header-subtitle-font-size: $font-size;
+$panel-header-subtitle-font-weight: 300;
+$panel-header-subtitle-color: darken($gray-light, 10%);
+
+$panel-body-padding: $grid-unit * 2 $grid-unit * 3;
+$panel-body-font-size: $font-size;
+
+$panel-footer-padding: $grid-unit * 2;
+
+/* Input */
+$input-border-bottom: 1px solid $gray-light;
+$input-background-color: $bg-color;
+$input-padding: $grid-unit 0;
+$input-margin: $grid-unit * 3 0 $grid-unit * 2;
+$input-font-size: $font-size;
+$input-color: $font-color;
+$input-color-disabled: lighten($font-color, 40%);
+$input-height: $grid-unit * 3;
+
+$input-placeholder-top: $grid-unit * 1.5;
+$input-placeholder-color: $input-color;
+$input-placeholder-font-size: $input-font-size;
+$input-placeholder-font-weight: $font-weight;
+$input-placeholder-active-font-size: $input-font-size - 4;
+$input-placeholder-active-font-weight: $font-weight;
+$input-placeholder-active-font-color: $brand-accent;
+$input-placeholder-active-height: $grid-unit * 2;
+
+$input-bar-height: 2px;
+$input-bar-color: $brand-accent;
+
+$input-message-height: $grid-unit * 3;
+$input-message-padding: $grid-unit * 0.5 0 0 0;
+$input-message-color: $input-color;
+$input-message-font-size: $input-font-size;
+$input-message-font-weight: $font-weight;

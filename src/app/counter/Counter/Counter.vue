@@ -1,35 +1,41 @@
 <template>
-  <div>
-    <h1>Counter</h1>
-    <button @click='increment'>Increment +1</button>
-    <button @click='decrement'>Decrement -1</button>
-    <h3>Count is {{ counter }}</h3>
-  </div>
+  <vue-grid>
+    <vue-grid-item fill>
+      <h1>{{ $t('App.nav.counter') }}</h1>
+    </vue-grid-item>
+
+    <vue-grid-item fill>
+      <vue-button @click='increment' accent>Increment +1</vue-button>
+      <vue-button @click='decrement' primary>Decrement -1</vue-button>
+      <h3>Count is {{ counter }}</h3>
+    </vue-grid-item>
+  </vue-grid>
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
   import { mapGetters, mapActions } from 'vuex';
+  import VueGrid from '../../shared/VueGrid/VueGrid';
+  import VueGridItem from '../../shared/VueGridItem/VueGridItem';
+  import VueButton from '../../shared/VueButton/VueButton';
 
-  @Component({
+  export default {
+    components: {
+      VueGrid,
+      VueGridItem,
+      VueButton,
+    },
     methods: {
       ...mapActions([
         'increment',
-        'decrement'
-      ])
+        'decrement',
+      ]),
     },
     computed: {
       ...mapGetters({
-        counter: 'getCounter'
-      })
-    }
-  })
-  class Counter extends Vue {
-
-  }
-
-  export default Counter;
+        counter: 'getCounter',
+      }),
+    },
+  };
 </script>
 
 <style lang="scss" module>
