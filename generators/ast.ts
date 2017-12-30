@@ -4,15 +4,13 @@ import * as ts from 'typescript';
 
 let sourceFile: ts.SourceFile;
 
-const insertAt = (file: string, index: number, insert: string) => {
+const insertAt = (file: string, index: number, insert: string): string => {
   return file.substr(0, index) + insert + file.substr(index);
 };
-
-const getAST = (file) => {
+const getAST = (file: string): void => {
   sourceFile = ts.createSourceFile('ast', file, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
 };
-
-const findAstNodes = (node: ts.Node | null, kind: ts.SyntaxKind, recursive = false, max: number = Infinity): ts.Node[] => {
+const findAstNodes = (node: ts.Node, kind: ts.SyntaxKind, recursive: boolean = false, max: number = Infinity): ts.Node[] => {
   if (max === 0) {
     return [];
   }
@@ -56,7 +54,7 @@ export const addModuleToRoutes = (pathToAppRoutes: string, moduleName: string): 
     file = insertAt(
       file,
       findAstNodes(sourceFile, ts.SyntaxKind.ImportDeclaration, true).pop().end,
-      `\nimport ${moduleName}Routes from './${moduleName}/routes';`
+      `\nimport { ${moduleName}Routes } from './${moduleName}/routes';`
     );
 
     getAST(file);

@@ -1,4 +1,6 @@
-import { createApp } from '../app/app';
+import { createApp, IApp } from '../app/app';
+import { Route } from 'vue-router';
+import { Component } from 'vue-router/types/router';
 
 if (PRODUCTION) {
   const runtime = require('serviceworker-webpack-plugin/lib/runtime');
@@ -7,22 +9,21 @@ if (PRODUCTION) {
   }
 }
 
-const { app, router, store } = createApp();
+const { app, router, store }: IApp = createApp();
 
 if (window.__INITIAL_STATE__) {
   store.replaceState(window.__INITIAL_STATE__);
 }
 
 router.onReady(() => {
-
   router
-    .beforeResolve((to: any, from: any, next: any) => {
-      const matched = router.getMatchedComponents(to);
-      const prevMatched = router.getMatchedComponents(from);
-      let diffed = false;
+    .beforeResolve((to: Route, from: Route, next: any) => {
+      const matched: Component[] = router.getMatchedComponents(to);
+      const prevMatched: Component[] = router.getMatchedComponents(from);
+      let diffed: boolean = false;
 
-      const activated = matched.filter((c: any, i: any) => {
-        return diffed || (diffed = (prevMatched[i] !== c));
+      const activated: Component[] = matched.filter((component: Component, i: number) => {
+        return diffed || (diffed = (prevMatched[i] !== component));
       });
 
       if (!activated.length) {
@@ -30,10 +31,10 @@ router.onReady(() => {
       }
 
       Promise
-        .all(activated.map((Component: any) => {
+        .all(activated.map((component: Component) => {
 
-          if (Component.prefetch) {
-            return Component.prefetch({
+          if ((component as any).prefetch) {
+            return (component as any).prefetch({
               store,
               route: to,
             });

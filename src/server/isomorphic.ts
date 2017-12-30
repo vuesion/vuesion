@@ -1,22 +1,23 @@
-import { createApp } from '../app/app';
+import { createApp, IApp } from '../app/app';
+import { Component } from 'vue-router/types/router';
 
 export default (context: any) => {
   return new Promise((resolve: any, reject: any) => {
-    const { app, router, store } = createApp();
+    const { app, router, store }: IApp = createApp();
 
     router.push(context.url);
     router
       .onReady(() => {
-        const matchedComponents = router.getMatchedComponents();
+        const matchedComponents: Component[] = router.getMatchedComponents();
 
         if (!matchedComponents.length) {
           return reject({ code: 404 });
         }
 
-        Promise.all(matchedComponents.map((Component: any) => {
+        Promise.all(matchedComponents.map((component: Component) => {
 
-          if (Component.prefetch) {
-            return Component.prefetch({
+          if ((component as any).prefetch) {
+            return (component as any).prefetch({
               store,
               route: router.currentRoute,
             });

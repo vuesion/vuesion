@@ -6,17 +6,14 @@ const MFS = nodeRequire('memory-fs');
 const clientConfig = nodeRequire('../../config/webpack.client.config');
 const isomorphicConfig = nodeRequire('../../config/webpack.isomorphic.config');
 
-export default (app: any, cb: any) => {
+export const devServer =  (app: any, cb: any): void => {
   let bundle: string;
   let template: string;
   let clientManifest: string;
 
   clientConfig.entry.app = ['webpack-hot-middleware/client', clientConfig.entry.app];
   clientConfig.output.filename = '[name].js';
-  clientConfig.plugins.push(
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-  );
+  clientConfig.plugins.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
 
   const clientCompiler = webpack(clientConfig);
   const devMiddleware = nodeRequire('webpack-dev-middleware')(clientCompiler, {

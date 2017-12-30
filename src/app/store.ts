@@ -1,15 +1,15 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import Vuex, { Store } from 'vuex';
 import { actions } from './actions';
 import { getters } from './getters';
 import { defaultState, mutations } from './mutations';
 
 Vue.use(Vuex);
 
-const inBrowser = typeof window !== 'undefined';
-const state = (inBrowser && window.__INITIAL_STATE__) || defaultState;
+const inBrowser: boolean = typeof window !== 'undefined';
+const state: any = (inBrowser && window.__INITIAL_STATE__) || defaultState;
 
-export default new Vuex.Store({
+export const store: Store<any> = new Vuex.Store({
   state,
   actions,
   mutations,

@@ -4,16 +4,18 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as Express from 'express';
 import * as favicon from 'serve-favicon';
+import { BundleRenderer } from 'vue-server-renderer';
+import { Handler, Request, Response } from 'express';
 
-const app = Express();
+const app: Express.Application = Express();
 const compression = require('compression');
 
-const isProd = process.env.NODE_ENV === 'production';
-const resolve = (file: string) => path.resolve(__dirname, file);
-const serve = (servePath: string, cache: boolean) => Express.static(resolve(servePath), {
+const isProd: boolean = process.env.NODE_ENV === 'production';
+const resolve = (file: string): string => path.resolve(__dirname, file);
+const serve = (servePath: string, cache: boolean): Handler => Express.static(resolve(servePath), {
   maxAge: cache && isProd ? 60 * 60 * 24 * 30 : 0,
 });
-const createRenderer = (bundle: string, template: string, clientManifest: string) => {
+const createRenderer = (bundle: string, template: string, clientManifest: string): BundleRenderer => {
   return nodeRequire('vue-server-renderer').createBundleRenderer(bundle, {
     template,
     clientManifest,
@@ -24,16 +26,16 @@ const createRenderer = (bundle: string, template: string, clientManifest: string
   });
 };
 
-let renderer: any;
+let renderer: BundleRenderer;
 
 if (isProd) {
-  const bundle = nodeRequire('../../dist/server/vue-ssr-bundle.json');
-  const template = fs.readFileSync(resolve('../../dist/client/index.html'), 'utf-8');
-  const clientManifest = nodeRequire('../../dist/client/vue-ssr-client-manifest.json');
+  const bundle: any = nodeRequire('../../dist/server/vue-ssr-bundle.json');
+  const template: string = fs.readFileSync(resolve('../../dist/client/index.html'), 'utf-8');
+  const clientManifest: any = nodeRequire('../../dist/client/vue-ssr-client-manifest.json');
 
   renderer = createRenderer(bundle, template, clientManifest);
 } else {
-  const devServer = nodeRequire('../../dist/server/dev-server.js').default;
+  const devServer: any = nodeRequire('../../dist/server/dev-server.js').devServer;
 
   devServer(app, (bundle: string, template: string, clientManifest: string) => {
     renderer = createRenderer(bundle, template, clientManifest);
@@ -63,12 +65,12 @@ app.use('/manifest.json', serve('../../dist/assets/pwa/manifest.json', false));
 /**
  * SSR
  */
-app.get('*', (req, res) => {
+app.get('*', (req: Request, res: Response) => {
   if (!renderer) {
     return res.end('waiting for compilation... refresh in a moment.');
   }
 
-  const s = Date.now();
+  const s: number = Date.now();
 
   res.setHeader('Content-Type', 'text/html');
 
@@ -88,7 +90,7 @@ app.get('*', (req, res) => {
     .pipe(res);
 });
 
-const port = process.env.PORT || 3000;
+const port: string = process.env.PORT || '3000';
 
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);

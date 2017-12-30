@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
       minimize: true
     }),
     new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, '..', 'src/client/sw.js'),
+      entry: path.join(__dirname, '..', 'src/client/sw.ts'),
     }),
     new CompressionPlugin({
       asset: '[path].gz[query]',
