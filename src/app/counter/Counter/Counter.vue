@@ -19,6 +19,9 @@
   import VueButton from '../../shared/VueButton/VueButton';
 
   export default {
+    metaInfo: {
+      title: 'Counter'
+    },
     components: {
       VueGrid,
       VueGridItem,
