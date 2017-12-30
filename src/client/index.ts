@@ -1,5 +1,12 @@
 import { createApp } from '../app/app';
 
+if (PRODUCTION) {
+  const runtime = require('serviceworker-webpack-plugin/lib/runtime');
+  if ('serviceWorker' in navigator) {
+    runtime.register();
+  }
+}
+
 const { app, router, store } = createApp();
 
 if (window.__INITIAL_STATE__) {

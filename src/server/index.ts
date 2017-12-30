@@ -5,11 +5,15 @@ import * as path from 'path';
 import * as Express from 'express';
 import * as favicon from 'serve-favicon';
 
-const resolve = (file: string) => path.resolve(__dirname, file);
-const isProd = process.env.NODE_ENV === 'production';
 const app = Express();
+const compression = require('compression');
 
-function createRenderer(bundle: string, template: string, clientManifest: string) {
+const isProd = process.env.NODE_ENV === 'production';
+const resolve = (file: string) => path.resolve(__dirname, file);
+const serve = (servePath: string, cache: boolean) => Express.static(resolve(servePath), {
+  maxAge: cache && isProd ? 60 * 60 * 24 * 30 : 0,
+});
+const createRenderer = (bundle: string, template: string, clientManifest: string) => {
   return nodeRequire('vue-server-renderer').createBundleRenderer(bundle, {
     template,
     clientManifest,
@@ -18,13 +22,14 @@ function createRenderer(bundle: string, template: string, clientManifest: string
       maxAge: 1000 * 60 * 15,
     }),
   });
-}
+};
 
 let renderer: any;
+
 if (isProd) {
   const bundle = nodeRequire('../../dist/server/vue-ssr-bundle.json');
   const template = fs.readFileSync(resolve('../../dist/client/index.html'), 'utf-8');
-  const clientManifest = nodeRequire('../../dist/server/vue-ssr-client-manifest.json');
+  const clientManifest = nodeRequire('../../dist/client/vue-ssr-client-manifest.json');
 
   renderer = createRenderer(bundle, template, clientManifest);
 } else {
@@ -35,14 +40,29 @@ if (isProd) {
   });
 }
 
-const serve = (servePath: string, cache: boolean) => Express.static(resolve(servePath), {
-  maxAge: cache && isProd ? 60 * 60 * 24 * 30 : 0,
-});
+/**
+ * middlewares
+ */
+app.use(compression());
 
+/**
+ * assets
+ */
 app.use('/i18n', serve('../../i18n', false));
 app.use('/client', serve('../../dist/client', true));
-app.use(favicon(path.resolve(__dirname, '../client/assets/logo.png')));
+app.use('/assets', serve('../../dist/assets', true));
+app.use(favicon(path.resolve(__dirname, '../assets/logo.png')));
 
+/**
+ * PWA
+ */
+app.use('/browserconfig.xml', serve('../../dist/assets/pwa/browserconfig.xml', false));
+app.use('/sw.js', serve('../../dist/client/sw.js', false));
+app.use('/manifest.json', serve('../../dist/assets/pwa/manifest.json', false));
+
+/**
+ * SSR
+ */
 app.get('*', (req, res) => {
   if (!renderer) {
     return res.end('waiting for compilation... refresh in a moment.');

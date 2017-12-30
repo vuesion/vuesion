@@ -4,7 +4,7 @@
     <vue-grid>
       <vue-grid-item>
         <router-link :to="to" exact>
-          <img :class="$style.brand" :src="imageUrl" />
+          <img :class="$style.brand" :src="imageUrl" alt="logo" />
         </router-link>
       </vue-grid-item>
     </vue-grid>
@@ -34,7 +34,7 @@
       imageUrl: {
         type: String,
         required: false,
-        default: '/client/assets/logo.png',
+        default: '/assets/logo.png',
       },
     },
     computed: {

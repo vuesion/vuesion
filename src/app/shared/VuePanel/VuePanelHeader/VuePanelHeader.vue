@@ -1,6 +1,6 @@
 <template>
   <div :class="cssClasses">
-    <img :src="image" v-if="image" />
+    <img :src="image" v-if="image" :alt="title"/>
     <div>
       <div :class="$style.title" v-if="title">{{title}}</div>
       <div :class="$style.subtitle" v-if="subtitle">{{subtitle}}</div>
