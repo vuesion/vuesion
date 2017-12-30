@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const baseConfig = require('./webpack.base.config');
 
 const serverConfig = merge(baseConfig, {
@@ -20,6 +21,7 @@ const serverConfig = merge(baseConfig, {
       SERVER: true,
       nodeRequire: 'function(module){return require(module);}',
     }),
+    new CopyWebpackPlugin([{ from: 'src/assets', to: '../assets' }]),
   ],
   node: {
     global: true,

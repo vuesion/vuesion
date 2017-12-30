@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/devCrossNet/vue-starter.svg?branch=master)](https://travis-ci.org/devCrossNet/vue-starter)
 [![codecov](https://codecov.io/gh/devCrossNet/vue-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/devCrossNet/vue-starter)
+[![Dependencies](https://img.shields.io/david/devCrossNet/vue-starter.svg?style=flat-square)](https://david-dm.org/devCrossNet/vue-starter)
+[![DevDependencies](https://img.shields.io/david/dev/devCrossNet/vue-starter.svg?style=flat-square)](https://david-dm.org/devCrossNet/vue-starter?type=dev)
+[![GitHub repo size](https://img.shields.io/github/repo-size/devCrossNet/vue-starter.svg)]()
+[![GitHub issue last update](https://img.shields.io/github/issues/detail/last-update/devCrossNet/vue-starter/979.svg)]()
 
 ## Development
 

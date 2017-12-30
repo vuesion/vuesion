@@ -61,7 +61,7 @@
 
 <style lang="scss" module>
   @import "./shared/variables";
-  @import url($google-font);
+  // @import url($google-font);
 
   body {
     font-family:      $font-family;
@@ -123,5 +123,10 @@
         }
       }
     }
+  }
+
+  img[alt=""],
+  img:not([alt]) {
+    border: 5px dashed $brand-warn;
   }
 </style>

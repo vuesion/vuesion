@@ -3,8 +3,9 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.config');
 const HTMLPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const clientConfig = merge(baseConfig, {
   entry: {
@@ -29,7 +30,6 @@ const clientConfig = merge(baseConfig, {
     new HTMLPlugin({
       template: 'src/app/index.template.html'
     }),
-    new CopyWebpackPlugin([{ from: 'src/client/assets', to: 'assets' }]),
   ]
 });
 
@@ -42,7 +42,17 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
-    })
+    }),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, '..', 'src/client/sw.js'),
+    }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 0,
+      minRatio: 1
+    }),
   ]);
 }
 
