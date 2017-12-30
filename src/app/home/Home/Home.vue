@@ -18,6 +18,9 @@
   import VueGridItem from '../../shared/VueGridItem/VueGridItem';
 
   export default {
+    metaInfo: {
+      title: 'Home'
+    },
     components: {
       VueGrid,
       VueGridItem,

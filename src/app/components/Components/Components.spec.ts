@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from 'vue-test-utils';
 import Vuex from 'vuex';
-import { i18n } from '../../../i18n';
+import { i18n } from '../../plugins/i18n';
 import Components from './Components.vue';
 import $style from 'identity-obj-proxy';
 

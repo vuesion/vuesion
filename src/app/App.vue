@@ -34,7 +34,7 @@
   import VueButton from './shared/VueButton/VueButton.vue';
   import VueGrid from './shared/VueGrid/VueGrid.vue';
   import VueGridItem from './shared/VueGridItem/VueGridItem.vue';
-  import { loadLanguageAsync } from '../i18n';
+  import { loadLanguageAsync } from './plugins/i18n';
 
   export default {
     components: {

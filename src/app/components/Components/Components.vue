@@ -210,6 +210,9 @@
   import VueInput from '../../shared/VueInput/VueInput';
 
   export default {
+    metaInfo: {
+      title: 'Components'
+    },
     components: {
       VueGrid,
       VueGridItem,
