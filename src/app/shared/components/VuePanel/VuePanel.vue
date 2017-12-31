@@ -23,7 +23,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../variables";
+  @import "../../variables";
 
   .vuePanel {
     background-color: $panel-bg;

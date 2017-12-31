@@ -47,7 +47,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../variables";
+  @import "../../../variables";
 
   .vuePanelHeader {
     display:     block;

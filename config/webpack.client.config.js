@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.config');
 const HTMLPlugin = require('html-webpack-plugin');
-const VueSSRClientPlugin = require('vue-server-renderer/client-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
@@ -26,7 +25,6 @@ const clientConfig = merge(baseConfig, {
       minChunks: (module) => module.context && module.context.indexOf('node_modules') !== -1
     }),
     new webpack.optimize.CommonsChunkPlugin('manifest'),
-    new VueSSRClientPlugin(),
     new HTMLPlugin({
       template: 'src/app/index.template.html'
     }),

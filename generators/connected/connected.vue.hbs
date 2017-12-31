@@ -11,23 +11,17 @@
   import { mapGetters } from 'vuex';
 
   export default {
-    components: {
-
-    },
-    props: {
-
-    },
-    data: function () {
+    components: {},
+    props: {},
+    data () {
       return {};
     },
     computed: {
       ...mapGetters({
         {{ camelCase moduleName }}: 'get{{ properCase moduleName }}'
-      })
+      }),
     },
-    methods: {
-
-    },
+    methods: {},
     prefetch: ({ store }: any) => {
       return store.dispatch(`get{{ properCase moduleName }}`);
     },

@@ -73,7 +73,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../variables";
+  @import "../../variables";
 
   .loader {
     display:  inline-block;

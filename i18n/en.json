@@ -1,5 +1,7 @@
 {
   "App.nav.home": "Home",
   "App.nav.counter": "Counter",
-  "App.nav.components": "Components"
+  "App.nav.components": "Components",
+  "App.nav.english": "English",
+  "App.nav.german": "German"
 }

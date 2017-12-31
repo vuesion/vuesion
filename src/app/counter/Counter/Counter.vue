@@ -14,9 +14,9 @@
 
 <script lang="ts">
   import { mapGetters, mapActions } from 'vuex';
-  import VueGrid from '../../shared/VueGrid/VueGrid';
-  import VueGridItem from '../../shared/VueGridItem/VueGridItem';
-  import VueButton from '../../shared/VueButton/VueButton';
+  import VueGrid from '../../shared/components/VueGrid/VueGrid';
+  import VueGridItem from '../../shared/components/VueGridItem/VueGridItem';
+  import VueButton from '../../shared/components/VueButton/VueButton';
 
   export default {
     metaInfo: {

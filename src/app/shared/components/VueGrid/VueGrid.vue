@@ -9,14 +9,15 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/variables";
+  @import "../../variables";
 
   .grid {
     display:        flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap:      wrap;
     max-width:      $screen-phone;
     margin:         0 auto;
+    position:       relative;
   }
 
   @media (min-width: $screen-tablet-portrait) {

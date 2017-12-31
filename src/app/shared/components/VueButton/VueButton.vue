@@ -1,7 +1,7 @@
 <template>
   <button :class="cssClasses" @click="onClick">
     <slot v-if="!loading" />
-    <vue-loader v-if="loading"></vue-loader>
+    <vue-loader v-if="loading" />
   </button>
 </template>
 
@@ -82,7 +82,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../variables";
+  @import "../../variables";
 
   button,
   button:active,
@@ -110,7 +110,7 @@
     font-size:                   $button-font-size;
     font-weight:                 $button-font-weight;
     border-radius:               $button-border-radius;
-    background-color:            $button-default-bg;
+    background:                  $button-default-bg;
     box-shadow:                  $button-shadow;
     transition:                  $button-transition;
     transition-property:         box-shadow, background-color;
@@ -118,16 +118,16 @@
     -webkit-tap-highlight-color: transparent;
 
     &:active {
-      background-color: $button-default-hover-bg;
+      background: $button-default-hover-bg;
       box-shadow:       $button-active-shadow;
     }
 
     &.primary {
       color:            $button-primary-color;
-      background-color: $button-primary-bg;
+      background: $button-primary-bg;
 
       &:hover {
-        background-color: $button-primary-hover-bg;
+        background: $button-primary-hover-bg;
       }
 
       :global {
@@ -139,10 +139,10 @@
 
     &.accent {
       color:            $button-accent-color;
-      background-color: $button-accent-bg;
+      background: $button-accent-bg;
 
       &:hover {
-        background-color: $button-accent-hover-bg;
+        background: $button-accent-hover-bg;
       }
 
       :global {
@@ -154,10 +154,10 @@
 
     &.warn {
       color:            $button-warn-color;
-      background-color: $button-warn-bg;
+      background: $button-warn-bg;
 
       &:hover {
-        background-color: $button-warn-hover-bg;
+        background: $button-warn-hover-bg;
       }
 
       :global {
@@ -210,7 +210,7 @@
 
         .vue-loader-circle {
           &:before {
-            background-color: $button-default-color;
+            background: $button-default-color;
           }
         }
       }
