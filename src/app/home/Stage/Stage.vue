@@ -5,7 +5,7 @@
     <div :class="$style.accentTwo"></div>
 
     <h1 :class="$style.title">Vue.js Starter</h1>
-    <div :class="$style.subTitle">a enterprise ready boilerplate for isomorphic, progressive web apps</div>
+    <div :class="$style.subTitle">an enterprise ready boilerplate for isomorphic, progressive web apps</div>
   </div>
 </template>
 
