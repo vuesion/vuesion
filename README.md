@@ -8,6 +8,8 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/devCrossNet/vue-starter.svg)]()
 [![GitHub issue last update](https://img.shields.io/github/issues/detail/last-update/devCrossNet/vue-starter/979.svg)]()
 
+![vue-starter](https://user-images.githubusercontent.com/1667598/34497260-2d39a7ac-effd-11e7-8d88-ff011f0b3244.gif)
+
 # Goal
 
 This starter should enable you to build an enterprise ready web-app as fast as possible.
