@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const isProd = process.env.NODE_ENV === 'production';
 
-module.exports = {
+const baseConfig = {
   stats: {
     assets: true,
     children: true
@@ -55,3 +56,13 @@ module.exports = {
     ]
   }
 };
+
+if (process.env.ANALYZE) {
+  baseConfig.plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
+    })
+  );
+}
+
+module.exports = baseConfig;

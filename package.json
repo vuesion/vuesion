@@ -29,6 +29,7 @@
     "test": "cross-env NODE_ENV=test jest",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "build": "npm run build:client && npm run build:isomorphic && npm run build:server",
+    "analyze-bundle": "cross-env ANALYZE=true npm run build:client",
     "postinstall": "webpack --config ./generators/webpack.config.js --progress --hide-modules",
     "generate": "plop --plopfile ./generators/index.js",
     "clean": "rimraf ./dist ./coverage",
@@ -167,6 +168,7 @@
     "vue-template-compiler": "^2.5.13",
     "vue-test-utils": "^1.0.0-beta.9",
     "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.9.1",
     "webpack-dev-middleware": "^2.0.3",
     "webpack-hot-middleware": "^2.21.0",
     "webpack-merge": "^4.1.1"

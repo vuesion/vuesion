@@ -13,7 +13,8 @@ const clientConfig = merge(baseConfig, {
   output: {
     path: path.join(__dirname, '..', 'dist', 'client'),
     filename: '[name].[chunkHash].js',
-    publicPath: '/client/'
+    publicPath: '/client/',
+    chunkFilename: '[name].[id].[chunkhash].js'
   },
   plugins: [
     new webpack.DefinePlugin({
