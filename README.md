@@ -17,13 +17,16 @@ The following use cases are already included:
 
 - server-side-rendering
 - SEO support
-- lighthouse score as high as possible (90+)
+- lighthouse score as high as possible (for me - 90+)
 - enterprise ready
 - enable unit/integration tests to have 100% coverage
 - animations
 - flexible component library
 - i18n support
 - fast development / code generators
+- prefetching of data
+- server-side-rendering of prefetched data
+- transfer state from server -> client
 
 With its integrated generators, it is possible to generate components and whole modules.
 This will save you a lot of time during development!
