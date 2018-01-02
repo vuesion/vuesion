@@ -15,10 +15,9 @@ const resolve = (file: string): string => path.resolve(__dirname, file);
 const serve = (servePath: string, cache: boolean): Handler => Express.static(resolve(servePath), {
   maxAge: cache && isProd ? 60 * 60 * 24 * 30 : 0,
 });
-const createRenderer = (bundle: string, template: string, clientManifest: string): BundleRenderer => {
+const createRenderer = (bundle: string, template: string): BundleRenderer => {
   return nodeRequire('vue-server-renderer').createBundleRenderer(bundle, {
     template,
-    clientManifest,
     cache: nodeRequire('lru-cache')({
       max: 1000,
       maxAge: 1000 * 60 * 15,
@@ -31,14 +30,13 @@ let renderer: BundleRenderer;
 if (isProd) {
   const bundle: any = nodeRequire('../../dist/server/vue-ssr-bundle.json');
   const template: string = fs.readFileSync(resolve('../../dist/client/index.html'), 'utf-8');
-  const clientManifest: any = nodeRequire('../../dist/client/vue-ssr-client-manifest.json');
 
-  renderer = createRenderer(bundle, template, clientManifest);
+  renderer = createRenderer(bundle, template);
 } else {
   const devServer: any = nodeRequire('../../dist/server/dev-server.js').devServer;
 
-  devServer(app, (bundle: string, template: string, clientManifest: string) => {
-    renderer = createRenderer(bundle, template, clientManifest);
+  devServer(app, (bundle: string, template: string) => {
+    renderer = createRenderer(bundle, template);
   });
 }
 

@@ -3,7 +3,7 @@ import { sync } from 'vuex-router-sync';
 import App from './App.vue';
 import { store } from './store';
 import { router } from './router';
-import { i18n } from './plugins/i18n';
+import { i18n } from './shared/plugins/i18n';
 import { VueRouter } from 'vue-router/types/router';
 import { Store } from 'vuex';
 
@@ -21,5 +21,6 @@ export const createApp = (): IApp => {
     i18n,
     render: (h) => h(App),
   });
+
   return { app, router, store };
 };

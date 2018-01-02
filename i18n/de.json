@@ -1,5 +1,7 @@
 {
   "App.nav.home": "Startseite",
   "App.nav.counter": "Zähler",
-  "App.nav.components": "Komponenten"
+  "App.nav.components": "Komponenten",
+  "App.nav.english": "Englisch",
+  "App.nav.german": "Deutsch"
 }

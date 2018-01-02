@@ -114,6 +114,8 @@
     }
   },
   "dependencies": {
+    "@types/animejs": "^2.0.0",
+    "animejs": "^2.2.0",
     "axios": "^0.17.1",
     "compression": "^1.7.1",
     "express": "^4.16.2",
@@ -160,7 +162,7 @@
     "typescript": "^2.6.2",
     "validate-commit-msg": "^2.14.0",
     "vue-jest": "^1.4.0",
-    "vue-loader": "^13.6.1",
+    "vue-loader": "^13.6.2",
     "vue-ssr-webpack-plugin": "^3.0.0",
     "vue-template-compiler": "^2.5.13",
     "vue-test-utils": "^1.0.0-beta.9",

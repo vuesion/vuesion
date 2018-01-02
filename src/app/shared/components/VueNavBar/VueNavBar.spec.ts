@@ -12,9 +12,11 @@ describe('VueNavBar.vue', () => {
     expect(wrapper.findAll(`.${$style.vueNavBar}`)).toHaveLength(1);
   });
 
-  test('registers and unregisters scroll event', () => {
+  test('registers and unregisters scroll/click event', () => {
     window.addEventListener = jest.fn();
     window.removeEventListener = jest.fn();
+    document.addEventListener = jest.fn();
+    document.removeEventListener = jest.fn();
 
     const wrapper = mount(VueNavBar, { localVue, mocks: { $style } });
 
@@ -22,6 +24,8 @@ describe('VueNavBar.vue', () => {
 
     expect(window.addEventListener).toBeCalled();
     expect(window.removeEventListener).toBeCalled();
+    expect(document.addEventListener).toBeCalled();
+    expect(document.removeEventListener).toBeCalled();
   });
 
   test('should add sticky class', () => {
@@ -33,20 +37,20 @@ describe('VueNavBar.vue', () => {
     (window as any).pageYOffset = 100;
     wrapper.vm.handleScroll();
     wrapper.update();
-    expect(wrapper.findAll(`.${$style.in}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.${$style.in}`)).toHaveLength(2);
 
     (window as any).pageYOffset = undefined;
     document.documentElement.scrollTop = 100;
     wrapper.vm.handleScroll();
     wrapper.update();
-    expect(wrapper.findAll(`.${$style.in}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.${$style.in}`)).toHaveLength(2);
 
     (window as any).pageYOffset = undefined;
     document.documentElement.scrollTop = undefined;
     document.body.scrollTop = 100;
     wrapper.vm.handleScroll();
     wrapper.update();
-    expect(wrapper.findAll(`.${$style.in}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.${$style.in}`)).toHaveLength(2);
 
     (window as any).pageYOffset = undefined;
     document.documentElement.scrollTop = undefined;
@@ -56,4 +60,24 @@ describe('VueNavBar.vue', () => {
     expect(wrapper.findAll(`.${$style.in}`)).toHaveLength(0);
   });
 
+  test('should open menu and close it on outside click', () => {
+    const wrapper: any = mount(VueNavBar, {
+      localVue,
+      mocks: { $style },
+    });
+
+    expect(wrapper.vm.isOpen).toBeFalsy();
+
+    wrapper.find(`.${$style.hamburger}`).trigger('click');
+    wrapper.update();
+    expect(wrapper.vm.isOpen).toBeTruthy();
+
+    wrapper.vm.handleDocumentClick({ target: wrapper.find(`.${$style.hamburger}`).element });
+    wrapper.update();
+    expect(wrapper.vm.isOpen).toBeTruthy();
+
+    wrapper.vm.handleDocumentClick({ target: null });
+    wrapper.update();
+    expect(wrapper.vm.isOpen).toBeFalsy();
+  });
 });

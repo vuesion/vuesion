@@ -1,47 +1,61 @@
 <template>
   <div id="app">
-    <vue-nav-bar />
+    <vue-nav-bar>
+      <ul :class="$style.nav">
+        <li>
+          <router-link to="/" exact>
+            <i class="fas fa-home" />
+            <small>{{ $t('App.nav.home') }}</small>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/counter">
+            <i class="fas fa-hashtag" />
+            <small>{{ $t('App.nav.counter') }}</small>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/components">
+            <i class="fas fa-puzzle-piece" />
+            <small>{{ $t('App.nav.components') }}</small>
+          </router-link>
+        </li>
+        <li>
+          <a @click="langSwitch('en')">
+            <i class="fas fa-flag" />
+            <small>{{ $t('App.nav.english') }}</small>
+          </a>
+        </li>
+        <li>
+          <a @click="langSwitch('de')">
+            <i class="fas fa-flag" />
+            <small>{{ $t('App.nav.german') }}</small>
+          </a>
+        </li>
+      </ul>
+    </vue-nav-bar>
 
     <div :class="$style.app">
-      <vue-grid>
-        <vue-grid-item fill>
-          <vue-button @click="langSwitch('en')" :primary="lang === 'en'">EN</vue-button>
-          <vue-button @click="langSwitch('de')" :primary="lang === 'de'">DE</vue-button>
-        </vue-grid-item>
-
-        <vue-grid-item fill>
-          <ul :class="$style.nav">
-            <li>
-              <router-link to="/" exact>{{ $t('App.nav.home') }}</router-link>
-            </li>
-            <li>
-              <router-link to="/counter">{{ $t('App.nav.counter') }}</router-link>
-            </li>
-            <li>
-              <router-link to="/components">{{ $t('App.nav.components') }}</router-link>
-            </li>
-          </ul>
-        </vue-grid-item>
-      </vue-grid>
-
       <router-view class="view"></router-view>
     </div>
+
+    <vue-footer />
   </div>
 </template>
 
 <script lang="ts">
-  import VueNavBar from './shared/VueNavBar/VueNavBar.vue';
-  import VueButton from './shared/VueButton/VueButton.vue';
-  import VueGrid from './shared/VueGrid/VueGrid.vue';
-  import VueGridItem from './shared/VueGridItem/VueGridItem.vue';
-  import { loadLanguageAsync } from './plugins/i18n';
+  import VueNavBar from './shared/components/VueNavBar/VueNavBar.vue';
+  import VueGrid from './shared/components/VueGrid/VueGrid.vue';
+  import VueGridItem from './shared/components/VueGridItem/VueGridItem.vue';
+  import VueFooter from './shared/components/VueFooter/VueFooter'
+  import { loadLanguageAsync } from './shared/plugins/i18n';
 
   export default {
     components: {
       VueNavBar,
       VueGrid,
       VueGridItem,
-      VueButton,
+      VueFooter,
     },
     data() {
       return {
@@ -76,8 +90,6 @@
   }
 
   .app {
-    margin:  $nav-bar-height 0 0 0;
-    padding: $grid-unit * 4 0;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -108,18 +120,52 @@
     font-size: $font-size-h6;
   }
 
+  small {
+    font-size: 75%;
+  }
+
   .nav {
-    margin:     $grid-unit * 3 0 0;
-    padding:    0;
-    list-style: none;
+    margin:         0;
+    padding:        0;
+    list-style:     none;
+    display:        flex;
+    flex-direction: row;
+    flex-wrap:      wrap;
+    width:          100%;
+
     li {
-      display: inline-block;
-      margin:  0;
+      flex:       1;
+      margin:     0 $grid-unit $grid-unit 0;
+      color:      $text-color;
+      flex-basis: $grid-unit * 10;
+      height:     $grid-unit * 10;
+      background: $divider-color;
+      cursor:     pointer;
+
       a {
-        display: inline;
-        padding: 10px;
+        padding:         $grid-unit;
+        display:         block;
+        color:           $text-color;
+        text-align:      center;
+        font-size:       32px;
+        text-decoration: none;
+
+        small {
+          font-size: 12px;
+          display:   block;
+        }
+      }
+    }
+  }
+
+  @media(min-width: $screen-tablet-landscape) {
+    .nav {
+      li {
+        opacity:    .8;
+        transition: opacity 250ms linear;
+
         &:hover {
-          background-color: #FFF;
+          opacity: 1;
         }
       }
     }

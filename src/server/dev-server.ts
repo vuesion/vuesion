@@ -9,7 +9,6 @@ const isomorphicConfig = nodeRequire('../../config/webpack.isomorphic.config');
 export const devServer =  (app: any, cb: any): void => {
   let bundle: string;
   let template: string;
-  let clientManifest: string;
 
   clientConfig.entry.app = ['webpack-hot-middleware/client', clientConfig.entry.app];
   clientConfig.output.filename = '[name].js';
@@ -29,14 +28,12 @@ export const devServer =  (app: any, cb: any): void => {
   clientCompiler.plugin('done', () => {
     const fs = devMiddleware.fileSystem;
     const templatePath = path.join(clientConfig.output.path, 'index.html');
-    const clientManifestPath = path.join(clientConfig.output.path, 'vue-ssr-client-manifest.json');
 
-    if (fs.existsSync(templatePath) && fs.existsSync(clientManifestPath)) {
+    if (fs.existsSync(templatePath)) {
       template = fs.readFileSync(templatePath, 'utf-8');
-      clientManifest = JSON.parse(fs.readFileSync(clientManifestPath, 'utf-8'));
 
       if (bundle) {
-        cb(bundle, template, clientManifest);
+        cb(bundle, template);
       }
     }
   });
@@ -59,7 +56,7 @@ export const devServer =  (app: any, cb: any): void => {
     bundle = JSON.parse(mfs.readFileSync(bundlePath, 'utf-8'));
 
     if (template) {
-      cb(bundle, template, clientManifest);
+      cb(bundle, template);
     }
   });
 };

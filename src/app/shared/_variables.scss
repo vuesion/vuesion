@@ -1,22 +1,26 @@
 /* Brand */
-$brand-dark: #455A64;
-$brand-light: #FAFAFA;
+$brand-dark-primary: #7966F3;
+$brand-light-primary: #9B9BFD;
+$brand-primary: #A851E2;
 
-$brand-primary: #00C853;
-$brand-accent: #0091EA;
-$brand-warn: #D50000;
+$brand-accent: #17BEBB;
+$brand-warn: #FB3640;
 
-$gray-light: #B0BEC5;
+$bg-color: #333;
+
+$text-color: #FFF;
+$secondary-text-color: #BABABA;
+
+$divider-color: lighten($bg-color, 20%);
 
 /* General */
 $google-font: 'https://fonts.googleapis.com/css?family=Alegreya+Sans';
 $font-family: 'Alegreya Sans', Helvetica, sans-serif;
 $font-size: 16px;
-$font-color: $brand-dark;
+$font-color: $text-color;
 $font-weight: 300;
 $grid-unit: 8px;
-$bg-color: $brand-light;
-$link-active-color: $brand-primary;
+$link-active-color: $brand-accent;
 
 /* Headings */
 $font-size-h1: 42px;
@@ -44,17 +48,24 @@ $screen-small-desktop-gutter: 32px;
 $screen-large-desktop-gutter: 32px;
 
 /* AppNavBar*/
-$nav-bar-bg: $brand-dark;
-$nav-bar-color: $brand-light;
+$nav-bar-bg: linear-gradient(to bottom, $bg-color 0%, lighten($bg-color, 2%) 50%, $bg-color 100%);
+$nav-bar-color: $text-color;
 $nav-bar-width: 100%;
 $nav-bar-height: $grid-unit * 10;
 $nav-bar-padding: 0;
 $nav-bar-index: 1000;
-$nav-bar-bg-transition: opacity 100ms ease-in-out;
+$nav-bar-bg-transition: opacity 250ms ease-in-out;
+$nav-bar-bg-accent-transition: transform 250ms ease-in-out;
+$nav-bar-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+$nav-bar-accent-bg: linear-gradient(to left, $brand-dark-primary 0%, $brand-primary 100%);
+$nav-bar-accent-shadow: $nav-bar-shadow;
+$nav-bar-hamburger-bg: $divider-color;
+$nav-bar-menu-border-color: lighten($bg-color, 5%);
+$nav-bar-menu-bg: transparent;
 
 /* Button */
 $button-font-family: $font-family;
-$button-padding: $grid-unit * 2 $grid-unit * 2;
+$button-padding: ($grid-unit * 2) - 2 $grid-unit * 2;
 $button-margin: 0 $grid-unit $grid-unit * 2 0;
 $button-min-width: $grid-unit * 14;
 $button-height: $grid-unit * 6;
@@ -65,20 +76,20 @@ $button-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.4);
 $button-transition: all 300ms cubic-bezier(.25, .8, .25, 1);
 $button-active-shadow: 0 12px 20px rgba(0, 0, 0, 0.20), 0 10px 10px rgba(0, 0, 0, 0.18);
 
-$button-default-color: #000;
-$button-default-bg: $gray-light;
+$button-default-color: #FFF;
+$button-default-bg: linear-gradient(171deg, $divider-color 0%, lighten($divider-color, 5%) 100%);
 $button-default-hover-bg: $button-default-bg;
 
 $button-primary-color: #000;
-$button-primary-bg: $brand-primary;
+$button-primary-bg: linear-gradient(171deg, $brand-primary 0%, lighten($brand-primary, 5%) 100%);
 $button-primary-hover-bg: $button-primary-bg;
 
 $button-accent-color: #000;
-$button-accent-bg: $brand-accent;
+$button-accent-bg: linear-gradient(171deg, $brand-accent 0%, lighten($brand-accent, 5%) 100%);
 $button-accent-hover-bg: $button-accent-bg;
 
-$button-warn-color: #FFF;
-$button-warn-bg: $brand-warn;
+$button-warn-color: #000;
+$button-warn-bg: linear-gradient(171deg, $brand-warn 0%, lighten($brand-warn, 5%) 100%);
 $button-warn-hover-bg: $button-warn-bg;
 
 /* Loader */
@@ -87,7 +98,7 @@ $loader-medium-size: $grid-unit * 8;
 $loader-large-size: $grid-unit * 16;
 
 /* Panel */
-$panel-bg: #FFF;
+$panel-bg: lighten($bg-color, 5%);
 $panel-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 $panel-border-radius: 0;
 $panel-margin: 0 0 $grid-unit * 5 0;
@@ -100,15 +111,16 @@ $panel-header-title-font-size: $font-size-h6;
 $panel-header-title-font-weight: 500;
 $panel-header-subtitle-font-size: $font-size;
 $panel-header-subtitle-font-weight: 300;
-$panel-header-subtitle-color: darken($gray-light, 10%);
+$panel-header-subtitle-color: $secondary-text-color;
 
 $panel-body-padding: $grid-unit * 2 $grid-unit * 3;
 $panel-body-font-size: $font-size;
+$panel-body-color: $text-color;
 
 $panel-footer-padding: $grid-unit * 2;
 
 /* Input */
-$input-border-bottom: 1px solid $gray-light;
+$input-border-bottom: 1px solid $divider-color;
 $input-background-color: $bg-color;
 $input-padding: $grid-unit 0;
 $input-margin: $grid-unit * 3 0 $grid-unit * 2;
@@ -134,3 +146,10 @@ $input-message-padding: $grid-unit * 0.5 0 0 0;
 $input-message-color: $input-color;
 $input-message-font-size: $input-font-size;
 $input-message-font-weight: $font-weight;
+
+/* Modal */
+$modal-shadow: $nav-bar-shadow;
+$modal-padding: $grid-unit * 3;
+$modal-index: 2001;
+$modal-bg: $nav-bar-bg;
+$modal-max-width: 480px;

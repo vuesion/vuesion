@@ -28,7 +28,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/variables";
+  @import "../../variables";
 
   .gridItem {
     flex-basis: 100%;

@@ -17,7 +17,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../variables";
+  @import "../../../variables";
 
   .vuePanelFooter {
     display: block;
