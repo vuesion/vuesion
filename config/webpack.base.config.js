@@ -21,9 +21,7 @@ const baseConfig = {
     new webpack.DefinePlugin({
       PRODUCTION: isProd,
       DEVELOPMENT: !isProd,
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-      }
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ],
   module: {
