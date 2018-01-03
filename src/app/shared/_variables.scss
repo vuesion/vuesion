@@ -42,10 +42,10 @@ $screen-small-desktop-max: $screen-small-desktop - 1;
 $screen-large-desktop: 1440px;
 $screen-large-desktop-max: $screen-large-desktop - 1;
 $screen-phone-gutter: 16px;
-$screen-tablet-portrait-gutter: 32px;
-$screen-tablet-landscape-gutter: 32px;
-$screen-small-desktop-gutter: 32px;
-$screen-large-desktop-gutter: 32px;
+$screen-tablet-portrait-gutter: 16px;
+$screen-tablet-landscape-gutter: 16px;
+$screen-small-desktop-gutter: 16px;
+$screen-large-desktop-gutter: 16px;
 
 /* AppNavBar*/
 $nav-bar-bg: linear-gradient(to bottom, $bg-color 0%, lighten($bg-color, 2%) 50%, $bg-color 100%);
