@@ -11,7 +11,7 @@ node_js:
   - "8"
 
 install:
-  - npm install --dev
+  - npm install
 
 script:
   - npm run ci
