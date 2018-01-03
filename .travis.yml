@@ -14,6 +14,7 @@ deploy:
   provider: heroku
   api_key:
     secure: eAZkY8MedVzJOcLqVzuMkB3Ver/ElSsVVAcdKLc774qyqYEZGrD8SlCPwFypLNYGPohdjiC1IsufAVaC6ww6FoU/fgbcV1UxWuC1jxfEpBUPYHGzZ89pP/6CLtiog3L0IPMerPubgFNQOb647EuzQauXLg1pdkz9oNzjlTUbnKZvobkHq2KWvRL+K/MBkwgyeU8bXdxzVgqn8p/XBXoO9o0E269PdRaRpb4gKp4xIbmX2l03X7USifv0Jj+zlg3avvRZoupxU1Qwm8V1umWZBA5Pg+glOT9L/tOTaguZfNXT3LeQXqPxP7PbAQvnYShwR71+V0VwsYp7kFoMpdPtZTXbxTYHQZ92JHfz0PdNTFoak8TbUm4U/BQzhIA4VSfKKhRBtPg8D5lGNdG1U125t5tq+X92rm8Hvh5oxwo/fQlebrrBd6+r+RnKsq0ikrNqJvClcLH70VX3mZEU8B6UU0WwPiQgH+cLzxy/Vm9qc7GVigswlbkxqbH9FnxjTwyqmTBN/SdvP2q2+62qF5+yOj55pHhZnUQxlJw3YMDNla9xjl1Km/Lm+GV3WUnIdNXFuAc3j39eh1zzAEoPT8196/pTxkJLyoJPty9sL22spzvxaLn2x5rPlZwNoajp6cEz2HbywcNnd3HraVOXUcTdB0qy/QkbxNQ8PWDGz19pbgk=
+  skip_cleanup: true
   app: vue-starter
   on:
     repo: devCrossNet/vue-starter

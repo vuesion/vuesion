@@ -33,7 +33,6 @@
     "build:generators": "webpack --config ./generators/webpack.config.js --progress --hide-modules",
     "generate": "npm run build:generators && plop --plopfile ./generators/index.js",
     "clean": "rimraf ./dist ./coverage",
-    "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node ./dist/server/server.js",
     "dev:dev-server": "webpack -d --config ./config/webpack.dev-server.config.js --progress --hide-modules",
     "dev:server": "webpack -d --config ./config/webpack.server.config.js --progress --hide-modules",
