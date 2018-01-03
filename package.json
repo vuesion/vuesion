@@ -172,5 +172,9 @@
     "webpack-dev-middleware": "^2.0.3",
     "webpack-hot-middleware": "^2.21.0",
     "webpack-merge": "^4.1.1"
+  },
+  "engines": {
+    "node": "8.9.4",
+    "npm": "5.6.0"
   }
 }
