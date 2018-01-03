@@ -28,4 +28,16 @@ describe('Stage.vue', () => {
     wrapper.vm.$mount();
   });
 
+  test('adds and removes resize listeners', () => {
+    window.addEventListener = jest.fn();
+    window.removeEventListener = jest.fn();
+
+    const wrapper = mount(Stage, { localVue, mocks: { $style } });
+
+    wrapper.destroy();
+
+    expect(window.addEventListener).toBeCalled();
+    expect(window.removeEventListener).toBeCalled();
+  });
+
 });

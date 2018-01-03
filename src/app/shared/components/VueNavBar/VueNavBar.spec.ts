@@ -12,7 +12,7 @@ describe('VueNavBar.vue', () => {
     expect(wrapper.findAll(`.${$style.vueNavBar}`)).toHaveLength(1);
   });
 
-  test('registers and unregisters scroll/click event', () => {
+  test('adds and removes scroll/click listeners', () => {
     window.addEventListener = jest.fn();
     window.removeEventListener = jest.fn();
     document.addEventListener = jest.fn();
