@@ -19,16 +19,26 @@
       return {};
     },
     computed: {},
-    methods: {},
+    methods: {
+      handleResize() {
+        const canvas: HTMLCanvasElement = this.$refs.canvas;
+        const stage: HTMLElement = this.$refs.stage;
+        const stageRect: ClientRect = stage.getClientRects().length > 0 ? stage.getClientRects().item(0) : { width: 0, height: 0 } as ClientRect;
+
+        canvas.width = stageRect.width;
+        canvas.height = stageRect.height;
+      }
+    },
+    beforeMount() {
+      window.addEventListener('resize', this.handleResize);
+    },
     mounted() {
-      const canvas: HTMLCanvasElement = this.$refs.canvas;
-      const stage: HTMLElement = this.$refs.stage;
-      const stageRect: ClientRect = stage.getClientRects().length > 0 ? stage.getClientRects().item(0) : { width: 0, height: 0 } as ClientRect;
+      this.handleResize();
 
-      canvas.width = stageRect.width;
-      canvas.height = stageRect.height;
-
-      CircleAnimation(canvas);
+      CircleAnimation(this.$refs.canvas);
+    },
+    beforeDestroy() {
+      window.removeEventListener('resize', this.handleResize);
     }
   };
 </script>
@@ -50,6 +60,7 @@
       transform:  skewX(-40deg) translateX(100%);
       box-shadow: $nav-bar-shadow;
       position:   absolute;
+      transition: transform 250ms linear;
     }
 
     .accentTwo {
@@ -59,6 +70,7 @@
       transform:  skewX(30deg) translateX(-57%);
       box-shadow: $nav-bar-shadow;
       position:   absolute;
+      transition: transform 250ms linear;
     }
 
     .canvas {
@@ -81,6 +93,71 @@
 
     .subTitle {
       top: $grid-unit * 19;
+    }
+  }
+
+  @media (min-width: $screen-tablet-portrait) {
+    .stage {
+      .accent {
+        transform: skewX(-33deg) translateX(100%);
+      }
+
+      .accentTwo {
+        transform: skewX(37deg) translateX(-29%);
+      }
+
+      .title {
+        top:       $grid-unit * 24;
+        font-size: $font-size-h1 + 4;
+      }
+
+      .subTitle {
+        top: $grid-unit * 21;
+      }
+    }
+  }
+
+  @media (min-width: $screen-tablet-landscape) {
+    .stage {
+      .accent {
+        transform: skewX(-44deg) translateX(100%);
+      }
+
+      .accentTwo {
+        transform: skewX(38deg) translateX(-29%);
+      }
+
+      .title {
+        top:       $grid-unit * 26;
+        font-size: $font-size-h1 + 6;
+      }
+
+      .subTitle {
+        top: $grid-unit * 23;
+      }
+    }
+  }
+
+  @media (min-width: $screen-small-desktop) {
+    .stage {
+      .accent {
+        transform: skewX(-46deg) translateX(117%);
+        width:     49%;
+      }
+
+      .accentTwo {
+        transform: skewX(38deg) translateX(-19%);
+        width:     49%;
+      }
+
+      .title {
+        top:       $grid-unit * 26;
+        font-size: $font-size-h1 + 6;
+      }
+
+      .subTitle {
+        top: $grid-unit * 23;
+      }
     }
   }
 </style>
