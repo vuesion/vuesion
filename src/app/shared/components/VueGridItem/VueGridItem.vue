@@ -42,7 +42,7 @@
       padding: 0 $screen-tablet-portrait-gutter;
 
       &.fill {
-        flex: 0 0 100%
+        flex: 1 1 100%
       }
     }
   }
