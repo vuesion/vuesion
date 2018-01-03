@@ -10,38 +10,62 @@
 
 ![vue-starter](https://user-images.githubusercontent.com/1667598/34497260-2d39a7ac-effd-11e7-8d88-ff011f0b3244.gif)
 
-# Goal
+# Features
+**Quick scaffolding**
 
-This starter should enable you to build an enterprise ready web-app as fast as possible.
-The following use cases are already included:
+Create components, connected components, modules - and their tests - right from the CLI!
 
-- server-side-rendering
-- SEO support
-- lighthouse score as high as possible (for me - 90+)
-- enterprise ready
-- enable unit/integration tests to have 100% coverage
-- animations
-- flexible component library
-- i18n support
-- fast development / code generators
-- prefetching of data
-- server-side-rendering of prefetched data
-- transfer state from server -> client
+**Instant feedback**
 
-With its integrated generators, it is possible to generate components and whole modules.
-This will save you a lot of time during development!
+Enjoy the best DX (Developer eXperience) and code your app at the speed of thought!
+Your saved changes to the CSS and JS are reflected instantaneously without refreshing the page.
+Preserve application state even when you update something in the underlying code!
 
-## Getting started
+**SEO** (with [vue-meta](https://github.com/declandewet/vue-meta))
 
-### Prerequisites
-- Install Node.js 8.7.x or higher. Use [nvm](https://github.com/creationix/nvm) to maintain multiple Node.js versions.
-- Install npm version 5.4.x or higher
+We support SEO (document head tags management) and server-side-rendering for search engines
+that support indexing of JavaScript content. (eg. Google)
 
-### Installation
-- Install dependencies: `npm install`
+**Progressive-Web-App**
 
-### Run the application
-Run `npm run dev`. The server runs on port `3000` by default, set `PORT` environment variable to configure a different port.
+Offline-first support with service-workers and a lighthouse score as high as possible (for me - 90+).
+
+**Enterprise Ready**
+
+Common style guide and the best test setup: Automatically guarantee code quality and non-breaking changes.
+
+**Animations**
+
+A stable animations set up already included.
+
+**Components**
+
+A flexible component library that'll be extended over time.
+
+
+**Industry-standard i18n internationalization support**
+
+Scalable apps need to support multiple languages, easily add and support multiple languages with [vue-i18n](https://github.com/kazupon/vue-i18n).
+
+**Predictable state management** 
+
+With [vuex](https://github.com/vuejs/vuex).
+
+**Routing with data prefetching**
+
+Server-side-rendering of prefetched data and transferring state from server to client.
+
+# Quick start
+
+1. Install Node.js 8.7.x or higher. Use [nvm](https://github.com/creationix/nvm) to maintain multiple Node.js versions.
+2. Install npm version 5.4.x or higher
+3. clone repository `git clone https://github.com/devCrossNet/vue-starter`
+4. Install dependencies: `npm install`
+5. Run `npm run dev`. The server runs on port `3000` by default, set `PORT` environment variable to configure a different port.
+
+# Documentation
+
+> WIP
 
 ### Run unit tests
 - `npm test` runs tests once
@@ -64,8 +88,12 @@ To release a new version of your project run one of the following commands:
 
 This will also automatically generate a change log.
 
-## Thanks to
+# Reference resources
 
 - [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate)
 - [vue-ssr-starter-kit](https://github.com/doabit/vue-ssr-starter-kit)
 - [Angular](https://github.com/angular/angular)
+
+# License
+
+[MIT](http://opensource.org/licenses/MIT)
