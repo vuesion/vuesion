@@ -15,7 +15,7 @@
     display:        flex;
     flex-direction: row;
     flex-wrap:      wrap;
-    max-width:      $screen-phone;
+    max-width:      425px;
     margin:         0 auto;
     position:       relative;
   }

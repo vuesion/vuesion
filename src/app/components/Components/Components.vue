@@ -1,5 +1,37 @@
 <template>
-  <div>
+  <div :class="$style.components">
+    <vue-grid>
+
+      <vue-grid-item fill>
+        <div class="h1">Tab</div>
+      </vue-grid-item>
+
+      <vue-grid-item fill>
+        <vue-tab-group>
+          <vue-tab-item title="Profile" icon="fas fa-user">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </vue-tab-item>
+          <vue-tab-item title="Settings" icon="fas fa-cog">
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </vue-tab-item>
+          <vue-tab-item title="Upload" icon="fas fa-upload">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </vue-tab-item>
+        </vue-tab-group>
+      </vue-grid-item>
+
+    </vue-grid>
+
     <vue-grid>
 
       <vue-grid-item fill>
@@ -248,6 +280,8 @@
   import VueInput from '../../shared/components/VueInput/VueInput';
   import VueCollapse from '../../shared/components/VueCollapse/VueCollapse';
   import VueModal from '../../shared/components/VueModal/VueModal';
+  import VueTabGroup from '../../shared/components/VueTabGroup/VueTabGroup';
+  import VueTabItem from '../../shared/components/VueTabItem/VueTabItem';
 
   export default {
     metaInfo: {
@@ -265,6 +299,8 @@
       VueInput,
       VueCollapse,
       VueModal,
+      VueTabGroup,
+      VueTabItem,
     },
     data() {
       return {
@@ -277,6 +313,10 @@
 
 <style lang="scss" module>
   @import "../../shared/variables";
+
+  .components {
+    margin-top: $nav-bar-height;
+  }
 
   :global {
     .h1 {
