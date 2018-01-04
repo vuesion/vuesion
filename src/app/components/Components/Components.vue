@@ -327,8 +327,9 @@
   }
 
   .collapseDemo {
-    padding:          $grid-unit * 2;
-    background-color: $divider-color;
-    color:            #FFF
+    padding:    $grid-unit * 2;
+    background: $panel-bg;
+    box-shadow: $panel-shadow;
+    color:      #FFF
   }
 </style>

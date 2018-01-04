@@ -6,6 +6,10 @@
 
     <h1 :class="$style.title">Vue.js Starter</h1>
     <div :class="$style.subTitle">an enterprise ready boilerplate for isomorphic, progressive web apps</div>
+
+    <a :class="$style.github" href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener">
+      <i class="fab fa-github"></i>
+    </a>
   </div>
 </template>
 
@@ -82,7 +86,7 @@
       top:              0;
     }
 
-    .title, .subTitle {
+    .title, .subTitle, .github {
       text-shadow: 0 5px 10px rgba(0, 0, 0, 0.33);
       position:    relative;
     }
@@ -93,6 +97,22 @@
 
     .subTitle {
       top: $grid-unit * 19;
+    }
+
+    .github {
+      font-size:           $font-size-h1;
+      top:                 $grid-unit * 28;
+      box-shadow:          $nav-bar-shadow;
+      display:             inline-block;
+      background:          $nav-bar-bg;
+      transition:          $button-transition;
+      transition-property: box-shadow, background-color;
+      color:               $text-color;
+      padding:             $button-padding;
+
+      &:hover {
+        box-shadow: $button-active-shadow;
+      }
     }
   }
 
@@ -113,6 +133,10 @@
 
       .subTitle {
         top: $grid-unit * 21;
+      }
+
+      .github {
+        top: $grid-unit * 30;
       }
     }
   }
@@ -135,6 +159,10 @@
       .subTitle {
         top: $grid-unit * 23;
       }
+
+      .github {
+        top: $grid-unit * 42;
+      }
     }
   }
 
@@ -148,15 +176,6 @@
       .accentTwo {
         transform: skewX(38deg) translateX(-19%);
         width:     49%;
-      }
-
-      .title {
-        top:       $grid-unit * 26;
-        font-size: $font-size-h1 + 6;
-      }
-
-      .subTitle {
-        top: $grid-unit * 23;
       }
     }
   }

@@ -119,11 +119,11 @@
 
     &:active {
       background: $button-default-hover-bg;
-      box-shadow:       $button-active-shadow;
+      box-shadow: $button-active-shadow;
     }
 
     &.primary {
-      color:            $button-primary-color;
+      color:      $button-primary-color;
       background: $button-primary-bg;
 
       &:hover {
@@ -138,7 +138,7 @@
     }
 
     &.accent {
-      color:            $button-accent-color;
+      color:      $button-accent-color;
       background: $button-accent-bg;
 
       &:hover {
@@ -153,7 +153,7 @@
     }
 
     &.warn {
-      color:            $button-warn-color;
+      color:      $button-warn-color;
       background: $button-warn-bg;
 
       &:hover {
