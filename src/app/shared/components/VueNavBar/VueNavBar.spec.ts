@@ -12,7 +12,7 @@ describe('VueNavBar.vue', () => {
     expect(wrapper.findAll(`.${$style.vueNavBar}`)).toHaveLength(1);
   });
 
-  test('adds and removes scroll/click listeners', () => {
+  test('adds and removes scroll/click/touchstart listeners', () => {
     window.addEventListener = jest.fn();
     window.removeEventListener = jest.fn();
     document.addEventListener = jest.fn();
@@ -24,8 +24,8 @@ describe('VueNavBar.vue', () => {
 
     expect(window.addEventListener).toBeCalled();
     expect(window.removeEventListener).toBeCalled();
-    expect(document.addEventListener).toBeCalled();
-    expect(document.removeEventListener).toBeCalled();
+    expect(document.addEventListener).toHaveBeenCalledTimes(2);
+    expect(document.removeEventListener).toHaveBeenCalledTimes(2);
   });
 
   test('should add sticky class', () => {

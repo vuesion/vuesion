@@ -42,8 +42,8 @@ describe('VueModal.vue', () => {
 
     wrapper.destroy();
 
-    expect(document.addEventListener).toBeCalled();
-    expect(document.removeEventListener).toBeCalled();
+    expect(document.addEventListener).toHaveBeenCalledTimes(2);
+    expect(document.removeEventListener).toHaveBeenCalledTimes(2);
   });
 
   test('should open menu and close it on outside click', () => {

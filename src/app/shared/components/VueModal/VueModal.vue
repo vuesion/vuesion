@@ -90,9 +90,11 @@
       }
 
       document.addEventListener('click', this.handleDocumentClick);
+      document.addEventListener('touchstart', this.handleDocumentClick);
     },
     beforeDestroy() {
       document.removeEventListener('click', this.handleDocumentClick);
+      document.removeEventListener('touchstart', this.handleDocumentClick);
     }
   };
 </script>

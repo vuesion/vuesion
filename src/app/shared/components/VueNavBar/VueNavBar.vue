@@ -96,6 +96,7 @@
     beforeMount() {
       window.addEventListener('scroll', this.handleScroll);
       document.addEventListener('click', this.handleDocumentClick);
+      document.addEventListener('touchstart', this.handleDocumentClick);
     },
     mounted() {
       this.handleScroll();
@@ -103,6 +104,7 @@
     beforeDestroy() {
       window.removeEventListener('scroll', this.handleScroll);
       document.removeEventListener('click', this.handleDocumentClick);
+      document.removeEventListener('touchstart', this.handleDocumentClick);
     }
   };
 </script>
