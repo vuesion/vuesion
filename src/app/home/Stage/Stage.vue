@@ -92,16 +92,16 @@
     }
 
     .title {
-      top: $grid-unit * 22;
+      top: $grid-unit * 17;
     }
 
     .subTitle {
-      top: $grid-unit * 19;
+      top: $grid-unit * 13;
     }
 
     .github {
       font-size:           $font-size-h1;
-      top:                 $grid-unit * 25;
+      top:                 $grid-unit * 17;
       box-shadow:          $nav-bar-shadow;
       display:             inline-block;
       background:          $nav-bar-bg;
