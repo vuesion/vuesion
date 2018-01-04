@@ -8,6 +8,10 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/devCrossNet/vue-starter.svg)]()
 [![GitHub issue last update](https://img.shields.io/github/issues/detail/last-update/devCrossNet/vue-starter/979.svg)]()
 
+# Live demo
+
+If you want to see a preview before you decide for this starter, please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.com/)**
+
 ![vue-starter](https://user-images.githubusercontent.com/1667598/34497260-2d39a7ac-effd-11e7-8d88-ff011f0b3244.gif)
 
 # Features
@@ -18,7 +22,7 @@ Create components, connected components, modules - and their tests - right from 
 **Instant feedback**
 
 Enjoy the best DX (Developer eXperience) and code your app at the speed of thought!
-Your saved changes to the CSS and JS are reflected instantaneously without refreshing the page.
+Your saved changes to the CSS and TypeScript are reflected instantaneously without refreshing the page.
 Preserve application state even when you update something in the underlying code!
 
 **SEO** (with [vue-meta](https://github.com/declandewet/vue-meta))
@@ -32,7 +36,7 @@ Offline-first support with service-workers and a lighthouse score as high as pos
 
 **Enterprise Ready**
 
-Common style guide and the best test setup: Automatically guarantee code quality and non-breaking changes.
+Common style guide, TypeScript and the best test setup: Automatically guarantee code quality and non-breaking changes.
 
 **Animations**
 
