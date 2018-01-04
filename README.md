@@ -8,7 +8,11 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/devCrossNet/vue-starter.svg)]()
 [![GitHub issue last update](https://img.shields.io/github/issues/detail/last-update/devCrossNet/vue-starter/979.svg)]()
 
-![vue-starter](https://user-images.githubusercontent.com/1667598/34497260-2d39a7ac-effd-11e7-8d88-ff011f0b3244.gif)
+#Live demo
+
+If you want to see a preview before you decide for this starter, please visit the [vue-starter app on heroku!](https://vue-starter.herokuapp.com/)
+
+<img src="https://user-images.githubusercontent.com/1667598/34497260-2d39a7ac-effd-11e7-8d88-ff011f0b3244.gif" alt="vue-stater animation" align="center" />
 
 # Features
 **Quick scaffolding**
