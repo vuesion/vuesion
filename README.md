@@ -38,7 +38,7 @@ Offline-first support with service-workers and a lighthouse score as high as pos
 
 Common style guide, TypeScript and the best test setup: Automatically guarantee code quality and non-breaking changes.
 
-**Animations**
+**Animations** (with [anime.js](http://animejs.com/))
 
 A stable animations set up already included.
 
