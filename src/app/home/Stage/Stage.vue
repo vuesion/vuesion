@@ -101,7 +101,7 @@
 
     .github {
       font-size:           $font-size-h1;
-      top:                 $grid-unit * 28;
+      top:                 $grid-unit * 25;
       box-shadow:          $nav-bar-shadow;
       display:             inline-block;
       background:          $nav-bar-bg;
