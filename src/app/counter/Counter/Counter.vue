@@ -1,15 +1,17 @@
 <template>
-  <vue-grid>
-    <vue-grid-item fill>
-      <h1>{{ $t('App.nav.counter') }}</h1>
-    </vue-grid-item>
+  <div :class="$style.counter">
+    <vue-grid>
+      <vue-grid-item fill>
+        <h1>{{ $t('App.nav.counter') }}</h1>
+      </vue-grid-item>
 
-    <vue-grid-item fill>
-      <vue-button @click='increment' accent>Increment +1</vue-button>
-      <vue-button @click='decrement' primary>Decrement -1</vue-button>
-      <h3>Count is {{ counter }}</h3>
-    </vue-grid-item>
-  </vue-grid>
+      <vue-grid-item fill>
+        <vue-button @click='increment' accent>Increment +1</vue-button>
+        <vue-button @click='decrement' primary>Decrement -1</vue-button>
+        <h3>Count is {{ counter }}</h3>
+      </vue-grid-item>
+    </vue-grid>
+  </div>
 </template>
 
 <script lang="ts">
@@ -43,4 +45,9 @@
 
 <style lang="scss" module>
   @import "../../shared/variables";
+
+  .counter {
+    margin-top: $nav-bar-height;
+    min-height: 500px;
+  }
 </style>
