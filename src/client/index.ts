@@ -5,7 +5,11 @@ import { Component } from 'vue-router/types/router';
 if (PRODUCTION) {
   const runtime = require('serviceworker-webpack-plugin/lib/runtime');
   if ('serviceWorker' in navigator) {
-    runtime.register();
+    runtime
+      .register()
+      .then((registration: ServiceWorkerRegistration) => {
+        registration.update();
+      });
   }
 }
 

@@ -64,14 +64,17 @@ app.use('/manifest.json', serve('../../dist/assets/pwa/manifest.json', false));
  * SSR
  */
 app.get('*', (req: Request, res: Response) => {
+  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.setHeader('max-age', '0');
+
   if (!renderer) {
     return res.end('waiting for compilation... refresh in a moment.');
   }
 
   const s: number = Date.now();
-
-  res.setHeader('Content-Type', 'text/html');
-
   const errorHandler = (err: any) => {
     if (err && err.code === 404) {
       res.status(404).end('404 | Page Not Found');

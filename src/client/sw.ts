@@ -1,10 +1,15 @@
 /* tslint:disable:no-console */
 
-const DEBUG = false;
-const { assets } = ((global as any) as any).serviceWorkerOption;
-const CACHE_NAME = new Date().toISOString();
+/**
+ * good resource if you think you have caching issues:
+ * https://gist.github.com/Rich-Harris/fd6c3c73e6e707e312d7c5d7d0f3b2f9
+ */
 
-let assetsToCache = [...assets.map((path: string) => '/client' + path), '../', '../manifest.json'];
+const DEBUG = true;
+const { assets } = ((global as any) as any).serviceWorkerOption;
+const CACHE_NAME: string = Date.now().toString();
+
+let assetsToCache = [...assets.map((path: string) => '/client' + path), `../`, '../manifest.json'];
 
 assetsToCache = assetsToCache.map(path => {
   return new URL(path, ((global as any) as any).location).toString();
@@ -14,19 +19,19 @@ assetsToCache = assetsToCache.map(path => {
 self.addEventListener('install', (event: any) => {
   // Perform install steps.
   if (DEBUG) {
-    console.log('[SW] Install event');
+    console.log(`[SW] Install cache: ${CACHE_NAME}`);
   }
 
   // Add core website files to cache during serviceworker installation.
   event.waitUntil(
     (global as any).caches
       .open(CACHE_NAME)
-      .then((cache: any) => {
+      .then((cache: Cache) => {
         return cache.addAll(assetsToCache);
       })
       .then(() => {
         if (DEBUG) {
-          console.log('Cached assets: main', assetsToCache);
+          console.info('Cached assets: main', assetsToCache);
         }
       })
       .catch((error: any) => {
@@ -39,20 +44,28 @@ self.addEventListener('install', (event: any) => {
 // After the install event.
 self.addEventListener('activate', (event: any) => {
   if (DEBUG) {
-    console.log('[SW] Activate event');
+    console.log(`[SW] Activate event for cache: ${CACHE_NAME}`);
   }
 
   // Clean the caches
   event.waitUntil(
     (global as any).caches.keys().then((cacheNames: any) => {
+      if (DEBUG) {
+        console.log('[SW] installed caches:', cacheNames);
+      }
+
       return Promise.all(
-        cacheNames.map((cacheName: any) => {
+        cacheNames.map((cacheName: string): Promise<any> => {
           // Delete the caches that are not the current one.
-          if (cacheName.indexOf(CACHE_NAME) === 0) {
-            return null;
+          if (cacheName !== CACHE_NAME) {
+            if (DEBUG) {
+              console.info(`[SW] cache deleted: ${cacheName}`);
+            }
+
+            return (global as any).caches.delete(cacheName);
           }
 
-          return (global as any).caches.delete(cacheName);
+          return Promise.resolve();
         }),
       );
     }),
@@ -73,7 +86,7 @@ self.addEventListener('message', (event: any) => {
 });
 
 self.addEventListener('fetch', (event: any) => {
-  const request = event.request;
+  const request: Request = event.request;
 
   // Ignore not GET request.
   if (request.method !== 'GET') {
@@ -93,36 +106,37 @@ self.addEventListener('fetch', (event: any) => {
     return;
   }
 
-  const resource = (global as any).caches.match(request)
-    .then((response: any) => {
-      if (response) {
+  const resource = (global as any).caches
+    .match(request, { cacheName: CACHE_NAME })
+    .then((cacheResponse: any) => {
+      if (cacheResponse) {
         if (DEBUG) {
-          console.log(`[SW] fetch URL ${requestUrl.href} from cache`);
+          console.info(`[SW] fetch URL ${requestUrl.href} from cache`);
         }
 
-        return response;
+        return cacheResponse;
       }
 
       // Load and cache known assets.
       return fetch(request)
-        .then((responseNetwork) => {
-          if (!responseNetwork || !responseNetwork.ok) {
+        .then((response: Response) => {
+          if (!response || !response.ok) {
             if (DEBUG) {
-              console.log(`[SW] URL [${requestUrl.toString()}] wrong responseNetwork: ${responseNetwork.status} ${responseNetwork.type}`);
+              console.error(`[SW] URL [${requestUrl.toString()}] wrong responseNetwork: ${response.status} ${response.type}`);
             }
 
-            return responseNetwork;
+            return response;
           }
 
           if (DEBUG) {
             console.log(`[SW] URL ${requestUrl.href} fetched`);
           }
 
-          const responseCache = responseNetwork.clone();
+          const responseCache: Response = response.clone();
 
           (global as any).caches
             .open(CACHE_NAME)
-            .then((cache: any) => {
+            .then((cache: Cache) => {
               return cache.put(request, responseCache);
             })
             .then(() => {
@@ -131,7 +145,7 @@ self.addEventListener('fetch', (event: any) => {
               }
             });
 
-          return responseNetwork;
+          return response;
         })
         .catch(() => {
           // User is landing on our page.
