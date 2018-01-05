@@ -5,14 +5,14 @@ import axios from 'axios';
 Vue.use(VueI18n);
 
 export const i18n = new VueI18n({
-  locale: 'en',
-  fallbackLocale: 'en',
+  locale: 'en-EN',
+  fallbackLocale: 'en-EN',
   messages: {
-    en: require('../../../../i18n/en.json'),
+    'en-EN': require('../../../../i18n/en-EN.json'),
   },
 });
 
-const loadedLanguages: string[] = ['en'];
+const loadedLanguages: string[] = ['en-EN'];
 
 const setI18nLanguage = (lang: string) => {
   i18n.locale = lang;

@@ -5,14 +5,14 @@ describe('i18n', () => {
   test('should set new language', (done) => {
     axios.get = jest.fn().mockReturnValue(Promise.resolve({ data: { foo: 'foo' } }));
 
-    loadLanguageAsync('de')
+    loadLanguageAsync('de-DE')
       .then(() => {
         expect(axios.get).toHaveBeenCalledTimes(1);
-        return loadLanguageAsync('de');
+        return loadLanguageAsync('de-DE');
       })
       .then(() => {
         expect(axios.get).toHaveBeenCalledTimes(1);
-        return loadLanguageAsync('en');
+        return loadLanguageAsync('en-EN');
       })
       .then(() => {
         expect(axios.get).toHaveBeenCalledTimes(1);

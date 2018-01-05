@@ -1,8 +1,8 @@
 {
-  "App.nav.home": "Início",
-  "App.nav.counter": "Contador",
   "App.nav.components": "Componentes",
+  "App.nav.counter": "Contador",
   "App.nav.english": "Inglês",
   "App.nav.german": "Alemão",
+  "App.nav.home": "Início",
   "App.nav.pt-BR": "Português"
 }

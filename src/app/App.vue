@@ -21,13 +21,13 @@
           </router-link>
         </li>
         <li>
-          <a @click="langSwitch('en')">
+          <a @click="langSwitch('en-EN')">
             <i class="fas fa-flag" />
             <small>{{ $t('App.nav.english') }}</small>
           </a>
         </li>
         <li>
-          <a @click="langSwitch('de')">
+          <a @click="langSwitch('de-DE')">
             <i class="fas fa-flag" />
             <small>{{ $t('App.nav.german') }}</small>
           </a>
@@ -65,7 +65,7 @@
     },
     data() {
       return {
-        lang: 'en'
+        lang: 'en-EN'
       }
     },
     methods: {
