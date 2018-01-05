@@ -96,7 +96,7 @@
     }
 
     .subTitle {
-      top: $grid-unit * 13;
+      top: $grid-unit * 15;
     }
 
     .github {
@@ -132,7 +132,7 @@
       }
 
       .subTitle {
-        top: $grid-unit * 21;
+        top: $grid-unit * 22;
       }
 
       .github {
@@ -157,7 +157,7 @@
       }
 
       .subTitle {
-        top: $grid-unit * 23;
+        top: $grid-unit * 24;
       }
 
       .github {

@@ -50,7 +50,7 @@
 
     i {
       font-size: $font-size-h1;
-      margin-right: $grid-unit * 4;
+      margin: 0 $grid-unit * 2;
     }
 
     small {
