@@ -56,7 +56,7 @@
 
     <vue-grid>
       <vue-grid-item fill>
-        <h1>{{ $t('App.nav.components') }}</h1>
+        <h1>{{ $t('App.nav.components' /*Components*/) }}</h1>
       </vue-grid-item>
 
       <vue-grid-item fill>

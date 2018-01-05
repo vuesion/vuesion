@@ -1,4 +1,5 @@
 {
+  "App.core.description": "Ein professionelles Boilerplate für universelle, progressive-web-apps",
   "App.nav.components": "Komponenten",
   "App.nav.counter": "Zähler",
   "App.nav.english": "Englisch",

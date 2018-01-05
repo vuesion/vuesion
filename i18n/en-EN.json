@@ -1,4 +1,5 @@
 {
+  "App.core.description": "an enterprise ready boilerplate for isomorphic, progressive web apps",
   "App.nav.components": "Components",
   "App.nav.counter": "Counter",
   "App.nav.english": "English",

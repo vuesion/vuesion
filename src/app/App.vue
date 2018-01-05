@@ -5,37 +5,37 @@
         <li>
           <router-link to="/" exact>
             <i class="fas fa-home" />
-            <small>{{ $t('App.nav.home') }}</small>
+            <small>{{ $t('App.nav.home' /*Home*/) }}</small>
           </router-link>
         </li>
         <li>
           <router-link to="/counter">
             <i class="fas fa-hashtag" />
-            <small>{{ $t('App.nav.counter') }}</small>
+            <small>{{ $t('App.nav.counter' /*Counter*/) }}</small>
           </router-link>
         </li>
         <li>
           <router-link to="/components">
             <i class="fas fa-puzzle-piece" />
-            <small>{{ $t('App.nav.components') }}</small>
+            <small>{{ $t('App.nav.components' /*Components*/) }}</small>
           </router-link>
         </li>
         <li>
           <a @click="langSwitch('en-EN')">
             <i class="fas fa-flag" />
-            <small>{{ $t('App.nav.english') }}</small>
+            <small>{{ $t('App.nav.english' /*English*/) }}</small>
           </a>
         </li>
         <li>
           <a @click="langSwitch('de-DE')">
             <i class="fas fa-flag" />
-            <small>{{ $t('App.nav.german') }}</small>
+            <small>{{ $t('App.nav.german' /*German*/) }}</small>
           </a>
         </li>
         <li>
           <a @click="langSwitch('pt-BR')">
             <i class="fas fa-flag" />
-            <small>{{ $t('App.nav.pt-BR') }}</small>
+            <small>{{ $t('App.nav.pt-BR' /*Portuguese*/) }}</small>
           </a>
         </li>
       </ul>

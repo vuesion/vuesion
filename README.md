@@ -87,6 +87,12 @@ To extract all your i18n identifies run `npm run extract-i18n-messages`.
 This will generate the languages files, defined in `./packages.json` in the folder `./i18n`,
 to add new language files add a new entry in `config."supported-languages"`.
 
+This script also enables you to define default messages with a magic comment:
+
+`$t('App.nav.components' /*Components*/)`,
+this will add `'Components'` as newly generated values to all the `'App.nav.components'` keys, 
+but will keep previous added values.
+
 ## Release
 To release a new version of your project run one of the following commands:
 

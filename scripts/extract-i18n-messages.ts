@@ -9,9 +9,14 @@ const supportedLanguages: string[] = JSON.parse(fs.readFileSync(path.join(basePa
 const translations: any = {};
 
 const addTranslationObject = (translation: string) => {
-  const id: string = translation.match(/'\S*'/)[0].replace(/[\\']/g, '');
+  const idMatches: string[] = translation.match(/'\S*'/);
+  const id: string = idMatches ? idMatches[0].replace(/[\\']/g, '') : '';
+  const defaultMessageMatches: string[] = translation.match(/\/\*[\S\s]*\*\//);
+  const defaultMessage: string = defaultMessageMatches ? defaultMessageMatches[0].replace(/[\/*]/g, '') : '';
 
-  translations[id] = '';
+  if (defaultMessage.length > 0) {
+    translations[id] = defaultMessage;
+  }
 };
 
 const run = (): void => {
@@ -21,7 +26,7 @@ const run = (): void => {
      */
     files.forEach((file: string) => {
       const content = fs.readFileSync(file).toString();
-      const matches: string[] = content.match(/\$t\S*\)/g);
+      const matches: string[] = content.match(/\$t\([\S, ]*\)/g);
 
       if (matches) {
         matches.forEach((translation: string) => {

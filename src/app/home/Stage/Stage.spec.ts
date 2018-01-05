@@ -1,6 +1,7 @@
 import { mount, createLocalVue } from 'vue-test-utils';
 import Stage from './Stage.vue';
 import $style from 'identity-obj-proxy';
+import { i18n } from '../../shared/plugins/i18n';
 
 const localVue = createLocalVue();
 
@@ -9,7 +10,13 @@ describe('Stage.vue', () => {
   test('renders component', () => {
     (window as any).HTMLCanvasElement.prototype.getContext = jest.fn();
 
-    const wrapper = mount(Stage, { localVue, mocks: { $style } });
+    const wrapper = mount(Stage, {
+      localVue,
+      i18n,
+      mocks: {
+        $style,
+      },
+    });
 
     expect(wrapper.find('h1').text()).toBe('Vue.js Starter');
 
@@ -32,7 +39,11 @@ describe('Stage.vue', () => {
     window.addEventListener = jest.fn();
     window.removeEventListener = jest.fn();
 
-    const wrapper = mount(Stage, { localVue, mocks: { $style } });
+    const wrapper = mount(Stage, {
+      localVue,
+      i18n,
+      mocks: { $style },
+    });
 
     wrapper.destroy();
 
