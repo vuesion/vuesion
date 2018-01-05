@@ -32,6 +32,12 @@
             <small>{{ $t('App.nav.german') }}</small>
           </a>
         </li>
+        <li>
+          <a @click="langSwitch('pt-BR')">
+            <i class="fas fa-flag" />
+            <small>{{ $t('App.nav.pt-BR') }}</small>
+          </a>
+        </li>
       </ul>
     </vue-nav-bar>
 
