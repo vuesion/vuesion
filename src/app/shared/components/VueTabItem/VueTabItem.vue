@@ -93,7 +93,9 @@
 </script>
 
 <style lang="scss" module>
+  @import "../../variables";
+
   .vueTab {
-    transition: transform 250ms linear;
+    transition: $tab-item-transition;
   }
 </style>

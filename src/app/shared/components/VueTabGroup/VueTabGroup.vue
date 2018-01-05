@@ -69,10 +69,10 @@
   @import "../../variables";
 
   .vueTabGroup {
-    background: $panel-bg;
-    box-shadow: $nav-bar-shadow;
-    padding:    0 $grid-unit * 2 $grid-unit * 2;
-    margin-top: $grid-unit * 4;
+    background: $tab-group-bg;
+    box-shadow: $tab-group-shadow;
+    padding:    $tab-group-padding;
+    margin-top: $tab-group-margin;
   }
 
   .headerList {
@@ -81,18 +81,18 @@
     padding:    0;
     display:    flex;
     width:      100%;
-    background: $panel-bg;
-    box-shadow: $nav-bar-shadow;
+    background: $tab-group-header-bg;
+    box-shadow: $tab-group-header-shadow;
     position:   relative;
     top:        -($grid-unit * 2);
 
     li {
-      padding:      $grid-unit * 1.5 $grid-unit $grid-unit;
+      padding:      $tab-group-header-item-padding;
       flex:         1;
       text-align:   center;
       position:     relative;
-      border-left:  1px solid lighten($panel-bg, 2%);
-      border-right: 1px solid darken($panel-bg, 2%);
+      border-left:  $tab-group-header-item-border-left;
+      border-right: $tab-group-header-item-border-right;
       line-height:  1.7;
       cursor:       pointer;
 
@@ -112,9 +112,9 @@
         bottom:                     0;
         opacity:                    0;
         transition-property:        opacity, transform;
-        transition-duration:        500ms;
+        transition-duration:        300ms;
         transition-timing-function: linear;
-        background:                 $brand-primary;
+        background:                 $tab-group-header-item-hover-bg;
       }
 
       &.active {

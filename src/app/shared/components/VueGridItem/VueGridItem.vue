@@ -15,7 +15,7 @@
     },
     computed: {
       cssClasses() {
-        const classes = [this.$style.gridItem];
+        const classes = ['vue-grid-item', this.$style.gridItem];
 
         if (this.fill) {
           classes.push(this.$style.fill);

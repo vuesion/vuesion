@@ -93,7 +93,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    margin: $grid-unit * 4 0 $grid-unit * 4 0;
+    margin: $grid-unit * 4 0 $grid-unit * 2 0;
   }
 
   h1 {
@@ -174,5 +174,13 @@
   img[alt=""],
   img:not([alt]) {
     border: 5px dashed $brand-warn;
+  }
+
+  a {
+    color: $brand-accent;
+
+    &:hover {
+      color: darken($brand-accent, 5%);
+    }
   }
 </style>

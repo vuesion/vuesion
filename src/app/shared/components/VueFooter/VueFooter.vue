@@ -2,7 +2,16 @@
   <div :class="$style.vueFooter">
     <vue-grid>
       <vue-grid-item>
-        <small>&copy; Copyright {{year}} Johannes Werner. MIT License</small>
+        <small>&copy; Copyright {{year}} Johannes Werner</small>
+      </vue-grid-item>
+
+      <vue-grid-item>
+        <a href="https://github.com/devCrossNet" target="_blank" rel="noopener"><i class="fab fa-github-alt"></i></a>
+        <a href="https://twitter.com/_jwerner_" target="_blank" rel="noopener"><i class="fab fa-twitter-square"></i></a>
+      </vue-grid-item>
+
+      <vue-grid-item>
+        <small><a href="https://github.com/devCrossNet/vue-starter/blob/master/LICENSE" target="_blank" rel="noopener">MIT License</a></small>
       </vue-grid-item>
     </vue-grid>
   </div>
@@ -34,8 +43,19 @@
   @import "../../variables";
 
   .vueFooter {
-    padding:    $grid-unit * 4 0 $grid-unit * 2 0;
-    background: linear-gradient(to bottom, darken($text-color, 3%) 0%, $text-color 50%, darken($text-color, 3%) 100%);
-    color:      $bg-color;
+    padding:    $footer-padding;
+    background: $footer-bg;
+    color:      $footer-color;
+    text-align: center;
+
+    i {
+      font-size: $font-size-h1;
+      margin-right: $grid-unit * 4;
+    }
+
+    small {
+      display: inline-block;
+      margin: $grid-unit * 2 0;
+    }
   }
 </style>

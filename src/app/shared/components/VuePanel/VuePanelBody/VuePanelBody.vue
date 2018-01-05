@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vuePanelBody">
+  <div :class="['vue-panel-body', $style.vuePanelBody]">
     <slot />
   </div>
 </template>

@@ -1,26 +1,25 @@
 <template>
-  <div>
+  <div :class="$style.home">
     <stage />
+    <dev-ex />
+    <enterprise-ready />
+    <user-experience />
+    <quick-start />
 
-    <vue-grid>
-      <vue-grid-item fill>
-        <h1>{{ $t('App.nav.home') }}</h1>
-      </vue-grid-item>
+    <div v-for="item in home" v-if="false">
+      <p>{{item.title}}</p>
+    </div>
 
-      <vue-grid-item fill>
-        <div v-for="item in home">
-          <p>{{item.title}}</p>
-        </div>
-      </vue-grid-item>
-    </vue-grid>
   </div>
 </template>
 
 <script lang="ts">
   import { mapGetters } from 'vuex';
-  import VueGrid from '../../shared/components/VueGrid/VueGrid';
-  import VueGridItem from '../../shared/components/VueGridItem/VueGridItem';
-  import Stage from '../Stage/Stage'
+  import Stage from '../Stage/Stage';
+  import DevEx from '../DevEx/DevEx';
+  import EnterpriseReady from '../EnterpriseReady/EnterpriseReady';
+  import UserExperience from '../UserExperience/UserExperience';
+  import QuickStart from '../QuickStart/QuickStart';
 
   export default {
     metaInfo: {
@@ -47,9 +46,11 @@
       ],
     },
     components: {
-      VueGrid,
-      VueGridItem,
       Stage,
+      DevEx,
+      EnterpriseReady,
+      UserExperience,
+      QuickStart,
     },
     computed: {
       ...mapGetters({
@@ -64,4 +65,44 @@
 
 <style lang="scss" module>
   @import "../../shared/variables";
+
+  .home {
+    h2 {
+      text-shadow: 0 5px 10px rgba(0, 0, 0, 0.33);
+    }
+
+    :global {
+      .vue-panel {
+        height: 100%;
+      }
+
+      .vue-grid-item {
+        margin-bottom: $grid-unit * 4;
+      }
+
+      .feature-section {
+        padding: $grid-unit * 4 0;
+      }
+    }
+  }
+
+  @media (min-width: $screen-tablet-portrait) {
+    .home {
+      :global {
+        .feature-section {
+          padding: $grid-unit * 14 0;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $screen-small-desktop) {
+    .home {
+      :global {
+        .feature-section {
+          padding: $grid-unit * 20 0;
+        }
+      }
+    }
+  }
 </style>

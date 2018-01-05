@@ -175,8 +175,9 @@
 
   .hamburger {
     position:                   absolute;
-    right:                      0;
-    padding:                    $grid-unit * 2;
+    right:                      $grid-unit * 2;
+    top:                        $grid-unit * 2;
+    padding:                    $grid-unit / 2 $grid-unit;
     display:                    inline-block;
     cursor:                     pointer;
 
@@ -187,13 +188,12 @@
     font:                       inherit;
     color:                      inherit;
     text-transform:             none;
-    background-color:           transparent;
     border:                     0;
-    margin:                     0;
     overflow:                   visible;
-    float:                      right;
+    background:                 $brand-primary;
 
     &.in {
+      background: transparent;
       .inner {
         &,
         &::before,
@@ -281,7 +281,7 @@
 
   @media (min-width: $screen-tablet-portrait) {
     .hamburger {
-      padding: $grid-unit * 2 $grid-unit * 4;
+      margin-right: $grid-unit * 2;
     }
   }
 </style>

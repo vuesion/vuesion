@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vuePanelFooter">
+  <div :class="['vue-panel-footer', $style.vuePanelFooter]">
     <slot />
   </div>
 </template>

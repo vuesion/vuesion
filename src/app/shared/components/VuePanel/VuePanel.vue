@@ -1,6 +1,6 @@
 <template>
   <vue-grid-item>
-    <div :class="$style.vuePanel">
+    <div :class="['vue-panel', $style.vuePanel]">
       <slot />
     </div>
   </vue-grid-item>
