@@ -75,6 +75,14 @@ Server-side-rendering of prefetched data and transferring state from server to c
 
 Find a detailed coverage report in `coverage/iconv-report/index.html`
 
+### Run e2e tests
+
+For more information about the e2e test set up, have a look at [cypress.io](https://www.cypress.io/).
+
+- run `npm run dev`
+- open a second terminal window
+- run `npm run e2e`
+
 ### Generators
 This boilerplate comes with the possibility to generate modules, components and connected components
 to keep a common style guide and to make development faster.
