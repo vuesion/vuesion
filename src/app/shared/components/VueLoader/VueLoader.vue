@@ -8,7 +8,7 @@
         r="20"
         fill="none"
         stroke-width="2"
-        stroke-miterlimit="10" />
+        stroke-miterlimit="10"></circle>
     </svg>
   </div>
 </template>
@@ -127,6 +127,9 @@
       margin:           auto;
 
       @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
         100% {
           transform: rotate(360deg);
         }

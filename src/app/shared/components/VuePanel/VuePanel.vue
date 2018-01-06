@@ -1,18 +1,12 @@
 <template>
-  <vue-grid-item>
-    <div :class="['vue-panel', $style.vuePanel]">
-      <slot />
-    </div>
-  </vue-grid-item>
+  <div :class="['vue-panel', $style.vuePanel]">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">
-  import VueGridItem from '../VueGridItem/VueGridItem';
-
   export default {
-    components: {
-      VueGridItem,
-    },
+    components: {},
     props: {},
     data: function () {
       return {};
