@@ -6,6 +6,7 @@ import * as Express from 'express';
 import * as favicon from 'serve-favicon';
 import { BundleRenderer } from 'vue-server-renderer';
 import { Handler, Request, Response } from 'express';
+import * as cookieParser from 'cookie-parser';
 
 const app: Express.Application = Express();
 const compression = require('compression');
@@ -43,6 +44,7 @@ if (isProd) {
 /**
  * middlewares
  */
+app.use(cookieParser());
 app.use(compression());
 
 /**
@@ -85,7 +87,7 @@ app.get('*', (req: Request, res: Response) => {
     }
   };
 
-  renderer.renderToStream({ url: req.url })
+  renderer.renderToStream({ url: req.url, cookies: req.cookies })
     .on('error', errorHandler)
     .on('end', () => console.log(`whole request: ${Date.now() - s}ms`))
     .pipe(res);

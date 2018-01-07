@@ -15,10 +15,6 @@ if (PRODUCTION) {
 
 const { app, router, store }: IApp = createApp();
 
-if (window.__INITIAL_STATE__) {
-  store.replaceState(window.__INITIAL_STATE__);
-}
-
 router.onReady(() => {
   router
     .beforeResolve((to: Route, from: Route, next: any) => {

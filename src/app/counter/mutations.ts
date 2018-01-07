@@ -1,12 +1,14 @@
 export const counterDefaultState: any = {
-  counter: 0,
+  counter: {
+    count: 0,
+  },
 };
 
 export const counterMutations = {
   INCREMENT: (state: any) => {
-    state.counter += 1;
+    state.counter.count += 1;
   },
   DECREMENT: (state: any) => {
-    state.counter -= 1;
+    state.counter.count -= 1;
   },
 };

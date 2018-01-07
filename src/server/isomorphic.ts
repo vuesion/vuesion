@@ -1,9 +1,17 @@
 import { createApp, IApp } from '../app/app';
 import { Component } from 'vue-router/types/router';
+import merge from 'deepmerge';
 
-export default (context: any) => {
+export interface IServerContext {
+  url: string;
+  cookies: any;
+  meta?: any;
+  state?: any;
+}
+
+export default (context: IServerContext) => {
   return new Promise((resolve: any, reject: any) => {
-    const { app, router, store }: IApp = createApp();
+    const { app, router, store }: IApp = createApp(context);
 
     router.push(context.url);
 
