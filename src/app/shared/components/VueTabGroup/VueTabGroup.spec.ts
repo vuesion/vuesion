@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from 'vue-test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import VueTabGroup from './VueTabGroup.vue';
 import $style from 'identity-obj-proxy';
 import VueTabItem from '../VueTabItem/VueTabItem.vue';
@@ -72,10 +72,10 @@ describe('VueTabGroup.vue', () => {
     expect(wrapper.findAll('li')).toHaveLength(2);
 
     expect(wrapper.find('li').text()).toMatch('foo');
-    expect(wrapper.find('li').hasClass($style.active)).toBe(true);
+    expect(wrapper.find('li').classes()).toEqual([$style.active]);
 
     expect(wrapper.findAll('li').at(1).text()).toMatch('foo2');
-    expect(wrapper.findAll('li').at(1).hasClass($style.active)).toBe(false);
+    expect(wrapper.findAll('li').at(1).classes()).toEqual([]);
 
     (wrapper as any).vm.changeTab(1);
     wrapper.update();
@@ -83,10 +83,10 @@ describe('VueTabGroup.vue', () => {
     tabWrapper2.update();
 
     expect(wrapper.find('li').text()).toMatch('foo');
-    expect(wrapper.find('li').hasClass($style.active)).toBe(false);
+    expect(wrapper.find('li').classes()).toEqual([]);
 
     expect(wrapper.findAll('li').at(1).text()).toMatch('foo2');
-    expect(wrapper.findAll('li').at(1).hasClass($style.active)).toBe(true);
+    expect(wrapper.findAll('li').at(1).classes()).toEqual([$style.active]);
   });
 
 });

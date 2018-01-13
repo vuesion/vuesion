@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from 'vue-test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import { i18n } from '../../shared/plugins/i18n';
 import Components from './Components.vue';

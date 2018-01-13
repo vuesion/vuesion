@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from 'vue-test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import QuickStart from './QuickStart.vue';
 import $style from 'identity-obj-proxy';
 

@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from 'vue-test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import VueModal from './VueModal.vue';
 import $style from 'identity-obj-proxy';
 
