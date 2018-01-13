@@ -8,7 +8,7 @@
       <vue-grid-item fill>
         <vue-button @click='increment' accent>Increment +1</vue-button>
         <vue-button @click='decrement' primary>Decrement -1</vue-button>
-        <h3>Count is {{ counter }}</h3>
+        <h3>Count is {{ counter.count }}</h3>
       </vue-grid-item>
     </vue-grid>
   </div>
