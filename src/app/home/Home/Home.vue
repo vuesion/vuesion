@@ -64,7 +64,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/variables";
+  @import "../../shared/styles";
 
   .home {
     h2 {
@@ -84,20 +84,16 @@
         padding: $grid-unit * 4 0;
       }
     }
-  }
 
-  @media (min-width: $screen-tablet-portrait) {
-    .home {
+    @include media(tabletPortrait) {
       :global {
         .feature-section {
           padding: $grid-unit * 14 0;
         }
       }
     }
-  }
 
-  @media (min-width: $screen-small-desktop) {
-    .home {
+    @include media(tabletLandscape) {
       :global {
         .feature-section {
           padding: $grid-unit * 20 0;

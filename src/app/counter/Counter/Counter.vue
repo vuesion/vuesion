@@ -44,7 +44,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/variables";
+  @import "../../shared/styles";
 
   .counter {
     margin-top: $nav-bar-height;

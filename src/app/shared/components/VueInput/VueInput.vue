@@ -65,7 +65,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../variables";
+  @import "../../styles";
 
   .vueInput {
     position: relative;

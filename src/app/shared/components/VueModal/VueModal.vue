@@ -100,7 +100,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../variables";
+  @import "../../styles";
 
   .vueModal {
     position:   fixed;
@@ -112,10 +112,8 @@
     z-index:    $modal-index;
     box-shadow: $modal-shadow;
     padding:    $modal-padding;
-  }
 
-  @media(min-width: $screen-tablet-portrait) {
-    .vueModal {
+    @include media(tabletPortrait) {
       width:       $modal-max-width;
       left:        50%;
       top:         0;

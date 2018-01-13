@@ -9,7 +9,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../variables";
+  @import "../../styles";
 
   .grid {
     display:        flex;
@@ -18,31 +18,23 @@
     max-width:      425px;
     margin:         0 auto;
     position:       relative;
-  }
 
-  @media (min-width: $screen-tablet-portrait) {
-    .grid {
+    @include media(tabletPortrait) {
       max-width: $screen-tablet-portrait;
       padding:   0 $screen-tablet-portrait-gutter;
     }
-  }
 
-  @media (min-width: $screen-tablet-landscape) {
-    .grid {
+    @include media(tabletLandscape) {
       max-width: $screen-tablet-landscape;
       padding:   0 $screen-tablet-landscape-gutter;
     }
-  }
 
-  @media (min-width: $screen-small-desktop) {
-    .grid {
+    @include media(smallDesktop) {
       max-width: $screen-small-desktop;
       padding:   0 $screen-small-desktop-gutter;
     }
-  }
 
-  @media (min-width: $screen-large-desktop) {
-    .grid {
+    @include media(largeDesktop) {
       max-width: $screen-large-desktop;
       padding:   0 $screen-large-desktop-gutter;
     }

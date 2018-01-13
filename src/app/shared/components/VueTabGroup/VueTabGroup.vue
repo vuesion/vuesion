@@ -66,7 +66,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../variables";
+  @import "../../styles";
 
   .vueTabGroup {
     background: $tab-group-bg;

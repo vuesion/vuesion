@@ -80,7 +80,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "./shared/variables";
+  @import "shared/styles";
   // @import url($google-font);
 
   body {
@@ -162,10 +162,8 @@
         }
       }
     }
-  }
 
-  @media(min-width: $screen-tablet-landscape) {
-    .nav {
+    @include media(tabletLandscape) {
       li {
         opacity:    .8;
         transition: opacity 250ms linear;
@@ -177,6 +175,7 @@
     }
   }
 
+  // always make sure images have an alt attribute
   img[alt=""],
   img:not([alt]) {
     border: 5px dashed $brand-warn;

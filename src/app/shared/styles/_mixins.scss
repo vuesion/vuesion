@@ -1,0 +1,49 @@
+@mixin background-gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+
+  @if $orientation == 'vertical' {
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  } @else if $orientation == 'horizontal' {
+    background: linear-gradient(to right, $start-color, $end-color);
+  } @else {
+    background: linear-gradient($orientation, $start-color, $end-color);
+  }
+}
+
+@mixin center-block {
+  display:      block;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+@mixin center-both {
+  position:  absolute;
+  top:       50%;
+  left:      50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin position($type, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $type;
+  top:      $top;
+  right:    $right;
+  bottom:   $bottom;
+  left:     $left;
+}
+
+$grid-breakpoints: (
+                     phone: $screen-phone,
+                     tabletPortrait: $screen-tablet-portrait,
+                     tabletLandscape: $screen-tablet-landscape,
+                     smallDesktop: $screen-small-desktop,
+                     largeDesktop: $screen-large-desktop
+                   );
+@mixin media($breakpoint-name) {
+  @if map-has-key($grid-breakpoints, $breakpoint-name) {
+    @media (min-width: #{map_get($grid-breakpoints, $breakpoint-name)}) {
+      @content;
+    }
+  } @else {
+    @error "breakpoint not suuported!"
+  }
+}
