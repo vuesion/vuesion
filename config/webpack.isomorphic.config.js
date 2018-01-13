@@ -13,12 +13,13 @@ const isomorphicConfig = merge(baseConfig, {
     libraryTarget: 'commonjs2',
     publicPath: '/client/',
   },
+  externals: Object.keys(require('../package.json').dependencies),
   plugins: [
     new webpack.DefinePlugin({
       CLIENT: false,
       SERVER: true
     }),
-    new VueSSRPlugin()
+    new VueSSRPlugin({})
   ]
 });
 
