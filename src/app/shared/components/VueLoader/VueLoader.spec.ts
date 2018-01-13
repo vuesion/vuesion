@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from 'vue-test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import VueLoader from './VueLoader.vue';
 import $style from 'identity-obj-proxy';
 
