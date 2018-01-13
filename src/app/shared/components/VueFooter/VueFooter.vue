@@ -40,7 +40,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../variables";
+  @import "../../styles";
 
   .vueFooter {
     padding:    $footer-padding;

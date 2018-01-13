@@ -185,7 +185,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/variables";
+  @import "../../shared/styles";
 
   .components {
 
@@ -204,9 +204,10 @@
 
   .header {
     padding:     $nav-bar-height 0 $nav-bar-height * 0.5;
-    background:  linear-gradient(152deg, $brand-dark-primary 0%, $brand-accent 100%);
     text-align:  center;
-    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.33);;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.33);
+
+    @include background-gradient($brand-dark-primary, $brand-accent, 152deg);
   }
 
   .collapseDemo {

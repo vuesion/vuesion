@@ -62,12 +62,11 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/variables";
+  @import "../../shared/styles";
 
   .enterpriseReady {
     display:    block;
     text-align: center;
-    background: linear-gradient(-135deg, $brand-accent 0%, $brand-light-primary 100%);
 
     :global {
       .vue-panel-body {
@@ -78,5 +77,7 @@
         }
       }
     }
+
+    @include background-gradient($brand-accent, $brand-light-primary, -135deg);
   }
 </style>

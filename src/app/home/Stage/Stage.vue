@@ -48,7 +48,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/variables";
+  @import "../../shared/styles";
 
   .stage {
     min-height: 100vh;
@@ -57,126 +57,118 @@
     position:   relative;
     text-align: center;
 
-    .accent {
-      background: linear-gradient(-171deg, $brand-light-primary 0%, $brand-dark-primary 100%);
-      width:      56%;
-      min-height: 100vh;
-      transform:  skewX(-40deg) translateX(100%);
-      box-shadow: $nav-bar-shadow;
-      position:   absolute;
-      transition: transform 250ms linear;
+    @include background-gradient($brand-dark-primary, $brand-primary, 171deg);
+  }
+
+  .accent {
+    width:      56%;
+    min-height: 100vh;
+    transform:  skewX(-40deg) translateX(100%);
+    box-shadow: $nav-bar-shadow;
+    position:   absolute;
+    transition: transform 250ms linear;
+
+    @include background-gradient($brand-light-primary, $brand-dark-primary, -171deg);
+
+    @include media(tabletPortrait) {
+      transform: skewX(-33deg) translateX(100%);
     }
 
-    .accentTwo {
-      background: linear-gradient(-171deg, $brand-accent 0%, $brand-light-primary 100%);
-      width:      56%;
-      min-height: 100vh;
-      transform:  skewX(30deg) translateX(-57%);
-      box-shadow: $nav-bar-shadow;
-      position:   absolute;
-      transition: transform 250ms linear;
+    @include media(tabletLandscape) {
+      transform: skewX(-44deg) translateX(100%);
     }
 
-    .canvas {
-      min-height:       100vh;
-      width:            100%;
-      position:         absolute;
-      background-color: transparent;
-      left:             0;
-      top:              0;
-    }
-
-    .title, .subTitle, .github {
-      text-shadow: 0 5px 10px rgba(0, 0, 0, 0.33);
-      position:    relative;
-    }
-
-    .title {
-      top: $grid-unit * 17;
-    }
-
-    .subTitle {
-      top: $grid-unit * 15;
-    }
-
-    .github {
-      font-size:           $font-size-h1;
-      top:                 $grid-unit * 17;
-      box-shadow:          $nav-bar-shadow;
-      display:             inline-block;
-      background:          $nav-bar-bg;
-      transition:          $button-transition;
-      transition-property: box-shadow, background-color;
-      color:               $text-color;
-      padding:             $button-padding;
-
-      &:hover {
-        box-shadow: $button-active-shadow;
-      }
+    @include media(smallDesktop) {
+      transform: skewX(-46deg) translateX(117%);
+      width:     49%;
     }
   }
 
-  @media (min-width: $screen-tablet-portrait) {
-    .stage {
-      .accent {
-        transform: skewX(-33deg) translateX(100%);
-      }
+  .accentTwo {
+    width:      56%;
+    min-height: 100vh;
+    transform:  skewX(30deg) translateX(-57%);
+    box-shadow: $nav-bar-shadow;
+    position:   absolute;
+    transition: transform 250ms linear;
 
-      .accentTwo {
-        transform: skewX(37deg) translateX(-29%);
-      }
+    @include background-gradient($brand-accent, $brand-light-primary, -171deg);
 
-      .title {
-        top:       $grid-unit * 24;
-        font-size: $font-size-h1 + 4;
-      }
+    @include media(tabletPortrait) {
+      transform: skewX(37deg) translateX(-29%);
+    }
 
-      .subTitle {
-        top: $grid-unit * 22;
-      }
+    @include media(tabletLandscape) {
+      transform: skewX(38deg) translateX(-29%);
+    }
 
-      .github {
-        top: $grid-unit * 30;
-      }
+    @include media(smallDesktop) {
+      transform: skewX(38deg) translateX(-19%);
+      width:     49%;
     }
   }
 
-  @media (min-width: $screen-tablet-landscape) {
-    .stage {
-      .accent {
-        transform: skewX(-44deg) translateX(100%);
-      }
+  .canvas {
+    min-height:       100vh;
+    width:            100%;
+    position:         absolute;
+    background-color: transparent;
+    left:             0;
+    top:              0;
+  }
 
-      .accentTwo {
-        transform: skewX(38deg) translateX(-29%);
-      }
+  .title, .subTitle, .github {
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.33);
+    position:    relative;
+  }
 
-      .title {
-        top:       $grid-unit * 26;
-        font-size: $font-size-h1 + 6;
-      }
+  .title {
+    top: $grid-unit * 17;
 
-      .subTitle {
-        top: $grid-unit * 24;
-      }
+    @include media(tabletPortrait) {
+      top:       $grid-unit * 24;
+      font-size: $font-size-h1 + 4;
+    }
 
-      .github {
-        top: $grid-unit * 42;
-      }
+    @include media(tabletLandscape) {
+      top:       $grid-unit * 26;
+      font-size: $font-size-h1 + 6;
     }
   }
 
-  @media (min-width: $screen-small-desktop) {
-    .stage {
-      .accent {
-        transform: skewX(-46deg) translateX(117%);
-        width:     49%;
-      }
+  .subTitle {
+    top: $grid-unit * 15;
 
-      .accentTwo {
-        transform: skewX(38deg) translateX(-19%);
-        width:     49%;
-      }
+    @include media(tabletPortrait) {
+      top: $grid-unit * 22;
+    }
+
+    @include media(tabletLandscape) {
+      top: $grid-unit * 24;
+    }
+  }
+
+  .github {
+    font-size:           $font-size-h1;
+    top:                 $grid-unit * 17;
+    box-shadow:          $nav-bar-shadow;
+    display:             inline-block;
+    background:          $nav-bar-bg;
+    transition:          $button-transition;
+    transition-property: box-shadow, background-color;
+    color:               $text-color;
+    padding:             $button-padding;
+
+    &:hover {
+      box-shadow: $button-active-shadow;
+    }
+
+    @include media(tabletPortrait) {
+      top: $grid-unit * 30;
+    }
+
+    @include media(tabletLandscape) {
+      top: $grid-unit * 42;
     }
   }
 </style>

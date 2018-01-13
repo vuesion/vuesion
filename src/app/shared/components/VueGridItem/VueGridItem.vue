@@ -28,16 +28,14 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../variables";
+  @import "../../styles";
 
   .gridItem {
     flex-basis: 100%;
     padding:    0 $screen-phone-gutter;
     min-width:  $screen-phone - ($screen-phone-gutter * 2);
-  }
 
-  @media (min-width: $screen-tablet-portrait) {
-    .gridItem {
+    @include media(tabletPortrait) {
       flex:    1;
       padding: 0 $screen-tablet-portrait-gutter;
 
@@ -45,22 +43,16 @@
         flex: 1 1 100%
       }
     }
-  }
 
-  @media (min-width: $screen-tablet-landscape) {
-    .gridItem {
+    @include media(tabletLandscape) {
       padding: 0 $screen-tablet-landscape-gutter;
     }
-  }
 
-  @media (min-width: $screen-small-desktop) {
-    .gridItem {
+    @include media(smallDesktop) {
       padding: 0 $screen-small-desktop-gutter;
     }
-  }
 
-  @media (min-width: $screen-large-desktop) {
-    .gridItem {
+    @include media(largeDesktop) {
       padding: 0 $screen-large-desktop-gutter;
     }
   }

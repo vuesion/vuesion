@@ -70,7 +70,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/variables";
+  @import "../../shared/styles";
 
   .userExperience {
     display:    block;

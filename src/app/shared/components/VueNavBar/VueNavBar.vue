@@ -110,7 +110,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../variables";
+  @import "../../styles";
 
   .vueNavBar {
     width:      $nav-bar-width;
@@ -279,7 +279,7 @@
     }
   }
 
-  @media (min-width: $screen-tablet-portrait) {
+  @include media(tabletPortrait) {
     .hamburger {
       margin-right: $grid-unit * 2;
     }

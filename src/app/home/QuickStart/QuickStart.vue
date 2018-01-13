@@ -47,12 +47,13 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/variables";
+  @import "../../shared/styles";
 
   .quickStart {
     display:    block;
     text-align: center;
-    background: linear-gradient(-31deg, $brand-dark-primary 0%, $brand-primary 100%);
+
+    @include background-gradient($brand-dark-primary, $brand-primary, -31deg);
 
     :global {
       .vue-panel-body {
@@ -63,17 +64,14 @@
           margin-top: $grid-unit * 5;
           padding:    0 0 0 $grid-unit * 2;
 
-
           li {
             margin-bottom: $grid-unit * 2;
           }
         }
       }
     }
-  }
 
-  @media (min-width: $screen-tablet-portrait) {
-    .quickStart {
+    @include media(tabletPortrait) {
       :global {
         .vue-panel {
           width:       50%;
@@ -81,10 +79,8 @@
         }
       }
     }
-  }
 
-  @media (min-width: $screen-tablet-landscape) {
-    .quickStart {
+    @include media(tabletLandscape) {
       :global {
         .vue-panel {
           width:       33.3333333%;
