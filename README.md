@@ -1,5 +1,5 @@
 # vue-starter
-> an enterprise ready boilerplate for isomorphic, progressive web apps
+> an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS
 
 [![Build Status](https://travis-ci.org/devCrossNet/vue-starter.svg?branch=master)](https://travis-ci.org/devCrossNet/vue-starter)
 [![codecov](https://codecov.io/gh/devCrossNet/vue-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/devCrossNet/vue-starter)
@@ -51,9 +51,9 @@ A flexible component library that'll be extended over time.
 
 Scalable apps need to support multiple languages, easily add and support multiple languages with [vue-i18n](https://github.com/kazupon/vue-i18n).
 
-**Predictable state management** 
+**Predictable state management**
 
-With [vuex](https://github.com/vuejs/vuex).
+Centralized State Management with [vuex](https://github.com/vuejs/vuex).
 
 **Routing with data prefetching**
 
@@ -69,46 +69,13 @@ Server-side-rendering of prefetched data and transferring state from server to c
 
 # Documentation (WIP)
 
-### Run unit tests
-- `npm test` runs tests once
-- `npm run test:coverage` runs tests with coverage once
+- **[npm tasks](docs/NPM_SCRIPTS.md)**
+- **[generator CLI](docs/CLI.md)**
+- **[style guide](docs/STYLE_GUIDE.md)**
+- **[i18n](docs/I18N.md)**
+- **[vuex and vuex-persist](docs/VUEX.md)**
+- **[components](docs/COMPONENTS.md)**
 
-Find a detailed coverage report in `coverage/iconv-report/index.html`
-
-### Run e2e tests
-
-For more information about the e2e test set up, have a look at [cypress.io](https://www.cypress.io/).
-
-- run `npm run dev`
-- open a second terminal window
-- run `npm run e2e`
-
-### Generators
-This boilerplate comes with the possibility to generate modules, components and connected components
-to keep a common style guide and to make development faster.
-
-To generate code just run `npm run generate` or `npm run g` and follow the instructions.
-
-### i18n and extracting messages
-
-To extract all your i18n IDs run `npm run extract-i18n-messages`.
-This will generate the languages files in the folder `./i18n`,
-to add new language files add a new entry to `package.json -> config."supported-languages"`.
-
-This script also enables you to define default messages with a magic comment:
-
-`$t('App.nav.components' /*Components*/)`,
-this will add `'Components'` as default value to all `'App.nav.components'` keys, 
-but will keep previously added values.
-
-## Release
-To release a new version of your project run one of the following commands:
-
-- `npm run release:major`
-- `npm run release:minor`
-- `npm run release:patch`
-
-This will also automatically generate a change log.
 
 # Reference resources
 

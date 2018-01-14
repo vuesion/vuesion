@@ -23,26 +23,26 @@
 
   export default {
     metaInfo: {
-      title: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps',
+      title: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS',
       meta: [
-        { name: 'description', content: 'an enterprise ready boilerplate for isomorphic, progressive web apps' },
-        { name: 'keywords', content: 'vue.js, vuex, seo, server-side-rendering, isomorphic, progressive-web-app' },
+        { name: 'description', content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS' },
+        { name: 'keywords', content: 'vue.js, vuex, vuex-persist, seo, server-side-rendering, isomorphic, progressive-web-app' },
 
         { name: 'og:url', content: 'https://vue-starter.herokuapp.com/' },
         { name: 'og:site_name', content: 'vue-starter' },
         { name: 'og:type', content: 'website' },
         { name: 'og:locale', content: 'en' },
-        { name: 'og:title', content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps' },
-        { name: 'og:description', content: 'an enterprise ready boilerplate for isomorphic, progressive web apps' },
+        { name: 'og:title', content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS' },
+        { name: 'og:description', content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS' },
         { name: 'og:image:url', content: 'https://vue-starter.herokuapp.com/assets/logo.png' },
 
         { name: 'twitter:card', content: 'summary' },
         { name: 'twitter:site', content: '@_jwerner_' },
         { name: 'twitter:creator', content: '@_jwerner_' },
-        { name: 'twitter:title', content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps' },
+        { name: 'twitter:title', content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS' },
         { name: 'twitter:url', content: 'https://vue-starter.herokuapp.com/' },
         { name: 'twitter:image', content: 'https://vue-starter.herokuapp.com/assets/logo.png' },
-        { name: 'twitter:description', content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps' },
+        { name: 'twitter:description', content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS' },
       ],
     },
     components: {

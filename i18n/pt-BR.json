@@ -1,5 +1,5 @@
 {
-  "App.core.description": "an enterprise ready boilerplate for isomorphic, progressive web apps",
+  "App.core.description": "an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS",
   "App.nav.components": "Componentes",
   "App.nav.counter": "Contador",
   "App.nav.english": "Inglês",

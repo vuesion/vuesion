@@ -1,5 +1,5 @@
 {
-  "App.core.description": "Ein professionelles Boilerplate für universelle, progressive-web-apps",
+  "App.core.description": "Ein professionelles Boilerplate für universelle, progressive-web-apps mit Vue.JS",
   "App.nav.components": "Komponenten",
   "App.nav.counter": "Zähler",
   "App.nav.english": "Englisch",
