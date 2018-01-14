@@ -1,14 +1,14 @@
 import { IVuexPersistStorage } from './vuex-persist';
 
 export class PersistLocalStorage implements IVuexPersistStorage {
-  public whitelist: string[];
+  public modules: string[];
   public prefix: string;
   public length: number;
   [key: string]: any;
   [index: number]: string;
 
-  constructor(whitelist: string[] = [], prefix: string = 'vuexpersist') {
-    this.whitelist = whitelist;
+  constructor(modules: string[] = [], prefix: string = 'vuexpersist') {
+    this.modules = modules;
     this.prefix = prefix;
   }
 

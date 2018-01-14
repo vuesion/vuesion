@@ -5,7 +5,7 @@ import { IServerContext } from '../../../../server/isomorphic';
 import { CookieAttributes } from 'js-cookie';
 
 export class PersistCookieStorage implements IVuexPersistStorage {
-  public whitelist: string[];
+  public modules: string[];
   public prefix: string;
   public length: number;
   public options: any;
@@ -13,8 +13,8 @@ export class PersistCookieStorage implements IVuexPersistStorage {
   [index: number]: string;
   private indexKey: string = 'vuexpersistcookie';
 
-  constructor(whitelist: string[] = [], options: CookieAttributes = {}, prefix: string = 'vuexpersist') {
-    this.whitelist = whitelist;
+  constructor(modules: string[] = [], options: CookieAttributes = {}, prefix: string = 'vuexpersist') {
+    this.modules = modules;
     this.prefix = prefix;
     this.options = options;
   }

@@ -2,12 +2,12 @@
 
 import Vue from 'vue';
 import Vuex, { Store } from 'vuex';
-import { VuexPersist } from './shared/plugins/vuex/vuex-persist';
+import { VuexPersist } from './shared/plugins/vuex-persist/vuex-persist';
 import { actions } from './actions';
 import { getters } from './getters';
 import { defaultState, mutations } from './mutations';
-import { PersistLocalStorage } from './shared/plugins/vuex/PersistLocalStorage';
-import { PersistCookieStorage } from './shared/plugins/vuex/PersistCookieStorage';
+import { PersistLocalStorage } from './shared/plugins/vuex-persist/PersistLocalStorage';
+import { PersistCookieStorage } from './shared/plugins/vuex-persist/PersistCookieStorage';
 import { IServerContext } from '../server/isomorphic';
 
 Vue.use(Vuex);
@@ -17,7 +17,7 @@ let state: any = (CLIENT && window.__INITIAL_STATE__) || defaultState;
 export const getStore = (serverContext?: IServerContext): Store<any> => {
   const persistCookieStorage: PersistCookieStorage = new PersistCookieStorage(['counter'], { expires: 365 });
 
-  if (serverContext) {
+  if (SERVER) {
     state = persistCookieStorage.getMergedStateFromServerContext(serverContext, state);
   }
 

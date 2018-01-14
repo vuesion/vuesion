@@ -6,7 +6,7 @@ import merge from 'deepmerge';
 import { Plugin, Store } from 'vuex';
 
 export interface IVuexPersistStorage extends Storage {
-  whitelist?: string[];
+  modules?: string[];
   prefix?: string;
 }
 
@@ -43,7 +43,7 @@ export const VuexPersist = (storages: IVuexPersistStorage[]): Plugin<any> => {
     storages.forEach((storage: IVuexPersistStorage): void => {
       if (canWriteStorage(storage)) {
 
-        storage.whitelist.forEach((key: string) => {
+        storage.modules.forEach((key: string) => {
           const savedState: any = getState(key, storage);
 
           if (savedState && Object.keys(savedState).length > 0) {
