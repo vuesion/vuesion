@@ -31,7 +31,7 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "build": "concurrently \"npm run build:client\" \"npm run build:isomorphic\" \"npm run build:server\"",
     "analyze-bundle": "cross-env ANALYZE=true npm run build:client",
-    "extract-i18n-messages": "tsc ./scripts/extract-i18n-messages.ts && node ./scripts/extract-i18n-messages.js",
+    "extract-i18n-messages": "./node_modules/.bin/tsc -p ./scripts/ && node ./scripts/extract-i18n-messages.js",
     "build:generators": "webpack --config ./generators/webpack.config.js --progress --hide-modules",
     "generate": "npm run build:generators && plop --plopfile ./generators/index.js",
     "clean": "rimraf ./dist ./coverage",
@@ -118,7 +118,7 @@
     },
     "supported-languages": [
       "de-DE",
-      "en-En",
+      "en-EN",
       "pt-BR"
     ]
   },
