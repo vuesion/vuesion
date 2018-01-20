@@ -1,7 +1,7 @@
 import * as fs from 'fs';
-import * as _ from 'lodash';
 import * as ts from 'typescript';
 
+const lowerFirst = require('lodash.lowerfirst');
 let sourceFile: ts.SourceFile;
 
 const insertAt = (file: string, index: number, insert: string): string => {
@@ -47,7 +47,7 @@ export const addModuleToRoutes = (pathToAppRoutes: string, moduleName: string): 
   try {
     let file = fs.readFileSync(pathToAppRoutes, 'utf-8');
 
-    moduleName = _.lowerFirst(moduleName);
+    moduleName = lowerFirst(moduleName);
 
     getAST(file);
 
@@ -75,7 +75,7 @@ export const addModuleToActions = (pathToAppActions: string, moduleName: string)
   try {
     let file = fs.readFileSync(pathToAppActions, 'utf-8');
 
-    moduleName = _.lowerFirst(moduleName);
+    moduleName = lowerFirst(moduleName);
 
     getAST(file);
 
@@ -103,7 +103,7 @@ export const addModuleToGetters = (pathToAppGetters: string, moduleName: string)
   try {
     let file = fs.readFileSync(pathToAppGetters, 'utf-8');
 
-    moduleName = _.lowerFirst(moduleName);
+    moduleName = lowerFirst(moduleName);
 
     getAST(file);
 
@@ -131,7 +131,7 @@ export const addModuleToMutations = (pathToAppMutations: string, moduleName: str
   try {
     let file = fs.readFileSync(pathToAppMutations, 'utf-8');
 
-    moduleName = _.lowerFirst(moduleName);
+    moduleName = lowerFirst(moduleName);
 
     getAST(file);
 
