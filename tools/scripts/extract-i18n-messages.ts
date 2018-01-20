@@ -3,9 +3,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const basePath: string = path.resolve(process.cwd());
-
-const supportedLanguages: string[] = JSON.parse(fs.readFileSync(path.join(basePath, 'package.json')).toString()).config['supported-languages'] as string[];
-
+const packageJSON: any = JSON.parse(fs.readFileSync(path.join(basePath, 'package.json')).toString());
+const supportedLanguages: string[] = packageJSON.config['supported-languages'];
+const defaultLanguage: string = packageJSON.config['default-language'];
 const translations: any = {};
 
 const addTranslationObject = (translation: string) => {
@@ -42,7 +42,9 @@ const run = (): void => {
       const langFilePath: string = path.join(basePath, 'i18n', `${lang}.json`);
       const langFile: string = fs.existsSync(langFilePath) ? fs.readFileSync(langFilePath).toString() : null;
       const langFileObject: any = langFile ? JSON.parse(langFile) : {};
-      const newLangObject: any = (Object as any).assign({}, translations, langFileObject);
+      const newLangObject: any = lang === defaultLanguage
+        ? (Object as any).assign({}, langFileObject, translations)
+        : (Object as any).assign({}, translations, langFileObject);
 
       /**
        * sort entries

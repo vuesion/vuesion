@@ -34,7 +34,7 @@ export = {
 
     data.moduleName = pathArray.pop();
     data.componentName = data.moduleName;
-    data.basePath = '../src/app/' + pathArray.join('/');
+    data.basePath = '../../src/app/' + pathArray.join('/');
 
     const actions: any[] = [
       {

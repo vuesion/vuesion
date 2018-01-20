@@ -24,7 +24,7 @@ export = {
 
     data.componentName = path.pop();
     data.moduleName = path.pop();
-    data.basePath = '../src/app/' + path.join('/');
+    data.basePath = '../../src/app/' + path.join('/');
 
     return [
       {

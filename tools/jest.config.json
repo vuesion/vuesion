@@ -1,0 +1,19 @@
+{
+  "name": "tools",
+  "globals": {
+    "window": true
+  },
+  "rootDir": "./",
+  "setupFiles": [
+    "../jestsetup.js"
+  ],
+  "moduleFileExtensions": [
+    "js",
+    "ts",
+    "json"
+  ],
+  "transform": {
+    ".(ts|tsx)": "<rootDir>../node_modules/ts-jest/preprocessor.js"
+  },
+  "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+}

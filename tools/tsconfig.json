@@ -11,7 +11,11 @@
     "target": "es6",
     "skipLibCheck": true
   },
+  "include":[
+    "./**/*.ts"
+  ],
   "exclude": [
-    "../node_modules"
+    "../node_modules",
+    "./tools.spec.ts"
   ]
 }
