@@ -7,6 +7,7 @@
 [![DevDependencies](https://img.shields.io/david/dev/devCrossNet/vue-starter.svg)](https://david-dm.org/devCrossNet/vue-starter?type=dev)
 [![GitHub repo size](https://img.shields.io/github/repo-size/devCrossNet/vue-starter.svg)]()
 [![GitHub issue last update](https://img.shields.io/github/issues/detail/last-update/devCrossNet/vue-starter/979.svg)]()
+[![Maintainability](https://api.codeclimate.com/v1/badges/2ff891c2cf949a6a818a/maintainability)](https://codeclimate.com/github/devCrossNet/vue-starter/maintainability)
 
 # Live demo
 
