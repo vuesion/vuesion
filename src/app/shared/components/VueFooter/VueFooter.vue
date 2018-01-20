@@ -6,8 +6,8 @@
       </vue-grid-item>
 
       <vue-grid-item>
-        <a href="https://github.com/devCrossNet" target="_blank" rel="noopener"><i class="fab fa-github-alt"></i></a>
-        <a href="https://twitter.com/_jwerner_" target="_blank" rel="noopener"><i class="fab fa-twitter-square"></i></a>
+        <a href="https://github.com/devCrossNet" target="_blank" rel="noopener" aria-label="github profile"><i class="fab fa-github-alt"></i></a>
+        <a href="https://twitter.com/_jwerner_" target="_blank" rel="noopener" aria-label="twitter profile"><i class="fab fa-twitter-square"></i></a>
       </vue-grid-item>
 
       <vue-grid-item>
