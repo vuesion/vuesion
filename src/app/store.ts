@@ -21,8 +21,12 @@ export const getStore = (serverContext?: IServerContext): Store<any> => {
     state = persistCookieStorage.getMergedStateFromServerContext(serverContext, state);
 
     if (state.app && state.app.lang) {
-      serverContext.defaultLang = state.app.lang;
+      serverContext.acceptLanguage = state.app.lang;
       serverContext.htmlLang = state.app.lang.substr(0, 2);
+    } else {
+      state.app = {
+        lang: serverContext.acceptLanguage,
+      };
     }
   }
 

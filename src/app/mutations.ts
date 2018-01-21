@@ -3,7 +3,7 @@ import { counterDefaultState, counterMutations } from './counter/mutations';
 
 export const defaultState = {
   app: {
-    lang: 'en-EN',
+    lang: null,
   },
   ...homeDefaultState,
   ...counterDefaultState,

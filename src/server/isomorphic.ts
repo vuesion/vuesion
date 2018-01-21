@@ -1,13 +1,12 @@
 import { createApp, IApp } from '../app/app';
 import { Component } from 'vue-router/types/router';
-import merge from 'deepmerge';
 
 export interface IServerContext {
   url: string;
   cookies: any;
   meta?: any;
   state?: any;
-  defaultLang: string;
+  acceptLanguage: string;
   htmlLang: string;
 }
 

@@ -16,7 +16,7 @@ export interface IApp {
 
 export const createApp = (serverContext?: IServerContext): IApp => {
   const store: Store<any> = getStore(serverContext);
-  const lang: string = serverContext ? serverContext.defaultLang : store.state.app.lang;
+  const lang: string = serverContext ? serverContext.acceptLanguage : store.state.app.lang;
 
   sync(store, router);
   const app = new Vue({

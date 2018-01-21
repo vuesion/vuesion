@@ -1,7 +1,7 @@
 {
   "name": "vue-starter",
   "version": "0.0.0",
-  "description": "A Vue.js boilerplate to build isomorphic web apps",
+  "description": "An enterprise ready boilerplate for isomorphic, progressive web apps with Vue.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/devCrossNet/vue-starter.git"
