@@ -4,20 +4,30 @@ import axios from 'axios';
 
 Vue.use(VueI18n);
 
-export const i18n = new VueI18n({
-  locale: 'en-EN',
-  fallbackLocale: 'en-EN',
-  messages: {
+let i18n: VueI18n = null;
+
+export const getI18n = (lang?: string): VueI18n => {
+  const messages: any = {
     'en-EN': require('../../../../i18n/en-EN.json'),
-  },
-});
+  };
+
+  if (lang) {
+    messages[lang] = require(`../../../../i18n/${lang}.json`);
+  }
+
+  return i18n = new VueI18n({
+    locale: lang,
+    fallbackLocale: 'en-EN',
+    messages,
+  });
+};
 
 const loadedLanguages: string[] = ['en-EN'];
 
 const setI18nLanguage = (lang: string) => {
   i18n.locale = lang;
   axios.defaults.headers.common['Accept-Language'] = lang;
-  document.querySelector('html').setAttribute('lang', lang);
+  document.querySelector('html').setAttribute('lang', lang.substr(0, 2));
   return lang;
 };
 

@@ -1,7 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Stage from './Stage.vue';
 import $style from 'identity-obj-proxy';
-import { i18n } from '../../shared/plugins/i18n';
+import { getI18n } from '../../shared/plugins/i18n';
 
 const localVue = createLocalVue();
 
@@ -12,7 +12,7 @@ describe('Stage.vue', () => {
 
     const wrapper = mount(Stage, {
       localVue,
-      i18n,
+      i18n: getI18n(),
       mocks: {
         $style,
       },
@@ -41,7 +41,7 @@ describe('Stage.vue', () => {
 
     const wrapper = mount(Stage, {
       localVue,
-      i18n,
+      i18n: getI18n(),
       mocks: { $style },
     });
 

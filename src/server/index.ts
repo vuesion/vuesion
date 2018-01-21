@@ -7,11 +7,12 @@ import * as favicon from 'serve-favicon';
 import { BundleRenderer } from 'vue-server-renderer';
 import { Handler, Request, Response } from 'express';
 import * as cookieParser from 'cookie-parser';
+import acceptLanguage from 'accept-language';
 
 const app: Express.Application = Express();
 const compression = require('compression');
-
 const isProd: boolean = process.env.NODE_ENV === 'production';
+
 const resolve = (file: string): string => path.resolve(__dirname, file);
 const serve = (servePath: string, cache: boolean): Handler => Express.static(resolve(servePath), {
   maxAge: cache && isProd ? 60 * 60 * 24 * 30 : 0,
@@ -25,6 +26,7 @@ const createRenderer = (bundle: string, template: string): BundleRenderer => {
     }),
   });
 };
+const packageJson: any = JSON.parse(fs.readFileSync(resolve('../../package.json')).toString());
 
 let renderer: BundleRenderer;
 
@@ -72,11 +74,13 @@ app.get('*', (req: Request, res: Response) => {
   res.setHeader('Expires', '0');
   res.setHeader('max-age', '0');
 
+  acceptLanguage.languages(packageJson.config['supported-languages']);
+
   if (!renderer) {
     return res.end('waiting for compilation... refresh in a moment.');
   }
 
-  const s: number = Date.now();
+  const startTime: number = Date.now();
   const errorHandler = (err: any) => {
     if (err && err.code === 404) {
       res.status(404).end('404 | Page Not Found');
@@ -86,10 +90,17 @@ app.get('*', (req: Request, res: Response) => {
       console.error(err);
     }
   };
+  const defaultLang: string = acceptLanguage.get(req.headers['accept-language'].toString()) || packageJson.config['default-language'];
 
-  renderer.renderToStream({ url: req.url, cookies: req.cookies })
+  renderer
+    .renderToStream({
+      url: req.url,
+      cookies: req.cookies,
+      acceptLanguage: defaultLang,
+      htmlLang: defaultLang.substr(0, 2),
+    })
     .on('error', errorHandler)
-    .on('end', () => console.log(`whole request: ${Date.now() - s}ms`))
+    .on('end', () => console.log(`whole request: ${Date.now() - startTime}ms`))
     .pipe(res);
 });
 

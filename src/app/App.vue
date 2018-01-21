@@ -50,6 +50,7 @@
 </template>
 
 <script lang="ts">
+  import { mapActions } from 'vuex';
   import VueNavBar from './shared/components/VueNavBar/VueNavBar.vue';
   import VueGrid from './shared/components/VueGrid/VueGrid.vue';
   import VueGridItem from './shared/components/VueGridItem/VueGridItem.vue';
@@ -63,19 +64,15 @@
       VueGridItem,
       VueFooter,
     },
-    data() {
-      return {
-        lang: 'en-EN'
-      }
-    },
     methods: {
+      ...mapActions(['changeLang']),
       langSwitch(lang: string): void {
-        this.lang = lang;
-
         loadLanguageAsync(lang)
-          .catch((error: Error) => console.log(error))
-      }
-    }
+          .catch((error: Error) => console.log(error));
+
+        this.changeLang(lang);
+      },
+    },
   };
 </script>
 

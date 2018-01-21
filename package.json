@@ -119,12 +119,13 @@
     },
     "default-language": "en-EN",
     "supported-languages": [
-      "de-DE",
       "en-EN",
+      "de-DE",
       "pt-BR"
     ]
   },
   "dependencies": {
+    "accept-language": "^3.0.18",
     "animejs": "^2.2.0",
     "axios": "^0.17.1",
     "compression": "^1.7.1",

@@ -1,3 +1,5 @@
+/* tslint:disable:no-console */
+
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -10,16 +12,22 @@ const appGettersPath: string = path.join(path.resolve(process.cwd()), 'src/app/g
 const appMutationsPath: string = path.join(path.resolve(process.cwd()), 'src/app/mutations.ts');
 const appRoutesPath: string = path.join(path.resolve(process.cwd()), 'src/app/router.ts');
 
-const testComponent: string = path.join(path.resolve(process.cwd()), 'src/app/TestComponent');
-const testConnectedComponent: string = path.join(path.resolve(process.cwd()), 'src/app/TestConnectedComponent');
+const testComponentPath: string = path.join(path.resolve(process.cwd()), 'src/app/TestComponent');
+const testConnectedComponentPath: string = path.join(path.resolve(process.cwd()), 'src/app/TestConnectedComponent');
 
 describe('tools', () => {
   afterAll(() => {
-    rimraf(testModulePath);
+    rimraf(testModulePath, () => {
+      console.log('testModule deleted');
+    });
 
-    rimraf(testComponent);
+    rimraf(testComponentPath, () => {
+      console.log('testComponent deleted');
+    });
 
-    rimraf(testConnectedComponent);
+    rimraf(testConnectedComponentPath, () => {
+      console.log('testConnectedComponent deleted');
+    });
 
     let appActions: string = fs.readFileSync(appActionsPath).toString();
     appActions = appActions.replace('\nimport * as testModuleActions from \'./testModule/actions\';', '');
@@ -69,7 +77,7 @@ describe('tools', () => {
     nixt()
       .run(`npm run g -- component "testComponent"`)
       .expect((result: any) => {
-        if (fs.existsSync(testComponent) === false) {
+        if (fs.existsSync(testComponentPath) === false) {
           return new Error('testComponent not created');
         }
       })
@@ -80,7 +88,7 @@ describe('tools', () => {
     nixt()
       .run(`npm run g -- connected "testConnectedComponent"`)
       .expect((result: any) => {
-        if (fs.existsSync(testConnectedComponent) === false) {
+        if (fs.existsSync(testConnectedComponentPath) === false) {
           return new Error('testConnectedComponent not created');
         }
       })
