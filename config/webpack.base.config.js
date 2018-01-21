@@ -38,14 +38,10 @@ const baseConfig = {
             require('autoprefixer')({ browsers: ['last 2 versions', 'ie >= 11'] }),
             require('css-mqpacker')(),
             require('cssnano')({
-              preset: [
-                'default',
-                {
-                  discardComments: {
-                    removeAll: true
-                  },
-                  zindex: false
-                }]
+              discardComments: {
+                removeAll: true
+              },
+              zindex: false
             })
           ]
         }
