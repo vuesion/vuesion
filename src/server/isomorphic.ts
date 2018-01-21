@@ -7,6 +7,8 @@ export interface IServerContext {
   cookies: any;
   meta?: any;
   state?: any;
+  defaultLang: string;
+  htmlLang: string;
 }
 
 export default (context: IServerContext) => {

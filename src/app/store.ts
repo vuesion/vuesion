@@ -15,10 +15,15 @@ Vue.use(Vuex);
 let state: any = (CLIENT && window.__INITIAL_STATE__) || defaultState;
 
 export const getStore = (serverContext?: IServerContext): Store<any> => {
-  const persistCookieStorage: PersistCookieStorage = new PersistCookieStorage(['counter'], { expires: 365 });
+  const persistCookieStorage: PersistCookieStorage = new PersistCookieStorage(['app', 'counter'], { expires: 365 });
 
   if (SERVER) {
     state = persistCookieStorage.getMergedStateFromServerContext(serverContext, state);
+
+    if (state.app && state.app.lang) {
+      serverContext.defaultLang = state.app.lang;
+      serverContext.htmlLang = state.app.lang.substr(0, 2);
+    }
   }
 
   return new Vuex.Store({

@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import { i18n } from '../../shared/plugins/i18n';
+import { getI18n } from '../../shared/plugins/i18n';
 import Counter from './Counter.vue';
 import $style from 'identity-obj-proxy';
 
@@ -23,7 +23,7 @@ describe('Counter.vue', () => {
     const wrapper = mount(Counter, {
       store,
       localVue,
-      i18n,
+      i18n: getI18n(),
       mocks: { $style },
   });
 
@@ -44,7 +44,7 @@ describe('Counter.vue', () => {
     const wrapper: any = mount(Counter, {
       store,
       localVue,
-      i18n,
+      i18n: getI18n(),
       mocks: { $style },
     });
 
