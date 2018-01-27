@@ -174,3 +174,9 @@ $tab-group-header-item-border-right: 1px solid darken($panel-bg, 2%);
 $tab-group-header-item-hover-bg: $brand-primary;
 
 $tab-item-transition: transform 250ms linear;
+
+/* CheckBox */
+
+$checkbox-color: $text-color;
+$checkbox-padding: 0;
+$checkbox-margin: $grid-unit 0;

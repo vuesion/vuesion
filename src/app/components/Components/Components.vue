@@ -137,6 +137,19 @@
           TEST
         </vue-modal>
       </vue-grid-item>
+
+      <vue-grid-item>
+        <div class="h1">Checkboxes / RadioButtons</div>
+
+        <vue-check-box id="check" label="checkbox" :checked="checked" @click="check" />
+        <br />
+        <vue-check-box id="check2" label="checkbox" :checked="checked" @click="check" :disabled="true" />
+        <br />
+        <br />
+        <vue-check-box id="radio" label="radio" :checked="checked" radio @click="check" />
+        <br />
+        <vue-check-box id="radio2" label="radio" :checked="checked" radio @click="check" :disabled="true" />
+      </vue-grid-item>
     </vue-grid>
   </div>
 </template>
@@ -155,6 +168,7 @@
   import VueModal from '../../shared/components/VueModal/VueModal';
   import VueTabGroup from '../../shared/components/VueTabGroup/VueTabGroup';
   import VueTabItem from '../../shared/components/VueTabItem/VueTabItem';
+  import VueCheckBox from '../../shared/components/VueCheckBox/VueCheckBox';
 
   export default {
     metaInfo: {
@@ -174,11 +188,18 @@
       VueModal,
       VueTabGroup,
       VueTabItem,
+      VueCheckBox,
     },
     data() {
       return {
         collapseDemo: true,
         showModal: false,
+        checked: true,
+      }
+    },
+    methods: {
+      check() {
+        this.checked = !this.checked;
       }
     }
   };
