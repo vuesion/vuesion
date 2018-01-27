@@ -11,9 +11,7 @@ export const getI18n = (lang: string = 'en-EN'): VueI18n => {
     'en-EN': require('../../../../i18n/en-EN.json'),
   };
 
-  if (lang) {
-    messages[lang] = require(`../../../../i18n/${lang}.json`);
-  }
+  messages[lang] = require(`../../../../i18n/${lang}.json`);
 
   return i18n = new VueI18n({
     locale: lang,
