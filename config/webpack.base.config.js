@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 
 const baseConfig = {
@@ -22,7 +23,8 @@ const baseConfig = {
       PRODUCTION: isProd,
       DEVELOPMENT: !isProd,
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
+    }),
+    new HardSourceWebpackPlugin(),
   ],
   module: {
     rules: [

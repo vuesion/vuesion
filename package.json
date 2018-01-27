@@ -171,6 +171,7 @@
     "file-loader": "^1.1.6",
     "generate-changelog": "^1.7.0",
     "glob": "^7.1.2",
+    "hard-source-webpack-plugin": "^0.5.16",
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
