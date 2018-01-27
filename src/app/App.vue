@@ -54,7 +54,7 @@
   import VueNavBar from './shared/components/VueNavBar/VueNavBar.vue';
   import VueGrid from './shared/components/VueGrid/VueGrid.vue';
   import VueGridItem from './shared/components/VueGridItem/VueGridItem.vue';
-  import VueFooter from './shared/components/VueFooter/VueFooter'
+  import VueFooter from './shared/components/VueFooter/VueFooter.vue'
   import { loadLanguageAsync } from './shared/plugins/i18n';
 
   export default {
