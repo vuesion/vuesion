@@ -4,7 +4,7 @@ export const counterDefaultState: any = {
   },
 };
 
-export const counterMutations = {
+export const counterMutations: any = {
   INCREMENT: (state: any) => {
     state.counter.count += 1;
   },

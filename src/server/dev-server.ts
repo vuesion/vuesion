@@ -1,12 +1,15 @@
 /* tslint:disable:no-console */
 
+import * as Express from 'express';
+import { WebpackDevMiddleware } from 'webpack-dev-middleware';
+
 const path = nodeRequire('path');
 const webpack = nodeRequire('webpack');
 const MFS = nodeRequire('memory-fs');
 const clientConfig = nodeRequire('../../config/webpack.client.config');
 const isomorphicConfig = nodeRequire('../../config/webpack.isomorphic.config');
 
-export const devServer =  (app: any, cb: any): void => {
+export const devServer = (app: Express.Application, cb: any): void => {
   let bundle: string;
   let template: string;
 
@@ -15,7 +18,7 @@ export const devServer =  (app: any, cb: any): void => {
   clientConfig.plugins.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
 
   const clientCompiler = webpack(clientConfig);
-  const devMiddleware = nodeRequire('webpack-dev-middleware')(clientCompiler, {
+  const devMiddleware: WebpackDevMiddleware = nodeRequire('webpack-dev-middleware')(clientCompiler, {
     publicPath: clientConfig.output.publicPath,
     stats: {
       colors: true,
@@ -23,11 +26,11 @@ export const devServer =  (app: any, cb: any): void => {
     },
   });
 
-  app.use(devMiddleware);
+  app.use(devMiddleware as any);
 
   clientCompiler.plugin('done', () => {
-    const fs = devMiddleware.fileSystem;
-    const templatePath = path.join(clientConfig.output.path, 'index.html');
+    const fs: any = devMiddleware.fileSystem;
+    const templatePath: string = path.join(clientConfig.output.path, 'index.html');
 
     if (fs.existsSync(templatePath)) {
       template = fs.readFileSync(templatePath, 'utf-8');
@@ -40,8 +43,9 @@ export const devServer =  (app: any, cb: any): void => {
 
   app.use(nodeRequire('webpack-hot-middleware')(clientCompiler));
 
-  const serverCompiler = webpack(isomorphicConfig);
-  const mfs = new MFS();
+  const serverCompiler: any = webpack(isomorphicConfig);
+  const mfs: any = new MFS();
+
   serverCompiler.outputFileSystem = mfs;
   serverCompiler.watch({}, (err: any, stats: any) => {
     if (err) {
@@ -51,7 +55,7 @@ export const devServer =  (app: any, cb: any): void => {
     stats.errors.forEach((e: any) => console.error(e));
     stats.warnings.forEach((e: any) => console.warn(e));
 
-    const bundlePath = path.join(isomorphicConfig.output.path, 'vue-ssr-bundle.json');
+    const bundlePath: string = path.join(isomorphicConfig.output.path, 'vue-ssr-bundle.json');
 
     bundle = JSON.parse(mfs.readFileSync(bundlePath, 'utf-8'));
 

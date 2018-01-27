@@ -156,6 +156,7 @@
     "@types/node": "9.4.0",
     "@types/serve-favicon": "2.2.30",
     "@types/webpack": "3.8.4",
+    "@types/webpack-dev-middleware": "^2.0.0",
     "@types/webpack-merge": "4.1.1",
     "@vue/test-utils": "1.0.0-beta.10",
     "autoprefixer": "7.2.5",

@@ -10,7 +10,7 @@ import * as cookieParser from 'cookie-parser';
 import acceptLanguage from 'accept-language';
 
 const app: Express.Application = Express();
-const compression = require('compression');
+const compression: any = require('compression');
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
 const resolve = (file: string): string => path.resolve(__dirname, file);
@@ -95,7 +95,7 @@ app.get('*', (req: Request, res: Response) => {
   }
 
   const startTime: number = Date.now();
-  const errorHandler = (err: any) => {
+  const errorHandler = (err: any): void => {
     if (err && err.code === 404) {
       res.status(404).end('404 | Page Not Found');
     } else {

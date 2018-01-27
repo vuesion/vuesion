@@ -1,7 +1,7 @@
 import { homeDefaultState, homeMutations } from './home/mutations';
 import { counterDefaultState, counterMutations } from './counter/mutations';
 
-export const defaultState = {
+export const defaultState: any = {
   app: {
     lang: null,
   },
@@ -9,7 +9,7 @@ export const defaultState = {
   ...counterDefaultState,
 };
 
-export const mutations = {
+export const mutations: any = {
   CHANGE_LANG: (state: any, lang: string) => {
     state.app.lang = lang;
   },

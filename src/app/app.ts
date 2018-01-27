@@ -19,7 +19,7 @@ export const createApp = (serverContext?: IServerContext): IApp => {
   const lang: string = serverContext ? serverContext.acceptLanguage : store.state.app.lang;
 
   sync(store, router);
-  const app = new Vue({
+  const app: Vue = new Vue({
     router,
     store,
     i18n: getI18n(lang),

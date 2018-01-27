@@ -8,7 +8,7 @@ import { componentsRoutes } from './components/routes';
 Vue.use(VueRouter);
 Vue.use(Meta);
 
-export const router = new VueRouter({
+export const router: VueRouter = new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: [

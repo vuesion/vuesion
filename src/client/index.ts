@@ -3,7 +3,7 @@ import { Route } from 'vue-router';
 import { Component } from 'vue-router/types/router';
 
 if (PRODUCTION) {
-  const runtime = require('serviceworker-webpack-plugin/lib/runtime');
+  const runtime: any = require('serviceworker-webpack-plugin/lib/runtime');
   if ('serviceWorker' in navigator) {
     runtime
       .register()
