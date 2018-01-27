@@ -11,29 +11,27 @@ _If you want to save some time and to keep the style guide consistent, we recomm
 ├── config                          // webpack configuration
 ├── cypress                         // cypress e2e tests
 ├── docs                            // docs for this starter, not needed in your project
-├── generators
-│   ├── component                   // single file component
-│   ├── connected                   // single file component with vuex connection
-│   └── module                      // whole module with routing/vuex state management
-├── i18n                            // language files used by vue-meta
-├── scripts                         // helper and tools
-└── src
-    ├── app                         // main business logic for your website, shared by client and server
-    │   ├── App.vue                 // main component
-    │   ├── actions.ts              // combined actions, including all modules
-    │   ├── app.ts                  // app set up
-    │   ├── components              // module, not needed in your project
-    │   ├── counter                 // module, not needed in your project
-    │   ├── getters.ts              // combined getters, including all modules
-    │   ├── home                    // module and landing page
-    │   ├── index.template.html     // template, needed for SSR and webpack
-    │   ├── mutations.ts            // combined mutations, including all modules
-    │   ├── router.ts               // combined routes, including all modules
-    │   ├── shared                  // component, modules, plugins that are dependencies for more than one module
-    │   └── store.ts                // vuex-store set up
-    ├── assets                      // assets, served by express static middleware
-    ├── client                      // entry point for client application
-    └── server                      // express server that handles server-side-rendering
+├── i18n                            // language files used by vue-i18n
+├── src
+│   ├── app                         // main business logic for your website, shared by client and server
+│   │   ├── App.vue                 // main component
+│   │   ├── actions.ts              // combined actions, including all modules
+│   │   ├── app.ts                  // app set up
+│   │   ├── components              // module, not needed in your project
+│   │   ├── counter                 // module, not needed in your project
+│   │   ├── getters.ts              // combined getters, including all modules
+│   │   ├── home                    // module and landing page
+│   │   ├── index.template.html     // template, needed for SSR and webpack
+│   │   ├── mutations.ts            // combined mutations, including all modules
+│   │   ├── router.ts               // combined routes, including all modules
+│   │   ├── shared                  // component, modules, plugins that are dependencies for more than one module
+│   │   └── store.ts                // vuex-store set up
+│   ├── assets                      // assets, served by express static middleware
+│   ├── client                      // entry point for client application
+│   └── server                      // express server that handles server-side-rendering
+└── tools
+    ├── generators                  // generator cli
+    └── scripts                     // helper scripts
 
 ```
 
