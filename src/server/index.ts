@@ -90,7 +90,8 @@ app.get('*', (req: Request, res: Response) => {
       console.error(err);
     }
   };
-  const defaultLang: string = acceptLanguage.get(req.headers['accept-language'].toString()) || packageJson.config['default-language'];
+  const acceptLang: string = req.headers['accept-language'] ? req.headers['accept-language'].toString() : packageJson.config['default-language'];
+  const defaultLang: string = acceptLanguage.get(acceptLang);
 
   renderer
     .renderToStream({

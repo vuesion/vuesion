@@ -6,7 +6,7 @@ Vue.use(VueI18n);
 
 let i18n: VueI18n = null;
 
-export const getI18n = (lang?: string): VueI18n => {
+export const getI18n = (lang: string = 'en-EN'): VueI18n => {
   const messages: any = {
     'en-EN': require('../../../../i18n/en-EN.json'),
   };
