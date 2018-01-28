@@ -73,18 +73,18 @@
     }
 
     &:before {
-      background:  $brand-accent;
-      color:       $bg-color;
+      background:  $tooltip-bg;
+      color:       $tooltip-color;
       content:     attr(data-tip);
-      padding:     4px 8px;
+      padding:     $tooltip-padding;
       top:         -36px;
       white-space: nowrap;
-      box-shadow:  $panel-shadow;
+      box-shadow:  $tooltip-shadow;
     }
 
     &:after {
       border-right: 6px solid transparent;
-      border-top:   6px solid $brand-accent;
+      border-top:   6px solid $tooltip-bg;
       border-left:  6px solid transparent;
       content:      '';
       height:       0;
@@ -104,6 +104,6 @@
   }
 
   .highlight {
-    border-bottom: 1px dashed $brand-accent;
+    border-bottom: 1px dashed $tooltip-highlight-color;
   }
 </style>

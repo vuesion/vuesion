@@ -178,7 +178,6 @@ $tab-group-header-item-hover-bg: $brand-primary;
 $tab-item-transition: transform $transition-duration linear;
 
 /* CheckBox */
-
 $checkbox-color: $text-color;
 $checkbox-padding: 0;
 $checkbox-margin: $grid-unit 0;
@@ -188,4 +187,11 @@ $checkbox-transition: background $transition-duration cubic-bezier(0, .84, .83, 
 $checkbox-check: 2px solid #FFF;
 $checkbox-check-margin: 0 $grid-unit * 2 0 0;
 $checkbox-checked-bg: $brand-accent;
-$checkbox-shadow: $panel-shadow
+$checkbox-shadow: $panel-shadow;
+
+/* Tooltip */
+$tooltip-bg: $brand-accent;
+$tooltip-color: $bg-color;
+$tooltip-padding: $grid-unit / 2 $grid-unit;
+$tooltip-shadow: $panel-shadow;
+$tooltip-highlight-color: $tooltip-bg
