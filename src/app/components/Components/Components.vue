@@ -152,6 +152,25 @@
         <br />
         <vue-check-box id="radio3" label="radio" :checked="radio === 'radio3'" radio @click="radio = 'radio3'" :disabled="true" />
       </vue-grid-item>
+
+      <vue-grid-item>
+        <div class="h1">Tooltip</div>
+
+        Lorem ipsum dolor sit amet,
+        <vue-tooltip tip="This is a tooltip!">consetetur sadipscing elitr</vue-tooltip>
+        , sed diam nonumy eirmod tempor invidunt ut
+        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+        et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+        accusam et justo duo dolores
+        et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+        <br />
+        <br />
+        <vue-tooltip tip="This is a tooltip!">
+          <vue-button>TEST</vue-button>
+        </vue-tooltip>
+      </vue-grid-item>
     </vue-grid>
   </div>
 </template>
@@ -171,6 +190,7 @@
   import VueTabGroup from '../../shared/components/VueTabGroup/VueTabGroup.vue';
   import VueTabItem from '../../shared/components/VueTabItem/VueTabItem.vue';
   import VueCheckBox from '../../shared/components/VueCheckBox/VueCheckBox.vue';
+  import VueTooltip from '../../shared/components/VueTooltip/VueTooltip.vue';
 
   export default {
     metaInfo: {
@@ -191,6 +211,7 @@
       VueTabGroup,
       VueTabItem,
       VueCheckBox,
+      VueTooltip,
     },
     data() {
       return {
