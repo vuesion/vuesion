@@ -8,6 +8,7 @@
   import CollapseAnimation from '../../animations/CollapseAnimation/CollapseAnimation'
 
   export default {
+    name: 'VueCollapse',
     components: {
       CollapseAnimation,
     },

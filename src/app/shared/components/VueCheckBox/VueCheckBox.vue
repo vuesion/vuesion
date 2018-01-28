@@ -7,6 +7,7 @@
 
 <script lang="ts">
   export default {
+    name: 'VueCheckBox',
     components: {},
     props: {
       id: {

@@ -20,6 +20,7 @@
 
 <script lang="ts">
   export default {
+    name: 'VueTabGroup',
     components: {},
     props: {},
     data(): any {

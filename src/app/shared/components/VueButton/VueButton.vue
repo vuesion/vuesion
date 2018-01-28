@@ -9,6 +9,7 @@
   import VueLoader from '../VueLoader/VueLoader';
 
   export default {
+    name: 'VueButton',
     props: {
       primary: {
         type: Boolean,
@@ -116,6 +117,7 @@
     transition-property:         box-shadow, background-color;
     height:                      $button-height;
     -webkit-tap-highlight-color: transparent;
+    user-select:                 none;
 
     &:active {
       background: $button-default-hover-bg;

@@ -171,6 +171,39 @@
           <vue-button>TEST</vue-button>
         </vue-tooltip>
       </vue-grid-item>
+
+      <vue-grid-item>
+        <div class="h1">Slider</div>
+
+        <vue-slider
+          :min="0"
+          :max="200"
+          :values="[0, 200]"
+          @change="sliderChange"
+          :formatValue="formatSliderValue"
+        />
+
+
+        <vue-slider
+          :min="0"
+          :max="200"
+          :values="[50, 120]"
+          @change="sliderChange"
+          :formatValue="formatSliderValue"
+          :disabled="true"
+        />
+
+        <vue-slider
+          :min="0"
+          :max="200"
+          :values="[50]"
+          @change="sliderChange"
+          :formatValue="formatSliderValue"
+        />
+      </vue-grid-item>
+
+      <vue-grid-item>
+      </vue-grid-item>
     </vue-grid>
   </div>
 </template>
@@ -191,6 +224,7 @@
   import VueTabItem from '../../shared/components/VueTabItem/VueTabItem.vue';
   import VueCheckBox from '../../shared/components/VueCheckBox/VueCheckBox.vue';
   import VueTooltip from '../../shared/components/VueTooltip/VueTooltip.vue';
+  import VueSlider from '../../shared/components/VueSlider/VueSlider.vue';
 
   export default {
     metaInfo: {
@@ -212,15 +246,24 @@
       VueTabItem,
       VueCheckBox,
       VueTooltip,
+      VueSlider,
     },
     data() {
       return {
         collapseDemo: true,
         showModal: false,
         checked: true,
-        radio: 'radio1'
+        radio: 'radio1',
       }
     },
+    methods: {
+      sliderChange(sliderOptions: any) {
+        console.log(sliderOptions);
+      },
+      formatSliderValue(value: number) {
+        return `${Math.floor(value)} €`;
+      },
+    }
   };
 </script>
 

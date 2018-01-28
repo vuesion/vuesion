@@ -169,7 +169,6 @@ $tab-group-margin: $grid-unit * 4 0 0 0;
 
 $tab-group-header-bg: $panel-bg;
 $tab-group-header-shadow: $nav-bar-shadow;
-
 $tab-group-header-item-padding: $grid-unit * 1.5 $grid-unit $grid-unit;
 $tab-group-header-item-border-left: 1px solid lighten($panel-bg, 2%);
 $tab-group-header-item-border-right: 1px solid darken($panel-bg, 2%);
@@ -194,4 +193,19 @@ $tooltip-bg: $brand-accent;
 $tooltip-color: $bg-color;
 $tooltip-padding: $grid-unit / 2 $grid-unit;
 $tooltip-shadow: $panel-shadow;
-$tooltip-highlight-color: $tooltip-bg
+$tooltip-highlight-color: $tooltip-bg;
+
+/* Slider */
+$slider-margin: 0;
+$slider-padding: $grid-unit * 3 $grid-unit * 2;
+$slider-track-bg: lighten($bg-color, 15%);
+$slider-track-shadow: $panel-shadow;
+$slider-progress-height: $grid-unit * 0.5;
+$slider-progress-bg: linear-gradient(to left, $brand-dark-primary 0%, $brand-accent 100%);
+$slider-handle-size: $grid-unit * 4;
+$slider-handle-shadow: $panel-shadow;
+$slider-handle-bg: $bg-color;
+$slider-handle-border: 2px solid $brand-accent;
+$slider-handle-transition: box-shadow $transition-duration / 2 ease-in-out;
+$slider-handle-active-shadow: 0 0 0 8px rgba(red($brand-accent), green($brand-accent), blue($brand-accent), .5);
+$slider-values-margin: 0 0 40px -16px;

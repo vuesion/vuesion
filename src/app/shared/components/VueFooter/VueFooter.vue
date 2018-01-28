@@ -22,6 +22,7 @@
   import VueGridItem from '../VueGridItem/VueGridItem';
 
   export default {
+    name: 'VueFooter',
     components: {
       VueGrid,
       VueGridItem,

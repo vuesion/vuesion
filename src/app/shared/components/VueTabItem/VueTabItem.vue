@@ -14,6 +14,7 @@
   import anime from 'animejs';
 
   export default {
+    name: 'VueTabItem',
     components: {},
     props: {
       isActive: {

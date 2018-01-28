@@ -19,6 +19,8 @@ describe('Components.vue', () => {
       },
     });
 
+    (wrapper as any).vm.sliderChange();
+
     expect(wrapper.find('h1').text()).toBe('Components');
   });
 

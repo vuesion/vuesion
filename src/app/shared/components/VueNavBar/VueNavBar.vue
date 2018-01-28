@@ -35,6 +35,7 @@
   import VueCollapse from '../VueCollapse/VueCollapse';
 
   export default {
+    name: 'VueNavBar',
     components: {
       VueGrid,
       VueGridItem,
