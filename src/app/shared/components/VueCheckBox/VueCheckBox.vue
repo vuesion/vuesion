@@ -91,37 +91,39 @@
       }
 
       &:before {
-        width:      24px;
-        height:     24px;
-        background: #FFF;
+        width:      $checkbox-size;
+        height:     $checkbox-size;
+        background: $checkbox-bg;
         cursor:     pointer;
-        transition: background 200ms cubic-bezier(0, .84, .83, .67);
+        transition: $checkbox-transition;
       }
 
       &:after {
         opacity:                    0;
         transform:                  rotate(-45deg) scale(3);
-        top:                        6px;
-        left:                       4px;
-        width:                      15px;
-        height:                     6px;
-        border:                     2px solid #FFF;
-        border-top-style:           none;
-        border-right-style:         none;
+        top:                        $checkbox-size / 4;
+        left:                       floor($checkbox-size / 5);
+        width:                      ($checkbox-size / 1.5) - 1;
+        height:                     $checkbox-size / 4;
+        border:                     $checkbox-check;
+        border-top:                 none;
+        border-right:               none;
 
         transition-property:        opacity, transform;
-        transition-duration:        200ms;
+        transition-duration:        $transition-duration;
         transition-timing-function: cubic-bezier(0, .84, .83, .67);
+
+        box-shadow:                 $checkbox-shadow;
       }
     }
 
     input[type="checkbox"] {
-      outline:      0;
-      margin-right: 16px;
+      outline: 0;
+      margin:  $checkbox-check-margin;
 
       &:checked {
         + label:before {
-          background: $brand-accent;
+          background: $checkbox-checked-bg;
         }
 
         + label:after {
@@ -152,43 +154,44 @@
       }
 
       &:before {
-        width:         24px;
-        height:        24px;
-        background:    #FFF;
+        width:         $checkbox-size;
+        height:        $checkbox-size;
+        background:    $checkbox-bg;
         cursor:        pointer;
-        transition:    background 200ms cubic-bezier(0, .84, .83, .67);
+        transition:    $checkbox-transition;
         border-radius: 50%;
       }
 
       &:after {
         opacity:                    0;
-        transform:                  scale(3);
-        top:                        4px;
-        left:                       4px;
-        width:                      16px;
-        height:                     16px;
+        top:                        $checkbox-size / 6;
+        left:                       $checkbox-size / 6;
+        width:                      $checkbox-size / 1.5;
+        height:                     $checkbox-size / 1.5;
         border-radius:              50%;
         background-color:           #FFF;
 
-        transition-property:        opacity, transform;
-        transition-duration:        200ms;
+        transition-property:        opacity;
+        transition-duration:        $transition-duration;
         transition-timing-function: cubic-bezier(0, .84, .83, .67);
+
+        box-shadow:                 $checkbox-shadow;
       }
     }
 
     input[type="radio"] {
-      outline:      0;
-      margin-right: 16px;
+      outline:  0;
+      margin:   $checkbox-check-margin;
+      left:     4px;
+      position: relative;
 
       &:checked {
         + label:before {
-          background: $brand-accent;
+          background: $checkbox-checked-bg;
         }
 
         + label:after {
-          transform:           scale(1);
-          opacity:             1;
-          transition-property: opacity;
+          opacity: 1;
         }
       }
     }

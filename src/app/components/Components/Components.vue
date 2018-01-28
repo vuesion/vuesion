@@ -141,34 +141,36 @@
       <vue-grid-item>
         <div class="h1">Checkboxes / RadioButtons</div>
 
-        <vue-check-box id="check" label="checkbox" :checked="checked" @click="check" />
+        <vue-check-box id="check" label="checkbox" :checked="checked" @click="checked = !checked" />
         <br />
-        <vue-check-box id="check2" label="checkbox" :checked="checked" @click="check" :disabled="true" />
+        <vue-check-box id="check2" label="checkbox" :checked="checked" @click="checked = !checked" :disabled="true" />
         <br />
         <br />
-        <vue-check-box id="radio" label="radio" :checked="checked" radio @click="check" />
+        <vue-check-box id="radio" label="radio" :checked="radio === 'radio1'" radio @click="radio = 'radio1'" />
         <br />
-        <vue-check-box id="radio2" label="radio" :checked="checked" radio @click="check" :disabled="true" />
+        <vue-check-box id="radio2" label="radio" :checked="radio === 'radio2'" radio @click="radio = 'radio2'" />
+        <br />
+        <vue-check-box id="radio3" label="radio" :checked="radio === 'radio3'" radio @click="radio = 'radio3'" :disabled="true" />
       </vue-grid-item>
     </vue-grid>
   </div>
 </template>
 
 <script lang="ts">
-  import VueGrid from '../../shared/components/VueGrid/VueGrid';
-  import VueGridItem from '../../shared/components/VueGridItem/VueGridItem';
-  import VueButton from '../../shared/components/VueButton/VueButton';
-  import VueLoader from '../../shared/components/VueLoader/VueLoader';
-  import VuePanel from '../../shared/components/VuePanel/VuePanel';
-  import VuePanelHeader from '../../shared/components/VuePanel/VuePanelHeader/VuePanelHeader';
-  import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody';
-  import VuePanelFooter from '../../shared/components/VuePanel/VuePanelFooter/VuePanelFooter';
-  import VueInput from '../../shared/components/VueInput/VueInput';
-  import VueCollapse from '../../shared/components/VueCollapse/VueCollapse';
-  import VueModal from '../../shared/components/VueModal/VueModal';
-  import VueTabGroup from '../../shared/components/VueTabGroup/VueTabGroup';
-  import VueTabItem from '../../shared/components/VueTabItem/VueTabItem';
-  import VueCheckBox from '../../shared/components/VueCheckBox/VueCheckBox';
+  import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
+  import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VueButton from '../../shared/components/VueButton/VueButton.vue';
+  import VueLoader from '../../shared/components/VueLoader/VueLoader.vue';
+  import VuePanel from '../../shared/components/VuePanel/VuePanel.vue';
+  import VuePanelHeader from '../../shared/components/VuePanel/VuePanelHeader/VuePanelHeader.vue';
+  import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
+  import VuePanelFooter from '../../shared/components/VuePanel/VuePanelFooter/VuePanelFooter.vue';
+  import VueInput from '../../shared/components/VueInput/VueInput.vue';
+  import VueCollapse from '../../shared/components/VueCollapse/VueCollapse.vue';
+  import VueModal from '../../shared/components/VueModal/VueModal.vue';
+  import VueTabGroup from '../../shared/components/VueTabGroup/VueTabGroup.vue';
+  import VueTabItem from '../../shared/components/VueTabItem/VueTabItem.vue';
+  import VueCheckBox from '../../shared/components/VueCheckBox/VueCheckBox.vue';
 
   export default {
     metaInfo: {
@@ -195,13 +197,9 @@
         collapseDemo: true,
         showModal: false,
         checked: true,
+        radio: 'radio1'
       }
     },
-    methods: {
-      check() {
-        this.checked = !this.checked;
-      }
-    }
   };
 </script>
 
