@@ -78,6 +78,11 @@ describe('VueSlider.vue', () => {
         },
       });
 
+    (wrapper as any).vm.moveStart({ changedTouches: [1, 2] }, 0);
+
+    expect(document.addEventListener).toHaveBeenCalledTimes(0);
+    expect((wrapper as any).vm.currentSlider).toBe(null);
+
     (wrapper as any).vm.moveStart({}, 0);
 
     expect(document.addEventListener).toHaveBeenCalledTimes(5);

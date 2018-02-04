@@ -163,7 +163,7 @@
         const valueId: string = this.currentSlider === 0 ? 'currentMin' : 'currentMax';
         const padding: number = this.isMultiRange ? 1 : 0;
 
-        if (valueId === 'currentMin' && value < this.min) {
+        if (valueId === 'currentMin' && value <= this.min) {
           this[valueId] = 0;
         } else if (valueId === 'currentMin' && value >= this.currentMax - padding) {
           this[valueId] = this.currentMax - padding;
