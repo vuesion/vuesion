@@ -47,7 +47,7 @@ export class PersistCookieStorage implements IVuexPersistStorage {
     Cookies.set(this.getKey(key), data, this.options);
   }
 
-  public getMergedStateFromServerContext(serverContext: IServerContext, state: any): any {
+  public getMergedStateFromServerContext<T>(serverContext: IServerContext, state: any): T {
     const vuexPersistCookie: any = JSON.parse(serverContext.cookies[this.indexKey] || '{}');
     const cookieState: any = {};
 

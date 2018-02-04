@@ -1,5 +1,5 @@
 import { RouteConfig } from 'vue-router/types/router';
 
-export const {{ camelCase moduleName }}Routes: RouteConfig[] = [
+export const {{ properCase moduleName }}Routes: RouteConfig[] = [
   { path: '/{{ camelCase moduleName }}', component: () => import(/* webpackChunkName: "{{ camelCase moduleName }}" */ './{{ properCase moduleName }}/{{ properCase moduleName }}.vue').then(m => m.default) },
 ];

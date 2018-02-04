@@ -8,10 +8,10 @@ let i18n: VueI18n = null;
 
 export const getI18n = (lang: string = 'en-EN'): VueI18n => {
   const messages: any = {
-    'en-EN': require('../../../../i18n/en-EN.json'),
+    'en-EN': require('../../../../../i18n/en-EN.json'),
   };
 
-  messages[lang] = require(`../../../../i18n/${lang}.json`);
+  messages[lang] = require(`../../../../../i18n/${lang}.json`);
 
   return i18n = new VueI18n({
     locale: lang,

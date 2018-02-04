@@ -1,7 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Stage from './Stage.vue';
 import $style from 'identity-obj-proxy';
-import { getI18n } from '../../shared/plugins/i18n';
+import { getI18n } from '../../shared/plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 

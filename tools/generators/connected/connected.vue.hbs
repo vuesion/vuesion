@@ -9,6 +9,7 @@
 
 <script lang="ts">
   import { mapGetters } from 'vuex';
+  import { IPreLoad } from '../../../server/isomorphic';
 
   export default {
     name: '{{ properCase componentName }}',
@@ -23,8 +24,8 @@
       }),
     },
     methods: {},
-    prefetch: ({ store }: any) => {
-      return store.dispatch(`get{{ properCase moduleName }}`);
+    prefetch: (options: IPreLoad) => {
+      return options.store.dispatch(`get{{ properCase moduleName }}`);
     },
   };
 </script>

@@ -1,1 +1,11 @@
-export const get{{ properCase moduleName }} = (state: any) => state.{{ camelCase moduleName }};
+import { IState } from '../mutations';
+
+export interface I{{ properCase moduleName }}Getters {
+  get{{ properCase moduleName }}(state: IState): any[];
+}
+
+export const {{ properCase moduleName }}Getters: I{{ properCase moduleName }}Getters = {
+  get{{ properCase moduleName }}(state: IState): any[] {
+    return state.{{ camelCase moduleName }};
+  },
+};

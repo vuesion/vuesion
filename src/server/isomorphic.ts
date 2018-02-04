@@ -1,5 +1,8 @@
 import { createApp, IApp } from '../app/app';
 import { Component } from 'vue-router/types/router';
+import { Store } from 'vuex';
+import { IState } from '../app/mutations';
+import { Route } from 'vue-router';
 
 export interface IServerContext {
   url: string;
@@ -8,6 +11,11 @@ export interface IServerContext {
   state?: any;
   acceptLanguage: string;
   htmlLang: string;
+}
+
+export interface IPreLoad {
+  store?: Store<IState> | any;
+  route?: Route | any;
 }
 
 export default (context: IServerContext) => {
@@ -32,7 +40,7 @@ export default (context: IServerContext) => {
             return (component as any).prefetch({
               store,
               route: router.currentRoute,
-            });
+            } as IPreLoad);
           }
 
           return Promise.resolve();

@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import { getI18n } from '../../shared/plugins/i18n';
+import { getI18n } from '../../shared/plugins/i18n/i18n';
 import Counter from './Counter.vue';
 import $style from 'identity-obj-proxy';
 
@@ -13,7 +13,7 @@ describe('Counter.vue', () => {
   test('renders component', () => {
     const store = new Vuex.Store({
       getters: {
-        getCounter: () => 0,
+        getCount: () => 0,
       },
       actions: {
         increment: jest.fn(),
@@ -37,7 +37,7 @@ describe('Counter.vue', () => {
     };
     const store = new Vuex.Store({
       getters: {
-        getCounter: () => 0,
+        getCount: () => 0,
       },
       actions,
     });

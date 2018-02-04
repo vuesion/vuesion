@@ -20,6 +20,7 @@
   import EnterpriseReady from '../EnterpriseReady/EnterpriseReady';
   import UserExperience from '../UserExperience/UserExperience';
   import QuickStart from '../QuickStart/QuickStart';
+  import { IPreLoad } from '../../../server/isomorphic';
 
   export default {
     metaInfo: {
@@ -57,8 +58,8 @@
         home: 'getHome',
       }),
     },
-    prefetch: ({ store }: any) => {
-      return store.dispatch(`getHome`);
+    prefetch: (options: IPreLoad) => {
+      return options.store.dispatch(`getHome`);
     },
   };
 </script>

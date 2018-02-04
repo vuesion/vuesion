@@ -31,26 +31,31 @@ describe('tools', () => {
 
     let appActions: string = fs.readFileSync(appActionsPath).toString();
     appActions = appActions.replace('\nimport * as testModuleActions from \'./testModule/actions\';', '');
-    appActions = appActions.replace('\n  ...testModuleActions,', '');
+    appActions = appActions.replace('\nimport { ITestModuleActions, TestModuleActions } from \'./testModule/actions\';', '');
+    appActions = appActions.replace(', ITestModuleActions', '');
+    appActions = appActions.replace('\n  ...TestModuleActions,', '');
 
     fs.writeFileSync(appActionsPath, appActions);
 
     let appGetters: string = fs.readFileSync(appGettersPath).toString();
-    appGetters = appGetters.replace('\nimport * as testModuleGetters from \'./testModule/getters\';', '');
-    appGetters = appGetters.replace('\n  ...testModuleGetters,', '');
+    appGetters = appGetters.replace('\nimport { ITestModuleGetters, TestModuleGetters } from \'./testModule/getters\';', '');
+    appGetters = appGetters.replace(', ITestModuleGetters', '');
+    appGetters = appGetters.replace('\n  ...TestModuleGetters,', '');
 
     fs.writeFileSync(appGettersPath, appGetters);
 
     let appMutations: string = fs.readFileSync(appMutationsPath).toString();
-    appMutations = appMutations.replace('\nimport { testModuleDefaultState, testModuleMutations } from \'./testModule/mutations\';', '');
-    appMutations = appMutations.replace('\n  ...testModuleDefaultState,', '');
-    appMutations = appMutations.replace('\n  ...testModuleMutations,', '');
+    appMutations = appMutations.replace('\nimport { ITestModuleState, ITestModuleMutations, TestModuleDefaultState, TestModuleMutations } from \'./testModule/mutations\';', '');
+    appMutations = appMutations.replace(', ITestModuleState', '');
+    appMutations = appMutations.replace(', ITestModuleMutations', '');
+    appMutations = appMutations.replace('\n  ...TestModuleDefaultState,', '');
+    appMutations = appMutations.replace('\n  ...TestModuleMutations,', '');
 
     fs.writeFileSync(appMutationsPath, appMutations);
 
     let appRoutes: string = fs.readFileSync(appRoutesPath).toString();
-    appRoutes = appRoutes.replace('\nimport { testModuleRoutes } from \'./testModule/routes\';', '');
-    appRoutes = appRoutes.replace('\n    ...testModuleRoutes,', '');
+    appRoutes = appRoutes.replace('\nimport { TestModuleRoutes } from \'./testModule/routes\';', '');
+    appRoutes = appRoutes.replace('\n    ...TestModuleRoutes,', '');
 
     fs.writeFileSync(appRoutesPath, appRoutes);
   });

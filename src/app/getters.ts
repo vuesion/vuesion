@@ -1,8 +1,14 @@
-import * as topicGetters from './home/getters';
-import * as counterGetters from './counter/getters';
+import { GetterTree } from 'vuex';
+import { IState } from './mutations';
+import { IHomeGetters, HomeGetters } from './home/getters';
+import { ICounterGetters, CounterGetters } from './counter/getters';
 
-export const getters: any = {
-  getLang: (state: any) => state.app.lang,
-  ...topicGetters,
-  ...counterGetters,
+export interface IGetters extends GetterTree<IState, IState>, IHomeGetters, ICounterGetters {
+  getLang(state: IState): string;
+}
+
+export const Getters: IGetters = {
+  getLang: (state: IState): string => state.app.lang,
+  ...HomeGetters,
+  ...CounterGetters,
 };

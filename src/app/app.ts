@@ -3,7 +3,7 @@ import { sync } from 'vuex-router-sync';
 import App from './App.vue';
 import { getStore } from './store';
 import { router } from './router';
-import { getI18n } from './shared/plugins/i18n';
+import { getI18n } from './shared/plugins/i18n/i18n';
 import { VueRouter } from 'vue-router/types/router';
 import { Store } from 'vuex';
 import { IServerContext } from '../server/isomorphic';

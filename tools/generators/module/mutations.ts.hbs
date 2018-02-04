@@ -1,9 +1,17 @@
-export const {{ camelCase moduleName }}DefaultState: any = {
+export interface I{{ properCase moduleName }}State {
+  {{ camelCase moduleName }}: any[];
+}
+
+export interface I{{ properCase moduleName }}Mutations {
+  {{ upperCase moduleName }}(state: I{{ properCase moduleName }}State, {{ camelCase moduleName }}: any): void;
+}
+
+export const {{ properCase moduleName }}DefaultState: I{{ properCase moduleName }}State = {
   {{ camelCase moduleName }}: [],
 };
 
-export const {{ camelCase moduleName }}Mutations = {
-  {{ upperCase moduleName }}: (state: any, {{ camelCase moduleName }}: any) => {
+export const {{ properCase moduleName }}Mutations: I{{ properCase moduleName }}Mutations = {
+  {{ upperCase moduleName }}: (state: I{{ properCase moduleName }}State, {{ camelCase moduleName }}: any) => {
     state.{{ camelCase moduleName }} = {{ camelCase moduleName }};
   },
 };

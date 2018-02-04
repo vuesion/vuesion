@@ -14,7 +14,7 @@ describe('Home.vue', () => {
       dispatch: jest.fn(),
     };
 
-    Home.prefetch({ store, mocks: { $style } });
+    Home.prefetch({ store });
 
     expect(store.dispatch).toHaveBeenCalled();
     expect(store.dispatch).toHaveBeenCalledWith(`getHome`);
