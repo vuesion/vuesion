@@ -9,7 +9,7 @@
         parentValue === '' ? '' : $style.hasValue
       ]"
     />
-    <span :class="$style.bar" />
+    <span :class="$style.bar"></span>
     <label>{{placeholder}}</label>
     <div :class="$style.message">{{message}}</div>
   </div>
@@ -17,6 +17,7 @@
 
 <script lang="ts">
   export default {
+    name: 'VueInput',
     components: {},
     props: {
       placeholder: {

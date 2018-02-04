@@ -15,6 +15,7 @@
 
 <script lang="ts">
   export default {
+    name: 'VueLoader',
     props: {
       medium: {
         type: Boolean,

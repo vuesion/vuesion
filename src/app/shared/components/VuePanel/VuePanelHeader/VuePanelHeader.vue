@@ -10,6 +10,7 @@
 
 <script lang="ts">
   export default {
+    name: 'VuePanelHeader',
     components: {},
     props: {
       title: {

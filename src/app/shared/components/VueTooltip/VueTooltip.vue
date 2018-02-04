@@ -11,6 +11,7 @@
 
 <script lang="ts">
   export default {
+    name: 'VueTooltip',
     components: {},
     props: {
       tip: {

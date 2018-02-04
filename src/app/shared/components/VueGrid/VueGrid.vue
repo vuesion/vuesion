@@ -5,7 +5,9 @@
 </template>
 
 <script lang="ts">
-  export default {};
+  export default {
+    name: 'VueGrid',
+  };
 </script>
 
 <style lang="scss" module>

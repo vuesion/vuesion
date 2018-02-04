@@ -6,6 +6,7 @@
 
 <script lang="ts">
   export default {
+    name: 'VuePanelBody',
     components: {},
     props: {},
     data: function () {

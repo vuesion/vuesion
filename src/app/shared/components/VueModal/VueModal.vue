@@ -14,6 +14,7 @@
   import anime from 'animejs';
 
   export default {
+    name: 'VueModal',
     components: {},
     props: {
       show: {
