@@ -110,12 +110,13 @@
     methods: {
       getClosestHandle(percentageDiff: number) {
         const handlePos: number[] = [parseInt(this.handleLeftPosition, 10), parseInt(this.handleRightPosition, 10)];
+        const startIndex: number = this.isMultiRange ? 1 : 0;
 
         return handlePos.reduce((closestIdx, node, idx) => {
           const challenger = Math.abs(handlePos[idx] - percentageDiff);
           const current = Math.abs(handlePos[closestIdx] - percentageDiff);
           return challenger < current ? idx : closestIdx;
-        }, 0);
+        }, startIndex);
       },
       percentageDiff(e: any) {
         const positionX: number = e.changedTouches && e.changedTouches.length > 0 ? e.changedTouches[e.changedTouches.length - 1].clientX : e.clientX;
@@ -163,14 +164,10 @@
         const valueId: string = this.currentSlider === 0 ? 'currentMin' : 'currentMax';
         const padding: number = this.isMultiRange ? 1 : 0;
 
-        if (valueId === 'currentMin' && value <= this.min) {
-          this[valueId] = 0;
-        } else if (valueId === 'currentMin' && value >= this.currentMax - padding) {
+        if (valueId === 'currentMin' && value >= this.currentMax - padding) {
           this[valueId] = this.currentMax - padding;
         } else if (valueId === 'currentMax' && value <= this.currentMin + padding) {
           this[valueId] = this.currentMin + padding;
-        } else if (valueId === 'currentMax' && value >= this.max) {
-          this[valueId] = this.max;
         } else {
           this[valueId] = value;
         }
