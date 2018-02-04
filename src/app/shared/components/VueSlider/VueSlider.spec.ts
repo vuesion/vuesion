@@ -250,4 +250,21 @@ describe('VueSlider.vue', () => {
     expect((wrapper as any).vm.currentMax).toBe(51);
   });
 
+  test('should return closest handle', () => {
+    const wrapper = mount(VueSlider,
+      {
+        localVue,
+        mocks: { $style },
+        propsData: {
+          min: 0,
+          max: 100,
+          values: [0, 100],
+        },
+      });
+
+    expect((wrapper as any).vm.getClosestHandle(25)).toBe(0);
+    expect((wrapper as any).vm.getClosestHandle(75)).toBe(1);
+    expect((wrapper as any).vm.getClosestHandle(50)).toBe(0);
+  });
+
 });
