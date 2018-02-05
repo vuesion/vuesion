@@ -209,3 +209,12 @@ $slider-handle-border: 2px solid $brand-accent;
 $slider-handle-transition: box-shadow $transition-duration / 2 ease-in-out;
 $slider-handle-active-shadow: 0 0 0 8px rgba(red($brand-accent), green($brand-accent), blue($brand-accent), .5);
 $slider-values-margin: 0 0 40px -16px;
+
+/* Accordion */
+
+$accordion-item-header-bg: $panel-bg;
+$accordion-item-header-shadow: $panel-shadow;
+$accordion-item-header-padding: $grid-unit * 2;
+$accordion-item-header-border-top: 1px solid lighten($bg-color, 10%);
+$accordion-item-header-arrow-color: $brand-accent;
+$accordion-item-body-padding: $accordion-item-header-padding;

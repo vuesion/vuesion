@@ -39,6 +39,7 @@ describe('CollapseAnimation.vue', () => {
 
     (testElement as any).getClientRects = () => {
       return {
+        length: 1,
         item: () => {
           return {
             height: 100,
@@ -49,6 +50,31 @@ describe('CollapseAnimation.vue', () => {
 
     (wrapper as any).vm.enter(testElement, () => {
       expect(testElement.style.height).toBe('-100px');
+      expect(testElement.style.opacity).toBe('1');
+      done();
+    });
+  });
+
+  test('should animate enter', (done) => {
+    const wrapper = mount(CollapseAnimation,
+      {
+        localVue,
+        mocks: { $style },
+        slots: {
+          default: '<p>TEST</p>',
+        },
+      });
+
+    const testElement: HTMLElement = wrapper.find('p').element;
+
+    (testElement as any).getClientRects = () => {
+      return {
+        length: 0,
+      };
+    };
+
+    (wrapper as any).vm.enter(testElement, () => {
+      expect(testElement.style.height).toBe('0px');
       expect(testElement.style.opacity).toBe('1');
       done();
     });

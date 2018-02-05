@@ -4,7 +4,7 @@
     @enter="enter"
     @beforeLeave="beforeLeave"
     @leave="leave"
-    v-bind:css="false"
+    :css="false"
   >
     <slot />
   </transition>
@@ -33,10 +33,12 @@
         el.style.overflow = 'hidden';
       },
       enter(el: HTMLElement, done: any) {
+        const height: number = el.getClientRects().length > 0 ? el.getClientRects().item(0).height : 0;
+
         anime({
           targets: el,
           height: {
-            value: `${el.scrollHeight - el.getClientRects().item(0).height}px`,
+            value: `${el.scrollHeight - height}px`,
             duration: this.duration,
           },
           opacity: {

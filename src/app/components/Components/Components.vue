@@ -203,6 +203,48 @@
       </vue-grid-item>
 
       <vue-grid-item>
+        <div class="h1">Accordion</div>
+
+        <vue-accordion>
+          <vue-accordion-item
+            title="Item 1"
+            :initOpen="true">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </vue-accordion-item>
+          <vue-accordion-item title="Item 2">
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </vue-accordion-item>
+        </vue-accordion>
+
+        <p>Multi</p>
+        <vue-accordion :multi="true">
+          <vue-accordion-item
+            title="Item 1">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </vue-accordion-item>
+          <vue-accordion-item title="Item 2">
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </vue-accordion-item>
+          <vue-accordion-item title="Item 3">
+            <vue-button>TEST</vue-button>
+          </vue-accordion-item>
+        </vue-accordion>
       </vue-grid-item>
     </vue-grid>
   </div>
@@ -225,6 +267,8 @@
   import VueCheckBox from '../../shared/components/VueCheckBox/VueCheckBox.vue';
   import VueTooltip from '../../shared/components/VueTooltip/VueTooltip.vue';
   import VueSlider from '../../shared/components/VueSlider/VueSlider.vue';
+  import VueAccordion from '../../shared/components/VueAccordion/VueAccordion.vue';
+  import VueAccordionItem from '../../shared/components/VueAccordionItem/VueAccordionItem.vue';
 
   export default {
     metaInfo: {
@@ -247,6 +291,8 @@
       VueCheckBox,
       VueTooltip,
       VueSlider,
+      VueAccordion,
+      VueAccordionItem,
     },
     data() {
       return {
