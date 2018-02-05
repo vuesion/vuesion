@@ -36,7 +36,7 @@ export const getStore = (serverContext?: IServerContext): Store<IState> => {
     mutations: Mutations,
     getters: Getters,
     plugins: [VuexPersist([
-      new PersistLocalStorage(['home']),
+      new PersistLocalStorage([]),
       persistCookieStorage,
     ])],
   });

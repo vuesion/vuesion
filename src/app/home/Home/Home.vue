@@ -5,22 +5,15 @@
     <enterprise-ready />
     <user-experience />
     <quick-start />
-
-    <div v-for="item in home" v-if="false">
-      <p>{{item.title}}</p>
-    </div>
-
   </div>
 </template>
 
 <script lang="ts">
-  import { mapGetters } from 'vuex';
   import Stage from '../Stage/Stage';
   import DevEx from '../DevEx/DevEx';
   import EnterpriseReady from '../EnterpriseReady/EnterpriseReady';
   import UserExperience from '../UserExperience/UserExperience';
   import QuickStart from '../QuickStart/QuickStart';
-  import { IPreLoad } from '../../../server/isomorphic';
 
   export default {
     metaInfo: {
@@ -53,14 +46,7 @@
       UserExperience,
       QuickStart,
     },
-    computed: {
-      ...mapGetters({
-        home: 'getHome',
-      }),
-    },
-    prefetch: (options: IPreLoad) => {
-      return options.store.dispatch(`getHome`);
-    },
+    computed: {},
   };
 </script>
 

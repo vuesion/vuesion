@@ -1,13 +1,13 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
+import VuexExample from './VuexExample.vue';
 import $style from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
 
-describe('{{ properCase componentName }}.vue', () => {
+describe('VuexExample.vue', () => {
 
   test('renders component', () => {
     const store = new Vuex.Store({
@@ -15,9 +15,9 @@ describe('{{ properCase componentName }}.vue', () => {
         getTopics: () => [],
       },
     });
-    const wrapper = mount({{ properCase componentName }}, { store, localVue, mocks: { $style } });
+    const wrapper = mount(VuexExample, { store, localVue, mocks: { $style } });
 
-    expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
+    expect(wrapper.find('h1').text()).toBe('VuexExample');
   });
 
   test('fetches data on the server', () => {
@@ -25,7 +25,7 @@ describe('{{ properCase componentName }}.vue', () => {
       dispatch: jest.fn(),
     };
 
-    {{ properCase componentName }}.prefetch({ store });
+    VuexExample.prefetch({ store });
 
     expect(store.dispatch).toHaveBeenCalled();
     expect(store.dispatch).toHaveBeenCalledWith(`getTopics`);

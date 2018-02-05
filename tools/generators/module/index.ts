@@ -80,6 +80,24 @@ export = {
         templateFile: './module/mutations.ts.hbs',
         abortOnFail: true
       });
+      actions.push({
+        type: 'add',
+        path: '{{basePath}}/{{camelCase moduleName}}/actions.spec.ts',
+        templateFile: './module/actions.spec.ts.hbs',
+        abortOnFail: true
+      });
+      actions.push({
+        type: 'add',
+        path: '{{basePath}}/{{camelCase moduleName}}/getters.spec.ts',
+        templateFile: './module/getters.spec.ts.hbs',
+        abortOnFail: true
+      });
+      actions.push({
+        type: 'add',
+        path: '{{basePath}}/{{camelCase moduleName}}/mutations.spec.ts',
+        templateFile: './module/mutations.spec.ts.hbs',
+        abortOnFail: true
+      });
       addModuleToActions(path.join(path.resolve(process.cwd()), 'src', 'app', 'actions.ts'), data.moduleName);
       addModuleToGetters(path.join(path.resolve(process.cwd()), 'src', 'app', 'getters.ts'), data.moduleName);
       addModuleToMutations(path.join(path.resolve(process.cwd()), 'src', 'app', 'mutations.ts'), data.moduleName);

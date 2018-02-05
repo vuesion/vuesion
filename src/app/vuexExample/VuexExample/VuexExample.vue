@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>{{ properCase componentName }}</h1>
+    <h1>VuexExample</h1>
     <div v-for="item in topics">
-      <p>\{{ item.title }}</p>
+      <p>{{ item.title }}</p>
     </div>
   </div>
 </template>
@@ -12,7 +12,7 @@
   import { IPreLoad } from '../../../server/isomorphic';
 
   export default {
-    name: '{{ properCase componentName }}',
+    name: 'VuexExample',
     components: {},
     props: {},
     data(): any {

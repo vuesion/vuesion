@@ -2,14 +2,14 @@ import axios from 'axios';
 import { ActionContext } from 'vuex';
 import { IState } from '../mutations';
 
-export interface I{{ properCase moduleName }}Actions {
+export interface IVuexExampleActions {
   getTopics(context: ActionContext<IState, IState>): Promise<any>;
 }
 
-export const {{ properCase moduleName }}Actions: I{{ properCase moduleName }}Actions = {
+export const VuexExampleActions: IVuexExampleActions = {
   getTopics({ commit, state }: ActionContext<IState, IState>): Promise<any> {
-    if (state.{{ camelCase moduleName }}.topics.length > 0) {
-      commit('TOPICS', state.{{ camelCase moduleName }}.topics);
+    if (state.vuexExample.topics.length > 0) {
+      commit('TOPICS', state.vuexExample.topics);
       return Promise.resolve();
     }
 
