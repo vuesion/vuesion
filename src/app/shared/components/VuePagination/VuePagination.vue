@@ -82,6 +82,7 @@
     position:   relative;
     box-shadow: $pagination-button-shadow;
     background: $pagination-button-bg;
+    cursor:     pointer;
 
     &:before, &:after {
       content:          "";
