@@ -211,10 +211,20 @@ $slider-handle-active-shadow: 0 0 0 8px rgba(red($brand-accent), green($brand-ac
 $slider-values-margin: 0 0 40px -16px;
 
 /* Accordion */
-
 $accordion-item-header-bg: $panel-bg;
 $accordion-item-header-shadow: $panel-shadow;
 $accordion-item-header-padding: $grid-unit * 2;
 $accordion-item-header-border-top: 1px solid lighten($bg-color, 10%);
 $accordion-item-header-arrow-color: $brand-accent;
 $accordion-item-body-padding: $accordion-item-header-padding;
+
+/* Pagination */
+$pagination-margin: 0 0 $grid-unit * 4 0;
+$pagination-padding: 0;
+$pagination-label-padding: $grid-unit * 2;
+$pagination-label-min-width: $grid-unit * 8;
+$pagination-button-size: $grid-unit * 7;
+$pagination-button-bg: $panel-bg;
+$pagination-button-shadow: $panel-shadow;
+$pagination-arrow-color: $brand-accent;
+$pagination-arrow-disabled-color: $bg-color;

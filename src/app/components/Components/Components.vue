@@ -246,6 +246,12 @@
           </vue-accordion-item>
         </vue-accordion>
       </vue-grid-item>
+
+      <vue-grid-item>
+        <div class="h1">Pagination</div>
+
+        <vue-pagination :pages="10" :current="page" @change="page = $event"></vue-pagination>
+      </vue-grid-item>
     </vue-grid>
   </div>
 </template>
@@ -269,6 +275,7 @@
   import VueSlider from '../../shared/components/VueSlider/VueSlider.vue';
   import VueAccordion from '../../shared/components/VueAccordion/VueAccordion.vue';
   import VueAccordionItem from '../../shared/components/VueAccordionItem/VueAccordionItem.vue';
+  import VuePagination from '../../shared/components/VuePagination/VuePagination.vue';
 
   export default {
     metaInfo: {
@@ -293,6 +300,7 @@
       VueSlider,
       VueAccordion,
       VueAccordionItem,
+      VuePagination,
     },
     data() {
       return {
@@ -300,6 +308,7 @@
         showModal: false,
         checked: true,
         radio: 'radio1',
+        page: 1,
       }
     },
     methods: {
