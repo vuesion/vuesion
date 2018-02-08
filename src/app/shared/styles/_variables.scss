@@ -228,3 +228,16 @@ $pagination-button-bg: $panel-bg;
 $pagination-button-shadow: $panel-shadow;
 $pagination-arrow-color: $brand-accent;
 $pagination-arrow-disabled-color: $bg-color;
+
+/* Select */
+$select-bg: $panel-bg;
+$select-shadow: $panel-shadow;
+$select-margin: 0 0 $grid-unit * 2 0;
+$select-padding: $grid-unit * 2;
+$select-border-top: $accordion-item-header-border-top;
+$select-color: $text-color;
+$select-font-size: $font-size;
+$select-arrow-color: $brand-accent;
+
+$select-multi-max-height: $grid-unit * 13;
+$select-multi-option-padding: $grid-unit * 0.5 0;

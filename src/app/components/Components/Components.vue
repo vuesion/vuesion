@@ -252,6 +252,15 @@
 
         <vue-pagination :pages="10" :current="page" @change="page = $event"></vue-pagination>
       </vue-grid-item>
+
+      <vue-grid-item>
+        <div class="h1">Select</div>
+
+        <vue-select :options="options"></vue-select>
+
+        <p>Multi</p>
+        <vue-select :options="options" :multiple="true"></vue-select>
+      </vue-grid-item>
     </vue-grid>
   </div>
 </template>
@@ -276,6 +285,7 @@
   import VueAccordion from '../../shared/components/VueAccordion/VueAccordion.vue';
   import VueAccordionItem from '../../shared/components/VueAccordionItem/VueAccordionItem.vue';
   import VuePagination from '../../shared/components/VuePagination/VuePagination.vue';
+  import VueSelect from '../../shared/components/VueSelect/VueSelect.vue';
 
   export default {
     metaInfo: {
@@ -301,6 +311,7 @@
       VueAccordion,
       VueAccordionItem,
       VuePagination,
+      VueSelect,
     },
     data() {
       return {
@@ -309,6 +320,28 @@
         checked: true,
         radio: 'radio1',
         page: 1,
+        options: [
+          {
+            label: 'Foo',
+            value: 'foo',
+          },
+          {
+            label: 'Bar',
+            value: 'bar',
+          },
+          {
+            label: 'Baz',
+            value: 'baz',
+          },
+          {
+            label: 'Bla Bla Bla Bla Bla',
+            value: 'bla',
+          },
+          {
+            label: 'Lorem Ipsum la la la',
+            value: 'lorem',
+          },
+        ]
       }
     },
     methods: {
