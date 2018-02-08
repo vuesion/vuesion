@@ -5,6 +5,30 @@ import axios from 'axios';
 Vue.use(VueI18n);
 
 let i18n: VueI18n = null;
+const dateTimeFormats: VueI18n.DateTimeFormats = {
+  'en-EN': {
+    calendarHeader: {
+      month: 'long', weekday: 'long', day: 'numeric',
+    },
+    calendarNav: {
+      month: 'long', year: 'numeric',
+    },
+    datePicker: {
+      year: 'numeric', month: '2-digit', day: '2-digit',
+    },
+  },
+  'de-DE': {
+    calendarHeader: {
+      month: 'long', weekday: 'long', day: 'numeric',
+    },
+    calendarNav: {
+      month: 'long', year: 'numeric',
+    },
+    datePicker: {
+      year: 'numeric', month: '2-digit', day: '2-digit',
+    },
+  },
+};
 
 export const getI18n = (lang: string = 'en-EN'): VueI18n => {
   const messages: any = {
@@ -17,6 +41,7 @@ export const getI18n = (lang: string = 'en-EN'): VueI18n => {
     locale: lang,
     fallbackLocale: 'en-EN',
     messages,
+    dateTimeFormats,
   });
 };
 

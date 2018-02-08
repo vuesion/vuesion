@@ -12,4 +12,11 @@ describe('VueInput.vue', () => {
     expect(wrapper.findAll(`.${$style.vueInput}`)).toHaveLength(1);
   });
 
+  test('should emit change', () => {
+    const wrapper = mount(VueInput, { localVue, mocks: { $style } }) as any;
+
+    wrapper.vm.onChange('foo');
+    expect(wrapper.emitted('change')).toBeTruthy();
+  });
+
 });

@@ -4,7 +4,7 @@
     @enter="enter"
     @beforeLeave="beforeLeave"
     @leave="leave">
-    <div :class="$style.vueModal" v-if="show" ref="modal">
+    <div :class="[$style.vueModal, fitContent ? $style.fitContent : '']" v-if="show" ref="modal">
       <slot />
     </div>
   </transition>
@@ -22,6 +22,11 @@
         default: false,
         type: Boolean,
       },
+      fitContent: {
+        type: Boolean,
+        required: false,
+        default: false,
+      }
     },
     data: function () {
       return {};
@@ -120,6 +125,16 @@
       top:         0;
       bottom:      0;
       margin-left: -240px;
+    }
+  }
+
+  .fitContent {
+    padding: 0;
+    bottom:  initial;
+
+    @include media(tabletPortrait) {
+      top:    25%;
+      bottom: initial;
     }
   }
 </style>

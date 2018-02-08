@@ -124,8 +124,8 @@
       <vue-grid-item>
         <div class="h1">Inputs</div>
 
-        <vue-input placeholder="Placeholder" message="test" />
-        <vue-input placeholder="Placeholder" disabled value="test" />
+        <vue-input placeholder="Placeholder" message="test" :value="inputValue" @change="inputValue = $event.target.value" />
+        <vue-input placeholder="Placeholder" disabled :value="inputValue" @change="inputValue = $event.target.value" />
       </vue-grid-item>
 
       <vue-grid-item>
@@ -250,17 +250,44 @@
       <vue-grid-item>
         <div class="h1">Pagination</div>
 
-        <vue-pagination :pages="10" :current="page" @change="page = $event"></vue-pagination>
+        <vue-pagination :pages="10" :current="page" @change="page = $event" />
       </vue-grid-item>
 
       <vue-grid-item>
         <div class="h1">Select</div>
 
-        <vue-select :options="options"></vue-select>
+        <vue-select :options="options" />
 
         <p>Multi</p>
-        <vue-select :options="options" :multiple="true"></vue-select>
+        <vue-select :options="options" :multiple="true" />
       </vue-grid-item>
+
+      <vue-grid-item>
+        <div class="h1">Calendar</div>
+
+        <vue-calendar @change="calendarChange" :min-date="today" :max-date="nextWeek" />
+      </vue-grid-item>
+
+      <vue-grid-item>
+        <div class="h1">DatePicker</div>
+
+        <vue-date-picker
+          @change="calendarChange"
+          :first-day-of-week="1"
+          placeholder="Select a date" />
+      </vue-grid-item>
+
+      <vue-grid-item>
+        <div class="h1">DateRange</div>
+
+        <vue-date-range-picker
+          @change="calendarChange"
+          :first-day-of-week="1"
+          placeholder-start="Select a start date"
+          placeholder-end="Select a end date" />
+      </vue-grid-item>
+
+      <vue-grid-item />
     </vue-grid>
   </div>
 </template>
@@ -286,6 +313,9 @@
   import VueAccordionItem from '../../shared/components/VueAccordionItem/VueAccordionItem.vue';
   import VuePagination from '../../shared/components/VuePagination/VuePagination.vue';
   import VueSelect from '../../shared/components/VueSelect/VueSelect.vue';
+  import VueCalendar from '../../shared/components/VueCalendar/VueCalendar.vue';
+  import VueDatePicker from '../../shared/components/VueDatePicker/VueDatePicker.vue';
+  import VueDateRangePicker from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
 
   export default {
     metaInfo: {
@@ -312,6 +342,19 @@
       VueAccordionItem,
       VuePagination,
       VueSelect,
+      VueCalendar,
+      VueDatePicker,
+      VueDateRangePicker,
+    },
+    computed: {
+      today(): Date {
+        const today: Date = new Date();
+
+        return new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      },
+      nextWeek(): Date {
+        return new Date(this.today.getTime() + 7 * 24 * 60 * 60 * 1000);
+      },
     },
     data() {
       return {
@@ -341,7 +384,8 @@
             label: 'Lorem Ipsum la la la',
             value: 'lorem',
           },
-        ]
+        ],
+        inputValue: 'test',
       }
     },
     methods: {
@@ -351,6 +395,9 @@
       formatSliderValue(value: number) {
         return `${Math.floor(value)} €`;
       },
+      calendarChange(date: Date | Date[]) {
+        console.log(date);
+      }
     }
   };
 </script>

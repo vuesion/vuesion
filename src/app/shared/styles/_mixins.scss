@@ -44,6 +44,6 @@ $grid-breakpoints: (
       @content;
     }
   } @else {
-    @error "breakpoint not suuported!"
+    @error "breakpoint not suported!"
   }
 }

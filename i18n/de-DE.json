@@ -5,5 +5,12 @@
   "App.nav.english": "Englisch",
   "App.nav.german": "Deutsch",
   "App.nav.home": "Startseite",
-  "App.nav.pt-BR": "Portugiesisch"
+  "App.nav.pt-BR": "Portugiesisch",
+  "components.calendar.friday.short": "F",
+  "components.calendar.monday.short": "M",
+  "components.calendar.saturday.short": "S",
+  "components.calendar.sunday.short": "S",
+  "components.calendar.thursday.short": "D",
+  "components.calendar.tuesday.short": "D",
+  "components.calendar.wednesday.short": "M"
 }

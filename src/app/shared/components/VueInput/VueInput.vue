@@ -2,12 +2,14 @@
   <div :class="cssClasses">
     <input
       :required="required"
-      v-model="parentValue"
+      :value="value"
       :type="type"
       :disabled="disabled"
       :class="[
-        parentValue === '' ? '' : $style.hasValue
+        value === '' ? '' : $style.hasValue
       ]"
+      @keyup="onChange"
+      @change="onChange"
     />
     <span :class="$style.bar"></span>
     <label>{{placeholder}}</label>
@@ -45,10 +47,8 @@
         default: '',
       },
     },
-    data: function () {
-      return {
-        parentValue: this.value,
-      };
+    data() {
+      return {};
     },
     computed: {
       cssClasses() {
@@ -61,7 +61,11 @@
         return classes;
       },
     },
-    methods: {},
+    methods: {
+      onChange(e: Event): void {
+        this.$emit('change', e);
+      }
+    },
   };
 </script>
 

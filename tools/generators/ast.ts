@@ -1,8 +1,7 @@
 import * as fs from 'fs';
 import * as ts from 'typescript';
+import { lowerFirst, upperFirst } from 'lodash';
 
-const lowerFirst = require('lodash.lowerfirst');
-const upperFirst = require('lodash.upperfirst');
 let sourceFile: ts.SourceFile;
 
 const insertAt = (file: string, index: number, insert: string): string => {
