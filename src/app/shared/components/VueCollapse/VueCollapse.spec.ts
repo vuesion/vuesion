@@ -6,24 +6,21 @@ const localVue = createLocalVue();
 
 describe('VueCollapse.vue', () => {
 
-  test('renders component', (done) => {
+  test('renders component', () => {
     const wrapper = mount(VueCollapse, {
       localVue,
       mocks: { $style },
       slots: {
         default: '<h1>content</h1>',
       },
-    });
+    }) as any;
 
     expect(wrapper.find('h1').text()).toBe('content');
 
     wrapper.setProps({ show: false });
     wrapper.update();
 
-    setTimeout(() => {
-      expect(wrapper.findAll('h1')).toHaveLength(0);
-      done();
-    }, 500);
+    expect(wrapper.props().show).toBe(false);
   });
 
 });
