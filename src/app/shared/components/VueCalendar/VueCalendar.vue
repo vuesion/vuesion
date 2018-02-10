@@ -367,7 +367,7 @@
 
           span {
             position: relative;
-            top:      25%;
+            top:      20%;
           }
         }
       }
@@ -482,7 +482,7 @@
   }
 
   .footer {
-    padding:         $grid-unit;
+    padding:         $grid-unit * 2;
     display:         flex;
     justify-content: flex-end;
 

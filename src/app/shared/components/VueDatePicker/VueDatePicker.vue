@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.vueDatePicker" @click="show = true">
-    <vue-input :value="inputValue" :placeholder="placeholder" />
+    <vue-input :value="inputValue" :placeholder="placeholder" readonly />
     <vue-modal :show="show" :fit-content="true" @close="show = false">
       <vue-calendar
         :min-date="minDate"
@@ -101,8 +101,16 @@
     max-width: $modal-max-width;
 
     @include media(tabletPortrait) {
-      td {
-        font-size: $font-size-h5;
+      table {
+        tr {
+          td {
+            font-size: $font-size-h5;
+
+            span {
+              top: 25%;
+            }
+          }
+        }
       }
     }
   }

@@ -12,11 +12,42 @@ describe('VueInput.vue', () => {
     expect(wrapper.findAll(`.${$style.vueInput}`)).toHaveLength(1);
   });
 
+  test('renders disabled component', () => {
+    const wrapper = mount(VueInput, {
+      localVue,
+      mocks: { $style },
+      propsData: {
+        disabled: true,
+      },
+    });
+
+    expect(wrapper.findAll(`.${$style.disabled}`)).toHaveLength(1);
+  });
+
   test('should emit change', () => {
     const wrapper = mount(VueInput, { localVue, mocks: { $style } }) as any;
 
     wrapper.vm.onChange('foo');
     expect(wrapper.emitted('change')).toBeTruthy();
+  });
+
+  test('should handle focus', () => {
+    const wrapper = mount(VueInput, {
+      localVue,
+      mocks: { $style },
+    }) as any;
+    const event: any = {
+      target: {
+        blur: jest.fn(),
+      },
+    };
+
+    wrapper.vm.onFocus(event);
+    expect(event.target.blur).not.toHaveBeenCalled();
+
+    wrapper.setProps({ readonly: true });
+    wrapper.vm.onFocus(event);
+    expect(event.target.blur).toHaveBeenCalled();
   });
 
 });

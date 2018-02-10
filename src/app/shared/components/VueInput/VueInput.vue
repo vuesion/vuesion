@@ -5,11 +5,13 @@
       :value="value"
       :type="type"
       :disabled="disabled"
+      :readonly="readonly"
       :class="[
         value === '' ? '' : $style.hasValue
       ]"
       @keyup="onChange"
       @change="onChange"
+      @focus="onFocus"
     />
     <span :class="$style.bar"></span>
     <label>{{placeholder}}</label>
@@ -42,6 +44,10 @@
         type: Boolean,
         default: false,
       },
+      readonly: {
+        type: Boolean,
+        default: false,
+      },
       message: {
         type: String,
         default: '',
@@ -64,7 +70,12 @@
     methods: {
       onChange(e: Event): void {
         this.$emit('change', e);
-      }
+      },
+      onFocus(e: any) {
+        if (this.readonly) {
+          e.target.blur();
+        }
+      },
     },
   };
 </script>
@@ -93,6 +104,7 @@
       font-size:        $input-font-size;
       color:            $input-color;
       height:           $input-height;
+      border-radius:    0;
 
       &:disabled {
         color: $input-color-disabled;

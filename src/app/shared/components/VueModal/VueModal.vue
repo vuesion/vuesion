@@ -133,7 +133,7 @@
     bottom:  initial;
 
     @include media(tabletPortrait) {
-      top:    25%;
+      top:    $nav-bar-height;
       bottom: initial;
     }
   }
