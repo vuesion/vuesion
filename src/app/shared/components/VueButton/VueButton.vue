@@ -85,13 +85,6 @@
 <style lang="scss" module>
   @import "../../styles";
 
-  button,
-  button:active,
-  button:focus,
-  button:hover {
-    outline: none !important;
-  }
-
   .button {
     color:                       $button-default-color;
     display:                     inline-block;

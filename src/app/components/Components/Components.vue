@@ -287,7 +287,10 @@
           placeholder-end="Select a end date" />
       </vue-grid-item>
 
-      <vue-grid-item />
+      <vue-grid-item>
+        <div class="h1">Notification Stack</div>
+        <vue-button accent @click="addNotification">add notification</vue-button>
+      </vue-grid-item>
     </vue-grid>
   </div>
 </template>
@@ -316,6 +319,7 @@
   import VueCalendar from '../../shared/components/VueCalendar/VueCalendar.vue';
   import VueDatePicker from '../../shared/components/VueDatePicker/VueDatePicker.vue';
   import VueDateRangePicker from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
+  import { addNotification, INotification } from '../../shared/components/VueNotificationStack/utils';
 
   export default {
     metaInfo: {
@@ -397,7 +401,13 @@
       },
       calendarChange(date: Date | Date[]) {
         console.log(date);
-      }
+      },
+      addNotification() {
+        addNotification({
+          title: 'this is a test',
+          text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+        } as INotification);
+      },
     }
   };
 </script>

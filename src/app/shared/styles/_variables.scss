@@ -241,3 +241,20 @@ $select-arrow-color: $brand-accent;
 
 $select-multi-max-height: $grid-unit * 13;
 $select-multi-option-padding: $grid-unit * 0.5 0;
+
+/* Calendar */
+
+/* Notification Stack */
+$notifications-index: $modal-index + 1;
+$notifications-padding: $grid-unit;
+$notifications-max-width: $grid-unit * 50;
+
+$notification-padding: $grid-unit * 2 $grid-unit * 5 $grid-unit * 2 $grid-unit * 2;
+$notification-margin: 0 0 $grid-unit 0;
+$notification-shadow: $modal-shadow;
+$notification-max-height: $grid-unit * 10;
+$notification-close-bg: $bg-color;
+$notification-close-width: $grid-unit * 5;
+$notification-close-cross-color: $brand-accent;
+
+$notification-default-bg: $panel-bg;

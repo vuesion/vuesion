@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <vue-notification-stack />
+
     <vue-nav-bar>
       <ul :class="$style.nav">
         <li>
@@ -42,7 +44,7 @@
     </vue-nav-bar>
 
     <div :class="$style.app">
-      <router-view class="view"></router-view>
+      <router-view class="view" />
     </div>
 
     <vue-footer />
@@ -54,7 +56,8 @@
   import VueNavBar from './shared/components/VueNavBar/VueNavBar.vue';
   import VueGrid from './shared/components/VueGrid/VueGrid.vue';
   import VueGridItem from './shared/components/VueGridItem/VueGridItem.vue';
-  import VueFooter from './shared/components/VueFooter/VueFooter.vue'
+  import VueFooter from './shared/components/VueFooter/VueFooter.vue';
+  import VueNotificationStack from './shared/components/VueNotificationStack/VueNotificationStack.vue';
   import { loadLanguageAsync } from './shared/plugins/i18n/i18n';
 
   export default {
@@ -63,6 +66,7 @@
       VueGrid,
       VueGridItem,
       VueFooter,
+      VueNotificationStack,
     },
     methods: {
       ...mapActions(['changeLang']),
