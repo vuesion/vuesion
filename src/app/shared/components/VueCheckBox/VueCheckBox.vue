@@ -1,7 +1,8 @@
 <template>
-  <div :class="cssClasses" :aria-label="label" @click="onClick">
-    <input :type="inputType" :name="id" :id="id" :checked="checked" />
-    <label :for="id">{{label}}</label>
+  <div :class="cssClasses" :aria-label="label">
+    <input :type="inputType" :name="name" :id="name" :checked="checked" @change.prevent="onClick" />
+    <div :class="$style.box" @click="onClick" />
+    <label :for="name" v-html="label" />
   </div>
 </template>
 
@@ -10,9 +11,9 @@
     name:       'VueCheckBox',
     components: {},
     props:      {
-      id:       {
+      name:     {
         type:     String,
-        required: true,
+        required: false,
       },
       checked:  {
         type:    Boolean,
@@ -74,7 +75,6 @@
   @import "../../styles";
 
   .checkbox {
-    cursor:      pointer;
     user-select: none;
     color:       $checkbox-color;
     display:     inline-block;
@@ -83,12 +83,17 @@
     position:    relative;
 
     label {
-      cursor: pointer;
+      display:      inline-block;
+      padding-left: $checkbox-size + ($grid-unit * 2);
+    }
+
+    .box {
       &:before, &:after {
         content:  "";
         position: absolute;
         left:     0;
         top:      0;
+        cursor:   pointer;
       }
 
       &:before {
@@ -117,15 +122,22 @@
     }
 
     input[type="checkbox"] {
-      outline: 0;
-      margin:  $checkbox-check-margin;
+      outline:  0;
+      margin:   $checkbox-check-margin;
+      position: absolute;
+
+      &:focus {
+        + .box:before {
+          background: $checkbox-checked-bg;
+        }
+      }
 
       &:checked {
-        + label:before {
+        + .box:before {
           background: $checkbox-checked-bg;
         }
 
-        + label:after {
+        + .box:after {
           transform:           rotate(-45deg) scale(1);
           opacity:             1;
           transition-property: opacity;
@@ -135,7 +147,6 @@
   }
 
   .radio {
-    cursor:      pointer;
     user-select: none;
     color:       $checkbox-color;
     display:     inline-block;
@@ -144,12 +155,17 @@
     position:    relative;
 
     label {
-      cursor: pointer;
+      display:      inline-block;
+      padding-left: $checkbox-size + ($grid-unit * 2);
+    }
+
+    .box {
       &:before, &:after {
         content:  "";
         position: absolute;
         left:     0;
         top:      0;
+        cursor:   pointer;
       }
 
       &:before {
@@ -179,15 +195,22 @@
     input[type="radio"] {
       outline:  0;
       margin:   $checkbox-check-margin;
-      left:     4px;
-      position: relative;
+      left:     6px;
+      top:      6px;
+      position: absolute;
+
+      &:focus {
+        + .box:before {
+          background: $checkbox-checked-bg;
+        }
+      }
 
       &:checked {
-        + label:before {
+        + .box:before {
           background: $checkbox-checked-bg;
         }
 
-        + label:after {
+        + .box:after {
           opacity: 1;
         }
       }

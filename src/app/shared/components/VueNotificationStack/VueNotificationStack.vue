@@ -119,11 +119,13 @@
   .title {
     font-weight:   500;
     margin-bottom: $grid-unit;
+    padding-right: $grid-unit * 2;
   }
 
   .text {
-    max-height: $notification-max-height;
-    overflow-y: scroll;
+    max-height:    $notification-max-height;
+    padding-right: $grid-unit * 2;
+    overflow-y:    scroll;
   }
 
   .close {

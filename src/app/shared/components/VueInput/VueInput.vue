@@ -1,20 +1,23 @@
 <template>
   <div :class="cssClasses">
     <input
+      :name="name"
+      :id="name"
       :required="required"
       :value="value"
       :type="type"
+      :autocomplete="type"
       :disabled="disabled"
       :readonly="readonly"
       :class="[
-        value === '' ? '' : $style.hasValue
+        value ? $style.hasValue : ''
       ]"
       @keyup="onChange"
       @change="onChange"
       @focus="onFocus"
     />
     <span :class="$style.bar"></span>
-    <label>{{placeholder}}</label>
+    <label :for="name">{{placeholder}}<sup v-if="required">*</sup></label>
     <div :class="$style.message">{{message}}</div>
   </div>
 </template>
@@ -24,6 +27,10 @@
     name:       'VueInput',
     components: {},
     props:      {
+      name:        {
+        type:     String,
+        required: false,
+      },
       placeholder: {
         type:    String,
         default: '',
@@ -32,9 +39,13 @@
         type:    Boolean,
         default: false,
       },
+      isValid:     {
+        type:    Boolean,
+        default: true,
+      },
       value:       {
         type:    String,
-        default: '',
+        default: null,
       },
       type:        {
         type:    String,
@@ -62,6 +73,10 @@
 
         if (this.disabled) {
           classes.push(this.$style.disabled);
+        }
+
+        if (!this.isValid) {
+          classes.push(this.$style.error);
         }
 
         return classes;
@@ -123,7 +138,7 @@
 
     input:focus ~ label,
     input.hasValue ~ label {
-      top:         -$input-placeholder-top;
+      top:         -($input-placeholder-top + 8);
       font-size:   $input-placeholder-active-font-size;
       font-weight: $input-placeholder-active-font-weight;
       color:       $input-placeholder-active-font-color;
@@ -160,14 +175,32 @@
       width: 50%;
     }
 
-    .message {
-      display:     block;
-      height:      $input-message-height;
-      padding:     $input-message-padding;
-      position:    relative;
-      color:       $input-message-color;
-      font-size:   $input-message-font-size;
-      font-weight: $input-message-font-weight;
+    &.error {
+      input {
+        border-bottom-color: $brand-warn;
+      }
+
+      input:focus ~ label,
+      input.hasValue ~ label {
+        color: $brand-warn;
+      }
+
+      .bar {
+        &:before,
+        &:after {
+          background: $brand-warn;
+        }
+      }
     }
+  }
+
+  .message {
+    display:     block;
+    height:      $input-message-height;
+    padding:     $input-message-padding;
+    position:    relative;
+    color:       $input-message-color;
+    font-size:   $input-message-font-size;
+    font-weight: $input-message-font-weight;
   }
 </style>

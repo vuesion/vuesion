@@ -292,37 +292,49 @@
 
       <vue-grid-item>
         <div class="h1">Notification Stack</div>
-        <vue-button accent @click="addNotification">add notification</vue-button>
+        <vue-button accent @click="addNotificationClick">add notification</vue-button>
+      </vue-grid-item>
+
+      <vue-grid-item>
+        <div class="h1">Forms</div>
+        <vue-form :schema="registerSchema" @submit="formSubmit" @reset="formReset" />
+      </vue-grid-item>
+      <vue-grid-item>
+        <div class="h1">Forms</div>
+        <vue-form :schema="loginSchema" />
       </vue-grid-item>
     </vue-grid>
   </div>
 </template>
 
 <script lang="ts">
-  import VueGrid                            from '../../shared/components/VueGrid/VueGrid.vue';
-  import VueGridItem                        from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VueButton                          from '../../shared/components/VueButton/VueButton.vue';
-  import VueLoader                          from '../../shared/components/VueLoader/VueLoader.vue';
-  import VuePanel                           from '../../shared/components/VuePanel/VuePanel.vue';
-  import VuePanelHeader                     from '../../shared/components/VuePanel/VuePanelHeader/VuePanelHeader.vue';
-  import VuePanelBody                       from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
-  import VuePanelFooter                     from '../../shared/components/VuePanel/VuePanelFooter/VuePanelFooter.vue';
-  import VueInput                           from '../../shared/components/VueInput/VueInput.vue';
-  import VueCollapse                        from '../../shared/components/VueCollapse/VueCollapse.vue';
-  import VueModal                           from '../../shared/components/VueModal/VueModal.vue';
-  import VueTabGroup                        from '../../shared/components/VueTabGroup/VueTabGroup.vue';
-  import VueTabItem                         from '../../shared/components/VueTabItem/VueTabItem.vue';
-  import VueCheckBox                        from '../../shared/components/VueCheckBox/VueCheckBox.vue';
-  import VueTooltip                         from '../../shared/components/VueTooltip/VueTooltip.vue';
-  import VueSlider                          from '../../shared/components/VueSlider/VueSlider.vue';
-  import VueAccordion                       from '../../shared/components/VueAccordion/VueAccordion.vue';
-  import VueAccordionItem                   from '../../shared/components/VueAccordionItem/VueAccordionItem.vue';
-  import VuePagination                      from '../../shared/components/VuePagination/VuePagination.vue';
-  import VueSelect, { IVueSelectOption }    from '../../shared/components/VueSelect/VueSelect.vue';
-  import VueCalendar                        from '../../shared/components/VueCalendar/VueCalendar.vue';
-  import VueDatePicker                      from '../../shared/components/VueDatePicker/VueDatePicker.vue';
-  import VueDateRangePicker                 from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
-  import { addNotification, INotification } from '../../shared/components/VueNotificationStack/utils';
+  import VueGrid                              from '../../shared/components/VueGrid/VueGrid.vue';
+  import VueGridItem                          from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VueButton                            from '../../shared/components/VueButton/VueButton.vue';
+  import VueLoader                            from '../../shared/components/VueLoader/VueLoader.vue';
+  import VuePanel                             from '../../shared/components/VuePanel/VuePanel.vue';
+  import VuePanelHeader                       from '../../shared/components/VuePanel/VuePanelHeader/VuePanelHeader.vue';
+  import VuePanelBody                         from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
+  import VuePanelFooter                       from '../../shared/components/VuePanel/VuePanelFooter/VuePanelFooter.vue';
+  import VueInput                             from '../../shared/components/VueInput/VueInput.vue';
+  import VueCollapse                          from '../../shared/components/VueCollapse/VueCollapse.vue';
+  import VueModal                             from '../../shared/components/VueModal/VueModal.vue';
+  import VueTabGroup                          from '../../shared/components/VueTabGroup/VueTabGroup.vue';
+  import VueTabItem                           from '../../shared/components/VueTabItem/VueTabItem.vue';
+  import VueCheckBox                          from '../../shared/components/VueCheckBox/VueCheckBox.vue';
+  import VueTooltip                           from '../../shared/components/VueTooltip/VueTooltip.vue';
+  import VueSlider                            from '../../shared/components/VueSlider/VueSlider.vue';
+  import VueAccordion                         from '../../shared/components/VueAccordion/VueAccordion.vue';
+  import VueAccordionItem                     from '../../shared/components/VueAccordionItem/VueAccordionItem.vue';
+  import VuePagination                        from '../../shared/components/VuePagination/VuePagination.vue';
+  import VueSelect, { IVueSelectOption }      from '../../shared/components/VueSelect/VueSelect.vue';
+  import VueCalendar                          from '../../shared/components/VueCalendar/VueCalendar.vue';
+  import VueDatePicker                        from '../../shared/components/VueDatePicker/VueDatePicker.vue';
+  import VueDateRangePicker                   from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
+  import { addNotification, INotification }   from '../../shared/components/VueNotificationStack/utils';
+  import VueForm                              from '../../shared/components/VueForm/VueForm.vue';
+  import { IFormSchema }                      from '../../shared/components/VueForm/IFormSchema';
+  import { isEmailValid, isPhoneNumberValid } from '../../shared/components/VueForm/Validators';
 
   export default {
     metaInfo:   {
@@ -352,6 +364,7 @@
       VueCalendar,
       VueDatePicker,
       VueDateRangePicker,
+      VueForm,
     },
     computed:   {
       today(): Date {
@@ -393,6 +406,94 @@
           },
         ],
         inputValue:   'test',
+        registerSchema:
+                      {
+                        cancellationText: 'Cancel',
+                        submitText:       'Submit',
+                        id:               'myForm',
+                        name:             'myForm',
+                        title:            'Register',
+                        subtitle:         'Please fill in all required fields',
+                        elements:         [
+                          {
+                            type:        'vue-input',
+                            model:       'name',
+                            required:    true,
+                            label:       'Name',
+                            inputType:   'text',
+                            isValid(value: string) {
+                              return value.trim().indexOf(' ') > -1;
+                            },
+                            invalidText: 'Please provide fist and last name',
+                          },
+                          {
+                            type:        'vue-input',
+                            model:       'phone',
+                            required:    false,
+                            label:       'Phone',
+                            inputType:   'phone',
+                            isValid(value: string) {
+                              return isPhoneNumberValid(value);
+                            },
+                            invalidText: 'This is not a valid phone number!',
+                          },
+                          {
+                            type:        'vue-input',
+                            model:       'email',
+                            required:    true,
+                            label:       'Email',
+                            inputType:   'email',
+                            isValid(value: string) {
+                              return isEmailValid(value);
+                            },
+                            invalidText: 'This is not a valid email address!',
+                          },
+                          {
+                            type:     'vue-check-box',
+                            model:    'terms',
+                            required: true,
+                            label:    'I accept the <a href="/terms">Terms and Conditions</a>',
+                            value:    false,
+                          },
+                          {
+                            type:     'vue-check-box',
+                            model:    'consent',
+                            required: false,
+                            label:    'I consent to get contacted',
+                            value:    false,
+                          },
+                        ],
+                      } as IFormSchema,
+        loginSchema:
+                      {
+                        submitText: 'Login',
+                        id:         'loginForm',
+                        name:       'loginForm',
+                        title:      'Login',
+                        elements:   [
+                          {
+                            type:        'vue-input',
+                            model:       'email',
+                            required:    true,
+                            label:       'Email',
+                            inputType:   'email',
+                            isValid(value: string) {
+                              return isEmailValid(value);
+                            },
+                            invalidText: 'This is not a valid email address!',
+                          },
+                          {
+                            type:      'vue-input',
+                            model:     'password',
+                            required:  true,
+                            label:     'Password',
+                            inputType: 'password',
+                            isValid(value: string) {
+                              return value.length > 3;
+                            },
+                          },
+                        ],
+                      } as IFormSchema,
       };
     },
     methods:    {
@@ -405,15 +506,33 @@
       calendarChange(date: Date | Date[]) {
         console.log(date);
       },
-      addNotification() {
+      addNotificationClick() {
         addNotification(
           {
             title: 'this is a test',
             text:  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
-          } as INotification);
+          } as INotification,
+        );
       },
       selectChange(options: IVueSelectOption[]) {
         console.log(options);
+      },
+      formSubmit(model: any, reset: any) {
+        addNotification(
+          {
+            title: `Hey ${model.name}!`,
+            text:  `We've sent an email to: ${model.email}.`,
+          } as INotification,
+        );
+        reset();
+      },
+      formReset() {
+        addNotification(
+          {
+            title: `How can we help?`,
+            text:  `Are you not happy with our offer?`,
+          } as INotification,
+        );
       },
     },
   };

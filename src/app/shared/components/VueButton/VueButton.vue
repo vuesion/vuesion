@@ -1,5 +1,5 @@
 <template>
-  <button :class="cssClasses" @click="onClick">
+  <button :class="cssClasses" @click="onClick" :disabled="disabled">
     <slot v-if="!loading" />
     <vue-loader v-if="loading" />
   </button>

@@ -11,7 +11,7 @@ describe('VueCheckBox.vue', () => {
       localVue,
       mocks:     { $style },
       propsData: {
-        id:    'foo',
+        name:    'foo',
         label: 'Test',
       },
     });
@@ -26,7 +26,7 @@ describe('VueCheckBox.vue', () => {
       localVue,
       mocks:     { $style },
       propsData: {
-        id:    'foo',
+        name:    'foo',
         label: 'Test',
         radio: true,
       },
@@ -42,12 +42,12 @@ describe('VueCheckBox.vue', () => {
       localVue,
       mocks:     { $style },
       propsData: {
-        id:    'foo',
+        name:    'foo',
         label: 'Test',
       },
     });
 
-    wrapper.find(`.${$style.checkbox}`).trigger('click');
+    wrapper.find(`.${$style.box}`).trigger('click');
     expect(wrapper.emitted().click).toBeTruthy();
   });
 
@@ -56,14 +56,14 @@ describe('VueCheckBox.vue', () => {
       localVue,
       mocks:     { $style },
       propsData: {
-        id:       'foo',
+        name:       'foo',
         label:    'Test',
         disabled: true,
       },
     });
 
     expect(wrapper.findAll(`.${$style.disabled}`)).toHaveLength(1);
-    wrapper.find(`.${$style.checkbox}`).trigger('click');
+    wrapper.find(`.${$style.box}`).trigger('click');
     expect(wrapper.emitted().click).toBeFalsy();
   });
 

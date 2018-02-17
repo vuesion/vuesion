@@ -50,4 +50,16 @@ describe('VueInput.vue', () => {
     expect(event.target.blur).toHaveBeenCalled();
   });
 
+  test('should display error state', () => {
+    const wrapper = mount(VueInput, {
+      localVue,
+      mocks:     { $style },
+      propsData: {
+        isValid: false,
+      },
+    });
+
+    expect(wrapper.findAll(`.${$style.error}`)).toHaveLength(1);
+  });
+
 });
