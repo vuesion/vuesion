@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-  export interface VueSelectOption {
+  export interface IVueSelectOption {
     label: string;
     value: string;
   }
@@ -45,7 +45,7 @@
     },
     methods:    {
       onChange(e: Event) {
-        const selected: VueSelectOption[] = [];
+        const selected: IVueSelectOption[] = [];
         const target: HTMLSelectElement = e.target as HTMLSelectElement;
         const length: number = target.options.length;
 
