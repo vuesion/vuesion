@@ -1,5 +1,7 @@
+/* tslint:disable:no-console */
+
 import * as glob from 'glob';
-import * as fs from 'fs';
+import * as fs   from 'fs';
 import * as path from 'path';
 
 const basePath: string = path.resolve(process.cwd());
@@ -7,12 +9,29 @@ const packageJSON: any = JSON.parse(fs.readFileSync(path.join(basePath, 'package
 const supportedLanguages: string[] = packageJSON.config['supported-languages'];
 const defaultLanguage: string = packageJSON.config['default-language'];
 const translations: any = {};
+const sanitizeMessage = (message: string): string => {
+  const replacements: Array<{ from: string | RegExp, to: string }> = [
+    { from: '/*', to: '' },
+    { from: '*/', to: '' },
+    { from: /\n/g, to: '\\n' },
+    { from: '[', to: '<' },
+    { from: ']', to: '>' },
+  ];
+
+  replacements.forEach((replacement: { from: string | RegExp, to: string }) => {
+    message = message.replace(replacement.from, replacement.to);
+  });
+
+  return message.trim();
+};
 
 const addTranslationObject = (translation: string) => {
   const idMatches: string[] = translation.match(/'\S*'/);
   const id: string = idMatches ? idMatches[0].replace(/[\\']/g, '') : '';
   const defaultMessageMatches: string[] = translation.match(/\/\*[\S\s]*\*\//);
-  const defaultMessage: string = defaultMessageMatches ? defaultMessageMatches[0].replace(/[\/*]/g, '') : '';
+  const defaultMessage: string = defaultMessageMatches
+    ? sanitizeMessage(defaultMessageMatches[0])
+    : '';
 
   if (defaultMessage.length > 0) {
     translations[id] = defaultMessage;
@@ -51,7 +70,7 @@ const run = (): void => {
        */
       const sortedKeys: string[] = (Object as any).keys(newLangObject).sort();
       const sortedEntries: string[] = sortedKeys.map((key: string) => {
-        return `"${key}": "${newLangObject[key]}"`;
+        return `"${key}": "${newLangObject[key].replace(/\n/g, '\\n')}"`;
       });
 
       fs.writeFileSync(path.join(basePath, 'i18n', `${lang}.json`), `{\n  ${sortedEntries.join(',\n  ')}\n}\n`);
