@@ -1,6 +1,6 @@
 <template>
   <div :class="cssClasses">
-    <select :multiple="multiple" role="listbox">
+    <select :multiple="multiple" role="listbox" @change="onChange">
       <option v-for="option in options" :value="option.value" role="option">
         {{option.label}}
       </option>
@@ -10,6 +10,11 @@
 </template>
 
 <script lang="ts">
+  export interface VueSelectOption {
+    label: string;
+    value: string;
+  }
+
   export default {
     name:       'VueSelect',
     components: {},
@@ -38,7 +43,22 @@
         return classes;
       },
     },
-    methods:    {},
+    methods:    {
+      onChange(e: Event) {
+        const selected: VueSelectOption[] = [];
+        const target: HTMLSelectElement = e.target as HTMLSelectElement;
+        const length: number = target.options.length;
+
+        for (let i = 0; i < length; i++) {
+          const option: HTMLOptionElement = target.options[i];
+          if (option.selected) {
+            selected.push({ label: option.text, value: option.value });
+          }
+        }
+
+        this.$emit('change', selected);
+      },
+    },
   };
 </script>
 

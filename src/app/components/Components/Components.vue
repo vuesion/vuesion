@@ -259,10 +259,10 @@
       <vue-grid-item>
         <div class="h1">Select</div>
 
-        <vue-select :options="options" />
+        <vue-select :options="options" @change="selectChange" />
 
         <p>Multi</p>
-        <vue-select :options="options" :multiple="true" />
+        <vue-select :options="options" :multiple="true" @change="selectChange" />
       </vue-grid-item>
 
       <vue-grid-item>
@@ -318,7 +318,7 @@
   import VueAccordion                       from '../../shared/components/VueAccordion/VueAccordion.vue';
   import VueAccordionItem                   from '../../shared/components/VueAccordionItem/VueAccordionItem.vue';
   import VuePagination                      from '../../shared/components/VuePagination/VuePagination.vue';
-  import VueSelect                          from '../../shared/components/VueSelect/VueSelect.vue';
+  import VueSelect, { VueSelectOption }     from '../../shared/components/VueSelect/VueSelect.vue';
   import VueCalendar                        from '../../shared/components/VueCalendar/VueCalendar.vue';
   import VueDatePicker                      from '../../shared/components/VueDatePicker/VueDatePicker.vue';
   import VueDateRangePicker                 from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
@@ -411,6 +411,9 @@
             title: 'this is a test',
             text:  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
           } as INotification);
+      },
+      selectChange(options: VueSelectOption[]) {
+        console.log(options);
       },
     },
   };

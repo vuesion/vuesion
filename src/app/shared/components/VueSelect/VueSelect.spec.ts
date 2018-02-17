@@ -55,4 +55,43 @@ describe('VueSelect.vue', () => {
     expect(wrapper.find('select').attributes().multiple).toBe('multiple');
   });
 
+  it('should return list of options', () => {
+    const wrapper = mount(VueSelect, {
+      localVue,
+      mocks:     { $style },
+      propsData: {
+        options,
+        multiple: true,
+      },
+    }) as any;
+
+    const event: any = {
+      target: {
+        options: [
+          {
+            selected: true,
+            text:     'foo',
+            value:    'foo2',
+          },
+          {
+            selected: false,
+            text:     'bar',
+            value:    'bar2',
+          },
+        ],
+      },
+    };
+
+    wrapper.vm.onChange(event);
+
+    expect(wrapper.emitted().change[0][0]).toEqual(
+      [
+        {
+          value: 'foo2',
+          label: 'foo',
+        },
+      ],
+    );
+  });
+
 });

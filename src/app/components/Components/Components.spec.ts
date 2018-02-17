@@ -22,6 +22,7 @@ describe('Components.vue', () => {
     (wrapper as any).vm.sliderChange();
     (wrapper as any).vm.calendarChange();
     (wrapper as any).vm.addNotification();
+    (wrapper as any).vm.selectChange();
 
     expect(wrapper.find('h1').text()).toBe('Components');
   });
