@@ -9,50 +9,50 @@
   import VueLoader from '../VueLoader/VueLoader';
 
   export default {
-    name: 'VueButton',
-    props: {
-      primary: {
-        type: Boolean,
+    name:       'VueButton',
+    props:      {
+      primary:  {
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
-      accent: {
-        type: Boolean,
+      accent:   {
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
-      warn: {
-        type: Boolean,
+      warn:     {
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
       disabled: {
-        type: Boolean,
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
-      loading: {
-        type: Boolean,
+      loading:  {
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
-      pulse: {
-        type: Boolean,
+      pulse:    {
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
     },
     components: {
       VueLoader,
     },
-    methods: {
+    methods:    {
       onClick(e: Event) {
         if (this.disabled === false && this.loading === false) {
           this.$emit('click', e);
         }
       },
     },
-    computed: {
+    computed:   {
       cssClasses() {
         const classes = [this.$style.button, this.$style.ripple];
 

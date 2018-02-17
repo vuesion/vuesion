@@ -1,7 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueCalendar from './VueCalendar.vue';
-import $style from 'identity-obj-proxy';
-import { getI18n } from '../../plugins/i18n/i18n';
+import VueCalendar               from './VueCalendar.vue';
+import $style                    from 'identity-obj-proxy';
+import { getI18n }               from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 const today: Date = new Date();
@@ -12,7 +12,7 @@ describe('VueCalendar.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n:  getI18n(),
       mocks: { $style },
     });
 
@@ -29,8 +29,8 @@ describe('VueCalendar.vue', () => {
   test('renders component with min max date', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
-      mocks: { $style },
+      i18n:      getI18n(),
+      mocks:     { $style },
       propsData: {
         minDate: today,
         maxDate: nextWeek,
@@ -50,11 +50,11 @@ describe('VueCalendar.vue', () => {
   test('renders component with range', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
-      mocks: { $style },
+      i18n:      getI18n(),
+      mocks:     { $style },
       propsData: {
         startDate: today,
-        endDate: nextWeek,
+        endDate:   nextWeek,
       },
     });
 
@@ -64,8 +64,8 @@ describe('VueCalendar.vue', () => {
   test('renders component with selected date', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
-      mocks: { $style },
+      i18n:      getI18n(),
+      mocks:     { $style },
       propsData: {
         selectedDate: nextWeek,
       },
@@ -77,7 +77,7 @@ describe('VueCalendar.vue', () => {
   test('should emit events', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n:  getI18n(),
       mocks: { $style },
     }) as any;
 
@@ -91,7 +91,7 @@ describe('VueCalendar.vue', () => {
   test('should setByDay', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n:  getI18n(),
       mocks: { $style },
     }) as any;
 
@@ -107,7 +107,7 @@ describe('VueCalendar.vue', () => {
   test('should setByMonth', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n:  getI18n(),
       mocks: { $style },
     }) as any;
 
@@ -129,7 +129,7 @@ describe('VueCalendar.vue', () => {
   test('should setByYear', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n:  getI18n(),
       mocks: { $style },
     }) as any;
 

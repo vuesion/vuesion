@@ -1,13 +1,13 @@
 /* tslint:disable:no-console */
 
-import * as fs from 'fs';
-import * as path from 'path';
-import * as Express from 'express';
-import * as favicon from 'serve-favicon';
-import { BundleRenderer } from 'vue-server-renderer';
+import * as fs                        from 'fs';
+import * as path                      from 'path';
+import * as Express                   from 'express';
+import * as favicon                   from 'serve-favicon';
+import { BundleRenderer }             from 'vue-server-renderer';
 import { Handler, Request, Response } from 'express';
-import * as cookieParser from 'cookie-parser';
-import acceptLanguage from 'accept-language';
+import * as cookieParser              from 'cookie-parser';
+import acceptLanguage                 from 'accept-language';
 
 const app: Express.Application = Express();
 const compression: any = require('compression');
@@ -21,9 +21,9 @@ const createRenderer = (bundle: string, template: string): BundleRenderer => {
   return nodeRequire('vue-server-renderer').createBundleRenderer(bundle, {
     template,
     cache: nodeRequire('lru-cache')({
-      max: 1000,
-      maxAge: 1000 * 60 * 15,
-    }),
+                                      max:    1000,
+                                      maxAge: 1000 * 60 * 15,
+                                    }),
   });
 };
 const packageJson: any = JSON.parse(fs.readFileSync(resolve('../../package.json')).toString());
@@ -104,19 +104,21 @@ app.get('*', (req: Request, res: Response) => {
       console.error(err);
     }
   };
-  const acceptLang: string = req.headers['accept-language'] ? req.headers['accept-language'].toString() : packageJson.config['default-language'];
+  const acceptLang: string = req.headers['accept-language']
+    ? req.headers['accept-language'].toString()
+    : packageJson.config['default-language'];
   const defaultLang: string = acceptLanguage.get(acceptLang);
 
   renderer
-    .renderToStream({
-      url: req.url,
-      cookies: req.cookies,
-      acceptLanguage: defaultLang,
-      htmlLang: defaultLang.substr(0, 2),
-    })
-    .on('error', errorHandler)
-    .on('end', () => console.log(`whole request: ${Date.now() - startTime}ms`))
-    .pipe(res);
+  .renderToStream({
+                    url:            req.url,
+                    cookies:        req.cookies,
+                    acceptLanguage: defaultLang,
+                    htmlLang:       defaultLang.substr(0, 2),
+                  })
+  .on('error', errorHandler)
+  .on('end', () => console.log(`whole request: ${Date.now() - startTime}ms`))
+  .pipe(res);
 });
 
 const port: string = process.env.PORT || '3000';

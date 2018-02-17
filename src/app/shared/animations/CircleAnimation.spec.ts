@@ -6,12 +6,12 @@ describe('CircleAnimation', () => {
     const context: any = {
       clearRect: jest.fn(),
       beginPath: jest.fn(),
-      arc: jest.fn(),
-      fill: jest.fn(),
+      arc:       jest.fn(),
+      fill:      jest.fn(),
       closePath: jest.fn(),
     };
     const canvas: any = {
-      width: 300,
+      width:  300,
       height: 300,
       getContext(): any {
         return context;
@@ -38,8 +38,8 @@ describe('CircleAnimation', () => {
 
   test('should not animate', () => {
     const canvas: any = {
-      width: 300,
-      height: 300,
+      width:      300,
+      height:     300,
       getContext: jest.fn().mockReturnValue(null),
     };
 

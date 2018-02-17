@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import QuickStart from './QuickStart.vue';
-import $style from 'identity-obj-proxy';
+import QuickStart                from './QuickStart.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 

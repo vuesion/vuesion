@@ -11,7 +11,8 @@
           <vue-panel-body>
             <i class="fas fa-spinner"></i>
             <h3>Animations</h3>
-            <p>A stable animations set up already included (<a href="http://animejs.com/" target="_blank" rel="noopener">anime.js</a>).</p>
+            <p>A stable animations set up already included (<a href="http://animejs.com/" target="_blank"
+                                                               rel="noopener">anime.js</a>).</p>
           </vue-panel-body>
         </vue-panel>
       </vue-grid-item>
@@ -48,9 +49,9 @@
 </template>
 
 <script lang="ts">
-  import VueGrid from '../../shared/components/VueGrid/VueGrid';
-  import VueGridItem from '../../shared/components/VueGridItem/VueGridItem';
-  import VuePanel from '../../shared/components/VuePanel/VuePanel';
+  import VueGrid      from '../../shared/components/VueGrid/VueGrid';
+  import VueGridItem  from '../../shared/components/VueGridItem/VueGridItem';
+  import VuePanel     from '../../shared/components/VuePanel/VuePanel';
   import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody';
 
   export default {
@@ -60,12 +61,12 @@
       VuePanel,
       VuePanelBody,
     },
-    props: {},
+    props:      {},
     data(): any {
       return {};
     },
-    computed: {},
-    methods: {},
+    computed:   {},
+    methods:    {},
   };
 </script>
 

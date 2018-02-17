@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueTooltip from './VueTooltip.vue';
-import $style from 'identity-obj-proxy';
+import VueTooltip                from './VueTooltip.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -9,11 +9,11 @@ describe('VueTooltip.vue', () => {
   test('renders component with text', () => {
     const wrapper = mount(VueTooltip, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         tip: 'foo',
       },
-      slots: {
+      slots:     {
         default: 'test',
       },
     });
@@ -26,11 +26,11 @@ describe('VueTooltip.vue', () => {
   test('renders component with button', () => {
     const wrapper = mount(VueTooltip, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         tip: 'foo',
       },
-      slots: {
+      slots:     {
         default: '<button>test</button>',
       },
     });
@@ -43,11 +43,11 @@ describe('VueTooltip.vue', () => {
   test('renders component with nothing', () => {
     const wrapper = mount(VueTooltip, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         tip: 'foo',
       },
-      slots: {
+      slots:     {
         default: [],
       },
     });
@@ -60,11 +60,11 @@ describe('VueTooltip.vue', () => {
   test('should show and hide tooltip', () => {
     const wrapper = mount(VueTooltip, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         tip: 'foo',
       },
-      slots: {
+      slots:     {
         default: 'test',
       },
     });

@@ -14,12 +14,14 @@
   <meta name="theme-color" content="#2ecc71">
   <link rel="manifest" href="/manifest.json">
   <script>
-    function loadAsyncStyleSheets () {
+    function loadAsyncStyleSheets() {
       for (var e = document.getElementsByTagName('head')[0], t = ['https://use.fontawesome.com/releases/v5.0.2/css/all.css'], s = 0; s < t.length; s++) {
-        var a = document.createElement('link'), l = document.createAttribute('rel'), n = document.createAttribute('href');
+        var a = document.createElement('link'), l = document.createAttribute('rel'),
+          n = document.createAttribute('href');
         l.value = 'stylesheet', n.value = t[s], a.setAttributeNode(l), a.setAttributeNode(n), e.appendChild(a);
       }
     }
+
     window.addEventListener('load', loadAsyncStyleSheets, !1);
   </script>
   <% for (var chunk of webpack.chunks) {

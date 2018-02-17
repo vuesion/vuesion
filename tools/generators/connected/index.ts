@@ -2,11 +2,11 @@ import { folderExists } from '../utils';
 
 export = {
   description: 'Add a VueX connected component',
-  prompts: [
+  prompts:     [
     {
-      type: 'input',
-      name: 'name',
-      message: 'What should it be called?',
+      type:     'input',
+      name:     'name',
+      message:  'What should it be called?',
       validate: (value: string) => {
         if (!value || value.length === 0) {
           return 'name is required';
@@ -17,9 +17,10 @@ export = {
         }
 
         return folderExists(value) ? `folder already exists (${value})` : true;
-      }
-    }],
-  actions: (data: any) => {
+      },
+    },
+  ],
+  actions:     (data: any) => {
     const path: string[] = data.name.split('/');
 
     data.componentName = path.pop();
@@ -28,17 +29,17 @@ export = {
 
     return [
       {
-        type: 'add',
-        path: '{{basePath}}/{{camelCase moduleName}}/{{properCase componentName}}/{{properCase componentName}}.vue',
+        type:         'add',
+        path:         '{{basePath}}/{{camelCase moduleName}}/{{properCase componentName}}/{{properCase componentName}}.vue',
         templateFile: './connected/connected.vue.hbs',
-        abortOnFail: true
+        abortOnFail:  true,
       },
       {
-        type: 'add',
-        path: '{{basePath}}/{{camelCase moduleName}}/{{properCase componentName}}/{{properCase componentName}}.spec.ts',
+        type:         'add',
+        path:         '{{basePath}}/{{camelCase moduleName}}/{{properCase componentName}}/{{properCase componentName}}.spec.ts',
         templateFile: './connected/connected.spec.ts.hbs',
-        abortOnFail: true
-      }
+        abortOnFail:  true,
+      },
     ];
-  }
+  },
 };

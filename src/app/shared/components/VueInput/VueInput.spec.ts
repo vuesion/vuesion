@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueInput from './VueInput.vue';
-import $style from 'identity-obj-proxy';
+import VueInput                  from './VueInput.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -15,7 +15,7 @@ describe('VueInput.vue', () => {
   test('renders disabled component', () => {
     const wrapper = mount(VueInput, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         disabled: true,
       },

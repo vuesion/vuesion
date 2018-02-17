@@ -14,30 +14,30 @@
   import anime from 'animejs';
 
   export default {
-    name: 'VueTabItem',
+    name:       'VueTabItem',
     components: {},
-    props: {
+    props:      {
       isActive: {
-        type: Boolean,
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
-      title: {
-        type: String,
+      title:    {
+        type:     String,
         required: true,
       },
-      icon: {
-        type: String,
+      icon:     {
+        type:     String,
         required: true,
       },
     },
     data(): any {
       return {
-        idx: null,
+        idx:    null,
         active: false,
       };
     },
-    computed: {
+    computed:   {
       show() {
         return this.active || this.isActive;
       },
@@ -49,24 +49,24 @@
         }
 
         return classes;
-      }
+      },
     },
-    methods: {
+    methods:    {
       beforeEnter(el: HTMLElement) {
         el.style.opacity = '0.2';
       },
       enter(el: HTMLElement, done: any) {
         done();
         anime({
-          targets: el,
-          opacity: {
-            value: '1',
-            duration: 1000,
-            elasticity: 0,
-          },
-          easing: 'easeInOutSine',
-          complete: done,
-        });
+                targets:  el,
+                opacity:  {
+                  value:      '1',
+                  duration:   1000,
+                  elasticity: 0,
+                },
+                easing:   'easeInOutSine',
+                complete: done,
+              });
       },
       beforeLeave(el: HTMLElement) {
         el.style.transform = '0.8';
@@ -74,16 +74,16 @@
       leave(el: HTMLElement, done: any) {
         done();
         anime({
-          targets: el,
-          opacity: {
-            value: '0',
-            duration: 700,
-            elasticity: 0,
-          },
-          easing: 'easeInOutSine',
-          complete: done,
-        });
-      }
+                targets:  el,
+                opacity:  {
+                  value:      '0',
+                  duration:   700,
+                  elasticity: 0,
+                },
+                easing:   'easeInOutSine',
+                complete: done,
+              });
+      },
     },
     created() {
       if (this.$parent) {

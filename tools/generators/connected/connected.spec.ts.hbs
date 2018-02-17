@@ -9,26 +9,26 @@ localVue.use(Vuex);
 
 describe('{{ properCase componentName }}.vue', () => {
 
-  test('renders component', () => {
-    const store = new Vuex.Store({
-      getters: {
-        getTopics: () => [],
-      },
-    });
-    const wrapper = mount({{ properCase componentName }}, { store, localVue, mocks: { $style } });
+test('renders component', () => {
+const store = new Vuex.Store({
+getters: {
+getTopics: () => [],
+},
+});
+const wrapper = mount({{ properCase componentName }}, { store, localVue, mocks: { $style } });
 
-    expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
-  });
+expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
+});
 
-  test('fetches data on the server', () => {
-    const store = {
-      dispatch: jest.fn(),
-    };
+test('fetches data on the server', () => {
+const store = {
+dispatch: jest.fn(),
+};
 
-    {{ properCase componentName }}.prefetch({ store });
+{{ properCase componentName }}.prefetch({ store });
 
-    expect(store.dispatch).toHaveBeenCalled();
-    expect(store.dispatch).toHaveBeenCalledWith(`getTopics`);
-  });
+expect(store.dispatch).toHaveBeenCalled();
+expect(store.dispatch).toHaveBeenCalledWith(`getTopics`);
+});
 
 });

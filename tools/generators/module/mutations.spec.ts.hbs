@@ -2,22 +2,22 @@ import { {{ properCase moduleName }}Mutations } from './mutations';
 import { IState } from '../mutations';
 
 describe('{{ properCase moduleName }}Mutations', () => {
-  const testState = {
-    {{ camelCase moduleName }}: {
-      topics: [],
-      error: null,
-    },
-  } as IState;
+const testState = {
+{{ camelCase moduleName }}: {
+topics: [],
+error: null,
+},
+} as IState;
 
-  test('it should set topics', () => {
-    {{ properCase moduleName }}Mutations.TOPICS(testState, [1, 2, 3]);
-    expect(testState.{{ camelCase moduleName }}.topics).toEqual([1, 2, 3]);
-    expect(testState.{{ camelCase moduleName }}.error).toBeNull();
-  });
+test('it should set topics', () => {
+{{ properCase moduleName }}Mutations.TOPICS(testState, [1, 2, 3]);
+expect(testState.{{ camelCase moduleName }}.topics).toEqual([1, 2, 3]);
+expect(testState.{{ camelCase moduleName }}.error).toBeNull();
+});
 
-  test('it should set error', () => {
-    {{ properCase moduleName }}Mutations.TOPICS_FAILURE(testState, new Error('foo'));
-    expect(testState.{{ camelCase moduleName }}.error).toEqual(new Error('foo'));
-  });
+test('it should set error', () => {
+{{ properCase moduleName }}Mutations.TOPICS_FAILURE(testState, new Error('foo'));
+expect(testState.{{ camelCase moduleName }}.error).toEqual(new Error('foo'));
+});
 
 });

@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as ts from 'typescript';
+import * as fs                    from 'fs';
+import * as ts                    from 'typescript';
 import { lowerFirst, upperFirst } from 'lodash';
 
 let sourceFile: ts.SourceFile;
@@ -28,12 +28,12 @@ const findAstNodes = (node: ts.Node, kind: ts.SyntaxKind, recursive: boolean = f
   if (max > 0) {
     for (const child of node.getChildren(sourceFile)) {
       findAstNodes(child, kind, recursive, max)
-        .forEach((currentNode: ts.Node) => {
-          if (max > 0) {
-            arr.push(currentNode);
-          }
-          max--;
-        });
+      .forEach((currentNode: ts.Node) => {
+        if (max > 0) {
+          arr.push(currentNode);
+        }
+        max--;
+      });
 
       if (max <= 0) {
         break;
@@ -52,13 +52,13 @@ export const addModuleToRoutes = (pathToAppRoutes: string, moduleName: string): 
     file = insertAt(
       file,
       findAstNodes(sourceFile, ts.SyntaxKind.ArrayLiteralExpression, true).pop().end - 4,
-      `\n    ...${upperFirst(moduleName)}Routes,`
+      `\n    ...${upperFirst(moduleName)}Routes,`,
     );
 
     file = insertAt(
       file,
       findAstNodes(sourceFile, ts.SyntaxKind.ImportDeclaration, true).pop().end,
-      `\nimport { ${upperFirst(moduleName)}Routes } from './${lowerFirst(moduleName)}/routes';`
+      `\nimport { ${upperFirst(moduleName)}Routes } from './${lowerFirst(moduleName)}/routes';`,
     );
 
     fs.writeFileSync(pathToAppRoutes, file, { encoding: 'utf-8' });
@@ -76,7 +76,7 @@ export const addModuleToActions = (pathToAppActions: string, moduleName: string)
     file = insertAt(
       file,
       findAstNodes(sourceFile, ts.SyntaxKind.ObjectLiteralExpression, true).pop().end - 2,
-      `\n  ...${upperFirst(moduleName)}Actions,`
+      `\n  ...${upperFirst(moduleName)}Actions,`,
     );
 
     const interfaces: ts.Node[] = findAstNodes(sourceFile, ts.SyntaxKind.InterfaceDeclaration, true);
@@ -84,13 +84,13 @@ export const addModuleToActions = (pathToAppActions: string, moduleName: string)
     file = insertAt(
       file,
       findAstNodes(interfaces.shift(), ts.SyntaxKind.FirstPunctuation, true).shift().end - 2,
-      `, I${upperFirst(moduleName)}Actions`
+      `, I${upperFirst(moduleName)}Actions`,
     );
 
     file = insertAt(
       file,
       findAstNodes(sourceFile, ts.SyntaxKind.ImportDeclaration, true).pop().end,
-      `\nimport { I${upperFirst(moduleName)}Actions, ${upperFirst(moduleName)}Actions } from './${lowerFirst(moduleName)}/actions';`
+      `\nimport { I${upperFirst(moduleName)}Actions, ${upperFirst(moduleName)}Actions } from './${lowerFirst(moduleName)}/actions';`,
     );
 
     fs.writeFileSync(pathToAppActions, file, { encoding: 'utf-8' });
@@ -108,7 +108,7 @@ export const addModuleToGetters = (pathToAppGetters: string, moduleName: string)
     file = insertAt(
       file,
       findAstNodes(sourceFile, ts.SyntaxKind.ObjectLiteralExpression, true).pop().end - 2,
-      `\n  ...${upperFirst(moduleName)}Getters,`
+      `\n  ...${upperFirst(moduleName)}Getters,`,
     );
 
     const interfaces: ts.Node[] = findAstNodes(sourceFile, ts.SyntaxKind.InterfaceDeclaration, true);
@@ -116,13 +116,13 @@ export const addModuleToGetters = (pathToAppGetters: string, moduleName: string)
     file = insertAt(
       file,
       findAstNodes(interfaces.shift(), ts.SyntaxKind.FirstPunctuation, true).shift().end - 2,
-      `, I${upperFirst(moduleName)}Getters`
+      `, I${upperFirst(moduleName)}Getters`,
     );
 
     file = insertAt(
       file,
       findAstNodes(sourceFile, ts.SyntaxKind.ImportDeclaration, true).pop().end,
-      `\nimport { I${upperFirst(moduleName)}Getters, ${upperFirst(moduleName)}Getters } from './${lowerFirst(moduleName)}/getters';`
+      `\nimport { I${upperFirst(moduleName)}Getters, ${upperFirst(moduleName)}Getters } from './${lowerFirst(moduleName)}/getters';`,
     );
 
     fs.writeFileSync(pathToAppGetters, file, { encoding: 'utf-8' });
@@ -143,7 +143,7 @@ export const addModuleToMutations = (pathToAppMutations: string, moduleName: str
     file = insertAt(
       file,
       literals.pop().end - 2,
-      `\n  ...${upperFirst(moduleName)}Mutations,`
+      `\n  ...${upperFirst(moduleName)}Mutations,`,
     );
 
     literals.pop();
@@ -151,25 +151,25 @@ export const addModuleToMutations = (pathToAppMutations: string, moduleName: str
     file = insertAt(
       file,
       literals.pop().end - 2,
-      `\n  ...${upperFirst(moduleName)}DefaultState,`
+      `\n  ...${upperFirst(moduleName)}DefaultState,`,
     );
 
     file = insertAt(
       file,
       findAstNodes(interfaces.pop(), ts.SyntaxKind.FirstPunctuation, true).shift().end - 2,
-      `, I${upperFirst(moduleName)}Mutations`
+      `, I${upperFirst(moduleName)}Mutations`,
     );
 
     file = insertAt(
       file,
       findAstNodes(interfaces.pop(), ts.SyntaxKind.FirstPunctuation, true).shift().end - 2,
-      `, I${upperFirst(moduleName)}State`
+      `, I${upperFirst(moduleName)}State`,
     );
 
     file = insertAt(
       file,
       findAstNodes(sourceFile, ts.SyntaxKind.ImportDeclaration, true).pop().end,
-      `\nimport { I${upperFirst(moduleName)}State, I${upperFirst(moduleName)}Mutations, ${upperFirst(moduleName)}DefaultState, ${upperFirst(moduleName)}Mutations } from './${lowerFirst(moduleName)}/mutations';`
+      `\nimport { I${upperFirst(moduleName)}State, I${upperFirst(moduleName)}Mutations, ${upperFirst(moduleName)}DefaultState, ${upperFirst(moduleName)}Mutations } from './${lowerFirst(moduleName)}/mutations';`,
     );
 
     fs.writeFileSync(pathToAppMutations, file, { encoding: 'utf-8' });

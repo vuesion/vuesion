@@ -19,8 +19,16 @@
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "no-var-requires": false,
-    "max-line-length": [160],
-    "max-file-line-count": [250]
+    "max-line-length": [
+      160
+    ],
+    "max-file-line-count": [
+      250
+    ],
+    "trailing-comma": [
+      true
+    ],
+    "import-spacing": false
   },
   "rulesDirectory": []
 }

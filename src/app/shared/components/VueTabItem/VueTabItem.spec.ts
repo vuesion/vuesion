@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueTabItem from './VueTabItem.vue';
-import $style from 'identity-obj-proxy';
+import VueTabItem                from './VueTabItem.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -9,15 +9,15 @@ describe('VueTab.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueTabItem, {
       localVue,
-      mocks: {
+      mocks:     {
         $style,
       },
-      slots: {
+      slots:     {
         default: '<p>TEST</p>',
       },
       propsData: {
         title: 'foo',
-        icon: 'bar',
+        icon:  'bar',
       },
     });
 

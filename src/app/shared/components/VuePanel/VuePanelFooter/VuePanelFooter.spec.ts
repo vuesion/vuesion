@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VuePanelFooter from './VuePanelFooter.vue';
-import $style from 'identity-obj-proxy';
+import VuePanelFooter            from './VuePanelFooter.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 

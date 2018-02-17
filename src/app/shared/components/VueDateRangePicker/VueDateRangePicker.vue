@@ -20,46 +20,46 @@
 </template>
 
 <script lang="ts">
-  import VueDatePicker from '../VueDatePicker/VueDatePicker.vue'
+  import VueDatePicker from '../VueDatePicker/VueDatePicker.vue';
 
   export default {
-    name: 'VueDateRangePicker',
+    name:       'VueDateRangePicker',
     components: {
       VueDatePicker,
     },
-    props: {
-      minDate: {
-        type: Date,
+    props:      {
+      minDate:          {
+        type:     Date,
         required: false,
       },
-      maxDate: {
-        type: Date,
+      maxDate:          {
+        type:     Date,
         required: false,
       },
-      firstDayOfWeek: {
-        type: Number,
+      firstDayOfWeek:   {
+        type:     Number,
         required: false,
-        default: 0,
+        default:  0,
       },
       placeholderStart: {
-        type: String,
+        type:     String,
         required: false,
-        default: '',
+        default:  '',
       },
-      placeholderEnd: {
-        type: String,
+      placeholderEnd:   {
+        type:     String,
         required: false,
-        default: '',
+        default:  '',
       },
     },
     data(): any {
       return {
         startDate: null,
-        endDate: null,
+        endDate:   null,
       };
     },
-    computed: {},
-    methods: {
+    computed:   {},
+    methods:    {
       onStartChange(startDate: Date) {
         this.startDate = startDate;
 

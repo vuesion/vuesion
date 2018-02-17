@@ -18,15 +18,15 @@
         type="button"
       ></button>
       <button v-if="isMultiRange"
-        :class="handleCssClasses(1)"
-        :style="{left: handleRightPosition}"
-        :aria-valuemax="max"
-        :aria-valuemin="min"
-        :aria-valuenow="currentMax"
-        aria-disabled="false"
-        role="slider"
-        tabindex="0"
-        type="button"
+              :class="handleCssClasses(1)"
+              :style="{left: handleRightPosition}"
+              :aria-valuemax="max"
+              :aria-valuemin="min"
+              :aria-valuenow="currentMax"
+              aria-disabled="false"
+              role="slider"
+              tabindex="0"
+              type="button"
       ></button>
     </div>
   </div>
@@ -38,42 +38,42 @@
   const algorithm: IAlgorithm = linear;
 
   export default {
-    name: 'VueSlider',
+    name:       'VueSlider',
     components: {},
-    props: {
-      min: {
-        type: Number,
+    props:      {
+      min:         {
+        type:     Number,
         required: true,
       },
-      max: {
-        type: Number,
-        required: true
+      max:         {
+        type:     Number,
+        required: true,
       },
-      values: {
-        type: Array,
+      values:      {
+        type:     Array,
         required: true,
       },
       formatValue: {
-        type: Function,
+        type:     Function,
         required: false,
-        default: () => {
+        default:  () => {
         },
       },
-      disabled: {
-        type: Boolean,
+      disabled:    {
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
     },
     data(): any {
       return {
-        sliderBox: null,
+        sliderBox:     null,
         currentSlider: null,
-        currentMin: 0,
-        currentMax: 0,
+        currentMin:    0,
+        currentMax:    0,
       };
     },
-    computed: {
+    computed:   {
       handleLeftPosition() {
         return `${algorithm.getPosition(this.currentMin, this.min, this.max)}%`;
       },
@@ -107,7 +107,7 @@
         return this.values.length > 1;
       },
     },
-    methods: {
+    methods:    {
       getClosestHandle(percentageDiff: number) {
         const handlePos: number[] = [parseInt(this.handleLeftPosition, 10), parseInt(this.handleRightPosition, 10)];
         const startIndex: number = this.isMultiRange ? 1 : 0;
@@ -119,7 +119,9 @@
         }, startIndex);
       },
       percentageDiff(e: any) {
-        const positionX: number = e.changedTouches && e.changedTouches.length > 0 ? e.changedTouches[e.changedTouches.length - 1].clientX : e.clientX;
+        const positionX: number = e.changedTouches && e.changedTouches.length > 0
+          ? e.changedTouches[e.changedTouches.length - 1].clientX
+          : e.clientX;
 
         return ((positionX - this.sliderBox.left) / this.sliderBox.width) * 100;
       },
@@ -179,10 +181,10 @@
         const classes: string[] = [this.$style.handle];
 
         if (index === this.currentSlider) {
-          classes.push(this.$style.active)
+          classes.push(this.$style.active);
         }
 
-        return classes
+        return classes;
       },
     },
     mounted() {
@@ -238,7 +240,6 @@
     cursor:           pointer;
     border:           $slider-handle-border;
     user-select:      none;
-
     transition:       $slider-handle-transition;
 
     &.active {

@@ -14,25 +14,25 @@
   import anime from 'animejs';
 
   export default {
-    name: 'VueModal',
+    name:       'VueModal',
     components: {},
-    props: {
-      show: {
+    props:      {
+      show:       {
         required: false,
-        default: false,
-        type: Boolean,
+        default:  false,
+        type:     Boolean,
       },
       fitContent: {
-        type: Boolean,
+        type:     Boolean,
         required: false,
-        default: false,
-      }
+        default:  false,
+      },
     },
-    data: function () {
+    data:       function () {
       return {};
     },
-    computed: {},
-    methods: {
+    computed:   {},
+    methods:    {
       beforeEnter(el: HTMLElement) {
         el.style.transform = 'translateY(100%)';
 
@@ -41,14 +41,14 @@
       enter(el: HTMLElement, done: any) {
         document.getElementById('overlay').style.opacity = '0.5';
         anime({
-          targets: el,
-          translateY: {
-            value: '0%',
-            duration: 500,
-            elasticity: 100,
-          },
-          complete: done
-        });
+                targets:    el,
+                translateY: {
+                  value:      '0%',
+                  duration:   500,
+                  elasticity: 100,
+                },
+                complete:   done,
+              });
       },
       beforeLeave(el: HTMLElement) {
         el.style.transform = 'translateY(0%)';
@@ -58,17 +58,17 @@
         overlay.style.opacity = '0';
 
         anime({
-          targets: el,
-          translateY: {
-            value: '200%',
-            duration: 500,
-            elasticity: 100,
-          },
-          complete() {
-            overlay.style.visibility = 'hidden';
-            done();
-          }
-        });
+                targets:    el,
+                translateY: {
+                  value:      '200%',
+                  duration:   500,
+                  elasticity: 100,
+                },
+                complete() {
+                  overlay.style.visibility = 'hidden';
+                  done();
+                },
+              });
       },
       handleDocumentClick(e: Event) {
         if (this.$refs.modal && this.$refs.modal.contains(e.target) === false) {
@@ -101,7 +101,7 @@
     beforeDestroy() {
       document.removeEventListener('click', this.handleDocumentClick);
       document.removeEventListener('touchstart', this.handleDocumentClick);
-    }
+    },
   };
 </script>
 

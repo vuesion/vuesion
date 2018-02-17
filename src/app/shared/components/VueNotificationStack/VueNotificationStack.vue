@@ -2,8 +2,8 @@
   <div :class="$style.vueNotificationStack">
     <transition-group name="list" tag="div">
       <div v-for="n in orderedNotifications"
-        :class="[$style.notification, $style[n.type]]"
-        :key="n.id">
+           :class="[$style.notification, $style[n.type]]"
+           :key="n.id">
         <div :class="$style.title">{{ n.title }}</div>
         <div :class="$style.text">{{ n.text }}</div>
         <div :class="$style.close" role="button" @click="removeNotification(n)"></div>
@@ -14,18 +14,18 @@
 
 <script lang="ts">
   import { INotification } from './utils';
-  import { EventBus } from '../../EventBus';
+  import { EventBus }      from '../../EventBus';
 
   let id: number = 0;
 
   export default {
-    name: 'VueNotificationStack',
+    name:       'VueNotificationStack',
     components: {},
-    props: {
+    props:      {
       duration: {
-        type: Number,
+        type:     Number,
         required: false,
-        default: 10000,
+        default:  10000,
       },
     },
     data(): any {
@@ -33,12 +33,12 @@
         notifications: [],
       };
     },
-    computed: {
+    computed:   {
       orderedNotifications() {
         return this.notifications.slice(0).reverse();
-      }
+      },
     },
-    methods: {
+    methods:    {
       addNotification(n: INotification): void {
         n.id = id++;
         n.type = n.type || 'default';
@@ -49,12 +49,12 @@
       },
       removeNotification(n: INotification): void {
         this.notifications = this.notifications
-          .filter((notification: INotification) => notification.id !== n.id);
+                                 .filter((notification: INotification) => notification.id !== n.id);
       },
     },
     mounted() {
       EventBus.$on('notification.add', this.addNotification);
-    }
+    },
   };
 </script>
 

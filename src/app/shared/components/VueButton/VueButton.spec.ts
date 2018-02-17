@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueButton from './VueButton.vue';
-import $style from 'identity-obj-proxy';
+import VueButton                 from './VueButton.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -26,7 +26,7 @@ describe('VueButton.vue', () => {
   test('should disable button and not emit onClick event', () => {
     const wrapper = mount(VueButton, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         disabled: true,
       },
@@ -41,7 +41,7 @@ describe('VueButton.vue', () => {
   test('should show loader and not emit onClick event', () => {
     const wrapper = mount(VueButton, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         loading: true,
       },
@@ -54,7 +54,7 @@ describe('VueButton.vue', () => {
   test('should show primary color', () => {
     const wrapper = mount(VueButton, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         primary: true,
       },
@@ -66,7 +66,7 @@ describe('VueButton.vue', () => {
   test('should show accent color', () => {
     const wrapper = mount(VueButton, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         accent: true,
       },
@@ -78,7 +78,7 @@ describe('VueButton.vue', () => {
   test('should show warn color', () => {
     const wrapper = mount(VueButton, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         warn: true,
       },
@@ -90,7 +90,7 @@ describe('VueButton.vue', () => {
   test('should add pulse animation', () => {
     const wrapper = mount(VueButton, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         pulse: true,
       },

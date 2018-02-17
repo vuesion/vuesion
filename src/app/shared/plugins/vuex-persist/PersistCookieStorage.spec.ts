@@ -1,5 +1,5 @@
 import { PersistCookieStorage } from './PersistCookieStorage';
-import { IServerContext } from '../../../../server/isomorphic';
+import { IServerContext }       from '../../../../server/isomorphic';
 
 describe('PersistCookieStorage', () => {
   let storage: PersistCookieStorage;
@@ -51,7 +51,7 @@ describe('PersistCookieStorage', () => {
       {
         cookies: {
           vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
-          vuexpersistfoo: '["baz"]',
+          vuexpersistfoo:    '["baz"]',
         },
       } as IServerContext,
       {
@@ -67,7 +67,7 @@ describe('PersistCookieStorage', () => {
       {
         cookies: {
           vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
-          vuexpersistfoo: '["baz]',
+          vuexpersistfoo:    '["baz]',
         },
       } as IServerContext,
       {
@@ -84,7 +84,7 @@ describe('PersistCookieStorage', () => {
       {
         cookies: {
           vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
-          vuexpersistfoo: '["baz]',
+          vuexpersistfoo:    '["baz]',
         },
       } as IServerContext,
       {

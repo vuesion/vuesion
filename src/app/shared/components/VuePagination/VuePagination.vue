@@ -10,22 +10,22 @@
 
 <script lang="ts">
   export default {
-    name: 'VuePagination',
+    name:       'VuePagination',
     components: {},
-    props: {
-      pages: {
-        type: Number,
+    props:      {
+      pages:   {
+        type:     Number,
         required: true,
       },
       current: {
-        type: Number,
+        type:     Number,
         required: true,
       },
     },
     data(): any {
       return {};
     },
-    computed: {
+    computed:   {
       prevCssClasses() {
         const classes = [this.$style.prev];
 
@@ -45,7 +45,7 @@
         return classes;
       },
     },
-    methods: {
+    methods:    {
       prevClick() {
         if (this.current > 1) {
           this.$emit('change', this.current - 1);

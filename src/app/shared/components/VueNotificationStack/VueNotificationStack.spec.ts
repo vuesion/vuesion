@@ -1,6 +1,6 @@
-import { mount, createLocalVue } from '@vue/test-utils';
-import VueNotificationStack from './VueNotificationStack.vue';
-import $style from 'identity-obj-proxy';
+import { mount, createLocalVue }          from '@vue/test-utils';
+import VueNotificationStack               from './VueNotificationStack.vue';
+import $style                             from 'identity-obj-proxy';
 import { INotification, addNotification } from './utils';
 
 const localVue = createLocalVue();
@@ -14,7 +14,7 @@ describe('VueNotificationStack.vue', () => {
     }) as any;
     const notification: INotification = {
       title: 'this is a test',
-      text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+      text:  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
     } as INotification;
 
     expect(wrapper.vm.notifications).toHaveLength(0);
@@ -27,7 +27,7 @@ describe('VueNotificationStack.vue', () => {
     }) as any;
     const notification: INotification = {
       title: 'this is a test',
-      text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+      text:  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
     } as INotification;
 
     expect(wrapper.vm.notifications).toHaveLength(0);
@@ -45,14 +45,14 @@ describe('VueNotificationStack.vue', () => {
   test('should remove notification after 100 ms', (done) => {
     const wrapper = mount(VueNotificationStack, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         duration: 100,
       },
     }) as any;
     const notification: INotification = {
       title: 'this is a test',
-      text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+      text:  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
     } as INotification;
 
     expect(wrapper.vm.notifications).toHaveLength(0);

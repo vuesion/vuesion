@@ -6,6 +6,7 @@ export interface ICounterState {
 
 export interface ICounterMutations {
   INCREMENT(state: ICounterState): void;
+
   DECREMENT(state: ICounterState): void;
 }
 

@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueLoader from './VueLoader.vue';
-import $style from 'identity-obj-proxy';
+import VueLoader                 from './VueLoader.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -22,7 +22,7 @@ describe('VueLoader.vue', () => {
       VueLoader,
       {
         localVue,
-        mocks: { $style },
+        mocks:     { $style },
         propsData: {
           medium: true,
         },
@@ -36,7 +36,7 @@ describe('VueLoader.vue', () => {
       VueLoader,
       {
         localVue,
-        mocks: { $style },
+        mocks:     { $style },
         propsData: {
           large: true,
         },
@@ -50,7 +50,7 @@ describe('VueLoader.vue', () => {
       VueLoader,
       {
         localVue,
-        mocks: { $style },
+        mocks:     { $style },
         propsData: {
           primary: true,
         },
@@ -64,7 +64,7 @@ describe('VueLoader.vue', () => {
       VueLoader,
       {
         localVue,
-        mocks: { $style },
+        mocks:     { $style },
         propsData: {
           accent: true,
         },
@@ -78,7 +78,7 @@ describe('VueLoader.vue', () => {
       VueLoader,
       {
         localVue,
-        mocks: { $style },
+        mocks:     { $style },
         propsData: {
           warn: true,
         },

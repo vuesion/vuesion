@@ -1,8 +1,8 @@
 import { createApp, IApp } from '../app/app';
-import { Component } from 'vue-router/types/router';
-import { Store } from 'vuex';
-import { IState } from '../app/mutations';
-import { Route } from 'vue-router';
+import { Component }       from 'vue-router/types/router';
+import { Store }           from 'vuex';
+import { IState }          from '../app/mutations';
+import { Route }           from 'vue-router';
 
 export interface IServerContext {
   url: string;
@@ -27,30 +27,30 @@ export default (context: IServerContext) => {
     context.meta = app.$meta();
 
     router
-      .onReady(() => {
-        const matchedComponents: Component[] = router.getMatchedComponents();
+    .onReady(() => {
+      const matchedComponents: Component[] = router.getMatchedComponents();
 
-        if (!matchedComponents.length) {
-          return reject({ code: 404 });
+      if (!matchedComponents.length) {
+        return reject({ code: 404 });
+      }
+
+      Promise.all(matchedComponents.map((component: Component) => {
+
+        if ((component as any).prefetch) {
+          return (component as any).prefetch({
+                                               store,
+                                               route: router.currentRoute,
+                                             } as IPreLoad);
         }
 
-        Promise.all(matchedComponents.map((component: Component) => {
+        return Promise.resolve();
+      }))
+             .then(() => {
+               context.state = store.state;
+               resolve(app);
+             })
+             .catch(reject);
 
-          if ((component as any).prefetch) {
-            return (component as any).prefetch({
-              store,
-              route: router.currentRoute,
-            } as IPreLoad);
-          }
-
-          return Promise.resolve();
-        }))
-          .then(() => {
-            context.state = store.state;
-            resolve(app);
-          })
-          .catch(reject);
-
-      }, reject);
+    }, reject);
   });
 };

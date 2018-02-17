@@ -7,34 +7,34 @@
 
 <script lang="ts">
   export default {
-    name: 'VueCheckBox',
+    name:       'VueCheckBox',
     components: {},
-    props: {
-      id: {
-        type: String,
+    props:      {
+      id:       {
+        type:     String,
         required: true,
       },
-      checked: {
-        type: Boolean,
+      checked:  {
+        type:    Boolean,
         default: false,
       },
       disabled: {
-        type: Boolean,
+        type:    Boolean,
         default: false,
       },
-      radio: {
-        type: Boolean,
+      radio:    {
+        type:    Boolean,
         default: false,
       },
-      label: {
-        type: String,
+      label:    {
+        type:     String,
         required: true,
-      }
+      },
     },
     data(): any {
       return {};
     },
-    computed: {
+    computed:   {
       cssClasses() {
         const classes = [];
 
@@ -56,16 +56,16 @@
         } else {
           return 'checkbox';
         }
-      }
+      },
     },
-    methods: {
+    methods:    {
       onClick(e: Event) {
         e.preventDefault();
 
         if (this.disabled === false) {
           this.$emit('click', e);
         }
-      }
+      },
     },
   };
 </script>
@@ -109,11 +109,9 @@
         border:                     $checkbox-check;
         border-top:                 none;
         border-right:               none;
-
         transition-property:        opacity, transform;
         transition-duration:        $transition-duration;
         transition-timing-function: cubic-bezier(0, .84, .83, .67);
-
         box-shadow:                 $checkbox-shadow;
       }
     }
@@ -171,11 +169,9 @@
         height:                     $checkbox-size / 1.5;
         border-radius:              50%;
         background-color:           #FFF;
-
         transition-property:        opacity;
         transition-duration:        $transition-duration;
         transition-timing-function: cubic-bezier(0, .84, .83, .67);
-
         box-shadow:                 $checkbox-shadow;
       }
     }

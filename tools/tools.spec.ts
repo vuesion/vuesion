@@ -1,6 +1,6 @@
 /* tslint:disable:no-console */
 
-import * as fs from 'fs';
+import * as fs   from 'fs';
 import * as path from 'path';
 
 const nixt = require('nixt');
@@ -62,42 +62,42 @@ describe('tools', () => {
 
   test('should extract i18n messages', (done) => {
     nixt()
-      .run(`npm run extract-i18n-messages`)
-      .stdout(/finished/)
-      .end(done);
+    .run(`npm run extract-i18n-messages`)
+    .stdout(/finished/)
+    .end(done);
   });
 
   test('should generate module', (done) => {
     nixt()
-      .run(`npm run g -- module "testModule" "yes" "yes"`)
-      .expect(() => {
-        if (fs.existsSync(testModulePath) === false) {
-          return new Error('testModule not created');
-        }
-      })
-      .end(done);
+    .run(`npm run g -- module "testModule" "yes" "yes"`)
+    .expect(() => {
+      if (fs.existsSync(testModulePath) === false) {
+        return new Error('testModule not created');
+      }
+    })
+    .end(done);
   });
 
   test('should generate a component', (done) => {
     nixt()
-      .run(`npm run g -- component "testComponent"`)
-      .expect((result: any) => {
-        if (fs.existsSync(testComponentPath) === false) {
-          return new Error('testComponent not created');
-        }
-      })
-      .end(done);
+    .run(`npm run g -- component "testComponent"`)
+    .expect((result: any) => {
+      if (fs.existsSync(testComponentPath) === false) {
+        return new Error('testComponent not created');
+      }
+    })
+    .end(done);
   });
 
   test('should generate a connected component', (done) => {
     nixt()
-      .run(`npm run g -- connected "testConnectedComponent"`)
-      .expect((result: any) => {
-        if (fs.existsSync(testConnectedComponentPath) === false) {
-          return new Error('testConnectedComponent not created');
-        }
-      })
-      .end(done);
+    .run(`npm run g -- connected "testConnectedComponent"`)
+    .expect((result: any) => {
+      if (fs.existsSync(testConnectedComponentPath) === false) {
+        return new Error('testConnectedComponent not created');
+      }
+    })
+    .end(done);
   });
 
 });

@@ -6,14 +6,14 @@
 
 <script lang="ts">
   export default {
-    name: 'VuePanel',
+    name:       'VuePanel',
     components: {},
-    props: {},
-    data: function () {
+    props:      {},
+    data:       function () {
       return {};
     },
-    computed: {},
-    methods: {},
+    computed:   {},
+    methods:    {},
   };
 </script>
 

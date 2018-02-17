@@ -5,9 +5,12 @@
     <div :class="$style.accentTwo"></div>
 
     <h1 :class="$style.title">Vue.js Starter</h1>
-    <div :class="$style.subTitle">{{ $t('App.core.description' /*an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS*/) }}</div>
+    <div :class="$style.subTitle">{{ $t('App.core.description' /*an enterprise ready boilerplate for isomorphic,
+                                  progressive web apps with Vue.JS*/) }}
+    </div>
 
-    <a :class="$style.github" href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener" aria-label="github repository">
+    <a :class="$style.github" href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener"
+       aria-label="github repository">
       <i class="fab fa-github"></i>
     </a>
   </div>
@@ -18,20 +21,23 @@
 
   export default {
     components: {},
-    props: {},
+    props:      {},
     data() {
       return {};
     },
-    computed: {},
-    methods: {
+    computed:   {},
+    methods:    {
       handleResize() {
         const canvas: HTMLCanvasElement = this.$refs.canvas;
         const stage: HTMLElement = this.$refs.stage;
-        const stageRect: ClientRect = stage.getClientRects().length > 0 ? stage.getClientRects().item(0) : { width: 0, height: 0 } as ClientRect;
+        const stageRect: ClientRect = stage.getClientRects().length > 0 ? stage.getClientRects().item(0) : {
+          width:  0,
+          height: 0,
+        } as ClientRect;
 
         canvas.width = stageRect.width;
         canvas.height = stageRect.height;
-      }
+      },
     },
     beforeMount() {
       window.addEventListener('resize', this.handleResize);
@@ -43,7 +49,7 @@
     },
     beforeDestroy() {
       window.removeEventListener('resize', this.handleResize);
-    }
+    },
   };
 </script>
 
@@ -56,7 +62,6 @@
     overflow:   hidden;
     position:   relative;
     text-align: center;
-
     @include background-gradient($brand-dark-primary, $brand-primary, 171deg);
   }
 
@@ -67,7 +72,6 @@
     box-shadow: $nav-bar-shadow;
     position:   absolute;
     transition: transform 250ms linear;
-
     @include background-gradient($brand-light-primary, $brand-dark-primary, -171deg);
 
     @include media(tabletPortrait) {
@@ -91,7 +95,6 @@
     box-shadow: $nav-bar-shadow;
     position:   absolute;
     transition: transform 250ms linear;
-
     @include background-gradient($brand-accent, $brand-light-primary, -171deg);
 
     @include media(tabletPortrait) {

@@ -1,34 +1,36 @@
-import { VuexPersist } from './vuex-persist';
-import { Plugin } from 'vuex';
+import { VuexPersist }         from './vuex-persist';
+import { Plugin }              from 'vuex';
 import { PersistLocalStorage } from './PersistLocalStorage';
 
 describe('vuex-persist', () => {
 
   test('should merge state', () => {
     (window as any).localStorage = {
-      clear: jest.fn(),
-      getItem: (key: string): string => {
+      clear:      jest.fn(),
+      getItem:    (key: string): string => {
         if (key === 'vuexpersistbar') {
           return undefined;
         }
 
         return '{"bar":"baz"}';
       },
-      key: jest.fn(),
+      key:        jest.fn(),
       removeItem: jest.fn(),
-      setItem: jest.fn(),
+      setItem:    jest.fn(),
     };
 
-    const plugin: Plugin<any> = VuexPersist([
-      new PersistLocalStorage(['foo', 'bar']),
-    ]);
+    const plugin: Plugin<any> = VuexPersist(
+      [
+        new PersistLocalStorage(['foo', 'bar']),
+      ],
+    );
     let mergedState: any = null;
     let updateHandler: any = null;
     const mockStore: any = {
-      state: {
+      state:        {
         initial: ['TEST'],
       },
-      subscribe: (handler: any) => {
+      subscribe:    (handler: any) => {
         updateHandler = handler;
       },
       replaceState: (newState: any) => {
@@ -40,43 +42,49 @@ describe('vuex-persist', () => {
 
     updateHandler({ update: true }, { bar: { test: 1 } });
 
-    expect(mergedState).toEqual({
-      foo: {
-        bar: 'baz',
+    expect(mergedState).toEqual(
+      {
+        foo:     {
+          bar: 'baz',
+        },
+        initial: ['TEST'],
       },
-      initial: ['TEST'],
-    });
+    );
 
     expect((window as any).localStorage.setItem.mock.calls[1])
-      .toEqual([
+    .toEqual(
+      [
         'vuexpersistbar',
         '{"test":1}',
-      ]);
+      ],
+    );
   });
 
   test('should continue if store is not writable', () => {
     (window as any).localStorage = {
-      clear: jest.fn(),
-      getItem: (): string => {
+      clear:      jest.fn(),
+      getItem:    (): string => {
         throw new Error();
       },
-      key: jest.fn(),
+      key:        jest.fn(),
       removeItem: jest.fn(),
-      setItem: () => {
+      setItem:    () => {
         throw new Error();
       },
     };
 
-    const plugin: Plugin<any> = VuexPersist([
-      new PersistLocalStorage(['initial']),
-    ]);
+    const plugin: Plugin<any> = VuexPersist(
+      [
+        new PersistLocalStorage(['initial']),
+      ],
+    );
     let mergedState: any = null;
     let updateHandler: any = null;
     const mockStore: any = {
-      state: {
+      state:        {
         initial: ['TEST'],
       },
-      subscribe: (handler: any) => {
+      subscribe:    (handler: any) => {
         updateHandler = handler;
       },
       replaceState: (newState: any) => {
@@ -86,32 +94,36 @@ describe('vuex-persist', () => {
 
     plugin(mockStore);
 
-    expect(mergedState).toEqual({
-      initial: ['TEST'],
-    });
+    expect(mergedState).toEqual(
+      {
+        initial: ['TEST'],
+      },
+    );
   });
 
   test('should continue if store is not readable', () => {
     (window as any).localStorage = {
-      clear: jest.fn(),
-      getItem: (): string => {
+      clear:      jest.fn(),
+      getItem:    (): string => {
         throw new Error();
       },
-      key: jest.fn(),
+      key:        jest.fn(),
       removeItem: jest.fn(),
-      setItem: jest.fn(),
+      setItem:    jest.fn(),
     };
 
-    const plugin: Plugin<any> = VuexPersist([
-      new PersistLocalStorage(['initial']),
-    ]);
+    const plugin: Plugin<any> = VuexPersist(
+      [
+        new PersistLocalStorage(['initial']),
+      ],
+    );
     let mergedState: any = null;
     let updateHandler: any = null;
     const mockStore: any = {
-      state: {
+      state:        {
         initial: ['TEST'],
       },
-      subscribe: (handler: any) => {
+      subscribe:    (handler: any) => {
         updateHandler = handler;
       },
       replaceState: (newState: any) => {
@@ -121,32 +133,36 @@ describe('vuex-persist', () => {
 
     plugin(mockStore);
 
-    expect(mergedState).toEqual({
-      initial: ['TEST'],
-    });
+    expect(mergedState).toEqual(
+      {
+        initial: ['TEST'],
+      },
+    );
   });
 
   test('should merge arrays correctly', () => {
     (window as any).localStorage = {
-      clear: jest.fn(),
-      getItem: (): string => {
+      clear:      jest.fn(),
+      getItem:    (): string => {
         return '["TEST"]';
       },
-      key: jest.fn(),
+      key:        jest.fn(),
       removeItem: jest.fn(),
-      setItem: jest.fn(),
+      setItem:    jest.fn(),
     };
 
-    const plugin: Plugin<any> = VuexPersist([
-      new PersistLocalStorage(['initial']),
-    ]);
+    const plugin: Plugin<any> = VuexPersist(
+      [
+        new PersistLocalStorage(['initial']),
+      ],
+    );
     let mergedState: any = null;
     let updateHandler: any = null;
     const mockStore: any = {
-      state: {
+      state:        {
         initial: ['TEST'],
       },
-      subscribe: (handler: any) => {
+      subscribe:    (handler: any) => {
         updateHandler = handler;
       },
       replaceState: (newState: any) => {
@@ -159,13 +175,15 @@ describe('vuex-persist', () => {
     updateHandler({ update: true }, { initial: ['foo', 'bar'] });
 
     expect(mergedState).toEqual({
-      initial: ['TEST'],
-    });
+                                  initial: ['TEST'],
+                                });
 
     expect((window as any).localStorage.setItem.mock.calls[1])
-      .toEqual([
+    .toEqual(
+      [
         'vuexpersistinitial',
         '["foo","bar"]',
-      ]);
+      ],
+    );
   });
 });

@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueSlider from './VueSlider.vue';
-import $style from 'identity-obj-proxy';
+import VueSlider                 from './VueSlider.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -10,15 +10,15 @@ describe('VueSlider.vue', () => {
     window.addEventListener = jest.fn();
     window.removeEventListener = jest.fn();
     const wrapper = mount(VueSlider,
-      {
-        localVue,
-        mocks: { $style },
-        propsData: {
-          min: 0,
-          max: 100,
-          values: [0, 100],
-        },
-      });
+                          {
+                            localVue,
+                            mocks:     { $style },
+                            propsData: {
+                              min:    0,
+                              max:    100,
+                              values: [0, 100],
+                            },
+                          });
 
     (wrapper as any).vm.refresh();
 
@@ -31,15 +31,15 @@ describe('VueSlider.vue', () => {
 
   test('renders component with single handles', () => {
     const wrapper = mount(VueSlider,
-      {
-        localVue,
-        mocks: { $style },
-        propsData: {
-          min: 0,
-          max: 100,
-          values: [50],
-        },
-      });
+                          {
+                            localVue,
+                            mocks:     { $style },
+                            propsData: {
+                              min:    0,
+                              max:    100,
+                              values: [50],
+                            },
+                          });
 
     expect(wrapper.findAll('button')).toHaveLength(1);
   });
@@ -47,16 +47,16 @@ describe('VueSlider.vue', () => {
   test('renders disable slider', () => {
     document.addEventListener = jest.fn();
     const wrapper = mount(VueSlider,
-      {
-        localVue,
-        mocks: { $style },
-        propsData: {
-          min: 0,
-          max: 100,
-          values: [50],
-          disabled: true,
-        },
-      });
+                          {
+                            localVue,
+                            mocks:     { $style },
+                            propsData: {
+                              min:      0,
+                              max:      100,
+                              values:   [50],
+                              disabled: true,
+                            },
+                          });
 
     expect(wrapper.findAll(`.${$style.disabled}`)).toHaveLength(1);
 
@@ -68,15 +68,15 @@ describe('VueSlider.vue', () => {
   test('should add handlers on moveStart', () => {
     document.addEventListener = jest.fn();
     const wrapper = mount(VueSlider,
-      {
-        localVue,
-        mocks: { $style },
-        propsData: {
-          min: 0,
-          max: 100,
-          values: [50],
-        },
-      });
+                          {
+                            localVue,
+                            mocks:     { $style },
+                            propsData: {
+                              min:    0,
+                              max:    100,
+                              values: [50],
+                            },
+                          });
 
     (wrapper as any).vm.moveStart({ changedTouches: [1, 2] }, 0);
 
@@ -92,15 +92,15 @@ describe('VueSlider.vue', () => {
   test('should remove handlers on moveEnd', () => {
     document.removeEventListener = jest.fn();
     const wrapper = mount(VueSlider,
-      {
-        localVue,
-        mocks: { $style },
-        propsData: {
-          min: 0,
-          max: 100,
-          values: [50],
-        },
-      });
+                          {
+                            localVue,
+                            mocks:     { $style },
+                            propsData: {
+                              min:    0,
+                              max:    100,
+                              values: [50],
+                            },
+                          });
 
     (wrapper as any).vm.currentSlider = 1;
     (wrapper as any).vm.moveEnd(null, 0);
@@ -113,15 +113,15 @@ describe('VueSlider.vue', () => {
   test('should do nothing on moveEnd if currentSlider is null', () => {
     document.removeEventListener = jest.fn();
     const wrapper = mount(VueSlider,
-      {
-        localVue,
-        mocks: { $style },
-        propsData: {
-          min: 0,
-          max: 100,
-          values: [50],
-        },
-      });
+                          {
+                            localVue,
+                            mocks:     { $style },
+                            propsData: {
+                              min:    0,
+                              max:    100,
+                              values: [50],
+                            },
+                          });
 
     (wrapper as any).vm.moveEnd(null, 0);
 
@@ -133,15 +133,15 @@ describe('VueSlider.vue', () => {
   test('should add active class to handle', () => {
     document.removeEventListener = jest.fn();
     const wrapper = mount(VueSlider,
-      {
-        localVue,
-        mocks: { $style },
-        propsData: {
-          min: 0,
-          max: 100,
-          values: [50],
-        },
-      });
+                          {
+                            localVue,
+                            mocks:     { $style },
+                            propsData: {
+                              min:    0,
+                              max:    100,
+                              values: [50],
+                            },
+                          });
 
     (wrapper as any).vm.currentSlider = 1;
 
@@ -151,19 +151,19 @@ describe('VueSlider.vue', () => {
 
   test('should move left handle with multi handles', () => {
     const wrapper = mount(VueSlider,
-      {
-        localVue,
-        mocks: { $style },
-        propsData: {
-          min: 0,
-          max: 100,
-          values: [50, 100],
-        },
-      });
+                          {
+                            localVue,
+                            mocks:     { $style },
+                            propsData: {
+                              min:    0,
+                              max:    100,
+                              values: [50, 100],
+                            },
+                          });
 
     (wrapper as any).vm.currentSlider = 0;
     (wrapper as any).vm.sliderBox = {
-      left: 0,
+      left:  0,
       width: 100,
     };
 
@@ -186,19 +186,19 @@ describe('VueSlider.vue', () => {
 
   test('should move left handle with multi handles', () => {
     const wrapper = mount(VueSlider,
-      {
-        localVue,
-        mocks: { $style },
-        propsData: {
-          min: 0,
-          max: 100,
-          values: [50],
-        },
-      });
+                          {
+                            localVue,
+                            mocks:     { $style },
+                            propsData: {
+                              min:    0,
+                              max:    100,
+                              values: [50],
+                            },
+                          });
 
     (wrapper as any).vm.currentSlider = 0;
     (wrapper as any).vm.sliderBox = {
-      left: 0,
+      left:  0,
       width: 100,
     };
 
@@ -221,19 +221,19 @@ describe('VueSlider.vue', () => {
 
   test('should move right handle', () => {
     const wrapper = mount(VueSlider,
-      {
-        localVue,
-        mocks: { $style },
-        propsData: {
-          min: 0,
-          max: 100,
-          values: [50, 100],
-        },
-      });
+                          {
+                            localVue,
+                            mocks:     { $style },
+                            propsData: {
+                              min:    0,
+                              max:    100,
+                              values: [50, 100],
+                            },
+                          });
 
     (wrapper as any).vm.currentSlider = 1;
     (wrapper as any).vm.sliderBox = {
-      left: 0,
+      left:  0,
       width: 100,
     };
 
@@ -252,15 +252,15 @@ describe('VueSlider.vue', () => {
 
   test('should return closest handle with multi range', () => {
     const wrapper = mount(VueSlider,
-      {
-        localVue,
-        mocks: { $style },
-        propsData: {
-          min: 0,
-          max: 100,
-          values: [0, 100],
-        },
-      });
+                          {
+                            localVue,
+                            mocks:     { $style },
+                            propsData: {
+                              min:    0,
+                              max:    100,
+                              values: [0, 100],
+                            },
+                          });
 
     expect((wrapper as any).vm.getClosestHandle(25)).toBe(0);
     expect((wrapper as any).vm.getClosestHandle(75)).toBe(1);
@@ -269,15 +269,15 @@ describe('VueSlider.vue', () => {
 
   test('should return closest handle with single range', () => {
     const wrapper = mount(VueSlider,
-      {
-        localVue,
-        mocks: { $style },
-        propsData: {
-          min: 0,
-          max: 100,
-          values: [50],
-        },
-      });
+                          {
+                            localVue,
+                            mocks:     { $style },
+                            propsData: {
+                              min:    0,
+                              max:    100,
+                              values: [50],
+                            },
+                          });
 
     expect((wrapper as any).vm.getClosestHandle(25)).toBe(0);
     expect((wrapper as any).vm.getClosestHandle(75)).toBe(0);

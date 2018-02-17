@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import UserExperience from './UserExperience.vue';
-import $style from 'identity-obj-proxy';
+import UserExperience            from './UserExperience.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 

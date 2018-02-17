@@ -5,29 +5,29 @@
 </template>
 
 <script lang="ts">
-  import CollapseAnimation from '../../animations/CollapseAnimation/CollapseAnimation'
+  import CollapseAnimation from '../../animations/CollapseAnimation/CollapseAnimation';
 
   export default {
-    name: 'VueCollapse',
+    name:       'VueCollapse',
     components: {
       CollapseAnimation,
     },
-    props: {
-      show: {
-        default: true,
-        type: Boolean,
+    props:      {
+      show:     {
+        default:  true,
+        type:     Boolean,
         required: false,
       },
       duration: {
-        type: Number,
+        type:     Number,
         required: false,
-        default: 250,
+        default:  250,
       },
     },
-    data: function () {
+    data:       function () {
       return {};
     },
-    computed: {},
-    methods: {},
+    computed:   {},
+    methods:    {},
   };
 </script>

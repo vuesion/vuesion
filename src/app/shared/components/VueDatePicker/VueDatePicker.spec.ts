@@ -1,7 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueDatePicker from './VueDatePicker.vue';
-import $style from 'identity-obj-proxy';
-import { getI18n } from '../../plugins/i18n/i18n';
+import VueDatePicker             from './VueDatePicker.vue';
+import $style                    from 'identity-obj-proxy';
+import { getI18n }               from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
@@ -10,7 +10,7 @@ describe('VueDatePicker.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
-      i18n: getI18n(),
+      i18n:  getI18n(),
       mocks: { $style },
     }) as any;
 
@@ -22,7 +22,7 @@ describe('VueDatePicker.vue', () => {
   test('renders component with selected date', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
-      i18n: getI18n(),
+      i18n:  getI18n(),
       mocks: { $style },
     }) as any;
 
@@ -36,8 +36,8 @@ describe('VueDatePicker.vue', () => {
   test('renders component with current date', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
-      i18n: getI18n(),
-      mocks: { $style },
+      i18n:      getI18n(),
+      mocks:     { $style },
       propsData: {
         currentDate: new Date(),
       },
@@ -50,7 +50,7 @@ describe('VueDatePicker.vue', () => {
   test('should emit change', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
-      i18n: getI18n(),
+      i18n:  getI18n(),
       mocks: { $style },
     }) as any;
 

@@ -1,11 +1,11 @@
 import { VuexExampleMutations } from './mutations';
-import { IState } from '../mutations';
+import { IState }               from '../mutations';
 
 describe('VuexExampleMutations', () => {
   const testState = {
     vuexExample: {
       topics: [],
-      error: null,
+      error:  null,
     },
   } as IState;
 

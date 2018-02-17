@@ -11,23 +11,23 @@
 
 <script lang="ts">
   export default {
-    name: 'VueSelect',
+    name:       'VueSelect',
     components: {},
-    props: {
-      options: {
+    props:      {
+      options:  {
         required: true,
-        type: Array,
+        type:     Array,
       },
       multiple: {
         required: false,
-        default: false,
-        type: Boolean,
+        default:  false,
+        type:     Boolean,
       },
     },
     data(): any {
       return {};
     },
-    computed: {
+    computed:   {
       cssClasses() {
         const classes = [this.$style.vueSelect];
 
@@ -36,9 +36,9 @@
         }
 
         return classes;
-      }
+      },
     },
-    methods: {},
+    methods:    {},
   };
 </script>
 

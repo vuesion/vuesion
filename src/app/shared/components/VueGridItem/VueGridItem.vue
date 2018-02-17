@@ -6,12 +6,12 @@
 
 <script lang="ts">
   export default {
-    name: 'VueGridItem',
-    props: {
+    name:     'VueGridItem',
+    props:    {
       fill: {
-        type: Boolean,
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
     },
     computed: {

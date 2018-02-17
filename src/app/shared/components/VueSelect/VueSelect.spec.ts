@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueSelect from './VueSelect.vue';
-import $style from 'identity-obj-proxy';
+import VueSelect                 from './VueSelect.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -31,7 +31,7 @@ describe('VueSelect.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueSelect, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         options,
       },
@@ -44,7 +44,7 @@ describe('VueSelect.vue', () => {
   test('renders multi component', () => {
     const wrapper = mount(VueSelect, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         options,
         multiple: true,

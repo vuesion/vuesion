@@ -1,8 +1,8 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueTabGroup from './VueTabGroup.vue';
-import $style from 'identity-obj-proxy';
-import VueTabItem from '../VueTabItem/VueTabItem.vue';
-import { Component } from 'vue';
+import VueTabGroup               from './VueTabGroup.vue';
+import $style                    from 'identity-obj-proxy';
+import VueTabItem                from '../VueTabItem/VueTabItem.vue';
+import { Component }             from 'vue';
 
 const localVue = createLocalVue();
 
@@ -11,10 +11,10 @@ describe('VueTabGroup.vue', () => {
   test('renders component with a tab', () => {
     const tabWrapper = mount(VueTabItem, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         title: 'foo',
-        icon: 'bar',
+        icon:  'bar',
       },
     });
     const wrapper = mount(VueTabGroup, {
@@ -39,18 +39,18 @@ describe('VueTabGroup.vue', () => {
   test('should change tab', () => {
     const tabWrapper = mount(VueTabItem, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         title: 'foo',
-        icon: 'bar',
+        icon:  'bar',
       },
     });
     const tabWrapper2 = mount(VueTabItem, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         title: 'foo2',
-        icon: 'bar',
+        icon:  'bar',
       },
     });
     const wrapper = mount(VueTabGroup, {

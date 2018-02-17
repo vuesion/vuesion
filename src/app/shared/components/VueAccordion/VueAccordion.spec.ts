@@ -1,8 +1,8 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueAccordion from './VueAccordion.vue';
-import $style from 'identity-obj-proxy';
-import VueAccordionItem from '../VueAccordionItem/VueAccordionItem.vue';
-import { Component } from 'vue';
+import VueAccordion              from './VueAccordion.vue';
+import $style                    from 'identity-obj-proxy';
+import VueAccordionItem          from '../VueAccordionItem/VueAccordionItem.vue';
+import { Component }             from 'vue';
 
 const localVue = createLocalVue();
 
@@ -11,9 +11,9 @@ describe('VueAccordion.vue', () => {
   test('renders component with an accordion item', () => {
     const accordionItemWrapper = mount(VueAccordionItem, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
-        title: 'foo',
+        title:    'foo',
         initOpen: false,
       },
     });
@@ -40,9 +40,9 @@ describe('VueAccordion.vue', () => {
   test('renders component with an open accordion item', () => {
     const accordionItemWrapper = mount(VueAccordionItem, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
-        title: 'foo',
+        title:    'foo',
         initOpen: true,
       },
     });
@@ -69,7 +69,7 @@ describe('VueAccordion.vue', () => {
   test('should handle single accordion', () => {
     const wrapper = mount(VueAccordion, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         multi: false,
       },
@@ -90,7 +90,7 @@ describe('VueAccordion.vue', () => {
   test('should handle multi accordion', () => {
     const wrapper = mount(VueAccordion, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         multi: true,
       },

@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueGridItem from './VueGridItem.vue';
-import $style from 'identity-obj-proxy';
+import VueGridItem               from './VueGridItem.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -15,7 +15,7 @@ describe('VueGridItem.vue', () => {
   test('renders gritItem 100%', () => {
     const wrapper = mount(VueGridItem, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
         fill: true,
       },

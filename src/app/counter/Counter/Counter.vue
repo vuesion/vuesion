@@ -16,29 +16,29 @@
 
 <script lang="ts">
   import { mapGetters, mapActions } from 'vuex';
-  import VueGrid from '../../shared/components/VueGrid/VueGrid';
-  import VueGridItem from '../../shared/components/VueGridItem/VueGridItem';
-  import VueButton from '../../shared/components/VueButton/VueButton';
+  import VueGrid                    from '../../shared/components/VueGrid/VueGrid';
+  import VueGridItem                from '../../shared/components/VueGridItem/VueGridItem';
+  import VueButton                  from '../../shared/components/VueButton/VueButton';
 
   export default {
-    metaInfo: {
-      title: 'Counter'
+    metaInfo:   {
+      title: 'Counter',
     },
     components: {
       VueGrid,
       VueGridItem,
       VueButton,
     },
-    methods: {
+    methods:    {
       ...mapActions([
-        'increment',
-        'decrement',
-      ]),
+                      'increment',
+                      'decrement',
+                    ]),
     },
-    computed: {
+    computed:   {
       ...mapGetters({
-        count: 'getCount',
-      }),
+                      count: 'getCount',
+                    }),
     },
   };
 </script>

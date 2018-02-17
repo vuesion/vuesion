@@ -1,6 +1,5 @@
-import axios from 'axios';
+import axios                          from 'axios';
 import { getI18n, loadLanguageAsync } from './i18n';
-import VueI18n from 'vue-i18n';
 
 describe('i18n', () => {
   test('should set new language', (done) => {
@@ -9,18 +8,18 @@ describe('i18n', () => {
     getI18n();
 
     loadLanguageAsync('de-DE')
-      .then(() => {
-        expect(axios.get).toHaveBeenCalledTimes(1);
-        return loadLanguageAsync('de-DE');
-      })
-      .then(() => {
-        expect(axios.get).toHaveBeenCalledTimes(1);
-        return loadLanguageAsync('en-EN');
-      })
-      .then(() => {
-        expect(axios.get).toHaveBeenCalledTimes(1);
-        done();
-      });
+    .then(() => {
+      expect(axios.get).toHaveBeenCalledTimes(1);
+      return loadLanguageAsync('de-DE');
+    })
+    .then(() => {
+      expect(axios.get).toHaveBeenCalledTimes(1);
+      return loadLanguageAsync('en-EN');
+    })
+    .then(() => {
+      expect(axios.get).toHaveBeenCalledTimes(1);
+      done();
+    });
   });
 
   test('should set default language', (done) => {
@@ -29,9 +28,9 @@ describe('i18n', () => {
     getI18n('de-DE');
 
     loadLanguageAsync('de-DE')
-      .then(() => {
-        expect(axios.get).toHaveBeenCalledTimes(0);
-        done();
-      });
+    .then(() => {
+      expect(axios.get).toHaveBeenCalledTimes(0);
+      done();
+    });
   });
 });

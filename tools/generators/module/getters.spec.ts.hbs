@@ -3,14 +3,14 @@ import { IState } from '../mutations';
 
 describe('{{ properCase moduleName }}Getters', () => {
 
-  test('it should get topics', () => {
-    const testState = {
-      {{ camelCase moduleName }}: {
-        topics: [1, 2, 3],
-      },
-    } as IState;
+test('it should get topics', () => {
+const testState = {
+{{ camelCase moduleName }}: {
+topics: [1, 2, 3],
+},
+} as IState;
 
-    expect({{ properCase moduleName }}Getters.getTopics(testState)).toEqual([1, 2, 3]);
-  });
+expect({{ properCase moduleName }}Getters.getTopics(testState)).toEqual([1, 2, 3]);
+});
 
 });

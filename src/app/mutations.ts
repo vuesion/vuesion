@@ -1,6 +1,16 @@
 import { MutationTree } from 'vuex';
-import { ICounterState, ICounterMutations, CounterDefaultState, CounterMutations } from './counter/mutations';
-import { IVuexExampleState, IVuexExampleMutations, VuexExampleDefaultState, VuexExampleMutations } from './vuexExample/mutations';
+import {
+  ICounterState,
+  ICounterMutations,
+  CounterDefaultState,
+  CounterMutations,
+}                       from './counter/mutations';
+import {
+  IVuexExampleState,
+  IVuexExampleMutations,
+  VuexExampleDefaultState,
+  VuexExampleMutations,
+}                       from './vuexExample/mutations';
 
 export interface IState extends ICounterState, IVuexExampleState {
   app: {

@@ -11,20 +11,20 @@
 
 <script lang="ts">
   export default {
-    name: 'VueTooltip',
+    name:       'VueTooltip',
     components: {},
-    props: {
+    props:      {
       tip: {
-        type: String,
+        type:     String,
         required: true,
-      }
+      },
     },
     data(): any {
       return {
         show: false,
       };
     },
-    computed: {
+    computed:   {
       cssClasses() {
         const classes: string [] = [this.$style.vueTooltip];
 
@@ -37,9 +37,9 @@
         }
 
         return classes;
-      }
+      },
     },
-    methods: {
+    methods:    {
       onEnter() {
         this.show = true;
       },
@@ -67,7 +67,6 @@
       pointer-events:             none;
       position:                   absolute;
       transform:                  translate3d(0, 8px, 0);
-
       transition-property:        opacity, transform;
       transition-duration:        $transition-duration;
       transition-timing-function: ease-in-out;

@@ -14,12 +14,12 @@ export interface IVuexExampleMutations {
 export const VuexExampleDefaultState: IVuexExampleState = {
   vuexExample: {
     topics: [],
-    error: null,
+    error:  null,
   },
 };
 
 export const VuexExampleMutations: IVuexExampleMutations = {
-  TOPICS: (state: IVuexExampleState, topics: any[]) => {
+  TOPICS:         (state: IVuexExampleState, topics: any[]) => {
     state.vuexExample.topics = topics;
     state.vuexExample.error = null;
   },

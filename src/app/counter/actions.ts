@@ -1,5 +1,5 @@
 import { ActionContext } from 'vuex';
-import { IState } from '../mutations';
+import { IState }        from '../mutations';
 
 export interface ICounterActions {
   increment(context: ActionContext<IState, IState>): void;

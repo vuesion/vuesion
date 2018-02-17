@@ -1,8 +1,8 @@
 import { IVuexPersistStorage } from './vuex-persist';
-import * as Cookies from 'js-cookie';
-import merge from 'deepmerge';
-import { IServerContext } from '../../../../server/isomorphic';
-import { CookieAttributes } from 'js-cookie';
+import * as Cookies            from 'js-cookie';
+import merge                   from 'deepmerge';
+import { IServerContext }      from '../../../../server/isomorphic';
+import { CookieAttributes }    from 'js-cookie';
 
 export class PersistCookieStorage implements IVuexPersistStorage {
   public modules: string[];
@@ -64,7 +64,7 @@ export class PersistCookieStorage implements IVuexPersistStorage {
     });
 
     return merge(state, cookieState, {
-      clone: false,
+      clone:      false,
       arrayMerge: (initial, cookie) => {
         return cookie;
       },

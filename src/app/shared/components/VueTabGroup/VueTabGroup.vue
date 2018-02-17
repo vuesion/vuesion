@@ -20,22 +20,22 @@
 
 <script lang="ts">
   export default {
-    name: 'VueTabGroup',
+    name:       'VueTabGroup',
     components: {},
-    props: {},
+    props:      {},
     data(): any {
       return {
-        tabs: [],
+        tabs:       [],
         currentTab: 0,
-        tabHeader: [],
+        tabHeader:  [],
       };
     },
-    computed: {
+    computed:   {
       headerItems() {
         return this.tabHeader;
-      }
+      },
     },
-    methods: {
+    methods:    {
       changeTab(idx: number) {
         this.currentTab = idx;
         this.handleTabs();
@@ -50,10 +50,10 @@
 
         this.tabs.push(tab);
         this.tabHeader.push({
-          idx: tab.$data.idx,
-          title: tab.$props.title,
-          icon: tab.$props.icon,
-        });
+                              idx:   tab.$data.idx,
+                              title: tab.$props.title,
+                              icon:  tab.$props.icon,
+                            });
 
         this.handleTabs();
       },
@@ -62,7 +62,7 @@
       this.tabs = [];
       this.tabHeader = [];
       this.currentTab = 0;
-    }
+    },
   };
 </script>
 

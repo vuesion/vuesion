@@ -105,7 +105,7 @@
 
         <vue-panel>
           <vue-panel-header title="Title" subtitle="subtitle"
-            image="https://avatars2.githubusercontent.com/u/1667598?s=460&v=4" />
+                            image="https://avatars2.githubusercontent.com/u/1667598?s=460&v=4" />
           <vue-panel-body>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
             labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
@@ -124,7 +124,8 @@
       <vue-grid-item>
         <div class="h1">Inputs</div>
 
-        <vue-input placeholder="Placeholder" message="test" :value="inputValue" @change="inputValue = $event.target.value" />
+        <vue-input placeholder="Placeholder" message="test" :value="inputValue"
+                   @change="inputValue = $event.target.value" />
         <vue-input placeholder="Placeholder" disabled :value="inputValue" @change="inputValue = $event.target.value" />
       </vue-grid-item>
 
@@ -150,7 +151,8 @@
         <br />
         <vue-check-box id="radio2" label="radio" :checked="radio === 'radio2'" radio @click="radio = 'radio2'" />
         <br />
-        <vue-check-box id="radio3" label="radio" :checked="radio === 'radio3'" radio @click="radio = 'radio3'" :disabled="true" />
+        <vue-check-box id="radio3" label="radio" :checked="radio === 'radio3'" radio @click="radio = 'radio3'"
+                       :disabled="true" />
       </vue-grid-item>
 
       <vue-grid-item>
@@ -161,7 +163,8 @@
         , sed diam nonumy eirmod tempor invidunt ut
         labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
         et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et
         accusam et justo duo dolores
         et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
@@ -296,34 +299,34 @@
 </template>
 
 <script lang="ts">
-  import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
-  import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VueButton from '../../shared/components/VueButton/VueButton.vue';
-  import VueLoader from '../../shared/components/VueLoader/VueLoader.vue';
-  import VuePanel from '../../shared/components/VuePanel/VuePanel.vue';
-  import VuePanelHeader from '../../shared/components/VuePanel/VuePanelHeader/VuePanelHeader.vue';
-  import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
-  import VuePanelFooter from '../../shared/components/VuePanel/VuePanelFooter/VuePanelFooter.vue';
-  import VueInput from '../../shared/components/VueInput/VueInput.vue';
-  import VueCollapse from '../../shared/components/VueCollapse/VueCollapse.vue';
-  import VueModal from '../../shared/components/VueModal/VueModal.vue';
-  import VueTabGroup from '../../shared/components/VueTabGroup/VueTabGroup.vue';
-  import VueTabItem from '../../shared/components/VueTabItem/VueTabItem.vue';
-  import VueCheckBox from '../../shared/components/VueCheckBox/VueCheckBox.vue';
-  import VueTooltip from '../../shared/components/VueTooltip/VueTooltip.vue';
-  import VueSlider from '../../shared/components/VueSlider/VueSlider.vue';
-  import VueAccordion from '../../shared/components/VueAccordion/VueAccordion.vue';
-  import VueAccordionItem from '../../shared/components/VueAccordionItem/VueAccordionItem.vue';
-  import VuePagination from '../../shared/components/VuePagination/VuePagination.vue';
-  import VueSelect from '../../shared/components/VueSelect/VueSelect.vue';
-  import VueCalendar from '../../shared/components/VueCalendar/VueCalendar.vue';
-  import VueDatePicker from '../../shared/components/VueDatePicker/VueDatePicker.vue';
-  import VueDateRangePicker from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
+  import VueGrid                            from '../../shared/components/VueGrid/VueGrid.vue';
+  import VueGridItem                        from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VueButton                          from '../../shared/components/VueButton/VueButton.vue';
+  import VueLoader                          from '../../shared/components/VueLoader/VueLoader.vue';
+  import VuePanel                           from '../../shared/components/VuePanel/VuePanel.vue';
+  import VuePanelHeader                     from '../../shared/components/VuePanel/VuePanelHeader/VuePanelHeader.vue';
+  import VuePanelBody                       from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
+  import VuePanelFooter                     from '../../shared/components/VuePanel/VuePanelFooter/VuePanelFooter.vue';
+  import VueInput                           from '../../shared/components/VueInput/VueInput.vue';
+  import VueCollapse                        from '../../shared/components/VueCollapse/VueCollapse.vue';
+  import VueModal                           from '../../shared/components/VueModal/VueModal.vue';
+  import VueTabGroup                        from '../../shared/components/VueTabGroup/VueTabGroup.vue';
+  import VueTabItem                         from '../../shared/components/VueTabItem/VueTabItem.vue';
+  import VueCheckBox                        from '../../shared/components/VueCheckBox/VueCheckBox.vue';
+  import VueTooltip                         from '../../shared/components/VueTooltip/VueTooltip.vue';
+  import VueSlider                          from '../../shared/components/VueSlider/VueSlider.vue';
+  import VueAccordion                       from '../../shared/components/VueAccordion/VueAccordion.vue';
+  import VueAccordionItem                   from '../../shared/components/VueAccordionItem/VueAccordionItem.vue';
+  import VuePagination                      from '../../shared/components/VuePagination/VuePagination.vue';
+  import VueSelect                          from '../../shared/components/VueSelect/VueSelect.vue';
+  import VueCalendar                        from '../../shared/components/VueCalendar/VueCalendar.vue';
+  import VueDatePicker                      from '../../shared/components/VueDatePicker/VueDatePicker.vue';
+  import VueDateRangePicker                 from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
   import { addNotification, INotification } from '../../shared/components/VueNotificationStack/utils';
 
   export default {
-    metaInfo: {
-      title: 'Components'
+    metaInfo:   {
+      title: 'Components',
     },
     components: {
       VueGrid,
@@ -350,7 +353,7 @@
       VueDatePicker,
       VueDateRangePicker,
     },
-    computed: {
+    computed:   {
       today(): Date {
         const today: Date = new Date();
 
@@ -363,11 +366,11 @@
     data() {
       return {
         collapseDemo: true,
-        showModal: false,
-        checked: true,
-        radio: 'radio1',
-        page: 1,
-        options: [
+        showModal:    false,
+        checked:      true,
+        radio:        'radio1',
+        page:         1,
+        options:      [
           {
             label: 'Foo',
             value: 'foo',
@@ -389,10 +392,10 @@
             value: 'lorem',
           },
         ],
-        inputValue: 'test',
-      }
+        inputValue:   'test',
+      };
     },
-    methods: {
+    methods:    {
       sliderChange(sliderOptions: any) {
         console.log(sliderOptions);
       },
@@ -403,12 +406,13 @@
         console.log(date);
       },
       addNotification() {
-        addNotification({
-          title: 'this is a test',
-          text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
-        } as INotification);
+        addNotification(
+          {
+            title: 'this is a test',
+            text:  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+          } as INotification);
       },
-    }
+    },
   };
 </script>
 
@@ -434,7 +438,6 @@
     padding:     $nav-bar-height 0 $nav-bar-height * 0.5;
     text-align:  center;
     text-shadow: 0 5px 10px rgba(0, 0, 0, 0.33);
-
     @include background-gradient($brand-dark-primary, $brand-accent, 152deg);
   }
 

@@ -5,11 +5,11 @@ describe('PersistLocalStorage', () => {
 
   beforeEach(() => {
     (window as any).localStorage = {
-      clear: jest.fn(),
-      getItem: jest.fn(),
-      key: jest.fn(),
+      clear:      jest.fn(),
+      getItem:    jest.fn(),
+      key:        jest.fn(),
       removeItem: jest.fn(),
-      setItem: jest.fn(),
+      setItem:    jest.fn(),
     };
 
     storage = new PersistLocalStorage();

@@ -1,7 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueDateRangePicker from './VueDateRangePicker.vue';
-import $style from 'identity-obj-proxy';
-import { getI18n } from '../../plugins/i18n/i18n';
+import VueDateRangePicker        from './VueDateRangePicker.vue';
+import $style                    from 'identity-obj-proxy';
+import { getI18n }               from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 const today: Date = new Date();
@@ -12,7 +12,7 @@ describe('VueDateRangePicker.vue', () => {
   test('should handle onStartChange', () => {
     const wrapper = mount(VueDateRangePicker, {
       localVue,
-      i18n: getI18n(),
+      i18n:  getI18n(),
       mocks: { $style },
     }) as any;
 
@@ -37,7 +37,7 @@ describe('VueDateRangePicker.vue', () => {
   test('should handle onEndChange', () => {
     const wrapper = mount(VueDateRangePicker, {
       localVue,
-      i18n: getI18n(),
+      i18n:  getI18n(),
       mocks: { $style },
     }) as any;
 

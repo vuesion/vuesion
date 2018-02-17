@@ -1,7 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import Vuex from 'vuex';
-import VuexExample from './VuexExample.vue';
-import $style from 'identity-obj-proxy';
+import Vuex                      from 'vuex';
+import VuexExample               from './VuexExample.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -11,10 +11,10 @@ describe('VuexExample.vue', () => {
 
   test('renders component', () => {
     const store = new Vuex.Store({
-      getters: {
-        getTopics: () => [],
-      },
-    });
+                                   getters: {
+                                     getTopics: () => [],
+                                   },
+                                 });
     const wrapper = mount(VuexExample, { store, localVue, mocks: { $style } });
 
     expect(wrapper.find('h1').text()).toBe('VuexExample');

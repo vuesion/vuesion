@@ -1,14 +1,12 @@
-/* tslint:disable:no-console */
-
-import Vue from 'vue';
-import Vuex, { Store } from 'vuex';
-import { VuexPersist } from './shared/plugins/vuex-persist/vuex-persist';
-import { Actions } from './actions';
-import { Getters } from './getters';
+import Vue                                 from 'vue';
+import Vuex, { Store }                     from 'vuex';
+import { VuexPersist }                     from './shared/plugins/vuex-persist/vuex-persist';
+import { Actions }                         from './actions';
+import { Getters }                         from './getters';
 import { IState, DefaultState, Mutations } from './mutations';
-import { PersistLocalStorage } from './shared/plugins/vuex-persist/PersistLocalStorage';
-import { PersistCookieStorage } from './shared/plugins/vuex-persist/PersistCookieStorage';
-import { IServerContext } from '../server/isomorphic';
+import { PersistLocalStorage }             from './shared/plugins/vuex-persist/PersistLocalStorage';
+import { PersistCookieStorage }            from './shared/plugins/vuex-persist/PersistCookieStorage';
+import { IServerContext }                  from '../server/isomorphic';
 
 Vue.use(Vuex);
 
@@ -30,14 +28,20 @@ export const getStore = (serverContext?: IServerContext): Store<IState> => {
     }
   }
 
-  return new Vuex.Store({
-    state,
-    actions: Actions,
-    mutations: Mutations,
-    getters: Getters,
-    plugins: [VuexPersist([
-      new PersistLocalStorage([]),
-      persistCookieStorage,
-    ])],
-  });
+  return new Vuex.Store(
+    {
+      state,
+      actions:   Actions,
+      mutations: Mutations,
+      getters:   Getters,
+      plugins:   [
+        VuexPersist(
+          [
+            new PersistLocalStorage([]),
+            persistCookieStorage,
+          ],
+        ),
+      ],
+    },
+  );
 };

@@ -1,6 +1,6 @@
-import { ActionContext, ActionTree } from 'vuex';
-import { IState } from './mutations';
-import { ICounterActions, CounterActions } from './counter/actions';
+import { ActionContext, ActionTree }               from 'vuex';
+import { IState }                                  from './mutations';
+import { ICounterActions, CounterActions }         from './counter/actions';
 import { IVuexExampleActions, VuexExampleActions } from './vuexExample/actions';
 
 export interface IActions extends ActionTree<IState, IState>, ICounterActions, IVuexExampleActions {

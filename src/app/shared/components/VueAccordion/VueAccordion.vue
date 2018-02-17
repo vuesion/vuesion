@@ -6,26 +6,26 @@
 
 <script lang="ts">
   export default {
-    name: 'VueAccordion',
+    name:       'VueAccordion',
     components: {},
-    props: {
+    props:      {
       multi: {
-        type: Boolean,
+        type:     Boolean,
         required: false,
-        default: false,
-      }
+        default:  false,
+      },
     },
     data(): any {
       return {
-        items: [],
+        items:     [],
         openItems: [],
       };
     },
-    computed: {},
-    methods: {
+    computed:   {},
+    methods:    {
       openItem(idx: number) {
         if (this.multi && this.openItems.indexOf(idx) > -1) {
-          this.openItems = this.openItems.filter((item: number) => item !== idx)
+          this.openItems = this.openItems.filter((item: number) => item !== idx);
         } else if (this.multi) {
           this.openItems.push(idx);
         } else if (this.openItems.indexOf(idx) > -1) {
@@ -56,7 +56,7 @@
     beforeDestroy() {
       this.items = [];
       this.openItems = [];
-    }
+    },
   };
 </script>
 

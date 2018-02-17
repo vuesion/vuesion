@@ -9,22 +9,22 @@
 
 <script lang="ts">
   import { mapGetters } from 'vuex';
-  import { IPreLoad } from '../../../server/isomorphic';
+  import { IPreLoad }   from '../../../server/isomorphic';
 
   export default {
-    name: '{{ properCase componentName }}',
+    name:       '{{ properCase componentName }}',
     components: {},
-    props: {},
+    props:      {},
     data(): any {
       return {};
     },
-    computed: {
+    computed:   {
       ...mapGetters({
-        topics: 'getTopics'
-      }),
+                      topics: 'getTopics',
+                    }),
     },
-    methods: {},
-    prefetch: (options: IPreLoad) => {
+    methods:    {},
+    prefetch:   (options: IPreLoad) => {
       return options.store.dispatch(`getTopics`);
     },
   };

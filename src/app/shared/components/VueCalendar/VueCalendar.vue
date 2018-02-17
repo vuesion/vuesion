@@ -20,7 +20,8 @@
 
         <tbody>
         <tr v-for="(days, index) in calendar" :key="index">
-          <td :class="[day.currentDay ? $style.currentDay : '', day.disabled ? $style.disabledDay : '', day.selected ? $style.selectedDay : '']"
+          <td
+            :class="[day.currentDay ? $style.currentDay : '', day.disabled ? $style.disabledDay : '', day.selected ? $style.selectedDay : '']"
             v-for="day in days"
             tabindex="0"
             @keydown.enter.stop.prevent="setByDay(day)"
@@ -35,10 +36,10 @@
 
     <div :class="$style.year" v-if="selecting === 'year'">
       <div :class="[year.selected ? $style.selected : '']"
-        :id="`${year.year}-calendar-year`"
-        v-for="year in years"
-        :key="year.year"
-        @click="setByYear(year.year)">
+           :id="`${year.year}-calendar-year`"
+           v-for="year in years"
+           :key="year.year"
+           @click="setByYear(year.year)">
         {{ year.year }}
       </div>
     </div>
@@ -52,7 +53,7 @@
 
 <script lang="ts">
   import VueButton from '../VueButton/VueButton.vue';
-  import chunk from 'lodash/chunk';
+  import chunk     from 'lodash/chunk';
 
   interface IData {
     selecting: string,
@@ -77,43 +78,43 @@
   }
 
   export default {
-    name: 'VueCalendar',
+    name:       'VueCalendar',
     components: {
       VueButton,
     },
-    props: {
-      minDate: {
-        type: Date,
+    props:      {
+      minDate:        {
+        type:     Date,
         required: false,
       },
-      maxDate: {
-        type: Date,
+      maxDate:        {
+        type:     Date,
         required: false,
       },
       firstDayOfWeek: {
-        type: Number,
+        type:     Number,
         required: false,
-        default: 0,
+        default:  0,
       },
-      startDate: {
-        type: Date,
-        required: false,
-      },
-      endDate: {
-        type: Date,
+      startDate:      {
+        type:     Date,
         required: false,
       },
-      customClass: {
-        type: String,
+      endDate:        {
+        type:     Date,
         required: false,
-        default: 'calendar',
       },
-      selectedDate: {
-        type: Date,
+      customClass:    {
+        type:     String,
+        required: false,
+        default:  'calendar',
+      },
+      selectedDate:   {
+        type:     Date,
         required: false,
       },
     },
-    computed: {
+    computed:   {
       calculatedDate(): Date {
         return new Date(this.selectedYear, this.selectedMonth, this.selectedDay);
       },
@@ -199,23 +200,23 @@
         }
 
         return orderedDays;
-      }
+      },
     },
     created() {
       this.setDate();
     },
     data(): IData {
       return {
-        selecting: 'date',
-        currentMonth: null,
-        currentYear: null,
+        selecting:         'date',
+        currentMonth:      null,
+        currentYear:       null,
         selectedDayOfWeek: null,
-        selectedDay: null,
-        selectedMonth: null,
-        selectedYear: null,
+        selectedDay:       null,
+        selectedMonth:     null,
+        selectedYear:      null,
       };
     },
-    methods: {
+    methods:    {
       setSelecting(value: string): void {
         this.selecting = value;
       },
@@ -295,7 +296,7 @@
       onClose(): void {
         this.$emit('close');
       },
-    }
+    },
   };
 </script>
 

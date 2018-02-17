@@ -1,6 +1,6 @@
 /* tslint:disable:no-console */
 
-import * as Express from 'express';
+import * as Express             from 'express';
 import { WebpackDevMiddleware } from 'webpack-dev-middleware';
 
 const path = nodeRequire('path');
@@ -20,7 +20,7 @@ export const devServer = (app: Express.Application, cb: any): void => {
   const clientCompiler = webpack(clientConfig);
   const devMiddleware: WebpackDevMiddleware = nodeRequire('webpack-dev-middleware')(clientCompiler, {
     publicPath: clientConfig.output.publicPath,
-    stats: {
+    stats:      {
       colors: true,
       chunks: false,
     },

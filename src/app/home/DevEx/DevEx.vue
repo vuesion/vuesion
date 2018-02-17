@@ -20,9 +20,11 @@
           <vue-panel-body>
             <i class="fas fa-bullhorn"></i>
             <h3>Instant feedback</h3>
-            <p>Enjoy the best DX (Developer eXperience) and code your app at the speed of thought! Your saved changes to the CSS and TypeScript are reflected instantaneously
-              without
-              refreshing the page. Preserve application state even when you update something in the underlying code!</p>
+            <p>Enjoy the best DX (Developer eXperience) and code your app at the speed of thought! Your saved changes to
+               the CSS and TypeScript are reflected instantaneously
+               without
+               refreshing the page. Preserve application state even when you update something in the underlying
+               code!</p>
           </vue-panel-body>
         </vue-panel>
       </vue-grid-item>
@@ -32,9 +34,9 @@
 </template>
 
 <script lang="ts">
-  import VueGrid from '../../shared/components/VueGrid/VueGrid';
-  import VueGridItem from '../../shared/components/VueGridItem/VueGridItem';
-  import VuePanel from '../../shared/components/VuePanel/VuePanel';
+  import VueGrid      from '../../shared/components/VueGrid/VueGrid';
+  import VueGridItem  from '../../shared/components/VueGridItem/VueGridItem';
+  import VuePanel     from '../../shared/components/VuePanel/VuePanel';
   import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody';
 
   export default {
@@ -44,12 +46,12 @@
       VuePanel,
       VuePanelBody,
     },
-    props: {},
+    props:      {},
     data(): any {
       return {};
     },
-    computed: {},
-    methods: {},
+    computed:   {},
+    methods:    {},
   };
 </script>
 

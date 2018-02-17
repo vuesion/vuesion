@@ -21,42 +21,42 @@
 
 <script lang="ts">
   export default {
-    name: 'VueInput',
+    name:       'VueInput',
     components: {},
-    props: {
+    props:      {
       placeholder: {
-        type: String,
+        type:    String,
         default: '',
       },
-      required: {
-        type: Boolean,
+      required:    {
+        type:    Boolean,
         default: false,
       },
-      value: {
-        type: String,
+      value:       {
+        type:    String,
         default: '',
       },
-      type: {
-        type: String,
+      type:        {
+        type:    String,
         default: 'text',
       },
-      disabled: {
-        type: Boolean,
+      disabled:    {
+        type:    Boolean,
         default: false,
       },
-      readonly: {
-        type: Boolean,
+      readonly:    {
+        type:    Boolean,
         default: false,
       },
-      message: {
-        type: String,
+      message:     {
+        type:    String,
         default: '',
       },
     },
     data() {
       return {};
     },
-    computed: {
+    computed:   {
       cssClasses() {
         const classes = [this.$style.vueInput];
 
@@ -67,7 +67,7 @@
         return classes;
       },
     },
-    methods: {
+    methods:    {
       onChange(e: Event): void {
         this.$emit('change', e);
       },

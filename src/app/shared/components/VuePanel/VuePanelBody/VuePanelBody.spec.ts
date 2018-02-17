@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VuePanelBody from './VuePanelBody.vue';
-import $style from 'identity-obj-proxy';
+import VuePanelBody              from './VuePanelBody.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 

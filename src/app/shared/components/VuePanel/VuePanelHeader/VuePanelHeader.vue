@@ -1,6 +1,6 @@
 <template>
   <div :class="cssClasses">
-    <img :src="image" v-if="image" :alt="title"/>
+    <img :src="image" v-if="image" :alt="title" />
     <div>
       <div :class="$style.title" v-if="title">{{title}}</div>
       <div :class="$style.subtitle" v-if="subtitle">{{subtitle}}</div>
@@ -10,29 +10,29 @@
 
 <script lang="ts">
   export default {
-    name: 'VuePanelHeader',
+    name:       'VuePanelHeader',
     components: {},
-    props: {
-      title: {
-        type: String,
+    props:      {
+      title:    {
+        type:     String,
         required: false,
-        default: null,
+        default:  null,
       },
       subtitle: {
-        type: String,
+        type:     String,
         required: false,
-        default: null,
+        default:  null,
       },
-      image: {
-        type: String,
+      image:    {
+        type:     String,
         required: false,
-        default: null,
+        default:  null,
       },
     },
-    data: function () {
+    data:       function () {
       return {};
     },
-    computed: {
+    computed:   {
       cssClasses() {
         const classes = ['vue-panel-header', this.$style.vuePanelHeader];
 
@@ -43,7 +43,7 @@
         return classes;
       },
     },
-    methods: {},
+    methods:    {},
   };
 </script>
 

@@ -1,5 +1,5 @@
 import { CounterMutations } from './mutations';
-import { IState } from '../mutations';
+import { IState }           from '../mutations';
 
 describe('CounterMutations', () => {
 

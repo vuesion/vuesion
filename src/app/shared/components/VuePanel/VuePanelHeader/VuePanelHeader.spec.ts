@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VuePanelHeader from './VuePanelHeader.vue';
-import $style from 'identity-obj-proxy';
+import VuePanelHeader            from './VuePanelHeader.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -22,7 +22,7 @@ describe('VuePanelHeader.vue', () => {
       VuePanelHeader,
       {
         localVue,
-        mocks: { $style },
+        mocks:     { $style },
         propsData: {
           title: 'foo',
         },
@@ -37,7 +37,7 @@ describe('VuePanelHeader.vue', () => {
       VuePanelHeader,
       {
         localVue,
-        mocks: { $style },
+        mocks:     { $style },
         propsData: {
           subtitle: 'foo',
         },
@@ -52,7 +52,7 @@ describe('VuePanelHeader.vue', () => {
       VuePanelHeader,
       {
         localVue,
-        mocks: { $style },
+        mocks:     { $style },
         propsData: {
           image: 'foo',
         },

@@ -15,32 +15,32 @@
 
 <script lang="ts">
   export default {
-    name: 'VueLoader',
-    props: {
-      medium: {
-        type: Boolean,
+    name:     'VueLoader',
+    props:    {
+      medium:  {
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
-      large: {
-        type: Boolean,
+      large:   {
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
       primary: {
-        type: Boolean,
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
-      accent: {
-        type: Boolean,
+      accent:  {
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
-      warn: {
-        type: Boolean,
+      warn:    {
+        type:     Boolean,
         required: false,
-        default: false,
+        default:  false,
       },
     },
     computed: {

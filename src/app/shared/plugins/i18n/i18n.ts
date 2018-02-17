@@ -1,6 +1,6 @@
-import Vue from 'vue';
+import Vue     from 'vue';
 import VueI18n from 'vue-i18n';
-import axios from 'axios';
+import axios   from 'axios';
 
 Vue.use(VueI18n);
 
@@ -10,10 +10,10 @@ const dateTimeFormats: VueI18n.DateTimeFormats = {
     calendarHeader: {
       month: 'long', weekday: 'long', day: 'numeric',
     },
-    calendarNav: {
+    calendarNav:    {
       month: 'long', year: 'numeric',
     },
-    datePicker: {
+    datePicker:     {
       year: 'numeric', month: '2-digit', day: '2-digit',
     },
   },
@@ -21,10 +21,10 @@ const dateTimeFormats: VueI18n.DateTimeFormats = {
     calendarHeader: {
       month: 'long', weekday: 'long', day: 'numeric',
     },
-    calendarNav: {
+    calendarNav:    {
       month: 'long', year: 'numeric',
     },
-    datePicker: {
+    datePicker:     {
       year: 'numeric', month: '2-digit', day: '2-digit',
     },
   },
@@ -37,12 +37,14 @@ export const getI18n = (lang: string = 'en-EN'): VueI18n => {
 
   messages[lang] = require(`../../../../../i18n/${lang}.json`);
 
-  return i18n = new VueI18n({
-    locale: lang,
-    fallbackLocale: 'en-EN',
-    messages,
-    dateTimeFormats,
-  });
+  return i18n = new VueI18n(
+    {
+      locale:         lang,
+      fallbackLocale: 'en-EN',
+      messages,
+      dateTimeFormats,
+    },
+  );
 };
 
 const loadedLanguages: string[] = ['en-EN'];
@@ -59,11 +61,11 @@ export const loadLanguageAsync = (lang: string): Promise<any> => {
 
     if (!loadedLanguages.find((l) => l === lang)) {
       return axios.get(`/i18n/${lang}.json`)
-        .then((response: any) => {
-          i18n.setLocaleMessage(lang, response.data);
-          loadedLanguages.push(lang);
-          return setI18nLanguage(lang);
-        });
+                  .then((response: any) => {
+                    i18n.setLocaleMessage(lang, response.data);
+                    loadedLanguages.push(lang);
+                    return setI18nLanguage(lang);
+                  });
     }
 
     return Promise.resolve(setI18nLanguage(lang));

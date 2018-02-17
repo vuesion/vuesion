@@ -30,12 +30,12 @@
 </template>
 
 <script lang="ts">
-  import VueGrid from '../VueGrid/VueGrid';
+  import VueGrid     from '../VueGrid/VueGrid';
   import VueGridItem from '../VueGridItem/VueGridItem';
   import VueCollapse from '../VueCollapse/VueCollapse';
 
   export default {
-    name: 'VueNavBar',
+    name:       'VueNavBar',
     components: {
       VueGrid,
       VueGridItem,
@@ -44,22 +44,22 @@
     data() {
       return {
         isSticky: false,
-        isOpen: false,
-      }
+        isOpen:   false,
+      };
     },
-    props: {
-      to: {
-        type: String,
+    props:      {
+      to:       {
+        type:     String,
         required: false,
-        default: '/',
+        default:  '/',
       },
       imageUrl: {
-        type: String,
+        type:     String,
         required: false,
-        default: '/assets/logo.png',
+        default:  '/assets/logo.png',
       },
     },
-    computed: {
+    computed:   {
       bgCssClasses() {
         const classes = [this.$style.bg];
 
@@ -83,7 +83,7 @@
         return classes;
       },
     },
-    methods: {
+    methods:    {
       handleScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
         this.isSticky = scrollTop > 0;
@@ -106,7 +106,7 @@
       window.removeEventListener('scroll', this.handleScroll);
       document.removeEventListener('click', this.handleDocumentClick);
       document.removeEventListener('touchstart', this.handleDocumentClick);
-    }
+    },
   };
 </script>
 
@@ -181,11 +181,9 @@
     padding:                    $grid-unit / 2 $grid-unit;
     display:                    inline-block;
     cursor:                     pointer;
-
     transition-property:        opacity, filter;
     transition-duration:        250ms;
     transition-timing-function: linear;
-
     font:                       inherit;
     color:                      inherit;
     text-transform:             none;

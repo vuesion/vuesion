@@ -18,56 +18,56 @@
 </template>
 
 <script lang="ts">
-  import VueInput from '../VueInput/VueInput.vue';
-  import VueModal from '../VueModal/VueModal.vue';
+  import VueInput    from '../VueInput/VueInput.vue';
+  import VueModal    from '../VueModal/VueModal.vue';
   import VueCalendar from '../VueCalendar/VueCalendar.vue';
 
   export default {
-    name: 'VueDatePicker',
+    name:       'VueDatePicker',
     components: {
       VueInput,
       VueModal,
       VueCalendar,
     },
-    props: {
-      minDate: {
-        type: Date,
+    props:      {
+      minDate:        {
+        type:     Date,
         required: false,
       },
-      maxDate: {
-        type: Date,
+      maxDate:        {
+        type:     Date,
         required: false,
       },
       firstDayOfWeek: {
-        type: Number,
+        type:     Number,
         required: false,
-        default: 0,
+        default:  0,
       },
-      placeholder: {
-        type: String,
+      placeholder:    {
+        type:     String,
         required: false,
-        default: '',
+        default:  '',
       },
-      startDate: {
-        type: Date,
-        required: false,
-      },
-      endDate: {
-        type: Date,
+      startDate:      {
+        type:     Date,
         required: false,
       },
-      currentDate: {
-        type: Date,
+      endDate:        {
+        type:     Date,
+        required: false,
+      },
+      currentDate:    {
+        type:     Date,
         required: false,
       },
     },
     data(): any {
       return {
-        show: false,
+        show:         false,
         selectedDate: null,
       };
     },
-    computed: {
+    computed:   {
       inputValue() {
         const val: string = this.date === null ? '' : this.$d(this.date, 'datePicker');
         return val;
@@ -80,11 +80,11 @@
         return this.selectedDate;
       },
     },
-    methods: {
+    methods:    {
       onChange(date: Date): void {
         this.selectedDate = date;
         this.$emit('change', this.selectedDate);
-      }
+      },
     },
   };
 </script>

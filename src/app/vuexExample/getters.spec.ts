@@ -1,5 +1,5 @@
 import { VuexExampleGetters } from './getters';
-import { IState } from '../mutations';
+import { IState }             from '../mutations';
 
 describe('VuexExampleGetters', () => {
 

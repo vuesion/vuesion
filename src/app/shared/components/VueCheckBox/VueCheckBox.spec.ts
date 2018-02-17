@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueCheckBox from './VueCheckBox.vue';
-import $style from 'identity-obj-proxy';
+import VueCheckBox               from './VueCheckBox.vue';
+import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -9,9 +9,9 @@ describe('VueCheckBox.vue', () => {
   test('renders checkbox', () => {
     const wrapper = mount(VueCheckBox, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
-        id: 'foo',
+        id:    'foo',
         label: 'Test',
       },
     });
@@ -24,9 +24,9 @@ describe('VueCheckBox.vue', () => {
   test('renders radio', () => {
     const wrapper = mount(VueCheckBox, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
-        id: 'foo',
+        id:    'foo',
         label: 'Test',
         radio: true,
       },
@@ -40,9 +40,9 @@ describe('VueCheckBox.vue', () => {
   test('should emit click event', () => {
     const wrapper = mount(VueCheckBox, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
-        id: 'foo',
+        id:    'foo',
         label: 'Test',
       },
     });
@@ -54,10 +54,10 @@ describe('VueCheckBox.vue', () => {
   test('should disable checkbox', () => {
     const wrapper = mount(VueCheckBox, {
       localVue,
-      mocks: { $style },
+      mocks:     { $style },
       propsData: {
-        id: 'foo',
-        label: 'Test',
+        id:       'foo',
+        label:    'Test',
         disabled: true,
       },
     });

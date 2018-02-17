@@ -19,28 +19,28 @@
   import VueCollapse from '../VueCollapse/VueCollapse.vue';
 
   export default {
-    name: 'VueAccordionItem',
+    name:       'VueAccordionItem',
     components: {
       VueCollapse,
     },
-    props: {
-      title: {
-        type: String,
+    props:      {
+      title:    {
+        type:     String,
         required: true,
       },
       initOpen: {
-        type: Boolean,
+        type:     Boolean,
         required: false,
-        default: false,
-      }
+        default:  false,
+      },
     },
     data(): any {
       return {
-        idx: null,
+        idx:  null,
         open: false,
       };
     },
-    computed: {
+    computed:   {
       show() {
         return this.open;
       },
@@ -54,7 +54,7 @@
         return classes;
       },
     },
-    methods: {
+    methods:    {
       click() {
         this.$parent.openItem(this.idx);
       },
