@@ -424,7 +424,7 @@
                             isValid(value: string) {
                               return value.trim().indexOf(' ') > -1;
                             },
-                            invalidText: 'Please provide fist and last name',
+                            invalidText: 'Please provide first and last name',
                           },
                           {
                             type:        'vue-input',
