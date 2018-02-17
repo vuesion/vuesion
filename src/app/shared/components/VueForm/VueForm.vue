@@ -6,7 +6,7 @@
     <vue-panel-body>
       <form :class="$style.vueForm" :name="schema.name" :id="schema.id" @submit.prevent="submitForm()">
 
-        <template v-for="element in elements">
+        <div v-for="element in elements">
           <keep-alive>
             <component
               :key="element.model"
@@ -14,7 +14,7 @@
               v-bind="getComponentProps(element)"
               v-on="getComponentHandler(element)" />
           </keep-alive>
-        </template>
+        </div>
 
         <vue-button
           primary
