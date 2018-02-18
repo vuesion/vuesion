@@ -34,13 +34,13 @@
 </template>
 
 <script lang="ts">
-  import VuePanel         from '../VuePanel/VuePanel.vue';
-  import VuePanelHeader   from '../VuePanel/VuePanelHeader/VuePanelHeader.vue';
-  import VuePanelBody     from '../VuePanel/VuePanelBody/VuePanelBody.vue';
-  import VueInput         from '../VueInput/VueInput.vue';
-  import VueCheckBox      from '../VueCheckBox/VueCheckBox.vue';
-  import VueButton        from '../VueButton/VueButton.vue';
-  import { IFormElement } from './IFormSchema';
+  import VuePanel                      from '../VuePanel/VuePanel.vue';
+  import VuePanelHeader                from '../VuePanel/VuePanelHeader/VuePanelHeader.vue';
+  import VuePanelBody                  from '../VuePanel/VuePanelBody/VuePanelBody.vue';
+  import VueInput                      from '../VueInput/VueInput.vue';
+  import VueCheckBox                   from '../VueCheckBox/VueCheckBox.vue';
+  import VueButton                     from '../VueButton/VueButton.vue';
+  import { IFormElement, IFormSchema } from './IFormSchema';
 
   export default {
     name:       'VueForm',
@@ -155,6 +155,14 @@
     },
     created() {
       this.reset();
+    },
+    watch:      {
+      schema(newSchema: IFormSchema) {
+        this.$data.elements.forEach((element: IFormElement, idx: number) => {
+          element.invalidText = newSchema.elements[idx].invalidText;
+          element.label = newSchema.elements[idx].label;
+        });
+      },
     },
   };
 </script>

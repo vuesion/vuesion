@@ -18,24 +18,24 @@ describe('Components.vue', () => {
       mocks: {
         $style,
       },
-    });
+    }) as any;
 
-    (wrapper as any).vm.sliderChange();
-    (wrapper as any).vm.calendarChange();
-    (wrapper as any).vm.addNotificationClick();
-    (wrapper as any).vm.selectChange();
-    (wrapper as any).vm.formSubmit({ name: 'foo', email: 'bar' }, () => {
+    wrapper.vm.sliderChange();
+    wrapper.vm.calendarChange();
+    wrapper.vm.addNotificationClick();
+    wrapper.vm.selectChange();
+    wrapper.vm.formSubmit({ name: 'foo', email: 'bar' }, () => {
       return true;
     });
-    (wrapper as any).vm.formReset();
+    wrapper.vm.formReset();
 
-    wrapper.vm.$data.registerSchema.elements.forEach((element: IFormElement) => {
+    wrapper.vm.registerSchema.elements.forEach((element: IFormElement) => {
       if (element.isValid) {
         element.isValid('');
       }
     });
 
-    wrapper.vm.$data.loginSchema.elements.forEach((element: IFormElement) => {
+    wrapper.vm.loginSchema.elements.forEach((element: IFormElement) => {
       if (element.isValid) {
         element.isValid('');
       }

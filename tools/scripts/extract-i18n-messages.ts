@@ -11,11 +11,13 @@ const defaultLanguage: string = packageJSON.config['default-language'];
 const translations: any = {};
 const sanitizeMessage = (message: string): string => {
   const replacements: Array<{ from: string | RegExp, to: string }> = [
+    { from: /\s\s+/g, to: ' ' },
     { from: '/*', to: '' },
     { from: '*/', to: '' },
     { from: /\n/g, to: '\\n' },
-    { from: '[', to: '<' },
-    { from: ']', to: '>' },
+    { from: /\[/g, to: '<' },
+    { from: /\]/g, to: '>' },
+    { from: /"/g, to: '\'' },
   ];
 
   replacements.forEach((replacement: { from: string | RegExp, to: string }) => {
@@ -45,7 +47,7 @@ const run = (): void => {
      */
     files.forEach((file: string) => {
       const content = fs.readFileSync(file).toString();
-      const matches: string[] = content.match(/\$t\([\S, ]*\)/g);
+      const matches: string[] = content.match(/\$t\([\r,\n, ,\S]*?\)/g);
 
       if (matches) {
         matches.forEach((translation: string) => {

@@ -12,5 +12,20 @@
   "components.calendar.sunday.short": "S",
   "components.calendar.thursday.short": "D",
   "components.calendar.tuesday.short": "D",
-  "components.calendar.wednesday.short": "M"
+  "components.calendar.wednesday.short": "M",
+  "components.forms": "Formulare",
+  "components.register.cancellationText": "Abbrechen",
+  "components.register.consent": "Ja, Sie können mich kontaktieren",
+  "components.register.email": "E-mail",
+  "components.register.email.invalidText": "Ungültige E-mail Adresse",
+  "components.register.name": "Name",
+  "components.register.name.invalidText": "Bitte Vor- und Nachnamen angeben",
+  "components.register.phone": "Telefon",
+  "components.register.phone.invalidText": "Ungültige Telefonnummer",
+  "components.register.submit.notification.text": "Wir haben Dir eine E-mail an {email} gesendet.",
+  "components.register.submit.notification.title": "Hallo {name}!",
+  "components.register.submitText": "Registrieren",
+  "components.register.subtitle": "Bitte alle benötigten Felder ausfüllen",
+  "components.register.terms": "Ich akzeptiere die <a href='/terms'>AGBs</a>",
+  "components.register.title": "Registrieren"
 }

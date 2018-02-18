@@ -5,8 +5,10 @@
     <div :class="$style.accentTwo"></div>
 
     <h1 :class="$style.title">Vue.js Starter</h1>
-    <div :class="$style.subTitle">{{ $t('App.core.description' /*an enterprise ready boilerplate for isomorphic,
-                                  progressive web apps with Vue.JS*/) }}
+    <div :class="$style.subTitle">
+      {{
+      $t('App.core.description' /*an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS*/)
+      }}
     </div>
 
     <a :class="$style.github" href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener"

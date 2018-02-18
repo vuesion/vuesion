@@ -14,7 +14,12 @@
     "typescript",
     "server-side-rendering",
     "boilerplate",
-    "jest"
+    "jest",
+    "enterprise",
+    "datepicker",
+    "slider",
+    "forms",
+    "components"
   ],
   "author": "Johannes Werner <johannes.werner86@gmail.com>",
   "license": "MIT",

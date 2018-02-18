@@ -296,11 +296,11 @@
       </vue-grid-item>
 
       <vue-grid-item>
-        <div class="h1">Forms</div>
+        <div class="h1">{{ $t('components.forms' /*Forms*/) }}</div>
         <vue-form :schema="registerSchema" @submit="formSubmit" @reset="formReset" />
       </vue-grid-item>
       <vue-grid-item>
-        <div class="h1">Forms</div>
+        <div class="h1">{{ $t('components.forms' /*Forms*/) }}</div>
         <vue-form :schema="loginSchema" />
       </vue-grid-item>
     </vue-grid>
@@ -375,6 +375,96 @@
       nextWeek(): Date {
         return new Date(this.today.getTime() + 7 * 24 * 60 * 60 * 1000);
       },
+      registerSchema(): IFormSchema {
+        return {
+          cancellationText: this.$t('components.register.cancellationText' /*Cancel*/),
+          submitText:       this.$t('components.register.submitText' /*Submit*/),
+          id:               'myForm',
+          name:             'myForm',
+          title:            this.$t('components.register.title' /*Register*/),
+          subtitle:         this.$t('components.register.subtitle' /*Please fill in all required fields*/),
+          elements:         [
+            {
+              type:        'vue-input',
+              model:       'name',
+              required:    true,
+              label:       this.$t('components.register.name' /*Name*/),
+              inputType:   'text',
+              isValid(value: string) {
+                return value.trim().indexOf(' ') > -1;
+              },
+              invalidText: this.$t('components.register.name.invalidText' /*Please provide first and last name*/),
+            },
+            {
+              type:        'vue-input',
+              model:       'phone',
+              required:    false,
+              label:       this.$t('components.register.phone' /*Phone*/),
+              inputType:   'phone',
+              isValid(value: string) {
+                return isPhoneNumberValid(value);
+              },
+              invalidText: this.$t('components.register.phone.invalidText' /*This is not a valid phone number!*/),
+            },
+            {
+              type:        'vue-input',
+              model:       'email',
+              required:    true,
+              label:       this.$t('components.register.email' /*Email*/),
+              inputType:   'email',
+              isValid(value: string) {
+                return isEmailValid(value);
+              },
+              invalidText: this.$t('components.register.email.invalidText' /*This is not a valid email address!*/),
+            },
+            {
+              type:     'vue-check-box',
+              model:    'terms',
+              required: true,
+              label:    this.$t('components.register.terms' /*I accept the <a href="/terms">Terms and Conditions</a>*/),
+              value:    false,
+            },
+            {
+              type:     'vue-check-box',
+              model:    'consent',
+              required: false,
+              label:    this.$t('components.register.consent' /*I consent to get contacted*/),
+              value:    false,
+            },
+          ],
+        };
+      },
+      loginSchema(): IFormSchema {
+        return {
+          submitText: 'Login',
+          id:         'loginForm',
+          name:       'loginForm',
+          title:      'Login',
+          elements:   [
+            {
+              type:        'vue-input',
+              model:       'email2',
+              required:    true,
+              label:       'Email',
+              inputType:   'email',
+              isValid(value: string) {
+                return isEmailValid(value);
+              },
+              invalidText: 'This is not a valid email address!',
+            },
+            {
+              type:      'vue-input',
+              model:     'password2',
+              required:  true,
+              label:     'Password',
+              inputType: 'password',
+              isValid(value: string) {
+                return value.length > 3;
+              },
+            },
+          ],
+        };
+      },
     },
     data() {
       return {
@@ -406,94 +496,6 @@
           },
         ],
         inputValue:   'test',
-        registerSchema:
-                      {
-                        cancellationText: 'Cancel',
-                        submitText:       'Submit',
-                        id:               'myForm',
-                        name:             'myForm',
-                        title:            'Register',
-                        subtitle:         'Please fill in all required fields',
-                        elements:         [
-                          {
-                            type:        'vue-input',
-                            model:       'name',
-                            required:    true,
-                            label:       'Name',
-                            inputType:   'text',
-                            isValid(value: string) {
-                              return value.trim().indexOf(' ') > -1;
-                            },
-                            invalidText: 'Please provide first and last name',
-                          },
-                          {
-                            type:        'vue-input',
-                            model:       'phone',
-                            required:    false,
-                            label:       'Phone',
-                            inputType:   'phone',
-                            isValid(value: string) {
-                              return isPhoneNumberValid(value);
-                            },
-                            invalidText: 'This is not a valid phone number!',
-                          },
-                          {
-                            type:        'vue-input',
-                            model:       'email',
-                            required:    true,
-                            label:       'Email',
-                            inputType:   'email',
-                            isValid(value: string) {
-                              return isEmailValid(value);
-                            },
-                            invalidText: 'This is not a valid email address!',
-                          },
-                          {
-                            type:     'vue-check-box',
-                            model:    'terms',
-                            required: true,
-                            label:    'I accept the <a href="/terms">Terms and Conditions</a>',
-                            value:    false,
-                          },
-                          {
-                            type:     'vue-check-box',
-                            model:    'consent',
-                            required: false,
-                            label:    'I consent to get contacted',
-                            value:    false,
-                          },
-                        ],
-                      } as IFormSchema,
-        loginSchema:
-                      {
-                        submitText: 'Login',
-                        id:         'loginForm',
-                        name:       'loginForm',
-                        title:      'Login',
-                        elements:   [
-                          {
-                            type:        'vue-input',
-                            model:       'email',
-                            required:    true,
-                            label:       'Email',
-                            inputType:   'email',
-                            isValid(value: string) {
-                              return isEmailValid(value);
-                            },
-                            invalidText: 'This is not a valid email address!',
-                          },
-                          {
-                            type:      'vue-input',
-                            model:     'password',
-                            required:  true,
-                            label:     'Password',
-                            inputType: 'password',
-                            isValid(value: string) {
-                              return value.length > 3;
-                            },
-                          },
-                        ],
-                      } as IFormSchema,
       };
     },
     methods:    {
@@ -520,8 +522,9 @@
       formSubmit(model: any, reset: any) {
         addNotification(
           {
-            title: `Hey ${model.name}!`,
-            text:  `We've sent an email to: ${model.email}.`,
+            title: this.$t('components.register.submit.notification.title', model /*Hey
+            {name}!*/),
+            text:  this.$t('components.register.submit.notification.text', model /*We've sent an email to: {email}!*/),
           } as INotification,
         );
         reset();
