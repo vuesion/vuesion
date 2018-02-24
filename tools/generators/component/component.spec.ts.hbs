@@ -6,10 +6,17 @@ const localVue = createLocalVue();
 
 describe('{{ properCase componentName }}.vue', () => {
 
-test('renders component', () => {
-const wrapper = mount({{ properCase componentName }}, { localVue, mocks: { $style } });
+  test('renders component', () => {
+    const wrapper = mount({{ properCase componentName }},
+                      {
+                        localVue,
+                        mocks: {
+                          $style
+                        },
+                      },
+                    );
 
-expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
-});
+    expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
+  });
 
 });

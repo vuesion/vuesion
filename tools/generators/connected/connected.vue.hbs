@@ -19,9 +19,11 @@
       return {};
     },
     computed:   {
-      ...mapGetters({
-                      topics: 'getTopics',
-                    }),
+      ...mapGetters(
+        {
+          topics: 'getTopics',
+        },
+      ),
     },
     methods:    {},
     prefetch:   (options: IPreLoad) => {

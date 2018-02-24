@@ -1,11 +1,11 @@
 import { IState } from '../mutations';
 
 export interface I{{ properCase moduleName }}Getters {
-getTopics(state: IState): any[];
+  getTopics(state: IState): any[];
 }
 
 export const {{ properCase moduleName }}Getters: I{{ properCase moduleName }}Getters = {
-getTopics(state: IState): any[] {
-return state.{{ camelCase moduleName }}.topics;
-},
+  getTopics(state: IState): any[] {
+    return state.{{ camelCase moduleName }}.topics;
+  },
 };

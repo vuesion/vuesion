@@ -1,29 +1,29 @@
 export interface I{{ properCase moduleName }}State {
-{{ camelCase moduleName }}: {
-topics: any[],
-error: Error,
-};
+  {{ camelCase moduleName }}: {
+    topics: any[],
+    error: Error,
+  };
 }
 
 export interface I{{ properCase moduleName }}Mutations {
-TOPICS(state: I{{ properCase moduleName }}State, topics: any[]): void;
+  TOPICS(state: I{{ properCase moduleName }}State, topics: any[]): void;
 
-TOPICS_FAILURE(state: I{{ properCase moduleName }}State, error: Error): void;
+  TOPICS_FAILURE(state: I{{ properCase moduleName }}State, error: Error): void;
 }
 
 export const {{ properCase moduleName }}DefaultState: I{{ properCase moduleName }}State = {
-{{ camelCase moduleName }}: {
-topics: [],
-error: null,
-},
+  {{ camelCase moduleName }}: {
+    topics: [],
+    error: null,
+  },
 };
 
 export const {{ properCase moduleName }}Mutations: I{{ properCase moduleName }}Mutations = {
-TOPICS: (state: I{{ properCase moduleName }}State, topics: any[]) => {
-state.{{ camelCase moduleName }}.topics = topics;
-state.{{ camelCase moduleName }}.error = null;
-},
-TOPICS_FAILURE: (state: I{{ properCase moduleName }}State, error: Error) => {
-state.{{ camelCase moduleName }}.error = error;
-},
+  TOPICS: (state: I{{ properCase moduleName }}State, topics: any[]) => {
+    state.{{ camelCase moduleName }}.topics = topics;
+    state.{{ camelCase moduleName }}.error = null;
+  },
+  TOPICS_FAILURE: (state: I{{ properCase moduleName }}State, error: Error) => {
+    state.{{ camelCase moduleName }}.error = error;
+  },
 };
