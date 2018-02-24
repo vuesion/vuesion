@@ -1,4 +1,4 @@
-import { EventBus } from '../../EventBus';
+import { EventBus } from '../../services/EventBus';
 
 export interface INotification {
   id?: number;

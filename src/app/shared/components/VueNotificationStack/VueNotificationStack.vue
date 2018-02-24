@@ -14,7 +14,7 @@
 
 <script lang="ts">
   import { INotification } from './utils';
-  import { EventBus }      from '../../EventBus';
+  import { EventBus }      from '../../services/EventBus';
 
   let id: number = 0;
 
