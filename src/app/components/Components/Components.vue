@@ -297,7 +297,15 @@
 
       <vue-grid-item>
         <div class="h1">{{ $t('components.forms' /*Forms*/) }}</div>
-        <vue-form :schema="registerSchema" @submit="formSubmit" @reset="formReset" />
+        <vue-form :schema="registerSchema" @submit="formSubmit" @reset="formReset">
+          <div slot="middle">
+            named slot in the middle (defined in schema)
+          </div>
+
+          <div>
+            default slot is always at the end of the form
+          </div>
+        </vue-form>
       </vue-grid-item>
       <vue-grid-item>
         <div class="h1">{{ $t('components.forms' /*Forms*/) }}</div>
@@ -405,6 +413,10 @@
                 return isPhoneNumberValid(value);
               },
               invalidText: this.$t('components.register.phone.invalidText' /*This is not a valid phone number!*/),
+            },
+            {
+              type:  'slot',
+              model: 'middle',
             },
             {
               type:        'vue-input',

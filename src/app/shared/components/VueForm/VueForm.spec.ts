@@ -30,6 +30,10 @@ describe('VueForm.vue', () => {
             invalidText: 'Please provide fist and last name',
           },
           {
+            type:  'slot',
+            model: 'foo',
+          },
+          {
             type:        'vue-input',
             model:       'phone',
             required:    false,
@@ -100,6 +104,10 @@ describe('VueForm.vue', () => {
               return value.trim().indexOf(' ') > -1;
             },
             invalidText: 'Please provide fist and last name',
+          },
+          {
+            type:  'slot',
+            model: 'foo',
           },
           {
             type:        'vue-input',
@@ -195,6 +203,10 @@ describe('VueForm.vue', () => {
             invalidText: 'Please provide fist and last name',
           },
           {
+            type:  'slot',
+            model: 'foo',
+          },
+          {
             type:        'vue-input',
             model:       'phone',
             required:    false,
@@ -284,6 +296,10 @@ describe('VueForm.vue', () => {
               return value.trim().indexOf(' ') > -1;
             },
             invalidText: 'Please provide fist and last name',
+          },
+          {
+            type:  'slot',
+            model: 'foo',
           },
           {
             type:        'vue-input',

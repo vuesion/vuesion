@@ -7,7 +7,8 @@
       <form :class="$style.vueForm" :name="schema.name" :id="schema.id" @submit.prevent="submitForm()">
 
         <div v-for="element in elements">
-          <keep-alive>
+          <slot v-if="element.type === 'slot'" :name="element.model" />
+          <keep-alive v-else>
             <component
               :key="element.model"
               :is="element.type"
@@ -28,6 +29,8 @@
           @click.prevent="reset(true)">
           {{ schema.cancellationText }}
         </vue-button>
+
+        <slot />
       </form>
     </vue-panel-body>
   </vue-panel>
@@ -84,7 +87,9 @@
         const model: any = {};
 
         this.$data.elements.forEach((element: IFormElement) => {
-          model[element.model] = element.value;
+          if (element.type !== 'slot') {
+            model[element.model] = element.value;
+          }
         });
 
         if (this.submitDisabled() === false) {
