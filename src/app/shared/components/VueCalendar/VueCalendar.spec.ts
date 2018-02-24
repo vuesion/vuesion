@@ -27,13 +27,15 @@ describe('VueCalendar.vue', () => {
   });
 
   test('renders component with min max date', () => {
+    const min: Date = new Date(2018, 1, 8);
+    const max: Date = new Date(2018, 1, 15);
     const wrapper = mount(VueCalendar, {
       localVue,
       i18n:      getI18n(),
       mocks:     { $style },
       propsData: {
-        minDate: today,
-        maxDate: nextWeek,
+        minDate: min,
+        maxDate: max,
       },
     });
 
@@ -48,13 +50,15 @@ describe('VueCalendar.vue', () => {
   });
 
   test('renders component with range', () => {
+    const start: Date = new Date(2018, 1, 8);
+    const end: Date = new Date(2018, 1, 15);
     const wrapper = mount(VueCalendar, {
       localVue,
       i18n:      getI18n(),
       mocks:     { $style },
       propsData: {
-        startDate: today,
-        endDate:   nextWeek,
+        startDate: start,
+        endDate:   end,
       },
     });
 
