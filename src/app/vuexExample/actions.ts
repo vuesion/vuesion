@@ -1,6 +1,6 @@
-import axios             from 'axios';
 import { ActionContext } from 'vuex';
 import { IState }        from '../mutations';
+import { HttpService }   from '../shared/services/HttpService';
 
 export interface IVuexExampleActions {
   getTopics(context: ActionContext<IState, IState>): Promise<any>;
@@ -13,12 +13,12 @@ export const VuexExampleActions: IVuexExampleActions = {
       return Promise.resolve();
     }
 
-    return axios.get('https://jsonplaceholder.typicode.com/posts')
-                .then((response: any) => {
-                  commit('TOPICS', response.data);
-                })
-                .catch((e: Error) => {
-                  commit('TOPICS_FAILURE', e);
-                });
+    return HttpService.get('https://jsonplaceholder.typicode.com/posts')
+                      .then((response: any) => {
+                        commit('TOPICS', response.data);
+                      })
+                      .catch((e: Error) => {
+                        commit('TOPICS_FAILURE', e);
+                      });
   },
 };

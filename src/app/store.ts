@@ -12,6 +12,8 @@ Vue.use(Vuex);
 
 let state: IState = (CLIENT && window.__INITIAL_STATE__) || DefaultState;
 
+export let store: Store<IState>;
+
 export const getStore = (serverContext?: IServerContext): Store<IState> => {
   const persistCookieStorage: PersistCookieStorage = new PersistCookieStorage(
     ['app', 'counter'],
@@ -40,7 +42,7 @@ export const getStore = (serverContext?: IServerContext): Store<IState> => {
     }
   }
 
-  return new Vuex.Store(
+  return store = new Vuex.Store(
     {
       state,
       actions:   Actions,
