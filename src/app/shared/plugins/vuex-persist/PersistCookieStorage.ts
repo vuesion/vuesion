@@ -3,17 +3,23 @@ import * as Cookies            from 'js-cookie';
 import merge                   from 'deepmerge';
 import { IServerContext }      from '../../../../server/isomorphic';
 import { CookieAttributes }    from 'js-cookie';
+import { IState }              from '../../../mutations';
+
+interface IPersistCookieStorageConfig {
+  cookieOptions: CookieAttributes;
+  beforePersist?: (state: IState) => IState;
+}
 
 export class PersistCookieStorage implements IVuexPersistStorage {
   public modules: string[];
   public prefix: string;
   public length: number;
-  public options: any;
+  public options: IPersistCookieStorageConfig;
   [key: string]: any;
   [index: number]: string;
   private indexKey: string = 'vuexpersistcookie';
 
-  constructor(modules: string[] = [], options: CookieAttributes = {}, prefix: string = 'vuexpersist') {
+  constructor(modules: string[] = [], options: IPersistCookieStorageConfig = { cookieOptions: {} }, prefix: string = 'vuexpersist') {
     this.modules = modules;
     this.prefix = prefix;
     this.options = options;
@@ -44,7 +50,7 @@ export class PersistCookieStorage implements IVuexPersistStorage {
 
   public setItem(key: string, data: string): void {
     this.addToIndex(key);
-    Cookies.set(this.getKey(key), data, this.options);
+    Cookies.set(this.getKey(key), data, this.options.cookieOptions);
   }
 
   public getMergedStateFromServerContext<T>(serverContext: IServerContext, state: any): T {
@@ -71,6 +77,14 @@ export class PersistCookieStorage implements IVuexPersistStorage {
     });
   }
 
+  public beforePersist(state: IState): IState {
+    if (this.options.beforePersist) {
+      return this.options.beforePersist(state);
+    }
+
+    return state;
+  }
+
   private getKey(key: string) {
     return `${this.prefix}${key}`;
   }
@@ -84,7 +98,7 @@ export class PersistCookieStorage implements IVuexPersistStorage {
 
     index[this.getKey(key)] = key;
 
-    Cookies.set(this.indexKey, JSON.stringify(index), this.options);
+    Cookies.set(this.indexKey, JSON.stringify(index), this.options.cookieOptions);
   }
 
   private removeFromIndex(key: string) {
@@ -92,7 +106,7 @@ export class PersistCookieStorage implements IVuexPersistStorage {
 
     delete index[this.getKey(key)];
 
-    Cookies.set(this.indexKey, JSON.stringify(index), this.options);
+    Cookies.set(this.indexKey, JSON.stringify(index), this.options.cookieOptions);
   }
 
 }

@@ -4,53 +4,56 @@
 
 import merge             from 'deepmerge';
 import { Plugin, Store } from 'vuex';
+import { IState }        from '../../../mutations';
 
 export interface IVuexPersistStorage extends Storage {
-  modules?: string[];
-  prefix?: string;
+  modules: string[];
+  beforePersist: (state: IState) => IState;
 }
 
-export const VuexPersist = (storages: IVuexPersistStorage[]): Plugin<any> => {
-  const canWriteStorage = (store: IVuexPersistStorage) => {
+export const VuexPersist = (storages: IVuexPersistStorage[]): Plugin<IState> => {
+  const canWriteStorage = (storage: IVuexPersistStorage) => {
     try {
-      store.setItem('@@', '1');
-      store.removeItem('@@');
+      storage.setItem('@@', '1');
+      storage.removeItem('@@');
       return true;
     } catch (e) {
       return false;
     }
   };
-  const getState = (key: string, store: IVuexPersistStorage) => {
+  const getState = (key: string, storage: IVuexPersistStorage) => {
     try {
-      const value = store.getItem(key);
+      const value = storage.getItem(key);
       return value && value !== 'undefined' ? JSON.parse(value) : undefined;
     } catch (e) {
       return undefined;
     }
   };
-  const setState = (key: string, state: string, store: IVuexPersistStorage) => {
-    return store.setItem(key, JSON.stringify(state));
+  const setState = (key: string, state: IState, storage: IVuexPersistStorage) => {
+    return storage.setItem(key, JSON.stringify(state));
   };
-  const subscriber = (store: Store<any>) => {
+  const subscriber = (store: Store<IState>) => {
     return (handler: any) => {
       return store.subscribe(handler);
     };
   };
 
-  return (vuexStore: Store<any>) => {
-    const hydratedState: any = {};
+  return (vuexStore: Store<IState>) => {
+    const hydratedState: IState = {} as IState;
 
     storages.forEach((storage: IVuexPersistStorage): void => {
       if (canWriteStorage(storage)) {
 
         storage.modules.forEach((key: string) => {
-          const savedState: any = getState(key, storage);
+          const savedState: IState = getState(key, storage);
 
           if (savedState && Object.keys(savedState).length > 0) {
             hydratedState[key] = savedState;
           }
 
-          subscriber(vuexStore)((mutation: any, state: any) => {
+          subscriber(vuexStore)((mutation: any, state: IState) => {
+            state = storage.beforePersist(JSON.parse(JSON.stringify(state)));
+
             setState(key, state[key], storage);
           });
         });
@@ -60,7 +63,7 @@ export const VuexPersist = (storages: IVuexPersistStorage[]): Plugin<any> => {
     /**
      * merge saved state from store into initial store
      */
-    const mergedState: any = merge(vuexStore.state, hydratedState, {
+    const mergedState: IState = merge(vuexStore.state, hydratedState, {
       clone:      false,
       arrayMerge: (store, saved) => {
         return saved;

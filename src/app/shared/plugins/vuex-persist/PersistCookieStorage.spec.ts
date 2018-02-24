@@ -79,7 +79,7 @@ describe('PersistCookieStorage', () => {
   });
 
   test('should continue with invalid JSON and fall back if ther is no initial state', () => {
-    const localStorage: PersistCookieStorage = new PersistCookieStorage([], {}, 'vuexpersist');
+    const localStorage: PersistCookieStorage = new PersistCookieStorage([], { cookieOptions: {} }, 'vuexpersist');
     const mergedState: any = localStorage.getMergedStateFromServerContext(
       {
         cookies: {
@@ -93,5 +93,22 @@ describe('PersistCookieStorage', () => {
     );
 
     expect(mergedState).toEqual({ fooo: ['bar'], foo: {} });
+  });
+
+  test('should manipulate state before persist', () => {
+    const state: any = {
+      foo: 'bar',
+      baz: 'faz',
+    };
+    const beforePersist = (localState: any): any => {
+      delete localState.foo;
+      return localState;
+    };
+    let localStorage: PersistCookieStorage = new PersistCookieStorage([]);
+
+    expect(localStorage.beforePersist(state)).toEqual(state);
+
+    localStorage = new PersistCookieStorage([], { cookieOptions: {}, beforePersist });
+    expect(localStorage.beforePersist(state)).toEqual({ baz: 'faz' });
   });
 });

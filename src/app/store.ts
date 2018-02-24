@@ -13,7 +13,19 @@ Vue.use(Vuex);
 let state: IState = (CLIENT && window.__INITIAL_STATE__) || DefaultState;
 
 export const getStore = (serverContext?: IServerContext): Store<IState> => {
-  const persistCookieStorage: PersistCookieStorage = new PersistCookieStorage(['app', 'counter'], { expires: 365 });
+  const persistCookieStorage: PersistCookieStorage = new PersistCookieStorage(
+    ['app', 'counter'],
+    {
+      cookieOptions: {
+        expires: 365,
+      },
+      beforePersist(localState: IState): IState {
+        // TODO: delete state that should not be saved in the cookie (https://github.com/devCrossNet/vue-starter/issues/52)
+
+        return localState;
+      },
+    },
+  );
 
   if (SERVER) {
     state = persistCookieStorage.getMergedStateFromServerContext<IState>(serverContext, state);
@@ -37,7 +49,7 @@ export const getStore = (serverContext?: IServerContext): Store<IState> => {
       plugins:   [
         VuexPersist(
           [
-            new PersistLocalStorage([]),
+            new PersistLocalStorage(),
             persistCookieStorage,
           ],
         ),

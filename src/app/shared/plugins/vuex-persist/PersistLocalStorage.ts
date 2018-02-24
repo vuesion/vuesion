@@ -1,15 +1,18 @@
 import { IVuexPersistStorage } from './vuex-persist';
+import { IState }              from '../../../mutations';
 
 export class PersistLocalStorage implements IVuexPersistStorage {
   public modules: string[];
   public prefix: string;
   public length: number;
+  private localBeforePersist: (state: IState) => IState;
   [key: string]: any;
   [index: number]: string;
 
-  constructor(modules: string[] = [], prefix: string = 'vuexpersist') {
+  constructor(modules: string[] = [], beforePersist?: (state: IState) => IState, prefix: string = 'vuexpersist') {
     this.modules = modules;
     this.prefix = prefix;
+    this.localBeforePersist = beforePersist;
   }
 
   public clear(): void {
@@ -30,6 +33,14 @@ export class PersistLocalStorage implements IVuexPersistStorage {
 
   public setItem(key: string, data: string): void {
     window.localStorage.setItem(this.getKey(key), data);
+  }
+
+  public beforePersist(state: IState): IState {
+    if (this.localBeforePersist) {
+      return this.localBeforePersist(state);
+    }
+
+    return state;
   }
 
   private getKey(key: string) {

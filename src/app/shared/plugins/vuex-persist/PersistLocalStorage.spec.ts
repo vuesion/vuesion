@@ -40,11 +40,28 @@ describe('PersistLocalStorage', () => {
   });
 
   test('should set item and change prefix', () => {
-    const localStore: PersistLocalStorage = new PersistLocalStorage([], 'testprefix');
+    const localStore: PersistLocalStorage = new PersistLocalStorage([], undefined, 'testprefix');
 
     localStore.setItem('foo', 'bar');
 
     expect(window.localStorage.setItem).toHaveBeenCalledWith('testprefixfoo', 'bar');
+  });
+
+  test('should manipulate state before persist', () => {
+    const state: any = {
+      foo: 'bar',
+      baz: 'faz',
+    };
+    const beforePersist = (localState: any): any => {
+      delete localState.foo;
+      return localState;
+    };
+    let localStore: PersistLocalStorage = new PersistLocalStorage([]);
+
+    expect(localStore.beforePersist(state)).toEqual(state);
+
+    localStore = new PersistLocalStorage([], beforePersist);
+    expect(localStore.beforePersist(state)).toEqual({ baz: 'faz' });
   });
 
 });

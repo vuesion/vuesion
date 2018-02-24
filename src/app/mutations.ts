@@ -13,6 +13,8 @@ import {
 }                       from './vuexExample/mutations';
 
 export interface IState extends ICounterState, IVuexExampleState {
+  [key: string]: any;
+
   app: {
     lang: string,
   };
