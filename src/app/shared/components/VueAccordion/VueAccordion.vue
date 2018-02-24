@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vueAccordion">
+  <div :class="[$style.vueAccordion, cssClass]">
     <slot />
   </div>
 </template>
@@ -9,7 +9,11 @@
     name:       'VueAccordion',
     components: {},
     props:      {
-      multi: {
+      cssClass: {
+        type:    String,
+        default: 'vueAccordion',
+      },
+      multi:    {
         type:     Boolean,
         required: false,
         default:  false,

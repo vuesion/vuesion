@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vueSlider" ref="slider" @mousedown="moveStart($event)" @touchstart="moveStart($event)">
+  <div :class="[$style.vueSlider, cssClass]" ref="slider" @mousedown="moveStart($event)" @touchstart="moveStart($event)">
     <ul :class="isMultiRange ? [$style.values, $style.multi] : $style.values">
       <li>{{formatValue(currentMin)}}</li>
       <li v-if="isMultiRange">{{formatValue(currentMax)}}</li>
@@ -41,6 +41,10 @@
     name:       'VueSlider',
     components: {},
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueSlider',
+      },
       min:         {
         type:     Number,
         required: true,

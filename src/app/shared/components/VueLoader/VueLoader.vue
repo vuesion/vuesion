@@ -1,8 +1,8 @@
 <template>
   <div :class="cssClasses">
-    <svg :class="['vue-loader-circle', $style.circle]" viewBox="25 25 50 50">
+    <svg :class="[$style.circle, 'vueLoaderCircle']" viewBox="25 25 50 50">
       <circle
-        :class="['vue-loader-path', $style.path]"
+        :class="[$style.path, 'vueLoaderPath']"
         cx="50"
         cy="50"
         r="20"
@@ -17,27 +17,31 @@
   export default {
     name:     'VueLoader',
     props:    {
-      medium:  {
+      cssClass: {
+        type:    String,
+        default: 'vueLoader',
+      },
+      medium:   {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      large:   {
+      large:    {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      primary: {
+      primary:  {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      accent:  {
+      accent:   {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      warn:    {
+      warn:     {
         type:     Boolean,
         required: false,
         default:  false,
@@ -45,7 +49,7 @@
     },
     computed: {
       cssClasses() {
-        const classes = ['vue-loader', this.$style.loader];
+        const classes = [this.$style.loader];
 
         if (this.medium) {
           classes.push(this.$style.medium);
@@ -66,6 +70,8 @@
         if (this.warn) {
           classes.push(this.$style.warn);
         }
+
+        classes.push(this.cssClass);
 
         return classes;
       },

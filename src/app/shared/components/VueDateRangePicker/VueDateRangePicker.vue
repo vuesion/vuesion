@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vueDateRangePicker">
+  <div :class="[$style.vueDateRangePicker, cssClass]">
     <vue-date-picker
       :min-date="minDate"
       :max-date="maxDate"
@@ -28,6 +28,10 @@
       VueDatePicker,
     },
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueDateRangePicker',
+      },
       minDate:          {
         type:     Date,
         required: false,

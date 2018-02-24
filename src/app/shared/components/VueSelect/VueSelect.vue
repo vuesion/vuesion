@@ -19,6 +19,10 @@
     name:       'VueSelect',
     components: {},
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueSelect',
+      },
       options:  {
         required: true,
         type:     Array,
@@ -39,6 +43,8 @@
         if (this.multiple) {
           classes.push(this.$style.multiple);
         }
+
+        classes.push(this.cssClass);
 
         return classes;
       },

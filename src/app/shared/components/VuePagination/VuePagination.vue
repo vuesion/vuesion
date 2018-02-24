@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vuePagination">
+  <div :class="[$style.vuePagination, cssClass]">
     <div :class="prevCssClasses" role="button" @click="prevClick"></div>
     <div :class="$style.label">
       {{current}} / {{pages}}
@@ -13,6 +13,10 @@
     name:       'VuePagination',
     components: {},
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vuePagination',
+      },
       pages:   {
         type:     Number,
         required: true,

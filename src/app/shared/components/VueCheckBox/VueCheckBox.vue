@@ -11,6 +11,10 @@
     name:       'VueCheckBox',
     components: {},
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueCheckBox',
+      },
       name:     {
         type:     String,
         required: false,
@@ -48,6 +52,8 @@
         if (this.disabled) {
           classes.push(this.$style.disabled);
         }
+
+        classes.push(this.cssClass);
 
         return classes;
       },

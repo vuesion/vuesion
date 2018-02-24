@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vueFooter">
+  <div :class="[$style.vueFooter, cssClass]">
     <vue-grid>
       <vue-grid-item>
         <small>&copy; Copyright {{year}} Johannes Werner</small>
@@ -31,7 +31,12 @@
       VueGrid,
       VueGridItem,
     },
-    props:      {},
+    props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueFooter',
+      },
+    },
     data() {
       return {};
     },

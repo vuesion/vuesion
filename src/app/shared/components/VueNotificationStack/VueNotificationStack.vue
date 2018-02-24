@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vueNotificationStack">
+  <div :class="[$style.vueNotificationStack, cssClass]">
     <transition-group name="list" tag="div">
       <div v-for="n in orderedNotifications"
            :class="[$style.notification, $style[n.type]]"
@@ -22,6 +22,10 @@
     name:       'VueNotificationStack',
     components: {},
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueNotificationStack',
+      },
       duration: {
         type:     Number,
         required: false,

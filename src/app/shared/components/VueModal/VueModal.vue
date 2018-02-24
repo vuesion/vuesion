@@ -4,7 +4,7 @@
     @enter="enter"
     @beforeLeave="beforeLeave"
     @leave="leave">
-    <div :class="[$style.vueModal, fitContent ? $style.fitContent : '']" v-if="show" ref="modal">
+    <div :class="[$style.vueModal, fitContent ? $style.fitContent : '', cssClass]" v-if="show" ref="modal">
       <slot />
     </div>
   </transition>
@@ -17,6 +17,10 @@
     name:       'VueModal',
     components: {},
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueModal',
+      },
       show:       {
         required: false,
         default:  false,

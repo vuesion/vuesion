@@ -17,6 +17,10 @@
     name:       'VueTabItem',
     components: {},
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueTabItem',
+      },
       isActive: {
         type:     Boolean,
         required: false,
@@ -47,6 +51,8 @@
         if (this.active || this.isActive) {
           classes.push(this.$style.active);
         }
+
+        classes.push(this.cssClass);
 
         return classes;
       },

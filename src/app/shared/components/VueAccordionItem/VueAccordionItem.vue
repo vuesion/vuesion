@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vueAccordionItem">
+  <div :class="[$style.vueAccordionItem, cssClass]">
     <div :class="$style.header" @click="click" role="tab">
       {{title}}
       <i :class="iconClasses"></i>
@@ -24,6 +24,10 @@
       VueCollapse,
     },
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueAccordionItem',
+      },
       title:    {
         type:     String,
         required: true,

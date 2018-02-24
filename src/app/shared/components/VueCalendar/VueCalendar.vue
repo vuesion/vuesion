@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.calendar, customClass]">
+  <div :class="[$style.calendar, cssClass]">
     <div :class="$style.header">
       <h3 @click="setSelecting('year')">{{ selectedYear }}</h3>
       <h2 @click="setSelecting('date')">{{ $d(calculatedDate, 'calendarHeader') }}</h2>
@@ -83,6 +83,10 @@
       VueButton,
     },
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueCalendar',
+      },
       minDate:        {
         type:     Date,
         required: false,
@@ -103,11 +107,6 @@
       endDate:        {
         type:     Date,
         required: false,
-      },
-      customClass:    {
-        type:     String,
-        required: false,
-        default:  'calendar',
       },
       selectedDate:   {
         type:     Date,

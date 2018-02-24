@@ -565,7 +565,7 @@
         font-size:     $font-size-h1;
       }
 
-      .vue-grid-item {
+      .vueGridItem {
         min-width: 46%;
       }
     }

@@ -1,5 +1,5 @@
 <template>
-  <vue-panel>
+  <vue-panel :css-class="cssClass">
     <vue-panel-header v-if="schema.title"
                       :title="schema.title"
                       :subtitle="schema.subtitle" />
@@ -56,6 +56,10 @@
       VueButton,
     },
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueForm',
+      },
       schema: {
         type:     Object,
         required: true,

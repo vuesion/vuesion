@@ -1,5 +1,5 @@
 <template>
-  <div :class="['feature-section', $style.devEx]">
+  <div :class="[$style.devEx, 'featureSection']">
     <vue-grid>
       <vue-grid-item fill>
         <h2>Development Experience</h2>
@@ -63,7 +63,7 @@
     text-align: center;
 
     :global {
-      .vue-panel-body {
+      .vuePanelBody {
         i {
           display:    inline-block;
           font-size:  $font-size-h1;

@@ -1,12 +1,18 @@
 <template>
-  <div :class="['vue-grid', $style.grid]">
+  <div :class="[$style.grid, cssClass]">
     <slot />
   </div>
 </template>
 
 <script lang="ts">
   export default {
-    name: 'VueGrid',
+    name:  'VueGrid',
+    props: {
+      cssClass: {
+        type:    String,
+        default: 'vueGrid',
+      },
+    },
   };
 </script>
 

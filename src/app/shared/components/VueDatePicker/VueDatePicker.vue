@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vueDatePicker" @click="show = true">
+  <div :class="[$style.vueDatePicker, cssClass]" @click="show = true">
     <vue-input :value="inputValue" :placeholder="placeholder" readonly />
     <vue-modal :show="show" :fit-content="true" @close="show = false">
       <vue-calendar
@@ -30,6 +30,10 @@
       VueCalendar,
     },
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueDatePicker',
+      },
       minDate:        {
         type:     Date,
         required: false,

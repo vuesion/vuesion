@@ -11,6 +11,10 @@
   export default {
     name:       'VueButton',
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueButton',
+      },
       primary:  {
         type:     Boolean,
         required: false,
@@ -76,6 +80,8 @@
           classes.push(this.$style.pulse);
         }
 
+        classes.push(this.cssClass);
+
         return classes;
       },
     },
@@ -126,7 +132,7 @@
       }
 
       :global {
-        .vue-loader-path {
+        .vueLoaderPath {
           stroke: $button-primary-color;
         }
       }
@@ -141,7 +147,7 @@
       }
 
       :global {
-        .vue-loader-path {
+        .vueLoaderPath {
           stroke: $button-accent-color;
         }
       }
@@ -156,7 +162,7 @@
       }
 
       :global {
-        .vue-loader-path {
+        .vueLoaderPath {
           stroke: $button-warn-color;
         }
       }
@@ -197,13 +203,13 @@
     }
 
     :global {
-      .vue-loader {
+      .vueLoader {
         position:    absolute;
         left:        50%;
         margin-left: -($grid-unit * 2);
         top:         $grid-unit;
 
-        .vue-loader-circle {
+        .vueLoaderCircle {
           &:before {
             background: $button-default-color;
           }

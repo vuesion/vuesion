@@ -77,22 +77,22 @@
     }
 
     :global {
-      .vue-panel {
+      .vuePanel {
         height: 100%;
       }
 
-      .vue-grid-item {
+      .vueGridItem {
         margin-bottom: $grid-unit * 4;
       }
 
-      .feature-section {
+      .featureSection {
         padding: $grid-unit * 4 0;
       }
     }
 
     @include media(tabletPortrait) {
       :global {
-        .feature-section {
+        .featureSection {
           padding: $grid-unit * 14 0;
         }
       }
@@ -100,7 +100,7 @@
 
     @include media(tabletLandscape) {
       :global {
-        .feature-section {
+        .featureSection {
           padding: $grid-unit * 20 0;
         }
       }

@@ -1,5 +1,5 @@
 <template>
-  <div :class="['feature-section', $style.quickStart]">
+  <div :class="[$style.quickStart, 'featureSection']">
     <vue-grid>
 
       <vue-grid-item fill>
@@ -59,7 +59,7 @@
     @include background-gradient($brand-dark-primary, $brand-primary, -31deg);
 
     :global {
-      .vue-panel-body {
+      .vuePanelBody {
         text-align: left;
         overflow:   hidden;
 
@@ -76,7 +76,7 @@
 
     @include media(tabletPortrait) {
       :global {
-        .vue-panel {
+        .vuePanel {
           width:       50%;
           margin-left: 25%;
         }
@@ -85,7 +85,7 @@
 
     @include media(tabletLandscape) {
       :global {
-        .vue-panel {
+        .vuePanel {
           width:       33.3333333%;
           margin-left: 33.3333333%;
         }

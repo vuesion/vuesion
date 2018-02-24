@@ -27,6 +27,10 @@
     name:       'VueInput',
     components: {},
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueInput',
+      },
       name:        {
         type:     String,
         required: false,
@@ -78,6 +82,8 @@
         if (!this.isValid) {
           classes.push(this.$style.error);
         }
+
+        classes.push(this.cssClass);
 
         return classes;
       },

@@ -1,5 +1,5 @@
 <template>
-  <div :class="['vue-panel-footer', $style.vuePanelFooter]">
+  <div :class="[$style.vuePanelFooter, cssClass]">
     <slot />
   </div>
 </template>
@@ -8,7 +8,12 @@
   export default {
     name:       'VuePanelFooter',
     components: {},
-    props:      {},
+    props:      {
+      cssClass: {
+        type:    String,
+        default: 'vuePanelFooter',
+      },
+    },
     data:       function () {
       return {};
     },

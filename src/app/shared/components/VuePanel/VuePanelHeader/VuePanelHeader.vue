@@ -13,6 +13,10 @@
     name:       'VuePanelHeader',
     components: {},
     props:      {
+      cssClass: {
+        type:    String,
+        default: 'vuePanelHeader',
+      },
       title:    {
         type:     String,
         required: false,
@@ -39,6 +43,8 @@
         if (this.image) {
           classes.push(this.$style.withImage);
         }
+
+        classes.push(this.cssClass);
 
         return classes;
       },

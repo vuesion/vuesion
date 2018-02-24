@@ -8,7 +8,11 @@
   export default {
     name:     'VueGridItem',
     props:    {
-      fill: {
+      cssClass: {
+        type:    String,
+        default: 'vueGridItem',
+      },
+      fill:     {
         type:     Boolean,
         required: false,
         default:  false,
@@ -21,6 +25,8 @@
         if (this.fill) {
           classes.push(this.$style.fill);
         }
+
+        classes.push(this.cssClass);
 
         return classes;
       },

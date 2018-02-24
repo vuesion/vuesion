@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vueTabGroup">
+  <div :class="[$style.vueTabGroup, cssClass]">
 
     <ul :class="$style.headerList" role="tablist">
       <li
@@ -22,7 +22,12 @@
   export default {
     name:       'VueTabGroup',
     components: {},
-    props:      {},
+    props:      {
+      cssClass: {
+        type:    String,
+        default: 'vueTabGroup',
+      },
+    },
     data(): any {
       return {
         tabs:       [],
