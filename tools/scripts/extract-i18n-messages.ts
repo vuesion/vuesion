@@ -11,13 +11,13 @@ const defaultLanguage: string = packageJSON.config['default-language'];
 const translations: any = {};
 const sanitizeMessage = (message: string): string => {
   const replacements: Array<{ from: string | RegExp, to: string }> = [
-    { from: /\s\s+/g, to: ' ' },
     { from: '/*', to: '' },
     { from: '*/', to: '' },
     { from: /\n/g, to: '\\n' },
     { from: /\[/g, to: '<' },
     { from: /\]/g, to: '>' },
-    { from: /\"/g, to: '\\"' },
+    { from: /"/g, to: '\'' },
+    { from: /\s\s+/g, to: ' ' },
   ];
 
   replacements.forEach((replacement: { from: string | RegExp, to: string }) => {
@@ -32,7 +32,7 @@ const addTranslationObject = (translation: string) => {
   const id: string = idMatches ? idMatches[0].replace(/[\\']/g, '') : '';
   const defaultMessageMatches: string[] = translation.match(/\/\*[\S\s]*\*\//);
   const defaultMessage: string = defaultMessageMatches
-    ? sanitizeMessage(defaultMessageMatches[0])
+    ? defaultMessageMatches[0]
     : '';
 
   if (defaultMessage.length > 0) {
@@ -72,7 +72,7 @@ const run = (): void => {
        */
       const sortedKeys: string[] = (Object as any).keys(newLangObject).sort();
       const sortedEntries: string[] = sortedKeys.map((key: string) => {
-        return `"${key}": "${newLangObject[key].replace(/\n/g, '\\n')}"`;
+        return `"${key}": "${sanitizeMessage(newLangObject[key])}"`;
       });
 
       fs.writeFileSync(path.join(basePath, 'i18n', `${lang}.json`), `{\n  ${sortedEntries.join(',\n  ')}\n}\n`);
