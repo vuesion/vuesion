@@ -17,7 +17,7 @@ const sanitizeMessage = (message: string): string => {
     { from: /\n/g, to: '\\n' },
     { from: /\[/g, to: '<' },
     { from: /\]/g, to: '>' },
-    { from: /"/g, to: '\'' },
+    { from: /\"/g, to: '\\"' },
   ];
 
   replacements.forEach((replacement: { from: string | RegExp, to: string }) => {
