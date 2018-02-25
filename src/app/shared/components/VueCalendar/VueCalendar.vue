@@ -83,7 +83,7 @@
       VueButton,
     },
     props:      {
-      cssClass: {
+      cssClass:       {
         type:    String,
         default: 'vueCalendar',
       },
@@ -304,19 +304,19 @@
 
   .calendar {
     width:      100%;
-    max-width:  $screen-phone;
+    max-width:  $calendar-max-width;
     position:   relative;
-    box-shadow: $panel-shadow;
-    background: $panel-bg;
-    margin:     0 $grid-unit * 2 $grid-unit * 2 0;
+    box-shadow: $calendar-shadow;
+    background: $calendar-bg;
+    margin:     $calendar-margin;
     display:    inline-block;
   }
 
   .header {
-    color:       $text-color;
-    padding:     $grid-unit * 2 $grid-unit * 3;
-    background:  linear-gradient(170deg, $brand-accent 0%, $brand-dark-primary 100%);
-    text-shadow: 0 2px 5px rgba(0, 0, 0, .33);
+    color:       $calendar-header-color;
+    padding:     $calendar-header-padding;
+    background:  $calendar-header-bg;
+    text-shadow: $calendar-header-text-shadow;
 
     h2, h3 {
       cursor: default;
@@ -336,8 +336,8 @@
   }
 
   .body {
-    border-bottom: $accordion-item-header-border-top;
-    padding:       $grid-unit * 2;
+    border-bottom: $calendar-body-border;
+    padding:       $calendar-body-padding;
 
     table {
       display: block;
@@ -356,12 +356,12 @@
             float:       left;
             padding-top: 100%;
           }
-          border-radius: 50%;
+          border-radius: $calendar-day-border-radius;
           flex:          1;
           text-align:    center;
 
           &:hover {
-            background: $bg-color;
+            background: $calendar-day-hover;
             cursor:     pointer;
           }
 
@@ -379,20 +379,21 @@
   }
 
   .arrow {
-    height:   $grid-unit * 4;
-    flex:     1 0 15%;
-    position: relative;
-    cursor:   pointer;
+    height:     $grid-unit * 4;
+    flex:       1 0 15%;
+    position:   relative;
+    cursor:     pointer;
+    background: $calendar-arrow-bg;
 
     &:hover {
-      background: $bg-color;
+      background: $calendar-arrow-hover-bg;
     }
 
     &:before, &:after {
       content:          "";
       transition:       all 0.25s ease-in-out;
       position:         absolute;
-      background-color: $brand-accent;
+      background-color: $calendar-arrow-color;
       width:            2px;
       height:           13px;
       top:              4px;
@@ -435,22 +436,22 @@
   }
 
   .currentDay {
-    font-weight:      bold;
-    background-color: $brand-primary;
-    color:            $bg-color;
+    font-weight: bold;
+    background:  $calendar-current-day-bg;
+    color:       $calendar-current-day-color;
 
     &:hover {
-      background-color: $brand-primary !important;
+      background-color: $calendar-current-day-bg !important;
     }
   }
 
   .selectedDay {
     font-weight:      bold;
-    background-color: $brand-accent;
-    color:            $bg-color;
+    background-color: $calendar-selected-day-bg;
+    color:            $calendar-selected-day-color;
 
     &:hover {
-      background-color: $brand-accent !important;
+      background-color: $calendar-selected-day-bg !important;
     }
   }
 

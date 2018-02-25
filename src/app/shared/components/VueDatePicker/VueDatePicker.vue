@@ -6,7 +6,7 @@
         :min-date="minDate"
         :max-date="maxDate"
         :first-day-of-week="firstDayOfWeek"
-        :custom-class="$style.calendar"
+        :css-class="$style.calendar"
         :selected-date="date"
         :start-date="startDate"
         :end-date="endDate"
@@ -30,7 +30,7 @@
       VueCalendar,
     },
     props:      {
-      cssClass: {
+      cssClass:       {
         type:    String,
         default: 'vueDatePicker',
       },

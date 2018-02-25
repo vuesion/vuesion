@@ -243,6 +243,31 @@ $select-multi-max-height: $grid-unit * 13;
 $select-multi-option-padding: $grid-unit * 0.5 0;
 
 /* Calendar */
+$calendar-max-width: $screen-phone;
+$calendar-shadow: $panel-shadow;
+$calendar-bg: $panel-bg;
+$calendar-margin: 0 $grid-unit * 2 $grid-unit * 2 0;
+
+$calendar-header-color: $text-color;
+$calendar-header-padding: $grid-unit * 2 $grid-unit * 3;
+$calendar-header-bg: linear-gradient(170deg, $brand-accent 0%, $brand-dark-primary 100%);
+$calendar-header-text-shadow: 0 2px 5px rgba(0, 0, 0, .33);
+
+$calendar-body-border: $accordion-item-header-border-top;
+$calendar-body-padding: $grid-unit * 2;
+
+$calendar-arrow-color: $brand-accent;
+$calendar-arrow-bg: $calendar-bg;
+$calendar-arrow-hover-bg: $bg-color;
+
+$calendar-day-border-radius: 50%;
+$calendar-day-hover: $bg-color;
+
+$calendar-current-day-bg: $brand-primary;
+$calendar-current-day-color: $bg-color;
+
+$calendar-selected-day-bg: $brand-accent;
+$calendar-selected-day-color: $bg-color;
 
 /* Notification Stack */
 $notifications-index: $modal-index + 1;
