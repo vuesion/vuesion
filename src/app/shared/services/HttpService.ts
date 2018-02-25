@@ -14,6 +14,7 @@ const isExternalUrl = (url: string): boolean => {
 };
 let retries: number = RETRY_COUNT;
 
+/* istanbul ignore next */
 axios.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     // TODO: get token from store e.g. const token: string = store.state.auth.accessToken;
@@ -35,6 +36,7 @@ axios.interceptors.request.use(
   },
 );
 
+/* istanbul ignore next */
 axios.interceptors.response.use(
   (response: AxiosResponse) => {
     return response;
