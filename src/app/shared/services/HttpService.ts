@@ -8,7 +8,7 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 const RETRY_COUNT: number = 3;
 
-const baseUrl: string = 'you backend url';
+const baseUrl: string = '';
 const isExternalUrl = (url: string): boolean => {
   return url.indexOf('://') > -1;
 };
