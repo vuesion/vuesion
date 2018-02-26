@@ -1,0 +1,16 @@
+import Vue from 'vue';
+
+import { storiesOf } from '@storybook/vue';
+import { action } from '@storybook/addon-actions';
+import VueInfoAddon from 'storybook-addon-vue-info';
+
+import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
+
+const story = (storiesOf('{{ properCase componentName }}', module) as any);
+
+story.addDecorator(VueInfoAddon);
+
+story.add('defualt', () => ({
+  components: { {{ properCase componentName }} },
+  template: `<{{ hyphenate componentName }}>{{ properCase componentName }}</{{ hyphenate componentName }}>`,
+}));
