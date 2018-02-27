@@ -78,12 +78,14 @@ app.use('/browserconfig.xml', serve('../../dist/assets/pwa/browserconfig.xml', f
 app.use('/sw.js', serve('../../dist/client/sw.js', false));
 app.use('/manifest.json', serve('../../dist/assets/pwa/manifest.json', false));
 
-/*
+/**
  * storybook
+ * TODO: enable this route only in non production environments
+ * if (!isProd) {
+ *    app.use('/storybook', serve('../../storybook-static', true));
+ * }
  */
-if (!isProd) {
-  app.use('/storybook', serve('../../storybook-static', true));
-}
+app.use('/storybook', serve('../../storybook-static', true));
 
 /**
  * SSR
