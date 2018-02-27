@@ -14,3 +14,16 @@ declare module 'vue-meta' {
   const meta: any;
   export = meta;
 }
+
+declare module 'marked' {
+  const marked: any;
+  export = marked;
+}
+
+declare module '@storybook/vue' {
+  export function storiesOf(name: string, ...params: any[]): any;
+}
+
+declare module '@storybook/addon-actions' {
+  export function action(name: string, ...params: any[]): any;
+}

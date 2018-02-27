@@ -48,6 +48,12 @@ A stable animations set up already included.
 
 A flexible component library that'll be extended over time.
 
+**Storybook**
+
+Storybook for Vue is a UI development environment for UI components. It allows interactive development, testing and sharing of UI components in various property states.
+
+It runs outside of your app. So you can develop UI components in isolation without worrying about app specific dependencies and requirements.
+Run `npm run storybook`. The server runs on port `6006`.
 
 **Industry-standard i18n internationalization support**
 

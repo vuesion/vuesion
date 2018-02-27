@@ -20,17 +20,17 @@
       title:    {
         type:     String,
         required: false,
-        default:  null,
+        default:  '',
       },
       subtitle: {
         type:     String,
         required: false,
-        default:  null,
+        default:  '',
       },
       image:    {
         type:     String,
         required: false,
-        default:  null,
+        default:  '',
       },
     },
     data:       function () {

@@ -1,0 +1,24 @@
+<template>
+  <div :class="$style.{{ camelCase componentName }}">
+    <h1>{{ properCase componentName }}</h1>
+  </div>
+</template>
+
+<script lang="ts">
+  export default {
+    name:       '{{ properCase componentName }}',
+    components: {},
+    props:      {},
+    data(): any {
+      return {};
+    },
+    computed:   {},
+    methods:    {},
+  };
+</script>
+
+<style lang="scss" module>
+  .{{ camelCase componentName }} {
+    display: block;
+  }
+</style>
