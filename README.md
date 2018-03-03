@@ -67,6 +67,11 @@ Centralized State Management with [vuex](https://github.com/vuejs/vuex).
 
 Server-side-rendering of prefetched data and transferring state from server to client.
 
+**Configuration**
+
+Default configuration is stored in `/src/app/config/default.json`, which can get overridden by providing valid JSON in the environment variable `CONFIG` on application startup or by an environment specific file.
+For instance, in order to set a custom API endpoint, run `CONFIG='{"api":{"baseUrl": "http://custom.api.endpoint/"}}' npm run start`. Check documentation of [config](https://www.npmjs.com/package/config) module.
+
 # Quick start
 
 1. Install Node.js 8.7.x or higher. Use [nvm](https://github.com/creationix/nvm) to maintain multiple Node.js versions

@@ -1,0 +1,5 @@
+{
+  "api": {
+    "baseUrl": "http://jsonplaceholder.typicode.com"
+  }
+}
