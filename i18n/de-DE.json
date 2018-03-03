@@ -1,32 +1,68 @@
 {
-  "App.core.description": "Ein professionelles Boilerplate für universelle, progressive-web-apps mit Vue.JS",
-  "App.nav.components": "Komponenten",
-  "App.nav.counter": "Zähler",
-  "App.nav.english": "Englisch",
-  "App.nav.german": "Deutsch",
-  "App.nav.home": "Startseite",
-  "App.nav.pt-BR": "Portugiesisch",
-  "components.calendar.friday.short": "F",
-  "components.calendar.monday.short": "M",
-  "components.calendar.saturday.short": "S",
-  "components.calendar.sunday.short": "S",
-  "components.calendar.thursday.short": "D",
-  "components.calendar.tuesday.short": "D",
-  "components.calendar.wednesday.short": "M",
-  "components.forms": "Formulare",
-  "components.markdown": "\n # Markdown support\n\n - build on top of marked\n\n - server side rendering!!!\n\n - `github style` markdown\n",
-  "components.register.cancellationText": "Abbrechen",
-  "components.register.consent": "Ja, Sie können mich kontaktieren",
-  "components.register.email": "E-mail",
-  "components.register.email.invalidText": "Ungültige E-mail Adresse",
-  "components.register.name": "Name",
-  "components.register.name.invalidText": "Bitte Vor- und Nachnamen angeben",
-  "components.register.phone": "Telefon",
-  "components.register.phone.invalidText": "Ungültige Telefonnummer",
-  "components.register.submit.notification.text": "Wir haben Dir eine E-mail an {email} gesendet.",
-  "components.register.submit.notification.title": "Hallo {name}!",
-  "components.register.submitText": "Registrieren",
-  "components.register.subtitle": "Bitte alle benötigten Felder ausfüllen",
-  "components.register.terms": "Ich akzeptiere die <a href='/terms'>AGBs</a>",
-  "components.register.title": "Registrieren"
+  "app": {
+    "core": {
+      "description": "Ein professionelles Boilerplate für universelle, progressive-web-apps mit Vue.JS"
+    },
+    "nav": {
+      "components": "Komponenten",
+      "counter": "Zähler",
+      "english": "Englisch",
+      "german": "Deutsch",
+      "home": "Startseite",
+      "pt-BR": "Portugiesisch"
+    },
+    "components": {
+      "calendar": {
+        "friday": {
+          "short": "F"
+        },
+        "monday": {
+          "short": "M"
+        },
+        "saturday": {
+          "short": "S"
+        },
+        "sunday": {
+          "short": "S"
+        },
+        "thursday": {
+          "short": "D"
+        },
+        "tuesday": {
+          "short": "D"
+        },
+        "wednesday": {
+          "short": "M"
+        }
+      },
+      "forms": "Formulare",
+      "markdown": "\n # Markdown support\n\n - build on top of marked\n\n - server side rendering!!!\n\n - `github style` markdown\n",
+      "register": {
+        "cancellationText": "Abbrechen",
+        "consent": "Ja, Sie können mich kontaktieren",
+        "email": {
+          "label": "E-mail",
+          "invalidText": "Ungültige E-mail Adresse!"
+        },
+        "name": {
+          "label": "Name",
+          "invalidText": "Bitte Vor- und Nachnamen angeben!"
+        },
+        "phone": {
+          "label": "Telefon",
+          "invalidText": "Ungültige Telefonnummer!"
+        },
+        "submit": {
+          "notification": {
+            "text": "Wir haben Dir eine E-mail an {email} gesendet.",
+            "title": "Hallo {name}!"
+          },
+          "label": "Registrieren"
+        },
+        "subtitle": "Bitte alle benötigten Felder ausfüllen",
+        "terms": "Ich akzeptiere die <a href='/terms'>AGBs</a>",
+        "title": "Registrieren"
+      }
+    }
+  }
 }
