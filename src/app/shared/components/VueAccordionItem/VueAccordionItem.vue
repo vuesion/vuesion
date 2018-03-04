@@ -2,7 +2,7 @@
   <div :class="[$style.vueAccordionItem, cssClass]">
     <div :class="$style.header" @click="click" role="tab">
       {{title}}
-      <i :class="iconClasses"></i>
+      <vue-icon :name="iconClasses" />
     </div>
     <vue-collapse :show="show">
       <section
@@ -17,11 +17,13 @@
 
 <script lang="ts">
   import VueCollapse from '../VueCollapse/VueCollapse.vue';
+  import VueIcon   from '../VueIcon/VueIcon';
 
   export default {
     name:       'VueAccordionItem',
     components: {
       VueCollapse,
+      VueIcon,
     },
     props:      {
       cssClass: {

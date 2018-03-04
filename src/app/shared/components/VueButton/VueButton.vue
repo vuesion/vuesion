@@ -4,7 +4,7 @@
     @click="onClick"
     :disabled="disabled"
     v-bind="$attrs">
-    <i :class="iconClasses" v-if="$props.icon" />
+    <vue-icon :name="iconClasses" v-if="$props.icon" />
     <slot v-if="!loading" />
     <vue-loader v-if="loading" />
   </button>
@@ -12,6 +12,7 @@
 
 <script lang="ts">
   import VueLoader from '../VueLoader/VueLoader';
+  import VueIcon   from '../VueIcon/VueIcon';
 
   export default {
     name:       'VueButton',
@@ -58,6 +59,7 @@
     },
     components: {
       VueLoader,
+      VueIcon,
     },
     methods:    {
       onClick(e: Event) {

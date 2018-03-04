@@ -5,6 +5,6 @@ const req = require.context('../src/app/shared/components', true, /.stories.ts$/
 
 const loadStories = () => {
   req.keys().forEach((filename) => req(filename));
-}
+};
 
 configure(loadStories, module);

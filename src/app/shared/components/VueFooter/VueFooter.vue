@@ -7,10 +7,12 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          <a href="https://github.com/devCrossNet" target="_blank" rel="noopener" aria-label="github profile"><i
-            class="fab fa-github-alt"></i></a>
-          <a href="https://twitter.com/_jwerner_" target="_blank" rel="noopener" aria-label="twitter profile"><i
-            class="fab fa-twitter-square"></i></a>
+          <a href="https://github.com/devCrossNet" target="_blank" rel="noopener" aria-label="github profile">
+            <vue-icon name="fab fa-github-alt" />
+          </a>
+          <a href="https://twitter.com/_jwerner_" target="_blank" rel="noopener" aria-label="twitter profile">
+            <vue-icon name="fab fa-twitter-square" />
+          </a>
         </vue-grid-item>
 
         <vue-grid-item>
@@ -27,6 +29,7 @@
   import VueGrid     from '../VueGrid/VueGrid';
   import VueGridItem from '../VueGridItem/VueGridItem';
   import VueGridRow  from '../VueGridRow/VueGridRow';
+  import VueIcon     from '../VueIcon/VueIcon';
 
   export default {
     name:       'VueFooter',
@@ -34,6 +37,7 @@
       VueGrid,
       VueGridItem,
       VueGridRow,
+      VueIcon,
     },
     props:      {
       cssClass: {
