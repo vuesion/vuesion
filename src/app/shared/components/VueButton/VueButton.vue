@@ -1,5 +1,6 @@
 <template>
   <button :class="cssClasses" @click="onClick" :disabled="disabled">
+    <i :class="iconClasses" v-if="$props.icon" />
     <slot v-if="!loading" />
     <vue-loader v-if="loading" />
   </button>
@@ -45,6 +46,11 @@
         required: false,
         default:  false,
       },
+      icon:     {
+        type:     String,
+        required: false,
+        default:  ''
+      }
     },
     components: {
       VueLoader,
@@ -57,6 +63,9 @@
       },
     },
     computed:   {
+      iconClasses() {
+        return `fas fa-${this.icon}`;
+      },
       cssClasses() {
         const classes = [this.$style.button, this.$style.ripple];
 

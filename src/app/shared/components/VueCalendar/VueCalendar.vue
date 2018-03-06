@@ -126,7 +126,7 @@
 
         days = days.concat(Array(paddingLeft).fill(null));
 
-        for (let i = 0, len = daysInMonth; i < daysInMonth; i++) {
+        for (let i = 0; i < daysInMonth; i++) {
           days.push(i + 1);
         }
 
@@ -145,8 +145,12 @@
             selected = date.getTime() >= this.startDate.getTime() && date.getTime() <= this.calculatedDate.getTime();
           }
 
-          if (this.endDate && this.endDate.getTime() >= date.getTime()) {
+          if (this.endDate) {
             selected = date.getTime() <= this.endDate.getTime() && date.getTime() >= this.calculatedDate.getTime();
+          }
+
+          if (day === null) {
+            selected = false;
           }
 
           return { day, currentDay, selected, disabled } as IDay;
@@ -252,19 +256,22 @@
         this.selecting = 'date';
       },
       setDate(): void {
-        const date: Date = new Date();
+        let date: Date = new Date();
 
         this.selectedDay = date.getDate();
 
         if (this.minDate) {
+          date = this.minDate;
           this.selectedDay = this.minDate.getDate() + 1;
         }
 
         if (this.startDate) {
+          date = this.startDate;
           this.selectedDay = this.startDate.getDate();
         }
 
         if (this.selectedDate) {
+          date = this.selectedDate;
           this.selectedDay = this.selectedDate.getDate();
         }
 
