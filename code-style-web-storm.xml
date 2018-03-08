@@ -1,0 +1,119 @@
+<code_scheme name="vue-starter" version="173">
+  <CssCodeStyleSettings>
+    <option name="HEX_COLOR_UPPER_CASE" value="true" />
+    <option name="HEX_COLOR_SHORT_FORMAT" value="true" />
+    <option name="VALUE_ALIGNMENT" value="2" />
+    <option name="KEEP_SINGLE_LINE_BLOCKS" value="true" />
+  </CssCodeStyleSettings>
+  <DBN-PSQL>
+    <case-options enabled="false">
+      <option name="KEYWORD_CASE" value="lower" />
+      <option name="FUNCTION_CASE" value="lower" />
+      <option name="PARAMETER_CASE" value="lower" />
+      <option name="DATATYPE_CASE" value="lower" />
+      <option name="OBJECT_CASE" value="preserve" />
+    </case-options>
+    <formatting-settings enabled="false" />
+  </DBN-PSQL>
+  <DBN-SQL>
+    <case-options enabled="false">
+      <option name="KEYWORD_CASE" value="lower" />
+      <option name="FUNCTION_CASE" value="lower" />
+      <option name="PARAMETER_CASE" value="lower" />
+      <option name="DATATYPE_CASE" value="lower" />
+      <option name="OBJECT_CASE" value="preserve" />
+    </case-options>
+    <formatting-settings enabled="false">
+      <option name="STATEMENT_SPACING" value="one_line" />
+      <option name="CLAUSE_CHOP_DOWN" value="chop_down_if_statement_long" />
+      <option name="ITERATION_ELEMENTS_WRAPPING" value="chop_down_if_not_single" />
+    </formatting-settings>
+  </DBN-SQL>
+  <HTMLCodeStyleSettings>
+    <option name="HTML_ALIGN_TEXT" value="true" />
+    <option name="HTML_SPACE_INSIDE_EMPTY_TAG" value="true" />
+    <option name="HTML_ENFORCE_QUOTES" value="true" />
+  </HTMLCodeStyleSettings>
+  <JSCodeStyleSettings>
+    <option name="FORCE_SEMICOLON_STYLE" value="true" />
+    <option name="ALIGN_OBJECT_PROPERTIES" value="1" />
+    <option name="USE_DOUBLE_QUOTES" value="false" />
+    <option name="FORCE_QUOTE_STYlE" value="true" />
+    <option name="ENFORCE_TRAILING_COMMA" value="WhenMultiline" />
+    <option name="SPACES_WITHIN_OBJECT_LITERAL_BRACES" value="true" />
+    <option name="SPACES_WITHIN_IMPORTS" value="true" />
+    <option name="ALIGN_IMPORTS" value="true" />
+    <option name="INDENT_CHAINED_CALLS" value="false" />
+    <option name="BLACKLIST_IMPORTS" value="rxjs" />
+  </JSCodeStyleSettings>
+  <DBN-PSQL>
+    <case-options enabled="false">
+      <option name="KEYWORD_CASE" value="lower" />
+      <option name="FUNCTION_CASE" value="lower" />
+      <option name="PARAMETER_CASE" value="lower" />
+      <option name="DATATYPE_CASE" value="lower" />
+      <option name="OBJECT_CASE" value="preserve" />
+    </case-options>
+    <formatting-settings enabled="false" />
+  </DBN-PSQL>
+  <DBN-SQL>
+    <case-options enabled="false">
+      <option name="KEYWORD_CASE" value="lower" />
+      <option name="FUNCTION_CASE" value="lower" />
+      <option name="PARAMETER_CASE" value="lower" />
+      <option name="DATATYPE_CASE" value="lower" />
+      <option name="OBJECT_CASE" value="preserve" />
+    </case-options>
+    <formatting-settings enabled="false">
+      <option name="STATEMENT_SPACING" value="one_line" />
+      <option name="CLAUSE_CHOP_DOWN" value="chop_down_if_statement_long" />
+      <option name="ITERATION_ELEMENTS_WRAPPING" value="chop_down_if_not_single" />
+    </formatting-settings>
+  </DBN-SQL>
+  <TypeScriptCodeStyleSettings>
+    <option name="FORCE_SEMICOLON_STYLE" value="true" />
+    <option name="ALIGN_OBJECT_PROPERTIES" value="1" />
+    <option name="USE_DOUBLE_QUOTES" value="false" />
+    <option name="FORCE_QUOTE_STYlE" value="true" />
+    <option name="ENFORCE_TRAILING_COMMA" value="WhenMultiline" />
+    <option name="SPACES_WITHIN_OBJECT_LITERAL_BRACES" value="true" />
+    <option name="SPACES_WITHIN_IMPORTS" value="true" />
+    <option name="ALIGN_IMPORTS" value="true" />
+    <option name="INDENT_CHAINED_CALLS" value="false" />
+  </TypeScriptCodeStyleSettings>
+  <codeStyleSettings language="HTML">
+    <option name="SOFT_MARGINS" value="80,120" />
+  </codeStyleSettings>
+  <codeStyleSettings language="JavaScript">
+    <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
+    <option name="ALIGN_MULTILINE_PARAMETERS_IN_CALLS" value="true" />
+    <option name="ALIGN_MULTILINE_TERNARY_OPERATION" value="true" />
+    <option name="ALIGN_MULTILINE_ARRAY_INITIALIZER_EXPRESSION" value="true" />
+    <option name="TERNARY_OPERATION_WRAP" value="5" />
+    <option name="TERNARY_OPERATION_SIGNS_ON_NEXT_LINE" value="true" />
+    <option name="ARRAY_INITIALIZER_WRAP" value="1" />
+    <option name="ARRAY_INITIALIZER_LBRACE_ON_NEXT_LINE" value="true" />
+    <option name="ARRAY_INITIALIZER_RBRACE_ON_NEXT_LINE" value="true" />
+    <option name="IF_BRACE_FORCE" value="3" />
+    <option name="DOWHILE_BRACE_FORCE" value="3" />
+    <option name="WHILE_BRACE_FORCE" value="3" />
+    <option name="FOR_BRACE_FORCE" value="3" />
+  </codeStyleSettings>
+  <codeStyleSettings language="TypeScript">
+    <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
+    <option name="ALIGN_MULTILINE_PARAMETERS_IN_CALLS" value="true" />
+    <option name="ALIGN_MULTILINE_TERNARY_OPERATION" value="true" />
+    <option name="ALIGN_MULTILINE_ARRAY_INITIALIZER_EXPRESSION" value="true" />
+    <option name="TERNARY_OPERATION_WRAP" value="5" />
+    <option name="TERNARY_OPERATION_SIGNS_ON_NEXT_LINE" value="true" />
+    <option name="KEEP_SIMPLE_BLOCKS_IN_ONE_LINE" value="true" />
+    <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
+    <option name="ARRAY_INITIALIZER_WRAP" value="1" />
+    <option name="ARRAY_INITIALIZER_LBRACE_ON_NEXT_LINE" value="true" />
+    <option name="ARRAY_INITIALIZER_RBRACE_ON_NEXT_LINE" value="true" />
+    <option name="IF_BRACE_FORCE" value="3" />
+    <option name="DOWHILE_BRACE_FORCE" value="3" />
+    <option name="WHILE_BRACE_FORCE" value="3" />
+    <option name="FOR_BRACE_FORCE" value="3" />
+  </codeStyleSettings>
+</code_scheme>

@@ -25,7 +25,7 @@ const serverConfig = merge(baseConfig, {
   ],
   node:      {
     global:     true,
-    __dirname:  true,
+    __dirname:  false,
     __filename: true,
     process:    true,
     Buffer:     false,

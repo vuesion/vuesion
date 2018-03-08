@@ -31,12 +31,12 @@ const packageJson: any = JSON.parse(fs.readFileSync(resolve('../../package.json'
 let renderer: BundleRenderer;
 
 if (isProd) {
-  const bundle: any = nodeRequire('../../dist/server/vue-ssr-bundle.json');
-  const template: string = fs.readFileSync(resolve('../../dist/client/index.html'), 'utf-8');
+  const bundle: any = nodeRequire('./vue-ssr-bundle.json');
+  const template: string = fs.readFileSync(resolve('../client/index.html'), 'utf-8');
 
   renderer = createRenderer(bundle, template);
 } else {
-  const devServer: any = nodeRequire('../../dist/server/dev-server.js').devServer;
+  const devServer: any = nodeRequire('./dev-server.js').devServer;
 
   devServer(app, (bundle: string, template: string) => {
     renderer = createRenderer(bundle, template);
@@ -67,16 +67,16 @@ app.get('*', (req: Request, res: Response, next: any) => {
  * assets
  */
 app.use('/i18n', serve('../../i18n', false));
-app.use('/client', serve('../../dist/client', true));
-app.use('/assets', serve('../../dist/assets', true));
+app.use('/client', serve('../client', true));
+app.use('/assets', serve('../assets', true));
 app.use(favicon(path.resolve(__dirname, '../assets/logo.png')));
 
 /**
  * PWA
  */
-app.use('/browserconfig.xml', serve('../../dist/assets/pwa/browserconfig.xml', false));
-app.use('/sw.js', serve('../../dist/client/sw.js', false));
-app.use('/manifest.json', serve('../../dist/assets/pwa/manifest.json', false));
+app.use('/browserconfig.xml', serve('../assets/pwa/browserconfig.xml', false));
+app.use('/sw.js', serve('../client/sw.js', false));
+app.use('/manifest.json', serve('../assets/pwa/manifest.json', false));
 
 /**
  * storybook
@@ -97,11 +97,11 @@ app.get('*', (req: Request, res: Response) => {
   res.setHeader('Expires', '0');
   res.setHeader('max-age', '0');
 
-  acceptLanguage.languages(packageJson.config['supported-languages']);
-
   if (!renderer) {
     return res.end('waiting for compilation... refresh in a moment.');
   }
+
+  acceptLanguage.languages(packageJson.config['supported-languages']);
 
   const startTime: number = Date.now();
   const errorHandler = (err: any): void => {
