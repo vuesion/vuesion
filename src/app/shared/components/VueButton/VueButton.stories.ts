@@ -1,9 +1,6 @@
-import Vue from 'vue';
-
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import VueInfoAddon from 'storybook-addon-vue-info';
-
 import VueButton from './VueButton.vue';
 
 const story = (storiesOf('Button', module) as any);

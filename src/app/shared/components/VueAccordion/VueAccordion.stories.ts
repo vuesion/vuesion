@@ -1,8 +1,5 @@
-import Vue from 'vue';
-
 import { storiesOf } from '@storybook/vue';
 import VueInfoAddon from 'storybook-addon-vue-info';
-
 import VueAccordion from './VueAccordion.vue';
 import VueAccordionItem from '../VueAccordionItem/VueAccordionItem.vue';
 

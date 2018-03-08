@@ -63,22 +63,22 @@
         <vue-button>Default</vue-button>
         <vue-button disabled>Default</vue-button>
         <!--<vue-button loading>Loading</vue-button>-->
-        <vue-button pulse>Pulse</vue-button>
+        <vue-button pulse>Default</vue-button>
         <br />
         <vue-button primary>Primary</vue-button>
         <vue-button primary disabled>Primary</vue-button>
         <!--<vue-button primary loading>Loading</vue-button>-->
-        <vue-button primary pulse>Pulse</vue-button>
+        <vue-button primary pulse>Primary</vue-button>
         <br />
-        <vue-button accent>Primary</vue-button>
-        <vue-button accent disabled>Primary</vue-button>
+        <vue-button accent>Accent</vue-button>
+        <vue-button accent disabled>Accent</vue-button>
         <!--<vue-button accent loading>Loading</vue-button>-->
-        <vue-button accent pulse>Pulse</vue-button>
+        <vue-button accent pulse>Accent</vue-button>
         <br />
-        <vue-button warn>Primary</vue-button>
-        <vue-button warn disabled>Primary</vue-button>
+        <vue-button warn>Warn</vue-button>
+        <vue-button warn disabled>Warn</vue-button>
         <!--<vue-button warn loading>Loading</vue-button>-->
-        <vue-button warn pulse>Pulse</vue-button>
+        <vue-button warn pulse>Warn</vue-button>
       </vue-grid-item>
 
       <vue-grid-item>

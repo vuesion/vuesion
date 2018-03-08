@@ -5,7 +5,7 @@
  * https://gist.github.com/Rich-Harris/fd6c3c73e6e707e312d7c5d7d0f3b2f9
  */
 
-const DEBUG = true;
+const DEBUG_SW = true;
 const { assets } = ((global as any) as any).serviceWorkerOption;
 const CACHE_NAME: string = Date.now().toString();
 
@@ -18,7 +18,7 @@ assetsToCache = assetsToCache.map(path => {
 // When the service worker is first added to a computer.
 self.addEventListener('install', (event: any) => {
   // Perform install steps.
-  if (DEBUG) {
+  if (DEBUG_SW) {
     console.log(`[SW] Install cache: ${CACHE_NAME}`);
   }
 
@@ -30,7 +30,7 @@ self.addEventListener('install', (event: any) => {
                      return cache.addAll(assetsToCache);
                    })
                    .then(() => {
-                     if (DEBUG) {
+                     if (DEBUG_SW) {
                        console.info('Cached assets: main', assetsToCache);
                      }
                    })
@@ -43,14 +43,14 @@ self.addEventListener('install', (event: any) => {
 
 // After the install event.
 self.addEventListener('activate', (event: any) => {
-  if (DEBUG) {
+  if (DEBUG_SW) {
     console.log(`[SW] Activate event for cache: ${CACHE_NAME}`);
   }
 
   // Clean the caches
   event.waitUntil(
     (global as any).caches.keys().then((cacheNames: any) => {
-      if (DEBUG) {
+      if (DEBUG_SW) {
         console.log('[SW] installed caches:', cacheNames);
       }
 
@@ -58,7 +58,7 @@ self.addEventListener('activate', (event: any) => {
         cacheNames.map((cacheName: string): Promise<any> => {
           // Delete the caches that are not the current one.
           if (cacheName !== CACHE_NAME) {
-            if (DEBUG) {
+            if (DEBUG_SW) {
               console.info(`[SW] cache deleted: ${cacheName}`);
             }
 
@@ -90,7 +90,7 @@ self.addEventListener('fetch', (event: any) => {
 
   // Ignore not GET request.
   if (request.method !== 'GET') {
-    if (DEBUG) {
+    if (DEBUG_SW) {
       console.log(`[SW] Ignore non GET request ${request.method}`);
     }
     return;
@@ -100,7 +100,7 @@ self.addEventListener('fetch', (event: any) => {
 
   // Ignore difference origin.
   if (requestUrl.origin !== location.origin) {
-    if (DEBUG) {
+    if (DEBUG_SW) {
       console.log(`[SW] Ignore difference origin ${requestUrl.origin}`);
     }
     return;
@@ -110,7 +110,7 @@ self.addEventListener('fetch', (event: any) => {
                                   .match(request, { cacheName: CACHE_NAME })
                                   .then((cacheResponse: any) => {
                                     if (cacheResponse) {
-                                      if (DEBUG) {
+                                      if (DEBUG_SW) {
                                         console.info(`[SW] fetch URL ${requestUrl.href} from cache`);
                                       }
 
@@ -121,14 +121,14 @@ self.addEventListener('fetch', (event: any) => {
                                     return fetch(request)
                                     .then((response: Response) => {
                                       if (!response || !response.ok) {
-                                        if (DEBUG) {
+                                        if (DEBUG_SW) {
                                           console.error(`[SW] URL [${requestUrl.toString()}] wrong responseNetwork: ${response.status} ${response.type}`);
                                         }
 
                                         return response;
                                       }
 
-                                      if (DEBUG) {
+                                      if (DEBUG_SW) {
                                         console.log(`[SW] URL ${requestUrl.href} fetched`);
                                       }
 
@@ -140,7 +140,7 @@ self.addEventListener('fetch', (event: any) => {
                                                        return cache.put(request, responseCache);
                                                      })
                                                      .then(() => {
-                                                       if (DEBUG) {
+                                                       if (DEBUG_SW) {
                                                          console.log(`[SW] Cache asset: ${requestUrl.href}`);
                                                        }
                                                      });

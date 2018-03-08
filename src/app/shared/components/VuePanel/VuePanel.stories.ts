@@ -1,8 +1,5 @@
-import Vue from 'vue';
-
 import { storiesOf } from '@storybook/vue';
 import VueInfoAddon from 'storybook-addon-vue-info';
-
 import VuePanel from './VuePanel.vue';
 import VuePanelHeader from './VuePanelHeader/VuePanelHeader.vue';
 import VuePanelBody from './VuePanelBody/VuePanelBody.vue';
