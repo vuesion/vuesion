@@ -1,32 +1,68 @@
 {
-  "App.core.description": "an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS",
-  "App.nav.components": "Components",
-  "App.nav.counter": "Counter",
-  "App.nav.english": "English",
-  "App.nav.german": "German",
-  "App.nav.home": "Home",
-  "App.nav.pt-BR": "Portuguese",
-  "components.calendar.friday.short": "F",
-  "components.calendar.monday.short": "M",
-  "components.calendar.saturday.short": "S",
-  "components.calendar.sunday.short": "S",
-  "components.calendar.thursday.short": "T",
-  "components.calendar.tuesday.short": "T",
-  "components.calendar.wednesday.short": "W",
-  "components.forms": "Forms",
-  "components.markdown": "\n # Markdown support\n\n - build on top of marked\n\n - server side rendering!!!\n\n - `github style` markdown\n",
-  "components.register.cancellationText": "Cancel",
-  "components.register.consent": "I consent to get contacted",
-  "components.register.email": "Email",
-  "components.register.email.invalidText": "This is not a valid email address!",
-  "components.register.name": "Name",
-  "components.register.name.invalidText": "Please provide first and last name",
-  "components.register.phone": "Phone",
-  "components.register.phone.invalidText": "This is not a valid phone number!",
-  "components.register.submit.notification.text": "We've sent an email to: {email}!",
-  "components.register.submit.notification.title": "Hey {name}!",
-  "components.register.submitText": "Submit",
-  "components.register.subtitle": "Please fill in all required fields",
-  "components.register.terms": "I accept the <a href='/terms'>Terms and Conditions</a>",
-  "components.register.title": "Register"
+  "app": {
+    "core": {
+      "description": "an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS"
+    },
+    "nav": {
+      "components": "Components",
+      "counter": "Counter",
+      "english": "English",
+      "german": "German",
+      "home": "Home",
+      "pt-BR": "Portuguese"
+    },
+    "components": {
+      "calendar": {
+        "friday": {
+          "short": "F"
+        },
+        "monday": {
+          "short": "M"
+        },
+        "saturday": {
+          "short": "S"
+        },
+        "sunday": {
+          "short": "S"
+        },
+        "thursday": {
+          "short": "T"
+        },
+        "tuesday": {
+          "short": "T"
+        },
+        "wednesday": {
+          "short": "W"
+        }
+      },
+      "forms": "Forms",
+      "markdown": "\n # Markdown support\n\n - build on top of marked\n\n - server side rendering!!!\n\n - `github style` markdown\n",
+      "register": {
+        "cancellationText": "Cancel",
+        "consent": "I consent to get contacted",
+        "email": {
+          "label": "Email",
+          "invalidText": "This is not a valid email address!"
+        },
+        "name": {
+          "label": "Name",
+          "invalidText": "Please provide first and last name"
+        },
+        "phone": {
+          "label": "Phone",
+          "invalidText": "This is not a valid phone number!"
+        },
+        "submit": {
+          "notification": {
+            "text": "We've sent an email to: {email}!",
+            "title": "Hey {name}!"
+          },
+          "label": "Submit"
+        },
+        "subtitle": "Please fill in all required fields",
+        "terms": "I accept the <a href='/terms'>Terms and Conditions</a>",
+        "title": "Register"
+      }
+    }
+  }
 }

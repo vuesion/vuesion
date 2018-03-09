@@ -2,7 +2,7 @@
   <div :class="$style.counter">
     <vue-grid>
       <vue-grid-item fill>
-        <h1>{{ $t('App.nav.counter') }}</h1>
+        <h1>{{ $t('app.nav.counter') }}</h1>
       </vue-grid-item>
 
       <vue-grid-item fill>

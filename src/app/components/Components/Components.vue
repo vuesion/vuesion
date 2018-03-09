@@ -4,7 +4,7 @@
     <div :class="$style.header">
       <vue-grid>
         <vue-grid-item>
-          <h1>{{ $t('App.nav.components' /*Components*/) }}</h1>
+          <h1>{{ $t('app.nav.components' /*Components*/) }}</h1>
           <p>
             This Boilerplate comes with an initial set of solutions for common UX/UI patterns.
           </p>
@@ -296,7 +296,7 @@
       </vue-grid-item>
 
       <vue-grid-item>
-        <div class="h1">{{ $t('components.forms' /*Forms*/) }}</div>
+        <div class="h1">{{ $t('app.components.forms' /*Forms*/) }}</div>
         <vue-form :schema="registerSchema" @submit="formSubmit" @reset="formReset">
           <div slot="middle">
             named slot in the middle (defined in schema)
@@ -309,13 +309,13 @@
       </vue-grid-item>
 
       <vue-grid-item>
-        <div class="h1">{{ $t('components.forms' /*Forms*/) }}</div>
+        <div class="h1">{{ $t('app.components.forms' /*Forms*/) }}</div>
         <vue-form :schema="loginSchema" />
       </vue-grid-item>
 
       <vue-grid-item>
         <div class="h1">Markdown renderer</div>
-        <vue-markdown>{{ $t('components.markdown' /*
+        <vue-markdown>{{ $t('app.components.markdown' /*
                       # Markdown support\n
                       - build on top of marked\n
                       - server side rendering!!!\n
@@ -401,34 +401,34 @@
       },
       registerSchema(): IFormSchema {
         return {
-          cancellationText: this.$t('components.register.cancellationText' /* Cancel */),
-          submitText:       this.$t('components.register.submitText' /* Submit */),
+          cancellationText: this.$t('app.components.register.cancellationText' /* Cancel */),
+          submitText:       this.$t('app.components.register.submit.label' /* Submit */),
           id:               'myForm',
           name:             'myForm',
-          title:            this.$t('components.register.title' /* Register */),
-          subtitle:         this.$t('components.register.subtitle' /* Please fill in all required fields */),
+          title:            this.$t('app.components.register.title' /* Register */),
+          subtitle:         this.$t('app.components.register.subtitle' /* Please fill in all required fields */),
           elements:         [
             {
               type:        'vue-input',
               model:       'name',
               required:    true,
-              label:       this.$t('components.register.name' /* Name */),
+              label:       this.$t('app.components.register.name.label' /* Name */),
               inputType:   'text',
               isValid(value: string) {
                 return value.trim().indexOf(' ') > -1;
               },
-              invalidText: this.$t('components.register.name.invalidText' /* Please provide first and last name */),
+              invalidText: this.$t('app.components.register.name.invalidText' /* Please provide first and last name */),
             },
             {
               type:        'vue-input',
               model:       'phone',
               required:    false,
-              label:       this.$t('components.register.phone' /* Phone */),
+              label:       this.$t('app.components.register.phone.label' /* Phone */),
               inputType:   'phone',
               isValid(value: string) {
                 return isPhoneNumberValid(value);
               },
-              invalidText: this.$t('components.register.phone.invalidText' /* This is not a valid phone number! */),
+              invalidText: this.$t('app.components.register.phone.invalidText' /* This is not a valid phone number! */),
             },
             {
               type:  'slot',
@@ -438,25 +438,25 @@
               type:        'vue-input',
               model:       'email',
               required:    true,
-              label:       this.$t('components.register.email' /* Email */),
+              label:       this.$t('app.components.register.email.label' /* Email */),
               inputType:   'email',
               isValid(value: string) {
                 return isEmailValid(value);
               },
-              invalidText: this.$t('components.register.email.invalidText' /* This is not a valid email address! */),
+              invalidText: this.$t('app.components.register.email.invalidText' /* This is not a valid email address! */),
             },
             {
               type:     'vue-check-box',
               model:    'terms',
               required: true,
-              label:    this.$t('components.register.terms' /* I accept the <a href="/terms">Terms and Conditions</a> */),
+              label:    this.$t('app.components.register.terms' /* I accept the <a href="/terms">Terms and Conditions</a> */),
               value:    false,
             },
             {
               type:     'vue-check-box',
               model:    'consent',
               required: false,
-              label:    this.$t('components.register.consent' /* I consent to get contacted */),
+              label:    this.$t('app.components.register.consent' /* I consent to get contacted */),
               value:    false,
             },
           ],
@@ -550,8 +550,8 @@
       formSubmit(model: any, reset: any) {
         addNotification(
           {
-            title: this.$t('components.register.submit.notification.title', model /* Hey {name}! */),
-            text:  this.$t('components.register.submit.notification.text', model /* We've sent an email to: {email}! */),
+            title: this.$t('app.components.register.submit.notification.title', model /* Hey {name}! */),
+            text:  this.$t('app.components.register.submit.notification.text', model /* We've sent an email to: {email}! */),
           } as INotification,
         );
         reset();
