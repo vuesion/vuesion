@@ -174,6 +174,7 @@
     "plop": "2.0.0",
     "rimraf": "2.6.2",
     "sass-loader": "6.0.7",
+    "serviceworker-webpack-plugin": "^0.2.3",
     "storybook-addon-vue-info": "0.1.8",
     "ts-jest": "22.4.1",
     "ts-loader": "3.5.0",
