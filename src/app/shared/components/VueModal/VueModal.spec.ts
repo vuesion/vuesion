@@ -13,7 +13,7 @@ describe('VueModal.vue', () => {
       slots: {
         default: '<p>TEST</p>',
       },
-    });
+    }) as any;
 
     expect(wrapper.findAll('p')).toHaveLength(0);
 
@@ -28,10 +28,10 @@ describe('VueModal.vue', () => {
     wrapper.setProps({ show: true });
     wrapper.update();
 
-    const testElement: HTMLElement = wrapper.find('p').element;
-
-    (wrapper as any).vm.beforeLeave(testElement);
-    (wrapper as any).vm.leave(testElement, done);
+    wrapper.vm.beforeEnter(wrapper.vm.$el);
+    wrapper.vm.enter(wrapper.vm.$el, jest.fn());
+    wrapper.vm.beforeLeave(wrapper.vm.$el);
+    wrapper.vm.leave(wrapper.vm.$el, done);
   });
 
   test('registers and unregisters scroll/click event', () => {

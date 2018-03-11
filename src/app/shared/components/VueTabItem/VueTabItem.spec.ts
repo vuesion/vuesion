@@ -19,7 +19,7 @@ describe('VueTab.vue', () => {
         title: 'foo',
         icon:  'bar',
       },
-    });
+    }) as any;
 
     expect(wrapper.findAll('p')).toHaveLength(0);
 
@@ -46,10 +46,10 @@ describe('VueTab.vue', () => {
 
     expect(wrapper.findAll('p')).toHaveLength(1);
 
-    const testElement: HTMLElement = wrapper.find('p').element;
-
-    (wrapper as any).vm.beforeLeave(testElement);
-    (wrapper as any).vm.leave(testElement, jest.fn());
+    wrapper.vm.beforeEnter(wrapper.vm.$el);
+    wrapper.vm.enter(wrapper.vm.$el, jest.fn());
+    wrapper.vm.beforeLeave(wrapper.vm.$el);
+    wrapper.vm.leave(wrapper.vm.$el, jest.fn());
   });
 
 });
