@@ -361,7 +361,45 @@
 
   export default {
     metaInfo:   {
-      title: 'Components',
+      title: 'vue-starter - Components',
+      meta:  [
+        {
+          name:    'description',
+          content: 'vue-starter - includes most common UI/UX use cases, for example: calendar, date picker, range slider, accordion and more!',
+        },
+        {
+          name:    'keywords',
+          content: 'vue.js, vuex, vuex-persist, seo, server-side-rendering, isomorphic, progressive-web-app',
+        },
+
+        { name: 'og:url', content: 'https://vue-starter.herokuapp.com/' },
+        { name: 'og:site_name', content: 'vue-starter' },
+        { name: 'og:type', content: 'website' },
+        { name: 'og:locale', content: 'en' },
+        {
+          name:    'og:title',
+          content: 'vue-starter - includes most common UI/UX use cases, for example: calendar, date picker, range slider, accordion and more!',
+        },
+        {
+          name:    'og:description',
+          content: 'vue-starter - includes most common UI/UX use cases, for example: calendar, date picker, range slider, accordion and more!',
+        },
+        { name: 'og:image:url', content: 'https://vue-starter.herokuapp.com/assets/logo.png' },
+
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:site', content: '@_jwerner_' },
+        { name: 'twitter:creator', content: '@_jwerner_' },
+        {
+          name:    'twitter:title',
+          content: 'vue-starter - includes most common UI/UX use cases, for example: calendar, date picker, range slider, accordion and more!',
+        },
+        { name: 'twitter:url', content: 'https://vue-starter.herokuapp.com/' },
+        { name: 'twitter:image', content: 'https://vue-starter.herokuapp.com/assets/logo.png' },
+        {
+          name:    'twitter:description',
+          content: 'vue-starter - includes most common UI/UX use cases, for example: calendar, date picker, range slider, accordion and more!',
+        },
+      ],
     },
     components: {
       VueMarkdown,
@@ -449,7 +487,7 @@
               type:     'vue-check-box',
               model:    'terms',
               required: true,
-              label:    this.$t('components.register.terms' /* I accept the <a href="/terms">Terms and Conditions</a> */),
+              label:    this.$t('components.register.terms' /* I accept the <a href="/">Terms and Conditions</a> */),
               value:    false,
             },
             {

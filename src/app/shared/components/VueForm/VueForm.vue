@@ -4,7 +4,7 @@
                       :title="schema.title"
                       :subtitle="schema.subtitle" />
     <vue-panel-body>
-      <form :class="$style.vueForm" :name="schema.name" :id="schema.id" @submit.prevent="submitForm()">
+      <form :class="$style.vueForm" :name="schema.name" :id="schema.id" @submit.prevent="submitForm()" method="post">
 
         <div v-for="element in elements">
           <slot v-if="element.type === 'slot'" :name="element.model" />
@@ -60,7 +60,7 @@
         type:    String,
         default: 'vueForm',
       },
-      schema: {
+      schema:   {
         type:     Object,
         required: true,
       },

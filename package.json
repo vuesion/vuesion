@@ -30,7 +30,7 @@
   "scripts": {
     "g": "npm run generate",
     "dev": "npm run dev:dev-server && npm run dev:server && node ./dist/server/server.js",
-    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
+    "test:coverage": "cross-env NODE_ENV=test jest --silent --coverage",
     "test:tools": "cross-env NODE_ENV=test jest --config=./tools/jest.config.json",
     "test": "cross-env NODE_ENV=test jest",
     "e2e": "cypress run --browser chrome",
@@ -53,8 +53,8 @@
     "build:server": "cross-env NODE_ENV=production webpack --config ./config/webpack.server.config.js",
     "prebuild": "npm run clean && npm run build-storybook",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "precommit": "npm run lint && npm run test",
-    "ci": "concurrently \"npm run lint\" \"npm run test:coverage\"",
+    "precommit": "concurrently \"npm run lint\" \"npm run test:coverage\"",
+    "ci": "concurrently \"npm run lint\" \"npm run test:coverage -- --runInBand\"",
     "postci": "npm run build && codecov -f ./coverage/*.json",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

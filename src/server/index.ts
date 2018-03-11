@@ -3,9 +3,9 @@
 import * as fs                        from 'fs';
 import * as path                      from 'path';
 import * as Express                   from 'express';
+import { Handler, Request, Response } from 'express';
 import * as favicon                   from 'serve-favicon';
 import { BundleRenderer }             from 'vue-server-renderer';
-import { Handler, Request, Response } from 'express';
 import * as cookieParser              from 'cookie-parser';
 import acceptLanguage                 from 'accept-language';
 
@@ -13,9 +13,20 @@ const app: Express.Application = Express();
 const compression: any = require('compression');
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
+app.disable('x-powered-by');
+
+/**
+ * middlewares
+ */
+app.use(cookieParser());
+app.use(compression({ threshold: 0 }));
+
 const resolve = (file: string): string => path.resolve(__dirname, file);
-const serve = (servePath: string, cache: boolean): Handler => Express.static(resolve(servePath), {
-  maxAge: cache && isProd ? 60 * 60 * 24 * 30 : 0,
+const serve = (servePath: string, cache: boolean = true): Handler => Express.static(resolve(servePath), {
+  maxAge: cache && isProd ? '24h' : 0,
+  setHeaders: (res: Response) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+  },
 });
 const createRenderer = (bundle: string, template: string): BundleRenderer => {
   return nodeRequire('vue-server-renderer').createBundleRenderer(bundle, {
@@ -44,12 +55,6 @@ if (isProd) {
 }
 
 /**
- * middlewares
- */
-app.use(cookieParser());
-app.use(compression());
-
-/**
  * http -> https redirect for heroku
  */
 app.get('*', (req: Request, res: Response, next: any) => {
@@ -66,17 +71,19 @@ app.get('*', (req: Request, res: Response, next: any) => {
 /**
  * assets
  */
-app.use('/i18n', serve('../../i18n', false));
-app.use('/client', serve('../client', true));
-app.use('/assets', serve('../assets', true));
+app.use('/i18n', serve('../../i18n'));
+app.use('/client', serve('../client'));
+app.use('/assets', serve('../assets'));
 app.use(favicon(path.resolve(__dirname, '../assets/logo.png')));
 
 /**
  * PWA
  */
-app.use('/browserconfig.xml', serve('../assets/pwa/browserconfig.xml', false));
-app.use('/sw.js', serve('../client/sw.js', false));
-app.use('/manifest.json', serve('../assets/pwa/manifest.json', false));
+app.use('/browserconfig.xml', serve('../assets/pwa/browserconfig.xml'));
+app.use('/sw.js', serve('../client/sw.js'));
+app.use('/manifest.json', serve('../assets/pwa/manifest.json'));
+app.use('/robots.txt', serve('../assets/pwa/robots.txt'));
+app.use('/sitemap.xml', serve('../assets/pwa/sitemap.xml'));
 
 /**
  * storybook
@@ -85,12 +92,16 @@ app.use('/manifest.json', serve('../assets/pwa/manifest.json', false));
  *    app.use('/storybook', serve('../../storybook-static', true));
  * }
  */
-app.use('/storybook', serve('../../storybook-static', true));
+app.use('/storybook', serve('../../storybook-static'));
 
 /**
  * SSR
  */
 app.get('*', (req: Request, res: Response) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Strict-Transport-Security', 'max-age=10886400; includeSubDomains; preload');
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.setHeader('Pragma', 'no-cache');

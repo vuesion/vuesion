@@ -27,6 +27,6 @@
   "components.register.submit.notification.title": "Hey {name}!",
   "components.register.submitText": "Submit",
   "components.register.subtitle": "Please fill in all required fields",
-  "components.register.terms": "I accept the <a href='/terms'>Terms and Conditions</a>",
+  "components.register.terms": "I accept the <a href='/'>Terms and Conditions</a>",
   "components.register.title": "Register"
 }
