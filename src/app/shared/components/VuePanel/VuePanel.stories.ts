@@ -16,7 +16,7 @@ story.add('Default', () => ({
     VuePanelHeader,
     VuePanelBody,
     VuePanelFooter,
-    VueButton
+    VueButton,
   },
   template: `<vue-panel>
   <vue-panel-header title="Title" subtitle="subtitle" image="https://avatars2.githubusercontent.com/u/1667598?s=460&v=4" />

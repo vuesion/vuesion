@@ -21,7 +21,7 @@ for (const item of storySchema) {
   story.add(item.label, () => ({
     components: {
       VueAccordion,
-      VueAccordionItem
+      VueAccordionItem,
     },
     template: `<vue-accordion ${item.props ? item.props.join(' ') : ''}>
   <vue-accordion-item title="Item 1" :initOpen="true">
@@ -38,6 +38,6 @@ for (const item of storySchema) {
     labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
     et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
   </vue-accordion-item>
-</vue-accordion>`
+</vue-accordion>`,
   }));
 }
