@@ -8,27 +8,27 @@ story.addDecorator(VueInfoAddon);
 
 const storySchema = [
   {
-    label: 'Default'
+    label: 'Default',
   },
   {
     label: 'Medium',
-    props: ['primary', 'medium']
+    props: ['primary', 'medium'],
   },
   {
     label: 'Large',
-    props: ['primary', 'large']
+    props: ['primary', 'large'],
   },
   {
     label: 'Primary',
-    props: ['primary']
+    props: ['primary'],
   },
   {
     label: 'Accent',
-    props: ['accent']
+    props: ['accent'],
   },
   {
     label: 'Warn',
-    props: ['warn']
+    props: ['warn'],
   },
 ];
 

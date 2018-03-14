@@ -3,7 +3,11 @@
   "extends": [
     "tslint:recommended"
   ],
-  "jsRules": {},
+  "jsRules": {
+    "trailing-comma": [
+      true
+    ]
+  },
   "rules": {
     "quotemark": [
       true,
@@ -24,9 +28,6 @@
     ],
     "max-file-line-count": [
       250
-    ],
-    "trailing-comma": [
-      true
     ],
     "import-spacing": false
   },

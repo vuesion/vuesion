@@ -9,67 +9,67 @@ story.addDecorator(VueInfoAddon);
 
 const storySchema = [
   {
-    label: 'Default'
+    label: 'Default',
   },
   {
     label: 'Default Disabled',
-    props: ['disabled']
+    props: ['disabled'],
   },
   {
     label: 'Default Pulse',
-    props: ['pulse']
+    props: ['pulse'],
   },
   {
     label: 'Default with Icon',
-    props: ['icon="user"']
+    props: ['icon="user"'],
   },
   {
     label: 'Primary',
-    props: ['primary']
+    props: ['primary'],
   },
   {
     label: 'Primary Disabled',
-    props: ['primary', 'disabled']
+    props: ['primary', 'disabled'],
   },
   {
     label: 'Primary Pulse',
-    props: ['primary', 'pulse']
+    props: ['primary', 'pulse'],
   },
   {
     label: 'Primary with Icon',
-    props: ['primary', 'icon="user"']
+    props: ['primary', 'icon="user"'],
   },
   {
     label: 'Accent',
-    props: ['accent']
+    props: ['accent'],
   },
   {
     label: 'Accent Disabled',
-    props: ['accent', 'disabled']
+    props: ['accent', 'disabled'],
   },
   {
     label: 'Accent Pulse',
-    props: ['accent', 'pulse']
+    props: ['accent', 'pulse'],
   },
   {
     label: 'Accent with Icon',
-    props: ['accent', 'icon="user"']
+    props: ['accent', 'icon="user"'],
   },
   {
     label: 'Warn',
-    props: ['warn']
+    props: ['warn'],
   },
   {
     label: 'Warn Disabled',
-    props: ['warn', 'disabled']
+    props: ['warn', 'disabled'],
   },
   {
     label: 'Warn Pulse',
-    props: ['warn', 'pulse']
+    props: ['warn', 'pulse'],
   },
   {
     label: 'Warn with Icon',
-    props: ['warn', 'icon="user"']
+    props: ['warn', 'icon="user"'],
   },
 ];
 
@@ -78,7 +78,7 @@ for (const item of storySchema) {
     components: { VueButton },
     template: `<vue-button @click="action" ${item.props ? item.props.join(' ') : ''}>${item.label}</vue-button>`,
     methods: {
-      action: action('@onClick')
+      action: action('@onClick'),
     },
   }));
 }
