@@ -84,6 +84,10 @@
   @import "shared/styles";
   // @import url($google-font);
 
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     font-family:      $font-family;
     font-size:        $font-size;

@@ -163,7 +163,7 @@
   .brand {
     flex:    1;
     padding: $grid-unit * 2 0 0 0;
-    height:  $nav-bar-height - ($grid-unit * 4);
+    height:  $nav-bar-height - ($grid-unit);
     z-index: 2;
   }
 
@@ -172,7 +172,7 @@
     flex:       1;
     flex-basis: 100%;
     list-style: none;
-    margin-top: $grid-unit + 2;
+    margin-top: $grid-unit * 3;
     padding:    $grid-unit * 2 0;
     border-top: 1px solid $nav-bar-menu-border-color;
     background: $nav-bar-menu-bg;
