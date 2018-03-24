@@ -20,4 +20,27 @@ describe('VueMarkdown.vue', () => {
     expect(wrapper.find('h3').text()).toBe('baz');
   });
 
+  test('renders component with trimmed text', () => {
+    const wrapper = mount(VueMarkdown, {
+      localVue,
+      mocks: { $style },
+      slots: {
+        default: ['       foo bar'],
+      },
+    });
+    expect(wrapper.contains('code')).toBe(false);
+    expect(wrapper.find('div').text()).toBe('foo bar');
+  });
+
+  test('renders component with trimmed text and shows as code', () => {
+    const wrapper = mount(VueMarkdown, {
+      localVue,
+      mocks: { $style },
+      slots: {
+        default: [`       \`foo bar\``],
+      },
+    });
+    expect(wrapper.find('code').text()).toBe('foo bar');
+  });
+
 });
