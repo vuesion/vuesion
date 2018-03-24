@@ -55,7 +55,7 @@
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "precommit": "concurrently \"npm run lint\" \"npm run test:coverage\"",
     "ci": "concurrently \"npm run lint\" \"npm run test:coverage -- --runInBand\"",
-    "postci": "npm run build && codecov -f ./coverage/*.json",
+    "postci": "codecov -f ./coverage/*.json && npm run build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
