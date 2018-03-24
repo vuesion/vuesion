@@ -37,7 +37,7 @@
           });
         }
 
-        text = text.replace(/\n /g, '\n');
+        text = text.trim().replace(/\n /g, '\n');
 
         this.html = (marked as any)(text);
       },
