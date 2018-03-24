@@ -259,10 +259,16 @@
       <vue-grid-item>
         <div class="h1">Select</div>
 
-        <vue-select :options="options" @change="selectChange" />
+        <vue-select
+          :options="options"
+          :selected-option="selectedOption"
+          @change="selectChange" />
 
         <p>Multi</p>
-        <vue-select :options="options" :multiple="true" @change="selectChange" />
+        <vue-select
+          :options="options"
+          :multiple="true"
+          @change="selectChange" />
       </vue-grid-item>
 
       <vue-grid-item>
@@ -534,12 +540,12 @@
     },
     data() {
       return {
-        collapseDemo: true,
-        showModal:    false,
-        checked:      true,
-        radio:        'radio1',
-        page:         1,
-        options:      [
+        collapseDemo:   true,
+        showModal:      false,
+        checked:        true,
+        radio:          'radio1',
+        page:           1,
+        options:        [
           {
             label: 'Foo',
             value: 'foo',
@@ -561,7 +567,11 @@
             value: 'lorem',
           },
         ],
-        inputValue:   'test',
+        selectedOption: {
+          label: 'Baz',
+          value: 'baz',
+        },
+        inputValue:     'test',
       };
     },
     methods:    {

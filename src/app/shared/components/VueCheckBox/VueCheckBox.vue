@@ -1,6 +1,13 @@
 <template>
   <div :class="cssClasses" :aria-label="label">
-    <input :type="inputType" :name="name" :id="name" :checked="checked" @change.prevent="onClick" />
+    <input
+      :type="inputType"
+      :name="name"
+      :id="name"
+      :checked="checked"
+      :required="required"
+      v-bind="$attrs"
+      @change.prevent="onClick" />
     <div :class="$style.box" @click="onClick" />
     <label :for="name" v-html="label" />
   </div>
@@ -24,6 +31,10 @@
         default: false,
       },
       disabled: {
+        type:    Boolean,
+        default: false,
+      },
+      required: {
         type:    Boolean,
         default: false,
       },

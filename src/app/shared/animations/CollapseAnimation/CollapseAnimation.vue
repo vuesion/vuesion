@@ -38,7 +38,7 @@
           {
             targets:  el,
             height:   {
-              value:    `${el.scrollHeight - height}px`,
+              value:    `${el.scrollHeight - height + 32}px`,
               duration: this.duration,
             },
             opacity:  {

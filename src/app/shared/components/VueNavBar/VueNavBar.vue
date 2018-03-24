@@ -172,7 +172,7 @@
     flex:       1;
     flex-basis: 100%;
     list-style: none;
-    margin-top: $grid-unit * 3;
+    margin-top: 0;
     padding:    $grid-unit * 2 0;
     border-top: 1px solid $nav-bar-menu-border-color;
     background: $nav-bar-menu-bg;

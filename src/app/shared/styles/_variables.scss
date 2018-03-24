@@ -129,9 +129,9 @@ $input-margin: $grid-unit * 3 0 $grid-unit * 2;
 $input-font-size: $font-size;
 $input-color: $font-color;
 $input-color-disabled: lighten($font-color, 40%);
-$input-height: $grid-unit * 3;
+$input-height: $grid-unit * 4;
 
-$input-placeholder-top: $grid-unit * 1.5;
+$input-placeholder-top: $grid-unit;
 $input-placeholder-color: $input-color;
 $input-placeholder-font-size: $input-font-size;
 $input-placeholder-font-weight: $font-weight;

@@ -12,6 +12,7 @@
       :class="[
         value ? $style.hasValue : ''
       ]"
+      v-bind="$attrs"
       @keyup="onChange"
       @change="onChange"
       @focus="onFocus"
@@ -27,7 +28,7 @@
     name:       'VueInput',
     components: {},
     props:      {
-      cssClass: {
+      cssClass:    {
         type:    String,
         default: 'vueInput',
       },
@@ -144,7 +145,7 @@
 
     input:focus ~ label,
     input.hasValue ~ label {
-      top:         -($input-placeholder-top + 8);
+      top:         -($grid-unit * 2.5);
       font-size:   $input-placeholder-active-font-size;
       font-weight: $input-placeholder-active-font-weight;
       color:       $input-placeholder-active-font-color;

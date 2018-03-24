@@ -136,7 +136,7 @@
   }
 
   .nav {
-    margin:         0;
+    margin:         $grid-unit 0 0 0;
     padding:        0;
     list-style:     none;
     display:        flex;

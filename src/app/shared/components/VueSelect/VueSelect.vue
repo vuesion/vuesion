@@ -1,7 +1,16 @@
 <template>
   <div :class="cssClasses">
-    <select :multiple="multiple" role="listbox" @change="onChange">
-      <option v-for="option in options" :value="option.value" role="option">
+    <select
+      role="listbox"
+      :multiple="multiple"
+      :required="required"
+      v-bind="$attrs"
+      @change="onChange">
+      <option
+        v-for="option in options"
+        :value="option.value"
+        :selected="option.value === selectedOption.value"
+        role="option">
         {{option.label}}
       </option>
     </select>
@@ -19,18 +28,30 @@
     name:       'VueSelect',
     components: {},
     props:      {
-      cssClass: {
+      cssClass:       {
         type:    String,
         default: 'vueSelect',
       },
-      options:  {
+      options:        {
         required: true,
         type:     Array,
       },
-      multiple: {
-        required: false,
-        default:  false,
-        type:     Boolean,
+      selectedOption: {
+        type:    Object,
+        default: () => {
+          return {
+            label: '',
+            value: '',
+          };
+        },
+      },
+      multiple:       {
+        default: false,
+        type:    Boolean,
+      },
+      required:       {
+        default: false,
+        type:    Boolean,
       },
     },
     data(): any {

@@ -49,7 +49,7 @@ describe('CollapseAnimation.vue', () => {
     };
 
     (wrapper as any).vm.enter(testElement, () => {
-      expect(testElement.style.height).toBe('-100px');
+      expect(testElement.style.height).toBe('-68px');
       expect(testElement.style.opacity).toBe('1');
       done();
     });
@@ -74,7 +74,7 @@ describe('CollapseAnimation.vue', () => {
     };
 
     (wrapper as any).vm.enter(testElement, () => {
-      expect(testElement.style.height).toBe('0px');
+      expect(testElement.style.height).toBe('32px');
       expect(testElement.style.opacity).toBe('1');
       done();
     });

@@ -1,5 +1,9 @@
 <template>
-  <button :class="cssClasses" @click="onClick" :disabled="disabled">
+  <button
+    :class="cssClasses"
+    @click="onClick"
+    :disabled="disabled"
+    v-bind="$attrs">
     <i :class="iconClasses" v-if="$props.icon" />
     <slot v-if="!loading" />
     <vue-loader v-if="loading" />
@@ -49,8 +53,8 @@
       icon:     {
         type:     String,
         required: false,
-        default:  ''
-      }
+        default:  '',
+      },
     },
     components: {
       VueLoader,
