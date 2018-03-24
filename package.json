@@ -53,7 +53,7 @@
     "build:server": "cross-env NODE_ENV=production webpack --config ./config/webpack.server.config.js",
     "prebuild": "npm run clean && npm run build-storybook",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "precommit": "concurrently \"npm run lint\" \"npm run test:coverage\"",
+    "precommit": "concurrently \"npm run lint\" \"npm run test -- --silent\"",
     "ci": "concurrently \"npm run lint\" \"npm run test:coverage -- --runInBand\"",
     "postci": "codecov -f ./coverage/*.json && npm run build",
     "storybook": "start-storybook -p 6006",

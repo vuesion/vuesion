@@ -21,7 +21,7 @@ axios.interceptors.request.use(
     const token: string = 'accessToken';
     const isExternal: boolean = isExternalUrl(config.url);
 
-    if (token && !isExternal) {
+    if (token && !isExternal && !config.headers.Authorization) {
       config.headers.Authorization = `Bearer ${token}`;
     }
 
