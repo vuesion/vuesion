@@ -6,7 +6,7 @@ Vue.use(VueI18n);
 
 let i18n: VueI18n = null;
 const dateTimeFormats: VueI18n.DateTimeFormats = {
-  'en-EN': {
+  'en-US': {
     calendarHeader: {
       month: 'long', weekday: 'long', day: 'numeric',
     },
@@ -30,24 +30,29 @@ const dateTimeFormats: VueI18n.DateTimeFormats = {
   },
 };
 
-export const getI18n = (lang: string = 'en-EN'): VueI18n => {
+export const getI18n = (lang: string = 'en-US'): VueI18n => {
+  const defaultMessages: any = require('../../../../../i18n/en-US.json');
   const messages: any = {
-    'en-EN': require('../../../../../i18n/en-EN.json'),
+    'en-US': defaultMessages,
   };
 
-  messages[lang] = require(`../../../../../i18n/${lang}.json`);
+  try {
+    messages[lang] = require(`../../../../../i18n/${lang}.json`);
+  } catch {
+    messages[lang] = defaultMessages;
+  }
 
   return i18n = new VueI18n(
     {
       locale:         lang,
-      fallbackLocale: 'en-EN',
+      fallbackLocale: 'en-US',
       messages,
       dateTimeFormats,
     },
   );
 };
 
-const loadedLanguages: string[] = ['en-EN'];
+const loadedLanguages: string[] = ['en-US'];
 
 const setI18nLanguage = (lang: string) => {
   i18n.locale = lang;

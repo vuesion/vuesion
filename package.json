@@ -93,9 +93,9 @@
     "testURL": "http://localhost:3000"
   },
   "config": {
-    "default-language": "en-EN",
+    "default-language": "en-US",
     "supported-languages": [
-      "en-EN",
+      "en-US",
       "de-DE",
       "pt-BR"
     ]

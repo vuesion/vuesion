@@ -1,5 +1,6 @@
 import axios                          from 'axios';
 import { getI18n, loadLanguageAsync } from './i18n';
+import { IVueI18n }                   from 'vue-i18n';
 
 describe('i18n', () => {
   test('should set new language', (done) => {
@@ -14,7 +15,7 @@ describe('i18n', () => {
     })
     .then(() => {
       expect(axios.get).toHaveBeenCalledTimes(1);
-      return loadLanguageAsync('en-EN');
+      return loadLanguageAsync('en-US');
     })
     .then(() => {
       expect(axios.get).toHaveBeenCalledTimes(1);
@@ -32,5 +33,11 @@ describe('i18n', () => {
       expect(axios.get).toHaveBeenCalledTimes(0);
       done();
     });
+  });
+
+  test('should load language which has no language file', () => {
+    const i18n: IVueI18n = getI18n('en-EN');
+
+    expect(Object.keys(i18n.messages['en-EN']).length).toBeGreaterThan(0);
   });
 });

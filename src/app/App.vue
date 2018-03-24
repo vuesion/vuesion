@@ -23,7 +23,7 @@
           </router-link>
         </li>
         <li>
-          <a @click="langSwitch('en-EN')">
+          <a @click="langSwitch('en-US')">
             <i class="fas fa-flag" />
             <small>{{ $t('App.nav.english' /*English*/) }}</small>
           </a>
