@@ -1,15 +1,17 @@
 <template>
   <div :class="$style.counter">
     <vue-grid>
-      <vue-grid-item fill>
-        <h1>{{ $t('App.nav.counter') }}</h1>
-      </vue-grid-item>
+      <vue-grid-row>
+        <vue-grid-item fill>
+          <h1>{{ $t('App.nav.counter') }}</h1>
+        </vue-grid-item>
 
-      <vue-grid-item fill>
-        <vue-button @click='increment' accent>Increment +1</vue-button>
-        <vue-button @click='decrement' primary>Decrement -1</vue-button>
-        <h3>Count is {{ count }}</h3>
-      </vue-grid-item>
+        <vue-grid-item fill>
+          <vue-button @click='increment' accent>Increment +1</vue-button>
+          <vue-button @click='decrement' primary>Decrement -1</vue-button>
+          <h3>Count is {{ count }}</h3>
+        </vue-grid-item>
+      </vue-grid-row>
     </vue-grid>
   </div>
 </template>
@@ -19,6 +21,7 @@
   import VueGrid                    from '../../shared/components/VueGrid/VueGrid';
   import VueGridItem                from '../../shared/components/VueGridItem/VueGridItem';
   import VueButton                  from '../../shared/components/VueButton/VueButton';
+  import VueGridRow                 from '../../shared/components/VueGridRow/VueGridRow';
 
   export default {
     metaInfo:   {
@@ -28,6 +31,7 @@
       VueGrid,
       VueGridItem,
       VueButton,
+      VueGridRow,
     },
     methods:    {
       ...mapActions([

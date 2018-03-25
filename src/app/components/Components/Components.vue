@@ -3,334 +3,347 @@
 
     <div :class="$style.header">
       <vue-grid>
-        <vue-grid-item>
-          <h1>{{ $t('App.nav.components' /*Components*/) }}</h1>
-          <p>
-            This Boilerplate comes with an initial set of solutions for common UX/UI patterns.
-          </p>
-          <p>
-            That makes it easy for you to add specific features for your business logic and
-            keeps the code as lean as possible, because you don't have to ship unnecessary features to your users.
-          </p>
-        </vue-grid-item>
+        <vue-grid-row>
+          <vue-grid-item>
+            <h1>{{ $t('App.nav.components' /*Components*/) }}</h1>
+            <p>
+              This Boilerplate comes with an initial set of solutions for common UX/UI patterns.
+            </p>
+            <p>
+              That makes it easy for you to add specific features for your business logic and
+              keeps the code as lean as possible, because you don't have to ship unnecessary features to your users.
+            </p>
+          </vue-grid-item>
+        </vue-grid-row>
       </vue-grid>
     </div>
 
     <vue-grid>
-      <vue-grid-item>
-        <div class="h1">Tabs</div>
-        <vue-tab-group>
-          <vue-tab-item title="Profile" icon="fas fa-user">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </vue-tab-item>
-          <vue-tab-item title="Settings" icon="fas fa-cog">
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </vue-tab-item>
-          <vue-tab-item title="Upload" icon="fas fa-upload">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </vue-tab-item>
-        </vue-tab-group>
-      </vue-grid-item>
+      <vue-grid-row>
+        <vue-grid-item>
+          <div class="h1">Tabs</div>
+          <vue-tab-group>
+            <vue-tab-item title="Profile" icon="fas fa-user">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </vue-tab-item>
+            <vue-tab-item title="Settings" icon="fas fa-cog">
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </vue-tab-item>
+            <vue-tab-item title="Upload" icon="fas fa-upload">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </vue-tab-item>
+          </vue-tab-group>
+        </vue-grid-item>
 
-      <vue-grid-item>
-        <div class="h1">Collapse</div>
-        <vue-button @click="collapseDemo = !collapseDemo" accent>Collapse toggle</vue-button>
-        <vue-collapse :show="collapseDemo">
-          <div :class="$style.collapseDemo">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </div>
-        </vue-collapse>
-      </vue-grid-item>
+        <vue-grid-item>
+          <div class="h1">Collapse</div>
+          <vue-button @click="collapseDemo = !collapseDemo" accent>Collapse toggle</vue-button>
+          <vue-collapse :show="collapseDemo">
+            <div :class="$style.collapseDemo">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </div>
+          </vue-collapse>
+        </vue-grid-item>
+      </vue-grid-row>
+      <vue-grid-row>
+        <vue-grid-item>
+          <div class="h1">Buttons</div>
 
-      <vue-grid-item>
-        <div class="h1">Buttons</div>
+          <vue-button>Default</vue-button>
+          <vue-button disabled>Default</vue-button>
+          <!--<vue-button loading>Loading</vue-button>-->
+          <vue-button pulse>Default</vue-button>
+          <br />
+          <vue-button primary>Primary</vue-button>
+          <vue-button primary disabled>Primary</vue-button>
+          <!--<vue-button primary loading>Loading</vue-button>-->
+          <vue-button primary pulse>Primary</vue-button>
+          <br />
+          <vue-button accent>Accent</vue-button>
+          <vue-button accent disabled>Accent</vue-button>
+          <!--<vue-button accent loading>Loading</vue-button>-->
+          <vue-button accent pulse>Accent</vue-button>
+          <br />
+          <vue-button warn>Warn</vue-button>
+          <vue-button warn disabled>Warn</vue-button>
+          <!--<vue-button warn loading>Loading</vue-button>-->
+          <vue-button warn pulse>Warn</vue-button>
+        </vue-grid-item>
 
-        <vue-button>Default</vue-button>
-        <vue-button disabled>Default</vue-button>
-        <!--<vue-button loading>Loading</vue-button>-->
-        <vue-button pulse>Default</vue-button>
-        <br />
-        <vue-button primary>Primary</vue-button>
-        <vue-button primary disabled>Primary</vue-button>
-        <!--<vue-button primary loading>Loading</vue-button>-->
-        <vue-button primary pulse>Primary</vue-button>
-        <br />
-        <vue-button accent>Accent</vue-button>
-        <vue-button accent disabled>Accent</vue-button>
-        <!--<vue-button accent loading>Loading</vue-button>-->
-        <vue-button accent pulse>Accent</vue-button>
-        <br />
-        <vue-button warn>Warn</vue-button>
-        <vue-button warn disabled>Warn</vue-button>
-        <!--<vue-button warn loading>Loading</vue-button>-->
-        <vue-button warn pulse>Warn</vue-button>
-      </vue-grid-item>
+        <vue-grid-item>
+          <div class="h1">Loader</div>
 
-      <vue-grid-item>
-        <div class="h1">Loader</div>
+          <vue-loader />
+          <vue-loader primary />
+          <vue-loader accent />
+          <vue-loader warn />
+        </vue-grid-item>
+      </vue-grid-row>
+      <vue-grid-row>
+        <vue-grid-item>
+          <div class="h1">Headlines</div>
+          <h1>Headline 1</h1>
+          <h2>Headline 2</h2>
+          <h3>Headline 3</h3>
+          <h4>Headline 4</h4>
+          <h5>Headline 5</h5>
+          <h6>Headline 6</h6>
+        </vue-grid-item>
 
-        <vue-loader />
-        <vue-loader primary />
-        <vue-loader accent />
-        <vue-loader warn />
-      </vue-grid-item>
+        <vue-grid-item>
+          <div class="h1">Panels</div>
 
-      <vue-grid-item>
-        <div class="h1">Headlines</div>
-        <h1>Headline 1</h1>
-        <h2>Headline 2</h2>
-        <h3>Headline 3</h3>
-        <h4>Headline 4</h4>
-        <h5>Headline 5</h5>
-        <h6>Headline 6</h6>
-      </vue-grid-item>
+          <vue-panel>
+            <vue-panel-header title="Title" subtitle="subtitle"
+                              image="https://avatars2.githubusercontent.com/u/1667598?s=460&v=4" />
+            <vue-panel-body>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </vue-panel-body>
+            <vue-panel-footer>
+              <vue-button warn>Delete</vue-button>
+              <vue-button>Cancel</vue-button>
+            </vue-panel-footer>
+          </vue-panel>
+        </vue-grid-item>
+      </vue-grid-row>
+      <vue-grid-row>
+        <vue-grid-item>
+          <div class="h1">Inputs</div>
 
-      <vue-grid-item>
-        <div class="h1">Panels</div>
+          <vue-input placeholder="Placeholder" message="test" :value="inputValue"
+                     @change="inputValue = $event.target.value" />
+          <vue-input placeholder="Placeholder" disabled :value="inputValue"
+                     @change="inputValue = $event.target.value" />
+        </vue-grid-item>
 
-        <vue-panel>
-          <vue-panel-header title="Title" subtitle="subtitle"
-                            image="https://avatars2.githubusercontent.com/u/1667598?s=460&v=4" />
-          <vue-panel-body>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </vue-panel-body>
-          <vue-panel-footer>
-            <vue-button warn>Delete</vue-button>
-            <vue-button>Cancel</vue-button>
-          </vue-panel-footer>
-        </vue-panel>
-      </vue-grid-item>
+        <vue-grid-item>
+          <div class="h1">Modal</div>
 
-      <vue-grid-item>
-        <div class="h1">Inputs</div>
+          <vue-button primary @click="showModal = !showModal">Show Modal</vue-button>
+          <vue-modal :show="showModal" @close="showModal = !showModal">
+            <vue-button warn @click="showModal = !showModal">X</vue-button>
+            TEST
+          </vue-modal>
+        </vue-grid-item>
+      </vue-grid-row>
+      <vue-grid-row>
+        <vue-grid-item>
+          <div class="h1">Checkboxes / RadioButtons</div>
 
-        <vue-input placeholder="Placeholder" message="test" :value="inputValue"
-                   @change="inputValue = $event.target.value" />
-        <vue-input placeholder="Placeholder" disabled :value="inputValue" @change="inputValue = $event.target.value" />
-      </vue-grid-item>
+          <vue-check-box id="check" label="checkbox" :checked="checked" @click="checked = !checked" />
+          <br />
+          <vue-check-box id="check2" label="checkbox" :checked="checked" @click="checked = !checked" :disabled="true" />
+          <br />
+          <br />
+          <vue-check-box id="radio" label="radio" :checked="radio === 'radio1'" radio @click="radio = 'radio1'" />
+          <br />
+          <vue-check-box id="radio2" label="radio" :checked="radio === 'radio2'" radio @click="radio = 'radio2'" />
+          <br />
+          <vue-check-box id="radio3" label="radio" :checked="radio === 'radio3'" radio @click="radio = 'radio3'"
+                         :disabled="true" />
+        </vue-grid-item>
 
-      <vue-grid-item>
-        <div class="h1">Modal</div>
+        <vue-grid-item>
+          <div class="h1">Tooltip</div>
 
-        <vue-button primary @click="showModal = !showModal">Show Modal</vue-button>
-        <vue-modal :show="showModal" @close="showModal = !showModal">
-          <vue-button warn @click="showModal = !showModal">X</vue-button>
-          TEST
-        </vue-modal>
-      </vue-grid-item>
+          Lorem ipsum dolor sit amet,
+          <vue-tooltip tip="This is a tooltip!">consetetur sadipscing elitr</vue-tooltip>
+          , sed diam nonumy eirmod tempor invidunt ut
+          labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+          et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+          accusam et justo duo dolores
+          et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
-      <vue-grid-item>
-        <div class="h1">Checkboxes / RadioButtons</div>
-
-        <vue-check-box id="check" label="checkbox" :checked="checked" @click="checked = !checked" />
-        <br />
-        <vue-check-box id="check2" label="checkbox" :checked="checked" @click="checked = !checked" :disabled="true" />
-        <br />
-        <br />
-        <vue-check-box id="radio" label="radio" :checked="radio === 'radio1'" radio @click="radio = 'radio1'" />
-        <br />
-        <vue-check-box id="radio2" label="radio" :checked="radio === 'radio2'" radio @click="radio = 'radio2'" />
-        <br />
-        <vue-check-box id="radio3" label="radio" :checked="radio === 'radio3'" radio @click="radio = 'radio3'"
-                       :disabled="true" />
-      </vue-grid-item>
-
-      <vue-grid-item>
-        <div class="h1">Tooltip</div>
-
-        Lorem ipsum dolor sit amet,
-        <vue-tooltip tip="This is a tooltip!">consetetur sadipscing elitr</vue-tooltip>
-        , sed diam nonumy eirmod tempor invidunt ut
-        labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-        et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-        accusam et justo duo dolores
-        et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-        <br />
-        <br />
-        <vue-tooltip tip="This is a tooltip!">
-          <vue-button>TEST</vue-button>
-        </vue-tooltip>
-      </vue-grid-item>
-
-      <vue-grid-item>
-        <div class="h1">Slider</div>
-
-        <vue-slider
-          :min="0"
-          :max="200"
-          :values="[0, 200]"
-          @change="sliderChange"
-          :formatValue="formatSliderValue"
-        />
-
-
-        <vue-slider
-          :min="0"
-          :max="200"
-          :values="[50, 120]"
-          @change="sliderChange"
-          :formatValue="formatSliderValue"
-          :disabled="true"
-        />
-
-        <vue-slider
-          :min="0"
-          :max="200"
-          :values="[50]"
-          @change="sliderChange"
-          :formatValue="formatSliderValue"
-        />
-      </vue-grid-item>
-
-      <vue-grid-item>
-        <div class="h1">Accordion</div>
-
-        <vue-accordion>
-          <vue-accordion-item
-            title="Item 1"
-            :initOpen="true">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </vue-accordion-item>
-          <vue-accordion-item title="Item 2">
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </vue-accordion-item>
-        </vue-accordion>
-
-        <p>Multi</p>
-        <vue-accordion :multi="true">
-          <vue-accordion-item
-            title="Item 1">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </vue-accordion-item>
-          <vue-accordion-item title="Item 2">
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </vue-accordion-item>
-          <vue-accordion-item title="Item 3">
+          <br />
+          <br />
+          <vue-tooltip tip="This is a tooltip!">
             <vue-button>TEST</vue-button>
-          </vue-accordion-item>
-        </vue-accordion>
-      </vue-grid-item>
+          </vue-tooltip>
+        </vue-grid-item>
+      </vue-grid-row>
+      <vue-grid-row>
+        <vue-grid-item>
+          <div class="h1">Slider</div>
 
-      <vue-grid-item>
-        <div class="h1">Pagination</div>
+          <vue-slider
+            :min="0"
+            :max="200"
+            :values="[0, 200]"
+            @change="sliderChange"
+            :formatValue="formatSliderValue"
+          />
 
-        <vue-pagination :pages="10" :current="page" @change="page = $event" />
-      </vue-grid-item>
 
-      <vue-grid-item>
-        <div class="h1">Select</div>
+          <vue-slider
+            :min="0"
+            :max="200"
+            :values="[50, 120]"
+            @change="sliderChange"
+            :formatValue="formatSliderValue"
+            :disabled="true"
+          />
 
-        <vue-select
-          :options="options"
-          :selected-option="selectedOption"
-          @change="selectChange" />
+          <vue-slider
+            :min="0"
+            :max="200"
+            :values="[50]"
+            @change="sliderChange"
+            :formatValue="formatSliderValue"
+          />
+        </vue-grid-item>
 
-        <p>Multi</p>
-        <vue-select
-          :options="options"
-          :multiple="true"
-          @change="selectChange" />
-      </vue-grid-item>
+        <vue-grid-item>
+          <div class="h1">Accordion</div>
 
-      <vue-grid-item>
-        <div class="h1">Calendar</div>
+          <vue-accordion>
+            <vue-accordion-item
+              title="Item 1"
+              :initOpen="true">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </vue-accordion-item>
+            <vue-accordion-item title="Item 2">
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </vue-accordion-item>
+          </vue-accordion>
 
-        <vue-calendar @change="calendarChange" :min-date="today" :max-date="nextWeek" />
-      </vue-grid-item>
+          <p>Multi</p>
+          <vue-accordion :multi="true">
+            <vue-accordion-item
+              title="Item 1">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </vue-accordion-item>
+            <vue-accordion-item title="Item 2">
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </vue-accordion-item>
+            <vue-accordion-item title="Item 3">
+              <vue-button>TEST</vue-button>
+            </vue-accordion-item>
+          </vue-accordion>
+        </vue-grid-item>
+      </vue-grid-row>
+      <vue-grid-row>
+        <vue-grid-item>
+          <div class="h1">Pagination</div>
 
-      <vue-grid-item>
-        <div class="h1">DatePicker</div>
+          <vue-pagination :pages="10" :current="page" @change="page = $event" />
+        </vue-grid-item>
 
-        <vue-date-picker
-          @change="calendarChange"
-          :first-day-of-week="1"
-          placeholder="Select a date" />
-      </vue-grid-item>
+        <vue-grid-item>
+          <div class="h1">Select</div>
 
-      <vue-grid-item>
-        <div class="h1">DateRange</div>
+          <vue-select
+            :options="options"
+            :selected-option="selectedOption"
+            @change="selectChange" />
 
-        <vue-date-range-picker
-          @change="calendarChange"
-          :first-day-of-week="1"
-          placeholder-start="Select a start date"
-          placeholder-end="Select a end date" />
-      </vue-grid-item>
+          <p>Multi</p>
+          <vue-select
+            :options="options"
+            :multiple="true"
+            @change="selectChange" />
+        </vue-grid-item>
+      </vue-grid-row>
+      <vue-grid-row>
+        <vue-grid-item>
+          <div class="h1">Calendar</div>
 
-      <vue-grid-item>
-        <div class="h1">Notification Stack</div>
-        <vue-button accent @click="addNotificationClick">add notification</vue-button>
-      </vue-grid-item>
+          <vue-calendar @change="calendarChange" :min-date="today" :max-date="nextWeek" />
+        </vue-grid-item>
 
-      <vue-grid-item>
-        <div class="h1">{{ $t('components.forms' /*Forms*/) }}</div>
-        <vue-form :schema="registerSchema" @submit="formSubmit" @reset="formReset">
-          <div slot="middle">
-            named slot in the middle (defined in schema)
-          </div>
+        <vue-grid-item>
+          <div class="h1">DatePicker</div>
 
-          <div>
-            default slot is always at the end of the form
-          </div>
-        </vue-form>
-      </vue-grid-item>
+          <vue-date-picker
+            @change="calendarChange"
+            :first-day-of-week="1"
+            placeholder="Select a date" />
+        </vue-grid-item>
+      </vue-grid-row>
+      <vue-grid-row>
+        <vue-grid-item>
+          <div class="h1">DateRange</div>
 
-      <vue-grid-item>
-        <div class="h1">{{ $t('components.forms' /*Forms*/) }}</div>
-        <vue-form :schema="loginSchema" />
-      </vue-grid-item>
+          <vue-date-range-picker
+            @change="calendarChange"
+            :first-day-of-week="1"
+            placeholder-start="Select a start date"
+            placeholder-end="Select a end date" />
+        </vue-grid-item>
 
-      <vue-grid-item>
-        <div class="h1">Markdown renderer</div>
-        <vue-markdown>{{ $t('components.markdown' /*
-                      # Markdown support\n
-                      - build on top of marked\n
-                      - server side rendering!!!\n
-                      - `github style` markdown
-                      */) }}
-        </vue-markdown>
-      </vue-grid-item>
+        <vue-grid-item>
+          <div class="h1">Notification Stack</div>
+          <vue-button accent @click="addNotificationClick">add notification</vue-button>
+        </vue-grid-item>
+      </vue-grid-row>
+      <vue-grid-row>
+        <vue-grid-item>
+          <div class="h1">{{ $t('components.forms' /*Forms*/) }}</div>
+          <vue-form :schema="registerSchema" @submit="formSubmit" @reset="formReset">
+            <div slot="middle">
+              named slot in the middle (defined in schema)
+            </div>
 
-      <vue-grid-item></vue-grid-item>
+            <div>
+              default slot is always at the end of the form
+            </div>
+          </vue-form>
+        </vue-grid-item>
+
+        <vue-grid-item>
+          <div class="h1">{{ $t('components.forms' /*Forms*/) }}</div>
+          <vue-form :schema="loginSchema" />
+        </vue-grid-item>
+      </vue-grid-row>
+      <vue-grid-row>
+        <vue-grid-item>
+          <div class="h1">Markdown renderer</div>
+          <vue-markdown>{{ $t('components.markdown' /*
+                        # Markdown support\n
+                        - build on top of marked\n
+                        - server side rendering!!!\n
+                        - `github style` markdown
+                        */) }}
+          </vue-markdown>
+        </vue-grid-item>
+      </vue-grid-row>
     </vue-grid>
   </div>
 </template>
@@ -364,6 +377,7 @@
   import { IFormSchema }                      from '../../shared/components/VueForm/IFormSchema';
   import { isEmailValid, isPhoneNumberValid } from '../../shared/components/VueForm/Validators';
   import VueMarkdown                          from '../../shared/components/VueMarkdown/VueMarkdown';
+  import VueGridRow                           from '../../shared/components/VueGridRow/VueGridRow';
 
   export default {
     metaInfo:   {
@@ -433,6 +447,7 @@
       VueDatePicker,
       VueDateRangePicker,
       VueForm,
+      VueGridRow,
     },
     computed:   {
       today(): Date {
