@@ -3,6 +3,7 @@ import { Component }       from 'vue-router/types/router';
 import { Store }           from 'vuex';
 import { IState }          from '../app/mutations';
 import { Route }           from 'vue-router';
+import { IAppConfig }      from '../app/config/IAppConfig';
 
 export interface IServerContext {
   url: string;
@@ -11,6 +12,7 @@ export interface IServerContext {
   state?: any;
   acceptLanguage: string;
   htmlLang: string;
+  appConfig: IAppConfig;
 }
 
 export interface IPreLoad {

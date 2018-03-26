@@ -8,6 +8,7 @@ import * as favicon                   from 'serve-favicon';
 import { BundleRenderer }             from 'vue-server-renderer';
 import * as cookieParser              from 'cookie-parser';
 import acceptLanguage                 from 'accept-language';
+import { IAppConfig }                 from '../app/config/IAppConfig';
 
 const app: Express.Application = Express();
 const compression: any = require('compression');
@@ -53,6 +54,13 @@ if (isProd) {
     renderer = createRenderer(bundle, template);
   });
 }
+
+/**
+ * read default config and merge it with CONFIG environment variable
+ */
+process.env.NODE_CONFIG_DIR = path.join(path.resolve(__dirname), '..', 'app', 'config');
+const envConfig: IAppConfig = JSON.parse(process.env.CONFIG || '{}');
+const appConfig: IAppConfig = Object.assign({}, require('config'), envConfig);
 
 /**
  * http -> https redirect for heroku
@@ -135,6 +143,7 @@ app.get('*', (req: Request, res: Response) => {
                     cookies:        req.cookies,
                     acceptLanguage: defaultLang,
                     htmlLang:       defaultLang.substr(0, 2),
+                    appConfig,
                   })
   .on('error', errorHandler)
   .on('end', () => console.log(`whole request: ${Date.now() - startTime}ms`))

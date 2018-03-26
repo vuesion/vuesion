@@ -11,12 +11,14 @@ import {
   VuexExampleDefaultState,
   VuexExampleMutations,
 }                       from './vuexExample/mutations';
+import { IAppConfig }   from './config/IAppConfig';
 
 export interface IState extends ICounterState, IVuexExampleState {
   [key: string]: any;
 
   app: {
     lang: string,
+    config: IAppConfig,
   };
 }
 
@@ -27,6 +29,7 @@ export interface IMutations extends MutationTree<IState>, ICounterMutations, IVu
 export const DefaultState: IState = {
   app: {
     lang: null,
+    config: null,
   },
   ...CounterDefaultState,
   ...VuexExampleDefaultState,

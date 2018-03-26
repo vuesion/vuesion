@@ -13,7 +13,7 @@ export const VuexExampleActions: IVuexExampleActions = {
       return Promise.resolve();
     }
 
-    return HttpService.get('https://jsonplaceholder.typicode.com/posts')
+    return HttpService.get('/posts')
                       .then((response: any) => {
                         commit('TOPICS', response.data);
                       })

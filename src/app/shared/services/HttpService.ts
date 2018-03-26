@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
-
+import { store }                                                from '../../store';
 /**
  * TODO: import store to access auth token
  * import { store } from '../../store';
@@ -8,7 +8,6 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 const RETRY_COUNT: number = 3;
 
-const baseUrl: string = '';
 const isExternalUrl = (url: string): boolean => {
   return url.indexOf('://') > -1;
 };
@@ -20,6 +19,7 @@ axios.interceptors.request.use(
     // TODO: get token from store e.g. const token: string = store.state.auth.accessToken;
     const token: string = 'accessToken';
     const isExternal: boolean = isExternalUrl(config.url);
+    const baseUrl: string = store.state.app.config.api.baseUrl;
 
     if (token && !isExternal && !config.headers.Authorization) {
       config.headers.Authorization = `Bearer ${token}`;
