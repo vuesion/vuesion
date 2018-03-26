@@ -5,24 +5,28 @@
     </div>
 
     <vue-grid>
-      <vue-grid-item fill>
-        <router-link :to="to" exact>
-          <img :class="$style.brand" :src="imageUrl" alt="logo" />
-        </router-link>
-        <button :class="hamburgerCssClasses" type="button" aria-label="menu" @click="isOpen = !isOpen">
-          <span :class="$style.box">
-            <span :class="$style.inner"></span>
-          </span>
-        </button>
-      </vue-grid-item>
+      <vue-grid-row>
+        <vue-grid-item fill>
+          <router-link :to="to" exact>
+            <img :class="$style.brand" :src="imageUrl" alt="logo" />
+          </router-link>
+          <button :class="hamburgerCssClasses" type="button" aria-label="menu" @click="isOpen = !isOpen">
+            <span :class="$style.box">
+              <span :class="$style.inner"></span>
+            </span>
+          </button>
+        </vue-grid-item>
+      </vue-grid-row>
     </vue-grid>
 
     <vue-collapse :show="isOpen">
       <div :class="$style.menu">
         <vue-grid>
-          <vue-grid-item>
-            <slot />
-          </vue-grid-item>
+          <vue-grid-row>
+            <vue-grid-item>
+              <slot />
+            </vue-grid-item>
+          </vue-grid-row>
         </vue-grid>
       </div>
     </vue-collapse>
@@ -32,6 +36,7 @@
 <script lang="ts">
   import VueGrid     from '../VueGrid/VueGrid';
   import VueGridItem from '../VueGridItem/VueGridItem';
+  import VueGridRow  from '../VueGridRow/VueGridRow';
   import VueCollapse from '../VueCollapse/VueCollapse';
 
   export default {
@@ -40,6 +45,7 @@
       VueGrid,
       VueGridItem,
       VueCollapse,
+      VueGridRow,
     },
     data() {
       return {

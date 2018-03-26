@@ -146,7 +146,7 @@
 
     li {
       flex:       1;
-      margin:     0 $grid-unit $grid-unit 0;
+      margin:     $grid-unit / 2;
       color:      $text-color;
       flex-basis: $grid-unit * 10;
       height:     $grid-unit * 10;

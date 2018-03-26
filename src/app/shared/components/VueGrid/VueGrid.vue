@@ -20,9 +20,6 @@
   @import "../../styles";
 
   .grid {
-    display:        flex;
-    flex-direction: row;
-    flex-wrap:      wrap;
     max-width:      425px;
     margin:         0 auto;
     position:       relative;
