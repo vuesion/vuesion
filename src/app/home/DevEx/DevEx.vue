@@ -10,7 +10,7 @@
         <vue-grid-item>
           <vue-panel>
             <vue-panel-body>
-              <i class="fas fa-code"></i>
+              <vue-icon name="fas fa-code" />
               <h3>Quick scaffolding</h3>
               <p>Create components, connected components, modules - and their tests - right from the CLI!</p>
             </vue-panel-body>
@@ -20,7 +20,7 @@
         <vue-grid-item>
           <vue-panel>
             <vue-panel-body>
-              <i class="fas fa-bullhorn"></i>
+              <vue-icon name="fas fa-bullhorn" />
               <h3>Instant feedback</h3>
               <p>Enjoy the best DX (Developer eXperience) and code your app at the speed of thought! Your saved changes to
                  the CSS and TypeScript are reflected instantaneously
@@ -41,6 +41,7 @@
   import VueGridRow  from '../../shared/components/VueGridRow/VueGridRow';
   import VuePanel     from '../../shared/components/VuePanel/VuePanel';
   import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody';
+  import VueIcon      from '../../shared/components/VueIcon/VueIcon';
 
   export default {
     components: {
@@ -49,6 +50,7 @@
       VuePanel,
       VuePanelBody,
       VueGridRow,
+      VueIcon,
     },
     props:      {},
     data(): any {

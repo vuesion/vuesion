@@ -7,7 +7,7 @@ const story = (storiesOf('{{ properCase componentName }}', module) as any);
 
 story.addDecorator(VueInfoAddon);
 
-story.add('defualt', () => ({
+story.add('Default', () => ({
   components: { {{ properCase componentName }} },
   template: `<{{ hyphenate componentName }}>{{ properCase componentName }}</{{ hyphenate componentName }}>`,
 }));

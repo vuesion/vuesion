@@ -14,11 +14,13 @@
         {{option.label}}
       </option>
     </select>
-    <i :class="$style.icon" v-if="multiple === false"></i>
+    <vue-icon :name="$style.icon" v-if="multiple === false" />
   </div>
 </template>
 
 <script lang="ts">
+  import VueIcon from '../VueIcon/VueIcon';
+
   export interface IVueSelectOption {
     label: string;
     value: string;
@@ -26,7 +28,9 @@
 
   export default {
     name:       'VueSelect',
-    components: {},
+    components: {
+      VueIcon,
+    },
     props:      {
       cssClass:       {
         type:    String,
