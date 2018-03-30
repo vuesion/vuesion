@@ -8,3 +8,4 @@ tools/**/*.js
 cypress/screenshots
 cypress/videos
 storybook-static
+logs

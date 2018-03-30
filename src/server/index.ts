@@ -1,18 +1,18 @@
-/* tslint:disable:no-console */
-
 import * as fs                        from 'fs';
 import * as path                      from 'path';
 import * as Express                   from 'express';
 import { Handler, Request, Response } from 'express';
 import * as favicon                   from 'serve-favicon';
-import { BundleRenderer }             from 'vue-server-renderer';
 import * as cookieParser              from 'cookie-parser';
 import acceptLanguage                 from 'accept-language';
+import { BundleRenderer }             from 'vue-server-renderer';
 import { IAppConfig }                 from '../app/config/IAppConfig';
+import { Logger }                     from './Logger';
 
 const app: Express.Application = Express();
 const compression: any = require('compression');
 const isProd: boolean = process.env.NODE_ENV === 'production';
+const port: string = process.env.PORT || '3000';
 
 app.disable('x-powered-by');
 
@@ -24,7 +24,7 @@ app.use(compression({ threshold: 0 }));
 
 const resolve = (file: string): string => path.resolve(__dirname, file);
 const serve = (servePath: string, cache: boolean = true): Handler => Express.static(resolve(servePath), {
-  maxAge: cache && isProd ? '24h' : 0,
+  maxAge:     cache && isProd ? '24h' : 0,
   setHeaders: (res: Response) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
   },
@@ -126,15 +126,15 @@ app.get('*', (req: Request, res: Response) => {
   const errorHandler = (err: any): void => {
     if (err && err.code === 404) {
       res.status(404).end('404 | Page Not Found');
+      Logger.warn('unsupported route: %s; error: %s', req.url, JSON.stringify(err));
     } else {
       res.status(500).end('500 | Internal Server Error');
-      console.error(`error during render : ${req.url}`);
-      console.error(err);
+      Logger.error('error during rendering: %s; error: %s', req.url, JSON.stringify(err));
     }
   };
   const acceptLang: string = req.headers['accept-language']
-    ? req.headers['accept-language'].toString()
-    : packageJson.config['default-language'];
+                             ? req.headers['accept-language'].toString()
+                             : packageJson.config['default-language'];
   const defaultLang: string = acceptLanguage.get(acceptLang);
 
   renderer
@@ -146,12 +146,10 @@ app.get('*', (req: Request, res: Response) => {
                     appConfig,
                   })
   .on('error', errorHandler)
-  .on('end', () => console.log(`whole request: ${Date.now() - startTime}ms`))
+  .on('end', () => Logger.debug(`whole request: ${Date.now() - startTime}ms`))
   .pipe(res);
 });
 
-const port: string = process.env.PORT || '3000';
-
 app.listen(port, () => {
-  console.log(`server started at http://localhost:${port}`);
+  Logger.debug(`server started at http://localhost:${port}`);
 });
