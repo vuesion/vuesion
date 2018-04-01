@@ -283,3 +283,14 @@ $notification-close-width: $grid-unit * 5;
 $notification-close-cross-color: $brand-accent;
 
 $notification-default-bg: $panel-bg;
+
+/* Autocomplete */
+$autocomplete-bg: $panel-bg;
+$autocomplete-padding: 0;
+$autocomplete-margin: -($grid-unit * 5) 0 0 0;
+$autocomplete-shadow: $panel-shadow;
+
+$autocomplete-item-padding: $grid-unit * 2;
+$autocomplete-item-border: $calendar-body-border;
+$autocomplete-item-selected-bg: lighten($autocomplete-bg, 5%);
+$autocomplete-item-selected-color: $text-color;

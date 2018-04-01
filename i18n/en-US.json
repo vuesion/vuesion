@@ -6,6 +6,7 @@
   "App.nav.german": "German",
   "App.nav.home": "Home",
   "App.nav.pt-BR": "Portuguese",
+  "components.autocomplete.emptyMessage": "No options found for %s",
   "components.calendar.friday.short": "F",
   "components.calendar.monday.short": "M",
   "components.calendar.saturday.short": "S",

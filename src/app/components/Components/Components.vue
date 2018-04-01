@@ -343,6 +343,15 @@
                         */) }}
           </vue-markdown>
         </vue-grid-item>
+        <vue-grid-item>
+          <div class="h1">Autocomplete</div>
+          <vue-autocomplete
+            :options="autocompleteOptions"
+            :max-options="3"
+            :is-loading="autocompleteLoading"
+            placeholder="Type something (e.g. foo)"
+            @request="onRequest" />
+        </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
   </div>
@@ -378,6 +387,8 @@
   import { isEmailValid, isPhoneNumberValid } from '../../shared/components/VueForm/Validators';
   import VueMarkdown                          from '../../shared/components/VueMarkdown/VueMarkdown';
   import VueGridRow                           from '../../shared/components/VueGridRow/VueGridRow';
+  import VueAutocomplete                      from '../../shared/components/VueAutocomplete/VueAutocomplete';
+  import { AutocompleteOptionsFixture }       from '../../shared/components/VueAutocomplete/fixtures/IAutocompleteFixture';
 
   export default {
     metaInfo:   {
@@ -422,6 +433,7 @@
       ],
     },
     components: {
+      VueAutocomplete,
       VueMarkdown,
       VueGrid,
       VueGridItem,
@@ -553,14 +565,14 @@
         };
       },
     },
-    data() {
+    data(): any {
       return {
-        collapseDemo:   true,
-        showModal:      false,
-        checked:        true,
-        radio:          'radio1',
-        page:           1,
-        options:        [
+        collapseDemo:        true,
+        showModal:           false,
+        checked:             true,
+        radio:               'radio1',
+        page:                1,
+        options:             [
           {
             label: 'Foo',
             value: 'foo',
@@ -582,11 +594,13 @@
             value: 'lorem',
           },
         ],
-        selectedOption: {
+        selectedOption:      {
           label: 'Baz',
           value: 'baz',
         },
-        inputValue:     'test',
+        inputValue:          'test',
+        autocompleteOptions: [],
+        autocompleteLoading: false,
       };
     },
     methods:    {
@@ -626,6 +640,27 @@
             text:  `Are you not happy with our offer?`,
           } as INotification,
         );
+      },
+      /* istanbul ignore next */
+      onRequest(query: string, shouldReturn: boolean = true) {
+        this.autocompleteLoading = true;
+
+        /* istanbul ignore next */
+        setTimeout(() => {
+          let returnOptions: boolean = Math.random() > 0.5 || query.indexOf('foo') > -1;
+
+          if (!shouldReturn) {
+            returnOptions = shouldReturn;
+          }
+
+          if (returnOptions) {
+            this.autocompleteOptions = AutocompleteOptionsFixture;
+          } else {
+            this.autocompleteOptions = [];
+          }
+
+          this.autocompleteLoading = false;
+        }, 2000);
       },
     },
   };

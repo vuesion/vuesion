@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import VueInfoAddon from 'storybook-addon-vue-info';
 import VueLoader from './VueLoader.vue';
 
-const story = (storiesOf('Loader', module) as any);
+const story = (storiesOf('VueLoader', module) as any);
 
 story.addDecorator(VueInfoAddon);
 
