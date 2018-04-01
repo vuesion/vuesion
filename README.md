@@ -52,9 +52,6 @@ A flexible component library that'll be extended over time.
 
 Storybook for Vue is a UI development environment for UI components. It allows interactive development, testing and sharing of UI components in various property states.
 
-It runs outside of your app. So you can develop UI components in isolation without worrying about app specific dependencies and requirements.
-Run `npm run storybook`. The server runs on port `6006`.
-
 **Industry-standard i18n internationalization support**
 
 Scalable apps need to support multiple languages, easily add and support multiple languages with [vue-i18n](https://github.com/kazupon/vue-i18n).
@@ -72,7 +69,7 @@ Server-side-rendering of prefetched data and transferring state from server to c
 Default configuration is stored in `/src/app/config/default.json`, which can get overridden by providing valid JSON in the environment variable `CONFIG` on application startup or by an environment specific file.
 For instance, in order to set a custom API endpoint, run `CONFIG='{"api":{"baseUrl": "http://custom.api.endpoint/"}}' npm run start`. Check documentation of [config](https://www.npmjs.com/package/config) module.
 
-# Quick start
+# Getting started
 
 1. Install Node.js 8.7.x or higher. Use [nvm](https://github.com/creationix/nvm) to maintain multiple Node.js versions
 2. Install npm version 5.4.x or higher
@@ -80,7 +77,7 @@ For instance, in order to set a custom API endpoint, run `CONFIG='{"api":{"baseU
 4. Install dependencies: `npm install`
 5. Run `npm run dev`. The server runs on port `3000` by default, set `PORT` environment variable to configure a different port
 
-# Documentation (WIP)
+# Documentation
 
 - **[npm tasks](docs/NPM_SCRIPTS.md)**
 - **[generator CLI](docs/CLI.md)**
@@ -89,12 +86,22 @@ For instance, in order to set a custom API endpoint, run `CONFIG='{"api":{"baseU
 - **[vuex and vuex-persist](docs/VUEX.md)**
 - **[components](docs/COMPONENTS.md)**
 
+# FAQ
+
+**Why should I use this boilerplate over vue-cli or nuxt.js?**
+This boilerplate is opinionated, aiming to educate and empower users to essentially configure their own framework, ideally suited to their needs. It also includes as less libraries as possible to keep you flexible and to enable you to implement every product requirement that comes down the road.
+
+Use cases for this boilerplate:
+- The requirements for the product might change and you want to maintain maximum flexibility and control.
+- You'd like to focus on developing skills that will transfer across any Vue project.
+- You're working in a large team, so need tooling to help everyone avoid common mistakes, write in a consistent style, and avoid bikeshedding in PRs.
 
 # Reference resources
 
 - [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate)
 - [vue-ssr-starter-kit](https://github.com/doabit/vue-ssr-starter-kit)
 - [Angular](https://github.com/angular/angular)
+- [vue-enterprise-boilerplate](https://github.com/chrisvfritz/vue-enterprise-boilerplate)
 
 # License
 
