@@ -1,6 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueTooltip                from './VueTooltip.vue';
-import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -9,7 +8,6 @@ describe('VueTooltip.vue', () => {
   test('renders component with text', () => {
     const wrapper = mount(VueTooltip, {
       localVue,
-      mocks:     { $style },
       propsData: {
         tip: 'foo',
       },
@@ -19,14 +17,13 @@ describe('VueTooltip.vue', () => {
     });
 
     expect(wrapper.text()).toBe('test');
-    expect(wrapper.classes()).toContain($style.vueTooltip);
-    expect(wrapper.classes()).toContain($style.highlight);
+    expect(wrapper.classes()).toContain('vueTooltip');
+    expect(wrapper.classes()).toContain('highlight');
   });
 
   test('renders component with button', () => {
     const wrapper = mount(VueTooltip, {
       localVue,
-      mocks:     { $style },
       propsData: {
         tip: 'foo',
       },
@@ -36,14 +33,13 @@ describe('VueTooltip.vue', () => {
     });
 
     expect(wrapper.text()).toBe('test');
-    expect(wrapper.classes()).toContain($style.vueTooltip);
-    expect(wrapper.classes()).not.toContain($style.highlight);
+    expect(wrapper.classes()).toContain('vueTooltip');
+    expect(wrapper.classes()).not.toContain('highlight');
   });
 
   test('renders component with nothing', () => {
     const wrapper = mount(VueTooltip, {
       localVue,
-      mocks:     { $style },
       propsData: {
         tip: 'foo',
       },
@@ -53,14 +49,13 @@ describe('VueTooltip.vue', () => {
     });
 
     expect(wrapper.text()).toBe('');
-    expect(wrapper.classes()).toContain($style.vueTooltip);
-    expect(wrapper.classes()).not.toContain($style.highlight);
+    expect(wrapper.classes()).toContain('vueTooltip');
+    expect(wrapper.classes()).not.toContain('highlight');
   });
 
   test('should show and hide tooltip', () => {
     const wrapper = mount(VueTooltip, {
       localVue,
-      mocks:     { $style },
       propsData: {
         tip: 'foo',
       },
@@ -69,27 +64,23 @@ describe('VueTooltip.vue', () => {
       },
     });
 
-    expect(wrapper.classes()).not.toContain($style.show);
+    expect(wrapper.classes()).not.toContain('show');
 
     wrapper.vm.$el.dispatchEvent(new Event('mouseenter'));
-    wrapper.update();
-    expect(wrapper.classes()).toContain($style.show);
+    expect(wrapper.classes()).toContain('show');
 
     wrapper.vm.$el.dispatchEvent(new Event('mouseleave'));
-    wrapper.update();
-    expect(wrapper.classes()).not.toContain($style.show);
+    expect(wrapper.classes()).not.toContain('show');
 
     /**
      * touch
      */
 
     wrapper.vm.$el.dispatchEvent(new Event('touchend'));
-    wrapper.update();
-    expect(wrapper.classes()).toContain($style.show);
+    expect(wrapper.classes()).toContain('show');
 
     wrapper.vm.$el.dispatchEvent(new Event('touchend'));
-    wrapper.update();
-    expect(wrapper.classes()).not.toContain($style.show);
+    expect(wrapper.classes()).not.toContain('show');
   });
 
 });

@@ -1,6 +1,5 @@
 import { mount, createLocalVue }          from '@vue/test-utils';
 import VueNotificationStack               from './VueNotificationStack.vue';
-import $style                             from 'identity-obj-proxy';
 import { INotification, addNotification } from './utils';
 
 const localVue = createLocalVue();
@@ -10,7 +9,6 @@ describe('VueNotificationStack.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueNotificationStack, {
       localVue,
-      mocks: { $style },
     }) as any;
     const notification: INotification = {
       title: 'this is a test',
@@ -23,7 +21,6 @@ describe('VueNotificationStack.vue', () => {
   test('add and remove notification', () => {
     const wrapper = mount(VueNotificationStack, {
       localVue,
-      mocks: { $style },
     }) as any;
     const notification: INotification = {
       title: 'this is a test',
@@ -35,7 +32,6 @@ describe('VueNotificationStack.vue', () => {
     addNotification(Object.assign({}, notification));
     addNotification(Object.assign({}, notification));
     addNotification(Object.assign({}, notification));
-    wrapper.update();
     expect(wrapper.vm.notifications).toHaveLength(3);
 
     wrapper.vm.removeNotification({ id: 1 } as INotification);
@@ -45,7 +41,6 @@ describe('VueNotificationStack.vue', () => {
   test('should remove notification after 100 ms', (done) => {
     const wrapper = mount(VueNotificationStack, {
       localVue,
-      mocks:     { $style },
       propsData: {
         duration: 100,
       },
@@ -60,7 +55,6 @@ describe('VueNotificationStack.vue', () => {
     addNotification(Object.assign({}, notification));
     addNotification(Object.assign({}, notification));
     addNotification(Object.assign({}, notification));
-    wrapper.update();
     expect(wrapper.vm.notifications).toHaveLength(3);
 
     setTimeout(() => {

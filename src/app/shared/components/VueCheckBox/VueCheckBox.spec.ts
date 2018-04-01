@@ -1,6 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueCheckBox               from './VueCheckBox.vue';
-import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -9,7 +8,6 @@ describe('VueCheckBox.vue', () => {
   test('renders checkbox', () => {
     const wrapper = mount(VueCheckBox, {
       localVue,
-      mocks:     { $style },
       propsData: {
         name:    'foo',
         label: 'Test',
@@ -18,13 +16,12 @@ describe('VueCheckBox.vue', () => {
 
     expect(wrapper.find('label').text()).toBe('Test');
     expect(wrapper.findAll('#foo')).toHaveLength(1);
-    expect(wrapper.findAll(`.${$style.checkbox}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.checkbox`)).toHaveLength(1);
   });
 
   test('renders radio', () => {
     const wrapper = mount(VueCheckBox, {
       localVue,
-      mocks:     { $style },
       propsData: {
         name:    'foo',
         label: 'Test',
@@ -34,27 +31,25 @@ describe('VueCheckBox.vue', () => {
 
     expect(wrapper.find('label').text()).toBe('Test');
     expect(wrapper.findAll('#foo')).toHaveLength(1);
-    expect(wrapper.findAll(`.${$style.radio}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.radio`)).toHaveLength(1);
   });
 
   test('should emit click event', () => {
     const wrapper = mount(VueCheckBox, {
       localVue,
-      mocks:     { $style },
       propsData: {
         name:    'foo',
         label: 'Test',
       },
     });
 
-    wrapper.find(`.${$style.box}`).trigger('click');
+    wrapper.find(`.box`).trigger('click');
     expect(wrapper.emitted().click).toBeTruthy();
   });
 
   test('should disable checkbox', () => {
     const wrapper = mount(VueCheckBox, {
       localVue,
-      mocks:     { $style },
       propsData: {
         name:       'foo',
         label:    'Test',
@@ -62,8 +57,8 @@ describe('VueCheckBox.vue', () => {
       },
     });
 
-    expect(wrapper.findAll(`.${$style.disabled}`)).toHaveLength(1);
-    wrapper.find(`.${$style.box}`).trigger('click');
+    expect(wrapper.findAll(`.disabled`)).toHaveLength(1);
+    wrapper.find(`.box`).trigger('click');
     expect(wrapper.emitted().click).toBeFalsy();
   });
 

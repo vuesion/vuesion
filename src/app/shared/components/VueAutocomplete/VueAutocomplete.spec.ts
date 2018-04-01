@@ -1,7 +1,6 @@
 import { createLocalVue, mount, shallow } from '@vue/test-utils';
 import VueAutocomplete                    from './VueAutocomplete.vue';
 import VueLoader                          from '../VueLoader/VueLoader.vue';
-import $style                             from 'identity-obj-proxy';
 import { AutocompleteOptionsFixture }     from './fixtures/IAutocompleteFixture';
 import { getI18n }                        from '../../plugins/i18n/i18n';
 
@@ -13,7 +12,6 @@ describe('VueAutocomplete.vue', () => {
     const wrapper: any = shallow(VueAutocomplete, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -29,7 +27,6 @@ describe('VueAutocomplete.vue', () => {
     const wrapper: any = shallow(VueAutocomplete, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -44,7 +41,6 @@ describe('VueAutocomplete.vue', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -63,7 +59,6 @@ describe('VueAutocomplete.vue', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -88,7 +83,6 @@ describe('VueAutocomplete.vue', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -112,7 +106,6 @@ describe('VueAutocomplete.vue', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         options: AutocompleteOptionsFixture,
       },
@@ -122,9 +115,8 @@ describe('VueAutocomplete.vue', () => {
     wrapper.vm.handleOutsideClick({ target: null });
     expect(wrapper.vm.isOpen).toBeFalsy();
 
-    wrapper.vm.onFocus();
+    wrapper.vm.isOpen = true;
     wrapper.vm.handleOutsideClick({ target: wrapper.find('div').element });
-    wrapper.update();
     expect(wrapper.vm.isOpen).toBeTruthy();
   });
 
@@ -132,7 +124,6 @@ describe('VueAutocomplete.vue', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -156,7 +147,6 @@ describe('VueAutocomplete.vue', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -179,7 +169,6 @@ describe('VueAutocomplete.vue', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -189,8 +178,6 @@ describe('VueAutocomplete.vue', () => {
     wrapper.vm.searchQuery = '';
     wrapper.vm.onChange({ target: { value: '' } });
     expect(wrapper.vm.isOpen).toBe(false);
-
-    wrapper.update();
 
     wrapper.vm.searchQuery = 'Test';
     wrapper.vm.emitRequest = jest.fn();
@@ -203,7 +190,6 @@ describe('VueAutocomplete.vue', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -222,7 +208,6 @@ describe('VueAutocomplete.vue', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         placeholder: 'Type something',
         maxOptions:  10,
@@ -254,7 +239,6 @@ describe('VueAutocomplete.vue', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         placeholder: 'Type something',
         maxOptions:  10,

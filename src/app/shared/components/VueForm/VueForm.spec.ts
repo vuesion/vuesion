@@ -1,6 +1,5 @@
-import { mount, createLocalVue }            from '@vue/test-utils';
+import { createLocalVue, mount }            from '@vue/test-utils';
 import VueForm                              from './VueForm.vue';
-import $style                               from 'identity-obj-proxy';
 import { isEmailValid, isPhoneNumberValid } from './Validators';
 import { IFormSchema }                      from './IFormSchema';
 
@@ -74,7 +73,6 @@ describe('VueForm.vue', () => {
 
     const wrapper = mount(VueForm, {
       localVue,
-      mocks:     { $style },
       propsData: {
         schema,
       },
@@ -149,7 +147,6 @@ describe('VueForm.vue', () => {
       } as IFormSchema;
     const wrapper = mount(VueForm, {
       localVue,
-      mocks:     { $style },
       propsData: {
         schema,
       },
@@ -246,7 +243,6 @@ describe('VueForm.vue', () => {
       } as IFormSchema;
     const wrapper = mount(VueForm, {
       localVue,
-      mocks:     { $style },
       propsData: {
         schema,
       },
@@ -340,11 +336,69 @@ describe('VueForm.vue', () => {
       } as IFormSchema;
     const wrapper = mount(VueForm, {
       localVue,
-      mocks:     { $style },
       propsData: {
-        schema,
+        schema: {
+          cancellationText: 'foo',
+          submitText:       'foo',
+          id:               'foo',
+          name:             'foo',
+          title:            'foo',
+          subtitle:         'foo',
+          elements:         [
+            {
+              type:        'vue-input',
+              model:       'name',
+              required:    true,
+              isValid(value: string) {
+                return value.trim().indexOf(' ') > -1;
+              },
+              invalidText: 'Please provide fist and last name',
+            },
+            {
+              type:  'slot',
+              model: 'foo',
+            },
+            {
+              type:        'vue-input',
+              model:       'phone',
+              required:    false,
+              label:       'Phone',
+              inputType:   'phone',
+              isValid(value: string) {
+                return isPhoneNumberValid(value);
+              },
+              invalidText: 'This is not a valid phone number!',
+            },
+            {
+              type:        'vue-input',
+              model:       'email',
+              required:    true,
+              label:       'Email',
+              inputType:   'email',
+              isValid(value: string) {
+                return isEmailValid(value);
+              },
+              invalidText: 'This is not a valid email address!',
+            },
+            {
+              type:     'vue-check-box',
+              model:    'terms',
+              required: true,
+              label:    'I accept the <a href="/terms">Terms and Conditions</a>',
+              value:    false,
+            },
+            {
+              type:     'vue-check-box',
+              model:    'consent',
+              required: false,
+              value:    false,
+            },
+          ],
+        },
       },
     });
+
+    wrapper.setProps({ schema });
 
     const name: any = wrapper.findAll('input').at(0);
     const phone: any = wrapper.findAll('input').at(1);

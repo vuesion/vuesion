@@ -1,7 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex                      from 'vuex';
 import VuexExample               from './VuexExample.vue';
-import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -15,7 +14,7 @@ describe('VuexExample.vue', () => {
                                      getTopics: () => [],
                                    },
                                  });
-    const wrapper = mount(VuexExample, { store, localVue, mocks: { $style } });
+    const wrapper = mount(VuexExample, { store, localVue });
 
     expect(wrapper.find('h1').text()).toBe('VuexExample');
   });

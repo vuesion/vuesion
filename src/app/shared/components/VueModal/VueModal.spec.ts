@@ -1,6 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueModal                  from './VueModal.vue';
-import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -9,7 +8,6 @@ describe('VueModal.vue', () => {
   test('renders slot', (done) => {
     const wrapper = mount(VueModal, {
       localVue,
-      mocks: { $style },
       slots: {
         default: '<p>TEST</p>',
       },
@@ -18,15 +16,12 @@ describe('VueModal.vue', () => {
     expect(wrapper.findAll('p')).toHaveLength(0);
 
     wrapper.setProps({ show: true });
-    wrapper.update();
     expect(wrapper.findAll('p')).toHaveLength(1);
 
     wrapper.setProps({ show: false });
-    wrapper.update();
     expect(wrapper.findAll('p')).toHaveLength(0);
 
     wrapper.setProps({ show: true });
-    wrapper.update();
 
     wrapper.vm.beforeEnter(wrapper.vm.$el);
     wrapper.vm.enter(wrapper.vm.$el, jest.fn());
@@ -38,7 +33,7 @@ describe('VueModal.vue', () => {
     document.addEventListener = jest.fn();
     document.removeEventListener = jest.fn();
 
-    const wrapper = mount(VueModal, { localVue, mocks: { $style } });
+    const wrapper = mount(VueModal, { localVue });
 
     wrapper.destroy();
 
@@ -49,7 +44,6 @@ describe('VueModal.vue', () => {
   test('should open menu and close it on outside click', () => {
     const wrapper: any = mount(VueModal, {
       localVue,
-      mocks: { $style },
       slots: {
         default: '<p>TEST</p>',
       },
@@ -59,17 +53,13 @@ describe('VueModal.vue', () => {
 
     expect(wrapper.vm.$emit).toHaveBeenCalledTimes(0);
     wrapper.vm.handleDocumentClick({ target: wrapper.find(`p`).element });
-    wrapper.update();
     expect(wrapper.vm.$emit).toHaveBeenCalledTimes(0);
 
     wrapper.vm.handleDocumentClick({ target: null });
-    wrapper.update();
     expect(wrapper.vm.$emit).toHaveBeenCalledTimes(0);
 
     wrapper.setProps({ show: true });
-    wrapper.update();
     wrapper.vm.handleDocumentClick({ target: null });
-    wrapper.update();
     expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
   });
 });

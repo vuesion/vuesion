@@ -8,7 +8,7 @@ const baseConfig = {
     assets:   true,
     children: true,
   },
-  devtool: isProd ? '#source-map' : '#eval-source-map',
+  devtool: isProd ? false : '#eval-source-map',
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json', '.node', '.scss'],
     modules:    [
@@ -17,12 +17,7 @@ const baseConfig = {
     ],
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(true),
-    new webpack.DefinePlugin({
-                               PRODUCTION:             isProd,
-                               DEVELOPMENT:            !isProd,
-                               'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-                             }),
+    new webpack.DefinePlugin({ PRODUCTION: isProd, DEVELOPMENT: !isProd }),
   ],
   module:  {
     rules: [
@@ -30,11 +25,15 @@ const baseConfig = {
         test:    /\.vue$/,
         loader:  'vue-loader',
         options: {
-          loaders: {
+          cssModules: {
+            localIdentName: '[local]-[hash:base64:5]',
+            camelCase:      true,
+          },
+          loaders:    {
             'scss': 'vue-style-loader!css-loader!sass-loader',
             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
           },
-          postcss: [
+          postcss:    [
             require('autoprefixer')({ browsers: ['last 2 versions', 'ie >= 11'] }),
             require('css-mqpacker')(),
             require('cssnano')({

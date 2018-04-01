@@ -15,6 +15,7 @@ export default (app: Express.Application, cb: any): void => {
   clientConfig.entry.app = ['webpack-hot-middleware/client', clientConfig.entry.app];
   clientConfig.output.filename = '[name].js';
   clientConfig.plugins.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
+  clientConfig.mode = 'development';
 
   const clientCompiler = webpack(clientConfig);
   const devMiddleware: WebpackDevMiddleware = nodeRequire('webpack-dev-middleware')(clientCompiler, {
@@ -41,6 +42,8 @@ export default (app: Express.Application, cb: any): void => {
   });
 
   app.use(nodeRequire('webpack-hot-middleware')(clientCompiler));
+
+  isomorphicConfig.mode = 'development';
 
   const serverCompiler: any = webpack(isomorphicConfig);
   const mfs: any = new MFS();

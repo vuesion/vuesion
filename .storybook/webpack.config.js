@@ -1,14 +1,13 @@
 const path = require('path');
-const genDefaultConfig = require('@storybook/vue/dist/server/config/defaults/webpack.config.js');
 
-module.exports = (storybookBaseConfig, configType) => {
-  const config = genDefaultConfig(storybookBaseConfig, configType);
+module.exports = (storybookBaseConfig) => {
+  const config = storybookBaseConfig;
 
   config.resolve.extensions.push('.ts', '.js', '.vue', '.json', '.node', '.scss');
 
   const resolve = (dir) => {
     return path.join(__dirname, '..', dir);
-  }
+  };
 
   config.resolve.alias = {
     'vue$': 'vue/dist/vue.esm.js',
