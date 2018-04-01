@@ -20,9 +20,10 @@
   @import "../../styles";
 
   .grid {
-    max-width:      425px;
-    margin:         0 auto;
-    position:       relative;
+    max-width: 425px;
+    margin:    0 auto;
+    position:  relative;
+    padding:   0 $screen-phone-gutter;
 
     @include media(tabletPortrait) {
       max-width: $screen-tablet-portrait;
