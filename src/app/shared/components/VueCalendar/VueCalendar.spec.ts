@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import VueCalendar               from './VueCalendar.vue';
 import $style                    from 'identity-obj-proxy';
 import { getI18n }               from '../../plugins/i18n/i18n';
@@ -148,6 +148,23 @@ describe('VueCalendar.vue', () => {
     expect(wrapper.vm.selectedYear).toBe(today.getFullYear() + 1);
     expect(wrapper.vm.currentYear).toBe(today.getFullYear() + 1);
     expect(wrapper.vm.selecting).toBe('date');
+  });
+
+  test('should render 1. april 2018', () => {
+    const start: Date = new Date(2018, 3, 1);
+    const end: Date = new Date(2018, 3, 2);
+    const wrapper = mount(VueCalendar, {
+      localVue,
+      i18n:      getI18n(),
+      mocks:     { $style },
+      propsData: {
+        startDate:      start,
+        endDate:        end,
+        firstDayOfWeek: 1,
+      },
+    });
+
+    expect(wrapper.findAll(`.${$style.selectedDay}`)).toHaveLength(2);
   });
 
 });

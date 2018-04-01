@@ -124,7 +124,9 @@
         const daysInMonth = 32 - new Date(this.currentYear, this.currentMonth, 32).getDate();
         const today = new Date();
 
-        days = days.concat(Array(paddingLeft).fill(null));
+        if (paddingLeft >= 0) {
+          days = days.concat(Array(paddingLeft).fill(null));
+        }
 
         for (let i = 0; i < daysInMonth; i++) {
           days.push(i + 1);
