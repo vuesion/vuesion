@@ -41,3 +41,8 @@ To release a new version of your project run one of the following commands:
 - `npm run release:patch`
 
 This will automatically generate a change log, change the version in `package.json` and tags the repository.
+
+## Storybook
+
+Storybook runs outside of your app. So you can develop UI components in isolation without worrying about app specific dependencies and requirements.
+Run `npm run storybook`. The server runs on port `6006`.

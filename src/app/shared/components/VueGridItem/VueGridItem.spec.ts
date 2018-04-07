@@ -12,7 +12,7 @@ describe('VueGridItem.vue', () => {
     expect(wrapper.findAll(`.${$style.gridItem}`)).toHaveLength(1);
   });
 
-  test('renders gritItem 100%', () => {
+  test('renders gridItem 100%', () => {
     const wrapper = mount(VueGridItem, {
       localVue,
       mocks:     { $style },
