@@ -24,6 +24,8 @@ describe('Components.vue', () => {
     wrapper.vm.calendarChange();
     wrapper.vm.addNotificationClick();
     wrapper.vm.selectChange();
+    wrapper.vm.onRequest('foo');
+    wrapper.vm.onRequest('foo', false);
     wrapper.vm.formSubmit({ name: 'foo', email: 'bar' }, () => {
       return true;
     });

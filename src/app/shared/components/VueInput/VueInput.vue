@@ -13,9 +13,7 @@
         value ? $style.hasValue : ''
       ]"
       v-bind="$attrs"
-      @keyup="onChange"
-      @change="onChange"
-      @focus="onFocus"
+      v-on="$listeners"
     />
     <span :class="$style.bar"></span>
     <label :for="name">{{placeholder}}<sup v-if="required">*</sup></label>
@@ -50,7 +48,7 @@
       },
       value:       {
         type:    String,
-        default: null,
+        default: '',
       },
       type:        {
         type:    String,
