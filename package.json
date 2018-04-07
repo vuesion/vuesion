@@ -34,7 +34,7 @@
     "test:tools": "cross-env NODE_ENV=test jest --config=./tools/jest.config.json",
     "test": "cross-env NODE_ENV=test jest --silent",
     "e2e": "cypress run --browser chrome",
-    "lint": "tslint -c tslint.json './src/**/*.ts' './tools/**/*.ts'",
+    "lint": "tslint --fix -c tslint.json './src/**/*.ts' './tools/**/*.ts'",
     "build": "concurrently \"npm run build:client\" \"npm run build:isomorphic\" \"npm run build:server\"",
     "analyze-bundle": "cross-env ANALYZE=true npm run build:client",
     "extract-i18n-messages": "npm run compile-tools && node ./tools/scripts/extract-i18n-messages.js",
@@ -93,11 +93,11 @@
     "testURL": "http://localhost:3000"
   },
   "config": {
-    "default-language": "en-US",
+    "default-language": "en",
     "supported-languages": [
-      "en-US",
-      "de-DE",
-      "pt-BR"
+      "en",
+      "de",
+      "pt"
     ]
   },
   "dependencies": {
