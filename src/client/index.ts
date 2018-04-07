@@ -1,6 +1,7 @@
 import { createApp, IApp } from '../app/app';
 import { Route }           from 'vue-router';
 import { Component }       from 'vue-router/types/router';
+import { IPreLoad }        from '../server/isomorphic';
 
 if (PRODUCTION) {
   const runtime: any = require('serviceworker-webpack-plugin/lib/runtime');
@@ -34,10 +35,7 @@ router.onReady(() => {
     .all(activated.map((component: Component) => {
 
       if ((component as any).prefetch) {
-        return (component as any).prefetch({
-                                             store,
-                                             route: to,
-                                           });
+        return (component as any).prefetch({ store, route: to } as IPreLoad);
       }
 
       return Promise.resolve();

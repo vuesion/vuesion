@@ -6,7 +6,7 @@ const baseConfig = require('./webpack.base.config');
 const devServerConfig = merge(baseConfig, {
   target:    'node',
   entry:     {
-    'dev-server': './src/server/dev-server',
+    'dev-server': './src/server/dev/server',
   },
   output:    {
     path:          path.join(__dirname, '..', 'dist', 'server'),

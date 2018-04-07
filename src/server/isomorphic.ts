@@ -39,10 +39,7 @@ export default (context: IServerContext) => {
       Promise.all(matchedComponents.map((component: Component) => {
 
         if ((component as any).prefetch) {
-          return (component as any).prefetch({
-                                               store,
-                                               route: router.currentRoute,
-                                             } as IPreLoad);
+          return (component as any).prefetch({ store, route: router.currentRoute } as IPreLoad);
         }
 
         return Promise.resolve();

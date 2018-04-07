@@ -1,6 +1,6 @@
 import * as Express             from 'express';
 import { WebpackDevMiddleware } from 'webpack-dev-middleware';
-import { Logger }               from './Logger';
+import { Logger }               from '../utils/Logger';
 
 const path = nodeRequire('path');
 const webpack = nodeRequire('webpack');
@@ -8,7 +8,7 @@ const MFS = nodeRequire('memory-fs');
 const clientConfig = nodeRequire('../../config/webpack.client.config');
 const isomorphicConfig = nodeRequire('../../config/webpack.isomorphic.config');
 
-export const devServer = (app: Express.Application, cb: any): void => {
+export default (app: Express.Application, cb: any): void => {
   let bundle: string;
   let template: string;
 

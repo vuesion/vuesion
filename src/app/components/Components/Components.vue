@@ -150,16 +150,16 @@
         <vue-grid-item>
           <div class="h1">Checkboxes / RadioButtons</div>
 
-          <vue-check-box id="check" label="checkbox" :checked="checked" @click="checked = !checked" />
+          <vue-check-box name="check" label="checkbox" :checked="checked" @click="checked = !checked" />
           <br />
-          <vue-check-box id="check2" label="checkbox" :checked="checked" @click="checked = !checked" :disabled="true" />
+          <vue-check-box name="check2" label="checkbox" :checked="checked" @click="checked = !checked" :disabled="true" />
           <br />
           <br />
-          <vue-check-box id="radio" label="radio" :checked="radio === 'radio1'" radio @click="radio = 'radio1'" />
+          <vue-check-box name="radio" label="radio" :checked="radio === 'radio1'" radio @click="radio = 'radio1'" />
           <br />
-          <vue-check-box id="radio2" label="radio" :checked="radio === 'radio2'" radio @click="radio = 'radio2'" />
+          <vue-check-box name="radio2" label="radio" :checked="radio === 'radio2'" radio @click="radio = 'radio2'" />
           <br />
-          <vue-check-box id="radio3" label="radio" :checked="radio === 'radio3'" radio @click="radio = 'radio3'"
+          <vue-check-box name="radio3" label="radio" :checked="radio === 'radio3'" radio @click="radio = 'radio3'"
                          :disabled="true" />
         </vue-grid-item>
 
