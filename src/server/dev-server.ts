@@ -1,7 +1,6 @@
-/* tslint:disable:no-console */
-
 import * as Express             from 'express';
 import { WebpackDevMiddleware } from 'webpack-dev-middleware';
+import { Logger }               from './Logger';
 
 const path = nodeRequire('path');
 const webpack = nodeRequire('webpack');
@@ -52,8 +51,8 @@ export const devServer = (app: Express.Application, cb: any): void => {
       throw err;
     }
     stats = stats.toJson();
-    stats.errors.forEach((e: any) => console.error(e));
-    stats.warnings.forEach((e: any) => console.warn(e));
+    stats.errors.forEach((e: any) => Logger.debug('%s', e));
+    stats.warnings.forEach((e: any) => Logger.debug('%s', e));
 
     const bundlePath: string = path.join(isomorphicConfig.output.path, 'vue-ssr-bundle.json');
 
