@@ -8,14 +8,14 @@ describe('i18n', () => {
 
     getI18n();
 
-    loadLanguageAsync('de-DE')
+    loadLanguageAsync('de')
     .then(() => {
       expect(axios.get).toHaveBeenCalledTimes(1);
-      return loadLanguageAsync('de-DE');
+      return loadLanguageAsync('de');
     })
     .then(() => {
       expect(axios.get).toHaveBeenCalledTimes(1);
-      return loadLanguageAsync('en-US');
+      return loadLanguageAsync('en');
     })
     .then(() => {
       expect(axios.get).toHaveBeenCalledTimes(1);
@@ -26,9 +26,9 @@ describe('i18n', () => {
   test('should set default language', (done) => {
     axios.get = jest.fn().mockReturnValue(Promise.resolve({ data: { foo: 'foo' } }));
 
-    getI18n('de-DE');
+    getI18n('de');
 
-    loadLanguageAsync('de-DE')
+    loadLanguageAsync('de')
     .then(() => {
       expect(axios.get).toHaveBeenCalledTimes(0);
       done();
@@ -36,8 +36,8 @@ describe('i18n', () => {
   });
 
   test('should load language which has no language file', () => {
-    const i18n: IVueI18n = getI18n('en-EN');
+    const i18n: IVueI18n = getI18n('fr');
 
-    expect(Object.keys(i18n.messages['en-EN']).length).toBeGreaterThan(0);
+    expect(Object.keys(i18n.messages.fr).length).toBeGreaterThan(0);
   });
 });

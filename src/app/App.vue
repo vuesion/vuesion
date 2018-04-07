@@ -23,19 +23,19 @@
           </router-link>
         </li>
         <li>
-          <a @click="langSwitch('en-US')">
+          <a @click="langSwitch('en')">
             <i class="fas fa-flag" />
             <small>{{ $t('App.nav.english' /*English*/) }}</small>
           </a>
         </li>
         <li>
-          <a @click="langSwitch('de-DE')">
+          <a @click="langSwitch('de')">
             <i class="fas fa-flag" />
             <small>{{ $t('App.nav.german' /*German*/) }}</small>
           </a>
         </li>
         <li>
-          <a @click="langSwitch('pt-BR')">
+          <a @click="langSwitch('pt')">
             <i class="fas fa-flag" />
             <small>{{ $t('App.nav.pt-BR' /*Portuguese*/) }}</small>
           </a>
