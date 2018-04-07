@@ -18,6 +18,7 @@ const isomorphicConfig = merge(baseConfig, {
     new webpack.DefinePlugin({
                                CLIENT: false,
                                SERVER: true,
+                               nodeRequire: 'function(module){return require(module);}',
                              }),
     new VueSSRPlugin({}),
   ],

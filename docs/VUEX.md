@@ -24,20 +24,24 @@ file: `/src/app/store.ts`:
 
 This can be used, for example, to store an access token in a cookie so you can use the access token for api calls on the server and server-side-render the app.
 
-following part in `/src/app/store.ts` is responsible for extracting the cookie data and pass it into the initial state of the app.
+following part in `/src/server/isomorphic.ts` is responsible for extracting the cookie data and pass it into the initial state of the app.
 
 ```js
-  if (SERVER) {
-    state = persistCookieStorage.getMergedStateFromServerContext<IState>(serverContext, state);
-    state.app.config = serverContext.appConfig;
+    /**
+     * default state
+     */
+    let state: IState = store.state;
+    state = PersistCookieStorage.getMergedStateFromServerContext<IState>(context, state);
+    state.app.config = context.appConfig;
 
-    if (state.app && state.app.lang) {
-      serverContext.acceptLanguage = state.app.lang;
-      serverContext.htmlLang = state.app.lang.substr(0, 2);
+    if (state.app && state.app.locale) {
+      context.acceptLanguage = state.app.locale;
+      context.htmlLang = state.app.locale.substr(0, 2);
     } else {
-      state.app.lang = serverContext.acceptLanguage;
+      state.app.locale = context.acceptLanguage;
     }
-  }
+
+    store.replaceState(state);
 ```
 
 ## Localstorage Persist

@@ -4,11 +4,11 @@ import { ICounterGetters, CounterGetters }         from './counter/getters';
 import { IVuexExampleGetters, VuexExampleGetters } from './vuexExample/getters';
 
 export interface IGetters extends GetterTree<IState, IState>, ICounterGetters, IVuexExampleGetters {
-  getLang(state: IState): string;
+  getLocale(state: IState): string;
 }
 
 export const Getters: IGetters = {
-  getLang: (state: IState): string => state.app.lang,
+  getLocale: (state: IState): string => state.app.locale,
   ...CounterGetters,
   ...VuexExampleGetters,
 };

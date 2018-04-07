@@ -5,7 +5,7 @@ export class PersistLocalStorage implements IVuexPersistStorage {
   public modules: string[];
   public prefix: string;
   public length: number;
-  private localBeforePersist: (state: IState) => IState;
+  private readonly localBeforePersist: (state: IState) => IState;
   [key: string]: any;
   [index: number]: string;
 

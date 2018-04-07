@@ -4,7 +4,6 @@ import axios         from 'axios';
 
 Vue.use(VueI18n);
 
-let i18n: VueI18n = null;
 const dateTimeFormats: VueI18n.DateTimeFormats = {
   en: {
     calendarHeader: {
@@ -30,50 +29,41 @@ const dateTimeFormats: VueI18n.DateTimeFormats = {
   },
 };
 
-export const getI18n = (lang: string = 'en'): VueI18n => {
-  const defaultMessages: any = require('../../../../../i18n/en.json');
-  const messages: any = {
-    en: defaultMessages,
-  };
+export const i18n = new VueI18n(
+  {
+    dateTimeFormats,
+  },
+);
 
-  try {
-    messages[lang] = require(`../../../../../i18n/${lang}.json`);
-  } catch {
-    messages[lang] = defaultMessages;
-  }
+/* istanbul ignore next */
+if (TEST) {
+  i18n.locale = 'en';
+  i18n.fallbackLocale = 'en';
+  i18n.setLocaleMessage('en', require('../../../../../i18n/en.json'));
+}
 
-  return i18n = new VueI18n(
-    {
-      locale:         lang,
-      fallbackLocale: 'en',
-      messages,
-      dateTimeFormats,
-    },
-  );
+const loadedLocales: string[] = [];
+
+const setI18nLocale = (locale: string) => {
+  i18n.locale = locale;
+  axios.defaults.headers.common['Accept-Language'] = locale;
+  document.querySelector('html').setAttribute('lang', locale.substr(0, 2));
+  return locale;
 };
 
-const loadedLanguages: string[] = ['en'];
+export const loadLocaleAsync = (locale: string): Promise<any> => {
+  if (i18n.locale !== locale) {
 
-const setI18nLanguage = (lang: string) => {
-  i18n.locale = lang;
-  axios.defaults.headers.common['Accept-Language'] = lang;
-  document.querySelector('html').setAttribute('lang', lang.substr(0, 2));
-  return lang;
-};
-
-export const loadLanguageAsync = (lang: string): Promise<any> => {
-  if (i18n.locale !== lang) {
-
-    if (!loadedLanguages.find((l) => l === lang)) {
-      return axios.get(`/i18n/${lang}.json`)
+    if (!loadedLocales.find((l) => l === locale)) {
+      return axios.get(`/i18n/${locale}.json`)
                   .then((response: any) => {
-                    i18n.setLocaleMessage(lang, response.data);
-                    loadedLanguages.push(lang);
-                    return setI18nLanguage(lang);
+                    i18n.setLocaleMessage(locale, response.data);
+                    loadedLocales.push(locale);
+                    return setI18nLocale(locale);
                   });
     }
 
-    return Promise.resolve(setI18nLanguage(lang));
+    return Promise.resolve(setI18nLocale(locale));
   }
-  return Promise.resolve(lang);
+  return Promise.resolve(locale);
 };

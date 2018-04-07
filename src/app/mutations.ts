@@ -1,13 +1,13 @@
 import { MutationTree } from 'vuex';
 import {
-  ICounterState,
-  ICounterMutations,
   CounterDefaultState,
   CounterMutations,
+  ICounterMutations,
+  ICounterState,
 }                       from './counter/mutations';
 import {
-  IVuexExampleState,
   IVuexExampleMutations,
+  IVuexExampleState,
   VuexExampleDefaultState,
   VuexExampleMutations,
 }                       from './vuexExample/mutations';
@@ -17,27 +17,29 @@ export interface IState extends ICounterState, IVuexExampleState {
   [key: string]: any;
 
   app: {
-    lang: string,
+    locale: string,
     config: IAppConfig,
+    defaultMessages: any;
   };
 }
 
 export interface IMutations extends MutationTree<IState>, ICounterMutations, IVuexExampleMutations {
-  CHANGE_LANG(state: IState, lang: string): void;
+  CHANGE_LOCALE(state: IState, locale: string): void;
 }
 
 export const DefaultState: IState = {
   app: {
-    lang: null,
-    config: null,
+    locale:          null,
+    config:          null,
+    defaultMessages: {},
   },
   ...CounterDefaultState,
   ...VuexExampleDefaultState,
 };
 
 export const Mutations: IMutations = {
-  CHANGE_LANG: (state: IState, lang: string) => {
-    state.app.lang = lang;
+  CHANGE_LOCALE: (state: IState, locale: string) => {
+    state.app.locale = locale;
   },
   ...CounterMutations,
   ...VuexExampleMutations,

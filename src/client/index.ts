@@ -14,7 +14,11 @@ if (PRODUCTION) {
   }
 }
 
-const { app, router, store }: IApp = createApp();
+const { app, router, store, i18n }: IApp = createApp();
+
+i18n.locale = store.state.app.locale;
+i18n.fallbackLocale = store.state.app.locale;
+i18n.setLocaleMessage(store.state.app.locale, store.state.app.defaultMessages);
 
 router.onReady(() => {
   router

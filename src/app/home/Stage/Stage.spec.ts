@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Stage                     from './Stage.vue';
-import { getI18n }               from '../../shared/plugins/i18n/i18n';
+import { i18n }               from '../../shared/plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
@@ -11,7 +11,7 @@ describe('Stage.vue', () => {
 
     const wrapper = mount(Stage, {
       localVue,
-      i18n:  getI18n(),
+      i18n,
     });
 
     expect(wrapper.find('h1').text()).toBe('Vue.js Starter');
@@ -37,7 +37,7 @@ describe('Stage.vue', () => {
 
     const wrapper = mount(Stage, {
       localVue,
-      i18n:  getI18n(),
+      i18n,
     });
 
     wrapper.destroy();

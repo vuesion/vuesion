@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueCalendar               from './VueCalendar.vue';
-import { getI18n }               from '../../plugins/i18n/i18n';
+import { i18n }                  from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 const today: Date = new Date();
@@ -28,7 +28,7 @@ describe('VueCalendar.vue', () => {
     const max: Date = new Date(2018, 1, 15);
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         minDate: min,
         maxDate: max,
@@ -49,7 +49,7 @@ describe('VueCalendar.vue', () => {
     const end: Date = new Date(2018, 1, 15);
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n,
       propsData: {
         startDate: start,
         endDate:   end,
@@ -62,7 +62,7 @@ describe('VueCalendar.vue', () => {
   test('renders component with selected date', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n,
       propsData: {
         selectedDate: nextWeek,
       },
@@ -74,7 +74,7 @@ describe('VueCalendar.vue', () => {
   test('should emit events', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n:  getI18n(),
+      i18n: getI18n(),
     }) as any;
 
     wrapper.vm.onChange();
@@ -87,7 +87,7 @@ describe('VueCalendar.vue', () => {
   test('should setByDay', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n:  getI18n(),
+      i18n: getI18n(),
     }) as any;
 
     expect(wrapper.vm.selectedDay).toBe(today.getDate());
@@ -102,7 +102,7 @@ describe('VueCalendar.vue', () => {
   test('should setByMonth', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n:  getI18n(),
+      i18n: getI18n(),
     }) as any;
 
     expect(wrapper.vm.currentMonth).toBe(today.getMonth());
@@ -123,7 +123,7 @@ describe('VueCalendar.vue', () => {
   test('should setByYear', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n:  getI18n(),
+      i18n: getI18n(),
     }) as any;
 
     wrapper.vm.$data.selecting = 'year';
@@ -143,7 +143,7 @@ describe('VueCalendar.vue', () => {
     const end: Date = new Date(2018, 3, 2);
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n,
       propsData: {
         startDate:      start,
         endDate:        end,

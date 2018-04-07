@@ -3,7 +3,7 @@ import { action }                     from '@storybook/addon-actions';
 import VueInfoAddon                   from 'storybook-addon-vue-info';
 import VueAutocomplete                from './VueAutocomplete.vue';
 import { AutocompleteOptionsFixture } from './fixtures/IAutocompleteFixture';
-import { getI18n }                    from '../../plugins/i18n/i18n';
+import { i18n }                    from '../../plugins/i18n/i18n';
 
 const story = (storiesOf('VueAutocomplete', module) as any);
 
@@ -39,7 +39,7 @@ story.add('Default', () => ({
             @request="onRequest"
             @request="request"
             @change="change"/>`,
-  i18n:       getI18n(),
+  i18n,
 }));
 
 story.add('Loading', () => ({
@@ -79,5 +79,5 @@ story.add('Loading', () => ({
             @request="onRequest"
             @request="request"
             @change="change"/>`,
-  i18n:       getI18n(),
+  i18n,
 }));
