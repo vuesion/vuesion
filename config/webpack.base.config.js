@@ -17,7 +17,7 @@ const baseConfig = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({ PRODUCTION: isProd, DEVELOPMENT: !isProd }),
+    new webpack.DefinePlugin({ PRODUCTION: isProd, DEVELOPMENT: !isProd, TEST: false }),
   ],
   module:  {
     rules: [

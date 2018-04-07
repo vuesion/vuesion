@@ -1,43 +1,32 @@
-import axios                          from 'axios';
-import { getI18n, loadLanguageAsync } from './i18n';
-import { IVueI18n }                   from 'vue-i18n';
+import axios               from 'axios';
+import { loadLocaleAsync } from './i18n';
 
 describe('i18n', () => {
   test('should set new language', (done) => {
     axios.get = jest.fn().mockReturnValue(Promise.resolve({ data: { foo: 'foo' } }));
 
-    getI18n();
-
-    loadLanguageAsync('de')
+    loadLocaleAsync('de')
     .then(() => {
       expect(axios.get).toHaveBeenCalledTimes(1);
-      return loadLanguageAsync('de');
+      return loadLocaleAsync('de');
     })
     .then(() => {
       expect(axios.get).toHaveBeenCalledTimes(1);
-      return loadLanguageAsync('en');
+      return loadLocaleAsync('en');
     })
     .then(() => {
-      expect(axios.get).toHaveBeenCalledTimes(1);
+      expect(axios.get).toHaveBeenCalledTimes(2);
       done();
     });
   });
 
-  test('should set default language', (done) => {
+  test('should set default locale', (done) => {
     axios.get = jest.fn().mockReturnValue(Promise.resolve({ data: { foo: 'foo' } }));
 
-    getI18n('de');
-
-    loadLanguageAsync('de')
+    loadLocaleAsync('de')
     .then(() => {
       expect(axios.get).toHaveBeenCalledTimes(0);
       done();
     });
-  });
-
-  test('should load language which has no language file', () => {
-    const i18n: IVueI18n = getI18n('fr');
-
-    expect(Object.keys(i18n.messages.fr).length).toBeGreaterThan(0);
   });
 });

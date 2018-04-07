@@ -36,7 +36,7 @@ describe('PersistCookieStorage', () => {
   });
 
   test('should merge server context if index cookie is not present', () => {
-    const mergedState: any = storage.getMergedStateFromServerContext(
+    const mergedState: any = PersistCookieStorage.getMergedStateFromServerContext(
       { cookies: {} } as IServerContext,
       {
         foo: ['bar'],
@@ -47,7 +47,7 @@ describe('PersistCookieStorage', () => {
   });
 
   test('should merge server context', () => {
-    const mergedState: any = storage.getMergedStateFromServerContext(
+    const mergedState: any = PersistCookieStorage.getMergedStateFromServerContext(
       {
         cookies: {
           vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
@@ -63,7 +63,7 @@ describe('PersistCookieStorage', () => {
   });
 
   test('should continue with invalid JSON and use initial state', () => {
-    const mergedState: any = storage.getMergedStateFromServerContext(
+    const mergedState: any = PersistCookieStorage.getMergedStateFromServerContext(
       {
         cookies: {
           vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
@@ -79,8 +79,7 @@ describe('PersistCookieStorage', () => {
   });
 
   test('should continue with invalid JSON and fall back if ther is no initial state', () => {
-    const localStorage: PersistCookieStorage = new PersistCookieStorage([], { cookieOptions: {} }, 'vuexpersist');
-    const mergedState: any = localStorage.getMergedStateFromServerContext(
+    const mergedState: any = PersistCookieStorage.getMergedStateFromServerContext(
       {
         cookies: {
           vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
@@ -108,7 +107,7 @@ describe('PersistCookieStorage', () => {
 
     expect(localStorage.beforePersist(state)).toEqual(state);
 
-    localStorage = new PersistCookieStorage([], { cookieOptions: {}, beforePersist });
+    localStorage = new PersistCookieStorage([], { cookieOptions: {}, beforePersist }, 'foo');
     expect(localStorage.beforePersist(state)).toEqual({ baz: 'faz' });
   });
 });

@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueDatePicker             from './VueDatePicker.vue';
-import { getI18n }               from '../../plugins/i18n/i18n';
+import { i18n }                  from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
@@ -9,7 +9,7 @@ describe('VueDatePicker.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
-      i18n:  getI18n(),
+      i18n,
     }) as any;
 
     expect(wrapper.findAll(`.vueDatePicker`)).toHaveLength(1);
@@ -20,7 +20,7 @@ describe('VueDatePicker.vue', () => {
   test('renders component with selected date', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
-      i18n:  getI18n(),
+      i18n,
     }) as any;
 
     expect(wrapper.vm.inputValue).toBe('');
@@ -32,7 +32,7 @@ describe('VueDatePicker.vue', () => {
   test('renders component with current date', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         currentDate: new Date(),
       },
@@ -44,7 +44,7 @@ describe('VueDatePicker.vue', () => {
   test('should emit change', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
-      i18n:  getI18n(),
+      i18n,
     }) as any;
 
     wrapper.vm.onChange();

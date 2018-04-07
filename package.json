@@ -93,8 +93,8 @@
     "testURL": "http://localhost:3000"
   },
   "config": {
-    "default-language": "en",
-    "supported-languages": [
+    "default-locale": "en",
+    "supported-locales": [
       "en",
       "de",
       "pt"

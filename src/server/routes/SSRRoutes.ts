@@ -53,12 +53,12 @@ export const SSRRoutes = (app: Express.Application): any => {
       return res.end('waiting for compilation... refresh in a moment.');
     }
 
-    acceptLanguage.languages(packageJson.config['supported-languages']);
+    acceptLanguage.languages(packageJson.config['supported-locales']);
 
     const startTime: number = Date.now();
     const acceptLang: string = req.headers['accept-language']
                                ? req.headers['accept-language'].toString()
-                               : packageJson.config['default-language'];
+                               : packageJson.config['default-locale'];
     const defaultLang: string = acceptLanguage.get(acceptLang);
     const serverContext: IServerContext = {
       url:            req.url,

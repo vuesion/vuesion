@@ -1,9 +1,10 @@
-import { createApp, IApp } from '../app/app';
-import { Component }       from 'vue-router/types/router';
-import { Store }           from 'vuex';
-import { IState }          from '../app/mutations';
-import { Route }           from 'vue-router';
-import { IAppConfig }      from '../app/config/IAppConfig';
+import { createApp, IApp }      from '../app/app';
+import { Component }            from 'vue-router/types/router';
+import { Store }                from 'vuex';
+import { IState }               from '../app/mutations';
+import { Route }                from 'vue-router';
+import { IAppConfig }           from '../app/config/IAppConfig';
+import { PersistCookieStorage } from '../app/shared/plugins/vuex-persist/PersistCookieStorage';
 
 export interface IServerContext {
   url: string;
@@ -22,11 +23,48 @@ export interface IPreLoad {
 
 export default (context: IServerContext) => {
   return new Promise((resolve: any, reject: any) => {
-    const { app, router, store }: IApp = createApp(context);
+    const { app, router, store, i18n }: IApp = createApp();
+
+    /**
+     * default state
+     */
+    let state: IState = store.state;
+    state = PersistCookieStorage.getMergedStateFromServerContext<IState>(context, state);
+    state.app.config = context.appConfig;
+
+    if (state.app && state.app.locale) {
+      context.acceptLanguage = state.app.locale;
+      context.htmlLang = state.app.locale.substr(0, 2);
+    } else {
+      state.app.locale = context.acceptLanguage;
+    }
+
+    store.replaceState(state);
+
+    /**
+     * SEO
+     */
+    context.meta = app.$meta();
+
+    /**
+     * I18N
+     */
+    const lang: string = store.state.app.locale;
+    let defaultMessages: any = {};
+
+    try {
+      defaultMessages = nodeRequire(`../../i18n/${lang}.json`);
+    } catch (e) {
+      defaultMessages = nodeRequire(`../../i18n/en.json`);
+    }
+
+    i18n.locale = lang;
+    i18n.fallbackLocale = lang;
+    i18n.setLocaleMessage(lang, defaultMessages);
+
+    store.state.app.defaultMessages = defaultMessages;
 
     router.push(context.url);
-
-    context.meta = app.$meta();
 
     router
     .onReady(() => {

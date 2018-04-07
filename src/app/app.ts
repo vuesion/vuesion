@@ -1,33 +1,31 @@
 import Vue                from 'vue';
-import { sync }           from 'vuex-router-sync';
-import App                from './App.vue';
-import { getStore }       from './store';
-import { router }         from './router';
-import { getI18n }        from './shared/plugins/i18n/i18n';
-import { VueRouter }      from 'vue-router/types/router';
+import VueI18n            from 'vue-i18n';
 import { Store }          from 'vuex';
-import { IServerContext } from '../server/isomorphic';
+import { sync }           from 'vuex-router-sync';
+import { VueRouter }      from 'vue-router/types/router';
+import App                from './App.vue';
+import { i18n }        from './shared/plugins/i18n/i18n';
+import { store }       from './store';
+import { router }         from './router';
 import { IState }         from './mutations';
 
 export interface IApp {
   app: Vue;
   router: VueRouter;
   store: Store<IState>;
+  i18n: VueI18n;
 }
 
-export const createApp = (serverContext?: IServerContext): IApp => {
-  const store: Store<IState> = getStore(serverContext);
-  const lang: string = serverContext ? serverContext.acceptLanguage : store.state.app.lang;
-
+export const createApp = (): IApp => {
   sync(store, router);
   const app: Vue = new Vue(
     {
       router,
       store,
-      i18n:   getI18n(lang),
+      i18n,
       render: (h) => h(App),
     },
   );
 
-  return { app, router, store };
+  return { app, router, store, i18n };
 };

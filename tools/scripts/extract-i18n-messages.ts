@@ -6,8 +6,8 @@ import * as path from 'path';
 
 const basePath: string = path.resolve(process.cwd());
 const packageJSON: any = JSON.parse(fs.readFileSync(path.join(basePath, 'package.json')).toString());
-const supportedLanguages: string[] = packageJSON.config['supported-languages'];
-const defaultLanguage: string = packageJSON.config['default-language'];
+const supportedLanguages: string[] = packageJSON.config['supported-locales'];
+const defaultLanguage: string = packageJSON.config['default-locale'];
 const translations: any = {};
 const sanitizeMessage = (message: string): string => {
   const replacements: Array<{ from: string | RegExp, to: string }> = [

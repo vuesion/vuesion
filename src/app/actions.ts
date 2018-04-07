@@ -4,11 +4,11 @@ import { ICounterActions, CounterActions }         from './counter/actions';
 import { IVuexExampleActions, VuexExampleActions } from './vuexExample/actions';
 
 export interface IActions extends ActionTree<IState, IState>, ICounterActions, IVuexExampleActions {
-  changeLang(context: ActionContext<IState, IState>, lang: string): void;
+  changeLocale(context: ActionContext<IState, IState>, locale: string): void;
 }
 
 export const Actions: IActions = {
-  changeLang: ({ commit }: ActionContext<IState, IState>, lang: string) => commit('CHANGE_LANG', lang),
+  changeLocale: ({ commit }: ActionContext<IState, IState>, locale: string) => commit('CHANGE_LOCALE', locale),
   ...CounterActions,
   ...VuexExampleActions,
 };

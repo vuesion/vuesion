@@ -2,7 +2,7 @@ import { createLocalVue, mount, shallow } from '@vue/test-utils';
 import VueAutocomplete                    from './VueAutocomplete.vue';
 import VueLoader                          from '../VueLoader/VueLoader.vue';
 import { AutocompleteOptionsFixture }     from './fixtures/IAutocompleteFixture';
-import { getI18n }                        from '../../plugins/i18n/i18n';
+import { i18n }                        from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
@@ -11,7 +11,7 @@ describe('VueAutocomplete.vue', () => {
   test('renders and destroys component', () => {
     const wrapper: any = shallow(VueAutocomplete, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -26,7 +26,7 @@ describe('VueAutocomplete.vue', () => {
   test('renders component with loader', () => {
     const wrapper: any = shallow(VueAutocomplete, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -40,7 +40,7 @@ describe('VueAutocomplete.vue', () => {
   test('onFocus', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -58,7 +58,7 @@ describe('VueAutocomplete.vue', () => {
   test('onArrowDown', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -82,7 +82,7 @@ describe('VueAutocomplete.vue', () => {
   test('onArrowUp', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -105,7 +105,7 @@ describe('VueAutocomplete.vue', () => {
   test('handleClickOutside', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         options: AutocompleteOptionsFixture,
       },
@@ -123,7 +123,7 @@ describe('VueAutocomplete.vue', () => {
   test('onEnterKeyPress', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -146,7 +146,7 @@ describe('VueAutocomplete.vue', () => {
   test('onOptionClick', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -168,7 +168,7 @@ describe('VueAutocomplete.vue', () => {
   test('onChange', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -189,7 +189,7 @@ describe('VueAutocomplete.vue', () => {
   test('emitRequest', (done) => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         placeholder: 'Type something',
         options:     AutocompleteOptionsFixture,
@@ -207,7 +207,7 @@ describe('VueAutocomplete.vue', () => {
   test('setResultContainerHeight', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         placeholder: 'Type something',
         maxOptions:  10,
@@ -238,7 +238,7 @@ describe('VueAutocomplete.vue', () => {
   test('onFocusItem', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
-      i18n:      getI18n(),
+      i18n,
       propsData: {
         placeholder: 'Type something',
         maxOptions:  10,
