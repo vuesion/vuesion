@@ -1,8 +1,8 @@
 {
   "name": "vue-starter",
   "short_name": "vue",
-  "theme_color": "#2ecc71",
-  "background_color": "#ecf0f1",
+  "theme_color": "#17BEBB",
+  "background_color": "#333333",
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",
