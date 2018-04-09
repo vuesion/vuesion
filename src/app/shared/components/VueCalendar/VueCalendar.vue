@@ -183,13 +183,13 @@
       },
       weekdays(): string[] {
         const weekdays: string[] = [
-          this.$t('components.calendar.sunday.short' /*S*/),
-          this.$t('components.calendar.monday.short' /*M*/),
-          this.$t('components.calendar.tuesday.short' /*T*/),
-          this.$t('components.calendar.wednesday.short' /*W*/),
-          this.$t('components.calendar.thursday.short' /*T*/),
-          this.$t('components.calendar.friday.short' /*F*/),
-          this.$t('components.calendar.saturday.short' /*S*/),
+          this.$t('components.calendar.sunday.short' /* S */),
+          this.$t('components.calendar.monday.short' /* M */),
+          this.$t('components.calendar.tuesday.short' /* T */),
+          this.$t('components.calendar.wednesday.short' /* W */),
+          this.$t('components.calendar.thursday.short' /* T */),
+          this.$t('components.calendar.friday.short' /* F */),
+          this.$t('components.calendar.saturday.short' /* S */),
         ];
         const orderedDays: string[] = [];
         let startDay: number = this.firstDayOfWeek;

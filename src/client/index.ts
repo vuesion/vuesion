@@ -17,7 +17,7 @@ if (PRODUCTION) {
 const { app, router, store, i18n }: IApp = createApp();
 
 i18n.locale = store.state.app.locale;
-i18n.fallbackLocale = store.state.app.locale;
+i18n.fallbackLocale = 'en';
 i18n.setLocaleMessage(store.state.app.locale, store.state.app.defaultMessages);
 
 router.onReady(() => {

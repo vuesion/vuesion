@@ -31,7 +31,7 @@
     "g": "npm run generate",
     "dev": "npm run dev:dev-server && npm run dev:server && node ./dist/server/server.js",
     "test:coverage": "cross-env NODE_ENV=test jest --silent --coverage",
-    "test:tools": "cross-env NODE_ENV=test jest --config=./tools/jest.config.json",
+    "test:tools": "npm run clean && cross-env NODE_ENV=test jest --config=./tools/jest.config.json",
     "test": "cross-env NODE_ENV=test jest --silent",
     "e2e": "cypress run --browser chrome",
     "lint": "tslint --fix -c tslint.json './src/**/*.ts' './tools/**/*.ts'",

@@ -3,7 +3,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item fill>
-          <h1>{{ $t('App.nav.counter') }}</h1>
+          <h1>{{ $t('App.nav.counter' /* Counter */) }}</h1>
         </vue-grid-item>
 
         <vue-grid-item fill>

@@ -15,7 +15,7 @@
   "components.calendar.tuesday.short": "D",
   "components.calendar.wednesday.short": "M",
   "components.forms": "Formulare",
-  "components.markdown": "\n # Markdown support\n\n - build on top of marked\n\n - server side rendering!!!\n\n - `github style` markdown\n",
+  "components.markdown": "# Markdown support\n - build on top of marked\n - server side rendering!!!\n - `github style` markdown",
   "components.register.cancellationText": "Abbrechen",
   "components.register.consent": "Ja, Sie können mich kontaktieren",
   "components.register.email": "E-mail",
@@ -28,6 +28,6 @@
   "components.register.submit.notification.title": "Hallo {name}!",
   "components.register.submitText": "Registrieren",
   "components.register.subtitle": "Bitte alle benötigten Felder ausfüllen",
-  "components.register.terms": "Ich akzeptiere die <a href='/terms'>AGBs</a>",
+  "components.register.terms": "Ich akzeptiere die <a href=\"/terms\">AGBs</a>",
   "components.register.title": "Registrieren"
 }

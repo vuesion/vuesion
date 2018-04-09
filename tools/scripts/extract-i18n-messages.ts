@@ -1,83 +1,57 @@
 /* tslint:disable:no-console */
 
-import * as glob from 'glob';
-import * as fs   from 'fs';
-import * as path from 'path';
-
-const basePath: string = path.resolve(process.cwd());
-const packageJSON: any = JSON.parse(fs.readFileSync(path.join(basePath, 'package.json')).toString());
-const supportedLanguages: string[] = packageJSON.config['supported-locales'];
-const defaultLanguage: string = packageJSON.config['default-locale'];
-const translations: any = {};
-const sanitizeMessage = (message: string): string => {
-  const replacements: Array<{ from: string | RegExp, to: string }> = [
-    { from: '/*', to: '' },
-    { from: '*/', to: '' },
-    { from: /\n/g, to: '\\n' },
-    { from: /\[/g, to: '<' },
-    { from: /\]/g, to: '>' },
-    { from: /"/g, to: '\'' },
-    { from: /\s\s+/g, to: ' ' },
-  ];
-
-  replacements.forEach((replacement: { from: string | RegExp, to: string }) => {
-    message = message.replace(replacement.from, replacement.to);
-  });
-
-  return message.trim();
-};
-
-const addTranslationObject = (translation: string) => {
-  const idMatches: string[] = translation.match(/'\S*'/);
-  const id: string = idMatches ? idMatches[0].replace(/[\\']/g, '') : '';
-  const defaultMessageMatches: string[] = translation.match(/\/\*[\S\s]*\*\//);
-  const defaultMessage: string = defaultMessageMatches
-    ? defaultMessageMatches[0]
-    : '';
-
-  if (defaultMessage.length > 0) {
-    translations[id] = defaultMessage;
-  }
-};
+import * as glob                                           from 'glob';
+import * as fs                                             from 'fs';
+import * as path                                           from 'path';
+import { getTranslationObject, getTranslationsFromString } from './Utils';
 
 const run = (): void => {
   glob('./src/app/**/*.vue', (err: any, files: string[]) => {
+    const basePath: string = path.resolve(process.cwd());
+    const packageJSON: any = JSON.parse(fs.readFileSync(path.join(basePath, 'package.json')).toString());
+    const supportedLocales: string[] = packageJSON.config['supported-locales'];
+    const defaultLocale: string = packageJSON.config['default-locale'];
+    let translations: any = {};
+
     /**
      * go through all *.vue files end extract the translation object $t('foo') -> {id: 'foo'}
      */
     files.forEach((file: string) => {
       const content = fs.readFileSync(file).toString();
-      const matches: string[] = content.match(/\$t\([\r,\n, ,\S]*?\)/g);
+      const matches: string[] = getTranslationsFromString(content);
 
       if (matches) {
-        matches.forEach((translation: string) => {
-          addTranslationObject(translation);
-        });
+        translations = { ...translations, ...getTranslationObject(matches) };
       }
     });
 
     /**
      * analyze and write languages files
      */
-    supportedLanguages.forEach((lang: string) => {
-      const langFilePath: string = path.join(basePath, 'i18n', `${lang}.json`);
-      const langFile: string = fs.existsSync(langFilePath) ? fs.readFileSync(langFilePath).toString() : null;
-      const langFileObject: any = langFile ? JSON.parse(langFile) : {};
-      const newLangObject: any = lang === defaultLanguage
-        ? (Object as any).assign({}, langFileObject, translations)
-        : (Object as any).assign({}, translations, langFileObject);
+    supportedLocales.forEach((locale: string) => {
+      const i18nFilePath: string = path.join(basePath, 'i18n', `${locale}.json`);
+      const i18nFileContent: string = fs.existsSync(i18nFilePath) ? fs.readFileSync(i18nFilePath).toString() : null;
+      const i18nFileObject: any = i18nFileContent ? JSON.parse(i18nFileContent) : {};
+
+      (Object as any).keys(i18nFileObject).forEach((key: string) => {
+        i18nFileObject[key] = i18nFileObject[key].replace(/\n/g, '\\n').replace(/"/g, '\\"');
+      });
+
+      const newI18nObject: any = locale === defaultLocale
+                                 ? (Object as any).assign({}, i18nFileObject, translations)
+                                 : (Object as any).assign({}, translations, i18nFileObject);
 
       /**
        * sort entries
        */
-      const sortedKeys: string[] = (Object as any).keys(newLangObject).sort();
+      const sortedKeys: string[] = (Object as any).keys(newI18nObject).sort();
       const sortedEntries: string[] = sortedKeys.map((key: string) => {
-        return `"${key}": "${sanitizeMessage(newLangObject[key])}"`;
+        return `"${key}": "${newI18nObject[key]}"`;
       });
 
-      fs.writeFileSync(path.join(basePath, 'i18n', `${lang}.json`), `{\n  ${sortedEntries.join(',\n  ')}\n}\n`);
+      fs.writeFileSync(path.join(basePath, 'i18n', `${locale}.json`), `{\n  ${sortedEntries.join(',\n  ')}\n}\n`);
 
-      console.info(`wrote i18n/${lang}.json`);
+      console.info(`wrote i18n/${locale}.json`);
     });
 
     console.info('i18n extraction finished');
