@@ -5,7 +5,7 @@
       <vue-grid>
         <vue-grid-row>
           <vue-grid-item>
-            <h1>{{ $t('App.nav.components' /*Components*/) }}</h1>
+            <h1>{{ $t('App.nav.components' /* Components */) }}</h1>
             <p>
               This Boilerplate comes with an initial set of solutions for common UX/UI patterns.
             </p>
@@ -315,7 +315,7 @@
       </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item>
-          <div class="h1">{{ $t('components.forms' /*Forms*/) }}</div>
+          <div class="h1">{{ $t('components.forms' /* Forms */) }}</div>
           <vue-form :schema="registerSchema" @submit="formSubmit" @reset="formReset">
             <div slot="middle">
               named slot in the middle (defined in schema)
@@ -328,7 +328,7 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          <div class="h1">{{ $t('components.forms' /*Forms*/) }}</div>
+          <div class="h1">{{ $t('components.forms' /* Forms */) }}</div>
           <vue-form :schema="loginSchema" />
         </vue-grid-item>
       </vue-grid-row>

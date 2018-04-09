@@ -7,37 +7,37 @@
         <li>
           <router-link to="/" @click.native="navBarClose" exact>
             <i class="fas fa-home" />
-            <small>{{ $t('App.nav.home' /*Home*/) }}</small>
+            <small>{{ $t('App.nav.home' /* Home */) }}</small>
           </router-link>
         </li>
         <li>
           <router-link to="/counter" @click.native="navBarClose">
             <i class="fas fa-hashtag" />
-            <small>{{ $t('App.nav.counter' /*Counter*/) }}</small>
+            <small>{{ $t('App.nav.counter' /* Counter */) }}</small>
           </router-link>
         </li>
         <li>
           <router-link to="/components" @click.native="navBarClose">
             <i class="fas fa-puzzle-piece" />
-            <small>{{ $t('App.nav.components' /*Components*/) }}</small>
+            <small>{{ $t('App.nav.components' /* Components */) }}</small>
           </router-link>
         </li>
         <li>
           <a @click="localeSwitch('en')">
             <i class="fas fa-flag" />
-            <small>{{ $t('App.nav.english' /*English*/) }}</small>
+            <small>{{ $t('App.nav.english' /* English */) }}</small>
           </a>
         </li>
         <li>
           <a @click="localeSwitch('de')">
             <i class="fas fa-flag" />
-            <small>{{ $t('App.nav.german' /*German*/) }}</small>
+            <small>{{ $t('App.nav.german' /* German */) }}</small>
           </a>
         </li>
         <li>
           <a @click="localeSwitch('pt')">
             <i class="fas fa-flag" />
-            <small>{{ $t('App.nav.pt-BR' /*Portuguese*/) }}</small>
+            <small>{{ $t('App.nav.pt-BR' /* Portuguese */) }}</small>
           </a>
         </li>
       </ul>

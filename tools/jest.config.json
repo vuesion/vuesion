@@ -15,5 +15,18 @@
   "transform": {
     ".(ts|tsx)": "<rootDir>../node_modules/ts-jest/preprocessor.js"
   },
-  "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+  "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+  "coverageThreshold": {
+    "global": {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100
+    }
+  },
+  "coveragePathIgnorePatterns": [
+    "/node_modules/"
+  ],
+  "coverageDirectory": "../coverage",
+  "testURL": "http://localhost:3000"
 }

@@ -59,7 +59,7 @@ export default (context: IServerContext) => {
     }
 
     i18n.locale = lang;
-    i18n.fallbackLocale = lang;
+    i18n.fallbackLocale = 'en';
     i18n.setLocaleMessage(lang, defaultMessages);
 
     store.state.app.defaultMessages = defaultMessages;
