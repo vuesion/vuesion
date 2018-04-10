@@ -23,7 +23,6 @@ export const Logger: winston.LoggerInstance =
                                                           handleExceptions: true,
                                                           json:             false,
                                                           colorize:         true,
-                                                          label:            'debug',
                                                         }),
                        ],
                        exitOnError: false,

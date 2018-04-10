@@ -7,8 +7,7 @@
     role="combobox">
 
     <vue-input
-      :id="name"
-      :name="name"
+      :name="name || instanceId"
       :value="searchQuery"
       :placeholder="placeholder"
       @input="onChange"
