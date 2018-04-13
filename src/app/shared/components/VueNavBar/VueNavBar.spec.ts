@@ -1,6 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueNavBar                 from './VueNavBar.vue';
 import $style                    from 'identity-obj-proxy';
+import { EventBus }              from '../../services/EventBus';
 
 const localVue = createLocalVue();
 
@@ -78,6 +79,30 @@ describe('VueNavBar.vue', () => {
 
     wrapper.vm.handleDocumentClick({ target: null });
     wrapper.update();
+    expect(wrapper.vm.isOpen).toBeFalsy();
+  });
+
+  test('should close navbar when close event is received', () => {
+    const wrapper: any = mount(VueNavBar, {
+      localVue,
+      mocks: { $style },
+    });
+
+    // Open the navbar to initialize:
+    expect(wrapper.vm.isOpen).toBeFalsy();
+
+    wrapper.find(`.${$style.hamburger}`).trigger('click');
+    wrapper.update();
+    expect(wrapper.vm.isOpen).toBeTruthy();
+
+    wrapper.vm.handleDocumentClick({ target: wrapper.find(`.${$style.hamburger}`).element });
+    wrapper.update();
+    expect(wrapper.vm.isOpen).toBeTruthy();
+
+    // Send the close event through the event bus:
+    EventBus.$emit('navbar.close');
+
+    // Navbar should now be closed:
     expect(wrapper.vm.isOpen).toBeFalsy();
   });
 });
