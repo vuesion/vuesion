@@ -38,6 +38,7 @@
   import VueGridItem from '../VueGridItem/VueGridItem';
   import VueGridRow  from '../VueGridRow/VueGridRow';
   import VueCollapse from '../VueCollapse/VueCollapse';
+  import { EventBus } from '../../services/EventBus';
 
   export default {
     name:       'VueNavBar',
@@ -103,11 +104,15 @@
           this.isOpen = false;
         }
       },
+      handleCloseEvent() {
+        this.isOpen = false;
+      }
     },
     beforeMount() {
       window.addEventListener('scroll', this.handleScroll);
       document.addEventListener('click', this.handleDocumentClick);
       document.addEventListener('touchstart', this.handleDocumentClick);
+      EventBus.$on('navbar.close', this.handleCloseEvent);
     },
     mounted() {
       this.handleScroll();

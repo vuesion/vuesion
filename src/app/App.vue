@@ -5,19 +5,19 @@
     <vue-nav-bar>
       <ul :class="$style.nav">
         <li>
-          <router-link to="/" exact>
+          <router-link to="/" @click.native="navBarClose" exact>
             <i class="fas fa-home" />
             <small>{{ $t('App.nav.home' /*Home*/) }}</small>
           </router-link>
         </li>
         <li>
-          <router-link to="/counter">
+          <router-link to="/counter" @click.native="navBarClose">
             <i class="fas fa-hashtag" />
             <small>{{ $t('App.nav.counter' /*Counter*/) }}</small>
           </router-link>
         </li>
         <li>
-          <router-link to="/components">
+          <router-link to="/components" @click.native="navBarClose">
             <i class="fas fa-puzzle-piece" />
             <small>{{ $t('App.nav.components' /*Components*/) }}</small>
           </router-link>
@@ -59,6 +59,7 @@
   import VueFooter             from './shared/components/VueFooter/VueFooter.vue';
   import VueNotificationStack  from './shared/components/VueNotificationStack/VueNotificationStack.vue';
   import { loadLanguageAsync } from './shared/plugins/i18n/i18n';
+  import { EventBus }          from './shared/services/EventBus';
 
   export default {
     components: {
@@ -75,7 +76,11 @@
         .catch((error: Error) => console.log(error));
 
         this.changeLang(lang);
+        this.navBarClose();
       },
+      navBarClose() {
+          EventBus.$emit('navbar.close');
+      }
     },
   };
 </script>
