@@ -3,7 +3,7 @@ import * as Cookies            from 'js-cookie';
 import { CookieAttributes }    from 'js-cookie';
 import merge                   from 'deepmerge';
 import { IServerContext }      from '../../../../server/isomorphic';
-import { IState }              from '../../../mutations';
+import { IState }              from '../../../state';
 
 interface IPersistCookieStorageConfig {
   cookieOptions: CookieAttributes;

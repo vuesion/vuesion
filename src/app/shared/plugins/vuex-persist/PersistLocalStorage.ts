@@ -1,5 +1,5 @@
 import { IVuexPersistStorage } from './vuex-persist';
-import { IState }              from '../../../mutations';
+import { IState }              from '../../../state';
 
 export class PersistLocalStorage implements IVuexPersistStorage {
   public modules: string[];

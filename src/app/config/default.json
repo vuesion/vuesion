@@ -1,5 +1,5 @@
 {
   "api": {
-    "baseUrl": "http://jsonplaceholder.typicode.com"
+    "baseUrl": "http://localhost:3000"
   }
 }

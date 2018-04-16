@@ -1,38 +1,46 @@
-import Vue                                 from 'vue';
-import Vuex, { Store }                     from 'vuex';
-import { VuexPersist }                     from './shared/plugins/vuex-persist/vuex-persist';
-import { Actions }                         from './actions';
-import { Getters }                         from './getters';
-import { DefaultState, IState, Mutations } from './mutations';
-import { PersistLocalStorage }             from './shared/plugins/vuex-persist/PersistLocalStorage';
-import { PersistCookieStorage }            from './shared/plugins/vuex-persist/PersistCookieStorage';
+import Vue                      from 'vue';
+import Vuex, { Store }          from 'vuex';
+import { DefaultState, IState } from './state';
+import { VuexPersist }          from './shared/plugins/vuex-persist/vuex-persist';
+import { PersistLocalStorage }  from './shared/plugins/vuex-persist/PersistLocalStorage';
+import { PersistCookieStorage } from './shared/plugins/vuex-persist/PersistCookieStorage';
+import { AppModule }            from './app/module';
+import { CounterModule }        from './counter/module';
 
 Vue.use(Vuex);
 
 const state: IState = (CLIENT && window.__INITIAL_STATE__) || DefaultState;
 
+/* istanbul ignore next */
+const beforePersistLocalStorage = (localState: IState): IState => {
+  delete localState.counter.incrementPending;
+  delete localState.counter.decrementPending;
+
+  return localState;
+};
+
+/* istanbul ignore next */
+const beforePersistCookieStorage = (localState: IState): IState => {
+  delete localState.app.config;
+  delete localState.app.defaultMessages;
+
+  return localState;
+};
+
 export const store: Store<IState> = new Vuex.Store(
   {
     state,
-    actions:   Actions,
-    mutations: Mutations,
-    getters:   Getters,
-    plugins:   [
+    plugins: [
       VuexPersist(
         [
-          new PersistLocalStorage(['counter']),
+          new PersistLocalStorage(['counter'], beforePersistLocalStorage),
           new PersistCookieStorage(
             ['app'],
             {
               cookieOptions: {
                 expires: 365,
               },
-              beforePersist(localState: IState): IState {
-                // TODO: delete state that should not be saved in a cookie (https://github.com/devCrossNet/vue-starter/issues/52)
-                delete localState.app.config;
-                delete localState.app.defaultMessages;
-                return localState;
-              },
+              beforePersist: beforePersistCookieStorage,
             },
           ),
         ],
@@ -40,3 +48,6 @@ export const store: Store<IState> = new Vuex.Store(
     ],
   },
 );
+
+store.registerModule('app', AppModule, { preserveState: true });
+store.registerModule('counter', CounterModule, { preserveState: true });

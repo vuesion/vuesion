@@ -1,7 +1,7 @@
 import { folderExists } from '../utils';
 
 export = {
-  description: 'Add an unconnected component',
+  description: 'Add a single file component',
   prompts:     [
     {
       type:     'input',
@@ -15,6 +15,12 @@ export = {
         return folderExists(value) ? `folder already exists (${value})` : true;
       },
     },
+    {
+      type:    'confirm',
+      name:    'storybook',
+      default: true,
+      message: 'Do you want a story book?',
+    },
   ],
   actions:     (data: any) => {
     const path: string[] = data.name.split('/');
@@ -22,7 +28,7 @@ export = {
     data.componentName = path.pop();
     data.basePath = '../../src/app/' + path.join('/');
 
-    return [
+    const actions: any[] = [
       {
         type:         'add',
         path:         '{{basePath}}/{{properCase componentName}}/{{properCase componentName}}.vue',
@@ -36,5 +42,16 @@ export = {
         abortOnFail:  true,
       },
     ];
+
+    if (data.storybook) {
+      actions.push({
+                     type:         'add',
+                     path:         '{{basePath}}/{{properCase componentName}}/{{properCase componentName}}.stories.ts',
+                     templateFile: './component/component.stories.ts.hbs',
+                     abortOnFail:  true,
+                   });
+    }
+
+    return actions;
   },
 };

@@ -1,28 +1,27 @@
-import { CounterMutations } from './mutations';
-import { IState }           from '../mutations';
+import { CounterMutations }                   from './mutations';
+import { CounterDefaultState, ICounterState } from './state';
+import { cloneDeep }                          from 'lodash';
 
 describe('CounterMutations', () => {
+  let testState: ICounterState;
 
-  test('it should increment the counts', () => {
-    const testState = {
-      counter: {
-        count: 1337,
-      },
-    } as IState;
-
-    CounterMutations.INCREMENT(testState);
-    expect(testState.counter.count).toBe(1338);
+  beforeEach(() => {
+    testState = cloneDeep(CounterDefaultState);
   });
 
-  test('it should decrement the counts', () => {
-    const testState = {
-      counter: {
-        count: 1337,
-      },
-    } as IState;
+  test('it should set the count', () => {
+    CounterMutations.SET_COUNT(testState, 1337);
+    expect(testState.count).toBe(1337);
+  });
 
-    CounterMutations.DECREMENT(testState);
-    expect(testState.counter.count).toBe(1336);
+  test('it should set increment pending', () => {
+    CounterMutations.SET_INCREMENT_PENDING(testState, true);
+    expect(testState.incrementPending).toBe(true);
+  });
+
+  test('it should set decrement pending', () => {
+    CounterMutations.SET_DECREMENT_PENDING(testState, true);
+    expect(testState.decrementPending).toBe(true);
   });
 
 });

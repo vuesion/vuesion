@@ -1,11 +1,19 @@
-import { IState } from '../mutations';
+import { ICounterState } from './state';
 
 export interface ICounterGetters {
-  getCount(state: IState): number;
+  incrementPending(state: ICounterState): boolean;
+  decrementPending(state: ICounterState): boolean;
+  count(state: ICounterState): number;
 }
 
 export const CounterGetters: ICounterGetters = {
-  getCount(state: IState): number {
-    return state.counter.count;
+  incrementPending(state: ICounterState): boolean {
+    return state.incrementPending;
+  },
+  decrementPending(state: ICounterState): boolean {
+    return state.decrementPending;
+  },
+  count(state: ICounterState): number {
+    return state.count;
   },
 };

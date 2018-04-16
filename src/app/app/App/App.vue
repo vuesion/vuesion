@@ -53,13 +53,13 @@
 
 <script lang="ts">
   import { mapActions }       from 'vuex';
-  import VueNavBar            from './shared/components/VueNavBar/VueNavBar.vue';
-  import VueGrid              from './shared/components/VueGrid/VueGrid.vue';
-  import VueGridItem          from './shared/components/VueGridItem/VueGridItem.vue';
-  import VueFooter            from './shared/components/VueFooter/VueFooter.vue';
-  import VueNotificationStack from './shared/components/VueNotificationStack/VueNotificationStack.vue';
-  import { loadLocaleAsync }  from './shared/plugins/i18n/i18n';
-  import { EventBus }         from './shared/services/EventBus';
+  import VueNavBar            from '../../shared/components/VueNavBar/VueNavBar.vue';
+  import VueGrid              from '../../shared/components/VueGrid/VueGrid.vue';
+  import VueGridItem          from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VueFooter            from '../../shared/components/VueFooter/VueFooter.vue';
+  import VueNotificationStack from '../../shared/components/VueNotificationStack/VueNotificationStack.vue';
+  import { loadLocaleAsync }  from '../../shared/plugins/i18n/i18n';
+  import { EventBus }         from '../../shared/services/EventBus';
 
   export default {
     components: {
@@ -70,7 +70,7 @@
       VueNotificationStack,
     },
     methods:    {
-      ...mapActions(['changeLocale']),
+      ...mapActions('app', ['changeLocale']),
       localeSwitch(locale: string): void {
         loadLocaleAsync(locale)
         .catch((error: Error) => console.log(error));
@@ -86,7 +86,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "shared/styles";
+  @import "../../shared/styles";
   // @import url($google-font);
 
   * {

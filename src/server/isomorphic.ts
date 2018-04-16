@@ -1,8 +1,8 @@
-import { createApp, IApp }      from '../app/app';
-import { Component }            from 'vue-router/types/router';
 import { Store }                from 'vuex';
-import { IState }               from '../app/mutations';
 import { Route }                from 'vue-router';
+import { Component }            from 'vue-router/types/router';
+import { createApp, IApp }      from '../app/app';
+import { IState }               from '../app/state';
 import { IAppConfig }           from '../app/config/IAppConfig';
 import { PersistCookieStorage } from '../app/shared/plugins/vuex-persist/PersistCookieStorage';
 

@@ -4,7 +4,7 @@
 
 import merge             from 'deepmerge';
 import { Plugin, Store } from 'vuex';
-import { IState }        from '../../../mutations';
+import { IState }        from '../../../state';
 
 export interface IVuexPersistStorage extends Storage {
   modules: string[];

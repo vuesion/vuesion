@@ -1,16 +1,18 @@
-import { {{ properCase moduleName }}Getters } from './getters';
-import { IState } from '../mutations';
+import { {{ properCase moduleName }}Getters }      from './getters';
+import { {{ properCase moduleName }}DefaultState } from './state';
 
 describe('{{ properCase moduleName }}Getters', () => {
 
-  test('it should get topics', () => {
-    const testState = {
-      {{ camelCase moduleName }}: {
-      topics: [1, 2, 3],
-      },
-    } as IState;
+  test('it should get the count', () => {
+    expect({{ properCase moduleName }}Getters.count({{ properCase moduleName }}DefaultState)).toBe(0);
+  });
 
-    expect({{ properCase moduleName }}Getters.getTopics(testState)).toEqual([1, 2, 3]);
+  test('it should get increment pending', () => {
+    expect({{ properCase moduleName }}Getters.incrementPending({{ properCase moduleName }}DefaultState)).toBe(false);
+  });
+
+  test('it should get decrement pending', () => {
+    expect({{ properCase moduleName }}Getters.decrementPending({{ properCase moduleName }}DefaultState)).toBe(false);
   });
 
 });

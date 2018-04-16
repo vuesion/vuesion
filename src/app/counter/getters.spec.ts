@@ -1,16 +1,18 @@
-import { CounterGetters } from './getters';
-import { IState }         from '../mutations';
+import { CounterGetters }      from './getters';
+import { CounterDefaultState } from './state';
 
 describe('CounterGetters', () => {
 
   test('it should get the count', () => {
-    const testState = {
-      counter: {
-        count: 1337,
-      },
-    } as IState;
+    expect(CounterGetters.count(CounterDefaultState)).toBe(0);
+  });
 
-    expect(CounterGetters.getCount(testState)).toBe(1337);
+  test('it should get increment pending', () => {
+    expect(CounterGetters.incrementPending(CounterDefaultState)).toBe(false);
+  });
+
+  test('it should get decrement pending', () => {
+    expect(CounterGetters.decrementPending(CounterDefaultState)).toBe(false);
   });
 
 });

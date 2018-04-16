@@ -1,14 +1,9 @@
-import * as path        from 'path';
-import { folderExists } from '../utils';
-import {
-  addModuleToActions,
-  addModuleToGetters,
-  addModuleToMutations,
-  addModuleToRoutes,
-}                       from '../ast';
+import * as path                                                 from 'path';
+import { folderExists }                                          from '../utils';
+import { addModuleToRoutes, addModuleToState, addModuleToStore } from '../ast';
 
 export = {
-  description: 'Add a module with mutations and routing information',
+  description: 'Add a module with vuex store and routes',
   prompts:     [
     {
       type:     'input',
@@ -42,7 +37,7 @@ export = {
     data.componentName = data.moduleName;
     data.basePath = '../../src/app/' + pathArray.join('/');
 
-    const actions: any[] = [
+    let actions: any[] = [
       {
         type:         'add',
         path:         '{{basePath}}/{{camelCase moduleName}}/{{properCase componentName}}/{{properCase componentName}}.vue',
@@ -70,51 +65,60 @@ export = {
     }
 
     if (data.wantVuex) {
-      actions.push(
-        {
-          type:         'add',
-          path:         '{{basePath}}/{{camelCase moduleName}}/actions.ts',
-          templateFile: './module/actions.ts.hbs',
-          abortOnFail:  true,
-        });
-      actions.push(
-        {
-          type:         'add',
-          path:         '{{basePath}}/{{camelCase moduleName}}/getters.ts',
-          templateFile: './module/getters.ts.hbs',
-          abortOnFail:  true,
-        });
-      actions.push(
-        {
-          type:         'add',
-          path:         '{{basePath}}/{{camelCase moduleName}}/mutations.ts',
-          templateFile: './module/mutations.ts.hbs',
-          abortOnFail:  true,
-        });
-      actions.push(
-        {
-          type:         'add',
-          path:         '{{basePath}}/{{camelCase moduleName}}/actions.spec.ts',
-          templateFile: './module/actions.spec.ts.hbs',
-          abortOnFail:  true,
-        });
-      actions.push(
-        {
-          type:         'add',
-          path:         '{{basePath}}/{{camelCase moduleName}}/getters.spec.ts',
-          templateFile: './module/getters.spec.ts.hbs',
-          abortOnFail:  true,
-        });
-      actions.push(
-        {
-          type:         'add',
-          path:         '{{basePath}}/{{camelCase moduleName}}/mutations.spec.ts',
-          templateFile: './module/mutations.spec.ts.hbs',
-          abortOnFail:  true,
-        });
-      addModuleToActions(path.join(path.resolve(process.cwd()), 'src', 'app', 'actions.ts'), data.moduleName);
-      addModuleToGetters(path.join(path.resolve(process.cwd()), 'src', 'app', 'getters.ts'), data.moduleName);
-      addModuleToMutations(path.join(path.resolve(process.cwd()), 'src', 'app', 'mutations.ts'), data.moduleName);
+      actions = actions
+      .concat([
+                {
+                  type:         'add',
+                  path:         '{{basePath}}/{{camelCase moduleName}}/actions.spec.ts',
+                  templateFile: './module/actions.spec.ts.hbs',
+                  abortOnFail:  true,
+                },
+                {
+                  type:         'add',
+                  path:         '{{basePath}}/{{camelCase moduleName}}/actions.ts',
+                  templateFile: './module/actions.ts.hbs',
+                  abortOnFail:  true,
+                },
+                {
+                  type:         'add',
+                  path:         '{{basePath}}/{{camelCase moduleName}}/getters.spec.ts',
+                  templateFile: './module/getters.spec.ts.hbs',
+                  abortOnFail:  true,
+                },
+                {
+                  type:         'add',
+                  path:         '{{basePath}}/{{camelCase moduleName}}/getters.ts',
+                  templateFile: './module/getters.ts.hbs',
+                  abortOnFail:  true,
+                },
+                {
+                  type:         'add',
+                  path:         '{{basePath}}/{{camelCase moduleName}}/module.ts',
+                  templateFile: './module/module.ts.hbs',
+                  abortOnFail:  true,
+                },
+                {
+                  type:         'add',
+                  path:         '{{basePath}}/{{camelCase moduleName}}/mutations.spec.ts',
+                  templateFile: './module/mutations.spec.ts.hbs',
+                  abortOnFail:  true,
+                },
+                {
+                  type:         'add',
+                  path:         '{{basePath}}/{{camelCase moduleName}}/mutations.ts',
+                  templateFile: './module/mutations.ts.hbs',
+                  abortOnFail:  true,
+                },
+                {
+                  type:         'add',
+                  path:         '{{basePath}}/{{camelCase moduleName}}/state.ts',
+                  templateFile: './module/state.ts.hbs',
+                  abortOnFail:  true,
+                },
+              ]);
+
+      addModuleToStore(path.join(path.resolve(process.cwd()), 'src', 'app', 'store.ts'), data.moduleName);
+      addModuleToState(path.join(path.resolve(process.cwd()), 'src', 'app', 'state.ts'), data.moduleName);
     }
 
     return actions;

@@ -1,6 +1,6 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex                      from 'vuex';
-import { i18n }               from '../../shared/plugins/i18n/i18n';
+import { i18n }                  from '../../shared/plugins/i18n/i18n';
 import Counter                   from './Counter.vue';
 
 const localVue = createLocalVue();
@@ -11,12 +11,17 @@ describe('Counter.vue', () => {
 
   test('renders component', () => {
     const store = new Vuex.Store({
-                                   getters: {
-                                     getCount: () => 0,
-                                   },
-                                   actions: {
-                                     increment: jest.fn(),
-                                     decrement: jest.fn(),
+                                   modules: {
+                                     counter: {
+                                       namespaced: true,
+                                       getters:    {
+                                         getCount: () => 0,
+                                       },
+                                       actions:    {
+                                         increment: jest.fn(),
+                                         decrement: jest.fn(),
+                                       },
+                                     },
                                    },
                                  });
     const wrapper = mount(Counter, {
@@ -34,10 +39,15 @@ describe('Counter.vue', () => {
       decrement: jest.fn(),
     };
     const store = new Vuex.Store({
-                                   getters: {
-                                     getCount: () => 0,
+                                   modules: {
+                                     counter: {
+                                       namespaced: true,
+                                       getters:    {
+                                         getCount: () => 0,
+                                       },
+                                       actions,
+                                     },
                                    },
-                                   actions,
                                  });
     const wrapper: any = mount(Counter, {
       store,
@@ -50,6 +60,17 @@ describe('Counter.vue', () => {
 
     wrapper.vm.decrement();
     expect(actions.decrement).toHaveBeenCalled();
+  });
+
+  test('dispatches action on the server', () => {
+    const store = {
+      dispatch: jest.fn(),
+    };
+
+    Counter.prefetch({ store });
+
+    expect(store.dispatch).toHaveBeenCalled();
+    expect(store.dispatch).toHaveBeenCalledWith(`counter/increment`);
   });
 
 });
