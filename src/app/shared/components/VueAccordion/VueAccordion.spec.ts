@@ -1,6 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueAccordion              from './VueAccordion.vue';
-import $style                    from 'identity-obj-proxy';
 import VueAccordionItem          from '../VueAccordionItem/VueAccordionItem.vue';
 import { Component }             from 'vue';
 
@@ -11,7 +10,6 @@ describe('VueAccordion.vue', () => {
   test('renders component with an accordion item', () => {
     const accordionItemWrapper = mount(VueAccordionItem, {
       localVue,
-      mocks:     { $style },
       propsData: {
         title:    'foo',
         initOpen: false,
@@ -19,7 +17,6 @@ describe('VueAccordion.vue', () => {
     });
     const wrapper = mount(VueAccordion, {
       localVue,
-      mocks: { $style },
       slots: {
         default: [accordionItemWrapper.vm as Component],
       },
@@ -28,9 +25,7 @@ describe('VueAccordion.vue', () => {
     expect((wrapper as any).vm.items).toHaveLength(0);
 
     (accordionItemWrapper as any).vm.$parent = wrapper.vm;
-    (accordionItemWrapper as any).vm.$options.created['0'].call(accordionItemWrapper.vm);
-
-    wrapper.update();
+    (accordionItemWrapper as any).vm.$options.created['1'].call(accordionItemWrapper.vm);
 
     expect((wrapper as any).vm.items).toHaveLength(1);
 
@@ -40,7 +35,6 @@ describe('VueAccordion.vue', () => {
   test('renders component with an open accordion item', () => {
     const accordionItemWrapper = mount(VueAccordionItem, {
       localVue,
-      mocks:     { $style },
       propsData: {
         title:    'foo',
         initOpen: true,
@@ -48,18 +42,15 @@ describe('VueAccordion.vue', () => {
     });
     const wrapper = mount(VueAccordion, {
       localVue,
-      mocks: { $style },
       slots: {
         default: [accordionItemWrapper.vm as Component],
       },
-    });
+    }) as any;
 
     expect((wrapper as any).vm.items).toHaveLength(0);
 
     (accordionItemWrapper as any).vm.$parent = wrapper.vm;
-    (accordionItemWrapper as any).vm.$options.created['0'].call(accordionItemWrapper.vm);
-
-    wrapper.update();
+    (accordionItemWrapper as any).vm.$options.created['1'].call(accordionItemWrapper.vm);
 
     expect((wrapper as any).vm.items).toHaveLength(1);
 
@@ -69,7 +60,6 @@ describe('VueAccordion.vue', () => {
   test('should handle single accordion', () => {
     const wrapper = mount(VueAccordion, {
       localVue,
-      mocks:     { $style },
       propsData: {
         multi: false,
       },
@@ -90,7 +80,6 @@ describe('VueAccordion.vue', () => {
   test('should handle multi accordion', () => {
     const wrapper = mount(VueAccordion, {
       localVue,
-      mocks:     { $style },
       propsData: {
         multi: true,
       },

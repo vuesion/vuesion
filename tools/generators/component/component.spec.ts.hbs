@@ -1,6 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
-import $style from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -10,9 +9,6 @@ describe('{{ properCase componentName }}.vue', () => {
     const wrapper = mount({{ properCase componentName }},
                       {
                         localVue,
-                        mocks: {
-                          $style
-                        },
                       },
                     );
 

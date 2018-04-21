@@ -1,6 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VuePanelHeader            from './VuePanelHeader.vue';
-import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -11,10 +10,9 @@ describe('VuePanelHeader.vue', () => {
       VuePanelHeader,
       {
         localVue,
-        mocks: { $style },
       });
 
-    expect(wrapper.findAll(`.${$style.vuePanelHeader}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.vuePanelHeader`)).toHaveLength(1);
   });
 
   test('renders component with title', () => {
@@ -22,14 +20,13 @@ describe('VuePanelHeader.vue', () => {
       VuePanelHeader,
       {
         localVue,
-        mocks:     { $style },
         propsData: {
           title: 'foo',
         },
       });
 
-    expect(wrapper.findAll(`.${$style.title}`)).toHaveLength(1);
-    expect(wrapper.find(`.${$style.title}`).text()).toBe('foo');
+    expect(wrapper.findAll(`.title`)).toHaveLength(1);
+    expect(wrapper.find(`.title`).text()).toBe('foo');
   });
 
   test('renders component with subtitle', () => {
@@ -37,14 +34,13 @@ describe('VuePanelHeader.vue', () => {
       VuePanelHeader,
       {
         localVue,
-        mocks:     { $style },
         propsData: {
           subtitle: 'foo',
         },
       });
 
-    expect(wrapper.findAll(`.${$style.subtitle}`)).toHaveLength(1);
-    expect(wrapper.find(`.${$style.subtitle}`).text()).toBe('foo');
+    expect(wrapper.findAll(`.subtitle`)).toHaveLength(1);
+    expect(wrapper.find(`.subtitle`).text()).toBe('foo');
   });
 
   test('renders component with image', () => {
@@ -52,7 +48,6 @@ describe('VuePanelHeader.vue', () => {
       VuePanelHeader,
       {
         localVue,
-        mocks:     { $style },
         propsData: {
           image: 'foo',
         },

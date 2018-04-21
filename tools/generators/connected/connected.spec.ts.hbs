@@ -1,7 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
-import $style from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -15,7 +14,7 @@ describe('{{ properCase componentName }}.vue', () => {
                           getTopics: () => [],
                         },
                       });
-    const wrapper = mount({{ properCase componentName }}, { store, localVue, mocks: { $style } });
+    const wrapper = mount({{ properCase componentName }}, { store, localVue });
 
     expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
   });

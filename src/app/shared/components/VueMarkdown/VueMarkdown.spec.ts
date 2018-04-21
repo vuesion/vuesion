@@ -1,6 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueMarkdown               from './VueMarkdown.vue';
-import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -9,7 +8,6 @@ describe('VueMarkdown.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueMarkdown, {
       localVue,
-      mocks: { $style },
       slots: {
         default: ['# foo', '## bar\n ### baz'],
       },
@@ -23,7 +21,6 @@ describe('VueMarkdown.vue', () => {
   test('renders component with trimmed text', () => {
     const wrapper = mount(VueMarkdown, {
       localVue,
-      mocks: { $style },
       slots: {
         default: ['       foo bar'],
       },
@@ -35,7 +32,6 @@ describe('VueMarkdown.vue', () => {
   test('renders component with trimmed text and shows as code', () => {
     const wrapper = mount(VueMarkdown, {
       localVue,
-      mocks: { $style },
       slots: {
         default: [`       \`foo bar\``],
       },

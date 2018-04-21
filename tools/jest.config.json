@@ -5,7 +5,7 @@
   },
   "rootDir": "./",
   "setupFiles": [
-    "../jestsetup.js"
+    "../jestsetup.ts"
   ],
   "moduleFileExtensions": [
     "js",

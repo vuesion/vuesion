@@ -1,6 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueCalendar               from './VueCalendar.vue';
-import $style                    from 'identity-obj-proxy';
 import { getI18n }               from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
@@ -12,18 +11,16 @@ describe('VueCalendar.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n:  getI18n(),
-      mocks: { $style },
+      i18n: getI18n(),
     });
 
-    expect(wrapper.findAll(`.${$style.calendar}`)).toHaveLength(1);
-    expect(wrapper.findAll(`.${$style.body}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
+    expect(wrapper.findAll(`.body`)).toHaveLength(1);
 
     wrapper.find('h3').trigger('click');
-    wrapper.update();
-    expect(wrapper.findAll(`.${$style.calendar}`)).toHaveLength(1);
-    expect(wrapper.findAll(`.${$style.body}`)).toHaveLength(0);
-    expect(wrapper.findAll(`.${$style.year}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
+    expect(wrapper.findAll(`.body`)).toHaveLength(0);
+    expect(wrapper.findAll(`.year`)).toHaveLength(1);
   });
 
   test('renders component with min max date', () => {
@@ -32,21 +29,19 @@ describe('VueCalendar.vue', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
       i18n:      getI18n(),
-      mocks:     { $style },
       propsData: {
         minDate: min,
         maxDate: max,
       },
     });
 
-    expect(wrapper.findAll(`.${$style.calendar}`)).toHaveLength(1);
-    expect(wrapper.findAll(`.${$style.body}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
+    expect(wrapper.findAll(`.body`)).toHaveLength(1);
 
     wrapper.find('h3').trigger('click');
-    wrapper.update();
-    expect(wrapper.findAll(`.${$style.calendar}`)).toHaveLength(1);
-    expect(wrapper.findAll(`.${$style.body}`)).toHaveLength(0);
-    expect(wrapper.findAll(`.${$style.year}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
+    expect(wrapper.findAll(`.body`)).toHaveLength(0);
+    expect(wrapper.findAll(`.year`)).toHaveLength(1);
   });
 
   test('renders component with range', () => {
@@ -54,35 +49,32 @@ describe('VueCalendar.vue', () => {
     const end: Date = new Date(2018, 1, 15);
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n:      getI18n(),
-      mocks:     { $style },
+      i18n: getI18n(),
       propsData: {
         startDate: start,
         endDate:   end,
       },
     });
 
-    expect(wrapper.findAll(`.${$style.selectedDay}`)).toHaveLength(8);
+    expect(wrapper.findAll(`.selectedDay`)).toHaveLength(8);
   });
 
   test('renders component with selected date', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n:      getI18n(),
-      mocks:     { $style },
+      i18n: getI18n(),
       propsData: {
         selectedDate: nextWeek,
       },
     });
 
-    expect(wrapper.findAll(`.${$style.selectedDay}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.selectedDay`)).toHaveLength(1);
   });
 
   test('should emit events', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
       i18n:  getI18n(),
-      mocks: { $style },
     }) as any;
 
     wrapper.vm.onChange();
@@ -96,7 +88,6 @@ describe('VueCalendar.vue', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
       i18n:  getI18n(),
-      mocks: { $style },
     }) as any;
 
     expect(wrapper.vm.selectedDay).toBe(today.getDate());
@@ -112,7 +103,6 @@ describe('VueCalendar.vue', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
       i18n:  getI18n(),
-      mocks: { $style },
     }) as any;
 
     expect(wrapper.vm.currentMonth).toBe(today.getMonth());
@@ -134,11 +124,9 @@ describe('VueCalendar.vue', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
       i18n:  getI18n(),
-      mocks: { $style },
     }) as any;
 
     wrapper.vm.$data.selecting = 'year';
-    wrapper.update();
 
     expect(wrapper.vm.selectedYear).toBe(today.getFullYear());
     expect(wrapper.vm.currentYear).toBe(today.getFullYear());
@@ -155,8 +143,7 @@ describe('VueCalendar.vue', () => {
     const end: Date = new Date(2018, 3, 2);
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n:      getI18n(),
-      mocks:     { $style },
+      i18n: getI18n(),
       propsData: {
         startDate:      start,
         endDate:        end,
@@ -164,7 +151,7 @@ describe('VueCalendar.vue', () => {
       },
     });
 
-    expect(wrapper.findAll(`.${$style.selectedDay}`)).toHaveLength(2);
+    expect(wrapper.findAll(`.selectedDay`)).toHaveLength(2);
   });
 
 });

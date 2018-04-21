@@ -2,7 +2,6 @@ import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex                      from 'vuex';
 import { getI18n }               from '../../shared/plugins/i18n/i18n';
 import Counter                   from './Counter.vue';
-import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -24,7 +23,6 @@ describe('Counter.vue', () => {
       store,
       localVue,
       i18n:  getI18n(),
-      mocks: { $style },
     });
 
     expect(wrapper.find('h1').text()).toBe('Counter');
@@ -45,7 +43,6 @@ describe('Counter.vue', () => {
       store,
       localVue,
       i18n:  getI18n(),
-      mocks: { $style },
     });
 
     wrapper.vm.increment();

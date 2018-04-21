@@ -1,31 +1,29 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueInput                  from './VueInput.vue';
-import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
 describe('VueInput.vue', () => {
 
   test('renders component', () => {
-    const wrapper = mount(VueInput, { localVue, mocks: { $style } });
+    const wrapper = mount(VueInput, { localVue });
 
-    expect(wrapper.findAll(`.${$style.vueInput}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.vueInput`)).toHaveLength(1);
   });
 
   test('renders disabled component', () => {
     const wrapper = mount(VueInput, {
       localVue,
-      mocks:     { $style },
       propsData: {
         disabled: true,
       },
     });
 
-    expect(wrapper.findAll(`.${$style.disabled}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.disabled`)).toHaveLength(1);
   });
 
   test('should emit change', () => {
-    const wrapper = mount(VueInput, { localVue, mocks: { $style } }) as any;
+    const wrapper = mount(VueInput, { localVue }) as any;
 
     wrapper.vm.onChange('foo');
     expect(wrapper.emitted('change')).toBeTruthy();
@@ -34,7 +32,6 @@ describe('VueInput.vue', () => {
   test('should handle focus', () => {
     const wrapper = mount(VueInput, {
       localVue,
-      mocks: { $style },
     }) as any;
     const event: any = {
       target: {
@@ -53,13 +50,12 @@ describe('VueInput.vue', () => {
   test('should display error state', () => {
     const wrapper = mount(VueInput, {
       localVue,
-      mocks:     { $style },
       propsData: {
         isValid: false,
       },
     });
 
-    expect(wrapper.findAll(`.${$style.error}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.error`)).toHaveLength(1);
   });
 
 });

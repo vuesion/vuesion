@@ -1,6 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Stage                     from './Stage.vue';
-import $style                    from 'identity-obj-proxy';
 import { getI18n }               from '../../shared/plugins/i18n/i18n';
 
 const localVue = createLocalVue();
@@ -13,9 +12,6 @@ describe('Stage.vue', () => {
     const wrapper = mount(Stage, {
       localVue,
       i18n:  getI18n(),
-      mocks: {
-        $style,
-      },
     });
 
     expect(wrapper.find('h1').text()).toBe('Vue.js Starter');
@@ -42,7 +38,6 @@ describe('Stage.vue', () => {
     const wrapper = mount(Stage, {
       localVue,
       i18n:  getI18n(),
-      mocks: { $style },
     });
 
     wrapper.destroy();

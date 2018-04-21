@@ -1,6 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueSlider                 from './VueSlider.vue';
-import $style                    from 'identity-obj-proxy';
 
 const localVue = createLocalVue();
 
@@ -12,7 +11,6 @@ describe('VueSlider.vue', () => {
     const wrapper = mount(VueSlider,
                           {
                             localVue,
-                            mocks:     { $style },
                             propsData: {
                               min:    0,
                               max:    100,
@@ -33,7 +31,6 @@ describe('VueSlider.vue', () => {
     const wrapper = mount(VueSlider,
                           {
                             localVue,
-                            mocks:     { $style },
                             propsData: {
                               min:    0,
                               max:    100,
@@ -49,7 +46,6 @@ describe('VueSlider.vue', () => {
     const wrapper = mount(VueSlider,
                           {
                             localVue,
-                            mocks:     { $style },
                             propsData: {
                               min:      0,
                               max:      100,
@@ -58,7 +54,7 @@ describe('VueSlider.vue', () => {
                             },
                           });
 
-    expect(wrapper.findAll(`.${$style.disabled}`)).toHaveLength(1);
+    expect(wrapper.findAll(`.disabled`)).toHaveLength(1);
 
     (wrapper as any).vm.moveStart();
 
@@ -70,7 +66,6 @@ describe('VueSlider.vue', () => {
     const wrapper = mount(VueSlider,
                           {
                             localVue,
-                            mocks:     { $style },
                             propsData: {
                               min:    0,
                               max:    100,
@@ -94,7 +89,6 @@ describe('VueSlider.vue', () => {
     const wrapper = mount(VueSlider,
                           {
                             localVue,
-                            mocks:     { $style },
                             propsData: {
                               min:    0,
                               max:    100,
@@ -115,7 +109,6 @@ describe('VueSlider.vue', () => {
     const wrapper = mount(VueSlider,
                           {
                             localVue,
-                            mocks:     { $style },
                             propsData: {
                               min:    0,
                               max:    100,
@@ -135,7 +128,6 @@ describe('VueSlider.vue', () => {
     const wrapper = mount(VueSlider,
                           {
                             localVue,
-                            mocks:     { $style },
                             propsData: {
                               min:    0,
                               max:    100,
@@ -153,7 +145,6 @@ describe('VueSlider.vue', () => {
     const wrapper = mount(VueSlider,
                           {
                             localVue,
-                            mocks:     { $style },
                             propsData: {
                               min:    0,
                               max:    100,
@@ -188,7 +179,6 @@ describe('VueSlider.vue', () => {
     const wrapper = mount(VueSlider,
                           {
                             localVue,
-                            mocks:     { $style },
                             propsData: {
                               min:    0,
                               max:    100,
@@ -223,7 +213,6 @@ describe('VueSlider.vue', () => {
     const wrapper = mount(VueSlider,
                           {
                             localVue,
-                            mocks:     { $style },
                             propsData: {
                               min:    0,
                               max:    100,
@@ -254,7 +243,6 @@ describe('VueSlider.vue', () => {
     const wrapper = mount(VueSlider,
                           {
                             localVue,
-                            mocks:     { $style },
                             propsData: {
                               min:    0,
                               max:    100,
@@ -271,7 +259,6 @@ describe('VueSlider.vue', () => {
     const wrapper = mount(VueSlider,
                           {
                             localVue,
-                            mocks:     { $style },
                             propsData: {
                               min:    0,
                               max:    100,
