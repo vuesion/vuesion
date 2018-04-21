@@ -22,7 +22,7 @@ const serverConfig = merge(baseConfig, {
                                nodeRequire: 'function(module){return require(module);}',
                              }),
     new CopyWebpackPlugin([
-                            { from: 'src/assets', to: '../assets' },
+                            { from: 'src/static', to: '../static' },
                             { from: 'src/app/config/*.json', to: '../app/config', flatten: true },
                           ]),
   ],

@@ -5,10 +5,10 @@
     <vue-nav-bar>
       <ul :class="$style.nav">
         <li>
-          <router-link to="/" @click.native="navBarClose" exact>
-            <i class="fas fa-home" />
-            <small>{{ $t('App.nav.home' /* Home */) }}</small>
-          </router-link>
+          <a href="/docs" @click.native="navBarClose">
+            <i class="fas fa-book" />
+            <small>{{ $t('App.nav.docs' /* Documentation */) }}</small>
+          </a>
         </li>
         <li>
           <router-link to="/counter" @click.native="navBarClose">

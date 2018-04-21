@@ -67,7 +67,7 @@
       imageUrl: {
         type:     String,
         required: false,
-        default:  '/assets/logo.png',
+        default:  '/logo.png',
       },
     },
     computed:   {

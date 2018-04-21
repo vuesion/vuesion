@@ -54,8 +54,8 @@ export default (app: Express.Application, cb: any): void => {
       throw err;
     }
     stats = stats.toJson();
-    stats.errors.forEach((e: any) => Logger.debug('%s', e));
-    stats.warnings.forEach((e: any) => Logger.debug('%s', e));
+    stats.errors.forEach((e: any) => Logger.debug('%s', JSON.stringify(err, Object.getOwnPropertyNames(e))));
+    stats.warnings.forEach((e: any) => Logger.debug('%s', JSON.stringify(err, Object.getOwnPropertyNames(e))));
 
     const bundlePath: string = path.join(isomorphicConfig.output.path, 'vue-ssr-bundle.json');
 

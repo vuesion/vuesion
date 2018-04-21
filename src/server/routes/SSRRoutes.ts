@@ -73,10 +73,10 @@ export const SSRRoutes = (app: Express.Application): any => {
     .on('error', (err: any) => {
       if (err && err.code === 404) {
         res.status(404).end('404 | Page Not Found');
-        Logger.warn('unsupported route: %s; error: %s', req.url, JSON.stringify(err));
+        Logger.warn('unsupported route: %s; error: %s', req.url, JSON.stringify(err, Object.getOwnPropertyNames(err)));
       } else {
         res.status(500).end('500 | Internal Server Error');
-        Logger.error('error during rendering: %s; error: %s', req.url, JSON.stringify(err));
+        Logger.error('error during rendering: %s; error: %s', req.url, JSON.stringify(err, Object.getOwnPropertyNames(err)));
       }
     })
     .on('end', () => Logger.debug(`whole request: ${Date.now() - startTime}ms`))
