@@ -51,6 +51,7 @@ const baseConfig = {
         exclude: /node_modules/,
         options: {
           appendTsSuffixTo: [/\.vue$/],
+          transpileOnly:    !isProd,
         },
       },
       {

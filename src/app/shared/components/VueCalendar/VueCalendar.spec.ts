@@ -11,7 +11,7 @@ describe('VueCalendar.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n,
     });
 
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
@@ -74,7 +74,7 @@ describe('VueCalendar.vue', () => {
   test('should emit events', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n,
     }) as any;
 
     wrapper.vm.onChange();
@@ -87,7 +87,7 @@ describe('VueCalendar.vue', () => {
   test('should setByDay', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n,
     }) as any;
 
     expect(wrapper.vm.selectedDay).toBe(today.getDate());
@@ -102,7 +102,7 @@ describe('VueCalendar.vue', () => {
   test('should setByMonth', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n,
     }) as any;
 
     expect(wrapper.vm.currentMonth).toBe(today.getMonth());
@@ -123,7 +123,7 @@ describe('VueCalendar.vue', () => {
   test('should setByYear', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
-      i18n: getI18n(),
+      i18n,
     }) as any;
 
     wrapper.vm.$data.selecting = 'year';
