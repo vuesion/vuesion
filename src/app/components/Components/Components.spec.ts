@@ -13,7 +13,7 @@ describe('Components.vue', () => {
   test('renders component', () => {
     const wrapper = mount(Components, {
       localVue,
-      i18n
+      i18n,
     }) as any;
 
     wrapper.vm.sliderChange();
