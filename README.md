@@ -96,6 +96,12 @@ Use cases for this boilerplate:
 - You'd like to focus on developing skills that will transfer across any Vue project.
 - You're working in a large team, so need tooling to help everyone avoid common mistakes, write in a consistent style, and avoid bikeshedding in PRs.
 
+# Sponsors
+
+<a href="https://careers.bcgdv.com/locations/berlin" title="BCG Digital Ventures">
+  <img src="https://user-images.githubusercontent.com/1667598/38944976-89d5c03c-4335-11e8-92f4-910049c2166a.jpeg" alt="BCG Digital Ventures" />
+</a>
+
 # Reference resources
 
 - [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate)
