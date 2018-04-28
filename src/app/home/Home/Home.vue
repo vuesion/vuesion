@@ -82,11 +82,11 @@
       }
 
       .vueGridItem {
-        margin-bottom: $grid-unit * 4;
+        margin-bottom: $grid-unit * 2;
       }
 
       .featureSection {
-        padding: $grid-unit * 4 0;
+        padding: 0;
       }
     }
 

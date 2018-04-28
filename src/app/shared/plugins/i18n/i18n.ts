@@ -1,32 +1,23 @@
-import Vue           from 'vue';
-import VueI18n       from 'vue-i18n';
-import axios         from 'axios';
+import Vue     from 'vue';
+import VueI18n from 'vue-i18n';
+import axios   from 'axios';
 
 Vue.use(VueI18n);
 
+const calendarFormats: any = {
+  calendarHeader: {
+    month: 'long', weekday: 'long', day: 'numeric',
+  },
+  calendarNav:    {
+    month: 'long', year: 'numeric',
+  },
+  datePicker:     {
+    year: 'numeric', month: '2-digit', day: '2-digit',
+  },
+};
 const dateTimeFormats: VueI18n.DateTimeFormats = {
-  en: {
-    calendarHeader: {
-      month: 'long', weekday: 'long', day: 'numeric',
-    },
-    calendarNav:    {
-      month: 'long', year: 'numeric',
-    },
-    datePicker:     {
-      year: 'numeric', month: '2-digit', day: '2-digit',
-    },
-  },
-  de: {
-    calendarHeader: {
-      month: 'long', weekday: 'long', day: 'numeric',
-    },
-    calendarNav:    {
-      month: 'long', year: 'numeric',
-    },
-    datePicker:     {
-      year: 'numeric', month: '2-digit', day: '2-digit',
-    },
-  },
+  en: calendarFormats,
+  de: calendarFormats,
 };
 
 export const i18n = new VueI18n(
