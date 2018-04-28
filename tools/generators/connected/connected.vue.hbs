@@ -1,37 +1,70 @@
 <template>
-  <div>
-    <h1>{{ properCase componentName }}</h1>
-    <div v-for="item in topics">
-      <p>\{{ item.title }}</p>
-    </div>
+  <div :class="$style.{{ camelCase componentName }}">
+    <vue-grid>
+      <vue-grid-row>
+        <vue-grid-item fill>
+          <h1>{{ properCase componentName }}</h1>
+        </vue-grid-item>
+
+        <vue-grid-item fill>
+          <vue-button
+            :loading="incrementPending"
+            @click='increment'
+            accent>Increment +1
+          </vue-button>
+        </vue-grid-item>
+        <vue-grid-item fill>
+          <vue-button
+            :loading="decrementPending"
+            @click='decrement'
+            primary>Decrement -1
+          </vue-button>
+          <h3>Count is \{{ count }}</h3>
+        </vue-grid-item>
+      </vue-grid-row>
+    </vue-grid>
   </div>
 </template>
 
 <script lang="ts">
-  import { mapGetters } from 'vuex';
-  import { IPreLoad }   from '../../../server/isomorphic';
+  import { mapActions, mapGetters } from 'vuex';
+  import { IPreLoad }               from '../../../server/isomorphic';
+  import VueGrid                    from '../../shared/components/VueGrid/VueGrid';
+  import VueGridItem                from '../../shared/components/VueGridItem/VueGridItem';
+  import VueButton                  from '../../shared/components/VueButton/VueButton';
+  import VueGridRow                 from '../../shared/components/VueGridRow/VueGridRow';
 
   export default {
-    name:       '{{ properCase componentName }}',
-    components: {},
-    props:      {},
-    data(): any {
-      return {};
+    metaInfo:   {
+      title: '{{ properCase componentName }}',
+    },
+    components: {
+      VueGrid,
+      VueGridItem,
+      VueButton,
+      VueGridRow,
+    },
+    methods:    {
+      ...mapActions('{{ camelCase moduleName }}', [
+        'increment',
+        'decrement',
+      ]),
     },
     computed:   {
-      ...mapGetters(
-        {
-          topics: 'getTopics',
-        },
-      ),
+      ...mapGetters('{{ camelCase moduleName }}', ['count', 'incrementPending', 'decrementPending']),
     },
-    methods:    {},
     prefetch:   (options: IPreLoad) => {
-      return options.store.dispatch(`getTopics`);
+      return options.store.dispatch('{{ camelCase moduleName }}/increment');
     },
   };
 </script>
 
-<style lang="scss" module>
 
+<style lang="scss" module>
+  @import "../../shared/styles";
+
+  .{{ camelCase componentName }} {
+    margin-top: $nav-bar-height;
+    min-height: 500px;
+  }
 </style>

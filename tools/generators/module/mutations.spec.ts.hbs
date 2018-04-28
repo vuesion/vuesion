@@ -1,23 +1,27 @@
-import { {{ properCase moduleName }}Mutations } from './mutations';
-import { IState } from '../mutations';
+import { {{ properCase moduleName }}Mutations }                   from './mutations';
+import { {{ properCase moduleName }}DefaultState, I{{ properCase moduleName }}State } from './state';
+import { cloneDeep }                          from 'lodash';
 
 describe('{{ properCase moduleName }}Mutations', () => {
-  const testState = {
-    {{ camelCase moduleName }}: {
-      topics: [],
-      error: null,
-    },
-  } as IState;
+  let testState: I{{ properCase moduleName }}State;
 
-  test('it should set topics', () => {
-    {{ properCase moduleName }}Mutations.TOPICS(testState, [1, 2, 3]);
-    expect(testState.{{ camelCase moduleName }}.topics).toEqual([1, 2, 3]);
-    expect(testState.{{ camelCase moduleName }}.error).toBeNull();
+  beforeEach(() => {
+    testState = cloneDeep({{ properCase moduleName }}DefaultState);
   });
 
-  test('it should set error', () => {
-    {{ properCase moduleName }}Mutations.TOPICS_FAILURE(testState, new Error('foo'));
-    expect(testState.{{ camelCase moduleName }}.error).toEqual(new Error('foo'));
+  test('it should set the count', () => {
+    {{ properCase moduleName }}Mutations.SET_COUNT(testState, 1337);
+    expect(testState.count).toBe(1337);
+  });
+
+  test('it should set increment pending', () => {
+    {{ properCase moduleName }}Mutations.SET_INCREMENT_PENDING(testState, true);
+    expect(testState.incrementPending).toBe(true);
+  });
+
+  test('it should set decrement pending', () => {
+    {{ properCase moduleName }}Mutations.SET_DECREMENT_PENDING(testState, true);
+    expect(testState.decrementPending).toBe(true);
   });
 
 });

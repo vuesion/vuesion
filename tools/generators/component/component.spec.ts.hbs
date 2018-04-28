@@ -1,5 +1,5 @@
-import { mount, createLocalVue } from '@vue/test-utils';
-import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
+import { createLocalVue, mount } from '@vue/test-utils';
+import {{ properCase componentName }}                       from './{{ properCase componentName }}.vue';
 
 const localVue = createLocalVue();
 
@@ -7,10 +7,10 @@ describe('{{ properCase componentName }}.vue', () => {
 
   test('renders component', () => {
     const wrapper = mount({{ properCase componentName }},
-                      {
-                        localVue,
-                      },
-                    );
+                          {
+                            localVue,
+                          },
+    );
 
     expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
   });

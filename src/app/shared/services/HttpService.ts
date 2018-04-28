@@ -1,10 +1,6 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { store }                                                from '../../store';
 
-const isExternalUrl = (url: string): boolean => {
-  return url.indexOf('://') > -1 && url.indexOf('i18n') === -1;
-};
-
 export const HttpService = axios.create();
 
 /* istanbul ignore next */
@@ -12,8 +8,8 @@ HttpService.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     // TODO: get token from store e.g. const token: string = store.state.auth.accessToken;
     const token: string = 'accessToken';
-    const baseUrl: string = store.state.app.config.api.baseUrl;
-    const isExternal: boolean = isExternalUrl(config.url);
+    const baseUrl: string = store.state.app.config ? store.state.app.config.api.baseUrl : '';
+    const isExternal: boolean = config.url.indexOf('://') > -1 && config.url.indexOf('i18n') === -1;
 
     if (token && !isExternal && !config.headers.Authorization) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -30,6 +26,7 @@ HttpService.interceptors.request.use(
   },
 );
 
+/* istanbul ignore next */
 HttpService.interceptors.response.use(
   (response: AxiosResponse) => {
     return response;

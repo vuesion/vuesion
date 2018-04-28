@@ -1,13 +1,13 @@
-import Vue                from 'vue';
-import VueI18n            from 'vue-i18n';
-import { Store }          from 'vuex';
-import { sync }           from 'vuex-router-sync';
-import { VueRouter }      from 'vue-router/types/router';
-import App                from './App.vue';
-import { i18n }        from './shared/plugins/i18n/i18n';
-import { store }       from './store';
-import { router }         from './router';
-import { IState }         from './mutations';
+import Vue           from 'vue';
+import VueI18n       from 'vue-i18n';
+import { Store }     from 'vuex';
+import { sync }      from 'vuex-router-sync';
+import { VueRouter } from 'vue-router/types/router';
+import { i18n }      from './shared/plugins/i18n/i18n';
+import { store }     from './store';
+import { router }    from './router';
+import { IState }    from './state';
+import App           from './app/App/App.vue';
 
 export interface IApp {
   app: Vue;

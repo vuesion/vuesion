@@ -1,0 +1,21 @@
+import { Module }                             from 'vuex';
+import { {{ properCase moduleName }}DefaultState, I{{ properCase moduleName }}State } from './state';
+import { {{ properCase moduleName }}Actions }                     from './actions';
+import { {{ properCase moduleName }}Getters }                     from './getters';
+import { {{ properCase moduleName }}Mutations }                   from './mutations';
+
+export const {{ properCase moduleName }}Module: Module<I{{ properCase moduleName }}State, I{{ properCase moduleName }}State> = {
+  namespaced: true,
+  actions:    {
+    ...{{ properCase moduleName }}Actions,
+  },
+  getters:    {
+    ...{{ properCase moduleName }}Getters,
+  },
+  state:      {
+    ...{{ properCase moduleName }}DefaultState,
+  },
+  mutations:  {
+    ...{{ properCase moduleName }}Mutations,
+  },
+};

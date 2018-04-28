@@ -1,11 +1,19 @@
-import { IState } from '../mutations';
+import { I{{ properCase moduleName }}State } from './state';
 
 export interface I{{ properCase moduleName }}Getters {
-  getTopics(state: IState): any[];
+  incrementPending(state: I{{ properCase moduleName }}State): boolean;
+  decrementPending(state: I{{ properCase moduleName }}State): boolean;
+  count(state: I{{ properCase moduleName }}State): number;
 }
 
 export const {{ properCase moduleName }}Getters: I{{ properCase moduleName }}Getters = {
-  getTopics(state: IState): any[] {
-    return state.{{ camelCase moduleName }}.topics;
+  incrementPending(state: I{{ properCase moduleName }}State): boolean {
+    return state.incrementPending;
+  },
+  decrementPending(state: I{{ properCase moduleName }}State): boolean {
+    return state.decrementPending;
+  },
+  count(state: I{{ properCase moduleName }}State): number {
+    return state.count;
   },
 };

@@ -1,67 +1,89 @@
-import Axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { {{ properCase moduleName }}Actions } from './actions';
-import { ActionContext, Commit, Dispatch } from 'vuex';
-import { IState } from '../mutations';
+import MockAdapter                            from 'axios-mock-adapter';
+import { HttpService }                        from '../shared/services/HttpService';
+import { ActionContext, Commit, Dispatch }    from 'vuex';
+import { {{ properCase moduleName }}Actions }                     from './actions';
+import { {{ properCase moduleName }}DefaultState, I{{ properCase moduleName }}State } from './state';
+import { {{ properCase moduleName }}Getters }                     from './getters';
 
 describe('{{ properCase moduleName }}Actions', () => {
-  let testContext: ActionContext<IState, IState>;
+  let testContext: ActionContext<I{{ properCase moduleName }}State, I{{ properCase moduleName }}State>;
   let mockAxios: MockAdapter;
 
   beforeEach(() => {
     testContext = {
       dispatch: jest.fn() as Dispatch,
-      commit: jest.fn() as Commit,
-      state: {
-        {{ camelCase moduleName }}: {
-          topics: [],
-          error: null,
-        },
-      } as IState,
-      getters: {},
-      rootState: {} as IState,
-      rootGetters: {},
-    };
+      commit:   jest.fn() as Commit,
+      state:    {{ properCase moduleName }}DefaultState,
+      getters:  {
+        ...{{ properCase moduleName }}Getters,
+      },
+    } as ActionContext<I{{ properCase moduleName }}State, I{{ properCase moduleName }}State>;
 
-    mockAxios = new MockAdapter(Axios);
+    mockAxios = new MockAdapter(HttpService);
   });
 
-  test('it should call api and commit response', (done) => {
-    const data: any[] = [{ id: 1, name: 'John Smith' }];
-    mockAxios
-    .onGet('https://jsonplaceholder.typicode.com/posts')
-    .reply(200, data);
+  test('it should call INCREMENT action on success', (done) => {
+    const commitMock: jest.Mock = testContext.commit as jest.Mock;
 
-    {{ properCase moduleName }}Actions.getTopics(testContext)
+    mockAxios
+    .onPut('/counter/increment')
+    .reply(200, { count: 1337 });
+
+    {{ properCase moduleName }}Actions
+    .increment(testContext)
     .then(() => {
-      expect(testContext.commit).toHaveBeenCalledTimes(1);
-      expect(testContext.commit).toHaveBeenCalledWith('TOPICS', data);
+      expect(commitMock.mock.calls[0]).toEqual(['SET_INCREMENT_PENDING', true]);
+      expect(commitMock.mock.calls[1]).toEqual(['SET_COUNT', 1337]);
+      expect(commitMock.mock.calls[2]).toEqual(['SET_INCREMENT_PENDING', false]);
       done();
     });
   });
 
-  test('it should use initial state', (done) => {
-    const data: any = { id: 1, name: 'John Smith' };
-    testContext.state.{{ camelCase moduleName }}.topics.push(data);
+  test('it should set INCREMENT pending to false on fail', (done) => {
+    const commitMock: jest.Mock = testContext.commit as jest.Mock;
 
-    {{ properCase moduleName }}Actions.getTopics(testContext)
-    .then(() => {
-      expect(testContext.commit).toHaveBeenCalledTimes(1);
-      expect(testContext.commit).toHaveBeenCalledWith('TOPICS', [data]);
-      done();
-    });
-  });
-
-  test('it should handle error', (done) => {
     mockAxios
-    .onGet('https://jsonplaceholder.typicode.com/posts')
+    .onPut('/counter/increment')
     .reply(500);
 
-    {{ properCase moduleName }}Actions.getTopics(testContext)
+    {{ properCase moduleName }}Actions
+    .increment(testContext)
     .then(() => {
-      expect(testContext.commit).toHaveBeenCalledTimes(1);
-      expect(testContext.commit)
-      .toHaveBeenCalledWith('TOPICS_FAILURE', new Error('Request failed with status code 500'));
+      expect(commitMock.mock.calls[0]).toEqual(['SET_INCREMENT_PENDING', true]);
+      expect(commitMock.mock.calls[1]).toEqual(['SET_INCREMENT_PENDING', false]);
+      done();
+    });
+  });
+
+  test('it should call DECREMENT action on success', (done) => {
+    const commitMock: jest.Mock = testContext.commit as jest.Mock;
+
+    mockAxios
+    .onPut('/counter/decrement')
+    .reply(200, { count: 1337 });
+
+    {{ properCase moduleName }}Actions
+    .decrement(testContext)
+    .then(() => {
+      expect(commitMock.mock.calls[0]).toEqual(['SET_DECREMENT_PENDING', true]);
+      expect(commitMock.mock.calls[1]).toEqual(['SET_COUNT', 1337]);
+      expect(commitMock.mock.calls[2]).toEqual(['SET_DECREMENT_PENDING', false]);
+      done();
+    });
+  });
+
+  test('it should set DECREMENT pending to false on fail', (done) => {
+    const commitMock: jest.Mock = testContext.commit as jest.Mock;
+
+    mockAxios
+    .onPut('/counter/decrement')
+    .reply(500);
+
+    {{ properCase moduleName }}Actions
+    .decrement(testContext)
+    .then(() => {
+      expect(commitMock.mock.calls[0]).toEqual(['SET_DECREMENT_PENDING', true]);
+      expect(commitMock.mock.calls[1]).toEqual(['SET_DECREMENT_PENDING', false]);
       done();
     });
   });

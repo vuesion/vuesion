@@ -5,18 +5,19 @@ import * as path from 'path';
 
 const nixt = require('nixt');
 const rimraf = require('rimraf');
-
 const testModulePath: string = path.join(path.resolve(process.cwd()), 'src/app/testModule');
-const appActionsPath: string = path.join(path.resolve(process.cwd()), 'src/app/actions.ts');
-const appGettersPath: string = path.join(path.resolve(process.cwd()), 'src/app/getters.ts');
-const appMutationsPath: string = path.join(path.resolve(process.cwd()), 'src/app/mutations.ts');
-const appRoutesPath: string = path.join(path.resolve(process.cwd()), 'src/app/router.ts');
-
 const testComponentPath: string = path.join(path.resolve(process.cwd()), 'src/app/TestComponent');
 const testConnectedComponentPath: string = path.join(path.resolve(process.cwd()), 'src/app/TestConnectedComponent');
+const appStorePath: string = path.join(path.resolve(process.cwd()), 'src/app/store.ts');
+const appStatePath: string = path.join(path.resolve(process.cwd()), 'src/app/state.ts');
+const appRouterPath: string = path.join(path.resolve(process.cwd()), 'src/app/router.ts');
 
 describe('tools', () => {
   afterAll(() => {
+    console.log(fs.existsSync(testModulePath));
+    console.log(fs.existsSync(testComponentPath));
+    console.log(fs.existsSync(testConnectedComponentPath));
+
     rimraf(testModulePath, () => {
       console.log('testModule deleted');
     });
@@ -29,35 +30,24 @@ describe('tools', () => {
       console.log('testConnectedComponent deleted');
     });
 
-    let appActions: string = fs.readFileSync(appActionsPath).toString();
-    appActions = appActions.replace('\nimport * as testModuleActions from \'./testModule/actions\';', '');
-    appActions = appActions.replace('\nimport { ITestModuleActions, TestModuleActions } from \'./testModule/actions\';', '');
-    appActions = appActions.replace(', ITestModuleActions', '');
-    appActions = appActions.replace('\n  ...TestModuleActions,', '');
+    let appStore: string = fs.readFileSync(appStorePath).toString();
+    appStore = appStore.replace('\nimport { TestModuleModule }            from \'./testModule/module\';', '');
+    appStore = appStore.replace('\nstore.registerModule(\'testModule\', TestModuleModule, { preserveState: true });', '');
 
-    fs.writeFileSync(appActionsPath, appActions);
+    fs.writeFileSync(appStorePath, appStore);
 
-    let appGetters: string = fs.readFileSync(appGettersPath).toString();
-    appGetters = appGetters.replace('\nimport { ITestModuleGetters, TestModuleGetters } from \'./testModule/getters\';', '');
-    appGetters = appGetters.replace(', ITestModuleGetters', '');
-    appGetters = appGetters.replace('\n  ...TestModuleGetters,', '');
+    let appState: string = fs.readFileSync(appStatePath).toString();
+    appState = appState.replace('\n  testModule: {\n    ...TestModuleDefaultState,\n  },', '');
+    appState = appState.replace('\n  testModule?: ITestModuleState;', '');
+    appState = appState.replace('\nimport { TestModuleDefaultState, ITestModuleState }         from \'./testModule/state\';', '');
 
-    fs.writeFileSync(appGettersPath, appGetters);
+    fs.writeFileSync(appStatePath, appState);
 
-    let appMutations: string = fs.readFileSync(appMutationsPath).toString();
-    appMutations = appMutations.replace('\nimport { ITestModuleState, ITestModuleMutations, TestModuleDefaultState, TestModuleMutations } from \'./testModule/mutations\';', '');
-    appMutations = appMutations.replace(', ITestModuleState', '');
-    appMutations = appMutations.replace(', ITestModuleMutations', '');
-    appMutations = appMutations.replace('\n  ...TestModuleDefaultState,', '');
-    appMutations = appMutations.replace('\n  ...TestModuleMutations,', '');
+    let appRouter: string = fs.readFileSync(appRouterPath).toString();
+    appRouter = appRouter.replace('\nimport { TestModuleRoutes }         from \'./testModule/routes\';', '');
+    appRouter = appRouter.replace('      ...TestModuleRoutes,\n', ' ');
 
-    fs.writeFileSync(appMutationsPath, appMutations);
-
-    let appRoutes: string = fs.readFileSync(appRoutesPath).toString();
-    appRoutes = appRoutes.replace('\nimport { TestModuleRoutes } from \'./testModule/routes\';', '');
-    appRoutes = appRoutes.replace('\n    ...TestModuleRoutes,', '');
-
-    fs.writeFileSync(appRoutesPath, appRoutes);
+    fs.writeFileSync(appRouterPath, appRouter);
   });
 
   test('should extract i18n messages', (done) => {
@@ -80,7 +70,7 @@ describe('tools', () => {
 
   test('should generate a component', (done) => {
     nixt()
-    .run(`npm run g -- component "testComponent"`)
+    .run(`npm run g -- component "testComponent" "yes"`)
     .expect((result: any) => {
       if (fs.existsSync(testComponentPath) === false) {
         return new Error('testComponent not created');

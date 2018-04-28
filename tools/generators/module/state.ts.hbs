@@ -1,0 +1,11 @@
+export interface I{{ properCase moduleName }}State {
+  incrementPending: boolean;
+  decrementPending: boolean;
+  count: number;
+}
+
+export const {{ properCase moduleName }}DefaultState: I{{ properCase moduleName }}State = {
+  incrementPending: false,
+  decrementPending: false,
+  count:            0,
+};

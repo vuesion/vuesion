@@ -1,26 +1,21 @@
-export interface ICounterState {
-  counter: {
-    count: number,
-  };
-}
+import { ICounterState } from './state';
 
 export interface ICounterMutations {
-  INCREMENT(state: ICounterState): void;
+  SET_INCREMENT_PENDING(state: ICounterState, pending: boolean): void;
 
-  DECREMENT(state: ICounterState): void;
+  SET_DECREMENT_PENDING(state: ICounterState, pending: boolean): void;
+
+  SET_COUNT(state: ICounterState, count: number): void;
 }
 
-export const CounterDefaultState: ICounterState = {
-  counter: {
-    count: 0,
-  },
-};
-
 export const CounterMutations: ICounterMutations = {
-  INCREMENT: (state: ICounterState) => {
-    state.counter.count += 1;
+  SET_INCREMENT_PENDING: (state: ICounterState, pending: boolean) => {
+    state.incrementPending = pending;
   },
-  DECREMENT: (state: ICounterState) => {
-    state.counter.count -= 1;
+  SET_DECREMENT_PENDING: (state: ICounterState, pending: boolean) => {
+    state.decrementPending = pending;
+  },
+  SET_COUNT:             (state: ICounterState, count: number) => {
+    state.count = count;
   },
 };
