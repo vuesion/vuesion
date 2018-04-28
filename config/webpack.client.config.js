@@ -35,6 +35,7 @@ const clientConfig = merge(baseConfig, {
                              }),
     new HTMLPlugin({
                      template: 'src/app/index.template.html',
+                     spa:      false,
                    }),
   ],
 });

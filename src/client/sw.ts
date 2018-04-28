@@ -9,7 +9,7 @@ const DEBUG_SW = true;
 const { assets } = ((global as any) as any).serviceWorkerOption;
 const CACHE_NAME: string = Date.now().toString();
 
-let assetsToCache = [...assets.map((path: string) => '/client' + path), `../`, '../manifest.json'];
+let assetsToCache = [...assets.map((path: string) => '/client' + path), '../', '../manifest.json'];
 
 assetsToCache = assetsToCache.map(path => {
   return new URL(path, ((global as any) as any).location).toString();
