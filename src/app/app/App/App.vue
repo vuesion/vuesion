@@ -1,7 +1,6 @@
 <template>
-  <div id="app">
+  <div id="app" :class="$style.app">
     <vue-notification-stack />
-
     <vue-nav-bar>
       <ul :class="$style.nav">
         <li>
@@ -43,9 +42,7 @@
       </ul>
     </vue-nav-bar>
 
-    <div :class="$style.app">
-      <router-view class="view" />
-    </div>
+    <router-view :class="$style.content" />
 
     <vue-footer />
   </div>
@@ -87,57 +84,19 @@
 
 <style lang="scss" module>
   @import "../../shared/styles";
-  // @import url($google-font);
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family:      $font-family;
-    font-size:        $font-size;
-    font-weight:      $font-weight;
-    color:            $font-color;
-    background-color: $bg-color;
-    padding:          0;
-    margin:           0;
-    letter-spacing:   .5px;
-    line-height:      1.47;
-  }
+  @import "../../shared/styles/reset";
+  @import "../../shared/styles/typo";
+  @import "../../shared/styles/global";
+  @import url($google-font);
 
   .app {
+    min-height:     100vh;
+    display:        flex;
+    flex-direction: column;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    margin: $grid-unit * 4 0 $grid-unit * 2 0;
-  }
-
-  h1 {
-    font-size: $font-size-h1;
-  }
-
-  h2 {
-    font-size: $font-size-h2;
-  }
-
-  h3 {
-    font-size: $font-size-h3;
-  }
-
-  h4 {
-    font-size: $font-size-h4;
-  }
-
-  h5 {
-    font-size: $font-size-h5;
-  }
-
-  h6 {
-    font-size: $font-size-h6;
-  }
-
-  small {
-    font-size: 75%;
+  .content {
+    flex: 1;
   }
 
   .nav {
@@ -182,20 +141,6 @@
           opacity: 1;
         }
       }
-    }
-  }
-
-  // always make sure images have an alt attribute
-  img[alt=""],
-  img:not([alt]) {
-    border: 5px dashed $brand-warn;
-  }
-
-  a {
-    color: $brand-accent;
-
-    &:hover {
-      color: darken($brand-accent, 5%);
     }
   }
 </style>

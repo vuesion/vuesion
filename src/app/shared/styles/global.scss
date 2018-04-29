@@ -1,0 +1,13 @@
+@import "variables";
+@import "mixins";
+
+body {
+  color:            $text-color;
+  background-color: $bg-color;
+}
+
+// always make sure images have an alt attribute
+img[alt=""],
+img:not([alt]) {
+  border: 5px dashed $brand-warn;
+}

@@ -21,7 +21,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item>
-          <div class="h1">Tabs</div>
+          <h2>Tabs</h2>
           <vue-tab-group>
             <vue-tab-item title="Profile" icon="fas fa-user">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
@@ -46,8 +46,10 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          <div class="h1">Collapse</div>
+          <h2>Collapse</h2>
           <vue-button @click="collapseDemo = !collapseDemo" accent>Collapse toggle</vue-button>
+          <br />
+          <br />
           <vue-collapse :show="collapseDemo">
             <div :class="$style.collapseDemo">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
@@ -62,22 +64,25 @@
       </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item>
-          <div class="h1">Buttons</div>
+          <h2>Buttons</h2>
 
           <vue-button>Default</vue-button>
           <vue-button disabled>Default</vue-button>
           <!--<vue-button loading>Loading</vue-button>-->
           <vue-button pulse>Default</vue-button>
           <br />
+          <br />
           <vue-button primary>Primary</vue-button>
           <vue-button primary disabled>Primary</vue-button>
           <!--<vue-button primary loading>Loading</vue-button>-->
           <vue-button primary pulse>Primary</vue-button>
           <br />
+          <br />
           <vue-button accent>Accent</vue-button>
           <vue-button accent disabled>Accent</vue-button>
           <!--<vue-button accent loading>Loading</vue-button>-->
           <vue-button accent pulse>Accent</vue-button>
+          <br />
           <br />
           <vue-button warn>Warn</vue-button>
           <vue-button warn disabled>Warn</vue-button>
@@ -86,7 +91,7 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          <div class="h1">Loader</div>
+          <h2>Loader</h2>
 
           <vue-loader />
           <vue-loader primary />
@@ -96,7 +101,7 @@
       </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item>
-          <div class="h1">Headlines</div>
+          <h2>Headlines</h2>
           <h1>Headline 1</h1>
           <h2>Headline 2</h2>
           <h3>Headline 3</h3>
@@ -106,7 +111,7 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          <div class="h1">Panels</div>
+          <h2>Panels</h2>
 
           <vue-panel>
             <vue-panel-header title="Title" subtitle="subtitle"
@@ -128,7 +133,7 @@
       </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item>
-          <div class="h1">Inputs</div>
+          <h2>Inputs</h2>
 
           <vue-input placeholder="Placeholder" message="test" :value="inputValue"
                      @change="inputValue = $event.target.value" />
@@ -137,7 +142,7 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          <div class="h1">Modal</div>
+          <h2>Modal</h2>
 
           <vue-button primary @click="showModal = !showModal">Show Modal</vue-button>
           <vue-modal :show="showModal" @close="showModal = !showModal">
@@ -148,7 +153,7 @@
       </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item>
-          <div class="h1">Checkboxes / RadioButtons</div>
+          <h2>Checkboxes / RadioButtons</h2>
 
           <vue-check-box name="check" label="checkbox" :checked="checked" @click="checked = !checked" />
           <br />
@@ -165,7 +170,7 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          <div class="h1">Tooltip</div>
+          <h2>Tooltip</h2>
 
           Lorem ipsum dolor sit amet,
           <vue-tooltip tip="This is a tooltip!">consetetur sadipscing elitr</vue-tooltip>
@@ -186,7 +191,7 @@
       </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item>
-          <div class="h1">Slider</div>
+          <h2>Slider</h2>
 
           <vue-slider
             :min="0"
@@ -216,7 +221,7 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          <div class="h1">Accordion</div>
+          <h2>Accordion</h2>
 
           <vue-accordion>
             <vue-accordion-item
@@ -262,13 +267,13 @@
       </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item>
-          <div class="h1">Pagination</div>
+          <h2>Pagination</h2>
 
           <vue-pagination :pages="10" :current="page" @change="page = $event" />
         </vue-grid-item>
 
         <vue-grid-item>
-          <div class="h1">Select</div>
+          <h2>Select</h2>
 
           <vue-select
             :options="options"
@@ -284,13 +289,13 @@
       </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item>
-          <div class="h1">Calendar</div>
+          <h2>Calendar</h2>
 
           <vue-calendar @change="calendarChange" :min-date="today" :max-date="nextWeek" />
         </vue-grid-item>
 
         <vue-grid-item>
-          <div class="h1">DatePicker</div>
+          <h2>DatePicker</h2>
 
           <vue-date-picker
             @change="calendarChange"
@@ -300,7 +305,7 @@
       </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item>
-          <div class="h1">DateRange</div>
+          <h2>DateRange</h2>
 
           <vue-date-range-picker
             @change="calendarChange"
@@ -310,13 +315,13 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          <div class="h1">Notification Stack</div>
+          <h2>Notification Stack</h2>
           <vue-button accent @click="addNotificationClick">add notification</vue-button>
         </vue-grid-item>
       </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item>
-          <div class="h1">{{ $t('components.forms' /* Forms */) }}</div>
+          <h2>{{ $t('components.forms' /* Forms */) }}</h2>
           <vue-form :schema="registerSchema" @submit="formSubmit" @reset="formReset">
             <div slot="middle">
               named slot in the middle (defined in schema)
@@ -329,15 +334,15 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          <div class="h1">{{ $t('components.forms' /* Forms */) }}</div>
+          <h2>{{ $t('components.forms' /* Forms */) }}</h2>
           <vue-form :schema="loginSchema" />
         </vue-grid-item>
       </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item>
-          <div class="h1">Markdown renderer</div>
+          <h2>Markdown renderer</h2>
           <vue-markdown>{{ $t('components.markdown' /*
-                        # Markdown support\n
+                        ### Markdown support\n
                         - build on top of marked\n
                         - server side rendering!!!\n
                         - `github style` markdown
@@ -345,7 +350,7 @@
           </vue-markdown>
         </vue-grid-item>
         <vue-grid-item>
-          <div class="h1">Autocomplete</div>
+          <h2>Autocomplete</h2>
           <vue-autocomplete
             :options="autocompleteOptions"
             :max-options="3"
@@ -398,6 +403,10 @@
         {
           name:    'description',
           content: 'vue-starter - includes most common UI/UX use cases, for example: calendar, date picker, range slider, accordion and more!',
+        },
+        {
+          name:    'robots',
+          content: 'INDEX,FOLLOW',
         },
         {
           name:    'keywords',
@@ -671,12 +680,11 @@
   @import "../../shared/styles";
 
   .components {
+    padding-bottom: $grid-unit * 2;
 
     :global {
-      .h1 {
-        border-bottom: 1px solid $divider-color;
-        margin:        $grid-unit * 4 0 $grid-unit * 4 0;
-        font-size:     $font-size-h1;
+      h2 {
+        margin-top: 3.6rem;
       }
 
       .vueGridItem {

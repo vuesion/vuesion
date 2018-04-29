@@ -20,19 +20,19 @@ const setHeaders = (res: Response): void => {
   res.setHeader('max-age', '0');
 };
 
-export const SSRRoutes = (app: Express.Application): any => {
-  let renderer: BundleRenderer;
-  const createRenderer = (bundle: string, template: string): BundleRenderer => {
-    return nodeRequire('vue-server-renderer').createBundleRenderer(bundle, {
-      template,
-      cache: nodeRequire('lru-cache')({
-                                        max:    1000,
-                                        maxAge: 1000 * 60 * 15,
-                                      }),
-    });
-  };
-  const packageJson: any = JSON.parse(fs.readFileSync(resolve('../../package.json')).toString());
+let renderer: BundleRenderer;
+const createRenderer = (bundle: string, template: string): BundleRenderer => {
+  return nodeRequire('vue-server-renderer').createBundleRenderer(bundle, {
+    template,
+    cache: nodeRequire('lru-cache')({
+                                      max:    1000,
+                                      maxAge: 1000 * 60 * 15,
+                                    }),
+  });
+};
+const packageJson: any = JSON.parse(fs.readFileSync(resolve('../../package.json')).toString());
 
+export const SSRRoutes = (app: Express.Application): any => {
   if (isProd) {
     const bundle: any = nodeRequire('./vue-ssr-bundle.json');
     const template: string = fs.readFileSync(resolve('../client/index.html'), 'utf-8');
@@ -60,26 +60,34 @@ export const SSRRoutes = (app: Express.Application): any => {
                                ? req.headers['accept-language'].toString()
                                : packageJson.config['default-locale'];
     const defaultLang: string = acceptLanguage.get(acceptLang);
-    const serverContext: IServerContext = {
-      url:            req.url,
-      cookies:        req.cookies,
-      acceptLanguage: defaultLang,
-      htmlLang:       defaultLang.substr(0, 2),
-      appConfig:      AppConfig,
+    const errorHandler = (err: any, renderRedirect: any) => {
+      if (err && err.code === 404) {
+        res.status(404);
+        Logger.warn('unsupported route: %s; error: %s', req.url, JSON.stringify(err, Object.getOwnPropertyNames(err)));
+        renderRedirect('/not-found', true);
+      } else {
+        res.status(500);
+        Logger.error('error during rendering: %s; error: %s', req.url, JSON.stringify(err, Object.getOwnPropertyNames(err)));
+        renderRedirect('/error', true);
+      }
+    };
+    const render = (url: string, redirect: boolean = false): void => {
+      const serverContext: IServerContext = {
+        url,
+        cookies:        req.cookies,
+        acceptLanguage: defaultLang,
+        htmlLang:       defaultLang.substr(0, 2),
+        appConfig:      AppConfig,
+        redirect,
+      };
+
+      renderer
+      .renderToStream(serverContext)
+      .on('error', (err: any) => errorHandler(err, render))
+      .on('end', () => Logger.debug(`whole request: ${Date.now() - startTime}ms`))
+      .pipe(res);
     };
 
-    renderer
-    .renderToStream(serverContext)
-    .on('error', (err: any) => {
-      if (err && err.code === 404) {
-        res.status(404).end('404 | Page Not Found');
-        Logger.warn('unsupported route: %s; error: %s', req.url, JSON.stringify(err, Object.getOwnPropertyNames(err)));
-      } else {
-        res.status(500).end('500 | Internal Server Error');
-        Logger.error('error during rendering: %s; error: %s', req.url, JSON.stringify(err, Object.getOwnPropertyNames(err)));
-      }
-    })
-    .on('end', () => Logger.debug(`whole request: ${Date.now() - startTime}ms`))
-    .pipe(res);
+    render(req.url);
   });
 };

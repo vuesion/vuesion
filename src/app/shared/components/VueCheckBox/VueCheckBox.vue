@@ -124,10 +124,10 @@
       &:after {
         opacity:                    0;
         transform:                  rotate(-45deg) scale(3);
-        top:                        $checkbox-size / 4;
-        left:                       floor($checkbox-size / 5);
-        width:                      ($checkbox-size / 1.5) - 1;
-        height:                     $checkbox-size / 4;
+        top:                        $checkbox-size / 8;
+        left:                       $checkbox-size / 12;
+        width:                      $checkbox-size / 1.2;
+        height:                     $checkbox-size / 2.5;
         border:                     $checkbox-check;
         border-top:                 none;
         border-right:               none;

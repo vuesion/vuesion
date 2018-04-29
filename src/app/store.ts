@@ -23,6 +23,7 @@ const beforePersistLocalStorage = (localState: IState): IState => {
 const beforePersistCookieStorage = (localState: IState): IState => {
   delete localState.app.config;
   delete localState.app.defaultMessages;
+  delete localState.app.redirectTo;
 
   return localState;
 };

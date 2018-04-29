@@ -24,6 +24,10 @@
           content: 'vue-starter - A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
         },
         {
+          name:    'robots',
+          content: 'INDEX,FOLLOW',
+        },
+        {
           name:    'keywords',
           content: 'vue.js, vuex, vuex-persist, seo, server-side-rendering, isomorphic, progressive-web-app',
         },
@@ -90,18 +94,10 @@
       }
     }
 
-    @include media(tabletPortrait) {
-      :global {
-        .featureSection {
-          padding: $grid-unit * 14 0;
-        }
-      }
-    }
-
     @include media(tabletLandscape) {
       :global {
         .featureSection {
-          padding: $grid-unit * 20 0;
+          padding: $grid-unit * 15 0;
         }
       }
     }

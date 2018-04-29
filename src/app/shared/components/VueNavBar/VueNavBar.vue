@@ -183,7 +183,7 @@
     flex:       1;
     flex-basis: 100%;
     list-style: none;
-    margin-top: 0;
+    margin-top: 1px;
     padding:    $grid-unit * 2 0;
     border-top: 1px solid $nav-bar-menu-border-color;
     background: $nav-bar-menu-bg;
