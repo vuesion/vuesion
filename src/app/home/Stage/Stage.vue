@@ -7,7 +7,7 @@
     <h1 :class="$style.title">Vue.js Starter</h1>
     <div :class="$style.subTitle">
       {{
-      $t('App.core.description' /* an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS */)
+      $t('App.core.description' /* A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices */)
       }}
     </div>
 

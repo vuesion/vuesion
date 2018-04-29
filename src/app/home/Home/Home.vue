@@ -17,11 +17,11 @@
 
   export default {
     metaInfo:   {
-      title: 'vue-starter - an enterprise ready boilerplate with Vue.JS',
+      title: 'vue-starter - flexible, scalable, opinionated, fast',
       meta:  [
         {
           name:    'description',
-          content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps built with Vue.JS',
+          content: 'vue-starter - A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
         },
         {
           name:    'keywords',
@@ -34,26 +34,26 @@
         { name: 'og:locale', content: 'en' },
         {
           name:    'og:title',
-          content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps built with Vue.JS',
+          content: 'vue-starter - A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
         },
         {
           name:    'og:description',
-          content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps built with Vue.JS',
+          content: 'vue-starter - A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
         },
-        { name: 'og:image:url', content: 'https://vue-starter.herokuapp.com/assets/logo.png' },
+        { name: 'og:image:url', content: 'https://vue-starter.herokuapp.com/logo.png' },
 
         { name: 'twitter:card', content: 'summary' },
         { name: 'twitter:site', content: '@_jwerner_' },
         { name: 'twitter:creator', content: '@_jwerner_' },
         {
           name:    'twitter:title',
-          content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps built with Vue.JS',
+          content: 'vue-starter - A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
         },
         { name: 'twitter:url', content: 'https://vue-starter.herokuapp.com/' },
-        { name: 'twitter:image', content: 'https://vue-starter.herokuapp.com/assets/logo.png' },
+        { name: 'twitter:image', content: 'https://vue-starter.herokuapp.com/logo.png' },
         {
           name:    'twitter:description',
-          content: 'vue-starter - an enterprise ready boilerplate for isomorphic, progressive web apps built with Vue.JS',
+          content: 'vue-starter - A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
         },
       ],
     },

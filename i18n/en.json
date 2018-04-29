@@ -1,7 +1,8 @@
 {
-  "App.core.description": "an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS",
+  "App.core.description": "A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices",
   "App.nav.components": "Components",
   "App.nav.counter": "Counter",
+  "App.nav.docs": "Documentation",
   "App.nav.english": "English",
   "App.nav.german": "German",
   "App.nav.home": "Home",

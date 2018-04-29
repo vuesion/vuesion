@@ -1,7 +1,7 @@
 {
   "name": "vue-starter",
   "version": "0.0.0",
-  "description": "An enterprise ready boilerplate for isomorphic, progressive web apps with Vue.js",
+  "description": "A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices",
   "repository": {
     "type": "git",
     "url": "https://github.com/devCrossNet/vue-starter.git"
@@ -52,11 +52,11 @@
     "build:client": "cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.client.config.js",
     "build:isomorphic": "cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.isomorphic.config.js",
     "build:server": "cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.server.config.js",
-    "prebuild": "npm run clean && npm run build-storybook",
+    "prebuild": "npm run clean",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "precommit": "concurrently \"npm run lint\" \"npm run test -- --silent\"",
     "ci": "concurrently \"npm run lint\" \"npm run test:coverage -- --runInBand\"",
-    "postci": "codecov -f ./coverage/*.json && npm run build",
+    "postci": "codecov -f ./coverage/*.json && npm run build && concurrently \"npm run build-storybook\" \"vuepress build docs\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -133,7 +133,7 @@
     "@storybook/addons": "3.4.3",
     "@storybook/vue": "4.0.0-alpha.1",
     "@types/animejs": "2.0.0",
-    "@types/body-parser": "1.16.8",
+    "@types/body-parser": "1.17.0",
     "@types/compression": "0.0.36",
     "@types/cookie-parser": "1.4.1",
     "@types/deepmerge": "2.1.0",
@@ -187,7 +187,7 @@
     "tslint": "5.9.1",
     "typescript": "2.8.3",
     "vue-jest": "2.5.0",
-    "vue-loader": "^14.2.2",
+    "vue-loader": "14.2.2",
     "vue-ssr-webpack-plugin": "3.0.0",
     "webpack": "4.6.0",
     "webpack-bundle-analyzer": "2.11.1",
