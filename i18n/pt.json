@@ -16,7 +16,7 @@
   "components.calendar.tuesday.short": "T",
   "components.calendar.wednesday.short": "W",
   "components.forms": "Forms",
-  "components.markdown": "# Markdown support\n - build on top of marked\n - server side rendering!!!\n - `github style` markdown",
+  "components.markdown": "### Markdown support\n - build on top of marked\n - server side rendering!!!\n - `github style` markdown",
   "components.register.cancellationText": "Cancel",
   "components.register.consent": "I consent to get contacted",
   "components.register.email": "Email",

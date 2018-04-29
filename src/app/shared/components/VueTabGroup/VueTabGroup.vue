@@ -78,7 +78,7 @@
     background: $tab-group-bg;
     box-shadow: $tab-group-shadow;
     padding:    $tab-group-padding;
-    margin-top: $tab-group-margin;
+    margin: $tab-group-margin;
   }
 
   .headerList {

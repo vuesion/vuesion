@@ -1,8 +1,8 @@
 <template>
   <div :class="[$style.calendar, cssClass]">
     <div :class="$style.header">
-      <h3 @click="setSelecting('year')">{{ selectedYear }}</h3>
-      <h2 @click="setSelecting('date')">{{ $d(calculatedDate, 'calendarHeader') }}</h2>
+      <h4 @click="setSelecting('year')">{{ selectedYear }}</h4>
+      <h5 @click="setSelecting('date')">{{ $d(calculatedDate, 'calendarHeader') }}</h5>
     </div>
 
     <div :class="$style.body" v-if="selecting === 'date'">
@@ -327,20 +327,9 @@
     background:  $calendar-header-bg;
     text-shadow: $calendar-header-text-shadow;
 
-    h2, h3 {
+    h4, h5 {
       cursor: default;
       margin: 0;
-    }
-
-    h2 {
-      font-size:   $font-size-h5 - 2;
-      line-height: $font-size-h5 - 2;
-    }
-
-    h3 {
-      font-size:   $font-size-h6;
-      font-weight: 300;
-      cursor:      pointer;
     }
   }
 
@@ -376,7 +365,15 @@
 
           span {
             position: relative;
-            top:      20%;
+            top:      0.5rem;
+
+            @include media(tabletPortrait) {
+              top: 15%;
+            }
+
+            @include media(largeDesktop) {
+              top: 12%;
+            }
           }
         }
       }
@@ -439,9 +436,7 @@
     cursor:      default;
     text-align:  center;
     flex:        1 0 70%;
-    font-size:   14px;
     font-weight: 500;
-    padding-top: $grid-unit * 0.5;
   }
 
   .currentDay {

@@ -17,7 +17,7 @@
     name:       'VueModal',
     components: {},
     props:      {
-      cssClass: {
+      cssClass:   {
         type:    String,
         default: 'vueModal',
       },

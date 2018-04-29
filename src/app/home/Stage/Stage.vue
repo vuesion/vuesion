@@ -4,25 +4,35 @@
     <div :class="$style.accent"></div>
     <div :class="$style.accentTwo"></div>
 
-    <h1 :class="$style.title">Vue.js Starter</h1>
-    <div :class="$style.subTitle">
-      {{
-      $t('App.core.description' /* A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices */)
-      }}
-    </div>
+    <vue-grid>
+      <vue-grid-row>
+        <vue-grid-item>
+          <h1 :class="$style.title">Vue.js Starter</h1>
+          <div :class="$style.subTitle">
+            {{
+            $t('App.core.description' /* A flexible, scalable, opinionated boilerplate for production-ready PWAs with
+            focus on performance, development speed, and best practices */)
+            }}
+          </div>
 
-    <a :class="$style.github" href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener"
-       aria-label="github repository">
-      <i class="fab fa-github"></i>
-    </a>
+          <a :class="$style.github" href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener"
+             aria-label="github repository">
+            <i class="fab fa-github"></i>
+          </a>
+        </vue-grid-item>
+      </vue-grid-row>
+    </vue-grid>
   </div>
 </template>
 
 <script lang="ts">
   import { CircleAnimation } from '../../shared/animations/CircleAnimation';
+  import VueGrid             from '../../shared/components/VueGrid/VueGrid';
+  import VueGridRow          from '../../shared/components/VueGridRow/VueGridRow';
+  import VueGridItem         from '../../shared/components/VueGridItem/VueGridItem';
 
   export default {
-    components: {},
+    components: { VueGridItem, VueGridRow, VueGrid },
     props:      {},
     data() {
       return {};
@@ -131,13 +141,11 @@
     top: $grid-unit * 17;
 
     @include media(tabletPortrait) {
-      top:       $grid-unit * 24;
-      font-size: $font-size-h1 + 4;
+      top: $grid-unit * 24;
     }
 
     @include media(tabletLandscape) {
-      top:       $grid-unit * 26;
-      font-size: $font-size-h1 + 6;
+      top: $grid-unit * 26;
     }
   }
 

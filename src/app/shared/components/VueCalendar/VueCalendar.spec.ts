@@ -17,7 +17,7 @@ describe('VueCalendar.vue', () => {
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(1);
 
-    wrapper.find('h3').trigger('click');
+    wrapper.find('h4').trigger('click');
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(0);
     expect(wrapper.findAll(`.year`)).toHaveLength(1);
@@ -38,7 +38,7 @@ describe('VueCalendar.vue', () => {
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(1);
 
-    wrapper.find('h3').trigger('click');
+    wrapper.find('h4').trigger('click');
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(0);
     expect(wrapper.findAll(`.year`)).toHaveLength(1);

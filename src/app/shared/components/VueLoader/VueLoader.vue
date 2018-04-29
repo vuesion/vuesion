@@ -148,7 +148,7 @@
       stroke-dashoffset: 0;
       animation:         dash 1.5s ease-in-out infinite;
       stroke-linecap:    round;
-      stroke:            $font-color;
+      stroke:            $text-color;
 
       @keyframes dash {
         0% {

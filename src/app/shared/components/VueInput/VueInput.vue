@@ -121,6 +121,7 @@
       padding:          $input-padding;
       display:          block;
       width:            100%;
+      font-family:      $input-font-family;
       font-size:        $input-font-size;
       color:            $input-color;
       height:           $input-height;
