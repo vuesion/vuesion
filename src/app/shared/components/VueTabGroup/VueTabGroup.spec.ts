@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueTabGroup               from './VueTabGroup.vue';
-import VueTabItem                from '../VueTabItem/VueTabItem.vue';
+import VueTabItem                from './VueTabItem/VueTabItem.vue';
 import { Component }             from 'vue';
 
 const localVue = createLocalVue();

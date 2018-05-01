@@ -68,12 +68,12 @@
 
     i {
       font-size: $font-size-h1;
-      margin:    0 $grid-unit * 2;
+      margin:    0 $space-unit * 2;
     }
 
     small {
       display: inline-block;
-      margin:  $grid-unit * 2 0;
+      margin:  $space-unit * 2 0;
     }
   }
 </style>

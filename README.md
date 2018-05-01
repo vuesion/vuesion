@@ -21,6 +21,9 @@ Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.co
 
 ![vue-starter](https://user-images.githubusercontent.com/1667598/34497260-2d39a7ac-effd-11e7-8d88-ff011f0b3244.gif)
 
+### Lighthouse Score
+<img width="721" alt="screen shot 2018-04-30 at 09 09 45" src="https://user-images.githubusercontent.com/1667598/39417746-99f967f0-4c56-11e8-865c-9db54012060a.png">
+
 # Getting started
 
 1. Install Node.js 8.x or higher. Use [nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n) to maintain multiple Node.js versions

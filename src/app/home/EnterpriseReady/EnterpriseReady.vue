@@ -80,7 +80,7 @@
         i {
           display:    inline-block;
           font-size:  $font-size-h1;
-          margin-top: $grid-unit;
+          margin-top: $space-unit;
         }
       }
     }

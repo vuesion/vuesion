@@ -173,8 +173,8 @@
 
   .brand {
     flex:    1;
-    padding: $grid-unit * 2 0 0 0;
-    height:  $nav-bar-height - ($grid-unit);
+    padding: $space-unit * 2 0 0 0;
+    height:  $nav-bar-height - ($space-unit);
     z-index: 2;
   }
 
@@ -184,16 +184,16 @@
     flex-basis: 100%;
     list-style: none;
     margin-top: 1px;
-    padding:    $grid-unit * 2 0;
+    padding:    $space-unit * 2 0;
     border-top: 1px solid $nav-bar-menu-border-color;
     background: $nav-bar-menu-bg;
   }
 
   .hamburger {
     position:                   absolute;
-    right:                      $grid-unit * 2;
-    top:                        $grid-unit * 2;
-    padding:                    $grid-unit / 2 $grid-unit;
+    right:                      $space-unit * 2;
+    top:                        $space-unit * 2;
+    padding:                    $space-unit / 2 $space-unit;
     display:                    inline-block;
     cursor:                     pointer;
     transition-property:        opacity, filter;
@@ -218,8 +218,8 @@
     }
 
     .box {
-      width:    $grid-unit * 4;
-      height:   $grid-unit * 4;
+      width:    $space-unit * 4;
+      height:   $space-unit * 4;
       display:  inline-block;
       position: relative;
     }
@@ -232,8 +232,8 @@
       &,
       &::before,
       &::after {
-        width:                      $grid-unit * 4;
-        height:                     $grid-unit / 2;
+        width:                      $space-unit * 4;
+        height:                     $space-unit / 2;
         background:                 $nav-bar-bg;
         border-radius:              0;
         position:                   absolute;
@@ -249,11 +249,11 @@
       }
 
       &::before {
-        top: ($grid-unit / 2+ $grid-unit / 2) * -1;
+        top: ($space-unit / 2+ $space-unit / 2) * -1;
       }
 
       &::after {
-        bottom: ($grid-unit / 2 + $grid-unit / 2) * -1;
+        bottom: ($space-unit / 2 + $space-unit / 2) * -1;
       }
 
       transition-duration:        0.075s;
@@ -295,7 +295,7 @@
 
   @include media(tabletPortrait) {
     .hamburger {
-      margin-right: $grid-unit * 2;
+      margin-right: $space-unit * 2;
     }
   }
 </style>

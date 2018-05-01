@@ -138,32 +138,32 @@
   }
 
   .title {
-    top: $grid-unit * 17;
+    top: $space-unit * 17;
 
     @include media(tabletPortrait) {
-      top: $grid-unit * 24;
+      top: $space-unit * 24;
     }
 
     @include media(tabletLandscape) {
-      top: $grid-unit * 26;
+      top: $space-unit * 26;
     }
   }
 
   .subTitle {
-    top: $grid-unit * 15;
+    top: $space-unit * 15;
 
     @include media(tabletPortrait) {
-      top: $grid-unit * 22;
+      top: $space-unit * 22;
     }
 
     @include media(tabletLandscape) {
-      top: $grid-unit * 24;
+      top: $space-unit * 24;
     }
   }
 
   .github {
     font-size:           $font-size-h1;
-    top:                 $grid-unit * 17;
+    top:                 $space-unit * 17;
     box-shadow:          $nav-bar-shadow;
     display:             inline-block;
     background:          $nav-bar-bg;
@@ -177,11 +177,11 @@
     }
 
     @include media(tabletPortrait) {
-      top: $grid-unit * 30;
+      top: $space-unit * 30;
     }
 
     @include media(tabletLandscape) {
-      top: $grid-unit * 42;
+      top: $space-unit * 42;
     }
   }
 </style>

@@ -1,5 +1,6 @@
 <template>
-  <div :class="[$style.vueSlider, cssClass]" ref="slider" @mousedown="moveStart($event)" @touchstart="moveStart($event)">
+  <div :class="[$style.vueSlider, cssClass]" ref="slider" @mousedown="moveStart($event)"
+       @touchstart="moveStart($event)">
     <ul :class="isMultiRange ? [$style.values, $style.multi] : $style.values">
       <li>{{formatValue(currentMin)}}</li>
       <li v-if="isMultiRange">{{formatValue(currentMax)}}</li>
@@ -41,7 +42,7 @@
     name:       'VueSlider',
     components: {},
     props:      {
-      cssClass: {
+      cssClass:    {
         type:    String,
         default: 'vueSlider',
       },
@@ -60,7 +61,8 @@
       formatValue: {
         type:     Function,
         required: false,
-        default:  () => {
+        default:  (value: number) => {
+          return value;
         },
       },
       disabled:    {
@@ -124,8 +126,8 @@
       },
       percentageDiff(e: any) {
         const positionX: number = e.changedTouches && e.changedTouches.length > 0
-          ? e.changedTouches[e.changedTouches.length - 1].clientX
-          : e.clientX;
+                                  ? e.changedTouches[e.changedTouches.length - 1].clientX
+                                  : e.clientX;
 
         return ((positionX - this.sliderBox.left) / this.sliderBox.width) * 100;
       },
@@ -267,7 +269,7 @@
           &:after {
             content: "-";
             display: inline-block;
-            margin:  0 $grid-unit;
+            margin:  0 $space-unit;
           }
         }
       }

@@ -100,7 +100,7 @@
   }
 
   .nav {
-    margin:         $grid-unit 0 0 0;
+    margin:         $space-unit 0 0 0;
     padding:        0;
     list-style:     none;
     display:        flex;
@@ -110,15 +110,15 @@
 
     li {
       flex:       1;
-      margin:     $grid-unit / 2;
+      margin:     $space-unit / 2;
       color:      $text-color;
-      flex-basis: $grid-unit * 10;
-      height:     $grid-unit * 10;
+      flex-basis: $space-unit * 10;
+      height:     $space-unit * 10;
       background: $divider-color;
       cursor:     pointer;
 
       a {
-        padding:         $grid-unit;
+        padding:         $space-unit;
         display:         block;
         color:           $text-color;
         text-align:      center;

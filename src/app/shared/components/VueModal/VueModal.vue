@@ -114,10 +114,10 @@
 
   .vueModal {
     position:   fixed;
-    top:        $grid-unit;
-    left:       $grid-unit;
-    bottom:     $grid-unit;
-    right:      $grid-unit;
+    top:        $space-unit;
+    left:       $space-unit;
+    bottom:     $space-unit;
+    right:      $space-unit;
     background: $modal-bg;
     z-index:    $modal-index;
     box-shadow: $modal-shadow;

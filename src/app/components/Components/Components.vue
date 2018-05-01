@@ -21,48 +21,27 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item>
-          <h2>Tabs</h2>
-          <vue-tab-group>
-            <vue-tab-item title="Profile" icon="fas fa-user">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            </vue-tab-item>
-            <vue-tab-item title="Settings" icon="fas fa-cog">
-              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            </vue-tab-item>
-            <vue-tab-item title="Upload" icon="fas fa-upload">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            </vue-tab-item>
-          </vue-tab-group>
+          <h2>Headlines with badges</h2>
+          <h1>Headline 1
+            <vue-badge>New</vue-badge>
+          </h1>
+          <h2>Headline 2
+            <vue-badge primary>New</vue-badge>
+          </h2>
+          <h3>Headline 3
+            <vue-badge accent>New</vue-badge>
+          </h3>
+          <h4>Headline 4
+            <vue-badge warn>New</vue-badge>
+          </h4>
+          <h5>Headline 5
+            <vue-badge>New</vue-badge>
+          </h5>
+          <h6>Headline 6
+            <vue-badge>New</vue-badge>
+          </h6>
         </vue-grid-item>
 
-        <vue-grid-item>
-          <h2>Collapse</h2>
-          <vue-button @click="collapseDemo = !collapseDemo" accent>Collapse toggle</vue-button>
-          <br />
-          <br />
-          <vue-collapse :show="collapseDemo">
-            <div :class="$style.collapseDemo">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-            </div>
-          </vue-collapse>
-        </vue-grid-item>
-      </vue-grid-row>
-      <vue-grid-row>
         <vue-grid-item>
           <h2>Buttons</h2>
 
@@ -89,25 +68,115 @@
           <!--<vue-button warn loading>Loading</vue-button>-->
           <vue-button warn pulse>Warn</vue-button>
         </vue-grid-item>
-
-        <vue-grid-item>
-          <h2>Loader</h2>
-
-          <vue-loader />
-          <vue-loader primary />
-          <vue-loader accent />
-          <vue-loader warn />
-        </vue-grid-item>
       </vue-grid-row>
+
       <vue-grid-row>
         <vue-grid-item>
-          <h2>Headlines</h2>
-          <h1>Headline 1</h1>
-          <h2>Headline 2</h2>
-          <h3>Headline 3</h3>
-          <h4>Headline 4</h4>
-          <h5>Headline 5</h5>
-          <h6>Headline 6</h6>
+          <h2>Inputs</h2>
+
+          <vue-input placeholder="Placeholder" message="test" :value="inputValue"
+                     @change="inputValue = $event.target.value" />
+          <vue-input placeholder="Placeholder" disabled :value="inputValue"
+                     @change="inputValue = $event.target.value" />
+        </vue-grid-item>
+
+        <vue-grid-item>
+          <h2>Modal</h2>
+
+          <vue-button primary @click="showModal = !showModal">Show Modal</vue-button>
+          <vue-modal :show="showModal" @close="showModal = !showModal">
+            <vue-button warn @click="showModal = !showModal">X</vue-button>
+            TEST
+          </vue-modal>
+        </vue-grid-item>
+      </vue-grid-row>
+
+      <vue-grid-row>
+        <vue-grid-item>
+          <h2>Checkboxes / RadioButtons</h2>
+
+          <vue-check-box
+            name="check"
+            id="check"
+            label="checkbox"
+            :checked="checked"
+            @click="checked = !checked" />
+          <br />
+          <vue-check-box
+            name="check2"
+            id="check2"
+            label="checkbox"
+            :checked="checked"
+            @click="checked = !checked"
+            :disabled="true" />
+          <br />
+          <br />
+          <vue-check-box
+            name="radio"
+            id="radio"
+            label="radio"
+            :checked="radio === 'radio1'"
+            radio
+            @click="radio = 'radio1'" />
+          <br />
+          <vue-check-box
+            name="radio2"
+            id="radio2"
+            label="radio"
+            :checked="radio === 'radio2'"
+            radio
+            @click="radio = 'radio2'" />
+          <br />
+          <vue-check-box
+            name="radio3"
+            id="radio3"
+            label="radio"
+            :checked="radio === 'radio3'"
+            radio
+            @click="radio = 'radio3'"
+            :disabled="true" />
+        </vue-grid-item>
+
+        <vue-grid-item>
+          <h2>Select</h2>
+
+          <vue-select
+            :options="options"
+            :selected-option="selectedOption"
+            @change="selectChange" />
+
+          <p>Multi</p>
+          <vue-select
+            :options="options"
+            :multiple="true"
+            @change="selectChange" />
+        </vue-grid-item>
+      </vue-grid-row>
+
+      <vue-grid-row>
+        <vue-grid-item>
+          <h2>Tabs</h2>
+          <vue-tab-group>
+            <vue-tab-item title="Profile" icon="fas fa-user">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </vue-tab-item>
+            <vue-tab-item title="Settings" icon="fas fa-cog">
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </vue-tab-item>
+            <vue-tab-item title="Upload" icon="fas fa-upload">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </vue-tab-item>
+          </vue-tab-group>
         </vue-grid-item>
 
         <vue-grid-item>
@@ -131,42 +200,23 @@
           </vue-panel>
         </vue-grid-item>
       </vue-grid-row>
+
       <vue-grid-row>
         <vue-grid-item>
-          <h2>Inputs</h2>
-
-          <vue-input placeholder="Placeholder" message="test" :value="inputValue"
-                     @change="inputValue = $event.target.value" />
-          <vue-input placeholder="Placeholder" disabled :value="inputValue"
-                     @change="inputValue = $event.target.value" />
-        </vue-grid-item>
-
-        <vue-grid-item>
-          <h2>Modal</h2>
-
-          <vue-button primary @click="showModal = !showModal">Show Modal</vue-button>
-          <vue-modal :show="showModal" @close="showModal = !showModal">
-            <vue-button warn @click="showModal = !showModal">X</vue-button>
-            TEST
-          </vue-modal>
-        </vue-grid-item>
-      </vue-grid-row>
-      <vue-grid-row>
-        <vue-grid-item>
-          <h2>Checkboxes / RadioButtons</h2>
-
-          <vue-check-box name="check" label="checkbox" :checked="checked" @click="checked = !checked" />
-          <br />
-          <vue-check-box name="check2" label="checkbox" :checked="checked" @click="checked = !checked"
-                         :disabled="true" />
+          <h2>Collapse</h2>
+          <vue-button @click="collapseDemo = !collapseDemo" accent>Collapse toggle</vue-button>
           <br />
           <br />
-          <vue-check-box name="radio" label="radio" :checked="radio === 'radio1'" radio @click="radio = 'radio1'" />
-          <br />
-          <vue-check-box name="radio2" label="radio" :checked="radio === 'radio2'" radio @click="radio = 'radio2'" />
-          <br />
-          <vue-check-box name="radio3" label="radio" :checked="radio === 'radio3'" radio @click="radio = 'radio3'"
-                         :disabled="true" />
+          <vue-collapse :show="collapseDemo">
+            <div :class="$style.collapseDemo">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+              et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </div>
+          </vue-collapse>
         </vue-grid-item>
 
         <vue-grid-item>
@@ -189,6 +239,7 @@
           </vue-tooltip>
         </vue-grid-item>
       </vue-grid-row>
+
       <vue-grid-row>
         <vue-grid-item>
           <h2>Slider</h2>
@@ -243,7 +294,7 @@
           </vue-accordion>
 
           <p>Multi</p>
-          <vue-accordion :multi="true">
+          <vue-accordion multiple>
             <vue-accordion-item
               title="Item 1">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
@@ -265,6 +316,7 @@
           </vue-accordion>
         </vue-grid-item>
       </vue-grid-row>
+
       <vue-grid-row>
         <vue-grid-item>
           <h2>Pagination</h2>
@@ -273,20 +325,15 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          <h2>Select</h2>
+          <h2>Loader</h2>
 
-          <vue-select
-            :options="options"
-            :selected-option="selectedOption"
-            @change="selectChange" />
-
-          <p>Multi</p>
-          <vue-select
-            :options="options"
-            :multiple="true"
-            @change="selectChange" />
+          <vue-loader />
+          <vue-loader primary />
+          <vue-loader accent />
+          <vue-loader warn />
         </vue-grid-item>
       </vue-grid-row>
+
       <vue-grid-row>
         <vue-grid-item>
           <h2>Calendar</h2>
@@ -303,6 +350,7 @@
             placeholder="Select a date" />
         </vue-grid-item>
       </vue-grid-row>
+
       <vue-grid-row>
         <vue-grid-item>
           <h2>DateRange</h2>
@@ -319,25 +367,7 @@
           <vue-button accent @click="addNotificationClick">add notification</vue-button>
         </vue-grid-item>
       </vue-grid-row>
-      <vue-grid-row>
-        <vue-grid-item>
-          <h2>{{ $t('components.forms' /* Forms */) }}</h2>
-          <vue-form :schema="registerSchema" @submit="formSubmit" @reset="formReset">
-            <div slot="middle">
-              named slot in the middle (defined in schema)
-            </div>
 
-            <div>
-              default slot is always at the end of the form
-            </div>
-          </vue-form>
-        </vue-grid-item>
-
-        <vue-grid-item>
-          <h2>{{ $t('components.forms' /* Forms */) }}</h2>
-          <vue-form :schema="loginSchema" />
-        </vue-grid-item>
-      </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item>
           <h2>Markdown renderer</h2>
@@ -349,6 +379,7 @@
                         */) }}
           </vue-markdown>
         </vue-grid-item>
+
         <vue-grid-item>
           <h2>Autocomplete</h2>
           <vue-autocomplete
@@ -364,37 +395,36 @@
 </template>
 
 <script lang="ts">
-  import VueGrid                              from '../../shared/components/VueGrid/VueGrid.vue';
-  import VueGridItem                          from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VueButton                            from '../../shared/components/VueButton/VueButton.vue';
-  import VueLoader                            from '../../shared/components/VueLoader/VueLoader.vue';
-  import VuePanel                             from '../../shared/components/VuePanel/VuePanel.vue';
-  import VuePanelHeader                       from '../../shared/components/VuePanel/VuePanelHeader/VuePanelHeader.vue';
-  import VuePanelBody                         from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
-  import VuePanelFooter                       from '../../shared/components/VuePanel/VuePanelFooter/VuePanelFooter.vue';
-  import VueInput                             from '../../shared/components/VueInput/VueInput.vue';
-  import VueCollapse                          from '../../shared/components/VueCollapse/VueCollapse.vue';
-  import VueModal                             from '../../shared/components/VueModal/VueModal.vue';
-  import VueTabGroup                          from '../../shared/components/VueTabGroup/VueTabGroup.vue';
-  import VueTabItem                           from '../../shared/components/VueTabItem/VueTabItem.vue';
-  import VueCheckBox                          from '../../shared/components/VueCheckBox/VueCheckBox.vue';
-  import VueTooltip                           from '../../shared/components/VueTooltip/VueTooltip.vue';
-  import VueSlider                            from '../../shared/components/VueSlider/VueSlider.vue';
-  import VueAccordion                         from '../../shared/components/VueAccordion/VueAccordion.vue';
-  import VueAccordionItem                     from '../../shared/components/VueAccordionItem/VueAccordionItem.vue';
-  import VuePagination                        from '../../shared/components/VuePagination/VuePagination.vue';
-  import VueSelect, { IVueSelectOption }      from '../../shared/components/VueSelect/VueSelect.vue';
-  import VueCalendar                          from '../../shared/components/VueCalendar/VueCalendar.vue';
-  import VueDatePicker                        from '../../shared/components/VueDatePicker/VueDatePicker.vue';
-  import VueDateRangePicker                   from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
-  import { addNotification, INotification }   from '../../shared/components/VueNotificationStack/utils';
-  import VueForm                              from '../../shared/components/VueForm/VueForm.vue';
-  import { IFormSchema }                      from '../../shared/components/VueForm/IFormSchema';
-  import { isEmailValid, isPhoneNumberValid } from '../../shared/components/VueForm/Validators';
-  import VueMarkdown                          from '../../shared/components/VueMarkdown/VueMarkdown';
-  import VueGridRow                           from '../../shared/components/VueGridRow/VueGridRow';
-  import VueAutocomplete                      from '../../shared/components/VueAutocomplete/VueAutocomplete';
-  import { AutocompleteOptionsFixture }       from '../../shared/components/VueAutocomplete/fixtures/IAutocompleteFixture';
+  import VueGrid                            from '../../shared/components/VueGrid/VueGrid.vue';
+  import VueGridItem                        from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VueButton                          from '../../shared/components/VueButton/VueButton.vue';
+  import VueLoader                          from '../../shared/components/VueLoader/VueLoader.vue';
+  import VuePanel                           from '../../shared/components/VuePanel/VuePanel.vue';
+  import VuePanelHeader                     from '../../shared/components/VuePanel/VuePanelHeader/VuePanelHeader.vue';
+  import VuePanelBody                       from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
+  import VuePanelFooter                     from '../../shared/components/VuePanel/VuePanelFooter/VuePanelFooter.vue';
+  import VueInput                           from '../../shared/components/VueInput/VueInput.vue';
+  import VueCollapse                        from '../../shared/components/VueCollapse/VueCollapse.vue';
+  import VueModal                           from '../../shared/components/VueModal/VueModal.vue';
+  import VueTabGroup                        from '../../shared/components/VueTabGroup/VueTabGroup.vue';
+  import VueTabItem                         from '../../shared/components/VueTabGroup/VueTabItem/VueTabItem.vue';
+  import VueCheckBox                        from '../../shared/components/VueCheckBox/VueCheckBox.vue';
+  import VueTooltip                         from '../../shared/components/VueTooltip/VueTooltip.vue';
+  import VueSlider                          from '../../shared/components/VueSlider/VueSlider.vue';
+  import VueAccordion                       from '../../shared/components/VueAccordion/VueAccordion.vue';
+  import VueAccordionItem
+                                            from '../../shared/components/VueAccordion/VueAccordionItem/VueAccordionItem.vue';
+  import VuePagination                      from '../../shared/components/VuePagination/VuePagination.vue';
+  import VueSelect, { IVueSelectOption }    from '../../shared/components/VueSelect/VueSelect.vue';
+  import VueCalendar                        from '../../shared/components/VueCalendar/VueCalendar.vue';
+  import VueDatePicker                      from '../../shared/components/VueDatePicker/VueDatePicker.vue';
+  import VueDateRangePicker                 from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
+  import { addNotification, INotification } from '../../shared/components/VueNotificationStack/utils';
+  import VueMarkdown                        from '../../shared/components/VueMarkdown/VueMarkdown';
+  import VueGridRow                         from '../../shared/components/VueGridRow/VueGridRow';
+  import VueAutocomplete                    from '../../shared/components/VueAutocomplete/VueAutocomplete';
+  import { AutocompleteOptionsFixture }     from '../../shared/components/VueAutocomplete/fixtures/IAutocompleteFixture';
+  import VueBadge                           from '../../shared/components/VueBadge/VueBadge';
 
   export default {
     metaInfo:   {
@@ -443,6 +473,7 @@
       ],
     },
     components: {
+      VueBadge,
       VueAutocomplete,
       VueMarkdown,
       VueGrid,
@@ -468,7 +499,6 @@
       VueCalendar,
       VueDatePicker,
       VueDateRangePicker,
-      VueForm,
       VueGridRow,
     },
     computed:   {
@@ -479,100 +509,6 @@
       },
       nextWeek(): Date {
         return new Date(this.today.getTime() + 7 * 24 * 60 * 60 * 1000);
-      },
-      registerSchema(): IFormSchema {
-        return {
-          cancellationText: this.$t('components.register.cancellationText' /* Cancel */),
-          submitText:       this.$t('components.register.submitText' /* Submit */),
-          id:               'myForm',
-          name:             'myForm',
-          title:            this.$t('components.register.title' /* Register */),
-          subtitle:         this.$t('components.register.subtitle' /* Please fill in all required fields */),
-          elements:         [
-            {
-              type:        'vue-input',
-              model:       'name',
-              required:    true,
-              label:       this.$t('components.register.name' /* Name */),
-              inputType:   'text',
-              isValid(value: string) {
-                return value.trim().indexOf(' ') > -1;
-              },
-              invalidText: this.$t('components.register.name.invalidText' /* Please provide first and last name */),
-            },
-            {
-              type:        'vue-input',
-              model:       'phone',
-              required:    false,
-              label:       this.$t('components.register.phone' /* Phone */),
-              inputType:   'phone',
-              isValid(value: string) {
-                return isPhoneNumberValid(value);
-              },
-              invalidText: this.$t('components.register.phone.invalidText' /* This is not a valid phone number! */),
-            },
-            {
-              type:  'slot',
-              model: 'middle',
-            },
-            {
-              type:        'vue-input',
-              model:       'email',
-              required:    true,
-              label:       this.$t('components.register.email' /* Email */),
-              inputType:   'email',
-              isValid(value: string) {
-                return isEmailValid(value);
-              },
-              invalidText: this.$t('components.register.email.invalidText' /* This is not a valid email address! */),
-            },
-            {
-              type:     'vue-check-box',
-              model:    'terms',
-              required: true,
-              label:    this.$t('components.register.terms' /* I accept the <a href="/">Terms and Conditions</a> */),
-              value:    false,
-            },
-            {
-              type:     'vue-check-box',
-              model:    'consent',
-              required: false,
-              label:    this.$t('components.register.consent' /* I consent to get contacted */),
-              value:    false,
-            },
-          ],
-        };
-      },
-      loginSchema(): IFormSchema {
-        return {
-          submitText: 'Login',
-          id:         'loginForm',
-          name:       'loginForm',
-          title:      'Login',
-          elements:   [
-            {
-              type:        'vue-input',
-              model:       'email2',
-              required:    true,
-              label:       'Email',
-              inputType:   'email',
-              isValid(value: string) {
-                return isEmailValid(value);
-              },
-              invalidText: 'This is not a valid email address!',
-            },
-            {
-              type:      'vue-input',
-              model:     'password2',
-              required:  true,
-              label:     'Password',
-              inputType: 'password',
-              isValid(value: string) {
-                return value.length > 3;
-              },
-            },
-          ],
-        };
       },
     },
     data(): any {
@@ -634,23 +570,6 @@
       selectChange(options: IVueSelectOption[]) {
         console.log(options);
       },
-      formSubmit(model: any, reset: any) {
-        addNotification(
-          {
-            title: this.$t('components.register.submit.notification.title', model /* Hey {name}! */),
-            text:  this.$t('components.register.submit.notification.text', model /* We've sent an email to: {email}! */),
-          } as INotification,
-        );
-        reset();
-      },
-      formReset() {
-        addNotification(
-          {
-            title: `How can we help?`,
-            text:  `Are you not happy with our offer?`,
-          } as INotification,
-        );
-      },
       /* istanbul ignore next */
       onRequest(query: string, shouldReturn: boolean = true) {
         this.autocompleteLoading = true;
@@ -680,7 +599,7 @@
   @import "../../shared/styles";
 
   .components {
-    padding-bottom: $grid-unit * 2;
+    padding-bottom: $space-unit * 2;
 
     :global {
       h2 {
@@ -701,7 +620,7 @@
   }
 
   .collapseDemo {
-    padding:    $grid-unit * 2;
+    padding:    $space-unit * 2;
     background: $panel-bg;
     box-shadow: $panel-shadow;
     color:      #FFF

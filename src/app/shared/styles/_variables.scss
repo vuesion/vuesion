@@ -64,7 +64,7 @@ $letter-spacing-h6: -.1rem;
 $google-font: 'https://fonts.googleapis.com/css?family=Oxygen:300,400,700|Lato:300,400,700';
 $font-family-headings: 'Oxygen', Helvetica, sans-serif;
 $font-family: 'Lato', Helvetica, sans-serif;
-$grid-unit: 0.8rem;
+$space-unit: 0.8rem;
 
 /* Grid */
 $screen-phone: 320px;
@@ -78,16 +78,16 @@ $screen-small-desktop-max: $screen-small-desktop - 1;
 $screen-large-desktop: 1440px;
 $screen-large-desktop-max: $screen-large-desktop - 1;
 $screen-phone-gutter: 16px;
-$screen-tablet-portrait-gutter: $grid-unit * 2;
-$screen-tablet-landscape-gutter: $grid-unit * 2;
-$screen-small-desktop-gutter: $grid-unit * 2;
-$screen-large-desktop-gutter: $grid-unit * 2;
+$screen-tablet-portrait-gutter: $space-unit * 2;
+$screen-tablet-landscape-gutter: $space-unit * 2;
+$screen-small-desktop-gutter: $space-unit * 2;
+$screen-large-desktop-gutter: $space-unit * 2;
 
 /* AppNavBar*/
 $nav-bar-bg: linear-gradient(to bottom, $bg-color 0%, lighten($bg-color, 2%) 50%, $bg-color 100%);
 $nav-bar-color: $text-color;
 $nav-bar-width: 100%;
-$nav-bar-height: $grid-unit * 10;
+$nav-bar-height: $space-unit * 10;
 $nav-bar-padding: 0;
 $nav-bar-index: 1000;
 $nav-bar-bg-transition: opacity $transition-duration ease-in-out;
@@ -101,10 +101,10 @@ $nav-bar-menu-bg: transparent;
 
 /* Button */
 $button-font-family: $font-family;
-$button-padding: $grid-unit $grid-unit * 2;
-$button-margin: 0 $grid-unit 0 0;
-$button-min-width: $grid-unit * 14;
-$button-height: $grid-unit * 6;
+$button-padding: $space-unit $space-unit * 2;
+$button-margin: 0 $space-unit 0 0;
+$button-min-width: $space-unit * 14;
+$button-height: $space-unit * 6;
 $button-font-size: inherit;
 $button-font-weight: 400;
 $button-border-radius: 0;
@@ -129,9 +129,9 @@ $button-warn-bg: linear-gradient(171deg, $brand-warn 0%, lighten($brand-warn, 5%
 $button-warn-hover-bg: $button-warn-bg;
 
 /* Loader */
-$loader-size: $grid-unit * 4;
-$loader-medium-size: $grid-unit * 8;
-$loader-large-size: $grid-unit * 16;
+$loader-size: $space-unit * 4;
+$loader-medium-size: $space-unit * 8;
+$loader-large-size: $space-unit * 16;
 
 /* Panel */
 $panel-bg: lighten($bg-color, 5%);
@@ -139,32 +139,32 @@ $panel-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 $panel-border-radius: 0;
 $panel-margin: 0;
 
-$panel-header-padding: $grid-unit * 2;
-$panel-header-image-size: $grid-unit * 5;
+$panel-header-padding: $space-unit * 2;
+$panel-header-image-size: $space-unit * 5;
 $panel-header-image-border-radius: 50%;
-$panel-header-image-margin: $grid-unit $grid-unit * 2 0 0;
+$panel-header-image-margin: $space-unit $space-unit * 2 0 0;
 $panel-header-title-font-size: inherit;
 $panel-header-title-font-weight: 500;
 $panel-header-subtitle-font-size: inherit;
 $panel-header-subtitle-font-weight: 300;
 $panel-header-subtitle-color: $secondary-text-color;
 
-$panel-body-padding: $grid-unit * 2;
+$panel-body-padding: $space-unit * 2;
 $panel-body-font-size: inherit;
 $panel-body-color: $text-color;
 
-$panel-footer-padding: $grid-unit * 2;
+$panel-footer-padding: $space-unit * 2;
 
 /* Input */
 $input-border-bottom: 1px solid $divider-color;
 $input-background-color: transparent;
-$input-padding: $grid-unit 0;
-$input-margin: $grid-unit * 3 0 $grid-unit * 2;
+$input-padding: $space-unit 0;
+$input-margin: $space-unit * 3 0 $space-unit * 2;
 $input-font-family: $font-family;
 $input-font-size: inherit;
 $input-color: $text-color;
 $input-color-disabled: lighten($text-color, 40%);
-$input-height: $grid-unit * 4;
+$input-height: $space-unit * 4;
 
 $input-placeholder-top: 0;
 $input-placeholder-color: $input-color;
@@ -173,38 +173,38 @@ $input-placeholder-font-weight: $font-weight;
 $input-placeholder-active-font-size: 75%;
 $input-placeholder-active-font-weight: $font-weight;
 $input-placeholder-active-font-color: $brand-accent;
-$input-placeholder-active-height: $grid-unit * 2;
+$input-placeholder-active-height: $space-unit * 2;
 
 $input-bar-height: 2px;
 $input-bar-color: $brand-accent;
 
-$input-message-height: $grid-unit * 3;
-$input-message-padding: $grid-unit * 0.5 0 0 0;
+$input-message-height: $space-unit * 3;
+$input-message-padding: $space-unit * 0.5 0 0 0;
 $input-message-color: $input-color;
 $input-message-font-size: $input-font-size;
 $input-message-font-weight: $font-weight;
 
 /* Modal */
 $modal-shadow: $nav-bar-shadow;
-$modal-padding: $grid-unit * 3;
+$modal-padding: $space-unit * 3;
 $modal-index: 2001;
 $modal-bg: $nav-bar-bg;
 $modal-max-width: 480px;
 
 /* Footer */
-$footer-padding: $grid-unit * 2 0 $grid-unit * 2 0;
+$footer-padding: $space-unit * 2 0 $space-unit * 2 0;
 $footer-bg: linear-gradient(to bottom, darken($bg-color-inverse, 3%) 0%, $bg-color-inverse 50%, darken($bg-color-inverse, 3%) 100%);
 $footer-color: $text-color-inverse;
 
 /* Tabs */
 $tab-group-bg: $panel-bg;
 $tab-group-shadow: $nav-bar-shadow;
-$tab-group-padding: 0 $grid-unit * 2 $grid-unit * 2;
-$tab-group-margin: $grid-unit * 4 0 0 0;
+$tab-group-padding: 0 $space-unit * 2 $space-unit * 2;
+$tab-group-margin: $space-unit * 4 0 0 0;
 
 $tab-group-header-bg: $panel-bg;
 $tab-group-header-shadow: $nav-bar-shadow;
-$tab-group-header-item-padding: $grid-unit * 1.5 $grid-unit $grid-unit;
+$tab-group-header-item-padding: $space-unit * 1.5 $space-unit $space-unit;
 $tab-group-header-item-border-left: 1px solid lighten($panel-bg, 2%);
 $tab-group-header-item-border-right: 1px solid darken($panel-bg, 2%);
 $tab-group-header-item-hover-bg: $brand-primary;
@@ -214,30 +214,30 @@ $tab-item-transition: transform $transition-duration linear;
 /* CheckBox */
 $checkbox-color: $text-color;
 $checkbox-padding: 0;
-$checkbox-margin: $grid-unit 0;
-$checkbox-size: $grid-unit * 3;
+$checkbox-margin: $space-unit 0;
+$checkbox-size: $space-unit * 3;
 $checkbox-bg: #FFF;
 $checkbox-transition: background $transition-duration cubic-bezier(0, .84, .83, .67);
 $checkbox-check: 2px solid #FFF;
-$checkbox-check-margin: 0 $grid-unit * 2 0 0;
+$checkbox-check-margin: 0 $space-unit * 2 0 0;
 $checkbox-checked-bg: $brand-accent;
 $checkbox-shadow: -2px 2px 2px rgba(0, 0, 0, .24);
 
 /* Tooltip */
 $tooltip-bg: $brand-accent;
 $tooltip-color: $bg-color;
-$tooltip-padding: $grid-unit / 2 $grid-unit;
+$tooltip-padding: $space-unit / 2 $space-unit;
 $tooltip-shadow: $panel-shadow;
 $tooltip-highlight-color: $tooltip-bg;
 
 /* Slider */
 $slider-margin: 0;
-$slider-padding: $grid-unit * 3 $grid-unit * 2;
+$slider-padding: $space-unit * 3 $space-unit * 2;
 $slider-track-bg: lighten($bg-color, 15%);
 $slider-track-shadow: $panel-shadow;
-$slider-progress-height: $grid-unit * 0.5;
+$slider-progress-height: $space-unit * 0.5;
 $slider-progress-bg: linear-gradient(to left, $brand-dark-primary 0%, $brand-accent 100%);
-$slider-handle-size: $grid-unit * 4;
+$slider-handle-size: $space-unit * 4;
 $slider-handle-shadow: $panel-shadow;
 $slider-handle-bg: $bg-color;
 $slider-handle-border: 2px solid $brand-accent;
@@ -248,17 +248,17 @@ $slider-values-margin: 0 0 40px -16px;
 /* Accordion */
 $accordion-item-header-bg: $panel-bg;
 $accordion-item-header-shadow: $panel-shadow;
-$accordion-item-header-padding: $grid-unit * 2;
+$accordion-item-header-padding: $space-unit * 2;
 $accordion-item-header-border-top: 1px solid lighten($bg-color, 10%);
 $accordion-item-header-arrow-color: $brand-accent;
 $accordion-item-body-padding: $accordion-item-header-padding;
 
 /* Pagination */
-$pagination-margin: 0 0 $grid-unit * 4 0;
+$pagination-margin: 0 0 $space-unit * 4 0;
 $pagination-padding: 0;
-$pagination-label-padding: $grid-unit * 2;
-$pagination-label-min-width: $grid-unit * 8;
-$pagination-button-size: $grid-unit * 7;
+$pagination-label-padding: $space-unit * 2;
+$pagination-label-min-width: $space-unit * 8;
+$pagination-button-size: $space-unit * 7;
 $pagination-button-bg: $panel-bg;
 $pagination-button-shadow: $panel-shadow;
 $pagination-arrow-color: $brand-accent;
@@ -267,29 +267,29 @@ $pagination-arrow-disabled-color: $bg-color;
 /* Select */
 $select-bg: $panel-bg;
 $select-shadow: $panel-shadow;
-$select-margin: 0 0 $grid-unit * 2 0;
-$select-padding: $grid-unit * 2;
+$select-margin: 0 0 $space-unit * 2 0;
+$select-padding: $space-unit * 2;
 $select-border-top: $accordion-item-header-border-top;
 $select-color: $text-color;
 $select-font-size: inherit;
 $select-arrow-color: $brand-accent;
 
-$select-multi-max-height: $grid-unit * 13;
-$select-multi-option-padding: $grid-unit * 0.5 0;
+$select-multi-max-height: $space-unit * 13;
+$select-multi-option-padding: $space-unit * 0.5 0;
 
 /* Calendar */
 $calendar-max-width: $screen-phone;
 $calendar-shadow: $panel-shadow;
 $calendar-bg: $panel-bg;
-$calendar-margin: 0 $grid-unit * 2 $grid-unit * 2 0;
+$calendar-margin: 0 $space-unit * 2 $space-unit * 2 0;
 
 $calendar-header-color: $text-color;
-$calendar-header-padding: $grid-unit * 2 $grid-unit * 3;
+$calendar-header-padding: $space-unit * 2 $space-unit * 3;
 $calendar-header-bg: linear-gradient(170deg, $brand-accent 0%, $brand-dark-primary 100%);
 $calendar-header-text-shadow: 0 2px 5px rgba(0, 0, 0, .33);
 
 $calendar-body-border: $accordion-item-header-border-top;
-$calendar-body-padding: $grid-unit * 2;
+$calendar-body-padding: $space-unit * 2;
 
 $calendar-arrow-color: $brand-accent;
 $calendar-arrow-bg: $calendar-bg;
@@ -306,15 +306,15 @@ $calendar-selected-day-color: $bg-color;
 
 /* Notification Stack */
 $notifications-index: $modal-index + 1;
-$notifications-padding: $grid-unit;
-$notifications-max-width: $grid-unit * 50;
+$notifications-padding: $space-unit;
+$notifications-max-width: $space-unit * 50;
 
-$notification-padding: $grid-unit * 2 $grid-unit * 5 $grid-unit * 2 $grid-unit * 2;
-$notification-margin: 0 0 $grid-unit 0;
+$notification-padding: $space-unit * 2 $space-unit * 5 $space-unit * 2 $space-unit * 2;
+$notification-margin: 0 0 $space-unit 0;
 $notification-shadow: $modal-shadow;
-$notification-max-height: $grid-unit * 10;
+$notification-max-height: $space-unit * 10;
 $notification-close-bg: $bg-color;
-$notification-close-width: $grid-unit * 5;
+$notification-close-width: $space-unit * 5;
 $notification-close-cross-color: $brand-accent;
 
 $notification-default-bg: $panel-bg;
@@ -322,10 +322,30 @@ $notification-default-bg: $panel-bg;
 /* Autocomplete */
 $autocomplete-bg: $panel-bg;
 $autocomplete-padding: 0;
-$autocomplete-margin: -($grid-unit * 5) 0 0 0;
+$autocomplete-margin: -($space-unit * 5) 0 0 0;
 $autocomplete-shadow: $panel-shadow;
 
-$autocomplete-item-padding: $grid-unit * 2;
+$autocomplete-item-padding: $space-unit * 2;
 $autocomplete-item-border: $calendar-body-border;
 $autocomplete-item-selected-bg: lighten($autocomplete-bg, 5%);
 $autocomplete-item-selected-color: $text-color;
+
+/* Badge */
+$badge-padding: $space-unit / 2 $space-unit * 2;
+$badge-margin: 0;
+$badge-font-size: 75%;
+$badge-line-height: inherit;
+$badge-letter-spacing: inherit;
+$badge-border-radius: $space-unit / 4;
+
+$badge-default-color: $button-default-color;
+$badge-default-bg: $button-default-bg;
+
+$badge-primary-color: $button-primary-color;
+$badge-primary-bg: $button-primary-bg;
+
+$badge-accent-color: $button-accent-color;
+$badge-accent-bg: $button-accent-bg;
+
+$badge-warn-color: $button-warn-color;
+$badge-warn-bg: $button-warn-bg;
