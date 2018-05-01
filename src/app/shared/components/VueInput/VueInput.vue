@@ -2,7 +2,7 @@
   <div :class="cssClasses">
     <input
       :name="name"
-      :id="name"
+      :id="id"
       :required="required"
       :value="value"
       :type="type"
@@ -31,6 +31,10 @@
         default: 'vueInput',
       },
       name:        {
+        type:     String,
+        required: false,
+      },
+      id:        {
         type:     String,
         required: false,
       },
@@ -144,7 +148,7 @@
 
     input:focus ~ label,
     input.hasValue ~ label {
-      top:         -($grid-unit * 2.5);
+      top:         -($space-unit * 2.5);
       font-size:   $input-placeholder-active-font-size;
       font-weight: $input-placeholder-active-font-weight;
       color:       $input-placeholder-active-font-color;

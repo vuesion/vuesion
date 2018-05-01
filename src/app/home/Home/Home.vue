@@ -86,7 +86,7 @@
       }
 
       .vueGridItem {
-        margin-bottom: $grid-unit * 2;
+        margin-bottom: $space-unit * 2;
       }
 
       .featureSection {
@@ -97,7 +97,7 @@
     @include media(tabletLandscape) {
       :global {
         .featureSection {
-          padding: $grid-unit * 15 0;
+          padding: $space-unit * 15 0;
         }
       }
     }

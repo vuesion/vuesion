@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import VueCheckBox               from './VueCheckBox.vue';
 
 const localVue = createLocalVue();
@@ -9,7 +9,8 @@ describe('VueCheckBox.vue', () => {
     const wrapper = mount(VueCheckBox, {
       localVue,
       propsData: {
-        name:    'foo',
+        name:  'foo',
+        id:    'foo',
         label: 'Test',
       },
     });
@@ -23,7 +24,8 @@ describe('VueCheckBox.vue', () => {
     const wrapper = mount(VueCheckBox, {
       localVue,
       propsData: {
-        name:    'foo',
+        name:  'foo',
+        id:    'foo',
         label: 'Test',
         radio: true,
       },
@@ -38,7 +40,7 @@ describe('VueCheckBox.vue', () => {
     const wrapper = mount(VueCheckBox, {
       localVue,
       propsData: {
-        name:    'foo',
+        name:  'foo',
         label: 'Test',
       },
     });
@@ -51,7 +53,7 @@ describe('VueCheckBox.vue', () => {
     const wrapper = mount(VueCheckBox, {
       localVue,
       propsData: {
-        name:       'foo',
+        name:     'foo',
         label:    'Test',
         disabled: true,
       },

@@ -66,11 +66,11 @@
         overflow:   hidden;
 
         ol {
-          margin-top: $grid-unit * 5;
-          padding:    0 0 0 $grid-unit * 2;
+          margin-top: $space-unit * 5;
+          padding:    0 0 0 $space-unit * 2;
 
           li {
-            margin-bottom: $grid-unit * 2;
+            margin-bottom: $space-unit * 2;
           }
         }
       }

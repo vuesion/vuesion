@@ -1,43 +1,37 @@
-import { storiesOf }    from '@storybook/vue';
-import VueInfoAddon     from 'storybook-addon-vue-info';
-import VueAccordion     from './VueAccordion.vue';
-import VueAccordionItem from './VueAccordionItem/VueAccordionItem.vue';
+import { storiesOf } from '@storybook/vue';
+import VueInfoAddon from 'storybook-addon-vue-info';
+import VueTabGroup from './VueTabGroup.vue';
+import VueTabItem from './VueTabItem/VueTabItem.vue';
 
-const story = (storiesOf('VueAccordion', module) as any);
+const story = (storiesOf('VueTabGroup', module) as any);
 
 story.addDecorator(VueInfoAddon);
 
-const storySchema = [
-  {
-    label: 'Default',
+story.add('Default', () => ({
+  components: {
+    VueTabGroup,
+    VueTabItem,
   },
-  {
-    label: 'Multiple',
-    props: ['multiple'],
-  },
-];
-
-for (const item of storySchema) {
-  story.add(item.label, () => ({
-    components: {
-      VueAccordion,
-      VueAccordionItem,
-    },
-    template: `<vue-accordion ${item.props ? item.props.join(' ') : ''}>
-  <vue-accordion-item title="Item 1" :initOpen="true">
+  template: `
+<vue-tab-group>
+  <vue-tab-item title="Profile" icon="fas fa-user">
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
     labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
     et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
     labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
     et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-  </vue-accordion-item>
-  <vue-accordion-item title="Item 2">
+  </vue-tab-item>
+  <vue-tab-item title="Settings" icon="fas fa-cog">
     et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
     labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
     et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-  </vue-accordion-item>
-</vue-accordion>`,
-  }));
-}
+  </vue-tab-item>
+  <vue-tab-item title="Upload" icon="fas fa-upload">
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+  </vue-tab-item>
+</vue-tab-group>`,
+}));

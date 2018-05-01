@@ -385,7 +385,7 @@
   }
 
   .arrow {
-    height:     $grid-unit * 4;
+    height:     $space-unit * 4;
     flex:       1 0 15%;
     position:   relative;
     cursor:     pointer;
@@ -403,7 +403,7 @@
       width:            2px;
       height:           13px;
       top:              4px;
-      left:             $grid-unit * 2;
+      left:             $space-unit * 2;
     }
 
     &:before {
@@ -418,7 +418,7 @@
       text-align: right;
 
       &:before, &:after {
-        right: $grid-unit * 3;
+        right: $space-unit * 3;
         left:  initial;
       }
 
@@ -473,7 +473,7 @@
 
     div {
       cursor:     pointer;
-      padding:    $grid-unit 0;
+      padding:    $space-unit 0;
       transition: background-color .15s;
 
       &:hover {
@@ -487,7 +487,7 @@
   }
 
   .footer {
-    padding:         $grid-unit * 2;
+    padding:         $space-unit * 2;
     display:         flex;
     justify-content: flex-end;
 

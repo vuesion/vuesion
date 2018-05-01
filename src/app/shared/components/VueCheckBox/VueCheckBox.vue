@@ -3,9 +3,10 @@
     <input
       :type="inputType"
       :name="name"
-      :id="name"
+      :id="id"
       :checked="checked"
       :required="required"
+      :disabled="disabled"
       v-bind="$attrs"
       @change.prevent="onClick" />
     <div :class="$style.box" @click="onClick" />
@@ -23,6 +24,10 @@
         default: 'vueCheckBox',
       },
       name:     {
+        type:     String,
+        required: false,
+      },
+      id:       {
         type:     String,
         required: false,
       },
@@ -101,7 +106,8 @@
 
     label {
       display:      inline-block;
-      padding-left: $checkbox-size + ($grid-unit * 2);
+      padding-left: $checkbox-size + ($space-unit * 2);
+      cursor:   pointer;
     }
 
     .box {
@@ -173,7 +179,8 @@
 
     label {
       display:      inline-block;
-      padding-left: $checkbox-size + ($grid-unit * 2);
+      padding-left: $checkbox-size + ($space-unit * 2);
+      cursor:   pointer;
     }
 
     .box {

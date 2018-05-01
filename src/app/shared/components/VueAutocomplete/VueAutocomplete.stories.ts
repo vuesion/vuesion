@@ -36,8 +36,7 @@ story.add('Default', () => ({
             :options="autocompleteOptions"
             :max-options="3"
             placeholder="Type something (e.g. foo)"
-            @request="onRequest"
-            @request="request"
+            @request="onRequest($event);request($event)"
             @change="change"/>`,
   i18n,
 }));
@@ -76,8 +75,7 @@ story.add('Loading', () => ({
             :max-options="3"
             :is-loading="isLoading"
             placeholder="Type something (e.g. foo)"
-            @request="onRequest"
-            @request="request"
+            @request="onRequest($event);request($event)"
             @change="change"/>`,
   i18n,
 }));

@@ -13,7 +13,7 @@
         type:    String,
         default: 'vueAccordion',
       },
-      multi:    {
+      multiple:    {
         type:     Boolean,
         required: false,
         default:  false,
@@ -28,9 +28,9 @@
     computed:   {},
     methods:    {
       openItem(idx: number) {
-        if (this.multi && this.openItems.indexOf(idx) > -1) {
+        if (this.multiple && this.openItems.indexOf(idx) > -1) {
           this.openItems = this.openItems.filter((item: number) => item !== idx);
-        } else if (this.multi) {
+        } else if (this.multiple) {
           this.openItems.push(idx);
         } else if (this.openItems.indexOf(idx) > -1) {
           this.openItems = [];

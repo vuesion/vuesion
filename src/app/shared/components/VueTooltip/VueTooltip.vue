@@ -86,6 +86,14 @@
       top:         -36px;
       white-space: nowrap;
       box-shadow:  $tooltip-shadow;
+
+      @include media(tabletLandscape) {
+        top: -41px;
+      }
+
+      @include media(largeDesktop) {
+        top: -45px;
+      }
     }
 
     &:after {

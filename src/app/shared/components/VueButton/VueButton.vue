@@ -221,8 +221,8 @@
       .vueLoader {
         position:    absolute;
         left:        50%;
-        margin-left: -($grid-unit * 2);
-        top:         $grid-unit;
+        margin-left: -($space-unit * 2);
+        top:         $space-unit;
 
         .vueLoaderCircle {
           &:before {

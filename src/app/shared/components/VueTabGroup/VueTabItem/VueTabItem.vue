@@ -100,7 +100,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../styles";
+  @import "../../../styles";
 
   .vueTab {
     transition: $tab-item-transition;

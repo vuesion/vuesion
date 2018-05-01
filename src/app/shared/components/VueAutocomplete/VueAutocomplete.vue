@@ -250,20 +250,20 @@
 
     > i {
       position: absolute;
-      top:      $grid-unit;
+      top:      $space-unit;
       right:    0;
     }
 
     .loader {
       position: absolute;
-      top:      $grid-unit;
+      top:      $space-unit;
       right:    0;
-      width:    $grid-unit * 2;
-      height:   $grid-unit * 2;
+      width:    $space-unit * 2;
+      height:   $space-unit * 2;
 
       :global {
         .vueLoaderPath {
-          stroke-width: $grid-unit;
+          stroke-width: $space-unit;
         }
       }
     }

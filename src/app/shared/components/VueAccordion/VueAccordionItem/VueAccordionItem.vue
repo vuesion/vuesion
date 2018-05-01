@@ -16,8 +16,8 @@
 </template>
 
 <script lang="ts">
-  import VueCollapse from '../VueCollapse/VueCollapse.vue';
-  import VueIcon   from '../VueIcon/VueIcon';
+  import VueCollapse from '../../VueCollapse/VueCollapse.vue';
+  import VueIcon     from '../../VueIcon/VueIcon';
 
   export default {
     name:       'VueAccordionItem',
@@ -74,7 +74,7 @@
 </script>
 
 <style lang="scss" module>
-  @import "../../styles";
+  @import "../../../styles";
 
   .vueAccordionItem {
     display: block;

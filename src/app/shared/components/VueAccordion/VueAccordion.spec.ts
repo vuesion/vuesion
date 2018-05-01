@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueAccordion              from './VueAccordion.vue';
-import VueAccordionItem          from '../VueAccordionItem/VueAccordionItem.vue';
+import VueAccordionItem          from './VueAccordionItem/VueAccordionItem.vue';
 import { Component }             from 'vue';
 
 const localVue = createLocalVue();
@@ -61,7 +61,7 @@ describe('VueAccordion.vue', () => {
     const wrapper = mount(VueAccordion, {
       localVue,
       propsData: {
-        multi: false,
+        multiple: false,
       },
     }) as any;
 
@@ -77,11 +77,11 @@ describe('VueAccordion.vue', () => {
     expect(wrapper.vm.openItems).toEqual([]);
   });
 
-  test('should handle multi accordion', () => {
+  test('should handle multiple accordion', () => {
     const wrapper = mount(VueAccordion, {
       localVue,
       propsData: {
-        multi: true,
+        multiple: true,
       },
     }) as any;
 

@@ -122,13 +122,13 @@
 
   .title {
     font-weight:   500;
-    margin-bottom: $grid-unit;
-    padding-right: $grid-unit * 2;
+    margin-bottom: $space-unit;
+    padding-right: $space-unit * 2;
   }
 
   .text {
     max-height:    $notification-max-height;
-    padding-right: $grid-unit * 2;
+    padding-right: $space-unit * 2;
     overflow-y:    scroll;
   }
 
@@ -147,10 +147,10 @@
       position:         absolute;
       background-color: $notification-close-cross-color;
       width:            2px;
-      height:           $grid-unit * 3;
-      right:            $grid-unit * 2.5;
+      height:           $space-unit * 3;
+      right:            $space-unit * 2.5;
       top:              50%;
-      margin-top:       -($grid-unit * 1.5);
+      margin-top:       -($space-unit * 1.5);
     }
 
     &:before {

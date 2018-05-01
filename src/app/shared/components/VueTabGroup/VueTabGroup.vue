@@ -90,7 +90,7 @@
     background: $tab-group-header-bg;
     box-shadow: $tab-group-header-shadow;
     position:   relative;
-    top:        -($grid-unit * 2);
+    top:        -($space-unit * 2);
 
     li {
       padding:      $tab-group-header-item-padding;
