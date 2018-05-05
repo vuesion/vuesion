@@ -8,10 +8,6 @@
   export default {
     name:     'VueBadge',
     props:    {
-      cssClass: {
-        type:    String,
-        default: 'vueBadge',
-      },
       primary:  {
         type: Boolean,
       },
@@ -24,7 +20,7 @@
     },
     computed: {
       cssClasses() {
-        const classes: string[] = [this.$style.vueBadge, this.cssClass];
+        const classes: string[] = [this.$style.vueBadge];
 
         if (this.primary) {
           classes.push(this.$style.primary);

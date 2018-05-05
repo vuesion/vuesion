@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import VueSelect                 from './VueSelect.vue';
 
 const localVue = createLocalVue();
@@ -32,6 +32,11 @@ describe('VueSelect.vue', () => {
       localVue,
       propsData: {
         options,
+        name: 'name',
+        id:   'id',
+      },
+      mocks:     {
+        errors: null,
       },
     }) as any;
 
@@ -45,6 +50,8 @@ describe('VueSelect.vue', () => {
       propsData: {
         options,
         multiple: true,
+        name:     'name',
+        id:       'id',
       },
     }) as any;
 
@@ -58,6 +65,8 @@ describe('VueSelect.vue', () => {
       propsData: {
         options,
         multiple: true,
+        name:     'name',
+        id:       'id',
       },
     }) as any;
 
@@ -78,16 +87,29 @@ describe('VueSelect.vue', () => {
       },
     };
 
-    wrapper.vm.onChange(event);
+    wrapper.vm.onInput(event);
 
-    expect(wrapper.emitted().change[0][0]).toEqual(
-      [
-        {
-          value: 'foo2',
-          label: 'foo',
-        },
-      ],
-    );
+    expect(wrapper.emitted().input[0][0]).toBe('foo2');
   });
 
+  test('should display error state', () => {
+    const wrapper = mount(VueSelect, {
+      localVue,
+      mocks:     {
+        errors: {
+          first() {
+            return true;
+          },
+        },
+      },
+      propsData: {
+        options,
+        multiple: true,
+        name:     'name',
+        id:       'id',
+      },
+    });
+
+    expect(wrapper.findAll(`.error`)).toHaveLength(1);
+  });
 });

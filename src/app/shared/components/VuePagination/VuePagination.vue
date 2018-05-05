@@ -1,22 +1,17 @@
 <template>
-  <div :class="[$style.vuePagination, cssClass]">
-    <div :class="prevCssClasses" role="button" @click="prevClick"></div>
+  <div :class="$style.vuePagination">
+    <div :class="prevCssClasses" role="button" aria-label="$t('components.pagination.previous' /* Previous */)" @click="prevClick"></div>
     <div :class="$style.label">
       {{current}} / {{pages}}
     </div>
-    <div :class="nextCssClasses" role="button" @click="nextClick"></div>
+    <div :class="nextCssClasses" role="button" aria-label="$t('components.pagination.next' /* Next */)" @click="nextClick"></div>
   </div>
 </template>
 
 <script lang="ts">
   export default {
-    name:       'VuePagination',
-    components: {},
-    props:      {
-      cssClass: {
-        type:    String,
-        default: 'vuePagination',
-      },
+    name:     'VuePagination',
+    props:    {
       pages:   {
         type:     Number,
         required: true,
@@ -26,10 +21,7 @@
         required: true,
       },
     },
-    data(): any {
-      return {};
-    },
-    computed:   {
+    computed: {
       prevCssClasses() {
         const classes = [this.$style.prev];
 
@@ -49,7 +41,7 @@
         return classes;
       },
     },
-    methods:    {
+    methods:  {
       prevClick() {
         if (this.current > 1) {
           this.$emit('change', this.current - 1);

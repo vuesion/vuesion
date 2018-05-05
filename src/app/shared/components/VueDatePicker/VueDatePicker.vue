@@ -1,12 +1,20 @@
 <template>
-  <div :class="[$style.vueDatePicker, cssClass]" @click="show = true">
-    <vue-input :value="inputValue" :placeholder="placeholder" readonly />
+  <div :class="$style.vueDatePicker" @click="show = true">
+    <vue-input
+      :name="name"
+      :id="id"
+      :value="inputValue"
+      :placeholder="placeholder"
+      :required="required"
+      :disabled="disabled"
+      :readonly="readonly"
+      :message="message" />
     <vue-modal :show="show" :fit-content="true" @close="show = false">
       <vue-calendar
         :min-date="minDate"
         :max-date="maxDate"
         :first-day-of-week="firstDayOfWeek"
-        :css-class="$style.calendar"
+        :class="$style.calendar"
         :selected-date="date"
         :start-date="startDate"
         :end-date="endDate"
@@ -30,9 +38,13 @@
       VueCalendar,
     },
     props:      {
-      cssClass:       {
+      name:           {
         type:    String,
-        default: 'vueDatePicker',
+        default: 'date',
+      },
+      id:             {
+        type:    String,
+        default: 'date',
       },
       minDate:        {
         type:     Date,
@@ -64,6 +76,22 @@
         type:     Date,
         required: false,
       },
+      required:       {
+        type:    Boolean,
+        default: false,
+      },
+      disabled:       {
+        type:    Boolean,
+        default: false,
+      },
+      readonly:       {
+        type:    Boolean,
+        default: true,
+      },
+      message:        {
+        type:    String,
+        default: '',
+      },
     },
     data(): any {
       return {
@@ -73,8 +101,7 @@
     },
     computed:   {
       inputValue() {
-        const val: string = this.date === null ? '' : this.$d(this.date, 'datePicker');
-        return val;
+        return this.date === null ? '' : this.$d(this.date, 'datePicker');
       },
       date() {
         if (this.currentDate) {

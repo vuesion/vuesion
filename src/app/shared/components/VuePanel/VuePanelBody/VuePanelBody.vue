@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.vuePanelBody, cssClass]">
+  <div :class="$style.vuePanelBody">
     <slot />
   </div>
 </template>
@@ -7,18 +7,6 @@
 <script lang="ts">
   export default {
     name:       'VuePanelBody',
-    components: {},
-    props:      {
-      cssClass: {
-        type:    String,
-        default: 'vuePanelBody',
-      },
-    },
-    data:       function () {
-      return {};
-    },
-    computed:   {},
-    methods:    {},
   };
 </script>
 

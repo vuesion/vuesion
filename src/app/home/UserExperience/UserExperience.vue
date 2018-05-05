@@ -2,14 +2,14 @@
   <div :class="[$style.userExperience, 'featureSection']">
     <vue-grid>
       <vue-grid-row>
-        <vue-grid-item fill>
+        <vue-grid-item fill class="vueGridItem">
           <h2>User experience</h2>
         </vue-grid-item>
 
-        <vue-grid-item>
-          <vue-panel>
+        <vue-grid-item class="vueGridItem">
+          <vue-panel class="vuePanel">
             <vue-panel-body>
-              <vue-icon name="fas fa-spinner" />
+              <i class="fas fa-spinner" />
               <h3>Animations</h3>
               <p>A stable animations set up already included (<a href="http://animejs.com/" target="_blank"
                                                                  rel="noopener">anime.js</a>).</p>
@@ -17,20 +17,20 @@
           </vue-panel>
         </vue-grid-item>
 
-        <vue-grid-item>
-          <vue-panel>
+        <vue-grid-item class="vueGridItem">
+          <vue-panel class="vuePanel">
             <vue-panel-body>
-              <vue-icon name="fas fa-mobile" />
+              <i class="fas fa-mobile" />
               <h3>Progressive-Web-App</h3>
               <p>Offline-first support with service-workers and a lighthouse score as high as possible (90+).</p>
             </vue-panel-body>
           </vue-panel>
         </vue-grid-item>
 
-        <vue-grid-item>
-          <vue-panel>
+        <vue-grid-item class="vueGridItem">
+          <vue-panel class="vuePanel">
             <vue-panel-body>
-              <vue-icon name="fas fa-puzzle-piece" />
+              <i class="fas fa-puzzle-piece" />
               <h3>Components</h3>
               <p>
                 A flexible component library that'll be extended over time.
@@ -54,7 +54,6 @@
   import VuePanel     from '../../shared/components/VuePanel/VuePanel';
   import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody';
   import VueGridRow   from '../../shared/components/VueGridRow/VueGridRow';
-  import VueIcon      from '../../shared/components/VueIcon/VueIcon';
 
   export default {
     components: {
@@ -63,14 +62,7 @@
       VuePanel,
       VuePanelBody,
       VueGridRow,
-      VueIcon,
     },
-    props:      {},
-    data(): any {
-      return {};
-    },
-    computed:   {},
-    methods:    {},
   };
 </script>
 
@@ -81,14 +73,11 @@
     display:    block;
     text-align: center;
 
-    :global {
-      .vuePanelBody {
-        i {
-          display:    inline-block;
-          font-size:  $font-size-h1;
-          margin-top: $space-unit;
-        }
-      }
+    i {
+      display:    inline-block;
+      font-size:  $font-size-h1;
+      margin-top: $space-unit;
     }
+
   }
 </style>

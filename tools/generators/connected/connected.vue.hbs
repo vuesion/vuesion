@@ -12,6 +12,8 @@
             @click='increment'
             accent>Increment +1
           </vue-button>
+          <br/>
+          <br/>
         </vue-grid-item>
         <vue-grid-item fill>
           <vue-button

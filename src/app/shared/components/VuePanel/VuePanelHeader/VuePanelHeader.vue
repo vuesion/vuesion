@@ -11,12 +11,7 @@
 <script lang="ts">
   export default {
     name:       'VuePanelHeader',
-    components: {},
     props:      {
-      cssClass: {
-        type:    String,
-        default: 'vuePanelHeader',
-      },
       title:    {
         type:     String,
         required: false,
@@ -33,9 +28,6 @@
         default:  '',
       },
     },
-    data:       function () {
-      return {};
-    },
     computed:   {
       cssClasses() {
         const classes = ['vue-panel-header', this.$style.vuePanelHeader];
@@ -43,8 +35,6 @@
         if (this.image) {
           classes.push(this.$style.withImage);
         }
-
-        classes.push(this.cssClass);
 
         return classes;
       },

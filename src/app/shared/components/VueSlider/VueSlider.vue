@@ -1,12 +1,18 @@
 <template>
-  <div :class="[$style.vueSlider, cssClass]" ref="slider" @mousedown="moveStart($event)"
-       @touchstart="moveStart($event)">
+  <div
+    ref="slider"
+    :class="$style.vueSlider"
+    @mousedown="moveStart($event)"
+    @touchstart="moveStart($event)">
+
     <ul :class="isMultiRange ? [$style.values, $style.multi] : $style.values">
       <li>{{formatValue(currentMin)}}</li>
       <li v-if="isMultiRange">{{formatValue(currentMax)}}</li>
     </ul>
+
     <div :class="cssClasses">
-      <div :class="$style.progress" :style="{width: progressWidth, marginLeft: progressLeft}"></div>
+      <div :class="$style.progress" :style="{width: progressWidth, marginLeft: progressLeft}" />
+
       <button
         :class="handleCssClasses(0)"
         :style="{left: handleLeftPosition}"
@@ -17,7 +23,8 @@
         role="slider"
         tabindex="0"
         type="button"
-      ></button>
+        aria-label="left handle" />
+
       <button v-if="isMultiRange"
               :class="handleCssClasses(1)"
               :style="{left: handleRightPosition}"
@@ -28,7 +35,8 @@
               role="slider"
               tabindex="0"
               type="button"
-      ></button>
+              aria-label="right handle" />
+
     </div>
   </div>
 </template>
@@ -39,13 +47,8 @@
   const algorithm: IAlgorithm = linear;
 
   export default {
-    name:       'VueSlider',
-    components: {},
-    props:      {
-      cssClass:    {
-        type:    String,
-        default: 'vueSlider',
-      },
+    name:     'VueSlider',
+    props:    {
       min:         {
         type:     Number,
         required: true,
@@ -79,28 +82,28 @@
         currentMax:    0,
       };
     },
-    computed:   {
-      handleLeftPosition() {
+    computed: {
+      handleLeftPosition(): string {
         return `${algorithm.getPosition(this.currentMin, this.min, this.max)}%`;
       },
-      handleRightPosition() {
+      handleRightPosition(): string {
         return `${algorithm.getPosition(this.currentMax, this.min, this.max)}%`;
       },
-      progressLeft() {
+      progressLeft(): string {
         if (this.isMultiRange) {
           return `${algorithm.getPosition(this.currentMin, this.min, this.max)}%`;
         } else {
           return '0';
         }
       },
-      progressWidth() {
+      progressWidth(): string {
         if (this.isMultiRange) {
           return `${parseInt(this.handleRightPosition, 10) - parseInt(this.handleLeftPosition, 10)}%`;
         } else {
           return `${parseInt(this.handleLeftPosition, 10)}%`;
         }
       },
-      cssClasses() {
+      cssClasses(): string[] {
         const classes: string [] = [this.$style.track];
 
         if (this.disabled) {
@@ -109,11 +112,11 @@
 
         return classes;
       },
-      isMultiRange() {
+      isMultiRange(): boolean {
         return this.values.length > 1;
       },
     },
-    methods:    {
+    methods:  {
       getClosestHandle(percentageDiff: number) {
         const handlePos: number[] = [parseInt(this.handleLeftPosition, 10), parseInt(this.handleRightPosition, 10)];
         const startIndex: number = this.isMultiRange ? 1 : 0;

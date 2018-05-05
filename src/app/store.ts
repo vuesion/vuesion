@@ -50,5 +50,5 @@ export const store: Store<IState> = new Vuex.Store(
   },
 );
 
-store.registerModule('app', AppModule, { preserveState: true });
-store.registerModule('counter', CounterModule, { preserveState: true });
+store.registerModule(['app'], AppModule, { preserveState: true });
+store.registerModule(['counter'], CounterModule, { preserveState: true });

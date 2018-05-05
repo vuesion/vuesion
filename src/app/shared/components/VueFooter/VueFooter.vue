@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.vueFooter, cssClass]">
+  <div :class="$style.vueFooter">
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item>
@@ -8,10 +8,10 @@
 
         <vue-grid-item>
           <a href="https://github.com/devCrossNet" target="_blank" rel="noopener" aria-label="github profile">
-            <vue-icon name="fab fa-github-alt" />
+            <i class="fab fa-github-alt" />
           </a>
           <a href="https://twitter.com/_jwerner_" target="_blank" rel="noopener" aria-label="twitter profile">
-            <vue-icon name="fab fa-twitter-square" />
+            <i class="fab fa-twitter-square" />
           </a>
         </vue-grid-item>
 
@@ -29,7 +29,6 @@
   import VueGrid     from '../VueGrid/VueGrid';
   import VueGridItem from '../VueGridItem/VueGridItem';
   import VueGridRow  from '../VueGridRow/VueGridRow';
-  import VueIcon     from '../VueIcon/VueIcon';
 
   export default {
     name:       'VueFooter',
@@ -37,23 +36,12 @@
       VueGrid,
       VueGridItem,
       VueGridRow,
-      VueIcon,
-    },
-    props:      {
-      cssClass: {
-        type:    String,
-        default: 'vueFooter',
-      },
-    },
-    data() {
-      return {};
     },
     computed:   {
       year() {
         return new Date().getFullYear();
       },
     },
-    methods:    {},
   };
 </script>
 

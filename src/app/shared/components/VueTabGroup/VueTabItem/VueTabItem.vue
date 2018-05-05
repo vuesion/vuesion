@@ -14,18 +14,8 @@
   import anime from 'animejs';
 
   export default {
-    name:       'VueTabItem',
-    components: {},
-    props:      {
-      cssClass: {
-        type:    String,
-        default: 'vueTabItem',
-      },
-      isActive: {
-        type:     Boolean,
-        required: false,
-        default:  false,
-      },
+    name:     'VueTabItem',
+    props:    {
       title:    {
         type:     String,
         required: true,
@@ -41,23 +31,21 @@
         active: false,
       };
     },
-    computed:   {
+    computed: {
       show() {
-        return this.active || this.isActive;
+        return this.active;
       },
       cssClasses(): any {
         const classes = [this.$style.vueTab];
 
-        if (this.active || this.isActive) {
+        if (this.active) {
           classes.push(this.$style.active);
         }
-
-        classes.push(this.cssClass);
 
         return classes;
       },
     },
-    methods:    {
+    methods:  {
       beforeEnter(el: HTMLElement) {
         el.style.opacity = '0.2';
       },

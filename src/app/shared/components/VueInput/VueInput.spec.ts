@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import VueInput                  from './VueInput.vue';
 
 const localVue = createLocalVue();
@@ -6,9 +6,20 @@ const localVue = createLocalVue();
 describe('VueInput.vue', () => {
 
   test('renders component', () => {
-    const wrapper = mount(VueInput, { localVue });
+    const wrapper = mount(VueInput, {
+      localVue,
+      propsData: {
+        message: 'MESSAGE!',
+        name:    'name',
+        id:      'id',
+      },
+      mocks:     {
+        errors: null,
+      },
+    });
 
     expect(wrapper.findAll(`.vueInput`)).toHaveLength(1);
+    expect(wrapper.find(`.message`).text()).toBe('MESSAGE!');
   });
 
   test('renders disabled component', () => {
@@ -16,46 +27,46 @@ describe('VueInput.vue', () => {
       localVue,
       propsData: {
         disabled: true,
+        name:     'name',
+        id:       'id',
       },
     });
 
     expect(wrapper.findAll(`.disabled`)).toHaveLength(1);
   });
 
-  test('should emit change', () => {
-    const wrapper = mount(VueInput, { localVue }) as any;
-
-    wrapper.vm.onChange('foo');
-    expect(wrapper.emitted('change')).toBeTruthy();
-  });
-
-  test('should handle focus', () => {
+  test('should emit input', () => {
     const wrapper = mount(VueInput, {
       localVue,
-    }) as any;
-    const event: any = {
-      target: {
-        blur: jest.fn(),
+      propsData: {
+        name: 'name',
+        id:   'id',
       },
-    };
+    }) as any;
 
-    wrapper.vm.onFocus(event);
-    expect(event.target.blur).not.toHaveBeenCalled();
-
-    wrapper.setProps({ readonly: true });
-    wrapper.vm.onFocus(event);
-    expect(event.target.blur).toHaveBeenCalled();
+    wrapper.find('input').trigger('input');
+    expect(wrapper.emitted('input')).toBeTruthy();
   });
 
   test('should display error state', () => {
     const wrapper = mount(VueInput, {
       localVue,
+      mocks:     {
+        errors: {
+          first() {
+            return true;
+          },
+        },
+      },
       propsData: {
-        isValid: false,
+        errorMessage: 'ERROR!',
+        name:    'name',
+        id:      'id',
       },
     });
 
     expect(wrapper.findAll(`.error`)).toHaveLength(1);
+    expect(wrapper.find(`.message`).text()).toBe('ERROR!');
   });
 
 });

@@ -4,11 +4,11 @@
       :type="inputType"
       :name="name"
       :id="id"
-      :checked="checked"
+      :checked="checked || value"
       :required="required"
       :disabled="disabled"
-      v-bind="$attrs"
-      @change.prevent="onClick" />
+      @change.prevent="onClick"
+      v-bind="$attrs" />
     <div :class="$style.box" @click="onClick" />
     <label :for="name" v-html="label" />
   </div>
@@ -16,22 +16,21 @@
 
 <script lang="ts">
   export default {
-    name:       'VueCheckBox',
-    components: {},
-    props:      {
-      cssClass: {
-        type:    String,
-        default: 'vueCheckBox',
-      },
+    name:     'VueCheckbox',
+    props:    {
       name:     {
         type:     String,
-        required: false,
+        required: true,
       },
       id:       {
         type:     String,
-        required: false,
+        required: true,
       },
       checked:  {
+        type:    Boolean,
+        default: false,
+      },
+      value:    {
         type:    Boolean,
         default: false,
       },
@@ -52,10 +51,7 @@
         required: true,
       },
     },
-    data(): any {
-      return {};
-    },
-    computed:   {
+    computed: {
       cssClasses() {
         const classes = [];
 
@@ -69,8 +65,6 @@
           classes.push(this.$style.disabled);
         }
 
-        classes.push(this.cssClass);
-
         return classes;
       },
       inputType() {
@@ -81,12 +75,13 @@
         }
       },
     },
-    methods:    {
+    methods:  {
       onClick(e: Event) {
         e.preventDefault();
 
         if (this.disabled === false) {
           this.$emit('click', e);
+          this.$emit('input', !Boolean(this.value));
         }
       },
     },
@@ -107,7 +102,7 @@
     label {
       display:      inline-block;
       padding-left: $checkbox-size + ($space-unit * 2);
-      cursor:   pointer;
+      cursor:       pointer;
     }
 
     .box {
@@ -148,6 +143,7 @@
       outline:  0;
       margin:   $checkbox-check-margin;
       position: absolute;
+      top:      2px;
 
       &:focus {
         + .box:before {
@@ -180,7 +176,7 @@
     label {
       display:      inline-block;
       padding-left: $checkbox-size + ($space-unit * 2);
-      cursor:   pointer;
+      cursor:       pointer;
     }
 
     .box {

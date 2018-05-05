@@ -4,7 +4,7 @@
     <div :class="$style.header">
       <vue-grid>
         <vue-grid-row>
-          <vue-grid-item>
+          <vue-grid-item class="vueGridItem">
             <h1>{{ $t('App.nav.components' /* Components */) }}</h1>
             <p>
               This Boilerplate comes with an initial set of solutions for common UX/UI patterns.
@@ -20,7 +20,7 @@
 
     <vue-grid>
       <vue-grid-row>
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Headlines with badges</h2>
           <h1>Headline 1
             <vue-badge>New</vue-badge>
@@ -42,7 +42,7 @@
           </h6>
         </vue-grid-item>
 
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Buttons</h2>
 
           <vue-button>Default</vue-button>
@@ -71,16 +71,35 @@
       </vue-grid-row>
 
       <vue-grid-row>
-        <vue-grid-item>
-          <h2>Inputs</h2>
-
-          <vue-input placeholder="Placeholder" message="test" :value="inputValue"
-                     @change="inputValue = $event.target.value" />
-          <vue-input placeholder="Placeholder" disabled :value="inputValue"
-                     @change="inputValue = $event.target.value" />
+        <vue-grid-item class="vueGridItem">
+          <h2>Form example</h2>
+          <form-example />
         </vue-grid-item>
 
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
+        </vue-grid-item>
+      </vue-grid-row>
+
+      <vue-grid-row>
+        <vue-grid-item class="vueGridItem">
+          <h2>Inputs</h2>
+
+          <vue-input
+            name="input1"
+            id="input1"
+            placeholder="Placeholder"
+            message="test"
+            v-model="inputValue" />
+          <br />
+          <vue-input
+            name="input2"
+            id="input2"
+            placeholder="Placeholder"
+            disabled
+            v-model="inputValue" />
+        </vue-grid-item>
+
+        <vue-grid-item class="vueGridItem">
           <h2>Modal</h2>
 
           <vue-button primary @click="showModal = !showModal">Show Modal</vue-button>
@@ -92,26 +111,24 @@
       </vue-grid-row>
 
       <vue-grid-row>
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Checkboxes / RadioButtons</h2>
 
-          <vue-check-box
+          <vue-checkbox
             name="check"
             id="check"
             label="checkbox"
-            :checked="checked"
-            @click="checked = !checked" />
+            v-model="checked" />
           <br />
-          <vue-check-box
+          <vue-checkbox
             name="check2"
             id="check2"
             label="checkbox"
-            :checked="checked"
-            @click="checked = !checked"
+            v-model="checked"
             :disabled="true" />
           <br />
           <br />
-          <vue-check-box
+          <vue-checkbox
             name="radio"
             id="radio"
             label="radio"
@@ -119,7 +136,7 @@
             radio
             @click="radio = 'radio1'" />
           <br />
-          <vue-check-box
+          <vue-checkbox
             name="radio2"
             id="radio2"
             label="radio"
@@ -127,7 +144,7 @@
             radio
             @click="radio = 'radio2'" />
           <br />
-          <vue-check-box
+          <vue-checkbox
             name="radio3"
             id="radio3"
             label="radio"
@@ -137,24 +154,29 @@
             :disabled="true" />
         </vue-grid-item>
 
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Select</h2>
 
           <vue-select
+            name="select1"
+            id="select1"
             :options="options"
-            :selected-option="selectedOption"
-            @change="selectChange" />
+            :value="selectedOption"
+            @input="selectChange" />
 
           <p>Multi</p>
           <vue-select
+            name="select2"
+            id="select2"
             :options="options"
             :multiple="true"
-            @change="selectChange" />
+            :value="selectedOption"
+            @input="selectChange" />
         </vue-grid-item>
       </vue-grid-row>
 
       <vue-grid-row>
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Tabs</h2>
           <vue-tab-group>
             <vue-tab-item title="Profile" icon="fas fa-user">
@@ -179,7 +201,7 @@
           </vue-tab-group>
         </vue-grid-item>
 
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Panels</h2>
 
           <vue-panel>
@@ -202,7 +224,7 @@
       </vue-grid-row>
 
       <vue-grid-row>
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Collapse</h2>
           <vue-button @click="collapseDemo = !collapseDemo" accent>Collapse toggle</vue-button>
           <br />
@@ -219,7 +241,7 @@
           </vue-collapse>
         </vue-grid-item>
 
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Tooltip</h2>
 
           Lorem ipsum dolor sit amet,
@@ -241,7 +263,7 @@
       </vue-grid-row>
 
       <vue-grid-row>
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Slider</h2>
 
           <vue-slider
@@ -271,7 +293,7 @@
           />
         </vue-grid-item>
 
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Accordion</h2>
 
           <vue-accordion>
@@ -318,13 +340,13 @@
       </vue-grid-row>
 
       <vue-grid-row>
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Pagination</h2>
 
           <vue-pagination :pages="10" :current="page" @change="page = $event" />
         </vue-grid-item>
 
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Loader</h2>
 
           <vue-loader />
@@ -335,13 +357,13 @@
       </vue-grid-row>
 
       <vue-grid-row>
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Calendar</h2>
 
           <vue-calendar @change="calendarChange" :min-date="today" :max-date="nextWeek" />
         </vue-grid-item>
 
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>DatePicker</h2>
 
           <vue-date-picker
@@ -352,7 +374,7 @@
       </vue-grid-row>
 
       <vue-grid-row>
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>DateRange</h2>
 
           <vue-date-range-picker
@@ -362,14 +384,14 @@
             placeholder-end="Select a end date" />
         </vue-grid-item>
 
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Notification Stack</h2>
           <vue-button accent @click="addNotificationClick">add notification</vue-button>
         </vue-grid-item>
       </vue-grid-row>
 
       <vue-grid-row>
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Markdown renderer</h2>
           <vue-markdown>{{ $t('components.markdown' /*
                         ### Markdown support\n
@@ -380,14 +402,15 @@
           </vue-markdown>
         </vue-grid-item>
 
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h2>Autocomplete</h2>
           <vue-autocomplete
             :options="autocompleteOptions"
             :max-options="3"
             :is-loading="autocompleteLoading"
             placeholder="Type something (e.g. foo)"
-            @request="onRequest" />
+            @request="onRequest"
+            @change="onAutocompleteChange" />
         </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
@@ -403,19 +426,19 @@
   import VuePanelHeader                     from '../../shared/components/VuePanel/VuePanelHeader/VuePanelHeader.vue';
   import VuePanelBody                       from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
   import VuePanelFooter                     from '../../shared/components/VuePanel/VuePanelFooter/VuePanelFooter.vue';
-  import VueInput                           from '../../shared/components/VueInput/VueInput.vue';
-  import VueCollapse                        from '../../shared/components/VueCollapse/VueCollapse.vue';
-  import VueModal                           from '../../shared/components/VueModal/VueModal.vue';
-  import VueTabGroup                        from '../../shared/components/VueTabGroup/VueTabGroup.vue';
-  import VueTabItem                         from '../../shared/components/VueTabGroup/VueTabItem/VueTabItem.vue';
-  import VueCheckBox                        from '../../shared/components/VueCheckBox/VueCheckBox.vue';
-  import VueTooltip                         from '../../shared/components/VueTooltip/VueTooltip.vue';
-  import VueSlider                          from '../../shared/components/VueSlider/VueSlider.vue';
-  import VueAccordion                       from '../../shared/components/VueAccordion/VueAccordion.vue';
+  import VueInput      from '../../shared/components/VueInput/VueInput.vue';
+  import VueCollapse   from '../../shared/components/VueCollapse/VueCollapse.vue';
+  import VueModal      from '../../shared/components/VueModal/VueModal.vue';
+  import VueTabGroup   from '../../shared/components/VueTabGroup/VueTabGroup.vue';
+  import VueTabItem    from '../../shared/components/VueTabGroup/VueTabItem/VueTabItem.vue';
+  import VueCheckbox   from '../../shared/components/VueCheckbox/VueCheckbox.vue';
+  import VueTooltip    from '../../shared/components/VueTooltip/VueTooltip.vue';
+  import VueSlider     from '../../shared/components/VueSlider/VueSlider.vue';
+  import VueAccordion  from '../../shared/components/VueAccordion/VueAccordion.vue';
   import VueAccordionItem
-                                            from '../../shared/components/VueAccordion/VueAccordionItem/VueAccordionItem.vue';
-  import VuePagination                      from '../../shared/components/VuePagination/VuePagination.vue';
-  import VueSelect, { IVueSelectOption }    from '../../shared/components/VueSelect/VueSelect.vue';
+                       from '../../shared/components/VueAccordion/VueAccordionItem/VueAccordionItem.vue';
+  import VuePagination from '../../shared/components/VuePagination/VuePagination.vue';
+  import VueSelect                          from '../../shared/components/VueSelect/VueSelect.vue';
   import VueCalendar                        from '../../shared/components/VueCalendar/VueCalendar.vue';
   import VueDatePicker                      from '../../shared/components/VueDatePicker/VueDatePicker.vue';
   import VueDateRangePicker                 from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
@@ -425,6 +448,8 @@
   import VueAutocomplete                    from '../../shared/components/VueAutocomplete/VueAutocomplete';
   import { AutocompleteOptionsFixture }     from '../../shared/components/VueAutocomplete/fixtures/IAutocompleteFixture';
   import VueBadge                           from '../../shared/components/VueBadge/VueBadge';
+  import FormExample                        from '../FormExample/FormExample';
+  import { IAutocompleteOption }            from '../../shared/components/VueAutocomplete/IAutocompleteOption';
 
   export default {
     metaInfo:   {
@@ -473,6 +498,7 @@
       ],
     },
     components: {
+      FormExample,
       VueBadge,
       VueAutocomplete,
       VueMarkdown,
@@ -489,7 +515,7 @@
       VueModal,
       VueTabGroup,
       VueTabItem,
-      VueCheckBox,
+      VueCheckbox,
       VueTooltip,
       VueSlider,
       VueAccordion,
@@ -540,10 +566,7 @@
             value: 'lorem',
           },
         ],
-        selectedOption:      {
-          label: 'Baz',
-          value: 'baz',
-        },
+        selectedOption:      '',
         inputValue:          'test',
         autocompleteOptions: [],
         autocompleteLoading: false,
@@ -567,8 +590,9 @@
           } as INotification,
         );
       },
-      selectChange(options: IVueSelectOption[]) {
-        console.log(options);
+      selectChange(option: string) {
+        console.log(option);
+        this.selectedOption = option;
       },
       /* istanbul ignore next */
       onRequest(query: string, shouldReturn: boolean = true) {
@@ -589,7 +613,10 @@
           }
 
           this.autocompleteLoading = false;
-        }, 2000);
+        }, 1000);
+      },
+      onAutocompleteChange(option: IAutocompleteOption) {
+        console.log(option);
       },
     },
   };

@@ -27,13 +27,13 @@ describe('VueTab.vue', () => {
 
     expect((wrapper as any).vm.$parent.register).toHaveBeenCalledTimes(1);
 
-    wrapper.setProps({ isActive: true });
+    wrapper.setData({ active: true });
     expect(wrapper.findAll('p')).toHaveLength(1);
 
-    wrapper.setProps({ isActive: false });
+    wrapper.setData({ active: false });
     expect(wrapper.findAll('p')).toHaveLength(0);
 
-    wrapper.setProps({ isActive: true });
+    wrapper.setData({ active: true });
     expect(wrapper.findAll('p')).toHaveLength(1);
 
     wrapper.vm.beforeEnter(wrapper.vm.$el);

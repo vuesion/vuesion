@@ -1,6 +1,8 @@
 <template>
-  <div :class="[$style.vueDateRangePicker, cssClass]">
+  <div :class="$style.vueDateRangePicker">
     <vue-date-picker
+      name="startDate"
+      id="startDate"
       :min-date="minDate"
       :max-date="maxDate"
       :first-day-of-week="firstDayOfWeek"
@@ -9,6 +11,8 @@
       :current-date="startDate"
       @change="onStartChange" />
     <vue-date-picker
+      name="endDate"
+      id="endDate"
       :min-date="minDate"
       :max-date="maxDate"
       :first-day-of-week="firstDayOfWeek"
@@ -28,10 +32,6 @@
       VueDatePicker,
     },
     props:      {
-      cssClass: {
-        type:    String,
-        default: 'vueDateRangePicker',
-      },
       minDate:          {
         type:     Date,
         required: false,
@@ -62,7 +62,6 @@
         endDate:   null,
       };
     },
-    computed:   {},
     methods:    {
       onStartChange(startDate: Date) {
         this.startDate = startDate;

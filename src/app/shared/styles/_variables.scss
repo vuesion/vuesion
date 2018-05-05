@@ -163,7 +163,6 @@ $input-margin: $space-unit * 3 0 $space-unit * 2;
 $input-font-family: $font-family;
 $input-font-size: inherit;
 $input-color: $text-color;
-$input-color-disabled: lighten($text-color, 40%);
 $input-height: $space-unit * 4;
 
 $input-placeholder-top: 0;
@@ -181,7 +180,7 @@ $input-bar-color: $brand-accent;
 $input-message-height: $space-unit * 3;
 $input-message-padding: $space-unit * 0.5 0 0 0;
 $input-message-color: $input-color;
-$input-message-font-size: $input-font-size;
+$input-message-font-size: 75%;
 $input-message-font-weight: $font-weight;
 
 /* Modal */
@@ -208,6 +207,7 @@ $tab-group-header-item-padding: $space-unit * 1.5 $space-unit $space-unit;
 $tab-group-header-item-border-left: 1px solid lighten($panel-bg, 2%);
 $tab-group-header-item-border-right: 1px solid darken($panel-bg, 2%);
 $tab-group-header-item-hover-bg: $brand-primary;
+$tab-group-header-item-hover-color: $bg-color;
 
 $tab-item-transition: transform $transition-duration linear;
 

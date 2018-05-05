@@ -12,12 +12,7 @@
 <script lang="ts">
   export default {
     name:       'VueTooltip',
-    components: {},
     props:      {
-      cssClass: {
-        type:    String,
-        default: 'vueTooltip',
-      },
       tip:      {
         type:     String,
         required: true,
@@ -39,8 +34,6 @@
         if (this.$slots.default && this.$slots.default[0].tag === undefined) {
           classes.push(this.$style.highlight);
         }
-
-        classes.push(this.cssClass);
 
         return classes;
       },
