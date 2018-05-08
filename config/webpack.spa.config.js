@@ -13,7 +13,7 @@ baseConfig.plugins.unshift(new webpack.DefinePlugin({
                                                       TEST:   true,
                                                     }));
 
-const clientConfig = merge(baseConfig, {
+const SPAConfig = merge(baseConfig, {
   entry:        {
     app: './src/client/index',
   },
@@ -38,17 +38,13 @@ const clientConfig = merge(baseConfig, {
   plugins:      [
     new HTMLPlugin({
                      filename: '../index.html',
-                     template: 'src/app/index.template.html',
+                     template: 'src/index.template.html',
                      spa:      true,
                    }),
     new CopyWebpackPlugin([
-                            { from: 'src/assets', to: '../assets' },
-                            { from: 'src/assets/pwa/browserconfig.xml', to: '../browserconfig.xml' },
-                            { from: 'src/assets/pwa/sitemap.xml', to: '../sitemap.xml' },
-                            { from: 'src/assets/pwa/robots.txt', to: '../robots.txt' },
-                            { from: 'src/assets/pwa/manifest.json', to: '../manifest.json' },
-                            { from: 'src/assets/logo.png', to: '../favicon.png' },
+                            { from: 'src/static', to: '../' },
                             { from: './i18n', to: '../i18n' },
+                            { from: 'src/static/logo.png', to: '../favicon.png' },
                           ]),
     new ServiceWorkerWebpackPlugin({
                                      entry:    path.join(__dirname, '..', 'src/client/sw.ts'),
@@ -64,4 +60,4 @@ const clientConfig = merge(baseConfig, {
   ],
 });
 
-module.exports = clientConfig;
+module.exports = SPAConfig;
