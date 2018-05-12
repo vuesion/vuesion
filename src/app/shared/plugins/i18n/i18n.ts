@@ -27,7 +27,7 @@ export const i18n = new VueI18n(
 );
 
 /* istanbul ignore next */
-if (TEST) {
+if (TEST === true) {
   i18n.locale = 'en';
   i18n.fallbackLocale = 'en';
   i18n.setLocaleMessage('en', require('../../../../../i18n/en.json'));

@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = (storybookBaseConfig) => {
   const config = storybookBaseConfig;
@@ -22,39 +23,79 @@ module.exports = (storybookBaseConfig) => {
 
   config.module.rules = [
     {
-      test: /\.css$/,
-      use:  [
-        'vue-style-loader',
-        'css-loader',
-      ],
-    }, {
       test:   /\.vue$/,
       loader: 'vue-loader',
     },
     {
       test:    /\.js$/,
       loader:  'babel-loader',
-      exclude: /node_modules/,
+      exclude: file => (
+        /node_modules/.test(file) &&
+        !/\.vue\.js/.test(file)
+      ),
     },
     {
-      test:    /\.(png|jpg|gif|svg)$/,
-      loader:  'file-loader',
-      options: {
-        name: '[name].[ext]?[hash]',
-      },
-    },
-    {
-      test:    /\.ts?$/,
+      test:    /\.ts$/,
       loader:  'ts-loader',
-      exclude: [resolve('node_modules')],
+      exclude: /node_modules/,
       options: {
         appendTsSuffixTo: [/\.vue$/],
         transpileOnly:    true,
       },
     },
+    {
+      test: /\.css$/,
+      use:  [
+        'vue-style-loader',
+        'css-loader',
+      ],
+    },
+    {
+      test: /\.scss$/,
+      use:  [
+        'vue-style-loader',
+        {
+          loader:  'css-loader',
+          options: {
+            modules:        true,
+            localIdentName: '[local]_[hash:base64:8]',
+          },
+        },
+        {
+          loader: 'sass-loader',
+        },
+      ],
+    },
+    {
+      test: /\.sass$/,
+      use:  [
+        'vue-style-loader',
+        {
+          loader:  'css-loader',
+          options: {
+            modules:        true,
+            localIdentName: '[local]_[hash:base64:8]',
+          },
+        },
+        {
+          loader:  'sass-loader',
+          options: {
+            indentedSyntax: true,
+          },
+        },
+      ],
+    },
+    {
+      test:    /\.(?:jpg|png|svg|ttf|woff2?|eot|ico)$/,
+      loader:  'file-loader',
+      options: {
+        name: '[name].[ext]?[hash]',
+      },
+    },
   ];
 
   config.plugins.push(new webpack.DefinePlugin({ PRODUCTION: false, DEVELOPMENT: true, TEST: true }));
+  config.plugins.push(new VueLoaderPlugin());
 
   return config;
 };
