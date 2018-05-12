@@ -3,6 +3,7 @@ import { Route }           from 'vue-router';
 import { Component }       from 'vue-router/types/router';
 import { createApp, IApp } from '../app/app';
 import { IPreLoad }        from '../server/isomorphic';
+import { HttpService }     from '../app/shared/services/HttpService';
 
 if (PRODUCTION) {
   const runtime: any = require('serviceworker-webpack-plugin/lib/runtime');
@@ -31,7 +32,16 @@ if (store.state.app.redirectTo !== null) {
 /**
  * global error handler that redirects to error page
  */
-Vue.config.errorHandler = () => {
+Vue.config.errorHandler = (error: Error) => {
+  console.log(error); // tslint:disable-line
+
+  HttpService.post('/log/error', {
+    error: {
+      message: error.message,
+      stack:   error.stack,
+    },
+  });
+
   router.replace('/error');
 };
 
