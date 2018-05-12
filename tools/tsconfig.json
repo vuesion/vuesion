@@ -15,7 +15,6 @@
     "./**/*.ts"
   ],
   "exclude": [
-    "../node_modules",
-    "./tools.spec.ts"
+    "../node_modules"
   ]
 }

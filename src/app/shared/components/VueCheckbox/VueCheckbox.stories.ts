@@ -9,7 +9,12 @@ story.addDecorator(VueInfoAddon);
 
 story.add('Checkbox', () => ({
   components: { VueCheckbox },
-  template:   `<vue-checkbox label="checkbox" name="checkbox" id="checkbox" @click="action" />`,
+  data() {
+    return {
+      model: false,
+    };
+  },
+  template:   `<vue-checkbox label="checkbox" name="checkbox" id="checkbox" @click="action" v-model="model" />`,
   methods:    {
     action: action('@onClick'),
   },
@@ -17,7 +22,12 @@ story.add('Checkbox', () => ({
 
 story.add('Checkbox Disabled', () => ({
   components: { VueCheckbox },
-  template:   `<vue-checkbox label="checkbox" name="checkbox" id="checkbox" disabled @click="action" />`,
+  data() {
+    return {
+      model: false,
+    };
+  },
+  template:   `<vue-checkbox label="checkbox" name="checkbox" id="checkbox" disabled @click="action" v-model="model" />`,
   methods:    {
     action: action('@onClick'),
   },
@@ -25,7 +35,12 @@ story.add('Checkbox Disabled', () => ({
 
 story.add('Radio Button', () => ({
   components: { VueCheckbox },
-  template:   `<vue-checkbox label="radio button" name="radio" id="radio" radio @click="action" />`,
+  data() {
+    return {
+      model: false,
+    };
+  },
+  template:   `<vue-checkbox label="radio button" name="radio" id="radio" radio @click="action" v-model="model" />`,
   methods:    {
     action: action('@onClick'),
   },
@@ -33,7 +48,12 @@ story.add('Radio Button', () => ({
 
 story.add('Radio Button disabled', () => ({
   components: { VueCheckbox },
-  template:   `<vue-checkbox label="radio button" name="radio" id="radio" radio disabled @click="action" />`,
+  data() {
+    return {
+      model: false,
+    };
+  },
+  template:   `<vue-checkbox label="radio button" name="radio" id="radio" radio disabled @click="action" v-model="model" />`,
   methods:    {
     action: action('@onClick'),
   },

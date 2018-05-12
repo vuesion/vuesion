@@ -15,9 +15,10 @@ story.add('Default', () => ({
         { label: 'bar', value: 'bar' },
         { label: 'baz', value: 'baz' },
       ],
+      model:   '',
     };
   },
-  template:   `<vue-select :options="options" />`,
+  template:   `<vue-select name="select" id="select" :options="options" v-model="model" />`,
 }));
 
 story.add('Multi', () => ({
@@ -29,7 +30,8 @@ story.add('Multi', () => ({
         { label: 'bar', value: 'bar' },
         { label: 'baz', value: 'baz' },
       ],
+      model:   '',
     };
   },
-  template:   `<vue-select :options="options" multiple />`,
+  template:   `<vue-select name="select" id="select" :options="options" multiple v-model="model" />`,
 }));
