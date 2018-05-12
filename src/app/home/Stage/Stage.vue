@@ -6,7 +6,7 @@
 
     <vue-grid>
       <vue-grid-row>
-        <vue-grid-item>
+        <vue-grid-item class="vueGridItem">
           <h1 :class="$style.title">Vue.js Starter</h1>
           <div :class="$style.subTitle">
             {{

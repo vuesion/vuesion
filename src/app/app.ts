@@ -1,5 +1,6 @@
 import Vue           from 'vue';
 import VueI18n       from 'vue-i18n';
+import VeeValidate   from 'vee-validate';
 import { Store }     from 'vuex';
 import { sync }      from 'vuex-router-sync';
 import { VueRouter } from 'vue-router/types/router';
@@ -8,6 +9,8 @@ import { store }     from './store';
 import { router }    from './router';
 import { IState }    from './state';
 import App           from './app/App/App.vue';
+
+Vue.use(VeeValidate, { inject: false });
 
 export interface IApp {
   app: Vue;

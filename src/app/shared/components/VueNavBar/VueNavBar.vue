@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.vueNavBar, cssClass]" ref="nav">
+  <div :class="$style.vueNavBar" ref="nav">
     <div :class="bgCssClasses">
       <div :class="$style.accent" />
     </div>
@@ -55,10 +55,6 @@
       };
     },
     props:      {
-      cssClass: {
-        type:    String,
-        default: 'vueNavBar',
-      },
       to:       {
         type:     String,
         required: false,

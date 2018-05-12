@@ -15,7 +15,9 @@ describe('Counter.vue', () => {
                                      counter: {
                                        namespaced: true,
                                        getters:    {
-                                         getCount: () => 0,
+                                         count:            () => 0,
+                                         incrementPending: () => false,
+                                         decrementPending: () => false,
                                        },
                                        actions:    {
                                          increment: jest.fn(),
@@ -43,7 +45,9 @@ describe('Counter.vue', () => {
                                      counter: {
                                        namespaced: true,
                                        getters:    {
-                                         getCount: () => 0,
+                                         count:            () => 0,
+                                         incrementPending: () => false,
+                                         decrementPending: () => false,
                                        },
                                        actions,
                                      },

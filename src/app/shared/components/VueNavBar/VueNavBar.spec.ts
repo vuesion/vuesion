@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import VueNavBar                 from './VueNavBar.vue';
 import { EventBus }              from '../../services/EventBus';
 
@@ -7,7 +7,10 @@ const localVue = createLocalVue();
 describe('VueNavBar.vue', () => {
 
   test('renders component', () => {
-    const wrapper = mount(VueNavBar, { localVue});
+    const wrapper = mount(VueNavBar, {
+      localVue,
+      stubs: ['router-link'],
+    });
 
     expect(wrapper.findAll(`.vueNavBar`)).toHaveLength(1);
   });
@@ -18,7 +21,10 @@ describe('VueNavBar.vue', () => {
     document.addEventListener = jest.fn();
     document.removeEventListener = jest.fn();
 
-    const wrapper = mount(VueNavBar, { localVue });
+    const wrapper = mount(VueNavBar, {
+      localVue,
+      stubs: ['router-link'],
+    });
 
     wrapper.destroy();
 
@@ -31,6 +37,7 @@ describe('VueNavBar.vue', () => {
   test('should add sticky class', () => {
     const wrapper: any = mount(VueNavBar, {
       localVue,
+      stubs: ['router-link'],
     });
 
     (window as any).pageYOffset = 100;
@@ -58,6 +65,7 @@ describe('VueNavBar.vue', () => {
   test('should open menu and close it on outside click', () => {
     const wrapper: any = mount(VueNavBar, {
       localVue,
+      stubs: ['router-link'],
     });
 
     expect(wrapper.vm.isOpen).toBeFalsy();
@@ -75,6 +83,7 @@ describe('VueNavBar.vue', () => {
   test('should close navbar when close event is received', () => {
     const wrapper: any = mount(VueNavBar, {
       localVue,
+      stubs: ['router-link'],
     });
 
     // Open the navbar to initialize:

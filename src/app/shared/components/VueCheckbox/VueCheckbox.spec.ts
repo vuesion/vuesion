@@ -1,12 +1,12 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueCheckBox               from './VueCheckBox.vue';
+import VueCheckbox               from './VueCheckbox.vue';
 
 const localVue = createLocalVue();
 
-describe('VueCheckBox.vue', () => {
+describe('VueCheckbox.vue', () => {
 
   test('renders checkbox', () => {
-    const wrapper = mount(VueCheckBox, {
+    const wrapper = mount(VueCheckbox, {
       localVue,
       propsData: {
         name:  'foo',
@@ -21,7 +21,7 @@ describe('VueCheckBox.vue', () => {
   });
 
   test('renders radio', () => {
-    const wrapper = mount(VueCheckBox, {
+    const wrapper = mount(VueCheckbox, {
       localVue,
       propsData: {
         name:  'foo',
@@ -37,10 +37,11 @@ describe('VueCheckBox.vue', () => {
   });
 
   test('should emit click event', () => {
-    const wrapper = mount(VueCheckBox, {
+    const wrapper = mount(VueCheckbox, {
       localVue,
       propsData: {
-        name:  'foo',
+        name:    'name',
+        id:      'id',
         label: 'Test',
       },
     });
@@ -50,10 +51,11 @@ describe('VueCheckBox.vue', () => {
   });
 
   test('should disable checkbox', () => {
-    const wrapper = mount(VueCheckBox, {
+    const wrapper = mount(VueCheckbox, {
       localVue,
       propsData: {
-        name:     'foo',
+        name:    'name',
+        id:      'id',
         label:    'Test',
         disabled: true,
       },

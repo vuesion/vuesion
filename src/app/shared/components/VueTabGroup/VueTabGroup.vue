@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.vueTabGroup, cssClass]">
+  <div :class="$style.vueTabGroup">
 
     <ul :class="$style.headerList" role="tablist">
       <li
@@ -20,14 +20,7 @@
 
 <script lang="ts">
   export default {
-    name:       'VueTabGroup',
-    components: {},
-    props:      {
-      cssClass: {
-        type:    String,
-        default: 'vueTabGroup',
-      },
-    },
+    name:     'VueTabGroup',
     data(): any {
       return {
         tabs:       [],
@@ -35,12 +28,12 @@
         tabHeader:  [],
       };
     },
-    computed:   {
+    computed: {
       headerItems() {
         return this.tabHeader;
       },
     },
-    methods:    {
+    methods:  {
       changeTab(idx: number) {
         this.currentTab = idx;
         this.handleTabs();
@@ -78,7 +71,7 @@
     background: $tab-group-bg;
     box-shadow: $tab-group-shadow;
     padding:    $tab-group-padding;
-    margin: $tab-group-margin;
+    margin:     $tab-group-margin;
   }
 
   .headerList {
@@ -93,14 +86,15 @@
     top:        -($space-unit * 2);
 
     li {
-      padding:      $tab-group-header-item-padding;
-      flex:         1;
-      text-align:   center;
-      position:     relative;
-      border-left:  $tab-group-header-item-border-left;
-      border-right: $tab-group-header-item-border-right;
-      line-height:  1.7;
-      cursor:       pointer;
+      padding:          $tab-group-header-item-padding;
+      flex:             1;
+      text-align:       center;
+      position:         relative;
+      border-left:      $tab-group-header-item-border-left;
+      border-right:     $tab-group-header-item-border-right;
+      line-height:      1.7;
+      cursor:           pointer;
+      background-color: transparent;
 
       &:first-child {
         border-left: none;
@@ -124,14 +118,19 @@
       }
 
       &.active {
+        .title, .icon {
+          color: $tab-group-header-item-hover-color;
+        }
+
         .bg {
           opacity: 1;
         }
       }
 
       .title {
-        position: relative;
-        display:  block;
+        position:    relative;
+        display:     block;
+        font-weight: 400;
       }
 
       .icon {

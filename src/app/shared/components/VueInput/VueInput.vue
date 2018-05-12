@@ -1,6 +1,8 @@
 <template>
   <div :class="cssClasses">
     <input
+      v-validate="validation"
+      :data-vv-as="placeholder"
       :name="name"
       :id="id"
       :required="required"
@@ -13,68 +15,78 @@
         value ? $style.hasValue : ''
       ]"
       v-bind="$attrs"
-      v-on="$listeners"
+      v-on="handlers"
     />
     <span :class="$style.bar"></span>
-    <label :for="name">{{placeholder}}<sup v-if="required">*</sup></label>
-    <div :class="$style.message">{{message}}</div>
+    <label :for="name">
+      {{ placeholder }}<sup v-if="required">*</sup>
+    </label>
+    <div :class="$style.message">{{ messageOrError }}</div>
   </div>
 </template>
 
 <script lang="ts">
+  import { Validator } from 'vee-validate';
+
   export default {
-    name:       'VueInput',
-    components: {},
-    props:      {
-      cssClass:    {
-        type:    String,
-        default: 'vueInput',
+    name:     'VueInput',
+    inject:   {
+      $validator: {
+        default: new Validator({}, {}),
       },
-      name:        {
+    },
+    props:    {
+      name:         {
         type:     String,
-        required: false,
+        required: true,
       },
-      id:        {
+      id:           {
         type:     String,
-        required: false,
+        required: true,
       },
-      placeholder: {
+      placeholder:  {
         type:    String,
         default: '',
       },
-      required:    {
+      required:     {
         type:    Boolean,
         default: false,
       },
-      isValid:     {
-        type:    Boolean,
-        default: true,
-      },
-      value:       {
+      value:        {
         type:    String,
         default: '',
       },
-      type:        {
+      type:         {
         type:    String,
         default: 'text',
       },
-      disabled:    {
+      disabled:     {
         type:    Boolean,
         default: false,
       },
-      readonly:    {
+      readonly:     {
         type:    Boolean,
         default: false,
       },
-      message:     {
+      message:      {
         type:    String,
         default: '',
       },
+      errorMessage: {
+        type:    String,
+        default: '',
+      },
+      validation:   {
+        default: '',
+      },
     },
-    data() {
-      return {};
-    },
-    computed:   {
+    computed: {
+      isValid() {
+        return this.errors ? this.errors.first(this.name) === null : true;
+      },
+      messageOrError() {
+        return this.isValid ? this.message : this.errorMessage;
+      },
       cssClasses() {
         const classes = [this.$style.vueInput];
 
@@ -86,19 +98,17 @@
           classes.push(this.$style.error);
         }
 
-        classes.push(this.cssClass);
-
         return classes;
       },
-    },
-    methods:    {
-      onChange(e: Event): void {
-        this.$emit('change', e);
-      },
-      onFocus(e: any) {
-        if (this.readonly) {
-          e.target.blur();
-        }
+      handlers() {
+        delete this.$listeners.input;
+
+        return {
+          ...this.$listeners,
+          input: (e: any) => {
+            this.$emit('input', e.target.value);
+          },
+        };
       },
     },
   };
@@ -117,7 +127,6 @@
     input:hover {
       outline: none !important;
     }
-
     input {
       background-color: $input-background-color;
       border:           none;
@@ -130,10 +139,18 @@
       color:            $input-color;
       height:           $input-height;
       border-radius:    0;
-
-      &:disabled {
-        color: $input-color-disabled;
-      }
+    }
+    input:focus ~ label,
+    input.hasValue ~ label {
+      top:         -($space-unit * 2.5);
+      font-size:   $input-placeholder-active-font-size;
+      font-weight: $input-placeholder-active-font-weight;
+      color:       $input-placeholder-active-font-color;
+      height:      $input-placeholder-active-height;
+    }
+    input:focus ~ .bar:before,
+    input:focus ~ .bar:after {
+      width: 50%;
     }
 
     label {
@@ -145,24 +162,32 @@
       top:            $input-placeholder-top;
       transition:     0.2s ease all;
     }
+  }
 
+  .error {
+    input {
+      border-bottom-color: $brand-warn;
+    }
     input:focus ~ label,
     input.hasValue ~ label {
-      top:         -($space-unit * 2.5);
-      font-size:   $input-placeholder-active-font-size;
-      font-weight: $input-placeholder-active-font-weight;
-      color:       $input-placeholder-active-font-color;
-      height:      $input-placeholder-active-height;
+      color: $brand-warn;
     }
 
     .bar {
-      position: relative;
-      display:  block;
-      width:    100%;
+      &:before,
+      &:after {
+        background: $brand-warn;
+      }
     }
+  }
 
-    .bar:before,
-    .bar:after {
+  .bar {
+    position: relative;
+    display:  block;
+    width:    100%;
+
+    &:before,
+    &:after {
       content:    '';
       height:     $input-bar-height;
       width:      0;
@@ -171,36 +196,11 @@
       background: $input-bar-color;
       transition: all 0.2s ease-in-out;
     }
-
-    .bar:before {
+    &:before {
       left: 50%;
     }
-
-    .bar:after {
+    &:after {
       right: 50%;
-    }
-
-    input:focus ~ .bar:before,
-    input:focus ~ .bar:after {
-      width: 50%;
-    }
-
-    &.error {
-      input {
-        border-bottom-color: $brand-warn;
-      }
-
-      input:focus ~ label,
-      input.hasValue ~ label {
-        color: $brand-warn;
-      }
-
-      .bar {
-        &:before,
-        &:after {
-          background: $brand-warn;
-        }
-      }
     }
   }
 
@@ -212,5 +212,9 @@
     color:       $input-message-color;
     font-size:   $input-message-font-size;
     font-weight: $input-message-font-weight;
+  }
+
+  .disabled {
+    opacity: .6;
   }
 </style>

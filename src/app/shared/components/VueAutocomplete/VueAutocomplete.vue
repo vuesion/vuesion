@@ -7,37 +7,40 @@
     role="combobox">
 
     <vue-input
+      role="searchbox"
+      aria-autocomplete="list"
+      aria-controls="autocomplete-results"
       :name="name || instanceId"
+      :id="id || instanceId"
       :value="searchQuery"
+      :disabled="disabled"
+      :required="required"
       :placeholder="placeholder"
-      @input="onChange"
+      :aria-activedescendant="`result-item-${selectedOptionIndex}-${instanceId}`"
+      @input="onInput"
       @keyup.down="onArrowDown"
       @keydown.up="onArrowUp"
       @keydown.enter="onEnterKeyPress"
       @focus="onFocus"
-      role="searchbox"
-      aria-autocomplete="list"
-      aria-controls="autocomplete-results"
-      :aria-activedescendant="`result-item-${selectedOptionIndex}-${instanceId}`"
     />
 
-    <vue-icon name="fas fa-search" v-show="isLoading === false" />
-    <vue-loader :css-class="$style.loader" accent v-show="isLoading === true" />
+    <i class="fas fa-search" v-show="isLoading === false" />
+    <vue-loader :class="$style.loader" accent v-show="isLoading === true" />
 
     <ul
-      v-show="isOpen"
-      :style="{ height: resultContainerHeight + 'px' }"
       ref="resultContainer"
-      role="listbox">
+      role="listbox"
+      :style="{ height: resultContainerHeight + 'px' }"
+      v-show="isOpen === true && isLoading === false">
 
       <li v-if="hasOptions === false"
           v-html="$t('components.autocomplete.emptyMessage' /* No options found for %s */).replace('%s', searchQuery)"></li>
 
       <li
+        role="option"
         v-else
         v-for="(option, index) in options"
         :key="index"
-        role="option"
         :id="`result-item-${index}-${instanceId}`"
         :aria-selected="isSelected(index)"
         :class="isSelected(index) ? $style.isSelected : ''"
@@ -52,7 +55,6 @@
   import debounce                from 'lodash/debounce';
   import VueInput                from '../VueInput/VueInput';
   import { createGUID }          from '../../utils/misc';
-  import VueIcon                 from '../VueIcon/VueIcon';
   import { IAutocompleteOption } from './IAutocompleteOption';
   import VueLoader               from '../VueLoader/VueLoader';
 
@@ -60,11 +62,15 @@
     name:       'VueAutocomplete',
     components: {
       VueLoader,
-      VueIcon,
       VueInput,
     },
     props:      {
       name:          {
+        type:     String,
+        default:  '',
+        required: false,
+      },
+      id:            {
         type:     String,
         default:  '',
         required: false,
@@ -89,6 +95,16 @@
         default:  3,
       },
       isLoading:     {
+        type:     Boolean,
+        required: false,
+        default:  false,
+      },
+      required:      {
+        type:     Boolean,
+        required: false,
+        default:  false,
+      },
+      disabled:      {
         type:     Boolean,
         required: false,
         default:  false,
@@ -153,41 +169,44 @@
       handleOutsideClick(e: Event) {
         if (!this.$el.contains(e.target as Node)) {
           this.isOpen = false;
-          this.selectedOptionIndex = -1;
         }
       },
       onArrowUp() {
-        if (this.isOpen === false) {
+        if (!this.isOpen) {
           return;
         }
+
         if (this.selectedOptionIndex > 0) {
           this.selectedOptionIndex -= 1;
         } else {
           this.selectedOptionIndex = this.options.length - 1;
         }
+
         this.onFocusItem();
       },
       onArrowDown() {
-        if (this.isOpen === false) {
+        if (!this.isOpen) {
           return;
         }
+
         if (this.selectedOptionIndex < this.options.length - 1) {
           this.selectedOptionIndex += 1;
         } else {
           this.selectedOptionIndex = 0;
         }
+
         this.onFocusItem();
       },
       isSelected(index: number) {
         return index === this.selectedOptionIndex;
       },
       emitRequest: debounce(function () {
-        this.resultContainerHeight = 0;
         this.$emit('request', this.searchQuery);
         this.isOpen = true;
+        this.selectedOptionIndex = -1;
       }, 300),
-      onChange(e: Event) {
-        this.searchQuery = (e.target as HTMLInputElement).value;
+      onInput(query: string) {
+        this.searchQuery = query;
 
         if (this.searchQuery.length >= this.minInputChars) {
           this.emitRequest();
@@ -204,14 +223,10 @@
           this.selectedOptionIndex = 0;
         }
 
-        this.triggerChange(this.options[this.selectedOptionIndex]);
-        this.selectedOptionIndex = -1;
-        this.isOpen = false;
+        this.onOptionClick(this.selectedOptionIndex);
       },
       onOptionClick(index: number) {
         this.triggerChange(this.options[index]);
-        this.selectedOptionIndex = -1;
-        this.isOpen = false;
       },
       triggerChange(option: IAutocompleteOption) {
         this.searchQuery = option.label;
@@ -222,6 +237,7 @@
 
         this.$emit('change', option);
         this.previousQuery = this.searchQuery;
+        this.isOpen = false;
       },
     },
     watch:      {

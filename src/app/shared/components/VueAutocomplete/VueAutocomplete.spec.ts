@@ -1,4 +1,4 @@
-import { createLocalVue, mount, shallow } from '@vue/test-utils';
+import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
 import VueAutocomplete                    from './VueAutocomplete.vue';
 import VueLoader                          from '../VueLoader/VueLoader.vue';
 import { AutocompleteOptionsFixture }     from './fixtures/IAutocompleteFixture';
@@ -9,7 +9,7 @@ const localVue = createLocalVue();
 describe('VueAutocomplete.vue', () => {
 
   test('renders and destroys component', () => {
-    const wrapper: any = shallow(VueAutocomplete, {
+    const wrapper: any = shallowMount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -24,7 +24,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('renders component with loader', () => {
-    const wrapper: any = shallow(VueAutocomplete, {
+    const wrapper: any = shallowMount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -165,7 +165,7 @@ describe('VueAutocomplete.vue', () => {
     expect(wrapper.emitted().change[0][0]).toEqual(AutocompleteOptionsFixture[1]);
   });
 
-  test('onChange', () => {
+  test('onInput', () => {
     const wrapper: any = mount(VueAutocomplete, {
       localVue,
       i18n,
@@ -176,12 +176,12 @@ describe('VueAutocomplete.vue', () => {
     });
 
     wrapper.vm.searchQuery = '';
-    wrapper.vm.onChange({ target: { value: '' } });
+    wrapper.vm.onInput('');
     expect(wrapper.vm.isOpen).toBe(false);
 
     wrapper.vm.searchQuery = 'Test';
     wrapper.vm.emitRequest = jest.fn();
-    wrapper.vm.onChange({ target: { value: 'Test' } });
+    wrapper.vm.onInput('Test');
 
     expect(wrapper.vm.emitRequest).toHaveBeenCalled();
   });

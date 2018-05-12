@@ -1,26 +1,21 @@
 <template>
   <button
     :class="cssClasses"
-    @click="onClick"
     :disabled="disabled"
+    @click="onClick"
     v-bind="$attrs">
-    <vue-icon :name="iconClasses" v-if="$props.icon" />
-    <slot v-if="!loading" />
-    <vue-loader v-if="loading" />
+    <i v-if="$props.icon" :class="iconClasses" />
+    <slot v-if="loading === false" />
+    <vue-loader v-if="loading === true" />
   </button>
 </template>
 
 <script lang="ts">
   import VueLoader from '../VueLoader/VueLoader';
-  import VueIcon   from '../VueIcon/VueIcon';
 
   export default {
     name:       'VueButton',
     props:      {
-      cssClass: {
-        type:    String,
-        default: 'vueButton',
-      },
       primary:  {
         type:     Boolean,
         required: false,
@@ -59,7 +54,6 @@
     },
     components: {
       VueLoader,
-      VueIcon,
     },
     methods:    {
       onClick(e: Event) {
@@ -87,15 +81,13 @@
           classes.push(this.$style.warn);
         }
 
-        if (this.disabled || this.loading) {
+        if (this.disabled === true || this.loading === true) {
           classes.push(this.$style.disabled);
         }
 
         if (this.pulse) {
           classes.push(this.$style.pulse);
         }
-
-        classes.push(this.cssClass);
 
         return classes;
       },

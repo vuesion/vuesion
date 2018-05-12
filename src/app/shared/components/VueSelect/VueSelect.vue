@@ -1,25 +1,30 @@
 <template>
   <div :class="cssClasses">
     <select
+      :name="name"
+      :id="id"
+      v-validate="validation"
       role="listbox"
       :multiple="multiple"
       :required="required"
+      :disabled="disabled"
+      :autocomplete="name"
       v-bind="$attrs"
-      @change="onChange">
+      v-on="handlers">
       <option
+        role="option"
         v-for="option in options"
         :value="option.value"
-        :selected="option.value === selectedOption.value"
-        role="option">
+        :selected="isSelected(option)">
         {{option.label}}
       </option>
     </select>
-    <vue-icon :name="$style.icon" v-if="multiple === false" />
+    <i :class="$style.icon" v-if="multiple === false" />
   </div>
 </template>
 
 <script lang="ts">
-  import VueIcon from '../VueIcon/VueIcon';
+  import { Validator } from 'vee-validate';
 
   export interface IVueSelectOption {
     label: string;
@@ -27,41 +32,50 @@
   }
 
   export default {
-    name:       'VueSelect',
-    components: {
-      VueIcon,
-    },
-    props:      {
-      cssClass:       {
-        type:    String,
-        default: 'vueSelect',
+    name:     'VueSelect',
+    inject:   {
+      $validator: {
+        default: new Validator({}, {}),
       },
-      options:        {
+    },
+    props:    {
+      name:       {
+        type:     String,
+        required: true,
+      },
+      id:         {
+        type:     String,
+        required: true,
+      },
+      options:    {
         required: true,
         type:     Array,
       },
-      selectedOption: {
-        type:    Object,
-        default: () => {
-          return {
-            label: '',
-            value: '',
-          };
-        },
+      value:      {
+        type:     String,
+        default:  '',
+        required: false,
       },
-      multiple:       {
+      multiple:   {
         default: false,
         type:    Boolean,
       },
-      required:       {
+      required:   {
         default: false,
         type:    Boolean,
       },
+      disabled:   {
+        default: false,
+        type:    Boolean,
+      },
+      validation: {
+        default: '',
+      },
     },
-    data(): any {
-      return {};
-    },
-    computed:   {
+    computed: {
+      isValid() {
+        return this.errors ? this.errors.first(this.name) === null : true;
+      },
       cssClasses() {
         const classes = [this.$style.vueSelect];
 
@@ -69,13 +83,33 @@
           classes.push(this.$style.multiple);
         }
 
-        classes.push(this.cssClass);
+        if (this.disabled) {
+          classes.push(this.$style.disabled);
+        }
+
+        if (!this.isValid) {
+          classes.push(this.$style.error);
+        }
 
         return classes;
       },
+      currentValueAsArray(): string[] {
+        return this.value.split('|');
+      },
+      handlers() {
+        delete this.$listeners.input;
+
+        return {
+          ...this.$listeners,
+          input: this.onInput,
+        };
+      },
     },
-    methods:    {
-      onChange(e: Event) {
+    methods:  {
+      isSelected(option: IVueSelectOption): boolean {
+        return this.currentValueAsArray.indexOf(option.value) > -1;
+      },
+      onInput(e: Event) {
         const selected: IVueSelectOption[] = [];
         const target: HTMLSelectElement = e.target as HTMLSelectElement;
         const length: number = target.options.length;
@@ -87,7 +121,7 @@
           }
         }
 
-        this.$emit('change', selected);
+        this.$emit('input', selected.map((option: IVueSelectOption) => option.value).join('|'));
       },
     },
   };
@@ -103,16 +137,6 @@
     margin:     $select-margin;
     position:   relative;
     border-top: $select-border-top;
-
-    &.multiple {
-      select {
-        max-height: $select-multi-max-height;
-
-        option {
-          padding: $select-multi-option-padding;
-        }
-      }
-    }
 
     select {
       padding:            $select-padding;
@@ -138,6 +162,16 @@
     }
   }
 
+  .multiple {
+    select {
+      max-height: $select-multi-max-height;
+
+      option {
+        padding: $select-multi-option-padding;
+      }
+    }
+  }
+
   .icon {
     position: absolute;
     right:    24px;
@@ -159,5 +193,13 @@
     &:after {
       transform: translate(-4px, 0) rotate(-45deg)
     }
+  }
+
+  .disabled {
+    opacity: .6;
+  }
+
+  .error {
+    border: 1px solid $brand-warn;
   }
 </style>

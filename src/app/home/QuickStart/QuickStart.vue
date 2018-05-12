@@ -2,13 +2,13 @@
   <div :class="[$style.quickStart, 'featureSection']">
     <vue-grid>
       <vue-grid-row>
-        <vue-grid-item fill>
+        <vue-grid-item fill class="vueGridItem">
           <h2>Quick start</h2>
         </vue-grid-item>
 
-        <vue-grid-item>
-          <vue-panel>
-            <vue-panel-body>
+        <vue-grid-item class="vueGridItem">
+          <vue-panel class="vuePanel">
+            <vue-panel-body class="vuePanelBody">
               <ol>
                 <li>Install Node.js 8.7.x or higher. Use <a href="https://github.com/creationix/nvm" target="_blank"
                                                             rel="noopener">nvm</a> to maintain multiple Node.js versions
@@ -43,12 +43,6 @@
       VuePanelBody,
       VueGridRow,
     },
-    props:      {},
-    data(): any {
-      return {};
-    },
-    computed:   {},
-    methods:    {},
   };
 </script>
 

@@ -24,10 +24,5 @@
         default:  250,
       },
     },
-    data:       function () {
-      return {};
-    },
-    computed:   {},
-    methods:    {},
   };
 </script>

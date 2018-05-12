@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.vueAccordion, cssClass]">
+  <div :class="$style.vueAccordion">
     <slot />
   </div>
 </template>
@@ -7,12 +7,7 @@
 <script lang="ts">
   export default {
     name:       'VueAccordion',
-    components: {},
     props:      {
-      cssClass: {
-        type:    String,
-        default: 'vueAccordion',
-      },
       multiple:    {
         type:     Boolean,
         required: false,
@@ -25,7 +20,6 @@
         openItems: [],
       };
     },
-    computed:   {},
     methods:    {
       openItem(idx: number) {
         if (this.multiple && this.openItems.indexOf(idx) > -1) {

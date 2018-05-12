@@ -21,6 +21,7 @@ describe('Components.vue', () => {
     wrapper.vm.selectChange();
     wrapper.vm.onRequest('foo');
     wrapper.vm.onRequest('foo', false);
+    wrapper.vm.onAutocompleteChange();
 
     expect(wrapper.find('h1').text()).toBe('Components');
   });

@@ -17,10 +17,6 @@
   export default {
     name:     'VueLoader',
     props:    {
-      cssClass: {
-        type:    String,
-        default: 'vueLoader',
-      },
       medium:   {
         type:     Boolean,
         required: false,
@@ -70,8 +66,6 @@
         if (this.warn) {
           classes.push(this.$style.warn);
         }
-
-        classes.push(this.cssClass);
 
         return classes;
       },

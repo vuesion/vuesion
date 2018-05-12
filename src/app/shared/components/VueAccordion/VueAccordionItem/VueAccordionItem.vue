@@ -1,14 +1,13 @@
 <template>
-  <div :class="[$style.vueAccordionItem, cssClass]">
-    <div :class="$style.header" @click="click" role="tab">
+  <div :class="$style.vueAccordionItem">
+    <div :class="$style.header" @click="click" role="button" :aria-label="title">
       {{title}}
-      <vue-icon :name="iconClasses" />
+      <i :class="iconClasses" />
     </div>
     <vue-collapse :show="show">
       <section
         :class="$style.body"
-        :aria-expanded="show"
-        role="tabpanel">
+        :aria-expanded="show">
         <slot />
       </section>
     </vue-collapse>
@@ -17,19 +16,13 @@
 
 <script lang="ts">
   import VueCollapse from '../../VueCollapse/VueCollapse.vue';
-  import VueIcon     from '../../VueIcon/VueIcon';
 
   export default {
     name:       'VueAccordionItem',
     components: {
       VueCollapse,
-      VueIcon,
     },
     props:      {
-      cssClass: {
-        type:    String,
-        default: 'vueAccordionItem',
-      },
       title:    {
         type:     String,
         required: true,

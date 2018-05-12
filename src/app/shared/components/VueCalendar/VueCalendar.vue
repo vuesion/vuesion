@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.calendar, cssClass]">
+  <div :class="$style.calendar">
     <div :class="$style.header">
       <h4 @click="setSelecting('year')">{{ selectedYear }}</h4>
       <h5 @click="setSelecting('date')">{{ $d(calculatedDate, 'calendarHeader') }}</h5>
@@ -11,6 +11,7 @@
         <div :class="$style.currentDate">{{ $d(new Date(currentYear, currentMonth, 1), 'calendarNav') }}</div>
         <div :class="$style.arrow" @click="setByMonth(currentMonth + 1)"></div>
       </div>
+
       <table>
         <thead>
         <tr>
@@ -35,11 +36,12 @@
     </div>
 
     <div :class="$style.year" v-if="selecting === 'year'">
-      <div :class="[year.selected ? $style.selected : '']"
-           :id="`${year.year}-calendar-year`"
-           v-for="year in years"
-           :key="year.year"
-           @click="setByYear(year.year)">
+      <div
+        :class="[year.selected ? $style.selected : '']"
+        :id="`${year.year}-calendar-year`"
+        :key="year.year"
+        v-for="year in years"
+        @click="setByYear(year.year)">
         {{ year.year }}
       </div>
     </div>
@@ -83,10 +85,6 @@
       VueButton,
     },
     props:      {
-      cssClass:       {
-        type:    String,
-        default: 'vueCalendar',
-      },
       minDate:        {
         type:     Date,
         required: false,
