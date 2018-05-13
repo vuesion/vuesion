@@ -138,17 +138,23 @@
     position:   relative;
     border-top: $select-border-top;
 
+    select::-ms-expand {
+      display: none;
+    }
+
     select {
       padding:            $select-padding;
       color:              $select-color;
       font-size:          $select-font-size;
       display:            block;
       width:              100%;
-      border:             none;
       box-shadow:         none;
       background:         transparent;
       background-image:   none;
       -webkit-appearance: none;
+      -moz-appearance:    none;
+      appearance:         none;
+      border:             none;
 
       &:focus ~ .icon {
         &:before {
