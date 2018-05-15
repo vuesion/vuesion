@@ -76,7 +76,7 @@ export const addModuleToStore = (pathToAppActions: string, moduleName: string): 
     file = insertAt(
       file,
       sourceFile.endOfFileToken.end,
-      `store.registerModule('${lowerFirst(moduleName)}', ${upperFirst(moduleName)}Module, { preserveState: true });\n`,
+      `store.registerModule(['${lowerFirst(moduleName)}'], ${upperFirst(moduleName)}Module, { preserveState: true });\n`,
     );
 
     file = insertAt(
