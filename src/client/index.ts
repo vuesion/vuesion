@@ -33,7 +33,7 @@ if (store.state.app.redirectTo !== null) {
  * global error handler that redirects to error page
  */
 Vue.config.errorHandler = (error: Error) => {
-  console.log(error); // tslint:disable-line
+  console.error(error); // tslint:disable-line
 
   HttpService.post('/log/error', {
     error: {

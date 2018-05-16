@@ -1,5 +1,5 @@
 import * as path      from 'path';
-import { IAppConfig } from '../../app/config/IAppConfig';
+import { IAppConfig } from './IAppConfig';
 
 /**
  * read default config and merge it with CONFIG environment variable
