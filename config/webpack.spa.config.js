@@ -7,11 +7,7 @@ const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-baseConfig.plugins.unshift(new webpack.DefinePlugin({
-                                                      CLIENT: true,
-                                                      SERVER: false,
-                                                      TEST:   true,
-                                                    }));
+baseConfig.plugins.unshift(new webpack.DefinePlugin({ CLIENT: true, SERVER: false, TEST: true }));
 
 const SPAConfig = merge(baseConfig, {
   entry:        {

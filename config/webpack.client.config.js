@@ -29,14 +29,8 @@ const clientConfig = merge(baseConfig, {
     runtimeChunk: 'single',
   },
   plugins:      [
-    new webpack.DefinePlugin({
-                               CLIENT: true,
-                               SERVER: false,
-                             }),
-    new HTMLPlugin({
-                     template: 'src/index.template.html',
-                     spa:      false,
-                   }),
+    new webpack.DefinePlugin({ CLIENT: true, SERVER: false }),
+    new HTMLPlugin({ template: 'src/index.template.html', spa: false }),
   ],
 });
 

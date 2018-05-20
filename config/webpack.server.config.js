@@ -16,11 +16,7 @@ const serverConfig = merge(baseConfig, {
   },
   externals: Object.keys(require('../package.json').dependencies),
   plugins:   [
-    new webpack.DefinePlugin({
-                               CLIENT:      false,
-                               SERVER:      true,
-                               nodeRequire: 'function(module){return require(module);}',
-                             }),
+    new webpack.DefinePlugin({ CLIENT: false, SERVER: true, nodeRequire: 'function(module){return require(module);}' }),
     new CopyWebpackPlugin([
                             { from: 'src/static', to: '../static' },
                             { from: 'src/app/config/*.json', to: '../app/config', flatten: true },

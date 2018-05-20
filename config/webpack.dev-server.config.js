@@ -15,11 +15,7 @@ const devServerConfig = merge(baseConfig, {
   },
   externals: Object.keys(require('../package.json').dependencies),
   plugins:   [
-    new webpack.DefinePlugin({
-                               CLIENT:      false,
-                               SERVER:      true,
-                               nodeRequire: 'function(module){return require(module);}',
-                             }),
+    new webpack.DefinePlugin({ CLIENT: false, SERVER: true, nodeRequire: 'function(module){return require(module);}' }),
   ],
   node:      {
     global:     true,
