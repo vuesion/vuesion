@@ -8,17 +8,27 @@ const MFS = nodeRequire('memory-fs');
 const clientConfig = nodeRequire('../../config/webpack.client.config');
 const isomorphicConfig = nodeRequire('../../config/webpack.isomorphic.config');
 
-export default (app: Express.Application, cb: any): void => {
+let initialized: boolean = false;
+let devMiddleware: WebpackDevMiddleware;
+let clientCompiler: any;
+
+export default (app: Express.Application, callback: any): void => {
+  if (initialized) {
+    app.use(devMiddleware as any);
+    app.use(nodeRequire('webpack-hot-middleware')(clientCompiler));
+    return;
+  }
+
   let bundle: string;
   let template: string;
 
-  clientConfig.entry.app = ['webpack-hot-middleware/client', clientConfig.entry.app];
+  clientConfig.entry = ['webpack-hot-middleware/client', clientConfig.entry.app];
   clientConfig.output.filename = '[name].js';
-  clientConfig.plugins.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
+  clientConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
   clientConfig.mode = 'development';
 
-  const clientCompiler = webpack(clientConfig);
-  const devMiddleware: WebpackDevMiddleware = nodeRequire('webpack-dev-middleware')(clientCompiler, {
+  clientCompiler = webpack(clientConfig);
+  devMiddleware = nodeRequire('webpack-dev-middleware')(clientCompiler, {
     publicPath: clientConfig.output.publicPath,
     stats:      {
       colors: true,
@@ -36,7 +46,7 @@ export default (app: Express.Application, cb: any): void => {
       template = fs.readFileSync(templatePath, 'utf-8');
 
       if (bundle) {
-        cb(bundle, template);
+        callback(bundle, template);
       }
     }
   });
@@ -62,7 +72,9 @@ export default (app: Express.Application, cb: any): void => {
     bundle = JSON.parse(mfs.readFileSync(bundlePath, 'utf-8'));
 
     if (template) {
-      cb(bundle, template);
+      callback(bundle, template);
     }
   });
+
+  initialized = true;
 };
