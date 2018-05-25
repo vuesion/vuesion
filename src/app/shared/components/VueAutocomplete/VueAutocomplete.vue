@@ -231,11 +231,11 @@
       triggerChange(option: IAutocompleteOption) {
         this.searchQuery = option.label;
 
+        this.$emit('change', option);
+
         if (this.isSameSearchQuery()) {
           return;
         }
-
-        this.$emit('change', option);
         this.previousQuery = this.searchQuery;
         this.isOpen = false;
       },

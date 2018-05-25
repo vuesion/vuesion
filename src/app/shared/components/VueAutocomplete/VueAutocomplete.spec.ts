@@ -158,7 +158,7 @@ describe('VueAutocomplete.vue', () => {
     expect(wrapper.emitted().change).toHaveLength(1);
 
     wrapper.vm.onOptionClick(1);
-    expect(wrapper.emitted().change).toHaveLength(1);
+    expect(wrapper.emitted().change).toHaveLength(2);
 
     wrapper.vm.searchQuery = 'Test';
     wrapper.vm.onOptionClick(1);
