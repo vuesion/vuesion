@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const baseConfig = require('./webpack.base.config');
+const nodeExternals = require('webpack-node-externals');
 const VueSSRPlugin = require('vue-ssr-webpack-plugin');
+const baseConfig = require('./webpack.base.config');
 
 const isomorphicConfig = merge(baseConfig, {
   target:    'node',
@@ -12,7 +13,9 @@ const isomorphicConfig = merge(baseConfig, {
     filename:      'isomorphic.js',
     libraryTarget: 'commonjs2',
   },
-  externals: Object.keys(require('../package.json').dependencies),
+  externals: [
+    nodeExternals(),
+  ],
   plugins:   [
     new webpack.DefinePlugin({ CLIENT: false, SERVER: true, nodeRequire: 'function(module){return require(module);}' }),
     new VueSSRPlugin({}),

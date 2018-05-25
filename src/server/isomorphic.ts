@@ -1,3 +1,5 @@
+import * as fs                  from 'fs';
+import * as path                from 'path';
 import Vue                      from 'vue';
 import VueI18n                  from 'vue-i18n';
 import { Store }                from 'vuex';
@@ -50,7 +52,9 @@ const setI18nDefaultValues = (store: Store<IState>, i18n: VueI18n) => {
   let defaultMessages: any = {};
 
   try {
-    defaultMessages = nodeRequire(`../../i18n/${lang}.json`);
+    defaultMessages = DEVELOPMENT
+                      ? JSON.parse(fs.readFileSync(path.resolve(`./i18n/${lang}.json`)).toString())
+                      : nodeRequire(`../../i18n/${lang}.json`);
   } catch (e) {
     defaultMessages = nodeRequire(`../../i18n/en.json`);
   }

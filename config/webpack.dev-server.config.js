@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const nodeExternals = require('webpack-node-externals');
 const baseConfig = require('./webpack.base.config');
 
 const devServerConfig = merge(baseConfig, {
@@ -13,7 +14,9 @@ const devServerConfig = merge(baseConfig, {
     filename:      'dev-server.js',
     libraryTarget: 'commonjs',
   },
-  externals: Object.keys(require('../package.json').dependencies),
+  externals: [
+    nodeExternals(),
+  ],
   plugins:   [
     new webpack.DefinePlugin({ CLIENT: false, SERVER: true, nodeRequire: 'function(module){return require(module);}' }),
   ],
