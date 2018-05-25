@@ -105,7 +105,43 @@
           <vue-button primary @click="showModal = !showModal">Show Modal</vue-button>
           <vue-modal :show="showModal" @close="showModal = !showModal">
             <vue-button warn @click="showModal = !showModal">X</vue-button>
-            TEST
+            <br />
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+            sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+            elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+            vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet.
+
+            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu
+            feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
+            delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing
+            elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+
+            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
+            commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
+            vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit
+            praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+
+            Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer
+            possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
+            tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+
+            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu
+            feugiat nulla facilisis.
+
+            At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+            est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+            justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+            amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores
+            duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna
+            no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+            amet, consetetur
           </vue-modal>
         </vue-grid-item>
       </vue-grid-row>
@@ -426,18 +462,18 @@
   import VuePanelHeader                     from '../../shared/components/VuePanel/VuePanelHeader/VuePanelHeader.vue';
   import VuePanelBody                       from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
   import VuePanelFooter                     from '../../shared/components/VuePanel/VuePanelFooter/VuePanelFooter.vue';
-  import VueInput      from '../../shared/components/VueInput/VueInput.vue';
-  import VueCollapse   from '../../shared/components/VueCollapse/VueCollapse.vue';
-  import VueModal      from '../../shared/components/VueModal/VueModal.vue';
-  import VueTabGroup   from '../../shared/components/VueTabGroup/VueTabGroup.vue';
-  import VueTabItem    from '../../shared/components/VueTabGroup/VueTabItem/VueTabItem.vue';
-  import VueCheckbox   from '../../shared/components/VueCheckbox/VueCheckbox.vue';
-  import VueTooltip    from '../../shared/components/VueTooltip/VueTooltip.vue';
-  import VueSlider     from '../../shared/components/VueSlider/VueSlider.vue';
-  import VueAccordion  from '../../shared/components/VueAccordion/VueAccordion.vue';
+  import VueInput                           from '../../shared/components/VueInput/VueInput.vue';
+  import VueCollapse                        from '../../shared/components/VueCollapse/VueCollapse.vue';
+  import VueModal                           from '../../shared/components/VueModal/VueModal.vue';
+  import VueTabGroup                        from '../../shared/components/VueTabGroup/VueTabGroup.vue';
+  import VueTabItem                         from '../../shared/components/VueTabGroup/VueTabItem/VueTabItem.vue';
+  import VueCheckbox                        from '../../shared/components/VueCheckbox/VueCheckbox.vue';
+  import VueTooltip                         from '../../shared/components/VueTooltip/VueTooltip.vue';
+  import VueSlider                          from '../../shared/components/VueSlider/VueSlider.vue';
+  import VueAccordion                       from '../../shared/components/VueAccordion/VueAccordion.vue';
   import VueAccordionItem
-                       from '../../shared/components/VueAccordion/VueAccordionItem/VueAccordionItem.vue';
-  import VuePagination from '../../shared/components/VuePagination/VuePagination.vue';
+                                            from '../../shared/components/VueAccordion/VueAccordionItem/VueAccordionItem.vue';
+  import VuePagination                      from '../../shared/components/VuePagination/VuePagination.vue';
   import VueSelect                          from '../../shared/components/VueSelect/VueSelect.vue';
   import VueCalendar                        from '../../shared/components/VueCalendar/VueCalendar.vue';
   import VueDatePicker                      from '../../shared/components/VueDatePicker/VueDatePicker.vue';

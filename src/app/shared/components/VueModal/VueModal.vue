@@ -14,8 +14,8 @@
   import anime from 'animejs';
 
   export default {
-    name:       'VueModal',
-    props:      {
+    name:    'VueModal',
+    props:   {
       show:       {
         required: false,
         default:  false,
@@ -27,7 +27,7 @@
         default:  false,
       },
     },
-    methods:    {
+    methods: {
       beforeEnter(el: HTMLElement) {
         el.style.transform = 'translateY(100%)';
 
@@ -35,6 +35,8 @@
       },
       enter(el: HTMLElement, done: any) {
         document.getElementById('overlay').style.opacity = '0.5';
+        document.body.style.overflow = 'hidden';
+
         anime({
                 targets:    el,
                 translateY: {
@@ -51,6 +53,7 @@
       leave(el: HTMLElement, done: any) {
         const overlay: HTMLElement = document.getElementById('overlay');
         overlay.style.opacity = '0';
+        document.body.style.overflow = 'initial';
 
         anime({
                 targets:    el,
@@ -113,6 +116,7 @@
     z-index:    $modal-index;
     box-shadow: $modal-shadow;
     padding:    $modal-padding;
+    overflow-y: scroll;
 
     @include media(tabletPortrait) {
       width:       $modal-max-width;
