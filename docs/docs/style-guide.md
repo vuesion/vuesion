@@ -4,7 +4,7 @@ The default style guide that is used in this project, is based on the [Vue Style
 and the [Angular Style Guide](https://angular.io/guide/styleguide).
 
 _If you want to save some time and to keep the style guide consistent,
-it is recommended to use the included **[Generator CLI](generator-cli.md)** to generate new code._
+it is recommended to use the included **[Generator CLI](../guide/cli.md)** to generate new code._
 
 ## Directory Structure
 
@@ -30,8 +30,9 @@ it is recommended to use the included **[Generator CLI](generator-cli.md)** to g
 │   ├── index.template.html   // template, needed for SSR and webpack
 │   ├── server
 │   │   ├── dev               // dev server
-│   │   ├── index.ts          // express app
-│   │   ├── isomorphic.ts     // entry point for server application
+│   │   ├── server.ts         // express app
+│   │   ├── index.ts          // entry point for server application
+│   │   ├── isomorphic.ts     // entry point for server-side rendering
 │   │   ├── middlewares       // express middlewares
 │   │   ├── routes            // express routes
 │   │   └── utils             // utils for SSR
@@ -45,10 +46,15 @@ it is recommended to use the included **[Generator CLI](generator-cli.md)** to g
 
 A module is an encapsulated piece of domain logic in your application, this could be for example:
 
-- a dynamic page with lot of view logic and state management
-- a static page without state management e.g. imprint
-- domain logic with shared view components e.g. authentication logic + login/signup forms
-- domain logic
+###  Use-cases for a module
+
+**Dynamic page**: consists of a lot of view logic, at least one route and state-management
+
+**Static page**: has no state-management but a route e.g. `/imprint`
+
+**Domain logic with shared view components**: e.g. authentication state, actions, mutations plus login/signup forms but no routes
+
+**Domain logic**: just plain logic with state-management but no routes and no components
 
 _A module usually has routing information,  state management or both._
 

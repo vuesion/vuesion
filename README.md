@@ -1,4 +1,4 @@
-# vue-starter [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=flat)](https://twitter.com/intent/tweet?text=Vue-Starter%20an%20enterprise%20ready%20boilerplate%20for%20isomorphic,%20progressive%20web%20apps%20with%20Vue.JS&url=https://github.com/devCrossNet/vue-starter&via=_jwerner_&hashtags=VueJS,SEO,Enterprise,VueX) <a href="https://slack-vue-starter.herokuapp.com/" target="_blank"><img src="https://home-assistant.io/images/supported_brands/slack.png" height="20px" /></a>
+# vue-starter [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=flat)](https://twitter.com/intent/tweet?text=Vue-Starter%20an%20enterprise%20ready%20boilerplate%20for%20isomorphic,%20progressive%20web%20apps%20with%20Vue.JS&url=https://github.com/devCrossNet/vue-starter&via=_jwerner_&hashtags=VueStarter,VueJS,SEO,Enterprise) <a href="https://slack-vue-starter.herokuapp.com/" target="_blank"><img src="https://home-assistant.io/images/supported_brands/slack.png" height="20px" /></a>
 
 > A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices
 
@@ -12,11 +12,17 @@
 
 # Documentation
 
-**[https://vue-starter.herokuapp.com/docs](https://vue-starter.herokuapp.com/docs)**
+**[https://vue-starter.herokuapp.com/docs](https://vue-starter.herokuapp.com/docs)** (sometimes not available because of the heroku free-plan)
+
+## Run documentation on your local machine
+
+1. Complete the [Getting started](#getting-started) guide
+2. Install [vuepress](https://vuepress.vuejs.org/) `npm i -g vuepress`
+3. run `vuepress dev docs`
 
 # Live demo
 
-Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.com/)**
+Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.com/)** (sometimes not available because of the heroku free-plan)
 
 ![vue-starter](https://user-images.githubusercontent.com/1667598/34497260-2d39a7ac-effd-11e7-8d88-ff011f0b3244.gif)
 

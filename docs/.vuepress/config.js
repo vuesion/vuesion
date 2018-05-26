@@ -6,7 +6,7 @@ module.exports = {
   locales:       {
     '/': {
       lang:        'en',
-      title:       'vue-starter - Docs',
+      title:       'vue-starter',
       description: 'A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
     },
   },
@@ -34,11 +34,15 @@ module.exports = {
         nav:          [
           {
             text: 'Guide',
-            link: '/guide/',
+            link: '/introduction',
           },
           {
             text: 'Interactive Demo',
             link: 'https://vue-starter.herokuapp.com/',
+          },
+          {
+            text: 'Components',
+            link: 'https://vue-starter.herokuapp.com/storybook',
           },
           {
             text: 'Slack',
@@ -46,29 +50,36 @@ module.exports = {
           },
         ],
         sidebar:      {
-          '/guide/': genSidebarConfig('Guide'),
+          '/': [
+            {
+              title:       'Getting started',
+              collapsable: false,
+              children:    [
+                'guide/install',
+                'guide/run',
+                'guide/test',
+                'guide/clean-up',
+                'guide/i18n',
+                'guide/cli',
+                'guide/styles',
+                'guide/vuex',
+                'guide/build',
+                'guide/contribute',
+              ],
+            },
+            {
+              title:       'Docs',
+              collapsable: false,
+              children:    [
+                'docs/style-guide',
+                'docs/npm-scripts',
+                'docs/i18n',
+                'docs/storybook',
+              ],
+            },
+          ],
         },
       },
     },
   },
 };
-
-function genSidebarConfig(title) {
-  return [
-    {
-      title,
-      collapsable: false,
-      children:    [
-        '',
-        'getting-started',
-        'style-guide',
-        'npm-scripts',
-        'components',
-        'i18n',
-        'vuex',
-        'storybook',
-        'generator-cli',
-      ],
-    },
-  ];
-}
