@@ -8,6 +8,17 @@ import { Logger }            from '../utils/Logger';
 import { AppConfig }         from '../../app/config/AppConfig';
 import { isProd, resolve }   from '../utils/Utils';
 
+let renderer: BundleRenderer;
+
+const createRenderer = (bundle: string, template: string): void => {
+  renderer = nodeRequire('vue-server-renderer').createBundleRenderer(bundle, {
+    template,
+    cache: nodeRequire('lru-cache')({
+                                      max:    1000,
+                                      maxAge: 1000 * 60 * 15,
+                                    }),
+  });
+};
 const setHeaders = (res: Response): void => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
@@ -19,17 +30,6 @@ const setHeaders = (res: Response): void => {
   res.setHeader('Expires', '0');
   res.setHeader('max-age', '0');
 };
-
-let renderer: BundleRenderer;
-const createRenderer = (bundle: string, template: string): BundleRenderer => {
-  return nodeRequire('vue-server-renderer').createBundleRenderer(bundle, {
-    template,
-    cache: nodeRequire('lru-cache')({
-                                      max:    1000,
-                                      maxAge: 1000 * 60 * 15,
-                                    }),
-  });
-};
 const packageJson: any = JSON.parse(fs.readFileSync(resolve('../../package.json')).toString());
 
 export const SSRRoutes = (app: Express.Application): any => {
@@ -37,12 +37,12 @@ export const SSRRoutes = (app: Express.Application): any => {
     const bundle: any = nodeRequire('./vue-ssr-bundle.json');
     const template: string = fs.readFileSync(resolve('../client/index.html'), 'utf-8');
 
-    renderer = createRenderer(bundle, template);
+    createRenderer(bundle, template);
   } else {
     const devServer: any = nodeRequire('./dev-server.js').default;
 
     devServer(app, (bundle: string, template: string) => {
-      renderer = createRenderer(bundle, template);
+      createRenderer(bundle, template);
     });
   }
 

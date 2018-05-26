@@ -30,7 +30,7 @@ if (store.state.app.redirectTo !== null) {
 }
 
 /**
- * global error handler that redirects to error page
+ * global error handler that redirects to error page and logs error to express app
  */
 Vue.config.errorHandler = (error: Error) => {
   console.error(error); // tslint:disable-line

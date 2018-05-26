@@ -85,11 +85,11 @@ $screen-small-desktop: 1200px;
 $screen-small-desktop-max: $screen-small-desktop - 1;
 $screen-large-desktop: 1440px;
 $screen-large-desktop-max: $screen-large-desktop - 1;
-$screen-phone-gutter: 1.6rem;
+$screen-phone-gutter: 16px;
 $screen-tablet-portrait-gutter: $space-unit * 2;
 $screen-tablet-landscape-gutter: $space-unit * 2;
-$screen-small-desktop-gutter: $space-unit * 2;
-$screen-large-desktop-gutter: $space-unit * 2;
+$screen-small-desktop-gutter: $space-unit * 4;
+$screen-large-desktop-gutter: $space-unit * 4;
 ```
 
 All the components are dependents of these variables, so everything will look different if you change these values.
