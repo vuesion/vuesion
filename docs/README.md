@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.png
 actionText: Get Started →
-actionLink: /guide/
+actionLink: /introduction
 features:
 - title: Quick scaffolding
   details: Create components, connected components, modules - and their tests - right from the CLI

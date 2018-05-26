@@ -1,12 +1,47 @@
-# State management
+# Save your state
 
-# Persist your state
-This boilerplate comes with a vuex middleware that allows you to persist the application state.
+By default vuex keeps its state in the memory. But the problem with keeping the state in memory is,
+that the state is reset as soon as the user reloads the page. 
 
-## Cookie Persist
+There are many ways to persist state if the user reloads the page,
+for example you could keep variables in the query of the url and restore the state if the page loads.
 
-File: `./src/app/store.ts`:
+This approach is ok for a small amount of data that is not confidential, e.g. filters, sort directions, page number.
+
+But sometimes you have to store confidential data like access tokens or big data objects like a list of products.
+In this cases you need to store your data in cookies or the LocalStorage.
+
+The vue-starter comes with a vuex-middleware that allows you to decide to persist vuex-modules in different storages.
+
+## Persist to cookies
+
+The vue-starter already has a CookieStorage adapter for the vuex-persist middleware.
+
+::: tip Cookies
+**Before you apply this tip, have a talk with a security engineer!**
+
+Cookies are good for keeping access tokens. Cookies are available on the server-side too.
+This means you can connect to protected APIs on the server-side to render the initial page for the user
+with the correct data
+:::
+
+It is already referenced in the file `./src/app/store.ts`.
+
 ```js
+import { PersistCookieStorage } from './shared/plugins/vuex-persist/PersistCookieStorage';
+
+...
+
+const beforePersistCookieStorage = (localState: IState): IState => {
+  delete localState.app.config;
+  delete localState.app.defaultMessages;
+  delete localState.app.redirectTo;
+
+  return localState;
+};
+
+...
+
           new PersistCookieStorage(
             ['app'],
             {
@@ -18,7 +53,15 @@ File: `./src/app/store.ts`:
           ),
 ```
 
-This can be used, for example, to store an access token in a cookie that can be used later for api calls to server-side-render the app.
+To persist your state to a cookie, you have to initialize a 
+new instance of `PersistCookieStorage` which takes a list of modules as string as 
+the first parameter and an `options` object as the second parameter.
+
+You can define the `cookieOptions`, which is a copy of the
+[js-cookie](https://github.com/js-cookie/js-cookie#cookie-attributes) attributes
+and a callback to delete state that should not be persisted to the cookie.
+
+### Extracting Cookie state on the server
 
 Following part in `/src/server/isomorphic.ts` is responsible for extracting the cookie data and pass it into the initial state of the app.
 
@@ -40,11 +83,40 @@ Following part in `/src/server/isomorphic.ts` is responsible for extracting the 
     store.replaceState(state);
 ```
 
-## Localstorage Persist
+::: warning Cookie size
+Please keep in mind that most of the web-servers have a default header size of **4KB** for cookies,
+so you should consider just saving necessary data.
+:::
 
-File: `./src/app/store.ts`:
+## Persist to LocalStorage
+
+The vue-starter already has a LocalStorage adapter for the vuex-persist middleware.
+
+::: tip LocalStorage
+LocalStorage is good to save mid-sized data, but be aware that the LocalStorage is only available on the **client**.
+That means that every data you save to it, will not be server-side rendered. The DOM will always differ in this case.
+:::
+
+It is already referenced in the file `./src/app/store.ts`.
+
 ```js
+import { PersistLocalStorage }  from './shared/plugins/vuex-persist/PersistLocalStorage';
+
+...
+
+const beforePersistLocalStorage = (localState: IState): IState => {
+  delete localState.counter.incrementPending;
+  delete localState.counter.decrementPending;
+
+  return localState;
+};
+
+...
+
 new PersistLocalStorage(['counter'], beforePersistLocalStorage),
 ```
 
-This will save the `counter` module in the LocalStorage and hydrates the state back into the initial state before the client side app takes over.
+To persist your state to the LocalStorage, you have to initialize a 
+new instance of `PersistLocalStorage` which takes a list of modules as string as 
+the first parameter and a callback to delete state that should not be persisted
+to the LocalStorage as the second parameter.
