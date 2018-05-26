@@ -13,6 +13,12 @@ let devMiddleware: WebpackDevMiddleware;
 let clientCompiler: any;
 
 export default (app: Express.Application, callback: any): void => {
+  /**
+   * Code for hot-reloading
+   * ----------------------
+   * The dev server and the webpack compilers should just be initialized once.
+   * But the middlewares have to be applied every time a new app is loaded.
+   */
   if (initialized) {
     app.use(devMiddleware as any);
     app.use(nodeRequire('webpack-hot-middleware')(clientCompiler));

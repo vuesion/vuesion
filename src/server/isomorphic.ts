@@ -5,6 +5,7 @@ import VueI18n                  from 'vue-i18n';
 import { Store }                from 'vuex';
 import { Route }                from 'vue-router';
 import { Component }            from 'vue-router/types/router';
+import App                      from '../app/app/App/App.vue';
 import { createApp, IApp }      from '../app/app';
 import { IState }               from '../app/state';
 import { IAppConfig }           from '../app/config/IAppConfig';
@@ -78,7 +79,7 @@ export default (context: IServerContext) => {
 
     router
     .onReady(() => {
-      const matchedComponents: Component[] = router.getMatchedComponents();
+      const matchedComponents: Component[] = [App as Component].concat(router.getMatchedComponents());
 
       if (!matchedComponents.length) {
         return reject({ code: 404 });

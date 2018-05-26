@@ -15,7 +15,7 @@ HttpService.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`;
     }
 
-    if (!isExternal) {
+    if (!isExternal && config.url !== '/log/error') {
       config.url = `${baseUrl}${config.url}`;
     }
 
