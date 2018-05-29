@@ -4,28 +4,13 @@ next: ./guide/install
 ---
 # Introduction
 
-## Why another starter project?
+## This is not just another starter project
 
-If you start a new project and you have to deliver high-quality code in very short time, 
-it is often very helpful to use libraries because they provide you with solutions to already solved problems.
+When starting the development of a new project, it's often tempting to start with some libraries. They provide solutions to already solved problems, so you can solve on the unique challenges of your application.
 
-Over the years, I've found that this only works to a certain degree. In most projects I worked on, the number of phrases like 
-_"I can not change that because the library does not support it."_ increased the further the project had progressed.
+Over the years, I've found that the number of times phrases like _"I can't change that because the library doesn't support it"_ increased the further the project had progressed.
 
-I've often been in situations where I had to write feature-requests, eject the webpack configuration in the first second of the project,
-or I had to create a local fork of the library to implement the requested feature.
-
-From this experience, I decided to implement all the use cases, that I experienced, in this starter.
-If you use this starter, **the code is all yours**. You are less limited by a
-library and you can add any additional use case you encounter. 
-
-::: tip 
-The limitations of your project are up to the imagination of your designers and your ability to implement their feature requests
-:::
-
-::: warning
-I would not recommend this starter for beginners, **this starter is for experienced developers who need to deliver projects very quickly with the highest possible quality**.
-:::
+I often had to write feature-requests for libraries, remove the Webpack configuration at the start of the project, or had to create a local fork of the library to implement the required feature. To bring an end to that kind of mess, I decided to take all common use cases that I've encountered and bring them together in this starter. It's not a library. The **The code is all yours** to modify and build upon.
 
 ## Features
 
@@ -39,17 +24,17 @@ I would not recommend this starter for beginners, **this starter is for experien
 - [Storybook integration](https://storybook.js.org/basics/guide-vue/)
 - Predictable state management with [vuex](https://vuex.vuejs.org/en/)
 
+::: warning
+**Vue Starter is for experienced developers who need to deliver projects quickly with the highest possible quality.** It's assumed that developers already have experience with Vue and the features listed above. Looking for an easier way to get started with Vue and Webpack? [This template](https://github.com/vuejs-templates/webpack) may be more your cup of tea.
+:::
+
 ## Todo
 
-This is an every evolving project,
-if you want to help or you have an idea how to improve this project - 
-**feel free to file an [issue](https://github.com/devCrossNet/vue-starter/issues)**
+If you want to help or you have an idea on how to improve this project **feel free to file an [issue](https://github.com/devCrossNet/vue-starter/issues)**
 
 ## Why not vue-cli or nuxt.js ?
 
-This boilerplate is opinionated, aiming to educate and empower users to essentially configure their own framework,
-ideally suited to their needs. It also includes as few libraries as possible to keep you flexible and to enable you
-to implement every product requirement that comes down the road.
+This boilerplate is opinionated, aiming to educate and empower users to configure their own framework, suited to their needs. It includes as few libraries as possible to keep you flexible and to enable you to implement every product requirement that comes down the road.
 
 Use cases for this boilerplate:
 - The requirements for the product might change and you want to maintain maximum flexibility and control.
