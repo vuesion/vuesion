@@ -4,27 +4,39 @@ next: ./guide/install
 ---
 # Introduction
 
-## Why another starter project?
+## This is not just another starter project
 
-If you start a new project and you have to deliver high-quality code in very short time, 
-it is often very helpful to use libraries because they provide you with solutions to already solved problems.
 
-Over the years, I've found that this only works to a certain degree. In most projects I worked on, the number of phrases like 
-_"I can not change that because the library does not support it."_ increased the further the project had progressed.
+When starting the development of a new project, it's often tempting to start with some libraries.
+They provide solutions to already solved problems, so you can solve on the unique challenges of your application.
 
-I've often been in situations where I had to write feature-requests, eject the webpack configuration in the first second of the project,
-or I had to create a local fork of the library to implement the requested feature.
+But you know that this only works to a certain degree. In most projects you are working on, the number of phrases like 
+**_"I can not change that because the library does not support it."_** increases over time.
 
-From this experience, I decided to implement all the use cases, that I experienced, in this starter.
-If you use this starter, **the code is all yours**. You are less limited by a
-library and you can add any additional use case you encounter. 
+You've often been in situations where you had to write feature-requests, eject the webpack configuration in the first second of the project,
+or you have to create a local fork of the library to implement the requested features.
 
-::: tip 
-The limitations of your project are up to the imagination of your designers and your ability to implement their feature requests
+Because you're not the only one with this experience,
+we decided to implement all the use cases, that we experienced over time, in this starter.
+
+It's not a library.
+
+**The code is all yours** to modify and build upon. 
+
+::: tip No Excuses
+The limitations of your project are up to the imagination of the designers in your project and your ability to implement their feature requests.
+:::
+
+::: tip Productivity Tip
+The key for high-performance engineering is a good balance between a variety of music genres,
+for this reason, we provide you with a [Beast mode playlist on Youtube](https://www.youtube.com/playlist?list=PLcLlpvN8RJznCOm4dJ5rN5VJKFfy0hMNp)
 :::
 
 ::: warning
-I would not recommend this starter for beginners, **this starter is for experienced developers who need to deliver projects very quickly with the highest possible quality**.
+**Use this project if you are an experienced developer who needs to deliver projects quickly with the highest possible quality.**
+
+If you look for an easier way to get started with Vue and Webpack, 
+[this template](https://github.com/vuejs-templates/webpack) may be more your cup of tea.
 :::
 
 ## Features

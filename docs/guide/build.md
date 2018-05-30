@@ -3,17 +3,17 @@
 Now you want to bring your app online, it should be fast and optimized.
 You want the full package, the PWA package.
 
-In the development-mode you have non-optimized code,
+In the development-mode, you have the non-optimized code,
 source maps and all the good things you need to write good code.
 
-But in production you don't want to have unnecessary code, it should
+But in production you don't want to have the unnecessary code, it should
 be as small as possible.
 
 ## Optimize your build
 
 In order to optimize your app for production, run the command `npm run build`.
 
-this will optimize your app as followed:
+this will optimize your app as following:
 
 - it runs the webpack [production mode](https://webpack.js.org/guides/production/)
 - it adds a [service-worker](https://github.com/oliviertassinari/serviceworker-webpack-plugin) to your application to make it a PWA

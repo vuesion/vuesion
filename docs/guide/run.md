@@ -1,9 +1,9 @@
 # Run your application for the first time
 
-Of course you want to know if the application that you just downloaded works.
-In order to test if everything works as expect run the following command: `npm run dev`.
+Of course, you want to know if the application that you just downloaded works.
+In order to test if everything works as expected run the following command: `npm run dev`.
 
-You should see a message in your console that says
+You should see a message in your console that says:
 
 ```bash
 [1] info: server started at http://localhost:3000
@@ -11,7 +11,7 @@ You should see a message in your console that says
 
 That means that the dev-server successfully started.
 
-You have to wait for a second message that indicates that the client and isomorphic code is successfully compiled:
+You have to wait for a second message that indicates that the client and the isomorphic code is successfully compiled:
 
 ```bash
 [1] ℹ ｢wdm｣: Compiled successfully.

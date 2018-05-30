@@ -22,7 +22,7 @@
             <vue-panel-body>
               <i class="fas fa-certificate" />
               <h3>Best practices</h3>
-              <p>Common style guide, TypeScript and the best test setup: Automatically guarantee code quality and
+              <p>A Common style guide, TypeScript, and the best test setup: Automatically guarantee code quality and
                  non-breaking changes.</p>
             </vue-panel-body>
           </vue-panel>

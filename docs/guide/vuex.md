@@ -1,21 +1,21 @@
 # Save your state
 
-By default vuex keeps its state in the memory. But the problem with keeping the state in memory is,
+By default, VueX keeps its state in the memory. But the problem with keeping the state in memory is,
 that the state is reset as soon as the user reloads the page. 
 
 There are many ways to persist state if the user reloads the page,
-for example you could keep variables in the query of the url and restore the state if the page loads.
+for example, you could keep variables in the query of the URL and restore the state if the page loads.
 
 This approach is ok for a small amount of data that is not confidential, e.g. filters, sort directions, page number.
 
 But sometimes you have to store confidential data like access tokens or big data objects like a list of products.
-In this cases you need to store your data in cookies or the LocalStorage.
+In this cases, you need to store your data in cookies or the LocalStorage.
 
-The vue-starter comes with a vuex-middleware that allows you to decide to persist vuex-modules in different storages.
+The vue-starter comes with a VueX-middleware that allows you to decide to persist VueX-modules in different storages.
 
 ## Persist to cookies
 
-The vue-starter already has a CookieStorage adapter for the vuex-persist middleware.
+The vue-starter already has a CookieStorage adapter for the VueX-persist middleware.
 
 ::: tip Cookies
 **Before you apply this tip, have a talk with a security engineer!**
@@ -90,7 +90,7 @@ so you should consider just saving necessary data.
 
 ## Persist to LocalStorage
 
-The vue-starter already has a LocalStorage adapter for the vuex-persist middleware.
+The vue-starter already has a LocalStorage adapter for the VueX-persist middleware.
 
 ::: tip LocalStorage
 LocalStorage is good to save mid-sized data, but be aware that the LocalStorage is only available on the **client**.

@@ -14,7 +14,7 @@ describe('Stage.vue', () => {
       i18n,
     });
 
-    expect(wrapper.find('h1').text()).toBe('Vue.js Starter');
+    expect(wrapper.find('h1').text()).toBe('vue-starter');
 
     (wrapper as any).vm.$refs.stage.getClientRects = () => {
       return {

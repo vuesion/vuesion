@@ -22,14 +22,14 @@ Time:        4.605s
 Process finished with exit code 0
 ```
 
-It shows that you have a application that is well tested and from now on
+It shows that you have an application that is well tested and from now on
 you should get feedback if you accidentally break included features every time you run the tests.
 
 The `npm test` command will be executed in the before-commit hook,
 that guarantees that the code you are going to commit will not break the application.
 
 ::: tip Jest config
-By default the coverage threshold is set to `100`%.
+By default, the coverage threshold is set to `100`%.
 
 If you think this is just too much for your project, configure the appropriate thresholds in the `./package.json`.
 
