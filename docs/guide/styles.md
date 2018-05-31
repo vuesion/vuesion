@@ -1,6 +1,6 @@
 # Apply your brand colors
 
-Of course you want to have a different theme than the default one.
+Of course, you want to have a different theme than the default one.
 
 In order to apply your brand colors, open up `./src/app/shared/styles/_variables.scss`:
 and have a look at these lines:
@@ -95,7 +95,7 @@ $screen-large-desktop-gutter: $space-unit * 4;
 All the components are dependents of these variables, so everything will look different if you change these values.
 
 ::: tip Do you have light brand colors?
-Make sure you replace the `lighten` scss function with the `darken` function.
+Make sure you replace the `lighten` SCSS function with the `darken` function.
 
 _**This should look much better**_ :smile:
 :::

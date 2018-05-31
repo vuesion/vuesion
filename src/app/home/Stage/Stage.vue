@@ -7,7 +7,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item class="vueGridItem">
-          <h1 :class="$style.title">Vue.js Starter</h1>
+          <h1 :class="$style.title">vue-starter</h1>
           <div :class="$style.subTitle">
             {{
             $t('App.core.description' /* A flexible, scalable, opinionated boilerplate for production-ready PWAs with

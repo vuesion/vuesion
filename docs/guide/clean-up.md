@@ -1,8 +1,8 @@
 # Delete files that you don't need for your project
 
-At this point your project contains a lot of code that is just for demo purposes.
+At this point, your project contains a lot of code that is just for demo purposes.
 
-We recommend that you delete this code, because your use-cases will be completely different from the demo use-cases.
+We recommend that you delete this code because your use-cases will be completely different from the demo use-cases.
 
 ## Directories and Files
 

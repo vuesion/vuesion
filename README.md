@@ -24,8 +24,7 @@
 
 Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.com/)** (sometimes not available because of the heroku free-plan)
 
-![vue-starter](https://user-images.githubusercontent.com/1667598/34497260-2d39a7ac-effd-11e7-8d88-ff011f0b3244.gif)
-
+![vue-starter](https://user-images.githubusercontent.com/1667598/40796069-2721bc8e-6504-11e8-880c-d973fd37b73e.gif)
 ### Lighthouse Score
 <img width="721" alt="screen shot 2018-04-30 at 09 09 45" src="https://user-images.githubusercontent.com/1667598/39417746-99f967f0-4c56-11e8-865c-9db54012060a.png">
 

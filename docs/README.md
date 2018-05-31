@@ -21,6 +21,6 @@ features:
 - title: Storybook
   details: Allows interactive development, testing and sharing of UI components in various property states
 - title: Predictable state management
-  details: Centralised state management with vuex.
+  details: Centralised state management with VueX.
 footer: MIT Licensed | Copyright © 2018 - present Johannes Werner
 ---
