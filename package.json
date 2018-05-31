@@ -1,6 +1,6 @@
 {
   "name": "vue-starter",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices",
   "repository": {
     "type": "git",
