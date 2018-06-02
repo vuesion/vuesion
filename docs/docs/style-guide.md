@@ -15,13 +15,13 @@ and the [Angular Style Guide](https://angular.io/guide/styleguide).
 ├── src
 │   ├── app                   // main app code
 │   │   ├── app               // app module - contains main component
-│   │   ├── app.ts            // app setup
-│   │   ├── config            // app configuration with environments
-│   │   ├── router.ts         // global routing information
+│   │   ├── config            // app config to pass data from the server environment to the client
 │   │   ├── shared            // shared code
+│   │   ├── ...               // new modules will be added on this directory level
+│   │   ├── app.ts            // app setup
+│   │   ├── router.ts         // global routing information
 │   │   ├── state.ts          // global app state
 │   │   └── store.ts          // vuex store
-│   │   ...                   // new modules will be added on this directory level
 │   ├── client
 │   │   ├── index.ts          // entry point for client application
 │   │   └── sw.ts             // service worker

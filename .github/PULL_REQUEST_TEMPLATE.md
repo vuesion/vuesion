@@ -24,6 +24,7 @@ or a link to a ticket system...
 
 - [ ] Run unit tests to ensure all existing tests are still passing
 - [ ] Add new passing unit tests to cover the code introduced by your PR
+- [ ] Add new documentation for the code introduced by your PR
 
 
 <!--

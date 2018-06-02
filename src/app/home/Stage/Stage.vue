@@ -33,7 +33,12 @@
 
   export default {
     components: { VueGridItem, VueGridRow, VueGrid },
-    props:      {},
+    props:      {
+      disableParticles: {
+        type:     Boolean,
+        required: true,
+      },
+    },
     data() {
       return {};
     },
@@ -57,7 +62,9 @@
     mounted() {
       this.handleResize();
 
-      CircleAnimation(this.$refs.canvas);
+      if (!this.disableParticles) {
+        CircleAnimation(this.$refs.canvas);
+      }
     },
     beforeDestroy() {
       window.removeEventListener('resize', this.handleResize);
