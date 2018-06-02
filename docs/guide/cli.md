@@ -24,7 +24,7 @@ run `npm run g` and you will be asked some questions:
 ```bash
 ? [PLOP] Please choose a generator. (Use arrow keys)
   component - Add a single file component 
-❯ module - Add a module with vuex store and routes 
+❯ module - Add a module with VueX store and routes 
   connected - Add a VueX connected component 
 
 ```

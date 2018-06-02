@@ -53,7 +53,7 @@ If you look for an easier way to get started with Vue and Webpack,
 
 ## Todo
 
-This is an every evolving project,
+This is an ever-evolving project,
 if you want to help or you have an idea how to improve this project - 
 **feel free to file an [issue](https://github.com/devCrossNet/vue-starter/issues)**
 
