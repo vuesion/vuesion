@@ -57,7 +57,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 * Make your changes in a new git branch:
 
      ```shell
-     git checkout -b my-fix-branch master
+     git checkout -b my-fix-branch next
      ```
 
 * Create your patch, **including appropriate test cases**.
@@ -78,14 +78,14 @@ Before you submit your Pull Request (PR) consider the following guidelines:
     git push origin my-fix-branch
     ```
 
-* In GitHub, send a pull request to `vue-starter:master`.
+* In GitHub, send a pull request to `vue-starter:next`.
 * If we suggest changes then:
   * Make the required updates.
   * Re-run the test suites to ensure tests are still passing.
   * Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
     ```shell
-    git rebase master -i
+    git rebase next -i
     git push -f
     ```
 
@@ -102,10 +102,10 @@ from the main (upstream) repository:
     git push origin --delete my-fix-branch
     ```
 
-* Check out the master branch:
+* Check out the next branch:
 
     ```shell
-    git checkout master -f
+    git checkout next -f
     ```
 
 * Delete the local branch:
@@ -114,10 +114,10 @@ from the main (upstream) repository:
     git branch -D my-fix-branch
     ```
 
-* Update your master with the latest upstream version:
+* Update your next branch with the latest upstream version:
 
     ```shell
-    git pull --ff upstream master
+    git pull --ff upstream next
     ```
 
 ## <a name="rules"></a> Coding Rules
