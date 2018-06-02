@@ -107,16 +107,17 @@
   @import "../../styles";
 
   .vueModal {
-    position:   fixed;
-    top:        $space-unit;
-    left:       $space-unit;
-    bottom:     $space-unit;
-    right:      $space-unit;
-    background: $modal-bg;
-    z-index:    $modal-index;
-    box-shadow: $modal-shadow;
-    padding:    $modal-padding;
-    overflow-y: scroll;
+    position:                   fixed;
+    top:                        $space-unit;
+    left:                       $space-unit;
+    bottom:                     $space-unit;
+    right:                      $space-unit;
+    background:                 $modal-bg;
+    z-index:                    $modal-index;
+    box-shadow:                 $modal-shadow;
+    padding:                    $modal-padding;
+    overflow-y:                 scroll;
+    -webkit-overflow-scrolling: touch;
 
     @include media(tabletPortrait) {
       width:       $modal-max-width;
