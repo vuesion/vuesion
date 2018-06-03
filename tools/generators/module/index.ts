@@ -3,7 +3,7 @@ import { folderExists }                                          from '../utils'
 import { addModuleToRoutes, addModuleToState, addModuleToStore } from '../ast';
 
 export = {
-  description: 'Add a module with vuex store and routes',
+  description: 'Add a module with VueX store and routes',
   prompts:     [
     {
       type:     'input',
