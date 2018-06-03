@@ -164,6 +164,7 @@ Must be one of the following:
 * **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing
   semi-colons, etc)
 * **test**: Adding missing tests or correcting existing tests
+* **chore**: Maintenance
 
 ### Scope
 The scope should be the name of the module affected as perceived by the person reading changelog generated from the commit messages.
