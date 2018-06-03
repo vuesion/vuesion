@@ -1,5 +1,3 @@
-/* tslint:disable:no-console */
-
 import * as winston             from 'winston';
 import axios, { AxiosResponse } from 'axios';
 import * as fs                  from 'fs';
@@ -15,18 +13,17 @@ interface IConfig {
   currentTag: string;
 }
 
-const Logger: winston.LoggerInstance =
-  new winston.Logger({
-                       transports:  [
-                         new winston.transports.Console({
-                                                          level:            'debug',
-                                                          handleExceptions: true,
-                                                          json:             false,
-                                                          colorize:         true,
-                                                        }),
-                       ],
-                       exitOnError: false,
-                     });
+const Logger: winston.LoggerInstance = new winston.Logger({
+                                                            transports:  [
+                                                              new winston.transports.Console({
+                                                                                               level:            'debug',
+                                                                                               handleExceptions: true,
+                                                                                               json:             false,
+                                                                                               colorize:         true,
+                                                                                             }),
+                                                            ],
+                                                            exitOnError: false,
+                                                          });
 const vueStarterRepo: string = 'https://api.github.com/repos/devCrossNet/vue-starter';
 const configPath: string = path.join(path.resolve(__dirname), '.update.json');
 
@@ -55,12 +52,13 @@ async function update() {
   diffFiles.forEach((diffFile: IFile) => {
     const dest: string = path.join(path.resolve(__dirname), '..', '..', diffFile.filename);
     const url: string = `https://raw.githubusercontent.com/devCrossNet/vue-starter/feat/runtime-config/${diffFile.filename}`;
-    const file = fs.createWriteStream(dest);
 
     if (diffFile.status === 'deleted') {
       fs.unlinkSync(dest);
       Logger.info(`${diffFile.status}: ${dest}`);
     } else {
+      const file = fs.createWriteStream(dest);
+
       https.get(url, (response: any) => {
         response.pipe(file);
 
@@ -69,7 +67,7 @@ async function update() {
           Logger.info(`${diffFile.status}: ${dest}`);
         });
       }).on('error', () => {
-        fs.unlink(dest, null);
+        fs.unlinkSync(dest);
       });
     }
   });
