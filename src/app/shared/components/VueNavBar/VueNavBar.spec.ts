@@ -1,6 +1,6 @@
-import { createLocalVue, mount } from '@vue/test-utils';
-import VueNavBar                 from './VueNavBar.vue';
-import { EventBus }              from '../../services/EventBus';
+import { createLocalVue, mount, RouterLinkStub } from '@vue/test-utils';
+import VueNavBar                                 from './VueNavBar.vue';
+import { EventBus }                              from '../../services/EventBus';
 
 const localVue = createLocalVue();
 
@@ -99,6 +99,21 @@ describe('VueNavBar.vue', () => {
     EventBus.$emit('navbar.close');
 
     // Navbar should now be closed:
+    expect(wrapper.vm.isOpen).toBeFalsy();
+  });
+
+  test('should close navbar when brand logo is clicked', () => {
+    const wrapper = mount(VueNavBar, {
+      localVue,
+      stubs: {
+        RouterLink: RouterLinkStub,
+      },
+    }) as any;
+
+    wrapper.find(`.hamburger`).trigger('click');
+    expect(wrapper.vm.isOpen).toBeTruthy();
+
+    wrapper.find('a').trigger('click');
     expect(wrapper.vm.isOpen).toBeFalsy();
   });
 });
