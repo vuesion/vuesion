@@ -33,6 +33,36 @@ if (fs.existsSync(configPath) === false) {
 }
 
 const updateConfig: IConfig = JSON.parse(fs.readFileSync(configPath).toString());
+const deleteFile = (status: string, filePath: string) => {
+  try {
+    fs.unlinkSync(filePath);
+    Logger.info(`${status}: ${filePath}`);
+  } catch (e) {
+    Logger.error(e.message);
+  }
+};
+const renameFile = (status: string, oldPath: string, newPath: string) => {
+  try {
+    fs.renameSync(oldPath, newPath);
+    Logger.info(`${status}: ${oldPath} --> ${newPath}`);
+  } catch (e) {
+    Logger.error(e.message);
+  }
+};
+const downloadFile = (status: string, fielPath: string, url: string) => {
+  const file = fs.createWriteStream(fielPath);
+
+  https.get(url, (response: any) => {
+    response.pipe(file);
+
+    file.on('finish', () => {
+      file.close();
+      Logger.info(`${status}: ${fielPath}`);
+    });
+  }).on('error', () => {
+    deleteFile(status, fielPath);
+  });
+};
 
 async function update() {
   const tagsResponse: AxiosResponse<any> = await axios.get(`${vueStarterRepo}/tags`);
@@ -55,24 +85,14 @@ async function update() {
     const url: string = `https://raw.githubusercontent.com/devCrossNet/vue-starter/master/${diffFile.filename}`;
 
     if (diffFile.status === 'removed') {
-      fs.unlinkSync(dest);
-      Logger.info(`${diffFile.status}: ${dest}`);
+      deleteFile(diffFile.status, dest);
     } else if (diffFile.status === 'renamed') {
-      fs.renameSync(path.join(path.resolve(__dirname), '..', '..', diffFile.previous_filename), dest);
-      Logger.info(`${diffFile.status}: ${dest}`);
+      renameFile(
+        diffFile.status,
+        path.join(path.resolve(__dirname), '..', '..', diffFile.previous_filename),
+        dest);
     } else {
-      const file = fs.createWriteStream(dest);
-
-      https.get(url, (response: any) => {
-        response.pipe(file);
-
-        file.on('finish', () => {
-          file.close();
-          Logger.info(`${diffFile.status}: ${dest}`);
-        });
-      }).on('error', () => {
-        fs.unlinkSync(dest);
-      });
+      downloadFile(diffFile.status, dest, url);
     }
   });
 
