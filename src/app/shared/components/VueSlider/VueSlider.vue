@@ -19,11 +19,16 @@
         :aria-valuemax="max"
         :aria-valuemin="min"
         :aria-valuenow="currentMin"
+        :disabled="disabled"
         aria-disabled="false"
         role="slider"
         tabindex="0"
         type="button"
-        aria-label="left handle" />
+        aria-label="left handle"
+        @click="currentSlider = 0"
+        @focus="currentSlider = 0"
+        @keydown="onKeyDown"
+        @keyup="onKeyUp" />
 
       <button v-if="isMultiRange"
               :class="handleCssClasses(1)"
@@ -31,11 +36,16 @@
               :aria-valuemax="max"
               :aria-valuemin="min"
               :aria-valuenow="currentMax"
+              :disabled="disabled"
               aria-disabled="false"
               role="slider"
               tabindex="0"
               type="button"
-              aria-label="right handle" />
+              aria-label="right handle"
+              @click="currentSlider = 1"
+              @focus="currentSlider = 1"
+              @keydown="onKeyDown"
+              @keyup="onKeyUp" />
 
     </div>
   </div>
@@ -194,6 +204,36 @@
         }
 
         return classes;
+      },
+      onKeyDown(e: any) {
+        const valueId: string = this.currentSlider === 0 ? 'currentMin' : 'currentMax';
+        const padding: number = this.isMultiRange ? 1 : 0;
+        let value: number = this[valueId];
+
+        if (e.code === 'ArrowLeft') {
+          value = value - 5;
+        } else if (e.code === 'ArrowRight') {
+          value = value + 5;
+        }
+
+        if (value < this.min) {
+          this.currentMin = this.min;
+          return;
+        } else if (value > this.max) {
+          this.currentMax = this.max;
+          return;
+        }
+
+        if (valueId === 'currentMin' && value >= this.currentMax - padding) {
+          this[valueId] = this.currentMax - padding;
+        } else if (valueId === 'currentMax' && value <= this.currentMin + padding) {
+          this[valueId] = this.currentMin + padding;
+        } else {
+          this[valueId] = value;
+        }
+      },
+      onKeyUp() {
+        this.$emit('change', { values: [this.currentMin, this.currentMax] });
       },
     },
     mounted() {
