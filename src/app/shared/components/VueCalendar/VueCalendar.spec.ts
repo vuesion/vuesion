@@ -154,4 +154,17 @@ describe('VueCalendar.vue', () => {
     expect(wrapper.findAll(`.selectedDay`)).toHaveLength(2);
   });
 
+  test('should render 31. may 2018', () => {
+    const wrapper = mount(VueCalendar, {
+      localVue,
+      i18n,
+      propsData: {
+        today:        new Date(2018, 4, 31),
+        selectedDate: new Date(2018, 5, 2),
+      },
+    });
+
+    expect(wrapper.findAll(`.currentDay`)).toHaveLength(0);
+  });
+
 });
