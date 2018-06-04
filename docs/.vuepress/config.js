@@ -66,6 +66,7 @@ module.exports = {
                 'guide/build',
                 'guide/config',
                 'guide/contribute',
+                'guide/update',
               ],
             },
             {
