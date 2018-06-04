@@ -7,6 +7,7 @@ import * as https               from 'https';
 interface IFile {
   filename: string;
   status: string;
+  previous_filename: string;
 }
 
 interface IConfig {
@@ -51,10 +52,13 @@ async function update() {
 
   diffFiles.forEach((diffFile: IFile) => {
     const dest: string = path.join(path.resolve(__dirname), '..', '..', diffFile.filename);
-    const url: string = `https://raw.githubusercontent.com/devCrossNet/vue-starter/feat/runtime-config/${diffFile.filename}`;
+    const url: string = `https://raw.githubusercontent.com/devCrossNet/vue-starter/master/${diffFile.filename}`;
 
-    if (diffFile.status === 'deleted') {
+    if (diffFile.status === 'removed') {
       fs.unlinkSync(dest);
+      Logger.info(`${diffFile.status}: ${dest}`);
+    } else if (diffFile.status === 'renamed') {
+      fs.renameSync(path.join(path.resolve(__dirname), '..', '..', diffFile.previous_filename), dest);
       Logger.info(`${diffFile.status}: ${dest}`);
     } else {
       const file = fs.createWriteStream(dest);
