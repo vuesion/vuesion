@@ -1,6 +1,6 @@
 # AppConfig and RuntimeConfig
 
-You will probably come into a situation where you have to change the behavior of our app depending on your
+You will probably come into a situation where you have to change the behavior of our app depending on the
 deployment stage _(e.g. you want to have a different API endpoint in development than in production)_.
 
 ## AppConfig for different Environments
