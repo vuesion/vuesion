@@ -52,4 +52,31 @@ describe('VueDatePicker.vue', () => {
     expect(wrapper.emitted('change')).toBeTruthy();
   });
 
+  test('should open calendar on focus', () => {
+    const wrapper = mount(VueDatePicker, {
+      localVue,
+      i18n,
+    }) as any;
+
+    expect(wrapper.vm.show).toBeFalsy();
+
+    wrapper.find('input').trigger('focus');
+    expect(wrapper.vm.show).toBeTruthy();
+  });
+
+  test('should blur on focus', () => {
+    const wrapper = mount(VueDatePicker, {
+      localVue,
+      i18n,
+    }) as any;
+
+    const event: any = {
+      currentTarget: {
+        blur: jest.fn(),
+      },
+    };
+
+    wrapper.vm.onFocus(event);
+    expect(event.currentTarget.blur).toHaveBeenCalled();
+  });
 });

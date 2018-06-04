@@ -7,7 +7,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item fill>
-          <router-link :to="to" exact>
+          <router-link :to="to" exact @click.native="isOpen = false">
             <img :class="$style.brand" :src="imageUrl" alt="logo" />
           </router-link>
           <button :class="hamburgerCssClasses" type="button" aria-label="menu" @click="isOpen = !isOpen">

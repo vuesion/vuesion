@@ -7,6 +7,7 @@ import { IServerContext }    from '../isomorphic';
 import { Logger }            from '../utils/Logger';
 import { AppConfig }         from '../../app/config/AppConfig';
 import { isProd, resolve }   from '../utils/Utils';
+import { RuntimeConfig }     from '../utils/RuntimeConfig';
 
 let renderer: BundleRenderer;
 
@@ -77,7 +78,7 @@ export const SSRRoutes = (app: Express.Application): any => {
         cookies:        req.cookies,
         acceptLanguage: defaultLang,
         htmlLang:       defaultLang.substr(0, 2),
-        appConfig:      AppConfig,
+        appConfig:      RuntimeConfig(AppConfig, req),
         redirect,
       };
 
