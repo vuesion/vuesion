@@ -7,7 +7,7 @@ export const HttpService = axios.create();
 HttpService.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     // TODO: get token from store e.g. const token: string = store.state.auth.accessToken;
-    const token: string = 'accessToken';
+    const token: string = '';
     const baseUrl: string = store.state.app.config ? store.state.app.config.api.baseUrl : '';
     const isExternal: boolean = config.url.indexOf('://') > -1 && config.url.indexOf('i18n') === -1;
 

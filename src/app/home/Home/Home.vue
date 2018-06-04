@@ -1,6 +1,7 @@
 <template>
   <div :class="$style.home">
-    <stage />
+    <stage
+      :disable-particles="disableParticles" />
     <dev-ex />
     <enterprise-ready />
     <user-experience />
@@ -9,11 +10,13 @@
 </template>
 
 <script lang="ts">
+  import { mapState }    from 'vuex';
   import Stage           from '../Stage/Stage';
   import DevEx           from '../DevEx/DevEx';
   import EnterpriseReady from '../EnterpriseReady/EnterpriseReady';
   import UserExperience  from '../UserExperience/UserExperience';
   import QuickStart      from '../QuickStart/QuickStart';
+  import { IState }      from '../../state';
 
   export default {
     metaInfo:   {
@@ -68,7 +71,11 @@
       UserExperience,
       QuickStart,
     },
-    computed:   {},
+    computed:   {
+      ...mapState({
+                    disableParticles: (state: IState) => state.app.config.features.disableParticles,
+                  }),
+    },
   };
 </script>
 

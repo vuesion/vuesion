@@ -38,6 +38,7 @@
     "build": "concurrently \"npm run build:client\" \"npm run build:isomorphic\" \"npm run build:server\"",
     "analyze-bundle": "cross-env ANALYZE=true npm run build:client",
     "extract-i18n-messages": "npm run compile-tools && node ./tools/scripts/extract-i18n-messages.js",
+    "update": "npm run compile-tools && node ./tools/scripts/update.js",
     "generate": "npm run compile-tools && plop --plopfile ./tools/generators/index.js",
     "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'chore: update changelog' && npm version major && git push origin && git push origin --tags",
     "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'chore: update changelog' && npm version minor && git push origin && git push origin --tags",
