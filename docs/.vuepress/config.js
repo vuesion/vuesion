@@ -64,7 +64,9 @@ module.exports = {
                 'guide/styles',
                 'guide/vuex',
                 'guide/build',
+                'guide/config',
                 'guide/contribute',
+                'guide/update',
               ],
             },
             {

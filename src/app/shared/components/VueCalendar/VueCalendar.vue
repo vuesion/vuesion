@@ -85,6 +85,11 @@
       VueButton,
     },
     props:      {
+      today:          {
+        type:     Date,
+        required: false,
+        default:  () => new Date(),
+      },
       minDate:        {
         type:     Date,
         required: false,
@@ -120,7 +125,6 @@
 
         const paddingLeft = new Date(this.currentYear, this.currentMonth, 1).getDay() - this.firstDayOfWeek;
         const daysInMonth = 32 - new Date(this.currentYear, this.currentMonth, 32).getDate();
-        const today = new Date();
 
         if (paddingLeft >= 0) {
           days = days.concat(Array(paddingLeft).fill(null));
@@ -135,8 +139,8 @@
         days = days.concat(Array(paddingRight).fill(null));
 
         const dayObjects: IDay[] = days.map((day: number): IDay => {
-          const date: Date = new Date(this.currentYear, this.currentMonth, day);
-          const currentDay: boolean = date.getTime() === new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
+          const date: Date = day ? new Date(this.currentYear, this.currentMonth, day) : new Date(0, 0, 0);
+          const currentDay: boolean = date.getTime() === new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate()).getTime();
           let disabled: boolean = this.dayDisabled(day, date);
           let selected: boolean = date.getTime() === this.calculatedDate.getTime();
 
@@ -256,7 +260,7 @@
         this.selecting = 'date';
       },
       setDate(): void {
-        let date: Date = new Date();
+        let date: Date = this.today;
 
         this.selectedDay = date.getDate();
 
