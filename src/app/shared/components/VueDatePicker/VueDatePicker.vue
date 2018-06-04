@@ -8,7 +8,8 @@
       :required="required"
       :disabled="disabled"
       :readonly="readonly"
-      :message="message" />
+      :message="message"
+      @focus="onFocus" />
     <vue-modal :show="show" :fit-content="true" @close="show = false">
       <vue-calendar
         :min-date="minDate"
@@ -112,6 +113,10 @@
       },
     },
     methods:    {
+      onFocus(e: any) {
+        e.currentTarget.blur();
+        this.show = true;
+      },
       onChange(date: Date): void {
         this.selectedDate = date;
         this.$emit('change', this.selectedDate);
