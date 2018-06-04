@@ -2,7 +2,11 @@
 
 ::: tip Below version < 1.1.0
 Please download the file [./tools/scripts/update.ts](https://github.com/devCrossNet/vue-starter/blob/master/tools/scripts/update.ts)
-and copy it to `./tools/scripts/update.ts`.
+, copy it to `./tools/scripts/update.ts` and add the following script to your `package.json`:
+
+```json
+    "update": "npm run compile-tools && node ./tools/scripts/update.js",
+```
 :::
 
 ## Get the latest changes
@@ -34,5 +38,4 @@ If not you might want to update manually by comparing your local copy with the [
 
 ## Major version upgrades
 
-Our vision is to provide upgrade scripts for every major version, they will update the files and
-execute AST operations.
+Our vision is to provide upgrade scripts for every major version, they will update the files and code.
