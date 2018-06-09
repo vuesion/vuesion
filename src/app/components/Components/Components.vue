@@ -449,6 +449,24 @@
             @change="onAutocompleteChange" />
         </vue-grid-item>
       </vue-grid-row>
+
+      <vue-grid-row>
+        <vue-grid-item class="vueGridItem">
+          <h2>Text truncate</h2>
+
+          <vue-truncate :lines="2" :duration="500">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et<br />
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet<br />
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+            amet,<br />
+            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,<br />
+            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br />
+            no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </vue-truncate>
+        </vue-grid-item>
+
+        <vue-grid-item class="vueGridItem"></vue-grid-item>
+      </vue-grid-row>
     </vue-grid>
   </div>
 </template>
@@ -486,6 +504,7 @@
   import VueBadge                           from '../../shared/components/VueBadge/VueBadge';
   import FormExample                        from '../FormExample/FormExample';
   import { IAutocompleteOption }            from '../../shared/components/VueAutocomplete/IAutocompleteOption';
+  import VueTruncate                        from '../../shared/components/VueTruncate/VueTruncate';
 
   export default {
     metaInfo:   {
@@ -534,6 +553,7 @@
       ],
     },
     components: {
+      VueTruncate,
       FormExample,
       VueBadge,
       VueAutocomplete,

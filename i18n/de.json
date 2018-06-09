@@ -32,5 +32,7 @@
   "components.register.submitText": "Registrieren",
   "components.register.subtitle": "Bitte alle benötigten Felder ausfüllen",
   "components.register.terms": "Ich akzeptiere die <a href=\"/terms\">AGBs</a>",
-  "components.register.title": "Registrieren"
+  "components.register.title": "Registrieren",
+  "components.truncate.showLess": "Show less",
+  "components.truncate.showMore": "Show more"
 }
