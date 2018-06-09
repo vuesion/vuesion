@@ -470,6 +470,17 @@
           <vue-carousel :images="images" />
         </vue-grid-item>
       </vue-grid-row>
+
+      <vue-grid-row>
+        <vue-grid-item class="vueGridItem">
+          <h2>DataTable</h2>
+          <vue-data-table
+            :header="dataTableHeader"
+            :data="dataTableData"
+            placeholder="Search"
+            @click="dataTableClick" />
+        </vue-grid-item>
+      </vue-grid-row>
     </vue-grid>
   </div>
 </template>
@@ -509,6 +520,8 @@
   import { IAutocompleteOption }            from '../../shared/components/VueAutocomplete/IAutocompleteOption';
   import VueTruncate                        from '../../shared/components/VueTruncate/VueTruncate';
   import VueCarousel                        from '../../shared/components/VueCarousel/VueCarousel';
+  import VueDataTable                                     from '../../shared/components/VueDataTable/VueDataTable';
+  import { dataTableDataFixture, dataTableHeaderFixture } from '../../shared/components/VueDataTable/DataTableFixtures';
 
   export default {
     metaInfo:   {
@@ -557,6 +570,7 @@
       ],
     },
     components: {
+      VueDataTable,
       VueCarousel,
       VueTruncate,
       FormExample,
@@ -663,6 +677,8 @@
             url:       'https://images.unsplash.com/photo-1492970471430-bc6bd7eb2b13?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9893bc89e46e2b77a5d8c091fbba04e9&auto=format&fit=crop&w=2710&q=80',
           },
         ],
+        dataTableHeader:     dataTableHeaderFixture,
+        dataTableData:       dataTableDataFixture,
       };
     },
     methods:    {
@@ -687,7 +703,6 @@
         console.log(option);
         this.selectedOption = option;
       },
-      /* istanbul ignore next */
       onRequest(query: string, shouldReturn: boolean = true) {
         this.autocompleteLoading = true;
 
@@ -710,6 +725,9 @@
       },
       onAutocompleteChange(option: IAutocompleteOption) {
         console.log(option);
+      },
+      dataTableClick(row: any) {
+        console.log(row);
       },
     },
   };

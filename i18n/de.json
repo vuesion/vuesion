@@ -15,6 +15,7 @@
   "components.calendar.thursday.short": "D",
   "components.calendar.tuesday.short": "D",
   "components.calendar.wednesday.short": "M",
+  "components.dataTable.noResults": "No results found!",
   "components.formExample.zipCode.error": "Please enter a Number",
   "components.markdown": "### Markdown support\n - build on top of marked\n - server side rendering!!!\n - `github style` markdown",
   "components.pagination.next": "Next",

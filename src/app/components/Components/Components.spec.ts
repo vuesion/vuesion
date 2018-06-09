@@ -22,6 +22,7 @@ describe('Components.vue', () => {
     wrapper.vm.onRequest('foo');
     wrapper.vm.onRequest('foo', false);
     wrapper.vm.onAutocompleteChange();
+    wrapper.vm.dataTableClick();
 
     expect(wrapper.find('h1').text()).toBe('Components');
   });
