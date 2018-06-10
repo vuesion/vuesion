@@ -65,6 +65,14 @@ press two more times `enter` and you will see that the CLI generated a few files
 
 You will also see that the CLI already referenced the new files in the necessary places: `./src/app/router.ts`, `./src/app/state.ts` and `./src/app/store.ts`.
 
+::: tip Name can include path
+The name of a `module`, `connected` or `component` can be prefixed with a path.
+
+For example `counter/MyNewComponent` will create a component inside the module `counter`.
+
+**A `connected` component for example has to be prefixed with a path because it only can live inside a module.**
+:::
+
 ## Verification
 
 Go to [http://localhost:3000/foo](http://localhost:3000/foo) and you should see the `Counter` example again (this is the default blueprint for modules).
