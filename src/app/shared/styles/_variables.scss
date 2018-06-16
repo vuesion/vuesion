@@ -349,3 +349,19 @@ $badge-accent-bg: $button-accent-bg;
 
 $badge-warn-color: $button-warn-color;
 $badge-warn-bg: $button-warn-bg;
+
+/* Carousel */
+
+$carousel-min-height: 500px;
+$carousel-transition: opacity $transition-duration * 4 ease-in-out;
+$carousel-copyright-color: $text-color;
+$carousel-copyright-bottom: $space-unit * 2;
+$carousel-copyright-left: $space-unit * 2;
+$carousel-copyright-shadow: 0 0 3px $bg-color;
+$carousel-copyright-font-size: 75%;
+$carousel-indicator-bottom: 0;
+$carousel-indicator-size: $space-unit;
+$carousel-indicator-space: $space-unit;
+$carousel-indicator-shadow: $panel-shadow;
+$carousel-indicator-bg: $bg-color-inverse;
+$carousel-indicator-active-bg: $brand-accent
