@@ -15,6 +15,7 @@
   "components.calendar.thursday.short": "D",
   "components.calendar.tuesday.short": "D",
   "components.calendar.wednesday.short": "M",
+  "components.dataTable.noResults": "No results found!",
   "components.formExample.zipCode.error": "Please enter a Number",
   "components.markdown": "### Markdown support\n - build on top of marked\n - server side rendering!!!\n - `github style` markdown",
   "components.pagination.next": "Next",
@@ -32,5 +33,7 @@
   "components.register.submitText": "Registrieren",
   "components.register.subtitle": "Bitte alle benötigten Felder ausfüllen",
   "components.register.terms": "Ich akzeptiere die <a href=\"/terms\">AGBs</a>",
-  "components.register.title": "Registrieren"
+  "components.register.title": "Registrieren",
+  "components.truncate.showLess": "Show less",
+  "components.truncate.showMore": "Show more"
 }
