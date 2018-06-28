@@ -480,48 +480,75 @@
             placeholder="Search"
             @click="dataTableClick" />
         </vue-grid-item>
+
+        <vue-grid-item class="vueGridItem">
+          <h2>Toggle</h2>
+          <vue-toggle
+            name="toggle"
+            id="toggle"
+            v-model="toggle"
+            label="toggle me!"
+          />
+          <br />
+          <vue-toggle
+            :disabled="true"
+            name="toggle2"
+            id="toggle2"
+            v-model="toggle"
+            label="toggle me!"
+          />
+        </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
   </div>
 </template>
 
 <script lang="ts">
-  import VueGrid                            from '../../shared/components/VueGrid/VueGrid.vue';
-  import VueGridItem                        from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VueButton                          from '../../shared/components/VueButton/VueButton.vue';
-  import VueLoader                          from '../../shared/components/VueLoader/VueLoader.vue';
-  import VuePanel                           from '../../shared/components/VuePanel/VuePanel.vue';
-  import VuePanelHeader                     from '../../shared/components/VuePanel/VuePanelHeader/VuePanelHeader.vue';
-  import VuePanelBody                       from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
-  import VuePanelFooter                     from '../../shared/components/VuePanel/VuePanelFooter/VuePanelFooter.vue';
-  import VueInput                           from '../../shared/components/VueInput/VueInput.vue';
-  import VueCollapse                        from '../../shared/components/VueCollapse/VueCollapse.vue';
-  import VueModal                           from '../../shared/components/VueModal/VueModal.vue';
-  import VueTabGroup                        from '../../shared/components/VueTabGroup/VueTabGroup.vue';
-  import VueTabItem                         from '../../shared/components/VueTabGroup/VueTabItem/VueTabItem.vue';
-  import VueCheckbox                        from '../../shared/components/VueCheckbox/VueCheckbox.vue';
-  import VueTooltip                         from '../../shared/components/VueTooltip/VueTooltip.vue';
-  import VueSlider                          from '../../shared/components/VueSlider/VueSlider.vue';
-  import VueAccordion                       from '../../shared/components/VueAccordion/VueAccordion.vue';
+  import VueGrid                                          from '../../shared/components/VueGrid/VueGrid.vue';
+  import VueGridItem                                      from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VueButton                                        from '../../shared/components/VueButton/VueButton.vue';
+  import VueLoader                                        from '../../shared/components/VueLoader/VueLoader.vue';
+  import VuePanel                                         from '../../shared/components/VuePanel/VuePanel.vue';
+  import VuePanelHeader
+                                                          from '../../shared/components/VuePanel/VuePanelHeader/VuePanelHeader.vue';
+  import VuePanelBody
+                                                          from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
+  import VuePanelFooter
+                                                          from '../../shared/components/VuePanel/VuePanelFooter/VuePanelFooter.vue';
+  import VueInput                                         from '../../shared/components/VueInput/VueInput.vue';
+  import VueCollapse                                      from '../../shared/components/VueCollapse/VueCollapse.vue';
+  import VueModal                                         from '../../shared/components/VueModal/VueModal.vue';
+  import VueTabGroup                                      from '../../shared/components/VueTabGroup/VueTabGroup.vue';
+  import VueTabItem
+                                                          from '../../shared/components/VueTabGroup/VueTabItem/VueTabItem.vue';
+  import VueCheckbox                                      from '../../shared/components/VueCheckbox/VueCheckbox.vue';
+  import VueTooltip                                       from '../../shared/components/VueTooltip/VueTooltip.vue';
+  import VueSlider                                        from '../../shared/components/VueSlider/VueSlider.vue';
+  import VueAccordion                                     from '../../shared/components/VueAccordion/VueAccordion.vue';
   import VueAccordionItem
-                                            from '../../shared/components/VueAccordion/VueAccordionItem/VueAccordionItem.vue';
-  import VuePagination                      from '../../shared/components/VuePagination/VuePagination.vue';
-  import VueSelect                          from '../../shared/components/VueSelect/VueSelect.vue';
-  import VueCalendar                        from '../../shared/components/VueCalendar/VueCalendar.vue';
-  import VueDatePicker                      from '../../shared/components/VueDatePicker/VueDatePicker.vue';
-  import VueDateRangePicker                 from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
-  import { addNotification, INotification } from '../../shared/components/VueNotificationStack/utils';
-  import VueMarkdown                        from '../../shared/components/VueMarkdown/VueMarkdown';
-  import VueGridRow                         from '../../shared/components/VueGridRow/VueGridRow';
-  import VueAutocomplete                    from '../../shared/components/VueAutocomplete/VueAutocomplete';
-  import { AutocompleteOptionsFixture }     from '../../shared/components/VueAutocomplete/fixtures/IAutocompleteFixture';
-  import VueBadge                           from '../../shared/components/VueBadge/VueBadge';
-  import FormExample                        from '../FormExample/FormExample';
-  import { IAutocompleteOption }            from '../../shared/components/VueAutocomplete/IAutocompleteOption';
-  import VueTruncate                        from '../../shared/components/VueTruncate/VueTruncate';
-  import VueCarousel                        from '../../shared/components/VueCarousel/VueCarousel';
+                                                          from '../../shared/components/VueAccordion/VueAccordionItem/VueAccordionItem.vue';
+  import VuePagination
+                                                          from '../../shared/components/VuePagination/VuePagination.vue';
+  import VueSelect                                        from '../../shared/components/VueSelect/VueSelect.vue';
+  import VueCalendar                                      from '../../shared/components/VueCalendar/VueCalendar.vue';
+  import VueDatePicker
+                                                          from '../../shared/components/VueDatePicker/VueDatePicker.vue';
+  import VueDateRangePicker
+                                                          from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
+  import { addNotification, INotification }               from '../../shared/components/VueNotificationStack/utils';
+  import VueMarkdown                                      from '../../shared/components/VueMarkdown/VueMarkdown';
+  import VueGridRow                                       from '../../shared/components/VueGridRow/VueGridRow';
+  import VueAutocomplete
+                                                          from '../../shared/components/VueAutocomplete/VueAutocomplete';
+  import { AutocompleteOptionsFixture }                   from '../../shared/components/VueAutocomplete/fixtures/IAutocompleteFixture';
+  import VueBadge                                         from '../../shared/components/VueBadge/VueBadge';
+  import FormExample                                      from '../FormExample/FormExample';
+  import { IAutocompleteOption }                          from '../../shared/components/VueAutocomplete/IAutocompleteOption';
+  import VueTruncate                                      from '../../shared/components/VueTruncate/VueTruncate';
+  import VueCarousel                                      from '../../shared/components/VueCarousel/VueCarousel';
   import VueDataTable                                     from '../../shared/components/VueDataTable/VueDataTable';
   import { dataTableDataFixture, dataTableHeaderFixture } from '../../shared/components/VueDataTable/DataTableFixtures';
+  import VueToggle                                        from '../../shared/components/VueToggle/VueToggle';
 
   export default {
     metaInfo:   {
@@ -570,6 +597,7 @@
       ],
     },
     components: {
+      VueToggle,
       VueDataTable,
       VueCarousel,
       VueTruncate,
@@ -679,6 +707,7 @@
         ],
         dataTableHeader:     dataTableHeaderFixture,
         dataTableData:       dataTableDataFixture,
+        toggle:              false,
       };
     },
     methods:    {

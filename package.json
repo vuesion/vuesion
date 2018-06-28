@@ -62,6 +62,7 @@
     "build-storybook": "build-storybook"
   },
   "jest": {
+    "verbose": true,
     "globals": {
       "window": true
     },
