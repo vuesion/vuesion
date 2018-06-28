@@ -23,7 +23,7 @@ describe('VueTabGroup.vue', () => {
     });
 
     (tabWrapper as any).vm.$parent = wrapper.vm;
-    (tabWrapper as any).vm.$options.created['1'].call(tabWrapper.vm);
+    (tabWrapper as any).vm.$options.created['2'].call(tabWrapper.vm);
 
     expect(wrapper.findAll('li')).toHaveLength(1);
     expect(wrapper.find('li').text()).toMatch('foo');
@@ -54,10 +54,10 @@ describe('VueTabGroup.vue', () => {
     });
 
     (tabWrapper as any).vm.$parent = wrapper.vm;
-    (tabWrapper as any).vm.$options.created['1'].call(tabWrapper.vm);
+    (tabWrapper as any).vm.$options.created['2'].call(tabWrapper.vm);
 
     (tabWrapper2 as any).vm.$parent = wrapper.vm;
-    (tabWrapper2 as any).vm.$options.created['1'].call(tabWrapper2.vm);
+    (tabWrapper2 as any).vm.$options.created['2'].call(tabWrapper2.vm);
 
     expect(wrapper.findAll('li')).toHaveLength(2);
 

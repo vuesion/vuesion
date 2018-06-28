@@ -14,17 +14,19 @@ interface IConfig {
   currentTag: string;
 }
 
-const Logger: winston.LoggerInstance = new winston.Logger({
-                                                            transports:  [
-                                                              new winston.transports.Console({
-                                                                                               level:            'debug',
-                                                                                               handleExceptions: true,
-                                                                                               json:             false,
-                                                                                               colorize:         true,
-                                                                                             }),
-                                                            ],
-                                                            exitOnError: false,
-                                                          });
+const Logger: winston.Logger = winston.createLogger({
+                                                      transports:  [
+                                                        new winston.transports.Console({
+                                                                                         level:            'debug',
+                                                                                         handleExceptions: true,
+                                                                                         format:           winston.format.combine(
+                                                                                           winston.format.colorize(),
+                                                                                           winston.format.simple(),
+                                                                                         ),
+                                                                                       }),
+                                                      ],
+                                                      exitOnError: false,
+                                                    });
 const vueStarterRepo: string = 'https://api.github.com/repos/devCrossNet/vue-starter';
 const configPath: string = path.join(path.resolve(__dirname), '.update.json');
 

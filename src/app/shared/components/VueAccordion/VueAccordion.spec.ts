@@ -25,7 +25,7 @@ describe('VueAccordion.vue', () => {
     expect((wrapper as any).vm.items).toHaveLength(0);
 
     (accordionItemWrapper as any).vm.$parent = wrapper.vm;
-    (accordionItemWrapper as any).vm.$options.created['1'].call(accordionItemWrapper.vm);
+    (accordionItemWrapper as any).vm.$options.created['2'].call(accordionItemWrapper.vm);
 
     expect((wrapper as any).vm.items).toHaveLength(1);
 
@@ -50,7 +50,7 @@ describe('VueAccordion.vue', () => {
     expect((wrapper as any).vm.items).toHaveLength(0);
 
     (accordionItemWrapper as any).vm.$parent = wrapper.vm;
-    (accordionItemWrapper as any).vm.$options.created['1'].call(accordionItemWrapper.vm);
+    (accordionItemWrapper as any).vm.$options.created['2'].call(accordionItemWrapper.vm);
 
     expect((wrapper as any).vm.items).toHaveLength(1);
 
