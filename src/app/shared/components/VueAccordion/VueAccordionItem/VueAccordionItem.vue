@@ -59,7 +59,7 @@
       },
     },
     created() {
-      if (this.$parent) {
+      if (this.$parent.register) {
         this.$parent.register(this);
       }
     },

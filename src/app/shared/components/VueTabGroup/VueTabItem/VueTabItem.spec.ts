@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import VueTabItem                from './VueTabItem.vue';
 
 const localVue = createLocalVue();
@@ -19,11 +19,9 @@ describe('VueTab.vue', () => {
 
     expect(wrapper.findAll('p')).toHaveLength(0);
 
-    (wrapper as any).vm.$parent = {
-      register: jest.fn(),
-    };
+    (wrapper as any).vm.$parent.register = jest.fn();
 
-    (wrapper as any).vm.$options.created['1'].call(wrapper.vm);
+    (wrapper as any).vm.$options.created['2'].call(wrapper.vm);
 
     expect((wrapper as any).vm.$parent.register).toHaveBeenCalledTimes(1);
 

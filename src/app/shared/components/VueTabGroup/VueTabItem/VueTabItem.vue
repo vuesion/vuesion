@@ -16,11 +16,11 @@
   export default {
     name:     'VueTabItem',
     props:    {
-      title:    {
+      title: {
         type:     String,
         required: true,
       },
-      icon:     {
+      icon:  {
         type:     String,
         required: true,
       },
@@ -80,7 +80,7 @@
       },
     },
     created() {
-      if (this.$parent) {
+      if (this.$parent.register) {
         this.$parent.register(this);
       }
     },

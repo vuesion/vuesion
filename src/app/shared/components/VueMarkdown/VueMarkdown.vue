@@ -31,13 +31,10 @@
       createHTML() {
         let text: string = '';
 
-        if (this.$slots.default) {
-          this.$slots.default.forEach((slot: VNode) => {
-            text += `${slot.text}\n`;
-          });
-        }
-
-        text = text.trim().replace(/\n /g, '\n');
+        this.$slots.default.forEach((slot: VNode) => {
+          slot.text = slot.text.trim().replace(/\n /g, '\n');
+          text += `${slot.text}\n`;
+        });
 
         this.html = (marked as any)(text);
       },

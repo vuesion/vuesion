@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import VueMarkdown               from './VueMarkdown.vue';
 
 const localVue = createLocalVue();
@@ -9,7 +9,7 @@ describe('VueMarkdown.vue', () => {
     const wrapper = mount(VueMarkdown, {
       localVue,
       slots: {
-        default: ['# foo', '## bar\n ### baz'],
+        default: ['# foo\n ## bar\n ### baz', ''],
       },
     });
 

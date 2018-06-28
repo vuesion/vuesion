@@ -31,7 +31,7 @@ describe('Stage.vue', () => {
       };
     };
 
-    wrapper.vm.$mount();
+    (wrapper as any).vm.handleResize();
   });
 
   test('adds and removes resize listeners', () => {
