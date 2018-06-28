@@ -1,10 +1,20 @@
 <template>
   <div :class="$style.vuePagination">
-    <div :class="prevCssClasses" role="button" aria-label="$t('components.pagination.previous' /* Previous */)" @click="prevClick"></div>
+    <div :class="prevCssClasses"
+         role="button"
+         tabindex="0"
+         aria-label="$t('components.pagination.previous' /* Previous */)"
+         @click="prevClick"
+         @keypress="prevClick"></div>
     <div :class="$style.label">
       {{current}} / {{pages}}
     </div>
-    <div :class="nextCssClasses" role="button" aria-label="$t('components.pagination.next' /* Next */)" @click="nextClick"></div>
+    <div :class="nextCssClasses"
+         role="button"
+         tabindex="0"
+         aria-label="$t('components.pagination.next' /* Next */)"
+         @click="nextClick"
+         @keypress="nextClick"></div>
   </div>
 </template>
 
