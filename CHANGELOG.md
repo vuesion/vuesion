@@ -1,3 +1,42 @@
+### 1.1.0 (2018-06-30)
+
+##### Chores
+
+*  update dependencies ([#176](https://github.com/devCrossNet/vue-starter/pull/176)) ([cf3a10d7](https://github.com/devCrossNet/vue-starter/commit/cf3a10d78ff53929d75f71503010942943604c30))
+*  update contributing guidelines ([fdc2fee3](https://github.com/devCrossNet/vue-starter/commit/fdc2fee3f3b3062f45daba7bdf4189745bb96f8f))
+*  add version to README.md ([b2ae228a](https://github.com/devCrossNet/vue-starter/commit/b2ae228a7d08f2b3b1d634da75b30f1975549be7))
+* **http-service:**  remove default authorization header ([#156](https://github.com/devCrossNet/vue-starter/pull/156)) ([3d057535](https://github.com/devCrossNet/vue-starter/commit/3d05753500f45d0482d37c84e82f35b39b71c1b7))
+
+##### Documentation Changes
+
+* **cli:**  add hint for paths in names ([#168](https://github.com/devCrossNet/vue-starter/pull/168)) ([a66dfffe](https://github.com/devCrossNet/vue-starter/commit/a66dfffe53c3da62cc32c248cd78d4a7d8f7f4c3))
+* **contributing:**  add "chore" to list of commit message types ([#157](https://github.com/devCrossNet/vue-starter/pull/157)) ([24b6be90](https://github.com/devCrossNet/vue-starter/commit/24b6be90ecf064be1a3165eaaefd27489b274900))
+*  improve wording ([#154](https://github.com/devCrossNet/vue-starter/pull/154)) ([752b946e](https://github.com/devCrossNet/vue-starter/commit/752b946ec232f93777038a28de6e1dc67b43e401))
+
+##### New Features
+
+* **vue-pagination:**  add keyboard navigation ([dc025687](https://github.com/devCrossNet/vue-starter/commit/dc02568782ac39ed8311e11b0c0b54ff427fc3af))
+* **components:**
+  *  add toggle ([#175](https://github.com/devCrossNet/vue-starter/pull/175)) ([43e0b80e](https://github.com/devCrossNet/vue-starter/commit/43e0b80e388aacc56aa78f371e918f84573e39d9))
+  *  add data-table ([#167](https://github.com/devCrossNet/vue-starter/pull/167)) ([05267b4d](https://github.com/devCrossNet/vue-starter/commit/05267b4dd77bb2a564c3ac32f91c703956b3bb24))
+  *  add carousel ([#166](https://github.com/devCrossNet/vue-starter/pull/166)) ([bb12ac04](https://github.com/devCrossNet/vue-starter/commit/bb12ac042573c02ea76d3a637b496c47d8fda050))
+  *  add text truncate component ([#165](https://github.com/devCrossNet/vue-starter/pull/165)) ([27a69d02](https://github.com/devCrossNet/vue-starter/commit/27a69d02efb1972f3d746e8274b3df851e6f470a))
+* **vue-slider:**  accessibility for keyboard users ([#160](https://github.com/devCrossNet/vue-starter/pull/160)) ([7735f9c4](https://github.com/devCrossNet/vue-starter/commit/7735f9c486c74d2d51fe4cbfba2ce13b3d0f004f))
+* **vue-date-picker:**  open calendar on focus ([#159](https://github.com/devCrossNet/vue-starter/pull/159)) ([57a2b148](https://github.com/devCrossNet/vue-starter/commit/57a2b1487dc0cd0fac642b4160665f5caf60c0aa))
+* **scripts:**  add script to update the vue-starter ([#152](https://github.com/devCrossNet/vue-starter/pull/152)) ([f5b53e32](https://github.com/devCrossNet/vue-starter/commit/f5b53e32981a121ff05910a272fb6ce0f31f6122))
+*  add runtime config ([#150](https://github.com/devCrossNet/vue-starter/pull/150)) ([c383f1b1](https://github.com/devCrossNet/vue-starter/commit/c383f1b1c616abeb8995424983d336993ef9a3e6))
+* **vue-modal:**  add smooth scrolling ([c17dbacf](https://github.com/devCrossNet/vue-starter/commit/c17dbacfe80eba77a7703ad9fb0381d71fd84db0))
+
+##### Bug Fixes
+
+* **performance:**  increase http cache time ([f56c0f8e](https://github.com/devCrossNet/vue-starter/commit/f56c0f8e260d88b48e0df2690cabd3eba6052146))
+* **vue-calendar:**  don't display empty days as currentDay ([#158](https://github.com/devCrossNet/vue-starter/pull/158)) ([2663cc82](https://github.com/devCrossNet/vue-starter/commit/2663cc82d4f3909e87f51d295ce96d2a07874c2e))
+* **vue-nav-bar:**  close nav bar on logo click ([#161](https://github.com/devCrossNet/vue-starter/pull/161)) ([e3bb2563](https://github.com/devCrossNet/vue-starter/commit/e3bb256331eb1364c2d12182ccc5e623fbf8fdec))
+
+##### Refactors
+
+* **http-service:**  set store from outside to prevent circular deps ([#169](https://github.com/devCrossNet/vue-starter/pull/169)) ([374f17f9](https://github.com/devCrossNet/vue-starter/commit/374f17f920478444633211ae7b21376d27de9913))
+
 ## 1.0.0 (2018-05-31)
 
 ##### Chores
