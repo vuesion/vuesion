@@ -1,4 +1,4 @@
-import * as winston             from 'winston';
+/* tslint:disable:no-console */
 import axios, { AxiosResponse } from 'axios';
 import * as fs                  from 'fs';
 import * as path                from 'path';
@@ -14,19 +14,6 @@ interface IConfig {
   currentTag: string;
 }
 
-const Logger: winston.Logger = winston.createLogger({
-                                                      transports:  [
-                                                        new winston.transports.Console({
-                                                                                         level:            'debug',
-                                                                                         handleExceptions: true,
-                                                                                         format:           winston.format.combine(
-                                                                                           winston.format.colorize(),
-                                                                                           winston.format.simple(),
-                                                                                         ),
-                                                                                       }),
-                                                      ],
-                                                      exitOnError: false,
-                                                    });
 const vueStarterRepo: string = 'https://api.github.com/repos/devCrossNet/vue-starter';
 const configPath: string = path.join(path.resolve(__dirname), '.update.json');
 
@@ -38,31 +25,42 @@ const updateConfig: IConfig = JSON.parse(fs.readFileSync(configPath).toString())
 const deleteFile = (status: string, filePath: string) => {
   try {
     fs.unlinkSync(filePath);
-    Logger.info(`${status}: ${filePath}`);
+    console.info(`${status}: ${filePath}`);
   } catch (e) {
-    Logger.error(e.message);
+    console.error(e.message);
   }
 };
 const renameFile = (status: string, oldPath: string, newPath: string) => {
   try {
     fs.renameSync(oldPath, newPath);
-    Logger.info(`${status}: ${oldPath} --> ${newPath}`);
+    console.info(`${status}: ${oldPath} --> ${newPath}`);
   } catch (e) {
-    Logger.error(e.message);
+    console.error(e.message);
   }
 };
-const downloadFile = (status: string, fielPath: string, url: string) => {
-  const file = fs.createWriteStream(fielPath);
+const ensureDirectoryExistence = (filePath) => {
+  const dirname = path.dirname(filePath);
+
+  if (fs.existsSync(dirname)) {
+    return true;
+  }
+
+  ensureDirectoryExistence(dirname);
+  fs.mkdirSync(dirname);
+};
+const downloadFile = (status: string, filePath: string, url: string) => {
+  ensureDirectoryExistence(filePath);
+  const file = fs.createWriteStream(filePath);
 
   https.get(url, (response: any) => {
     response.pipe(file);
 
     file.on('finish', () => {
       file.close();
-      Logger.info(`${status}: ${fielPath}`);
+      console.info(`${status}: ${filePath}`);
     });
   }).on('error', () => {
-    deleteFile(status, fielPath);
+    deleteFile(status, filePath);
   });
 };
 
@@ -72,12 +70,12 @@ async function update() {
   const currentTag: string = updateConfig.currentTag;
 
   if (latestTag === currentTag) {
-    Logger.info('your copy of the vue-starter is already up to date!');
+    console.info('your copy of the vue-starter is already up to date!');
     return;
   }
 
-  Logger.info(`update from version: ${currentTag} to version: ${latestTag}`);
-  Logger.info(`==============================================`);
+  console.info(`update from version: ${currentTag} to version: ${latestTag}`);
+  console.info(`==============================================`);
 
   const diffResponse: AxiosResponse<any> = await axios.get(`${vueStarterRepo}/compare/${currentTag}...${latestTag}`);
   const diffFiles: IFile[] = diffResponse.data.files;
