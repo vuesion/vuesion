@@ -7,4 +7,8 @@ describe('AppGetters', () => {
     expect(AppGetters.getLocale(AppDefaultState)).toBe(null);
   });
 
+  test('it should get the cookie consent version', () => {
+    expect(AppGetters.cookieConsentVersion(AppDefaultState)).toBe('');
+  });
+
 });
