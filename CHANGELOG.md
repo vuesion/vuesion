@@ -1,3 +1,9 @@
+#### 1.1.1 (2018-07-07)
+
+##### Bug Fixes
+
+* **update-script:**  remove .update.json and winston, fix folder creation ([6890ddca](https://github.com/devCrossNet/vue-starter/commit/6890ddca69199afede37bd64ee0d5c65578c3b75))
+
 ### 1.1.0 (2018-06-30)
 
 ##### Chores
