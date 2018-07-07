@@ -20,11 +20,11 @@ describe('VueCookieConsent.vue', () => {
                               setCookieConsentVersion,
                             },
                           },
-    );
+    ) as any;
 
     expect(wrapper.text()).toBe('foo');
     expect(wrapper.findAll('.button')).toHaveLength(1);
-    expect(wrapper.findAll('.show')).toHaveLength(1);
+    expect(wrapper.vm.show).toBeTruthy();
 
     wrapper.find('.button').trigger('click');
 
@@ -44,11 +44,11 @@ describe('VueCookieConsent.vue', () => {
                               setCookieConsentVersion: jest.fn(),
                             },
                           },
-    );
+    ) as any;
 
-    expect(wrapper.text()).toBe('foo');
-    expect(wrapper.findAll('.button')).toHaveLength(1);
-    expect(wrapper.findAll('.show')).toHaveLength(0);
+    expect(wrapper.text()).toBe('');
+    expect(wrapper.findAll('.button')).toHaveLength(0);
+    expect(wrapper.vm.show).toBeFalsy();
   });
 
   test('test watchers', () => {
@@ -64,19 +64,17 @@ describe('VueCookieConsent.vue', () => {
                               setCookieConsentVersion: jest.fn(),
                             },
                           },
-    );
+    ) as any;
 
     expect(wrapper.text()).toBe('foo');
     expect(wrapper.findAll('.button')).toHaveLength(1);
-    expect(wrapper.findAll('.show')).toHaveLength(1);
+    expect(wrapper.vm.show).toBeTruthy();
 
     wrapper.setProps({ cookieConsentVersion: '1.1.0' });
-
-    expect(wrapper.findAll('.show')).toHaveLength(0);
+    expect(wrapper.vm.show).toBeFalsy();
 
     wrapper.setProps({ cookieConsentVersion: '1.0.0' });
-
-    expect(wrapper.findAll('.show')).toHaveLength(1);
+    expect(wrapper.vm.show).toBeTruthy();
   });
 
 });

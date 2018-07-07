@@ -1,21 +1,26 @@
 <template>
-  <div :class="cssClasses" ref="cookieConsent">
-    <div :class="$style.content">
-      <slot />
-    </div>
+  <fade-animation>
+      <div :class="$style.vueCookieConsent" v-if="show" ref="cookieConsent">
+        <div :class="$style.content">
+          <slot />
+        </div>
 
-    <div role="button" :class="$style.button" @click="onConsent">
-      <div :class="$style.icon">
-        <i class="fa fa-times" />
+        <div role="button" :class="$style.button" @click="onConsent">
+          <div :class="$style.icon">
+            <i class="fa fa-times" />
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+  </fade-animation>
 </template>
 
 <script lang="ts">
+  import FadeAnimation from '../../animations/FadeAnimation/FadeAnimation';
+
   export default {
-    name:     'VueCookieConsent',
-    props:    {
+    name:       'VueCookieConsent',
+    components: { FadeAnimation },
+    props:      {
       currentVersion:          {
         type:     String,
         required: true,
@@ -29,21 +34,12 @@
         required: true,
       },
     },
-    computed: {
+    computed:   {
       show() {
         return this.currentVersion !== this.cookieConsentVersion;
       },
-      cssClasses() {
-        const classes: string[] = [this.$style.vueCookieConsent];
-
-        if (this.show) {
-          classes.push(this.$style.show);
-        }
-
-        return classes;
-      },
     },
-    methods:  {
+    methods:    {
       onConsent() {
         this.setCookieConsentVersion(this.currentVersion);
       },
@@ -59,11 +55,9 @@
         this.addBodyPadding();
       }
     },
-    watch:    {
+    watch:      {
       show: function (show: boolean) {
-        if (show) {
-          this.addBodyPadding();
-        } else {
+        if (!show){
           this.removeBodyPadding();
         }
       },
@@ -82,7 +76,6 @@
     background-color: $panel-bg;
     width:            100%;
     bottom:           0;
-    opacity:          0;
     transition:       opacity $transition-duration ease-in-out;
     box-shadow:       0 -1px 3px rgba(0, 0, 0, 0.3);
   }
@@ -109,9 +102,5 @@
   .icon {
     flex:       1;
     text-align: center;
-  }
-
-  .show {
-    opacity: 1;
   }
 </style>
