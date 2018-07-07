@@ -182,6 +182,8 @@
     position: absolute;
     right:    24px;
     top:      20px;
+    height:   auto;
+    width:    auto;
 
     &:before, &:after {
       content:          "";

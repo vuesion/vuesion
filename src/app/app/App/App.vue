@@ -6,37 +6,37 @@
       <ul :class="$style.nav">
         <li>
           <a href="/docs" @click.native="navBarClose">
-            <i class="fas fa-book" />
+            <vue-icon-book />
             <small>{{ $t('App.nav.docs' /* Documentation */) }}</small>
           </a>
         </li>
         <li>
           <router-link to="/counter" @click.native="navBarClose">
-            <i class="fas fa-hashtag" />
+            <vue-icon-hashtag />
             <small>{{ $t('App.nav.counter' /* Counter */) }}</small>
           </router-link>
         </li>
         <li>
           <router-link to="/components" @click.native="navBarClose">
-            <i class="fas fa-puzzle-piece" />
+            <vue-icon-puzzle-piece />
             <small>{{ $t('App.nav.components' /* Components */) }}</small>
           </router-link>
         </li>
         <li>
           <a @click="localeSwitch('en')">
-            <i class="fas fa-flag" />
+            <vue-icon-flag />
             <small>{{ $t('App.nav.english' /* English */) }}</small>
           </a>
         </li>
         <li>
           <a @click="localeSwitch('de')">
-            <i class="fas fa-flag" />
+            <vue-icon-flag />
             <small>{{ $t('App.nav.german' /* German */) }}</small>
           </a>
         </li>
         <li>
           <a @click="localeSwitch('pt')">
-            <i class="fas fa-flag" />
+            <vue-icon-flag />
             <small>{{ $t('App.nav.pt-BR' /* Portuguese */) }}</small>
           </a>
         </li>
@@ -67,9 +67,17 @@
   import VueCookieConsent           from '../../shared/components/VueCookieConsent/VueCookieConsent';
   import { loadLocaleAsync }        from '../../shared/plugins/i18n/i18n';
   import { EventBus }               from '../../shared/services/EventBus';
+  import VueIconBook                from '../../shared/components/icons/VueIconBook/VueIconBook';
+  import VueIconHashtag             from '../../shared/components/icons/VueIconHashtag/VueIconHashtag';
+  import VueIconPuzzlePiece         from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece';
+  import VueIconFlag                from '../../shared/components/icons/VueIconFlag/VueIconFlag';
 
   export default {
     components: {
+      VueIconFlag,
+      VueIconPuzzlePiece,
+      VueIconHashtag,
+      VueIconBook,
       VueCookieConsent,
       VueNavBar,
       VueGrid,
@@ -132,22 +140,29 @@
       cursor:     pointer;
 
       a {
-        padding:         $space-unit;
+        padding:         $space-unit * 2;
         display:         block;
         color:           $text-color;
         text-align:      center;
-        font-size:       32px;
         text-decoration: none;
 
         small {
           font-size: 12px;
           display:   block;
         }
+
+        i {
+          height: 32px;
+          width:  32px;
+        }
       }
     }
 
     @include media(tabletLandscape) {
+      margin: 0;
+
       li {
+        margin:     $space-unit;
         opacity:    .8;
         transition: opacity 250ms linear;
 
