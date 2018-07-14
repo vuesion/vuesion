@@ -1,14 +1,19 @@
-import { AppGetters }      from './getters';
-import { AppDefaultState } from './state';
+import { AppGetters }                 from './getters';
+import { AppDefaultState, IAppState } from './state';
 
 describe('AppGetters', () => {
+  let testState: IAppState;
+
+  beforeEach(() => {
+    testState = AppDefaultState();
+  });
 
   test('it should get the locale', () => {
-    expect(AppGetters.getLocale(AppDefaultState)).toBe(null);
+    expect(AppGetters.getLocale(testState)).toBe(null);
   });
 
   test('it should get the cookie consent version', () => {
-    expect(AppGetters.cookieConsentVersion(AppDefaultState)).toBe('');
+    expect(AppGetters.cookieConsentVersion(testState)).toBe('');
   });
 
 });

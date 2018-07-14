@@ -74,6 +74,9 @@ $font-family-headings: 'Oxygen', Helvetica, sans-serif;
 $font-family: 'Lato', Helvetica, sans-serif;
 $space-unit: 0.8rem;
 
+/* Animations */
+$fade-animation-transition: opacity $transition-duration * 4 ease-in-out;
+
 /* Grid */
 $screen-phone: 320px;
 $screen-phone-max: $screen-phone - 1;
@@ -90,6 +93,7 @@ $screen-tablet-portrait-gutter: $space-unit * 2;
 $screen-tablet-landscape-gutter: $space-unit * 2;
 $screen-small-desktop-gutter: $space-unit * 4;
 $screen-large-desktop-gutter: $space-unit * 4;
+
 ```
 
 All the components are dependents of these variables, so everything will look different if you change these values.

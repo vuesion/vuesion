@@ -15,7 +15,9 @@ describe('{{ properCase componentName }}.vue', () => {
                                      {{ camelCase moduleName }}: {
                                        namespaced: true,
                                        getters:    {
-                                         getCount: () => 0,
+                                         count: () => 0,
+                                         incrementPending: () => false,
+                                         decrementPending: () => false,
                                        },
                                        actions:    {
                                          increment: jest.fn(),
@@ -43,7 +45,9 @@ describe('{{ properCase componentName }}.vue', () => {
                                      {{ camelCase moduleName }}: {
                                        namespaced: true,
                                        getters:    {
-                                         getCount: () => 0,
+                                         count: () => 0,
+                                         incrementPending: () => false,
+                                         decrementPending: () => false,
                                        },
                                        actions,
                                      },

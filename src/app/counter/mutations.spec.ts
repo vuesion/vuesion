@@ -1,12 +1,11 @@
 import { CounterMutations }                   from './mutations';
 import { CounterDefaultState, ICounterState } from './state';
-import { cloneDeep }                          from 'lodash';
 
 describe('CounterMutations', () => {
   let testState: ICounterState;
 
   beforeEach(() => {
-    testState = cloneDeep(CounterDefaultState);
+    testState = CounterDefaultState();
   });
 
   test('it should set the count', () => {

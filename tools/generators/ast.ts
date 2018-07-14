@@ -100,7 +100,7 @@ export const addModuleToState = (pathToAppActions: string, moduleName: string): 
     file = insertAt(
       file,
       findAstNodes(sourceFile, ts.SyntaxKind.ObjectLiteralExpression, true).pop().end + 1,
-      `\n  ${lowerFirst(moduleName)}: {\n    ...${upperFirst(moduleName)}DefaultState,\n  },`,
+      `\n  ${lowerFirst(moduleName)}: {\n    ...${upperFirst(moduleName)}DefaultState(),\n  },`,
     );
 
     const interfaces: ts.Node[] = findAstNodes(sourceFile, ts.SyntaxKind.InterfaceDeclaration, true);
