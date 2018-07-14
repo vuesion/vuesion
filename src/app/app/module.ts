@@ -13,7 +13,7 @@ export const AppModule: Module<IAppState, IAppState> = {
     ...AppGetters,
   },
   state:      {
-    ...AppDefaultState,
+    ...AppDefaultState(),
   },
   mutations:  {
     ...AppMutations,
