@@ -1,12 +1,11 @@
 import { {{ properCase moduleName }}Mutations }                   from './mutations';
 import { {{ properCase moduleName }}DefaultState, I{{ properCase moduleName }}State } from './state';
-import { cloneDeep }                          from 'lodash';
 
 describe('{{ properCase moduleName }}Mutations', () => {
   let testState: I{{ properCase moduleName }}State;
 
   beforeEach(() => {
-    testState = cloneDeep({{ properCase moduleName }}DefaultState);
+    testState = {{ properCase moduleName }}DefaultState();
   });
 
   test('it should set the count', () => {

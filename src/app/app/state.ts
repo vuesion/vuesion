@@ -8,10 +8,12 @@ export interface IAppState {
   cookieConsentVersion: string;
 }
 
-export const AppDefaultState: IAppState = {
-  locale:               null,
-  config:               null,
-  defaultMessages:      {},
-  redirectTo:           null,
-  cookieConsentVersion: '',
+export const AppDefaultState = (): IAppState => {
+  return {
+    locale:               null,
+    config:               null,
+    defaultMessages:      {},
+    redirectTo:           null,
+    cookieConsentVersion: '',
+  };
 };

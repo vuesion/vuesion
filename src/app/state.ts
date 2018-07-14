@@ -10,9 +10,9 @@ export interface IState {
 
 export const DefaultState: IState = {
   app:     {
-    ...AppDefaultState,
+    ...AppDefaultState(),
   },
   counter: {
-    ...CounterDefaultState,
+    ...CounterDefaultState(),
   },
 };
