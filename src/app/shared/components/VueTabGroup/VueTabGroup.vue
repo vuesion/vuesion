@@ -9,12 +9,13 @@
         :class="currentTab === header.idx ? $style.active : ''"
         role="tab">
         <div :class="$style.bg"></div>
-        <i :class="[$style.icon, header.icon]"></i>
         <span :class="$style.title">{{header.title}}</span>
       </li>
     </ul>
 
-    <slot />
+    <div :class="$style.body">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -70,7 +71,6 @@
   .vueTabGroup {
     background: $tab-group-bg;
     box-shadow: $tab-group-shadow;
-    padding:    $tab-group-padding;
     margin:     $tab-group-margin;
   }
 
@@ -81,28 +81,15 @@
     display:    flex;
     width:      100%;
     background: $tab-group-header-bg;
-    box-shadow: $tab-group-header-shadow;
     position:   relative;
-    top:        -($space-unit * 2);
 
     li {
       padding:          $tab-group-header-item-padding;
       flex:             1;
       text-align:       center;
-      position:         relative;
-      border-left:      $tab-group-header-item-border-left;
-      border-right:     $tab-group-header-item-border-right;
-      line-height:      1.7;
       cursor:           pointer;
       background-color: transparent;
-
-      &:first-child {
-        border-left: none;
-      }
-
-      &:last-child {
-        border-right: none;
-      }
+      position:         relative;
 
       .bg {
         position:                   absolute;
@@ -118,7 +105,7 @@
       }
 
       &.active {
-        .title, .icon {
+        .title {
           color: $tab-group-header-item-hover-color;
         }
 
@@ -132,11 +119,10 @@
         display:     block;
         font-weight: 400;
       }
-
-      .icon {
-        position:  relative;
-        font-size: $font-size-h3;
-      }
     }
+  }
+
+  .body {
+    padding: $tab-group-padding;
   }
 </style>

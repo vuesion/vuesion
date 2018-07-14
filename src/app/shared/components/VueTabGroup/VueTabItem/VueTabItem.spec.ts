@@ -13,7 +13,6 @@ describe('VueTab.vue', () => {
       },
       propsData: {
         title: 'foo',
-        icon:  'bar',
       },
     }) as any;
 
