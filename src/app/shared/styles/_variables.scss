@@ -66,6 +66,9 @@ $font-family-headings: 'Oxygen', Helvetica, sans-serif;
 $font-family: 'Lato', Helvetica, sans-serif;
 $space-unit: 0.8rem;
 
+/* Animations */
+$fade-animation-transition: opacity $transition-duration * 4 ease-in-out;
+
 /* Grid */
 $screen-phone: 320px;
 $screen-phone-max: $screen-phone - 1;
@@ -353,7 +356,6 @@ $badge-warn-bg: $button-warn-bg;
 /* Carousel */
 
 $carousel-min-height: 500px;
-$carousel-transition: opacity $transition-duration * 4 ease-in-out;
 $carousel-copyright-color: $text-color;
 $carousel-copyright-bottom: $space-unit * 2;
 $carousel-copyright-left: $space-unit * 2;

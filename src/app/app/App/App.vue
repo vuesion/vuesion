@@ -1,6 +1,7 @@
 <template>
   <div id="app" :class="$style.app">
     <vue-notification-stack />
+
     <vue-nav-bar>
       <ul :class="$style.nav">
         <li>
@@ -51,29 +52,42 @@
     <router-view :class="$style.content" />
 
     <vue-footer />
+
+    <vue-cookie-consent
+      current-version="1.0.0"
+      :cookie-consent-version="cookieConsentVersion"
+      :set-cookie-consent-version="setCookieConsentVersion">
+      This is a cookie consent component which shows the cookie consent every time you change the version of the
+      consent.
+    </vue-cookie-consent>
   </div>
 </template>
 
 <script lang="ts">
-  import { mapActions }       from 'vuex';
-  import VueNavBar            from '../../shared/components/VueNavBar/VueNavBar.vue';
-  import VueGrid              from '../../shared/components/VueGrid/VueGrid.vue';
-  import VueGridItem          from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VueFooter            from '../../shared/components/VueFooter/VueFooter.vue';
-  import VueNotificationStack from '../../shared/components/VueNotificationStack/VueNotificationStack.vue';
-  import { loadLocaleAsync }  from '../../shared/plugins/i18n/i18n';
-  import { EventBus }         from '../../shared/services/EventBus';
+  import { mapActions, mapGetters } from 'vuex';
+  import VueNavBar                  from '../../shared/components/VueNavBar/VueNavBar.vue';
+  import VueGrid                    from '../../shared/components/VueGrid/VueGrid.vue';
+  import VueGridItem                from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VueFooter                  from '../../shared/components/VueFooter/VueFooter.vue';
+  import VueNotificationStack       from '../../shared/components/VueNotificationStack/VueNotificationStack.vue';
+  import VueCookieConsent           from '../../shared/components/VueCookieConsent/VueCookieConsent';
+  import { loadLocaleAsync }        from '../../shared/plugins/i18n/i18n';
+  import { EventBus }               from '../../shared/services/EventBus';
 
   export default {
     components: {
+      VueCookieConsent,
       VueNavBar,
       VueGrid,
       VueGridItem,
       VueFooter,
       VueNotificationStack,
     },
+    computed:   {
+      ...mapGetters('app', ['cookieConsentVersion']),
+    },
     methods:    {
-      ...mapActions('app', ['changeLocale']),
+      ...mapActions('app', ['changeLocale', 'setCookieConsentVersion']),
       localeSwitch(locale: string): void {
         loadLocaleAsync(locale)
         .catch((error: Error) => console.log(error));

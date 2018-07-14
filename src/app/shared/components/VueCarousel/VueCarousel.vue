@@ -4,14 +4,14 @@
        @mouseenter="pause = true"
        @mouseleave="pause = false">
 
-    <transition v-for="(image, idx) in preloadedImages"
-                :key="idx"
-                :enter-class="$style.enter"
-                :enter-active-class="$style.enterActive"
-                :enter-to-class="$style.enterTo"
-                :leave-class="$style.leave"
-                :leave-active-class="$style.leaveActive"
-                :leave-to-class="$style.leaveTo">
+    <fade-animation v-for="(image, idx) in preloadedImages"
+                    :key="idx"
+                    :enter-class="$style.enter"
+                    :enter-active-class="$style.enterActive"
+                    :enter-to-class="$style.enterTo"
+                    :leave-class="$style.leave"
+                    :leave-active-class="$style.leaveActive"
+                    :leave-to-class="$style.leaveTo">
 
       <div
         v-if="isActiveSlide(idx)"
@@ -25,7 +25,7 @@
         </div>
       </div>
 
-    </transition>
+    </fade-animation>
 
     <ul v-if="showIndicator"
         :class="$style.indicator">
@@ -40,6 +40,8 @@
 </template>
 
 <script lang="ts">
+  import FadeAnimation from '../../animations/FadeAnimation/FadeAnimation';
+
   export interface ICarouselImage {
     copyright?: string;
     alt?: string;
@@ -47,8 +49,9 @@
   }
 
   export default {
-    name:    'VueCarousel',
-    props:   {
+    name:       'VueCarousel',
+    components: { FadeAnimation },
+    props:      {
       images:        {
         type:    Array,
         default: (): any[] => [],
@@ -79,7 +82,7 @@
         preloadedImages:  [],
       };
     },
-    methods: {
+    methods:    {
       isActiveSlide(idx: number) {
         return this.currentSlide === idx;
       },
@@ -173,17 +176,5 @@
         background-color: $carousel-indicator-active-bg;
       }
     }
-  }
-
-  .enterActive, .leaveActive {
-    transition: $carousel-transition;
-  }
-
-  .enterTo, .leave {
-    opacity: 1;
-  }
-
-  .enter, .leaveTo {
-    opacity: 0;
   }
 </style>
