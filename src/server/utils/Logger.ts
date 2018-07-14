@@ -8,18 +8,25 @@ export const Logger: winston.Logger =
                                                          level:    'error',
                                                          maxFiles: 5,
                                                          maxsize:  10485760,
-                                                         format:   winston.format.json(),
+                                                         format:   winston.format.combine(
+                                                           winston.format.splat(),
+                                                           winston.format.json(),
+                                                         ),
                                                        }),
                            new winston.transports.File({
                                                          filename: 'logs/all.log',
                                                          maxFiles: 5,
                                                          maxsize:  10485760,
-                                                         format:   winston.format.json(),
+                                                         format:   winston.format.combine(
+                                                           winston.format.splat(),
+                                                           winston.format.json(),
+                                                         ),
                                                        }),
                            new winston.transports.Console({
                                                             level:            'debug',
                                                             handleExceptions: true,
                                                             format:           winston.format.combine(
+                                                              winston.format.splat(),
                                                               winston.format.colorize(),
                                                               winston.format.simple(),
                                                             ),
