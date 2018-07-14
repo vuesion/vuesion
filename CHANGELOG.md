@@ -1,3 +1,9 @@
+#### 1.1.2 (2018-07-14)
+
+##### Bug Fixes
+
+* **server-utils:**  add string interpolation to logger ([7e5a930d](https://github.com/devCrossNet/vue-starter/commit/7e5a930ddde09e8b2b4b7b2ec4eb8c9ea9b8b40e))
+
 #### 1.1.1 (2018-07-07)
 
 ##### Bug Fixes
