@@ -24,7 +24,7 @@
       @focus="onFocus"
     />
 
-    <i class="fas fa-search" v-show="isLoading === false" />
+    <vue-icon-search v-show="isLoading === false" />
     <vue-loader :class="$style.loader" accent v-show="isLoading === true" />
 
     <ul
@@ -57,10 +57,12 @@
   import { createGUID }          from '../../utils/misc';
   import { IAutocompleteOption } from './IAutocompleteOption';
   import VueLoader               from '../VueLoader/VueLoader';
+  import VueIconSearch           from '../icons/VueIconSearch/VueIconSearch';
 
   export default {
     name:       'VueAutocomplete',
     components: {
+      VueIconSearch,
       VueLoader,
       VueInput,
     },

@@ -4,7 +4,6 @@
     :disabled="disabled"
     @click="onClick"
     v-bind="$attrs">
-    <i v-if="$props.icon" :class="iconClasses" />
     <slot v-if="loading === false" />
     <vue-loader v-if="loading === true" />
   </button>
@@ -46,11 +45,6 @@
         required: false,
         default:  false,
       },
-      icon:     {
-        type:     String,
-        required: false,
-        default:  '',
-      },
     },
     components: {
       VueLoader,
@@ -63,9 +57,6 @@
       },
     },
     computed:   {
-      iconClasses() {
-        return `fas fa-${this.icon}`;
-      },
       cssClasses() {
         const classes = [this.$style.button, this.$style.ripple];
 

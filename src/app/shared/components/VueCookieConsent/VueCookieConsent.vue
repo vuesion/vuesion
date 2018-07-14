@@ -1,25 +1,26 @@
 <template>
   <fade-animation>
-      <div :class="$style.vueCookieConsent" v-if="show" ref="cookieConsent">
-        <div :class="$style.content">
-          <slot />
-        </div>
+    <div :class="$style.vueCookieConsent" v-if="show" ref="cookieConsent">
+      <div :class="$style.content">
+        <slot />
+      </div>
 
-        <div role="button" :class="$style.button" @click="onConsent">
-          <div :class="$style.icon">
-            <i class="fa fa-times" />
-          </div>
+      <div role="button" :class="$style.button" @click="onConsent">
+        <div :class="$style.icon">
+          <vue-icon-times />
         </div>
       </div>
+    </div>
   </fade-animation>
 </template>
 
 <script lang="ts">
   import FadeAnimation from '../../animations/FadeAnimation/FadeAnimation';
+  import VueIconTimes  from '../icons/VueIconTimes/VueIconTimes';
 
   export default {
     name:       'VueCookieConsent',
-    components: { FadeAnimation },
+    components: { FadeAnimation, VueIconTimes },
     props:      {
       currentVersion:          {
         type:     String,
@@ -57,7 +58,7 @@
     },
     watch:      {
       show: function (show: boolean) {
-        if (!show){
+        if (!show) {
           this.removeBodyPadding();
         }
       },
@@ -91,8 +92,11 @@
     align-items:     center;
     flex:            0 0 $space-unit * 8;
     background:      $button-accent-bg;
-    color:           $button-accent-color;
     cursor:          pointer;
+
+    i {
+      fill: $button-accent-color;
+    }
 
     &:hover {
       background-color: $button-accent-hover-bg;
