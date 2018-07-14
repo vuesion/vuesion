@@ -5,11 +5,13 @@ export interface IAppState {
   config: IAppConfig;
   defaultMessages: any;
   redirectTo: string;
+  cookieConsentVersion: string;
 }
 
 export const AppDefaultState: IAppState = {
-  locale:          null,
-  config:          null,
-  defaultMessages: {},
-  redirectTo:      null,
+  locale:               null,
+  config:               null,
+  defaultMessages:      {},
+  redirectTo:           null,
+  cookieConsentVersion: '',
 };
