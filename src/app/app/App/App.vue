@@ -2,6 +2,8 @@
   <div id="app" :class="$style.app">
     <vue-notification-stack />
 
+    <vue-progress-bar />
+
     <vue-nav-bar>
       <ul :class="$style.nav">
         <li>
@@ -100,6 +102,25 @@
       navBarClose() {
         EventBus.$emit('navbar.close');
       },
+      initProgressBar () {
+        this.$Progress.start()
+        this.$router.beforeEach((to, from, next) => {
+          if (to.meta.progress) {
+            this.$Progress.parseMeta(to.meta.progress);
+          }
+          this.$Progress.start();
+          next();
+        });
+        this.$router.afterEach(() => {
+          this.$Progress.finish();
+        });
+      },
+    },
+    created () {
+      this.initProgressBar();
+    },
+    mounted () {
+      this.$Progress.finish();
     },
   };
 </script>

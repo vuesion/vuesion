@@ -14,3 +14,8 @@ declare module 'marked' {
   const marked: any;
   export = marked;
 }
+
+declare module 'vue-progressbar' {
+  const progressBar: any;
+  export = progressBar;
+}
