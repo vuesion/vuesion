@@ -26,11 +26,16 @@
           this.show = true;
           if (this.percent <= 50) {
             this.percent += randomInt(30, 40);
-          } else if (this.percent <= 70) {
+          }
+          /* istanbul ignore next */
+          else if (this.percent <= 70) {
             this.percent += randomInt(5, 10);
-          } else if (this.percent <= 95) {
+          }
+          /* istanbul ignore next */
+          else if (this.percent <= 95) {
             this.percent += randomInt(1, 2);
-          } else {
+          }
+          else {
             this.percent = 99;
             this.stopAnimation();
           }
