@@ -2,7 +2,7 @@
   <div id="app" :class="$style.app">
     <vue-notification-stack />
 
-    <vue-progress-bar />
+    <vue-navigation-progress :is-navigating="isNavigating" />
 
     <vue-nav-bar>
       <ul :class="$style.nav">
@@ -73,9 +73,11 @@
   import VueIconHashtag             from '../../shared/components/icons/VueIconHashtag/VueIconHashtag';
   import VueIconPuzzlePiece         from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece';
   import VueIconFlag                from '../../shared/components/icons/VueIconFlag/VueIconFlag';
+  import VueNavigationProgress      from '../../shared/components/VueNavigationProgress/VueNavigationProgress';
 
   export default {
     components: {
+      VueNavigationProgress,
       VueIconFlag,
       VueIconPuzzlePiece,
       VueIconHashtag,
@@ -86,6 +88,11 @@
       VueGridItem,
       VueFooter,
       VueNotificationStack,
+    },
+    data() {
+      return {
+        isNavigating: false,
+      };
     },
     computed:   {
       ...mapGetters('app', ['cookieConsentVersion']),
@@ -102,25 +109,18 @@
       navBarClose() {
         EventBus.$emit('navbar.close');
       },
-      initProgressBar () {
-        this.$Progress.start()
-        this.$router.beforeEach((to, from, next) => {
-          if (to.meta.progress) {
-            this.$Progress.parseMeta(to.meta.progress);
-          }
-          this.$Progress.start();
+      initProgressBar() {
+        this.$router.beforeEach((to: any, from: any, next: any) => {
+          this.isNavigating = true;
           next();
         });
         this.$router.afterEach(() => {
-          this.$Progress.finish();
+          this.isNavigating = false;
         });
       },
     },
-    created () {
+    created() {
       this.initProgressBar();
-    },
-    mounted () {
-      this.$Progress.finish();
     },
   };
 </script>
@@ -185,7 +185,7 @@
       li {
         margin:     $space-unit;
         opacity:    .8;
-        transition: opacity 250ms linear;
+        transition: opacity $transition-duration linear;
 
         &:hover {
           opacity: 1;

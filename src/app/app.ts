@@ -1,7 +1,6 @@
 import Vue             from 'vue';
 import VueI18n         from 'vue-i18n';
 import VeeValidate     from 'vee-validate';
-import VueProgressBar  from 'vue-progressbar';
 import { Store }       from 'vuex';
 import { sync }        from 'vuex-router-sync';
 import { VueRouter }   from 'vue-router/types/router';
@@ -13,7 +12,6 @@ import App             from './app/App/App.vue';
 import { HttpService } from './shared/services/HttpService';
 
 Vue.use(VeeValidate, { inject: false });
-Vue.use(VueProgressBar);
 
 export interface IApp {
   app: Vue;
