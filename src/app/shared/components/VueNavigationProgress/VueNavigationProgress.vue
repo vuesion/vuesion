@@ -37,7 +37,6 @@
           }
           else {
             this.percent = 99;
-            this.stopAnimation();
           }
         }, 100);
       },
