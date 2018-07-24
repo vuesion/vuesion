@@ -39,6 +39,12 @@
             <small>{{ $t('App.nav.pt-BR' /* Portuguese */) }}</small>
           </a>
         </li>
+        <li>
+          <a @click="localeSwitch('zh-cn')">
+            <i class="fas fa-flag" />
+            <small>{{ $t('App.nav.chinese' /* Portuguese */) }}</small>
+          </a>
+        </li>
       </ul>
     </vue-nav-bar>
 

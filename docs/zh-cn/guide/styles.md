@@ -1,9 +1,9 @@
 # 应用你的品牌颜色
 
-Of course, you want to have a different theme than the default one.
+当然, 你想要一个和默认主题不一样的主题.
 
-In order to apply your brand colors, open up `./src/app/shared/styles/_variables.scss`:
-and have a look at these lines:
+为了应用你的品牌颜色,打开 `./src/app/shared/styles/_variables.scss`:
+看一下这些代码:
 
 ```css
 /* Brand */
@@ -92,15 +92,15 @@ $screen-small-desktop-gutter: $space-unit * 4;
 $screen-large-desktop-gutter: $space-unit * 4;
 ```
 
-All the components are dependents of these variables, so everything will look different if you change these values.
+所有的组件都依赖于这些变量, 所以如果你改变了值，一切都将看起来不一样.
 
-::: tip Do you have light brand colors?
-Make sure you replace the `lighten` SCSS function with the `darken` function.
+::: tip 你有亮品牌色吗?
+确认你用了`lighten` SCSS 函数替换了 `darken` SCSS函数.
 
-_**This should look much better**_ :smile:
+_**这应该会看起来更好一点**_ :smile:
 :::
 
-::: tip It's all yours!
-Remember that every component provided by the vue-starter is **YOUR** code,
-you can change the behavior, appearance and features exactly as you need it for your project.
+::: tip 都是你的!
+请记住所有vue-starter提供的组件都是**你的**代码,
+你可以改变vue-starter的行为, 外观 和特性，正如你所想要的那样。
 :::

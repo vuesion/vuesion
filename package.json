@@ -100,7 +100,8 @@
     "supported-locales": [
       "en",
       "de",
-      "pt"
+      "pt",
+      "zh-cn"
     ]
   },
   "dependencies": {

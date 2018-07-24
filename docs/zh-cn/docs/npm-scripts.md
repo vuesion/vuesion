@@ -1,8 +1,8 @@
 # NPM脚本
 
-## Development
+## 开发
 
-### Run dev environment
+### 运行开发环境
 To run your app in development with hot-module-reloading just run `npm run dev`.
 
 ### 运行单元测试
@@ -11,7 +11,7 @@ To run your app in development with hot-module-reloading just run `npm run dev`.
 
 Find a detailed coverage report in `coverage/iconv-report/index.html`
 
-### Run e2e tests
+### 运行 e2e 测试
 
 For more information about the e2e test set up, have a look at [cypress.io](https://www.cypress.io/).
 
@@ -19,11 +19,11 @@ For more information about the e2e test set up, have a look at [cypress.io](http
 - open up a second terminal window
 - run `npm run e2e`
 
-### I18n and extracting messages
+### I18n国际化 & 提取信息
 For details please have a look at the [i18n docs](i18n.md).
 
-### 故事书
-For details please have a look at the [Storybook docs](storybook.md).
+### Storybook
+For details please have a look at the [Storybook 文档](storybook.md).
 
 
 ## 构建
@@ -31,13 +31,13 @@ For details please have a look at the [Storybook docs](storybook.md).
 ### 生产构建
 To build and run your app in production mode, please run `npm run build && npm start`.
 
-### Single Page Application without SSR
+### 无服务端渲染的单页面应用程序
 If you don't need server side rendering and you just want to have static files, please run `npm run build:spa`.
 
-### Continuous integration
+### 持续集成
 For your CI/CD build, we already created a `ci` script. It'll build the project, run the lint/test tasks and deploy the code coverage to codecov.
 
-### Bundle analyzer
+### 打包分析
 If you're curious how your client application looks and which code you ship to your customers.
 You can use the `npm run analyze-bundle` task to get an overview of the webpack bundle.
 This command uses the [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer).

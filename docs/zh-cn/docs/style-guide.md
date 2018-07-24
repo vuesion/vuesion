@@ -1,9 +1,9 @@
 # 风格指南
 
-The default style guide that is used in this project, is based on the [Vue Style Guide](https://vuejs.org/v2/style-guide/)
-and the [Angular Style Guide](https://angular.io/guide/styleguide).
+此项目中使用的默认样式指南是基于[Vue 风格指南](https://vuejs.org/v2/style-guide/)
+和 [Angular风格指南](https://angular.io/guide/styleguide).
 
-## File structure conventions
+## 文件结构约定
 
 ```
 ├── code-style-web-storm.xml  // code formatting rules for .idea
@@ -39,7 +39,7 @@ and the [Angular Style Guide](https://angular.io/guide/styleguide).
     ├── generators            // generator cli
     └── scripts               // productivity tools
 ```
-### What is a Module?
+### 什么是模块?
 
 A module is an encapsulated piece of domain logic in your application, this could be for example:
 
@@ -64,7 +64,7 @@ and **it has to live inside a module**.
 
 (_these components are different compared to normal components because it is required to set up a VueX mock store for testing_)
 
-### What is a Component?
+### 什么是组件?
 
 This is a simple [Single File Component](https://vuejs.org/v2/guide/single-file-components.html) without bindings,
 it just takes props and emits events - this is called a **"stupid"** component.
@@ -77,7 +77,7 @@ You should try to have as many "stupid" components as possible. They are much ea
 If you want to know how to archive this, have a look at [Container Components (in our vocabulary "Connected Components")](https://medium.com/@learnreact/container-components-c0e67432e005).
 :::
 
-## Naming Conventions
+## 命名约定
 
 Naming is one of the hardest things in software development.
 We can not support you with perfect names because we don't know your domain but we can help you to be consistent in naming files, modules, CSS classes, etc.

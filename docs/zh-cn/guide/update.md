@@ -1,41 +1,41 @@
 # 跟上时代
 
-::: tip Below version < 1.1.0
-Please download the file [./tools/scripts/update.ts](https://github.com/devCrossNet/vue-starter/blob/master/tools/scripts/update.ts)
-, copy it to `./tools/scripts/update.ts` and add the following script to your `package.json`:
+::: tip 若你的版本 < 1.1.0 请注意
+请下载文件[./tools/scripts/update.ts](https://github.com/devCrossNet/vue-starter/blob/master/tools/scripts/update.ts)
+, 复制到 `./tools/scripts/update.ts` 然后添加以下脚本到 `package.json`:
 
 ```json
     "update": "npm run compile-tools && node ./tools/scripts/update.js",
 ```
 :::
 
-## Get the latest changes
-If you want to keep your copy of the vue-starter up to date follow these steps:
+## 获取最新的更改
+如果你想保持最新的vue-starter，请遵循以下步骤:
 
-- check that you use a Version Control System for your app (e.g. github, gitlab, butbucket, etc.)
-- clear your change list
-- create a new branch
-- run `npm run update`
+- 检查你的应用程序是否使用版本控制系统 (e.g. github, gitlab, butbucket, etc.)
+- 清理你的更改列表
+- 创建一个新分支
+- 运行 `npm run update`
 
-The update script will compare your current copy of the vue-starter with the latest copy on `devCrossNet/vue-starter:master`.
+更新脚本将会比较你当前vue-starter的副本和vue-starter仓库里`devCrossNet/vue-starter:master分支的副本
 
-It will create, delete, add or modify all the files that are different.
+这将创建、删除、添加或修改所有不同的文件。
 
-It is basically the same as if you would rebase your project on top of `devCrossNet/vue-starter:master`.
-But usually, you did not keep the history of the vue-starter in your own app so it is not possible to rebase.
+这基本上等同于你重新在`devCrossNet/vue-starter:master`上建立你的项目（rebase变基，这个词不好理解，我暂时写成重新建立）.
+但是通常, 你没有把vue-starter的历史保存在你自己的应用程序中，所以不可能变基。
 
-## Merge with your local changes
+## 和你的本地更改融合
 
-Now you see the changes in your changelog:
+现在通过改变记录看一下改变:
 
-- go through all the files and merge your changes (revert the parts that would break your app)
-- run the tests and lint your project: `npm run test:coverage`, `npm run test:tools`, `npm run lint`
-- start the app
+- 遍历所有文件并合并更改 (恢复可能破坏你应用的部分)
+- 运行测试 & lint 你的项目: `npm run test:coverage`, `npm run test:tools`, `npm run lint`
+- 运行程序
 
-If everything works, commit your changes and merge it into your master.
+如果一切正常运行，融合到你的主分支.
 
-If not you might want to update manually by comparing your local copy with the [CHANGELOG](https://github.com/devCrossNet/vue-starter/blob/master/CHANGELOG.md).
+如果不是的话，你可以通过对比本地副本和`devCrossNet/vue-starter:master`[更改记录CHANGELOG](https://github.com/devCrossNet/vue-starter/blob/master/CHANGELOG.md)来进行手动更新。 
 
-## Major version upgrades
+## 主要版本更新
 
-Our vision is to provide upgrade scripts for every major version, they will update the files and code.
+我们的愿景是为每一个主要版本提供升级脚本，它将更新文件和代码。

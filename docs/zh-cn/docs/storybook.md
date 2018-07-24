@@ -1,8 +1,8 @@
-# 故事书
+# Storybook
 
-Storybook runs outside of your app.
+Storybook 运行于你的应用程序之外.
 
-So you can develop UI components in isolation without worrying about app-specific dependencies and requirements.
-Run `npm run storybook` to run the storybook dev-server, the server runs on port `6006`.
+因此，您可以孤立地开发UI组件，而不必担心特定于应用程序的依赖性和需求。
+运行 `npm run storybook` 运行storybook开发服务,服务监听于 `6006` 端口.
 
-To build a static copy of storybook, run `npm run build-storybook`.
+构建一个静态storybook副本, 运行 `npm run build-storybook`.

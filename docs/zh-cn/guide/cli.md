@@ -1,25 +1,25 @@
 # 创建你的第一个页面
 
-To create a new page, you have to add a new module to your application.
+为了创建一个新页面，你需要增加一个模块到你的应用。
 
-## What is a module?
+## 什么是模块?
 
-A module is an encapsulated piece of domain logic in your application.
+模块是应用程序中的"领域"逻辑的封装。
 
-###  Use-cases for a module
+###  模块用例
 
-**Dynamic page**: consists of a lot of view logic, at least one route and state-management
+**动态页面**: 由许多视图逻辑、至少一个路由和状态管理组成
 
-**Static page**: has no state-management but a route e.g. `/imprint`
+**静态页面**: 没有状态管理，只有一个路由 e.g. `/imprint`
 
-**Domain logic with shared view components**: e.g. authentication state, actions, mutations plus login/signup forms but no routes
+**"领域"逻辑和共享的视图组件**: e.g. 认证状态, 动作, 突变 加上 登录/注册 表单 但是没有路由
 
-**Domain logic**: just plain logic with state-management but no routes and no components
+**“领域”逻辑**: 只是普通逻辑以及状态管理的没有路由没有组件
 
-## Create a module
+## 创建一个模块
 
-Let's create a page that is dynamic and has to have stage-management,
-run `npm run g` and you will be asked some questions:
+让我创建一个有状态管理的动态页面
+运行 `npm run g` 然后你会被问一些问题:
 
 ```bash
 ? [PLOP] Please choose a generator. (Use arrow keys)
@@ -29,16 +29,16 @@ run `npm run g` and you will be asked some questions:
 
 ```
 
-choose `module` and continue with `enter`:
+选择 `module` 然后按下 `enter`:
 
 ```bash
 ? [PLOP] Please choose a generator. module - Add a module with vuex store and routes
 ? What should it be called? 
 ```
 
-This will be the name of your module, connected component and route.
+这将会是你的模块,connected和路由的名字
 
-Type `Foo` and press `enter`
+输入 `Foo` 然后按下`enter`
 
 ```bash
 ? [PLOP] Please choose a generator. module - Add a module with vuex store and routes
@@ -47,7 +47,7 @@ Type `Foo` and press `enter`
 ? Do you want vuex? Yes
 ```
 
-press two more times `enter` and you will see that the CLI generated a few files:
+按下多次`enter` 然后你会看到CLI生成一些文件:
 
 ```bash
 [SUCCESS] add /vue-starter/src/app/foo/Foo/Foo.vue
@@ -63,20 +63,20 @@ press two more times `enter` and you will see that the CLI generated a few files
 [SUCCESS] add /vue-starter/src/app/foo/state.ts
 ```
 
-You will also see that the CLI already referenced the new files in the necessary places: `./src/app/router.ts`, `./src/app/state.ts` and `./src/app/store.ts`.
+你也会看到CLI已经引用了新的文件在必要的位置: `./src/app/router.ts`, `./src/app/state.ts` and `./src/app/store.ts`.
 
-::: tip Name can include path
-The name of a `module`, `connected` or `component` can be prefixed with a path.
+::: tip 名称可以包含路径
+`module`, `connected` || `component` 的名称会被添加一个路径前缀
 
-For example `counter/MyNewComponent` will create a component inside the module `counter`.
+例如`counter/MyNewComponent`将会在`counter`模块里创建一个组件
 
-**A `connected` component for example has to be prefixed with a path because it only can live inside a module.**
+**例如， `connected` 组件必须被添加一个路径前缀，因为它只能存在于一个模块里**
 :::
 
-## Verification
+## 验证
 
-Go to [http://localhost:3000/foo](http://localhost:3000/foo) and you should see the `Counter` example again (this is the default blueprint for modules).
+打开 [http://localhost:3000/foo](http://localhost:3000/foo) 你应该再一次看到 `Counter` 栗子 (这是一个模块的默认蓝图).
 
-::: tip Does everything work?
-To verify if you didn't break something, run `npm test`.
+::: tip 一切都正常运行吗?
+为了验证你的更改不会破坏东西, 运行 `npm test`进行测试.
 :::

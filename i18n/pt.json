@@ -5,6 +5,7 @@
   "App.nav.docs": "Documentation",
   "App.nav.english": "Inglês",
   "App.nav.german": "Alemão",
+  "App.nav.chinese": "中文",
   "App.nav.home": "Início",
   "App.nav.pt-BR": "Português",
   "components.autocomplete.emptyMessage": "No options found for %s",
