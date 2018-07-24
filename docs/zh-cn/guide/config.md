@@ -1,18 +1,14 @@
 # 应用配置和运行时配置
 
-You will probably come into a situation where you have to change the behavior of our app depending on the
-deployment stage _(e.g. you want to have a different API endpoint in development than in production)_.
+你可能会遇到这样的情况：您必须根据部署阶段更改应用程序的行为（例如，您希望在开发中使用与生产中不同的API端点）
 
-## AppConfig for different Environments
+## 针对不同的环境进行AppConfig
 
-The AppConfig in `./src/app/config/AppConfig.ts` will provide your application with a default configuration
-that you can change in `./src/app/config/default.json`.
+AppConfig`./src/app/config/AppConfig.ts` 将为你的应用程序提供可以更改的默认配置 `./src/app/config/default.json`.
 
-If you want to overwrite the default config for example in the `PRODUCTION` environment, you have to
-create a new file `./src/app/config/prodcution.json` with the parts of the json that is different
-to the default config.
+如果你想覆盖默认配置，例如在 `PRODUCTION`环境下, 你需要创建一个新文件`./src/app/config/prodcution.json`其中有与默认配置不同的配置部分
 
-## Provide your app with Environment Variables
+## 为您的应用提供环境变量
 
 Sometimes you have to provide confidential data e.g. API keys to your app.
 The best practice is to **not** commit these keys in a git repository and instead provide it via an environment variable.

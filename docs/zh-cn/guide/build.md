@@ -1,32 +1,29 @@
 # 为生产构建你的应用
 
-Now you want to bring your app online, it should be fast and optimized.
-You want the full package, the PWA package.
+现在，您希望将应用程序上线，应该快速&&最优化。你想要完整的包，PWA包。
 
-In the development mode, you have the non-optimized code,
-source maps and all the good things you need to write good code.
+在开发模式中，你有非优化代码，源映射以及编写优秀代码所需的所有好东西。
 
-But in production you don't want to have unnecessary code, it should
-be as small as possible.
+但是在生产中你不希望有不必要的代码，它应该尽可能小。
 
 ## Optimize your build
 
-In order to optimize your app for production, run the command `npm run build`.
+要优化您的应用程序以进行生产，请运行命令 `npm run build`.
 
-This will optimize your app as following:
+这将如下优化您的应用程序:
 
-- It runs the webpack [production mode](https://webpack.js.org/guides/production/)
-- It adds a [service-worker](https://github.com/oliviertassinari/serviceworker-webpack-plugin) to your application to make it a PWA
-- It compresses all assets
+- 它运行webpack [生产模式](https://webpack.js.org/guides/production/)
+- 它为您的应用程序添加了一个[服务工作线程提供离线代理服务](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API) 来制作PWA
+- 它压缩所有资源
 
-## Analyze your bundle
+## 分析你的包
 
-Sometimes your bundles are just too big and you have no idea why this is happening.
+有时你的捆绑包太大了，你不知道为什么会发生这种情况。
 
-A tool to find out which parts of your bundles are too big is the [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) plugin for webpack.
+用于查找包的哪些部分太大的工具是webpack插件[webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) 
 
-To use this tool and get an overview of your bundles, run `npm run analyze-bundle`.
+要使用此工具并获得捆绑包的概述，请运行 `npm run analyze-bundle`.
 
-This will display the following overview:
+这将显示以下概览:
 
 <img :src="$withBase('/analyzer.png')" alt="foo">
