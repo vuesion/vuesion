@@ -81,7 +81,7 @@ export default (context: IServerContext) => {
     .onReady(() => {
       const matchedComponents: Component[] = [App as Component].concat(router.getMatchedComponents());
 
-      if (!matchedComponents.length) {
+      if (matchedComponents.length === 1) {
         return reject({ code: 404 });
       }
 
