@@ -1,3 +1,9 @@
+#### 1.1.3 (2018-07-24)
+
+##### Bug Fixes
+
+*  proper 404 page ([#189](https://github.com/devCrossNet/vue-starter/pull/189)) ([a7bac441](https://github.com/devCrossNet/vue-starter/commit/a7bac4417e38d06eb90064cd5fab8fee38fb4b78))
+
 #### 1.1.2 (2018-07-14)
 
 ##### Bug Fixes
