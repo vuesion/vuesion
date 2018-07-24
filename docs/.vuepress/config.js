@@ -62,7 +62,7 @@ module.exports = {
     locales: {
       '/': {
         label: 'English',
-        selectText: 'Languages',
+        selectText: '中文',
         editLinkText: 'Edit this page on GitHub',
         nav: [{
             text: 'Guide',
@@ -115,7 +115,7 @@ module.exports = {
       },
       '/zh-cn/': {
         label: '简体中文',
-        selectText: '语言',
+        selectText: 'English',
         editLinkText: '在GitHub上编辑这页',
         nav: [{
             text: '指南',

@@ -7,64 +7,60 @@ next: ./guide/install
 ## 这不仅仅是另一个启动项目
 
 
-When starting the development of a new project, it's often tempting to start with some libraries.
-They provide solutions to already solved problems, so you can solve on the unique challenges of your application.
+当开始开发一个新项目时，往往会从一些库开始。
+它们为已经解决的问题提供了解决方案，因此你可以解决应用程序的独特挑战。
 
-But you know that this only works to a certain degree. In most projects you are working on, the number of phrases like 
-**_"I can not change that because the library does not support it."_** increases over time.
+但是你知道这只是在一定程度上起作用。在你正在进行的大多数项目中，诸如 **"我不能改变这一点，因为库不支持它"** 这样的语句会随着时间的推移而增加。
 
-You've often been in situations where you had to write feature-requests, eject the webpack configuration in the first second of the project,
-or you have to create a local fork of the library to implement the requested features.
+你经常遇到需要编写特性需求的情况，然后项目会立刻弹出WebPACK配置。
+或者，你必须创建库的本地分支来实现需求特性。
 
-Because you're not the only one with this experience,
-we decided to implement all the use cases, that we experienced over time, in this starter.
+因为你不是唯一一个有这种经历的人，所以我们决定在这个初学者项目中实现我们经历过的所有用例。
 
-It's not a library.
+这不是一个库.
 
 **The code is all yours** to modify and build upon. 
 
-::: tip No Excuses
-The limitations of your project are up to the imagination of the designers in your project and your ability to implement their feature requests.
+::: tip 没有借口
+项目的极限取决于你的项目设计者的想象力和你实现他们特性需求的的能力。
 :::
 
-::: tip Productivity Tip
-The key for high-performance engineering is a good balance between a variety of music genres,
-for this reason, we provide you with a [Beast mode playlist on Youtube](https://www.youtube.com/playlist?list=PLcLlpvN8RJznCOm4dJ5rN5VJKFfy0hMNp)
+::: tip 生产力提示
+高性能工程的关键是在各种方面进行好的平衡，像在各种音乐流派之间进行平衡，因此，我们在YouTube上为你提供一个[狂野(原文是beast，我想是不是打错了，正在确认)模式的播放列表](https://www.youtube.com/playlist?list=PLcLlpvN8RJznCOm4dJ5rN5VJKFfy0hMNp)。
 :::
 
-::: warning
-**Use this project if you are an experienced developer who needs to deliver projects quickly with the highest possible quality.**
+::: warning 警告
+**如果您是一位经验丰富的开发人员，需要以最高的质量快速交付项目，请使用此项目。**
 
-If you look for an easier way to get started with Vue and Webpack, 
-[this template](https://github.com/vuejs-templates/webpack) may be more your cup of tea.
+如果你在寻找一个更简单的方法开始VUE和Webpack，这个[模板](https://github.com/vuejs-templates/webpack)更可能会是你需要的。
 :::
 
 ## 特性
 
-- Quick scaffolding with the [Generator CLI](./guide/cli.md)
-- Enterprise ready
-- SEO with [vue-meta](https://github.com/declandewet/vue-meta)
-- Industry-standard i18n support with [vue-i18n](https://github.com/kazupon/vue-i18n)
-- Progressive-Web-App
-- Component library
-- Routing with data prefetching
-- [Storybook integration](https://storybook.js.org/basics/guide-vue/)
-- Predictable state management with [vuex](https://vuex.vuejs.org/en/)
+- 基于[CLI](./guide/cli.md)的快速脚手架
+- 企业级
+- 使用[vue-meta](https://github.com/declandewet/vue-meta)的SEO
+- 基于[vue-i18n](https://github.com/kazupon/vue-i18n)的工业标准国际化 
+- 渐进式网络应用
+- 组件库
+- 路由和数据预获取
+- [Storybook](https://storybook.js.org/basics/guide-vue/)集成
+- 基于[vuex](https://vuex.vuejs.org/en/)的可预测状态管理
 
-## Todo
+## 备忘录
 
-This is an ever-evolving project,
-if you want to help or you have an idea how to improve this project - 
-**feel free to file an [issue](https://github.com/devCrossNet/vue-starter/issues)**
+这是一个不断发展的项目,
+如果你想帮助我们或者有一个帮助我们改进这个项目的想法 - 
+**放松地提交[issue](https://github.com/devCrossNet/vue-starter/issues)**
 
 ## 为什么不是 vue-cli || nuxt.js ?
 
-This boilerplate is opinionated, aiming to educate and empower users to essentially configure their own framework,
-ideally suited to their needs. It also includes as few libraries as possible to keep you flexible and to enable you
-to implement every product requirement that comes down the road.
+这个样板是opinionated, 旨在教育和使用户能够从根本上配置自己的框架,
+以理想的适合他们需求。
 
-Use cases for this boilerplate:
-- The requirements for the product might change and you want to maintain maximum flexibility and control.
-- You'd like to focus on developing skills that will transfer across any Vue project.
-- You're working in a large team, so you need tooling to help everyone avoid common mistakes,
-  write in a consistent style, and avoid bikeshedding in PRs.
+它包括尽可能少的库，以保持你的灵活性，并使你能够实现每一个即将出现的产品需求。
+
+这个样板的使用案例:
+- 对产品的要求可能会改变，并且希望保持最大的灵活性和可控制性。
+- 你想专注于可开发任何VUE项目的技能。
+- 你在一个大团队中工作，所以你需要工具来帮助每个人避免常见的错误，以一致的风格写，& 避免PRs中的bikeshedding.

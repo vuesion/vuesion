@@ -1,11 +1,11 @@
 # 安装
 
-::: warning COMPATIBILITY NOTE
-vue-starter requires Node.js >= 8 & npm >= 5.
+::: warning 兼容性
+vue-starter 需要 Node.js >= 8 & npm >= 5。
 :::
 
-1. Install Node.js 8.x or higher. Use [nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n) to maintain multiple Node.js versions
-2. Install npm version 5.x or higher
-3. Download or clone (`git clone https://github.com/devCrossNet/vue-starter`) the repository
-4. Change directory `cd vue-starter`
-5. Install dependencies: `npm install`
+1. 安装 Node.js 8.x || 更高版本。使用 [nvm](https://github.com/creationix/nvm) || [n](https://github.com/tj/n) 管理多版本Node.js；
+2. 安装 npm 5.x || 更高版本；
+3. 下载 || 克隆 (`git clone https://github.com/devCrossNet/vue-starter`) 这个仓库；
+4. 改变当前目录 `cd vue-starter`；
+5. 安装依赖: `cnpm install` || `npm install`。

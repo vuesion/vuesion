@@ -1,37 +1,36 @@
 # 第一次运行你的应用
 
-Of course, you want to know if the application that you just downloaded works.
-In order to test if everything works as expected run the following command: `npm run dev`.
+当然，您想知道刚才下载的应用程序是否工作。为了测试是否一切正常运行，运行命令 `npm run dev`.
 
-You should see a message in your console that says:
+你应该在控制台上看到一条消息:
 
 ```bash
 [1] info: server started at http://localhost:3000
 ```
 
-That means that the dev-server successfully started.
+这意味着开发服务成功启动.
 
-You have to wait for a second message that indicates that the client and the isomorphic code is successfully compiled:
+您必须等待第二条消息，表明已成功编译:
 
 ```bash
 [1] ℹ ｢wdm｣: Compiled successfully.
 ```
 
-Now you know that everything works as expected, to see the `vue-starter` in action, go to [http://localhost:3000](http://localhost:3000).
+现在你知道一切正常运行, 查看`vue-starter`效果, 打开 [http://localhost:3000](http://localhost:3000)。
 
-## Development mode and hot reloading
+## 开发模式&热更新
 
-Your application runs now in development mode, that means that webpack watches for changes.
+你的应用运行在开发模式, 这意味webpack监听改变。
 
-Every file in the `./src` directory will be hot reloaded, so you don't have to reload your browser or restart the dev server during development.
+所有在`./src` 文件夹的文件将会被热重载, 所以你不必在开发时重载你的浏览器。
 
-That guarantees a really good dev-experience and will make you much more productive.
+这保证了一个非常好的开发经验，并且会使你更有效率。
 
-::: tip i18n
-the only files that are not hot-reloaded are the files in the `./i18n` directory, you have to reload your browser to reflect the changes.
+::: tip i18n国际化
+唯一不会被重载的是在`./i18n`文件夹的文件, 你必须重新加载浏览器以反映更改。
 ::: 
 
-## Change web-server port
+## 改变服务端口
 
-Your app runs on port `3000` by default, set the `PORT` environment variable to configure a different port
-e.g. `PORT=8080 npm run dev` in development mode or `PORT=8080 npm start` for your production build.
+你的应用默认监听 `3000`, 设置 `PORT` 环境变量以配置一个不同的端口。
+例如. `PORT=8080 npm run dev` -为你的开发者模式 || `PORT=8080 npm start` -为你的生产构建模式.

@@ -1,10 +1,10 @@
 # 第一次运行测试
 
-Your app is installed and runs in development mode, but does every component in the app work correctly?
+你的应用已经安装好并且运行在开发模式, 但是，是不是所有组件都正确运行?
 
-To check if all the features, components, services, etc. work as intended, you should run the tests suite with `npm run test:coverage`.
+为了检查所有的特性,组件,服务,等等.如预期运行, 你应该运行测试套件`npm run test:coverage`.
 
-You will see something like this:
+你将会看到类似这些东西的输出:
 
 ```bash
 --------------|----------|----------|----------|----------|-------------------|
@@ -22,16 +22,14 @@ Time:        4.605s
 Process finished with exit code 0
 ```
 
-It shows that you have an application that is well tested and from now on
-you should get feedback if you accidentally break included features every time you run the tests.
+它表明你有一个应用程序经过测试，从现在开始，每次运行包含特性的测试时意外中断，你应该会得到反馈。
 
-The `npm test` command will be executed in the before-commit hook,
-that guarantees that the code you are going to commit will not break the application.
+在提交之前`npm test`命令将会被运行,这保证你正在提交的代码不会破坏应用程序.
 
-::: tip Jest config
-By default, the coverage threshold is set to `100`%.
+::: tip Jest配置
+默认情况下, 覆盖范围的阀限被设置在`100`%.
 
-If you think this is just too much for your project, configure the appropriate thresholds in the `./package.json`.
+如果您认为这对项目来说太多, 配置适当的阀限通过 `./package.json`.
 
 ```json
     "coverageThreshold": {

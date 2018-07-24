@@ -4,23 +4,23 @@ heroImage: /logo.png
 actionText: 开始 →
 actionLink: /zh-cn/introduction
 features:
-- title: Quick scaffolding
-  details: Create components, connected components, modules - and their tests - right from the CLI
-- title: Enterprise ready
-  details: Common style guide, TypeScript and the best test setup guarantee code quality and non-breaking changes
+- title: 快速脚手架
+  details: 创建组件, 连接组件, 模块 - 和他们的测试 - right from the CLI
+- title: 企业级
+  details: 常规样式指南, TypeScript & 最好的测试设置保证代码质量和连续变迁
 - title: SEO
-  details: SEO (document head tags management) and server-side-rendering for search engines
-- title: Industry-standard i18n support
-  details: Scalable apps need to support multiple languages, easily add and support multiple languages
-- title: Progressive-Web-App
-  details: Offline-first support with service-workers and a lighthouse score as high as possible
+  details: 为搜索引擎进行SEO (文件头标签管理) & 服务端渲染
+- title: 工业标准国际化
+  details: 可扩展应用程序需要支持多种语言，容易添加和支持多种语言
+- title: 渐进式网络应用
+  details: 离线优先与service-workers[服务工作线程提供离线代理服务](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API) & 一个尽可能先进的技术灯塔
 - title: UI/UX
-  details: redefine your appearance and behavior any time without restrictions by a library
-- title: Routing with data prefetching
-  details: Server-side-rendering of prefetched data and transferring state from server to client
+  details: 在任何时候没有限制地下重新定义外观和表现
+- title: 路由和数据预获取
+  details: 数据预获取的服务端渲染 & 从服务端到客户端的数据传输
 - title: Storybook
-  details: Allows interactive development, testing and sharing of UI components in various property states
-- title: Predictable state management
-  details: Centralised state management with VueX.
+  details: 允许交互式开发, 测试 & 共享 UI 组件在各种不同的属性状态
+- title: 可预测状态管理
+  details: 使用VueX进行集中状态管理
 footer: MIT Licensed | Copyright © 2018 - present Johannes Werner
 ---

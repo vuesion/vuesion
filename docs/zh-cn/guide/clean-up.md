@@ -1,12 +1,12 @@
-# 删除你项目不需要的文件
+# 删除项目不需要的文件和代码
 
-At this point, your project contains a lot of code that is just for demo purposes.
+你的项目包含许多只是为了“演示”的代码。
 
-We recommend that you delete this code because your use-cases will be completely different from the demo use-cases.
+我们建议你删除这些代码，因为您的用例与演示用例完全不同。
 
-## Directories and Files
+## 文件夹和文件
 
-Directories and files that we would recommend to delete:
+我们建议删除的文件和文件夹:
 
 ```bash
 ├── docs
@@ -20,9 +20,9 @@ Directories and files that we would recommend to delete:
             └── DemoRoutes.ts
 ```
 
-## Code
+## 代码
 
-Now you have to remove references to this modules, remove the following code in the following files:
+现在你必须删除这些模块的引用, 在以下文件中移除以下代码:
 
 `./src/app/router.ts`
 ```js
@@ -59,7 +59,7 @@ import { CounterModule }        from './counter/module';
 store.registerModule(['counter'], CounterModule, { preserveState: true });
 ```
 
-And the server-side routes:
+&服务端路由:
 
 `./src/server/server.ts`
 ```js
@@ -71,13 +71,13 @@ DemoRoutes(app);
 CounterRoutes(app);
 ```
 
-## Verification
+## 验证
 
-Now you have a clean app and you can start creating your own application.
+现在你已经清理了你的应用，你可以开始创建你自己的应用了.
 
-You should still see the vue-starter home page if you open up [http://localhost:3000](http://localhost:3000).
-But other routes should redirect to the `/not-found` page.
+如果你你打开了[http://localhost:3000](http://localhost:3000).你应该仍旧能看到vue-starter主页。
+但是其他路由应该重定向到 `/not-found`页面.
 
-::: tip Does it still work?
-To verify that your changes did not break something, run `npm test`.
+::: tip 它仍旧工作吗？
+为了验证你的更改不会破坏东西, 运行 `npm test`进行测试.
 :::
