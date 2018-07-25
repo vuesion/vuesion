@@ -17,7 +17,7 @@ story.add('Default', () => ({
   },
   template: `
 <vue-panel>
-  <vue-checkbox label="isNavigating" v-model="isNavigating" @change="isNavigating = !isNavigating" />
-  <vueNavigationProgress :isNavigating="isNavigating">VueNavigationProgress</vueNavigationProgress>
+  <vue-checkbox id="is-navigating-check" name="isNavigating" label="isNavigating" v-model="isNavigating" @change="isNavigating = !isNavigating" />
+  <vue-navigation-progress :isNavigating="isNavigating">VueNavigationProgress</vue-navigation-progress>
 </vue-panel>`,
 }));
