@@ -2,6 +2,7 @@
 
 > A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices
 
+> 一个灵活的、可扩展的、自定的，已经准备好用于生产的渐进式网络应用样板，聚焦于性能、开发速度和最佳实践
 
 [![Build Status](https://travis-ci.org/devCrossNet/vue-starter.svg?branch=master)](https://travis-ci.org/devCrossNet/vue-starter)
 [![codecov](https://codecov.io/gh/devCrossNet/vue-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/devCrossNet/vue-starter)
@@ -13,6 +14,8 @@
 # Documentation
 
 **[https://vue-starter.herokuapp.com/docs](https://vue-starter.herokuapp.com/docs)** (sometimes not available because of the heroku free-plan)
+
+**[https://vue-starter.herokuapp.com/docs/zh-cn](https://vue-starter.herokuapp.com/docs/zh-cn)** (欢迎改善中文文档(๑• . •๑))
 
 ## Run documentation on your local machine
 
@@ -46,6 +49,8 @@ Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.co
 # Contribute
 
 Contributions are always welcome! Please read the [contribution guidelines](https://github.com/devCrossNet/vue-starter/blob/master/.github/CONTRIBUTING.md) first.
+
+欢迎贡献! 请阅读 [贡献指南](https://github.com/devCrossNet/vue-starter/blob/master/.github/CONTRIBUTING.md) 先ο(=•ω＜=)ρ⌒☆.
 
 # Reference resources
 

@@ -1,5 +1,6 @@
 {
   "App.core.description": "A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices",
+  "App.nav.chinese": "Portuguese",
   "App.nav.components": "Components",
   "App.nav.counter": "Counter",
   "App.nav.docs": "Documentation",
