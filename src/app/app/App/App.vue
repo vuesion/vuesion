@@ -2,6 +2,8 @@
   <div id="app" :class="$style.app">
     <vue-notification-stack />
 
+    <vue-navigation-progress :is-navigating="isNavigating" />
+
     <vue-nav-bar>
       <ul :class="$style.nav">
         <li>
@@ -77,9 +79,11 @@
   import VueIconHashtag             from '../../shared/components/icons/VueIconHashtag/VueIconHashtag';
   import VueIconPuzzlePiece         from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece';
   import VueIconFlag                from '../../shared/components/icons/VueIconFlag/VueIconFlag';
+  import VueNavigationProgress      from '../../shared/components/VueNavigationProgress/VueNavigationProgress';
 
   export default {
     components: {
+      VueNavigationProgress,
       VueIconFlag,
       VueIconPuzzlePiece,
       VueIconHashtag,
@@ -90,6 +94,11 @@
       VueGridItem,
       VueFooter,
       VueNotificationStack,
+    },
+    data() {
+      return {
+        isNavigating: false,
+      };
     },
     computed:   {
       ...mapGetters('app', ['cookieConsentVersion']),
@@ -106,6 +115,18 @@
       navBarClose() {
         EventBus.$emit('navbar.close');
       },
+      initProgressBar() {
+        this.$router.beforeEach((to: any, from: any, next: any) => {
+          this.isNavigating = true;
+          next();
+        });
+        this.$router.afterEach(() => {
+          this.isNavigating = false;
+        });
+      },
+    },
+    created() {
+      this.initProgressBar();
     },
   };
 </script>
@@ -170,7 +191,7 @@
       li {
         margin:     $space-unit;
         opacity:    .8;
-        transition: opacity 250ms linear;
+        transition: opacity $transition-duration linear;
 
         &:hover {
           opacity: 1;
