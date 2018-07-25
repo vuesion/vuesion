@@ -105,8 +105,4 @@ const beforePersistLocalStorage = (localState: IState): IState => {
 new PersistLocalStorage(['counter'], beforePersistLocalStorage),
 ```
 
-To persist your state to LocalStorage, you have to initialize a 
-new instance of `PersistLocalStorage` which takes a list of module names as 
-the first parameter and a callback to delete state that should not be persisted
-to LocalStorage as the second parameter.
-要将状态保存到LocalStorage，你必须初始化一个`PersistLocalStorage`新实例，`PersistLocalStorage`该实例将模块名称列表作为第一个参数，并将删除不应该保存到LocalStorage状态的回调作为第二个参数。
+要将状态保存到LocalStorage，你必须初始化一个`PersistLocalStorage`实例，`PersistLocalStorage`该实例将模块名称列表作为第一个参数，并将删除不应该保存到LocalStorage状态的回调作为第二个参数。

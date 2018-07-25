@@ -45,57 +45,55 @@ A module is an encapsulated piece of domain logic in your application, this coul
 
 ####  Use-cases for a module
 
-**Dynamic page**: consists of a lot of view logic, at least one route and state-management
+**动态页面**: 由许多视图逻辑、至少一个路由和状态管理组成
 
-**Static page**: has no state-management but a route e.g. `/imprint`
+**静态页面**: 没有状态管理，只有一个路由 e.g. `/imprint`
 
-**Domain logic with shared view components**: e.g. authentication state, actions, mutations plus login/signup forms but no routes
+**"领域"逻辑和共享的视图组件**: e.g. 认证状态, 动作, 突变 加上 登录/注册 表单 但是没有路由
 
-**Domain logic**: just plain logic with state-management but no routes and no components
+**“领域”逻辑**: 只是普通逻辑以及状态管理的没有路由没有组件
 
-_A module usually has routing information,  state management or both._
+_一个模块通常含有路由信息或者状态管理,或者两者兼具._
 
-**You can easily create modules with `npm run g`**
+**你可以很容易的通过 `npm run g` 创建模块**
 
-### What is a Connected Component?
+### 什么是connected容器组件?
 
-A connected component is a [Single File Component](https://vuejs.org/v2/guide/single-file-components.html) with VueX-mappings
-and **it has to live inside a module**.
+connected是一个拥有VueX-mappings的[单文件组件](https://vuejs.org/v2/guide/single-file-components.html) 
+&**它只能存在于一个模块里**.
 
-(_these components are different compared to normal components because it is required to set up a VueX mock store for testing_)
+(_这些组件与普通组件相比有所不同，因为需要对VueX配置mock以进行测试g_)
+
 
 ### 什么是组件?
 
-This is a simple [Single File Component](https://vuejs.org/v2/guide/single-file-components.html) without bindings,
-it just takes props and emits events - this is called a **"stupid"** component.
+这是一个没有绑定的简单的 [单文件组件](https://vuejs.org/v2/guide/single-file-components.html)介绍,
 
-A Component can be placed everywhere. Usually, they live in the first level of a module, but it can also be inside other component folders.
+组件可以放在任何地方。通常，它们位于模块的第一级，但也可以位于其他组件文件夹中。
 
-::: tip Testing
-You should try to have as many "stupid" components as possible. They are much easier to test because you can just pass test objects, values, stubs and mocks as a property. And they are much better to reuse!
+::: tip 测试
 
-If you want to know how to archive this, have a look at [Container Components (in our vocabulary "Connected Components")](https://medium.com/@learnreact/container-components-c0e67432e005).
+你应该尝试尽可能多的“傻瓜式的”组件。它们更容易测试，而且它们可以很容易地重用！
+
+如果您想知道如何存档文件, 看一下 [容器组件 (用我们的话说"Connected组件")](https://medium.com/@learnreact/container-components-c0e67432e005).
 :::
 
 ## 命名约定
 
-Naming is one of the hardest things in software development.
-We can not support you with perfect names because we don't know your domain but we can help you to be consistent in naming files, modules, CSS classes, etc.
+命名是软件开发中最难的事情之一。我们无法用完美的名称来支持帮助你，因为我们不了解你的领域，但我们可以帮助你规范命名
 
-Let's consider you create a new page (module) with state-management, routes and a component named `FooBar`,
-what would be the different variations for different contexts?
+让我们考虑创建一个名为`FooBar`新的页面（模块），其中包含状态管理，路由和组件，
 
-- module `fooBar`
-- route `fooBar`
-- connected component `FooBar`
+- 模块 `fooBar`
+- 路由 `fooBar`
+- 容器 `FooBar`
 - css class `fooBar` // we decided against the hyphen notation because you have to use lower camel-case anyway to reference it with `$style`
-- actions `FooBarActions`
+- actions动作 `FooBarActions`
 - getters `FooBarGetters`
-- mutations `FooBarMutations`
-- state interface `IFooBarState`
-- default state `FooBarDefaultState`
+- mutations突变 `FooBarMutations`
+- 状态接口 `IFooBarState`
+- 默认状态 `FooBarDefaultState`
 
-::: tip Generator CLI
-If you want to save some time and to keep the style guide consistent,
-we recommended you to use the included **[Generator CLI](../guide/cli.md)** to generate new code.
+::: tip 生成命令
+如果您想节省时间并保持与样式指南的一致的风格，我们建议您使用 **[Generator CLI](../guide/cli.md)** 来生成新代码.
 :::

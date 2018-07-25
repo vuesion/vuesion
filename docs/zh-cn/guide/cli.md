@@ -66,11 +66,11 @@
 你也会看到CLI已经引用了新的文件在必要的位置: `./src/app/router.ts`, `./src/app/state.ts` and `./src/app/store.ts`.
 
 ::: tip 名称可以包含路径
-`module`, `connected` || `component` 的名称会被添加一个路径前缀
+`module`, `connected容器` , `component` 的名称会被添加一个路径前缀
 
 例如`counter/MyNewComponent`将会在`counter`模块里创建一个组件
 
-**例如， `connected` 组件必须被添加一个路径前缀，因为它只能存在于一个模块里**
+** `connected容器` 组件必须被添加一个路径前缀，因为它只能存在于一个模块里**
 :::
 
 ## 验证

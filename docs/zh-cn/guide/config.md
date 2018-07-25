@@ -10,12 +10,11 @@ AppConfig`./src/app/config/AppConfig.ts` 将为你的应用程序提供可以更
 
 ## 为您的应用提供环境变量
 
-Sometimes you have to provide confidential data e.g. API keys to your app.
-The best practice is to **not** commit these keys in a git repository and instead provide it via an environment variable.
+有时您必须提供机密数据，例如到你应用程序的API密钥。最佳做法`不是`在 git存储库中提交这些密钥，而是通过环境变量提供它。
 
-**Let's consider you want to add an `API_KEY` for a middleware to your app e.g. polling data from a CMS.**
+**让我们想一下你需要为应用添加`API_KEY`中间件，例如从CMS轮询数据。**
 
-First of all, you have to define the attribute `API_KEY` in your AppConfig, add it to:
+首先，你必须在AppConfig中定义属性`API_KEY`，将其添加到
 
 `./src/app/config/default.json`
 ```json
@@ -43,18 +42,19 @@ export interface IAppConfig {
 }
 ```
 
-And now, to provide your app with the API_KEY via an environment variable, you have to start your app with the following command:
+现在，要通过环境变量为应用提供`API_KEY`，你必须使用以下命令启动您的应用
 
 `CONFIG={\"API_KEY\":\"my-api-key\"} npm start` 
 
-or 
+|| 
 
 `CONFIG={\"API_KEY\":\"my-api-key\"} npm run dev`
 
-::: warning DELETE CONFIDENTIAL DATA
-This API_KEY is confidential information, you should not expose it to your client application.
+::: warning 删除机密数据
+此API_KEY是机密信息，你不应将其公开给您的客户端应用程序。
 
-In order to remove this information from your initial state, you have to add the following line in
+要从初始状态中删除此信息，您必须添加以下代码
+
 `./src/server/isomorphic.ts`
 
 ```js
@@ -69,20 +69,20 @@ const setDefaultState = (context: IServerContext, store: Store<IState>) => {
 ```
 :::
 
-Now you can use this API_KEY in your server-side app to fetch data from the CMS and no one will get your API_KEY.
+现在，你可以在服务器端应用程序中使用此API_KEY从CMS获取数据，并且没有人会获得您的API_KEY。
 
-If you want to pass environment variables to your client application, just leave the `DELETE CONFIDENTIAL DATA` step out.
+如果要将环境变量传递给客户端应用程序，只需不做`删除机密数据`步骤即可。
 
 
-## Feature flags and other runtime configurations
+## 功能标志和其他运行时配置
 
-You have to implement a feature that is disabled by default but for testers, it should be already available behind a feature flag.
+有些功能默认情况下是禁用的，但对于测试人员，它应该已经在特性标志下可用。
 
-The vue-starter comes already with a feature flag that explains the concept pretty well.
-If you go to [http://vue-starter.herokuapp.com/?disableParticles=true](http://vue-starter.herokuapp.com/?disableParticles=true) 
-you will see that the particle animation in the `Stage` component is disabled.
+vue-starter已经有一个功能标志，很好地解释了这个概念。
+如果你打开 [http://vue-starter.herokuapp.com/?disableParticles=true](http://vue-starter.herokuapp.com/?disableParticles=true) 
+你将看到`Stage`组件中的粒子动画被禁用。
 
-First add your feature flag in your configuration:
+首先在配置中添加功能标志:
 
 `./src/app/config/default.json`
 ```json
@@ -108,9 +108,7 @@ export interface IAppConfig {
 }
 ```
 
-Now you can enable the feature in any way you want in the `./src/server/utils/RuntimeConfig.ts`.
-In the already included use-case, it is via a query parameter that you can add to the URL.
-But you could also use request headers to enable/disable features.
+现在，您可以以任何方式启用在 `./src/server/utils/RuntimeConfig.ts`中配置标志的功能.在已包含的用例中，它通过在URL中添加查询参数。您也可以使用请求头来启用/禁用功能。
 
 ```js
 import { Request }    from 'express';
