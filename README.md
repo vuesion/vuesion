@@ -14,6 +14,7 @@
 # Documentation
 
 **[https://vue-starter.herokuapp.com/docs](https://vue-starter.herokuapp.com/docs)** (sometimes not available because of the heroku free-plan)
+
 **[https://vue-starter.herokuapp.com/docs/zh-cn](https://vue-starter.herokuapp.com/docs/zh-cn)** (欢迎改善中文文档(๑• . •๑))
 
 ## Run documentation on your local machine
