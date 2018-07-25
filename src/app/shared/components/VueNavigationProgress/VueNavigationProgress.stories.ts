@@ -1,8 +1,8 @@
-import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
-import VueNavigationProgress           from './VueNavigationProgress.vue';
-import VueCheckbox from '../VueCheckbox/VueCheckbox';
-import VuePanel      from '../VuePanel/VuePanel.vue';
+import { storiesOf }         from '@storybook/vue';
+import VueInfoAddon          from 'storybook-addon-vue-info';
+import VueNavigationProgress from './VueNavigationProgress.vue';
+import VueCheckbox           from '../VueCheckbox/VueCheckbox.vue';
+import VuePanel              from '../VuePanel/VuePanel.vue';
 
 const story = (storiesOf('VueNavigationProgress', module) as any);
 

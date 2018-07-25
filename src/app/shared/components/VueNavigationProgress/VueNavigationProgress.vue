@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.vueNavigationProgress, show ? $style.show : '']" :style="{width: `${percent}%`}"></div>
+  <div :class="[$style.vueNavigationProgress, show ? $style.show : '']" :style="{width: `${percent}%`, transition: transitionStyle}"></div>
 </template>
 
 <script lang="ts">
@@ -15,9 +15,11 @@
     },
     data(): any {
       return {
-        interval: null,
-        percent:  0,
-        show:     false,
+        widthTransitionDuration:   500,
+        opacityTransitionDuration: 350,
+        interval:                  null,
+        percent:                   0,
+        show:                      false,
       };
     },
     methods: {
@@ -41,8 +43,6 @@
         }, 100);
       },
       stopAnimation() {
-        const transitionDuration = 250;
-        const widthTransitionDuration = transitionDuration * 2;
         clearInterval(this.interval);
         this.interval = null;
         this.percent = 100;
@@ -50,8 +50,13 @@
           this.show = false;
           setTimeout(() => {
             this.percent = 0;
-          }, transitionDuration);
-        }, widthTransitionDuration);
+          }, this.opacityTransitionDuration);
+        }, this.widthTransitionDuration);
+      },
+    },
+    computed: {
+      transitionStyle() {
+        return `width ${this.widthTransitionDuration}ms linear, opacity ${this.opacityTransitionDuration}ms`;
       },
     },
     watch:   {
@@ -80,7 +85,6 @@
     z-index:    $nav-bar-index + 5;
     height:     2px;
     @include background-gradient($brand-accent, lighten($brand-accent, 30%), 'horizontal');
-    transition: width $transition-duration * 2 linear, opacity $transition-duration;
     opacity:    0;
   }
 
