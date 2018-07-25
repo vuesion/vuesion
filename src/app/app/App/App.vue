@@ -24,25 +24,25 @@
         <li>
           <a @click="localeSwitch('en')">
             <i class="fas fa-flag" />
-            <small>{{ $t('App.nav.english' /* English */) }}</small>
+            <small>English</small>
           </a>
         </li>
         <li>
           <a @click="localeSwitch('de')">
             <i class="fas fa-flag" />
-            <small>{{ $t('App.nav.german' /* German */) }}</small>
+            <small>Deutsch</small>
           </a>
         </li>
         <li>
           <a @click="localeSwitch('pt')">
             <i class="fas fa-flag" />
-            <small>{{ $t('App.nav.pt-BR' /* Portuguese */) }}</small>
+            <small>Português</small>
           </a>
         </li>
         <li>
           <a @click="localeSwitch('zh-cn')">
             <i class="fas fa-flag" />
-            <small>{{ $t('App.nav.chinese' /* Portuguese */) }}</small>
+            <small>中文</small>
           </a>
         </li>
       </ul>

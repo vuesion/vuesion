@@ -1,13 +1,9 @@
 {
   "App.core.description": "an enterprise ready boilerplate for isomorphic, progressive web apps with Vue.JS",
-  "App.nav.chinese": "中文",
   "App.nav.components": "Componentes",
   "App.nav.counter": "Contador",
   "App.nav.docs": "Documentation",
-  "App.nav.english": "Inglês",
-  "App.nav.german": "Alemão",
   "App.nav.home": "Início",
-  "App.nav.pt-BR": "Português",
   "components.autocomplete.emptyMessage": "No options found for %s",
   "components.calendar.friday.short": "F",
   "components.calendar.monday.short": "M",

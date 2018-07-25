@@ -1,13 +1,9 @@
 {
   "App.core.description": "Ein professionelles Boilerplate für universelle, progressive-web-apps mit Vue.JS",
-  "App.nav.chinese": "中文",
   "App.nav.components": "Komponenten",
   "App.nav.counter": "Zähler",
   "App.nav.docs": "Dokumentation",
-  "App.nav.english": "Englisch",
-  "App.nav.german": "Deutsch",
   "App.nav.home": "Startseite",
-  "App.nav.pt-BR": "Portugiesisch",
   "components.autocomplete.emptyMessage": "Keine Einträge für %s gefunden.",
   "components.calendar.friday.short": "F",
   "components.calendar.monday.short": "M",

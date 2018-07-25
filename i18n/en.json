@@ -1,13 +1,9 @@
 {
   "App.core.description": "A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices",
-  "App.nav.chinese": "Portuguese",
   "App.nav.components": "Components",
   "App.nav.counter": "Counter",
   "App.nav.docs": "Documentation",
-  "App.nav.english": "English",
-  "App.nav.german": "German",
   "App.nav.home": "Home",
-  "App.nav.pt-BR": "Portuguese",
   "components.autocomplete.emptyMessage": "No options found for %s",
   "components.calendar.friday.short": "F",
   "components.calendar.monday.short": "M",
