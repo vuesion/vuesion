@@ -73,7 +73,7 @@
     },
     computed:   {
       ...mapState({
-                    disableParticles: (state: IState) => state.app.config.features.disableParticles,
+                    disableParticles: (state: IState) => state.app.config && state.app.config.features.disableParticles,
                   }),
     },
   };

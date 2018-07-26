@@ -1,3 +1,18 @@
+#### 1.1.4 (2018-07-25)
+
+##### Chores
+
+*  remove language translations ([79915ed1](https://github.com/devCrossNet/vue-starter/commit/79915ed19813c5b82897c563b4eaea584ff3527a))
+*  add new heroku api key ([7dcb8d12](https://github.com/devCrossNet/vue-starter/commit/7dcb8d126efbb51d5bfcc9d1b714884bb75c297f))
+
+##### Documentation Changes
+
+*  localization for zh-cn ([#190](https://github.com/devCrossNet/vue-starter/pull/190)) ([ebc70a53](https://github.com/devCrossNet/vue-starter/commit/ebc70a53a5c4c8d1ac9c6a7e354227033b46bd86))
+
+##### Bug Fixes
+
+* **build:**  don't use app config in spa build ([ec14fa06](https://github.com/devCrossNet/vue-starter/commit/ec14fa065488b3e98c71465594cc26d34c9e438b))
+
 #### 1.1.3 (2018-07-24)
 
 ##### Bug Fixes
