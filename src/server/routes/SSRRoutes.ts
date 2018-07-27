@@ -1,6 +1,7 @@
 import * as Express          from 'express';
 import { Request, Response } from 'express';
 import * as fs               from 'fs';
+import * as URL              from 'url';
 import acceptLanguage        from 'accept-language';
 import { BundleRenderer }    from 'vue-server-renderer';
 import { IServerContext }    from '../isomorphic';
@@ -66,6 +67,14 @@ export const SSRRoutes = (app: Express.Application): any => {
         res.status(404);
         Logger.warn('unsupported route: %s; error: %s', req.url, JSON.stringify(err, Object.getOwnPropertyNames(err)));
         render('/not-found', true);
+      } else if (err && err.code === 302) {
+        const redirectUrl = URL.format({
+          protocol: req.protocol,
+          host: req.get('host'),
+          pathname: err.path,
+        });
+        res.redirect(302, redirectUrl);
+        res.send();
       } else {
         res.status(500);
         Logger.error('error during rendering: %s; error: %s', req.url, JSON.stringify(err, Object.getOwnPropertyNames(err)));

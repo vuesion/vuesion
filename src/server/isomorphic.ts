@@ -95,7 +95,11 @@ export default (context: IServerContext) => {
       }))
              .then(() => {
                context.state = store.state;
-               resolve(app);
+               if (router.currentRoute.fullPath !== context.url) {
+                 reject({ code: 302, path: router.currentRoute.fullPath });
+               } else {
+                 resolve(app);
+               }
              })
              .catch(reject);
 
