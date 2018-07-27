@@ -64,7 +64,7 @@ router.onReady(() => {
     .all(activated.map((component: Component) => {
 
       if ((component as any).prefetch) {
-        return (component as any).prefetch({ store, route: to } as IPreLoad);
+        return (component as any).prefetch({ store, route: to, router } as IPreLoad);
       }
 
       return Promise.resolve();
