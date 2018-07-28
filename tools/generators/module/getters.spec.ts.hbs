@@ -1,18 +1,23 @@
 import { {{ properCase moduleName }}Getters }      from './getters';
-import { {{ properCase moduleName }}DefaultState } from './state';
+import { {{ properCase moduleName }}DefaultState, I{{ properCase moduleName }}State } from './state';
 
 describe('{{ properCase moduleName }}Getters', () => {
+  let testState: I{{ properCase moduleName }}State;
+
+  beforeEach(() => {
+    testState = {{ properCase moduleName }}DefaultState();
+  });
 
   test('it should get the count', () => {
-    expect({{ properCase moduleName }}Getters.count({{ properCase moduleName }}DefaultState)).toBe(0);
+    expect({{ properCase moduleName }}Getters.count(testState)).toBe(0);
   });
 
   test('it should get increment pending', () => {
-    expect({{ properCase moduleName }}Getters.incrementPending({{ properCase moduleName }}DefaultState)).toBe(false);
+    expect({{ properCase moduleName }}Getters.incrementPending(testState)).toBe(false);
   });
 
   test('it should get decrement pending', () => {
-    expect({{ properCase moduleName }}Getters.decrementPending({{ properCase moduleName }}DefaultState)).toBe(false);
+    expect({{ properCase moduleName }}Getters.decrementPending(testState)).toBe(false);
   });
 
 });

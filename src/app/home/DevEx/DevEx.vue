@@ -10,7 +10,7 @@
         <vue-grid-item class="vueGridItem">
           <vue-panel class="vuePanel">
             <vue-panel-body>
-              <i class="fas fa-code" />
+              <vue-icon-code />
               <h3>Quick scaffolding</h3>
               <p>Create components, connected components, modules - and their tests - right from the CLI!</p>
             </vue-panel-body>
@@ -20,7 +20,7 @@
         <vue-grid-item class="vueGridItem">
           <vue-panel class="vuePanel">
             <vue-panel-body>
-              <i class="fas fa-bullhorn" />
+              <vue-icon-bullhorn />
               <h3>Instant feedback</h3>
               <p>Enjoy the best DX (Developer eXperience) and code your app at the speed of thought! Your saved changes
                  to
@@ -37,14 +37,18 @@
 </template>
 
 <script lang="ts">
-  import VueGrid      from '../../shared/components/VueGrid/VueGrid';
-  import VueGridItem  from '../../shared/components/VueGridItem/VueGridItem';
-  import VueGridRow   from '../../shared/components/VueGridRow/VueGridRow';
-  import VuePanel     from '../../shared/components/VuePanel/VuePanel';
-  import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody';
+  import VueGrid         from '../../shared/components/VueGrid/VueGrid';
+  import VueGridItem     from '../../shared/components/VueGridItem/VueGridItem';
+  import VueGridRow      from '../../shared/components/VueGridRow/VueGridRow';
+  import VuePanel        from '../../shared/components/VuePanel/VuePanel';
+  import VuePanelBody    from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody';
+  import VueIconCode     from '../../shared/components/icons/VueIconCode/VueIconCode';
+  import VueIconBullhorn from '../../shared/components/icons/VueIconBullhorn/VueIconBullhorn';
 
   export default {
     components: {
+      VueIconBullhorn,
+      VueIconCode,
       VueGrid,
       VueGridItem,
       VuePanel,
@@ -62,8 +66,8 @@
     text-align: center;
 
     i {
-      display:    inline-block;
-      font-size:  $font-size-h1;
+      height:  $font-size-h1;
+      width:  $font-size-h1;
       margin-top: $space-unit;
     }
 

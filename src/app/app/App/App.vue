@@ -1,47 +1,50 @@
 <template>
   <div id="app" :class="$style.app">
     <vue-notification-stack />
+
+    <vue-navigation-progress :is-navigating="isNavigating" />
+
     <vue-nav-bar>
       <ul :class="$style.nav">
         <li>
           <a href="/docs" @click.native="navBarClose">
-            <i class="fas fa-book" />
+            <vue-icon-book />
             <small>{{ $t('App.nav.docs' /* Documentation */) }}</small>
           </a>
         </li>
         <li>
           <router-link to="/counter" @click.native="navBarClose">
-            <i class="fas fa-hashtag" />
+            <vue-icon-hashtag />
             <small>{{ $t('App.nav.counter' /* Counter */) }}</small>
           </router-link>
         </li>
         <li>
           <router-link to="/components" @click.native="navBarClose">
-            <i class="fas fa-puzzle-piece" />
+            <vue-icon-puzzle-piece />
             <small>{{ $t('App.nav.components' /* Components */) }}</small>
           </router-link>
         </li>
         <li>
           <a @click="localeSwitch('en')">
-            <i class="fas fa-flag" />
+            <vue-icon-flag />
             <small>English</small>
           </a>
         </li>
         <li>
           <a @click="localeSwitch('de')">
-            <i class="fas fa-flag" />
+            <vue-icon-flag />
             <small>Deutsch</small>
           </a>
         </li>
         <li>
           <a @click="localeSwitch('pt')">
-            <i class="fas fa-flag" />
+            <vue-icon-flag />
             <small>Português</small>
           </a>
         </li>
         <li>
           <a @click="localeSwitch('zh-cn')">
-            <i class="fas fa-flag" />
+            <vue-icon-flag />
             <small>中文</small>
           </a>
         </li>
@@ -51,29 +54,57 @@
     <router-view :class="$style.content" />
 
     <vue-footer />
+
+    <vue-cookie-consent
+      current-version="1.0.0"
+      :cookie-consent-version="cookieConsentVersion"
+      :set-cookie-consent-version="setCookieConsentVersion">
+      This is a cookie consent component which shows the cookie consent every time you change the version of the
+      consent.
+    </vue-cookie-consent>
   </div>
 </template>
 
 <script lang="ts">
-  import { mapActions }       from 'vuex';
-  import VueNavBar            from '../../shared/components/VueNavBar/VueNavBar.vue';
-  import VueGrid              from '../../shared/components/VueGrid/VueGrid.vue';
-  import VueGridItem          from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VueFooter            from '../../shared/components/VueFooter/VueFooter.vue';
-  import VueNotificationStack from '../../shared/components/VueNotificationStack/VueNotificationStack.vue';
-  import { loadLocaleAsync }  from '../../shared/plugins/i18n/i18n';
-  import { EventBus }         from '../../shared/services/EventBus';
+  import { mapActions, mapGetters } from 'vuex';
+  import VueNavBar                  from '../../shared/components/VueNavBar/VueNavBar.vue';
+  import VueGrid                    from '../../shared/components/VueGrid/VueGrid.vue';
+  import VueGridItem                from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VueFooter                  from '../../shared/components/VueFooter/VueFooter.vue';
+  import VueNotificationStack       from '../../shared/components/VueNotificationStack/VueNotificationStack.vue';
+  import VueCookieConsent           from '../../shared/components/VueCookieConsent/VueCookieConsent';
+  import { loadLocaleAsync }        from '../../shared/plugins/i18n/i18n';
+  import { EventBus }               from '../../shared/services/EventBus';
+  import VueIconBook                from '../../shared/components/icons/VueIconBook/VueIconBook';
+  import VueIconHashtag             from '../../shared/components/icons/VueIconHashtag/VueIconHashtag';
+  import VueIconPuzzlePiece         from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece';
+  import VueIconFlag                from '../../shared/components/icons/VueIconFlag/VueIconFlag';
+  import VueNavigationProgress      from '../../shared/components/VueNavigationProgress/VueNavigationProgress';
 
   export default {
     components: {
+      VueNavigationProgress,
+      VueIconFlag,
+      VueIconPuzzlePiece,
+      VueIconHashtag,
+      VueIconBook,
+      VueCookieConsent,
       VueNavBar,
       VueGrid,
       VueGridItem,
       VueFooter,
       VueNotificationStack,
     },
+    data() {
+      return {
+        isNavigating: false,
+      };
+    },
+    computed:   {
+      ...mapGetters('app', ['cookieConsentVersion']),
+    },
     methods:    {
-      ...mapActions('app', ['changeLocale']),
+      ...mapActions('app', ['changeLocale', 'setCookieConsentVersion']),
       localeSwitch(locale: string): void {
         loadLocaleAsync(locale)
         .catch((error: Error) => console.log(error));
@@ -84,6 +115,18 @@
       navBarClose() {
         EventBus.$emit('navbar.close');
       },
+      initProgressBar() {
+        this.$router.beforeEach((to: any, from: any, next: any) => {
+          this.isNavigating = true;
+          next();
+        });
+        this.$router.afterEach(() => {
+          this.isNavigating = false;
+        });
+      },
+    },
+    created() {
+      this.initProgressBar();
     },
   };
 </script>
@@ -124,24 +167,31 @@
       cursor:     pointer;
 
       a {
-        padding:         $space-unit;
+        padding:         $space-unit * 2;
         display:         block;
         color:           $text-color;
         text-align:      center;
-        font-size:       32px;
         text-decoration: none;
 
         small {
           font-size: 12px;
           display:   block;
         }
+
+        i {
+          height: 32px;
+          width:  32px;
+        }
       }
     }
 
     @include media(tabletLandscape) {
+      margin: 0;
+
       li {
+        margin:     $space-unit;
         opacity:    .8;
-        transition: opacity 250ms linear;
+        transition: opacity $transition-duration linear;
 
         &:hover {
           opacity: 1;

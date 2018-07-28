@@ -17,7 +17,7 @@
 
           <a :class="$style.github" href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener"
              aria-label="github repository">
-            <i class="fab fa-github"></i>
+            <vue-icon-github />
           </a>
         </vue-grid-item>
       </vue-grid-row>
@@ -30,9 +30,10 @@
   import VueGrid             from '../../shared/components/VueGrid/VueGrid';
   import VueGridRow          from '../../shared/components/VueGridRow/VueGridRow';
   import VueGridItem         from '../../shared/components/VueGridItem/VueGridItem';
+  import VueIconGithub       from '../../shared/components/icons/VueIconGithub/VueIconGithub';
 
   export default {
-    components: { VueGridItem, VueGridRow, VueGrid },
+    components: { VueIconGithub, VueGridItem, VueGridRow, VueGrid },
     props:      {
       disableParticles: {
         type:     Boolean,
@@ -189,6 +190,11 @@
 
     @include media(tabletLandscape) {
       top: $space-unit * 42;
+    }
+
+    i {
+      height: $font-size-h1;
+      width:  $font-size-h1;
     }
   }
 </style>

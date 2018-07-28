@@ -20,10 +20,6 @@ const storySchema = [
     props: ['pulse'],
   },
   {
-    label: 'Default with Icon',
-    props: ['icon="user"'],
-  },
-  {
     label: 'Primary',
     props: ['primary'],
   },
@@ -34,10 +30,6 @@ const storySchema = [
   {
     label: 'Primary Pulse',
     props: ['primary', 'pulse'],
-  },
-  {
-    label: 'Primary with Icon',
-    props: ['primary', 'icon="user"'],
   },
   {
     label: 'Accent',
@@ -52,10 +44,6 @@ const storySchema = [
     props: ['accent', 'pulse'],
   },
   {
-    label: 'Accent with Icon',
-    props: ['accent', 'icon="user"'],
-  },
-  {
     label: 'Warn',
     props: ['warn'],
   },
@@ -66,10 +54,6 @@ const storySchema = [
   {
     label: 'Warn Pulse',
     props: ['warn', 'pulse'],
-  },
-  {
-    label: 'Warn with Icon',
-    props: ['warn', 'icon="user"'],
   },
 ];
 

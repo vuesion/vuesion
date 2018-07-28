@@ -1,6 +1,7 @@
 import * as Express          from 'express';
 import { Request, Response } from 'express';
 import * as fs               from 'fs';
+import * as URL              from 'url';
 import acceptLanguage        from 'accept-language';
 import { BundleRenderer }    from 'vue-server-renderer';
 import { IServerContext }    from '../isomorphic';
@@ -61,15 +62,23 @@ export const SSRRoutes = (app: Express.Application): any => {
                                ? req.headers['accept-language'].toString()
                                : packageJson.config['default-locale'];
     const defaultLang: string = acceptLanguage.get(acceptLang);
-    const errorHandler = (err: any, renderRedirect: any) => {
+    const errorHandler = (err: any) => {
       if (err && err.code === 404) {
         res.status(404);
         Logger.warn('unsupported route: %s; error: %s', req.url, JSON.stringify(err, Object.getOwnPropertyNames(err)));
-        renderRedirect('/not-found', true);
+        render('/not-found', true);
+      } else if (err && err.code === 302) {
+        const redirectUrl = URL.format({
+          protocol: req.protocol,
+          host: req.get('host'),
+          pathname: err.path,
+        });
+        res.redirect(302, redirectUrl);
+        res.send();
       } else {
         res.status(500);
         Logger.error('error during rendering: %s; error: %s', req.url, JSON.stringify(err, Object.getOwnPropertyNames(err)));
-        renderRedirect('/error', true);
+        render('/error', true);
       }
     };
     const render = (url: string, redirect: boolean = false): void => {
@@ -84,7 +93,7 @@ export const SSRRoutes = (app: Express.Application): any => {
 
       renderer
       .renderToStream(serverContext)
-      .on('error', (err: any) => errorHandler(err, render))
+      .on('error', errorHandler)
       .on('end', () => Logger.debug(`whole request: ${Date.now() - startTime}ms`))
       .pipe(res);
     };

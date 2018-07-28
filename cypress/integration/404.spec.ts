@@ -5,4 +5,15 @@ describe('404', () => {
     cy.title().should('include', 'page not found');
   });
 
+  it('should respond with correct status code', (done) => {
+    cy.request({
+      url:              'http://localhost:3000/test',
+      failOnStatusCode: false,
+    })
+      .then((res) => {
+        expect(res.status).to.equal(404);
+        done();
+      });
+  });
+
 });
