@@ -13,7 +13,7 @@ export const CounterModule: Module<ICounterState, ICounterState> = {
     ...CounterGetters,
   },
   state:      {
-    ...CounterDefaultState,
+    ...CounterDefaultState(),
   },
   mutations:  {
     ...CounterMutations,

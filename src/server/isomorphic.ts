@@ -85,19 +85,24 @@ export default (context: IServerContext) => {
         return reject({ code: 404 });
       }
 
-      Promise.all(matchedComponents.map((component: Component) => {
-
+      Promise
+      .all(matchedComponents.map((component: Component) => {
         if ((component as any).prefetch) {
           return (component as any).prefetch({ store, route: router.currentRoute } as IPreLoad);
         }
 
         return Promise.resolve();
       }))
-             .then(() => {
-               context.state = store.state;
-               resolve(app);
-             })
-             .catch(reject);
+      .then(() => {
+        context.state = store.state;
+
+        if (router.currentRoute.fullPath !== context.url) {
+          reject({ code: 302, path: router.currentRoute.fullPath });
+        } else {
+          resolve(app);
+        }
+      })
+      .catch(reject);
 
     }, reject);
   });

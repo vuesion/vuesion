@@ -46,7 +46,7 @@ import { CounterDefaultState, ICounterState } from './counter/state';
 ...
 
   counter: {
-    ...CounterDefaultState,
+    ...CounterDefaultState(),
   },
 ```
 

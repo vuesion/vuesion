@@ -91,15 +91,4 @@ describe('VueButton.vue', () => {
     expect(wrapper.findAll(`.pulse`)).toHaveLength(1);
   });
 
-  test('should add icon', () => {
-    const wrapper = mount(VueButton, {
-      localVue,
-      propsData: {
-        icon: 'user',
-      },
-    });
-
-    expect(wrapper.findAll(`.fa-user`)).toHaveLength(1);
-  });
-
 });

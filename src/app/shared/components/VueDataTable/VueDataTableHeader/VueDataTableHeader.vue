@@ -8,20 +8,23 @@
 
       {{ column.title }}
 
-      <i v-if="!sortKey && !isActive(column.sortKey)"
-         class="fas fa-sort" />
-      <i v-if="isActive(column.sortKey)"
-         :class="sortDirection === 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'" />
+      <vue-icon-sort v-if="!sortKey && !isActive(column.sortKey)" />
+      <vue-icon-sort-up v-if="isActive(column.sortKey) && sortDirection === 'asc'" />
+      <vue-icon-sort-down v-if="isActive(column.sortKey) && sortDirection === 'desc'" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
   import { IDataTableHeaderItem } from '../IDataTable';
+  import VueIconSort              from '../../icons/VueIconSort/VueIconSort';
+  import VueIconSortUp            from '../../icons/VueIconSortUp/VueIconSortUp';
+  import VueIconSortDown          from '../../icons/VueIconSortDown/VueIconSortDown';
 
   export default {
-    name:    'VueDataTableHeader',
-    props:   {
+    name:       'VueDataTableHeader',
+    components: { VueIconSortDown, VueIconSortUp, VueIconSort },
+    props:      {
       columns:       {
         type:     Array,
         required: true,
@@ -31,14 +34,14 @@
         required: true,
       },
       sortKey:       {
-        type:    String,
+        type: String,
       },
       sortDirection: {
         type:     String,
         required: true,
       },
     },
-    methods: {
+    methods:    {
       onClick(column: IDataTableHeaderItem) {
         this.$emit('click', column);
       },
@@ -71,7 +74,7 @@
 
     &:hover {
       i {
-        color:   $brand-accent;
+        fill:    $brand-accent;
         opacity: 1;
       }
     }
