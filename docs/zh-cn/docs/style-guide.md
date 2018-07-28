@@ -47,7 +47,7 @@ A module is an encapsulated piece of domain logic in your application, this coul
 
 **动态页面**: 由许多视图逻辑、至少一个路由和状态管理组成
 
-**静态页面**: 没有状态管理，只有一个路由 e.g. `/imprint`
+**静态页面**: 没有状态管理,只有一个路由 e.g. `/imprint`
 
 **"领域"逻辑和共享的视图组件**: e.g. 认证状态, 动作, 突变 加上 登录/注册 表单 但是没有路由
 
@@ -62,27 +62,27 @@ _一个模块通常含有路由信息或者状态管理,或者两者兼具._
 connected是一个拥有VueX-mappings的[单文件组件](https://vuejs.org/v2/guide/single-file-components.html) 
 &**它只能存在于一个模块里**.
 
-(_这些组件与普通组件相比有所不同，因为需要对VueX配置mock以进行测试g_)
+(_这些组件与普通组件相比有所不同,因为需要对VueX配置mock以进行测试g_)
 
 
 ### 什么是组件?
 
 这是一个没有绑定的简单的 [单文件组件](https://vuejs.org/v2/guide/single-file-components.html)介绍,
 
-组件可以放在任何地方。通常，它们位于模块的第一级，但也可以位于其他组件文件夹中。
+组件可以放在任何地方.通常,它们位于模块的第一级,但也可以位于其他组件文件夹中.
 
 ::: tip 测试
 
-你应该尝试尽可能多的“傻瓜式的”组件。它们更容易测试，而且它们可以很容易地重用！
+你应该尝试尽可能多的“傻瓜式的”组件.它们更容易测试,而且它们可以很容易地重用！
 
-如果您想知道如何存档文件, 看一下 [容器组件 (用我们的话说"Connected组件")](https://medium.com/@learnreact/container-components-c0e67432e005).
+如果你想知道如何存档文件, 看一下 [容器组件 (用我们的话说"Connected组件")](https://medium.com/@learnreact/container-components-c0e67432e005).
 :::
 
 ## 命名约定
 
-命名是软件开发中最难的事情之一。我们无法用完美的名称来支持帮助你，因为我们不了解你的领域，但我们可以帮助你规范命名
+命名是软件开发中最难的事情之一.我们无法用完美的名称来支持帮助你,因为我们不了解你的领域,但我们可以帮助你规范命名
 
-让我们考虑创建一个名为`FooBar`新的页面（模块），其中包含状态管理，路由和组件，
+让我们考虑创建一个名为`FooBar`新的页面（模块）,其中包含状态管理,路由和组件,
 
 - 模块 `fooBar`
 - 路由 `fooBar`
@@ -95,5 +95,5 @@ connected是一个拥有VueX-mappings的[单文件组件](https://vuejs.org/v2/g
 - 默认状态 `FooBarDefaultState`
 
 ::: tip 生成命令
-如果您想节省时间并保持与样式指南的一致的风格，我们建议您使用 **[Generator CLI](../guide/cli.md)** 来生成新代码.
+如果你想节省时间并保持与样式指南的一致的风格,我们建议你使用 **[Generator CLI](../guide/cli.md)** 来生成新代码.
 :::
