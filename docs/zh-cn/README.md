@@ -11,9 +11,9 @@ features:
 - title: SEO
   details: 为搜索引擎进行SEO (文件头标签管理) & 服务端渲染
 - title: 工业标准国际化
-  details: 可扩展应用程序需要支持多种语言，容易添加和支持多种语言
+  details: 可扩展应用程序需要支持多种语言,容易添加和支持多种语言
 - title: 渐进式网络应用
-  details: 离线优先与service-workers[服务工作线程提供离线代理服务](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API) & 一个尽可能先进的技术灯塔
+  details: 离线优先与service-workers & 一个尽可能先进的技术灯塔
 - title: UI/UX
   details: 在任何时候没有限制地下重新定义外观和表现
 - title: 路由和数据预获取
