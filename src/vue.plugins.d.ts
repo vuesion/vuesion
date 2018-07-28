@@ -2,6 +2,7 @@
 
 import Vue                               from 'vue';
 import { DefaultProps, PropsDefinition } from 'vue/types/options';
+import { Route, VueRouter }              from 'vue-router/types/router';
 
 declare module 'vue/types/vue' {
   interface Vue {
@@ -25,5 +26,16 @@ declare module 'vue/types/options' {
     metaInfo?: any;
     prefetch?: any;
     $_veeValidate?: any;
+  }
+}
+
+declare module 'vue-router/types/router' {
+  interface VueRouter {
+    history: {
+      router: VueRouter,
+      base: string,
+      current: Route,
+      pending?: Route,
+    };
   }
 }

@@ -101,7 +101,8 @@ export default (context: IServerContext) => {
         // Vue application. In case only the pending route is different, `router.push` or `router.replace`
         // was called, e.g. in `prefetch`.
         const currentPath = router.currentRoute.fullPath;
-        const pendingPath = (router as any).history.pending && (router as any).history.pending.fullPath;
+        const pendingPath = router.history.pending && router.history.pending.fullPath;
+
         if (currentPath !== context.url || (pendingPath && pendingPath !== context.url)) {
           reject({ code: 302, path: pendingPath || currentPath });
         } else {
