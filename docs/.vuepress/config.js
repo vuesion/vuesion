@@ -107,6 +107,7 @@ module.exports = {
                 'docs/style-guide',
                 'docs/npm-scripts',
                 'docs/i18n',
+                'docs/redirects',
                 'docs/storybook',
               ],
             },

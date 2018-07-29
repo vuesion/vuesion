@@ -97,8 +97,8 @@ export default (context: IServerContext) => {
       .then(() => {
         context.state = store.state;
 
-        // If the route from the VueRouter instance differs from request we assume a redirect was triggered in the
-        // Vue application. In case only the pending route is different, `router.push` or `router.replace`
+        // If the route from the VueRouter instance differs from the request we assume a redirect was triggered in
+        // the Vue application. In case only the pending route is different, `router.push` or `router.replace`
         // was called, e.g. in `prefetch`.
         const currentPath = router.currentRoute.fullPath;
         const pendingPath = router.history.pending && router.history.pending.fullPath;
