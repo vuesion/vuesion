@@ -17,4 +17,12 @@ export const AppRoutes: RouteConfig[] = [
     path:      '/redirect',
     redirect:  '/',
   },
+
+  // example route for authentication guard
+  // will redirect to `/login` (implemented in `src/app/router`)
+  // TODO: remove from production code
+  {
+    path:      '/requires-auth',
+    meta:      { requiresAuth: true },
+  },
 ];

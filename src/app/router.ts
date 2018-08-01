@@ -27,3 +27,19 @@ export const router: VueRouter = new VueRouter(
     },
   },
 );
+
+// example guard
+// TODO remove or adjust in production code
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // this route requires auth, check if logged in if not, redirect to login page.
+    const isAuthenticated = false; // TODO implement real auth check
+    if (!isAuthenticated) {
+      next({ path:  '/login' });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
