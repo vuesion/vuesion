@@ -35,7 +35,7 @@ router.beforeEach((to, from, next) => {
     // this route requires auth, check if logged in if not, redirect to login page.
     const isAuthenticated = false; // TODO implement real auth check
     if (!isAuthenticated) {
-      next({ path:  '/login' });
+      next({ path: '/login', query: { redirect: to.fullPath } });
     } else {
       next();
     }

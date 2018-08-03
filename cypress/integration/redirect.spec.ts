@@ -35,7 +35,7 @@ describe('auth guard', () => {
     })
       .then((res) => {
         expect(res.status).to.equal(302);
-        expect(res.headers.location).to.equal('http://localhost:3000/login');
+        expect(res.headers.location).to.equal('http://localhost:3000/login?redirect=%2Frequires-auth');
         done();
       });
   });
