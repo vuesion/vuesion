@@ -71,8 +71,7 @@ export const SSRRoutes = (app: Express.Application): any => {
         const redirectUrl = URL.format({
           protocol: req.protocol,
           host: req.get('host'),
-          pathname: err.path,
-        });
+        }) + err.path;
         res.redirect(302, redirectUrl);
         res.send();
       } else {
