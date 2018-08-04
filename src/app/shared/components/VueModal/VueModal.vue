@@ -41,7 +41,7 @@
                 targets:    el,
                 translateY: {
                   value:      '0%',
-                  duration:   500,
+                  duration:   250,
                   elasticity: 100,
                 },
                 complete:   done,
@@ -59,7 +59,7 @@
                 targets:    el,
                 translateY: {
                   value:      '200%',
-                  duration:   500,
+                  duration:   250,
                   elasticity: 100,
                 },
                 complete() {
@@ -89,15 +89,15 @@
         overlay.style.background = '#000';
         overlay.style.opacity = '0';
         overlay.style.visibility = 'hidden';
-        overlay.style.transition = 'opacity 500ms linear';
+        overlay.style.transition = 'opacity 250ms linear';
         document.body.appendChild(overlay);
       }
 
-      document.addEventListener('click', this.handleDocumentClick);
+      document.addEventListener('mousedown', this.handleDocumentClick);
       document.addEventListener('touchstart', this.handleDocumentClick);
     },
     beforeDestroy() {
-      document.removeEventListener('click', this.handleDocumentClick);
+      document.removeEventListener('mousedown', this.handleDocumentClick);
       document.removeEventListener('touchstart', this.handleDocumentClick);
     },
   };
@@ -129,8 +129,9 @@
   }
 
   .fitContent {
-    padding: 0;
-    bottom:  initial;
+    padding:    0;
+    bottom:     initial;
+    overflow-y: hidden;
 
     @include media(tabletPortrait) {
       top:    $nav-bar-height;

@@ -57,7 +57,7 @@
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "precommit": "concurrently \"npm run lint\" \"npm run test -- --silent\"",
     "ci": "concurrently \"npm run lint\" \"npm run test:coverage -- --runInBand\"",
-    "postci": "codecov -f ./coverage/*.json && npm run build:spa && npm run build && concurrently \"npm run build-storybook\" \"vuepress build docs\"",
+    "postci": "codecov -f ./coverage/*.json && npm run build && concurrently \"npm run build-storybook\" \"vuepress build docs\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
