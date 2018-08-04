@@ -4,7 +4,7 @@ import Vue                      from 'vue';
 import VueI18n                  from 'vue-i18n';
 import { Store }                from 'vuex';
 import { Route }                from 'vue-router';
-import { Component }            from 'vue-router/types/router';
+import { Component, VueRouter } from 'vue-router/types/router';
 import App                      from '../app/app/App/App.vue';
 import { createApp, IApp }      from '../app/app';
 import { IState }               from '../app/state';
@@ -25,6 +25,7 @@ export interface IServerContext {
 export interface IPreLoad {
   store?: Store<IState> | any;
   route?: Route | any;
+  router?: VueRouter;
 }
 
 const setDefaultState = (context: IServerContext, store: Store<IState>) => {
@@ -88,7 +89,7 @@ export default (context: IServerContext) => {
       Promise
       .all(matchedComponents.map((component: Component) => {
         if ((component as any).prefetch) {
-          return (component as any).prefetch({ store, route: router.currentRoute } as IPreLoad);
+          return (component as any).prefetch({ store, route: router.currentRoute, router } as IPreLoad);
         }
 
         return Promise.resolve();
@@ -96,8 +97,14 @@ export default (context: IServerContext) => {
       .then(() => {
         context.state = store.state;
 
-        if (router.currentRoute.fullPath !== context.url) {
-          reject({ code: 302, path: router.currentRoute.fullPath });
+        // If the route from the VueRouter instance differs from the request we assume a redirect was triggered in
+        // the Vue application. In case only the pending route is different, `router.push` or `router.replace`
+        // was called, e.g. in `prefetch`.
+        const currentPath = router.currentRoute.fullPath;
+        const pendingPath = router.history.pending && router.history.pending.fullPath;
+
+        if (currentPath !== context.url || (pendingPath && pendingPath !== context.url)) {
+          reject({ code: 302, path: pendingPath || currentPath });
         } else {
           resolve(app);
         }
