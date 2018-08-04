@@ -1,3 +1,32 @@
+### 1.2.0 (2018-08-04)
+
+##### Documentation Changes
+
+*  improve localisation quality for zh-cn ([#202](https://github.com/devCrossNet/vue-starter/pull/202)) ([39c57ed0](https://github.com/devCrossNet/vue-starter/commit/39c57ed031302cd53b9ec2c29a796d5020c2d3ba))
+
+##### New Features
+
+*  redirect from route guards ([#204](https://github.com/devCrossNet/vue-starter/pull/204)) ([a05def33](https://github.com/devCrossNet/vue-starter/commit/a05def33cfbb81bf69c40eedd0f6ddc563fa2387))
+*  add programmatic server side redirect ([#201](https://github.com/devCrossNet/vue-starter/pull/201)) ([ea3afe3a](https://github.com/devCrossNet/vue-starter/commit/ea3afe3af80534d662a366174190ddfad76f583c))
+*  add server-side redirect ([#199](https://github.com/devCrossNet/vue-starter/pull/199)) ([9c036f73](https://github.com/devCrossNet/vue-starter/commit/9c036f737ae1b39ba00bb2db97f8b7c10483d66a))
+*  replace font-awesome with SVG's ([#180](https://github.com/devCrossNet/vue-starter/pull/180)) ([da9422fb](https://github.com/devCrossNet/vue-starter/commit/da9422fbc3f8c59c53f51cdc7dcc1be886fcce9f))
+* **components:**
+  *  add navigation-progress ([#186](https://github.com/devCrossNet/vue-starter/pull/186)) ([ab74de66](https://github.com/devCrossNet/vue-starter/commit/ab74de664cc95a7fd4493f61352e6f54e185ed7a))
+  *  add cookie consent ([#179](https://github.com/devCrossNet/vue-starter/pull/179)) ([a30fad4c](https://github.com/devCrossNet/vue-starter/commit/a30fad4cee871a58cc59f6e1e042825459ef1092))
+
+##### Bug Fixes
+
+* **vue-modal:**  change overlay event listener for Firefox ([#205](https://github.com/devCrossNet/vue-starter/pull/205)) ([678954ad](https://github.com/devCrossNet/vue-starter/commit/678954adf2646ec4d62fd7e8b0e962327e5e10d2))
+
+##### Refactors
+
+* **routes:**  simplify error-handling code ([#187](https://github.com/devCrossNet/vue-starter/pull/187)) ([a24d0961](https://github.com/devCrossNet/vue-starter/commit/a24d0961385ef96175a76f898a63f4f8a6ccf2e6))
+* **vuex:**  change default-state object to a factory function ([#183](https://github.com/devCrossNet/vue-starter/pull/183)) ([66d31fb7](https://github.com/devCrossNet/vue-starter/commit/66d31fb7193d2234d1a2755e4a6f71b935b1f8d8))
+
+##### Tests
+
+* **e2e:**  add 404 HTTP status integration test ([#200](https://github.com/devCrossNet/vue-starter/pull/200)) ([c65619ae](https://github.com/devCrossNet/vue-starter/commit/c65619ae3bfcfc75cbc30c926d75f06b55448af8))
+
 #### 1.1.4 (2018-07-25)
 
 ##### Chores
