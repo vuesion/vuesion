@@ -162,6 +162,7 @@ module.exports = {
                 'docs/npm-scripts',
                 'docs/i18n',
                 'docs/storybook',
+                'docs/redirects'
               ],
             },
           ],
