@@ -1,3 +1,17 @@
+#### 1.2.1 (2018-08-16)
+
+##### Chores
+
+*  update issue templates ([4d52e7ff](https://github.com/devCrossNet/vue-starter/commit/4d52e7ffee6972ca5f291daca948ce16110d360b))
+
+##### Documentation Changes
+
+* **zh-cn:**  add redirects.md ([#206](https://github.com/devCrossNet/vue-starter/pull/206)) ([56490aa3](https://github.com/devCrossNet/vue-starter/commit/56490aa35d6a0a23b3ea073ecdf66cb6d773bcb2))
+
+##### Bug Fixes
+
+*  update engines to match README ([#209](https://github.com/devCrossNet/vue-starter/pull/209)) ([2a139fd9](https://github.com/devCrossNet/vue-starter/commit/2a139fd9d6976ae5ef3277dafca4a5dfed37c9d4))
+
 ### 1.2.0 (2018-08-04)
 
 ##### Documentation Changes
