@@ -9,7 +9,9 @@ import { CounterModule }        from './counter/module';
 
 Vue.use(Vuex);
 
-const state: IState = (CLIENT && window.__INITIAL_STATE__) || DefaultState;
+// Get CLIENT from the global namespace explicitly, to avoid errors when this file is loaded via the browser
+// (for example, while running Storybook)
+const state: IState = (global.CLIENT && window.__INITIAL_STATE__) || DefaultState;
 
 /* istanbul ignore next */
 const beforePersistLocalStorage = (localState: IState): IState => {
