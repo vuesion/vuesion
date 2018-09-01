@@ -29,4 +29,4 @@ To use this tool and get an overview of your bundles, run `npm run analyze-bundl
 
 This will display the following overview:
 
-<img :src="$withBase('/analyzer.png')" alt="foo">
+<img :src="$withBase('/analyzer.png')" alt="webpack-bundle-analyzer">
