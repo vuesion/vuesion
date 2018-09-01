@@ -51,6 +51,26 @@ If you look for an easier way to get started with Vue and Webpack,
 - [Storybook integration](https://storybook.js.org/basics/guide-vue/)
 - Predictable state management with [vuex](https://vuex.vuejs.org/en/)
 
+## Recommended architecture
+
+The vue-starter is build on top of the idea of micro-services or a service-oriented-architecture.
+
+This is because a separation of concerns approach is much better to maintain over time and it's much easier to manage a single technology
+per service instead of a mix of technologies e.g. PHP server-side-rendering and a Javascript client side app.
+
+::: tip Deployment
+The vue-starter project should be it's own deployable unit, it should be dreaded as it's own service in the architecture.
+:::
+
+::: tip Example
+If the vue-starter needs to access a database - the database should be exposed as another service and the vue-starter
+should access this service via RESTful API calls.
+:::
+
+#### Architecture diagram
+
+<img :src="$withBase('/architecture.jpg')" alt="architecture"> 
+
 ## Todo
 
 This is an ever-evolving project,
