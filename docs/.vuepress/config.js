@@ -110,6 +110,7 @@ module.exports = {
                 'docs/i18n',
                 'docs/redirects',
                 'docs/storybook',
+                'docs/prefetch-and-state-transfer',
               ],
             },
           ],
