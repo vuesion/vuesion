@@ -1,4 +1,4 @@
-FROM node:8 AS builder
+FROM node:8-alpine AS builder
 RUN mkdir /app
 WORKDIR /app
 COPY . .
