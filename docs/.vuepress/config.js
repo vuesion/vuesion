@@ -88,6 +88,7 @@ module.exports = {
               children: [
                 'guide/install',
                 'guide/run',
+                'guide/docker',
                 'guide/test',
                 'guide/clean-up',
                 'guide/i18n',
