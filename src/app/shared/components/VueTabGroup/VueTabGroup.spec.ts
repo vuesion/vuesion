@@ -1,65 +1,47 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import VueTabGroup               from './VueTabGroup.vue';
 import VueTabItem                from './VueTabItem/VueTabItem.vue';
-import { Component }             from 'vue';
 
 const localVue = createLocalVue();
+
+localVue.component('vue-tab-item', VueTabItem);
 
 describe('VueTabGroup.vue', () => {
 
   test('renders component with a tab', () => {
-    const tabWrapper = mount(VueTabItem, {
-      localVue,
-      propsData: {
-        title: 'foo',
-        icon:  'bar',
-      },
-    });
     const wrapper = mount(VueTabGroup, {
       localVue,
       slots: {
-        default: [tabWrapper.vm as Component],
+        default: '<vue-tab-item title="foo" />',
       },
     });
 
-    (tabWrapper as any).vm.$parent = wrapper.vm;
-    (tabWrapper as any).vm.$options.created['2'].call(tabWrapper.vm);
+    const tabWrapper: any = wrapper.find(VueTabItem);
 
-    expect(wrapper.findAll('li')).toHaveLength(1);
+    tabWrapper.vm.$parent = wrapper.vm;
+    tabWrapper.vm.$options.created[3].call(tabWrapper.vm);
+
     expect(wrapper.find('li').text()).toMatch('foo');
 
     wrapper.destroy();
   });
 
   test('should change tab', () => {
-    const tabWrapper = mount(VueTabItem, {
-      localVue,
-      propsData: {
-        title: 'foo',
-        icon:  'bar',
-      },
-    });
-    const tabWrapper2 = mount(VueTabItem, {
-      localVue,
-      propsData: {
-        title: 'foo2',
-        icon:  'bar',
-      },
-    });
     const wrapper = mount(VueTabGroup, {
       localVue,
       slots: {
-        default: [tabWrapper.vm as Component, tabWrapper2.vm as Component],
+        default: ['<vue-tab-item title="foo" />', '<vue-tab-item title="foo2" />'],
       },
     });
 
-    (tabWrapper as any).vm.$parent = wrapper.vm;
-    (tabWrapper as any).vm.$options.created['2'].call(tabWrapper.vm);
+    const tabWrapper: any = wrapper.findAll(VueTabItem).at(0);
+    const tabWrapper2: any = wrapper.findAll(VueTabItem).at(1);
 
-    (tabWrapper2 as any).vm.$parent = wrapper.vm;
-    (tabWrapper2 as any).vm.$options.created['2'].call(tabWrapper2.vm);
+    tabWrapper.vm.$parent = wrapper.vm;
+    tabWrapper.vm.$options.created[3].call(tabWrapper.vm);
 
-    expect(wrapper.findAll('li')).toHaveLength(2);
+    tabWrapper2.vm.$parent = wrapper.vm;
+    tabWrapper2.vm.$options.created[3].call(tabWrapper2.vm);
 
     expect(wrapper.find('li').text()).toMatch('foo');
     expect(wrapper.find('li').classes()).toEqual(['active']);
