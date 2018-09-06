@@ -3,7 +3,7 @@ import VueTabItem                from './VueTabItem.vue';
 
 const localVue = createLocalVue();
 
-describe('VueTab.vue', () => {
+describe('VueTabItem.vue', () => {
 
   test('renders component', () => {
     const wrapper = mount(VueTabItem, {
@@ -16,6 +16,11 @@ describe('VueTab.vue', () => {
       },
     }) as any;
 
+    expect((wrapper as any).vm.cssClasses).toEqual(['vueTab']);
+    wrapper.setData({ active: true });
+    expect((wrapper as any).vm.cssClasses).toEqual(['vueTab', 'active']);
+
+    wrapper.setData({ active: false });
     expect(wrapper.findAll('p')).toHaveLength(0);
 
     (wrapper as any).vm.$parent.register = jest.fn();
