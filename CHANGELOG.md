@@ -1,3 +1,24 @@
+#### 1.2.2 (2018-09-13)
+
+##### Chores
+
+*  update dependencies ([#224](https://github.com/devCrossNet/vue-starter/pull/224)) ([b5dba93b](https://github.com/devCrossNet/vue-starter/commit/b5dba93b2ab068f9db37ac20b5a76f2791f8d637))
+
+##### Documentation Changes
+
+*  add progressive-web-app section ([#227](https://github.com/devCrossNet/vue-starter/pull/227)) ([3387b957](https://github.com/devCrossNet/vue-starter/commit/3387b9575c48c43aca2abcbf2342b7975871c6d4))
+*  add guide to integrate with 3rd party UI libraries ([#225](https://github.com/devCrossNet/vue-starter/pull/225)) ([8b3357bc](https://github.com/devCrossNet/vue-starter/commit/8b3357bc197e0070a5f219a8b1b21f3e79f6bb37))
+*  add a recommended architecture section ([#222](https://github.com/devCrossNet/vue-starter/pull/222)) ([b7b575b4](https://github.com/devCrossNet/vue-starter/commit/b7b575b425ec1039c84bc02e3cb53766b69db7f2))
+*  add tutorial how to prefetch data on the server side ([#221](https://github.com/devCrossNet/vue-starter/pull/221)) ([9b162bb3](https://github.com/devCrossNet/vue-starter/commit/9b162bb369e7185cc9687492cbe5b66ff831fec2))
+
+##### Bug Fixes
+
+*  dockerfile ([#215](https://github.com/devCrossNet/vue-starter/pull/215)) ([fb3b908b](https://github.com/devCrossNet/vue-starter/commit/fb3b908bc0aacad2c843e566a93634d4287e4f63))
+
+##### Performance Improvements
+
+*  optimize Dockerfile ([d0348a5f](https://github.com/devCrossNet/vue-starter/commit/d0348a5f1968510158f38c2cc61d66fe34ce4c13))
+
 #### 1.2.1 (2018-08-16)
 
 ##### Chores
