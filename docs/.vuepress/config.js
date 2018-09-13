@@ -107,6 +107,7 @@ module.exports = {
               collapsable: false,
               children: [
                 'docs/style-guide',
+                'docs/pwa',
                 'docs/npm-scripts',
                 'docs/i18n',
                 'docs/redirects',
