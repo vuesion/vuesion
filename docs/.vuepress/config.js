@@ -91,6 +91,7 @@ module.exports = {
                 'guide/docker',
                 'guide/test',
                 'guide/clean-up',
+                'guide/third-party',
                 'guide/i18n',
                 'guide/cli',
                 'guide/styles',
