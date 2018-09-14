@@ -19,6 +19,17 @@ Before we start please install vuetify and the webpack css-loader by running `np
 
 ...
 
+      {
+        test:   /\.css$/,
+        loader: ['vue-style-loader', 'css-loader'],
+      },
+      {
+        test: /\.scss$/,
+        ...
+      }
+      
+...
+
 ```
 
 `./config/webpack.server.config.js`:
