@@ -72,7 +72,10 @@ router.onReady(() => {
     .then(() => {
       next();
     })
-    .catch(next);
+    .catch((error) => {
+      console.error(error); // tslint:disable-line
+      next();
+    });
   });
 
   app.$mount('#app');
