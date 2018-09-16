@@ -25,4 +25,9 @@ export const AppRoutes: RouteConfig[] = [
     path:      '/requires-auth',
     meta:      { requiresAuth: true },
   },
+
+  {
+    path:      '*',
+    component: () => import(/* webpackChunkName: "notFound" */ './NotFound/NotFound.vue').then(m => m.default),
+  },
 ];

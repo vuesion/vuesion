@@ -66,7 +66,7 @@ export const SSRRoutes = (app: Express.Application): any => {
       if (err && err.code === 404) {
         res.status(404);
         Logger.warn('unsupported route: %s; error: %s', req.url, JSON.stringify(err, Object.getOwnPropertyNames(err)));
-        render('/not-found', true);
+        render('/not-found');
       } else if (err && err.code === 302) {
         const redirectUrl = URL.format({
           protocol: req.protocol,
