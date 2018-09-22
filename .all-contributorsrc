@@ -1,0 +1,115 @@
+{
+  "projectName": "vue-starter",
+  "projectOwner": "devCrossNet",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "devCrossNet",
+      "name": "Johannes Werner",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1667598?v=4",
+      "profile": "https://twitter.com/_jwerner_",
+      "contributions": [
+        "code",
+        "bug",
+        "doc",
+        "design",
+        "example",
+        "ideas",
+        "infra",
+        "review",
+        "talk",
+        "test",
+        "tool",
+        "translation",
+        "tutorial",
+        "video"
+      ]
+    },
+    {
+      "login": "xMartin",
+      "name": "xMartin",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/112532?v=4",
+      "profile": "http://xmartin.de/",
+      "contributions": [
+        "code",
+        "bug",
+        "doc",
+        "example",
+        "ideas",
+        "review",
+        "test",
+        "tutorial"
+      ]
+    },
+    {
+      "login": "40818419",
+      "name": "Konstantin Kulinicenko",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2235499?s=460&v=4",
+      "profile": "https://github.com/40818419",
+      "contributions": [
+        "code",
+        "bug",
+        "doc",
+        "example",
+        "ideas",
+        "review",
+        "test",
+        "tutorial"
+      ]
+    },
+    {
+      "login": "SilverLeaves",
+      "name": "Silver·湫澲",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/31165554?v=4",
+      "profile": "http://saigao.fun",
+      "contributions": [
+        "doc",
+        "translation"
+      ]
+    },
+    {
+      "login": "stavros-liaskos",
+      "name": "Stavros Liaskos",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/17932287?v=4",
+      "profile": "https://stavrosliaskos.com/",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "marceloboeira",
+      "name": "Marcelo Boeira",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1898225?v=4",
+      "profile": "https://marceloboeira.com",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "Riari",
+      "name": "Rick Mann",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3583774?v=4",
+      "profile": "http://teamteatime.net/",
+      "contributions": [
+        "code",
+        "test"
+      ]
+    },
+    {
+      "login": "EnigmaCurry",
+      "name": "Ryan McGuire",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/43061?v=4",
+      "profile": "http://www.EnigmaCurry.com",
+      "contributions": [
+        "code",
+        "test"
+      ]
+    }
+  ]
+}
