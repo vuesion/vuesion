@@ -382,3 +382,8 @@ $toggle-handle-focused-shadow: $slider-handle-active-shadow;
 
 $toggle-disabled-bg: $panel-bg;
 $toggle-handle-disabled-bg: $divider-color;
+
+/* Breadcrumb */
+$breadcrumb-link-color: $brand-accent;
+$breadcrumb-link-hover-color: darken($breadcrumb-link-color, 5%);
+$breadcrumb-separator: "›";
