@@ -4,7 +4,7 @@
       <vue-grid-row>
         <vue-grid-item>
           <h1>404</h1>
-          <h3>Site not found!</h3>
+          <h3>Page not found!</h3>
         </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
