@@ -10,6 +10,7 @@ import { createApp, IApp }      from '../app/app';
 import { IState }               from '../app/state';
 import { IAppConfig }           from '../app/config/IAppConfig';
 import { PersistCookieStorage } from '../app/shared/plugins/vuex-persist/PersistCookieStorage';
+import { Logger }               from './utils/Logger';
 
 export interface IServerContext {
   url: string;
@@ -98,6 +99,10 @@ export default (context: IServerContext) => {
 
         return Promise.resolve();
       }))
+      // catch prefetch errors just as we're doing on the client side
+      .catch((error: any) => {
+        Logger.warn('error in prefetch for route: %s; error: %s', router.currentRoute.fullPath, JSON.stringify(error, Object.getOwnPropertyNames(error)));
+      })
       .then(() => {
         context.state = store.state;
 
