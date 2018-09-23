@@ -25,4 +25,12 @@ export const AppRoutes: RouteConfig[] = [
     path:      '/requires-auth',
     meta:      { requiresAuth: true },
   },
+
+  // catch-all route
+  // shows 404 page and also makes server respond with HTTP status code 404
+  // make sure to also adjust `src/server/isomorphic` in case you implement a more complex behavior here
+  {
+    path:      '*',
+    component: () => import(/* webpackChunkName: "notFound" */ './NotFound/NotFound.vue').then(m => m.default),
+  },
 ];

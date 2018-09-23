@@ -81,15 +81,16 @@ export default (context: IServerContext) => {
 
     router
     .onReady(() => {
-      const matchedComponents: Component[] = [App as Component].concat(router.getMatchedComponents());
-
       if (router.currentRoute.fullPath !== context.url) {
         return reject({ code: 302, path: router.currentRoute.fullPath });
       }
 
-      if (matchedComponents.length === 1) {
+      const routeMatchesCatchAll = router.currentRoute.matched.some((match) => match.path === '*');
+      if (routeMatchesCatchAll) {
         return reject({ code: 404 });
       }
+
+      const matchedComponents: Component[] = [App as Component].concat(router.getMatchedComponents());
 
       Promise
       .all(matchedComponents.map((component: Component) => {
