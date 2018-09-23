@@ -23,8 +23,7 @@ describe('auth guard', () => {
 
   it('should redirect /requires-auth to /login', () => {
     cy.visit('http://localhost:3000/requires-auth', { failOnStatusCode: false });
-    // as /login is not implemented we expect the client to redirect to 404 page for now
-    cy.location('pathname').should('eq', '/not-found');
+    cy.location('pathname').should('eq', '/login');
   });
 
   it('should respond with correct status code and location', (done) => {
