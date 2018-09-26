@@ -31,11 +31,11 @@
 </template>
 
 <script lang="ts">
-  import VueDataTableHeader                               from './VueDataTableHeader/VueDataTableHeader';
+  import VueDataTableHeader                               from './VueDataTableHeader/VueDataTableHeader.vue';
+  import VueDataTableRow                                  from './VueDataTableRow/VueDataTableRow.vue';
+  import VuePagination                                    from '../VuePagination/VuePagination.vue';
+  import VueDataTableSearch                               from './VueDataTableSearch/VueDataTableSearch.vue';
   import { IComputedDataRowColumn, IDataTableHeaderItem } from './IDataTable';
-  import VueDataTableRow                                  from './VueDataTableRow/VueDataTableRow';
-  import VuePagination                                    from '../VuePagination/VuePagination';
-  import VueDataTableSearch                               from './VueDataTableSearch/VueDataTableSearch';
 
   export default {
     name:       'VueDataTable',

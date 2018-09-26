@@ -58,13 +58,13 @@
   import chunk     from 'lodash/chunk';
 
   interface IData {
-    selecting: string,
-    currentMonth: number,
-    currentYear: number,
-    selectedDayOfWeek: number,
-    selectedDay: number,
-    selectedMonth: number,
-    selectedYear: number,
+    selecting: string;
+    currentMonth: number;
+    currentYear: number;
+    selectedDayOfWeek: number;
+    selectedDay: number;
+    selectedMonth: number;
+    selectedYear: number;
   }
 
   interface IDay {
@@ -168,12 +168,11 @@
         if (this.minDate) {
           firstYear = this.minDate.getFullYear();
         } else {
-          firstYear = (new Date).getFullYear();
+          firstYear = (new Date()).getFullYear();
         }
 
-        let through = this.maxDate ? (this.maxDate.getFullYear() + 1) - firstYear : 101;
-
-        let years = [];
+        const through = this.maxDate ? (this.maxDate.getFullYear() + 1) - firstYear : 101;
+        const years = [];
 
         for (let i = firstYear, len = firstYear + through; i < len; i++) {
           years.push(i);
@@ -287,7 +286,6 @@
       },
       dayDisabled(day: number, date: Date): boolean {
         let disabled: boolean = false;
-
 
         if (!day) {
           disabled = true;

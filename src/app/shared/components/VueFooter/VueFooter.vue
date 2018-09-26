@@ -16,9 +16,10 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          <small><a href="https://github.com/devCrossNet/vue-starter/blob/master/LICENSE" target="_blank"
-                    rel="noopener">MIT
-                                   License</a>
+          <small>
+            <a href="https://github.com/devCrossNet/vue-starter/blob/master/LICENSE" target="_blank" rel="noopener">
+              MIT License
+            </a>
           </small>
         </vue-grid-item>
       </vue-grid-row>
@@ -27,11 +28,11 @@
 </template>
 
 <script lang="ts">
-  import VueGrid              from '../VueGrid/VueGrid';
-  import VueGridItem          from '../VueGridItem/VueGridItem';
-  import VueGridRow           from '../VueGridRow/VueGridRow';
-  import VueIconGithubAlt     from '../icons/VueIconGithubAlt/VueIconGithubAlt';
-  import VueIconTwitterSquare from '../icons/VueIconTwitterSquare/VueIconTwitterSquare';
+  import VueGrid              from '../VueGrid/VueGrid.vue';
+  import VueGridItem          from '../VueGridItem/VueGridItem.vue';
+  import VueGridRow           from '../VueGridRow/VueGridRow.vue';
+  import VueIconGithubAlt     from '../icons/VueIconGithubAlt/VueIconGithubAlt.vue';
+  import VueIconTwitterSquare from '../icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
 
   export default {
     name:       'VueFooter',

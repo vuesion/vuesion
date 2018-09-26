@@ -34,10 +34,10 @@
 </template>
 
 <script lang="ts">
-  import VueGrid     from '../VueGrid/VueGrid';
-  import VueGridItem from '../VueGridItem/VueGridItem';
-  import VueGridRow  from '../VueGridRow/VueGridRow';
-  import VueCollapse from '../VueCollapse/VueCollapse';
+  import VueGrid      from '../VueGrid/VueGrid.vue';
+  import VueGridItem  from '../VueGridItem/VueGridItem.vue';
+  import VueGridRow   from '../VueGridRow/VueGridRow.vue';
+  import VueCollapse  from '../VueCollapse/VueCollapse.vue';
   import { EventBus } from '../../services/EventBus';
 
   export default {
@@ -102,7 +102,7 @@
       },
       handleCloseEvent() {
         this.isOpen = false;
-      }
+      },
     },
     beforeMount() {
       window.addEventListener('scroll', this.handleScroll);

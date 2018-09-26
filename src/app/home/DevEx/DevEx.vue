@@ -37,13 +37,13 @@
 </template>
 
 <script lang="ts">
-  import VueGrid         from '../../shared/components/VueGrid/VueGrid';
-  import VueGridItem     from '../../shared/components/VueGridItem/VueGridItem';
-  import VueGridRow      from '../../shared/components/VueGridRow/VueGridRow';
-  import VuePanel        from '../../shared/components/VuePanel/VuePanel';
-  import VuePanelBody    from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody';
-  import VueIconCode     from '../../shared/components/icons/VueIconCode/VueIconCode';
-  import VueIconBullhorn from '../../shared/components/icons/VueIconBullhorn/VueIconBullhorn';
+  import VueGrid         from '../../shared/components/VueGrid/VueGrid.vue';
+  import VueGridItem     from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VueGridRow      from '../../shared/components/VueGridRow/VueGridRow.vue';
+  import VuePanel        from '../../shared/components/VuePanel/VuePanel.vue';
+  import VuePanelBody    from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
+  import VueIconCode     from '../../shared/components/icons/VueIconCode/VueIconCode.vue';
+  import VueIconBullhorn from '../../shared/components/icons/VueIconBullhorn/VueIconBullhorn.vue';
 
   export default {
     components: {

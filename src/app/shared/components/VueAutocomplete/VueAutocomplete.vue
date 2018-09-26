@@ -53,11 +53,11 @@
 
 <script lang="ts">
   import debounce                from 'lodash/debounce';
-  import VueInput                from '../VueInput/VueInput';
-  import { createGUID }          from '../../utils/misc';
   import { IAutocompleteOption } from './IAutocompleteOption';
-  import VueLoader               from '../VueLoader/VueLoader';
-  import VueIconSearch           from '../icons/VueIconSearch/VueIconSearch';
+  import VueInput                from '../VueInput/VueInput.vue';
+  import VueLoader               from '../VueLoader/VueLoader.vue';
+  import VueIconSearch           from '../icons/VueIconSearch/VueIconSearch.vue';
+  import { createGUID }          from '../../utils/misc';
 
   export default {
     name:       'VueAutocomplete',
@@ -243,7 +243,7 @@
       },
     },
     watch:      {
-      options: function (options: IAutocompleteOption[]) {
+      options(options: IAutocompleteOption[]) {
         this.options = options;
         this.isOpen = true;
         this.$nextTick(() => {

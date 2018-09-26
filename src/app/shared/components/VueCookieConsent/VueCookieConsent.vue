@@ -15,8 +15,8 @@
 </template>
 
 <script lang="ts">
-  import FadeAnimation from '../../animations/FadeAnimation/FadeAnimation';
-  import VueIconTimes  from '../icons/VueIconTimes/VueIconTimes';
+  import FadeAnimation from '../../animations/FadeAnimation/FadeAnimation.vue';
+  import VueIconTimes  from '../icons/VueIconTimes/VueIconTimes.vue';
 
   export default {
     name:       'VueCookieConsent',
@@ -57,7 +57,7 @@
       }
     },
     watch:      {
-      show: function (show: boolean) {
+      show(show: boolean) {
         if (!show) {
           this.removeBodyPadding();
         }

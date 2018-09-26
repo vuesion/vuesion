@@ -31,10 +31,10 @@
 <script lang="ts">
   import { mapActions, mapGetters } from 'vuex';
   import { IPreLoad }               from '../../../server/isomorphic';
-  import VueGrid                    from '../../shared/components/VueGrid/VueGrid';
-  import VueGridItem                from '../../shared/components/VueGridItem/VueGridItem';
-  import VueButton                  from '../../shared/components/VueButton/VueButton';
-  import VueGridRow                 from '../../shared/components/VueGridRow/VueGridRow';
+  import VueGrid                    from '../../shared/components/VueGrid/VueGrid.vue';
+  import VueGridItem                from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VueButton                  from '../../shared/components/VueButton/VueButton.vue';
+  import VueGridRow                 from '../../shared/components/VueGridRow/VueGridRow.vue';
 
   export default {
     metaInfo:   {

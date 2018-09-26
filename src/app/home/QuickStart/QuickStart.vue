@@ -29,11 +29,11 @@
 </template>
 
 <script lang="ts">
-  import VueGrid      from '../../shared/components/VueGrid/VueGrid';
-  import VueGridItem  from '../../shared/components/VueGridItem/VueGridItem';
-  import VuePanel     from '../../shared/components/VuePanel/VuePanel';
-  import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody';
-  import VueGridRow   from '../../shared/components/VueGridRow/VueGridRow';
+  import VueGrid      from '../../shared/components/VueGrid/VueGrid.vue';
+  import VueGridItem  from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VuePanel     from '../../shared/components/VuePanel/VuePanel.vue';
+  import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
+  import VueGridRow   from '../../shared/components/VueGridRow/VueGridRow.vue';
 
   export default {
     components: {

@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-  import FadeAnimation from '../../animations/FadeAnimation/FadeAnimation';
+  import FadeAnimation from '../../animations/FadeAnimation/FadeAnimation.vue';
 
   export interface ICarouselImage {
     copyright?: string;
@@ -88,7 +88,7 @@
       },
       preloadImages() {
         this.images.forEach((image: ICarouselImage) => {
-          let imageInstance: HTMLImageElement = new Image();
+          const imageInstance: HTMLImageElement = new Image();
 
           imageInstance.src = image.url;
           imageInstance.alt = image.alt;

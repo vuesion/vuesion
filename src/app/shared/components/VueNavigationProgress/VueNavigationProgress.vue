@@ -1,13 +1,14 @@
 <template>
-  <div :class="[$style.vueNavigationProgress, show ? $style.show : '']" :style="{width: `${percent}%`, transition: transitionStyle}"></div>
+  <div :class="[$style.vueNavigationProgress, show ? $style.show : '']"
+       :style="{width: `${percent}%`, transition: transitionStyle}"></div>
 </template>
 
 <script lang="ts">
   import { randomInt } from '../../utils/misc';
 
   export default {
-    name:    'VueNavigationProgress',
-    props:   {
+    name:     'VueNavigationProgress',
+    props:    {
       isNavigating: {
         type:     Boolean,
         required: true,
@@ -22,22 +23,17 @@
         show:                      false,
       };
     },
-    methods: {
+    methods:  {
       startAnimation() {
         this.interval = setInterval(() => {
           this.show = true;
           if (this.percent <= 50) {
             this.percent += randomInt(30, 40);
-          }
-          /* istanbul ignore next */
-          else if (this.percent <= 70) {
+          } /* istanbul ignore next */ else if (this.percent <= 70) {
             this.percent += randomInt(5, 10);
-          }
-          /* istanbul ignore next */
-          else if (this.percent <= 95) {
+          } /* istanbul ignore next */ else if (this.percent <= 95) {
             this.percent += randomInt(1, 2);
-          }
-          else {
+          } else {
             this.percent = 99;
           }
         }, 100);
@@ -59,7 +55,7 @@
         return `width ${this.widthTransitionDuration}ms linear, opacity ${this.opacityTransitionDuration}ms`;
       },
     },
-    watch:   {
+    watch:    {
       isNavigating: {
         immediate: true,
         handler(isNavigating: boolean) {
@@ -78,14 +74,14 @@
   @import "../../styles";
 
   .vueNavigationProgress {
-    position:   fixed;
-    top:        0;
-    left:       0;
-    right:      0;
-    z-index:    $nav-bar-index + 5;
-    height:     2px;
+    position: fixed;
+    top:      0;
+    left:     0;
+    right:    0;
+    z-index:  $nav-bar-index + 5;
+    height:   2px;
     @include background-gradient($brand-accent, lighten($brand-accent, 30%), 'horizontal');
-    opacity:    0;
+    opacity:  0;
   }
 
   .show {

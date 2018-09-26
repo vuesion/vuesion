@@ -72,14 +72,14 @@
   import VueGridItem                from '../../shared/components/VueGridItem/VueGridItem.vue';
   import VueFooter                  from '../../shared/components/VueFooter/VueFooter.vue';
   import VueNotificationStack       from '../../shared/components/VueNotificationStack/VueNotificationStack.vue';
-  import VueCookieConsent           from '../../shared/components/VueCookieConsent/VueCookieConsent';
+  import VueCookieConsent           from '../../shared/components/VueCookieConsent/VueCookieConsent.vue';
+  import VueIconBook                from '../../shared/components/icons/VueIconBook/VueIconBook.vue';
+  import VueIconHashtag             from '../../shared/components/icons/VueIconHashtag/VueIconHashtag.vue';
+  import VueIconPuzzlePiece         from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
+  import VueIconFlag                from '../../shared/components/icons/VueIconFlag/VueIconFlag.vue';
+  import VueNavigationProgress      from '../../shared/components/VueNavigationProgress/VueNavigationProgress.vue';
   import { loadLocaleAsync }        from '../../shared/plugins/i18n/i18n';
   import { EventBus }               from '../../shared/services/EventBus';
-  import VueIconBook                from '../../shared/components/icons/VueIconBook/VueIconBook';
-  import VueIconHashtag             from '../../shared/components/icons/VueIconHashtag/VueIconHashtag';
-  import VueIconPuzzlePiece         from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece';
-  import VueIconFlag                from '../../shared/components/icons/VueIconFlag/VueIconFlag';
-  import VueNavigationProgress      from '../../shared/components/VueNavigationProgress/VueNavigationProgress';
 
   export default {
     components: {
@@ -95,7 +95,7 @@
       VueFooter,
       VueNotificationStack,
     },
-    data() {
+    data(): any {
       return {
         isNavigating: false,
       };
@@ -107,6 +107,7 @@
       ...mapActions('app', ['changeLocale', 'setCookieConsentVersion']),
       localeSwitch(locale: string): void {
         loadLocaleAsync(locale)
+        // tslint:disable-next-line
         .catch((error: Error) => console.log(error));
 
         this.changeLocale(locale);
