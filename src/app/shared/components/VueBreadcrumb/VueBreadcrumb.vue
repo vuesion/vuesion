@@ -1,6 +1,6 @@
 <template>
   <ul :class="$style.vueBreadcrumb">
-    <li v-for="(item, idx) in items">
+    <li :class="$style.item" v-for="(item, idx) in items">
       <router-link :to="item.href" v-if="idx < items.length -1">{{ item.label }}</router-link>
       <span v-else>{{ item.label }}</span>
     </li>
@@ -28,7 +28,7 @@
     list-style: none;
   }
 
-  li {
+  .item {
     display: inline-block;
     padding: $space-unit 0;
 
@@ -43,14 +43,14 @@
         content: "";
       }
     }
-  }
 
-  a {
-    color:           $breadcrumb-link-color;
-    text-decoration: none;
+    a {
+      color:           $breadcrumb-link-color;
+      text-decoration: none;
 
-    &:hover {
-      color: $breadcrumb-link-hover-color;
+      &:hover {
+        color: $breadcrumb-link-hover-color;
+      }
     }
   }
 </style>
