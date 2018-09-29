@@ -499,6 +499,14 @@
           />
         </vue-grid-item>
       </vue-grid-row>
+
+      <vue-grid-row>
+        <vue-grid-item class="vueGridItem">
+          <h2>Breadcrumb</h2>
+          <vue-breadcrumb
+            :items="[{ label: 'Home', href: '/' }, { label: 'Components', href: '/components' }]" />
+        </vue-grid-item>
+      </vue-grid-row>
     </vue-grid>
   </div>
 </template>
@@ -549,6 +557,7 @@
   import VueDataTable                                     from '../../shared/components/VueDataTable/VueDataTable';
   import { dataTableDataFixture, dataTableHeaderFixture } from '../../shared/components/VueDataTable/DataTableFixtures';
   import VueToggle                                        from '../../shared/components/VueToggle/VueToggle';
+  import VueBreadcrumb                                    from '../../shared/components/VueBreadcrumb/VueBreadcrumb';
 
   export default {
     metaInfo:   {
@@ -597,6 +606,7 @@
       ],
     },
     components: {
+      VueBreadcrumb,
       VueToggle,
       VueDataTable,
       VueCarousel,

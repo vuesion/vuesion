@@ -6,7 +6,7 @@
   "files": [
     "README.md"
   ],
-  "imageSize": 100,
+  "imageSize": 64,
   "commit": false,
   "contributors": [
     {
@@ -20,15 +20,7 @@
         "doc",
         "design",
         "example",
-        "ideas",
-        "infra",
-        "review",
-        "talk",
-        "test",
-        "tool",
-        "translation",
-        "tutorial",
-        "video"
+        "tool"
       ]
     },
     {
@@ -40,11 +32,7 @@
         "code",
         "bug",
         "doc",
-        "example",
-        "ideas",
-        "review",
-        "test",
-        "tutorial"
+        "example"
       ]
     },
     {
@@ -56,11 +44,7 @@
         "code",
         "bug",
         "doc",
-        "example",
-        "ideas",
-        "review",
-        "test",
-        "tutorial"
+        "example"
       ]
     },
     {
@@ -97,8 +81,7 @@
       "avatar_url": "https://avatars3.githubusercontent.com/u/3583774?v=4",
       "profile": "http://teamteatime.net/",
       "contributions": [
-        "code",
-        "test"
+        "code"
       ]
     },
     {
@@ -107,8 +90,7 @@
       "avatar_url": "https://avatars0.githubusercontent.com/u/43061?v=4",
       "profile": "http://www.EnigmaCurry.com",
       "contributions": [
-        "code",
-        "test"
+        "code"
       ]
     }
   ]

@@ -187,6 +187,7 @@
     "serviceworker-webpack-plugin": "1.0.1",
     "start-server-webpack-plugin": "2.2.5",
     "storybook-addon-vue-info": "0.6.1",
+    "storybook-vue-router": "1.0.1",
     "ts-jest": "22.4.6",
     "ts-loader": "4.5.0",
     "tslint": "5.11.0",
