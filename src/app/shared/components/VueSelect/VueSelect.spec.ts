@@ -59,6 +59,21 @@ describe('VueSelect.vue', () => {
     expect(wrapper.find('select').attributes().multiple).toBe('multiple');
   });
 
+  test('renders disabled component', () => {
+    const wrapper = mount(VueSelect, {
+      localVue,
+      propsData: {
+        options,
+        disabled: true,
+        name:     'name',
+        id:       'id',
+      },
+    }) as any;
+
+    expect(wrapper.findAll('option')).toHaveLength(5);
+    expect(wrapper.findAll('.disabled')).toHaveLength(1);
+  });
+
   it('should return list of options', () => {
     const wrapper = mount(VueSelect, {
       localVue,
