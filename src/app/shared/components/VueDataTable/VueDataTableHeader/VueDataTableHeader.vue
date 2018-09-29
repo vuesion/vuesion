@@ -1,14 +1,16 @@
 <template>
   <thead :class="$style.vueDataTableHeader">
-  <th v-for="(column, idx) in columns" v-if="column.visible"
-      :key="idx"
-      :class="$style.column"
-      :style="{flexBasis: `${columnWidth}`}"
-      @click="onClick(column)">{{ column.title }}
-    <vue-icon-sort v-if="!sortKey && !isActive(column.sortKey)" />
-    <vue-icon-sort-up v-if="isActive(column.sortKey) && sortDirection === 'asc'" />
-    <vue-icon-sort-down v-if="isActive(column.sortKey) && sortDirection === 'desc'" />
-  </th>
+  <tr>
+    <th v-for="(column, idx) in columns" v-if="column.visible"
+        :key="idx"
+        :class="$style.column"
+        :style="{flexBasis: `${columnWidth}`}"
+        @click="onClick(column)">{{ column.title }}
+      <vue-icon-sort v-if="!sortKey && !isActive(column.sortKey)" />
+      <vue-icon-sort-up v-if="isActive(column.sortKey) && sortDirection === 'asc'" />
+      <vue-icon-sort-down v-if="isActive(column.sortKey) && sortDirection === 'desc'" />
+    </th>
+  </tr>
   </thead>
 </template>
 
@@ -61,6 +63,13 @@
     font-weight:    700;
     background:     $panel-bg;
     min-width:      600px;
+
+    tr {
+      width:          100%;
+      display:        flex;
+      flex-direction: row;
+      min-width:      600px;
+    }
   }
 
   .column {

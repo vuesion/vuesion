@@ -130,8 +130,8 @@ describe('VueDataTable.vue', () => {
                           },
     ) as any;
     const cells: IComputedDataRowCell[] = [
-      { key: 'id', value: 2, visible: false, templateName: undefined },
-      { key: 'name', value: 'foo', visible: false, templateName: undefined },
+      { key: 'id', value: 2, visible: false, slot: undefined },
+      { key: 'name', value: 'foo', visible: false, slot: undefined },
     ];
 
     wrapper.vm.rowClick(cells);

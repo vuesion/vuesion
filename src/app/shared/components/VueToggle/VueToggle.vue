@@ -16,6 +16,7 @@
          @click="onClick">
       <div
         :class="$style.handle"
+        :aria-checked="isChecked ? 'true' : 'false'"
         role="checkbox" />
     </div>
     <label :for="name" v-html="label" />

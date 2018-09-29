@@ -12,18 +12,18 @@ export const dataTableHeaderFixture: IDataTableHeader = {
   },
   age:       {
     title:        'Age',
-    templateName: 'age',
+    slot: 'age',
   },
   address:   {
     title: 'Address',
   },
   created:   {
     title:        'Created',
-    templateName: 'date',
+    slot: 'date',
   },
   updated:   {
     title:        'Updated',
-    templateName: 'date',
+    slot: 'date',
   },
 };
 

@@ -20,15 +20,17 @@
             :class="$style.column"
             :style="{flexBasis: `${columnWidth}`}">
 
-          <slot :name="cell.templateName" :cell="cell">{{ cell.value }}</slot>
+          <slot :name="cell.slot" :cell="cell">{{ cell.value }}</slot>
 
         </td>
       </tr>
-      </tbody>
 
-      <div :class="$style.noResults" v-show="count === 0">
-        {{ $t('components.dataTable.noResults' /* No results found! */) }}
-      </div>
+      <tr v-show="count === 0">
+        <td :class="$style.noResults" :colspan="columns.length - 1">
+          {{ $t('components.dataTable.noResults' /* No results found! */) }}
+        </td>
+      </tr>
+      </tbody>
     </table>
 
     <br />
@@ -146,9 +148,9 @@
             const column: IDataTableHeaderItem = this.header[key];
             const computedColumn: IComputedDataRowCell = {
               key,
-              value:        row[key],
-              visible:      column.visible,
-              templateName: column.templateName,
+              value:   row[key],
+              visible: column.visible,
+              slot:    column.slot,
             };
             computedRow.push(computedColumn);
           });
