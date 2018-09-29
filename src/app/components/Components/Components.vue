@@ -544,20 +544,20 @@
   import VueDateRangePicker
                                                           from '../../shared/components/VueDateRangePicker/VueDateRangePicker.vue';
   import { addNotification, INotification }               from '../../shared/components/VueNotificationStack/utils';
-  import VueMarkdown                                      from '../../shared/components/VueMarkdown/VueMarkdown';
-  import VueGridRow                                       from '../../shared/components/VueGridRow/VueGridRow';
+  import VueMarkdown                                      from '../../shared/components/VueMarkdown/VueMarkdown.vue';
+  import VueGridRow                                       from '../../shared/components/VueGridRow/VueGridRow.vue';
   import VueAutocomplete
-                                                          from '../../shared/components/VueAutocomplete/VueAutocomplete';
+                                                          from '../../shared/components/VueAutocomplete/VueAutocomplete.vue';
   import { AutocompleteOptionsFixture }                   from '../../shared/components/VueAutocomplete/fixtures/IAutocompleteFixture';
-  import VueBadge                                         from '../../shared/components/VueBadge/VueBadge';
-  import FormExample                                      from '../FormExample/FormExample';
+  import VueBadge                                         from '../../shared/components/VueBadge/VueBadge.vue';
+  import FormExample                                      from '../FormExample/FormExample.vue';
   import { IAutocompleteOption }                          from '../../shared/components/VueAutocomplete/IAutocompleteOption';
-  import VueTruncate                                      from '../../shared/components/VueTruncate/VueTruncate';
-  import VueCarousel                                      from '../../shared/components/VueCarousel/VueCarousel';
-  import VueDataTable                                     from '../../shared/components/VueDataTable/VueDataTable';
+  import VueTruncate                                      from '../../shared/components/VueTruncate/VueTruncate.vue';
+  import VueCarousel                                      from '../../shared/components/VueCarousel/VueCarousel.vue';
+  import VueDataTable                                     from '../../shared/components/VueDataTable/VueDataTable.vue';
   import { dataTableDataFixture, dataTableHeaderFixture } from '../../shared/components/VueDataTable/DataTableFixtures';
-  import VueToggle                                        from '../../shared/components/VueToggle/VueToggle';
-  import VueBreadcrumb                                    from '../../shared/components/VueBreadcrumb/VueBreadcrumb';
+  import VueToggle                                        from '../../shared/components/VueToggle/VueToggle.vue';
+  import VueBreadcrumb                                    from '../../shared/components/VueBreadcrumb/VueBreadcrumb.vue';
 
   export default {
     metaInfo:   {
@@ -722,12 +722,14 @@
     },
     methods:    {
       sliderChange(sliderOptions: any) {
+        // tslint:disable-next-line
         console.log(sliderOptions);
       },
       formatSliderValue(value: number) {
         return `${Math.floor(value)} €`;
       },
       calendarChange(date: Date | Date[]) {
+        // tslint:disable-next-line
         console.log(date);
       },
       addNotificationClick() {
@@ -739,6 +741,7 @@
         );
       },
       selectChange(option: string) {
+        // tslint:disable-next-line
         console.log(option);
         this.selectedOption = option;
       },
@@ -763,9 +766,11 @@
         }, 1000);
       },
       onAutocompleteChange(option: IAutocompleteOption) {
+        // tslint:disable-next-line
         console.log(option);
       },
       dataTableClick(row: any) {
+        // tslint:disable-next-line
         console.log(row);
       },
     },

@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 
 const baseConfig = {
@@ -11,7 +12,7 @@ const baseConfig = {
   },
   devtool: isProd ? false : '#eval-source-map',
   resolve: {
-    extensions: ['.ts', '.js', '.vue', '.json', '.node', '.scss'],
+    extensions: ['*', '.ts', '.js', '.vue', '.json', '.node', '.scss'],
     modules:    [
       path.join(__dirname, '..', 'src'),
       path.join(__dirname, '..', 'node_modules'),
@@ -20,17 +21,18 @@ const baseConfig = {
   module:  {
     rules: [
       {
-        test:   /\.vue$/,
-        loader: 'vue-loader',
-      },
-      {
         test:    /\.ts$/,
         loader:  'ts-loader',
+        include: [path.join(__dirname, '..', 'src')],
         exclude: /node_modules/,
         options: {
           appendTsSuffixTo: [/\.vue$/],
-          transpileOnly:    !isProd,
+          transpileOnly:    true,
         },
+      },
+      {
+        test:   /\.vue$/,
+        loader: 'vue-loader',
       },
       {
         test: /\.scss$/,
@@ -113,14 +115,13 @@ const baseConfig = {
   plugins: [
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({ PRODUCTION: isProd, DEVELOPMENT: !isProd, TEST: false }),
+    new ForkTsCheckerWebpackPlugin({ tslint: true, vue: true }),
   ],
 };
 
 if (process.env.ANALYZE) {
   baseConfig.plugins.push(
-    new BundleAnalyzerPlugin({
-                               analyzerMode: 'static',
-                             }),
+    new BundleAnalyzerPlugin({ analyzerMode: 'static' }),
   );
 }
 

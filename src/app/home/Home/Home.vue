@@ -11,11 +11,11 @@
 
 <script lang="ts">
   import { mapState }    from 'vuex';
-  import Stage           from '../Stage/Stage';
-  import DevEx           from '../DevEx/DevEx';
-  import EnterpriseReady from '../EnterpriseReady/EnterpriseReady';
-  import UserExperience  from '../UserExperience/UserExperience';
-  import QuickStart      from '../QuickStart/QuickStart';
+  import Stage           from '../Stage/Stage.vue';
+  import DevEx           from '../DevEx/DevEx.vue';
+  import EnterpriseReady from '../EnterpriseReady/EnterpriseReady.vue';
+  import UserExperience  from '../UserExperience/UserExperience.vue';
+  import QuickStart      from '../QuickStart/QuickStart.vue';
   import { IState }      from '../../state';
 
   export default {

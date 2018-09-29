@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-  import VueLoader from '../VueLoader/VueLoader';
+  import VueLoader from '../VueLoader/VueLoader.vue';
 
   export default {
     name:       'VueButton',

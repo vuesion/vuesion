@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-  import VueInput from '../../VueInput/VueInput';
+  import VueInput from '../../VueInput/VueInput.vue';
 
   export default {
     name:       'VueDataTableSearch',

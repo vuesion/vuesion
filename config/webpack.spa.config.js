@@ -42,17 +42,8 @@ const SPAConfig = merge(baseConfig, {
                             { from: './i18n', to: '../i18n' },
                             { from: 'src/static/logo.png', to: '../favicon.png' },
                           ]),
-    new ServiceWorkerWebpackPlugin({
-                                     entry:    path.join(__dirname, '..', 'src/client/sw.ts'),
-                                     filename: '../sw.js',
-                                   }),
-    new CompressionPlugin({
-                            asset:     '[path].gz[query]',
-                            algorithm: 'gzip',
-                            test:      /\.js$|\.css$|\.html$/,
-                            threshold: 0,
-                            minRatio:  1,
-                          }),
+    new ServiceWorkerWebpackPlugin({ entry: path.join(__dirname, '..', 'src/client/sw.ts'), filename: '../sw.js' }),
+    new CompressionPlugin({ algorithm: 'gzip', test: /\.js$|\.css$|\.html$/, threshold: 0, minRatio: 1 }),
   ],
 });
 

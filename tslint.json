@@ -29,7 +29,13 @@
     "max-file-line-count": [
       250
     ],
-    "import-spacing": false
+    "import-spacing": false,
+    "space-before-function-paren": [
+      false,
+      {
+        "anonymous": "always"
+      }
+    ]
   },
   "rulesDirectory": []
 }

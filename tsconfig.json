@@ -12,11 +12,13 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "skipLibCheck": true
   },
   "include": [
     "./config/*",
-    "./src/**/*"
+    "./src/**/*",
+    "./src/**/*.vue"
   ],
   "exclude": [
     "./node_modules",

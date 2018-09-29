@@ -120,12 +120,12 @@
 </template>
 
 <script lang="ts">
-  import VueInput                           from '../../shared/components/VueInput/VueInput';
-  import VueSelect                          from '../../shared/components/VueSelect/VueSelect';
-  import VueCheckbox                        from '../../shared/components/VueCheckbox/VueCheckbox';
-  import VueGridRow                         from '../../shared/components/VueGridRow/VueGridRow';
-  import VueGridItem                        from '../../shared/components/VueGridItem/VueGridItem';
-  import VueButton                          from '../../shared/components/VueButton/VueButton';
+  import VueInput                           from '../../shared/components/VueInput/VueInput.vue';
+  import VueSelect                          from '../../shared/components/VueSelect/VueSelect.vue';
+  import VueCheckbox                        from '../../shared/components/VueCheckbox/VueCheckbox.vue';
+  import VueGridRow                         from '../../shared/components/VueGridRow/VueGridRow.vue';
+  import VueGridItem                        from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VueButton                          from '../../shared/components/VueButton/VueButton.vue';
   import { addNotification, INotification } from '../../shared/components/VueNotificationStack/utils';
 
   export default {
@@ -181,6 +181,7 @@
     methods:       {
       onSubmit() {
         this.isLoading = true;
+        // tslint:disable-next-line
         console.log(JSON.parse(JSON.stringify(this.form)));
 
         this.$nextTick(() => {
