@@ -478,9 +478,22 @@
             :header="dataTableHeader"
             :data="dataTableData"
             placeholder="Search"
-            @click="dataTableClick" />
-        </vue-grid-item>
+            @click="dataTableClick">
 
+            <template slot="date" slot-scope="{cell}">{{ new Date(cell.value).toDateString() }}</template>
+
+            <template slot="age" slot-scope="{cell}">
+              <div :class="$style.age">
+                <div :style="{width: `${cell.value}%`}" />
+                <span>{{ cell.value }}</span>
+              </div>
+            </template>
+
+          </vue-data-table>
+        </vue-grid-item>
+      </vue-grid-row>
+
+      <vue-grid-row>
         <vue-grid-item class="vueGridItem">
           <h2>Toggle</h2>
           <vue-toggle
@@ -498,9 +511,7 @@
             label="toggle me!"
           />
         </vue-grid-item>
-      </vue-grid-row>
 
-      <vue-grid-row>
         <vue-grid-item class="vueGridItem">
           <h2>Breadcrumb</h2>
           <vue-breadcrumb
@@ -557,7 +568,8 @@
   import VueDataTable                                     from '../../shared/components/VueDataTable/VueDataTable.vue';
   import { dataTableDataFixture, dataTableHeaderFixture } from '../../shared/components/VueDataTable/DataTableFixtures';
   import VueToggle                                        from '../../shared/components/VueToggle/VueToggle.vue';
-  import VueBreadcrumb                                    from '../../shared/components/VueBreadcrumb/VueBreadcrumb.vue';
+  import VueBreadcrumb
+                                                          from '../../shared/components/VueBreadcrumb/VueBreadcrumb.vue';
 
   export default {
     metaInfo:   {
@@ -806,5 +818,20 @@
     background: $panel-bg;
     box-shadow: $panel-shadow;
     color:      #FFF
+  }
+
+  .age {
+    > div {
+      height:     $space-unit;
+      background: $brand-accent;
+      margin-top: $space-unit * 1.5;
+      display:    inline-block;
+    }
+
+    > span {
+      font-size:   $font-size - 0.4;
+      display:     inline-block;
+      margin-left: $space-unit;
+    }
   }
 </style>

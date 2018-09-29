@@ -6,10 +6,12 @@ export interface IDataTableHeaderItem {
   title?: string;
   visible?: boolean;
   sortKey?: string;
+  templateName?: string;
 }
 
-export interface IComputedDataRowColumn {
+export interface IComputedDataRowCell {
   key: string;
   value: any;
   visible: boolean;
+  templateName?: string;
 }

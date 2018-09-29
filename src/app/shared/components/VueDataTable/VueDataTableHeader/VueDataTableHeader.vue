@@ -1,18 +1,15 @@
 <template>
-  <div :class="$style.vueDataTableHeader">
-    <div v-for="(column, idx) in columns" v-if="column.visible"
-         :key="idx"
-         :class="$style.column"
-         :style="{flexBasis: `${columnWidth}`}"
-         @click="onClick(column)">
-
-      {{ column.title }}
-
-      <vue-icon-sort v-if="!sortKey && !isActive(column.sortKey)" />
-      <vue-icon-sort-up v-if="isActive(column.sortKey) && sortDirection === 'asc'" />
-      <vue-icon-sort-down v-if="isActive(column.sortKey) && sortDirection === 'desc'" />
-    </div>
-  </div>
+  <thead :class="$style.vueDataTableHeader">
+  <th v-for="(column, idx) in columns" v-if="column.visible"
+      :key="idx"
+      :class="$style.column"
+      :style="{flexBasis: `${columnWidth}`}"
+      @click="onClick(column)">{{ column.title }}
+    <vue-icon-sort v-if="!sortKey && !isActive(column.sortKey)" />
+    <vue-icon-sort-up v-if="isActive(column.sortKey) && sortDirection === 'asc'" />
+    <vue-icon-sort-down v-if="isActive(column.sortKey) && sortDirection === 'desc'" />
+  </th>
+  </thead>
 </template>
 
 <script lang="ts">
@@ -71,6 +68,7 @@
     border-right: 1px solid $divider-color;
     padding:      $space-unit $space-unit * 2;
     cursor:       pointer;
+    user-select:  none;
 
     &:hover {
       i {
