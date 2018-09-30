@@ -6,22 +6,60 @@ const story = (storiesOf('VueBadge', module) as any);
 
 story.addDecorator(VueInfoAddon);
 
-story.add('Default', () => ({
-  components: { VueBadge },
-  template:   `<vue-badge>VueBadge</vue-badge>`,
-}));
+const storySchema = [
+  {
+    label: 'Primary',
+    props: ['primary'],
+  },
+  {
+    label: 'Secondary',
+    props: ['secondary'],
+  },
+  {
+    label: 'Tertiary',
+    props: ['tertiary'],
+  },
+  {
+    label: 'Danger',
+    props: ['danger'],
+  },
+  {
+    label: 'Attention',
+    props: ['attention'],
+  },
+  {
+    label: 'Success',
+    props: ['success'],
+  },
+  {
+    label: 'Primary Outlined',
+    props: ['primary', 'outlined'],
+  },
+  {
+    label: 'Secondary Outlined',
+    props: ['secondary', 'outlined'],
+  },
+  {
+    label: 'Tertiary Outlined',
+    props: ['tertiary', 'outlined'],
+  },
+  {
+    label: 'Danger Outlined',
+    props: ['danger', 'outlined'],
+  },
+  {
+    label: 'Attention Outlined',
+    props: ['attention', 'outlined'],
+  },
+  {
+    label: 'Success Outlined',
+    props: ['success', 'outlined'],
+  },
+];
 
-story.add('Primary', () => ({
-  components: { VueBadge },
-  template:   `<vue-badge primary>VueBadge</vue-badge>`,
-}));
-
-story.add('Accent', () => ({
-  components: { VueBadge },
-  template:   `<vue-badge accent>VueBadge</vue-badge>`,
-}));
-
-story.add('Warn', () => ({
-  components: { VueBadge },
-  template:   `<vue-badge warn>VueBadge</vue-badge>`,
-}));
+for (const item of storySchema) {
+  story.add(item.label, () => ({
+    components: { VueBadge },
+    template:   `<vue-badge ${item.props ? item.props.join(' ') : ''}>${item.label}</vue-badge>`,
+  }));
+}

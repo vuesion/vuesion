@@ -25,7 +25,7 @@
     />
 
     <vue-icon-search v-show="isLoading === false" />
-    <vue-loader :class="$style.loader" accent v-show="isLoading === true" />
+    <vue-loader :class="$style.loader" primary v-show="isLoading === true" />
 
     <ul
       ref="resultContainer"
@@ -297,10 +297,12 @@
       z-index:    2000;
       box-shadow: $autocomplete-shadow;
       overflow:   scroll;
+      border:     $autocomplete-border;
+      border-top: none;
 
       li {
-        padding:       $autocomplete-item-padding;
-        border-bottom: $autocomplete-item-border;
+        padding:    $autocomplete-item-padding;
+        border-top: $autocomplete-item-border;
 
         &[role="option"] {
           cursor: pointer;

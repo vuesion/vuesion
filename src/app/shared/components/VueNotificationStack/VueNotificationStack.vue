@@ -19,8 +19,8 @@
   let id: number = 0;
 
   export default {
-    name:       'VueNotificationStack',
-    props:      {
+    name:     'VueNotificationStack',
+    props:    {
       duration: {
         type:     Number,
         required: false,
@@ -32,12 +32,12 @@
         notifications: [],
       };
     },
-    computed:   {
+    computed: {
       orderedNotifications() {
         return this.notifications.slice(0).reverse();
       },
     },
-    methods:    {
+    methods:  {
       addNotification(n: INotification): void {
         n.id = id++;
         n.type = n.type || 'default';
@@ -113,6 +113,7 @@
 
   .default {
     background-color: $notification-default-bg;
+    border:           $notification-default-border;
   }
 
   .title {

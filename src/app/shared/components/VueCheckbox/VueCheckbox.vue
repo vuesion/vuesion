@@ -118,6 +118,7 @@
         width:      $checkbox-size;
         height:     $checkbox-size;
         background: $checkbox-bg;
+        border:     $checkbox-border;
         cursor:     pointer;
         transition: $checkbox-transition;
       }
@@ -192,6 +193,7 @@
         width:         $checkbox-size;
         height:        $checkbox-size;
         background:    $checkbox-bg;
+        border:        $checkbox-border;
         cursor:        pointer;
         transition:    $checkbox-transition;
         border-radius: 50%;

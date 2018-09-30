@@ -77,7 +77,7 @@
     background: $accordion-item-header-bg;
     box-shadow: $accordion-item-header-shadow;
     padding:    $accordion-item-header-padding;
-    border-top: $accordion-item-header-border-top;
+    border:     $accordion-item-header-border;
     position:   relative;
     z-index:    1;
     cursor:     pointer;
@@ -85,8 +85,8 @@
 
   .icon {
     position:   absolute;
-    margin-top: 4px;
-    right:      24px;
+    margin-top: $space-unit * 0.5;
+    right:      $space-unit;
 
     &:before, &:after {
       content:          "";

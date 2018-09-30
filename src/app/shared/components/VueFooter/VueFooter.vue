@@ -63,13 +63,26 @@
     i {
       height: $font-size-h1;
       width:  $font-size-h1;
-      fill:   $brand-accent;
+      fill:   $footer-link-color;
       margin: 0 $space-unit * 2;
+
+      &:hover {
+        fill: $footer-link-hover-color;
+      }
     }
 
     small {
       display: inline-block;
       margin:  $space-unit * 2 0;
+    }
+
+    a {
+      color:       $footer-link-color;
+      font-weight: $footer-link-font-weight;
+
+      &:hover {
+        color: $footer-link-hover-color;
+      }
     }
   }
 </style>

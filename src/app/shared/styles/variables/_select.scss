@@ -1,0 +1,11 @@
+$select-bg: $bg-color-variant;
+$select-shadow: none;
+$select-margin: 0;
+$select-padding: $space-unit $space-unit * 2;
+$select-border: 1px solid $border-color;
+$select-color: $text-color;
+$select-font-size: inherit;
+$select-arrow-color: $brand-primary;
+
+$select-multi-max-height: $space-unit * 13;
+$select-multi-option-padding: $space-unit * 0.5 0;

@@ -1,0 +1,13 @@
+$tab-group-bg: $bg-color-variant;
+$tab-group-shadow: none;
+$tab-group-border: 1px solid $border-color;
+$tab-group-padding: $space-unit $space-unit * 2;
+$tab-group-margin: $space-unit * 4 0 0 0;
+
+$tab-group-header-bg: $bg-color;
+$tab-group-header-bg: $bg-color;
+$tab-group-header-item-padding: $space-unit $space-unit * 2;
+$tab-group-header-item-hover-bg: $bg-color-variant;
+$tab-group-header-item-hover-color: $text-color;
+
+$tab-item-transition: transform $transition-duration linear;

@@ -91,15 +91,15 @@
     justify-content: center;
     align-items:     center;
     flex:            0 0 $space-unit * 8;
-    background:      $button-accent-bg;
+    background:      $button-secondary-bg;
     cursor:          pointer;
 
     i {
-      fill: $button-accent-color;
+      fill: $button-secondary-color;
     }
 
     &:hover {
-      background-color: $button-accent-hover-bg;
+      background-color: $button-secondary-hover-bg;
     }
   }
 

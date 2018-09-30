@@ -8,26 +8,54 @@
   export default {
     name:     'VueBadge',
     props:    {
-      primary:  {
+      primary:   {
         type: Boolean,
       },
-      accent:   {
+      secondary: {
         type: Boolean,
       },
-      warn:     {
+      tertiary:  {
         type: Boolean,
+      },
+      danger:    {
+        type: Boolean,
+      },
+      attention: {
+        type: Boolean,
+      },
+      success:   {
+        type: Boolean,
+      },
+      outlined:  {
+        type:     Boolean,
+        required: false,
+        default:  false,
       },
     },
     computed: {
       cssClasses() {
         const classes: string[] = [this.$style.vueBadge];
 
+        if (this.outlined) {
+          classes.push(this.$style.outlined);
+        }
         if (this.primary) {
           classes.push(this.$style.primary);
-        } else if (this.accent) {
-          classes.push(this.$style.accent);
-        } else if (this.warn) {
-          classes.push(this.$style.warn);
+        }
+        if (this.secondary) {
+          classes.push(this.$style.secondary);
+        }
+        if (this.tertiary) {
+          classes.push(this.$style.tertiary);
+        }
+        if (this.success) {
+          classes.push(this.$style.success);
+        }
+        if (this.attention) {
+          classes.push(this.$style.attention);
+        }
+        if (this.danger) {
+          classes.push(this.$style.danger);
         }
 
         return classes;
@@ -45,10 +73,9 @@
     margin:         $badge-margin;
     font-size:      $badge-font-size;
     line-height:    $badge-line-height;
+    font-weight:    $badge-font-weight;
     letter-spacing: $badge-letter-spacing;
     border-radius:  $badge-border-radius;
-    color:          $badge-default-color;
-    background:     $badge-default-bg;
   }
 
   .primary {
@@ -56,13 +83,64 @@
     background: $badge-primary-bg;
   }
 
-  .accent {
-    color:      $badge-accent-color;
-    background: $badge-accent-bg;
+  .secondary {
+    color:      $badge-secondary-color;
+    background: $badge-secondary-bg;
   }
 
-  .warn {
-    color:      $badge-warn-color;
-    background: $badge-warn-bg;
+  .tertiary {
+    color:      $badge-tertiary-color;
+    background: $badge-tertiary-bg;
+  }
+
+  .success {
+    color:      $badge-success-color;
+    background: $badge-success-bg;
+  }
+
+  .attention {
+    color:      $badge-attention-color;
+    background: $badge-attention-bg;
+  }
+
+  .danger {
+    color:      $badge-danger-color;
+    background: $badge-danger-bg;
+  }
+
+  .outlined {
+    border:     $badge-outlined-border-width solid transparent;
+    background: transparent;
+
+    &.primary {
+      border-color: $badge-primary-bg;
+      color:        $badge-primary-bg;
+    }
+
+    &.secondary {
+      border-color: $badge-secondary-bg;
+      color:        $badge-secondary-bg;
+    }
+
+    &.tertiary {
+      border-color: $badge-tertiary-bg;
+      color:        $badge-tertiary-color;
+    }
+
+    &.danger {
+      border-color: $badge-danger-bg;
+      color:        $badge-danger-bg;
+    }
+
+    &.attention {
+      border-color: $badge-attention-bg;
+      color:        $badge-attention-bg;
+    }
+
+    &.success {
+      border-color: $badge-success-bg;
+      color:        $badge-success-bg;
+    }
+
   }
 </style>

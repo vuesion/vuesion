@@ -139,6 +139,6 @@
     position: absolute;
     bottom:   0;
     width:    100%;
-    @include background-gradient(transparent, $bg-color, 'vertical');
+    @include background-gradient(rgba(red($bg-color), green($bg-color), blue($bg-color), 0), $bg-color, 'vertical');
   }
 </style>

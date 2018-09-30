@@ -227,7 +227,7 @@
   }
 
   .noResults {
-    border:     1px solid $divider-color;
+    border:     1px solid $border-color;
     border-top: none;
     text-align: center;
     opacity:    .5;
@@ -236,7 +236,7 @@
 
   .vueDataTableRow {
     box-shadow: $panel-shadow;
-    border:     1px solid $divider-color;
+    border:     1px solid $border-color;
     border-top: none;
     cursor:     pointer;
     min-width:  600px;
@@ -247,8 +247,9 @@
   }
 
   .column {
-    border-right: 1px solid $divider-color;
+    border-right: 1px solid $border-color;
     padding:      $space-unit $space-unit * 2;
+    min-width:    150px;
 
     &:last-child {
       border-right: none;

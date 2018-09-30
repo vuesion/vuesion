@@ -5,7 +5,7 @@
     @click="onClick"
     v-bind="$attrs">
     <slot v-if="loading === false" />
-    <vue-loader v-if="loading === true" />
+    <vue-loader :class="$style.loader" v-if="loading === true" />
   </button>
 </template>
 
@@ -15,32 +15,52 @@
   export default {
     name:       'VueButton',
     props:      {
-      primary:  {
+      primary:   {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      accent:   {
+      secondary: {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      warn:     {
+      tertiary:  {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      disabled: {
+      danger:    {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      loading:  {
+      attention: {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      pulse:    {
+      success:   {
+        type:     Boolean,
+        required: false,
+        default:  false,
+      },
+      disabled:  {
+        type:     Boolean,
+        required: false,
+        default:  false,
+      },
+      loading:   {
+        type:     Boolean,
+        required: false,
+        default:  false,
+      },
+      outlined:  {
+        type:     Boolean,
+        required: false,
+        default:  false,
+      },
+      ghost:     {
         type:     Boolean,
         required: false,
         default:  false,
@@ -60,24 +80,32 @@
       cssClasses() {
         const classes = [this.$style.button, this.$style.ripple];
 
+        if (this.outlined === true || this.ghost) {
+          classes.push(this.$style.outlined);
+        }
+        if (this.ghost === true) {
+          classes.push(this.$style.ghost);
+        }
         if (this.primary) {
           classes.push(this.$style.primary);
         }
-
-        if (this.accent) {
-          classes.push(this.$style.accent);
+        if (this.secondary) {
+          classes.push(this.$style.secondary);
         }
-
-        if (this.warn) {
-          classes.push(this.$style.warn);
+        if (this.tertiary) {
+          classes.push(this.$style.tertiary);
         }
-
+        if (this.success) {
+          classes.push(this.$style.success);
+        }
+        if (this.attention) {
+          classes.push(this.$style.attention);
+        }
+        if (this.danger) {
+          classes.push(this.$style.danger);
+        }
         if (this.disabled === true || this.loading === true) {
           classes.push(this.$style.disabled);
-        }
-
-        if (this.pulse) {
-          classes.push(this.$style.pulse);
         }
 
         return classes;
@@ -90,7 +118,6 @@
   @import "../../styles";
 
   .button {
-    color:                       $button-default-color;
     display:                     inline-block;
     margin:                      $button-margin;
     padding:                     $button-padding;
@@ -98,7 +125,6 @@
     vertical-align:              middle;
     touch-action:                manipulation;
     cursor:                      pointer;
-    border:                      1px solid transparent;
     white-space:                 nowrap;
     text-transform:              uppercase;
     min-width:                   $button-min-width;
@@ -108,7 +134,6 @@
     font-size:                   $button-font-size;
     font-weight:                 $button-font-weight;
     border-radius:               $button-border-radius;
-    background:                  $button-default-bg;
     box-shadow:                  $button-shadow;
     transition:                  $button-transition;
     transition-property:         box-shadow, background-color;
@@ -117,53 +142,7 @@
     user-select:                 none;
 
     &:active {
-      background: $button-default-hover-bg;
       box-shadow: $button-active-shadow;
-    }
-
-    &.primary {
-      color:      $button-primary-color;
-      background: $button-primary-bg;
-
-      &:hover {
-        background: $button-primary-hover-bg;
-      }
-
-      :global {
-        .vueLoaderPath {
-          stroke: $button-primary-color;
-        }
-      }
-    }
-
-    &.accent {
-      color:      $button-accent-color;
-      background: $button-accent-bg;
-
-      &:hover {
-        background: $button-accent-hover-bg;
-      }
-
-      :global {
-        .vueLoaderPath {
-          stroke: $button-accent-color;
-        }
-      }
-    }
-
-    &.warn {
-      color:      $button-warn-color;
-      background: $button-warn-bg;
-
-      &:hover {
-        background: $button-warn-hover-bg;
-      }
-
-      :global {
-        .vueLoaderPath {
-          stroke: $button-warn-color;
-        }
-      }
     }
 
     &.disabled,
@@ -175,43 +154,6 @@
 
       &:hover {
         box-shadow: none;
-      }
-    }
-
-    &.pulse {
-      animation: loading-animation 1s infinite ease-in-out both;
-
-      @keyframes loading-animation {
-        0% {
-          transform: scale(1);
-        }
-        25% {
-          transform: scale(0.98);
-        }
-        50% {
-          transform: scale(1);
-        }
-        75% {
-          transform: scale(0.98);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-    }
-
-    :global {
-      .vueLoader {
-        position:    absolute;
-        left:        50%;
-        margin-left: -($space-unit * 2);
-        top:         $space-unit;
-
-        .vueLoaderCircle {
-          &:before {
-            background: $button-default-color;
-          }
-        }
       }
     }
   }
@@ -242,6 +184,216 @@
       transform:  scale(0, 0);
       opacity:    .2;
       transition: 0s;
+    }
+  }
+
+  .loader {
+    position:    absolute;
+    left:        50%;
+    margin-left: -($space-unit * 2);
+    top:         $space-unit * 0.25;
+  }
+
+  .primary {
+    color:      $button-primary-color;
+    background: $button-primary-bg;
+    border:     $button-primary-border;
+
+    &:hover {
+      background: $button-primary-hover-bg;
+    }
+
+    :global {
+      .vueLoaderPath {
+        stroke: $button-primary-color;
+      }
+    }
+  }
+
+  .secondary {
+    color:      $button-secondary-color;
+    background: $button-secondary-bg;
+    border:     $button-secondary-border;
+
+    &:hover {
+      background: $button-secondary-hover-bg;
+    }
+
+    :global {
+      .vueLoaderPath {
+        stroke: $button-secondary-color;
+      }
+    }
+  }
+
+  .tertiary {
+    color:      $button-tertiary-color;
+    background: $button-tertiary-bg;
+    border:     $button-tertiary-border;
+
+    &:hover {
+      background: $button-tertiary-hover-bg;
+    }
+
+    :global {
+      .vueLoaderPath {
+        stroke: $button-tertiary-color;
+      }
+    }
+  }
+
+  .success {
+    color:      $button-success-color;
+    background: $button-success-bg;
+    border:     $button-success-border;
+
+    &:hover {
+      background: $button-success-hover-bg;
+    }
+
+    :global {
+      .vueLoaderPath {
+        stroke: $button-success-color;
+      }
+    }
+  }
+
+  .attention {
+    color:      $button-attention-color;
+    background: $button-attention-bg;
+    border:     $button-attention-border;
+
+    &:hover {
+      background: $button-attention-hover-bg;
+    }
+
+    :global {
+      .vueLoaderPath {
+        stroke: $button-attention-color;
+      }
+    }
+  }
+
+  .danger {
+    color:      $button-danger-color;
+    background: $button-danger-bg;
+    border:     $button-danger-border;
+
+    &:hover {
+      background: $button-danger-hover-bg;
+    }
+
+    :global {
+      .vueLoaderPath {
+        stroke: $button-danger-color;
+      }
+    }
+  }
+
+  .outlined {
+    border-width: $button-outlined-border-width;
+    background:   transparent;
+
+    &:hover {
+      background: transparent;
+    }
+
+    &.primary {
+      color: $button-primary-bg;
+
+      &:hover {
+        border-color: $button-primary-hover-bg;
+        color:        $button-primary-hover-bg;
+      }
+
+      :global {
+        .vueLoaderPath {
+          stroke: $button-primary-bg;
+        }
+      }
+    }
+
+    &.secondary {
+      color: $button-secondary-bg;
+
+      &:hover {
+        border-color: $button-secondary-hover-bg;
+        color:        $button-secondary-hover-bg;
+      }
+
+      :global {
+        .vueLoaderPath {
+          stroke: $button-secondary-bg;
+        }
+      }
+    }
+
+    &.tertiary {
+      color: $button-tertiary-color;
+
+      &:hover {
+        border-color: $button-tertiary-hover-bg;
+        color:        darken($button-tertiary-color, 5%);
+      }
+
+      :global {
+        .vueLoaderPath {
+          stroke: $button-tertiary-bg;
+        }
+      }
+    }
+
+    &.danger {
+      color: $button-danger-bg;
+
+      &:hover {
+        border-color: $button-danger-hover-bg;
+        color:        $button-danger-hover-bg;
+      }
+
+      :global {
+        .vueLoaderPath {
+          stroke: $button-danger-bg;
+        }
+      }
+    }
+
+    &.attention {
+      color: $button-attention-bg;
+
+      &:hover {
+        border-color: $button-attention-hover-bg;
+        color:        $button-attention-hover-bg;
+      }
+
+      :global {
+        .vueLoaderPath {
+          stroke: $button-attention-bg;
+        }
+      }
+    }
+
+    &.success {
+      color: $button-success-bg;
+
+      &:hover {
+        border-color: $button-success-hover-bg;
+        color:        $button-success-hover-bg;
+      }
+
+      :global {
+        .vueLoaderPath {
+          stroke: $button-success-bg;
+        }
+      }
+    }
+  }
+
+  .ghost {
+    border-color: transparent;
+
+    &:hover {
+      border-color: transparent !important;
     }
   }
 </style>
