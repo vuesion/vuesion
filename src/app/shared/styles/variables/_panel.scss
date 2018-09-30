@@ -1,0 +1,21 @@
+$panel-bg: $bg-color-variant;
+$panel-shadow: none;
+$panel-border: 1px solid $border-color;
+$panel-border-radius: 0;
+$panel-margin: 0;
+
+$panel-header-padding: $space-unit $space-unit * 2;
+$panel-header-image-size: $space-unit * 5;
+$panel-header-image-border-radius: 50%;
+$panel-header-image-margin: $space-unit $space-unit * 2 0 0;
+$panel-header-title-font-size: inherit;
+$panel-header-title-font-weight: $font-weight-medium;
+$panel-header-subtitle-font-size: inherit;
+$panel-header-subtitle-font-weight: 300;
+$panel-header-subtitle-color: $text-secondary-color;
+
+$panel-body-padding: $space-unit $space-unit * 2;
+$panel-body-font-size: inherit;
+$panel-body-color: $text-color;
+
+$panel-footer-padding: $space-unit $space-unit * 2;

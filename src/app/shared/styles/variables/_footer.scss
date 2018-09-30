@@ -1,0 +1,6 @@
+$footer-padding: $space-unit * 2 0 $space-unit * 2 0;
+$footer-bg: linear-gradient(to bottom, darken($bg-color-inverse, 3%) 0%, $bg-color-inverse 50%, darken($bg-color-inverse, 3%) 100%);
+$footer-color: $text-color-inverse;
+$footer-link-color: $secondary-2-1;
+$footer-link-hover-color: darken($footer-link-color, 5%);
+$footer-link-font-weight: $link-font-weight;

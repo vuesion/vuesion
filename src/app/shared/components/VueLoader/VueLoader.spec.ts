@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import VueLoader                 from './VueLoader.vue';
 
 const localVue = createLocalVue();
@@ -54,30 +54,69 @@ describe('VueLoader.vue', () => {
     expect(wrapper.findAll(`.primary`)).toHaveLength(1);
   });
 
-  test('renders accent loader', () => {
+  test('renders secondary loader', () => {
     const wrapper = mount(
       VueLoader,
       {
         localVue,
         propsData: {
-          accent: true,
+          secondary: true,
         },
       });
 
-    expect(wrapper.findAll(`.accent`)).toHaveLength(1);
+    expect(wrapper.findAll(`.secondary`)).toHaveLength(1);
   });
 
-  test('renders warn loader', () => {
+  test('renders tertiary loader', () => {
     const wrapper = mount(
       VueLoader,
       {
         localVue,
         propsData: {
-          warn: true,
+          tertiary: true,
         },
       });
 
-    expect(wrapper.findAll(`.warn`)).toHaveLength(1);
+    expect(wrapper.findAll(`.tertiary`)).toHaveLength(1);
+  });
+
+  test('renders danger loader', () => {
+    const wrapper = mount(
+      VueLoader,
+      {
+        localVue,
+        propsData: {
+          danger: true,
+        },
+      });
+
+    expect(wrapper.findAll(`.danger`)).toHaveLength(1);
+  });
+
+  test('renders attention loader', () => {
+    const wrapper = mount(
+      VueLoader,
+      {
+        localVue,
+        propsData: {
+          attention: true,
+        },
+      });
+
+    expect(wrapper.findAll(`.attention`)).toHaveLength(1);
+  });
+
+  test('renders success loader', () => {
+    const wrapper = mount(
+      VueLoader,
+      {
+        localVue,
+        propsData: {
+          success: true,
+        },
+      });
+
+    expect(wrapper.findAll(`.success`)).toHaveLength(1);
   });
 
 });

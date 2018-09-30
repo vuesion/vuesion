@@ -1,0 +1,43 @@
+$button-font-family: $font-family;
+$button-padding: $space-unit $space-unit * 2;
+$button-margin: 0 $space-unit 0 0;
+$button-min-width: $space-unit * 14;
+$button-height: $space-unit * 5;
+$button-font-size: inherit;
+$button-font-weight: 400;
+$button-border-radius: $border-radius;
+$button-shadow: none;
+$button-transition: all 300ms cubic-bezier(.25, .8, .25, 1);
+$button-active-shadow: 0 12px 20px rgba(0, 0, 0, 0.20), 0 10px 10px rgba(0, 0, 0, 0.18);
+
+$button-primary-color: $text-color-inverse;
+$button-primary-bg: $brand-primary;
+$button-primary-hover-bg: darken($button-primary-bg, 5%);
+$button-primary-border: 1px solid $button-primary-bg;
+
+$button-secondary-color: $text-color-inverse;
+$button-secondary-bg: $brand-secondary;
+$button-secondary-hover-bg: darken($button-secondary-bg, 5%);
+$button-secondary-border: 1px solid $button-secondary-bg;
+
+$button-tertiary-color: $primary-2-2;
+$button-tertiary-bg: $brand-tertiary;
+$button-tertiary-hover-bg: darken($button-tertiary-bg, 5%);
+$button-tertiary-border: 1px solid $button-tertiary-bg;
+
+$button-danger-color: $text-color-inverse;
+$button-danger-bg: $brand-danger;
+$button-danger-hover-bg: darken($button-danger-bg, 5%);
+$button-danger-border: 1px solid $button-danger-bg;
+
+$button-attention-color: $text-color;
+$button-attention-bg: $brand-attention;
+$button-attention-hover-bg: darken($button-attention-bg, 5%);
+$button-attention-border: 1px solid $button-attention-bg;
+
+$button-success-color: $text-color-inverse;
+$button-success-bg: $brand-success;
+$button-success-hover-bg: darken($button-success-bg, 5%);
+$button-success-border: 1px solid $button-success-bg;
+
+$button-outlined-border-width: 0.2rem;

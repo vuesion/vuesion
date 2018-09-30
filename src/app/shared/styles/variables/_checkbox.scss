@@ -1,0 +1,11 @@
+$checkbox-color: $text-color;
+$checkbox-padding: 0;
+$checkbox-margin: 0 0 $space-unit * 2 0;
+$checkbox-size: $space-unit * 3;
+$checkbox-bg: $bg-color;
+$checkbox-border: 1px solid $brand-secondary;
+$checkbox-transition: background $transition-duration cubic-bezier(0, .84, .83, .67);
+$checkbox-check: 2px solid #FFF;
+$checkbox-check-margin: 0 $space-unit * 2 0 0;
+$checkbox-checked-bg: $brand-secondary;
+$checkbox-shadow: -2px 2px 2px rgba(0, 0, 0, .24);
