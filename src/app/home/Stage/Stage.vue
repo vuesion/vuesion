@@ -78,11 +78,12 @@
 
   .stage {
     min-height: 100vh;
-    background: linear-gradient(171deg, $brand-dark-primary 0%, $brand-primary 100%);
+    background: $brand-primary;
     overflow:   hidden;
     position:   relative;
     text-align: center;
-    @include background-gradient($brand-dark-primary, $brand-primary, 171deg);
+    color:      $text-color-inverse;
+    @include background-gradient($secondary-1-1, $secondary-1-4, 171deg);
   }
 
   .accent {
@@ -92,7 +93,7 @@
     box-shadow: $nav-bar-shadow;
     position:   absolute;
     transition: transform 250ms linear;
-    @include background-gradient($brand-light-primary, $brand-dark-primary, -171deg);
+    @include background-gradient($secondary-1-1, $secondary-1-4, -171deg);
 
     @include media(tabletPortrait) {
       transform: skewX(-33deg) translateX(100%);
@@ -115,7 +116,7 @@
     box-shadow: $nav-bar-shadow;
     position:   absolute;
     transition: transform 250ms linear;
-    @include background-gradient($brand-accent, $brand-light-primary, -171deg);
+    @include background-gradient($secondary-1-4, $secondary-1-1, -171deg);
 
     @include media(tabletPortrait) {
       transform: skewX(37deg) translateX(-29%);
@@ -146,7 +147,7 @@
   }
 
   .title {
-    top: $space-unit * 17;
+    top: $space-unit * 14;
 
     @include media(tabletPortrait) {
       top: $space-unit * 24;
@@ -158,7 +159,7 @@
   }
 
   .subTitle {
-    top: $space-unit * 15;
+    top: $space-unit * 13;
 
     @include media(tabletPortrait) {
       top: $space-unit * 22;
@@ -185,11 +186,11 @@
     }
 
     @include media(tabletPortrait) {
-      top: $space-unit * 30;
+      top: $space-unit * 25;
     }
 
     @include media(tabletLandscape) {
-      top: $space-unit * 42;
+      top: $space-unit * 39;
     }
 
     i {

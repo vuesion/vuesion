@@ -1,0 +1,27 @@
+$badge-padding: $space-unit * 0.5 $space-unit;
+$badge-margin: 0;
+$badge-font-size: $font-size-small;
+$badge-line-height: inherit;
+$badge-letter-spacing: inherit;
+$badge-border-radius: $border-radius;
+$badge-font-weight: $font-weight-medium;
+
+$badge-primary-color: $text-color-inverse;
+$badge-primary-bg: $brand-primary;
+
+$badge-secondary-color: $text-color-inverse;
+$badge-secondary-bg: $brand-secondary;
+
+$badge-tertiary-color: $primary-2-2;
+$badge-tertiary-bg: $brand-tertiary;
+
+$badge-danger-color: $text-color-inverse;
+$badge-danger-bg: $brand-danger;
+
+$badge-attention-color: $text-color;
+$badge-attention-bg: $brand-attention;
+
+$badge-success-color: $text-color-inverse;
+$badge-success-bg: $brand-success;
+
+$badge-outlined-border-width: 1px;

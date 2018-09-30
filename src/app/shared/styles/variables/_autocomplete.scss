@@ -1,0 +1,10 @@
+$autocomplete-bg: $bg-color;
+$autocomplete-padding: 0;
+$autocomplete-margin: -($space-unit * 3) 0 0 0;
+$autocomplete-shadow: none;
+$autocomplete-border: 1px solid $border-color;
+
+$autocomplete-item-padding: $space-unit $space-unit * 2;
+$autocomplete-item-border: 1px solid $border-color;
+$autocomplete-item-selected-bg: $bg-color-variant;
+$autocomplete-item-selected-color: $text-color;

@@ -85,27 +85,19 @@
       color:       $tooltip-color;
       content:     attr(data-tip);
       padding:     $tooltip-padding;
-      top:         -36px;
+      top:         -$space-unit * 4.5;
       white-space: nowrap;
       box-shadow:  $tooltip-shadow;
-
-      @include media(tabletLandscape) {
-        top: -41px;
-      }
-
-      @include media(largeDesktop) {
-        top: -45px;
-      }
     }
 
     &:after {
-      border-right: 6px solid transparent;
-      border-top:   6px solid $tooltip-bg;
-      border-left:  6px solid transparent;
+      border-right: $space-unit solid transparent;
+      border-top:   $space-unit solid $tooltip-bg;
+      border-left:  $space-unit solid transparent;
       content:      '';
       height:       0;
-      top:          -5px;
-      left:         8px;
+      top:          -$space-unit * 0.5;
+      left:         $space-unit;
       width:        0;
     }
   }

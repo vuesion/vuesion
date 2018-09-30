@@ -1,0 +1,27 @@
+$calendar-max-width: $screen-phone;
+$calendar-shadow: none;
+$calendar-bg: $bg-color;
+$calendar-margin: 0;
+
+$calendar-header-color: $text-color-inverse;
+$calendar-header-padding: $space-unit * 2 $space-unit * 3;
+$calendar-header-bg: $brand-primary;
+$calendar-header-text-shadow: 0 2px 5px rgba(0, 0, 0, .33);
+
+$calendar-body-border: 1px solid $border-color;
+$calendar-body-padding: $space-unit $space-unit * 2;
+
+$calendar-arrow-color: $brand-secondary;
+$calendar-arrow-bg: $calendar-bg;
+$calendar-arrow-hover-bg: $bg-color-variant;
+
+$calendar-day-border-radius: 0;
+$calendar-day-hover: $bg-color-variant;
+
+$calendar-current-day-bg: $brand-primary;
+$calendar-current-day-color: $text-color-inverse;
+$calendar-current-day-font-weight: $font-weight-medium;
+
+$calendar-selected-day-bg: $brand-secondary;
+$calendar-selected-day-color: $text-color-inverse;
+$calendar-selected-day-font-weight: $font-weight-medium;

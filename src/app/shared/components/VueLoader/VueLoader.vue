@@ -17,27 +17,42 @@
   export default {
     name:     'VueLoader',
     props:    {
-      medium:   {
+      medium:    {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      large:    {
+      large:     {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      primary:  {
+      primary:   {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      accent:   {
+      secondary: {
         type:     Boolean,
         required: false,
         default:  false,
       },
-      warn:     {
+      tertiary:  {
+        type:     Boolean,
+        required: false,
+        default:  false,
+      },
+      danger:    {
+        type:     Boolean,
+        required: false,
+        default:  false,
+      },
+      attention: {
+        type:     Boolean,
+        required: false,
+        default:  false,
+      },
+      success:   {
         type:     Boolean,
         required: false,
         default:  false,
@@ -50,21 +65,26 @@
         if (this.medium) {
           classes.push(this.$style.medium);
         }
-
         if (this.large) {
           classes.push(this.$style.large);
         }
-
         if (this.primary) {
           classes.push(this.$style.primary);
         }
-
-        if (this.accent) {
-          classes.push(this.$style.accent);
+        if (this.secondary) {
+          classes.push(this.$style.secondary);
         }
-
-        if (this.warn) {
-          classes.push(this.$style.warn);
+        if (this.tertiary) {
+          classes.push(this.$style.tertiary);
+        }
+        if (this.danger) {
+          classes.push(this.$style.danger);
+        }
+        if (this.attention) {
+          classes.push(this.$style.attention);
+        }
+        if (this.success) {
+          classes.push(this.$style.success);
         }
 
         return classes;
@@ -81,85 +101,102 @@
     position: relative;
     width:    $loader-size;
     height:   $loader-size;
+
     &:before {
       content:     '';
       display:     block;
       padding-top: 100%;
     }
+  }
 
-    &.medium {
-      width:  $loader-medium-size;
-      height: $loader-medium-size;
-    }
+  .circle {
+    animation:        rotate 2s linear infinite;
+    height:           100%;
+    transform-origin: center center;
+    width:            100%;
+    position:         absolute;
+    top:              0;
+    bottom:           0;
+    left:             0;
+    right:            0;
+    margin:           auto;
 
-    &.large {
-      width:  $loader-large-size;
-      height: $loader-large-size;
-    }
-
-    &.primary {
-      .path {
-        stroke: $brand-primary;
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
       }
-    }
-
-    &.accent {
-      .path {
-        stroke: $brand-accent;
-      }
-    }
-
-    &.warn {
-      .path {
-        stroke: $brand-warn;
-      }
-    }
-
-    .circle {
-      animation:        rotate 2s linear infinite;
-      height:           100%;
-      transform-origin: center center;
-      width:            100%;
-      position:         absolute;
-      top:              0;
-      bottom:           0;
-      left:             0;
-      right:            0;
-      margin:           auto;
-
-      @keyframes rotate {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-    }
-
-    .path {
-      stroke-dasharray:  1, 200;
-      stroke-dashoffset: 0;
-      animation:         dash 1.5s ease-in-out infinite;
-      stroke-linecap:    round;
-      stroke:            $text-color;
-
-      @keyframes dash {
-        0% {
-          stroke-dasharray:  1, 200;
-          stroke-dashoffset: 0;
-        }
-        50% {
-          stroke-dasharray:  89, 200;
-          stroke-dashoffset: -35px;
-        }
-        100% {
-          stroke-dasharray:  89, 200;
-          stroke-dashoffset: -124px;
-        }
+      100% {
+        transform: rotate(360deg);
       }
     }
   }
 
+  .path {
+    stroke-dasharray:  1, 200;
+    stroke-dashoffset: 0;
+    animation:         dash 1.5s ease-in-out infinite;
+    stroke-linecap:    round;
+    stroke:            currentColor;
 
+    @keyframes dash {
+      0% {
+        stroke-dasharray:  1, 200;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray:  89, 200;
+        stroke-dashoffset: -35px;
+      }
+      100% {
+        stroke-dasharray:  89, 200;
+        stroke-dashoffset: -124px;
+      }
+    }
+  }
+
+  .medium {
+    width:  $loader-medium-size;
+    height: $loader-medium-size;
+  }
+
+  .large {
+    width:  $loader-large-size;
+    height: $loader-large-size;
+  }
+
+  .primary {
+    .path {
+      stroke: $loader-primary-color;
+    }
+  }
+
+  .secondary {
+    .path {
+      stroke: $loader-secondary-color;
+    }
+  }
+
+  .tertiary {
+    .path {
+      stroke: $loader-tertiary-color;
+    }
+  }
+
+  .danger {
+    .path {
+      stroke: $loader-danger-color;
+    }
+  }
+
+  .attention {
+    .path {
+      stroke: $loader-attention-color;
+    }
+  }
+
+  .success {
+    .path {
+      stroke: $loader-success-color;
+    }
+  }
 </style>

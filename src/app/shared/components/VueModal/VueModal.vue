@@ -38,10 +38,13 @@
         document.body.style.overflow = 'hidden';
 
         anime({
-                targets:    el,
-                opacity:    '1',
-                elasticity: 0,
-                complete:   done,
+                targets:  el,
+                opacity:  {
+                  value:      '1',
+                  duration:   500,
+                  elasticity: 0,
+                },
+                complete: done,
               });
       },
       beforeLeave(el: HTMLElement) {
@@ -53,9 +56,12 @@
         document.body.style.overflow = 'initial';
 
         anime({
-                targets:    el,
-                opacity:    '0',
-                elasticity: 0,
+                targets: el,
+                opacity: {
+                  value:      '0',
+                  duration:   500,
+                  elasticity: 0,
+                },
                 complete() {
                   overlay.style.visibility = 'hidden';
                   done();

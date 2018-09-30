@@ -3,7 +3,7 @@
     <div :class="prevCssClasses"
          role="button"
          tabindex="0"
-         aria-label="$t('components.pagination.previous' /* Previous */)"
+         :aria-label="$t('components.pagination.previous' /* Previous */)"
          @click="prevClick"
          @keypress="prevClick"></div>
     <div :class="$style.label">
@@ -12,7 +12,7 @@
     <div :class="nextCssClasses"
          role="button"
          tabindex="0"
-         aria-label="$t('components.pagination.next' /* Next */)"
+         :aria-label="$t('components.pagination.next' /* Next */)"
          @click="nextClick"
          @keypress="nextClick"></div>
   </div>
@@ -70,9 +70,10 @@
   @import "../../styles";
 
   .vuePagination {
-    padding: $pagination-padding;
-    margin:  $pagination-margin;
-    display: inline-flex;
+    padding:     $pagination-padding;
+    margin:      $pagination-margin;
+    display:     inline-flex;
+    user-select: none;
   }
 
   .label {
@@ -88,6 +89,7 @@
     position:   relative;
     box-shadow: $pagination-button-shadow;
     background: $pagination-button-bg;
+    border:     $pagination-button-border;
     cursor:     pointer;
 
     &:before, &:after {
@@ -97,6 +99,7 @@
       background-color: $pagination-arrow-color;
       width:            2px;
       height:           16px;
+      top:              -1px;
     }
 
     &.disabled {
@@ -108,21 +111,21 @@
 
   .prev {
     &:before {
-      transform: translate(25px, 26px) rotate(135deg);
+      transform: translate(1.8rem, 1.8rem) rotate(135deg);
     }
 
     &:after {
-      transform: translate(25px, 16px) rotate(-135deg)
+      transform: translate(1.8rem, 0.8rem) rotate(-135deg)
     }
   }
 
   .next {
     &:before {
-      transform: translate(28px, 16px) rotate(135deg);
+      transform: translate(1.8rem, 0.8rem) rotate(135deg);
     }
 
     &:after {
-      transform: translate(28px, 26px) rotate(-135deg)
+      transform: translate(1.8rem, 1.8rem) rotate(-135deg)
     }
   }
 </style>

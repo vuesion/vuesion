@@ -73,6 +73,7 @@
   .enterpriseReady {
     display:    block;
     text-align: center;
+    background: $secondary-2-1;
 
     i {
       display:    inline-block;
@@ -81,6 +82,10 @@
       margin-top: $space-unit;
     }
 
-    @include background-gradient($brand-accent, $brand-light-primary, -135deg);
+    :global {
+      .vuePanel {
+        background: $bg-color;
+      }
+    }
   }
 </style>

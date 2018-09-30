@@ -21,52 +21,116 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item class="vueGridItem">
-          <h2>Headlines with badges</h2>
-          <h1>Headline 1
-            <vue-badge>New</vue-badge>
-          </h1>
-          <h2>Headline 2
-            <vue-badge primary>New</vue-badge>
-          </h2>
-          <h3>Headline 3
-            <vue-badge accent>New</vue-badge>
-          </h3>
-          <h4>Headline 4
-            <vue-badge warn>New</vue-badge>
-          </h4>
-          <h5>Headline 5
-            <vue-badge>New</vue-badge>
-          </h5>
-          <h6>Headline 6
-            <vue-badge>New</vue-badge>
-          </h6>
+          <h2>Headlines</h2>
+          <h1>Headline 1</h1>
+          <h2>Headline 2</h2>
+          <h3>Headline 3</h3>
+          <h4>Headline 4</h4>
+          <h5>Headline 5</h5>
+          <h6>Headline 6</h6>
         </vue-grid-item>
 
         <vue-grid-item class="vueGridItem">
+          <h2>Badges</h2>
+
+          <vue-badge primary>Primary</vue-badge>
+          <vue-badge secondary>Secondary</vue-badge>
+          <vue-badge tertiary>Tertiary</vue-badge>
+          <vue-badge danger>Danger</vue-badge>
+          <vue-badge attention>Attention</vue-badge>
+          <vue-badge success>Success</vue-badge>
+
+          <br />
+          <br />
+          <vue-badge primary outlined>Primary</vue-badge>
+          <vue-badge secondary outlined>Secondary</vue-badge>
+          <vue-badge tertiary outlined>Tertiary</vue-badge>
+          <vue-badge danger outlined>Danger</vue-badge>
+          <vue-badge attention outlined>Attention</vue-badge>
+          <vue-badge success outlined>Success</vue-badge>
+        </vue-grid-item>
+      </vue-grid-row>
+
+      <vue-grid-row>
+        <vue-grid-item class="vueGridItem">
           <h2>Buttons</h2>
 
-          <vue-button>Default</vue-button>
-          <vue-button disabled>Default</vue-button>
-          <!--<vue-button loading>Loading</vue-button>-->
-          <vue-button pulse>Default</vue-button>
-          <br />
-          <br />
           <vue-button primary>Primary</vue-button>
           <vue-button primary disabled>Primary</vue-button>
-          <!--<vue-button primary loading>Loading</vue-button>-->
-          <vue-button primary pulse>Primary</vue-button>
           <br />
           <br />
-          <vue-button accent>Accent</vue-button>
-          <vue-button accent disabled>Accent</vue-button>
-          <!--<vue-button accent loading>Loading</vue-button>-->
-          <vue-button accent pulse>Accent</vue-button>
+          <vue-button secondary>Secondary</vue-button>
+          <vue-button secondary disabled>Secondary</vue-button>
           <br />
           <br />
-          <vue-button warn>Warn</vue-button>
-          <vue-button warn disabled>Warn</vue-button>
-          <!--<vue-button warn loading>Loading</vue-button>-->
-          <vue-button warn pulse>Warn</vue-button>
+          <vue-button tertiary>Tertiary</vue-button>
+          <vue-button tertiary disabled>Tertiary</vue-button>
+          <br />
+          <br />
+          <vue-button danger>Danger</vue-button>
+          <vue-button danger disabled>Danger</vue-button>
+          <br />
+          <br />
+          <vue-button attention>Attention</vue-button>
+          <vue-button attention disabled>Attention</vue-button>
+          <br />
+          <br />
+          <vue-button success>Success</vue-button>
+          <vue-button success disabled>Success</vue-button>
+        </vue-grid-item>
+
+        <vue-grid-item class="vueGridItem">
+          <h3>Outlined</h3>
+
+          <vue-button primary outlined>Primary</vue-button>
+          <vue-button primary disabled outlined>Primary</vue-button>
+          <br />
+          <br />
+          <vue-button secondary outlined>Secondary</vue-button>
+          <vue-button secondary disabled outlined>Secondary</vue-button>
+          <br />
+          <br />
+          <vue-button tertiary outlined>Tertiary</vue-button>
+          <vue-button tertiary disabled outlined>Tertiary</vue-button>
+          <br />
+          <br />
+          <vue-button danger outlined>Danger</vue-button>
+          <vue-button danger disabled outlined>Danger</vue-button>
+          <br />
+          <br />
+          <vue-button attention outlined>Attention</vue-button>
+          <vue-button attention disabled outlined>Attention</vue-button>
+          <br />
+          <br />
+          <vue-button success outlined>Success</vue-button>
+          <vue-button success disabled outlined>Success</vue-button>
+        </vue-grid-item>
+
+        <vue-grid-item class="vueGridItem">
+          <h3>Ghost</h3>
+
+          <vue-button primary ghost>Primary</vue-button>
+          <vue-button primary disabled ghost>Primary</vue-button>
+          <br />
+          <br />
+          <vue-button secondary ghost>Secondary</vue-button>
+          <vue-button secondary disabled ghost>Secondary</vue-button>
+          <br />
+          <br />
+          <vue-button tertiary ghost>Tertiary</vue-button>
+          <vue-button tertiary disabled ghost>Tertiary</vue-button>
+          <br />
+          <br />
+          <vue-button danger ghost>Danger</vue-button>
+          <vue-button danger disabled ghost>Danger</vue-button>
+          <br />
+          <br />
+          <vue-button attention ghost>Attention</vue-button>
+          <vue-button attention disabled ghost>Attention</vue-button>
+          <br />
+          <br />
+          <vue-button success ghost>Success</vue-button>
+          <vue-button success disabled ghost>Success</vue-button>
         </vue-grid-item>
       </vue-grid-row>
 
@@ -104,7 +168,7 @@
 
           <vue-button primary @click="showModal = !showModal">Show Modal</vue-button>
           <vue-modal :show="showModal" @close="showModal = !showModal">
-            <vue-button warn @click="showModal = !showModal">X</vue-button>
+            <vue-button danger @click="showModal = !showModal">X</vue-button>
             <br />
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
             dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
@@ -200,7 +264,8 @@
             :value="selectedOption"
             @input="selectChange" />
 
-          <p>Multi</p>
+          <br />
+          Multi
           <vue-select
             name="select2"
             id="select2"
@@ -252,8 +317,8 @@
               et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
             </vue-panel-body>
             <vue-panel-footer>
-              <vue-button warn>Delete</vue-button>
-              <vue-button>Cancel</vue-button>
+              <vue-button danger>Delete</vue-button>
+              <vue-button primary ghost>Cancel</vue-button>
             </vue-panel-footer>
           </vue-panel>
         </vue-grid-item>
@@ -262,7 +327,7 @@
       <vue-grid-row>
         <vue-grid-item class="vueGridItem">
           <h2>Collapse</h2>
-          <vue-button @click="collapseDemo = !collapseDemo" accent>Collapse toggle</vue-button>
+          <vue-button secondary @click="collapseDemo = !collapseDemo" accent>Collapse toggle</vue-button>
           <br />
           <br />
           <vue-collapse :show="collapseDemo">
@@ -293,7 +358,7 @@
           <br />
           <br />
           <vue-tooltip tip="This is a tooltip!">
-            <vue-button>TEST</vue-button>
+            <vue-button primary>TEST</vue-button>
           </vue-tooltip>
         </vue-grid-item>
       </vue-grid-row>
@@ -351,7 +416,8 @@
             </vue-accordion-item>
           </vue-accordion>
 
-          <p>Multi</p>
+          <br />
+          Multi
           <vue-accordion multiple>
             <vue-accordion-item
               title="Item 1">
@@ -385,10 +451,12 @@
         <vue-grid-item class="vueGridItem">
           <h2>Loader</h2>
 
-          <vue-loader />
           <vue-loader primary />
-          <vue-loader accent />
-          <vue-loader warn />
+          <vue-loader secondary />
+          <vue-loader tertiary />
+          <vue-loader danger />
+          <vue-loader attention />
+          <vue-loader success />
         </vue-grid-item>
       </vue-grid-row>
 
@@ -422,7 +490,7 @@
 
         <vue-grid-item class="vueGridItem">
           <h2>Notification Stack</h2>
-          <vue-button accent @click="addNotificationClick">add notification</vue-button>
+          <vue-button secondary @click="addNotificationClick">add notification</vue-button>
         </vue-grid-item>
       </vue-grid-row>
 
@@ -818,20 +886,19 @@
     padding:     $nav-bar-height 0 $nav-bar-height * 0.5;
     text-align:  center;
     text-shadow: 0 5px 10px rgba(0, 0, 0, 0.33);
-    @include background-gradient($brand-dark-primary, $brand-accent, 152deg);
+    background:  $brand-primary;
+    color:       $text-color-inverse
   }
 
   .collapseDemo {
     padding:    $space-unit * 2;
     background: $panel-bg;
-    box-shadow: $panel-shadow;
-    color:      #FFF
   }
 
   .age {
     > div {
       height:     $space-unit;
-      background: $brand-accent;
+      background: $brand-secondary;
       margin-top: $space-unit * 1.5;
       display:    inline-block;
     }

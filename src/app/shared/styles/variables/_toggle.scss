@@ -1,0 +1,17 @@
+$toggle-bg: $bg-color-variant;
+$toggle-margin: 0 0 $space-unit * 2 0;
+$toggle-shadow: none;
+$toggle-border-radius: $border-radius;
+$toggle-width: $space-unit * 6;
+$toggle-height: $space-unit * 1.5;
+$toggle-transition: all $transition-duration ease-in-out;
+
+$toggle-handle-border-radius: 50%;
+$toggle-handle-size: $space-unit * 3;
+$toggle-handle-bg: $brand-secondary;
+$toggle-handle-shadow: none;
+$toggle-handle-checked-bg: $brand-secondary;
+$toggle-handle-focused-shadow: 0 0 0 8px rgba(red($brand-secondary), green($brand-secondary), blue($brand-secondary), .5);
+
+$toggle-disabled-bg: $bg-color-variant;
+$toggle-handle-disabled-bg: $border-color;
