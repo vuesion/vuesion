@@ -38,3 +38,20 @@ story.add('All Props', () => ({
     action: action('@onClick'),
   },
 }));
+
+story.add('Custom Cell Renderer', () => ({
+  i18n,
+  components: { VueDataTable },
+  data() {
+    return {
+      header: dataTableHeaderFixture,
+      data:   dataTableDataFixture,
+    };
+  },
+  template:   `<vue-data-table :header="header" :data="data" placeholder="Search" @click="action">
+  <template slot="date" slot-scope="{cell}">{{ new Date(cell.value).toDateString() }}</template>
+</vue-data-table>`,
+  methods:    {
+    action: action('@onClick'),
+  },
+}));

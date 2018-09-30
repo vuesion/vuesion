@@ -1,6 +1,10 @@
 <template>
   <div
     ref="slider"
+    role="slider"
+    :aria-valuemax="max"
+    :aria-valuemin="min"
+    :aria-valuenow="currentMin"
     :class="$style.vueSlider"
     @mousedown="moveStart($event)"
     @touchstart="moveStart($event)">
@@ -16,12 +20,8 @@
       <button
         :class="handleCssClasses(0)"
         :style="{left: handleLeftPosition}"
-        :aria-valuemax="max"
-        :aria-valuemin="min"
-        :aria-valuenow="currentMin"
         :disabled="disabled"
         aria-disabled="false"
-        role="slider"
         tabindex="0"
         type="button"
         aria-label="left handle"
@@ -33,12 +33,8 @@
       <button v-if="isMultiRange"
               :class="handleCssClasses(1)"
               :style="{left: handleRightPosition}"
-              :aria-valuemax="max"
-              :aria-valuemin="min"
-              :aria-valuenow="currentMax"
               :disabled="disabled"
               aria-disabled="false"
-              role="slider"
               tabindex="0"
               type="button"
               aria-label="right handle"

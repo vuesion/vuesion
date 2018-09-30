@@ -1,7 +1,7 @@
 <template>
   <div
     :class="$style.vueAutocomplete"
-    :aria-expanded="isOpen"
+    :aria-expanded="isOpen ? 'true' : 'false'"
     aria-haspopup="true"
     aria-owns="autocomplete-results"
     role="combobox">
@@ -30,6 +30,7 @@
     <ul
       ref="resultContainer"
       role="listbox"
+      id="autocomplete-results"
       :style="{ height: resultContainerHeight + 'px' }"
       v-show="isOpen === true && isLoading === false">
 

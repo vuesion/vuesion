@@ -4,15 +4,13 @@
       :name="name"
       :id="id"
       v-validate="validation"
-      role="listbox"
       :multiple="multiple"
       :required="required"
       :disabled="disabled"
-      :autocomplete="name"
+      :autocomplete="autocomplete"
       v-bind="$attrs"
       v-on="handlers">
       <option
-        role="option"
         v-for="option in options"
         :value="option.value"
         :selected="isSelected(option)">
@@ -39,37 +37,40 @@
       },
     },
     props:    {
-      name:       {
+      name:         {
         type:     String,
         required: true,
       },
-      id:         {
+      id:           {
         type:     String,
         required: true,
       },
-      options:    {
+      options:      {
         required: true,
         type:     Array,
       },
-      value:      {
+      value:        {
         type:     String,
         default:  '',
         required: false,
       },
-      multiple:   {
+      multiple:     {
         default: false,
         type:    Boolean,
       },
-      required:   {
+      required:     {
         default: false,
         type:    Boolean,
       },
-      disabled:   {
+      disabled:     {
         default: false,
         type:    Boolean,
       },
-      validation: {
+      validation:   {
         default: '',
+      },
+      autocomplete: {
+        default: 'off',
       },
     },
     computed: {

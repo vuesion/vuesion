@@ -1,29 +1,41 @@
 <template>
-  <div :class="$style.vueDataTable">
+  <div>
     <vue-data-table-search v-model="searchTerm"
                            v-if="showSearch"
                            :placeholder="placeholder" />
 
-    <vue-data-table-header
-      :columns="columns"
-      :column-width="columnWidth"
-      :sort-key="sortKey"
-      :sort-direction="sortDirection"
-      @click="columnClick" />
+    <table :class="$style.vueDataTable">
+      <vue-data-table-header
+        :columns="columns"
+        :column-width="columnWidth"
+        :sort-key="sortKey"
+        :sort-direction="sortDirection"
+        @click="columnClick" />
 
-    <vue-data-table-row v-for="(row, idx) in rows"
-                        :key="idx"
-                        :row="row"
-                        :column-width="columnWidth"
-                        @click="rowClick" />
+      <tbody>
+      <tr v-for="(row) in rows" :class="$style.vueDataTableRow" @click="rowClick(row)">
+        <td v-for="(cell, idx) in row"
+            v-if="cell.visible"
+            :key="idx"
+            :class="$style.column"
+            :style="{flexBasis: `${columnWidth}`}">
 
-    <div :class="$style.noResults" v-show="count === 0">
-      {{ $t('components.dataTable.noResults' /* No results found! */) }}
-    </div>
+          <slot :name="cell.slot" :cell="cell">{{ cell.value }}</slot>
+
+        </td>
+      </tr>
+
+      <tr v-show="count === 0">
+        <td :class="$style.noResults" :colspan="columns.length - 1">
+          {{ $t('components.dataTable.noResults' /* No results found! */) }}
+        </td>
+      </tr>
+      </tbody>
+    </table>
 
     <br />
 
-    <vue-pagination v-show="count > 0"
+    <vue-pagination v-show="count > maxRows"
                     :current="currentPage + 1"
                     :pages="maxPages"
                     @change="paginationClick" />
@@ -31,15 +43,14 @@
 </template>
 
 <script lang="ts">
-  import VueDataTableHeader                               from './VueDataTableHeader/VueDataTableHeader.vue';
-  import VueDataTableRow                                  from './VueDataTableRow/VueDataTableRow.vue';
-  import VuePagination                                    from '../VuePagination/VuePagination.vue';
-  import VueDataTableSearch                               from './VueDataTableSearch/VueDataTableSearch.vue';
-  import { IComputedDataRowColumn, IDataTableHeaderItem } from './IDataTable';
+  import VueDataTableHeader                             from './VueDataTableHeader/VueDataTableHeader.vue';
+  import VuePagination                                  from '../VuePagination/VuePagination.vue';
+  import VueDataTableSearch                             from './VueDataTableSearch/VueDataTableSearch.vue';
+  import { IComputedDataRowCell, IDataTableHeaderItem } from './IDataTable';
 
   export default {
     name:       'VueDataTable',
-    components: { VueDataTableSearch, VuePagination, VueDataTableRow, VueDataTableHeader },
+    components: { VueDataTableSearch, VuePagination, VueDataTableHeader },
     props:      {
       header:      {
         type:     Object,
@@ -131,14 +142,15 @@
       },
       rows() {
         return this.displayData.map((row: any) => {
-          const computedRow: IComputedDataRowColumn[] = [];
+          const computedRow: IComputedDataRowCell[] = [];
 
           Object.keys(this.header).forEach((key: string) => {
             const column: IDataTableHeaderItem = this.header[key];
-            const computedColumn: IComputedDataRowColumn = {
+            const computedColumn: IComputedDataRowCell = {
               key,
               value:   row[key],
               visible: column.visible,
+              slot:    column.slot,
             };
             computedRow.push(computedColumn);
           });
@@ -173,7 +185,13 @@
           this.sortDirection = 'asc';
         }
       },
-      rowClick(row: any) {
+      rowClick(cells: IComputedDataRowCell[]) {
+        const row: any = {};
+
+        cells.forEach((column: IComputedDataRowCell) => {
+          row[column.key] = column.value;
+        });
+
         this.$emit('click', row);
       },
       paginationClick(page: number) {
@@ -191,6 +209,7 @@
 
   .vueDataTable {
     overflow-x: scroll;
+    width:      100%;
   }
 
   .noResults {
@@ -199,5 +218,29 @@
     text-align: center;
     opacity:    .5;
     padding:    $space-unit * 8 0;
+  }
+
+  .vueDataTableRow {
+    display:        flex;
+    flex-direction: row;
+    box-shadow:     $panel-shadow;
+    border:         1px solid $divider-color;
+    border-top:     none;
+    cursor:         pointer;
+    min-width:      600px;
+
+    &:hover {
+      background: $panel-bg;
+    }
+  }
+
+  .column {
+    flex:         1 1 auto;
+    border-right: 1px solid $divider-color;
+    padding:      $space-unit $space-unit * 2;
+
+    &:last-child {
+      border-right: none;
+    }
   }
 </style>

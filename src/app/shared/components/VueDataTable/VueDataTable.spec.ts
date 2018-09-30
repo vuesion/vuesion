@@ -1,10 +1,9 @@
 import { createLocalVue, mount }                        from '@vue/test-utils';
 import { i18n }                                         from '../../plugins/i18n/i18n';
 import VueDataTable                                     from './VueDataTable.vue';
-import { IDataTableHeader }                             from './IDataTable';
+import { IComputedDataRowCell, IDataTableHeader }       from './IDataTable';
 import VueDataTableSearch                               from './VueDataTableSearch/VueDataTableSearch.vue';
 import VueDataTableHeader                               from './VueDataTableHeader/VueDataTableHeader.vue';
-import VueDataTableRow                                  from './VueDataTableRow/VueDataTableRow.vue';
 import VuePagination                                    from '../VuePagination/VuePagination.vue';
 import { dataTableDataFixture, dataTableHeaderFixture } from './DataTableFixtures';
 
@@ -28,7 +27,7 @@ describe('VueDataTable.vue', () => {
 
     expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(1);
     expect(wrapper.findAll(VueDataTableHeader)).toHaveLength(1);
-    expect(wrapper.findAll(VueDataTableRow)).toHaveLength(5);
+    expect(wrapper.findAll('.vueDataTableRow')).toHaveLength(5);
     expect(wrapper.findAll(VuePagination)).toHaveLength(1);
   });
 
@@ -47,7 +46,7 @@ describe('VueDataTable.vue', () => {
 
     expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(0);
     expect(wrapper.findAll(VueDataTableHeader)).toHaveLength(1);
-    expect(wrapper.findAll(VueDataTableRow)).toHaveLength(5);
+    expect(wrapper.findAll('.vueDataTableRow')).toHaveLength(5);
     expect(wrapper.findAll(VuePagination)).toHaveLength(1);
   });
 
@@ -66,13 +65,13 @@ describe('VueDataTable.vue', () => {
     wrapper.vm.searchTerm = 'julia';
     expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(1);
     expect(wrapper.findAll(VueDataTableHeader)).toHaveLength(1);
-    expect(wrapper.findAll(VueDataTableRow)).toHaveLength(4);
+    expect(wrapper.findAll('.vueDataTableRow')).toHaveLength(4);
 
     wrapper.vm.searchTerm = 'z';
     expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(1);
     expect(wrapper.findAll(VueDataTableHeader)).toHaveLength(1);
     expect(wrapper.findAll('.noResults')).toHaveLength(1);
-    expect(wrapper.findAll(VueDataTableRow)).toHaveLength(0);
+    expect(wrapper.findAll('.vueDataTableRow')).toHaveLength(0);
   });
 
   test('should sort data', () => {
@@ -130,10 +129,15 @@ describe('VueDataTable.vue', () => {
                             },
                           },
     ) as any;
+    const cells: IComputedDataRowCell[] = [
+      { key: 'id', value: 2, visible: false, slot: undefined },
+      { key: 'name', value: 'foo', visible: false, slot: undefined },
+    ];
 
-    wrapper.vm.rowClick('foo');
+    wrapper.vm.rowClick(cells);
 
     expect(wrapper.emitted('click')).toBeTruthy();
+    expect(wrapper.emitted('click')[0][0]).toEqual({ id: 2, name: 'foo' });
   });
 
   test('should emit click', () => {

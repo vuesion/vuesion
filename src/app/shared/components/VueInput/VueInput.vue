@@ -8,7 +8,7 @@
       :required="required"
       :value="value"
       :type="type"
-      :autocomplete="type"
+      :autocomplete="autocomplete"
       :disabled="disabled"
       :readonly="readonly"
       :class="[
@@ -78,6 +78,9 @@
       },
       validation:   {
         default: '',
+      },
+      autocomplete: {
+        default: 'off',
       },
     },
     computed: {

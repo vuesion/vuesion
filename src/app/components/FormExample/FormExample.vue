@@ -148,7 +148,7 @@
           newsletter:  false,
         },
         countryOptions: [
-          { label: 'Choose a Country', value: null },
+          { label: 'Choose a Country', value: '' },
           { label: 'Germany', value: 'de' },
           { label: 'USA', value: 'us' },
           { label: 'Other', value: 'other' },
