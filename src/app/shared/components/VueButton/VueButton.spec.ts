@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import VueButton                 from './VueButton.vue';
 
 const localVue = createLocalVue();
@@ -58,37 +58,81 @@ describe('VueButton.vue', () => {
     expect(wrapper.findAll(`.primary`)).toHaveLength(1);
   });
 
-  test('should show accent color', () => {
+  test('should show secondary color', () => {
     const wrapper = mount(VueButton, {
       localVue,
       propsData: {
-        accent: true,
+        secondary: true,
       },
     });
 
-    expect(wrapper.findAll(`.accent`)).toHaveLength(1);
+    expect(wrapper.findAll(`.secondary`)).toHaveLength(1);
   });
 
-  test('should show warn color', () => {
+  test('should show tertiary color', () => {
     const wrapper = mount(VueButton, {
       localVue,
       propsData: {
-        warn: true,
+        tertiary: true,
       },
     });
 
-    expect(wrapper.findAll(`.warn`)).toHaveLength(1);
+    expect(wrapper.findAll(`.tertiary`)).toHaveLength(1);
   });
 
-  test('should add pulse animation', () => {
+  test('should show danger color', () => {
     const wrapper = mount(VueButton, {
       localVue,
       propsData: {
-        pulse: true,
+        danger: true,
       },
     });
 
-    expect(wrapper.findAll(`.pulse`)).toHaveLength(1);
+    expect(wrapper.findAll(`.danger`)).toHaveLength(1);
+  });
+
+  test('should show attention color', () => {
+    const wrapper = mount(VueButton, {
+      localVue,
+      propsData: {
+        attention: true,
+      },
+    });
+
+    expect(wrapper.findAll(`.attention`)).toHaveLength(1);
+  });
+
+  test('should show success color', () => {
+    const wrapper = mount(VueButton, {
+      localVue,
+      propsData: {
+        success: true,
+      },
+    });
+
+    expect(wrapper.findAll(`.success`)).toHaveLength(1);
+  });
+
+  test('should show outlined color', () => {
+    const wrapper = mount(VueButton, {
+      localVue,
+      propsData: {
+        outlined: true,
+      },
+    });
+
+    expect(wrapper.findAll(`.outlined`)).toHaveLength(1);
+  });
+
+  test('should show ghost color', () => {
+    const wrapper = mount(VueButton, {
+      localVue,
+      propsData: {
+        ghost: true,
+      },
+    });
+
+    expect(wrapper.findAll(`.ghost`)).toHaveLength(1);
   });
 
 });

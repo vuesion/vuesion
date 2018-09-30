@@ -105,6 +105,7 @@
     user-select: none;
     cursor:      pointer;
     align-items: baseline;
+    margin:      $toggle-margin;
 
     input {
       position: absolute;

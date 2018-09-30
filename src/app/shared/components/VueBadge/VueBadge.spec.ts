@@ -31,30 +31,69 @@ describe('VueBadge.vue', () => {
     expect(wrapper.findAll('.primary')).toHaveLength(1);
   });
 
-  test('renders accent', () => {
+  test('renders secondary', () => {
     const wrapper = mount(VueBadge,
                           {
                             localVue,
                             propsData: {
-                              accent: true,
+                              secondary: true,
                             },
                           },
     );
 
-    expect(wrapper.findAll('.accent')).toHaveLength(1);
+    expect(wrapper.findAll('.secondary')).toHaveLength(1);
   });
 
-  test('renders warn', () => {
+  test('renders tertiary', () => {
     const wrapper = mount(VueBadge,
                           {
                             localVue,
                             propsData: {
-                              warn: true,
+                              tertiary: true,
                             },
                           },
     );
 
-    expect(wrapper.findAll('.warn')).toHaveLength(1);
+    expect(wrapper.findAll('.tertiary')).toHaveLength(1);
+  });
+
+  test('renders danger', () => {
+    const wrapper = mount(VueBadge,
+                          {
+                            localVue,
+                            propsData: {
+                              danger: true,
+                            },
+                          },
+    );
+
+    expect(wrapper.findAll('.danger')).toHaveLength(1);
+  });
+
+  test('renders attention', () => {
+    const wrapper = mount(VueBadge,
+                          {
+                            localVue,
+                            propsData: {
+                              attention: true,
+                            },
+                          },
+    );
+
+    expect(wrapper.findAll('.attention')).toHaveLength(1);
+  });
+
+  test('renders success', () => {
+    const wrapper = mount(VueBadge,
+                          {
+                            localVue,
+                            propsData: {
+                              success: true,
+                            },
+                          },
+    );
+
+    expect(wrapper.findAll('.success')).toHaveLength(1);
   });
 
 });

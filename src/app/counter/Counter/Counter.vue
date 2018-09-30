@@ -8,6 +8,7 @@
 
         <vue-grid-item fill>
           <vue-button
+            secondary
             :loading="incrementPending"
             @click='increment'
             accent>Increment +1

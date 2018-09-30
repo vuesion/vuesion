@@ -8,7 +8,7 @@ body {
 
 // always make sure images have an alt attribute
 img:not([alt]) {
-  border: 5px dashed $brand-warn;
+  border: 5px dashed $brand-attention;
 }
 
 /* vue-icon global style */
@@ -18,19 +18,10 @@ i {
   width:   $font-size;
   fill:    $text-color;
 
-  @include media(tabletLandscape) {
-    height: $font-size * $font-size-factor-tablet-landscape;
-    width:  $font-size * $font-size-factor-tablet-landscape;
-  }
-
-  @include media(largeDesktop) {
-    height: $font-size * $font-size-factor-large-desktop;
-    width:  $font-size * $font-size-factor-large-desktop;
-  }
-
   svg {
     height: inherit;
     width:  inherit;
+    fill:   currentColor;
   }
 }
 

@@ -84,12 +84,13 @@
 
   .home {
     h2 {
-      text-shadow: 0 5px 10px rgba(0, 0, 0, 0.33);
+      line-height: 1.2;
     }
 
     :global {
       .vuePanel {
-        height: 100%;
+        height:  100%;
+        padding: $space-unit * 2;
       }
 
       .vueGridItem {

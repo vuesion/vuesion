@@ -80,7 +80,7 @@
     right:    0;
     z-index:  $nav-bar-index + 5;
     height:   2px;
-    @include background-gradient($brand-accent, lighten($brand-accent, 30%), 'horizontal');
+    @include background-gradient($brand-secondary, lighten($brand-secondary, 30%), 'horizontal');
     opacity:  0;
   }
 

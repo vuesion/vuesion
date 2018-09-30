@@ -6,7 +6,7 @@
 
 <script lang="ts">
   export default {
-    name:       'VuePanel',
+    name: 'VuePanel',
   };
 </script>
 
@@ -16,6 +16,7 @@
   .vuePanel {
     background-color: $panel-bg;
     box-shadow:       $panel-shadow;
+    border:           $panel-border;
     border-radius:    $panel-border-radius;
     margin:           $panel-margin;
   }

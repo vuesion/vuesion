@@ -1,0 +1,44 @@
+$google-font: 'https://fonts.googleapis.com/css?family=Barlow:100,300,500,700';
+$font-family-headings: 'Barlow', Helvetica, sans-serif;
+$font-family: 'Barlow', Helvetica, sans-serif;
+
+/* Font Sizes */
+$font-size-small: 80%;
+$font-size: 1.6rem;
+$font-size-h1: 4.8rem;
+$font-size-h2: 3.2rem;
+$font-size-h3: 2.4rem;
+$font-size-h4: 2rem;
+$font-size-h5: 1.6rem;
+$font-size-h6: 1.4rem;
+
+/* Font Weights */
+$font-weight-thin: 100;
+$font-weight-regular: 300;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$font-weight-h1: $font-weight-medium;
+$font-weight-h2: $font-weight-medium;
+$font-weight-h3: $font-weight-medium;
+$font-weight-h4: $font-weight-medium;
+$font-weight-h5: $font-weight-medium;
+$font-weight-h6: $font-weight-bold;
+$link-font-weight: $font-weight-medium;
+
+/* Line Heights */
+$line-height: $font-size + $space-unit;
+$line-height-h1: $font-size-h1 + $space-unit;
+$line-height-h2: $font-size-h2 + $space-unit;
+$line-height-h3: $font-size-h3 + $space-unit;
+$line-height-h4: $font-size-h4 + $space-unit;
+$line-height-h5: $font-size-h5 + $space-unit;
+$line-height-h6: $font-size-h6+ $space-unit;
+
+/* Letter Spacings */
+$letter-spacing: normal;
+$letter-spacing-h1: normal;
+$letter-spacing-h2: normal;
+$letter-spacing-h3: normal;
+$letter-spacing-h4: normal;
+$letter-spacing-h5: normal;
+$letter-spacing-h6: normal;

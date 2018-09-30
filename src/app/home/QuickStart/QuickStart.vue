@@ -49,7 +49,17 @@
   .quickStart {
     display:    block;
     text-align: center;
-    @include background-gradient($brand-dark-primary, $brand-primary, -31deg);
+    background: $primary-2-1;
+
+    h2 {
+      color: $text-color-inverse;
+    }
+
+    :global {
+      .vuePanel {
+        background: $bg-color;
+      }
+    }
 
     :global {
       .vuePanelBody {
