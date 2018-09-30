@@ -1,10 +1,10 @@
 <template>
-  <div :class="$style.vueDataTable">
+  <div :class="$style.container">
     <vue-data-table-search v-model="searchTerm"
                            v-if="showSearch"
                            :placeholder="placeholder" />
 
-    <table>
+    <table :class="$style.vueDataTable">
       <vue-data-table-header
         :columns="columns"
         :column-width="columnWidth"
@@ -218,12 +218,12 @@
 <style lang="scss" module>
   @import "../../styles";
 
-  .vueDataTable {
-    overflow-x: scroll;
+  .container {
+    overflow-x: auto;
+  }
 
-    table {
-      width: 100%;
-    }
+  .vueDataTable {
+    width: 100%;
   }
 
   .noResults {

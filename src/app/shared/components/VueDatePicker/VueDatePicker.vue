@@ -133,17 +133,18 @@
   }
 
   .calendar {
-    margin:    0;
-    max-width: $modal-max-width;
+    margin: 0;
 
     @include media(tabletPortrait) {
+      width: $calendar-max-width;
+
       table {
         tr {
           td {
             font-size: $font-size-h5;
 
             span {
-              top: 25%;
+              top: 17%;
             }
           }
         }
