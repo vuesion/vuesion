@@ -29,7 +29,7 @@
     },
     methods: {
       beforeEnter(el: HTMLElement) {
-        el.style.transform = 'translateY(100%)';
+        el.style.opacity = '0';
 
         document.getElementById('overlay').style.visibility = 'visible';
       },
@@ -39,16 +39,13 @@
 
         anime({
                 targets:    el,
-                translateY: {
-                  value:      '0%',
-                  duration:   250,
-                  elasticity: 100,
-                },
+                opacity:    '1',
+                elasticity: 0,
                 complete:   done,
               });
       },
       beforeLeave(el: HTMLElement) {
-        el.style.transform = 'translateY(0%)';
+        el.style.opacity = '1';
       },
       leave(el: HTMLElement, done: any) {
         const overlay: HTMLElement = document.getElementById('overlay');
@@ -57,11 +54,8 @@
 
         anime({
                 targets:    el,
-                translateY: {
-                  value:      '200%',
-                  duration:   250,
-                  elasticity: 100,
-                },
+                opacity:    '0',
+                elasticity: 0,
                 complete() {
                   overlay.style.visibility = 'hidden';
                   done();
@@ -127,22 +121,20 @@
     -webkit-overflow-scrolling: touch;
 
     @include media(tabletPortrait) {
-      width:       $modal-max-width;
-      left:        50%;
-      top:         0;
-      bottom:      0;
-      margin-left: -240px;
+      max-width:  $modal-max-width;
+      max-height: 100%;
+      position:   fixed;
+      top:        50%;
+      left:       50%;
+      right:      unset;
+      bottom:     unset;
+      transform:  translate(-50%, -50%);
     }
   }
 
   .fitContent {
     padding:    0;
-    bottom:     initial;
     overflow-y: hidden;
-
-    @include media(tabletPortrait) {
-      top:    $nav-bar-height;
-      bottom: initial;
-    }
+    bottom:     initial;
   }
 </style>
