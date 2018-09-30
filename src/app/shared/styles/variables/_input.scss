@@ -1,0 +1,28 @@
+$input-border-bottom: 1px solid $border-color;
+$input-background-color: transparent;
+$input-padding: $space-unit 0;
+$input-margin: 0;
+$input-font-family: $font-family;
+$input-font-size: inherit;
+$input-font-weight: $font-weight-medium;
+$input-color: $text-color;
+$input-height: $space-unit * 4;
+$input-error-color: $brand-danger;
+
+$input-placeholder-top: 0;
+$input-placeholder-color: $input-color;
+$input-placeholder-font-size: $input-font-size;
+$input-placeholder-font-weight: $font-weight-medium;
+$input-placeholder-active-font-size: 75%;
+$input-placeholder-active-font-weight: $font-weight-regular;
+$input-placeholder-active-font-color: $secondary-1-1;
+$input-placeholder-active-height: $space-unit * 2;
+
+$input-bar-height: 2px;
+$input-bar-color: $secondary-1-1;
+
+$input-message-height: $space-unit * 3;
+$input-message-padding: 0;
+$input-message-color: $input-color;
+$input-message-font-size: 75%;
+$input-message-font-weight: $font-weight-regular;

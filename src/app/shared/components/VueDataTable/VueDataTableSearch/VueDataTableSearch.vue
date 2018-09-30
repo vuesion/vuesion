@@ -32,7 +32,9 @@
 </script>
 
 <style lang="scss" module>
+  @import "../../../styles";
+
   .vueDataTableSearch {
-    display: block;
+    padding-top: $space-unit * 2;
   }
 </style>

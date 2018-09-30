@@ -116,7 +116,7 @@
         const length: number = target.options.length;
 
         for (let i = 0; i < length; i++) {
-          const option: HTMLOptionElement = target.options[i];
+          const option: any = target.options[i];
           if (option.selected) {
             selected.push({ label: option.text, value: option.value });
           }
@@ -137,7 +137,7 @@
     box-shadow: $select-shadow;
     margin:     $select-margin;
     position:   relative;
-    border-top: $select-border-top;
+    border:     $select-border;
 
     select::-ms-expand {
       display: none;
@@ -181,8 +181,8 @@
 
   .icon {
     position: absolute;
-    right:    24px;
-    top:      20px;
+    right:    $space-unit * 3;
+    top:      $space-unit * 1.5;
     height:   auto;
     width:    auto;
 
@@ -209,6 +209,6 @@
   }
 
   .error {
-    border: 1px solid $brand-warn;
+    border: 1px solid $brand-attention;
   }
 </style>

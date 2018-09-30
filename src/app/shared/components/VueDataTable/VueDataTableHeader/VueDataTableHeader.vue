@@ -62,29 +62,29 @@
   @import "../../../styles";
 
   .vueDataTableHeader {
-    flex-direction: row;
-    box-shadow:     $panel-shadow;
-    border:         1px solid $divider-color;
-    background:     $bg-color;
-    font-weight:    700;
-    background:     $panel-bg;
-    min-width:      600px;
+    box-shadow:  $panel-shadow;
+    border:      1px solid $border-color;
+    background:  $bg-color;
+    font-weight: 700;
+    background:  $panel-bg;
+    min-width:   600px;
 
     tr {
       width:     100%;
-      min-width: 600px;
+      min-width: 800px;
     }
   }
 
   .column {
-    border-right: 1px solid $divider-color;
+    border-right: 1px solid $border-color;
     padding:      $space-unit $space-unit * 2;
     cursor:       pointer;
     user-select:  none;
+    min-width:    150px;
 
     &:hover {
       i {
-        fill:    $brand-accent;
+        fill:    $brand-primary;
         opacity: 1;
       }
     }
@@ -99,7 +99,7 @@
 
     :global {
       .fa-sort-up, .fa-sort-down {
-        color:   $brand-accent;
+        color:   $brand-primary;
         opacity: 1;
       }
     }

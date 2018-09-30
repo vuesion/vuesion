@@ -47,8 +47,8 @@
     </div>
 
     <div :class="$style.footer">
-      <vue-button @click.stop.prevent="onClose" accent>Cancel</vue-button>
-      <vue-button @click.stop.prevent="onChange" primary>Ok</vue-button>
+      <vue-button @click.stop.prevent="onClose" primary ghost>Cancel</vue-button>
+      <vue-button @click.stop.prevent="onChange" secondary>Ok</vue-button>
     </div>
   </div>
 </template>
@@ -334,8 +334,8 @@
   }
 
   .body {
-    border-bottom: $calendar-body-border;
-    padding:       $calendar-body-padding;
+    border:  $calendar-body-border;
+    padding: $calendar-body-padding;
 
     table {
       display: block;
@@ -365,14 +365,14 @@
 
           span {
             position: relative;
-            top:      0.5rem;
+            top:      $space-unit - 0.1;
 
             @include media(tabletPortrait) {
               top: 15%;
             }
 
             @include media(largeDesktop) {
-              top: 12%;
+              top: 17%;
             }
           }
         }
@@ -436,11 +436,11 @@
     cursor:      default;
     text-align:  center;
     flex:        1 0 70%;
-    font-weight: 500;
+    font-weight: $font-weight-regular;
   }
 
   .currentDay {
-    font-weight: bold;
+    font-weight: $calendar-current-day-font-weight;
     background:  $calendar-current-day-bg;
     color:       $calendar-current-day-color;
 
@@ -450,7 +450,7 @@
   }
 
   .selectedDay {
-    font-weight:      bold;
+    font-weight:      $calendar-selected-day-font-weight;
     background-color: $calendar-selected-day-bg;
     color:            $calendar-selected-day-color;
 
@@ -460,7 +460,7 @@
   }
 
   .disabledDay {
-    opacity:     0.6;
+    opacity:     0.4;
     user-select: none;
     outline:     transparent;
   }
@@ -490,6 +490,8 @@
     padding:         $space-unit * 2;
     display:         flex;
     justify-content: flex-end;
+    border:          $calendar-body-border;
+    border-top:      none;
 
     button {
       margin-bottom: 0;

@@ -94,6 +94,8 @@
       cursor:           pointer;
       background-color: transparent;
       position:         relative;
+      border:           1px solid transparent;
+      border-bottom:    $tab-group-border;
 
       .bg {
         position:                   absolute;
@@ -109,6 +111,10 @@
       }
 
       &.active {
+        border:        $tab-group-border;
+        border-bottom: none;
+        top:           1px;
+
         .title {
           color: $tab-group-header-item-hover-color;
         }
@@ -127,6 +133,8 @@
   }
 
   .body {
-    padding: $tab-group-padding;
+    padding:    $tab-group-padding;
+    border:     $tab-group-border;
+    border-top: 0;
   }
 </style>

@@ -164,7 +164,7 @@
       color:      $text-color;
       flex-basis: $space-unit * 10;
       height:     $space-unit * 10;
-      background: $divider-color;
+      background: $border-color;
       cursor:     pointer;
 
       a {

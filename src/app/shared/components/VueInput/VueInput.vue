@@ -168,6 +168,7 @@
       width:            100%;
       font-family:      $input-font-family;
       font-size:        $input-font-size;
+      font-weight:      $input-font-weight;
       color:            $input-color;
       height:           $input-height;
       border-radius:    0;
@@ -197,19 +198,26 @@
   }
 
   .error {
+    label {
+      color: $input-error-color;
+    }
     input {
-      border-bottom-color: $brand-warn;
+      border-bottom-color: $input-error-color;
     }
     input:focus ~ label,
     input.hasValue ~ label {
-      color: $brand-warn;
+      color: $input-error-color;
     }
 
     .bar {
       &:before,
       &:after {
-        background: $brand-warn;
+        background: $input-error-color;
       }
+    }
+
+    .message {
+      color: $input-error-color;
     }
   }
 
