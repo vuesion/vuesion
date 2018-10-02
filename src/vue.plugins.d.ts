@@ -15,7 +15,7 @@ declare module 'vue/types/vue' {
 
   interface VueConstructor {
     metaInfo?: MetaInfo | (() => MetaInfo);
-    prefetch?: (options: IPreLoad) => {};
+    prefetch?: (options: IPreLoad) => Promise<any>;
     $_veeValidate?: VeeValidateComponentOptions;
   }
 }
@@ -23,13 +23,13 @@ declare module 'vue/types/vue' {
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     metaInfo?: MetaInfo | (() => MetaInfo);
-    prefetch?: (options: IPreLoad) => {};
+    prefetch?: (options: IPreLoad) => Promise<any>;
     $_veeValidate?: VeeValidateComponentOptions;
   }
 
   interface FunctionalComponentOptions<Props = DefaultProps, PropDefs = PropsDefinition<Props>> {
     metaInfo?: MetaInfo | (() => MetaInfo);
-    prefetch?: (options: IPreLoad) => {};
+    prefetch?: (options: IPreLoad) => Promise<any>;
     $_veeValidate?: VeeValidateComponentOptions;
   }
 }
