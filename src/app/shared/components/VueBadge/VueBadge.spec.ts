@@ -96,4 +96,17 @@ describe('VueBadge.vue', () => {
     expect(wrapper.findAll('.success')).toHaveLength(1);
   });
 
+  test('renders outlined', () => {
+    const wrapper = mount(VueBadge,
+                          {
+                            localVue,
+                            propsData: {
+                              outlined: true,
+                            },
+                          },
+    );
+
+    expect(wrapper.findAll('.outlined')).toHaveLength(1);
+  });
+
 });

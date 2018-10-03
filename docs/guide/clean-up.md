@@ -27,12 +27,12 @@ Now you have to remove references to this modules, remove the following code in 
 `./src/app/router.ts`
 ```js
 import { CounterRoutes }    from './counter/routes';
-import { ComponentsRoutes } from './components/routes';
+import { FormRoutes } from './form/routes';
 
 ...
 
       ...CounterRoutes,
-      ...ComponentsRoutes,
+      ...FormRoutes,
 ```
 
 `./src/app/state.ts`

@@ -17,7 +17,7 @@ story.add('Default', () => ({
   },
   template:   `
 <vue-panel>
-  <vue-button @click="show = !show" accent>Collapse toggle</vue-button>
+  <vue-button @click="show = !show" secondary>Collapse toggle</vue-button>
   <br />
   <br />
   <vue-collapse :show="show">

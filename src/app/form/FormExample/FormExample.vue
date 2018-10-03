@@ -31,6 +31,7 @@
       name="email"
       id="email"
       required
+      type="email"
       placeholder="E-mail"
       validation="required|email"
       v-model="form.email" />
@@ -72,6 +73,7 @@
       </vue-grid-item>
       <vue-grid-item>
         <vue-select
+          :class="$style.select"
           name="country"
           id="country"
           v-model="form.country"
@@ -203,7 +205,13 @@
 </script>
 
 <style lang="scss" module>
+  @import "../../shared/styles";
+
   .formExample {
     display: block;
+  }
+
+  .select {
+    margin-bottom: $space-unit * 2;
   }
 </style>
