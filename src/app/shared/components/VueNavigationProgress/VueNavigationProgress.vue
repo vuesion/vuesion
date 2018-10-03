@@ -78,7 +78,7 @@
     top:      0;
     left:     0;
     right:    0;
-    z-index:  $nav-bar-index + 5;
+    z-index:  9999;
     height:   2px;
     @include background-gradient($brand-secondary, lighten($brand-secondary, 30%), 'horizontal');
     opacity:  0;

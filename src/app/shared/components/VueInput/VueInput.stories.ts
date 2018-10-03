@@ -18,6 +18,46 @@ story.add('Default', () => ({
   template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" />`,
 }));
 
+story.add('Disabled', () => ({
+  components: { VueInput },
+  data() {
+    return {
+      model: '',
+    };
+  },
+  template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" :disabled="true" />`,
+}));
+
+story.add('Hint', () => ({
+  components: { VueInput },
+  data() {
+    return {
+      model: '',
+    };
+  },
+  template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" message="please enter a number" />`,
+}));
+
+story.add('Validation/Error state', () => ({
+  components: { VueInput },
+  data() {
+    return {
+      model: '',
+    };
+  },
+  template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" validation="required" required message="please enter a number" />`,
+}));
+
+story.add('Readonly', () => ({
+  components: { VueInput },
+  data() {
+    return {
+      model: '',
+    };
+  },
+  template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" readonly />`,
+}));
+
 story.add('SPA autofocus', () => ({
   components: { VueInput, VueButton, VueModal },
   data() {

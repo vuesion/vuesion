@@ -1,0 +1,21 @@
+$sidebar-index: 2002;
+$sidebar-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+$sidebar-bg: $bg-color;
+$sidebar-color: $text-color;
+$sidebar-max-width: 80%;
+$sidebar-padding: ($nav-bar-height + $space-unit * 2) $space-unit * 2 $space-unit * 2 $space-unit * 2;
+$sidebar-transition: transform $transition-duration ease-in-out;
+$sidebar-width: 250px;
+$sidebar-hamburger-bg: $brand-primary;
+$sidebar-hamburger-color: $text-color-inverse;
+
+$sidebar-group-margin: 0 0 $space-unit * 6 0;
+$sidebar-group-font-weight: $font-weight-medium;
+$sidebar-group-font-size: $font-size;
+$sidebar-group-border-bottom: 1px solid $border-color;
+
+$sidebar-group-item-font-weight: $font-weight-regular;
+$sidebar-group-item-font-size: $font-size;
+$sidebar-group-item-color: $text-color;
+$sidebar-group-item-hover-color: $text-color;
+$sidebar-group-item-hover-bg: $bg-color-variant;

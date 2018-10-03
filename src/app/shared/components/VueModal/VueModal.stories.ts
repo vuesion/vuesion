@@ -17,7 +17,7 @@ story.add('Default', () => ({
   },
   template:   `
 <vue-panel>
-  <vue-button @click="show = true" accent>Show</vue-button>
+  <vue-button @click="show = true" secondary>Show</vue-button>
   <vue-modal :show="show">
     <vue-button @click="show = false">Hide</vue-button>
   </vue-modal>
