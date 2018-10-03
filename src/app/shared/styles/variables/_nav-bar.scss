@@ -1,14 +1,6 @@
-$nav-bar-bg: $bg-color;
-$nav-bar-color: $text-color;
+$nav-bar-bg: $brand-primary;
+$nav-bar-color: $brand-tertiary;
 $nav-bar-width: 100%;
-$nav-bar-height: $space-unit * 10;
+$nav-bar-height: $space-unit * 8;
 $nav-bar-padding: 0;
 $nav-bar-index: 1000;
-$nav-bar-bg-transition: opacity $transition-duration ease-in-out;
-$nav-bar-bg-accent-transition: transform $transition-duration ease-in-out;
-$nav-bar-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-$nav-bar-accent-bg: $brand-primary;
-$nav-bar-accent-shadow: none;
-$nav-bar-hamburger-bg: $border-color;
-$nav-bar-menu-border-color: $border-color;
-$nav-bar-menu-bg: transparent;
