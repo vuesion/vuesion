@@ -1,6 +1,6 @@
 import { storiesOf }                      from '@storybook/vue';
 import VueInfoAddon                       from 'storybook-addon-vue-info';
-import VueNotificationStack                           from './VueNotificationStack.vue';
+import VueNotificationStack               from './VueNotificationStack.vue';
 import VueButton                          from '../VueButton/VueButton.vue';
 import VuePanel                           from '../VuePanel/VuePanel.vue';
 import { addNotification, INotification } from './utils';
@@ -14,7 +14,7 @@ story.add('Default', () => ({
   template:   `
 <vue-panel>
   <vue-notification-stack />
-  <vue-button accent @click="addNotificationClick">add notification</vue-button>
+  <vue-button secondary @click="addNotificationClick">add notification</vue-button>
 </vue-panel>
 `,
   methods:    {

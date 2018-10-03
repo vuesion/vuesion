@@ -90,7 +90,7 @@
     width:      56%;
     min-height: 100vh;
     transform:  skewX(-40deg) translateX(100%);
-    box-shadow: $nav-bar-shadow;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     position:   absolute;
     transition: transform 250ms linear;
     @include background-gradient($secondary-1-1, $secondary-1-4, -171deg);
@@ -113,7 +113,7 @@
     width:      56%;
     min-height: 100vh;
     transform:  skewX(30deg) translateX(-57%);
-    box-shadow: $nav-bar-shadow;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     position:   absolute;
     transition: transform 250ms linear;
     @include background-gradient($secondary-1-4, $secondary-1-1, -171deg);
@@ -173,12 +173,12 @@
   .github {
     font-size:           $font-size-h1;
     top:                 $space-unit * 17;
-    box-shadow:          $nav-bar-shadow;
+    box-shadow:          0 1px 3px rgba(0, 0, 0, 0.3);
     display:             inline-block;
-    background:          $nav-bar-bg;
+    background:          $bg-color;
     transition:          $button-transition;
     transition-property: box-shadow, background-color;
-    color:               $text-color;
+    color:               $link-color;
     padding:             $button-padding;
 
     &:hover {
