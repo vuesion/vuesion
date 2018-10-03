@@ -3,15 +3,14 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item fill>
-          <h1>{{ $t('App.nav.counter' /* Counter */) }}</h1>
+          <h1>Counter</h1>
         </vue-grid-item>
 
         <vue-grid-item fill>
           <vue-button
             secondary
             :loading="incrementPending"
-            @click='increment'
-            accent>Increment +1
+            @click='increment'>Increment +1
           </vue-button>
           <br/>
           <br/>
