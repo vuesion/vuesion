@@ -33,7 +33,7 @@ story.add('All Props', () => ({
       data:   dataTableDataFixture,
     };
   },
-  template:   `<vue-data-table :header="header" :data="data" :show-search="false" :page="1" :max-rows="10" @click="action" />`,
+  template:   `<vue-data-table :header="header" :data="data" :show-search="false" :page="1" :max-rows="0" @click="action" />`,
   methods:    {
     action: action('@onClick'),
   },

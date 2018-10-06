@@ -33,12 +33,15 @@
       </tbody>
     </table>
 
-    <br />
 
-    <vue-pagination v-show="count > maxRows"
-                    :current="currentPage + 1"
-                    :pages="maxPages"
-                    @change="paginationClick" />
+    <div v-show="maxPages > 1">
+      <br />
+
+      <vue-pagination
+        :current="currentPage + 1"
+        :pages="maxPages"
+        @change="paginationClick" />
+    </div>
   </div>
 </template>
 
@@ -118,6 +121,10 @@
         return this.filteredData.slice(0).sort(sort);
       },
       displayData() {
+        if (this.maxRows === 0 || this.maxRows >= this.count) {
+          return this.sortedData;
+        }
+
         return this.sortedData.slice(this.currentPage * this.maxRows, (this.currentPage + 1) * this.maxRows);
       },
       columns() {
@@ -170,6 +177,10 @@
         return this.filteredData.length;
       },
       maxPages() {
+        if (this.maxRows === 0) {
+          return 0;
+        }
+
         return Math.ceil(this.count / this.maxRows);
       },
     },
