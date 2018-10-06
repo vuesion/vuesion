@@ -1,31 +1,47 @@
-import { createLocalVue, mount } from '@vue/test-utils';
-import Vuex                      from 'vuex';
-import { i18n }                  from '../../shared/plugins/i18n/i18n';
-import Counter                   from './Counter.vue';
+import { createLocalVue, mount }               from '@vue/test-utils';
+import Vuex, { ActionTree, GetterTree, Store } from 'vuex';
+import Counter                                 from './Counter.vue';
+import { CounterGetters, ICounterGetters }     from '../getters';
+import { CounterDefaultState, ICounterState }  from '../state';
+import { CounterActions, ICounterActions }     from '../actions';
+import { i18n }                                from '../../shared/plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
 
 describe('Counter.vue', () => {
+  let store: Store<ICounterState>;
+  let getters: GetterTree<ICounterState, ICounterGetters>;
+  let actions: ActionTree<ICounterState, ICounterActions>;
+  let state: ICounterState;
+
+  beforeEach(() => {
+    getters = {
+      ...CounterGetters,
+    };
+    actions = {
+      ...CounterActions,
+      increment: jest.fn(),
+      decrement: jest.fn(),
+    };
+    state = {
+      ...CounterDefaultState(),
+    };
+
+    store = new Vuex.Store({
+                             modules: {
+                               counter: {
+                                 namespaced: true,
+                                 getters,
+                                 actions,
+                                 state,
+                               },
+                             },
+                           } as any);
+  });
 
   test('renders component', () => {
-    const store = new Vuex.Store({
-                                   modules: {
-                                     counter: {
-                                       namespaced: true,
-                                       getters:    {
-                                         count:            () => 0,
-                                         incrementPending: () => false,
-                                         decrementPending: () => false,
-                                       },
-                                       actions:    {
-                                         increment: jest.fn(),
-                                         decrement: jest.fn(),
-                                       },
-                                     },
-                                   },
-                                 });
     const wrapper = mount(Counter, {
       store,
       localVue,
@@ -36,23 +52,6 @@ describe('Counter.vue', () => {
   });
 
   test('should increment and decrement', () => {
-    const actions = {
-      increment: jest.fn(),
-      decrement: jest.fn(),
-    };
-    const store = new Vuex.Store({
-                                   modules: {
-                                     counter: {
-                                       namespaced: true,
-                                       getters:    {
-                                         count:            () => 0,
-                                         incrementPending: () => false,
-                                         decrementPending: () => false,
-                                       },
-                                       actions,
-                                     },
-                                   },
-                                 });
     const wrapper: any = mount(Counter, {
       store,
       localVue,
@@ -67,9 +66,7 @@ describe('Counter.vue', () => {
   });
 
   test('dispatches action on the server', () => {
-    const store = {
-      dispatch: jest.fn(),
-    };
+    store.dispatch =  jest.fn();
 
     Counter.prefetch({ store });
 
