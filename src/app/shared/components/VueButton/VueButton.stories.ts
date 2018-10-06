@@ -48,12 +48,12 @@ const storySchema = [
     props: ['danger', 'disabled'],
   },
   {
-    label: 'Attention',
-    props: ['attention'],
+    label: 'Warn',
+    props: ['warn'],
   },
   {
-    label: 'Attention Disabled',
-    props: ['attention', 'disabled'],
+    label: 'Warn Disabled',
+    props: ['warn', 'disabled'],
   },
   {
     label: 'Success',
@@ -64,12 +64,108 @@ const storySchema = [
     props: ['success', 'disabled'],
   },
   {
+    label: 'Default Outlined',
+    props: ['outlined'],
+  },
+  {
+    label: 'Outlined Disabled',
+    props: ['outlined', 'disabled'],
+  },
+  {
+    label: 'Primary Outlined',
+    props: ['primary', 'outlined'],
+  },
+  {
+    label: 'Primary Outlined Disabled',
+    props: ['primary', 'outlined', 'disabled'],
+  },
+  {
+    label: 'Secondary Outlined',
+    props: ['secondary', 'outlined'],
+  },
+  {
+    label: 'Secondary Outlined Disabled',
+    props: ['secondary', 'outlined', 'disabled'],
+  },
+  {
+    label: 'Tertiary Outlined',
+    props: ['tertiary', 'outlined'],
+  },
+  {
+    label: 'Tertiary Outlined Disabled',
+    props: ['tertiary', 'outlined', 'disabled'],
+  },
+  {
+    label: 'Danger Outlined',
+    props: ['danger', 'outlined'],
+  },
+  {
+    label: 'Danger Outlined Disabled',
+    props: ['danger', 'outlined', 'disabled'],
+  },
+  {
+    label: 'Warn Outlined',
+    props: ['warn', 'outlined'],
+  },
+  {
+    label: 'Warn Outlined Disabled',
+    props: ['warn', 'outlined', 'disabled'],
+  },
+  {
     label: 'Success Outlined',
     props: ['success', 'outlined'],
   },
   {
     label: 'Success Outlined Disabled',
     props: ['success', 'outlined', 'disabled'],
+  },
+  {
+    label: 'Default Ghost',
+    props: ['ghost'],
+  },
+  {
+    label: 'Default Ghost Disabled',
+    props: ['ghost', 'disabled'],
+  },
+  {
+    label: 'Primary Ghost',
+    props: ['primary', 'ghost'],
+  },
+  {
+    label: 'Primary Ghost Disabled',
+    props: ['primary', 'ghost', 'disabled'],
+  },
+  {
+    label: 'Secondary Ghost',
+    props: ['secondary', 'ghost'],
+  },
+  {
+    label: 'Secondary Ghost Disabled',
+    props: ['secondary', 'ghost', 'disabled'],
+  },
+  {
+    label: 'Tertiary Ghost',
+    props: ['tertiary', 'ghost'],
+  },
+  {
+    label: 'Tertiary Ghost Disabled',
+    props: ['tertiary', 'ghost', 'disabled'],
+  },
+  {
+    label: 'Danger Ghost',
+    props: ['danger', 'ghost'],
+  },
+  {
+    label: 'Danger Ghost Disabled',
+    props: ['danger', 'ghost', 'disabled'],
+  },
+  {
+    label: 'Warn Ghost',
+    props: ['warn', 'ghost'],
+  },
+  {
+    label: 'Warn Ghost Disabled',
+    props: ['warn', 'ghost', 'disabled'],
   },
   {
     label: 'Success Ghost',
