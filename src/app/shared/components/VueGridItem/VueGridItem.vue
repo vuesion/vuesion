@@ -33,28 +33,28 @@
 
   .gridItem {
     flex-basis: 100%;
-    padding:    0 $screen-phone-gutter;
-    min-width:  $screen-phone - ($screen-phone-gutter * 2);
+    padding:    0 $screen-phone-gutter * 0.5;
+    min-width:  $screen-phone - 32px;
 
-    @include media(tabletPortrait) {
+    @include mediaMin(tabletPortrait) {
       flex:    1;
-      padding: 0 $screen-tablet-portrait-gutter;
+      padding: 0 $screen-tablet-portrait-gutter * 0.5;
 
       &.fill {
         flex: 1 1 100%
       }
     }
 
-    @include media(tabletLandscape) {
-      padding: 0 $screen-tablet-landscape-gutter;
+    @include mediaMin(tabletLandscape) {
+      padding: 0 $screen-tablet-landscape-gutter * 0.5;
     }
 
-    @include media(smallDesktop) {
-      padding: 0 $screen-small-desktop-gutter;
+    @include mediaMin(smallDesktop) {
+      padding: 0 $screen-small-desktop-gutter * 0.5;
     }
 
-    @include media(largeDesktop) {
-      padding: 0 $screen-large-desktop-gutter;
+    @include mediaMin(largeDesktop) {
+      padding: 0 $screen-large-desktop-gutter * 0.5;
     }
   }
 </style>

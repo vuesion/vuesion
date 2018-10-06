@@ -6,7 +6,7 @@
 
 <script lang="ts">
   export default {
-    name:  'VueGrid',
+    name: 'VueGrid',
   };
 </script>
 
@@ -17,26 +17,26 @@
     max-width: 425px;
     margin:    0 auto;
     position:  relative;
-    padding:   0 $screen-phone-gutter;
+    padding:   0 $screen-phone-gutter * 0.5;
 
-    @include media(tabletPortrait) {
+    @include mediaMin(tabletPortrait) {
       max-width: $screen-tablet-portrait;
-      padding:   0 $screen-tablet-portrait-gutter;
+      padding:   0 $screen-tablet-portrait-gutter * 0.5;
     }
 
-    @include media(tabletLandscape) {
+    @include mediaMin(tabletLandscape) {
       max-width: $screen-tablet-landscape;
-      padding:   0 $screen-tablet-landscape-gutter;
+      padding:   0 $screen-tablet-landscape-gutter * 0.5;
     }
 
-    @include media(smallDesktop) {
+    @include mediaMin(smallDesktop) {
       max-width: $screen-small-desktop;
-      padding:   0 $screen-small-desktop-gutter;
+      padding:   0 $screen-small-desktop-gutter * 0.5;
     }
 
-    @include media(largeDesktop) {
+    @include mediaMin(largeDesktop) {
       max-width: $screen-large-desktop;
-      padding:   0 $screen-large-desktop-gutter;
+      padding:   0 $screen-large-desktop-gutter * 0.5;
     }
   }
 </style>

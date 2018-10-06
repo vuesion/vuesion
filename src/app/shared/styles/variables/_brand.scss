@@ -86,7 +86,7 @@ $tertiary-4: #FFF;
 
 $tertiary-5: #000;
 
-/* Brand Variants */
+/* Brand Variations */
 $brand-primary: $primary-2-1;
 $brand-secondary: $secondary-1-1;
 $brand-tertiary: $primary-1-5;
@@ -117,4 +117,5 @@ $border-radius: $space-unit * 0.5;
 
 /* Animation Language */
 $transition-duration: 250ms;
-$fade-animation-transition: opacity $transition-duration * 4 ease-in-out;
+$easing-curve: cubic-bezier(.17,.67,.83,.67);
+$fade-animation-transition: opacity $transition-duration * 4 $easing-curve;
