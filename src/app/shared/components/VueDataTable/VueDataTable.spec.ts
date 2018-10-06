@@ -14,15 +14,15 @@ describe('VueDataTable.vue', () => {
   const data: any[] = dataTableDataFixture;
 
   test('renders component', () => {
-    const wrapper = mount(VueDataTable,
-                          {
-                            i18n,
-                            localVue,
-                            propsData: {
-                              header,
-                              data,
-                            },
-                          },
+    const wrapper: any = mount(VueDataTable,
+                               {
+                                 i18n,
+                                 localVue,
+                                 propsData: {
+                                   header,
+                                   data,
+                                 },
+                               },
     );
 
     expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(1);
@@ -32,16 +32,16 @@ describe('VueDataTable.vue', () => {
   });
 
   test('renders component without search', () => {
-    const wrapper = mount(VueDataTable,
-                          {
-                            i18n,
-                            localVue,
-                            propsData: {
-                              header,
-                              data,
-                              showSearch: false,
-                            },
-                          },
+    const wrapper: any = mount(VueDataTable,
+                               {
+                                 i18n,
+                                 localVue,
+                                 propsData: {
+                                   header,
+                                   data,
+                                   showSearch: false,
+                                 },
+                               },
     );
 
     expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(0);
@@ -51,16 +51,16 @@ describe('VueDataTable.vue', () => {
   });
 
   test('should filter data', () => {
-    const wrapper = mount(VueDataTable,
-                          {
-                            i18n,
-                            localVue,
-                            propsData: {
-                              header,
-                              data,
-                            },
-                          },
-    ) as any;
+    const wrapper: any = mount(VueDataTable,
+                               {
+                                 i18n,
+                                 localVue,
+                                 propsData: {
+                                   header,
+                                   data,
+                                 },
+                               },
+    );
 
     wrapper.vm.searchTerm = 'julia';
     expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(1);
@@ -75,16 +75,16 @@ describe('VueDataTable.vue', () => {
   });
 
   test('should sort data', () => {
-    const wrapper = mount(VueDataTable,
-                          {
-                            i18n,
-                            localVue,
-                            propsData: {
-                              header,
-                              data,
-                            },
-                          },
-    ) as any;
+    const wrapper: any = mount(VueDataTable,
+                               {
+                                 i18n,
+                                 localVue,
+                                 propsData: {
+                                   header,
+                                   data,
+                                 },
+                               },
+    );
 
     wrapper.vm.sortKey = 'firstname';
 
@@ -102,16 +102,16 @@ describe('VueDataTable.vue', () => {
   });
 
   test('should change page', () => {
-    const wrapper = mount(VueDataTable,
-                          {
-                            i18n,
-                            localVue,
-                            propsData: {
-                              header,
-                              data,
-                            },
-                          },
-    ) as any;
+    const wrapper: any = mount(VueDataTable,
+                               {
+                                 i18n,
+                                 localVue,
+                                 propsData: {
+                                   header,
+                                   data,
+                                 },
+                               },
+    );
 
     wrapper.vm.paginationClick(2);
 
@@ -119,16 +119,16 @@ describe('VueDataTable.vue', () => {
   });
 
   test('should emit click', () => {
-    const wrapper = mount(VueDataTable,
-                          {
-                            i18n,
-                            localVue,
-                            propsData: {
-                              header,
-                              data,
-                            },
-                          },
-    ) as any;
+    const wrapper: any = mount(VueDataTable,
+                               {
+                                 i18n,
+                                 localVue,
+                                 propsData: {
+                                   header,
+                                   data,
+                                 },
+                               },
+    );
     const cells: IComputedDataRowCell[] = [
       { key: 'id', value: 2, visible: false, slot: undefined },
       { key: 'name', value: 'foo', visible: false, slot: undefined },
@@ -141,16 +141,16 @@ describe('VueDataTable.vue', () => {
   });
 
   test('should emit click', () => {
-    const wrapper = mount(VueDataTable,
-                          {
-                            i18n,
-                            localVue,
-                            propsData: {
-                              header,
-                              data,
-                            },
-                          },
-    ) as any;
+    const wrapper: any = mount(VueDataTable,
+                               {
+                                 i18n,
+                                 localVue,
+                                 propsData: {
+                                   header,
+                                   data,
+                                 },
+                               },
+    );
 
     expect(wrapper.vm.sortKey).toBe(null);
     expect(wrapper.vm.sortDirection).toBe('asc');
@@ -166,5 +166,22 @@ describe('VueDataTable.vue', () => {
     wrapper.vm.columnClick({ sortKey: 'foo' });
     expect(wrapper.vm.sortKey).toBe(null);
     expect(wrapper.vm.sortDirection).toBe('asc');
+  });
+
+  test('should display all the data if maxRows is set to 0', () => {
+    const wrapper: any = mount(VueDataTable,
+                               {
+                                 i18n,
+                                 localVue,
+                                 propsData: {
+                                   header,
+                                   data,
+                                   maxRows: 0,
+                                 },
+                               },
+    );
+
+    expect(wrapper.vm.displayData).toHaveLength(20);
+    expect(wrapper.vm.maxPages).toBe(0);
   });
 });
