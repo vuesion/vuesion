@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon from 'storybook-addon-vue-info';
-import VueTabGroup from './VueTabGroup.vue';
-import VueTabItem from './VueTabItem/VueTabItem.vue';
+import VueInfoAddon  from 'storybook-addon-vue-info';
+import VueTabGroup   from './VueTabGroup.vue';
+import VueTabItem    from './VueTabItem/VueTabItem.vue';
 
 const story = (storiesOf('VueTabGroup', module) as any);
 
@@ -12,7 +12,7 @@ story.add('Default', () => ({
     VueTabGroup,
     VueTabItem,
   },
-  template: `
+  template:   `
 <vue-tab-group>
   <vue-tab-item title="Profile">
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
@@ -22,7 +22,7 @@ story.add('Default', () => ({
     labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
     et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
   </vue-tab-item>
-  <vue-tab-item title="Settings">
+  <vue-tab-item title="Settings" :is-active="true">
     et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
     labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores

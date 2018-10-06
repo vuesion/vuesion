@@ -58,4 +58,17 @@ describe('VueTabGroup.vue', () => {
     expect(wrapper.findAll('li').at(1).classes()).toEqual(['active']);
   });
 
+  test('should select second tab because of its properties', () => {
+    const wrapper = mount(VueTabGroup, {
+      localVue,
+      slots: {
+        default: '<vue-tab-item title="foo" /><vue-tab-item title="foo" :is-active="true" />',
+      },
+    });
+
+    expect((wrapper as any).vm.currentTab).toBe(1);
+
+    wrapper.destroy();
+  });
+
 });
