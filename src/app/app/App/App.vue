@@ -40,13 +40,6 @@
           <vue-icon-hashtag />
           Form Example
         </vue-sidebar-group-item>
-
-        <vue-sidebar-group-item>
-          <a href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener">
-            <vue-icon-github />
-            Github
-          </a>
-        </vue-sidebar-group-item>
       </vue-sidebar-group>
 
       <vue-sidebar-group title="Documentation">
@@ -56,37 +49,42 @@
             Documentation
           </a>
         </vue-sidebar-group-item>
-      </vue-sidebar-group>
 
-      <vue-sidebar-group title="Design System">
-        <vue-sidebar-group-item to="/design-system/colors">
-          Colors
-        </vue-sidebar-group-item>
-
-        <vue-sidebar-group-item to="/design-system/typography">
-          Typography
-        </vue-sidebar-group-item>
-
-        <vue-sidebar-group-item to="/design-system/layout">
-          Layout
+        <vue-sidebar-group-item>
+          <a href="/docs/guide/styles.html">
+            <vue-icon-book />
+            Design System
+          </a>
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a href="/storybook">Components</a>
+          <a href="/storybook">
+            <vue-icon-puzzle-piece />
+            Components
+          </a>
         </vue-sidebar-group-item>
       </vue-sidebar-group>
 
       <vue-sidebar-group title="Community">
         <vue-sidebar-group-item>
+          <a href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener">
+            <vue-icon-github />
+            Github
+          </a>
+        </vue-sidebar-group-item>
+
+        <vue-sidebar-group-item>
           <a href="https://slack-vue-starter.herokuapp.com/" target="_blank" rel="noopener">
             Slack
           </a>
         </vue-sidebar-group-item>
+
         <vue-sidebar-group-item>
           <a href="https://chat.vuejs.org/" target="_blank" rel="noopener">
             VueLand
           </a>
         </vue-sidebar-group-item>
+
         <vue-sidebar-group-item>
           <a href="https://twitter.com/_jwerner_" target="_blank" rel="noopener">
             <vue-icon-twitter-square />
@@ -118,9 +116,11 @@
   import VueIconGithub              from '../../shared/components/icons/VueIconGithub/VueIconGithub.vue';
   import VueIconTwitterSquare       from '../../shared/components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
   import VueSelect                  from '../../shared/components/VueSelect/VueSelect.vue';
+  import VueIconPuzzlePiece         from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
 
   export default {
     components: {
+      VueIconPuzzlePiece,
       VueSelect,
       VueIconTwitterSquare,
       VueIconGithub,

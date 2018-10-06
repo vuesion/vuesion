@@ -10,27 +10,6 @@
   }
 }
 
-@mixin center-block {
-  display:      block;
-  margin-left:  auto;
-  margin-right: auto;
-}
-
-@mixin center-both {
-  position:  absolute;
-  top:       50%;
-  left:      50%;
-  transform: translate(-50%, -50%);
-}
-
-@mixin position($type, $top: null, $right: null, $bottom: null, $left: null) {
-  position: $type;
-  top:      $top;
-  right:    $right;
-  bottom:   $bottom;
-  left:     $left;
-}
-
 $grid-breakpoints: (
                      phone: $screen-phone,
                      tabletPortrait: $screen-tablet-portrait,
@@ -38,9 +17,27 @@ $grid-breakpoints: (
                      smallDesktop: $screen-small-desktop,
                      largeDesktop: $screen-large-desktop
                    );
-@mixin media($breakpoint-name) {
+@mixin mediaMin($breakpoint-name) {
   @if map-has-key($grid-breakpoints, $breakpoint-name) {
     @media (min-width: #{map_get($grid-breakpoints, $breakpoint-name)}) {
+      @content;
+    }
+  } @else {
+    @error "breakpoint not suported!"
+  }
+}
+
+$grid-breakpoints-max: (
+                         phone: $screen-phone-max,
+                         tabletPortrait: $screen-tablet-portrait-max,
+                         tabletLandscape: $screen-tablet-landscape-max,
+                         smallDesktop: $screen-small-desktop-max,
+                         largeDesktop: $screen-large-desktop-max
+                       );
+
+@mixin mediaMax($breakpoint-name) {
+  @if map-has-key($grid-breakpoints-max, $breakpoint-name) {
+    @media (max-width: #{map_get($grid-breakpoints-max, $breakpoint-name)}) {
       @content;
     }
   } @else {

@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { action }    from '@storybook/addon-actions';
 import VueInfoAddon  from 'storybook-addon-vue-info';
 import VueGrid       from './VueGrid.vue';
 import VueGridItem   from '../VueGridItem/VueGridItem.vue';
@@ -39,8 +38,12 @@ story.add('With row inside a row', () => ({
                        <vue-grid-item>item 2</vue-grid-item>
                        <vue-grid-item>item 3</vue-grid-item>
                      </vue-grid-row>
+                     <vue-grid-row>
+                       <vue-grid-item>item 4</vue-grid-item>
+                       <vue-grid-item>item 5</vue-grid-item>
+                     </vue-grid-row>
                    </vue-grid-item>
-                   <vue-grid-item>item 4</vue-grid-item>
+                   <vue-grid-item>item 6</vue-grid-item>
                  </vue-grid-row>
                </vue-grid>`,
 }));

@@ -35,7 +35,7 @@ story.add('Hint', () => ({
       model: '',
     };
   },
-  template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" message="please enter a number" />`,
+  template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" message="description" />`,
 }));
 
 story.add('Validation/Error state', () => ({
@@ -45,7 +45,7 @@ story.add('Validation/Error state', () => ({
       model: '',
     };
   },
-  template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" validation="required" required message="please enter a number" />`,
+  template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" validation="required|integer" required message="please enter a number" errorMessage="This is not a number" />`,
 }));
 
 story.add('Readonly', () => ({
@@ -55,7 +55,7 @@ story.add('Readonly', () => ({
       model: '',
     };
   },
-  template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" readonly />`,
+  template:   `<vue-input placeholder="Name" name="name" id="name" value="foo" readonly />`,
 }));
 
 story.add('SPA autofocus', () => ({

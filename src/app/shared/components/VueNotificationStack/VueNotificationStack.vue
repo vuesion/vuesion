@@ -98,7 +98,7 @@
       }
     }
 
-    @include media(tabletLandscape) {
+    @include mediaMin(tabletLandscape) {
       left:      initial;
       max-width: $notifications-max-width;
     }
