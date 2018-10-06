@@ -1,6 +1,5 @@
 import { storiesOf }        from '@storybook/vue';
 import VueInfoAddon         from 'storybook-addon-vue-info';
-import VueGridItem          from '../VueGridItem/VueGridItem.vue';
 import VueIconBook          from './VueIconBook/VueIconBook.vue';
 import VueIconBullhorn      from './VueIconBullhorn/VueIconBullhorn.vue';
 import VueIconCertificate   from './VueIconCertificate/VueIconCertificate.vue';
@@ -26,7 +25,6 @@ story.addDecorator(VueInfoAddon);
 
 story.add('Default', () => ({
   components: {
-    VueGridItem,
     VueIconBook,
     VueIconBullhorn,
     VueIconCertificate,
@@ -47,7 +45,7 @@ story.add('Default', () => ({
     VueIconTwitterSquare,
   },
   template:   `
-<vue-grid-item>
+<div>
   <vue-icon-book />
   <vue-icon-bullhorn />
   <vue-icon-certificate />
@@ -66,5 +64,5 @@ story.add('Default', () => ({
   <vue-icon-spinner/>
   <vue-icon-times/>
   <vue-icon-twitter-square/>
-</vue-grid-item>`,
+</div>`,
 }));

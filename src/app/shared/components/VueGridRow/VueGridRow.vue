@@ -16,22 +16,22 @@
   .vueGridRow {
     display:   flex;
     flex-wrap: wrap;
-    margin:    0 (-$screen-phone-gutter);
+    margin:    0 ($screen-phone-gutter * -0.5);
 
-    @include media(tabletPortrait) {
-      margin: 0 (-$screen-tablet-portrait-gutter);
+    @include mediaMin(tabletPortrait) {
+      margin: 0 ($screen-tablet-portrait-gutter * -0.5);
     }
 
-    @include media(tabletLandscape) {
-      margin: 0 (-$screen-tablet-landscape-gutter);
+    @include mediaMin(tabletLandscape) {
+      margin: 0 ($screen-tablet-landscape-gutter * -0.5);
     }
 
-    @include media(smallDesktop) {
-      margin: 0 (-$screen-small-desktop-gutter);
+    @include mediaMin(smallDesktop) {
+      margin: 0 ($screen-small-desktop-gutter * -0.5);
     }
 
-    @include media(largeDesktop) {
-      margin: 0 (-$screen-large-desktop-gutter);
+    @include mediaMin(largeDesktop) {
+      margin: 0 ($screen-large-desktop-gutter * -0.5);
     }
   }
 </style>

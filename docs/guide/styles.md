@@ -1,110 +1,172 @@
-# Apply your brand colors
+# Design System
 
-Of course, you want to have a different theme than the default one.
+The vue-starter comes with a Design System that you can 100% customize. 
+Design Systems are really complex and the key to a good Design System is
+consistency.
 
-In order to apply your brand colors, open up `./src/app/shared/styles/_variables.scss`:
-and have a look at these lines:
+It is hard to achieve a unique Brand Identity with a UI toolkit that is already build on top of another Design System (e.g. Material Design).
+It is also hard to achieve consistency if you have to combine multiple UI libraries without forking
+and customizing them to fit your Brand Identity.
 
-```css
-/* Brand */
-$brand-dark-primary: #7966F3;
-$brand-light-primary: #9B9BFD;
-$brand-primary: #A851E2;
-$brand-accent: #17BEBB;
-$brand-warn: #FB3640;
+_Over the years we discovered that it's much harder to maintain all of these forks for a project than
+building our own set of components that are **100% customizable** because the code is 100% accessible._
 
-/* Background Colors */
-$bg-color: #333;
-$bg-color-inverse: #FFF;
-
-/* Text Colors */
-$text-color: #FFF;
-$text-color-inverse: #333;
-$secondary-text-color: #BABABA;
-
-/* Border Colors */
-$divider-color: lighten($bg-color, 20%);
-
-/* Animation Language */
-$transition-duration: 250ms;
-
-/* Font Sizes */
-$font-size: 1.6rem;
-$font-size-h1: 4.6rem;
-$font-size-h2: 3.6rem;
-$font-size-h3: 2.8rem;
-$font-size-h4: 2.2rem;
-$font-size-h5: 1.8rem;
-$font-size-h6: 1.6rem;
-
-/* Font Size Factors */
-$font-size-factor-tablet-landscape: 1.125;
-$font-size-factor-large-desktop: 1.25;
-
-/* Font Weights */
-$font-weight: 300;
-$font-weight-h1: 400;
-$font-weight-h2: 400;
-$font-weight-h3: 400;
-$font-weight-h4: 400;
-$font-weight-h5: 400;
-$font-weight-h6: 700;
-
-/* Line Heights */
-$line-height: 1.6;
-$line-height-h1: 1.2;
-$line-height-h2: 1.25;
-$line-height-h3: 1.3;
-$line-height-h4: 1.35;
-$line-height-h5: 1.5;
-$line-height-h6: 1.4;
-
-/* Letter Spacings */
-$letter-spacing: .01em;
-$letter-spacing-h1: -.1rem;
-$letter-spacing-h2: -.1rem;
-$letter-spacing-h3: -.1rem;
-$letter-spacing-h4: -.08rem;
-$letter-spacing-h5: -.05rem;
-$letter-spacing-h6: -.1rem;
-
-/* General */
-$google-font: 'https://fonts.googleapis.com/css?family=Oxygen:300,400,700|Lato:300,400,700';
-$font-family-headings: 'Oxygen', Helvetica, sans-serif;
-$font-family: 'Lato', Helvetica, sans-serif;
-$space-unit: 0.8rem;
-
-/* Animations */
-$fade-animation-transition: opacity $transition-duration * 4 ease-in-out;
-
-/* Grid */
-$screen-phone: 320px;
-$screen-phone-max: $screen-phone - 1;
-$screen-tablet-portrait: 768px;
-$screen-tablet-portrait-max: $screen-tablet-portrait - 1;
-$screen-tablet-landscape: 1024px;
-$screen-tablet-landscape-max: $screen-tablet-landscape - 1;
-$screen-small-desktop: 1200px;
-$screen-small-desktop-max: $screen-small-desktop - 1;
-$screen-large-desktop: 1440px;
-$screen-large-desktop-max: $screen-large-desktop - 1;
-$screen-phone-gutter: 16px;
-$screen-tablet-portrait-gutter: $space-unit * 2;
-$screen-tablet-landscape-gutter: $space-unit * 2;
-$screen-small-desktop-gutter: $space-unit * 4;
-$screen-large-desktop-gutter: $space-unit * 4;
-
-```
-
-All the components are dependents of these variables, so everything will look different if you change these values.
-
-::: tip Do you have light brand colors?
-Make sure you replace the `lighten` SCSS function with the `darken` function.
-
-_**This should look much better**_ :smile:
+::: tip Design System
+This Design System is the next step, it is a blueprint that enables you to create your very own Design System that perfectly fits your
+Brand or your clients Corporate Identity.
 :::
 
-::: tip It's all yours!
-Remember that every component provided by the vue-starter is **YOUR** code,
-you can change the behavior, appearance and features exactly as you need it for your project.
+::: warning 3rd Party UI
+We are aware that not everyone has to implement their own professional Design System.
+If this is the case for you, you might be interested in [integrating a 3rd party UI library](/third-party)
 :::
+
+## Branding
+
+### Color Palette
+
+<img :src="$withBase('/color-palette.jpg')" alt="architecture"> 
+
+The naming convention of the color palette is structured in the following way
+
+`Meaning`-`Weight`-`Shade`
+
+following _Meanings_ are included:
+
+- **primary** (Main Colors)
+- **secondary** (Accent Colors)
+- **tertiary** (Utility Colors)
+
+the following _Weights_ are included:
+
+- primary **1-2**
+- secondary **1-5**
+- tertiary **1-5**
+
+and the following shades are included:
+
+Shade | Opacity
+------|--------
+1     | 100 %
+2     | 80 %
+3     | 60 %
+4     | 40 %
+5     | 20 %
+6     | 10 %
+7     | 5 %
+
+### Brand Colors
+Every brand color is related to a color of the color palette.
+
+#### Brand Variations
+These are the colors that we use to create different variations of components.
+
+Variation        | Palette Color
+-----------------|--------------
+brand-primary   | primary-2-1
+brand-secondary | secondary-1-1
+brand-tertiary  | primary-1-5
+brand-danger    | tertiary-1-1
+brand-warn      | tertiary-2-1
+brand-success   | tertiary-3-1
+
+#### Background Colors
+These are the colors that we use for document backgrounds or sections on a page.
+
+Variation                | Palette Color
+-------------------------|--------------
+bg-color                 | tertiary-4
+bg-color-variant         | primary-1-6
+bg-color-inverse         | tertiary-5
+bg-color-variant-inverse | primary-1-3
+
+#### Text Colors
+These are the colors that we use for document text or sections on a page.
+
+Variation                    | Palette Color
+-----------------------------|--------------
+text-color                   | tertiary-5
+text-secondary-color         | primary-1-3
+text-color-inverse           | tertiary-4
+text-secondary-color-inverse | primary-1-6
+link-color                   | secondary-1-1
+link-hover-color             | darken($link-color, 5%)
+
+#### Border Colors
+These are the colors that we use for borders.
+
+Variation            | Palette Color
+---------------------|--------------
+border-color         | primary-1-5
+border-color-inverse | primary-1-2
+
+### General Branding
+General rules for your Brand identity.
+
+#### Spacing
+To keep the spacing consistent we have one variable `$space-unit` that is used for spacings,
+you can multiply or divide this value as you want. 
+The default value in the blueprint is `0.8rem`.
+
+#### Border Radius
+To keep the border-radius consistent we have one variable `$border-radius` with the value `$space-unit * 0.5` (0.4rem).
+
+#### Transitions
+It's good to keep your animation language consistent to achieve that we defined a variable
+for the transition duration `$transition-duration` with the value `250ms`
+and a variable for the easing-curve `$easing-curve` with the value `cubic-bezier(.17,.67,.83,.67)`.
+
+## Typography
+Barlow is the standard type face for the Design System blueprint.
+
+### Font Weights
+Variable             | Weight
+---------------------|-------
+$font-weight-thin    | 100
+$font-weight-regular | 300
+$font-weight-medium  | 500
+$font-weight-bold    | 700
+
+### Font Sizes
+Level          | Font-size   | Font-weight
+---------------|-------------|------------
+Small Text     | 80%         | $font-weight-regular
+Paragraph      | 1.6rem      | $font-weight-regular
+H1             | 4.8rem      | $font-weight-medium
+H2             | 3.2rem      | $font-weight-medium
+H3             | 2.4rem      | $font-weight-medium
+H4             | 2rem        | $font-weight-medium
+H5             | 1.6rem      | $font-weight-medium
+H4             | 1.6rem      | $font-weight-bold
+
+### Line heights
+Line height is measured by taking the font size and adding 0.8rem. 
+
+### List Style
+Lists are indented by 8px with an additional 0.8rem between the bullet and content.
+
+## Layout
+The Grid-System is based on Flex box and comes in form of three included components.
+
+Component     | Purpose
+--------------|-------
+VueGrid       | Container that is limited in the width, general page layout
+VueGridRow    | Row that is always 100% width and will be stacked on the page
+VueGridItem   | Item in the row that will be distributed equally on the page 
+
+
+### Break points
+If you want to use a break point inside one of your components, we provide you width
+mixins to keep everything consistent and to avoid unnecessary media definitions:
+
+`@include mediaMin(break-point-id)`
+
+`@include mediaMax(break-point-id)`
+
+Break Point Id   | MinWidth | MaxWidth | GutterWidth
+-----------------|----------|----------|------------
+phone            | 320px    | 319px    | 1.6rem
+tabletPortrait   | 768px    | 767px    | 3.2rem
+tabletLandscape  | 1024px   | 1023px   | 3.2rem
+smallDesktop     | 1280px   | 1279px   | 3.2rem
+largeDesktop     | 1440px   | 1439px   | 3.2rem

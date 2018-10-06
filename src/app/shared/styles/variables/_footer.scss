@@ -1,6 +1,6 @@
 $footer-padding: $space-unit * 2 0 $space-unit * 2 0;
-$footer-bg: $brand-primary;
-$footer-color: $brand-tertiary;
-$footer-link-color: $brand-tertiary;
+$footer-bg: $bg-color-inverse;
+$footer-color: $text-color-inverse;
+$footer-link-color: $text-color-inverse;
 $footer-link-hover-color: darken($footer-link-color, 5%);
 $footer-link-font-weight: $link-font-weight;

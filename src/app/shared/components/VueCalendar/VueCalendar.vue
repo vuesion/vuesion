@@ -367,11 +367,11 @@
             position: relative;
             top:      $space-unit - 0.1;
 
-            @include media(tabletPortrait) {
+            @include mediaMin(tabletPortrait) {
               top: 15%;
             }
 
-            @include media(largeDesktop) {
+            @include mediaMin(largeDesktop) {
               top: 17%;
             }
           }
