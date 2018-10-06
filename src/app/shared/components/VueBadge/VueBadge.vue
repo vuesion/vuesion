@@ -20,7 +20,7 @@
       danger:    {
         type: Boolean,
       },
-      attention: {
+      warn: {
         type: Boolean,
       },
       success:   {
@@ -51,8 +51,8 @@
         if (this.success) {
           classes.push(this.$style.success);
         }
-        if (this.attention) {
-          classes.push(this.$style.attention);
+        if (this.warn) {
+          classes.push(this.$style.warn);
         }
         if (this.danger) {
           classes.push(this.$style.danger);
@@ -98,9 +98,9 @@
     background: $badge-success-bg;
   }
 
-  .attention {
-    color:      $badge-attention-color;
-    background: $badge-attention-bg;
+  .warn {
+    color:      $badge-warn-color;
+    background: $badge-warn-bg;
   }
 
   .danger {
@@ -132,9 +132,9 @@
       color:        $badge-danger-bg;
     }
 
-    &.attention {
-      border-color: $badge-attention-bg;
-      color:        $badge-attention-bg;
+    &.warn {
+      border-color: $badge-warn-bg;
+      color:        $badge-warn-bg;
     }
 
     &.success {

@@ -8,7 +8,7 @@ body {
 
 // always make sure images have an alt attribute
 img:not([alt]) {
-  border: 5px dashed $brand-attention;
+  border: 5px dashed $brand-warn;
 }
 
 /* vue-icon global style */

@@ -24,8 +24,8 @@ const storySchema = [
     props: ['danger'],
   },
   {
-    label: 'Attention',
-    props: ['attention'],
+    label: 'Warn',
+    props: ['warn'],
   },
   {
     label: 'Success',
@@ -48,8 +48,8 @@ const storySchema = [
     props: ['danger', 'outlined'],
   },
   {
-    label: 'Attention Outlined',
-    props: ['attention', 'outlined'],
+    label: 'Warn Outlined',
+    props: ['warn', 'outlined'],
   },
   {
     label: 'Success Outlined',

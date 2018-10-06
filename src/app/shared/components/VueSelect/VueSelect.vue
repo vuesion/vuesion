@@ -1,6 +1,7 @@
 <template>
   <div :class="cssClasses">
     <select
+      :title="placeholder"
       :name="name"
       :id="id"
       v-validate="validation"
@@ -71,6 +72,10 @@
       },
       autocomplete: {
         default: 'off',
+      },
+      placeholder:  {
+        type:    String,
+        default: '',
       },
     },
     computed: {
@@ -209,6 +214,6 @@
   }
 
   .error {
-    border: 1px solid $brand-attention;
+    border: 1px solid $brand-danger;
   }
 </style>
