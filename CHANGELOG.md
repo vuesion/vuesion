@@ -1,3 +1,33 @@
+### 1.3.0 (2018-10-06)
+
+##### Chores
+
+*  add new contributors ([7c42780a](https://github.com/devCrossNet/vue-starter/commit/7c42780abc7b629144d68365989b095cb958f2bf))
+*  catch errors for prefetch in a unified way ([#230](https://github.com/devCrossNet/vue-starter/pull/230)) ([20f959fc](https://github.com/devCrossNet/vue-starter/commit/20f959fc2d530bdb5dc8d38343f3dab87381e01a))
+*  improve 404 page wording ([#228](https://github.com/devCrossNet/vue-starter/pull/228)) ([937e1151](https://github.com/devCrossNet/vue-starter/commit/937e1151df7ad6c556be10d5df7c08a14a2ca00a))
+
+##### Documentation Changes
+
+* **readme:**  add issue-hunt and all-contributors ([#233](https://github.com/devCrossNet/vue-starter/pull/233)) ([2d84ee50](https://github.com/devCrossNet/vue-starter/commit/2d84ee50aca76913b14b85b99922bdacc6d2b50d))
+*  add missing snipped to 3rd party integration guide ([12b18047](https://github.com/devCrossNet/vue-starter/commit/12b18047c9854c08568b7dec7e04f3ce60d97f48))
+
+##### New Features
+
+* **vue-tab-group:**  add is-active property to pre-select tab-item ([#248](https://github.com/devCrossNet/vue-starter/pull/248)) ([0f5f2316](https://github.com/devCrossNet/vue-starter/commit/0f5f23168c4aa43d9ceba1dafb372c2b285ba8c6))
+* **vue-modal:**  emit close event on ESC press ([#247](https://github.com/devCrossNet/vue-starter/pull/247)) ([b38c8401](https://github.com/devCrossNet/vue-starter/commit/b38c84018c70307f41249c7aa042413a88a4603d))
+* **components:**  add Breadcrumb ([#234](https://github.com/devCrossNet/vue-starter/pull/234)) ([ac425a0d](https://github.com/devCrossNet/vue-starter/commit/ac425a0d4db0ad6d0a09855b6614e680d50406dd))
+*  don't change route on 404 ([#229](https://github.com/devCrossNet/vue-starter/pull/229)) ([d00dabb2](https://github.com/devCrossNet/vue-starter/commit/d00dabb2e94e7632a347064632fc28ef3d5f70c9))
+
+##### Refactors
+
+*  improve test setup for connected components ([#246](https://github.com/devCrossNet/vue-starter/pull/246)) ([115d5fad](https://github.com/devCrossNet/vue-starter/commit/115d5fadfa08997e92b894017ff889a6ac36f3af))
+*  add return type for prefetch ([#243](https://github.com/devCrossNet/vue-starter/pull/243)) ([1c15c1bf](https://github.com/devCrossNet/vue-starter/commit/1c15c1bf2ab7143bbd966c66fc6e600e18970852))
+* **dev:**  add type checking and linting ([#238](https://github.com/devCrossNet/vue-starter/pull/238)) ([0db3242e](https://github.com/devCrossNet/vue-starter/commit/0db3242efc8fbd32d960878ef29f811400c54c9a))
+
+##### Tests
+
+* **vue-select:**  add test for disabled property ([#239](https://github.com/devCrossNet/vue-starter/pull/239)) ([907dfd22](https://github.com/devCrossNet/vue-starter/commit/907dfd22275baa3bc91cac8b2cca52985c0bea16))
+
 #### 1.2.2 (2018-09-13)
 
 ##### Chores
