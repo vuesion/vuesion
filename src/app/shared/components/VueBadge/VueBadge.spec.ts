@@ -70,17 +70,17 @@ describe('VueBadge.vue', () => {
     expect(wrapper.findAll('.danger')).toHaveLength(1);
   });
 
-  test('renders attention', () => {
+  test('renders warn', () => {
     const wrapper = mount(VueBadge,
                           {
                             localVue,
                             propsData: {
-                              attention: true,
+                              warn: true,
                             },
                           },
     );
 
-    expect(wrapper.findAll('.attention')).toHaveLength(1);
+    expect(wrapper.findAll('.warn')).toHaveLength(1);
   });
 
   test('renders success', () => {

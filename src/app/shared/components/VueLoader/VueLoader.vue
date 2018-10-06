@@ -47,7 +47,7 @@
         required: false,
         default:  false,
       },
-      attention: {
+      warn: {
         type:     Boolean,
         required: false,
         default:  false,
@@ -80,8 +80,8 @@
         if (this.danger) {
           classes.push(this.$style.danger);
         }
-        if (this.attention) {
-          classes.push(this.$style.attention);
+        if (this.warn) {
+          classes.push(this.$style.warn);
         }
         if (this.success) {
           classes.push(this.$style.success);
@@ -188,9 +188,9 @@
     }
   }
 
-  .attention {
+  .warn {
     .path {
-      stroke: $loader-attention-color;
+      stroke: $loader-warn-color;
     }
   }
 

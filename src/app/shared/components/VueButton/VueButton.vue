@@ -35,7 +35,7 @@
         required: false,
         default:  false,
       },
-      attention: {
+      warn: {
         type:     Boolean,
         required: false,
         default:  false,
@@ -98,8 +98,8 @@
         if (this.success) {
           classes.push(this.$style.success);
         }
-        if (this.attention) {
-          classes.push(this.$style.attention);
+        if (this.warn) {
+          classes.push(this.$style.warn);
         }
         if (this.danger) {
           classes.push(this.$style.danger);
@@ -258,18 +258,18 @@
     }
   }
 
-  .attention {
-    color:      $button-attention-color;
-    background: $button-attention-bg;
-    border:     $button-attention-border;
+  .warn {
+    color:      $button-warn-color;
+    background: $button-warn-bg;
+    border:     $button-warn-border;
 
     &:hover {
-      background: $button-attention-hover-bg;
+      background: $button-warn-hover-bg;
     }
 
     :global {
       .vueLoaderPath {
-        stroke: $button-attention-color;
+        stroke: $button-warn-color;
       }
     }
   }
@@ -358,17 +358,17 @@
       }
     }
 
-    &.attention {
-      color: $button-attention-bg;
+    &.warn {
+      color: $button-warn-bg;
 
       &:hover {
-        border-color: $button-attention-hover-bg;
-        color:        $button-attention-hover-bg;
+        border-color: $button-warn-hover-bg;
+        color:        $button-warn-hover-bg;
       }
 
       :global {
         .vueLoaderPath {
-          stroke: $button-attention-bg;
+          stroke: $button-warn-bg;
         }
       }
     }
