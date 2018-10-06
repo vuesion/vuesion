@@ -86,12 +86,12 @@ $tertiary-4: #FFF;
 
 $tertiary-5: #000;
 
-/* Brand */
+/* Brand Variants */
 $brand-primary: $primary-2-1;
 $brand-secondary: $secondary-1-1;
 $brand-tertiary: $primary-1-5;
 $brand-danger: $tertiary-1-1;
-$brand-attention: $tertiary-2-1;
+$brand-warn: $tertiary-2-1;
 $brand-success: $tertiary-3-1;
 
 /* Background Colors */
@@ -112,6 +112,7 @@ $link-hover-color: darken($link-color, 5%);
 
 /* Borders */
 $border-color: $primary-1-5;
+$border-color-inverse: $primary-1-2;
 $border-radius: $space-unit * 0.5;
 
 /* Animation Language */
