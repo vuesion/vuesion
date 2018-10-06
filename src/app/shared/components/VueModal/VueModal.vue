@@ -73,6 +73,11 @@
           this.$emit('close');
         }
       },
+      handleDocumentKeyDown(e: KeyboardEvent) {
+        if (e.key === 'Escape') {
+          this.$emit('close');
+        }
+      },
     },
     beforeMount() {
       let overlay: HTMLElement = document.getElementById('overlay');
@@ -95,10 +100,12 @@
 
       document.addEventListener('mousedown', this.handleDocumentClick);
       document.addEventListener('touchstart', this.handleDocumentClick);
+      document.addEventListener('keydown', this.handleDocumentKeyDown);
     },
     beforeDestroy() {
       document.removeEventListener('mousedown', this.handleDocumentClick);
       document.removeEventListener('touchstart', this.handleDocumentClick);
+      document.removeEventListener('keydown', this.handleDocumentKeyDown);
     },
   };
 </script>
