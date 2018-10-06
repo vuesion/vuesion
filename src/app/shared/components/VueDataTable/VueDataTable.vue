@@ -234,33 +234,32 @@
   }
 
   .vueDataTable {
-    width: 100%;
+    width: $data-table-width;
   }
 
   .noResults {
-    border:     1px solid $border-color;
+    border:     $data-table-no-results-border;
     border-top: none;
     text-align: center;
-    opacity:    .5;
-    padding:    $space-unit * 8 0;
+    opacity:    $data-table-no-results-opacity;
+    padding:    $data-table-no-results-padding;
   }
 
   .vueDataTableRow {
-    box-shadow: $panel-shadow;
-    border:     1px solid $border-color;
+    border:     $data-table-row-border;
     border-top: none;
     cursor:     pointer;
-    min-width:  600px;
+    min-width:  $data-table-min-width;
 
     &:hover {
-      background: $panel-bg;
+      background: $data-table-row-hover-bg;
+      color:      $data-table-row-hover-color;
     }
   }
 
   .column {
-    border-right: 1px solid $border-color;
-    padding:      $space-unit $space-unit * 2;
-    min-width:    150px;
+    border-right: $data-table-row-border;
+    padding:      $data-table-row-column-padding;
 
     &:last-child {
       border-right: none;
