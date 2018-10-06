@@ -35,8 +35,8 @@ const storySchema = [
     props: ['danger'],
   },
   {
-    label: 'Attention',
-    props: ['attention'],
+    label: 'Warn',
+    props: ['warn'],
   },
   {
     label: 'Success',
