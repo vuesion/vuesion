@@ -16,9 +16,13 @@
   export default {
     name:     'VueTabItem',
     props:    {
-      title: {
+      title:    {
         type:     String,
         required: true,
+      },
+      isActive: {
+        type:    Boolean,
+        default: false,
       },
     },
     data(): any {
@@ -76,6 +80,8 @@
       },
     },
     created() {
+      this.active = this.isActive;
+
       if (this.$parent.register) {
         this.$parent.register(this);
       }

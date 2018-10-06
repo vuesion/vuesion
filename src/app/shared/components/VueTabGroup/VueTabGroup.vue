@@ -47,6 +47,10 @@
       register(tab: any) {
         tab.$data.idx = this.tabs.length;
 
+        if (tab.$data.active) {
+          this.currentTab = tab.$data.idx;
+        }
+
         this.tabs.push(tab);
         this.tabHeader.push({
                               idx:   tab.$data.idx,
