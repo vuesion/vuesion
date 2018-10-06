@@ -126,7 +126,7 @@
     overflow-y:                 scroll;
     -webkit-overflow-scrolling: touch;
 
-    @include media(tabletPortrait) {
+    @include mediaMin(tabletPortrait) {
       max-width:  $modal-max-width;
       max-height: 100%;
       position:   fixed;

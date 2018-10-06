@@ -95,15 +95,15 @@
     transition: transform 250ms linear;
     @include background-gradient($secondary-1-1, $secondary-1-4, -171deg);
 
-    @include media(tabletPortrait) {
+    @include mediaMin(tabletPortrait) {
       transform: skewX(-33deg) translateX(100%);
     }
 
-    @include media(tabletLandscape) {
+    @include mediaMin(tabletLandscape) {
       transform: skewX(-44deg) translateX(100%);
     }
 
-    @include media(smallDesktop) {
+    @include mediaMin(smallDesktop) {
       transform: skewX(-46deg) translateX(117%);
       width:     49%;
     }
@@ -118,15 +118,15 @@
     transition: transform 250ms linear;
     @include background-gradient($secondary-1-4, $secondary-1-1, -171deg);
 
-    @include media(tabletPortrait) {
+    @include mediaMin(tabletPortrait) {
       transform: skewX(37deg) translateX(-29%);
     }
 
-    @include media(tabletLandscape) {
+    @include mediaMin(tabletLandscape) {
       transform: skewX(38deg) translateX(-29%);
     }
 
-    @include media(smallDesktop) {
+    @include mediaMin(smallDesktop) {
       transform: skewX(38deg) translateX(-19%);
       width:     49%;
     }
@@ -149,11 +149,11 @@
   .title {
     top: $space-unit * 14;
 
-    @include media(tabletPortrait) {
+    @include mediaMin(tabletPortrait) {
       top: $space-unit * 24;
     }
 
-    @include media(tabletLandscape) {
+    @include mediaMin(tabletLandscape) {
       top: $space-unit * 26;
     }
   }
@@ -161,11 +161,11 @@
   .subTitle {
     top: $space-unit * 13;
 
-    @include media(tabletPortrait) {
+    @include mediaMin(tabletPortrait) {
       top: $space-unit * 22;
     }
 
-    @include media(tabletLandscape) {
+    @include mediaMin(tabletLandscape) {
       top: $space-unit * 24;
     }
   }
@@ -185,11 +185,11 @@
       box-shadow: $button-active-shadow;
     }
 
-    @include media(tabletPortrait) {
+    @include mediaMin(tabletPortrait) {
       top: $space-unit * 25;
     }
 
-    @include media(tabletLandscape) {
+    @include mediaMin(tabletLandscape) {
       top: $space-unit * 39;
     }
 

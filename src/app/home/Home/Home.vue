@@ -102,7 +102,7 @@
       }
     }
 
-    @include media(tabletLandscape) {
+    @include mediaMin(tabletLandscape) {
       :global {
         .featureSection {
           padding: $space-unit * 15 0;

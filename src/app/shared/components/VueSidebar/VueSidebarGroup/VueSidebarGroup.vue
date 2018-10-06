@@ -26,6 +26,10 @@
     display: block;
     margin:  $sidebar-group-margin;
 
+    ul {
+      padding: 0;
+    }
+
     strong {
       display:        block;
       font-weight:    $font-weight-medium;

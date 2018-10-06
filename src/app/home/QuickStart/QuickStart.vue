@@ -80,7 +80,7 @@
       }
     }
 
-    @include media(tabletPortrait) {
+    @include mediaMin(tabletPortrait) {
       :global {
         .vuePanel {
           width:       50%;
@@ -89,7 +89,7 @@
       }
     }
 
-    @include media(tabletLandscape) {
+    @include mediaMin(tabletLandscape) {
       :global {
         .vuePanel {
           width:       33.3333333%;
