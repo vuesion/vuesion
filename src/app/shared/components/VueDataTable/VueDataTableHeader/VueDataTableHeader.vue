@@ -62,29 +62,26 @@
   @import "../../../styles";
 
   .vueDataTableHeader {
-    box-shadow:  $panel-shadow;
-    border:      1px solid $border-color;
-    background:  $bg-color;
-    font-weight: 700;
-    background:  $panel-bg;
-    min-width:   600px;
+    border:      $data-table-header-border;
+    background:  $data-table-header-bg;
+    font-weight: $data-table-header-font-weight;
+    min-width:   $data-table-min-width;
 
     tr {
-      width:     100%;
-      min-width: 800px;
+      width:     $data-table-width;
+      min-width: $data-table-min-width;
     }
   }
 
   .column {
-    border-right: 1px solid $border-color;
-    padding:      $space-unit $space-unit * 2;
+    border-right: $data-table-header-border;
+    padding:      $data-table-header-column-padding;
     cursor:       pointer;
     user-select:  none;
-    min-width:    150px;
 
     &:hover {
       i {
-        fill:    $brand-primary;
+        color:   $data-table-header-icon-hover-color;
         opacity: 1;
       }
     }
@@ -94,14 +91,9 @@
     }
 
     i {
-      opacity: .3;
-    }
-
-    :global {
-      .fa-sort-up, .fa-sort-down {
-        color:   $brand-primary;
-        opacity: 1;
-      }
+      margin:  $data-table-header-icon-margin;
+      opacity: $data-table-header-icon-opacity;
+      color:   $data-table-header-icon-color;
     }
   }
 
