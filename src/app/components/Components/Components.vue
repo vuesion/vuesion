@@ -489,6 +489,10 @@
               </div>
             </template>
 
+            <template slot="actions" slot-scope="{row}">
+              <vue-button @click="onDeleteRow(row)">Delete</vue-button>
+            </template>
+
           </vue-data-table>
         </vue-grid-item>
       </vue-grid-row>
@@ -784,6 +788,10 @@
       dataTableClick(row: any) {
         // tslint:disable-next-line
         console.log(row);
+      },
+      onDeleteRow(row: any) {
+        // tslint:disable-next-line
+        alert(JSON.stringify(row));
       },
     },
   };
