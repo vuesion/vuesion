@@ -9,7 +9,7 @@ The AppConfig in `./src/app/config/AppConfig.ts` will provide your application w
 that you can change in `./src/app/config/default.json`.
 
 If you want to overwrite the default config for example in the `PRODUCTION` environment, you have to
-create a new file `./src/app/config/prodcution.json` with the parts of the json that is different
+create a new file `./src/app/config/production.json` with the parts of the json that is different
 to the default config.
 
 ## Provide your app with Environment Variables
