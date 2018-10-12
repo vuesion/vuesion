@@ -11,11 +11,15 @@
 
 <script lang="ts">
   export default {
-    name:       'VueTooltip',
-    props:      {
+    name:     'VueTooltip',
+    props:    {
       tip:      {
         type:     String,
         required: true,
+      },
+      disabled: {
+        type:    Boolean,
+        default: false,
       },
     },
     data(): any {
@@ -23,7 +27,7 @@
         show: false,
       };
     },
-    computed:   {
+    computed: {
       cssClasses() {
         const classes: string [] = [this.$style.vueTooltip];
 
@@ -31,22 +35,26 @@
           classes.push(this.$style.show);
         }
 
-        if (this.$slots.default && this.$slots.default[0].tag === undefined) {
+        if (!this.disabled && this.$slots.default && this.$slots.default[0].tag === undefined) {
           classes.push(this.$style.highlight);
         }
 
         return classes;
       },
     },
-    methods:    {
+    methods:  {
       onEnter() {
-        this.show = true;
+        if (!this.disabled) {
+          this.show = true;
+        }
       },
       onLeave() {
         this.show = false;
       },
       onTouchEnd() {
-        this.show = !this.show;
+        if (!this.disabled) {
+          this.show = !this.show;
+        }
       },
     },
   };
@@ -56,8 +64,9 @@
   @import "../../styles";
 
   .vueTooltip {
-    display:  inline-block;
-    position: relative;
+    display:       inline-block;
+    position:      relative;
+    border-bottom: 1px dashed transparent;
 
     &:before,
     &:after {
