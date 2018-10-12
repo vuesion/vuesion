@@ -1,11 +1,12 @@
 import { ActionContext, Commit, Dispatch }    from 'vuex';
 import MockAdapter                            from 'axios-mock-adapter';
 import { CounterDefaultState, ICounterState } from './state';
+import { IState }                             from '../state';
 import { CounterActions }                     from './actions';
 import { HttpService }                        from '../shared/services/HttpService';
 
 describe('CounterActions', () => {
-  let testContext: ActionContext<ICounterState, ICounterState>;
+  let testContext: ActionContext<ICounterState, IState>;
   let mockAxios: MockAdapter;
 
   beforeEach(() => {
@@ -13,7 +14,7 @@ describe('CounterActions', () => {
       dispatch: jest.fn() as Dispatch,
       commit:   jest.fn() as Commit,
       state:    CounterDefaultState(),
-    } as ActionContext<ICounterState, ICounterState>;
+    } as ActionContext<ICounterState, IState>;
 
     mockAxios = new MockAdapter(HttpService);
   });

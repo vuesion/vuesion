@@ -1,5 +1,6 @@
 import { ActionContext } from 'vuex';
 import { I{{ properCase moduleName }}State } from './state';
+import { IState }        from '../state';
 import { HttpService }   from '../shared/services/HttpService';
 import { AxiosResponse } from 'axios';
 
@@ -8,13 +9,13 @@ export interface I{{ properCase moduleName }}Response {
 }
 
 export interface I{{ properCase moduleName }}Actions {
-  increment(context: ActionContext<I{{ properCase moduleName }}State, I{{ properCase moduleName }}State>): Promise<any>;
+  increment(context: ActionContext<I{{ properCase moduleName }}State, IState>): Promise<any>;
 
-  decrement(context: ActionContext<I{{ properCase moduleName }}State, I{{ properCase moduleName }}State>): Promise<any>;
+  decrement(context: ActionContext<I{{ properCase moduleName }}State, IState>): Promise<any>;
 }
 
 export const {{ properCase moduleName }}Actions: I{{ properCase moduleName }}Actions = {
-  increment({ commit, state }: ActionContext<I{{ properCase moduleName }}State, I{{ properCase moduleName }}State>): Promise<any> {
+  increment({ commit, state }: ActionContext<I{{ properCase moduleName }}State, IState>): Promise<any> {
     commit('SET_INCREMENT_PENDING', true);
 
     return HttpService
@@ -27,7 +28,7 @@ export const {{ properCase moduleName }}Actions: I{{ properCase moduleName }}Act
       commit('SET_INCREMENT_PENDING', false);
     });
   },
-  decrement({ commit, state }: ActionContext<I{{ properCase moduleName }}State, I{{ properCase moduleName }}State>): Promise<any> {
+  decrement({ commit, state }: ActionContext<I{{ properCase moduleName }}State, IState>): Promise<any> {
     commit('SET_DECREMENT_PENDING', true);
 
     return HttpService
