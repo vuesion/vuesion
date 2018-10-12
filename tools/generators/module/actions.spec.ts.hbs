@@ -3,9 +3,10 @@ import { HttpService }                        from '../shared/services/HttpServi
 import { ActionContext, Commit, Dispatch }    from 'vuex';
 import { {{ properCase moduleName }}Actions }                     from './actions';
 import { {{ properCase moduleName }}DefaultState, I{{ properCase moduleName }}State } from './state';
+import { IState }                             from '../state';
 
 describe('{{ properCase moduleName }}Actions', () => {
-  let testContext: ActionContext<I{{ properCase moduleName }}State, I{{ properCase moduleName }}State>;
+  let testContext: ActionContext<I{{ properCase moduleName }}State, IState>;
   let mockAxios: MockAdapter;
 
   beforeEach(() => {
@@ -13,7 +14,7 @@ describe('{{ properCase moduleName }}Actions', () => {
       dispatch: jest.fn() as Dispatch,
       commit:   jest.fn() as Commit,
       state:    {{ properCase moduleName }}DefaultState(),
-    } as ActionContext<I{{ properCase moduleName }}State, I{{ properCase moduleName }}State>;
+    } as ActionContext<I{{ properCase moduleName }}State, IState>;
 
     mockAxios = new MockAdapter(HttpService);
   });
