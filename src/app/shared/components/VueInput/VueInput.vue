@@ -14,8 +14,10 @@
       :class="[
         value ? $style.hasValue : ''
       ]"
+      :autofocus="autofocus"
       v-bind="$attrs"
       v-on="handlers"
+      ref="input"
     />
     <span :class="$style.bar"></span>
     <label :for="name">
@@ -49,6 +51,10 @@
         default: '',
       },
       required:     {
+        type:    Boolean,
+        default: false,
+      },
+      autofocus:    {
         type:    Boolean,
         default: false,
       },
@@ -113,6 +119,29 @@
           },
         };
       },
+    },
+    data(): any {
+      return {
+        observer: null,
+      };
+    },
+    methods:  {
+      handleObserver() {
+        this.observer = new IntersectionObserver(() => {
+          if (this.autofocus && this.$refs.input) {
+            this.$refs.input.focus();
+          }
+        }, { root: this.$refs.input.parentElement, threshold: 1 });
+        this.observer.observe(this.$refs.input);
+      },
+    },
+    mounted() {
+      if ((window as any).IntersectionObserver) {
+        this.handleObserver();
+      }
+    },
+    beforeDestroy() {
+      this.observer = null;
     },
   };
 </script>
