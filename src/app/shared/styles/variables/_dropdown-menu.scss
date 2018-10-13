@@ -1,0 +1,26 @@
+$dropdown-menu-button-padding: $space-unit * 0.5;
+$dropdown-menu-button-border-radius: $border-radius;
+$dropdown-menu-button-font-family: $font-family;
+$dropdown-menu-button-font-size: $font-size;
+$dropdown-menu-button-font-weight: $font-weight-regular;
+$dropdown-menu-button-line-height: $line-height;
+$dropdown-menu-button-letter-spacing: $letter-spacing;
+$dropdown-menu-button-border: none;
+$dropdown-menu-button-bg: $bg-color;
+$dropdown-menu-button-hover-bg: $bg-color-variant;
+$dropdown-menu-button-icon-size: $dropdown-menu-button-font-size;
+
+$dropdown-menu-list-margin: $space-unit * 0.5 0 0 0;
+$dropdown-menu-list-padding: $space-unit 0;
+$dropdown-menu-list-index: 1000;
+$dropdown-menu-list-bg: $bg-color;
+$dropdown-menu-list-color: $text-color;
+$dropdown-menu-list-border: 1px solid $border-color;
+$dropdown-menu-list-border-radius: $border-radius;
+$dropdown-menu-list-min-width: 200px;
+$dropdown-menu-list-font-size: $font-size-small;
+$dropdown-menu-list-font-weight: $font-weight-medium;
+$dropdown-menu-list-line-height: $line-height;
+
+$dropdown-menu-list-item-padding: $space-unit $space-unit * 2;
+$dropdown-menu-list-item-hover-bg: $bg-color-variant;
