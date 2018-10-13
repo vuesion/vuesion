@@ -2,16 +2,17 @@ import { createLocalVue, mount } from '@vue/test-utils';
 import VueDataTableHeader        from './VueDataTableHeader.vue';
 import { IDataTableHeaderItem }  from '../IDataTable';
 import VueIconSort               from '../../icons/VueIconSort/VueIconSort.vue';
-import VueIconSortDown               from '../../icons/VueIconSortDown/VueIconSortDown.vue';
-import VueIconSortUp               from '../../icons/VueIconSortUp/VueIconSortUp.vue';
+import VueIconSortDown           from '../../icons/VueIconSortDown/VueIconSortDown.vue';
+import VueIconSortUp             from '../../icons/VueIconSortUp/VueIconSortUp.vue';
 
 const localVue = createLocalVue();
 
 describe('VueDataTableHeader.vue', () => {
   const columns: IDataTableHeaderItem[] = [
-    { title: 'foo', visible: true, sortKey: 'foo' },
-    { title: 'bar', visible: true, sortKey: 'bar' },
-    { title: 'baz', visible: true, sortKey: 'baz' },
+    { title: 'foo', visible: true, sortKey: 'foo', sortable: true },
+    { title: 'bar', visible: true, sortKey: 'bar', sortable: true },
+    { title: 'baz', visible: true, sortKey: 'baz', sortable: true },
+    { title: 'baz', visible: true, sortKey: 'baz', sortable: false },
   ];
 
   test('renders component', () => {
@@ -26,7 +27,7 @@ describe('VueDataTableHeader.vue', () => {
                           },
     );
 
-    expect(wrapper.findAll('.column')).toHaveLength(3);
+    expect(wrapper.findAll('.column')).toHaveLength(4);
     expect(wrapper.findAll(VueIconSort)).toHaveLength(3);
   });
 
@@ -77,8 +78,10 @@ describe('VueDataTableHeader.vue', () => {
                           },
     ) as any;
 
-    wrapper.vm.onClick(columns[0]);
+    wrapper.vm.onClick(columns[3]);
+    expect(wrapper.emitted('click')).toBeFalsy();
 
+    wrapper.vm.onClick(columns[0]);
     expect(wrapper.emitted('click')).toBeTruthy();
   });
 
