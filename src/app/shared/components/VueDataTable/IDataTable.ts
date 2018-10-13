@@ -7,6 +7,8 @@ export interface IDataTableHeaderItem {
   visible?: boolean;
   sortKey?: string;
   slot?: string;
+  sortable?: boolean;
+  fitContent?: boolean;
 }
 
 export interface IComputedDataRowCell {
