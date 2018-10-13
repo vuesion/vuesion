@@ -28,6 +28,11 @@ const clientConfig = merge(baseConfig, {
     },
     runtimeChunk: 'single',
   },
+  performance:  {
+    hints:             'error',
+    maxEntrypointSize: 318000,
+    maxAssetSize:      267000,
+  },
   plugins:      [
     new webpack.DefinePlugin({ CLIENT: true, SERVER: false }),
     new HTMLPlugin({ template: 'src/index.template.html', spa: false }),
