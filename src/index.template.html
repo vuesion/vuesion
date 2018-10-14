@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <% if (!htmlWebpackPlugin.options.spa) { %>{{{ meta.inject().meta.text() }}} {{{ meta.inject().title.text() }}} {{{ meta.inject().link.text() }}} {{{ meta.inject().style.text() }}} {{{ meta.inject().script.text() }}} {{{ meta.inject().noscript.text() }}}<% } else { %><title>vue-starter</title><link rel="shortcut icon" href="/favicon.png" type="image/png" /><link rel="icon" href="/favicon.png" type="image/png" /><% } %>
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimal-ui">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
   <meta name="theme-color" content="#17BEBB"><% for (var chunk of webpack.chunks) {
   for (var file of chunk.files) {
   if (file.match(/\.(js|css)$/)) { %>
