@@ -31,14 +31,11 @@
           <vue-panel class="vuePanel">
             <vue-panel-body>
               <vue-icon-puzzle-piece />
-              <h3>Components</h3>
+              <h3>Design System</h3>
               <p>
-                A flexible component library that'll be extended over time.
-              </p>
-              <p>
-                Visit the
-                <router-link to="/components">Component's page</router-link>
-                to see a preview of the available components.
+                Includes a blueprint for a 100% customizable Design System with a huge amount of
+                <router-link to="/storybook">components</router-link>
+                .
               </p>
             </vue-panel-body>
           </vue-panel>
@@ -78,12 +75,27 @@
   .userExperience {
     display:    block;
     text-align: center;
+    background: $bg-color-variant;
 
     i {
       display:    inline-block;
       height:     $font-size-h1;
       width:      $font-size-h1;
       margin-top: $space-unit;
+    }
+
+    a {
+      color: $text-color;
+
+      &:hover {
+        color: $text-color;
+      }
+    }
+
+    :global {
+      .vuePanel {
+        background: $tertiary-4;
+      }
     }
 
   }

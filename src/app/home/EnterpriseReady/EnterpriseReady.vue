@@ -11,8 +11,7 @@
               <vue-icon-chart-line />
               <h3>SEO</h3>
               <p>We support SEO (document head tags management) and server-side-rendering for search engines that
-                 support
-                 indexing of JavaScript content. (eg. Google)</p>
+                 support indexing of JavaScript content. (eg. Google)</p>
             </vue-panel-body>
           </vue-panel>
         </vue-grid-item>

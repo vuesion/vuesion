@@ -1,8 +1,6 @@
 <template>
   <div :class="$style.stage" ref="stage">
     <canvas :class="$style.canvas" ref="canvas"></canvas>
-    <div :class="$style.accent"></div>
-    <div :class="$style.accentTwo"></div>
 
     <vue-grid>
       <vue-grid-row>
@@ -83,53 +81,7 @@
     position:   relative;
     text-align: center;
     color:      $text-color-inverse;
-    @include background-gradient($secondary-1-1, $secondary-1-4, 171deg);
-  }
-
-  .accent {
-    width:      56%;
-    min-height: 100vh;
-    transform:  skewX(-40deg) translateX(100%);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    position:   absolute;
-    transition: transform 250ms linear;
-    @include background-gradient($secondary-1-1, $secondary-1-4, -171deg);
-
-    @include mediaMin(tabletPortrait) {
-      transform: skewX(-33deg) translateX(100%);
-    }
-
-    @include mediaMin(tabletLandscape) {
-      transform: skewX(-44deg) translateX(100%);
-    }
-
-    @include mediaMin(smallDesktop) {
-      transform: skewX(-46deg) translateX(117%);
-      width:     49%;
-    }
-  }
-
-  .accentTwo {
-    width:      56%;
-    min-height: 100vh;
-    transform:  skewX(30deg) translateX(-57%);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    position:   absolute;
-    transition: transform 250ms linear;
-    @include background-gradient($secondary-1-4, $secondary-1-1, -171deg);
-
-    @include mediaMin(tabletPortrait) {
-      transform: skewX(37deg) translateX(-29%);
-    }
-
-    @include mediaMin(tabletLandscape) {
-      transform: skewX(38deg) translateX(-29%);
-    }
-
-    @include mediaMin(smallDesktop) {
-      transform: skewX(38deg) translateX(-19%);
-      width:     49%;
-    }
+    background: $secondary-1-1;
   }
 
   .canvas {
