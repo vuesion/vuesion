@@ -12,7 +12,7 @@
             <vue-panel-body>
               <vue-icon-code />
               <h3>Quick scaffolding</h3>
-              <p>Create components, connected components, modules - and their tests - right from the CLI!</p>
+              <p>Create components, VueX connected components, modules - and their tests - right from the CLI!</p>
             </vue-panel-body>
           </vue-panel>
         </vue-grid-item>
@@ -22,12 +22,10 @@
             <vue-panel-body>
               <vue-icon-bullhorn />
               <h3>Instant feedback</h3>
-              <p>Enjoy the best DX (Developer eXperience) and code your app at the speed of thought! Your saved changes
-                 to
-                 the CSS and TypeScript are reflected instantaneously
-                 without
-                 refreshing the page. Preserve application state even when you update something in the underlying
-                 code!</p>
+              <p>Enjoy the best DX (Developer eXperience) and code your app at the speed of thought!
+                 Your saved changes to the CSS and TypeScript are reflected instantaneously
+                 without refreshing the page or restarting your server.
+                 Preserve application state even when you update something in the underlying code!</p>
             </vue-panel-body>
           </vue-panel>
         </vue-grid-item>
