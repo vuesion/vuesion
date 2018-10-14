@@ -39,13 +39,13 @@ describe('VueAccordionItem.vue', () => {
       },
     }) as any;
 
-    wrapper.vm.$options.created[4].call(wrapper.vm);
+    wrapper.vm.$options.created[1].call(wrapper.vm);
 
     wrapper.vm.$parent.openItem = jest.fn();
     wrapper.vm.$parent.register = jest.fn();
 
     wrapper.vm.click();
-    wrapper.vm.$options.created[4].call(wrapper.vm);
+    wrapper.vm.$options.created[1].call(wrapper.vm);
 
     expect(wrapper.vm.$parent.openItem).toHaveBeenCalled();
     expect(wrapper.vm.$parent.register).toHaveBeenCalled();
