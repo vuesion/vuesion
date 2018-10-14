@@ -25,7 +25,7 @@ describe('VueTabItem.vue', () => {
 
     (wrapper as any).vm.$parent.register = jest.fn();
 
-    (wrapper as any).vm.$options.created['2'].call(wrapper.vm);
+    (wrapper as any).vm.$options.created['1'].call(wrapper.vm);
 
     expect((wrapper as any).vm.$parent.register).toHaveBeenCalledTimes(1);
 
