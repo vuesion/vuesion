@@ -18,7 +18,7 @@ story.add('Default', () => ({
       model:   '',
     };
   },
-  template:   `<vue-select name="select" id="select" :options="options" v-model="model" />`,
+  template:   `<vue-select name="select" id="select" placeholder="Select" :options="options" v-model="model" />`,
 }));
 
 story.add('Multi', () => ({
@@ -33,5 +33,5 @@ story.add('Multi', () => ({
       model:   '',
     };
   },
-  template:   `<vue-select name="select" id="select" :options="options" multiple v-model="model" />`,
+  template:   `<vue-select name="select" id="select" placeholder="Select" :options="options" multiple v-model="model" />`,
 }));

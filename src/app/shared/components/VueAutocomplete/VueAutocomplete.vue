@@ -16,7 +16,7 @@
       :disabled="disabled"
       :required="required"
       :placeholder="placeholder"
-      :aria-activedescendant="`result-item-${selectedOptionIndex}-${instanceId}`"
+      :aria-activedescendant="hasOptions ? `result-item-${selectedOptionIndex}-${instanceId}` : null"
       @input="onInput"
       @keyup.down="onArrowDown"
       @keydown.up="onArrowUp"

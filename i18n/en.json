@@ -8,6 +8,7 @@
   "components.calendar.thursday.short": "T",
   "components.calendar.tuesday.short": "T",
   "components.calendar.wednesday.short": "W",
+  "components.cookieConsent.accept": "Accept",
   "components.dataTable.noResults": "No results found!",
   "components.formExample.zipCode.error": "Please enter a Number",
   "components.pagination.next": "Next",

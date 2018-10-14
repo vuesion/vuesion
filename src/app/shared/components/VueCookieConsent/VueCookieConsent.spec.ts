@@ -1,5 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueCookieConsent          from './VueCookieConsent.vue';
+import { i18n }                  from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
@@ -11,6 +12,7 @@ describe('VueCookieConsent.vue', () => {
     const wrapper = mount(VueCookieConsent,
                           {
                             localVue,
+                            i18n,
                             slots:     {
                               default: 'foo',
                             },
@@ -35,6 +37,7 @@ describe('VueCookieConsent.vue', () => {
     const wrapper = mount(VueCookieConsent,
                           {
                             localVue,
+                            i18n,
                             slots:     {
                               default: 'foo',
                             },
@@ -55,6 +58,7 @@ describe('VueCookieConsent.vue', () => {
     const wrapper = mount(VueCookieConsent,
                           {
                             localVue,
+                            i18n,
                             slots:     {
                               default: 'foo',
                             },
