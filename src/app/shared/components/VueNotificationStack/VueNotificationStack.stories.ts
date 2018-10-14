@@ -4,7 +4,7 @@ import VueNotificationStack               from './VueNotificationStack.vue';
 import VueButton                          from '../VueButton/VueButton.vue';
 import { addNotification, INotification } from './utils';
 
-const story = (storiesOf('VueNotificationStack', module) as any);
+const story = (storiesOf('2. Components|NotificationStack', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

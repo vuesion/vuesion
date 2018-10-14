@@ -4,7 +4,7 @@ import VueDatePicker from './VueDatePicker.vue';
 import { i18n }      from '../../plugins/i18n/i18n';
 import { action }    from '@storybook/addon-actions';
 
-const story = (storiesOf('VueDatePicker', module) as any);
+const story = (storiesOf('2. Components|DatePicker', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

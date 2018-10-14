@@ -3,7 +3,7 @@ import VueInfoAddon     from 'storybook-addon-vue-info';
 import VueAccordion     from './VueAccordion.vue';
 import VueAccordionItem from './VueAccordionItem/VueAccordionItem.vue';
 
-const story = (storiesOf('VueAccordion', module) as any);
+const story = (storiesOf('2. Components|Accordion', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

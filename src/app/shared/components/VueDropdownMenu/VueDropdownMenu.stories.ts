@@ -3,7 +3,7 @@ import { action }      from '@storybook/addon-actions';
 import VueInfoAddon    from 'storybook-addon-vue-info';
 import VueDropdownMenu from './VueDropdownMenu.vue';
 
-const story = (storiesOf('VueDropdownMenu', module) as any);
+const story = (storiesOf('2. Components|DropdownMenu', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

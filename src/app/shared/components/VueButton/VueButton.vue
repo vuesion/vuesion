@@ -2,7 +2,7 @@
   <button
     :class="cssClasses"
     :disabled="disabled"
-    @click="onClick"
+    v-on="handlers"
     v-bind="$attrs">
     <slot v-if="loading === false" />
     <vue-loader :class="$style.loader" v-if="loading === true" />
@@ -35,7 +35,7 @@
         required: false,
         default:  false,
       },
-      warning: {
+      warning:   {
         type:     Boolean,
         required: false,
         default:  false,
@@ -68,13 +68,6 @@
     },
     components: {
       VueLoader,
-    },
-    methods:    {
-      onClick(e: Event) {
-        if (this.disabled === false && this.loading === false) {
-          this.$emit('click', e);
-        }
-      },
     },
     computed:   {
       cssClasses() {
@@ -109,6 +102,18 @@
         }
 
         return classes;
+      },
+      handlers() {
+        delete this.$listeners.click;
+
+        return {
+          ...this.$listeners,
+          click: (e: any) => {
+            if (this.disabled === false && this.loading === false) {
+              this.$emit('click', e);
+            }
+          },
+        };
       },
     },
   };

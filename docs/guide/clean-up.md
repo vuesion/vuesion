@@ -12,8 +12,8 @@ Directories and files that we would recommend to delete:
 ├── docs
 └── src
     ├── app
-    │   ├── components
-    │   └── counter
+    │   ├── counter
+    │   └── form
     └── server
         └── routes
             ├── CounterRoutes.ts
@@ -52,8 +52,15 @@ import { CounterDefaultState, ICounterState } from './counter/state';
 ```js
 ...
 
-  delete localState.counter.incrementPending;
-  delete localState.counter.decrementPending;
+  /**
+   * because the counter module is loaded on demand
+   * we have to check if it exists before we delete
+   * some state attributes
+   */
+  if (localState.counter) {
+    delete localState.counter.incrementPending;
+    delete localState.counter.decrementPending;
+  }
   
 ...
 ```

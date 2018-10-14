@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import VueInfoAddon  from 'storybook-addon-vue-info';
 import VueToggle     from './VueToggle.vue';
 
-const story = (storiesOf('VueToggle', module) as any);
+const story = (storiesOf('2. Components|Toggle', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

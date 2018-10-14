@@ -2,64 +2,34 @@ import { storiesOf } from '@storybook/vue';
 import VueInfoAddon  from 'storybook-addon-vue-info';
 import VueBadge      from './VueBadge.vue';
 
-const story = (storiesOf('VueBadge', module) as any);
+const story = (storiesOf('2. Components|Badge', module) as any);
 
 story.addDecorator(VueInfoAddon);
 
-const storySchema = [
-  {
-    label: 'Primary',
-    props: ['primary'],
-  },
-  {
-    label: 'Secondary',
-    props: ['secondary'],
-  },
-  {
-    label: 'Tertiary',
-    props: ['tertiary'],
-  },
-  {
-    label: 'Danger',
-    props: ['danger'],
-  },
-  {
-    label: 'Warning',
-    props: ['warning'],
-  },
-  {
-    label: 'Success',
-    props: ['success'],
-  },
-  {
-    label: 'Primary Outlined',
-    props: ['primary', 'outlined'],
-  },
-  {
-    label: 'Secondary Outlined',
-    props: ['secondary', 'outlined'],
-  },
-  {
-    label: 'Tertiary Outlined',
-    props: ['tertiary', 'outlined'],
-  },
-  {
-    label: 'Danger Outlined',
-    props: ['danger', 'outlined'],
-  },
-  {
-    label: 'Warning Outlined',
-    props: ['warning', 'outlined'],
-  },
-  {
-    label: 'Success Outlined',
-    props: ['success', 'outlined'],
-  },
-];
-
-for (const item of storySchema) {
-  story.add(item.label, () => ({
-    components: { VueBadge },
-    template:   `<vue-badge ${item.props ? item.props.join(' ') : ''}>${item.label}</vue-badge>`,
-  }));
-}
+story.add('Badge Variants', () => ({
+  components: { VueBadge },
+  template:   `<div>
+<vue-badge primary>Primary</vue-badge>
+<vue-badge primary outlined>Primary Outlined</vue-badge>
+<br />
+<br />
+<vue-badge secondary>Secondary</vue-badge>
+<vue-badge secondary outlined>Secondary Outlined</vue-badge>
+<br />
+<br />
+<vue-badge tertiary>Tertiary</vue-badge>
+<vue-badge tertiary outlined>Tertiary Outlined</vue-badge>
+<br />
+<br />
+<vue-badge danger>Danger</vue-badge>
+<vue-badge danger outlined>Danger Outlined</vue-badge>
+<br />
+<br />
+<vue-badge warning>Warning</vue-badge>
+<vue-badge warning outlined>Warning Outlined</vue-badge>
+<br />
+<br />
+<vue-badge success>Success</vue-badge>
+<vue-badge success outlined>Success Outlined</vue-badge>
+</div>`,
+}));

@@ -3,7 +3,7 @@ import VueInfoAddon  from 'storybook-addon-vue-info';
 import VueSlider     from './VueSlider.vue';
 import { action }    from '@storybook/addon-actions';
 
-const story = (storiesOf('VueSlider', module) as any);
+const story = (storiesOf('2. Components|Slider', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

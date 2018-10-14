@@ -51,14 +51,16 @@
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a href="/docs/guide/styles.html">
+          <a
+            href="/storybook/?selectedKind=1.%20Design%20System%7C1-Design%20System&selectedStory=Intro&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel">
             <vue-icon-book />
             Design System
           </a>
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a href="/storybook">
+          <a
+            href="/storybook/?selectedKind=2.%20Components%7CAccordion&selectedStory=Default&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel">
             <vue-icon-puzzle-piece />
             Components
           </a>
@@ -119,6 +121,7 @@
   import VueIconPuzzlePiece         from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
 
   export default {
+    name:       'App',
     components: {
       VueIconPuzzlePiece,
       VueSelect,
@@ -182,7 +185,6 @@
   @import "../../shared/styles/reset";
   @import "../../shared/styles/typo";
   @import "../../shared/styles/global";
-  @import url($google-font);
 
   .app {
     min-height:     100vh;

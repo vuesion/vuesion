@@ -3,7 +3,7 @@ import VueInfoAddon  from 'storybook-addon-vue-info';
 import VueTabGroup   from './VueTabGroup.vue';
 import VueTabItem    from './VueTabItem/VueTabItem.vue';
 
-const story = (storiesOf('VueTabGroup', module) as any);
+const story = (storiesOf('2. Components|TabGroup', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

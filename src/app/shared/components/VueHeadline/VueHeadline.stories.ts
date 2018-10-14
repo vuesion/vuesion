@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import VueInfoAddon  from 'storybook-addon-vue-info';
 import VueHeadline   from './VueHeadline.vue';
 
-const story = (storiesOf('VueHeadline', module) as any);
+const story = (storiesOf('2. Components|Headline', module) as any);
 
 story.addDecorator(VueInfoAddon);
 
