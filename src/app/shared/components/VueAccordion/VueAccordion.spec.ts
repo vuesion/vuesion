@@ -19,7 +19,7 @@ describe('VueAccordion.vue', () => {
     const accordionItemWrapper: any = wrapper.find(VueAccordionItem);
 
     accordionItemWrapper.vm.$parent = wrapper.vm;
-    accordionItemWrapper.vm.$options.created[3].call(accordionItemWrapper.vm);
+    accordionItemWrapper.vm.$options.created[1].call(accordionItemWrapper.vm);
 
     expect((wrapper as any).vm.items.length).toBeGreaterThan(0);
     expect((wrapper as any).vm.openItems.length).toBe(0);
@@ -38,7 +38,7 @@ describe('VueAccordion.vue', () => {
     const accordionItemWrapper: any = wrapper.find(VueAccordionItem);
 
     accordionItemWrapper.vm.$parent = wrapper.vm;
-    accordionItemWrapper.vm.$options.created[3].call(accordionItemWrapper.vm);
+    accordionItemWrapper.vm.$options.created[1].call(accordionItemWrapper.vm);
 
     expect((wrapper as any).vm.items.length).toBeGreaterThan(0);
     expect((wrapper as any).vm.openItems.length).toBeGreaterThan(0);
