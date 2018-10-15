@@ -2,6 +2,7 @@
   <div :class="cssClasses">
     <select
       :title="placeholder"
+      :aria-labelledby="id"
       :name="name"
       :id="id"
       v-validate="validation"

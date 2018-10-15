@@ -10,8 +10,8 @@ story.add('Default', () => ({
   components: { VueMarkdown },
   template:   `
 <vue-markdown>
-# headline
-## headline
+# headline 1
+## headline 2
 
 - test
 - test
