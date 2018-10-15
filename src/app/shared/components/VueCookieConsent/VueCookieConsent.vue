@@ -5,7 +5,9 @@
         <slot />
       </div>
 
-      <div role="button" :class="$style.button" @click="onConsent">
+      <div role="button"
+           :aria-label="$t('components.cookieConsent.accept' /* Accept */)"
+           :class="$style.button" @click="onConsent">
         <div :class="$style.icon">
           <vue-icon-times />
         </div>
