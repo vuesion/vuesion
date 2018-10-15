@@ -8,6 +8,7 @@
   "components.calendar.thursday.short": "四",
   "components.calendar.tuesday.short": "二",
   "components.calendar.wednesday.short": "三",
+  "components.cookieConsent.accept": "Accept",
   "components.dataTable.noResults": "No results found!",
   "components.formExample.zipCode.error": "请输入一个数字",
   "components.pagination.next": "下一个",

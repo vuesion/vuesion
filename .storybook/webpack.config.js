@@ -1,9 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const { VueLoaderPlugin } = require('vue-loader');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
-module.exports = (storybookBaseConfig) => {
-  const config = storybookBaseConfig;
+module.exports = (storybookBaseConfig, env, defaultConfig) => {
+  const config = defaultConfig;
 
   config.resolve.extensions.push('.ts', '.js', '.vue', '.json', '.node', '.scss');
 
@@ -23,20 +23,9 @@ module.exports = (storybookBaseConfig) => {
 
   config.module.rules = [
     {
-      test:   /\.vue$/,
-      loader: 'vue-loader',
-    },
-    {
-      test:    /\.js$/,
-      loader:  'babel-loader',
-      exclude: file => (
-        /node_modules/.test(file) &&
-        !/\.vue\.js/.test(file)
-      ),
-    },
-    {
       test:    /\.ts$/,
       loader:  'ts-loader',
+      include: [path.join(__dirname, '..', 'src')],
       exclude: /node_modules/,
       options: {
         appendTsSuffixTo: [/\.vue$/],
@@ -44,11 +33,8 @@ module.exports = (storybookBaseConfig) => {
       },
     },
     {
-      test: /\.css$/,
-      use:  [
-        'vue-style-loader',
-        'css-loader',
-      ],
+      test:   /\.vue$/,
+      loader: 'vue-loader',
     },
     {
       test: /\.scss$/,
@@ -58,7 +44,24 @@ module.exports = (storybookBaseConfig) => {
           loader:  'css-loader',
           options: {
             modules:        true,
+            importLoaders:  1,
             localIdentName: '[local]_[hash:base64:8]',
+          },
+        },
+        {
+          loader:  'postcss-loader',
+          options: {
+            ident:   'postcss',
+            plugins: () => [
+              require('autoprefixer')({ browsers: ['last 2 versions', 'ie >= 11'] }),
+              require('css-mqpacker')(),
+              require('cssnano')({
+                                   discardComments: {
+                                     removeAll: true,
+                                   },
+                                   zindex:          false,
+                                 }),
+            ],
           },
         },
         {
@@ -74,7 +77,24 @@ module.exports = (storybookBaseConfig) => {
           loader:  'css-loader',
           options: {
             modules:        true,
+            importLoaders:  1,
             localIdentName: '[local]_[hash:base64:8]',
+          },
+        },
+        {
+          loader:  'postcss-loader',
+          options: {
+            ident:   'postcss',
+            plugins: () => [
+              require('autoprefixer')({ browsers: ['last 2 versions', 'ie >= 11'] }),
+              require('css-mqpacker')(),
+              require('cssnano')({
+                                   discardComments: {
+                                     removeAll: true,
+                                   },
+                                   zindex:          false,
+                                 }),
+            ],
           },
         },
         {
@@ -95,7 +115,7 @@ module.exports = (storybookBaseConfig) => {
   ];
 
   config.plugins.push(new webpack.DefinePlugin({ PRODUCTION: false, DEVELOPMENT: true, TEST: true }));
-  config.plugins.push(new VueLoaderPlugin());
+  config.plugins.push(new ForkTsCheckerWebpackPlugin({ tslint: true, vue: true }));
 
   return config;
 };

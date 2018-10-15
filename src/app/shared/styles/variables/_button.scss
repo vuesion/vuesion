@@ -15,17 +15,17 @@ $button-primary-bg: $brand-primary;
 $button-primary-hover-bg: darken($button-primary-bg, 5%);
 $button-primary-border: 1px solid $button-primary-bg;
 
-$button-secondary-color: $text-color-inverse;
+$button-secondary-color: $text-color;
 $button-secondary-bg: $brand-secondary;
 $button-secondary-hover-bg: darken($button-secondary-bg, 5%);
 $button-secondary-border: 1px solid $button-secondary-bg;
 
-$button-tertiary-color: $primary-2-2;
+$button-tertiary-color: $text-color;
 $button-tertiary-bg: $brand-tertiary;
 $button-tertiary-hover-bg: darken($button-tertiary-bg, 5%);
 $button-tertiary-border: 1px solid $button-tertiary-bg;
 
-$button-danger-color: $text-color-inverse;
+$button-danger-color: $text-color;
 $button-danger-bg: $brand-danger;
 $button-danger-hover-bg: darken($button-danger-bg, 5%);
 $button-danger-border: 1px solid $button-danger-bg;
@@ -35,7 +35,7 @@ $button-warn-bg: $brand-warn;
 $button-warn-hover-bg: darken($button-warn-bg, 5%);
 $button-warn-border: 1px solid $button-warn-bg;
 
-$button-success-color: $text-color-inverse;
+$button-success-color: $text-color;
 $button-success-bg: $brand-success;
 $button-success-hover-bg: darken($button-success-bg, 5%);
 $button-success-border: 1px solid $button-success-bg;
