@@ -45,9 +45,7 @@ import { CounterDefaultState, ICounterState } from './counter/state';
 
 ...
 
-  counter: {
     ...CounterDefaultState(),
-  },
 ```
 
 `./src/app/store.ts`
