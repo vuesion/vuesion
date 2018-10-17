@@ -46,6 +46,7 @@ import { CounterDefaultState, ICounterState } from './counter/state';
 ...
 
   counter: {
+    ...CounterDefaultState(),
   },
 ```
 
@@ -56,6 +57,11 @@ import { CounterModule }        from './counter/module';
 ...
 
 store.registerModule(['counter'], CounterModule, { preserveState: true });
+
+...
+  delete localState.counter.incrementPending;
+  delete localState.counter.decrementPending;
+...
 ```
 
 &服务端路由:

@@ -46,9 +46,8 @@ import { CounterDefaultState, ICounterState } from './counter/state';
 ...
 
   counter: {
+    ...CounterDefaultState(),
   },
-...
-
 ```
 
 `./src/app/store.ts`
@@ -58,6 +57,11 @@ import { CounterModule }        from './counter/module';
 ...
 
 store.registerModule(['counter'], CounterModule, { preserveState: true });
+
+...
+  delete localState.counter.incrementPending;
+  delete localState.counter.decrementPending;
+...
 ```
 
 And the server-side routes:
