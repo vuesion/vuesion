@@ -46,7 +46,7 @@ import { CounterDefaultState, ICounterState } from './counter/state';
 ...
 
   counter: {
-    ...CounterDefaultState,
+    ...CounterDefaultState(),
   },
 ```
 
@@ -57,12 +57,22 @@ import { CounterModule }        from './counter/module';
 ...
 
 store.registerModule(['counter'], CounterModule, { preserveState: true });
+
+...
+  delete localState.counter.incrementPending;
+  delete localState.counter.decrementPending;
+...
 ```
 
 &服务端路由:
 
 `./src/server/server.ts`
 ```js
+import { DemoRoutes }       from './routes/DemoRoutes';
+import { CounterRoutes }    from './routes/CounterRoutes';
+
+...
+
 /**
  * routes to demonstrate the possibilities of the vue-starter
  * can be removed if you don't need them in your application
