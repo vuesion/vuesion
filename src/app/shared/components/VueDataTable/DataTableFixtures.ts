@@ -11,19 +11,25 @@ export const dataTableHeaderFixture: IDataTableHeader = {
     title: 'Lastname',
   },
   age:       {
-    title:        'Age',
-    slot: 'age',
+    title: 'Age',
+    slot:  'age',
   },
   address:   {
     title: 'Address',
   },
   created:   {
-    title:        'Created',
-    slot: 'date',
+    title: 'Created',
+    slot:  'date',
   },
   updated:   {
-    title:        'Updated',
-    slot: 'date',
+    title: 'Updated',
+    slot:  'date',
+  },
+  actions:   {
+    title:      'Actions',
+    slot:       'actions',
+    sortable:   false,
+    fitContent: true,
   },
 };
 

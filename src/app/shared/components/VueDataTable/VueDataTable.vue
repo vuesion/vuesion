@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div :class="$style.vueDataTable">
     <vue-data-table-search v-model="searchTerm"
                            v-if="showSearch"
                            :placeholder="placeholder" />
 
-    <table :class="$style.vueDataTable">
+    <table>
       <vue-data-table-header
         :columns="columns"
         :column-width="columnWidth"
@@ -18,9 +18,9 @@
             v-if="cell.visible"
             :key="idx"
             :class="$style.column"
-            :style="{flexBasis: `${columnWidth}`}">
+            :style="{width: `${columnWidth}`}">
 
-          <slot :name="cell.slot" :cell="cell">{{ cell.value }}</slot>
+          <slot :name="cell.slot" :cell="cell" :row="getRowObject(row)">{{ cell.value }}</slot>
 
         </td>
       </tr>
@@ -132,13 +132,21 @@
             header.visible = true;
           }
 
+          if (typeof header.sortable === 'undefined') {
+            header.sortable = true;
+          }
+
+          if (typeof header.fitContent === 'undefined') {
+            header.fitContent = false;
+          }
+
           header.sortKey = key;
 
           return header;
         });
       },
       columnWidth() {
-        return `${100 / this.columns.length}%`;
+        return `${100 / this.columns.filter((column: IDataTableHeaderItem) => column.fitContent === false && column.visible === true).length}%`;
       },
       rows() {
         return this.displayData.map((row: any) => {
@@ -185,14 +193,17 @@
           this.sortDirection = 'asc';
         }
       },
-      rowClick(cells: IComputedDataRowCell[]) {
+      getRowObject(cells: IComputedDataRowCell[]) {
         const row: any = {};
 
         cells.forEach((column: IComputedDataRowCell) => {
           row[column.key] = column.value;
         });
 
-        this.$emit('click', row);
+        return row;
+      },
+      rowClick(cells: IComputedDataRowCell[]) {
+        this.$emit('click', this.getRowObject(cells));
       },
       paginationClick(page: number) {
         this.currentPage = page - 1;
@@ -209,7 +220,10 @@
 
   .vueDataTable {
     overflow-x: scroll;
-    width:      100%;
+
+    table {
+      width: 100%;
+    }
   }
 
   .noResults {
@@ -221,13 +235,11 @@
   }
 
   .vueDataTableRow {
-    display:        flex;
-    flex-direction: row;
-    box-shadow:     $panel-shadow;
-    border:         1px solid $divider-color;
-    border-top:     none;
-    cursor:         pointer;
-    min-width:      600px;
+    box-shadow: $panel-shadow;
+    border:     1px solid $divider-color;
+    border-top: none;
+    cursor:     pointer;
+    min-width:  600px;
 
     &:hover {
       background: $panel-bg;
@@ -235,7 +247,6 @@
   }
 
   .column {
-    flex:         1 1 auto;
     border-right: 1px solid $divider-color;
     padding:      $space-unit $space-unit * 2;
 

@@ -83,4 +83,28 @@ describe('VueTooltip.vue', () => {
     expect(wrapper.classes()).not.toContain('show');
   });
 
+  test('should not show the tooltip', () => {
+    const wrapper = mount(VueTooltip, {
+      localVue,
+      propsData: {
+        tip:     'foo',
+        disabled: true,
+      },
+      slots:     {
+        default: 'test',
+      },
+    });
+
+    expect(wrapper.classes()).not.toContain('show');
+
+    wrapper.vm.$el.dispatchEvent(new Event('mouseenter'));
+    expect(wrapper.classes()).not.toContain('show');
+
+    /**
+     * touch
+     */
+
+    wrapper.vm.$el.dispatchEvent(new Event('touchend'));
+    expect(wrapper.classes()).not.toContain('show');
+  });
 });
