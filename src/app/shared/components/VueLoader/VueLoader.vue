@@ -47,7 +47,7 @@
         required: false,
         default:  false,
       },
-      warn: {
+      warning: {
         type:     Boolean,
         required: false,
         default:  false,
@@ -80,8 +80,8 @@
         if (this.danger) {
           classes.push(this.$style.danger);
         }
-        if (this.warn) {
-          classes.push(this.$style.warn);
+        if (this.warning) {
+          classes.push(this.$style.warning);
         }
         if (this.success) {
           classes.push(this.$style.success);
@@ -188,9 +188,9 @@
     }
   }
 
-  .warn {
+  .warning {
     .path {
-      stroke: $loader-warn-color;
+      stroke: $loader-warning-color;
     }
   }
 

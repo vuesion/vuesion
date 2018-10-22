@@ -93,17 +93,17 @@ describe('VueLoader.vue', () => {
     expect(wrapper.findAll(`.danger`)).toHaveLength(1);
   });
 
-  test('renders warn loader', () => {
+  test('renders warning loader', () => {
     const wrapper = mount(
       VueLoader,
       {
         localVue,
         propsData: {
-          warn: true,
+          warning: true,
         },
       });
 
-    expect(wrapper.findAll(`.warn`)).toHaveLength(1);
+    expect(wrapper.findAll(`.warning`)).toHaveLength(1);
   });
 
   test('renders success loader', () => {

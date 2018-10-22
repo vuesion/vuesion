@@ -91,15 +91,15 @@ describe('VueButton.vue', () => {
     expect(wrapper.findAll(`.danger`)).toHaveLength(1);
   });
 
-  test('should show warn color', () => {
+  test('should show warning color', () => {
     const wrapper = mount(VueButton, {
       localVue,
       propsData: {
-        warn: true,
+        warning: true,
       },
     });
 
-    expect(wrapper.findAll(`.warn`)).toHaveLength(1);
+    expect(wrapper.findAll(`.warning`)).toHaveLength(1);
   });
 
   test('should show success color', () => {

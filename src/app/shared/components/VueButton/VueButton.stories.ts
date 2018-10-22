@@ -48,12 +48,12 @@ const storySchema = [
     props: ['danger', 'disabled'],
   },
   {
-    label: 'Warn',
-    props: ['warn'],
+    label: 'Warning',
+    props: ['warning'],
   },
   {
-    label: 'Warn Disabled',
-    props: ['warn', 'disabled'],
+    label: 'Warning Disabled',
+    props: ['warning', 'disabled'],
   },
   {
     label: 'Success',
@@ -104,12 +104,12 @@ const storySchema = [
     props: ['danger', 'outlined', 'disabled'],
   },
   {
-    label: 'Warn Outlined',
-    props: ['warn', 'outlined'],
+    label: 'Warning Outlined',
+    props: ['warning', 'outlined'],
   },
   {
-    label: 'Warn Outlined Disabled',
-    props: ['warn', 'outlined', 'disabled'],
+    label: 'Warning Outlined Disabled',
+    props: ['warning', 'outlined', 'disabled'],
   },
   {
     label: 'Success Outlined',
@@ -160,12 +160,12 @@ const storySchema = [
     props: ['danger', 'ghost', 'disabled'],
   },
   {
-    label: 'Warn Ghost',
-    props: ['warn', 'ghost'],
+    label: 'Warning Ghost',
+    props: ['warning', 'ghost'],
   },
   {
-    label: 'Warn Ghost Disabled',
-    props: ['warn', 'ghost', 'disabled'],
+    label: 'Warning Ghost Disabled',
+    props: ['warning', 'ghost', 'disabled'],
   },
   {
     label: 'Success Ghost',
