@@ -3,9 +3,11 @@ $sidebar-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 $sidebar-bg: $bg-color;
 $sidebar-color: $text-color;
 $sidebar-max-width: 80%;
-$sidebar-padding: ($nav-bar-height + $space-unit * 2) $space-unit * 2 $space-unit * 2 $space-unit * 2;
+$sidebar-padding: $space-unit * 2;
+$sidebar-margin: $space-unit * 8 0 0 0;
 $sidebar-transition: transform $transition-duration ease-in-out;
-$sidebar-width: 250px;
+$sidebar-width: 300px;
+$sidebar-height: calc(100% - #{$space-unit * 8});
 $sidebar-hamburger-bg: $brand-primary;
 $sidebar-hamburger-color: $text-color-inverse;
 
