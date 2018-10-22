@@ -165,7 +165,7 @@ mixins to keep everything consistent and to avoid unnecessary media definitions:
 
 Break Point Id   | MinWidth | MaxWidth | GutterWidth
 -----------------|----------|----------|------------
-phone            | 320px    | 319px    | 1.6rem
+phone            | 320px    | 319px    | 3.2rem
 tabletPortrait   | 768px    | 767px    | 3.2rem
 tabletLandscape  | 1024px   | 1023px   | 3.2rem
 smallDesktop     | 1280px   | 1279px   | 3.2rem
