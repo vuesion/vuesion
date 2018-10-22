@@ -8,7 +8,7 @@ body {
 
 // always make sure images have an alt attribute
 img:not([alt]) {
-  border: 5px dashed $brand-warn;
+  border: 5px dashed $brand-danger;
 }
 
 /* vue-icon global style */
@@ -21,7 +21,12 @@ i {
   svg {
     height: inherit;
     width:  inherit;
-    fill:   currentColor;
+    fill:   currentColor !important;
+    stroke: currentColor !important;
+  }
+
+  g {
+    stroke: currentColor !important;
   }
 }
 
