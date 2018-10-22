@@ -4,7 +4,7 @@ import { {{ properCase moduleName }}Actions }                     from './action
 import { {{ properCase moduleName }}Getters }                     from './getters';
 import { {{ properCase moduleName }}Mutations }                   from './mutations';
 
-export const {{ properCase moduleName }}Module: Module<I{{ properCase moduleName }}State, I{{ properCase moduleName }}State> = {
+export const {{ properCase moduleName }}Module: Module<I{{ properCase moduleName }}State, IState> = {
   namespaced: true,
   actions:    {
     ...{{ properCase moduleName }}Actions,
