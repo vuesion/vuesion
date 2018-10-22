@@ -30,10 +30,10 @@ $button-danger-bg: $brand-danger;
 $button-danger-hover-bg: darken($button-danger-bg, 5%);
 $button-danger-border: 1px solid $button-danger-bg;
 
-$button-warn-color: $text-color;
-$button-warn-bg: $brand-warning;
-$button-warn-hover-bg: darken($button-warn-bg, 5%);
-$button-warn-border: 1px solid $button-warn-bg;
+$button-warning-color: $text-color;
+$button-warning-bg: $brand-warning;
+$button-warning-hover-bg: darken($button-warning-bg, 5%);
+$button-warning-border: 1px solid $button-warning-bg;
 
 $button-success-color: $text-color;
 $button-success-bg: $brand-success;
