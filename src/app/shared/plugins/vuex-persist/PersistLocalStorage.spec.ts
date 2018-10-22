@@ -16,35 +16,40 @@ describe('PersistLocalStorage', () => {
   });
 
   test('should clear store', () => {
+    const spy = jest.spyOn(Storage.prototype, 'clear');
     storage.clear();
 
-    expect(window.localStorage.clear).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalled();
   });
 
   test('should get item', () => {
+    const spy = jest.spyOn(Storage.prototype, 'getItem');
     storage.getItem('foo');
 
-    expect(window.localStorage.getItem).toHaveBeenCalledWith('vuexpersistfoo');
+    expect(spy).toHaveBeenCalledWith('vuexpersistfoo');
   });
 
   test('should get key', () => {
+    const spy = jest.spyOn(Storage.prototype, 'key');
     storage.key(1);
 
-    expect(window.localStorage.key).toHaveBeenCalledWith(1);
+    expect(spy).toHaveBeenCalledWith(1);
   });
 
   test('should remove item', () => {
+    const spy = jest.spyOn(Storage.prototype, 'removeItem');
     storage.removeItem('foo');
 
-    expect(window.localStorage.removeItem).toHaveBeenCalledWith('vuexpersistfoo');
+    expect(spy).toHaveBeenCalledWith('vuexpersistfoo');
   });
 
   test('should set item and change prefix', () => {
     const localStore: PersistLocalStorage = new PersistLocalStorage([], undefined, 'testprefix');
+    const spy = jest.spyOn(Storage.prototype, 'setItem');
 
     localStore.setItem('foo', 'bar');
 
-    expect(window.localStorage.setItem).toHaveBeenCalledWith('testprefixfoo', 'bar');
+    expect(spy).toHaveBeenCalledWith('testprefixfoo', 'bar');
   });
 
   test('should manipulate state before persist', () => {
