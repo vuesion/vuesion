@@ -101,6 +101,24 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "hugomn",
+      "name": "Hugo Magalhães",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/497957?v=4",
+      "profile": "http://hugomagalhaes.com",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "glederer",
+      "name": "glederer",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/7151993?v=4",
+      "profile": "https://github.com/glederer",
+      "contributions": [
+        "translation"
+      ]
     }
   ]
 }
