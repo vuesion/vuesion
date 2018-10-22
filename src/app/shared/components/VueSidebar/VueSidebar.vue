@@ -1,5 +1,5 @@
 <template>
-  <div ref="sidebar">
+  <aside ref="sidebar">
     <button :class="hamburgerCssClasses" type="button" aria-label="menu" @click="open = !open">
             <span :class="$style.box">
               <span :class="$style.inner" />
@@ -8,7 +8,7 @@
     <div :class="sidebarClasses">
       <slot />
     </div>
-  </div>
+  </aside>
 </template>
 
 <script lang="ts">
@@ -68,11 +68,12 @@
     position:                   fixed;
     top:                        0;
     left:                       0;
-    height:                     100%;
+    height:                     $sidebar-height;
     background:                 $sidebar-bg;
     color:                      $sidebar-color;
     max-width:                  $sidebar-max-width;
     padding:                    $sidebar-padding;
+    margin:                     $sidebar-margin;
     overflow-y:                 scroll;
     transform:                  translateX(-100%);
     transition:                 transform $transition-duration ease-in-out;
