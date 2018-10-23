@@ -67,41 +67,11 @@ export const addModuleToRoutes = (pathToAppRoutes: string, moduleName: string): 
   }
 };
 
-export const addModuleToStore = (pathToAppActions: string, moduleName: string): void => {
-  try {
-    let file = fs.readFileSync(pathToAppActions, 'utf-8');
-
-    getAST(file);
-
-    file = insertAt(
-      file,
-      sourceFile.endOfFileToken.end,
-      `store.registerModule(['${lowerFirst(moduleName)}'], ${upperFirst(moduleName)}Module, { preserveState: true });\n`,
-    );
-
-    file = insertAt(
-      file,
-      findAstNodes(sourceFile, ts.SyntaxKind.ImportDeclaration, true).pop().end,
-      `\nimport { ${upperFirst(moduleName)}Module }            from './${lowerFirst(moduleName)}/module';`,
-    );
-
-    fs.writeFileSync(pathToAppActions, file, { encoding: 'utf-8' });
-  } catch (e) {
-    throw new Error(e);
-  }
-};
-
 export const addModuleToState = (pathToAppActions: string, moduleName: string): void => {
   try {
     let file = fs.readFileSync(pathToAppActions, 'utf-8');
 
     getAST(file);
-
-    file = insertAt(
-      file,
-      findAstNodes(sourceFile, ts.SyntaxKind.ObjectLiteralExpression, true).pop().end + 1,
-      `\n  ${lowerFirst(moduleName)}: {\n    ...${upperFirst(moduleName)}DefaultState(),\n  },`,
-    );
 
     const interfaces: ts.Node[] = findAstNodes(sourceFile, ts.SyntaxKind.InterfaceDeclaration, true);
 
@@ -114,7 +84,7 @@ export const addModuleToState = (pathToAppActions: string, moduleName: string): 
     file = insertAt(
       file,
       findAstNodes(sourceFile, ts.SyntaxKind.ImportDeclaration, true).pop().end,
-      `\nimport { ${upperFirst(moduleName)}DefaultState, I${upperFirst(moduleName)}State }         from './${lowerFirst(moduleName)}/state';`,
+      `\nimport { I${upperFirst(moduleName)}State }              from './${lowerFirst(moduleName)}/state';`,
     );
 
     fs.writeFileSync(pathToAppActions, file, { encoding: 'utf-8' });

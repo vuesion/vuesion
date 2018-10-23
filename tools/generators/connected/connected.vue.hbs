@@ -8,18 +8,18 @@
 
         <vue-grid-item fill>
           <vue-button
+            secondary
             :loading="incrementPending"
-            @click='increment'
-            accent>Increment +1
+            @click='increment'>Increment +1
           </vue-button>
-          <br/>
-          <br/>
+          <br />
+          <br />
         </vue-grid-item>
         <vue-grid-item fill>
           <vue-button
+            primary
             :loading="decrementPending"
-            @click='decrement'
-            primary>Decrement -1
+            @click='decrement'>Decrement -1
           </vue-button>
           <h3>Count is \{{ count }}</h3>
         </vue-grid-item>
@@ -30,6 +30,8 @@
 
 <script lang="ts">
   import { mapActions, mapGetters } from 'vuex';
+  import { registerModule }         from '../../store';
+  import { {{ properCase moduleName }}Module }          from '../module';
   import { IPreLoad }               from '../../../server/isomorphic';
   import VueGrid                    from '../../shared/components/VueGrid/VueGrid.vue';
   import VueGridItem                from '../../shared/components/VueGridItem/VueGridItem.vue';
@@ -55,7 +57,11 @@
     computed:   {
       ...mapGetters('{{ camelCase moduleName }}', ['count', 'incrementPending', 'decrementPending']),
     },
+    beforeCreate() {
+      registerModule('{{ camelCase moduleName }}', {{ properCase moduleName }}Module);
+    },
     prefetch:   (options: IPreLoad) => {
+      registerModule('{{ camelCase moduleName }}', {{ properCase moduleName }}Module);
       return options.store.dispatch('{{ camelCase moduleName }}/increment');
     },
   };
