@@ -3,14 +3,14 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item fill class="vueGridItem">
-          <h2>User experience</h2>
+          <vue-headline level="2">User experience</vue-headline>
         </vue-grid-item>
 
         <vue-grid-item class="vueGridItem">
           <vue-panel class="vuePanel">
             <vue-panel-body>
               <vue-icon-spinner />
-              <h3>Animations</h3>
+              <vue-headline level="3">Animations</vue-headline>
               <p>A stable animations set up already included (<a href="http://animejs.com/" target="_blank"
                                                                  rel="noopener">anime.js</a>).</p>
             </vue-panel-body>
@@ -21,7 +21,7 @@
           <vue-panel class="vuePanel">
             <vue-panel-body>
               <vue-icon-mobile />
-              <h3>Progressive-Web-App</h3>
+              <vue-headline level="3">Progressive-Web-App</vue-headline>
               <p>Offline-first support with service-workers and a lighthouse score as high as possible (90+).</p>
             </vue-panel-body>
           </vue-panel>
@@ -31,7 +31,7 @@
           <vue-panel class="vuePanel">
             <vue-panel-body>
               <vue-icon-puzzle-piece />
-              <h3>Design System</h3>
+              <vue-headline level="3">Design System</vue-headline>
               <p>
                 Includes a blueprint for a 100% customizable Design System with a huge amount of
                 <router-link to="/storybook">components</router-link>
@@ -54,9 +54,11 @@
   import VueIconSpinner     from '../../shared/components/icons/VueIconSpinner/VueIconSpinner.vue';
   import VueIconMobile      from '../../shared/components/icons/VueIconMobile/VueIconMobile.vue';
   import VueIconPuzzlePiece from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
+  import VueHeadline        from '../../shared/components/VueHeadline/VueHeadline.vue';
 
   export default {
     components: {
+      VueHeadline,
       VueIconPuzzlePiece,
       VueIconMobile,
       VueIconSpinner,

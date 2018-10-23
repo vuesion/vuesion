@@ -3,8 +3,8 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item>
-          <h1>Error</h1>
-          <h3>Try again later!</h3>
+          <vue-headline level="1">Error</vue-headline>
+          <vue-headline level="3">Try again later!</vue-headline>
         </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
@@ -15,6 +15,7 @@
   import VueGrid     from '../../shared/components/VueGrid/VueGrid.vue';
   import VueGridRow  from '../../shared/components/VueGridRow/VueGridRow.vue';
   import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
+  import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
 
   export default {
     metaInfo:   {
@@ -27,7 +28,7 @@
       ],
     },
     name:       'Error',
-    components: { VueGridItem, VueGridRow, VueGrid },
+    components: { VueHeadline, VueGridItem, VueGridRow, VueGrid },
     props:      {},
     data(): any {
       return {};

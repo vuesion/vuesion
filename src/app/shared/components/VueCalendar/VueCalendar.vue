@@ -1,8 +1,8 @@
 <template>
   <div :class="$style.calendar">
     <div :class="$style.header">
-      <h4 @click="setSelecting('year')">{{ selectedYear }}</h4>
-      <h5 @click="setSelecting('date')">{{ $d(calculatedDate, 'calendarHeader') }}</h5>
+      <vue-headline level="4" @click="setSelecting('year')">{{ selectedYear }}</vue-headline>
+      <vue-headline level="5" @click="setSelecting('date')">{{ $d(calculatedDate, 'calendarHeader') }}</vue-headline>
     </div>
 
     <div :class="$style.body" v-if="selecting === 'date'">
@@ -54,8 +54,9 @@
 </template>
 
 <script lang="ts">
-  import VueButton from '../VueButton/VueButton.vue';
-  import chunk     from 'lodash/chunk';
+  import chunk       from 'lodash/chunk';
+  import VueButton   from '../VueButton/VueButton.vue';
+  import VueHeadline from '../VueHeadline/VueHeadline.vue';
 
   interface IData {
     selecting: string;
@@ -82,6 +83,7 @@
   export default {
     name:       'VueCalendar',
     components: {
+      VueHeadline,
       VueButton,
     },
     props:      {
@@ -326,9 +328,9 @@
     padding:     $calendar-header-padding;
     background:  $calendar-header-bg;
     text-shadow: $calendar-header-text-shadow;
+    cursor:      pointer;
 
     h4, h5 {
-      cursor: default;
       margin: 0;
     }
   }
