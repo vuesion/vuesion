@@ -57,11 +57,12 @@ export const registerModule = (moduleName: string, module: Module<any, any>) => 
   /**
    * merge existing state hydrated from vuex persist
    * with module default state
+   * TODO: revisit this solution and figure out a better way to use it with vuex-persist
    */
   if (stateExists) {
     module.state = merge(module.state, store.state[moduleName], {
-      clone:      false,
-      arrayMerge: (moduleState, saved) => {
+      clone:                                 false,
+      arrayMerge: /* istanbul ignore next */ (moduleState, saved) => {
         return saved;
       },
     });
