@@ -1,11 +1,10 @@
 import Vue                      from 'vue';
-import Vuex, { Store }          from 'vuex';
+import Vuex, { Module, Store }  from 'vuex';
 import { DefaultState, IState } from './state';
 import { VuexPersist }          from './shared/plugins/vuex-persist/vuex-persist';
 import { PersistLocalStorage }  from './shared/plugins/vuex-persist/PersistLocalStorage';
 import { PersistCookieStorage } from './shared/plugins/vuex-persist/PersistCookieStorage';
 import { AppModule }            from './app/module';
-import { CounterModule }        from './counter/module';
 
 Vue.use(Vuex);
 
@@ -50,5 +49,13 @@ export const store: Store<IState> = new Vuex.Store(
   },
 );
 
-store.registerModule(['app'], AppModule, { preserveState: true });
-store.registerModule(['counter'], CounterModule, { preserveState: true });
+export const registerModule = (moduleName: string, module: Module<any, any>) => {
+  const moduleIsRegistered: boolean = (store as any)._modules.root._children[moduleName] !== undefined;
+  const stateExists: boolean = store.state[moduleName];
+
+  if (!moduleIsRegistered) {
+    store.registerModule(moduleName, module, { preserveState: stateExists });
+  }
+};
+
+registerModule('app', AppModule);
