@@ -213,7 +213,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "concurrently \"npm run lint\" \"npm run test -- --silent\""
+      "pre-commit": "concurrently \"npm run lint\" \"npm run test:coverage -- --silent\""
     }
   }
 }

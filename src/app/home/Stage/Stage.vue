@@ -5,7 +5,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item class="vueGridItem">
-          <h1 :class="$style.title">vue-starter</h1>
+          <vue-headline level="1" :class="$style.title">vue-starter</vue-headline>
           <div :class="$style.subTitle">
             {{
             $t('App.core.description' /* A flexible, scalable, opinionated boilerplate for production-ready PWAs with
@@ -29,9 +29,10 @@
   import VueGridRow          from '../../shared/components/VueGridRow/VueGridRow.vue';
   import VueGridItem         from '../../shared/components/VueGridItem/VueGridItem.vue';
   import VueIconGithub       from '../../shared/components/icons/VueIconGithub/VueIconGithub.vue';
+  import VueHeadline         from '../../shared/components/VueHeadline/VueHeadline.vue';
 
   export default {
-    components: { VueIconGithub, VueGridItem, VueGridRow, VueGrid },
+    components: { VueHeadline, VueIconGithub, VueGridItem, VueGridRow, VueGrid },
     props:      {
       disableParticles: {
         type:     Boolean,

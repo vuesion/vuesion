@@ -3,7 +3,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item fill class="vueGridItem">
-          <h2>Quick start</h2>
+          <vue-headline level="2">Quick start</vue-headline>
         </vue-grid-item>
 
         <vue-grid-item class="vueGridItem">
@@ -31,9 +31,11 @@
   import VuePanel     from '../../shared/components/VuePanel/VuePanel.vue';
   import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
   import VueGridRow   from '../../shared/components/VueGridRow/VueGridRow.vue';
+  import VueHeadline  from '../../shared/components/VueHeadline/VueHeadline.vue';
 
   export default {
     components: {
+      VueHeadline,
       VueGrid,
       VueGridItem,
       VuePanel,
