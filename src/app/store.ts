@@ -13,8 +13,15 @@ const state: IState = (CLIENT && window.__INITIAL_STATE__) || DefaultState;
 
 /* istanbul ignore next */
 const beforePersistLocalStorage = (localState: IState): IState => {
-  delete localState.counter.incrementPending;
-  delete localState.counter.decrementPending;
+  /**
+   * because the counter module is loaded on demand
+   * we have to check if it exists before we delete
+   * some state attributes
+   */
+  if (localState.counter) {
+    delete localState.counter.incrementPending;
+    delete localState.counter.decrementPending;
+  }
 
   return localState;
 };
