@@ -3,7 +3,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item fill class="vueGridItem">
-          <h2>Development Experience</h2>
+          <vue-headline level="2">Development Experience</vue-headline>
         </vue-grid-item>
       </vue-grid-row>
       <vue-grid-row>
@@ -11,7 +11,7 @@
           <vue-panel class="vuePanel">
             <vue-panel-body>
               <vue-icon-code />
-              <h3>Quick scaffolding</h3>
+              <vue-headline level="3">Quick scaffolding</vue-headline>
               <p>Create components, VueX connected components, modules - and their tests - right from the CLI!</p>
             </vue-panel-body>
           </vue-panel>
@@ -21,7 +21,7 @@
           <vue-panel class="vuePanel">
             <vue-panel-body>
               <vue-icon-bullhorn />
-              <h3>Instant feedback</h3>
+              <vue-headline level="3">Instant feedback</vue-headline>
               <p>Enjoy the best DX (Developer eXperience) and code your app at the speed of thought!
                  Your saved changes to the CSS and TypeScript are reflected instantaneously
                  without refreshing the page or restarting your server.
@@ -42,9 +42,11 @@
   import VuePanelBody    from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
   import VueIconCode     from '../../shared/components/icons/VueIconCode/VueIconCode.vue';
   import VueIconBullhorn from '../../shared/components/icons/VueIconBullhorn/VueIconBullhorn.vue';
+  import VueHeadline     from '../../shared/components/VueHeadline/VueHeadline.vue';
 
   export default {
     components: {
+      VueHeadline,
       VueIconBullhorn,
       VueIconCode,
       VueGrid,
@@ -64,8 +66,8 @@
     text-align: center;
 
     i {
-      height:  $font-size-h1;
-      width:  $font-size-h1;
+      height:     $font-size-h1;
+      width:      $font-size-h1;
       margin-top: $space-unit;
     }
 

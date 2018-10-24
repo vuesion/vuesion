@@ -1,5 +1,6 @@
 import Vue                      from 'vue';
 import Vuex, { Module, Store }  from 'vuex';
+import merge                    from 'deepmerge';
 import { DefaultState, IState } from './state';
 import { VuexPersist }          from './shared/plugins/vuex-persist/vuex-persist';
 import { PersistLocalStorage }  from './shared/plugins/vuex-persist/PersistLocalStorage';
@@ -51,10 +52,24 @@ export const store: Store<IState> = new Vuex.Store(
 
 export const registerModule = (moduleName: string, module: Module<any, any>) => {
   const moduleIsRegistered: boolean = (store as any)._modules.root._children[moduleName] !== undefined;
-  const stateExists: boolean = store.state[moduleName];
+  const stateExists: boolean = store.state[moduleName] !== undefined;
+
+  /**
+   * merge existing state hydrated from vuex persist
+   * with module default state
+   * TODO: revisit this solution and figure out a better way to use it with vuex-persist
+   */
+  if (stateExists) {
+    module.state = merge(module.state, store.state[moduleName], {
+      clone:                                 false,
+      arrayMerge: /* istanbul ignore next */ (moduleState, saved) => {
+        return saved;
+      },
+    });
+  }
 
   if (!moduleIsRegistered) {
-    store.registerModule(moduleName, module, { preserveState: stateExists });
+    store.registerModule(moduleName, module, { preserveState: false });
   }
 };
 

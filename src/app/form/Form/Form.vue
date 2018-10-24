@@ -4,7 +4,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item class="vueGridItem">
-          <h1>Form example</h1>
+          <vue-headline level="1">Form example</vue-headline>
           <form-example />
         </vue-grid-item>
 
@@ -19,12 +19,13 @@
   import VueGridRow  from '../../shared/components/VueGridRow/VueGridRow.vue';
   import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
   import FormExample from '../FormExample/FormExample.vue';
+  import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
 
   export default {
     metaInfo:   {
       title: 'vue-starter - Form Example',
     },
-    components: { FormExample, VueGridItem, VueGridRow, VueGrid },
+    components: { VueHeadline, FormExample, VueGridItem, VueGridRow, VueGrid },
     computed:   {},
     data(): any {
       return {};
