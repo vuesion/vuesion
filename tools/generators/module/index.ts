@@ -1,6 +1,6 @@
-import * as path                                                 from 'path';
-import { folderExists }                                          from '../utils';
-import { addModuleToRoutes, addModuleToState, addModuleToStore } from '../ast';
+import * as path                               from 'path';
+import { folderExists }                        from '../utils';
+import { addModuleToRoutes, addModuleToState } from '../ast';
 
 export = {
   description: 'Add a module with VueX store and routes',
@@ -117,7 +117,6 @@ export = {
                 },
               ]);
 
-      addModuleToStore(path.join(path.resolve(process.cwd()), 'src', 'app', 'store.ts'), data.moduleName);
       addModuleToState(path.join(path.resolve(process.cwd()), 'src', 'app', 'state.ts'), data.moduleName);
     }
 

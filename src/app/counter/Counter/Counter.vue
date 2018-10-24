@@ -12,14 +12,14 @@
             :loading="incrementPending"
             @click='increment'>Increment +1
           </vue-button>
-          <br/>
-          <br/>
+          <br />
+          <br />
         </vue-grid-item>
         <vue-grid-item fill>
           <vue-button
+            primary
             :loading="decrementPending"
-            @click='decrement'
-            primary>Decrement -1
+            @click='decrement'>Decrement -1
           </vue-button>
           <h3>Count is {{ count }}</h3>
         </vue-grid-item>
@@ -35,6 +35,8 @@
   import VueGridItem                from '../../shared/components/VueGridItem/VueGridItem.vue';
   import VueButton                  from '../../shared/components/VueButton/VueButton.vue';
   import VueGridRow                 from '../../shared/components/VueGridRow/VueGridRow.vue';
+  import { registerModule }         from '../../store';
+  import { CounterModule }          from '../module';
 
   export default {
     metaInfo:   {
@@ -55,7 +57,11 @@
     computed:   {
       ...mapGetters('counter', ['count', 'incrementPending', 'decrementPending']),
     },
+    beforeCreate() {
+      registerModule('counter', CounterModule);
+    },
     prefetch:   (options: IPreLoad) => {
+      registerModule('counter', CounterModule);
       return options.store.dispatch('counter/increment');
     },
   };

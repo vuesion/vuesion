@@ -1,5 +1,5 @@
-import { AppDefaultState, IAppState }         from './app/state';
-import { CounterDefaultState, ICounterState } from './counter/state';
+import { AppDefaultState, IAppState } from './app/state';
+import { ICounterState }              from './counter/state';
 
 export interface IState {
   [key: string]: any;
@@ -9,10 +9,7 @@ export interface IState {
 }
 
 export const DefaultState: IState = {
-  app:     {
+  app: {
     ...AppDefaultState(),
-  },
-  counter: {
-    ...CounterDefaultState(),
   },
 };

@@ -33,6 +33,8 @@ import { FormRoutes } from './form/routes';
 
       ...CounterRoutes,
       ...FormRoutes,
+      
+...
 ```
 
 `./src/app/state.ts`
@@ -44,23 +46,15 @@ import { CounterDefaultState, ICounterState } from './counter/state';
   counter?: ICounterState;
 
 ...
-
-  counter: {
-    ...CounterDefaultState(),
-  },
 ```
 
 `./src/app/store.ts`
 ```js
-import { CounterModule }        from './counter/module';
-
 ...
 
-store.registerModule(['counter'], CounterModule, { preserveState: true });
-
-...
   delete localState.counter.incrementPending;
   delete localState.counter.decrementPending;
+  
 ...
 ```
 
@@ -79,6 +73,8 @@ import { CounterRoutes }    from './routes/CounterRoutes';
  */
 DemoRoutes(app);
 CounterRoutes(app);
+
+...
 ```
 
 ## 验证
