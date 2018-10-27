@@ -1,3 +1,37 @@
+### 1.4.0 (2018-10-27)
+
+##### Chores
+
+*  add new contributors ([6a2c7b9b](https://github.com/devCrossNet/vue-starter/commit/6a2c7b9bfd48eaf418f4352e4b6fa8a54f8eaa0a))
+
+##### Documentation Changes
+
+*  update quick start / install ([997837cb](https://github.com/devCrossNet/vue-starter/commit/997837cb31063649e78786d388ab74e0cef7e707))
+*  fix cleanup docs ([#267](https://github.com/devCrossNet/vue-starter/pull/267)) ([b0d881e4](https://github.com/devCrossNet/vue-starter/commit/b0d881e439a448737e30b91bdf13e14f581f6976))
+* **config:**  fix spelling mistake ([#255](https://github.com/devCrossNet/vue-starter/pull/255)) ([4e6dfc2c](https://github.com/devCrossNet/vue-starter/commit/4e6dfc2c867b344817c805d0a7a2582876b5b0db))
+
+##### New Features
+
+* **vue-input:**  add auto-focus for SPA's ([05996b33](https://github.com/devCrossNet/vue-starter/commit/05996b338bafd966130d82a32980da26022267d2))
+* **vue-tooltip:**  add property to programmatically suppress tooltip ([#263](https://github.com/devCrossNet/vue-starter/pull/263)) ([d625656c](https://github.com/devCrossNet/vue-starter/commit/d625656cdeb5761a8434cccb5852bca44ad88066))
+* **vue-data-table:**  add row to scoped slot; add sortable, fitContent ([#256](https://github.com/devCrossNet/vue-starter/pull/256)) ([fb7ed420](https://github.com/devCrossNet/vue-starter/commit/fb7ed42041f401c6bb68dc586fcff6ae180db3a0))
+* **i18n:**  update portuguese translations ([#253](https://github.com/devCrossNet/vue-starter/pull/253)) ([38655445](https://github.com/devCrossNet/vue-starter/commit/38655445997e50ffcf3758d2b52186286d9cb05f))
+
+##### Bug Fixes
+
+*  module typings ([#271](https://github.com/devCrossNet/vue-starter/pull/271)) ([efe654b3](https://github.com/devCrossNet/vue-starter/commit/efe654b3dca89f2f5c679b8031e85e4683ec4125))
+*  remove performance budget in dev-mode ([a58728e0](https://github.com/devCrossNet/vue-starter/commit/a58728e0d203478f28a3c738931d9dd5327aaccd))
+*  remove empty img alt tag rules ([f5ad9605](https://github.com/devCrossNet/vue-starter/commit/f5ad960518f72978b8b8732f5c40ff3b5bb8aa24))
+* **typings:**  add rootState to ActionContext ([#262](https://github.com/devCrossNet/vue-starter/pull/262)) ([22dcbb36](https://github.com/devCrossNet/vue-starter/commit/22dcbb36bd8c02bc34ef2fd62714f912ce12add0))
+
+##### Performance Improvements
+
+*  add webpack performance budget ([ee944cf2](https://github.com/devCrossNet/vue-starter/commit/ee944cf2f31fb66271e8c4a865343821fa40dc3e))
+
+##### Tests
+
+* **vuex-persist:**  replace localStorage with mock implementation ([#272](https://github.com/devCrossNet/vue-starter/pull/272)) ([0c129940](https://github.com/devCrossNet/vue-starter/commit/0c129940908356cf1b58f3adfe6a652d142834c2))
+
 ### 1.3.0 (2018-10-06)
 
 ##### Chores
