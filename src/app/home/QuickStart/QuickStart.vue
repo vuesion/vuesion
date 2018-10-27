@@ -10,11 +10,8 @@
           <vue-panel class="vuePanel">
             <vue-panel-body class="vuePanelBody">
               <ol>
-                <li>Install Node.js 8.7.x or higher. Use <a href="https://github.com/creationix/nvm" target="_blank"
-                                                            rel="noopener">nvm</a> to maintain multiple Node.js versions
-                </li>
-                <li>Install Node.js 8.x or higher.</li>
-                <li>Install npm version 5.x or higher</li>
+                <li>Install node 8 or higher</li>
+                <li>Install npm 5 or higher</li>
                 <li>clone repository <code>git clone https://github.com/devCrossNet/vue-starter</code></li>
                 <li>change directory <code>cd vue-starter</code></li>
                 <li>Install dependencies: <code>npm install</code></li>

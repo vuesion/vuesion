@@ -9,3 +9,4 @@ cypress/screenshots
 cypress/videos
 storybook-static
 logs
+.cache
