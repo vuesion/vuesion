@@ -3,7 +3,9 @@
     :class="cssClasses"
     :disabled="disabled"
     @click="onClick"
-    v-bind="$attrs">
+    v-bind="$attrs"
+    ref="button"
+    :style="{ width: actualWidth }">
     <slot v-if="loading === false" />
     <vue-loader v-if="loading === true" />
   </button>
@@ -81,6 +83,11 @@
         }
 
         return classes;
+      },
+      actualWidth() {
+        return (this.loading === true && this.$refs.button)
+               ? `${this.$refs.button.getBoundingClientRect().width}px`
+               : null;
       },
     },
   };
