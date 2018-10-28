@@ -3,7 +3,7 @@ import VueInfoAddon  from 'storybook-addon-vue-info';
 import VueCheckbox   from './VueCheckbox.vue';
 import { action }    from '@storybook/addon-actions';
 
-const story = (storiesOf('VueCheckbox', module) as any);
+const story = (storiesOf('2. Components|Checkbox', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

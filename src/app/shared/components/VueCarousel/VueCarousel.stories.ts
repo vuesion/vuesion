@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import VueInfoAddon  from 'storybook-addon-vue-info';
 import VueCarousel   from './VueCarousel.vue';
 
-const story = (storiesOf('VueCarousel', module) as any);
+const story = (storiesOf('2. Components|Carousel', module) as any);
 const images: any[] = [
   {
     alt:       'Slide 1',

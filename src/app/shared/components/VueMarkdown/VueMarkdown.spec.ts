@@ -9,7 +9,7 @@ describe('VueMarkdown.vue', () => {
     const wrapper = mount(VueMarkdown, {
       localVue,
       slots: {
-        default: ['# foo\n ## bar\n ### baz'],
+        default: ['<img src="/test.jpg"/># foo\n ## bar\n ### baz'],
       },
     });
 

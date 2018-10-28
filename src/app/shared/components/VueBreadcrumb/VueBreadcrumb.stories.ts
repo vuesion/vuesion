@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import VueInfoAddon  from 'storybook-addon-vue-info';
 import VueBreadcrumb from './VueBreadcrumb.vue';
 
-const story = storiesOf('VueBreadcrumb', module);
+const story = storiesOf('2. Components|Breadcrumb', module);
 
 story.addDecorator(VueInfoAddon);
 story.addDecorator(require('storybook-vue-router').default());

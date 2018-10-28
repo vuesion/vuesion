@@ -5,7 +5,7 @@ import VueAutocomplete                from './VueAutocomplete.vue';
 import { AutocompleteOptionsFixture } from './fixtures/IAutocompleteFixture';
 import { i18n }                    from '../../plugins/i18n/i18n';
 
-const story = (storiesOf('VueAutocomplete', module) as any);
+const story = (storiesOf('2. Components|Autocomplete', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

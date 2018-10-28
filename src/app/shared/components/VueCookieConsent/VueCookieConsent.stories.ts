@@ -4,7 +4,7 @@ import VueInfoAddon     from 'storybook-addon-vue-info';
 import VueCookieConsent from './VueCookieConsent.vue';
 import { i18n }         from '../../plugins/i18n/i18n';
 
-const story = (storiesOf('VueCookieConsent', module) as any);
+const story = (storiesOf('2. Components|CookieConsent', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

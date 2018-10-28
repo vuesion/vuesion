@@ -1,3 +1,18 @@
+/* tslint:disable */
+
+import { storiesOf } from '@storybook/vue';
+import VueMarkdown   from '../components/VueMarkdown/VueMarkdown.vue';
+import { withInfo }  from 'storybook-addon-vue-info';
+
+let story = (storiesOf('1. Design System|1-Design System', module) as any);
+
+story.add('Intro', withInfo({ header:     false,
+                              source:     false,
+                              propTables: false,
+                              styles:     { propTableHead: { display: 'none' } },
+                            })(() => ({
+  components: { VueMarkdown },
+  template:   `<vue-markdown>
 # Design System
 
 The vue-starter comes with a Design System that you can 100% customize. 
@@ -11,25 +26,31 @@ and customizing them to fit your Brand Identity.
 _Over the years we discovered that it's much harder to maintain all of these forks for a project than
 building our own set of components that are **100% customizable** because the code is 100% accessible._
 
-::: tip Design System
 This Design System is the next step, it is a blueprint that enables you to create your very own Design System that perfectly fits your
 Brand or your clients Corporate Identity.
-:::
 
-::: warning 3rd Party UI
 We are aware that not everyone has to implement their own professional Design System.
-If this is the case for you, you might be interested in [integrating a 3rd party UI library](/third-party)
-:::
+If this is the case for you, you might be interested in [integrating a 3rd party UI library](/docs/guide/third-party.html)
+</vue-markdown>
+`,
+})));
 
-## Branding
+story = (storiesOf('1. Design System|2-Branding', module) as any);
 
-### Color Palette
+story.add('1. Color Palette', withInfo({ header:     false,
+                                      source:     false,
+                                      propTables: false,
+                                      styles:     { propTableHead: { display: 'none' } },
+                                    })(() => ({
+  components: { VueMarkdown },
+  template:   `<vue-markdown>
+# Color Palette
 
-<img :src="$withBase('/color-palette.jpg')" alt="architecture"> 
+![color palette](/color-palette.jpg "color palette")
 
 The naming convention of the color palette is structured in the following way
 
-`Meaning`-`Weight`-`Shade`
+\`Meaning\`-\`ColorIndex\`-\`Shade\` for example \`$primary-1-1\`
 
 following _Meanings_ are included:
 
@@ -54,7 +75,17 @@ Shade | Opacity
 5     | 20 %
 6     | 10 %
 7     | 5 %
+</vue-markdown>
+`,
+})));
 
+story.add('2. Brand Colors', withInfo({ header:     false,
+                                        source:     false,
+                                        propTables: false,
+                                        styles:     { propTableHead: { display: 'none' } },
+                                      })(() => ({
+  components: { VueMarkdown },
+  template:   `<vue-markdown>
 ### Brand Colors
 Every brand color is related to a color of the color palette.
 
@@ -99,23 +130,45 @@ Variation            | Palette Color
 ---------------------|--------------
 border-color         | primary-1-5
 border-color-inverse | primary-1-2
+</vue-markdown>
+`,
+})));
 
+story.add('3. General Branding', withInfo({ header:     false,
+                                        source:     false,
+                                        propTables: false,
+                                        styles:     { propTableHead: { display: 'none' } },
+                                      })(() => ({
+  components: { VueMarkdown },
+  template:   `<vue-markdown>
 ### General Branding
 General rules for your Brand identity.
 
 #### Spacing
-To keep the spacing consistent we have one variable `$space-unit` that is used for spacings,
+To keep the spacing consistent we have one variable \`$space-unit\` that is used for spacings,
 you can multiply or divide this value as you want. 
-The default value in the blueprint is `0.8rem`.
+The default value in the blueprint is \`0.8rem\`.
 
 #### Border Radius
-To keep the border-radius consistent we have one variable `$border-radius` with the value `$space-unit * 0.5` (0.4rem).
+To keep the border-radius consistent we have one variable \`$border-radius\` with the value \`$space-unit * 0.5\` (0.4rem).
 
 #### Transitions
 It's good to keep your animation language consistent to achieve that we defined a variable
-for the transition duration `$transition-duration` with the value `250ms`
-and a variable for the easing-curve `$easing-curve` with the value `cubic-bezier(.17,.67,.83,.67)`.
+for the transition duration \`$transition-duration\` with the value \`250ms\`
+and a variable for the easing-curve \`$easing-curve\` with the value \`cubic-bezier(.17,.67,.83,.67)\`.
+</vue-markdown>
+`,
+})));
 
+story = (storiesOf('1. Design System|3-Typography', module) as any);
+
+story.add('Typography', withInfo({ header:     false,
+                                   source:     false,
+                                   propTables: false,
+                                   styles:     { propTableHead: { display: 'none' } },
+                                 })(() => ({
+  components: { VueMarkdown },
+  template:   `<vue-markdown>
 ## Typography
 Barlow is the standard type face for the Design System blueprint.
 
@@ -144,7 +197,19 @@ Line height is measured by taking the font size and adding 0.8rem.
 
 ### List Style
 Lists are indented by 8px with an additional 0.8rem between the bullet and content.
+</vue-markdown>
+`,
+})));
 
+story = (storiesOf('1. Design System|4-Layout', module) as any);
+
+story.add('Layout', withInfo({ header:     false,
+                               source:     false,
+                               propTables: false,
+                               styles:     { propTableHead: { display: 'none' } },
+                             })(() => ({
+  components: { VueMarkdown },
+  template:   `<vue-markdown>
 ## Layout
 The Grid-System is based on Flex box and comes in form of three included components.
 
@@ -153,15 +218,26 @@ Component     | Purpose
 VueGrid       | Container that is limited in the width, general page layout
 VueGridRow    | Row that is always 100% width and will be stacked on the page
 VueGridItem   | Item in the row that will be distributed equally on the page 
+</vue-markdown>
+`,
+})));
 
+story = (storiesOf('1. Design System|5-Break points', module) as any);
 
-### Break points
+story.add('Break points', withInfo({ header:     false,
+                               source:     false,
+                               propTables: false,
+                               styles:     { propTableHead: { display: 'none' } },
+                             })(() => ({
+  components: { VueMarkdown },
+  template:   `<vue-markdown>
+## Break points
 If you want to use a break point inside one of your components, we provide you width
 mixins to keep everything consistent and to avoid unnecessary media definitions:
 
-`@include mediaMin(break-point-id)`
+\`@include mediaMin(break-point-id)\`
 
-`@include mediaMax(break-point-id)`
+\`@include mediaMax(break-point-id)\`
 
 Break Point Id   | MinWidth | MaxWidth | GutterWidth
 -----------------|----------|----------|------------
@@ -170,3 +246,6 @@ tabletPortrait   | 768px    | 767px    | 3.2rem
 tabletLandscape  | 1024px   | 1023px   | 3.2rem
 smallDesktop     | 1280px   | 1279px   | 3.2rem
 largeDesktop     | 1440px   | 1439px   | 3.2rem
+</vue-markdown>
+`,
+})));

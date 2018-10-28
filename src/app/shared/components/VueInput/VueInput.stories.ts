@@ -4,7 +4,7 @@ import VueInput      from './VueInput.vue';
 import VueButton     from '../VueButton/VueButton.vue';
 import VueModal      from '../VueModal/VueModal.vue';
 
-const story = (storiesOf('VueInput', module) as any);
+const story = (storiesOf('2. Components|Input', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

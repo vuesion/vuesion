@@ -6,7 +6,7 @@ import { i18n }                                         from '../../plugins/i18n
 import { dataTableDataFixture, dataTableHeaderFixture } from './DataTableFixtures';
 import VueButton                                        from '../VueButton/VueButton.vue';
 
-const story = (storiesOf('VueDataTable', module) as any);
+const story = (storiesOf('2. Components|DataTable', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

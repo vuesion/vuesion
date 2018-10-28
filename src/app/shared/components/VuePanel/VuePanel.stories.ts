@@ -6,7 +6,7 @@ import VuePanelBody   from './VuePanelBody/VuePanelBody.vue';
 import VuePanelFooter from './VuePanelFooter/VuePanelFooter.vue';
 import VueButton      from '../VueButton/VueButton.vue';
 
-const story = (storiesOf('VuePanel', module) as any);
+const story = (storiesOf('2. Components|Panel', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

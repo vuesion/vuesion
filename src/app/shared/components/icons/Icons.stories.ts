@@ -1,5 +1,5 @@
 import { storiesOf }        from '@storybook/vue';
-import VueInfoAddon         from 'storybook-addon-vue-info';
+import { withInfo }         from 'storybook-addon-vue-info';
 import VueIconBook          from './VueIconBook/VueIconBook.vue';
 import VueIconBullhorn      from './VueIconBullhorn/VueIconBullhorn.vue';
 import VueIconCertificate   from './VueIconCertificate/VueIconCertificate.vue';
@@ -19,11 +19,14 @@ import VueIconSpinner       from './VueIconSpinner/VueIconSpinner.vue';
 import VueIconTimes         from './VueIconTimes/VueIconTimes.vue';
 import VueIconTwitterSquare from './VueIconTwitterSquare/VueIconTwitterSquare.vue';
 
-const story = (storiesOf('icons', module) as any);
+const story = (storiesOf('1. Design System|6-Icons', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
+story.add('Icons', withInfo({
+                              header:     false,
+                              source:     false,
+                              propTables: false,
+                              styles:     { propTableHead: { display: 'none' } },
+                            })(() => ({
   components: {
     VueIconBook,
     VueIconBullhorn,
@@ -65,4 +68,4 @@ story.add('Default', () => ({
   <vue-icon-times/>
   <vue-icon-twitter-square/>
 </div>`,
-}));
+})));

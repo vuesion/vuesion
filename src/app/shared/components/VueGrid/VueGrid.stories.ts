@@ -4,7 +4,7 @@ import VueGrid       from './VueGrid.vue';
 import VueGridItem   from '../VueGridItem/VueGridItem.vue';
 import VueGridRow    from '../VueGridRow/VueGridRow.vue';
 
-const story = (storiesOf('VueGrid', module) as any);
+const story = (storiesOf('2. Components|Grid', module) as any);
 
 story.addDecorator(VueInfoAddon);
 

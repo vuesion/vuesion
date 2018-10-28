@@ -2,51 +2,40 @@ import { storiesOf } from '@storybook/vue';
 import VueInfoAddon  from 'storybook-addon-vue-info';
 import VueLoader     from './VueLoader.vue';
 
-const story = (storiesOf('VueLoader', module) as any);
+const story = (storiesOf('2. Components|Loader', module) as any);
 
 story.addDecorator(VueInfoAddon);
 
-const storySchema = [
-  {
-    label: 'Default',
-  },
-  {
-    label: 'Medium',
-    props: ['medium'],
-  },
-  {
-    label: 'Large',
-    props: ['large'],
-  },
-  {
-    label: 'Primary',
-    props: ['primary'],
-  },
-  {
-    label: 'Secondary',
-    props: ['secondary'],
-  },
-  {
-    label: 'Tertiary',
-    props: ['tertiary'],
-  },
-  {
-    label: 'Danger',
-    props: ['danger'],
-  },
-  {
-    label: 'Warning',
-    props: ['warning'],
-  },
-  {
-    label: 'Success',
-    props: ['success'],
-  },
-];
-
-for (const item of storySchema) {
-  story.add(item.label, () => ({
-    components: { VueLoader },
-    template:   `<vue-loader ${item.props ? item.props.join(' ') : ''}>${item.label}</vue-loader>`,
-  }));
-}
+story.add('Loader Variants', () => ({
+  components: { VueLoader },
+  template:   `<div>
+<vue-loader primary />
+<vue-loader primary medium />
+<vue-loader primary large />
+<br />
+<br />
+<vue-loader secondary />
+<vue-loader secondary medium />
+<vue-loader secondary large />
+<br />
+<br />
+<vue-loader tertiary />
+<vue-loader tertiary medium />
+<vue-loader tertiary large />
+<br />
+<br />
+<vue-loader danger />
+<vue-loader danger medium />
+<vue-loader danger large />
+<br />
+<br />
+<vue-loader warning />
+<vue-loader warning medium />
+<vue-loader warning large />
+<br />
+<br />
+<vue-loader success />
+<vue-loader success medium />
+<vue-loader success large />
+</div>`,
+}));

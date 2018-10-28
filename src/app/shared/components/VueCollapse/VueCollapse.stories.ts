@@ -3,7 +3,7 @@ import VueInfoAddon  from 'storybook-addon-vue-info';
 import VueCollapse   from './VueCollapse.vue';
 import VueButton     from '../VueButton/VueButton.vue';
 
-const story = (storiesOf('VueCollapse', module) as any);
+const story = (storiesOf('2. Components|Collapse', module) as any);
 
 story.addDecorator(VueInfoAddon);
 
