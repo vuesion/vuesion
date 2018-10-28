@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/vue';
 import VueMarkdown   from '../components/VueMarkdown/VueMarkdown.vue';
 import { withInfo }  from 'storybook-addon-vue-info';
 
-let story = (storiesOf('1. Design System|1-Design System', module) as any);
+let story = (storiesOf('1. Design System|1. Design System', module) as any);
 
 story.add('Intro', withInfo({ header:     false,
                               source:     false,
@@ -35,7 +35,7 @@ If this is the case for you, you might be interested in [integrating a 3rd party
 `,
 })));
 
-story = (storiesOf('1. Design System|2-Branding', module) as any);
+story = (storiesOf('1. Design System|2. Branding', module) as any);
 
 story.add('1. Color Palette', withInfo({ header:     false,
                                       source:     false,
@@ -160,7 +160,7 @@ and a variable for the easing-curve \`$easing-curve\` with the value \`cubic-bez
 `,
 })));
 
-story = (storiesOf('1. Design System|3-Typography', module) as any);
+story = (storiesOf('1. Design System|3. Typography', module) as any);
 
 story.add('Typography', withInfo({ header:     false,
                                    source:     false,
@@ -201,7 +201,7 @@ Lists are indented by 8px with an additional 0.8rem between the bullet and conte
 `,
 })));
 
-story = (storiesOf('1. Design System|4-Layout', module) as any);
+story = (storiesOf('1. Design System|4. Layout', module) as any);
 
 story.add('Layout', withInfo({ header:     false,
                                source:     false,
@@ -222,7 +222,7 @@ VueGridItem   | Item in the row that will be distributed equally on the page
 `,
 })));
 
-story = (storiesOf('1. Design System|5-Break points', module) as any);
+story = (storiesOf('1. Design System|5. Break points', module) as any);
 
 story.add('Break points', withInfo({ header:     false,
                                source:     false,

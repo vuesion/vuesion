@@ -19,7 +19,7 @@ export = {
       type:    'confirm',
       name:    'storybook',
       default: true,
-      message: 'Do you want a story book?',
+      message: 'Do you want a storybook?',
     },
   ],
   actions:     (data: any) => {

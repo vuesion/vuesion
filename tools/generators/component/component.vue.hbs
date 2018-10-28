@@ -1,17 +1,14 @@
 <template>
   <div :class="$style.{{ camelCase componentName }}">
-    <vue-headline level="1">{{ properCase componentName }}</vue-headline>
+    {{ properCase componentName }}
   </div>
 </template>
 
 <script lang="ts">
-  import VueHeadline                from '../../shared/components/VueHeadline/VueHeadline.vue';
 
   export default {
     name:       '{{ properCase componentName }}',
-    components: {
-      VueHeadline
-    },
+    components: {},
     props:      {},
     data(): any {
       return {};

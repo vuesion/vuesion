@@ -12,7 +12,7 @@ describe('{{ properCase componentName }}.vue', () => {
                           },
     );
 
-    expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
+    expect(wrapper.text()).toBe('{{ properCase componentName }}');
   });
 
 });
