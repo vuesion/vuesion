@@ -91,4 +91,20 @@ describe('VueButton.vue', () => {
     expect(wrapper.findAll(`.pulse`)).toHaveLength(1);
   });
 
+  test('should apply fixed width when loading', () => {
+    const wrapper = mount(VueButton, {
+      localVue,
+    });
+
+    (wrapper as any).vm.$refs.button.getBoundingClientRect = () => {
+      return {
+        width: 134,
+      };
+    };
+
+    expect((wrapper as any).vm.actualWidth).toBeNull();
+    wrapper.setProps({ loading: true });
+    expect((wrapper as any).vm.actualWidth).toBe('134px');
+  });
+
 });
