@@ -49,6 +49,7 @@ describe('VueDropdownMenuMenu.vue', () => {
                             propsData: {
                               options: [
                                 { label: 'foo', value: 'foo' },
+                                { label: '', value: 'separator' },
                                 { label: 'foo', value: 'foo' },
                               ],
                             },
@@ -69,7 +70,7 @@ describe('VueDropdownMenuMenu.vue', () => {
     expect((wrapper as any).vm.index).toBe(0);
 
     (wrapper as any).vm.onKeyPress({ code: 'ArrowDown', stopPropagation: jest.fn(), preventDefault: jest.fn() });
-    expect((wrapper as any).vm.index).toBe(1);
+    expect((wrapper as any).vm.index).toBe(2);
 
     (wrapper as any).vm.onKeyPress({ code: 'ArrowUp', stopPropagation: jest.fn(), preventDefault: jest.fn() });
     expect((wrapper as any).vm.index).toBe(0);
