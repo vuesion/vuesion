@@ -36,7 +36,7 @@ setOptions({
              showSearchBox:          false,
              addonPanelInRight:      false,
              sortStoriesByKind:      true,
-             hierarchySeparator:     /\/|\./,
+             hierarchySeparator:     /\//,
              hierarchyRootSeparator: /\|/,
              sidebarAnimations:      true,
              selectedAddonPanel:     undefined,
