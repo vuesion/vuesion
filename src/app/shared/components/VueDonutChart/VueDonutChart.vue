@@ -117,8 +117,10 @@
         return sum;
       },
     },
-    beforeDestroy() {
-      usedColors = [];
+    watch:      {
+      data() {
+        usedColors = [];
+      },
     },
   };
 </script>

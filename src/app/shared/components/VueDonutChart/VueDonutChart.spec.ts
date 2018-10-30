@@ -36,7 +36,16 @@ describe('VueDonutChart.vue', () => {
     expect(wrapper.text()).toMatch('Foo');
     expect(wrapper.findAll('circle')).toHaveLength(6);
 
-    wrapper.destroy();
+    wrapper.setProps({
+                       data: [
+                         { label: 'foo', value: 5465 },
+                         { label: 'bar', value: 8465 },
+                         { label: 'baz', value: 568 },
+                         { label: 'foo', value: 3645 },
+                         { label: 'bar', value: 151 },
+                         { label: 'baz', value: 941 },
+                       ],
+                     });
   });
 
   test('renders pie chart', () => {
@@ -64,8 +73,6 @@ describe('VueDonutChart.vue', () => {
     expect(wrapper.text()).toMatch('Foo');
     expect(wrapper.findAll('circle')).toHaveLength(6);
     expect((wrapper as any).vm.width).toBe(32);
-
-    wrapper.destroy();
   });
 
 });
