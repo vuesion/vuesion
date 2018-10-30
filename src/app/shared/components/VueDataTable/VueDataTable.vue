@@ -7,7 +7,6 @@
     <table :class="$style.vueDataTable">
       <vue-data-table-header
         :columns="columns"
-        :column-width="columnWidth"
         :sort-key="sortKey"
         :sort-direction="sortDirection"
         @click="columnClick" />
@@ -17,8 +16,7 @@
         <td v-for="(cell, idx) in row"
             v-if="cell.visible"
             :key="idx"
-            :class="$style.column"
-            :style="{width: `${columnWidth}`}">
+            :class="$style.column">
 
           <slot :name="cell.slot" :cell="cell" :row="getRowObject(row)">{{ cell.value }}</slot>
 
@@ -143,17 +141,10 @@
             header.sortable = true;
           }
 
-          if (typeof header.fitContent === 'undefined') {
-            header.fitContent = false;
-          }
-
           header.sortKey = key;
 
           return header;
         });
-      },
-      columnWidth() {
-        return `${100 / this.columns.filter((column: IDataTableHeaderItem) => column.fitContent === false && column.visible === true).length}%`;
       },
       rows() {
         return this.displayData.map((row: any) => {

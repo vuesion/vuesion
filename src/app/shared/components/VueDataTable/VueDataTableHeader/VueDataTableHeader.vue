@@ -4,7 +4,6 @@
     <th v-for="(column, idx) in columns" v-if="column.visible"
         :key="idx"
         :class="$style.column"
-        :style="{width: `${columnWidth}`}"
         @click="onClick(column)">
 
       {{ column.title }}
@@ -31,10 +30,6 @@
     props:      {
       columns:       {
         type:     Array,
-        required: true,
-      },
-      columnWidth:   {
-        type:     String,
         required: true,
       },
       sortKey:       {

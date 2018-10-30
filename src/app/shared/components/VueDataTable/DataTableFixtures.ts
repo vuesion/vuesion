@@ -29,7 +29,6 @@ export const dataTableHeaderFixture: IDataTableHeader = {
     title:      'Actions',
     slot:       'actions',
     sortable:   false,
-    fitContent: true,
   },
 };
 
