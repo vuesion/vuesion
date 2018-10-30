@@ -4,7 +4,7 @@ import { action }                                       from '@storybook/addon-a
 import VueDataTable                                     from './VueDataTable.vue';
 import { i18n }                                         from '../../plugins/i18n/i18n';
 import { dataTableDataFixture, dataTableHeaderFixture } from './DataTableFixtures';
-import VueButton                                        from '../VueButton/VueButton.vue';
+import VueDropdownMenu                                        from '../VueDropdownMenu/VueDropdownMenu.vue';
 
 const story = (storiesOf('2. Components|DataTable', module) as any);
 
@@ -59,7 +59,7 @@ story.add('Custom Cell Renderer', () => ({
 
 story.add('Access Row', () => ({
   i18n,
-  components: { VueDataTable, VueButton },
+  components: { VueDataTable, VueDropdownMenu },
   data() {
     return {
       header: dataTableHeaderFixture,
@@ -67,7 +67,9 @@ story.add('Access Row', () => ({
     };
   },
   template:   `<vue-data-table :header="header" :data="data" placeholder="Search" @click="action">
-  <template slot="actions" slot-scope="{row}"><vue-button danger @click.stop.prevent="click(row)">delete</vue-button></template>
+  <template slot="actions" slot-scope="{row}">
+    <vue-dropdown-menu :options="[{label:'Delete', value:'delete'}]" @click="click(row)" />
+  </template>
 </vue-data-table>`,
   methods:    {
     action: action('@onClick'),

@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.vueDropdownMenu" @keydown="onKeyPress" ref="dropdownMenu">
-    <span @click="show=!show" role="button" tabindex="0" :aria-expanded="show.toString()">
+    <span @click.stop.prevent="show=!show" role="button" tabindex="0" :aria-expanded="show.toString()">
       <slot />
       <vue-icon-sort-down />
     </span>
@@ -13,7 +13,7 @@
               :key="`${id}-${idx}`"
               @mouseenter="index = idx"
               :class="index === idx ? $style.active : ''"
-              @click="onClick(option)">
+              @click.stop.prevent="onClick(option)">
             {{ option.label }}
           </li>
           <li v-else :class="$style.separator"></li>
