@@ -8,11 +8,15 @@
     <vue-collapse :show="show">
       <div :class="$style.list">
         <ul>
-          <li v-for="(option, idx) in options" :key="`${id}-${idx}`" @mouseenter="index = idx"
+          <li v-for="(option, idx) in options"
+              v-if="option.value !== 'separator'"
+              :key="`${id}-${idx}`"
+              @mouseenter="index = idx"
               :class="index === idx ? $style.active : ''"
               @click="onClick(option)">
             {{ option.label }}
           </li>
+          <li v-else :class="$style.separator"></li>
         </ul>
       </div>
     </vue-collapse>
@@ -63,12 +67,19 @@
         } else if (['Enter', 'Space'].indexOf(e.code) > -1 && this.index > -1) {
           this.onClick(this.options[this.index]);
         } else if (e.code === 'ArrowDown') {
-          this.handleSelection(this.index + 1);
+          this.handleSelection(this.getNewIndex('down'));
         } else if (e.code === 'ArrowUp') {
-          this.handleSelection(this.index - 1);
+          this.handleSelection(this.getNewIndex('up'));
         } else if (e.code === 'Escape') {
           this.close();
         }
+      },
+      getNewIndex(direction: string) {
+        let newIndex: number = direction === 'down' ? this.index + 1 : this.index - 1;
+        if (this.options[newIndex] && this.options[newIndex].value === 'separator') {
+          newIndex = direction === 'down' ? newIndex + 1 : newIndex - 1;
+        }
+        return newIndex;
       },
       handleSelection(newIndex: number) {
         if (newIndex === this.options.length) {
@@ -157,6 +168,13 @@
 
       &.active {
         background: $dropdown-menu-list-item-hover-bg;
+      }
+
+      &.separator {
+        margin:     0;
+        padding:    0;
+        height:     0;
+        border-top: 1px solid $border-color;
       }
     }
   }
