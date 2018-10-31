@@ -6,6 +6,7 @@
       </div>
 
       <div role="button"
+           tabindex="0"
            :aria-label="$t('components.cookieConsent.accept' /* Accept */)"
            :class="$style.button" @click="onConsent">
         <div :class="$style.icon">

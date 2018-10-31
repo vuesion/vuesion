@@ -1,8 +1,12 @@
 {
   "App.core.description": "一个灵活的、可扩展的、自定的，已经准备好用于生产的渐进式网络应用样板，聚焦于性能、开发速度和最佳实践",
+  "common.cancel": "Cancel",
+  "common.ok": "Ok",
   "components.autocomplete.emptyMessage": "没有选项为 %s 提供",
   "components.calendar.friday.short": "五",
   "components.calendar.monday.short": "一",
+  "components.calendar.nextMonth": "next month",
+  "components.calendar.previousMonth": "previous month",
   "components.calendar.saturday.short": "六",
   "components.calendar.sunday.short": "日",
   "components.calendar.thursday.short": "四",

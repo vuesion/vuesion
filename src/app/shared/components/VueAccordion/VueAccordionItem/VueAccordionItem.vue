@@ -1,6 +1,11 @@
 <template>
   <div :class="$style.vueAccordionItem">
-    <div :class="$style.header" @click="click" role="button" :aria-label="title">
+    <div :class="$style.header"
+         @click="click"
+         @keypress.enter.space.prevent.stop="click"
+         tabindex="0"
+         role="button"
+         :aria-label="title">
       {{title}}
       <i :class="iconClasses" />
     </div>

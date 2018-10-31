@@ -5,9 +5,9 @@
       <li
         v-for="header in headerItems"
         :key="header.idx"
-        :tabindex="header.idx + 1"
+        tabindex="0"
         @click="changeTab(header.idx)"
-        @keypress.space.enter="changeTab(header.idx)"
+        @keypress.space.enter.stop.prevent="changeTab(header.idx)"
         :class="currentTab === header.idx ? $style.active : ''"
         role="tab">
         <div :class="$style.bg"></div>

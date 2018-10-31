@@ -1,8 +1,12 @@
 {
   "App.core.description": "Um boilerplate flexível, com um ponto de vista próprio e pronto para criação de PWAs para produção, com foco em performance, agilidade no desenvolvimento e melhores práticas",
+  "common.cancel": "Cancel",
+  "common.ok": "Ok",
   "components.autocomplete.emptyMessage": "Sem resultados para %s",
   "components.calendar.friday.short": "S",
   "components.calendar.monday.short": "S",
+  "components.calendar.nextMonth": "next month",
+  "components.calendar.previousMonth": "previous month",
   "components.calendar.saturday.short": "S",
   "components.calendar.sunday.short": "D",
   "components.calendar.thursday.short": "Q",

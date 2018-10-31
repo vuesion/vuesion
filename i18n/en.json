@@ -1,8 +1,12 @@
 {
   "App.core.description": "A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices",
+  "common.cancel": "Cancel",
+  "common.ok": "Ok",
   "components.autocomplete.emptyMessage": "No options found for %s",
   "components.calendar.friday.short": "F",
   "components.calendar.monday.short": "M",
+  "components.calendar.nextMonth": "next month",
+  "components.calendar.previousMonth": "previous month",
   "components.calendar.saturday.short": "S",
   "components.calendar.sunday.short": "S",
   "components.calendar.thursday.short": "T",
