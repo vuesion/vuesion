@@ -1,20 +1,20 @@
 <template>
-  <div :class="$style.vuePanelBody">
+  <div :class="$style.vueCardBody">
     <slot />
   </div>
 </template>
 
 <script lang="ts">
   export default {
-    name:       'VuePanelBody',
+    name:       'VueCardBody',
   };
 </script>
 
 <style lang="scss" module>
   @import "../../../styles";
 
-  .vuePanelBody {
+  .vueCardBody {
     display: block;
-    padding: $panel-body-padding;
+    padding: $card-body-padding;
   }
 </style>

@@ -7,8 +7,8 @@
         </vue-grid-item>
 
         <vue-grid-item class="vueGridItem">
-          <vue-panel class="vuePanel">
-            <vue-panel-body class="vuePanelBody">
+          <vue-card class="vueCard">
+            <vue-card-body class="vueCardBody">
               <ol>
                 <li>Install node 8 or higher</li>
                 <li>Install npm 5 or higher</li>
@@ -17,8 +17,8 @@
                 <li>Install dependencies: <code>npm install</code></li>
                 <li>Run <code>npm run dev</code></li>
               </ol>
-            </vue-panel-body>
-          </vue-panel>
+            </vue-card-body>
+          </vue-card>
         </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
@@ -28,8 +28,8 @@
 <script lang="ts">
   import VueGrid      from '../../shared/components/VueGrid/VueGrid.vue';
   import VueGridItem  from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VuePanel     from '../../shared/components/VuePanel/VuePanel.vue';
-  import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
+  import VueCard     from '../../shared/components/VueCard/VueCard.vue';
+  import VueCardBody from '../../shared/components/VueCard/VueCardBody/VueCardBody.vue';
   import VueGridRow   from '../../shared/components/VueGridRow/VueGridRow.vue';
   import VueHeadline  from '../../shared/components/VueHeadline/VueHeadline.vue';
 
@@ -38,8 +38,8 @@
       VueHeadline,
       VueGrid,
       VueGridItem,
-      VuePanel,
-      VuePanelBody,
+      VueCard,
+      VueCardBody,
       VueGridRow,
     },
   };
@@ -58,13 +58,13 @@
     }
 
     :global {
-      .vuePanel {
+      .vueCard {
         background: $bg-color;
       }
     }
 
     :global {
-      .vuePanelBody {
+      .vueCardBody {
         text-align: left;
         overflow:   hidden;
 
@@ -81,7 +81,7 @@
 
     @include mediaMin(tabletPortrait) {
       :global {
-        .vuePanel {
+        .vueCard {
           width:       50%;
           margin-left: 25%;
         }
@@ -90,7 +90,7 @@
 
     @include mediaMin(tabletLandscape) {
       :global {
-        .vuePanel {
+        .vueCard {
           width:       33.3333333%;
           margin-left: 33.3333333%;
         }

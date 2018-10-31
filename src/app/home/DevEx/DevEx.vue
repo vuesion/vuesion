@@ -8,26 +8,26 @@
       </vue-grid-row>
       <vue-grid-row>
         <vue-grid-item class="vueGridItem">
-          <vue-panel class="vuePanel">
-            <vue-panel-body>
+          <vue-card class="vueCard">
+            <vue-card-body>
               <vue-icon-code />
               <vue-headline level="3">Quick scaffolding</vue-headline>
               <p>Create components, VueX connected components, modules - and their tests - right from the CLI!</p>
-            </vue-panel-body>
-          </vue-panel>
+            </vue-card-body>
+          </vue-card>
         </vue-grid-item>
 
         <vue-grid-item class="vueGridItem">
-          <vue-panel class="vuePanel">
-            <vue-panel-body>
+          <vue-card class="vueCard">
+            <vue-card-body>
               <vue-icon-bullhorn />
               <vue-headline level="3">Instant feedback</vue-headline>
               <p>Enjoy the best DX (Developer eXperience) and code your app at the speed of thought!
                  Your saved changes to the CSS and TypeScript are reflected instantaneously
                  without refreshing the page or restarting your server.
                  Preserve application state even when you update something in the underlying code!</p>
-            </vue-panel-body>
-          </vue-panel>
+            </vue-card-body>
+          </vue-card>
         </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
@@ -38,8 +38,8 @@
   import VueGrid         from '../../shared/components/VueGrid/VueGrid.vue';
   import VueGridItem     from '../../shared/components/VueGridItem/VueGridItem.vue';
   import VueGridRow      from '../../shared/components/VueGridRow/VueGridRow.vue';
-  import VuePanel        from '../../shared/components/VuePanel/VuePanel.vue';
-  import VuePanelBody    from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
+  import VueCard        from '../../shared/components/VueCard/VueCard.vue';
+  import VueCardBody    from '../../shared/components/VueCard/VueCardBody/VueCardBody.vue';
   import VueIconCode     from '../../shared/components/icons/VueIconCode/VueIconCode.vue';
   import VueIconBullhorn from '../../shared/components/icons/VueIconBullhorn/VueIconBullhorn.vue';
   import VueHeadline     from '../../shared/components/VueHeadline/VueHeadline.vue';
@@ -51,8 +51,8 @@
       VueIconCode,
       VueGrid,
       VueGridItem,
-      VuePanel,
-      VuePanelBody,
+      VueCard,
+      VueCardBody,
       VueGridRow,
     },
   };

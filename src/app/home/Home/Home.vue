@@ -88,7 +88,7 @@
     }
 
     :global {
-      .vuePanel {
+      .vueCard {
         height:  100%;
         padding: $space-unit * 2;
       }

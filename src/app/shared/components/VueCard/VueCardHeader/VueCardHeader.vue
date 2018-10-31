@@ -10,7 +10,7 @@
 
 <script lang="ts">
   export default {
-    name:       'VuePanelHeader',
+    name:       'VueCardHeader',
     props:      {
       title:    {
         type:     String,
@@ -30,7 +30,7 @@
     },
     computed:   {
       cssClasses() {
-        const classes = ['vue-panel-header', this.$style.vuePanelHeader];
+        const classes = ['vue-card-header', this.$style.vueCardHeader];
 
         if (this.image) {
           classes.push(this.$style.withImage);
@@ -46,9 +46,9 @@
 <style lang="scss" module>
   @import "../../../styles";
 
-  .vuePanelHeader {
+  .vueCardHeader {
     display:     block;
-    padding:     $panel-header-padding;
+    padding:     $card-header-padding;
     line-height: 1.7;
 
     &.withImage {
@@ -56,25 +56,25 @@
       flex-direction: row;
 
       img {
-        width:         $panel-header-image-size;
-        height:        $panel-header-image-size;
-        border-radius: $panel-header-image-border-radius;
+        width:         $card-header-image-size;
+        height:        $card-header-image-size;
+        border-radius: $card-header-image-border-radius;
         flex-shrink:   0;
         display:       block;
-        margin:        $panel-header-image-margin;
+        margin:        $card-header-image-margin;
       }
     }
 
     .title {
-      font-size:   $panel-header-title-font-size;
-      font-weight: $panel-header-title-font-weight;
+      font-size:   $card-header-title-font-size;
+      font-weight: $card-header-title-font-weight;
       display:     block;
     }
 
     .subtitle {
-      font-size:   $panel-header-subtitle-font-size;
-      font-weight: $panel-header-subtitle-font-weight;
-      color:       $panel-header-subtitle-color;
+      font-size:   $card-header-subtitle-font-size;
+      font-weight: $card-header-subtitle-font-weight;
+      color:       $card-header-subtitle-color;
       display:     block;
     }
   }

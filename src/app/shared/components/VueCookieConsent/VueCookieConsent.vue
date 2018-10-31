@@ -76,7 +76,7 @@
     display:          flex;
     flex-direction:   row;
     z-index:          $nav-bar-index;
-    background-color: $panel-bg;
+    background-color: $card-bg;
     width:            100%;
     bottom:           0;
     transition:       opacity $transition-duration ease-in-out;

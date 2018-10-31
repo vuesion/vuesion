@@ -1,23 +1,23 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VuePanelHeader            from './VuePanelHeader.vue';
+import VueCardHeader            from './VueCardHeader.vue';
 
 const localVue = createLocalVue();
 
-describe('VuePanelHeader.vue', () => {
+describe('VueCardHeader.vue', () => {
 
   test('renders component', () => {
     const wrapper = mount(
-      VuePanelHeader,
+      VueCardHeader,
       {
         localVue,
       });
 
-    expect(wrapper.findAll(`.vuePanelHeader`)).toHaveLength(1);
+    expect(wrapper.findAll(`.vueCardHeader`)).toHaveLength(1);
   });
 
   test('renders component with title', () => {
     const wrapper = mount(
-      VuePanelHeader,
+      VueCardHeader,
       {
         localVue,
         propsData: {
@@ -31,7 +31,7 @@ describe('VuePanelHeader.vue', () => {
 
   test('renders component with subtitle', () => {
     const wrapper = mount(
-      VuePanelHeader,
+      VueCardHeader,
       {
         localVue,
         propsData: {
@@ -45,7 +45,7 @@ describe('VuePanelHeader.vue', () => {
 
   test('renders component with image', () => {
     const wrapper = mount(
-      VuePanelHeader,
+      VueCardHeader,
       {
         localVue,
         propsData: {
