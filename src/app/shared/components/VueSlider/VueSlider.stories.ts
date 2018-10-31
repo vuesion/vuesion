@@ -1,24 +1,22 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
+import { withInfo }  from 'storybook-addon-vue-info';
 import VueSlider     from './VueSlider.vue';
 import { action }    from '@storybook/addon-actions';
 
 const story = (storiesOf('2. Components|Slider', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
+story.add('Default', withInfo({})(() => ({
   components: { VueSlider },
   template:   `<vue-slider :min="0" :max="200" :values="[0]" @change="action" />`,
   methods:    {
     action: action('@change'),
   },
-}));
+})));
 
-story.add('Range', () => ({
+story.add('Range', withInfo({})(() => ({
   components: { VueSlider },
   template:   `<vue-slider :min="0" :max="200" :values="[0, 50]" @change="action" />`,
   methods:    {
     action: action('@change'),
   },
-}));
+})));

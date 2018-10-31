@@ -1,14 +1,12 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
+import { withInfo }  from 'storybook-addon-vue-info';
 import VueInput      from './VueInput.vue';
 import VueButton     from '../VueButton/VueButton.vue';
 import VueModal      from '../VueModal/VueModal.vue';
 
 const story = (storiesOf('2. Components|Input', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
+story.add('Default', withInfo({})(() => ({
   components: { VueInput },
   data() {
     return {
@@ -16,9 +14,9 @@ story.add('Default', () => ({
     };
   },
   template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" />`,
-}));
+})));
 
-story.add('Disabled', () => ({
+story.add('Disabled', withInfo({})(() => ({
   components: { VueInput },
   data() {
     return {
@@ -26,9 +24,9 @@ story.add('Disabled', () => ({
     };
   },
   template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" :disabled="true" />`,
-}));
+})));
 
-story.add('Hint', () => ({
+story.add('Hint', withInfo({})(() => ({
   components: { VueInput },
   data() {
     return {
@@ -36,9 +34,9 @@ story.add('Hint', () => ({
     };
   },
   template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" message="description" />`,
-}));
+})));
 
-story.add('Validation/Error state', () => ({
+story.add('Validation/Error state', withInfo({})(() => ({
   components: { VueInput },
   data() {
     return {
@@ -46,9 +44,9 @@ story.add('Validation/Error state', () => ({
     };
   },
   template:   `<vue-input placeholder="Name" name="name" id="name" v-model="model" validation="required|integer" required message="please enter a number" errorMessage="This is not a number" />`,
-}));
+})));
 
-story.add('Readonly', () => ({
+story.add('Readonly', withInfo({})(() => ({
   components: { VueInput },
   data() {
     return {
@@ -56,9 +54,9 @@ story.add('Readonly', () => ({
     };
   },
   template:   `<vue-input placeholder="Name" name="name" id="name" value="foo" readonly />`,
-}));
+})));
 
-story.add('SPA autofocus', () => ({
+story.add('SPA autofocus', withInfo({ propTablesExclude: [VueButton, VueModal] })(() => ({
   components: { VueInput, VueButton, VueModal },
   data() {
     return {
@@ -74,4 +72,4 @@ story.add('SPA autofocus', () => ({
     <vue-button @click="show = !show">Close</vue-button>
   </vue-modal>
 </div>`,
-}));
+})));

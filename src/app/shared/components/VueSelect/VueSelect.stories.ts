@@ -1,12 +1,10 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
+import { withInfo }  from 'storybook-addon-vue-info';
 import VueSelect     from './VueSelect.vue';
 
 const story = (storiesOf('2. Components|Select', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
+story.add('Default', withInfo({})(() => ({
   components: { VueSelect },
   data() {
     return {
@@ -19,9 +17,9 @@ story.add('Default', () => ({
     };
   },
   template:   `<vue-select name="select" id="select" placeholder="Select" :options="options" v-model="model" />`,
-}));
+})));
 
-story.add('Multi', () => ({
+story.add('Multi', withInfo({})(() => ({
   components: { VueSelect },
   data() {
     return {
@@ -34,4 +32,4 @@ story.add('Multi', () => ({
     };
   },
   template:   `<vue-select name="select" id="select" placeholder="Select" :options="options" multiple v-model="model" />`,
-}));
+})));

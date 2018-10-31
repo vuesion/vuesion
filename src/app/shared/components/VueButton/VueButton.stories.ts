@@ -1,13 +1,11 @@
 import { storiesOf } from '@storybook/vue';
 import { action }    from '@storybook/addon-actions';
-import VueInfoAddon  from 'storybook-addon-vue-info';
+import { withInfo }  from 'storybook-addon-vue-info';
 import VueButton     from './VueButton.vue';
 
 const story = (storiesOf('2. Components|Button', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Button Variants', () => ({
+story.add('Button Variants', withInfo({})(() => ({
   components: { VueButton },
   template:   `<div>
 <vue-button @click="action" primary>Primary</vue-button>
@@ -55,4 +53,4 @@ story.add('Button Variants', () => ({
   methods:    {
     action: action('@onClick'),
   },
-}));
+})));

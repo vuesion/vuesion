@@ -1,5 +1,5 @@
 import { storiesOf }  from '@storybook/vue';
-import VueInfoAddon   from 'storybook-addon-vue-info';
+import { withInfo }   from 'storybook-addon-vue-info';
 import VuePanel       from './VuePanel.vue';
 import VuePanelHeader from './VuePanelHeader/VuePanelHeader.vue';
 import VuePanelBody   from './VuePanelBody/VuePanelBody.vue';
@@ -8,9 +8,7 @@ import VueButton      from '../VueButton/VueButton.vue';
 
 const story = (storiesOf('2. Components|Panel', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
+story.add('Default', withInfo({ propTablesExclude: [VueButton] })(() => ({
   components: {
     VuePanel,
     VuePanelHeader,
@@ -33,4 +31,4 @@ story.add('Default', () => ({
     <vue-button primary ghost>Cancel</vue-button>
   </vue-panel-footer>
 </vue-panel>`,
-}));
+})));

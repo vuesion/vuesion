@@ -1,16 +1,14 @@
 import { storiesOf }                                    from '@storybook/vue';
-import VueInfoAddon                                     from 'storybook-addon-vue-info';
+import { withInfo }                                     from 'storybook-addon-vue-info';
 import { action }                                       from '@storybook/addon-actions';
 import VueDataTable                                     from './VueDataTable.vue';
 import { i18n }                                         from '../../plugins/i18n/i18n';
 import { dataTableDataFixture, dataTableHeaderFixture } from './DataTableFixtures';
-import VueDropdownMenu                                        from '../VueDropdownMenu/VueDropdownMenu.vue';
+import VueDropdownMenu                                  from '../VueDropdownMenu/VueDropdownMenu.vue';
 
 const story = (storiesOf('2. Components|DataTable', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
+story.add('Default', withInfo({})(() => ({
   i18n,
   components: { VueDataTable },
   data() {
@@ -23,9 +21,9 @@ story.add('Default', () => ({
   methods:    {
     action: action('@onClick'),
   },
-}));
+})));
 
-story.add('All Props', () => ({
+story.add('All Props', withInfo({})(() => ({
   i18n,
   components: { VueDataTable },
   data() {
@@ -38,9 +36,9 @@ story.add('All Props', () => ({
   methods:    {
     action: action('@onClick'),
   },
-}));
+})));
 
-story.add('Custom Cell Renderer', () => ({
+story.add('Custom Cell Renderer', withInfo({})(() => ({
   i18n,
   components: { VueDataTable },
   data() {
@@ -55,9 +53,9 @@ story.add('Custom Cell Renderer', () => ({
   methods:    {
     action: action('@onClick'),
   },
-}));
+})));
 
-story.add('Access Row', () => ({
+story.add('Access Row', withInfo({})(() => ({
   i18n,
   components: { VueDataTable, VueDropdownMenu },
   data() {
@@ -77,4 +75,4 @@ story.add('Access Row', () => ({
       alert(JSON.stringify(row));
     },
   },
-}));
+})));

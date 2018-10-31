@@ -1,14 +1,12 @@
 import { storiesOf }                      from '@storybook/vue';
-import VueInfoAddon                       from 'storybook-addon-vue-info';
+import { withInfo }                       from 'storybook-addon-vue-info';
 import VueNotificationStack               from './VueNotificationStack.vue';
 import VueButton                          from '../VueButton/VueButton.vue';
 import { addNotification, INotification } from './utils';
 
 const story = (storiesOf('2. Components|NotificationStack', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
+story.add('Default', withInfo({ propTablesExclude: [VueButton] })(() => ({
   components: { VueNotificationStack, VueButton },
   template:   `
 <div>
@@ -26,4 +24,4 @@ story.add('Default', () => ({
       );
     },
   },
-}));
+})));

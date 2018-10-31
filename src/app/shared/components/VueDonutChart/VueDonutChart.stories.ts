@@ -1,12 +1,10 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
+import { withInfo }  from 'storybook-addon-vue-info';
 import VueDonutChart from './VueDonutChart.vue';
 
 const story = (storiesOf('2. Components|DonutChart', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Donut', () => ({
+story.add('Donut', withInfo({})(() => ({
   components: { VueDonutChart },
   data(): any {
     return {
@@ -25,9 +23,9 @@ story.add('Donut', () => ({
   <vue-donut-chart title="Who would win?" :data="data" unit="Votes" />
 </div>
 `,
-}));
+})));
 
-story.add('Pie', () => ({
+story.add('Pie', withInfo({})(() => ({
   components: { VueDonutChart },
   data(): any {
     return {
@@ -46,4 +44,4 @@ story.add('Pie', () => ({
   <vue-donut-chart title="Who would win?" :data="data" unit="Votes" type="pie" />
 </div>
 `,
-}));
+})));

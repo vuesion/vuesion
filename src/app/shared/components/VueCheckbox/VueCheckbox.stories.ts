@@ -1,13 +1,11 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
+import { withInfo }  from 'storybook-addon-vue-info';
 import VueCheckbox   from './VueCheckbox.vue';
 import { action }    from '@storybook/addon-actions';
 
 const story = (storiesOf('2. Components|Checkbox', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Checkbox', () => ({
+story.add('Checkbox', withInfo({})(() => ({
   components: { VueCheckbox },
   data() {
     return {
@@ -18,9 +16,9 @@ story.add('Checkbox', () => ({
   methods:    {
     action: action('@onClick'),
   },
-}));
+})));
 
-story.add('Checkbox Disabled', () => ({
+story.add('Checkbox Disabled', withInfo({})(() => ({
   components: { VueCheckbox },
   data() {
     return {
@@ -31,9 +29,9 @@ story.add('Checkbox Disabled', () => ({
   methods:    {
     action: action('@onClick'),
   },
-}));
+})));
 
-story.add('Radio Button', () => ({
+story.add('Radio Button', withInfo({})(() => ({
   components: { VueCheckbox },
   data() {
     return {
@@ -44,9 +42,9 @@ story.add('Radio Button', () => ({
   methods:    {
     action: action('@onClick'),
   },
-}));
+})));
 
-story.add('Radio Button disabled', () => ({
+story.add('Radio Button disabled', withInfo({})(() => ({
   components: { VueCheckbox },
   data() {
     return {
@@ -57,4 +55,4 @@ story.add('Radio Button disabled', () => ({
   methods:    {
     action: action('@onClick'),
   },
-}));
+})));

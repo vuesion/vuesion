@@ -1,13 +1,11 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
-import VueTruncate  from './VueTruncate.vue';
+import { withInfo }  from 'storybook-addon-vue-info';
+import VueTruncate   from './VueTruncate.vue';
 import { i18n }      from '../../plugins/i18n/i18n';
 
 const story = (storiesOf('2. Components|Truncate', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
+story.add('Default', withInfo({})(() => ({
   i18n,
   components: { VueTruncate },
   template:   `<vue-truncate>
@@ -18,9 +16,9 @@ story.add('Default', () => ({
   sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br/>
   no sea takimata sanctus est Lorem ipsum dolor sit amet.
 </vue-truncate>`,
-}));
+})));
 
-story.add('Without truncation', () => ({
+story.add('Without truncation', withInfo({})(() => ({
   i18n,
   components: { VueTruncate },
   template:   `<vue-truncate :lines="6">
@@ -31,9 +29,9 @@ story.add('Without truncation', () => ({
   sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br/>
   no sea takimata sanctus est Lorem ipsum dolor sit amet.
 </vue-truncate>`,
-}));
+})));
 
-story.add('Lines and Duration', () => ({
+story.add('Lines and Duration', withInfo({})(() => ({
   i18n,
   components: { VueTruncate },
   template:   `<vue-truncate :lines="2" :duration="500">
@@ -44,4 +42,4 @@ story.add('Lines and Duration', () => ({
   sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br/>
   no sea takimata sanctus est Lorem ipsum dolor sit amet.
 </vue-truncate>`,
-}));
+})));

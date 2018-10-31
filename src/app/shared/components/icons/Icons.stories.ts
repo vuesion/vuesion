@@ -21,11 +21,33 @@ import VueIconTwitterSquare from './VueIconTwitterSquare/VueIconTwitterSquare.vu
 
 const story = (storiesOf('1. Design System|6. Icons', module) as any);
 
+story.addParameters({ options: { showAddonPanel: false } });
+
 story.add('Icons', withInfo({
-                              header:     false,
-                              source:     false,
-                              propTables: false,
-                              styles:     { propTableHead: { display: 'none' } },
+                              header:            false,
+                              source:            false,
+                              propTables:        false,
+                              styles:            { propTableHead: { display: 'none' } },
+                              propTablesExclude: [
+                                VueIconBook,
+                                VueIconBullhorn,
+                                VueIconCertificate,
+                                VueIconChartLine,
+                                VueIconCode,
+                                VueIconFlag,
+                                VueIconGithub,
+                                VueIconGithubAlt,
+                                VueIconHashtag,
+                                VueIconMobile,
+                                VueIconPuzzlePiece,
+                                VueIconSearch,
+                                VueIconSort,
+                                VueIconSortDown,
+                                VueIconSortUp,
+                                VueIconSpinner,
+                                VueIconTimes,
+                                VueIconTwitterSquare,
+                              ],
                             })(() => ({
   components: {
     VueIconBook,

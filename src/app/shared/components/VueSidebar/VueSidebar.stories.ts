@@ -1,5 +1,5 @@
 import { storiesOf }       from '@storybook/vue';
-import VueInfoAddon        from 'storybook-addon-vue-info';
+import { withInfo }        from 'storybook-addon-vue-info';
 import VueSidebar          from './VueSidebar.vue';
 import VueSidebarGroup     from './VueSidebarGroup/VueSidebarGroup.vue';
 import VueSidebarGroupItem from './VueSidebarGroupItem/VueSidebarGroupItem.vue';
@@ -7,15 +7,14 @@ import VueIconCode         from '../icons/VueIconCode/VueIconCode.vue';
 
 const story = (storiesOf('2. Components|Sidebar', module) as any);
 
-story.addDecorator(VueInfoAddon);
 story.addDecorator(require('storybook-vue-router').default());
 
-story.add('Default', () => ({
+story.add('Default', withInfo({})(() => ({
   components: { VueSidebar },
   template:   `<vue-sidebar>VueSidebar</vue-sidebar>`,
-}));
+})));
 
-story.add('Internal Navigation', () => ({
+story.add('Internal Navigation', withInfo({})(() => ({
   components: { VueSidebar, VueSidebarGroup, VueSidebarGroupItem, VueIconCode },
   template:   `<vue-sidebar>
   <vue-sidebar-group title="Navigation">
@@ -28,9 +27,9 @@ story.add('Internal Navigation', () => ({
 </vue-sidebar-group-item>
   </vue-sidebar-group>
 </vue-sidebar>`,
-}));
+})));
 
-story.add('External Navigation', () => ({
+story.add('External Navigation', withInfo({})(() => ({
   components: { VueSidebar, VueSidebarGroup, VueSidebarGroupItem, VueIconCode },
   template:   `<vue-sidebar>
   <vue-sidebar-group title="Navigation">
@@ -42,4 +41,4 @@ story.add('External Navigation', () => ({
         </vue-sidebar-group-item>
   </vue-sidebar-group>
 </vue-sidebar>`,
-}));
+})));

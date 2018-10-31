@@ -1,13 +1,11 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
+import { withInfo }  from 'storybook-addon-vue-info';
 import VueTabGroup   from './VueTabGroup.vue';
 import VueTabItem    from './VueTabItem/VueTabItem.vue';
 
 const story = (storiesOf('2. Components|TabGroup', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
+story.add('Default', withInfo({})(() => ({
   components: {
     VueTabGroup,
     VueTabItem,
@@ -34,4 +32,4 @@ story.add('Default', () => ({
     et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
   </vue-tab-item>
 </vue-tab-group>`,
-}));
+})));

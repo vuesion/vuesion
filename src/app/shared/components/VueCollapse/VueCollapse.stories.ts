@@ -1,13 +1,11 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
+import { withInfo }  from 'storybook-addon-vue-info';
 import VueCollapse   from './VueCollapse.vue';
 import VueButton     from '../VueButton/VueButton.vue';
 
 const story = (storiesOf('2. Components|Collapse', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
+story.add('Default', withInfo({ propTablesExclude: [VueButton] })(() => ({
   components: { VueCollapse, VueButton },
   data() {
     return {
@@ -31,4 +29,4 @@ story.add('Default', () => ({
   </vue-collapse>
 </div>
   `,
-}));
+})));

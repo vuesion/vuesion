@@ -1,12 +1,10 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
+import { withInfo }  from 'storybook-addon-vue-info';
 import VueToggle     from './VueToggle.vue';
 
 const story = (storiesOf('2. Components|Toggle', module) as any);
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
+story.add('Default', withInfo({})(() => ({
   components: { VueToggle },
   data() {
     return {
@@ -14,9 +12,9 @@ story.add('Default', () => ({
     };
   },
   template:   `<vue-toggle name="toggle" id="toggle" v-model="checked" label="toggle me">VueToggle</vue-toggle>`,
-}));
+})));
 
-story.add('Disabled', () => ({
+story.add('Disabled', withInfo({})(() => ({
   components: { VueToggle },
   data() {
     return {
@@ -24,4 +22,4 @@ story.add('Disabled', () => ({
     };
   },
   template:   `<vue-toggle disabled name="toggle" id="toggle" v-model="checked" label="toggle me">VueToggle</vue-toggle>`,
-}));
+})));

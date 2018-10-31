@@ -1,21 +1,27 @@
 /* tslint:disable */
-
 import { storiesOf } from '@storybook/vue';
 import VueMarkdown   from '../../components/VueMarkdown/VueMarkdown.vue';
 import { withInfo }  from 'storybook-addon-vue-info';
 
 let story = (storiesOf('1. Design System|1. Design System', module) as any);
 
-story.add('Intro', withInfo({ header:     false,
-                              source:     false,
-                              propTables: false,
-                              styles:     { propTableHead: { display: 'none' } },
+story.addParameters({ options: { showAddonPanel: false } });
+
+story.add('Intro', withInfo({
+                              header:            false,
+                              source:            false,
+                              propTables:        false,
+                              styles:            { propTableHead: { display: 'none' } },
+                              propTablesExclude: [VueMarkdown],
                             })(() => ({
   components: { VueMarkdown },
   template:   `<vue-markdown>
 # Design System
 
-The vue-starter comes with a Design System that you can 100% customize. 
+The vue-starter comes with a Design System that you can 100% customize.
+
+**_The files for customizing the Design System are located in \`./src/app/shared/styles\`._**
+
 Design Systems are really complex and the key to a good Design System is
 consistency.
 
@@ -37,11 +43,15 @@ If this is the case for you, you might be interested in [integrating a 3rd party
 
 story = (storiesOf('1. Design System|2. Branding', module) as any);
 
-story.add('1. Color Palette', withInfo({ header:     false,
-                                      source:     false,
-                                      propTables: false,
-                                      styles:     { propTableHead: { display: 'none' } },
-                                    })(() => ({
+story.addParameters({ options: { showAddonPanel: false } });
+
+story.add('1. Color Palette', withInfo({
+                                         header:            false,
+                                         source:            false,
+                                         propTables:        false,
+                                         styles:            { propTableHead: { display: 'none' } },
+                                         propTablesExclude: [VueMarkdown],
+                                       })(() => ({
   components: { VueMarkdown },
   template:   `<vue-markdown>
 # Color Palette
@@ -79,10 +89,12 @@ Shade | Opacity
 `,
 })));
 
-story.add('2. Brand Colors', withInfo({ header:     false,
-                                        source:     false,
-                                        propTables: false,
-                                        styles:     { propTableHead: { display: 'none' } },
+story.add('2. Brand Colors', withInfo({
+                                        header:            false,
+                                        source:            false,
+                                        propTables:        false,
+                                        styles:            { propTableHead: { display: 'none' } },
+                                        propTablesExclude: [VueMarkdown],
                                       })(() => ({
   components: { VueMarkdown },
   template:   `<vue-markdown>
@@ -134,11 +146,13 @@ border-color-inverse | primary-1-2
 `,
 })));
 
-story.add('3. General Branding', withInfo({ header:     false,
-                                        source:     false,
-                                        propTables: false,
-                                        styles:     { propTableHead: { display: 'none' } },
-                                      })(() => ({
+story.add('3. General Branding', withInfo({
+                                            header:            false,
+                                            source:            false,
+                                            propTables:        false,
+                                            styles:            { propTableHead: { display: 'none' } },
+                                            propTablesExclude: [VueMarkdown],
+                                          })(() => ({
   components: { VueMarkdown },
   template:   `<vue-markdown>
 ### General Branding
@@ -162,10 +176,14 @@ and a variable for the easing-curve \`$easing-curve\` with the value \`cubic-bez
 
 story = (storiesOf('1. Design System|3. Typography', module) as any);
 
-story.add('Typography', withInfo({ header:     false,
-                                   source:     false,
-                                   propTables: false,
-                                   styles:     { propTableHead: { display: 'none' } },
+story.addParameters({ options: { showAddonPanel: false } });
+
+story.add('Typography', withInfo({
+                                   header:            false,
+                                   source:            false,
+                                   propTables:        false,
+                                   styles:            { propTableHead: { display: 'none' } },
+                                   propTablesExclude: [VueMarkdown],
                                  })(() => ({
   components: { VueMarkdown },
   template:   `<vue-markdown>
@@ -203,10 +221,14 @@ Lists are indented by 8px with an additional 0.8rem between the bullet and conte
 
 story = (storiesOf('1. Design System|4. Layout', module) as any);
 
-story.add('Layout', withInfo({ header:     false,
-                               source:     false,
-                               propTables: false,
-                               styles:     { propTableHead: { display: 'none' } },
+story.addParameters({ options: { showAddonPanel: false } });
+
+story.add('Layout', withInfo({
+                               header:            false,
+                               source:            false,
+                               propTables:        false,
+                               styles:            { propTableHead: { display: 'none' } },
+                               propTablesExclude: [VueMarkdown],
                              })(() => ({
   components: { VueMarkdown },
   template:   `<vue-markdown>
@@ -224,11 +246,15 @@ VueGridItem   | Item in the row that will be distributed equally on the page
 
 story = (storiesOf('1. Design System|5. Break points', module) as any);
 
-story.add('Break points', withInfo({ header:     false,
-                               source:     false,
-                               propTables: false,
-                               styles:     { propTableHead: { display: 'none' } },
-                             })(() => ({
+story.addParameters({ options: { showAddonPanel: false } });
+
+story.add('Break points', withInfo({
+                                     header:            false,
+                                     source:            false,
+                                     propTables:        false,
+                                     styles:            { propTableHead: { display: 'none' } },
+                                     propTablesExclude: [VueMarkdown],
+                                   })(() => ({
   components: { VueMarkdown },
   template:   `<vue-markdown>
 ## Break points

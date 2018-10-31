@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
+import { withInfo }  from 'storybook-addon-vue-info';
 import VueCarousel   from './VueCarousel.vue';
 
 const story = (storiesOf('2. Components|Carousel', module) as any);
@@ -36,9 +36,7 @@ const images: any[] = [
   },
 ];
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
+story.add('Default', withInfo({})(() => ({
   data() {
     return {
       images,
@@ -46,9 +44,9 @@ story.add('Default', () => ({
   },
   components: { VueCarousel },
   template:   `<vue-carousel :images="images"></vue-carousel>`,
-}));
+})));
 
-story.add('No Indicator', () => ({
+story.add('No Indicator', withInfo({})(() => ({
   data() {
     return {
       images,
@@ -56,9 +54,9 @@ story.add('No Indicator', () => ({
   },
   components: { VueCarousel },
   template:   `<vue-carousel :show-indicator="false" :images="images"></vue-carousel>`,
-}));
+})));
 
-story.add('Fast Slider', () => ({
+story.add('Fast Slider', withInfo({})(() => ({
   data() {
     return {
       images,
@@ -66,4 +64,4 @@ story.add('Fast Slider', () => ({
   },
   components: { VueCarousel },
   template:   `<vue-carousel :interval="1000" :images="images"></vue-carousel>`,
-}));
+})));
