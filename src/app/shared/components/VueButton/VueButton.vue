@@ -2,7 +2,7 @@
   <button
     :class="cssClasses"
     :disabled="disabled"
-    v-on="handlers"
+    @click="click"
     v-bind="$attrs"
     ref="button"
     :style="{ width: actualWidth }">
@@ -105,22 +105,17 @@
 
         return classes;
       },
-      handlers() {
-        delete this.$listeners.click;
-
-        return {
-          ...this.$listeners,
-          click: (e: any) => {
-            if (this.disabled === false && this.loading === false) {
-              this.$emit('click', e);
-            }
-          },
-        };
-      },
       actualWidth() {
         return (this.loading === true && this.$refs.button)
                ? `${this.$refs.button.getBoundingClientRect().width}px`
                : null;
+      },
+    },
+    methods:    {
+      click(e: Event) {
+        if (this.disabled === false && this.loading === false) {
+          this.$emit('click', e);
+        }
       },
     },
   };
