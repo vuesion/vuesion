@@ -1,8 +1,12 @@
 {
   "App.core.description": "Ein professionelles Boilerplate für universelle, progressive-web-apps mit Vue.JS",
+  "common.cancel": "Cancel",
+  "common.ok": "Ok",
   "components.autocomplete.emptyMessage": "Keine Einträge für %s gefunden.",
   "components.calendar.friday.short": "F",
   "components.calendar.monday.short": "M",
+  "components.calendar.nextMonth": "next month",
+  "components.calendar.previousMonth": "previous month",
   "components.calendar.saturday.short": "S",
   "components.calendar.sunday.short": "S",
   "components.calendar.thursday.short": "D",

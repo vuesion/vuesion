@@ -1,15 +1,45 @@
 <template>
   <div :class="$style.calendar">
     <div :class="$style.header">
-      <vue-headline level="4" @click="setSelecting('year')">{{ selectedYear }}</vue-headline>
-      <vue-headline level="5" @click="setSelecting('date')">{{ $d(calculatedDate, 'calendarHeader') }}</vue-headline>
+      <vue-headline level="4"
+                    :native="false"
+                    @click="setSelecting('year')"
+                    @keypress.enter.space.stop.prevent="setSelecting('year')"
+                    role="button"
+                    tabindex="0"
+                    :aria-label="selectedYear">
+        {{ selectedYear }}
+      </vue-headline>
+      <vue-headline level="5"
+                    :native="false"
+                    @click="setSelecting('date')"
+                    @keypress.enter.space.stop.prevent="setSelecting('date')"
+                    role="button"
+                    tabindex="0"
+                    :aria-label="$d(calculatedDate, 'calendarHeader')">
+        {{ $d(calculatedDate, 'calendarHeader') }}
+      </vue-headline>
     </div>
 
     <div :class="$style.body" v-if="selecting === 'date'">
       <div :class="$style.date">
-        <div :class="$style.arrow" @click="setByMonth(currentMonth - 1)"></div>
+        <div
+          :class="$style.arrow"
+          @click="setByMonth(currentMonth - 1)"
+          @keypress.enter.space.stop.prevent="setByMonth(currentMonth - 1)"
+          role="button"
+          :aria-label="$t('components.calendar.previousMonth' /* previous month */)"
+          tabindex="0"></div>
+
         <div :class="$style.currentDate">{{ $d(new Date(currentYear, currentMonth, 1), 'calendarNav') }}</div>
-        <div :class="$style.arrow" @click="setByMonth(currentMonth + 1)"></div>
+
+        <div
+          :class="$style.arrow"
+          @click="setByMonth(currentMonth + 1)"
+          @keypress.enter.space.stop.prevent="setByMonth(currentMonth + 1)"
+          role="button"
+          :aria-label="$t('components.calendar.nextMonth' /* next month */)"
+          tabindex="0"></div>
       </div>
 
       <table>
@@ -24,7 +54,8 @@
           <td
             :class="[day.currentDay ? $style.currentDay : '', day.disabled ? $style.disabledDay : '', day.selected ? $style.selectedDay : '']"
             v-for="day in days"
-            tabindex="0"
+            :tabindex="day.day ? 0 : null"
+            :aria-label="day.day ? $d(new Date(currentYear, currentMonth, day.day), 'calendarLabel') : null"
             @keydown.enter.stop.prevent="setByDay(day)"
             @keydown.space.stop.prevent="setByDay(day)"
             @click="setByDay(day)">
@@ -41,14 +72,17 @@
         :id="`${year.year}-calendar-year`"
         :key="year.year"
         v-for="year in years"
-        @click="setByYear(year.year)">
+        @click="setByYear(year.year)"
+        @keypress.enter.space.stop.prevent="setByYear(year.year)"
+        :aria-label="year.year"
+        tabindex="0">
         {{ year.year }}
       </div>
     </div>
 
     <div :class="$style.footer">
-      <vue-button @click.stop.prevent="onClose" primary ghost>Cancel</vue-button>
-      <vue-button @click.stop.prevent="onChange" secondary>Ok</vue-button>
+      <vue-button @click.stop.prevent="onClose" primary ghost>{{ $t('common.cancel' /* Cancel */) }}</vue-button>
+      <vue-button @click.stop.prevent="onChange" secondary>{{ $t('common.ok' /* Ok */) }}</vue-button>
     </div>
   </div>
 </template>
@@ -330,7 +364,7 @@
     text-shadow: $calendar-header-text-shadow;
     cursor:      pointer;
 
-    h4, h5 {
+    div {
       margin: 0;
     }
   }

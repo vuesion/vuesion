@@ -11,6 +11,9 @@ const calendarFormats: any = {
   calendarNav:    {
     month: 'long', year: 'numeric',
   },
+  calendarLabel:  {
+    year: 'numeric', month: 'long', weekday: 'long', day: 'numeric',
+  },
   datePicker:     {
     year: 'numeric', month: '2-digit', day: '2-digit',
   },
