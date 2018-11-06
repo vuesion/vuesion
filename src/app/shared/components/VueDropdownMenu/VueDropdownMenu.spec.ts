@@ -106,7 +106,7 @@ describe('VueDropdownMenuMenu.vue', () => {
   });
 
   test('should close on outside click', () => {
-    const wrapper: any = mount(VueDropdownMenu, {
+    const wrapper = mount(VueDropdownMenu, {
       localVue,
       propsData: {
         options: [{ label: 'foo', value: 'foo' }],
@@ -128,7 +128,7 @@ describe('VueDropdownMenuMenu.vue', () => {
   });
 
   test('handleSelection', () => {
-    const wrapper: any = mount(VueDropdownMenu, {
+    const wrapper = mount(VueDropdownMenu, {
       localVue,
       propsData: {
         options: [

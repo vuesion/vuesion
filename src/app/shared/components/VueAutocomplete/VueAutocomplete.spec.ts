@@ -1,15 +1,15 @@
 import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
-import VueAutocomplete                    from './VueAutocomplete.vue';
-import VueLoader                          from '../VueLoader/VueLoader.vue';
-import { AutocompleteOptionsFixture }     from './fixtures/IAutocompleteFixture';
-import { i18n }                        from '../../plugins/i18n/i18n';
+import VueAutocomplete                         from './VueAutocomplete.vue';
+import VueLoader                               from '../VueLoader/VueLoader.vue';
+import { AutocompleteOptionsFixture }          from './fixtures/IAutocompleteFixture';
+import { i18n }                                from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
 describe('VueAutocomplete.vue', () => {
 
   test('renders and destroys component', () => {
-    const wrapper: any = shallowMount(VueAutocomplete, {
+    const wrapper = shallowMount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -24,7 +24,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('renders component with loader', () => {
-    const wrapper: any = shallowMount(VueAutocomplete, {
+    const wrapper = shallowMount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -38,7 +38,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onFocus', () => {
-    const wrapper: any = mount(VueAutocomplete, {
+    const wrapper = mount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -56,7 +56,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onArrowDown', () => {
-    const wrapper: any = mount(VueAutocomplete, {
+    const wrapper = mount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -80,7 +80,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onArrowUp', () => {
-    const wrapper: any = mount(VueAutocomplete, {
+    const wrapper = mount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -103,7 +103,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('handleClickOutside', () => {
-    const wrapper: any = mount(VueAutocomplete, {
+    const wrapper = mount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -121,7 +121,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onEnterKeyPress', () => {
-    const wrapper: any = mount(VueAutocomplete, {
+    const wrapper = mount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -144,7 +144,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onOptionClick', () => {
-    const wrapper: any = mount(VueAutocomplete, {
+    const wrapper = mount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -166,7 +166,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onInput', () => {
-    const wrapper: any = mount(VueAutocomplete, {
+    const wrapper = mount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -187,7 +187,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('emitRequest', (done) => {
-    const wrapper: any = mount(VueAutocomplete, {
+    const wrapper = mount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -205,7 +205,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('setResultContainerHeight', () => {
-    const wrapper: any = mount(VueAutocomplete, {
+    const wrapper = mount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -219,7 +219,7 @@ describe('VueAutocomplete.vue', () => {
       firstChild: {
         offsetHeight: 10,
       },
-    };
+    } as any;
 
     wrapper.vm.setResultContainerHeight();
     expect(wrapper.vm.resultContainerHeight).toBe(10);
@@ -236,7 +236,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onFocusItem', () => {
-    const wrapper: any = mount(VueAutocomplete, {
+    const wrapper = mount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -250,16 +250,16 @@ describe('VueAutocomplete.vue', () => {
       clientHeight: 100,
       scrollHeight: 0,
       scrollTop:    0,
-    };
+    } as any;
 
     wrapper.vm.onFocusItem();
-    expect(wrapper.vm.$refs.resultContainer.scrollTop).toBe(0);
+    expect((wrapper as any).vm.$refs.resultContainer.scrollTop).toBe(0);
 
     wrapper.vm.$refs.resultContainer = {
       clientHeight: 100,
       scrollHeight: 101,
       scrollTop:    0,
-    };
+    } as any;
 
     document.querySelector = () => {
       return {
@@ -269,13 +269,13 @@ describe('VueAutocomplete.vue', () => {
     };
 
     wrapper.vm.onFocusItem();
-    expect(wrapper.vm.$refs.resultContainer.scrollTop).toBe(10);
+    expect((wrapper as any).vm.$refs.resultContainer.scrollTop).toBe(10);
 
     wrapper.vm.$refs.resultContainer = {
       clientHeight: 100,
       scrollHeight: 101,
       scrollTop:    100,
-    };
+    } as any;
 
     document.querySelector = () => {
       return {
@@ -285,13 +285,13 @@ describe('VueAutocomplete.vue', () => {
     };
 
     wrapper.vm.onFocusItem();
-    expect(wrapper.vm.$refs.resultContainer.scrollTop).toBe(10);
+    expect((wrapper as any).vm.$refs.resultContainer.scrollTop).toBe(10);
 
     wrapper.vm.$refs.resultContainer = {
       clientHeight: 100,
       scrollHeight: 101,
       scrollTop:    100,
-    };
+    } as any;
 
     document.querySelector = () => {
       return {
@@ -301,7 +301,7 @@ describe('VueAutocomplete.vue', () => {
     };
 
     wrapper.vm.onFocusItem();
-    expect(wrapper.vm.$refs.resultContainer.scrollTop).toBe(100);
+    expect((wrapper as any).vm.$refs.resultContainer.scrollTop).toBe(100);
   });
 
 });

@@ -52,7 +52,7 @@ describe('Counter.vue', () => {
   });
 
   test('should increment and decrement', () => {
-    const wrapper: any = mount(Counter, {
+    const wrapper = mount(Counter, {
       store,
       localVue,
       i18n,

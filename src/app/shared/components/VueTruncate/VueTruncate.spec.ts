@@ -21,7 +21,7 @@ describe('VueTruncate.vue', () => {
   no sea takimata sanctus est Lorem ipsum dolor sit amet.`,
                             },
                           },
-    ) as any;
+    );
 
     expect(wrapper.isVueInstance()).toBeTruthy();
     expect(wrapper.vm.isTruncated).toBeTruthy();
@@ -53,7 +53,7 @@ describe('VueTruncate.vue', () => {
                               lines: 1,
                             },
                           },
-    ) as any;
+    );
 
     expect(wrapper.isVueInstance()).toBeTruthy();
     expect(wrapper.vm.isTruncated).toBeFalsy();
@@ -79,7 +79,7 @@ describe('VueTruncate.vue', () => {
                               duration: 0,
                             },
                           },
-    ) as any;
+    );
 
     wrapper.vm.offsetHeight = 150;
     wrapper.vm.collapsedHeight = 25.6 * 3;

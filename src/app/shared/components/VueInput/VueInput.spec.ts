@@ -70,7 +70,7 @@ describe('VueInput.vue', () => {
   });
 
   test('autofocus fallback', () => {
-    const wrapper: any = mount(VueInput, {
+    const wrapper = mount(VueInput, {
       localVue,
       propsData: {
         name:      'name',
@@ -96,7 +96,7 @@ describe('VueInput.vue', () => {
         this.cb();
       }
     };
-    const wrapper: any = mount(VueInput, {
+    const wrapper = mount(VueInput, {
       localVue,
       propsData: {
         name:      'name',
@@ -105,14 +105,14 @@ describe('VueInput.vue', () => {
       },
     });
 
-    wrapper.vm.$refs.input.focus = jest.fn();
+    (wrapper as any).vm.$refs.input.focus = jest.fn();
 
     expect(wrapper.vm.observer).not.toBeNull();
-    expect(wrapper.vm.$refs.input.focus).not.toHaveBeenCalled();
+    expect((wrapper as any).vm.$refs.input.focus).not.toHaveBeenCalled();
 
     wrapper.setProps({ autofocus: true });
     wrapper.vm.observer.observe();
-    expect(wrapper.vm.$refs.input.focus).toHaveBeenCalled();
+    expect((wrapper as any).vm.$refs.input.focus).toHaveBeenCalled();
 
     wrapper.destroy();
   });

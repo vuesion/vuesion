@@ -21,8 +21,8 @@ describe('VueAccordion.vue', () => {
     accordionItemWrapper.vm.$parent = wrapper.vm;
     accordionItemWrapper.vm.$options.created[1].call(accordionItemWrapper.vm);
 
-    expect((wrapper as any).vm.items.length).toBeGreaterThan(0);
-    expect((wrapper as any).vm.openItems.length).toBe(0);
+    expect(wrapper.vm.items.length).toBeGreaterThan(0);
+    expect(wrapper.vm.openItems.length).toBe(0);
 
     wrapper.destroy();
   });
@@ -40,8 +40,8 @@ describe('VueAccordion.vue', () => {
     accordionItemWrapper.vm.$parent = wrapper.vm;
     accordionItemWrapper.vm.$options.created[1].call(accordionItemWrapper.vm);
 
-    expect((wrapper as any).vm.items.length).toBeGreaterThan(0);
-    expect((wrapper as any).vm.openItems.length).toBeGreaterThan(0);
+    expect(wrapper.vm.items.length).toBeGreaterThan(0);
+    expect(wrapper.vm.openItems.length).toBeGreaterThan(0);
 
     wrapper.destroy();
   });
@@ -52,7 +52,7 @@ describe('VueAccordion.vue', () => {
       propsData: {
         multiple: false,
       },
-    }) as any;
+    });
 
     expect(wrapper.vm.openItems).toEqual([]);
 
@@ -72,7 +72,7 @@ describe('VueAccordion.vue', () => {
       propsData: {
         multiple: true,
       },
-    }) as any;
+    });
 
     expect(wrapper.vm.openItems).toEqual([]);
 

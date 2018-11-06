@@ -49,7 +49,7 @@ describe('VueTabGroup.vue', () => {
     expect(wrapper.findAll('li').at(1).text()).toMatch('foo2');
     expect(wrapper.findAll('li').at(1).classes()).toEqual([]);
 
-    (wrapper as any).vm.changeTab(1);
+    wrapper.vm.changeTab(1);
 
     expect(wrapper.find('li').text()).toMatch('foo');
     expect(wrapper.find('li').classes()).toEqual([]);
@@ -66,7 +66,7 @@ describe('VueTabGroup.vue', () => {
       },
     });
 
-    expect((wrapper as any).vm.currentTab).toBe(1);
+    expect(wrapper.vm.currentTab).toBe(1);
 
     wrapper.destroy();
   });

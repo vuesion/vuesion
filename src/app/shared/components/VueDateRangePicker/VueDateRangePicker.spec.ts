@@ -12,7 +12,7 @@ describe('VueDateRangePicker.vue', () => {
     const wrapper = mount(VueDateRangePicker, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     expect(wrapper.vm.startDate).toBe(null);
 
@@ -33,7 +33,7 @@ describe('VueDateRangePicker.vue', () => {
     const wrapper = mount(VueDateRangePicker, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     expect(wrapper.vm.endDate).toBe(null);
 

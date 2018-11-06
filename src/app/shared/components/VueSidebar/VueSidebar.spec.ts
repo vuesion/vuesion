@@ -49,7 +49,7 @@ describe('VueSidebar.vue', () => {
   });
 
   test('should open menu and close it on outside click', () => {
-    const wrapper: any = mount(VueSidebar, {
+    const wrapper = mount(VueSidebar, {
       localVue,
       stubs: ['router-link'],
     });

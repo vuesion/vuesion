@@ -42,7 +42,7 @@ describe('VueModal.vue', () => {
   });
 
   test('should close on outside click', () => {
-    const wrapper: any = mount(VueModal, {
+    const wrapper = mount(VueModal, {
       localVue,
       slots: {
         default: '<p>TEST</p>',
@@ -64,7 +64,7 @@ describe('VueModal.vue', () => {
   });
 
   test('should close on ESC press', () => {
-    const wrapper: any = mount(VueModal, {
+    const wrapper = mount(VueModal, {
       localVue,
     });
 

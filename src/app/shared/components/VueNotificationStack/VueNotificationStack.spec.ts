@@ -9,7 +9,7 @@ describe('VueNotificationStack.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueNotificationStack, {
       localVue,
-    }) as any;
+    });
     const notification: INotification = {
       title: 'this is a test',
       text:  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
@@ -21,7 +21,7 @@ describe('VueNotificationStack.vue', () => {
   test('add and remove notification', () => {
     const wrapper = mount(VueNotificationStack, {
       localVue,
-    }) as any;
+    });
     const notification: INotification = {
       title: 'this is a test',
       text:  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
@@ -44,7 +44,7 @@ describe('VueNotificationStack.vue', () => {
       propsData: {
         duration: 100,
       },
-    }) as any;
+    });
     const notification: INotification = {
       title: 'this is a test',
       text:  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',

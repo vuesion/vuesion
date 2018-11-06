@@ -10,7 +10,7 @@ describe('VueDatePicker.vue', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     expect(wrapper.findAll(`.vueDatePicker`)).toHaveLength(1);
     expect(wrapper.findAll('input')).toHaveLength(1);
@@ -21,7 +21,7 @@ describe('VueDatePicker.vue', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     expect(wrapper.vm.inputValue).toBe('');
 
@@ -36,7 +36,7 @@ describe('VueDatePicker.vue', () => {
       propsData: {
         currentDate: new Date(),
       },
-    }) as any;
+    });
 
     expect(wrapper.vm.inputValue).not.toBe('');
   });
@@ -45,7 +45,7 @@ describe('VueDatePicker.vue', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     wrapper.vm.onChange();
 
@@ -56,7 +56,7 @@ describe('VueDatePicker.vue', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     expect(wrapper.vm.show).toBeFalsy();
 
@@ -68,7 +68,7 @@ describe('VueDatePicker.vue', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     const event: any = {
       currentTarget: {

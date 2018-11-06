@@ -72,7 +72,7 @@ describe('VueDonutChart.vue', () => {
 
     expect(wrapper.text()).toMatch('Foo');
     expect(wrapper.findAll('circle')).toHaveLength(6);
-    expect((wrapper as any).vm.width).toBe(32);
+    expect(wrapper.vm.width).toBe(32);
   });
 
 });

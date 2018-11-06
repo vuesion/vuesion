@@ -5,12 +5,15 @@ import { MetaInfo }                      from 'vue-meta';
 import { DefaultProps, PropsDefinition } from 'vue/types/options';
 import { Route, VueRouter }              from 'vue-router/types/router';
 import { VeeValidateComponentOptions }   from 'vee-validate';
-import { IPreLoad }                    from './server/isomorphic';
+import { IPreLoad }                      from './server/isomorphic';
 
 declare module 'vue/types/vue' {
   interface Vue {
+    [key: string]: any;
+
     $meta?: any;
     $_veeValidate?: any;
+    $refs?: any;
   }
 
   interface VueConstructor {

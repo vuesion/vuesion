@@ -11,7 +11,7 @@ describe('VueCollapse.vue', () => {
       slots: {
         default: '<h1>content</h1>',
       },
-    }) as any;
+    });
 
     expect(wrapper.find('h1').text()).toBe('content');
 

@@ -22,7 +22,7 @@ describe('VueCookieConsent.vue', () => {
                               setCookieConsentVersion,
                             },
                           },
-    ) as any;
+    );
 
     expect(wrapper.text()).toBe('foo');
     expect(wrapper.findAll('.button')).toHaveLength(1);
@@ -47,7 +47,7 @@ describe('VueCookieConsent.vue', () => {
                               setCookieConsentVersion: jest.fn(),
                             },
                           },
-    ) as any;
+    );
 
     expect(wrapper.text()).toBe('');
     expect(wrapper.findAll('.button')).toHaveLength(0);
@@ -68,7 +68,7 @@ describe('VueCookieConsent.vue', () => {
                               setCookieConsentVersion: jest.fn(),
                             },
                           },
-    ) as any;
+    );
 
     expect(wrapper.text()).toBe('foo');
     expect(wrapper.findAll('.button')).toHaveLength(1);

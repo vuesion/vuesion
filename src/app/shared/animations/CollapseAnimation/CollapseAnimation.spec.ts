@@ -16,7 +16,7 @@ describe('CollapseAnimation.vue', () => {
 
     const testElement: HTMLElement = wrapper.find('p').element;
 
-    (wrapper as any).vm.beforeEnter(testElement);
+    wrapper.vm.beforeEnter(testElement);
 
     expect(testElement.style.height).toBe('0px');
     expect(testElement.style.opacity).toBe('0');
@@ -45,7 +45,7 @@ describe('CollapseAnimation.vue', () => {
       };
     };
 
-    (wrapper as any).vm.enter(testElement, () => {
+    wrapper.vm.enter(testElement, () => {
       expect(testElement.style.height).toBe('-68px');
       expect(testElement.style.opacity).toBe('1');
       done();
@@ -69,7 +69,7 @@ describe('CollapseAnimation.vue', () => {
       };
     };
 
-    (wrapper as any).vm.enter(testElement, () => {
+    wrapper.vm.enter(testElement, () => {
       expect(testElement.style.height).toBe('32px');
       expect(testElement.style.opacity).toBe('1');
       done();
@@ -87,7 +87,7 @@ describe('CollapseAnimation.vue', () => {
 
     const testElement: HTMLElement = wrapper.find('p').element;
 
-    (wrapper as any).vm.beforeLeave(testElement);
+    wrapper.vm.beforeLeave(testElement);
 
     expect(testElement.style.height).toBe('');
     expect(testElement.style.opacity).toBe('');
@@ -115,7 +115,7 @@ describe('CollapseAnimation.vue', () => {
       };
     };
 
-    (wrapper as any).vm.leave(testElement, () => {
+    wrapper.vm.leave(testElement, () => {
       expect(testElement.style.height).toBe('');
       expect(testElement.style.opacity).toBe('0');
       done();

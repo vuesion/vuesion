@@ -75,7 +75,7 @@ describe('VueCalendar.vue', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     wrapper.vm.onChange();
     wrapper.vm.onClose();
@@ -88,7 +88,7 @@ describe('VueCalendar.vue', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     expect(wrapper.vm.selectedDay).toBe(today.getDate());
 
@@ -103,7 +103,7 @@ describe('VueCalendar.vue', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     expect(wrapper.vm.currentMonth).toBe(today.getMonth());
     expect(wrapper.vm.currentYear).toBe(today.getFullYear());
@@ -124,7 +124,7 @@ describe('VueCalendar.vue', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     wrapper.vm.$data.selecting = 'year';
 

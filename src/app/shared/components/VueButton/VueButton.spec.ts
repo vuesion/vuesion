@@ -146,9 +146,9 @@ describe('VueButton.vue', () => {
       };
     };
 
-    expect((wrapper as any).vm.actualWidth).toBeNull();
+    expect(wrapper.vm.actualWidth).toBeNull();
     wrapper.setProps({ loading: true });
-    expect((wrapper as any).vm.actualWidth).toBe('134px');
+    expect(wrapper.vm.actualWidth).toBe('134px');
   });
 
 });

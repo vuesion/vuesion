@@ -47,7 +47,7 @@ describe('VueCarousel.vue', () => {
                               intervalDuration: 10,
                             },
                           },
-    ) as any;
+    );
 
     expect(wrapper.vm.currentSlide).toBe(0);
 

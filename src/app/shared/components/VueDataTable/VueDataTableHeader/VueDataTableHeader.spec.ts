@@ -76,7 +76,7 @@ describe('VueDataTableHeader.vue', () => {
                               sortKey:       'foo',
                             },
                           },
-    ) as any;
+    );
 
     wrapper.vm.onClick(columns[3]);
     expect(wrapper.emitted('click')).toBeFalsy();

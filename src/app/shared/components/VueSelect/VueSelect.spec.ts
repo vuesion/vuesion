@@ -38,7 +38,7 @@ describe('VueSelect.vue', () => {
       mocks:     {
         errors: null,
       },
-    }) as any;
+    });
 
     expect(wrapper.findAll('option')).toHaveLength(5);
     expect(wrapper.find('select').attributes().multiple).toBe(undefined);
@@ -53,7 +53,7 @@ describe('VueSelect.vue', () => {
         name:     'name',
         id:       'id',
       },
-    }) as any;
+    });
 
     expect(wrapper.findAll('option')).toHaveLength(5);
     expect(wrapper.find('select').attributes().multiple).toBe('multiple');
@@ -68,7 +68,7 @@ describe('VueSelect.vue', () => {
         name:     'name',
         id:       'id',
       },
-    }) as any;
+    });
 
     expect(wrapper.findAll('option')).toHaveLength(5);
     expect(wrapper.findAll('.disabled')).toHaveLength(1);
@@ -83,7 +83,7 @@ describe('VueSelect.vue', () => {
         name:     'name',
         id:       'id',
       },
-    }) as any;
+    });
 
     const event: any = {
       target: {
