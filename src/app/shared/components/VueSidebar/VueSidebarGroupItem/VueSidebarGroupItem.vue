@@ -18,8 +18,7 @@
     components: {},
     props:      {
       to: {
-        type:    String,
-        default: null,
+        type: String,
       },
     },
     data(): any {

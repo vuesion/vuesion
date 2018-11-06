@@ -14,17 +14,14 @@
     props:      {
       title:    {
         type:     String,
-        required: false,
         default:  '',
       },
       subtitle: {
         type:     String,
-        required: false,
         default:  '',
       },
       image:    {
         type:     String,
-        required: false,
         default:  '',
       },
     },

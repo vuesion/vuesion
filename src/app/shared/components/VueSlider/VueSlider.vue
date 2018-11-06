@@ -69,14 +69,12 @@
       },
       formatValue: {
         type:     Function,
-        required: false,
         default:  (value: number) => {
           return value;
         },
       },
       disabled:    {
         type:     Boolean,
-        required: false,
         default:  false,
       },
     },

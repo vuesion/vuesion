@@ -32,12 +32,10 @@
     props:    {
       lines:    {
         type:     Number,
-        required: false,
         default:  3,
       },
       duration: {
         type:     Number,
-        required: false,
         default:  250,
       },
     },

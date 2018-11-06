@@ -15,7 +15,6 @@
       },
       appearanceLevel: {
         type:     String,
-        required: false,
       },
       native:          {
         type:    Boolean,

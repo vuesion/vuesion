@@ -19,52 +19,42 @@
     props:      {
       primary:   {
         type:     Boolean,
-        required: false,
         default:  false,
       },
       secondary: {
         type:     Boolean,
-        required: false,
         default:  false,
       },
       tertiary:  {
         type:     Boolean,
-        required: false,
         default:  false,
       },
       danger:    {
         type:     Boolean,
-        required: false,
         default:  false,
       },
       warning:   {
         type:     Boolean,
-        required: false,
         default:  false,
       },
       success:   {
         type:     Boolean,
-        required: false,
         default:  false,
       },
       disabled:  {
         type:     Boolean,
-        required: false,
         default:  false,
       },
       loading:   {
         type:     Boolean,
-        required: false,
         default:  false,
       },
       outlined:  {
         type:     Boolean,
-        required: false,
         default:  false,
       },
       ghost:     {
         type:     Boolean,
-        required: false,
         default:  false,
       },
     },

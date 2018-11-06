@@ -17,13 +17,11 @@
     name:    'VueModal',
     props:   {
       show:       {
-        required: false,
         default:  false,
         type:     Boolean,
       },
       fitContent: {
         type:     Boolean,
-        required: false,
         default:  false,
       },
     },

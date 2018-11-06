@@ -16,11 +16,9 @@
       show:     {
         default:  true,
         type:     Boolean,
-        required: false,
       },
       duration: {
         type:     Number,
-        required: false,
         default:  250,
       },
     },

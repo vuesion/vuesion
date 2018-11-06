@@ -10,7 +10,6 @@
     props:    {
       fill:     {
         type:     Boolean,
-        required: false,
         default:  false,
       },
     },

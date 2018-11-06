@@ -49,33 +49,26 @@
       },
       minDate:        {
         type:     Date,
-        required: false,
       },
       maxDate:        {
         type:     Date,
-        required: false,
       },
       firstDayOfWeek: {
         type:     Number,
-        required: false,
         default:  0,
       },
       placeholder:    {
         type:     String,
-        required: false,
         default:  '',
       },
       startDate:      {
         type:     Date,
-        required: false,
       },
       endDate:        {
         type:     Date,
-        required: false,
       },
       currentDate:    {
         type:     Date,
-        required: false,
       },
       required:       {
         type:    Boolean,

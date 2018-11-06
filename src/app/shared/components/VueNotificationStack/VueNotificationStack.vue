@@ -23,7 +23,6 @@
     props:    {
       duration: {
         type:     Number,
-        required: false,
         default:  10000,
       },
     },

@@ -71,45 +71,36 @@
       name:          {
         type:     String,
         default:  '',
-        required: false,
       },
       id:            {
         type:     String,
         default:  '',
-        required: false,
       },
       options:       {
         type:     Array,
-        required: false,
         default:  (): any[] => [],
       },
       placeholder:   {
         type:     String,
-        required: false,
       },
       maxOptions:    {
         type:     Number,
-        required: false,
         default:  5,
       },
       minInputChars: {
         type:     Number,
-        required: false,
         default:  3,
       },
       isLoading:     {
         type:     Boolean,
-        required: false,
         default:  false,
       },
       required:      {
         type:     Boolean,
-        required: false,
         default:  false,
       },
       disabled:      {
         type:     Boolean,
-        required: false,
         default:  false,
       },
     },

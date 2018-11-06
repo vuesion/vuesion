@@ -123,33 +123,26 @@
     props:      {
       today:          {
         type:     Date,
-        required: false,
         default:  () => new Date(),
       },
       minDate:        {
         type:     Date,
-        required: false,
       },
       maxDate:        {
         type:     Date,
-        required: false,
       },
       firstDayOfWeek: {
         type:     Number,
-        required: false,
         default:  0,
       },
       startDate:      {
         type:     Date,
-        required: false,
       },
       endDate:        {
         type:     Date,
-        required: false,
       },
       selectedDate:   {
         type:     Date,
-        required: false,
       },
     },
     computed:   {

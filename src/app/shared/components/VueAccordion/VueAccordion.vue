@@ -10,7 +10,6 @@
     props:      {
       multiple:    {
         type:     Boolean,
-        required: false,
         default:  false,
       },
     },

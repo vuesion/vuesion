@@ -54,7 +54,6 @@
       value:        {
         type:     String,
         default:  '',
-        required: false,
       },
       multiple:     {
         default: false,

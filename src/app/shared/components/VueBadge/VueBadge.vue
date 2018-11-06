@@ -10,25 +10,30 @@
     props:    {
       primary:   {
         type: Boolean,
+        default:  false,
       },
       secondary: {
         type: Boolean,
+        default:  false,
       },
       tertiary:  {
         type: Boolean,
+        default:  false,
       },
       danger:    {
         type: Boolean,
+        default:  false,
       },
       warning: {
         type: Boolean,
+        default:  false,
       },
       success:   {
         type: Boolean,
+        default:  false,
       },
       outlined:  {
         type:     Boolean,
-        required: false,
         default:  false,
       },
     },

@@ -34,25 +34,20 @@
     props:      {
       minDate:          {
         type:     Date,
-        required: false,
       },
       maxDate:          {
         type:     Date,
-        required: false,
       },
       firstDayOfWeek:   {
         type:     Number,
-        required: false,
         default:  0,
       },
       placeholderStart: {
         type:     String,
-        required: false,
         default:  '',
       },
       placeholderEnd:   {
         type:     String,
-        required: false,
         default:  '',
       },
     },
