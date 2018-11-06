@@ -44,7 +44,7 @@ export default (app: Express.Application, callback: any): void => {
 
   app.use(devMiddleware as any);
 
-  clientCompiler.plugin('done', () => {
+  clientCompiler.hooks.done.tap('dev-server', () => {
     const fs: any = devMiddleware.fileSystem;
     const templatePath: string = path.join(clientConfig.output.path, 'index.html');
 

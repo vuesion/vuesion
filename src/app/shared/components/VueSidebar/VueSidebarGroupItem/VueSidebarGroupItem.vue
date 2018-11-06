@@ -19,6 +19,7 @@
     props:      {
       to: {
         type: String,
+        default: null,
       },
     },
     data(): any {
