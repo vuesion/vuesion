@@ -11,7 +11,7 @@ const CACHE_NAME: string = Date.now().toString();
 
 let assetsToCache = [...assets.map((path: string) => '/client' + path), '../', '../manifest.json'];
 
-assetsToCache = assetsToCache.map(path => {
+assetsToCache = assetsToCache.map((path) => {
   return new URL(path, ((global as any) as any).location).toString();
 });
 
@@ -25,19 +25,19 @@ self.addEventListener('install', (event: any) => {
   // Add core website files to cache during serviceworker installation.
   event.waitUntil(
     (global as any).caches
-                   .open(CACHE_NAME)
-                   .then((cache: Cache) => {
-                     return cache.addAll(assetsToCache);
-                   })
-                   .then(() => {
-                     if (DEBUG_SW) {
-                       console.info('Cached assets: main', assetsToCache);
-                     }
-                   })
-                   .catch((error: any) => {
-                     console.error(error);
-                     throw error;
-                   }),
+      .open(CACHE_NAME)
+      .then((cache: Cache) => {
+        return cache.addAll(assetsToCache);
+      })
+      .then(() => {
+        if (DEBUG_SW) {
+          console.info('Cached assets: main', assetsToCache);
+        }
+      })
+      .catch((error: any) => {
+        console.error(error);
+        throw error;
+      }),
   );
 });
 
@@ -55,18 +55,20 @@ self.addEventListener('activate', (event: any) => {
       }
 
       return Promise.all(
-        cacheNames.map((cacheName: string): Promise<any> => {
-          // Delete the caches that are not the current one.
-          if (cacheName !== CACHE_NAME) {
-            if (DEBUG_SW) {
-              console.info(`[SW] cache deleted: ${cacheName}`);
+        cacheNames.map(
+          (cacheName: string): Promise<any> => {
+            // Delete the caches that are not the current one.
+            if (cacheName !== CACHE_NAME) {
+              if (DEBUG_SW) {
+                console.info(`[SW] cache deleted: ${cacheName}`);
+              }
+
+              return (global as any).caches.delete(cacheName);
             }
 
-            return (global as any).caches.delete(cacheName);
-          }
-
-          return Promise.resolve();
-        }),
+            return Promise.resolve();
+          },
+        ),
       );
     }),
   );
@@ -106,56 +108,56 @@ self.addEventListener('fetch', (event: any) => {
     return;
   }
 
-  const resource = (global as any).caches
-                                  .match(request, { cacheName: CACHE_NAME })
-                                  .then((cacheResponse: any) => {
-                                    if (cacheResponse) {
-                                      if (DEBUG_SW) {
-                                        console.info(`[SW] fetch URL ${requestUrl.href} from cache`);
-                                      }
+  const resource = (global as any).caches.match(request, { cacheName: CACHE_NAME }).then((cacheResponse: any) => {
+    if (cacheResponse) {
+      if (DEBUG_SW) {
+        console.info(`[SW] fetch URL ${requestUrl.href} from cache`);
+      }
 
-                                      return cacheResponse;
-                                    }
+      return cacheResponse;
+    }
 
-                                    // Load and cache known assets.
-                                    return fetch(request)
-                                    .then((response: Response) => {
-                                      if (!response || !response.ok) {
-                                        if (DEBUG_SW) {
-                                          console.error(`[SW] URL [${requestUrl.toString()}] wrong responseNetwork: ${response.status} ${response.type}`);
-                                        }
+    // Load and cache known assets.
+    return fetch(request)
+      .then((response: Response) => {
+        if (!response || !response.ok) {
+          if (DEBUG_SW) {
+            console.error(
+              `[SW] URL [${requestUrl.toString()}] wrong responseNetwork: ${response.status} ${response.type}`,
+            );
+          }
 
-                                        return response;
-                                      }
+          return response;
+        }
 
-                                      if (DEBUG_SW) {
-                                        console.log(`[SW] URL ${requestUrl.href} fetched`);
-                                      }
+        if (DEBUG_SW) {
+          console.log(`[SW] URL ${requestUrl.href} fetched`);
+        }
 
-                                      const responseCache: Response = response.clone();
+        const responseCache: Response = response.clone();
 
-                                      (global as any).caches
-                                                     .open(CACHE_NAME)
-                                                     .then((cache: Cache) => {
-                                                       return cache.put(request, responseCache);
-                                                     })
-                                                     .then(() => {
-                                                       if (DEBUG_SW) {
-                                                         console.log(`[SW] Cache asset: ${requestUrl.href}`);
-                                                       }
-                                                     });
+        (global as any).caches
+          .open(CACHE_NAME)
+          .then((cache: Cache) => {
+            return cache.put(request, responseCache);
+          })
+          .then(() => {
+            if (DEBUG_SW) {
+              console.log(`[SW] Cache asset: ${requestUrl.href}`);
+            }
+          });
 
-                                      return response;
-                                    })
-                                    .catch(() => {
-                                      // User is landing on our page.
-                                      if (event.request.mode === 'navigate') {
-                                        return (global as any).caches.match('./');
-                                      }
+        return response;
+      })
+      .catch(() => {
+        // User is landing on our page.
+        if (event.request.mode === 'navigate') {
+          return (global as any).caches.match('./');
+        }
 
-                                      return null;
-                                    });
-                                  });
+        return null;
+      });
+  });
 
   event.respondWith(resource);
 });

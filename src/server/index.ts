@@ -1,6 +1,6 @@
-import http       from 'http';
+import http from 'http';
 import { Logger } from './utils/Logger';
-import { app }    from './server';
+import { app } from './server';
 
 const server = http.createServer(app);
 const port: string = process.env.PORT || '3000';

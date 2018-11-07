@@ -1,9 +1,9 @@
-import MockAdapter                            from 'axios-mock-adapter';
-import { HttpService }                        from '../shared/services/HttpService';
-import { ActionContext, Commit, Dispatch }    from 'vuex';
-import { {{ properCase moduleName }}Actions }                     from './actions';
+import MockAdapter from 'axios-mock-adapter';
+import { HttpService } from '../shared/services/HttpService';
+import { ActionContext, Commit, Dispatch } from 'vuex';
+import { {{ properCase moduleName }}Actions } from './actions';
 import { {{ properCase moduleName }}DefaultState, I{{ properCase moduleName }}State } from './state';
-import { IState }                             from '../state';
+import { IState } from '../state';
 
 describe('{{ properCase moduleName }}Actions', () => {
   let testContext: ActionContext<I{{ properCase moduleName }}State, IState>;

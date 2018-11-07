@@ -57,7 +57,8 @@
     "ci": "concurrently \"npm run lint\" \"npm run test:coverage -- --runInBand\"",
     "postci": "codecov -f ./coverage/*.json && npm run build && concurrently \"npm run build-storybook\" \"vuepress build docs\"",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prettier": "npm run clean && ./node_modules/.bin/prettier --write \"./**/*.{ts,vue,js,json,scss,sass,css,yaml,yml}\""
   },
   "jest": {
     "verbose": true,
@@ -185,6 +186,8 @@
     "node-sass": "4.9.4",
     "plop": "2.1.0",
     "postcss-loader": "3.0.0",
+    "prettier": "1.15.1",
+    "pretty-quick": "1.8.0",
     "react": "16.6.0",
     "react-dom": "16.6.0",
     "rimraf": "2.6.2",
@@ -196,6 +199,8 @@
     "ts-jest": "22.4.6",
     "ts-loader": "5.2.2",
     "tslint": "5.11.0",
+    "tslint-config-prettier": "1.15.0",
+    "tslint-plugin-prettier": "2.0.1",
     "typescript": "3.1.3",
     "vue-jest": "2.6.0",
     "vue-loader": "15.4.2",
@@ -216,7 +221,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "concurrently \"npm run lint\" \"npm run test:coverage\""
+      "pre-commit": "pretty-quick --staged && concurrently \"npm run lint\" \"npm run test:coverage\""
     }
   }
 }

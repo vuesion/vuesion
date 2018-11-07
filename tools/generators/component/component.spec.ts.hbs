@@ -1,18 +1,18 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import {{ properCase componentName }}                       from './{{ properCase componentName }}.vue';
+import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
 
 const localVue = createLocalVue();
 
 describe('{{ properCase componentName }}.vue', () => {
 
-  test('renders component', () => {
-    const wrapper = mount({{ properCase componentName }},
-                          {
-                            localVue,
-                          },
-    );
+test('renders component', () => {
+  const wrapper = mount({{ properCase componentName }},
+    {
+      localVue,
+    },
+   );
 
-    expect(wrapper.text()).toBe('{{ properCase componentName }}');
-  });
+  expect(wrapper.text()).toBe('{{ properCase componentName }}');
+});
 
 });

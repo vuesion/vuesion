@@ -1,7 +1,6 @@
 import { geometric, linear, log } from './algorithms';
 
 describe('VueSlider Algorithms', () => {
-
   test('geometric should return correct position', () => {
     expect(geometric.getPosition(50, 0, 100)).toBe(70.71067811865476);
   });
@@ -49,5 +48,4 @@ describe('VueSlider Algorithms', () => {
   test('log should return max value', () => {
     expect(log.getValue(150, 0, 100)).toBe(100);
   });
-
 });

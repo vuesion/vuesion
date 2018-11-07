@@ -1,14 +1,16 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo }  from 'storybook-addon-vue-info';
-import VueTruncate   from './VueTruncate.vue';
-import { i18n }      from '../../plugins/i18n/i18n';
+import { withInfo } from 'storybook-addon-vue-info';
+import VueTruncate from './VueTruncate.vue';
+import { i18n } from '../../plugins/i18n/i18n';
 
-const story = (storiesOf('2. Components|Truncate', module) as any);
+const story = storiesOf('2. Components|Truncate', module) as any;
 
-story.add('Default', withInfo({})(() => ({
-  i18n,
-  components: { VueTruncate },
-  template:   `<vue-truncate>
+story.add(
+  'Default',
+  withInfo({})(() => ({
+    i18n,
+    components: { VueTruncate },
+    template: `<vue-truncate>
   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et<br/>
   dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet<br/>
   clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,<br/>
@@ -16,12 +18,15 @@ story.add('Default', withInfo({})(() => ({
   sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br/>
   no sea takimata sanctus est Lorem ipsum dolor sit amet.
 </vue-truncate>`,
-})));
+  })),
+);
 
-story.add('Without truncation', withInfo({})(() => ({
-  i18n,
-  components: { VueTruncate },
-  template:   `<vue-truncate :lines="6">
+story.add(
+  'Without truncation',
+  withInfo({})(() => ({
+    i18n,
+    components: { VueTruncate },
+    template: `<vue-truncate :lines="6">
   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et<br/>
   dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet<br/>
   clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,<br/>
@@ -29,12 +34,15 @@ story.add('Without truncation', withInfo({})(() => ({
   sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br/>
   no sea takimata sanctus est Lorem ipsum dolor sit amet.
 </vue-truncate>`,
-})));
+  })),
+);
 
-story.add('Lines and Duration', withInfo({})(() => ({
-  i18n,
-  components: { VueTruncate },
-  template:   `<vue-truncate :lines="2" :duration="500">
+story.add(
+  'Lines and Duration',
+  withInfo({})(() => ({
+    i18n,
+    components: { VueTruncate },
+    template: `<vue-truncate :lines="2" :duration="500">
   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et<br/>
   dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet<br/>
   clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,<br/>
@@ -42,4 +50,5 @@ story.add('Lines and Duration', withInfo({})(() => ({
   sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br/>
   no sea takimata sanctus est Lorem ipsum dolor sit amet.
 </vue-truncate>`,
-})));
+  })),
+);

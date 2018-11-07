@@ -1,9 +1,9 @@
 import { IVuexPersistStorage } from './vuex-persist';
-import * as Cookies            from 'js-cookie';
-import { CookieAttributes }    from 'js-cookie';
-import merge                   from 'deepmerge';
-import { IServerContext }      from '../../../../server/isomorphic';
-import { IState }              from '../../../state';
+import * as Cookies from 'js-cookie';
+import { CookieAttributes } from 'js-cookie';
+import merge from 'deepmerge';
+import { IServerContext } from '../../../../server/isomorphic';
+import { IState } from '../../../state';
 
 interface IPersistCookieStorageConfig {
   cookieOptions: CookieAttributes;
@@ -28,7 +28,7 @@ export class PersistCookieStorage implements IVuexPersistStorage {
     });
 
     return merge(state, cookieState, {
-      clone:      false,
+      clone: false,
       arrayMerge: (initial, cookie) => {
         return cookie;
       },
@@ -46,7 +46,11 @@ export class PersistCookieStorage implements IVuexPersistStorage {
 
   [index: number]: string;
 
-  constructor(modules: string[] = [], options: IPersistCookieStorageConfig = { cookieOptions: {} }, prefix: string = 'vuexpersist') {
+  constructor(
+    modules: string[] = [],
+    options: IPersistCookieStorageConfig = { cookieOptions: {} },
+    prefix: string = 'vuexpersist',
+  ) {
     this.modules = modules;
     this.prefix = prefix;
     this.options = options;
@@ -111,5 +115,4 @@ export class PersistCookieStorage implements IVuexPersistStorage {
 
     Cookies.set(PersistCookieStorage.indexKey, JSON.stringify(index), this.options.cookieOptions);
   }
-
 }

@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { Store }                                                               from 'vuex';
-import { IState }                                                              from '../../state';
+import { Store } from 'vuex';
+import { IState } from '../../state';
 
 export interface IHttpService extends AxiosInstance {
   store?: Store<IState>;
@@ -13,7 +13,8 @@ HttpService.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     // TODO: get token from HttpService.store e.g. const token: string = HttpService.store.state.auth.accessToken;
     const token: string = '';
-    const baseUrl: string = HttpService.store && HttpService.store.state.app.config ? HttpService.store.state.app.config.api.baseUrl : '';
+    const baseUrl: string =
+      HttpService.store && HttpService.store.state.app.config ? HttpService.store.state.app.config.api.baseUrl : '';
     const isExternal: boolean = config.url.indexOf('://') > -1 && config.url.indexOf('i18n') === -1;
 
     if (token && !isExternal && !config.headers.Authorization) {
@@ -64,4 +65,5 @@ HttpService.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  });
+  },
+);

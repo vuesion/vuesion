@@ -8,6 +8,6 @@ export const CounterDefaultState = (): ICounterState => {
   return {
     incrementPending: false,
     decrementPending: false,
-    count:            0,
+    count: 0,
   };
 };

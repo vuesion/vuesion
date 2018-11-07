@@ -1,11 +1,10 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueDatePicker             from './VueDatePicker.vue';
-import { i18n }                  from '../../plugins/i18n/i18n';
+import VueDatePicker from './VueDatePicker.vue';
+import { i18n } from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
 describe('VueDatePicker.vue', () => {
-
   test('renders component', () => {
     const wrapper = mount(VueDatePicker, {
       localVue,

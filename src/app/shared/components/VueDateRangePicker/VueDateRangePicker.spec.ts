@@ -1,13 +1,12 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueDateRangePicker        from './VueDateRangePicker.vue';
-import { i18n }                  from '../../plugins/i18n/i18n';
+import VueDateRangePicker from './VueDateRangePicker.vue';
+import { i18n } from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 const today: Date = new Date();
 const nextWeek: Date = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
 describe('VueDateRangePicker.vue', () => {
-
   test('should handle onStartChange', () => {
     const wrapper = mount(VueDateRangePicker, {
       localVue,
@@ -41,5 +40,4 @@ describe('VueDateRangePicker.vue', () => {
     expect(wrapper.vm.endDate).toBe(today);
     expect(wrapper.emitted('change')).toBeTruthy();
   });
-
 });

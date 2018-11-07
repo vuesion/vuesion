@@ -1,4 +1,4 @@
-import { AppGetters }                 from './getters';
+import { AppGetters } from './getters';
 import { AppDefaultState, IAppState } from './state';
 
 describe('AppGetters', () => {
@@ -15,5 +15,4 @@ describe('AppGetters', () => {
   test('it should get the cookie consent version', () => {
     expect(AppGetters.cookieConsentVersion(testState)).toBe('');
   });
-
 });

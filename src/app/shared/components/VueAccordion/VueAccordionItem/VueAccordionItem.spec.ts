@@ -1,10 +1,9 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueAccordionItem          from './VueAccordionItem.vue';
+import VueAccordionItem from './VueAccordionItem.vue';
 
 const localVue = createLocalVue();
 
 describe('VueAccordionItem.vue', () => {
-
   test('renders component', () => {
     const wrapper = mount(VueAccordionItem, {
       localVue,
@@ -20,7 +19,7 @@ describe('VueAccordionItem.vue', () => {
     const wrapper = mount(VueAccordionItem, {
       localVue,
       propsData: {
-        title:    'foo',
+        title: 'foo',
         initOpen: false,
       },
     });
@@ -34,7 +33,7 @@ describe('VueAccordionItem.vue', () => {
     const wrapper = mount(VueAccordionItem, {
       localVue,
       propsData: {
-        title:    'foo',
+        title: 'foo',
         initOpen: false,
       },
     });
@@ -49,7 +48,5 @@ describe('VueAccordionItem.vue', () => {
 
     expect(wrapper.vm.$parent.openItem).toHaveBeenCalled();
     expect(wrapper.vm.$parent.register).toHaveBeenCalled();
-
   });
-
 });

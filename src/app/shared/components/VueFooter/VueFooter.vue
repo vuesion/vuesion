@@ -3,7 +3,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item>
-          <small>&copy; Copyright {{year}} Johannes Werner</small>
+          <small>&copy; Copyright {{ year }} Johannes Werner</small>
         </vue-grid-item>
 
         <vue-grid-item>
@@ -28,61 +28,61 @@
 </template>
 
 <script lang="ts">
-  import VueGrid              from '../VueGrid/VueGrid.vue';
-  import VueGridItem          from '../VueGridItem/VueGridItem.vue';
-  import VueGridRow           from '../VueGridRow/VueGridRow.vue';
-  import VueIconGithubAlt     from '../icons/VueIconGithubAlt/VueIconGithubAlt.vue';
-  import VueIconTwitterSquare from '../icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
+import VueGrid from '../VueGrid/VueGrid.vue';
+import VueGridItem from '../VueGridItem/VueGridItem.vue';
+import VueGridRow from '../VueGridRow/VueGridRow.vue';
+import VueIconGithubAlt from '../icons/VueIconGithubAlt/VueIconGithubAlt.vue';
+import VueIconTwitterSquare from '../icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
 
-  export default {
-    name:       'VueFooter',
-    components: {
-      VueIconTwitterSquare,
-      VueIconGithubAlt,
-      VueGrid,
-      VueGridItem,
-      VueGridRow,
+export default {
+  name: 'VueFooter',
+  components: {
+    VueIconTwitterSquare,
+    VueIconGithubAlt,
+    VueGrid,
+    VueGridItem,
+    VueGridRow,
+  },
+  computed: {
+    year() {
+      return new Date().getFullYear();
     },
-    computed:   {
-      year() {
-        return new Date().getFullYear();
-      },
-    },
-  };
+  },
+};
 </script>
 
 <style lang="scss" module>
-  @import "../../styles";
+@import '../../styles';
 
-  .vueFooter {
-    padding:    $footer-padding;
-    background: $footer-bg;
-    color:      $footer-color;
-    text-align: center;
+.vueFooter {
+  padding: $footer-padding;
+  background: $footer-bg;
+  color: $footer-color;
+  text-align: center;
 
-    i {
-      height: $font-size-h1;
-      width:  $font-size-h1;
-      fill:   $footer-link-color;
-      margin: 0 $space-unit * 2;
+  i {
+    height: $font-size-h1;
+    width: $font-size-h1;
+    fill: $footer-link-color;
+    margin: 0 $space-unit * 2;
 
-      &:hover {
-        fill: $footer-link-hover-color;
-      }
-    }
-
-    small {
-      display: inline-block;
-      margin:  $space-unit * 2 0;
-    }
-
-    a {
-      color:       $footer-link-color;
-      font-weight: $footer-link-font-weight;
-
-      &:hover {
-        color: $footer-link-hover-color;
-      }
+    &:hover {
+      fill: $footer-link-hover-color;
     }
   }
+
+  small {
+    display: inline-block;
+    margin: $space-unit * 2 0;
+  }
+
+  a {
+    color: $footer-link-color;
+    font-weight: $footer-link-font-weight;
+
+    &:hover {
+      color: $footer-link-hover-color;
+    }
+  }
+}
 </style>

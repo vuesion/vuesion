@@ -1,14 +1,13 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueTabItem                from './VueTabItem.vue';
+import VueTabItem from './VueTabItem.vue';
 
 const localVue = createLocalVue();
 
 describe('VueTabItem.vue', () => {
-
   test('renders component', () => {
     const wrapper = mount(VueTabItem, {
       localVue,
-      slots:     {
+      slots: {
         default: '<p>TEST</p>',
       },
       propsData: {
@@ -43,5 +42,4 @@ describe('VueTabItem.vue', () => {
     wrapper.vm.beforeLeave(wrapper.vm.$el);
     wrapper.vm.leave(wrapper.vm.$el, jest.fn());
   });
-
 });

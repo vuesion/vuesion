@@ -1,4 +1,4 @@
-import { CounterMutations }                   from './mutations';
+import { CounterMutations } from './mutations';
 import { CounterDefaultState, ICounterState } from './state';
 
 describe('CounterMutations', () => {
@@ -22,5 +22,4 @@ describe('CounterMutations', () => {
     CounterMutations.SET_DECREMENT_PENDING(testState, true);
     expect(testState.decrementPending).toBe(true);
   });
-
 });

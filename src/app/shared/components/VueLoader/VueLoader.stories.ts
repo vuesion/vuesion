@@ -1,12 +1,14 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo }  from 'storybook-addon-vue-info';
-import VueLoader     from './VueLoader.vue';
+import { withInfo } from 'storybook-addon-vue-info';
+import VueLoader from './VueLoader.vue';
 
-const story = (storiesOf('2. Components|Loader', module) as any);
+const story = storiesOf('2. Components|Loader', module) as any;
 
-story.add('Loader Variants', withInfo({})(() => ({
-  components: { VueLoader },
-  template:   `<div>
+story.add(
+  'Loader Variants',
+  withInfo({})(() => ({
+    components: { VueLoader },
+    template: `<div>
 <vue-loader primary />
 <vue-loader primary medium />
 <vue-loader primary large />
@@ -36,4 +38,5 @@ story.add('Loader Variants', withInfo({})(() => ({
 <vue-loader success medium />
 <vue-loader success large />
 </div>`,
-})));
+  })),
+);

@@ -15,7 +15,7 @@ export const CounterMutations: ICounterMutations = {
   SET_DECREMENT_PENDING: (state: ICounterState, pending: boolean) => {
     state.decrementPending = pending;
   },
-  SET_COUNT:             (state: ICounterState, count: number) => {
+  SET_COUNT: (state: ICounterState, count: number) => {
     state.count = count;
   },
 };

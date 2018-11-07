@@ -4,14 +4,8 @@
     "window": true
   },
   "rootDir": "./",
-  "setupFiles": [
-    "../jestsetup.ts"
-  ],
-  "moduleFileExtensions": [
-    "js",
-    "ts",
-    "json"
-  ],
+  "setupFiles": ["../jestsetup.ts"],
+  "moduleFileExtensions": ["js", "ts", "json"],
   "transform": {
     ".(ts|tsx)": "<rootDir>../node_modules/ts-jest/preprocessor.js"
   },
@@ -24,9 +18,7 @@
       "statements": 100
     }
   },
-  "coveragePathIgnorePatterns": [
-    "/node_modules/"
-  ],
+  "coveragePathIgnorePatterns": ["/node_modules/"],
   "coverageDirectory": "../coverage",
   "testURL": "http://localhost:3000"
 }

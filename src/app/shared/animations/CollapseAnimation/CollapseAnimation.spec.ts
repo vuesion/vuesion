@@ -1,18 +1,16 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import CollapseAnimation         from './CollapseAnimation.vue';
+import CollapseAnimation from './CollapseAnimation.vue';
 
 const localVue = createLocalVue();
 
 describe('CollapseAnimation.vue', () => {
-
   test('should set default before enter values', () => {
-    const wrapper = mount(CollapseAnimation,
-                          {
-                            localVue,
-                            slots: {
-                              default: '<p>TEST</p>',
-                            },
-                          });
+    const wrapper = mount(CollapseAnimation, {
+      localVue,
+      slots: {
+        default: '<p>TEST</p>',
+      },
+    });
 
     const testElement: HTMLElement = wrapper.find('p').element;
 
@@ -24,20 +22,19 @@ describe('CollapseAnimation.vue', () => {
   });
 
   test('should animate enter', (done) => {
-    const wrapper = mount(CollapseAnimation,
-                          {
-                            localVue,
-                            slots: {
-                              default: '<p>TEST</p>',
-                            },
-                          });
+    const wrapper = mount(CollapseAnimation, {
+      localVue,
+      slots: {
+        default: '<p>TEST</p>',
+      },
+    });
 
     const testElement: HTMLElement = wrapper.find('p').element;
 
     (testElement as any).getClientRects = () => {
       return {
         length: 1,
-        item:   () => {
+        item: () => {
           return {
             height: 100,
           };
@@ -53,13 +50,12 @@ describe('CollapseAnimation.vue', () => {
   });
 
   test('should animate enter', (done) => {
-    const wrapper = mount(CollapseAnimation,
-                          {
-                            localVue,
-                            slots: {
-                              default: '<p>TEST</p>',
-                            },
-                          });
+    const wrapper = mount(CollapseAnimation, {
+      localVue,
+      slots: {
+        default: '<p>TEST</p>',
+      },
+    });
 
     const testElement: HTMLElement = wrapper.find('p').element;
 
@@ -77,13 +73,12 @@ describe('CollapseAnimation.vue', () => {
   });
 
   test('should set default before leave values', () => {
-    const wrapper = mount(CollapseAnimation,
-                          {
-                            localVue,
-                            slots: {
-                              default: '<p>TEST</p>',
-                            },
-                          });
+    const wrapper = mount(CollapseAnimation, {
+      localVue,
+      slots: {
+        default: '<p>TEST</p>',
+      },
+    });
 
     const testElement: HTMLElement = wrapper.find('p').element;
 
@@ -95,13 +90,12 @@ describe('CollapseAnimation.vue', () => {
   });
 
   test('should animate enter', (done) => {
-    const wrapper = mount(CollapseAnimation,
-                          {
-                            localVue,
-                            slots: {
-                              default: '<p>TEST</p>',
-                            },
-                          });
+    const wrapper = mount(CollapseAnimation, {
+      localVue,
+      slots: {
+        default: '<p>TEST</p>',
+      },
+    });
 
     const testElement: HTMLElement = wrapper.find('p').element;
 

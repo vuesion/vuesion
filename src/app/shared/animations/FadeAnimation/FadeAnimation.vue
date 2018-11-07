@@ -5,29 +5,33 @@
     :enter-to-class="$style.enterTo"
     :leave-class="$style.leave"
     :leave-active-class="$style.leaveActive"
-    :leave-to-class="$style.leaveTo">
+    :leave-to-class="$style.leaveTo"
+  >
     <slot />
   </transition>
 </template>
 
 <script lang="ts">
-  export default {
-    name: 'FadeAnimation',
-  };
+export default {
+  name: 'FadeAnimation',
+};
 </script>
 
 <style lang="scss" module>
-  @import "../../styles";
+@import '../../styles';
 
-  .enterActive, .leaveActive {
-    transition: $fade-animation-transition;
-  }
+.enterActive,
+.leaveActive {
+  transition: $fade-animation-transition;
+}
 
-  .enterTo, .leave {
-    opacity: 1;
-  }
+.enterTo,
+.leave {
+  opacity: 1;
+}
 
-  .enter, .leaveTo {
-    opacity: 0;
-  }
+.enter,
+.leaveTo {
+  opacity: 0;
+}
 </style>

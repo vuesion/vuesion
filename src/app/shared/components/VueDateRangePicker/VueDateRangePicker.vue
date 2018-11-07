@@ -9,7 +9,8 @@
       :placeholder="placeholderStart"
       :end-date="endDate"
       :current-date="startDate"
-      @change="onStartChange" />
+      @change="onStartChange"
+    />
     <vue-date-picker
       name="endDate"
       id="endDate"
@@ -19,62 +20,63 @@
       :placeholder="placeholderEnd"
       :start-date="startDate"
       :current-date="endDate"
-      @change="onEndChange" />
+      @change="onEndChange"
+    />
   </div>
 </template>
 
 <script lang="ts">
-  import VueDatePicker from '../VueDatePicker/VueDatePicker.vue';
+import VueDatePicker from '../VueDatePicker/VueDatePicker.vue';
 
-  export default {
-    name:       'VueDateRangePicker',
-    components: {
-      VueDatePicker,
+export default {
+  name: 'VueDateRangePicker',
+  components: {
+    VueDatePicker,
+  },
+  props: {
+    minDate: {
+      type: Date,
     },
-    props:      {
-      minDate:          {
-        type:     Date,
-      },
-      maxDate:          {
-        type:     Date,
-      },
-      firstDayOfWeek:   {
-        type:     Number,
-        default:  0,
-      },
-      placeholderStart: {
-        type:     String,
-        default:  '',
-      },
-      placeholderEnd:   {
-        type:     String,
-        default:  '',
-      },
+    maxDate: {
+      type: Date,
     },
-    data(): any {
-      return {
-        startDate: null,
-        endDate:   null,
-      };
+    firstDayOfWeek: {
+      type: Number,
+      default: 0,
     },
-    methods:    {
-      onStartChange(startDate: Date) {
-        this.startDate = startDate;
+    placeholderStart: {
+      type: String,
+      default: '',
+    },
+    placeholderEnd: {
+      type: String,
+      default: '',
+    },
+  },
+  data(): any {
+    return {
+      startDate: null,
+      endDate: null,
+    };
+  },
+  methods: {
+    onStartChange(startDate: Date) {
+      this.startDate = startDate;
 
-        if (this.endDate && this.endDate.getTime() < this.startDate.getTime()) {
-          this.endDate = this.startDate;
-        }
-      },
-      onEndChange(endDate: Date) {
-        this.endDate = endDate;
-        this.$emit('change', [this.startDate, this.endDate]);
-      },
+      if (this.endDate && this.endDate.getTime() < this.startDate.getTime()) {
+        this.endDate = this.startDate;
+      }
     },
-  };
+    onEndChange(endDate: Date) {
+      this.endDate = endDate;
+      this.$emit('change', [this.startDate, this.endDate]);
+    },
+  },
+};
 </script>
 
 <style lang="scss" module>
-  .vueDateRangePicker {
-    display: block;
-  }
+.vueDateRangePicker {
+  display: block;
+}
 </style>

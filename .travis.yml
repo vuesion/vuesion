@@ -5,15 +5,15 @@ notifications:
   email: false
 cache:
   directories:
-  - "./node_modules"
+    - './node_modules'
 node_js:
-- 8.11.1
+  - 8.11.1
 before_install:
-- npm install -g vuepress
+  - npm install -g vuepress
 install:
-- npm install
+  - npm install
 script:
-- npm run ci
+  - npm run ci
 deploy:
   provider: heroku
   api_key:

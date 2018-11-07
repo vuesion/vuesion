@@ -1,4 +1,4 @@
-import { AppMutations }               from './mutations';
+import { AppMutations } from './mutations';
 import { AppDefaultState, IAppState } from './state';
 
 describe('AppMutations', () => {

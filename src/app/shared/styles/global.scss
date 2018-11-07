@@ -1,8 +1,8 @@
-@import "variables";
-@import "mixins";
+@import 'variables';
+@import 'mixins';
 
 body {
-  color:            $text-color;
+  color: $text-color;
   background-color: $bg-color;
 }
 
@@ -14,14 +14,14 @@ img:not([alt]) {
 /* vue-icon global style */
 i {
   display: inline-block;
-  height:  $font-size;
-  width:   $font-size;
-  fill:    $text-color;
+  height: $font-size;
+  width: $font-size;
+  fill: $text-color;
 
   svg {
     height: inherit;
-    width:  inherit;
-    fill:   currentColor !important;
+    width: inherit;
+    fill: currentColor !important;
     stroke: currentColor !important;
   }
 
@@ -29,4 +29,3 @@ i {
     stroke: currentColor !important;
   }
 }
-

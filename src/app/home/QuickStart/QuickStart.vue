@@ -2,9 +2,7 @@
   <div :class="[$style.quickStart, 'featureSection']">
     <vue-grid>
       <vue-grid-row>
-        <vue-grid-item fill class="vueGridItem">
-          <vue-headline level="2">Quick start</vue-headline>
-        </vue-grid-item>
+        <vue-grid-item fill class="vueGridItem"> <vue-headline level="2">Quick start</vue-headline> </vue-grid-item>
 
         <vue-grid-item class="vueGridItem">
           <vue-card class="vueCard">
@@ -26,75 +24,75 @@
 </template>
 
 <script lang="ts">
-  import VueGrid      from '../../shared/components/VueGrid/VueGrid.vue';
-  import VueGridItem  from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VueCard     from '../../shared/components/VueCard/VueCard.vue';
-  import VueCardBody from '../../shared/components/VueCard/VueCardBody/VueCardBody.vue';
-  import VueGridRow   from '../../shared/components/VueGridRow/VueGridRow.vue';
-  import VueHeadline  from '../../shared/components/VueHeadline/VueHeadline.vue';
+import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
+import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
+import VueCard from '../../shared/components/VueCard/VueCard.vue';
+import VueCardBody from '../../shared/components/VueCard/VueCardBody/VueCardBody.vue';
+import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
+import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
 
-  export default {
-    components: {
-      VueHeadline,
-      VueGrid,
-      VueGridItem,
-      VueCard,
-      VueCardBody,
-      VueGridRow,
-    },
-  };
+export default {
+  components: {
+    VueHeadline,
+    VueGrid,
+    VueGridItem,
+    VueCard,
+    VueCardBody,
+    VueGridRow,
+  },
+};
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/styles";
+@import '../../shared/styles';
 
-  .quickStart {
-    display:    block;
-    text-align: center;
-    background: $primary-2-1;
+.quickStart {
+  display: block;
+  text-align: center;
+  background: $primary-2-1;
 
-    h2 {
-      color: $text-color-inverse;
+  h2 {
+    color: $text-color-inverse;
+  }
+
+  :global {
+    .vueCard {
+      background: $bg-color;
     }
+  }
 
-    :global {
-      .vueCard {
-        background: $bg-color;
-      }
-    }
+  :global {
+    .vueCardBody {
+      text-align: left;
+      overflow: hidden;
 
-    :global {
-      .vueCardBody {
-        text-align: left;
-        overflow:   hidden;
+      ol {
+        margin-top: $space-unit * 5;
+        padding: 0 0 0 $space-unit * 2;
 
-        ol {
-          margin-top: $space-unit * 5;
-          padding:    0 0 0 $space-unit * 2;
-
-          li {
-            margin-bottom: $space-unit * 2;
-          }
-        }
-      }
-    }
-
-    @include mediaMin(tabletPortrait) {
-      :global {
-        .vueCard {
-          width:       50%;
-          margin-left: 25%;
-        }
-      }
-    }
-
-    @include mediaMin(tabletLandscape) {
-      :global {
-        .vueCard {
-          width:       33.3333333%;
-          margin-left: 33.3333333%;
+        li {
+          margin-bottom: $space-unit * 2;
         }
       }
     }
   }
+
+  @include mediaMin(tabletPortrait) {
+    :global {
+      .vueCard {
+        width: 50%;
+        margin-left: 25%;
+      }
+    }
+  }
+
+  @include mediaMin(tabletLandscape) {
+    :global {
+      .vueCard {
+        width: 33.3333333%;
+        margin-left: 33.3333333%;
+      }
+    }
+  }
+}
 </style>

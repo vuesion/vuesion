@@ -1,6 +1,6 @@
-import * as Express             from 'express';
+import * as Express from 'express';
 import { WebpackDevMiddleware } from 'webpack-dev-middleware';
-import { Logger }               from '../utils/Logger';
+import { Logger } from '../utils/Logger';
 
 const path = nodeRequire('path');
 const webpack = nodeRequire('webpack');
@@ -36,7 +36,7 @@ export default (app: Express.Application, callback: any): void => {
   clientCompiler = webpack(clientConfig);
   devMiddleware = nodeRequire('webpack-dev-middleware')(clientCompiler, {
     publicPath: clientConfig.output.publicPath,
-    stats:      {
+    stats: {
       colors: true,
       chunks: false,
     },

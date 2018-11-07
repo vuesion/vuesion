@@ -11,7 +11,8 @@ $toggle-handle-size: $space-unit * 3;
 $toggle-handle-bg: $brand-secondary;
 $toggle-handle-shadow: none;
 $toggle-handle-checked-bg: $brand-secondary;
-$toggle-handle-focused-shadow: 0 0 0 8px rgba(red($brand-secondary), green($brand-secondary), blue($brand-secondary), .5);
+$toggle-handle-focused-shadow: 0 0 0 8px
+  rgba(red($brand-secondary), green($brand-secondary), blue($brand-secondary), 0.5);
 
 $toggle-disabled-bg: $bg-color-variant;
 $toggle-handle-disabled-bg: $border-color;

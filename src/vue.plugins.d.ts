@@ -1,11 +1,11 @@
 /* tslint:disable:no-shadowed-variable */
 
-import Vue                               from 'vue';
-import { MetaInfo }                      from 'vue-meta';
+import Vue from 'vue';
+import { MetaInfo } from 'vue-meta';
 import { DefaultProps, PropsDefinition } from 'vue/types/options';
-import { Route, VueRouter }              from 'vue-router/types/router';
-import { VeeValidateComponentOptions }   from 'vee-validate';
-import { IPreLoad }                      from './server/isomorphic';
+import { Route, VueRouter } from 'vue-router/types/router';
+import { VeeValidateComponentOptions } from 'vee-validate';
+import { IPreLoad } from './server/isomorphic';
 
 declare module 'vue/types/vue' {
   interface Vue {
@@ -40,10 +40,10 @@ declare module 'vue/types/options' {
 declare module 'vue-router/types/router' {
   interface VueRouter {
     history: {
-      router: VueRouter,
-      base: string,
-      current: Route,
-      pending?: Route,
+      router: VueRouter;
+      base: string;
+      current: Route;
+      pending?: Route;
     };
   }
 }

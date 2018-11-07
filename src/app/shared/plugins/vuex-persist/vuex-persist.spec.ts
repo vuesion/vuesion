@@ -1,6 +1,6 @@
-import { Plugin }                           from 'vuex';
+import { Plugin } from 'vuex';
 import { IVuexPersistStorage, VuexPersist } from './vuex-persist';
-import { IState }                           from '../../../state';
+import { IState } from '../../../state';
 
 class PersistMockStorage implements IVuexPersistStorage {
   public modules: string[];
@@ -52,34 +52,29 @@ class PersistMockStorage implements IVuexPersistStorage {
 }
 
 describe('vuex-persist', () => {
-
   test('should merge state', () => {
     (global as any).mockStorage = {
-      clear:      jest.fn(),
-      getItem:    (key: string): string => {
+      clear: jest.fn(),
+      getItem: (key: string): string => {
         if (key === 'vuexpersistbar') {
           return undefined;
         }
 
         return '{"bar":"baz"}';
       },
-      key:        jest.fn(),
+      key: jest.fn(),
       removeItem: jest.fn(),
-      setItem:    jest.fn(),
+      setItem: jest.fn(),
     };
 
-    const plugin: Plugin<any> = VuexPersist(
-      [
-        new PersistMockStorage(['foo', 'bar']),
-      ],
-    );
+    const plugin: Plugin<any> = VuexPersist([new PersistMockStorage(['foo', 'bar'])]);
     let mergedState: any = null;
     let updateHandler: any = null;
     const mockStore: any = {
-      state:        {
+      state: {
         initial: ['TEST'],
       },
-      subscribe:    (handler: any) => {
+      subscribe: (handler: any) => {
         updateHandler = handler;
       },
       replaceState: (newState: any) => {
@@ -91,49 +86,37 @@ describe('vuex-persist', () => {
 
     updateHandler({ update: true }, { bar: { test: 1 } });
 
-    expect(mergedState).toEqual(
-      {
-        foo:     {
-          bar: 'baz',
-        },
-        initial: ['TEST'],
+    expect(mergedState).toEqual({
+      foo: {
+        bar: 'baz',
       },
-    );
+      initial: ['TEST'],
+    });
 
-    expect((window as any).mockStorage.setItem.mock.calls[1])
-    .toEqual(
-      [
-        'vuexpersistbar',
-        '{"test":1}',
-      ],
-    );
+    expect((window as any).mockStorage.setItem.mock.calls[1]).toEqual(['vuexpersistbar', '{"test":1}']);
   });
 
   test('should continue if store is not writable', () => {
     (window as any).mockStorage = {
-      clear:      jest.fn(),
-      getItem:    (): string => {
+      clear: jest.fn(),
+      getItem: (): string => {
         throw new Error();
       },
-      key:        jest.fn(),
+      key: jest.fn(),
       removeItem: jest.fn(),
-      setItem:    () => {
+      setItem: () => {
         throw new Error();
       },
     };
 
-    const plugin: Plugin<any> = VuexPersist(
-      [
-        new PersistMockStorage(['initial']),
-      ],
-    );
+    const plugin: Plugin<any> = VuexPersist([new PersistMockStorage(['initial'])]);
     let mergedState: any = null;
     let updateHandler: any = null;
     const mockStore: any = {
-      state:        {
+      state: {
         initial: ['TEST'],
       },
-      subscribe:    (handler: any) => {
+      subscribe: (handler: any) => {
         updateHandler = handler;
       },
       replaceState: (newState: any) => {
@@ -143,36 +126,30 @@ describe('vuex-persist', () => {
 
     plugin(mockStore);
 
-    expect(mergedState).toEqual(
-      {
-        initial: ['TEST'],
-      },
-    );
+    expect(mergedState).toEqual({
+      initial: ['TEST'],
+    });
   });
 
   test('should continue if store is not readable', () => {
     (window as any).mockStorage = {
-      clear:      jest.fn(),
-      getItem:    (): string => {
+      clear: jest.fn(),
+      getItem: (): string => {
         throw new Error();
       },
-      key:        jest.fn(),
+      key: jest.fn(),
       removeItem: jest.fn(),
-      setItem:    jest.fn(),
+      setItem: jest.fn(),
     };
 
-    const plugin: Plugin<any> = VuexPersist(
-      [
-        new PersistMockStorage(['initial']),
-      ],
-    );
+    const plugin: Plugin<any> = VuexPersist([new PersistMockStorage(['initial'])]);
     let mergedState: any = null;
     let updateHandler: any = null;
     const mockStore: any = {
-      state:        {
+      state: {
         initial: ['TEST'],
       },
-      subscribe:    (handler: any) => {
+      subscribe: (handler: any) => {
         updateHandler = handler;
       },
       replaceState: (newState: any) => {
@@ -182,36 +159,30 @@ describe('vuex-persist', () => {
 
     plugin(mockStore);
 
-    expect(mergedState).toEqual(
-      {
-        initial: ['TEST'],
-      },
-    );
+    expect(mergedState).toEqual({
+      initial: ['TEST'],
+    });
   });
 
   test('should merge arrays correctly', () => {
     (window as any).mockStorage = {
-      clear:      jest.fn(),
-      getItem:    (): string => {
+      clear: jest.fn(),
+      getItem: (): string => {
         return '["TEST"]';
       },
-      key:        jest.fn(),
+      key: jest.fn(),
       removeItem: jest.fn(),
-      setItem:    jest.fn(),
+      setItem: jest.fn(),
     };
 
-    const plugin: Plugin<any> = VuexPersist(
-      [
-        new PersistMockStorage(['initial']),
-      ],
-    );
+    const plugin: Plugin<any> = VuexPersist([new PersistMockStorage(['initial'])]);
     let mergedState: any = null;
     let updateHandler: any = null;
     const mockStore: any = {
-      state:        {
+      state: {
         initial: ['TEST'],
       },
-      subscribe:    (handler: any) => {
+      subscribe: (handler: any) => {
         updateHandler = handler;
       },
       replaceState: (newState: any) => {
@@ -224,15 +195,9 @@ describe('vuex-persist', () => {
     updateHandler({ update: true }, { initial: ['foo', 'bar'] });
 
     expect(mergedState).toEqual({
-                                  initial: ['TEST'],
-                                });
+      initial: ['TEST'],
+    });
 
-    expect((window as any).mockStorage.setItem.mock.calls[1])
-    .toEqual(
-      [
-        'vuexpersistinitial',
-        '["foo","bar"]',
-      ],
-    );
+    expect((window as any).mockStorage.setItem.mock.calls[1]).toEqual(['vuexpersistinitial', '["foo","bar"]']);
   });
 });
