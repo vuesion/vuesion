@@ -3,7 +3,6 @@
     :class="cssClasses"
     :disabled="disabled"
     @click="click"
-    v-bind="$attrs"
     ref="button"
     :style="{ width: actualWidth }">
     <slot v-if="loading === false" />

@@ -32,6 +32,7 @@
 
   export default {
     name:     'VueInput',
+    inheritAttrs: false,
     inject:   {
       $validator: {
         default: new Validator({}, {}),
