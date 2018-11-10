@@ -16,7 +16,7 @@ describe('VueDataTableHeader.vue', () => {
   ];
 
   test('renders component', () => {
-    const wrapper = mount(VueDataTableHeader, {
+    const wrapper = mount<any>(VueDataTableHeader, {
       localVue,
       propsData: {
         columns,
@@ -30,7 +30,7 @@ describe('VueDataTableHeader.vue', () => {
   });
 
   test('renders component with active sorting asc', () => {
-    const wrapper = mount(VueDataTableHeader, {
+    const wrapper = mount<any>(VueDataTableHeader, {
       localVue,
       propsData: {
         columns,
@@ -45,7 +45,7 @@ describe('VueDataTableHeader.vue', () => {
   });
 
   test('renders component with active sorting desc', () => {
-    const wrapper = mount(VueDataTableHeader, {
+    const wrapper = mount<any>(VueDataTableHeader, {
       localVue,
       propsData: {
         columns,
@@ -60,7 +60,7 @@ describe('VueDataTableHeader.vue', () => {
   });
 
   test('should populate sortKey on click', () => {
-    const wrapper = mount(VueDataTableHeader, {
+    const wrapper = mount<any>(VueDataTableHeader, {
       localVue,
       propsData: {
         columns,

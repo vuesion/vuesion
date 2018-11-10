@@ -5,14 +5,14 @@ const localVue = createLocalVue();
 
 describe('VueButton.vue', () => {
   test('renders component', () => {
-    const wrapper = mount(VueButton, { localVue });
+    const wrapper = mount<any>(VueButton, { localVue });
 
     expect(wrapper.findAll(`.button`)).toHaveLength(1);
     expect(wrapper.findAll(`.active`)).toHaveLength(0);
   });
 
   test('should emit onClick event', () => {
-    const wrapper = mount(VueButton, {
+    const wrapper = mount<any>(VueButton, {
       localVue,
     });
 
@@ -21,7 +21,7 @@ describe('VueButton.vue', () => {
   });
 
   test('should disable button and not emit onClick event', () => {
-    const wrapper = mount(VueButton, {
+    const wrapper = mount<any>(VueButton, {
       localVue,
       propsData: {
         disabled: true,
@@ -35,7 +35,7 @@ describe('VueButton.vue', () => {
   });
 
   test('should show loader and not emit onClick event', () => {
-    const wrapper = mount(VueButton, {
+    const wrapper = mount<any>(VueButton, {
       localVue,
       propsData: {
         loading: true,
@@ -47,7 +47,7 @@ describe('VueButton.vue', () => {
   });
 
   test('should show primary color', () => {
-    const wrapper = mount(VueButton, {
+    const wrapper = mount<any>(VueButton, {
       localVue,
       propsData: {
         primary: true,
@@ -58,7 +58,7 @@ describe('VueButton.vue', () => {
   });
 
   test('should show secondary color', () => {
-    const wrapper = mount(VueButton, {
+    const wrapper = mount<any>(VueButton, {
       localVue,
       propsData: {
         secondary: true,
@@ -69,7 +69,7 @@ describe('VueButton.vue', () => {
   });
 
   test('should show tertiary color', () => {
-    const wrapper = mount(VueButton, {
+    const wrapper = mount<any>(VueButton, {
       localVue,
       propsData: {
         tertiary: true,
@@ -80,7 +80,7 @@ describe('VueButton.vue', () => {
   });
 
   test('should show danger color', () => {
-    const wrapper = mount(VueButton, {
+    const wrapper = mount<any>(VueButton, {
       localVue,
       propsData: {
         danger: true,
@@ -91,7 +91,7 @@ describe('VueButton.vue', () => {
   });
 
   test('should show warning color', () => {
-    const wrapper = mount(VueButton, {
+    const wrapper = mount<any>(VueButton, {
       localVue,
       propsData: {
         warning: true,
@@ -102,7 +102,7 @@ describe('VueButton.vue', () => {
   });
 
   test('should show success color', () => {
-    const wrapper = mount(VueButton, {
+    const wrapper = mount<any>(VueButton, {
       localVue,
       propsData: {
         success: true,
@@ -113,7 +113,7 @@ describe('VueButton.vue', () => {
   });
 
   test('should show outlined color', () => {
-    const wrapper = mount(VueButton, {
+    const wrapper = mount<any>(VueButton, {
       localVue,
       propsData: {
         outlined: true,
@@ -124,7 +124,7 @@ describe('VueButton.vue', () => {
   });
 
   test('should show ghost color', () => {
-    const wrapper = mount(VueButton, {
+    const wrapper = mount<any>(VueButton, {
       localVue,
       propsData: {
         ghost: true,
@@ -135,7 +135,7 @@ describe('VueButton.vue', () => {
   });
 
   test('should apply fixed width when loading', () => {
-    const wrapper = mount(VueButton, {
+    const wrapper = mount<any>(VueButton, {
       localVue,
     });
 

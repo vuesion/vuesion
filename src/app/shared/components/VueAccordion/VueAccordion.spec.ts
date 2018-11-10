@@ -8,7 +8,7 @@ localVue.component('vueA-accordion-item', VueAccordionItem);
 
 describe('VueAccordion.vue', () => {
   test('renders component with an accordion item', () => {
-    const wrapper = mount(VueAccordion, {
+    const wrapper = mount<any>(VueAccordion, {
       localVue,
       slots: {
         default: '<vueA-accordion-item title="foo" :initOpen="false"/>',
@@ -27,7 +27,7 @@ describe('VueAccordion.vue', () => {
   });
 
   test('renders component with an open accordion item', () => {
-    const wrapper = mount(VueAccordion, {
+    const wrapper = mount<any>(VueAccordion, {
       localVue,
       slots: {
         default: '<vueA-accordion-item title="foo" :initOpen="true"/>',
@@ -46,7 +46,7 @@ describe('VueAccordion.vue', () => {
   });
 
   test('should handle single accordion', () => {
-    const wrapper = mount(VueAccordion, {
+    const wrapper = mount<any>(VueAccordion, {
       localVue,
       propsData: {
         multiple: false,
@@ -66,7 +66,7 @@ describe('VueAccordion.vue', () => {
   });
 
   test('should handle multiple accordion', () => {
-    const wrapper = mount(VueAccordion, {
+    const wrapper = mount<any>(VueAccordion, {
       localVue,
       propsData: {
         multiple: true,

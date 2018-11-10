@@ -5,7 +5,7 @@ const localVue = createLocalVue();
 
 describe('CollapseAnimation.vue', () => {
   test('should set default before enter values', () => {
-    const wrapper = mount(CollapseAnimation, {
+    const wrapper = mount<any>(CollapseAnimation, {
       localVue,
       slots: {
         default: '<p>TEST</p>',
@@ -22,7 +22,7 @@ describe('CollapseAnimation.vue', () => {
   });
 
   test('should animate enter', (done) => {
-    const wrapper = mount(CollapseAnimation, {
+    const wrapper = mount<any>(CollapseAnimation, {
       localVue,
       slots: {
         default: '<p>TEST</p>',
@@ -50,7 +50,7 @@ describe('CollapseAnimation.vue', () => {
   });
 
   test('should animate enter', (done) => {
-    const wrapper = mount(CollapseAnimation, {
+    const wrapper = mount<any>(CollapseAnimation, {
       localVue,
       slots: {
         default: '<p>TEST</p>',
@@ -73,7 +73,7 @@ describe('CollapseAnimation.vue', () => {
   });
 
   test('should set default before leave values', () => {
-    const wrapper = mount(CollapseAnimation, {
+    const wrapper = mount<any>(CollapseAnimation, {
       localVue,
       slots: {
         default: '<p>TEST</p>',
@@ -90,7 +90,7 @@ describe('CollapseAnimation.vue', () => {
   });
 
   test('should animate enter', (done) => {
-    const wrapper = mount(CollapseAnimation, {
+    const wrapper = mount<any>(CollapseAnimation, {
       localVue,
       slots: {
         default: '<p>TEST</p>',

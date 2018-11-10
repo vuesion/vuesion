@@ -7,7 +7,7 @@ describe('VueSlider.vue', () => {
   test('renders component with multiple handles', () => {
     window.addEventListener = jest.fn();
     window.removeEventListener = jest.fn();
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -26,7 +26,7 @@ describe('VueSlider.vue', () => {
   });
 
   test('renders component with single handles', () => {
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -40,7 +40,7 @@ describe('VueSlider.vue', () => {
 
   test('renders disable slider', () => {
     document.addEventListener = jest.fn();
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -59,7 +59,7 @@ describe('VueSlider.vue', () => {
 
   test('should add handlers on moveStart', () => {
     document.addEventListener = jest.fn();
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -81,7 +81,7 @@ describe('VueSlider.vue', () => {
 
   test('should remove handlers on moveEnd', () => {
     document.removeEventListener = jest.fn();
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -100,7 +100,7 @@ describe('VueSlider.vue', () => {
 
   test('should do nothing on moveEnd if currentSlider is null', () => {
     document.removeEventListener = jest.fn();
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -118,7 +118,7 @@ describe('VueSlider.vue', () => {
 
   test('should add active class to handle', () => {
     document.removeEventListener = jest.fn();
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -134,7 +134,7 @@ describe('VueSlider.vue', () => {
   });
 
   test('should move left handle with multi handles', () => {
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -167,7 +167,7 @@ describe('VueSlider.vue', () => {
   });
 
   test('should move left handle with multi handles', () => {
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -200,7 +200,7 @@ describe('VueSlider.vue', () => {
   });
 
   test('should move right handle', () => {
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -229,7 +229,7 @@ describe('VueSlider.vue', () => {
   });
 
   test('should return closest handle with multi range', () => {
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -244,7 +244,7 @@ describe('VueSlider.vue', () => {
   });
 
   test('should return closest handle with single range', () => {
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -259,7 +259,7 @@ describe('VueSlider.vue', () => {
   });
 
   test('should handle key events on left handle', () => {
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -291,7 +291,7 @@ describe('VueSlider.vue', () => {
   });
 
   test('should handle key events on right handle', () => {
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -322,7 +322,7 @@ describe('VueSlider.vue', () => {
   });
 
   test('should handle key events on left handle with single range', () => {
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,
@@ -355,7 +355,7 @@ describe('VueSlider.vue', () => {
   });
 
   test('should  emit on key up', () => {
-    const wrapper = mount(VueSlider, {
+    const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
         min: 0,

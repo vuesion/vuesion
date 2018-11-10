@@ -5,7 +5,7 @@ const localVue = createLocalVue();
 
 describe('VueTabItem.vue', () => {
   test('renders component', () => {
-    const wrapper = mount(VueTabItem, {
+    const wrapper = mount<any>(VueTabItem, {
       localVue,
       slots: {
         default: '<p>TEST</p>',

@@ -6,7 +6,7 @@ const localVue = createLocalVue();
 
 describe('VueDatePicker.vue', () => {
   test('renders component', () => {
-    const wrapper = mount(VueDatePicker, {
+    const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
     });
@@ -17,7 +17,7 @@ describe('VueDatePicker.vue', () => {
   });
 
   test('renders component with selected date', () => {
-    const wrapper = mount(VueDatePicker, {
+    const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
     });
@@ -29,7 +29,7 @@ describe('VueDatePicker.vue', () => {
   });
 
   test('renders component with current date', () => {
-    const wrapper = mount(VueDatePicker, {
+    const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
       propsData: {
@@ -41,7 +41,7 @@ describe('VueDatePicker.vue', () => {
   });
 
   test('should emit change', () => {
-    const wrapper = mount(VueDatePicker, {
+    const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
     });
@@ -52,7 +52,7 @@ describe('VueDatePicker.vue', () => {
   });
 
   test('should open calendar on focus', () => {
-    const wrapper = mount(VueDatePicker, {
+    const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
     });
@@ -64,7 +64,7 @@ describe('VueDatePicker.vue', () => {
   });
 
   test('should blur on focus', () => {
-    const wrapper = mount(VueDatePicker, {
+    const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
     });

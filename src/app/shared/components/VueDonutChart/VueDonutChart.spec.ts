@@ -12,7 +12,7 @@ describe('VueDonutChart.vue', () => {
   });
 
   test('renders donut chart', () => {
-    const wrapper = mount(VueDonutChart, {
+    const wrapper = mount<any>(VueDonutChart, {
       localVue,
       propsData: {
         title: 'Foo',
@@ -46,7 +46,7 @@ describe('VueDonutChart.vue', () => {
   });
 
   test('renders pie chart', () => {
-    const wrapper = mount(VueDonutChart, {
+    const wrapper = mount<any>(VueDonutChart, {
       localVue,
       propsData: {
         title: 'Foo',

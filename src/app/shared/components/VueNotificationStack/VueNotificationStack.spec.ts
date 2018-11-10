@@ -6,7 +6,7 @@ const localVue = createLocalVue();
 
 describe('VueNotificationStack.vue', () => {
   test('renders component', () => {
-    const wrapper = mount(VueNotificationStack, {
+    const wrapper = mount<any>(VueNotificationStack, {
       localVue,
     });
     const notification: INotification = {
@@ -18,7 +18,7 @@ describe('VueNotificationStack.vue', () => {
   });
 
   test('add and remove notification', () => {
-    const wrapper = mount(VueNotificationStack, {
+    const wrapper = mount<any>(VueNotificationStack, {
       localVue,
     });
     const notification: INotification = {
@@ -38,7 +38,7 @@ describe('VueNotificationStack.vue', () => {
   });
 
   test('should remove notification after 100 ms', (done) => {
-    const wrapper = mount(VueNotificationStack, {
+    const wrapper = mount<any>(VueNotificationStack, {
       localVue,
       propsData: {
         duration: 100,

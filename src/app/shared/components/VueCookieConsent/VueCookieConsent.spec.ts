@@ -8,7 +8,7 @@ describe('VueCookieConsent.vue', () => {
   test('renders visible component and simulates consent click', () => {
     const setCookieConsentVersion: any = jest.fn();
 
-    const wrapper = mount(VueCookieConsent, {
+    const wrapper = mount<any>(VueCookieConsent, {
       localVue,
       i18n,
       slots: {
@@ -31,7 +31,7 @@ describe('VueCookieConsent.vue', () => {
   });
 
   test('renders hidden component', () => {
-    const wrapper = mount(VueCookieConsent, {
+    const wrapper = mount<any>(VueCookieConsent, {
       localVue,
       i18n,
       slots: {
@@ -50,7 +50,7 @@ describe('VueCookieConsent.vue', () => {
   });
 
   test('test watchers', () => {
-    const wrapper = mount(VueCookieConsent, {
+    const wrapper = mount<any>(VueCookieConsent, {
       localVue,
       i18n,
       slots: {

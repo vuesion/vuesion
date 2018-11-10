@@ -42,7 +42,7 @@ describe('{{ properCase componentName }}.vue', () => {
   });
 
   test('renders component', () => {
-    const wrapper = mount({{ properCase componentName }}, {
+    const wrapper = mount<any>({{ properCase componentName }}, {
       store,
       localVue,
       i18n,
@@ -52,7 +52,7 @@ describe('{{ properCase componentName }}.vue', () => {
   });
 
   test('should increment and decrement', () => {
-    const wrapper: any = mount({{ properCase componentName }}, {
+    const wrapper: any = mount<any>({{ properCase componentName }}, {
       store,
       localVue,
       i18n,

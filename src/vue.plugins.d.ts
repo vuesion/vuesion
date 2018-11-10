@@ -9,8 +9,6 @@ import { IPreLoad } from './server/isomorphic';
 
 declare module 'vue/types/vue' {
   interface Vue {
-    [key: string]: any;
-
     $meta?: any;
     $_veeValidate?: any;
     $refs?: any;

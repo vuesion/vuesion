@@ -5,7 +5,7 @@ const localVue = createLocalVue();
 
 describe('VueDropdownMenuMenu.vue', () => {
   test('renders component', () => {
-    const wrapper = mount(VueDropdownMenu, {
+    const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
         options: [],
@@ -19,7 +19,7 @@ describe('VueDropdownMenuMenu.vue', () => {
   });
 
   test('onClick', () => {
-    const wrapper = mount(VueDropdownMenu, {
+    const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
         options: [{ label: 'foo', value: 'foo' }],
@@ -38,7 +38,7 @@ describe('VueDropdownMenuMenu.vue', () => {
   });
 
   test('onKeyPress', () => {
-    const wrapper = mount(VueDropdownMenu, {
+    const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
         options: [{ label: 'foo', value: 'foo' }, { label: '', value: 'separator' }, { label: 'foo', value: 'foo' }],
@@ -78,7 +78,7 @@ describe('VueDropdownMenuMenu.vue', () => {
     document.addEventListener = jest.fn();
     document.removeEventListener = jest.fn();
 
-    const wrapper = mount(VueDropdownMenu, {
+    const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
         options: [{ label: 'foo', value: 'foo' }],
@@ -95,7 +95,7 @@ describe('VueDropdownMenuMenu.vue', () => {
   });
 
   test('should close on outside click', () => {
-    const wrapper = mount(VueDropdownMenu, {
+    const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
         options: [{ label: 'foo', value: 'foo' }],
@@ -117,7 +117,7 @@ describe('VueDropdownMenuMenu.vue', () => {
   });
 
   test('handleSelection', () => {
-    const wrapper = mount(VueDropdownMenu, {
+    const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
         options: [{ label: 'foo', value: 'foo' }, { label: 'foo', value: 'foo' }, { label: 'foo', value: 'foo' }],

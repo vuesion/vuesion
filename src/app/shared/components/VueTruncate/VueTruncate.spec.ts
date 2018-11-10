@@ -6,7 +6,7 @@ const localVue = createLocalVue();
 
 describe('VueTruncate.vue', () => {
   test('renders component and truncate text', () => {
-    const wrapper = mount(VueTruncate, {
+    const wrapper = mount<any>(VueTruncate, {
       i18n,
       localVue,
       slots: {
@@ -33,7 +33,7 @@ describe('VueTruncate.vue', () => {
       };
     };
 
-    const wrapper = mount(VueTruncate, {
+    const wrapper = mount<any>(VueTruncate, {
       i18n,
       localVue,
       slots: {
@@ -57,7 +57,7 @@ describe('VueTruncate.vue', () => {
   });
 
   test('truncate text and show whole text and collapse text', (done) => {
-    const wrapper = mount(VueTruncate, {
+    const wrapper = mount<any>(VueTruncate, {
       i18n,
       localVue,
       slots: {

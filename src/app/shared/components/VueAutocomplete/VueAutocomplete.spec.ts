@@ -8,7 +8,7 @@ const localVue = createLocalVue();
 
 describe('VueAutocomplete.vue', () => {
   test('renders and destroys component', () => {
-    const wrapper = shallowMount(VueAutocomplete, {
+    const wrapper = shallowMount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -23,7 +23,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('renders component with loader', () => {
-    const wrapper = shallowMount(VueAutocomplete, {
+    const wrapper = shallowMount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -37,7 +37,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onFocus', () => {
-    const wrapper = mount(VueAutocomplete, {
+    const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -55,7 +55,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onArrowDown', () => {
-    const wrapper = mount(VueAutocomplete, {
+    const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -79,7 +79,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onArrowUp', () => {
-    const wrapper = mount(VueAutocomplete, {
+    const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -102,7 +102,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('handleClickOutside', () => {
-    const wrapper = mount(VueAutocomplete, {
+    const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -120,7 +120,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onEnterKeyPress', () => {
-    const wrapper = mount(VueAutocomplete, {
+    const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -143,7 +143,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onOptionClick', () => {
-    const wrapper = mount(VueAutocomplete, {
+    const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -165,7 +165,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onInput', () => {
-    const wrapper = mount(VueAutocomplete, {
+    const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -186,7 +186,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('emitRequest', (done) => {
-    const wrapper = mount(VueAutocomplete, {
+    const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -204,7 +204,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('setResultContainerHeight', () => {
-    const wrapper = mount(VueAutocomplete, {
+    const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
@@ -235,7 +235,7 @@ describe('VueAutocomplete.vue', () => {
   });
 
   test('onFocusItem', () => {
-    const wrapper = mount(VueAutocomplete, {
+    const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {

@@ -5,7 +5,7 @@ const localVue = createLocalVue();
 
 describe('VueSidebar.vue', () => {
   test('renders component', () => {
-    const wrapper = mount(VueSidebar, {
+    const wrapper = mount<any>(VueSidebar, {
       localVue,
       slots: {
         default: 'foo',
@@ -16,7 +16,7 @@ describe('VueSidebar.vue', () => {
   });
 
   test('should open', () => {
-    const wrapper = mount(VueSidebar, {
+    const wrapper = mount<any>(VueSidebar, {
       localVue,
       slots: {
         default: 'foo',
@@ -32,7 +32,7 @@ describe('VueSidebar.vue', () => {
     document.addEventListener = jest.fn();
     document.removeEventListener = jest.fn();
 
-    const wrapper = mount(VueSidebar, {
+    const wrapper = mount<any>(VueSidebar, {
       localVue,
       stubs: ['router-link'],
     });
@@ -44,7 +44,7 @@ describe('VueSidebar.vue', () => {
   });
 
   test('should open menu and close it on outside click', () => {
-    const wrapper = mount(VueSidebar, {
+    const wrapper = mount<any>(VueSidebar, {
       localVue,
       stubs: ['router-link'],
     });

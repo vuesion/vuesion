@@ -8,7 +8,7 @@ localVue.component('vue-tab-item', VueTabItem);
 
 describe('VueTabGroup.vue', () => {
   test('renders component with a tab', () => {
-    const wrapper = mount(VueTabGroup, {
+    const wrapper = mount<any>(VueTabGroup, {
       localVue,
       slots: {
         default: '<vue-tab-item title="foo" />',
@@ -26,7 +26,7 @@ describe('VueTabGroup.vue', () => {
   });
 
   test('should change tab', () => {
-    const wrapper = mount(VueTabGroup, {
+    const wrapper = mount<any>(VueTabGroup, {
       localVue,
       slots: {
         default: ['<vue-tab-item title="foo" />', '<vue-tab-item title="foo2" />'],
@@ -78,7 +78,7 @@ describe('VueTabGroup.vue', () => {
   });
 
   test('should select second tab because of its properties', () => {
-    const wrapper = mount(VueTabGroup, {
+    const wrapper = mount<any>(VueTabGroup, {
       localVue,
       slots: {
         default: '<vue-tab-item title="foo" /><vue-tab-item title="foo" :is-active="true" />',

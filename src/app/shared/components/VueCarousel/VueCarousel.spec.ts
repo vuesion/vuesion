@@ -10,7 +10,7 @@ const images: any[] = [
 
 describe('VueCarousel.vue', () => {
   test('renders component', () => {
-    const wrapper = mount(VueCarousel, {
+    const wrapper = mount<any>(VueCarousel, {
       localVue,
     });
 
@@ -20,7 +20,7 @@ describe('VueCarousel.vue', () => {
   });
 
   test('renders component with images', (done) => {
-    const wrapper = mount(VueCarousel, {
+    const wrapper = mount<any>(VueCarousel, {
       localVue,
       propsData: {
         images,
@@ -34,7 +34,7 @@ describe('VueCarousel.vue', () => {
   });
 
   test('should change slide', () => {
-    const wrapper = mount(VueCarousel, {
+    const wrapper = mount<any>(VueCarousel, {
       localVue,
       propsData: {
         images,

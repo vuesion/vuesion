@@ -8,7 +8,7 @@ const nextWeek: Date = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
 describe('VueDateRangePicker.vue', () => {
   test('should handle onStartChange', () => {
-    const wrapper = mount(VueDateRangePicker, {
+    const wrapper = mount<any>(VueDateRangePicker, {
       localVue,
       i18n,
     });
@@ -29,7 +29,7 @@ describe('VueDateRangePicker.vue', () => {
   });
 
   test('should handle onEndChange', () => {
-    const wrapper = mount(VueDateRangePicker, {
+    const wrapper = mount<any>(VueDateRangePicker, {
       localVue,
       i18n,
     });

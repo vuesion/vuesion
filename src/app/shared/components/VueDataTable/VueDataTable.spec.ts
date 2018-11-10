@@ -14,7 +14,7 @@ describe('VueDataTable.vue', () => {
   const data: any[] = dataTableDataFixture;
 
   test('renders component', () => {
-    const wrapper = mount(VueDataTable, {
+    const wrapper = mount<any>(VueDataTable, {
       i18n,
       localVue,
       propsData: {
@@ -30,7 +30,7 @@ describe('VueDataTable.vue', () => {
   });
 
   test('renders component without search', () => {
-    const wrapper = mount(VueDataTable, {
+    const wrapper = mount<any>(VueDataTable, {
       i18n,
       localVue,
       propsData: {
@@ -47,7 +47,7 @@ describe('VueDataTable.vue', () => {
   });
 
   test('should filter data', () => {
-    const wrapper = mount(VueDataTable, {
+    const wrapper = mount<any>(VueDataTable, {
       i18n,
       localVue,
       propsData: {
@@ -69,7 +69,7 @@ describe('VueDataTable.vue', () => {
   });
 
   test('should sort data', () => {
-    const wrapper = mount(VueDataTable, {
+    const wrapper = mount<any>(VueDataTable, {
       i18n,
       localVue,
       propsData: {
@@ -94,7 +94,7 @@ describe('VueDataTable.vue', () => {
   });
 
   test('should change page', () => {
-    const wrapper = mount(VueDataTable, {
+    const wrapper = mount<any>(VueDataTable, {
       i18n,
       localVue,
       propsData: {
@@ -109,7 +109,7 @@ describe('VueDataTable.vue', () => {
   });
 
   test('should emit click', () => {
-    const wrapper = mount(VueDataTable, {
+    const wrapper = mount<any>(VueDataTable, {
       i18n,
       localVue,
       propsData: {
@@ -129,7 +129,7 @@ describe('VueDataTable.vue', () => {
   });
 
   test('should emit click', () => {
-    const wrapper = mount(VueDataTable, {
+    const wrapper = mount<any>(VueDataTable, {
       i18n,
       localVue,
       propsData: {
@@ -155,7 +155,7 @@ describe('VueDataTable.vue', () => {
   });
 
   test('should display all the data if maxRows is set to 0', () => {
-    const wrapper = mount(VueDataTable, {
+    const wrapper = mount<any>(VueDataTable, {
       i18n,
       localVue,
       propsData: {

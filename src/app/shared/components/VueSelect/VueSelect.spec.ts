@@ -28,7 +28,7 @@ describe('VueSelect.vue', () => {
   ];
 
   test('renders component', () => {
-    const wrapper = mount(VueSelect, {
+    const wrapper = mount<any>(VueSelect, {
       localVue,
       propsData: {
         options,
@@ -45,7 +45,7 @@ describe('VueSelect.vue', () => {
   });
 
   test('renders multi component', () => {
-    const wrapper = mount(VueSelect, {
+    const wrapper = mount<any>(VueSelect, {
       localVue,
       propsData: {
         options,
@@ -60,7 +60,7 @@ describe('VueSelect.vue', () => {
   });
 
   test('renders disabled component', () => {
-    const wrapper = mount(VueSelect, {
+    const wrapper = mount<any>(VueSelect, {
       localVue,
       propsData: {
         options,
@@ -75,7 +75,7 @@ describe('VueSelect.vue', () => {
   });
 
   it('should return list of options', () => {
-    const wrapper = mount(VueSelect, {
+    const wrapper = mount<any>(VueSelect, {
       localVue,
       propsData: {
         options,
@@ -108,7 +108,7 @@ describe('VueSelect.vue', () => {
   });
 
   test('should display error state', () => {
-    const wrapper = mount(VueSelect, {
+    const wrapper = mount<any>(VueSelect, {
       localVue,
       mocks: {
         errors: {

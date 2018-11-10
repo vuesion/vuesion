@@ -5,7 +5,7 @@ const localVue = createLocalVue();
 
 describe('VueAccordionItem.vue', () => {
   test('renders component', () => {
-    const wrapper = mount(VueAccordionItem, {
+    const wrapper = mount<any>(VueAccordionItem, {
       localVue,
       propsData: {
         title: 'foo',
@@ -16,7 +16,7 @@ describe('VueAccordionItem.vue', () => {
   });
 
   test('opens component', () => {
-    const wrapper = mount(VueAccordionItem, {
+    const wrapper = mount<any>(VueAccordionItem, {
       localVue,
       propsData: {
         title: 'foo',
@@ -30,7 +30,7 @@ describe('VueAccordionItem.vue', () => {
   });
 
   test('calls parent functions', () => {
-    const wrapper = mount(VueAccordionItem, {
+    const wrapper = mount<any>(VueAccordionItem, {
       localVue,
       propsData: {
         title: 'foo',

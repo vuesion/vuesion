@@ -5,7 +5,7 @@ const localVue = createLocalVue();
 
 describe('VueInput.vue', () => {
   test('renders component', () => {
-    const wrapper = mount(VueInput, {
+    const wrapper = mount<any>(VueInput, {
       localVue,
       propsData: {
         message: 'MESSAGE!',
@@ -22,7 +22,7 @@ describe('VueInput.vue', () => {
   });
 
   test('renders disabled component', () => {
-    const wrapper = mount(VueInput, {
+    const wrapper = mount<any>(VueInput, {
       localVue,
       propsData: {
         disabled: true,
@@ -35,7 +35,7 @@ describe('VueInput.vue', () => {
   });
 
   test('should emit input', () => {
-    const wrapper = mount(VueInput, {
+    const wrapper = mount<any>(VueInput, {
       localVue,
       propsData: {
         name: 'name',
@@ -48,7 +48,7 @@ describe('VueInput.vue', () => {
   });
 
   test('should display error state', () => {
-    const wrapper = mount(VueInput, {
+    const wrapper = mount<any>(VueInput, {
       localVue,
       mocks: {
         errors: {
@@ -69,7 +69,7 @@ describe('VueInput.vue', () => {
   });
 
   test('autofocus fallback', () => {
-    const wrapper = mount(VueInput, {
+    const wrapper = mount<any>(VueInput, {
       localVue,
       propsData: {
         name: 'name',
@@ -95,7 +95,7 @@ describe('VueInput.vue', () => {
         this.cb();
       }
     };
-    const wrapper = mount(VueInput, {
+    const wrapper = mount<any>(VueInput, {
       localVue,
       propsData: {
         name: 'name',

@@ -42,7 +42,7 @@ describe('Counter.vue', () => {
   });
 
   test('renders component', () => {
-    const wrapper = mount(Counter, {
+    const wrapper = mount<any>(Counter, {
       store,
       localVue,
       i18n,
@@ -52,7 +52,7 @@ describe('Counter.vue', () => {
   });
 
   test('should increment and decrement', () => {
-    const wrapper = mount(Counter, {
+    const wrapper = mount<any>(Counter, {
       store,
       localVue,
       i18n,

@@ -5,7 +5,7 @@ const localVue = createLocalVue();
 
 describe('VueModal.vue', () => {
   test('renders slot', (done) => {
-    const wrapper = mount(VueModal, {
+    const wrapper = mount<any>(VueModal, {
       localVue,
       slots: {
         default: '<p>TEST</p>',
@@ -32,7 +32,7 @@ describe('VueModal.vue', () => {
     document.addEventListener = jest.fn();
     document.removeEventListener = jest.fn();
 
-    const wrapper = mount(VueModal, { localVue });
+    const wrapper = mount<any>(VueModal, { localVue });
 
     wrapper.destroy();
 
@@ -41,7 +41,7 @@ describe('VueModal.vue', () => {
   });
 
   test('should close on outside click', () => {
-    const wrapper = mount(VueModal, {
+    const wrapper = mount<any>(VueModal, {
       localVue,
       slots: {
         default: '<p>TEST</p>',
@@ -63,7 +63,7 @@ describe('VueModal.vue', () => {
   });
 
   test('should close on ESC press', () => {
-    const wrapper = mount(VueModal, {
+    const wrapper = mount<any>(VueModal, {
       localVue,
     });
 
