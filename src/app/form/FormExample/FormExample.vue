@@ -91,6 +91,7 @@
           id="acceptTerms"
           v-model="form.acceptTerms"
           label="I accept the terms"
+          validation="required"
           required />
       </vue-grid-item>
       <vue-grid-item>

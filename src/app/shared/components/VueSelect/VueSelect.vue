@@ -33,6 +33,7 @@
 
   export default {
     name:     'VueSelect',
+    inheritAttrs: false,
     inject:   {
       $validator: {
         default: new Validator({}, {}),

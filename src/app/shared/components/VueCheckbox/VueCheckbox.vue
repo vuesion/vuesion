@@ -7,6 +7,7 @@
       :checked="checked || value"
       :required="required"
       :disabled="disabled"
+      v-validate="validation"
       @change.prevent="onClick"
       v-bind="$attrs" />
     <div :class="$style.box" @click="onClick" />
@@ -15,8 +16,16 @@
 </template>
 
 <script lang="ts">
+  import { Validator } from 'vee-validate';
+
   export default {
     name:     'VueCheckbox',
+    inheritAttrs: false,
+    inject:   {
+      $validator: {
+        default: new Validator({}, {}),
+      },
+    },
     props:    {
       name:     {
         type:     String,
@@ -41,6 +50,9 @@
       required: {
         type:    Boolean,
         default: false,
+      },
+      validation:   {
+        default: '',
       },
       radio:    {
         type:    Boolean,

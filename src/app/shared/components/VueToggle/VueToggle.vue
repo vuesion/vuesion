@@ -8,6 +8,7 @@
       :checked="isChecked"
       :required="required"
       :disabled="disabled"
+      v-validate="validation"
       @change.prevent="onClick"
       @focus="focus = true"
       @blur="focus = false"
@@ -24,8 +25,16 @@
 </template>
 
 <script lang="ts">
+  import { Validator } from 'vee-validate';
+
   export default {
     name:     'VueToggle',
+    inheritAttrs: false,
+    inject:   {
+      $validator: {
+        default: new Validator({}, {}),
+      },
+    },
     props:    {
       name:     {
         type:     String,
@@ -50,6 +59,9 @@
       required: {
         type:    Boolean,
         default: false,
+      },
+      validation:   {
+        default: '',
       },
       label:    {
         type:     String,
