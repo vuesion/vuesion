@@ -12,55 +12,52 @@ module.exports = (storybookBaseConfig, env, defaultConfig) => {
   };
 
   config.resolve.alias = {
-    'vue$': 'vue/dist/vue.esm.js',
-    '@':    resolve('src'),
+    vue$: 'vue/dist/vue.esm.js',
+    '@': resolve('src'),
   };
 
-  config.resolve.modules.push(
-    path.join(resolve('src')),
-    path.join(resolve('node_modules')),
-  );
+  config.resolve.modules.push(path.join(resolve('src')), path.join(resolve('node_modules')));
 
   config.module.rules = [
     {
-      test:    /\.ts$/,
-      loader:  'ts-loader',
+      test: /\.ts$/,
+      loader: 'ts-loader',
       include: [path.join(__dirname, '..', 'src')],
       exclude: /node_modules/,
       options: {
         appendTsSuffixTo: [/\.vue$/],
-        transpileOnly:    true,
+        transpileOnly: true,
       },
     },
     {
-      test:   /\.vue$/,
+      test: /\.vue$/,
       loader: 'vue-loader',
     },
     {
       test: /\.scss$/,
-      use:  [
+      use: [
         'vue-style-loader',
         {
-          loader:  'css-loader',
+          loader: 'css-loader',
           options: {
-            modules:        true,
-            importLoaders:  1,
+            modules: true,
+            importLoaders: 1,
             localIdentName: '[local]_[hash:base64:8]',
           },
         },
         {
-          loader:  'postcss-loader',
+          loader: 'postcss-loader',
           options: {
-            ident:   'postcss',
+            ident: 'postcss',
             plugins: () => [
               require('autoprefixer')({ browsers: ['last 2 versions', 'ie >= 11'] }),
               require('css-mqpacker')(),
               require('cssnano')({
-                                   discardComments: {
-                                     removeAll: true,
-                                   },
-                                   zindex:          false,
-                                 }),
+                discardComments: {
+                  removeAll: true,
+                },
+                zindex: false,
+              }),
             ],
           },
         },
@@ -71,34 +68,34 @@ module.exports = (storybookBaseConfig, env, defaultConfig) => {
     },
     {
       test: /\.sass$/,
-      use:  [
+      use: [
         'vue-style-loader',
         {
-          loader:  'css-loader',
+          loader: 'css-loader',
           options: {
-            modules:        true,
-            importLoaders:  1,
+            modules: true,
+            importLoaders: 1,
             localIdentName: '[local]_[hash:base64:8]',
           },
         },
         {
-          loader:  'postcss-loader',
+          loader: 'postcss-loader',
           options: {
-            ident:   'postcss',
+            ident: 'postcss',
             plugins: () => [
               require('autoprefixer')({ browsers: ['last 2 versions', 'ie >= 11'] }),
               require('css-mqpacker')(),
               require('cssnano')({
-                                   discardComments: {
-                                     removeAll: true,
-                                   },
-                                   zindex:          false,
-                                 }),
+                discardComments: {
+                  removeAll: true,
+                },
+                zindex: false,
+              }),
             ],
           },
         },
         {
-          loader:  'sass-loader',
+          loader: 'sass-loader',
           options: {
             indentedSyntax: true,
           },
@@ -106,8 +103,8 @@ module.exports = (storybookBaseConfig, env, defaultConfig) => {
       ],
     },
     {
-      test:    /\.(?:jpg|png|svg|ttf|woff2?|eot|ico)$/,
-      loader:  'file-loader',
+      test: /\.(?:jpg|png|svg|ttf|woff2?|eot|ico)$/,
+      loader: 'file-loader',
       options: {
         name: '[name].[ext]?[hash]',
       },

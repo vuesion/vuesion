@@ -1,27 +1,24 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueTruncate               from './VueTruncate.vue';
-import { i18n }                  from '../../plugins/i18n/i18n';
+import VueTruncate from './VueTruncate.vue';
+import { i18n } from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
 describe('VueTruncate.vue', () => {
-
   test('renders component and truncate text', () => {
-    const wrapper = mount(VueTruncate,
-                          {
-                            i18n,
-                            localVue,
-                            slots: {
-                              default: `
+    const wrapper = mount(VueTruncate, {
+      i18n,
+      localVue,
+      slots: {
+        default: `
                                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et<br/>
   dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet<br/>
   clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,<br/>
   consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,<br/>
   sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br/>
   no sea takimata sanctus est Lorem ipsum dolor sit amet.`,
-                            },
-                          },
-    );
+      },
+    });
 
     expect(wrapper.isVueInstance()).toBeTruthy();
     expect(wrapper.vm.isTruncated).toBeTruthy();
@@ -36,24 +33,22 @@ describe('VueTruncate.vue', () => {
       };
     };
 
-    const wrapper = mount(VueTruncate,
-                          {
-                            i18n,
-                            localVue,
-                            slots:     {
-                              default: `
+    const wrapper = mount(VueTruncate, {
+      i18n,
+      localVue,
+      slots: {
+        default: `
                                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et<br/>
   dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet<br/>
   clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,<br/>
   consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,<br/>
   sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br/>
   no sea takimata sanctus est Lorem ipsum dolor sit amet.`,
-                            },
-                            propsData: {
-                              lines: 1,
-                            },
-                          },
-    );
+      },
+      propsData: {
+        lines: 1,
+      },
+    });
 
     expect(wrapper.isVueInstance()).toBeTruthy();
     expect(wrapper.vm.isTruncated).toBeFalsy();
@@ -62,24 +57,22 @@ describe('VueTruncate.vue', () => {
   });
 
   test('truncate text and show whole text and collapse text', (done) => {
-    const wrapper = mount(VueTruncate,
-                          {
-                            i18n,
-                            localVue,
-                            slots:     {
-                              default: `
+    const wrapper = mount(VueTruncate, {
+      i18n,
+      localVue,
+      slots: {
+        default: `
                                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et<br/>
   dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet<br/>
   clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,<br/>
   consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,<br/>
   sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br/>
   no sea takimata sanctus est Lorem ipsum dolor sit amet.`,
-                            },
-                            propsData: {
-                              duration: 0,
-                            },
-                          },
-    );
+      },
+      propsData: {
+        duration: 0,
+      },
+    });
 
     wrapper.vm.offsetHeight = 150;
     wrapper.vm.collapsedHeight = 25.6 * 3;
@@ -98,8 +91,6 @@ describe('VueTruncate.vue', () => {
         expect(wrapper.vm.showMoreButton).toBeTruthy();
         done();
       }, 100);
-
     }, 100);
   });
-
 });

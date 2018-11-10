@@ -1,16 +1,15 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueCheckbox               from './VueCheckbox.vue';
+import VueCheckbox from './VueCheckbox.vue';
 
 const localVue = createLocalVue();
 
 describe('VueCheckbox.vue', () => {
-
   test('renders checkbox', () => {
     const wrapper = mount(VueCheckbox, {
       localVue,
       propsData: {
-        name:  'foo',
-        id:    'foo',
+        name: 'foo',
+        id: 'foo',
         label: 'Test',
       },
     });
@@ -24,8 +23,8 @@ describe('VueCheckbox.vue', () => {
     const wrapper = mount(VueCheckbox, {
       localVue,
       propsData: {
-        name:  'foo',
-        id:    'foo',
+        name: 'foo',
+        id: 'foo',
         label: 'Test',
         radio: true,
       },
@@ -40,8 +39,8 @@ describe('VueCheckbox.vue', () => {
     const wrapper = mount(VueCheckbox, {
       localVue,
       propsData: {
-        name:    'name',
-        id:      'id',
+        name: 'name',
+        id: 'id',
         label: 'Test',
       },
     });
@@ -54,9 +53,9 @@ describe('VueCheckbox.vue', () => {
     const wrapper = mount(VueCheckbox, {
       localVue,
       propsData: {
-        name:    'name',
-        id:      'id',
-        label:    'Test',
+        name: 'name',
+        id: 'id',
+        label: 'Test',
         disabled: true,
       },
     });
@@ -65,5 +64,4 @@ describe('VueCheckbox.vue', () => {
     wrapper.find(`.box`).trigger('click');
     expect(wrapper.emitted().click).toBeFalsy();
   });
-
 });

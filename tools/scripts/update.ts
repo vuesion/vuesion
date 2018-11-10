@@ -1,8 +1,8 @@
 /* tslint:disable:no-console */
 import axios, { AxiosResponse } from 'axios';
-import * as fs                  from 'fs';
-import * as path                from 'path';
-import * as https               from 'https';
+import * as fs from 'fs';
+import * as path from 'path';
+import * as https from 'https';
 
 interface IFile {
   filename: string;
@@ -52,16 +52,18 @@ const downloadFile = (status: string, filePath: string, url: string) => {
   ensureDirectoryExistence(filePath);
   const file = fs.createWriteStream(filePath);
 
-  https.get(url, (response: any) => {
-    response.pipe(file);
+  https
+    .get(url, (response: any) => {
+      response.pipe(file);
 
-    file.on('finish', () => {
-      file.close();
-      console.info(`${status}: ${filePath}`);
+      file.on('finish', () => {
+        file.close();
+        console.info(`${status}: ${filePath}`);
+      });
+    })
+    .on('error', () => {
+      deleteFile(status, filePath);
     });
-  }).on('error', () => {
-    deleteFile(status, filePath);
-  });
 };
 
 async function update() {
@@ -87,10 +89,7 @@ async function update() {
     if (diffFile.status === 'removed') {
       deleteFile(diffFile.status, dest);
     } else if (diffFile.status === 'renamed') {
-      renameFile(
-        diffFile.status,
-        path.join(path.resolve(__dirname), '..', '..', diffFile.previous_filename),
-        dest);
+      renameFile(diffFile.status, path.join(path.resolve(__dirname), '..', '..', diffFile.previous_filename), dest);
     } else {
       downloadFile(diffFile.status, dest, url);
     }

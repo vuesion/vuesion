@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-  import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
   import { registerModule }         from '../../store';
   import { {{ properCase moduleName }}Module }          from '../module';
   import { IPreLoad }               from '../../../server/isomorphic';
@@ -39,42 +39,41 @@
   import VueGridRow                 from '../../shared/components/VueGridRow/VueGridRow.vue';
   import VueHeadline                from '../../shared/components/VueHeadline/VueHeadline.vue';
 
-  export default {
-    metaInfo:   {
-      title: '{{ properCase componentName }}',
-    },
-    components: {
-      VueGrid,
-      VueGridItem,
-      VueButton,
-      VueGridRow,
-      VueHeadline,
-    },
-    methods:    {
-      ...mapActions('{{ camelCase moduleName }}', [
-        'increment',
-        'decrement',
-      ]),
-    },
-    computed:   {
-      ...mapGetters('{{ camelCase moduleName }}', ['count', 'incrementPending', 'decrementPending']),
-    },
-    beforeCreate() {
-      registerModule('{{ camelCase moduleName }}', {{ properCase moduleName }}Module);
-    },
-    prefetch:   (options: IPreLoad) => {
-      registerModule('{{ camelCase moduleName }}', {{ properCase moduleName }}Module);
-      return options.store.dispatch('{{ camelCase moduleName }}/increment');
-    },
-  };
+export default {
+  metaInfo:   {
+    title: '{{ properCase componentName }}',
+  },
+  components: {
+    VueGrid,
+    VueGridItem,
+    VueButton,
+    VueGridRow,
+    VueHeadline,
+  },
+  methods:    {
+    ...mapActions('{{ camelCase moduleName }}', [
+      'increment',
+      'decrement',
+    ]),
+  },
+  computed:   {
+    ...mapGetters('{{ camelCase moduleName }}', ['count', 'incrementPending', 'decrementPending']),
+  },
+  beforeCreate() {
+    registerModule('{{ camelCase moduleName }}', {{ properCase moduleName }}Module);
+  },
+  prefetch:   (options: IPreLoad) => {
+    registerModule('{{ camelCase moduleName }}', {{ properCase moduleName }}Module);
+    return options.store.dispatch('{{ camelCase moduleName }}/increment');
+  },
+};
 </script>
 
-
 <style lang="scss" module>
-  @import "../../shared/styles";
+@import "../../shared/styles";
 
-  .{{ camelCase componentName }} {
-    margin-top: $nav-bar-height;
-    min-height: 500px;
-  }
+.{{ camelCase componentName }} {
+  margin-top: $nav-bar-height;
+  min-height: 500px;
+}
 </style>

@@ -1,4 +1,4 @@
-import axios               from 'axios';
+import axios from 'axios';
 import { loadLocaleAsync } from './i18n';
 
 describe('i18n', () => {
@@ -6,25 +6,24 @@ describe('i18n', () => {
     axios.get = jest.fn().mockReturnValue(Promise.resolve({ data: { foo: 'foo' } }));
 
     loadLocaleAsync('de')
-    .then(() => {
-      expect(axios.get).toHaveBeenCalledTimes(1);
-      return loadLocaleAsync('de');
-    })
-    .then(() => {
-      expect(axios.get).toHaveBeenCalledTimes(1);
-      return loadLocaleAsync('en');
-    })
-    .then(() => {
-      expect(axios.get).toHaveBeenCalledTimes(2);
-      done();
-    });
+      .then(() => {
+        expect(axios.get).toHaveBeenCalledTimes(1);
+        return loadLocaleAsync('de');
+      })
+      .then(() => {
+        expect(axios.get).toHaveBeenCalledTimes(1);
+        return loadLocaleAsync('en');
+      })
+      .then(() => {
+        expect(axios.get).toHaveBeenCalledTimes(2);
+        done();
+      });
   });
 
   test('should set default locale', (done) => {
     axios.get = jest.fn().mockReturnValue(Promise.resolve({ data: { foo: 'foo' } }));
 
-    loadLocaleAsync('de')
-    .then(() => {
+    loadLocaleAsync('de').then(() => {
       expect(axios.get).toHaveBeenCalledTimes(0);
       done();
     });

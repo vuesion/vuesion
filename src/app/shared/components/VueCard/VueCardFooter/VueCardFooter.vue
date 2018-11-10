@@ -1,20 +1,18 @@
 <template>
-  <div :class="$style.vueCardFooter">
-    <slot />
-  </div>
+  <div :class="$style.vueCardFooter"><slot /></div>
 </template>
 
 <script lang="ts">
-  export default {
-    name:       'VueCardFooter',
-  };
+export default {
+  name: 'VueCardFooter',
+};
 </script>
 
 <style lang="scss" module>
-  @import "../../../styles";
+@import '../../../styles';
 
-  .vueCardFooter {
-    display: block;
-    padding: $card-footer-padding;
-  }
+.vueCardFooter {
+  display: block;
+  padding: $card-footer-padding;
+}
 </style>

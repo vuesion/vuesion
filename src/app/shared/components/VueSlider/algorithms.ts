@@ -10,11 +10,11 @@ export interface IAlgorithm {
 
 export const geometric: IAlgorithm = {
   getPosition(value: number, min: number, max: number): number {
-    return ((max / (max - min)) ** 0.5) * (((value - min) / max) ** 0.5) * 100;
+    return (max / (max - min)) ** 0.5 * ((value - min) / max) ** 0.5 * 100;
   },
 
   getValue(percentageDiff: number, min: number, max: number): number {
-    return (Math.round(((percentageDiff / 100) ** 2) * (max - min)) + min);
+    return Math.round((percentageDiff / 100) ** 2 * (max - min)) + min;
   },
 };
 
@@ -32,7 +32,7 @@ export const linear: IAlgorithm = {
       return max;
     }
 
-    return Math.round(((max - min) * decimal) + min);
+    return Math.round((max - min) * decimal + min);
   },
 };
 
@@ -58,6 +58,6 @@ export const log: IAlgorithm = {
 
     const scale: number = (maxv - minv) / 100;
 
-    return Math.floor(Math.exp(minv + (scale * percentageDiff)));
+    return Math.floor(Math.exp(minv + scale * percentageDiff));
   },
 };

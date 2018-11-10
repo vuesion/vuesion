@@ -5,36 +5,37 @@
       name="dataTableSearch"
       :placeholder="placeholder"
       :value="value"
-      @input="$emit('input', $event)" />
+      @input="$emit('input', $event);"
+    />
   </div>
 </template>
 
 <script lang="ts">
-  import VueInput from '../../VueInput/VueInput.vue';
+import VueInput from '../../VueInput/VueInput.vue';
 
-  export default {
-    name:       'VueDataTableSearch',
-    components: { VueInput },
-    props:      {
-      value:       {
-        type: String,
-      },
-      placeholder: {
-        type: String,
-      },
+export default {
+  name: 'VueDataTableSearch',
+  components: { VueInput },
+  props: {
+    value: {
+      type: String,
     },
-    data(): any {
-      return {};
+    placeholder: {
+      type: String,
     },
-    computed:   {},
-    methods:    {},
-  };
+  },
+  data(): any {
+    return {};
+  },
+  computed: {},
+  methods: {},
+};
 </script>
 
 <style lang="scss" module>
-  @import "../../../styles";
+@import '../../../styles';
 
-  .vueDataTableSearch {
-    padding-top: $space-unit * 2;
-  }
+.vueDataTableSearch {
+  padding-top: $space-unit * 2;
+}
 </style>

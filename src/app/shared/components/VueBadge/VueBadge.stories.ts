@@ -1,12 +1,14 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo }  from 'storybook-addon-vue-info';
-import VueBadge      from './VueBadge.vue';
+import { withInfo } from 'storybook-addon-vue-info';
+import VueBadge from './VueBadge.vue';
 
-const story = (storiesOf('2. Components|Badge', module) as any);
+const story = storiesOf('2. Components|Badge', module) as any;
 
-story.add('Badge Variants', withInfo({})(() => ({
-  components: { VueBadge },
-  template:   `<div>
+story.add(
+  'Badge Variants',
+  withInfo({})(() => ({
+    components: { VueBadge },
+    template: `<div>
 <vue-badge primary>Primary</vue-badge>
 <vue-badge primary outlined>Primary Outlined</vue-badge>
 <br />
@@ -30,4 +32,5 @@ story.add('Badge Variants', withInfo({})(() => ({
 <vue-badge success>Success</vue-badge>
 <vue-badge success outlined>Success Outlined</vue-badge>
 </div>`,
-})));
+  })),
+);

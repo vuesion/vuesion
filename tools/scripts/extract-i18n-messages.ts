@@ -1,8 +1,8 @@
 /* tslint:disable:no-console */
 
-import * as glob                                           from 'glob';
-import * as fs                                             from 'fs';
-import * as path                                           from 'path';
+import * as glob from 'glob';
+import * as fs from 'fs';
+import * as path from 'path';
 import { getTranslationObject, getTranslationsFromString } from './Utils';
 
 const run = (): void => {
@@ -37,9 +37,10 @@ const run = (): void => {
         i18nFileObject[key] = i18nFileObject[key].replace(/\n/g, '\\n').replace(/"/g, '\\"');
       });
 
-      const newI18nObject: any = locale === defaultLocale
-                                 ? (Object as any).assign({}, i18nFileObject, translations)
-                                 : (Object as any).assign({}, translations, i18nFileObject);
+      const newI18nObject: any =
+        locale === defaultLocale
+          ? (Object as any).assign({}, i18nFileObject, translations)
+          : (Object as any).assign({}, translations, i18nFileObject);
 
       /**
        * sort entries

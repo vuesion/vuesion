@@ -1,10 +1,9 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueButton                 from './VueButton.vue';
+import VueButton from './VueButton.vue';
 
 const localVue = createLocalVue();
 
 describe('VueButton.vue', () => {
-
   test('renders component', () => {
     const wrapper = mount(VueButton, { localVue });
 
@@ -150,5 +149,4 @@ describe('VueButton.vue', () => {
     wrapper.setProps({ loading: true });
     expect(wrapper.vm.actualWidth).toBe('134px');
   });
-
 });

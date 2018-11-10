@@ -1,5 +1,5 @@
-import { Request }    from 'express';
-import cloneDeep      from 'lodash/cloneDeep';
+import { Request } from 'express';
+import cloneDeep from 'lodash/cloneDeep';
 import { IAppConfig } from '../../app/config/IAppConfig';
 
 /**
@@ -10,8 +10,8 @@ export const RuntimeConfig = (appConfig: IAppConfig, req: Request) => {
   const runtimeConfig: IAppConfig = cloneDeep(appConfig);
 
   runtimeConfig.features.disableParticles = req.query.disableParticles
-                                            ? Boolean(req.query.disableParticles)
-                                            : appConfig.features.disableParticles;
+    ? Boolean(req.query.disableParticles)
+    : appConfig.features.disableParticles;
 
   return runtimeConfig;
 };

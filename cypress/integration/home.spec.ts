@@ -1,5 +1,4 @@
 describe('home', () => {
-
   context('mobile', () => {
     it('e2e', () => {
       cy.viewport(320, 480);
@@ -39,5 +38,4 @@ describe('home', () => {
       cy.title().should('include', 'vue-starter');
     });
   });
-
 });

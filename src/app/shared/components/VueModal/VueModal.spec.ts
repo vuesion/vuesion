@@ -1,10 +1,9 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueModal                  from './VueModal.vue';
+import VueModal from './VueModal.vue';
 
 const localVue = createLocalVue();
 
 describe('VueModal.vue', () => {
-
   test('renders slot', (done) => {
     const wrapper = mount(VueModal, {
       localVue,
@@ -76,5 +75,4 @@ describe('VueModal.vue', () => {
     wrapper.vm.handleDocumentKeyDown({ key: 'Escape' });
     expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
   });
-
 });

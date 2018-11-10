@@ -1,13 +1,12 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueCalendar               from './VueCalendar.vue';
-import { i18n }                  from '../../plugins/i18n/i18n';
+import VueCalendar from './VueCalendar.vue';
+import { i18n } from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 const today: Date = new Date();
 const nextWeek: Date = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
 describe('VueCalendar.vue', () => {
-
   test('renders component', () => {
     const wrapper = mount(VueCalendar, {
       localVue,
@@ -52,7 +51,7 @@ describe('VueCalendar.vue', () => {
       i18n,
       propsData: {
         startDate: start,
-        endDate:   end,
+        endDate: end,
       },
     });
 
@@ -145,8 +144,8 @@ describe('VueCalendar.vue', () => {
       localVue,
       i18n,
       propsData: {
-        startDate:      start,
-        endDate:        end,
+        startDate: start,
+        endDate: end,
         firstDayOfWeek: 1,
       },
     });
@@ -159,12 +158,11 @@ describe('VueCalendar.vue', () => {
       localVue,
       i18n,
       propsData: {
-        today:        new Date(2018, 4, 31),
+        today: new Date(2018, 4, 31),
         selectedDate: new Date(2018, 5, 2),
       },
     });
 
     expect(wrapper.findAll(`.currentDay`)).toHaveLength(0);
   });
-
 });

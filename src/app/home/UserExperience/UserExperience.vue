@@ -2,17 +2,21 @@
   <div :class="[$style.userExperience, 'featureSection']">
     <vue-grid>
       <vue-grid-row>
-        <vue-grid-item fill class="vueGridItem">
-          <vue-headline level="2">User experience</vue-headline>
-        </vue-grid-item>
+        <vue-grid-item fill class="vueGridItem"> <vue-headline level="2">User experience</vue-headline> </vue-grid-item>
 
         <vue-grid-item class="vueGridItem">
           <vue-card class="vueCard">
             <vue-card-body>
               <vue-icon-spinner />
               <vue-headline level="3">Animations</vue-headline>
-              <p>A stable animations set up already included (<a href="http://animejs.com/" target="_blank"
-                                                                 rel="noopener">anime.js</a>).</p>
+              <p>
+                A stable animations set up already included (<a
+                  href="http://animejs.com/"
+                  target="_blank"
+                  rel="noopener"
+                  >anime.js</a
+                >).
+              </p>
             </vue-card-body>
           </vue-card>
         </vue-grid-item>
@@ -46,59 +50,58 @@
 </template>
 
 <script lang="ts">
-  import VueGrid            from '../../shared/components/VueGrid/VueGrid.vue';
-  import VueGridItem        from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VueCard           from '../../shared/components/VueCard/VueCard.vue';
-  import VueCardBody       from '../../shared/components/VueCard/VueCardBody/VueCardBody.vue';
-  import VueGridRow         from '../../shared/components/VueGridRow/VueGridRow.vue';
-  import VueIconSpinner     from '../../shared/components/icons/VueIconSpinner/VueIconSpinner.vue';
-  import VueIconMobile      from '../../shared/components/icons/VueIconMobile/VueIconMobile.vue';
-  import VueIconPuzzlePiece from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
-  import VueHeadline        from '../../shared/components/VueHeadline/VueHeadline.vue';
+import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
+import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
+import VueCard from '../../shared/components/VueCard/VueCard.vue';
+import VueCardBody from '../../shared/components/VueCard/VueCardBody/VueCardBody.vue';
+import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
+import VueIconSpinner from '../../shared/components/icons/VueIconSpinner/VueIconSpinner.vue';
+import VueIconMobile from '../../shared/components/icons/VueIconMobile/VueIconMobile.vue';
+import VueIconPuzzlePiece from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
+import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
 
-  export default {
-    components: {
-      VueHeadline,
-      VueIconPuzzlePiece,
-      VueIconMobile,
-      VueIconSpinner,
-      VueGrid,
-      VueGridItem,
-      VueCard,
-      VueCardBody,
-      VueGridRow,
-    },
-  };
+export default {
+  components: {
+    VueHeadline,
+    VueIconPuzzlePiece,
+    VueIconMobile,
+    VueIconSpinner,
+    VueGrid,
+    VueGridItem,
+    VueCard,
+    VueCardBody,
+    VueGridRow,
+  },
+};
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/styles";
+@import '../../shared/styles';
 
-  .userExperience {
-    display:    block;
-    text-align: center;
-    background: $bg-color-variant;
+.userExperience {
+  display: block;
+  text-align: center;
+  background: $bg-color-variant;
 
-    i {
-      display:    inline-block;
-      height:     $font-size-h1;
-      width:      $font-size-h1;
-      margin-top: $space-unit;
-    }
-
-    a {
-      color: $text-color;
-
-      &:hover {
-        color: $text-color;
-      }
-    }
-
-    :global {
-      .vueCard {
-        background: $tertiary-4;
-      }
-    }
-
+  i {
+    display: inline-block;
+    height: $font-size-h1;
+    width: $font-size-h1;
+    margin-top: $space-unit;
   }
+
+  a {
+    color: $text-color;
+
+    &:hover {
+      color: $text-color;
+    }
+  }
+
+  :global {
+    .vueCard {
+      background: $tertiary-4;
+    }
+  }
+}
 </style>

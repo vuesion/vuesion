@@ -1,19 +1,18 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueInput                  from './VueInput.vue';
+import VueInput from './VueInput.vue';
 
 const localVue = createLocalVue();
 
 describe('VueInput.vue', () => {
-
   test('renders component', () => {
     const wrapper = mount(VueInput, {
       localVue,
       propsData: {
         message: 'MESSAGE!',
-        name:    'name',
-        id:      'id',
+        name: 'name',
+        id: 'id',
       },
-      mocks:     {
+      mocks: {
         errors: null,
       },
     });
@@ -27,8 +26,8 @@ describe('VueInput.vue', () => {
       localVue,
       propsData: {
         disabled: true,
-        name:     'name',
-        id:       'id',
+        name: 'name',
+        id: 'id',
       },
     });
 
@@ -40,7 +39,7 @@ describe('VueInput.vue', () => {
       localVue,
       propsData: {
         name: 'name',
-        id:   'id',
+        id: 'id',
       },
     }) as any;
 
@@ -51,7 +50,7 @@ describe('VueInput.vue', () => {
   test('should display error state', () => {
     const wrapper = mount(VueInput, {
       localVue,
-      mocks:     {
+      mocks: {
         errors: {
           first() {
             return true;
@@ -60,8 +59,8 @@ describe('VueInput.vue', () => {
       },
       propsData: {
         errorMessage: 'ERROR!',
-        name:         'name',
-        id:           'id',
+        name: 'name',
+        id: 'id',
       },
     });
 
@@ -73,8 +72,8 @@ describe('VueInput.vue', () => {
     const wrapper = mount(VueInput, {
       localVue,
       propsData: {
-        name:      'name',
-        id:        'id',
+        name: 'name',
+        id: 'id',
         autofocus: true,
       },
     });
@@ -99,8 +98,8 @@ describe('VueInput.vue', () => {
     const wrapper = mount(VueInput, {
       localVue,
       propsData: {
-        name:      'name',
-        id:        'id',
+        name: 'name',
+        id: 'id',
         autofocus: false,
       },
     });

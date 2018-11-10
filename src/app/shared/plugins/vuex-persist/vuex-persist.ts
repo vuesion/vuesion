@@ -2,9 +2,9 @@
  * inspired by https://github.com/robinvdvleuten/vuex-persistedstate
  */
 
-import merge             from 'deepmerge';
+import merge from 'deepmerge';
 import { Plugin, Store } from 'vuex';
-import { IState }        from '../../../state';
+import { IState } from '../../../state';
 
 export interface IVuexPersistStorage extends Storage {
   modules: string[];
@@ -56,14 +56,16 @@ export const VuexPersist = (storages: IVuexPersistStorage[]): Plugin<IState> => 
   return (vuexStore: Store<IState>) => {
     const hydratedState: IState = {} as IState;
 
-    storages.forEach((storage: IVuexPersistStorage): void => {
-      if (canWriteStorage(storage)) {
-        processStorage(storage, hydratedState, vuexStore);
-      }
-    });
+    storages.forEach(
+      (storage: IVuexPersistStorage): void => {
+        if (canWriteStorage(storage)) {
+          processStorage(storage, hydratedState, vuexStore);
+        }
+      },
+    );
 
     const mergedState: IState = merge(vuexStore.state, hydratedState, {
-      clone:      false,
+      clone: false,
       arrayMerge: (store, saved) => {
         return saved;
       },

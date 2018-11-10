@@ -1,11 +1,11 @@
-import Vue                      from 'vue';
-import Vuex, { Module, Store }  from 'vuex';
-import merge                    from 'deepmerge';
+import Vue from 'vue';
+import Vuex, { Module, Store } from 'vuex';
+import merge from 'deepmerge';
 import { DefaultState, IState } from './state';
-import { VuexPersist }          from './shared/plugins/vuex-persist/vuex-persist';
-import { PersistLocalStorage }  from './shared/plugins/vuex-persist/PersistLocalStorage';
+import { VuexPersist } from './shared/plugins/vuex-persist/vuex-persist';
+import { PersistLocalStorage } from './shared/plugins/vuex-persist/PersistLocalStorage';
 import { PersistCookieStorage } from './shared/plugins/vuex-persist/PersistCookieStorage';
-import { AppModule }            from './app/module';
+import { AppModule } from './app/module';
 
 Vue.use(Vuex);
 
@@ -35,27 +35,20 @@ const beforePersistCookieStorage = (localState: IState): IState => {
   return localState;
 };
 
-export const store: Store<IState> = new Vuex.Store(
-  {
-    state,
-    plugins: [
-      VuexPersist(
-        [
-          new PersistLocalStorage(['counter'], beforePersistLocalStorage),
-          new PersistCookieStorage(
-            ['app'],
-            {
-              cookieOptions: {
-                expires: 365,
-              },
-              beforePersist: beforePersistCookieStorage,
-            },
-          ),
-        ],
-      ),
-    ],
-  },
-);
+export const store: Store<IState> = new Vuex.Store({
+  state,
+  plugins: [
+    VuexPersist([
+      new PersistLocalStorage(['counter'], beforePersistLocalStorage),
+      new PersistCookieStorage(['app'], {
+        cookieOptions: {
+          expires: 365,
+        },
+        beforePersist: beforePersistCookieStorage,
+      }),
+    ]),
+  ],
+});
 
 export const registerModule = (moduleName: string, module: Module<any, any>) => {
   const moduleIsRegistered: boolean = (store as any)._modules.root._children[moduleName] !== undefined;
@@ -68,7 +61,7 @@ export const registerModule = (moduleName: string, module: Module<any, any>) => 
    */
   if (stateExists) {
     module.state = merge(module.state, store.state[moduleName], {
-      clone:                                 false,
+      clone: false,
       arrayMerge: /* istanbul ignore next */ (moduleState, saved) => {
         return saved;
       },

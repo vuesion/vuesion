@@ -1,32 +1,27 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueSidebar                from './VueSidebar.vue';
+import VueSidebar from './VueSidebar.vue';
 
 const localVue = createLocalVue();
 
 describe('VueSidebar.vue', () => {
-
   test('renders component', () => {
-    const wrapper = mount(VueSidebar,
-                          {
-                            localVue,
-                            slots: {
-                              default: 'foo',
-                            },
-                          },
-    );
+    const wrapper = mount(VueSidebar, {
+      localVue,
+      slots: {
+        default: 'foo',
+      },
+    });
 
     expect(wrapper.text()).toBe('foo');
   });
 
   test('should open', () => {
-    const wrapper = mount(VueSidebar,
-                          {
-                            localVue,
-                            slots: {
-                              default: 'foo',
-                            },
-                          },
-    );
+    const wrapper = mount(VueSidebar, {
+      localVue,
+      slots: {
+        default: 'foo',
+      },
+    });
 
     wrapper.find('button').trigger('click');
 
@@ -65,5 +60,4 @@ describe('VueSidebar.vue', () => {
     wrapper.vm.handleDocumentClick({ target: null });
     expect(wrapper.vm.open).toBeFalsy();
   });
-
 });

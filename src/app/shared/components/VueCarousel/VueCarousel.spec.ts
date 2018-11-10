@@ -1,5 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueCarousel               from './VueCarousel.vue';
+import VueCarousel from './VueCarousel.vue';
 
 const localVue = createLocalVue();
 const images: any[] = [
@@ -9,13 +9,10 @@ const images: any[] = [
 ];
 
 describe('VueCarousel.vue', () => {
-
   test('renders component', () => {
-    const wrapper = mount(VueCarousel,
-                          {
-                            localVue,
-                          },
-    );
+    const wrapper = mount(VueCarousel, {
+      localVue,
+    });
 
     expect(wrapper.isVueInstance()).toBe(true);
 
@@ -23,14 +20,12 @@ describe('VueCarousel.vue', () => {
   });
 
   test('renders component with images', (done) => {
-    const wrapper = mount(VueCarousel,
-                          {
-                            localVue,
-                            propsData: {
-                              images,
-                            },
-                          },
-    );
+    const wrapper = mount(VueCarousel, {
+      localVue,
+      propsData: {
+        images,
+      },
+    });
 
     setTimeout(() => {
       expect(wrapper.findAll('.image')).toHaveLength(1);
@@ -39,15 +34,13 @@ describe('VueCarousel.vue', () => {
   });
 
   test('should change slide', () => {
-    const wrapper = mount(VueCarousel,
-                          {
-                            localVue,
-                            propsData: {
-                              images,
-                              intervalDuration: 10,
-                            },
-                          },
-    );
+    const wrapper = mount(VueCarousel, {
+      localVue,
+      propsData: {
+        images,
+        intervalDuration: 10,
+      },
+    });
 
     expect(wrapper.vm.currentSlide).toBe(0);
 
@@ -68,5 +61,4 @@ describe('VueCarousel.vue', () => {
     wrapper.vm.changeSlide();
     expect(wrapper.vm.currentSlide).toBe(1);
   });
-
 });

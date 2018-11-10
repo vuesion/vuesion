@@ -1,5 +1,5 @@
 import { PersistCookieStorage } from './PersistCookieStorage';
-import { IServerContext }       from '../../../../server/isomorphic';
+import { IServerContext } from '../../../../server/isomorphic';
 
 describe('PersistCookieStorage', () => {
   let storage: PersistCookieStorage;
@@ -36,12 +36,9 @@ describe('PersistCookieStorage', () => {
   });
 
   test('should merge server context if index cookie is not present', () => {
-    const mergedState: any = PersistCookieStorage.getMergedStateFromServerContext(
-      { cookies: {} } as IServerContext,
-      {
-        foo: ['bar'],
-      },
-    );
+    const mergedState: any = PersistCookieStorage.getMergedStateFromServerContext({ cookies: {} } as IServerContext, {
+      foo: ['bar'],
+    });
 
     expect(mergedState).toEqual({ foo: ['bar'] });
   });
@@ -51,7 +48,7 @@ describe('PersistCookieStorage', () => {
       {
         cookies: {
           vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
-          vuexpersistfoo:    '["baz"]',
+          vuexpersistfoo: '["baz"]',
         },
       } as IServerContext,
       {
@@ -67,7 +64,7 @@ describe('PersistCookieStorage', () => {
       {
         cookies: {
           vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
-          vuexpersistfoo:    '["baz]',
+          vuexpersistfoo: '["baz]',
         },
       } as IServerContext,
       {
@@ -83,7 +80,7 @@ describe('PersistCookieStorage', () => {
       {
         cookies: {
           vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
-          vuexpersistfoo:    '["baz]',
+          vuexpersistfoo: '["baz]',
         },
       } as IServerContext,
       {

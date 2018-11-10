@@ -1,13 +1,12 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueAccordion              from './VueAccordion.vue';
-import VueAccordionItem          from './VueAccordionItem/VueAccordionItem.vue';
+import VueAccordion from './VueAccordion.vue';
+import VueAccordionItem from './VueAccordionItem/VueAccordionItem.vue';
 
 const localVue = createLocalVue();
 
 localVue.component('vueA-accordion-item', VueAccordionItem);
 
 describe('VueAccordion.vue', () => {
-
   test('renders component with an accordion item', () => {
     const wrapper = mount(VueAccordion, {
       localVue,
@@ -88,5 +87,4 @@ describe('VueAccordion.vue', () => {
     wrapper.vm.openItem(0);
     expect(wrapper.vm.openItems).toEqual([]);
   });
-
 });

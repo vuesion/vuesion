@@ -1,20 +1,19 @@
 import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
-import VueAutocomplete                         from './VueAutocomplete.vue';
-import VueLoader                               from '../VueLoader/VueLoader.vue';
-import { AutocompleteOptionsFixture }          from './fixtures/IAutocompleteFixture';
-import { i18n }                                from '../../plugins/i18n/i18n';
+import VueAutocomplete from './VueAutocomplete.vue';
+import VueLoader from '../VueLoader/VueLoader.vue';
+import { AutocompleteOptionsFixture } from './fixtures/IAutocompleteFixture';
+import { i18n } from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
 describe('VueAutocomplete.vue', () => {
-
   test('renders and destroys component', () => {
     const wrapper = shallowMount(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
         placeholder: 'Type something',
-        options:     AutocompleteOptionsFixture,
+        options: AutocompleteOptionsFixture,
       },
     });
 
@@ -29,8 +28,8 @@ describe('VueAutocomplete.vue', () => {
       i18n,
       propsData: {
         placeholder: 'Type something',
-        options:     AutocompleteOptionsFixture,
-        isLoading:   true,
+        options: AutocompleteOptionsFixture,
+        isLoading: true,
       },
     });
 
@@ -43,7 +42,7 @@ describe('VueAutocomplete.vue', () => {
       i18n,
       propsData: {
         placeholder: 'Type something',
-        options:     AutocompleteOptionsFixture,
+        options: AutocompleteOptionsFixture,
       },
     });
     wrapper.vm.searchQuery = 'Te';
@@ -61,7 +60,7 @@ describe('VueAutocomplete.vue', () => {
       i18n,
       propsData: {
         placeholder: 'Type something',
-        options:     AutocompleteOptionsFixture,
+        options: AutocompleteOptionsFixture,
       },
     });
 
@@ -85,7 +84,7 @@ describe('VueAutocomplete.vue', () => {
       i18n,
       propsData: {
         placeholder: 'Type something',
-        options:     AutocompleteOptionsFixture,
+        options: AutocompleteOptionsFixture,
       },
     });
 
@@ -126,7 +125,7 @@ describe('VueAutocomplete.vue', () => {
       i18n,
       propsData: {
         placeholder: 'Type something',
-        options:     AutocompleteOptionsFixture,
+        options: AutocompleteOptionsFixture,
       },
     });
 
@@ -149,7 +148,7 @@ describe('VueAutocomplete.vue', () => {
       i18n,
       propsData: {
         placeholder: 'Type something',
-        options:     AutocompleteOptionsFixture,
+        options: AutocompleteOptionsFixture,
       },
     });
 
@@ -171,7 +170,7 @@ describe('VueAutocomplete.vue', () => {
       i18n,
       propsData: {
         placeholder: 'Type something',
-        options:     AutocompleteOptionsFixture,
+        options: AutocompleteOptionsFixture,
       },
     });
 
@@ -192,7 +191,7 @@ describe('VueAutocomplete.vue', () => {
       i18n,
       propsData: {
         placeholder: 'Type something',
-        options:     AutocompleteOptionsFixture,
+        options: AutocompleteOptionsFixture,
       },
     });
     wrapper.vm.searchQuery = 'Test';
@@ -210,7 +209,7 @@ describe('VueAutocomplete.vue', () => {
       i18n,
       propsData: {
         placeholder: 'Type something',
-        maxOptions:  10,
+        maxOptions: 10,
       },
     });
 
@@ -241,7 +240,7 @@ describe('VueAutocomplete.vue', () => {
       i18n,
       propsData: {
         placeholder: 'Type something',
-        maxOptions:  10,
+        maxOptions: 10,
       },
     });
 
@@ -249,7 +248,7 @@ describe('VueAutocomplete.vue', () => {
     wrapper.vm.$refs.resultContainer = {
       clientHeight: 100,
       scrollHeight: 0,
-      scrollTop:    0,
+      scrollTop: 0,
     } as any;
 
     wrapper.vm.onFocusItem();
@@ -258,12 +257,12 @@ describe('VueAutocomplete.vue', () => {
     wrapper.vm.$refs.resultContainer = {
       clientHeight: 100,
       scrollHeight: 101,
-      scrollTop:    0,
+      scrollTop: 0,
     } as any;
 
     document.querySelector = () => {
       return {
-        offsetTop:    100,
+        offsetTop: 100,
         offsetHeight: 10,
       };
     };
@@ -274,12 +273,12 @@ describe('VueAutocomplete.vue', () => {
     wrapper.vm.$refs.resultContainer = {
       clientHeight: 100,
       scrollHeight: 101,
-      scrollTop:    100,
+      scrollTop: 100,
     } as any;
 
     document.querySelector = () => {
       return {
-        offsetTop:    10,
+        offsetTop: 10,
         offsetHeight: 10,
       };
     };
@@ -290,12 +289,12 @@ describe('VueAutocomplete.vue', () => {
     wrapper.vm.$refs.resultContainer = {
       clientHeight: 100,
       scrollHeight: 101,
-      scrollTop:    100,
+      scrollTop: 100,
     } as any;
 
     document.querySelector = () => {
       return {
-        offsetTop:    100,
+        offsetTop: 100,
         offsetHeight: 10,
       };
     };
@@ -303,5 +302,4 @@ describe('VueAutocomplete.vue', () => {
     wrapper.vm.onFocusItem();
     expect((wrapper as any).vm.$refs.resultContainer.scrollTop).toBe(100);
   });
-
 });

@@ -1,4 +1,4 @@
-import * as fs   from 'fs';
+import * as fs from 'fs';
 import * as path from 'path';
 
 export const folderExists = (folder: string): boolean => {

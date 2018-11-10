@@ -1,13 +1,15 @@
 import { storiesOf } from '@storybook/vue';
-import { action }    from '@storybook/addon-actions';
-import { withInfo }  from 'storybook-addon-vue-info';
-import VueButton     from './VueButton.vue';
+import { action } from '@storybook/addon-actions';
+import { withInfo } from 'storybook-addon-vue-info';
+import VueButton from './VueButton.vue';
 
-const story = (storiesOf('2. Components|Button', module) as any);
+const story = storiesOf('2. Components|Button', module) as any;
 
-story.add('Button Variants', withInfo({})(() => ({
-  components: { VueButton },
-  template:   `<div>
+story.add(
+  'Button Variants',
+  withInfo({})(() => ({
+    components: { VueButton },
+    template: `<div>
 <vue-button @click="action" primary>Primary</vue-button>
 <vue-button @click="action" primary disabled>Primary Disabled</vue-button>
 <vue-button @click="action" primary outlined>Primary Outlined</vue-button>
@@ -50,7 +52,8 @@ story.add('Button Variants', withInfo({})(() => ({
 <vue-button @click="action" success loading>Success Loading</vue-button>
 </div>
 `,
-  methods:    {
-    action: action('@onClick'),
-  },
-})));
+    methods: {
+      action: action('@onClick'),
+    },
+  })),
+);

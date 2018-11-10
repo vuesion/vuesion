@@ -11,29 +11,29 @@
 }
 
 $grid-breakpoints: (
-                     phone: $screen-phone,
-                     tabletPortrait: $screen-tablet-portrait,
-                     tabletLandscape: $screen-tablet-landscape,
-                     smallDesktop: $screen-small-desktop,
-                     largeDesktop: $screen-large-desktop
-                   );
+  phone: $screen-phone,
+  tabletPortrait: $screen-tablet-portrait,
+  tabletLandscape: $screen-tablet-landscape,
+  smallDesktop: $screen-small-desktop,
+  largeDesktop: $screen-large-desktop,
+);
 @mixin mediaMin($breakpoint-name) {
   @if map-has-key($grid-breakpoints, $breakpoint-name) {
     @media (min-width: #{map_get($grid-breakpoints, $breakpoint-name)}) {
       @content;
     }
   } @else {
-    @error "breakpoint not suported!"
+    @error "breakpoint not suported!";
   }
 }
 
 $grid-breakpoints-max: (
-                         phone: $screen-phone-max,
-                         tabletPortrait: $screen-tablet-portrait-max,
-                         tabletLandscape: $screen-tablet-landscape-max,
-                         smallDesktop: $screen-small-desktop-max,
-                         largeDesktop: $screen-large-desktop-max
-                       );
+  phone: $screen-phone-max,
+  tabletPortrait: $screen-tablet-portrait-max,
+  tabletLandscape: $screen-tablet-landscape-max,
+  smallDesktop: $screen-small-desktop-max,
+  largeDesktop: $screen-large-desktop-max,
+);
 
 @mixin mediaMax($breakpoint-name) {
   @if map-has-key($grid-breakpoints-max, $breakpoint-name) {
@@ -41,6 +41,6 @@ $grid-breakpoints-max: (
       @content;
     }
   } @else {
-    @error "breakpoint not suported!"
+    @error "breakpoint not suported!";
   }
 }

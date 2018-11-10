@@ -1,17 +1,16 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VuePagination             from './VuePagination.vue';
-import { i18n }                  from '../../plugins/i18n/i18n';
+import VuePagination from './VuePagination.vue';
+import { i18n } from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
 describe('VuePagination.vue', () => {
-
   test('should go to next page but not prev', () => {
     const wrapper = mount(VuePagination, {
       localVue,
       i18n,
       propsData: {
-        pages:   10,
+        pages: 10,
         current: 1,
       },
     });
@@ -30,7 +29,7 @@ describe('VuePagination.vue', () => {
       localVue,
       i18n,
       propsData: {
-        pages:   10,
+        pages: 10,
         current: 10,
       },
     });
@@ -43,5 +42,4 @@ describe('VuePagination.vue', () => {
     wrapper.find(`.prev`).trigger('click');
     expect(wrapper.emitted().change).toBeTruthy();
   });
-
 });

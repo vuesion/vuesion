@@ -5,13 +5,14 @@ class Circle {
   private counter: number = 0;
   private direction: number = 0;
 
-  constructor(private context: CanvasRenderingContext2D | any,
-              private radius: number,
-              private speed: number,
-              private width: number,
-              private xPos: number,
-              private yPos: number) {
-
+  constructor(
+    private context: CanvasRenderingContext2D | any,
+    private radius: number,
+    private speed: number,
+    private width: number,
+    private xPos: number,
+    private yPos: number,
+  ) {
     this.direction = randomInt(0, 1) === 1 ? -1 : 1;
   }
 
@@ -23,12 +24,14 @@ class Circle {
 
     this.context.beginPath();
 
-    this.context.arc(this.xPos + Math.cos(this.counter / 100) * this.radius,
+    this.context.arc(
+      this.xPos + Math.cos(this.counter / 100) * this.radius,
       this.yPos + Math.sin(this.counter / 100) * this.radius,
       this.width,
       0,
       Math.PI * 2,
-      false);
+      false,
+    );
 
     this.context.closePath();
 
@@ -44,18 +47,24 @@ class Circle {
   }
 }
 
-const getCircles = (circleCount: number, canvas: HTMLCanvasElement | any, context: CanvasRenderingContext2D | any): Circle[] => {
+const getCircles = (
+  circleCount: number,
+  canvas: HTMLCanvasElement | any,
+  context: CanvasRenderingContext2D | any,
+): Circle[] => {
   const localCircles: any[] = [];
 
   for (let i = 0; i < circleCount; i++) {
-    localCircles.push(new Circle(
-      context,
-      randomInt(50, 350),
-      random(0.1, 1),
-      random(2, 10),
-      randomInt(0, canvas.width),
-      randomInt(0, canvas.height),
-    ));
+    localCircles.push(
+      new Circle(
+        context,
+        randomInt(50, 350),
+        random(0.1, 1),
+        random(2, 10),
+        randomInt(0, canvas.width),
+        randomInt(0, canvas.height),
+      ),
+    );
   }
 
   return localCircles;

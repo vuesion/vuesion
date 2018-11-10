@@ -1,17 +1,17 @@
-@import "variables";
-@import "mixins";
+@import 'variables';
+@import 'mixins';
 @import url($google-font);
 
 html {
-  font-size: 62.5%
+  font-size: 62.5%;
 }
 
 body {
-  font-family:    $font-family;
-  font-size:      1.6em;
-  font-weight:    $font-weight-regular;
+  font-family: $font-family;
+  font-size: 1.6em;
+  font-weight: $font-weight-regular;
   letter-spacing: $letter-spacing;
-  line-height:    $line-height;
+  line-height: $line-height;
 }
 
 small {
@@ -23,7 +23,7 @@ strong {
 }
 
 a {
-  color:       $link-color;
+  color: $link-color;
   font-weight: $link-font-weight;
 
   &:hover {

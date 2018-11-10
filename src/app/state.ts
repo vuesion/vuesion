@@ -1,5 +1,5 @@
 import { AppDefaultState, IAppState } from './app/state';
-import { ICounterState }              from './counter/state';
+import { ICounterState } from './counter/state';
 
 export interface IState {
   [key: string]: any;

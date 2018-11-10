@@ -12,37 +12,37 @@
 </template>
 
 <script lang="ts">
-  import VueGrid     from '../../shared/components/VueGrid/VueGrid.vue';
-  import VueGridRow  from '../../shared/components/VueGridRow/VueGridRow.vue';
-  import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
+import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
+import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
+import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
+import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
 
-  export default {
-    metaInfo:   {
-      title: 'vue-starter - an error occurred',
-      meta:  [
-        {
-          name:    'robots',
-          content: 'NOINDEX,NOFOLLOW',
-        },
-      ],
-    },
-    name:       'Error',
-    components: { VueHeadline, VueGridItem, VueGridRow, VueGrid },
-    props:      {},
-    data(): any {
-      return {};
-    },
-    computed:   {},
-    methods:    {},
-  };
+export default {
+  metaInfo: {
+    title: 'vue-starter - an error occurred',
+    meta: [
+      {
+        name: 'robots',
+        content: 'NOINDEX,NOFOLLOW',
+      },
+    ],
+  },
+  name: 'Error',
+  components: { VueHeadline, VueGridItem, VueGridRow, VueGrid },
+  props: {},
+  data(): any {
+    return {};
+  },
+  computed: {},
+  methods: {},
+};
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/styles";
+@import '../../shared/styles';
 
-  .error {
-    padding-top: $nav-bar-height;
-    text-align:  center;
-  }
+.error {
+  padding-top: $nav-bar-height;
+  text-align: center;
+}
 </style>

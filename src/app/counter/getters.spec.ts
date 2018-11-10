@@ -1,4 +1,4 @@
-import { CounterGetters }                     from './getters';
+import { CounterGetters } from './getters';
 import { CounterDefaultState, ICounterState } from './state';
 
 describe('CounterGetters', () => {
@@ -19,5 +19,4 @@ describe('CounterGetters', () => {
   test('it should get decrement pending', () => {
     expect(CounterGetters.decrementPending(testState)).toBe(false);
   });
-
 });
