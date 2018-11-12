@@ -1,4 +1,4 @@
-import { IHttpService } from './httpService';
+import { IHttpService } from './HttpService';
 import { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
 
 export function ResponseInterceptor(httpService: IHttpService) {
