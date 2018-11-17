@@ -114,6 +114,7 @@ describe('PersistCookieStorage', () => {
       cookies: {
         vuexpersistcookie: '{"vuexpersistapp":"app"}',
         vuexpersistapp: '{"override":"value", "nonExistingKey":"value"}',
+        webstorm: '297fg92ug49gf29fg',
       },
       state: {
         app: {

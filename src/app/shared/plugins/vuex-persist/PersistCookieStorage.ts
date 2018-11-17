@@ -43,13 +43,11 @@ export class PersistCookieStorage implements IVuexPersistStorage {
       .filter((key: string) => key !== this.indexKey)
       .forEach((key: string) => {
         const mappedKey: string = vuexPersistCookie[key];
-        const cookieState = JSON.parse(serverContext.cookies[key]);
+        const cookieState = mappedKey ? JSON.parse(serverContext.cookies[key]) : {};
         const newCookieState: any = {};
 
         Object.keys(cookieState).forEach((k: string) => {
-          if (serverContext.state[mappedKey]) {
-            newCookieState[k] = serverContext.state[mappedKey][k];
-          }
+          newCookieState[k] = serverContext.state[mappedKey][k];
         });
 
         if (mappedKey) {
