@@ -41,6 +41,7 @@ export class PersistCookieStorage implements IVuexPersistStorage {
   public prefix: string;
   public length: number;
   public options: IPersistCookieStorageConfig;
+  public forceInitialState: boolean;
 
   [key: string]: any;
 
@@ -54,6 +55,7 @@ export class PersistCookieStorage implements IVuexPersistStorage {
     this.modules = modules;
     this.prefix = prefix;
     this.options = options;
+    this.forceInitialState = true;
   }
 
   public clear(): void {
