@@ -10,8 +10,7 @@ import { IPreLoad } from './server/isomorphic';
 declare module 'vue/types/vue' {
   interface Vue {
     $meta?: any;
-    $_veeValidate?: any;
-    $refs?: any;
+    $_veeValidate?: VeeValidateComponentOptions;
   }
 
   interface VueConstructor {

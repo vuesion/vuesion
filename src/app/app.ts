@@ -11,7 +11,7 @@ import { IState } from './state';
 import App from './app/App/App.vue';
 import { HttpService } from './shared/services/HttpService';
 
-Vue.use(VeeValidate, { inject: false });
+Vue.use(VeeValidate, { inject: false, delay: 1 });
 
 export interface IApp {
   app: Vue;
