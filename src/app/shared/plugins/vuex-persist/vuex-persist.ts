@@ -9,6 +9,7 @@ import { IState } from '../../../state';
 export interface IVuexPersistStorage extends Storage {
   modules: string[];
   beforePersist: (state: IState) => IState;
+  forceInitialState: boolean;
 }
 
 const canWriteStorage = (storage: IVuexPersistStorage) => {
@@ -36,12 +37,20 @@ const subscriber = (store: Store<IState>) => {
     return store.subscribe(handler);
   };
 };
-const processStorage = (storage: IVuexPersistStorage, hydratedState: IState, vuexStore: Store<IState>): void => {
+const processStorage = (storage: IVuexPersistStorage, vuexStore: Store<IState>): void => {
+  const mergeOptions = {
+    clone: false,
+    arrayMerge: (target: any, source: any) => {
+      return source;
+    },
+  };
   storage.modules.forEach((key: string) => {
     const savedState: IState = getState(key, storage);
 
     if (savedState && Object.keys(savedState).length > 0) {
-      hydratedState[key] = savedState;
+      vuexStore.state[key] = storage.forceInitialState
+        ? merge(savedState, vuexStore.state[key], mergeOptions)
+        : merge(vuexStore.state[key], savedState, mergeOptions);
     }
 
     subscriber(vuexStore)((mutation: any, state: IState) => {
@@ -54,23 +63,14 @@ const processStorage = (storage: IVuexPersistStorage, hydratedState: IState, vue
 
 export const VuexPersist = (storages: IVuexPersistStorage[]): Plugin<IState> => {
   return (vuexStore: Store<IState>) => {
-    const hydratedState: IState = {} as IState;
-
     storages.forEach(
       (storage: IVuexPersistStorage): void => {
         if (canWriteStorage(storage)) {
-          processStorage(storage, hydratedState, vuexStore);
+          processStorage(storage, vuexStore);
         }
       },
     );
 
-    const mergedState: IState = merge(vuexStore.state, hydratedState, {
-      clone: false,
-      arrayMerge: (store, saved) => {
-        return saved;
-      },
-    });
-
-    vuexStore.replaceState(mergedState);
+    vuexStore.replaceState(vuexStore.state);
   };
 };

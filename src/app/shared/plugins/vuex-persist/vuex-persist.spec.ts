@@ -6,6 +6,7 @@ class PersistMockStorage implements IVuexPersistStorage {
   public modules: string[];
   public prefix: string;
   public length: number;
+  public forceInitialState: boolean;
   private readonly localBeforePersist: (state: IState) => IState;
 
   [key: string]: any;
@@ -16,6 +17,7 @@ class PersistMockStorage implements IVuexPersistStorage {
     this.modules = modules;
     this.prefix = prefix;
     this.localBeforePersist = beforePersist;
+    this.forceInitialState = false;
   }
 
   public clear(): void {
@@ -199,5 +201,76 @@ describe('vuex-persist', () => {
     });
 
     expect((window as any).mockStorage.setItem.mock.calls[1]).toEqual(['vuexpersistinitial', '["foo","bar"]']);
+  });
+
+  test('should prefer local state over the initial state when forceInitialState is false', () => {
+    (global as any).mockStorage = {
+      clear: jest.fn(),
+      getItem: (): string => {
+        return '{"bar":"baz","arr":[1,2,3]}';
+      },
+      key: jest.fn(),
+      removeItem: jest.fn(),
+      setItem: jest.fn(),
+    };
+
+    const plugin: Plugin<any> = VuexPersist([new PersistMockStorage(['foo'])]);
+    let mergedState: any = null;
+    const mockStore: any = {
+      state: {
+        foo: {
+          bar: '',
+          arr: [4, 5, 6],
+        },
+      },
+      subscribe: (): any => null,
+      replaceState: (newState: any) => {
+        mergedState = newState;
+      },
+    };
+
+    plugin(mockStore);
+
+    expect(mergedState).toEqual({ foo: { bar: 'baz', arr: [1, 2, 3] } });
+  });
+
+  test('should prefer initial state over the local state when forceInitialState is true', () => {
+    (global as any).mockStorage = {
+      clear: jest.fn(),
+      getItem: (): string => {
+        return '{"accessToken":"old Token","refreshToken":"old RefreshToken","arr":[1,2,3]}';
+      },
+      key: jest.fn(),
+      removeItem: jest.fn(),
+      setItem: jest.fn(),
+    };
+    const persistMockStorage = new PersistMockStorage(['auth']);
+    persistMockStorage.forceInitialState = true;
+
+    const plugin: Plugin<any> = VuexPersist([persistMockStorage]);
+    let mergedState: any = null;
+    const mockStore: any = {
+      state: {
+        auth: {
+          accessToken: 'new Token',
+          refreshToken: 'new RefreshToken',
+          arr: [4, 5, 6],
+        },
+      },
+      subscribe: (): any => null,
+      replaceState: (newState: any) => {
+        mergedState = newState;
+      },
+    };
+
+    plugin(mockStore);
+
+    expect(mergedState).toEqual({
+      auth: {
+        accessToken: 'new Token',
+        refreshToken: 'new RefreshToken',
+        arr: [4, 5, 6],
+      },
+    });
   });
 });
