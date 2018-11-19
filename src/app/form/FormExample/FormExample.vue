@@ -139,7 +139,7 @@ import { addNotification, INotification } from '../../shared/components/VueNotif
 
 export default {
   $_veeValidate: {
-    validator: 'new',
+    validator: 'new' as 'new',
   },
   name: 'FormExample',
   components: { VueButton, VueGridItem, VueGridRow, VueCheckbox, VueSelect, VueInput },
@@ -193,15 +193,19 @@ export default {
       // tslint:disable-next-line
       console.log(JSON.parse(JSON.stringify(this.form)));
 
-      this.$nextTick(() => {
-        setTimeout(() => {
-          this.isLoading = false;
-          addNotification({
-            title: 'Data has been saved!',
-            text: 'Have a look at the console!',
-          } as INotification);
-        }, 500);
-      });
+      this.$emit('submit', this.form);
+
+      this.$nextTick(
+        /* istanbul ignore next */ () => {
+          setTimeout(() => {
+            this.isLoading = false;
+            addNotification({
+              title: 'Data has been saved!',
+              text: 'Have a look at the console!',
+            } as INotification);
+          }, 500);
+        },
+      );
     },
   },
 };

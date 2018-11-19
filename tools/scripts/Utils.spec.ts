@@ -28,6 +28,7 @@ describe('Utils', () => {
     const content: string = `<div>
       {{ $t('test' /* this is a test */) }}
       {{ $t('test.test') }}
+      {{ foo === 1 ? $t('foo' /* Foo */) : $t('bar' /* bar */) }}
       {{ $t('test.foo' /* test (test) [test] test */) }}
       {{ $t('test.foo2' /* test (test) [test] test */ ) }}
       {{ $t("test.bar" /* test (test) [test] test */ ) }}
@@ -43,6 +44,8 @@ $t('components.markdown' /*
 
     expect(getTranslationsFromString(content)).toEqual([
       "$t('test' /* this is a test */)",
+      "$t('foo' /* Foo */)",
+      "$t('bar' /* bar */)",
       "$t('test.foo' /* test (test) [test] test */)",
       "$t('test.foo2' /* test (test) [test] test */ )",
       '$t("test.bar" /* test (test) [test] test */ )',

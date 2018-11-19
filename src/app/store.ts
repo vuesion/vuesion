@@ -62,8 +62,8 @@ export const registerModule = (moduleName: string, module: Module<any, any>) => 
   if (stateExists) {
     module.state = merge(module.state, store.state[moduleName], {
       clone: false,
-      arrayMerge: /* istanbul ignore next */ (moduleState, saved) => {
-        return saved;
+      arrayMerge: /* istanbul ignore next */ (target: any, source: any) => {
+        return source;
       },
     });
   }
