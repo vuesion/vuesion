@@ -10,3 +10,4 @@ cypress/videos
 storybook-static
 logs
 .cache
+.vscode/
