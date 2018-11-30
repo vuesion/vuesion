@@ -14,7 +14,7 @@ let baseURL;
 
 /* istanbul ignore if */
 if (!CLIENT) {
-  const config = require('../../config/AppConfig');
+  const config = require('../../../config/AppConfig');
   baseURL = config.api.baseUrl;
 }
 
