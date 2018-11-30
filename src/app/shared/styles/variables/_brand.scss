@@ -1,0 +1,121 @@
+/* General */
+$space-unit: 0.8rem;
+
+/* Palette */
+$primary-1-1: #2b3a42;
+$primary-1-2: #525e65;
+$primary-1-3: #7b8489;
+$primary-1-4: #aab0b3;
+$primary-1-5: #d5d8da;
+$primary-1-6: #e9ebec;
+$primary-1-7: #f4f5f5;
+
+$primary-2-1: #435365;
+$primary-2-2: #697584;
+$primary-2-3: #8e98a3;
+$primary-2-4: #b4bac1;
+$primary-2-5: #d9dde0;
+$primary-2-6: #ecedef;
+$primary-2-7: #f5f6f7;
+
+$secondary-1-1: #008eaa;
+$secondary-1-2: #33a5bb;
+$secondary-1-3: #6bc;
+$secondary-1-4: #99d2dd;
+$secondary-1-5: #cce8ee;
+$secondary-1-6: #e5f3f6;
+$secondary-1-7: #f2f9fb;
+
+$secondary-2-1: #a1cd3a;
+$secondary-2-2: #b4d761;
+$secondary-2-3: #c7e189;
+$secondary-2-4: #d9ebb0;
+$secondary-2-5: #ecf5d8;
+$secondary-2-6: #f5faeb;
+$secondary-2-7: #fafcf5;
+
+$secondary-3-1: #cf4520;
+$secondary-3-2: #d96a4d;
+$secondary-3-3: #e3907a;
+$secondary-3-4: #ecb5a6;
+$secondary-3-5: #f5dad2;
+$secondary-3-6: #faece8;
+$secondary-3-7: #fcf5f4;
+
+$secondary-4-1: #a41e36;
+$secondary-4-2: #b64b5e;
+$secondary-4-3: #c87886;
+$secondary-4-4: #dba5af;
+$secondary-4-5: #edd2d7;
+$secondary-4-6: #f5e8ea;
+$secondary-4-7: #faf4f5;
+
+$secondary-5-1: #177b57;
+$secondary-5-2: #459579;
+$secondary-5-3: #74b09a;
+$secondary-5-4: #a2cabc;
+$secondary-5-5: #d1e5dd;
+$secondary-5-6: #e7f1ee;
+$secondary-5-7: #f3f8f6;
+
+$tertiary-1-1: #ed254e;
+$tertiary-1-2: #f15171;
+$tertiary-1-3: #f47c95;
+$tertiary-1-4: #f8a8b8;
+$tertiary-1-5: #fbd3dc;
+$tertiary-1-6: #fde9ed;
+$tertiary-1-7: #fef4f6;
+
+$tertiary-2-1: #ffc857;
+$tertiary-2-2: #ffd379;
+$tertiary-2-3: #ffde9a;
+$tertiary-2-4: #ffe9bc;
+$tertiary-2-5: #fff4dd;
+$tertiary-2-6: #fff9ee;
+$tertiary-2-7: #fffcf6;
+
+$tertiary-3-1: #00a878;
+$tertiary-3-2: #33b993;
+$tertiary-3-3: #66cbae;
+$tertiary-3-4: #99dcc9;
+$tertiary-3-5: #cceee4;
+$tertiary-3-6: #e5f6f1;
+$tertiary-3-7: #f2faf8;
+
+$tertiary-4: #fff;
+
+$tertiary-5: #000;
+
+/* Brand Variations */
+$brand-primary: $primary-2-1;
+$brand-secondary: $secondary-1-1;
+$brand-tertiary: $primary-1-5;
+$brand-danger: $tertiary-1-1;
+$brand-warning: $tertiary-2-1;
+$brand-success: $tertiary-3-1;
+
+/* Background Colors */
+$bg-color: $tertiary-4;
+$bg-color-variant: $primary-1-6;
+$bg-color-inverse: $tertiary-5;
+$bg-color-variant-inverse: $primary-1-3;
+
+/* Text Colors */
+$text-color: $tertiary-5;
+$text-secondary-color: $primary-1-1;
+$text-color-inverse: $tertiary-4;
+$text-secondary-color-inverse: $primary-1-6;
+
+/* Links */
+$link-color: $secondary-1-1;
+$link-hover-color: darken($link-color, 5%);
+
+/* Borders */
+$border-color: $primary-1-5;
+$border-color-inverse: $primary-1-2;
+$border-radius: $space-unit * 0.5;
+
+/* Animation Language */
+$transition-duration: 250ms;
+$easing-curve: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+$fade-animation-transition: opacity $transition-duration * 4 $easing-curve;

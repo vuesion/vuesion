@@ -1,10 +1,10 @@
-import { createLocalVue, mount }               from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex, { ActionTree, GetterTree, Store } from 'vuex';
-import Counter                                 from './Counter.vue';
-import { CounterGetters, ICounterGetters }     from '../getters';
-import { CounterDefaultState, ICounterState }  from '../state';
-import { CounterActions, ICounterActions }     from '../actions';
-import { i18n }                                from '../../shared/plugins/i18n/i18n';
+import Counter from './Counter.vue';
+import { CounterGetters, ICounterGetters } from '../getters';
+import { CounterDefaultState, ICounterState } from '../state';
+import { CounterActions, ICounterActions } from '../actions';
+import { i18n } from '../../shared/plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
@@ -30,19 +30,19 @@ describe('Counter.vue', () => {
     };
 
     store = new Vuex.Store({
-                             modules: {
-                               counter: {
-                                 namespaced: true,
-                                 getters,
-                                 actions,
-                                 state,
-                               },
-                             },
-                           } as any);
+      modules: {
+        counter: {
+          namespaced: true,
+          getters,
+          actions,
+          state,
+        },
+      },
+    } as any);
   });
 
   test('renders component', () => {
-    const wrapper = mount(Counter, {
+    const wrapper = mount<any>(Counter, {
       store,
       localVue,
       i18n,
@@ -52,7 +52,7 @@ describe('Counter.vue', () => {
   });
 
   test('should increment and decrement', () => {
-    const wrapper: any = mount(Counter, {
+    const wrapper = mount<any>(Counter, {
       store,
       localVue,
       i18n,
@@ -66,12 +66,11 @@ describe('Counter.vue', () => {
   });
 
   test('dispatches action on the server', () => {
-    store.dispatch =  jest.fn();
+    store.dispatch = jest.fn();
 
     Counter.prefetch({ store });
 
     expect(store.dispatch).toHaveBeenCalled();
     expect(store.dispatch).toHaveBeenCalledWith(`counter/increment`);
   });
-
 });

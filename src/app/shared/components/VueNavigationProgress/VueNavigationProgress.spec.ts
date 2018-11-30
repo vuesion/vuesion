@@ -1,29 +1,24 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueNavigationProgress                       from './VueNavigationProgress.vue';
+import VueNavigationProgress from './VueNavigationProgress.vue';
 
 const localVue = createLocalVue();
 
 describe('VueNavigationProgress.vue', () => {
-
   test('renders component', () => {
-    const wrapper = mount(VueNavigationProgress,
-                          {
-                            localVue,
-                          },
-    );
+    const wrapper = mount(VueNavigationProgress, {
+      localVue,
+    });
 
     expect(wrapper.classes()).toContain('vueNavigationProgress');
   });
 
   test('has width when is navigating', (done) => {
-    const wrapper = mount(VueNavigationProgress,
-      {
-        localVue,
-        propsData: {
-          isNavigating: true,
-        },
+    const wrapper = mount(VueNavigationProgress, {
+      localVue,
+      propsData: {
+        isNavigating: true,
       },
-    );
+    });
 
     const initialWidth = parseInt(wrapper.element.style.width, 10);
     expect(initialWidth).toBe(0);
@@ -37,14 +32,12 @@ describe('VueNavigationProgress.vue', () => {
   });
 
   test('has no width after navigating', (done) => {
-    const wrapper = mount(VueNavigationProgress,
-      {
-        localVue,
-        propsData: {
-          isNavigating: true,
-        },
+    const wrapper = mount(VueNavigationProgress, {
+      localVue,
+      propsData: {
+        isNavigating: true,
       },
-    );
+    });
 
     setTimeout(() => {
       expect(parseInt(wrapper.element.style.width, 10)).toBeGreaterThan(0);
@@ -59,5 +52,4 @@ describe('VueNavigationProgress.vue', () => {
       }, 1100);
     }, 200);
   });
-
 });

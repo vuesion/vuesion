@@ -4,14 +4,17 @@
 
 > 一个灵活的、可扩展的、自定的，已经准备好用于生产的渐进式网络应用样板，聚焦于性能、开发速度和最佳实践
 
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/devCrossNet/vue-starter/graphs/commit-activity)
 [![Build Status](https://travis-ci.org/devCrossNet/vue-starter.svg?branch=master)](https://travis-ci.org/devCrossNet/vue-starter)
 [![codecov](https://codecov.io/gh/devCrossNet/vue-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/devCrossNet/vue-starter)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2ff891c2cf949a6a818a/maintainability)](https://codeclimate.com/github/devCrossNet/vue-starter/maintainability)
 [![Dependencies](https://img.shields.io/david/devCrossNet/vue-starter.svg)](https://david-dm.org/devCrossNet/vue-starter)
 [![DevDependencies](https://img.shields.io/david/dev/devCrossNet/vue-starter.svg)](https://david-dm.org/devCrossNet/vue-starter?type=dev)
-[![GitHub issue last update](https://img.shields.io/github/issues/detail/last-update/devCrossNet/vue-starter/979.svg)]()
+[![GitHub issues-closed](https://img.shields.io/github/issues-closed/devCrossNet/vue-starter/.svg)](https://GitHub.com/devCrossNet/vue-starter//issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub release](https://img.shields.io/github/release/devCrossNet/vue-starter.svg)](https://GitHub.com/devCrossNet/vue-starter/releases/)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-[**Show your support by giving a :star:**](https://github.com/devCrossNet/vue-starter/stargazers) 
+[**Show your support by giving a :star:**](https://github.com/devCrossNet/vue-starter/stargazers)
 
 # Documentation
 
@@ -30,7 +33,9 @@
 Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.com/)** (sometimes not available because of the heroku free-plan)
 
 ![vue-starter](https://user-images.githubusercontent.com/1667598/40796069-2721bc8e-6504-11e8-880c-d973fd37b73e.gif)
+
 ### Lighthouse Score
+
 <img width="721" alt="screen shot 2018-04-30 at 09 09 45" src="https://user-images.githubusercontent.com/1667598/39417746-99f967f0-4c56-11e8-865c-9db54012060a.png">
 
 # Getting started
@@ -58,7 +63,7 @@ This gives you the power to prioritize our work and support project contributors
 
 Contributions are always welcome! Please read the [contribution guidelines](https://github.com/devCrossNet/vue-starter/blob/master/.github/CONTRIBUTING.md) first.
 
-欢迎贡献! 请阅读 [贡献指南](https://github.com/devCrossNet/vue-starter/blob/master/.github/CONTRIBUTING.md) 先ο(=•ω＜=)ρ⌒☆.
+欢迎贡献! 请阅读 [贡献指南](https://github.com/devCrossNet/vue-starter/blob/master/.github/CONTRIBUTING.md) 先 ο(=•ω ＜=)ρ⌒☆.
 
 ## Contributors
 
@@ -69,10 +74,10 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 | [<img src="https://avatars1.githubusercontent.com/u/1667598?v=4" width="64px;"/><br /><sub><b>Johannes Werner</b></sub>](https://twitter.com/_jwerner_)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=devCrossNet "Code") [🐛](https://github.com/devCrossNet/vue-starter/issues?q=author%3AdevCrossNet "Bug reports") [📖](https://github.com/devCrossNet/vue-starter/commits?author=devCrossNet "Documentation") [🎨](#design-devCrossNet "Design") [💡](#example-devCrossNet "Examples") [🔧](#tool-devCrossNet "Tools") | [<img src="https://avatars2.githubusercontent.com/u/112532?v=4" width="64px;"/><br /><sub><b>xMartin</b></sub>](http://xmartin.de/)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=xMartin "Code") [🐛](https://github.com/devCrossNet/vue-starter/issues?q=author%3AxMartin "Bug reports") [📖](https://github.com/devCrossNet/vue-starter/commits?author=xMartin "Documentation") [💡](#example-xMartin "Examples") | [<img src="https://avatars2.githubusercontent.com/u/2235499?s=460&v=4" width="64px;"/><br /><sub><b>Konstantin Kulinicenko</b></sub>](https://github.com/40818419)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=40818419 "Code") [🐛](https://github.com/devCrossNet/vue-starter/issues?q=author%3A40818419 "Bug reports") [📖](https://github.com/devCrossNet/vue-starter/commits?author=40818419 "Documentation") [💡](#example-40818419 "Examples") | [<img src="https://avatars0.githubusercontent.com/u/31165554?v=4" width="64px;"/><br /><sub><b>Silver·湫澲</b></sub>](http://saigao.fun)<br />[📖](https://github.com/devCrossNet/vue-starter/commits?author=SilverLeaves "Documentation") [🌍](#translation-SilverLeaves "Translation") | [<img src="https://avatars2.githubusercontent.com/u/17932287?v=4" width="64px;"/><br /><sub><b>Stavros Liaskos</b></sub>](https://stavrosliaskos.com/)<br />[🐛](https://github.com/devCrossNet/vue-starter/issues?q=author%3Astavros-liaskos "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/1898225?v=4" width="64px;"/><br /><sub><b>Marcelo Boeira</b></sub>](https://marceloboeira.com)<br />[🌍](#translation-marceloboeira "Translation") | [<img src="https://avatars3.githubusercontent.com/u/3583774?v=4" width="64px;"/><br /><sub><b>Rick Mann</b></sub>](http://teamteatime.net/)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=Riari "Code") |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | [<img src="https://avatars0.githubusercontent.com/u/43061?v=4" width="64px;"/><br /><sub><b>Ryan McGuire</b></sub>](http://www.EnigmaCurry.com)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=EnigmaCurry "Code") | [<img src="https://avatars3.githubusercontent.com/u/28268680?v=4" width="64px;"/><br /><sub><b>Jay McDoniel</b></sub>](https://github.com/jmcdo29)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=jmcdo29 "Code") | [<img src="https://avatars3.githubusercontent.com/u/497957?v=4" width="64px;"/><br /><sub><b>Hugo Magalhães</b></sub>](http://hugomagalhaes.com)<br />[🌍](#translation-hugomn "Translation") | [<img src="https://avatars3.githubusercontent.com/u/7151993?v=4" width="64px;"/><br /><sub><b>glederer</b></sub>](https://github.com/glederer)<br />[🌍](#translation-glederer "Translation") |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
-
 
 # Reference resources
 

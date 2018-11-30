@@ -1,23 +1,22 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
-import VueCollapse   from './VueCollapse.vue';
-import VueButton     from '../VueButton/VueButton.vue';
-import VuePanel      from '../VuePanel/VuePanel.vue';
+import { withInfo } from 'storybook-addon-vue-info';
+import VueCollapse from './VueCollapse.vue';
+import VueButton from '../VueButton/VueButton.vue';
 
-const story = (storiesOf('VueCollapse', module) as any);
+const story = storiesOf('2. Components|Collapse', module) as any;
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
-  components: { VueCollapse, VueButton, VuePanel },
-  data() {
-    return {
-      show: true,
-    };
-  },
-  template:   `
-<vue-panel>
-  <vue-button @click="show = !show" accent>Collapse toggle</vue-button>
+story.add(
+  'Default',
+  withInfo({ propTablesExclude: [VueButton] })(() => ({
+    components: { VueCollapse, VueButton },
+    data() {
+      return {
+        show: true,
+      };
+    },
+    template: `
+<div>
+  <vue-button @click="show = !show" secondary>Collapse toggle</vue-button>
   <br />
   <br />
   <vue-collapse :show="show">
@@ -30,6 +29,7 @@ story.add('Default', () => ({
       et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
     </div>
   </vue-collapse>
-</vue-panel>
+</div>
   `,
-}));
+  })),
+);

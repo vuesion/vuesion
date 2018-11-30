@@ -1,30 +1,29 @@
-import { mount, createLocalVue }          from '@vue/test-utils';
-import VueNotificationStack               from './VueNotificationStack.vue';
+import { mount, createLocalVue } from '@vue/test-utils';
+import VueNotificationStack from './VueNotificationStack.vue';
 import { INotification, addNotification } from './utils';
 
 const localVue = createLocalVue();
 
 describe('VueNotificationStack.vue', () => {
-
   test('renders component', () => {
-    const wrapper = mount(VueNotificationStack, {
+    const wrapper = mount<any>(VueNotificationStack, {
       localVue,
-    }) as any;
+    });
     const notification: INotification = {
       title: 'this is a test',
-      text:  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+      text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
     } as INotification;
 
     expect(wrapper.vm.notifications).toHaveLength(0);
   });
 
   test('add and remove notification', () => {
-    const wrapper = mount(VueNotificationStack, {
+    const wrapper = mount<any>(VueNotificationStack, {
       localVue,
-    }) as any;
+    });
     const notification: INotification = {
       title: 'this is a test',
-      text:  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+      text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
     } as INotification;
 
     expect(wrapper.vm.notifications).toHaveLength(0);
@@ -39,15 +38,15 @@ describe('VueNotificationStack.vue', () => {
   });
 
   test('should remove notification after 100 ms', (done) => {
-    const wrapper = mount(VueNotificationStack, {
+    const wrapper = mount<any>(VueNotificationStack, {
       localVue,
       propsData: {
         duration: 100,
       },
-    }) as any;
+    });
     const notification: INotification = {
       title: 'this is a test',
-      text:  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+      text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
     } as INotification;
 
     expect(wrapper.vm.notifications).toHaveLength(0);
@@ -62,5 +61,4 @@ describe('VueNotificationStack.vue', () => {
       done();
     }, 200);
   });
-
 });

@@ -1,10 +1,9 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueGridItem               from './VueGridItem.vue';
+import VueGridItem from './VueGridItem.vue';
 
 const localVue = createLocalVue();
 
 describe('VueGridItem.vue', () => {
-
   test('renders gridItem with flow layout', () => {
     const wrapper = mount(VueGridItem, { localVue });
 
@@ -22,5 +21,4 @@ describe('VueGridItem.vue', () => {
     expect(wrapper.findAll(`.gridItem`)).toHaveLength(1);
     expect(wrapper.findAll(`.fill`)).toHaveLength(1);
   });
-
 });

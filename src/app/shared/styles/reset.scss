@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'mixins';
+
 /*! minireset.css v0.0.3 | MIT License | github.com/jgthms/minireset.css */
 html,
 body,
@@ -22,7 +25,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin:  0;
+  margin: 0;
   padding: 0;
 }
 
@@ -32,12 +35,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-size:   100%;
+  font-size: 100%;
   font-weight: normal;
 }
 
 ul {
-  list-style: none;
+  padding: 0 0 0 $space-unit * 4;
 }
 
 button,
@@ -51,7 +54,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -61,7 +66,7 @@ iframe,
 object,
 audio,
 video {
-  height:    auto;
+  height: auto;
   max-width: 100%;
 }
 
@@ -71,11 +76,11 @@ iframe {
 
 table {
   border-collapse: collapse;
-  border-spacing:  0;
+  border-spacing: 0;
 }
 
 td,
 th {
-  padding:    0;
+  padding: 0;
   text-align: left;
 }

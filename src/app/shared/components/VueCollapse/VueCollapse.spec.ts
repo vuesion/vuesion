@@ -1,17 +1,16 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueCollapse               from './VueCollapse.vue';
+import VueCollapse from './VueCollapse.vue';
 
 const localVue = createLocalVue();
 
 describe('VueCollapse.vue', () => {
-
   test('renders component', () => {
     const wrapper = mount(VueCollapse, {
       localVue,
       slots: {
         default: '<h1>content</h1>',
       },
-    }) as any;
+    });
 
     expect(wrapper.find('h1').text()).toBe('content');
 
@@ -19,5 +18,4 @@ describe('VueCollapse.vue', () => {
 
     expect(wrapper.props().show).toBe(false);
   });
-
 });

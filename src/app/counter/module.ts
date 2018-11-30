@@ -1,22 +1,22 @@
-import { Module }                             from 'vuex';
+import { Module } from 'vuex';
 import { CounterDefaultState, ICounterState } from './state';
-import { IState }                             from '../state';
-import { CounterActions }                     from './actions';
-import { CounterGetters }                     from './getters';
-import { CounterMutations }                   from './mutations';
+import { IState } from '../state';
+import { CounterActions } from './actions';
+import { CounterGetters } from './getters';
+import { CounterMutations } from './mutations';
 
 export const CounterModule: Module<ICounterState, IState> = {
   namespaced: true,
-  actions:    {
+  actions: {
     ...CounterActions,
   },
-  getters:    {
+  getters: {
     ...CounterGetters,
   },
-  state:      {
+  state: {
     ...CounterDefaultState(),
   },
-  mutations:  {
+  mutations: {
     ...CounterMutations,
   },
 };

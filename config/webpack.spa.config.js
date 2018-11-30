@@ -10,38 +10,38 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 baseConfig.plugins.unshift(new webpack.DefinePlugin({ CLIENT: true, SERVER: false, TEST: true }));
 
 const SPAConfig = merge(baseConfig, {
-  entry:        {
+  entry: {
     app: './src/client/index',
   },
-  output:       {
-    path:          path.join(__dirname, '..', 'dist', 'client'),
-    filename:      '[name].[chunkHash].js',
-    publicPath:    '/client/',
+  output: {
+    path: path.join(__dirname, '..', 'dist', 'client'),
+    filename: '[name].[chunkHash].js',
+    publicPath: '/client/',
     chunkFilename: '[name].[id].[chunkhash].js',
   },
   optimization: {
-    splitChunks:  {
+    splitChunks: {
       cacheGroups: {
         commons: {
-          test:   /[\\/]node_modules[\\/]/,
-          name:   'vendor',
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
           chunks: 'all',
         },
       },
     },
     runtimeChunk: 'single',
   },
-  plugins:      [
+  plugins: [
     new HTMLPlugin({
-                     filename: '../index.html',
-                     template: 'src/index.template.html',
-                     spa:      true,
-                   }),
+      filename: '../index.html',
+      template: 'src/index.template.html',
+      spa: true,
+    }),
     new CopyWebpackPlugin([
-                            { from: 'src/static', to: '../' },
-                            { from: './i18n', to: '../i18n' },
-                            { from: 'src/static/logo.png', to: '../favicon.png' },
-                          ]),
+      { from: 'src/static', to: '../' },
+      { from: './i18n', to: '../i18n' },
+      { from: 'src/static/logo.png', to: '../favicon.png' },
+    ]),
     new ServiceWorkerWebpackPlugin({ entry: path.join(__dirname, '..', 'src/client/sw.ts'), filename: '../sw.js' }),
     new CompressionPlugin({ algorithm: 'gzip', test: /\.js$|\.css$|\.html$/, threshold: 0, minRatio: 1 }),
   ],

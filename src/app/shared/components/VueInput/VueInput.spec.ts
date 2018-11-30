@@ -1,19 +1,18 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueInput                  from './VueInput.vue';
+import VueInput from './VueInput.vue';
 
 const localVue = createLocalVue();
 
 describe('VueInput.vue', () => {
-
   test('renders component', () => {
-    const wrapper = mount(VueInput, {
+    const wrapper = mount<any>(VueInput, {
       localVue,
       propsData: {
         message: 'MESSAGE!',
-        name:    'name',
-        id:      'id',
+        name: 'name',
+        id: 'id',
       },
-      mocks:     {
+      mocks: {
         errors: null,
       },
     });
@@ -23,12 +22,12 @@ describe('VueInput.vue', () => {
   });
 
   test('renders disabled component', () => {
-    const wrapper = mount(VueInput, {
+    const wrapper = mount<any>(VueInput, {
       localVue,
       propsData: {
         disabled: true,
-        name:     'name',
-        id:       'id',
+        name: 'name',
+        id: 'id',
       },
     });
 
@@ -36,11 +35,11 @@ describe('VueInput.vue', () => {
   });
 
   test('should emit input', () => {
-    const wrapper = mount(VueInput, {
+    const wrapper = mount<any>(VueInput, {
       localVue,
       propsData: {
         name: 'name',
-        id:   'id',
+        id: 'id',
       },
     }) as any;
 
@@ -49,9 +48,9 @@ describe('VueInput.vue', () => {
   });
 
   test('should display error state', () => {
-    const wrapper = mount(VueInput, {
+    const wrapper = mount<any>(VueInput, {
       localVue,
-      mocks:     {
+      mocks: {
         errors: {
           first() {
             return true;
@@ -60,8 +59,8 @@ describe('VueInput.vue', () => {
       },
       propsData: {
         errorMessage: 'ERROR!',
-        name:         'name',
-        id:           'id',
+        name: 'name',
+        id: 'id',
       },
     });
 
@@ -70,11 +69,11 @@ describe('VueInput.vue', () => {
   });
 
   test('autofocus fallback', () => {
-    const wrapper: any = mount(VueInput, {
+    const wrapper = mount<any>(VueInput, {
       localVue,
       propsData: {
-        name:      'name',
-        id:        'id',
+        name: 'name',
+        id: 'id',
         autofocus: true,
       },
     });
@@ -96,23 +95,23 @@ describe('VueInput.vue', () => {
         this.cb();
       }
     };
-    const wrapper: any = mount(VueInput, {
+    const wrapper = mount<any>(VueInput, {
       localVue,
       propsData: {
-        name:      'name',
-        id:        'id',
+        name: 'name',
+        id: 'id',
         autofocus: false,
       },
     });
 
-    wrapper.vm.$refs.input.focus = jest.fn();
+    (wrapper as any).vm.$refs.input.focus = jest.fn();
 
     expect(wrapper.vm.observer).not.toBeNull();
-    expect(wrapper.vm.$refs.input.focus).not.toHaveBeenCalled();
+    expect((wrapper as any).vm.$refs.input.focus).not.toHaveBeenCalled();
 
     wrapper.setProps({ autofocus: true });
     wrapper.vm.observer.observe();
-    expect(wrapper.vm.$refs.input.focus).toHaveBeenCalled();
+    expect((wrapper as any).vm.$refs.input.focus).toHaveBeenCalled();
 
     wrapper.destroy();
   });

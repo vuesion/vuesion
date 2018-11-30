@@ -1,12 +1,11 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueModal                  from './VueModal.vue';
+import VueModal from './VueModal.vue';
 
 const localVue = createLocalVue();
 
 describe('VueModal.vue', () => {
-
   test('renders slot', (done) => {
-    const wrapper = mount(VueModal, {
+    const wrapper = mount<any>(VueModal, {
       localVue,
       slots: {
         default: '<p>TEST</p>',
@@ -33,7 +32,7 @@ describe('VueModal.vue', () => {
     document.addEventListener = jest.fn();
     document.removeEventListener = jest.fn();
 
-    const wrapper = mount(VueModal, { localVue });
+    const wrapper = mount<any>(VueModal, { localVue });
 
     wrapper.destroy();
 
@@ -42,7 +41,7 @@ describe('VueModal.vue', () => {
   });
 
   test('should close on outside click', () => {
-    const wrapper: any = mount(VueModal, {
+    const wrapper = mount<any>(VueModal, {
       localVue,
       slots: {
         default: '<p>TEST</p>',
@@ -64,7 +63,7 @@ describe('VueModal.vue', () => {
   });
 
   test('should close on ESC press', () => {
-    const wrapper: any = mount(VueModal, {
+    const wrapper = mount<any>(VueModal, {
       localVue,
     });
 
@@ -76,5 +75,4 @@ describe('VueModal.vue', () => {
     wrapper.vm.handleDocumentKeyDown({ key: 'Escape' });
     expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
   });
-
 });

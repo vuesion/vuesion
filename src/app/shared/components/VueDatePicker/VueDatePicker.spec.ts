@@ -1,16 +1,15 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueDatePicker             from './VueDatePicker.vue';
-import { i18n }                  from '../../plugins/i18n/i18n';
+import VueDatePicker from './VueDatePicker.vue';
+import { i18n } from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 
 describe('VueDatePicker.vue', () => {
-
   test('renders component', () => {
-    const wrapper = mount(VueDatePicker, {
+    const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     expect(wrapper.findAll(`.vueDatePicker`)).toHaveLength(1);
     expect(wrapper.findAll('input')).toHaveLength(1);
@@ -18,10 +17,10 @@ describe('VueDatePicker.vue', () => {
   });
 
   test('renders component with selected date', () => {
-    const wrapper = mount(VueDatePicker, {
+    const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     expect(wrapper.vm.inputValue).toBe('');
 
@@ -30,22 +29,22 @@ describe('VueDatePicker.vue', () => {
   });
 
   test('renders component with current date', () => {
-    const wrapper = mount(VueDatePicker, {
+    const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
       propsData: {
         currentDate: new Date(),
       },
-    }) as any;
+    });
 
     expect(wrapper.vm.inputValue).not.toBe('');
   });
 
   test('should emit change', () => {
-    const wrapper = mount(VueDatePicker, {
+    const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     wrapper.vm.onChange();
 
@@ -53,10 +52,10 @@ describe('VueDatePicker.vue', () => {
   });
 
   test('should open calendar on focus', () => {
-    const wrapper = mount(VueDatePicker, {
+    const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     expect(wrapper.vm.show).toBeFalsy();
 
@@ -65,10 +64,10 @@ describe('VueDatePicker.vue', () => {
   });
 
   test('should blur on focus', () => {
-    const wrapper = mount(VueDatePicker, {
+    const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     const event: any = {
       currentTarget: {

@@ -1,12 +1,11 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueAccordionItem          from './VueAccordionItem.vue';
+import VueAccordionItem from './VueAccordionItem.vue';
 
 const localVue = createLocalVue();
 
 describe('VueAccordionItem.vue', () => {
-
   test('renders component', () => {
-    const wrapper = mount(VueAccordionItem, {
+    const wrapper = mount<any>(VueAccordionItem, {
       localVue,
       propsData: {
         title: 'foo',
@@ -17,10 +16,10 @@ describe('VueAccordionItem.vue', () => {
   });
 
   test('opens component', () => {
-    const wrapper = mount(VueAccordionItem, {
+    const wrapper = mount<any>(VueAccordionItem, {
       localVue,
       propsData: {
-        title:    'foo',
+        title: 'foo',
         initOpen: false,
       },
     });
@@ -31,25 +30,23 @@ describe('VueAccordionItem.vue', () => {
   });
 
   test('calls parent functions', () => {
-    const wrapper = mount(VueAccordionItem, {
+    const wrapper = mount<any>(VueAccordionItem, {
       localVue,
       propsData: {
-        title:    'foo',
+        title: 'foo',
         initOpen: false,
       },
-    }) as any;
+    });
 
-    wrapper.vm.$options.created[4].call(wrapper.vm);
+    (wrapper as any).vm.$options.created[1].call(wrapper.vm);
 
     wrapper.vm.$parent.openItem = jest.fn();
     wrapper.vm.$parent.register = jest.fn();
 
     wrapper.vm.click();
-    wrapper.vm.$options.created[4].call(wrapper.vm);
+    (wrapper as any).vm.$options.created[1].call(wrapper.vm);
 
     expect(wrapper.vm.$parent.openItem).toHaveBeenCalled();
     expect(wrapper.vm.$parent.register).toHaveBeenCalled();
-
   });
-
 });

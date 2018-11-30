@@ -1,33 +1,32 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueTabItem                from './VueTabItem.vue';
+import VueTabItem from './VueTabItem.vue';
 
 const localVue = createLocalVue();
 
 describe('VueTabItem.vue', () => {
-
   test('renders component', () => {
-    const wrapper = mount(VueTabItem, {
+    const wrapper = mount<any>(VueTabItem, {
       localVue,
-      slots:     {
+      slots: {
         default: '<p>TEST</p>',
       },
       propsData: {
         title: 'foo',
       },
-    }) as any;
+    });
 
-    expect((wrapper as any).vm.cssClasses).toEqual(['vueTab']);
+    expect(wrapper.vm.cssClasses).toEqual(['vueTab']);
     wrapper.setData({ active: true });
-    expect((wrapper as any).vm.cssClasses).toEqual(['vueTab', 'active']);
+    expect(wrapper.vm.cssClasses).toEqual(['vueTab', 'active']);
 
     wrapper.setData({ active: false });
     expect(wrapper.findAll('p')).toHaveLength(0);
 
-    (wrapper as any).vm.$parent.register = jest.fn();
+    wrapper.vm.$parent.register = jest.fn();
 
-    (wrapper as any).vm.$options.created['2'].call(wrapper.vm);
+    (wrapper as any).vm.$options.created['1'].call(wrapper.vm);
 
-    expect((wrapper as any).vm.$parent.register).toHaveBeenCalledTimes(1);
+    expect(wrapper.vm.$parent.register).toHaveBeenCalledTimes(1);
 
     wrapper.setData({ active: true });
     expect(wrapper.findAll('p')).toHaveLength(1);
@@ -43,5 +42,4 @@ describe('VueTabItem.vue', () => {
     wrapper.vm.beforeLeave(wrapper.vm.$el);
     wrapper.vm.leave(wrapper.vm.$el, jest.fn());
   });
-
 });

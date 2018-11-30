@@ -1,26 +1,46 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
-import VueModal      from './VueModal.vue';
-import VueButton     from '../VueButton/VueButton.vue';
-import VuePanel      from '../VuePanel/VuePanel.vue';
+import { withInfo } from 'storybook-addon-vue-info';
+import VueModal from './VueModal.vue';
+import VueButton from '../VueButton/VueButton.vue';
 
-const story = (storiesOf('VueModal', module) as any);
+const story = storiesOf('2. Components|Modal', module) as any;
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
-  components: { VueModal, VueButton, VuePanel },
-  data() {
-    return {
-      show: false,
-    };
-  },
-  template:   `
-<vue-panel>
-  <vue-button @click="show = true" accent>Show</vue-button>
-  <vue-modal :show="show">
-    <vue-button @click="show = false">Hide</vue-button>
+story.add(
+  'Default',
+  withInfo({ propTablesExclude: [VueButton] })(() => ({
+    components: { VueModal, VueButton },
+    data() {
+      return {
+        show: false,
+      };
+    },
+    template: `
+<div>
+  <vue-button @click="show = true" secondary>Show</vue-button>
+  <vue-modal :show="show" @close="show = false">
+    <vue-button primary @click="show = false">Hide</vue-button>
   </vue-modal>
-</vue-panel>
+</div>
   `,
-}));
+  })),
+);
+
+story.add(
+  'Fit Content',
+  withInfo({ propTablesExclude: [VueButton] })(() => ({
+    components: { VueModal, VueButton },
+    data() {
+      return {
+        show: false,
+      };
+    },
+    template: `
+<div>
+  <vue-button @click="show = true" secondary>Show</vue-button>
+  <vue-modal :show="show" @close="show = false" fit-content>
+    <vue-button style="margin: 0;" primary @click="show = false">Hide</vue-button>
+  </vue-modal>
+</div>
+  `,
+  })),
+);

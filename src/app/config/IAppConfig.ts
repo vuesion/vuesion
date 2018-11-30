@@ -3,6 +3,6 @@ export interface IAppConfig {
     baseUrl: string;
   };
   features: {
-    disableParticles: boolean,
+    disableParticles: boolean;
   };
 }

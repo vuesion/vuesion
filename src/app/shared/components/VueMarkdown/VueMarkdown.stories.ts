@@ -1,20 +1,21 @@
 import { storiesOf } from '@storybook/vue';
-import VueInfoAddon  from 'storybook-addon-vue-info';
-import VueMarkdown     from './VueMarkdown.vue';
+import { withInfo } from 'storybook-addon-vue-info';
+import VueMarkdown from './VueMarkdown.vue';
 
-const story = (storiesOf('VueMarkdown', module) as any);
+const story = storiesOf('2. Components|Markdown', module) as any;
 
-story.addDecorator(VueInfoAddon);
-
-story.add('Default', () => ({
-  components: { VueMarkdown },
-  template:   `
+story.add(
+  'Default',
+  withInfo({})(() => ({
+    components: { VueMarkdown },
+    template: `
 <vue-markdown>
-# headline
-## headline
+# headline 1
+## headline 2
 
 - test
 - test
   - test
 </vue-markdown>`,
-}));
+  })),
+);

@@ -12,8 +12,8 @@ Directories and files that we would recommend to delete:
 ├── docs
 └── src
     ├── app
-    │   ├── components
-    │   └── counter
+    │   ├── counter
+    │   └── form
     └── server
         └── routes
             ├── CounterRoutes.ts
@@ -25,17 +25,21 @@ Directories and files that we would recommend to delete:
 Now you have to remove references to this modules, remove the following code in the following files:
 
 `./src/app/router.ts`
+
 ```js
 import { CounterRoutes }    from './counter/routes';
-import { ComponentsRoutes } from './components/routes';
+import { FormRoutes } from './form/routes';
 
 ...
 
       ...CounterRoutes,
-      ...ComponentsRoutes,
+      ...FormRoutes,
+
+...
 ```
 
 `./src/app/state.ts`
+
 ```js
 import { CounterDefaultState, ICounterState } from './counter/state';
 
@@ -44,29 +48,30 @@ import { CounterDefaultState, ICounterState } from './counter/state';
   counter?: ICounterState;
 
 ...
-
-  counter: {
-    ...CounterDefaultState(),
-  },
 ```
 
 `./src/app/store.ts`
+
 ```js
-import { CounterModule }        from './counter/module';
-
 ...
 
-store.registerModule(['counter'], CounterModule, { preserveState: true });
+  /**
+   * because the counter module is loaded on demand
+   * we have to check if it exists before we delete
+   * some state attributes
+   */
+  if (localState.counter) {
+    delete localState.counter.incrementPending;
+    delete localState.counter.decrementPending;
+  }
 
-...
-  delete localState.counter.incrementPending;
-  delete localState.counter.decrementPending;
 ...
 ```
 
 And the server-side routes:
 
 `./src/server/server.ts`
+
 ```js
 import { DemoRoutes }       from './routes/DemoRoutes';
 import { CounterRoutes }    from './routes/CounterRoutes';

@@ -10,10 +10,10 @@ export interface IAppState {
 
 export const AppDefaultState = (): IAppState => {
   return {
-    locale:               null,
-    config:               null,
-    defaultMessages:      {},
-    redirectTo:           null,
+    locale: null,
+    config: null,
+    defaultMessages: {},
+    redirectTo: null,
     cookieConsentVersion: '',
   };
 };

@@ -1,17 +1,16 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueTooltip                from './VueTooltip.vue';
+import VueTooltip from './VueTooltip.vue';
 
 const localVue = createLocalVue();
 
 describe('VueTooltip.vue', () => {
-
   test('renders component with text', () => {
     const wrapper = mount(VueTooltip, {
       localVue,
       propsData: {
         tip: 'foo',
       },
-      slots:     {
+      slots: {
         default: 'test',
       },
     });
@@ -27,7 +26,7 @@ describe('VueTooltip.vue', () => {
       propsData: {
         tip: 'foo',
       },
-      slots:     {
+      slots: {
         default: '<button>test</button>',
       },
     });
@@ -43,7 +42,7 @@ describe('VueTooltip.vue', () => {
       propsData: {
         tip: 'foo',
       },
-      slots:     {
+      slots: {
         default: [],
       },
     });
@@ -59,7 +58,7 @@ describe('VueTooltip.vue', () => {
       propsData: {
         tip: 'foo',
       },
-      slots:     {
+      slots: {
         default: 'test',
       },
     });
@@ -87,10 +86,10 @@ describe('VueTooltip.vue', () => {
     const wrapper = mount(VueTooltip, {
       localVue,
       propsData: {
-        tip:     'foo',
+        tip: 'foo',
         disabled: true,
       },
-      slots:     {
+      slots: {
         default: 'test',
       },
     });

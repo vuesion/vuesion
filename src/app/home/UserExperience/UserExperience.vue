@@ -2,46 +2,47 @@
   <div :class="[$style.userExperience, 'featureSection']">
     <vue-grid>
       <vue-grid-row>
-        <vue-grid-item fill class="vueGridItem">
-          <h2>User experience</h2>
-        </vue-grid-item>
+        <vue-grid-item fill class="vueGridItem"> <vue-headline level="2">User experience</vue-headline> </vue-grid-item>
 
         <vue-grid-item class="vueGridItem">
-          <vue-panel class="vuePanel">
-            <vue-panel-body>
+          <vue-card class="vueCard">
+            <vue-card-body>
               <vue-icon-spinner />
-              <h3>Animations</h3>
-              <p>A stable animations set up already included (<a href="http://animejs.com/" target="_blank"
-                                                                 rel="noopener">anime.js</a>).</p>
-            </vue-panel-body>
-          </vue-panel>
+              <vue-headline level="3">Animations</vue-headline>
+              <p>
+                A stable animations set up already included (<a
+                  href="http://animejs.com/"
+                  target="_blank"
+                  rel="noopener"
+                  >anime.js</a
+                >).
+              </p>
+            </vue-card-body>
+          </vue-card>
         </vue-grid-item>
 
         <vue-grid-item class="vueGridItem">
-          <vue-panel class="vuePanel">
-            <vue-panel-body>
+          <vue-card class="vueCard">
+            <vue-card-body>
               <vue-icon-mobile />
-              <h3>Progressive-Web-App</h3>
+              <vue-headline level="3">Progressive-Web-App</vue-headline>
               <p>Offline-first support with service-workers and a lighthouse score as high as possible (90+).</p>
-            </vue-panel-body>
-          </vue-panel>
+            </vue-card-body>
+          </vue-card>
         </vue-grid-item>
 
         <vue-grid-item class="vueGridItem">
-          <vue-panel class="vuePanel">
-            <vue-panel-body>
+          <vue-card class="vueCard">
+            <vue-card-body>
               <vue-icon-puzzle-piece />
-              <h3>Components</h3>
+              <vue-headline level="3">Design System</vue-headline>
               <p>
-                A flexible component library that'll be extended over time.
+                Includes a blueprint for a 100% customizable Design System with a huge amount of
+                <router-link to="/storybook">components</router-link>
+                .
               </p>
-              <p>
-                Visit the
-                <router-link to="/components">Component's page</router-link>
-                to see a preview of the available components.
-              </p>
-            </vue-panel-body>
-          </vue-panel>
+            </vue-card-body>
+          </vue-card>
         </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
@@ -49,42 +50,58 @@
 </template>
 
 <script lang="ts">
-  import VueGrid            from '../../shared/components/VueGrid/VueGrid.vue';
-  import VueGridItem        from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VuePanel           from '../../shared/components/VuePanel/VuePanel.vue';
-  import VuePanelBody       from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
-  import VueGridRow         from '../../shared/components/VueGridRow/VueGridRow.vue';
-  import VueIconSpinner     from '../../shared/components/icons/VueIconSpinner/VueIconSpinner.vue';
-  import VueIconMobile      from '../../shared/components/icons/VueIconMobile/VueIconMobile.vue';
-  import VueIconPuzzlePiece from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
+import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
+import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
+import VueCard from '../../shared/components/VueCard/VueCard.vue';
+import VueCardBody from '../../shared/components/VueCard/VueCardBody/VueCardBody.vue';
+import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
+import VueIconSpinner from '../../shared/components/icons/VueIconSpinner/VueIconSpinner.vue';
+import VueIconMobile from '../../shared/components/icons/VueIconMobile/VueIconMobile.vue';
+import VueIconPuzzlePiece from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
+import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
 
-  export default {
-    components: {
-      VueIconPuzzlePiece,
-      VueIconMobile,
-      VueIconSpinner,
-      VueGrid,
-      VueGridItem,
-      VuePanel,
-      VuePanelBody,
-      VueGridRow,
-    },
-  };
+export default {
+  components: {
+    VueHeadline,
+    VueIconPuzzlePiece,
+    VueIconMobile,
+    VueIconSpinner,
+    VueGrid,
+    VueGridItem,
+    VueCard,
+    VueCardBody,
+    VueGridRow,
+  },
+};
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/styles";
+@import '../../shared/styles';
 
-  .userExperience {
-    display:    block;
-    text-align: center;
+.userExperience {
+  display: block;
+  text-align: center;
+  background: $bg-color-variant;
 
-    i {
-      display:    inline-block;
-      height:     $font-size-h1;
-      width:      $font-size-h1;
-      margin-top: $space-unit;
-    }
-
+  i {
+    display: inline-block;
+    height: $font-size-h1;
+    width: $font-size-h1;
+    margin-top: $space-unit;
   }
+
+  a {
+    color: $text-color;
+
+    &:hover {
+      color: $text-color;
+    }
+  }
+
+  :global {
+    .vueCard {
+      background: $tertiary-4;
+    }
+  }
+}
 </style>

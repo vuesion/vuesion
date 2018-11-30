@@ -4,52 +4,7 @@
 
     <vue-navigation-progress :is-navigating="isNavigating" />
 
-    <vue-nav-bar>
-      <ul :class="$style.nav">
-        <li>
-          <a href="/docs" @click.native="navBarClose">
-            <vue-icon-book />
-            <small>{{ $t('App.nav.docs' /* Documentation */) }}</small>
-          </a>
-        </li>
-        <li>
-          <router-link to="/counter" @click.native="navBarClose">
-            <vue-icon-hashtag />
-            <small>{{ $t('App.nav.counter' /* Counter */) }}</small>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/components" @click.native="navBarClose">
-            <vue-icon-puzzle-piece />
-            <small>{{ $t('App.nav.components' /* Components */) }}</small>
-          </router-link>
-        </li>
-        <li>
-          <a @click="localeSwitch('en')">
-            <vue-icon-flag />
-            <small>English</small>
-          </a>
-        </li>
-        <li>
-          <a @click="localeSwitch('de')">
-            <vue-icon-flag />
-            <small>Deutsch</small>
-          </a>
-        </li>
-        <li>
-          <a @click="localeSwitch('pt')">
-            <vue-icon-flag />
-            <small>Português</small>
-          </a>
-        </li>
-        <li>
-          <a @click="localeSwitch('zh-cn')">
-            <vue-icon-flag />
-            <small>中文</small>
-          </a>
-        </li>
-      </ul>
-    </vue-nav-bar>
+    <vue-nav-bar />
 
     <router-view :class="$style.content" />
 
@@ -58,146 +13,184 @@
     <vue-cookie-consent
       current-version="1.0.0"
       :cookie-consent-version="cookieConsentVersion"
-      :set-cookie-consent-version="setCookieConsentVersion">
+      :set-cookie-consent-version="setCookieConsentVersion"
+    >
       This is a cookie consent component which shows the cookie consent every time you change the version of the
       consent.
     </vue-cookie-consent>
+
+    <vue-sidebar>
+      <vue-sidebar-group title="Languages">
+        <vue-sidebar-group-item>
+          <vue-select name="lang" id="lang" :options="languages" @input="localeSwitch" :value="getLocale" />
+        </vue-sidebar-group-item>
+      </vue-sidebar-group>
+
+      <vue-sidebar-group title="Navigation">
+        <vue-sidebar-group-item to="/">
+          <vue-icon-code />
+          Home
+        </vue-sidebar-group-item>
+
+        <vue-sidebar-group-item to="/counter">
+          <vue-icon-hashtag />
+          VueX Example
+        </vue-sidebar-group-item>
+
+        <vue-sidebar-group-item to="/form">
+          <vue-icon-hashtag />
+          Form Example
+        </vue-sidebar-group-item>
+      </vue-sidebar-group>
+
+      <vue-sidebar-group title="Documentation">
+        <vue-sidebar-group-item>
+          <a href="/docs">
+            <vue-icon-book />
+            Documentation
+          </a>
+        </vue-sidebar-group-item>
+
+        <vue-sidebar-group-item>
+          <a
+            href="/storybook/?selectedKind=1.%20Design%20System%7C1-Design%20System&selectedStory=Intro&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
+          >
+            <vue-icon-book />
+            Design System
+          </a>
+        </vue-sidebar-group-item>
+
+        <vue-sidebar-group-item>
+          <a
+            href="/storybook/?selectedKind=2.%20Components%7CAccordion&selectedStory=Default&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
+          >
+            <vue-icon-puzzle-piece />
+            Components
+          </a>
+        </vue-sidebar-group-item>
+      </vue-sidebar-group>
+
+      <vue-sidebar-group title="Community">
+        <vue-sidebar-group-item>
+          <a href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener">
+            <vue-icon-github />
+            Github
+          </a>
+        </vue-sidebar-group-item>
+
+        <vue-sidebar-group-item>
+          <a href="https://slack-vue-starter.herokuapp.com/" target="_blank" rel="noopener"> Slack </a>
+        </vue-sidebar-group-item>
+
+        <vue-sidebar-group-item>
+          <a href="https://chat.vuejs.org/" target="_blank" rel="noopener"> VueLand </a>
+        </vue-sidebar-group-item>
+
+        <vue-sidebar-group-item>
+          <a href="https://twitter.com/_jwerner_" target="_blank" rel="noopener">
+            <vue-icon-twitter-square />
+            Twitter
+          </a>
+        </vue-sidebar-group-item>
+      </vue-sidebar-group>
+    </vue-sidebar>
   </div>
 </template>
 
 <script lang="ts">
-  import { mapActions, mapGetters } from 'vuex';
-  import VueNavBar                  from '../../shared/components/VueNavBar/VueNavBar.vue';
-  import VueGrid                    from '../../shared/components/VueGrid/VueGrid.vue';
-  import VueGridItem                from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VueFooter                  from '../../shared/components/VueFooter/VueFooter.vue';
-  import VueNotificationStack       from '../../shared/components/VueNotificationStack/VueNotificationStack.vue';
-  import VueCookieConsent           from '../../shared/components/VueCookieConsent/VueCookieConsent.vue';
-  import VueIconBook                from '../../shared/components/icons/VueIconBook/VueIconBook.vue';
-  import VueIconHashtag             from '../../shared/components/icons/VueIconHashtag/VueIconHashtag.vue';
-  import VueIconPuzzlePiece         from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
-  import VueIconFlag                from '../../shared/components/icons/VueIconFlag/VueIconFlag.vue';
-  import VueNavigationProgress      from '../../shared/components/VueNavigationProgress/VueNavigationProgress.vue';
-  import { loadLocaleAsync }        from '../../shared/plugins/i18n/i18n';
-  import { EventBus }               from '../../shared/services/EventBus';
+import { mapActions, mapGetters } from 'vuex';
+import VueNavBar from '../../shared/components/VueNavBar/VueNavBar.vue';
+import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
+import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
+import VueFooter from '../../shared/components/VueFooter/VueFooter.vue';
+import VueNotificationStack from '../../shared/components/VueNotificationStack/VueNotificationStack.vue';
+import VueCookieConsent from '../../shared/components/VueCookieConsent/VueCookieConsent.vue';
+import VueNavigationProgress from '../../shared/components/VueNavigationProgress/VueNavigationProgress.vue';
+import { loadLocaleAsync } from '../../shared/plugins/i18n/i18n';
+import VueSidebar from '../../shared/components/VueSidebar/VueSidebar.vue';
+import VueSidebarGroup from '../../shared/components/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
+import VueSidebarGroupItem from '../../shared/components/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
+import VueIconCode from '../../shared/components/icons/VueIconCode/VueIconCode.vue';
+import VueIconBook from '../../shared/components/icons/VueIconBook/VueIconBook.vue';
+import VueIconHashtag from '../../shared/components/icons/VueIconHashtag/VueIconHashtag.vue';
+import VueIconGithub from '../../shared/components/icons/VueIconGithub/VueIconGithub.vue';
+import VueIconTwitterSquare from '../../shared/components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
+import VueSelect from '../../shared/components/VueSelect/VueSelect.vue';
+import VueIconPuzzlePiece from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
 
-  export default {
-    components: {
-      VueNavigationProgress,
-      VueIconFlag,
-      VueIconPuzzlePiece,
-      VueIconHashtag,
-      VueIconBook,
-      VueCookieConsent,
-      VueNavBar,
-      VueGrid,
-      VueGridItem,
-      VueFooter,
-      VueNotificationStack,
-    },
-    data(): any {
-      return {
-        isNavigating: false,
-      };
-    },
-    computed:   {
-      ...mapGetters('app', ['cookieConsentVersion']),
-    },
-    methods:    {
-      ...mapActions('app', ['changeLocale', 'setCookieConsentVersion']),
-      localeSwitch(locale: string): void {
-        loadLocaleAsync(locale)
+export default {
+  name: 'App',
+  components: {
+    VueIconPuzzlePiece,
+    VueSelect,
+    VueIconTwitterSquare,
+    VueIconGithub,
+    VueIconHashtag,
+    VueIconBook,
+    VueIconCode,
+    VueSidebarGroupItem,
+    VueSidebarGroup,
+    VueSidebar,
+    VueNavigationProgress,
+    VueCookieConsent,
+    VueNavBar,
+    VueGrid,
+    VueGridItem,
+    VueFooter,
+    VueNotificationStack,
+  },
+  data(): any {
+    return {
+      isNavigating: false,
+      languages: [
+        { label: 'English', value: 'en' },
+        { label: 'Deutsch', value: 'de' },
+        { label: 'Português', value: 'pt' },
+        { label: '中文', value: 'zh-cn' },
+      ],
+    };
+  },
+  computed: {
+    ...mapGetters('app', ['cookieConsentVersion', 'getLocale']),
+  },
+  methods: {
+    ...mapActions('app', ['changeLocale', 'setCookieConsentVersion']),
+    localeSwitch(locale: string): void {
+      loadLocaleAsync(locale)
         // tslint:disable-next-line
         .catch((error: Error) => console.log(error));
 
-        this.changeLocale(locale);
-        this.navBarClose();
-      },
-      navBarClose() {
-        EventBus.$emit('navbar.close');
-      },
-      initProgressBar() {
-        this.$router.beforeEach((to: any, from: any, next: any) => {
-          this.isNavigating = true;
-          next();
-        });
-        this.$router.afterEach(() => {
-          this.isNavigating = false;
-        });
-      },
+      this.changeLocale(locale);
     },
-    created() {
-      this.initProgressBar();
+    initProgressBar() {
+      this.$router.beforeEach((to: any, from: any, next: any) => {
+        this.isNavigating = true;
+        next();
+      });
+      this.$router.afterEach(() => {
+        this.isNavigating = false;
+      });
     },
-  };
+  },
+  created() {
+    this.initProgressBar();
+  },
+};
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/styles";
-  @import "../../shared/styles/reset";
-  @import "../../shared/styles/typo";
-  @import "../../shared/styles/global";
-  @import url($google-font);
+@import '../../shared/styles';
+@import '../../shared/styles/reset';
+@import '../../shared/styles/typo';
+@import '../../shared/styles/global';
 
-  .app {
-    min-height:     100vh;
-    display:        flex;
-    flex-direction: column;
-  }
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-  .content {
-    flex: 1;
-  }
-
-  .nav {
-    margin:         $space-unit 0 0 0;
-    padding:        0;
-    list-style:     none;
-    display:        flex;
-    flex-direction: row;
-    flex-wrap:      wrap;
-    width:          100%;
-
-    li {
-      flex:       1;
-      margin:     $space-unit / 2;
-      color:      $text-color;
-      flex-basis: $space-unit * 10;
-      height:     $space-unit * 10;
-      background: $divider-color;
-      cursor:     pointer;
-
-      a {
-        padding:         $space-unit * 2;
-        display:         block;
-        color:           $text-color;
-        text-align:      center;
-        text-decoration: none;
-
-        small {
-          font-size: 12px;
-          display:   block;
-        }
-
-        i {
-          height: 32px;
-          width:  32px;
-        }
-      }
-    }
-
-    @include media(tabletLandscape) {
-      margin: 0;
-
-      li {
-        margin:     $space-unit;
-        opacity:    .8;
-        transition: opacity $transition-duration linear;
-
-        &:hover {
-          opacity: 1;
-        }
-      }
-    }
-  }
+.content {
+  flex: 1;
+}
 </style>

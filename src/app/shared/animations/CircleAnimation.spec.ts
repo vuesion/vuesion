@@ -1,17 +1,16 @@
 import { CircleAnimation } from './CircleAnimation';
 
 describe('CircleAnimation', () => {
-
   test('should animate', () => {
     const context: any = {
       clearRect: jest.fn(),
       beginPath: jest.fn(),
-      arc:       jest.fn(),
-      fill:      jest.fn(),
+      arc: jest.fn(),
+      fill: jest.fn(),
       closePath: jest.fn(),
     };
     const canvas: any = {
-      width:  300,
+      width: 300,
       height: 300,
       getContext(): any {
         return context;
@@ -38,8 +37,8 @@ describe('CircleAnimation', () => {
 
   test('should not animate', () => {
     const canvas: any = {
-      width:      300,
-      height:     300,
+      width: 300,
+      height: 300,
       getContext: jest.fn().mockReturnValue(null),
     };
 
@@ -47,5 +46,4 @@ describe('CircleAnimation', () => {
 
     expect(canvas.getContext).toHaveBeenCalledTimes(1);
   });
-
 });

@@ -12,8 +12,8 @@
 ├── docs
 └── src
     ├── app
-    │   ├── components
-    │   └── counter
+    │   ├── counter
+    │   └── form
     └── server
         └── routes
             ├── CounterRoutes.ts
@@ -25,17 +25,21 @@
 现在你必须删除这些模块的引用, 在以下文件中移除以下代码:
 
 `./src/app/router.ts`
+
 ```js
 import { CounterRoutes }    from './counter/routes';
-import { ComponentsRoutes } from './components/routes';
+import { FormRoutes } from './form/routes';
 
 ...
 
       ...CounterRoutes,
-      ...ComponentsRoutes,
+      ...FormRoutes,
+
+...
 ```
 
 `./src/app/state.ts`
+
 ```js
 import { CounterDefaultState, ICounterState } from './counter/state';
 
@@ -44,29 +48,30 @@ import { CounterDefaultState, ICounterState } from './counter/state';
   counter?: ICounterState;
 
 ...
-
-  counter: {
-    ...CounterDefaultState(),
-  },
 ```
 
 `./src/app/store.ts`
+
 ```js
-import { CounterModule }        from './counter/module';
-
 ...
 
-store.registerModule(['counter'], CounterModule, { preserveState: true });
+  /**
+   * because the counter module is loaded on demand
+   * we have to check if it exists before we delete
+   * some state attributes
+   */
+  if (localState.counter) {
+    delete localState.counter.incrementPending;
+    delete localState.counter.decrementPending;
+  }
 
-...
-  delete localState.counter.incrementPending;
-  delete localState.counter.decrementPending;
 ...
 ```
 
 &服务端路由:
 
 `./src/server/server.ts`
+
 ```js
 import { DemoRoutes }       from './routes/DemoRoutes';
 import { CounterRoutes }    from './routes/CounterRoutes';
@@ -79,13 +84,15 @@ import { CounterRoutes }    from './routes/CounterRoutes';
  */
 DemoRoutes(app);
 CounterRoutes(app);
+
+...
 ```
 
 ## 验证
 
 现在你已经清理了你的应用,你可以开始创建你自己的应用了.
 
-如果你你打开了[http://localhost:3000](http://localhost:3000).你应该仍旧能看到vue-starter主页.
+如果你你打开了[http://localhost:3000](http://localhost:3000).你应该仍旧能看到 vue-starter 主页.
 但是其他路由应该重定向到 `/not-found`页面.
 
 ::: tip 它仍旧工作吗？

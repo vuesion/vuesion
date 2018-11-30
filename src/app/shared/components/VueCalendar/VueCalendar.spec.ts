@@ -1,15 +1,14 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueCalendar               from './VueCalendar.vue';
-import { i18n }                  from '../../plugins/i18n/i18n';
+import VueCalendar from './VueCalendar.vue';
+import { i18n } from '../../plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 const today: Date = new Date();
 const nextWeek: Date = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
 describe('VueCalendar.vue', () => {
-
   test('renders component', () => {
-    const wrapper = mount(VueCalendar, {
+    const wrapper = mount<any>(VueCalendar, {
       localVue,
       i18n,
     });
@@ -17,7 +16,7 @@ describe('VueCalendar.vue', () => {
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(1);
 
-    wrapper.find('h4').trigger('click');
+    wrapper.find('.h4').trigger('click');
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(0);
     expect(wrapper.findAll(`.year`)).toHaveLength(1);
@@ -26,7 +25,7 @@ describe('VueCalendar.vue', () => {
   test('renders component with min max date', () => {
     const min: Date = new Date(2018, 1, 8);
     const max: Date = new Date(2018, 1, 15);
-    const wrapper = mount(VueCalendar, {
+    const wrapper = mount<any>(VueCalendar, {
       localVue,
       i18n,
       propsData: {
@@ -38,7 +37,7 @@ describe('VueCalendar.vue', () => {
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(1);
 
-    wrapper.find('h4').trigger('click');
+    wrapper.find('.h4').trigger('click');
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(0);
     expect(wrapper.findAll(`.year`)).toHaveLength(1);
@@ -47,12 +46,12 @@ describe('VueCalendar.vue', () => {
   test('renders component with range', () => {
     const start: Date = new Date(2018, 1, 8);
     const end: Date = new Date(2018, 1, 15);
-    const wrapper = mount(VueCalendar, {
+    const wrapper = mount<any>(VueCalendar, {
       localVue,
       i18n,
       propsData: {
         startDate: start,
-        endDate:   end,
+        endDate: end,
       },
     });
 
@@ -60,7 +59,7 @@ describe('VueCalendar.vue', () => {
   });
 
   test('renders component with selected date', () => {
-    const wrapper = mount(VueCalendar, {
+    const wrapper = mount<any>(VueCalendar, {
       localVue,
       i18n,
       propsData: {
@@ -72,10 +71,10 @@ describe('VueCalendar.vue', () => {
   });
 
   test('should emit events', () => {
-    const wrapper = mount(VueCalendar, {
+    const wrapper = mount<any>(VueCalendar, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     wrapper.vm.onChange();
     wrapper.vm.onClose();
@@ -85,10 +84,10 @@ describe('VueCalendar.vue', () => {
   });
 
   test('should setByDay', () => {
-    const wrapper = mount(VueCalendar, {
+    const wrapper = mount<any>(VueCalendar, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     expect(wrapper.vm.selectedDay).toBe(today.getDate());
 
@@ -100,10 +99,10 @@ describe('VueCalendar.vue', () => {
   });
 
   test('should setByMonth', () => {
-    const wrapper = mount(VueCalendar, {
+    const wrapper = mount<any>(VueCalendar, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     expect(wrapper.vm.currentMonth).toBe(today.getMonth());
     expect(wrapper.vm.currentYear).toBe(today.getFullYear());
@@ -121,10 +120,10 @@ describe('VueCalendar.vue', () => {
   });
 
   test('should setByYear', () => {
-    const wrapper = mount(VueCalendar, {
+    const wrapper = mount<any>(VueCalendar, {
       localVue,
       i18n,
-    }) as any;
+    });
 
     wrapper.vm.$data.selecting = 'year';
 
@@ -141,12 +140,12 @@ describe('VueCalendar.vue', () => {
   test('should render 1. april 2018', () => {
     const start: Date = new Date(2018, 3, 1);
     const end: Date = new Date(2018, 3, 2);
-    const wrapper = mount(VueCalendar, {
+    const wrapper = mount<any>(VueCalendar, {
       localVue,
       i18n,
       propsData: {
-        startDate:      start,
-        endDate:        end,
+        startDate: start,
+        endDate: end,
         firstDayOfWeek: 1,
       },
     });
@@ -155,16 +154,15 @@ describe('VueCalendar.vue', () => {
   });
 
   test('should render 31. may 2018', () => {
-    const wrapper = mount(VueCalendar, {
+    const wrapper = mount<any>(VueCalendar, {
       localVue,
       i18n,
       propsData: {
-        today:        new Date(2018, 4, 31),
+        today: new Date(2018, 4, 31),
         selectedDate: new Date(2018, 5, 2),
       },
     });
 
     expect(wrapper.findAll(`.currentDay`)).toHaveLength(0);
   });
-
 });

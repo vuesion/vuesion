@@ -1,6 +1,6 @@
-import * as Express          from 'express';
+import * as Express from 'express';
 import { Request, Response } from 'express';
-import { serve }             from '../utils/Utils';
+import { serve } from '../utils/Utils';
 
 export const DemoRoutes = (app: Express.Application) => {
   /**

@@ -1,8 +1,13 @@
 export const getTranslationsFromString = (content: string): RegExpMatchArray => {
-  return content.match(/\$t\([",'].*[",'].*\/\*[\r,\n, ,\S]*?\*\/.?\)/gm) || [];
+  const result = [];
+  const matches = content.match(/\$t\([",'].*[",'].*\/\*[\r,\n, ,\S]*?\*\/.?\)/gm) || [];
+
+  matches.forEach((match: string) => match.split(' : ').forEach((m: string) => result.push(m.trim())));
+
+  return result;
 };
 export const sanitizeMessage = (message: string): string => {
-  const replacements: Array<{ from: string | RegExp, to: string }> = [
+  const replacements: Array<{ from: string | RegExp; to: string }> = [
     { from: /\s\s+/g, to: ' ' },
     { from: '/*', to: '' },
     { from: '*/', to: '' },
@@ -11,7 +16,7 @@ export const sanitizeMessage = (message: string): string => {
     { from: /"/g, to: '\\"' },
   ];
 
-  replacements.forEach((replacement: { from: string | RegExp, to: string }) => {
+  replacements.forEach((replacement: { from: string | RegExp; to: string }) => {
     message = message.replace(replacement.from, replacement.to);
   });
 

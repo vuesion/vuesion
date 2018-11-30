@@ -2,13 +2,11 @@
   <div :class="[$style.quickStart, 'featureSection']">
     <vue-grid>
       <vue-grid-row>
-        <vue-grid-item fill class="vueGridItem">
-          <h2>Quick start</h2>
-        </vue-grid-item>
+        <vue-grid-item fill class="vueGridItem"> <vue-headline level="2">Quick start</vue-headline> </vue-grid-item>
 
         <vue-grid-item class="vueGridItem">
-          <vue-panel class="vuePanel">
-            <vue-panel-body class="vuePanelBody">
+          <vue-card class="vueCard">
+            <vue-card-body class="vueCardBody">
               <ol>
                 <li>Install node 8 or higher</li>
                 <li>Install npm 5 or higher</li>
@@ -17,8 +15,8 @@
                 <li>Install dependencies: <code>npm install</code></li>
                 <li>Run <code>npm run dev</code></li>
               </ol>
-            </vue-panel-body>
-          </vue-panel>
+            </vue-card-body>
+          </vue-card>
         </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
@@ -26,63 +24,75 @@
 </template>
 
 <script lang="ts">
-  import VueGrid      from '../../shared/components/VueGrid/VueGrid.vue';
-  import VueGridItem  from '../../shared/components/VueGridItem/VueGridItem.vue';
-  import VuePanel     from '../../shared/components/VuePanel/VuePanel.vue';
-  import VuePanelBody from '../../shared/components/VuePanel/VuePanelBody/VuePanelBody.vue';
-  import VueGridRow   from '../../shared/components/VueGridRow/VueGridRow.vue';
+import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
+import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
+import VueCard from '../../shared/components/VueCard/VueCard.vue';
+import VueCardBody from '../../shared/components/VueCard/VueCardBody/VueCardBody.vue';
+import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
+import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
 
-  export default {
-    components: {
-      VueGrid,
-      VueGridItem,
-      VuePanel,
-      VuePanelBody,
-      VueGridRow,
-    },
-  };
+export default {
+  components: {
+    VueHeadline,
+    VueGrid,
+    VueGridItem,
+    VueCard,
+    VueCardBody,
+    VueGridRow,
+  },
+};
 </script>
 
 <style lang="scss" module>
-  @import "../../shared/styles";
+@import '../../shared/styles';
 
-  .quickStart {
-    display:    block;
-    text-align: center;
-    @include background-gradient($brand-dark-primary, $brand-primary, -31deg);
+.quickStart {
+  display: block;
+  text-align: center;
+  background: $primary-2-1;
 
-    :global {
-      .vuePanelBody {
-        text-align: left;
-        overflow:   hidden;
+  h2 {
+    color: $text-color-inverse;
+  }
 
-        ol {
-          margin-top: $space-unit * 5;
-          padding:    0 0 0 $space-unit * 2;
-
-          li {
-            margin-bottom: $space-unit * 2;
-          }
-        }
-      }
+  :global {
+    .vueCard {
+      background: $bg-color;
     }
+  }
 
-    @include media(tabletPortrait) {
-      :global {
-        .vuePanel {
-          width:       50%;
-          margin-left: 25%;
-        }
-      }
-    }
+  :global {
+    .vueCardBody {
+      text-align: left;
+      overflow: hidden;
 
-    @include media(tabletLandscape) {
-      :global {
-        .vuePanel {
-          width:       33.3333333%;
-          margin-left: 33.3333333%;
+      ol {
+        margin-top: $space-unit * 5;
+        padding: 0 0 0 $space-unit * 2;
+
+        li {
+          margin-bottom: $space-unit * 2;
         }
       }
     }
   }
+
+  @include mediaMin(tabletPortrait) {
+    :global {
+      .vueCard {
+        width: 50%;
+        margin-left: 25%;
+      }
+    }
+  }
+
+  @include mediaMin(tabletLandscape) {
+    :global {
+      .vueCard {
+        width: 33.3333333%;
+        margin-left: 33.3333333%;
+      }
+    }
+  }
+}
 </style>

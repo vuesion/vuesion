@@ -1,15 +1,14 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueMarkdown               from './VueMarkdown.vue';
+import VueMarkdown from './VueMarkdown.vue';
 
 const localVue = createLocalVue();
 
 describe('VueMarkdown.vue', () => {
-
   test('renders component', () => {
     const wrapper = mount(VueMarkdown, {
       localVue,
       slots: {
-        default: ['# foo\n ## bar\n ### baz'],
+        default: ['<img src="/test.jpg"/># foo\n ## bar\n ### baz'],
       },
     });
 
@@ -38,5 +37,4 @@ describe('VueMarkdown.vue', () => {
     });
     expect(wrapper.find('code').text()).toBe('foo bar');
   });
-
 });
