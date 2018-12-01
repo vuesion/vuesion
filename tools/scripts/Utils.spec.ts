@@ -1,5 +1,38 @@
 import { getTranslationObject, getTranslationsFromString, sanitizeMessage } from './Utils';
 
+const testContent = `<div>
+      {{ $t('test' /* this is a test */) }}
+      
+      {{ $t('test.test') }}
+      
+      {{ foo === 1 ? $t('foo' /* Foo */) : $t('bar' /* bar */) }}
+      
+      {{ $t('test.foo' /* test (test) [test] test */) }}
+      
+      {{ $t('test.foo2' /* test (test) [test] test */) }}
+      
+      {{ $t("test.bar" /* test (test) [test] test */) }}
+      
+      <small>{{ $t('App.nav.counter' /* Counter */) }}</small>
+      
+      text:  this.$t('components.register.submit.notification.text', model /* We've sent an email to: {email}! */),
+      
+      $t('components.markdown' /*
+      # Markdown support\\n
+      - build on top of marked\\n
+      - server side rendering!!!\\n
+      - \`github style\` markdown
+      */)
+      
+	    {{
+        $t(
+          'key',
+          { key: value } /* key:
+      {key}? */,
+        )
+      }}      
+    </div>`;
+
 describe('Utils', () => {
   test('should remove comments, line breaks and double white spaces', () => {
     const message: string = `/*
@@ -25,49 +58,34 @@ describe('Utils', () => {
   });
 
   test('should parse translations from a string', () => {
-    const content: string = `<div>
-      {{ $t('test' /* this is a test */) }}
-      {{ $t('test.test') }}
-      {{ foo === 1 ? $t('foo' /* Foo */) : $t('bar' /* bar */) }}
-      {{ $t('test.foo' /* test (test) [test] test */) }}
-      {{ $t('test.foo2' /* test (test) [test] test */ ) }}
-      {{ $t("test.bar" /* test (test) [test] test */ ) }}
-      <small>{{ $t('App.nav.counter' /* Counter */) }}</small>
-                  text:  this.$t('components.register.submit.notification.text', model /* We've sent an email to: {email}! */),
-$t('components.markdown' /*
-# Markdown support\\n
-- build on top of marked\\n
-- server side rendering!!!\\n
-- \`github style\` markdown
-*/)
-    </div>`;
-
-    expect(getTranslationsFromString(content)).toEqual([
+    expect(getTranslationsFromString(testContent)).toEqual([
       "$t('test' /* this is a test */)",
       "$t('foo' /* Foo */)",
       "$t('bar' /* bar */)",
       "$t('test.foo' /* test (test) [test] test */)",
-      "$t('test.foo2' /* test (test) [test] test */ )",
-      '$t("test.bar" /* test (test) [test] test */ )',
+      "$t('test.foo2' /* test (test) [test] test */)",
+      '$t("test.bar" /* test (test) [test] test */)',
       "$t('App.nav.counter' /* Counter */)",
       "$t('components.register.submit.notification.text', model /* We've sent an email to: {email}! */)",
-      "$t('components.markdown' /*\n# Markdown support\\n\n- build on top of marked\\n\n- server side rendering!!!\\n\n- `github style` markdown\n*/)",
+      "$t('components.markdown' /*\n      # Markdown support\\n\n      - build on top of marked\\n\n      - server side rendering!!!\\n\n      - `github style` markdown\n      */)",
+      "$t(\n          'key',\n          { key: value } /* key:\n      {key}? */,\n        )",
     ]);
 
     expect(getTranslationsFromString('')).toEqual([]);
   });
 
   test('should get a translation object', () => {
-    const content: string = `<div>
-      {{ $t('test' /* this is a test */) }}
-      {{ $t('test.test') }}
-      {{ $t('test.foo' /* test (test) [test] test */) }}
-      {{ $t('test.foo' /* test (test) [test] test */ ) }}
-    </div>`;
-
-    expect(getTranslationObject(getTranslationsFromString(content))).toEqual({
+    expect(getTranslationObject(getTranslationsFromString(testContent))).toEqual({
+      'App.nav.counter': 'Counter',
+      bar: 'bar',
+      'components.register.submit.notification.text': "We've sent an email to: {email}!",
+      foo: 'Foo',
+      key: 'key: {key}?',
       test: 'this is a test',
       'test.foo': 'test (test) <test> test',
+      'test.foo2': 'test (test) <test> test',
+      'components.markdown':
+        '# Markdown support\\n - build on top of marked\\n - server side rendering!!!\\n - `github style` markdown',
     });
   });
 });
