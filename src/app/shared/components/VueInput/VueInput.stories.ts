@@ -82,7 +82,7 @@ story.add(
       };
     },
     template: `<div>
-  <vue-button @click="show = !show" primary>Login</vue-button>
+  <vue-button @click="show = !show" color="primary">Login</vue-button>
 
   <vue-modal :show="show" @close="show = false">
     <vue-input autofocus placeholder="Name" name="name" id="name" v-model="model" />

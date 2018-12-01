@@ -9,28 +9,28 @@ story.add(
   withInfo({})(() => ({
     components: { VueBadge },
     template: `<div>
-<vue-badge primary>Primary</vue-badge>
-<vue-badge primary outlined>Primary Outlined</vue-badge>
+<vue-badge color="primary">Primary</vue-badge>
+<vue-badge color="primary" outlined>Primary Outlined</vue-badge>
 <br />
 <br />
-<vue-badge secondary>Secondary</vue-badge>
-<vue-badge secondary outlined>Secondary Outlined</vue-badge>
+<vue-badge color="secondary">Secondary</vue-badge>
+<vue-badge color="secondary" outlined>Secondary Outlined</vue-badge>
 <br />
 <br />
-<vue-badge tertiary>Tertiary</vue-badge>
-<vue-badge tertiary outlined>Tertiary Outlined</vue-badge>
+<vue-badge color="tertiary">Tertiary</vue-badge>
+<vue-badge color="tertiary" outlined>Tertiary Outlined</vue-badge>
 <br />
 <br />
-<vue-badge danger>Danger</vue-badge>
-<vue-badge danger outlined>Danger Outlined</vue-badge>
+<vue-badge color="danger">Danger</vue-badge>
+<vue-badge color="danger" outlined>Danger Outlined</vue-badge>
 <br />
 <br />
-<vue-badge warning>Warning</vue-badge>
-<vue-badge warning outlined>Warning Outlined</vue-badge>
+<vue-badge color="warning">Warning</vue-badge>
+<vue-badge color="warning" outlined>Warning Outlined</vue-badge>
 <br />
 <br />
-<vue-badge success>Success</vue-badge>
-<vue-badge success outlined>Success Outlined</vue-badge>
+<vue-badge color="success">Success</vue-badge>
+<vue-badge color="success" outlined>Success Outlined</vue-badge>
 </div>`,
   })),
 );
