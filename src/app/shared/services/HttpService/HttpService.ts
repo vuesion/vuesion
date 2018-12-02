@@ -15,7 +15,7 @@ let baseURL;
 /* istanbul ignore if */
 if (!CLIENT) {
   const config = require('../../../config/AppConfig');
-  baseURL = config.api.baseUrl;
+  baseURL = config.AppConfig.api.baseUrl;
 }
 
 export const HttpService: IHttpService = axios.create({
