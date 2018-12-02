@@ -81,7 +81,7 @@ export default (context: IServerContext) => {
 
     router.onReady(() => {
       if (router.currentRoute.fullPath !== context.url) {
-        return reject({ code: 302, path: router.currentRoute.fullPath });
+        return reject({ code: 302, cookies: [], path: router.currentRoute.fullPath });
       }
 
       const routeMatchesCatchAll = router.currentRoute.matched.some((match) => match.path === '*');
@@ -118,7 +118,11 @@ export default (context: IServerContext) => {
           const pendingPath = router.history.pending && router.history.pending.fullPath;
 
           if (currentPath !== context.url || (pendingPath && pendingPath !== context.url)) {
-            reject({ code: 302, path: pendingPath || currentPath });
+            reject({
+              code: 302,
+              cookies: PersistCookieStorage.getCookiesFromState(context),
+              path: pendingPath || currentPath,
+            });
           } else {
             resolve(app);
           }

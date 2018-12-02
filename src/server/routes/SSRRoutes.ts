@@ -73,6 +73,12 @@ export const SSRRoutes = (app: Express.Application): any => {
             protocol: req.protocol,
             host: req.get('host'),
           }) + err.path;
+
+        /**
+         * transfer server state to cookies
+         */
+        err.cookies.forEach((cookie: any) => res.cookie(cookie.name, cookie.value));
+
         res.redirect(302, redirectUrl);
         res.send();
       } else {

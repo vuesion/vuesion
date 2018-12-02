@@ -35,6 +35,29 @@ export class PersistCookieStorage implements IVuexPersistStorage {
     });
   }
 
+  public static getCookiesFromState(serverContext: IServerContext): Array<{ name: string; value: string }> {
+    const vuexPersistCookie: any = JSON.parse(serverContext.cookies[this.indexKey] || '{}');
+    const cookies: Array<{ name: string; value: string }> = [];
+
+    Object.keys(serverContext.cookies)
+      .filter((key: string) => key !== this.indexKey)
+      .forEach((key: string) => {
+        const mappedKey: string = vuexPersistCookie[key];
+        const cookieState = mappedKey ? JSON.parse(serverContext.cookies[key]) : {};
+        const newCookieState: any = {};
+
+        Object.keys(cookieState).forEach((k: string) => {
+          newCookieState[k] = serverContext.state[mappedKey][k];
+        });
+
+        if (mappedKey) {
+          cookies.push({ name: key, value: JSON.stringify(newCookieState) });
+        }
+      });
+
+    return cookies;
+  }
+
   private static indexKey: string = 'vuexpersistcookie';
 
   public modules: string[];

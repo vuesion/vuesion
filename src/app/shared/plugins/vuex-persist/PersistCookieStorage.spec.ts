@@ -1,5 +1,6 @@
 import { PersistCookieStorage } from './PersistCookieStorage';
 import { IServerContext } from '../../../../server/isomorphic';
+import { IAppConfig } from '../../../config/IAppConfig';
 
 describe('PersistCookieStorage', () => {
   let storage: PersistCookieStorage;
@@ -106,5 +107,39 @@ describe('PersistCookieStorage', () => {
 
     localStorage = new PersistCookieStorage([], { cookieOptions: {}, beforePersist }, 'foo');
     expect(localStorage.beforePersist(state)).toEqual({ baz: 'faz' });
+  });
+
+  test('should get cookies from current server state', () => {
+    let result = PersistCookieStorage.getCookiesFromState({
+      cookies: {
+        vuexpersistcookie: '{"vuexpersistapp":"app"}',
+        vuexpersistapp: '{"override":"value", "nonExistingKey":"value"}',
+        webstorm: '297fg92ug49gf29fg',
+      },
+      state: {
+        app: {
+          override: 'new value',
+          exclude: 'this should not be in the cookie',
+        },
+      },
+    } as any);
+    let expected = [{ name: 'vuexpersistapp', value: '{"override":"new value"}' }];
+
+    expect(result).toEqual(expected);
+
+    result = PersistCookieStorage.getCookiesFromState({
+      cookies: {
+        vuexpersistapp: '{"override":"value", "nonExistingKey":"value"}',
+      },
+      state: {
+        app: {
+          override: 'new value',
+          exclude: 'this should not be in the cookie',
+        },
+      },
+    } as any);
+    expected = [];
+
+    expect(result).toEqual(expected);
   });
 });
