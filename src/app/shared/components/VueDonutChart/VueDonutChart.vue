@@ -92,7 +92,7 @@ export default {
     },
   },
   methods: {
-    getRandomColor() {
+    getRandomColor /* istanbul ignore next */() {
       const color = this.$style[`color${randomInt(1, this.colorCount)}`];
 
       if (usedColors.indexOf(color) === -1) {
