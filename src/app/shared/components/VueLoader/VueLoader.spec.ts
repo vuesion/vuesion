@@ -38,7 +38,7 @@ describe('VueLoader.vue', () => {
     const wrapper = mount(VueLoader, {
       localVue,
       propsData: {
-        primary: true,
+        color: 'primary',
       },
     });
 
@@ -49,7 +49,7 @@ describe('VueLoader.vue', () => {
     const wrapper = mount(VueLoader, {
       localVue,
       propsData: {
-        secondary: true,
+        color: 'secondary',
       },
     });
 
@@ -60,7 +60,7 @@ describe('VueLoader.vue', () => {
     const wrapper = mount(VueLoader, {
       localVue,
       propsData: {
-        tertiary: true,
+        color: 'tertiary',
       },
     });
 
@@ -71,7 +71,7 @@ describe('VueLoader.vue', () => {
     const wrapper = mount(VueLoader, {
       localVue,
       propsData: {
-        danger: true,
+        color: 'danger',
       },
     });
 
@@ -82,7 +82,7 @@ describe('VueLoader.vue', () => {
     const wrapper = mount(VueLoader, {
       localVue,
       propsData: {
-        warning: true,
+        color: 'warning',
       },
     });
 
@@ -93,7 +93,7 @@ describe('VueLoader.vue', () => {
     const wrapper = mount(VueLoader, {
       localVue,
       propsData: {
-        success: true,
+        color: 'success',
       },
     });
 

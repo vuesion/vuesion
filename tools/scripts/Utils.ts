@@ -1,6 +1,8 @@
 export const getTranslationsFromString = (content: string): RegExpMatchArray => {
   const result = [];
-  const matches = content.match(/\$t\([",'].*[",'].*\/\*[\r,\n, ,\S]*?\*\/.?\)/gm) || [];
+  let matches = content.match(/\$t\(.*\/\*[\S,\s]*?\*\/\)/gm) || [];
+
+  matches = matches.concat(content.match(/\$t\(\s.*\s.*\s.*\s.*\)/gm) || []);
 
   matches.forEach((match: string) => match.split(' : ').forEach((m: string) => result.push(m.trim())));
 
@@ -26,10 +28,14 @@ export const getTranslationObject = (matches: string[]): any => {
   const translations: any = {};
 
   matches.forEach((translation: string) => {
-    const id: string = translation.match(/'\S*'/)[0].replace(/[\\']/g, '');
-    const defaultMessage: string = translation.match(/\/\*[\S\s]*\*\//)[0];
+    const id = translation.match(/'\S*'/);
+    const comment = translation.match(/\/\*[\S\s]*\*\//);
+    const key = id && id[0].replace(/[\\']/g, '');
+    const value = comment && comment[0];
 
-    translations[id] = sanitizeMessage(defaultMessage);
+    if (key && value) {
+      translations[key] = sanitizeMessage(value);
+    }
   });
 
   return translations;
