@@ -18,7 +18,8 @@
         "anonymous": "always"
       }
     ],
-    "prettier": [true, null, { "editorconfig": false }]
+    "prettier": [true, null, { "editorconfig": false }],
+    "cyclomatic-complexity": [true, 11]
   },
   "rulesDirectory": ["tslint-plugin-prettier"]
 }

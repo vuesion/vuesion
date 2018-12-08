@@ -24,10 +24,10 @@
       ]
     },
     {
-      "login": "xMartin",
-      "name": "xMartin",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/112532?v=4",
-      "profile": "http://xmartin.de/",
+      "login": "40818419",
+      "name": "Konstantin Kulinicenko",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2235499?s=460&v=4",
+      "profile": "https://github.com/40818419",
       "contributions": [
         "code",
         "bug",
@@ -36,10 +36,10 @@
       ]
     },
     {
-      "login": "40818419",
-      "name": "Konstantin Kulinicenko",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/2235499?s=460&v=4",
-      "profile": "https://github.com/40818419",
+      "login": "xMartin",
+      "name": "xMartin",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/112532?v=4",
+      "profile": "http://xmartin.de/",
       "contributions": [
         "code",
         "bug",
@@ -118,6 +118,15 @@
       "profile": "https://github.com/glederer",
       "contributions": [
         "doc"
+      ]
+    },
+    {
+      "login": "tamer-mohamed",
+      "name": "Tamer Mohamed",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4436327?v=4",
+      "profile": "https://github.com/tamer-mohamed",
+      "contributions": [
+        "code"
       ]
     }
   ]
