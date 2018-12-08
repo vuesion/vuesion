@@ -21,7 +21,7 @@ module.exports = (storybookBaseConfig, env, defaultConfig) => {
 
   config.module.rules = baseConfig.module.rules;
 
-  config.plugins.push(new webpack.DefinePlugin({ PRODUCTION: false, DEVELOPMENT: true, TEST: true }));
+  config.plugins.push(new webpack.DefinePlugin({ PRODUCTION: false, DEVELOPMENT: true, CLIENT: true, TEST: true }));
   config.plugins.push(new ForkTsCheckerWebpackPlugin({ tslint: true, vue: true }));
 
   return config;

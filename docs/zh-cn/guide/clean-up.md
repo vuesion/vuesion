@@ -25,6 +25,7 @@
 现在你必须删除这些模块的引用, 在以下文件中移除以下代码:
 
 `./src/app/router.ts`
+
 ```js
 import { CounterRoutes }    from './counter/routes';
 import { FormRoutes } from './form/routes';
@@ -33,11 +34,12 @@ import { FormRoutes } from './form/routes';
 
       ...CounterRoutes,
       ...FormRoutes,
-      
+
 ...
 ```
 
 `./src/app/state.ts`
+
 ```js
 import { CounterDefaultState, ICounterState } from './counter/state';
 
@@ -49,6 +51,7 @@ import { CounterDefaultState, ICounterState } from './counter/state';
 ```
 
 `./src/app/store.ts`
+
 ```js
 ...
 
@@ -61,13 +64,14 @@ import { CounterDefaultState, ICounterState } from './counter/state';
     delete localState.counter.incrementPending;
     delete localState.counter.decrementPending;
   }
-  
+
 ...
 ```
 
 &服务端路由:
 
 `./src/server/server.ts`
+
 ```js
 import { DemoRoutes }       from './routes/DemoRoutes';
 import { CounterRoutes }    from './routes/CounterRoutes';
@@ -88,7 +92,7 @@ CounterRoutes(app);
 
 现在你已经清理了你的应用,你可以开始创建你自己的应用了.
 
-如果你你打开了[http://localhost:3000](http://localhost:3000).你应该仍旧能看到vue-starter主页.
+如果你你打开了[http://localhost:3000](http://localhost:3000).你应该仍旧能看到 vue-starter 主页.
 但是其他路由应该重定向到 `/not-found`页面.
 
 ::: tip 它仍旧工作吗？

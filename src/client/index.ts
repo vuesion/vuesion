@@ -3,7 +3,7 @@ import { Route } from 'vue-router';
 import { Component } from 'vue-router/types/router';
 import { createApp, IApp } from '../app/app';
 import { IPreLoad } from '../server/isomorphic';
-import { HttpService } from '../app/shared/services/HttpService';
+import { HttpService } from '../app/shared/services/HttpService/HttpService';
 
 if (PRODUCTION) {
   const runtime: any = require('serviceworker-webpack-plugin/lib/runtime');

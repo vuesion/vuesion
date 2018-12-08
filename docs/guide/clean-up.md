@@ -25,6 +25,7 @@ Directories and files that we would recommend to delete:
 Now you have to remove references to this modules, remove the following code in the following files:
 
 `./src/app/router.ts`
+
 ```js
 import { CounterRoutes }    from './counter/routes';
 import { FormRoutes } from './form/routes';
@@ -33,11 +34,12 @@ import { FormRoutes } from './form/routes';
 
       ...CounterRoutes,
       ...FormRoutes,
-      
+
 ...
 ```
 
 `./src/app/state.ts`
+
 ```js
 import { CounterDefaultState, ICounterState } from './counter/state';
 
@@ -49,6 +51,7 @@ import { CounterDefaultState, ICounterState } from './counter/state';
 ```
 
 `./src/app/store.ts`
+
 ```js
 ...
 
@@ -61,13 +64,14 @@ import { CounterDefaultState, ICounterState } from './counter/state';
     delete localState.counter.incrementPending;
     delete localState.counter.decrementPending;
   }
-  
+
 ...
 ```
 
 And the server-side routes:
 
 `./src/server/server.ts`
+
 ```js
 import { DemoRoutes }       from './routes/DemoRoutes';
 import { CounterRoutes }    from './routes/CounterRoutes';

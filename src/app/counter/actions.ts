@@ -1,7 +1,7 @@
 import { ActionContext } from 'vuex';
 import { ICounterState } from './state';
 import { IState } from '../state';
-import { HttpService } from '../shared/services/HttpService';
+import { HttpService } from '../shared/services/HttpService/HttpService';
 import { AxiosResponse } from 'axios';
 
 export interface ICounterResponse {
