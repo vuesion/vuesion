@@ -11,29 +11,8 @@ import VueLoader from '../VueLoader/VueLoader.vue';
 export default {
   name: 'VueButton',
   props: {
-    primary: {
-      type: Boolean,
-      default: false,
-    },
-    secondary: {
-      type: Boolean,
-      default: false,
-    },
-    tertiary: {
-      type: Boolean,
-      default: false,
-    },
-    danger: {
-      type: Boolean,
-      default: false,
-    },
-    warning: {
-      type: Boolean,
-      default: false,
-    },
-    success: {
-      type: Boolean,
-      default: false,
+    color: {
+      type: String,
     },
     disabled: {
       type: Boolean,
@@ -65,23 +44,8 @@ export default {
       if (this.ghost === true) {
         classes.push(this.$style.ghost);
       }
-      if (this.primary) {
-        classes.push(this.$style.primary);
-      }
-      if (this.secondary) {
-        classes.push(this.$style.secondary);
-      }
-      if (this.tertiary) {
-        classes.push(this.$style.tertiary);
-      }
-      if (this.success) {
-        classes.push(this.$style.success);
-      }
-      if (this.warning) {
-        classes.push(this.$style.warning);
-      }
-      if (this.danger) {
-        classes.push(this.$style.danger);
+      if (this.color) {
+        classes.push(this.$style[this.color]);
       }
       if (this.disabled === true || this.loading === true) {
         classes.push(this.$style.disabled);

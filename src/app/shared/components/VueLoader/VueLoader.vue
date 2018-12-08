@@ -26,29 +26,8 @@ export default {
       type: Boolean,
       default: false,
     },
-    primary: {
-      type: Boolean,
-      default: false,
-    },
-    secondary: {
-      type: Boolean,
-      default: false,
-    },
-    tertiary: {
-      type: Boolean,
-      default: false,
-    },
-    danger: {
-      type: Boolean,
-      default: false,
-    },
-    warning: {
-      type: Boolean,
-      default: false,
-    },
-    success: {
-      type: Boolean,
-      default: false,
+    color: {
+      type: String,
     },
   },
   computed: {
@@ -61,23 +40,8 @@ export default {
       if (this.large) {
         classes.push(this.$style.large);
       }
-      if (this.primary) {
-        classes.push(this.$style.primary);
-      }
-      if (this.secondary) {
-        classes.push(this.$style.secondary);
-      }
-      if (this.tertiary) {
-        classes.push(this.$style.tertiary);
-      }
-      if (this.danger) {
-        classes.push(this.$style.danger);
-      }
-      if (this.warning) {
-        classes.push(this.$style.warning);
-      }
-      if (this.success) {
-        classes.push(this.$style.success);
+      if (this.color) {
+        classes.push(this.$style[this.color]);
       }
 
       return classes;

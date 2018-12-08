@@ -29,8 +29,8 @@ story.add(
     et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
   </vue-card-body>
   <vue-card-footer>
-    <vue-button danger>Delete</vue-button>
-    <vue-button primary ghost>Cancel</vue-button>
+    <vue-button color="danger">Delete</vue-button>
+    <vue-button color="primary" ghost>Cancel</vue-button>
   </vue-card-footer>
 </vue-card>`,
   })),

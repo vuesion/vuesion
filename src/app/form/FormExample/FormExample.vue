@@ -124,7 +124,7 @@
     </vue-grid-row>
 
     <br />
-    <vue-button primary :disabled="isSubmitDisabled" :loading="isLoading"> Save </vue-button>
+    <vue-button color="primary" :disabled="isSubmitDisabled" :loading="isLoading"> Save </vue-button>
   </form>
 </template>
 
