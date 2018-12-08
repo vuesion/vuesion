@@ -40,8 +40,8 @@ Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.co
 
 # Getting started
 
-1. Install node 8 or higher
-2. Install npm 5 or higher
+1. Install node 10 or higher
+2. Install npm 6 or higher
 3. clone the repository `git clone https://github.com/devCrossNet/vue-starter`
 4. change directory `cd vue-starter`
 5. Install dependencies: `npm install`

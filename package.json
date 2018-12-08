@@ -58,7 +58,8 @@
     "postci": "codecov -f ./coverage/*.json && npm run build && concurrently \"npm run build-storybook\" \"vuepress build docs\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prettier": "npm run clean && ./node_modules/.bin/prettier --write \"./**/*.{ts,vue,js,json,scss,sass,css,yaml,yml}\""
+    "prettier": "npm run clean && ./node_modules/.bin/prettier --write \"./**/*.{ts,vue,js,json,scss,sass,css,yaml,yml}\"",
+    "heroku-postbuild": "npm run build"
   },
   "jest": {
     "verbose": true,
@@ -215,8 +216,8 @@
     "webpack-node-externals": "1.7.2"
   },
   "engines": {
-    "node": ">=8.0.0",
-    "npm": ">=5.0.0"
+    "node": "10.14.1",
+    "npm": "6.4.1"
   },
   "husky": {
     "hooks": {
