@@ -18,7 +18,7 @@ describe('VueTabGroup.vue', () => {
     const tabWrapper: any = wrapper.find(VueTabItem);
 
     tabWrapper.vm.$parent = wrapper.vm;
-    tabWrapper.vm.$options.created[2].call(tabWrapper.vm);
+    tabWrapper.vm.$options.created[1].call(tabWrapper.vm);
 
     expect(wrapper.find('li').text()).toMatch('foo');
 
@@ -37,10 +37,10 @@ describe('VueTabGroup.vue', () => {
     const tabWrapper2: any = wrapper.findAll(VueTabItem).at(1);
 
     tabWrapper.vm.$parent = wrapper.vm;
-    tabWrapper.vm.$options.created[2].call(tabWrapper.vm);
+    tabWrapper.vm.$options.created[1].call(tabWrapper.vm);
 
     tabWrapper2.vm.$parent = wrapper.vm;
-    tabWrapper2.vm.$options.created[2].call(tabWrapper2.vm);
+    tabWrapper2.vm.$options.created[1].call(tabWrapper2.vm);
 
     expect(wrapper.find('li').text()).toMatch('foo');
     expect(wrapper.find('li').classes()).toEqual(['active']);

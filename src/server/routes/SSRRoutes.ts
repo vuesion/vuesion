@@ -13,9 +13,11 @@ import { RuntimeConfig } from '../utils/RuntimeConfig';
 let renderer: BundleRenderer;
 
 const createRenderer = (bundle: string, template: string): void => {
+  const LRU = nodeRequire('lru-cache');
+
   renderer = nodeRequire('vue-server-renderer').createBundleRenderer(bundle, {
     template,
-    cache: nodeRequire('lru-cache')({
+    cache: new LRU({
       max: 1000,
       maxAge: 1000 * 60 * 15,
     }),
