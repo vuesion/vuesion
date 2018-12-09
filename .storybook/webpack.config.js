@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const base = require('../config/base');
+const base = require('../tools/webpack/base');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = (storybookBaseConfig, env, defaultConfig) => {

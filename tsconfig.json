@@ -11,6 +11,6 @@
     "noImplicitAny": true,
     "skipLibCheck": true
   },
-  "include": ["./config/*", "./src/**/*", "./src/**/*.vue"],
+  "include": ["./src/**/*", "./src/**/*.vue"],
   "exclude": ["./node_modules", "./dist"]
 }

@@ -47,13 +47,13 @@
     "compile-tools": "./node_modules/.bin/tsc -p ./tools/",
     "clean": "rimraf ./dist ./coverage ./tools/scripts/*.js ./tools/generators/*.js ./tools/generators/**/*.js ./storybook-static",
     "start": "node ./dist/server/server.js",
-    "dev:dev-server": "cross-env NODE_ENV=development webpack --mode development --config ./config/dev-server.js",
-    "dev:server": "cross-env NODE_ENV=development webpack --mode development --config ./config/server.js",
+    "dev:dev-server": "cross-env NODE_ENV=development webpack --mode development --config ./tools/webpack/dev-server.js",
+    "dev:server": "cross-env NODE_ENV=development webpack --mode development --config ./tools/webpack/server.js",
     "predev": "npm run clean",
-    "build:spa": "npm run clean && cross-env NODE_ENV=production webpack --mode production --config ./config/spa.js",
-    "build:client": "cross-env NODE_ENV=production webpack --mode production --config ./config/client.js",
-    "build:isomorphic": "cross-env NODE_ENV=production webpack --mode production --config ./config/isomorphic.js",
-    "build:server": "cross-env NODE_ENV=production webpack --mode production --config ./config/server.js",
+    "build:spa": "npm run clean && cross-env NODE_ENV=production webpack --mode production --config ./tools/webpack/spa.js",
+    "build:client": "cross-env NODE_ENV=production webpack --mode production --config ./tools/webpack/client.js",
+    "build:isomorphic": "cross-env NODE_ENV=production webpack --mode production --config ./tools/webpack/isomorphic.js",
+    "build:server": "cross-env NODE_ENV=production webpack --mode production --config ./tools/webpack/server.js",
     "prebuild": "npm run clean",
     "ci": "concurrently \"npm run lint\" \"npm run test:coverage -- --runInBand\"",
     "postci": "codecov -f ./coverage/*.json && npm run build && concurrently \"npm run build-storybook\" \"vuepress build docs\"",
@@ -61,48 +61,6 @@
     "build-storybook": "build-storybook",
     "prettier": "npm run clean && ./node_modules/.bin/prettier --write \"./**/*.{ts,vue,js,json,scss,sass,css,yaml,yml}\"",
     "heroku-postbuild": "npm run build"
-  },
-  "jest": {
-    "verbose": true,
-    "globals": {
-      "window": true
-    },
-    "rootDir": "./src",
-    "setupFiles": [
-      "../jestsetup.ts"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "vue",
-      "ts",
-      "json"
-    ],
-    "transform": {
-      ".*\\.(vue)$": "<rootDir>../node_modules/vue-jest",
-      ".(ts|tsx)": "<rootDir>../node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    },
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "coverageDirectory": "../coverage"
-  },
-  "config": {
-    "default-locale": "en",
-    "supported-locales": [
-      "en",
-      "de",
-      "pt",
-      "zh-cn"
-    ]
   },
   "dependencies": {
     "accept-language": "3.0.18",
@@ -225,5 +183,47 @@
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
       "pre-commit": "pretty-quick --staged && concurrently \"npm run lint\" \"npm run test:coverage\""
     }
+  },
+  "jest": {
+    "verbose": true,
+    "globals": {
+      "window": true
+    },
+    "rootDir": "./src",
+    "setupFiles": [
+      "../jestsetup.ts"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "vue",
+      "ts",
+      "json"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "<rootDir>../node_modules/vue-jest",
+      ".(ts|tsx)": "<rootDir>../node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "coverageDirectory": "../coverage"
+  },
+  "config": {
+    "default-locale": "en",
+    "supported-locales": [
+      "en",
+      "de",
+      "pt",
+      "zh-cn"
+    ]
   }
 }

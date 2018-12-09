@@ -8,7 +8,7 @@ Before we start please install vuetify and the webpack css-loader by running `np
 
 ### Configure Webpack
 
-`./config/base.js`:
+`./tools/webpack/base.js`:
 
 ```js
 ...
@@ -34,7 +34,7 @@ Before we start please install vuetify and the webpack css-loader by running `np
 
 ```
 
-`./config/server.js`:
+`./tools/webpack/server.js`:
 
 ```js
 ...
@@ -42,14 +42,14 @@ Before we start please install vuetify and the webpack css-loader by running `np
   externals: [
     // Modified
     utils.nodeExternals({
-                    whitelist: ['webpack/hot/poll?1000', /\.css$/, /vuetify/],
+                    whitelist: ['tools/webpack/hot/poll?1000', /\.css$/, /vuetify/],
                   }),
   ],
 
 ...
 ```
 
-`./config/isomorphic.js`:
+`./tools/webpack/isomorphic.js`:
 
 ```js
 ...
