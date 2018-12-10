@@ -1,17 +1,17 @@
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const baseConfig = require('./webpack.base.config');
+import * as webpack from 'webpack';
+import { isProd, merge, resolve } from './utils';
+import { base } from './base';
+
 const HTMLPlugin = require('html-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-const clientConfig = merge(baseConfig, {
+export const client: webpack.Configuration = merge(base, {
   entry: {
     app: './src/client/index',
   },
   output: {
-    path: path.join(__dirname, '..', 'dist', 'client'),
+    path: resolve('dist/client'),
     filename: '[name].[chunkHash].js',
     publicPath: '/client/',
     chunkFilename: '[name].[id].[chunkhash].js',
@@ -39,12 +39,12 @@ const clientConfig = merge(baseConfig, {
   ],
 });
 
-if (process.env.NODE_ENV === 'production') {
-  clientConfig.plugins = (clientConfig.plugins || []).concat([
-    new ServiceWorkerWebpackPlugin({ entry: path.join(__dirname, '..', 'src/client/sw.ts') }),
+if (isProd) {
+  client.plugins = (client.plugins || []).concat([
+    new ServiceWorkerWebpackPlugin({ entry: resolve('src/client/sw.ts') }),
     new CompressionPlugin({ algorithm: 'gzip', test: /\.js$|\.css$|\.html$/, threshold: 0, minRatio: 1 }),
   ]);
-  clientConfig.performance.hints = 'error';
+  (client as any).performance.hints = 'error';
 }
 
-module.exports = clientConfig;
+export default client;

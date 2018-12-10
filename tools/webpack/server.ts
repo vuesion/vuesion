@@ -1,18 +1,14 @@
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
-const StartServerPlugin = require('start-server-webpack-plugin');
-const baseConfig = require('./webpack.base.config');
+import * as webpack from 'webpack';
+import { isDev, merge, nodeExternals } from './utils';
+import { baseServer } from './base-server';
 
-let serverConfig = merge(baseConfig, {
-  target: 'node',
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const StartServerPlugin = require('start-server-webpack-plugin');
+
+export let server = merge(baseServer, {
   entry: ['./src/server/index'],
   output: {
-    path: path.join(__dirname, '..', 'dist', 'server'),
     filename: 'server.js',
-    libraryTarget: 'commonjs',
   },
   externals: [
     nodeExternals({
@@ -20,26 +16,18 @@ let serverConfig = merge(baseConfig, {
     }),
   ],
   plugins: [
-    new webpack.DefinePlugin({ CLIENT: false, SERVER: true, nodeRequire: 'function(module){return require(module);}' }),
     new CopyWebpackPlugin([
       { from: 'src/static', to: '../static' },
       { from: 'src/app/config/*.json', to: '../app/config', flatten: true },
     ]),
   ],
   node: {
-    global: true,
     __dirname: false,
-    __filename: true,
-    process: true,
-    Buffer: false,
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
   },
 });
 
-if (process.env.NODE_ENV === 'development') {
-  serverConfig = merge(serverConfig, {
+if (isDev) {
+  server = merge(server, {
     watch: true,
     entry: ['webpack/hot/poll?1000'],
     plugins: [
@@ -52,4 +40,4 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 
-module.exports = serverConfig;
+export default server;

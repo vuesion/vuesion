@@ -20,7 +20,7 @@ The service-worker implementation is based on the [serviceworker-webpack-plugin]
 We have chosen this plugin over the [Offline-Plugin](https://github.com/NekR/offline-plugin) because it gives much more
 freedom to the developer how the service-worker should behave for the specific app.
 
-If you want to change the plugin configuration, have a look into the file `./config/webpack.client.config.js`:
+If you want to change the plugin configuration, have a look into the file `./tools/webpack/client.ts`:
 
 ```js
 ...

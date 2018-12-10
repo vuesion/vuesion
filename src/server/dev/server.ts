@@ -5,8 +5,8 @@ import { Logger } from '../utils/Logger';
 const path = nodeRequire('path');
 const webpack = nodeRequire('webpack');
 const MFS = nodeRequire('memory-fs');
-const clientConfig = nodeRequire('../../config/webpack.client.config');
-const isomorphicConfig = nodeRequire('../../config/webpack.isomorphic.config');
+const clientConfig = nodeRequire('../../tools/webpack/client').default;
+const isomorphicConfig = nodeRequire('../../tools/webpack/isomorphic').default;
 
 let initialized: boolean = false;
 let devMiddleware: WebpackDevMiddleware;

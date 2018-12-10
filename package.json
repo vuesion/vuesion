@@ -19,7 +19,8 @@
     "datepicker",
     "slider",
     "forms",
-    "components"
+    "components",
+    "design-system"
   ],
   "author": "Johannes Werner <johannes.werner86@gmail.com>",
   "license": "MIT",
@@ -44,64 +45,23 @@
     "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'chore: update changelog' && npm version minor && git push origin && git push origin --tags",
     "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'chore: update changelog' && npm version patch && git push origin && git push origin --tags",
     "compile-tools": "./node_modules/.bin/tsc -p ./tools/",
-    "clean": "rimraf ./dist ./coverage ./tools/scripts/*.js ./tools/generators/*.js ./tools/generators/**/*.js ./storybook-static",
+    "clean": "rimraf ./dist ./coverage ./tools/scripts/*.js ./tools/webpack/*.js ./tools/generators/*.js ./tools/generators/**/*.js ./storybook-static",
     "start": "node ./dist/server/server.js",
-    "dev:dev-server": "cross-env NODE_ENV=development webpack --mode development --config ./config/webpack.dev-server.config.js",
-    "dev:server": "cross-env NODE_ENV=development webpack --mode development --config ./config/webpack.server.config.js",
-    "predev": "npm run clean",
-    "build:spa": "npm run clean && cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.spa.config.js",
-    "build:client": "cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.client.config.js",
-    "build:isomorphic": "cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.isomorphic.config.js",
-    "build:server": "cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.server.config.js",
-    "prebuild": "npm run clean",
+    "dev:dev-server": "cross-env NODE_ENV=development webpack --mode development --config ./tools/webpack/dev-server.js",
+    "dev:server": "cross-env NODE_ENV=development webpack --mode development --config ./tools/webpack/server.js",
+    "predev": "npm run clean && npm run compile-tools",
+    "build:spa": "npm run clean && cross-env NODE_ENV=production webpack --mode production --config ./tools/webpack/spa.js",
+    "build:client": "cross-env NODE_ENV=production webpack --mode production --config ./tools/webpack/client.js",
+    "build:isomorphic": "cross-env NODE_ENV=production webpack --mode production --config ./tools/webpack/isomorphic.js",
+    "build:server": "cross-env NODE_ENV=production webpack --mode production --config ./tools/webpack/server.js",
+    "prebuild": "npm run clean && npm run compile-tools",
     "ci": "concurrently \"npm run lint\" \"npm run test:coverage -- --runInBand\"",
     "postci": "codecov -f ./coverage/*.json && npm run build && concurrently \"npm run build-storybook\" \"vuepress build docs\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "prettier": "npm run clean && ./node_modules/.bin/prettier --write \"./**/*.{ts,vue,js,json,scss,sass,css,yaml,yml}\"",
-    "heroku-postbuild": "npm run build"
-  },
-  "jest": {
-    "verbose": true,
-    "globals": {
-      "window": true
-    },
-    "rootDir": "./src",
-    "setupFiles": [
-      "../jestsetup.ts"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "vue",
-      "ts",
-      "json"
-    ],
-    "transform": {
-      ".*\\.(vue)$": "<rootDir>../node_modules/vue-jest",
-      ".(ts|tsx)": "<rootDir>../node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    },
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "coverageDirectory": "../coverage"
-  },
-  "config": {
-    "default-locale": "en",
-    "supported-locales": [
-      "en",
-      "de",
-      "pt",
-      "zh-cn"
-    ]
+    "heroku-postbuild": "npm run build",
+    "postinstall": "npm run compile-tools"
   },
   "dependencies": {
     "accept-language": "3.0.18",
@@ -224,5 +184,47 @@
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
       "pre-commit": "pretty-quick --staged && concurrently \"npm run lint\" \"npm run test:coverage\""
     }
+  },
+  "jest": {
+    "verbose": true,
+    "globals": {
+      "window": true
+    },
+    "rootDir": "./src",
+    "setupFiles": [
+      "../jestsetup.ts"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "vue",
+      "ts",
+      "json"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "<rootDir>../node_modules/vue-jest",
+      ".(ts|tsx)": "<rootDir>../node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "coverageDirectory": "../coverage"
+  },
+  "config": {
+    "default-locale": "en",
+    "supported-locales": [
+      "en",
+      "de",
+      "pt",
+      "zh-cn"
+    ]
   }
 }

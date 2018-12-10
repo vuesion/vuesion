@@ -3,11 +3,13 @@
 ## Vuetify
 
 ### Installation
+
 Before we start please install vuetify and the webpack css-loader by running `npm install vuetify --save --save-exact && npm install --save-dev --save-exact css-loader` and follow the [Clean-Up-Guide](/guide/clean-up.md).
 
 ### Configure Webpack
 
-`./config/webpack.base.config.js`:
+`./tools/webpack/base.ts`:
+
 ```js
 ...
 
@@ -27,18 +29,19 @@ Before we start please install vuetify and the webpack css-loader by running `np
         test: /\.scss$/,
         ...
       }
-      
+
 ...
 
 ```
 
-`./config/webpack.server.config.js`:
+`./tools/webpack/server.ts`:
+
 ```js
 ...
 
   externals: [
     // Modified
-    nodeExternals({
+    utils.nodeExternals({
                     whitelist: ['webpack/hot/poll?1000', /\.css$/, /vuetify/],
                   }),
   ],
@@ -46,13 +49,14 @@ Before we start please install vuetify and the webpack css-loader by running `np
 ...
 ```
 
-`./config/webpack.isomorphic.config.js`:
+`./tools/webpack/isomorphic.ts`:
+
 ```js
 ...
 
   externals: [
     // Modified
-    nodeExternals({ whitelist: [/\.css$/, /vuetify/] }),
+    utils.nodeExternals({ whitelist: [/\.css$/, /vuetify/] }),
   ],
 
 ...
@@ -336,9 +340,9 @@ const VJstree = CLIENT ? require('vue-jstree').default : null;
 
 ...
 
-``` 
+```
 
-::: warning 
+::: warning
 We do not recommend using these kind of components because they lead to a re-rendering of the client-side app because
 the resulting HTML is different from the server-side rendered HTML.
 :::
