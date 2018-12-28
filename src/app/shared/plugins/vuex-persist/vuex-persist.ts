@@ -4,11 +4,10 @@
 
 import merge from 'deepmerge';
 import { Plugin, Store } from 'vuex';
-import { IState } from '../../../state';
 
 export interface IVuexPersistStorage extends Storage {
   modules: string[];
-  beforePersist: (state: IState) => IState;
+  beforePersist: <T>(state: T) => T;
   forceInitialState: boolean;
 }
 
@@ -29,15 +28,15 @@ const getState = (key: string, storage: IVuexPersistStorage) => {
     return undefined;
   }
 };
-const setState = (key: string, state: IState, storage: IVuexPersistStorage) => {
+const setState = (key: string, state: any, storage: IVuexPersistStorage) => {
   return storage.setItem(key, JSON.stringify(state));
 };
-const subscriber = (store: Store<IState>) => {
+const subscriber = (store: Store<any>) => {
   return (handler: any) => {
     return store.subscribe(handler);
   };
 };
-const processStorage = (storage: IVuexPersistStorage, vuexStore: Store<IState>): void => {
+const processStorage = (storage: IVuexPersistStorage, vuexStore: Store<any>): void => {
   const mergeOptions = {
     clone: false,
     arrayMerge: (target: any, source: any) => {
@@ -45,7 +44,7 @@ const processStorage = (storage: IVuexPersistStorage, vuexStore: Store<IState>):
     },
   };
   storage.modules.forEach((key: string) => {
-    const savedState: IState = getState(key, storage);
+    const savedState: any = getState(key, storage);
 
     if (savedState && Object.keys(savedState).length > 0) {
       vuexStore.state[key] = storage.forceInitialState
@@ -53,7 +52,7 @@ const processStorage = (storage: IVuexPersistStorage, vuexStore: Store<IState>):
         : merge(vuexStore.state[key], savedState, mergeOptions);
     }
 
-    subscriber(vuexStore)((mutation: any, state: IState) => {
+    subscriber(vuexStore)((mutation: any, state: any) => {
       state = storage.beforePersist(JSON.parse(JSON.stringify(state)));
 
       setState(key, state[key], storage);
@@ -61,8 +60,8 @@ const processStorage = (storage: IVuexPersistStorage, vuexStore: Store<IState>):
   });
 };
 
-export const VuexPersist = (storages: IVuexPersistStorage[]): Plugin<IState> => {
-  return (vuexStore: Store<IState>) => {
+export const VuexPersist = (storages: IVuexPersistStorage[]): Plugin<any> => {
+  return (vuexStore: Store<any>) => {
     storages.forEach(
       (storage: IVuexPersistStorage): void => {
         if (canWriteStorage(storage)) {

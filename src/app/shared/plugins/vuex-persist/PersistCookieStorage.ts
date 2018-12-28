@@ -2,25 +2,23 @@ import { IVuexPersistStorage } from './vuex-persist';
 import * as Cookies from 'js-cookie';
 import { CookieAttributes } from 'js-cookie';
 import merge from 'deepmerge';
-import { IServerContext } from '../../../../server/isomorphic';
-import { IState } from '../../../state';
 
 interface IPersistCookieStorageConfig {
   cookieOptions: CookieAttributes;
-  beforePersist?: (state: IState) => IState;
+  beforePersist?: (state: any) => any;
 }
 
 export class PersistCookieStorage implements IVuexPersistStorage {
-  public static getMergedStateFromServerContext<T>(serverContext: IServerContext, state: any): T {
-    const vuexPersistCookie: any = JSON.parse(serverContext.cookies[this.indexKey] || '{}');
+  public static getMergedStateFromServerContext<T>(cookies: any, state: any): T {
+    const vuexPersistCookie: any = JSON.parse(cookies[this.indexKey] || '{}');
     const cookieState: any = {};
 
-    Object.keys(serverContext.cookies).forEach((key: string) => {
+    Object.keys(cookies).forEach((key: string) => {
       const mappedKey: string = vuexPersistCookie[key];
 
       if (mappedKey) {
         try {
-          cookieState[mappedKey] = JSON.parse(serverContext.cookies[key]);
+          cookieState[mappedKey] = JSON.parse(cookies[key]);
         } catch (e) {
           cookieState[mappedKey] = state[mappedKey] || {};
         }
@@ -35,27 +33,27 @@ export class PersistCookieStorage implements IVuexPersistStorage {
     });
   }
 
-  public static getCookiesFromState(serverContext: IServerContext): Array<{ name: string; value: string }> {
-    const vuexPersistCookie: any = JSON.parse(serverContext.cookies[this.indexKey] || '{}');
-    const cookies: Array<{ name: string; value: string }> = [];
+  public static getCookiesFromState(cookies: any, state: any): Array<{ name: string; value: string }> {
+    const vuexPersistCookie: any = JSON.parse(cookies[this.indexKey] || '{}');
+    const result: Array<{ name: string; value: string }> = [];
 
-    Object.keys(serverContext.cookies)
+    Object.keys(cookies)
       .filter((key: string) => key !== this.indexKey)
       .forEach((key: string) => {
         const mappedKey: string = vuexPersistCookie[key];
-        const cookieState = mappedKey ? JSON.parse(serverContext.cookies[key]) : {};
+        const cookieState = mappedKey ? JSON.parse(cookies[key]) : {};
         const newCookieState: any = {};
 
         Object.keys(cookieState).forEach((k: string) => {
-          newCookieState[k] = serverContext.state[mappedKey][k];
+          newCookieState[k] = state[mappedKey][k];
         });
 
         if (mappedKey) {
-          cookies.push({ name: key, value: JSON.stringify(newCookieState) });
+          result.push({ name: key, value: JSON.stringify(newCookieState) });
         }
       });
 
-    return cookies;
+    return result;
   }
 
   private static indexKey: string = 'vuexpersistcookie';
@@ -109,7 +107,7 @@ export class PersistCookieStorage implements IVuexPersistStorage {
     Cookies.set(this.getKey(key), data, this.options.cookieOptions);
   }
 
-  public beforePersist(state: IState): IState {
+  public beforePersist(state: any): any {
     if (this.options.beforePersist) {
       return this.options.beforePersist(state);
     }
