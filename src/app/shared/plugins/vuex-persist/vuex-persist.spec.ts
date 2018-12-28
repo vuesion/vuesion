@@ -1,19 +1,18 @@
 import { Plugin } from 'vuex';
 import { IVuexPersistStorage, VuexPersist } from './vuex-persist';
-import { IState } from '../../../state';
 
 class PersistMockStorage implements IVuexPersistStorage {
   public modules: string[];
   public prefix: string;
   public length: number;
   public forceInitialState: boolean;
-  private readonly localBeforePersist: (state: IState) => IState;
+  private readonly localBeforePersist: <T>(state: T) => T;
 
   [key: string]: any;
 
   [index: number]: string;
 
-  constructor(modules: string[] = [], beforePersist?: (state: IState) => IState, prefix: string = 'vuexpersist') {
+  constructor(modules: string[] = [], beforePersist?: <T>(state: T) => T, prefix: string = 'vuexpersist') {
     this.modules = modules;
     this.prefix = prefix;
     this.localBeforePersist = beforePersist;
@@ -40,7 +39,7 @@ class PersistMockStorage implements IVuexPersistStorage {
     (window as any).mockStorage.setItem(this.getKey(key), data);
   }
 
-  public beforePersist(state: IState): IState {
+  public beforePersist<T>(state: T): T {
     if (this.localBeforePersist) {
       return this.localBeforePersist(state);
     }

@@ -31,7 +31,9 @@ export interface IPreLoad {
 
 const setDefaultState = (context: IServerContext, store: Store<IState>) => {
   let state: IState = store.state;
-  state = PersistCookieStorage.getMergedStateFromServerContext<IState>(context, state);
+  const cookies = context.cookies;
+
+  state = PersistCookieStorage.getMergedStateFromServerContext<IState>(cookies, state);
   state.app.config = context.appConfig;
 
   if (state.app && state.app.locale) {
@@ -56,7 +58,7 @@ const setI18nDefaultValues = (store: Store<IState>, i18n: VueI18n) => {
 
   try {
     defaultMessages = DEVELOPMENT
-      ? JSON.parse(fs.readFileSync(path.resolve(`./i18n/${lang}.json`)).toString())
+      ? JSON.parse(fs.readFileSync(path.resolve(`../../i18n/${lang}.json`)).toString())
       : nodeRequire(`../../i18n/${lang}.json`);
   } catch (e) {
     defaultMessages = nodeRequire(`../../i18n/en.json`);
@@ -120,7 +122,7 @@ export default (context: IServerContext) => {
           if (currentPath !== context.url || (pendingPath && pendingPath !== context.url)) {
             reject({
               code: 302,
-              cookies: PersistCookieStorage.getCookiesFromState(context),
+              cookies: PersistCookieStorage.getCookiesFromState(context.cookies, context.state),
               path: pendingPath || currentPath,
             });
           } else {

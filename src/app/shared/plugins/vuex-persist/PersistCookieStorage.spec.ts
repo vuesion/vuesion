@@ -1,6 +1,4 @@
 import { PersistCookieStorage } from './PersistCookieStorage';
-import { IServerContext } from '../../../../server/isomorphic';
-import { IAppConfig } from '../../../config/IAppConfig';
 
 describe('PersistCookieStorage', () => {
   let storage: PersistCookieStorage;
@@ -37,9 +35,7 @@ describe('PersistCookieStorage', () => {
   });
 
   test('should merge server context if index cookie is not present', () => {
-    const mergedState: any = PersistCookieStorage.getMergedStateFromServerContext({ cookies: {} } as IServerContext, {
-      foo: ['bar'],
-    });
+    const mergedState: any = PersistCookieStorage.getMergedStateFromServerContext({}, { foo: ['bar'] });
 
     expect(mergedState).toEqual({ foo: ['bar'] });
   });
@@ -47,11 +43,9 @@ describe('PersistCookieStorage', () => {
   test('should merge server context', () => {
     const mergedState: any = PersistCookieStorage.getMergedStateFromServerContext(
       {
-        cookies: {
-          vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
-          vuexpersistfoo: '["baz"]',
-        },
-      } as IServerContext,
+        vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
+        vuexpersistfoo: '["baz"]',
+      },
       {
         foo: ['bar'],
       },
@@ -63,11 +57,9 @@ describe('PersistCookieStorage', () => {
   test('should continue with invalid JSON and use initial state', () => {
     const mergedState: any = PersistCookieStorage.getMergedStateFromServerContext(
       {
-        cookies: {
-          vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
-          vuexpersistfoo: '["baz]',
-        },
-      } as IServerContext,
+        vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
+        vuexpersistfoo: '["baz]',
+      },
       {
         foo: ['bar'],
       },
@@ -79,11 +71,9 @@ describe('PersistCookieStorage', () => {
   test('should continue with invalid JSON and fall back if ther is no initial state', () => {
     const mergedState: any = PersistCookieStorage.getMergedStateFromServerContext(
       {
-        cookies: {
-          vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
-          vuexpersistfoo: '["baz]',
-        },
-      } as IServerContext,
+        vuexpersistcookie: '{"vuexpersistfoo":"foo"}',
+        vuexpersistfoo: '["baz]',
+      },
       {
         fooo: ['bar'],
       },
@@ -110,34 +100,34 @@ describe('PersistCookieStorage', () => {
   });
 
   test('should get cookies from current server state', () => {
-    let result = PersistCookieStorage.getCookiesFromState({
-      cookies: {
+    let result = PersistCookieStorage.getCookiesFromState(
+      {
         vuexpersistcookie: '{"vuexpersistapp":"app"}',
         vuexpersistapp: '{"override":"value", "nonExistingKey":"value"}',
         webstorm: '297fg92ug49gf29fg',
       },
-      state: {
+      {
         app: {
           override: 'new value',
           exclude: 'this should not be in the cookie',
         },
       },
-    } as any);
+    );
     let expected = [{ name: 'vuexpersistapp', value: '{"override":"new value"}' }];
 
     expect(result).toEqual(expected);
 
-    result = PersistCookieStorage.getCookiesFromState({
-      cookies: {
+    result = PersistCookieStorage.getCookiesFromState(
+      {
         vuexpersistapp: '{"override":"value", "nonExistingKey":"value"}',
       },
-      state: {
+      {
         app: {
           override: 'new value',
           exclude: 'this should not be in the cookie',
         },
       },
-    } as any);
+    );
     expected = [];
 
     expect(result).toEqual(expected);
