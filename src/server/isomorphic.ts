@@ -11,6 +11,7 @@ import { IState } from '../app/state';
 import { IAppConfig } from '../app/config/IAppConfig';
 import { PersistCookieStorage } from '../app/shared/plugins/vuex-persist/PersistCookieStorage';
 import { Logger } from './utils/Logger';
+import { initHttpService } from '../app/shared/services/HttpService/HttpService';
 
 export interface IServerContext {
   url: string;
@@ -78,6 +79,8 @@ export default (context: IServerContext) => {
     setDefaultState(context, store);
     setMetaInformation(context, app);
     setI18nDefaultValues(store, i18n);
+
+    initHttpService(store, router);
 
     router.push(context.url);
 

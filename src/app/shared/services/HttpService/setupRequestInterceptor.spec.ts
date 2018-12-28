@@ -1,11 +1,12 @@
 import MockAdapter from 'axios-mock-adapter';
-import { HttpService } from './HttpService';
+import { HttpService, initHttpService } from './HttpService';
 import { AxiosResponse } from 'axios';
 
 describe('RequestInterceptor', () => {
   let mockAxios: MockAdapter;
 
   beforeEach(() => {
+    initHttpService();
     mockAxios = new MockAdapter(HttpService);
   });
 

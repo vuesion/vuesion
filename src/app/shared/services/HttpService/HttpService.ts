@@ -1,5 +1,5 @@
 import VueRouter from 'vue-router';
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { Store } from 'vuex';
 import { IState } from '../../../state';
 import { setupResponseInterceptor } from './setupResponseInterceptor';
@@ -10,20 +10,18 @@ export interface IHttpService extends AxiosInstance {
   router?: VueRouter;
 }
 
-let baseURL;
+export let HttpService: IHttpService = axios.create();
 
-/* istanbul ignore if */
-if (!CLIENT) {
-  const config = require('../../../config/AppConfig');
-  baseURL = config.AppConfig.api.baseUrl;
-}
+export const initHttpService = (store?: Store<IState>, router?: VueRouter) => {
+  /* istanbul ignore next */
+  HttpService = axios.create({
+    baseURL: store && store.state.app.config.api.baseUrl,
+  });
 
-export const HttpService: IHttpService = axios.create({
-  baseURL,
-});
+  HttpService.store = store;
+  HttpService.router = router;
 
-/* istanbul ignore next */
-setupRequestInterceptor(HttpService);
+  setupRequestInterceptor(HttpService);
 
-/* istanbul ignore next */
-setupResponseInterceptor(HttpService);
+  setupResponseInterceptor(HttpService);
+};
