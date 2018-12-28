@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as webpackMerge from 'webpack-merge';
 import * as externals from 'webpack-node-externals';
 
-export const resolve = (dir) => {
+export const resolve = (dir: any) => {
   return path.join(__dirname, '..', '..', dir);
 };
 export const isProd = process.env.NODE_ENV === 'production';

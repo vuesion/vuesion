@@ -8,7 +8,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 
 export const client: webpack.Configuration = merge(base, {
   entry: {
-    app: './src/client/index',
+    app: resolve('src/client/index'),
   },
   output: {
     path: resolve('dist/client'),
@@ -35,9 +35,9 @@ export const client: webpack.Configuration = merge(base, {
   },
   plugins: [
     new webpack.DefinePlugin({ CLIENT: true, SERVER: false }),
-    new HTMLPlugin({ template: 'src/index.template.html', spa: false }),
+    new HTMLPlugin({ template: resolve('src/index.template.html'), spa: false }),
   ],
-});
+}) as any;
 
 if (isProd) {
   client.plugins = (client.plugins || []).concat([

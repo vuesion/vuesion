@@ -16,7 +16,7 @@ export const spa = merge(client, {
     }),
     new CopyWebpackPlugin([
       { from: 'src/static', to: '../' },
-      { from: './i18n', to: '../i18n' },
+      { from: 'i18n', to: '../i18n' },
       { from: 'src/static/logo.png', to: '../favicon.png' },
     ]),
   ],

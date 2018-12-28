@@ -20,6 +20,7 @@ export const base: webpack.Configuration = {
     },
   },
   module: {
+    exprContextCritical: false,
     rules: [
       {
         test: /\.ts$/,
@@ -80,7 +81,7 @@ export const base: webpack.Configuration = {
   plugins: [
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({ PRODUCTION: isProd, DEVELOPMENT: isDev, TEST: false }),
-    new ForkTsCheckerWebpackPlugin({ tslint: true, vue: true }),
+    new ForkTsCheckerWebpackPlugin({ tslint: resolve('tslint.json'), vue: true }),
   ],
 };
 
