@@ -1,6 +1,6 @@
-import moduleGenerator = require('./module/index');
-import componentGenerator = require('./component/index');
-import connectedGenerator = require('./connected/index');
+import moduleGenerator = require('./module');
+import componentGenerator = require('./component');
+import connectedGenerator = require('./connected');
 
 import { hyphenate } from './helpers';
 
