@@ -3,7 +3,7 @@ import { Route } from 'vue-router';
 import { Component } from 'vue-router/types/router';
 import { createApp, IApp } from '../app/app';
 import { IPreLoad } from '../server/isomorphic';
-import { HttpService } from '../app/shared/services/HttpService/HttpService';
+import { HttpService, initHttpService } from '../app/shared/services/HttpService/HttpService';
 
 if (PRODUCTION) {
   const runtime: any = require('serviceworker-webpack-plugin/lib/runtime');
@@ -19,6 +19,8 @@ const { app, router, store, i18n }: IApp = createApp();
 i18n.locale = store.state.app.locale;
 i18n.fallbackLocale = 'en';
 i18n.setLocaleMessage(store.state.app.locale, store.state.app.defaultMessages);
+
+initHttpService(store, router);
 
 /**
  * redirect client if server renders a different page than requested
