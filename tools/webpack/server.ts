@@ -1,12 +1,12 @@
 import * as webpack from 'webpack';
-import { isDev, merge, nodeExternals } from './utils';
+import { isDev, merge, nodeExternals, resolve } from './utils';
 import { baseServer } from './base-server';
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StartServerPlugin = require('start-server-webpack-plugin');
 
 export let server = merge(baseServer, {
-  entry: ['./src/server/index'],
+  entry: [resolve('src/server/index')],
   output: {
     filename: 'server.js',
   },
@@ -17,13 +17,10 @@ export let server = merge(baseServer, {
   ],
   plugins: [
     new CopyWebpackPlugin([
-      { from: 'src/static', to: '../static' },
-      { from: 'src/app/config/*.json', to: '../app/config', flatten: true },
+      { from: resolve('src/static'), to: '../static' },
+      { from: resolve('src/app/config/*.json'), to: '../app/config', flatten: true },
     ]),
   ],
-  node: {
-    __dirname: false,
-  },
 });
 
 if (isDev) {
