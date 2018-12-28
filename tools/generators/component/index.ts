@@ -23,10 +23,10 @@ export = {
     },
   ],
   actions: (data: any) => {
-    const path: string[] = data.name.split('/');
+    const filePath: string[] = data.name.split('/');
 
-    data.componentName = path.pop();
-    data.basePath = '../../src/app/' + path.join('/');
+    data.componentName = filePath.pop();
+    data.basePath = '../../src/app/' + filePath.join('/');
 
     const actions: any[] = [
       {

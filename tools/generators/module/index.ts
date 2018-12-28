@@ -31,11 +31,11 @@ export = {
     },
   ],
   actions: (data: any) => {
-    const pathArray: string[] = data.name.split('/');
+    const filePath: string[] = data.name.split('/');
 
-    data.moduleName = pathArray.pop();
+    data.moduleName = filePath.pop();
     data.componentName = data.moduleName;
-    data.basePath = '../../src/app/' + pathArray.join('/');
+    data.basePath = '../../src/app/' + filePath.join('/');
 
     let actions: any[] = [
       {
