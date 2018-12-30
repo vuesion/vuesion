@@ -5,8 +5,8 @@
     <table :class="$style.vueDataTable">
       <vue-data-table-header
         :columns="columns"
-        :sort-key="sortKey"
-        :sort-direction="sortDirection"
+        :sort-key="internalSortKey"
+        :sort-direction="internalSortDirection"
         @click="columnClick"
       />
 
@@ -66,6 +66,14 @@ export default {
     placeholder: {
       type: String,
     },
+    sortKey: {
+      type: String,
+      default: null,
+    },
+    sortDirection: {
+      type: String,
+      default: 'asc',
+    },
   },
   computed: {
     filteredData() {
@@ -93,16 +101,16 @@ export default {
       return this.data.slice(0).filter(filter);
     },
     sortedData() {
-      if (!this.sortKey) {
+      if (!this.internalSortKey) {
         return this.filteredData;
       }
 
       const sort = (a: any, b: any) => {
-        if (a[this.sortKey] < b[this.sortKey]) {
-          return this.sortDirection === 'asc' ? -1 : 1;
+        if (a[this.internalSortKey] < b[this.internalSortKey]) {
+          return this.internalSortDirection === 'asc' ? -1 : 1;
         }
-        if (a[this.sortKey] > b[this.sortKey]) {
-          return this.sortDirection === 'asc' ? 1 : -1;
+        if (a[this.internalSortKey] > b[this.internalSortKey]) {
+          return this.internalSortDirection === 'asc' ? 1 : -1;
         }
         return 0;
       };
@@ -168,22 +176,22 @@ export default {
   },
   data(): any {
     return {
-      sortKey: null,
-      sortDirection: 'asc',
+      internalSortKey: null,
+      internalSortDirection: null,
       currentPage: 0,
       searchTerm: '',
     };
   },
   methods: {
     columnClick(column: IDataTableHeaderItem) {
-      if (this.sortKey === column.sortKey && this.sortDirection === 'desc') {
-        this.sortKey = null;
-        this.sortDirection = 'asc';
-      } else if (this.sortKey === column.sortKey && this.sortDirection === 'asc') {
-        this.sortDirection = 'desc';
+      if (this.internalSortKey === column.sortKey && this.internalSortDirection === 'desc') {
+        this.internalSortKey = null;
+        this.internalSortDirection = 'asc';
+      } else if (this.internalSortKey === column.sortKey && this.internalSortDirection === 'asc') {
+        this.internalSortDirection = 'desc';
       } else {
-        this.sortKey = column.sortKey;
-        this.sortDirection = 'asc';
+        this.internalSortKey = column.sortKey;
+        this.internalSortDirection = 'asc';
       }
     },
     getRowObject(cells: IComputedDataRowCell[]) {
@@ -204,6 +212,20 @@ export default {
   },
   mounted() {
     this.currentPage = this.page;
+  },
+  watch: {
+    sortKey: {
+      immediate: true,
+      handler(newSortKey: any) {
+        this.internalSortKey = newSortKey;
+      },
+    },
+    sortDirection: {
+      immediate: true,
+      handler(newSortDirection: any) {
+        this.internalSortDirection = newSortDirection;
+      },
+    },
   },
 };
 </script>
