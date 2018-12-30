@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vueDatePicker" @click="show = true;">
+  <div :class="$style.vueDatePicker" @click="show = true">
     <vue-input
       :name="name"
       :id="id"
@@ -11,7 +11,7 @@
       :message="message"
       @focus="onFocus"
     />
-    <vue-modal :show="show" :fit-content="true" @close="show = false;">
+    <vue-modal :show="show" :fit-content="true" @close="show = false">
       <vue-calendar
         :min-date="minDate"
         :max-date="maxDate"
@@ -20,7 +20,7 @@
         :selected-date="date"
         :start-date="startDate"
         :end-date="endDate"
-        @close="show = false;"
+        @close="show = false"
         @change="onChange"
       >
       </vue-calendar>
@@ -43,11 +43,11 @@ export default {
   props: {
     name: {
       type: String,
-      default: 'date',
+      required: true,
     },
     id: {
       type: String,
-      default: 'date',
+      required: true,
     },
     minDate: {
       type: Date,
@@ -61,7 +61,6 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '',
     },
     startDate: {
       type: Date,
@@ -74,19 +73,15 @@ export default {
     },
     required: {
       type: Boolean,
-      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false,
     },
     readonly: {
       type: Boolean,
-      default: true,
     },
     message: {
       type: String,
-      default: '',
     },
   },
   data(): any {

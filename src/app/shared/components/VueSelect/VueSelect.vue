@@ -17,7 +17,7 @@
         {{ option.label }}
       </option>
     </select>
-    <i :class="$style.icon" v-if="multiple === false" />
+    <i :class="$style.icon" v-if="!multiple" />
   </div>
 </template>
 
@@ -55,26 +55,22 @@ export default {
       default: '',
     },
     multiple: {
-      default: false,
       type: Boolean,
     },
     required: {
-      default: false,
       type: Boolean,
     },
     disabled: {
-      default: false,
       type: Boolean,
     },
     validation: {
-      default: '',
+      type: String,
     },
     autocomplete: {
       default: 'off',
     },
     placeholder: {
       type: String,
-      default: '',
     },
   },
   computed: {

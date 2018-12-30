@@ -1,6 +1,8 @@
 <template>
   <transition @beforeEnter="beforeEnter" @enter="enter" @beforeLeave="beforeLeave" @leave="leave">
-    <div :class="[$style.vueModal, fitContent ? $style.fitContent : '']" v-if="show" ref="modal"><slot /></div>
+    <div :class="[$style.vueModal, fitContent ? $style.fitContent : '']" v-if="show" :aria-modal="show" ref="modal">
+      <slot />
+    </div>
   </transition>
 </template>
 
@@ -11,12 +13,10 @@ export default {
   name: 'VueModal',
   props: {
     show: {
-      default: false,
       type: Boolean,
     },
     fitContent: {
       type: Boolean,
-      default: false,
     },
   },
   methods: {

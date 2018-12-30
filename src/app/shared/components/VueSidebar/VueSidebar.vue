@@ -1,6 +1,6 @@
 <template>
   <aside ref="sidebar">
-    <button :class="hamburgerCssClasses" type="button" aria-label="menu" @click="open = !open;">
+    <button :class="hamburgerCssClasses" type="button" aria-label="menu" @click="open = !open">
       <span :class="$style.box"> <span :class="$style.inner" /> </span>
     </button>
     <div :class="sidebarClasses"><slot /></div>
@@ -10,8 +10,6 @@
 <script lang="ts">
 export default {
   name: 'VueSidebar',
-  components: {},
-  props: {},
   data(): any {
     return {
       open: false,

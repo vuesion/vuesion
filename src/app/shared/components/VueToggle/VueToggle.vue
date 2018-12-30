@@ -10,8 +10,8 @@
       :disabled="disabled"
       v-validate="validation"
       @change.prevent="onClick"
-      @focus="focus = true;"
-      @blur="focus = false;"
+      @focus="focus = true"
+      @blur="focus = false"
       v-bind="$attrs"
     />
     <div :class="$style.container" @click="onClick">
@@ -43,22 +43,18 @@ export default {
     },
     checked: {
       type: Boolean,
-      default: false,
     },
     value: {
       type: Boolean,
-      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false,
     },
     required: {
       type: Boolean,
-      default: false,
     },
     validation: {
-      default: '',
+      type: String,
     },
     label: {
       type: String,
@@ -97,7 +93,7 @@ export default {
       e.preventDefault();
       this.$refs.input.focus();
 
-      if (this.disabled === false) {
+      if (!this.disabled) {
         this.$emit('click', e);
         this.$emit('input', !Boolean(this.value));
       }

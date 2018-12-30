@@ -11,7 +11,6 @@ export default {
     },
     outlined: {
       type: Boolean,
-      default: false,
     },
   },
   computed: {
