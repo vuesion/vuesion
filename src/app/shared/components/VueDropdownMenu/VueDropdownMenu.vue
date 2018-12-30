@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.vueDropdownMenu" @keydown="onKeyPress" ref="dropdownMenu">
-    <span @click.stop.prevent="show = !show;" role="button" tabindex="0" :aria-expanded="show.toString()">
+    <span @click.stop.prevent="show = !show" role="button" tabindex="0" :aria-expanded="show.toString()">
       <slot />
       <vue-icon-sort-down />
     </span>
@@ -12,11 +12,11 @@
             v-for="(option, idx) in options"
             v-if="option.value !== 'separator'"
             :key="`${id}-${idx}`"
-            @mouseenter="index = idx;"
+            @mouseenter="index = idx"
             :class="index === idx ? $style.active : ''"
-            @click.stop.prevent="onClick(option);"
+            @click.stop.prevent="onClick(option)"
           >
-            {{ option.label }}
+            <slot name="option" :option="option">{{ option.label }}</slot>
           </li>
           <li v-else :class="$style.separator"></li>
         </ul>
