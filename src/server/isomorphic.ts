@@ -59,7 +59,7 @@ const setI18nDefaultValues = (store: Store<IState>, i18n: VueI18n) => {
 
   try {
     defaultMessages = DEVELOPMENT
-      ? JSON.parse(fs.readFileSync(path.resolve(`../../i18n/${lang}.json`)).toString())
+      ? JSON.parse(fs.readFileSync(path.resolve(`i18n/${lang}.json`)).toString())
       : nodeRequire(`../../i18n/${lang}.json`);
   } catch (e) {
     defaultMessages = nodeRequire(`../../i18n/en.json`);

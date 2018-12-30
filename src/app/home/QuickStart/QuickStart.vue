@@ -8,10 +8,12 @@
           <vue-card class="vueCard">
             <vue-card-body class="vueCardBody">
               <ol>
-                <li>Install node 8 or higher</li>
-                <li>Install npm 5 or higher</li>
-                <li>clone repository <code>git clone https://github.com/devCrossNet/vue-starter</code></li>
-                <li>change directory <code>cd vue-starter</code></li>
+                <li>Install node 10 or higher</li>
+                <li>Install npm 6 or higher</li>
+                <li>
+                  Clone repository <code>git clone https://github.com/<br />devCrossNet/vue-starter</code>
+                </li>
+                <li>Change directory <code>cd vue-starter</code></li>
                 <li>Install dependencies: <code>npm install</code></li>
                 <li>Run <code>npm run dev</code></li>
               </ol>

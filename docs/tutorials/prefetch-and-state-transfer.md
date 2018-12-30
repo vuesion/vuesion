@@ -1,4 +1,4 @@
-# Prefetch data and state transfer
+# Prefetching data
 
 # State transfer
 
@@ -45,11 +45,11 @@ If we have a look at the file `./src/server/isomorphic.ts`:
 
         return Promise.resolve();
       }))
-      
+
 ...
 ```
 
-we see that the vue-starter set-up expects us to call this static function `prefetch`. 
+we see that the vue-starter set-up expects us to call this static function `prefetch`.
 
 This part of the code is
 responsible for getting all the `prefetch` functions from all the components that match the current route.
@@ -62,7 +62,7 @@ If you want to see this concept in action, have a look at the file `./src/app/co
     prefetch:   (options: IPreLoad) => {
       return options.store.dispatch('counter/increment');
     },
-    
+
 ...
 ```
 
@@ -79,6 +79,6 @@ export interface IPreLoad {
   route?: Route | any;
   router?: VueRouter;
 }
-      
+
 ...
 ```

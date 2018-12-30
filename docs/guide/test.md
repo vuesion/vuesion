@@ -1,4 +1,4 @@
-# Run the tests for the first time
+# Run the tests
 
 Your app is installed and runs in development mode, but does every component in the app work correctly?
 
@@ -43,4 +43,5 @@ If you think this is just too much for your project, configure the appropriate t
       }
     },
 ```
+
 :::

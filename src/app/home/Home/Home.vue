@@ -24,7 +24,7 @@ export default {
       {
         name: 'description',
         content:
-          'vue-starter - A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
+          'vue-starter - The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices',
       },
       {
         name: 'robots',
@@ -42,12 +42,12 @@ export default {
       {
         name: 'og:title',
         content:
-          'vue-starter - A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
+          'vue-starter - The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices',
       },
       {
         name: 'og:description',
         content:
-          'vue-starter - A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
+          'vue-starter - The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices',
       },
       { name: 'og:image:url', content: 'https://vue-starter.herokuapp.com/logo.png' },
 
@@ -57,14 +57,14 @@ export default {
       {
         name: 'twitter:title',
         content:
-          'vue-starter - A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
+          'vue-starter - The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices',
       },
       { name: 'twitter:url', content: 'https://vue-starter.herokuapp.com/' },
       { name: 'twitter:image', content: 'https://vue-starter.herokuapp.com/logo.png' },
       {
         name: 'twitter:description',
         content:
-          'vue-starter - A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
+          'vue-starter - The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices',
       },
     ],
   },

@@ -1,4 +1,4 @@
-# Delete files that you don't need for your project
+# Clean up
 
 At this point, your project contains a lot of code that is just for demo purposes.
 

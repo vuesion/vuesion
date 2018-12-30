@@ -22,10 +22,9 @@ Check out the example in `src/app/app/routes.ts`:
 import { RouteConfig } from 'vue-router/types/router';
 
 export const AppRoutes: RouteConfig[] = [
-  ...
-  {
-    path:      '/redirect',
-    redirect:  '/',
+  ...{
+    path: '/redirect',
+    redirect: '/',
   },
 ];
 ```
@@ -41,6 +40,7 @@ In module Vue files such as `src/app/counter/Counter/Counter.vue` the `prefetch`
 Now you can call `router.push` to change the URL before the page is rendered, which means redirecting.
 
 Example:
+
 ```js
     ...
     prefetch:   ({ store, router }: IPreLoad) => {

@@ -6,8 +6,6 @@ and the [Angular Style Guide](https://angular.io/guide/styleguide).
 ## File structure conventions
 
 ```
-├── code-style-web-storm.xml  // code formatting rules for .idea
-├── config                    // webpack configs
 ├── cypress                   // e2e tests
 ├── docs                      // can be deleted
 ├── i18n                      // language files used by vue-i18n
@@ -37,13 +35,15 @@ and the [Angular Style Guide](https://angular.io/guide/styleguide).
 │   └── static                // static files mapped to /
 └── tools
     ├── generators            // generator cli
-    └── scripts               // productivity tools
+    ├── scripts               // productivity tools
+    └── webpack               // webpack configs
 ```
+
 ### What is a Module?
 
 A module is an encapsulated piece of domain logic in your application, this could be for example:
 
-####  Use-cases for a module
+#### Use-cases for a module
 
 **Dynamic page**: consists of a lot of view logic, at least one route and state-management
 
@@ -53,7 +53,7 @@ A module is an encapsulated piece of domain logic in your application, this coul
 
 **Domain logic**: just plain logic with state-management but no routes and no components
 
-_A module usually has routing information,  state management or both._
+_A module usually has routing information, state management or both._
 
 **You can easily create modules with `npm run g`**
 
