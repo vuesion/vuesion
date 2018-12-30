@@ -49,15 +49,13 @@ export default {
   props: {
     title: {
       type: String,
-      default: '',
     },
     data: {
       type: Array,
-      default: [],
+      required: true,
     },
     unit: {
       type: String,
-      default: '',
     },
     strokeWidth: {
       type: Number,

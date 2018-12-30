@@ -10,7 +10,7 @@ story.add(
   'Default',
   withInfo({})(() => ({
     components: { VueDatePicker },
-    template: `<vue-date-picker @change="action" :first-day-of-week="1" placeholder="Select a date" />`,
+    template: `<vue-date-picker name="date" id="date" @change="action" :first-day-of-week="1" placeholder="Select a date" />`,
     i18n,
     methods: {
       action: action('@change'),

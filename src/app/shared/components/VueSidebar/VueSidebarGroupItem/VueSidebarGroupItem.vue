@@ -1,6 +1,6 @@
 <template>
   <li :class="$style.vueSidebarGroupItem">
-    <div v-if="to !== null">
+    <div v-if="to">
       <router-link :to="to"> <slot /> </router-link>
     </div>
 
@@ -11,18 +11,11 @@
 <script lang="ts">
 export default {
   name: 'VueSidebarGroupItem',
-  components: {},
   props: {
     to: {
       type: String,
-      default: null,
     },
   },
-  data(): any {
-    return {};
-  },
-  computed: {},
-  methods: {},
 };
 </script>
 

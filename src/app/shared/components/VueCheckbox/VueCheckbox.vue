@@ -38,26 +38,21 @@ export default {
     },
     checked: {
       type: Boolean,
-      default: false,
     },
     value: {
       type: Boolean,
-      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false,
     },
     required: {
       type: Boolean,
-      default: false,
     },
     validation: {
-      default: '',
+      type: String,
     },
     radio: {
       type: Boolean,
-      default: false,
     },
     label: {
       type: String,
@@ -92,7 +87,7 @@ export default {
     onClick(e: Event) {
       e.preventDefault();
 
-      if (this.disabled === false) {
+      if (!this.disabled) {
         this.$emit('click', e);
         this.$emit('input', !Boolean(this.value));
       }

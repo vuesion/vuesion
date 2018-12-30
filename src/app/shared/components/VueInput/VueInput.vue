@@ -44,19 +44,15 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '',
     },
     required: {
       type: Boolean,
-      default: false,
     },
     autofocus: {
       type: Boolean,
-      default: false,
     },
     value: {
       type: String,
-      default: '',
     },
     type: {
       type: String,
@@ -64,22 +60,18 @@ export default {
     },
     disabled: {
       type: Boolean,
-      default: false,
     },
     readonly: {
       type: Boolean,
-      default: false,
     },
     message: {
       type: String,
-      default: '',
     },
     errorMessage: {
       type: String,
-      default: '',
     },
     validation: {
-      default: '',
+      type: String,
     },
     autocomplete: {
       default: 'off',

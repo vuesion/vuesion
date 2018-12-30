@@ -46,11 +46,9 @@ export default {
     },
     placeholderStart: {
       type: String,
-      default: '',
     },
     placeholderEnd: {
       type: String,
-      default: '',
     },
   },
   data(): any {
@@ -77,6 +75,5 @@ export default {
 
 <style lang="scss" module>
 .vueDateRangePicker {
-  display: block;
 }
 </style>

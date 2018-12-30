@@ -5,12 +5,6 @@
 <script lang="ts">
 export default {
   name: 'VueNavBar',
-  components: {},
-  data() {
-    return {};
-  },
-  props: {},
-  computed: {},
 };
 </script>
 

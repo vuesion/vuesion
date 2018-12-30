@@ -16,19 +16,15 @@ export default {
     },
     disabled: {
       type: Boolean,
-      default: false,
     },
     loading: {
       type: Boolean,
-      default: false,
     },
     outlined: {
       type: Boolean,
-      default: false,
     },
     ghost: {
       type: Boolean,
-      default: false,
     },
   },
   components: {
@@ -38,28 +34,28 @@ export default {
     cssClasses() {
       const classes = [this.$style.button, this.$style.ripple];
 
-      if (this.outlined === true || this.ghost) {
+      if (this.outlined || this.ghost) {
         classes.push(this.$style.outlined);
       }
-      if (this.ghost === true) {
+      if (this.ghost) {
         classes.push(this.$style.ghost);
       }
       if (this.color) {
         classes.push(this.$style[this.color]);
       }
-      if (this.disabled === true || this.loading === true) {
+      if (this.disabled || this.loading) {
         classes.push(this.$style.disabled);
       }
 
       return classes;
     },
     actualWidth() {
-      return this.loading === true && this.$refs.button ? `${this.$refs.button.getBoundingClientRect().width}px` : null;
+      return this.loading && this.$refs.button ? `${this.$refs.button.getBoundingClientRect().width}px` : null;
     },
   },
   methods: {
     click(e: Event) {
-      if (this.disabled === false && this.loading === false) {
+      if (!this.disabled && !this.loading) {
         this.$emit('click', e);
       }
     },

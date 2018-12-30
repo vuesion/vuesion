@@ -20,11 +20,9 @@ export default {
   props: {
     medium: {
       type: Boolean,
-      default: false,
     },
     large: {
       type: Boolean,
-      default: false,
     },
     color: {
       type: String,

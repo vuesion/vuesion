@@ -6,8 +6,8 @@
     :aria-valuemin="min"
     :aria-valuenow="currentMin"
     :class="$style.vueSlider"
-    @mousedown="moveStart($event);"
-    @touchstart="moveStart($event);"
+    @mousedown="moveStart($event)"
+    @touchstart="moveStart($event)"
   >
     <ul :class="isMultiRange ? [$style.values, $style.multi] : $style.values">
       <li>{{ formatValue(currentMin) }}</li>
@@ -25,8 +25,8 @@
         tabindex="0"
         type="button"
         aria-label="left handle"
-        @click="currentSlider = 0;"
-        @focus="currentSlider = 0;"
+        @click="currentSlider = 0"
+        @focus="currentSlider = 0"
         @keydown="onKeyDown"
         @keyup="onKeyUp"
       />
@@ -40,8 +40,8 @@
         tabindex="0"
         type="button"
         aria-label="right handle"
-        @click="currentSlider = 1;"
-        @focus="currentSlider = 1;"
+        @click="currentSlider = 1"
+        @focus="currentSlider = 1"
         @keydown="onKeyDown"
         @keyup="onKeyUp"
       />
@@ -77,7 +77,6 @@ export default {
     },
     disabled: {
       type: Boolean,
-      default: false,
     },
   },
   data(): any {

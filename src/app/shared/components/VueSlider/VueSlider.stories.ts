@@ -26,3 +26,14 @@ story.add(
     },
   })),
 );
+
+story.add(
+  'Disabled',
+  withInfo({})(() => ({
+    components: { VueSlider },
+    template: `<vue-slider disabled :min="0" :max="200" :values="[0, 50]" @change="action" />`,
+    methods: {
+      action: action('@change'),
+    },
+  })),
+);
