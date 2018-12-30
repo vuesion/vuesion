@@ -9,8 +9,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
-    "skipLibCheck": true,
-    "allowJs": true
+    "skipLibCheck": true
   },
   "include": ["./src/**/*", "./src/**/*.vue"],
   "exclude": ["./node_modules", "./dist"]

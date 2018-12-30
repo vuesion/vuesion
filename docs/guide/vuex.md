@@ -1,7 +1,7 @@
-# Save your state
+# Persisting state
 
 By default, VueX keeps the state in memory. But the problem with keeping the state in memory is,
-that the state is reset as soon as the user reloads the page. 
+that the state is reset as soon as the user reloads the page.
 
 There are many ways to persist state if the user reloads the page,
 for example, you could keep variables in the query of the URL and restore the state if the page loads.
@@ -53,8 +53,8 @@ const beforePersistCookieStorage = (localState: IState): IState => {
           ),
 ```
 
-To persist your state to a cookie, you have to initialize a 
-new instance of `PersistCookieStorage` which takes a list of module names as 
+To persist your state to a cookie, you have to initialize a
+new instance of `PersistCookieStorage` which takes a list of module names as
 the first parameter and an `options` object as the second parameter.
 
 You can define the `cookieOptions`, which is a copy of the
@@ -66,21 +66,21 @@ and a callback to delete state that should not be persisted to the cookie.
 The following part of `/src/server/isomorphic.ts` is responsible for extracting the cookie data and merging it into the initial state of the app.
 
 ```js
-    /**
-     * default state
-     */
-    let state: IState = store.state;
-    state = PersistCookieStorage.getMergedStateFromServerContext<IState>(context, state);
-    state.app.config = context.appConfig;
+/**
+ * default state
+ */
+let state: IState = store.state;
+state = PersistCookieStorage.getMergedStateFromServerContext < IState > (context, state);
+state.app.config = context.appConfig;
 
-    if (state.app && state.app.locale) {
-      context.acceptLanguage = state.app.locale;
-      context.htmlLang = state.app.locale.substr(0, 2);
-    } else {
-      state.app.locale = context.acceptLanguage;
-    }
+if (state.app && state.app.locale) {
+  context.acceptLanguage = state.app.locale;
+  context.htmlLang = state.app.locale.substr(0, 2);
+} else {
+  state.app.locale = context.acceptLanguage;
+}
 
-    store.replaceState(state);
+store.replaceState(state);
 ```
 
 ::: warning Cookie size
@@ -116,7 +116,7 @@ const beforePersistLocalStorage = (localState: IState): IState => {
 new PersistLocalStorage(['counter'], beforePersistLocalStorage),
 ```
 
-To persist your state to LocalStorage, you have to initialize a 
-new instance of `PersistLocalStorage` which takes a list of module names as 
+To persist your state to LocalStorage, you have to initialize a
+new instance of `PersistLocalStorage` which takes a list of module names as
 the first parameter and a callback to delete state that should not be persisted
 to LocalStorage as the second parameter.

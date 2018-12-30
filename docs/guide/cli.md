@@ -1,4 +1,4 @@
-# Create your first page
+# Create a new Page
 
 To create a new page, you have to add a new module to your application.
 
@@ -6,7 +6,7 @@ To create a new page, you have to add a new module to your application.
 
 A module is an encapsulated piece of domain logic in your application.
 
-###  Use-cases for a module
+### Use-cases for a module
 
 **Dynamic page**: consists of a lot of view logic, at least one route and state-management
 
@@ -23,9 +23,9 @@ run `npm run g` and you will be asked some questions:
 
 ```bash
 ? [PLOP] Please choose a generator. (Use arrow keys)
-  component - Add a single file component 
-❯ module - Add a module with VueX store and routes 
-  connected - Add a VueX connected component 
+  component - Add a single file component
+❯ module - Add a module with VueX store and routes
+  connected - Add a VueX connected component
 
 ```
 
@@ -33,7 +33,7 @@ choose `module` and continue with `enter`:
 
 ```bash
 ? [PLOP] Please choose a generator. module - Add a module with vuex store and routes
-? What should it be called? 
+? What should it be called?
 ```
 
 This will be the name of your module, connected component and route.

@@ -9,8 +9,7 @@
           <div :class="$style.subTitle">
             {{
               $t(
-                'App.core.description' /* A flexible, scalable, opinionated boilerplate for production-ready PWAs with
-            focus on performance, development speed, and best practices */,
+                'App.core.description' /* The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices */,
               )
             }}
           </div>
@@ -87,12 +86,15 @@ export default {
 
 .stage {
   min-height: 100vh;
-  background: $brand-primary;
   overflow: hidden;
   position: relative;
   text-align: center;
   color: $text-color-inverse;
   background: $secondary-1-1;
+
+  @include mediaMin(tabletPortrait) {
+    min-height: 50vh;
+  }
 }
 
 .canvas {
@@ -102,6 +104,10 @@ export default {
   background-color: transparent;
   left: 0;
   top: 0;
+
+  @include mediaMin(tabletPortrait) {
+    min-height: 50vh;
+  }
 }
 
 .title,

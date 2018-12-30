@@ -1,6 +1,8 @@
 <template>
   <div :class="$style.form">
     <vue-grid>
+      <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'Form Example' }]" />
+
       <vue-grid-row>
         <vue-grid-item class="vueGridItem">
           <vue-headline level="1">Form example</vue-headline>
@@ -19,12 +21,13 @@ import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
 import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
 import FormExample from '../FormExample/FormExample.vue';
 import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
+import VueBreadcrumb from '../../shared/components/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
   metaInfo: {
     title: 'vue-starter - Form Example',
   },
-  components: { VueHeadline, FormExample, VueGridItem, VueGridRow, VueGrid },
+  components: { VueBreadcrumb, VueHeadline, FormExample, VueGridItem, VueGridRow, VueGrid },
   computed: {},
   data(): any {
     return {};

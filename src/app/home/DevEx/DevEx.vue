@@ -30,6 +30,19 @@
             </vue-card-body>
           </vue-card>
         </vue-grid-item>
+
+        <vue-grid-item class="vueGridItem">
+          <vue-card class="vueCard">
+            <vue-card-body>
+              <vue-icon-certificate />
+              <vue-headline level="3">Tons of already implemented use-cases</vue-headline>
+              <p>
+                e.g. HttpService with interceptors, vuex persist middleware, redirect scenarios, configs for different
+                environments, etc.
+              </p>
+            </vue-card-body>
+          </vue-card>
+        </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
   </div>
@@ -44,9 +57,10 @@ import VueCardBody from '../../shared/components/VueCard/VueCardBody/VueCardBody
 import VueIconCode from '../../shared/components/icons/VueIconCode/VueIconCode.vue';
 import VueIconBullhorn from '../../shared/components/icons/VueIconBullhorn/VueIconBullhorn.vue';
 import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
-
+import VueIconCertificate from '../../shared/components/icons/VueIconCertificate/VueIconCertificate.vue';
 export default {
   components: {
+    VueIconCertificate,
     VueHeadline,
     VueIconBullhorn,
     VueIconCode,

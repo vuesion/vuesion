@@ -1,7 +1,7 @@
 # Installation
 
 ::: warning COMPATIBILITY NOTE
-vue-starter requires Node.js >= 8 & npm >= 5.
+vue-starter requires Node.js >= 10 & npm >= 6.
 :::
 
 1. Install node 10 or higher

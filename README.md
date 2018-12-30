@@ -1,6 +1,6 @@
 # vue-starter <sup>![version badge](https://v.egoist.moe/gh/devCrossNet/vue-starter.svg)</sup> [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=flat)](https://twitter.com/intent/tweet?text=Vue-Starter%20an%20enterprise%20ready%20boilerplate%20for%20isomorphic,%20progressive%20web%20apps%20with%20Vue.JS&url=https://github.com/devCrossNet/vue-starter&via=_jwerner_&hashtags=VueStarter,VueJS,SEO,Enterprise) <a href="https://slack-vue-starter.herokuapp.com/" target="_blank"><img src="https://home-assistant.io/images/supported_brands/slack.png" height="20px" /></a>
 
-> A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices
+> The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices
 
 > 一个灵活的、可扩展的、自定的，已经准备好用于生产的渐进式网络应用样板，聚焦于性能、开发速度和最佳实践
 
@@ -42,8 +42,8 @@ Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.co
 
 1. Install node 10 or higher
 2. Install npm 6 or higher
-3. clone the repository `git clone https://github.com/devCrossNet/vue-starter`
-4. change directory `cd vue-starter`
+3. Clone the repository `git clone https://github.com/devCrossNet/vue-starter`
+4. Change directory `cd vue-starter`
 5. Install dependencies: `npm install`
 6. Run `npm run dev`
 

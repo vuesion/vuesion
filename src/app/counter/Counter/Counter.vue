@@ -1,6 +1,8 @@
 <template>
   <div :class="$style.counter">
     <vue-grid>
+      <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'VueX Example' }]" />
+
       <vue-grid-row>
         <vue-grid-item fill> <vue-headline level="1">Counter</vue-headline> </vue-grid-item>
 
@@ -28,12 +30,14 @@ import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
 import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
 import { registerModule } from '../../store';
 import { CounterModule } from '../module';
+import VueBreadcrumb from '../../shared/components/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
   metaInfo: {
     title: 'Counter',
   },
   components: {
+    VueBreadcrumb,
     VueHeadline,
     VueGrid,
     VueGridItem,

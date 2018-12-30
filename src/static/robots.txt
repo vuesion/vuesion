@@ -1,1 +1,5 @@
 User-agent: *
+
+Disallow: /*?*
+Disallow: /docs/
+Disallow: /storybook/

@@ -1,4 +1,4 @@
-# Build your application for production
+# Production build
 
 Now you want to bring your app online, it should be fast and optimized.
 You want the full package, the PWA package.
@@ -19,7 +19,7 @@ This will optimize your app as following:
 - It adds a [service-worker](https://github.com/oliviertassinari/serviceworker-webpack-plugin) to your application to make it a PWA
 - It compresses all assets
 
-## Analyze your bundle
+## Analyze your bundles
 
 Sometimes your bundles are just too big and you have no idea why this is happening.
 

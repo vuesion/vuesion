@@ -8,7 +8,7 @@ module.exports = {
       lang: 'en',
       title: 'vue-starter',
       description:
-        'A flexible, scalable, opinionated boilerplate for production-ready PWAs with focus on performance, development speed, and best practices',
+        'The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices',
     },
     '/zh-cn/': {
       lang: 'zh-CN',
@@ -119,12 +119,10 @@ module.exports = {
               children: [
                 'guide/install',
                 'guide/run',
-                'guide/docker',
                 'guide/test',
                 'guide/clean-up',
                 'guide/i18n',
                 'guide/cli',
-                'guide/third-party',
                 'guide/vuex',
                 'guide/build',
                 'guide/config',
@@ -133,17 +131,14 @@ module.exports = {
               ],
             },
             {
+              title: 'Tutorials',
+              collapsable: false,
+              children: ['tutorials/redirects', 'tutorials/prefetch-and-state-transfer', 'tutorials/third-party'],
+            },
+            {
               title: 'Docs',
               collapsable: false,
-              children: [
-                'docs/style-guide',
-                'docs/pwa',
-                'docs/npm-scripts',
-                'docs/i18n',
-                'docs/redirects',
-                'docs/storybook',
-                'docs/prefetch-and-state-transfer',
-              ],
+              children: ['docs/style-guide', 'docs/pwa', 'docs/npm-scripts', 'docs/storybook'],
             },
           ],
         },
