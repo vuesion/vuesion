@@ -78,14 +78,14 @@ describe('VueDataTable.vue', () => {
       },
     });
 
-    wrapper.vm.sortKey = 'firstname';
+    wrapper.setProps({ sortKey: 'firstname' });
 
     expect(wrapper.vm.sortedData[0].firstname).toBe('Julia');
     expect(wrapper.vm.sortedData[1].firstname).toBe('Julia');
     expect(wrapper.vm.sortedData[2].firstname).toBe('Julia');
     expect(wrapper.vm.sortedData[3].firstname).toBe('Julia');
 
-    wrapper.vm.sortDirection = 'desc';
+    wrapper.setProps({ sortDirection: 'desc' });
 
     expect(wrapper.vm.sortedData[0].firstname).toBe('Toni');
     expect(wrapper.vm.sortedData[1].firstname).toBe('Toni');
@@ -128,7 +128,7 @@ describe('VueDataTable.vue', () => {
     expect(wrapper.emitted('click')[0][0]).toEqual({ id: 2, name: 'foo' });
   });
 
-  test('should emit click', () => {
+  test('should sort', () => {
     const wrapper = mount<any>(VueDataTable, {
       i18n,
       localVue,
@@ -138,20 +138,20 @@ describe('VueDataTable.vue', () => {
       },
     });
 
-    expect(wrapper.vm.sortKey).toBe(null);
-    expect(wrapper.vm.sortDirection).toBe('asc');
+    expect(wrapper.vm.internalSortKey).toBe(null);
+    expect(wrapper.vm.internalSortDirection).toBe('asc');
 
     wrapper.vm.columnClick({ sortKey: 'foo' });
-    expect(wrapper.vm.sortKey).toBe('foo');
-    expect(wrapper.vm.sortDirection).toBe('asc');
+    expect(wrapper.vm.internalSortKey).toBe('foo');
+    expect(wrapper.vm.internalSortDirection).toBe('asc');
 
     wrapper.vm.columnClick({ sortKey: 'foo' });
-    expect(wrapper.vm.sortKey).toBe('foo');
-    expect(wrapper.vm.sortDirection).toBe('desc');
+    expect(wrapper.vm.internalSortKey).toBe('foo');
+    expect(wrapper.vm.internalSortDirection).toBe('desc');
 
     wrapper.vm.columnClick({ sortKey: 'foo' });
-    expect(wrapper.vm.sortKey).toBe(null);
-    expect(wrapper.vm.sortDirection).toBe('asc');
+    expect(wrapper.vm.internalSortKey).toBe(null);
+    expect(wrapper.vm.internalSortDirection).toBe('asc');
   });
 
   test('should display all the data if maxRows is set to 0', () => {

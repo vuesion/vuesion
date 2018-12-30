@@ -88,3 +88,21 @@ story.add(
     },
   })),
 );
+
+story.add(
+  'Initial sort',
+  withInfo({})(() => ({
+    i18n,
+    components: { VueDataTable },
+    data() {
+      return {
+        header: dataTableHeaderFixture,
+        data: dataTableDataFixture,
+      };
+    },
+    template: `<vue-data-table :header="header" :data="data" sort-key="firstname" sort-direction="desc" @click="action" />`,
+    methods: {
+      action: action('@onClick'),
+    },
+  })),
+);
