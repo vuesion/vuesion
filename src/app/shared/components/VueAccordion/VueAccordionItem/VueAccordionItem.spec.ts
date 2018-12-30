@@ -10,6 +10,10 @@ describe('VueAccordionItem.vue', () => {
       propsData: {
         title: 'foo',
       },
+      provide: {
+        register: jest.fn(),
+        openItem: jest.fn(),
+      },
     });
 
     expect(wrapper.find(`.header`).text()).toMatch('foo');
@@ -22,6 +26,10 @@ describe('VueAccordionItem.vue', () => {
         title: 'foo',
         initOpen: false,
       },
+      provide: {
+        register: jest.fn(),
+        openItem: jest.fn(),
+      },
     });
 
     wrapper.setData({ idx: 0, open: true });
@@ -29,24 +37,24 @@ describe('VueAccordionItem.vue', () => {
     expect(wrapper.findAll(`.open`)).toHaveLength(1);
   });
 
-  test('calls parent functions', () => {
+  test('calls register', () => {
+    const register = jest.fn();
+    const openItem = jest.fn();
     const wrapper = mount<any>(VueAccordionItem, {
       localVue,
       propsData: {
         title: 'foo',
         initOpen: false,
       },
+      provide: {
+        register,
+        openItem,
+      },
     });
 
-    (wrapper as any).vm.$options.created[1].call(wrapper.vm);
-
-    wrapper.vm.$parent.openItem = jest.fn();
-    wrapper.vm.$parent.register = jest.fn();
-
     wrapper.vm.click();
-    (wrapper as any).vm.$options.created[1].call(wrapper.vm);
 
-    expect(wrapper.vm.$parent.openItem).toHaveBeenCalled();
-    expect(wrapper.vm.$parent.register).toHaveBeenCalled();
+    expect(openItem).toHaveBeenCalled();
+    expect(register).toHaveBeenCalled();
   });
 });

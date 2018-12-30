@@ -16,9 +16,9 @@ export default {
     },
     isActive: {
       type: Boolean,
-      default: false,
     },
   },
+  inject: ['register'],
   data(): any {
     return {
       idx: null,
@@ -76,9 +76,7 @@ export default {
   created() {
     this.active = this.isActive;
 
-    if (this.$parent.register) {
-      this.$parent.register(this);
-    }
+    this.register(this);
   },
 };
 </script>

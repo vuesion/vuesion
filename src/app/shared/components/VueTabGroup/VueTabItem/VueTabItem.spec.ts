@@ -5,6 +5,7 @@ const localVue = createLocalVue();
 
 describe('VueTabItem.vue', () => {
   test('renders component', () => {
+    const register = jest.fn();
     const wrapper = mount<any>(VueTabItem, {
       localVue,
       slots: {
@@ -13,6 +14,7 @@ describe('VueTabItem.vue', () => {
       propsData: {
         title: 'foo',
       },
+      provide: { register },
     });
 
     expect(wrapper.vm.cssClasses).toEqual(['vueTab']);
@@ -22,11 +24,7 @@ describe('VueTabItem.vue', () => {
     wrapper.setData({ active: false });
     expect(wrapper.findAll('p')).toHaveLength(0);
 
-    wrapper.vm.$parent.register = jest.fn();
-
-    (wrapper as any).vm.$options.created['1'].call(wrapper.vm);
-
-    expect(wrapper.vm.$parent.register).toHaveBeenCalledTimes(1);
+    expect(register).toHaveBeenCalledTimes(1);
 
     wrapper.setData({ active: true });
     expect(wrapper.findAll('p')).toHaveLength(1);
