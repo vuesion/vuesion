@@ -11,7 +11,7 @@
       />
 
       <tbody>
-        <tr v-for="row in rows" :class="$style.vueDataTableRow" @click="rowClick(row);">
+        <tr v-for="row in rows" :class="$style.vueDataTableRow" @click="rowClick(row)">
           <td v-for="(cell, idx) in row" v-if="cell.visible" :key="idx" :class="$style.column">
             <slot :name="cell.slot" :cell="cell" :row="getRowObject(row)">{{ cell.value }}</slot>
           </td>
@@ -65,16 +65,17 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '',
     },
   },
   computed: {
     filteredData() {
-      if (this.searchTerm.length === 0) {
+      const query = this.searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+      if (query.length === 0) {
         return this.data;
       }
 
-      const searchRegex: RegExp = new RegExp(`${this.searchTerm}`, 'gmi');
+      const searchRegex: RegExp = new RegExp(`${query}`, 'gmi');
       const filter = (row: any) => {
         let match: boolean = false;
 
