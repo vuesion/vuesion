@@ -5,8 +5,8 @@
         v-for="header in headerItems"
         :key="header.idx"
         tabindex="0"
-        @click="changeTab(header.idx);"
-        @keypress.space.enter.stop.prevent="changeTab(header.idx);"
+        @click="changeTab(header.idx)"
+        @keypress.space.enter.stop.prevent="changeTab(header.idx)"
         :class="currentTab === header.idx ? $style.active : ''"
         role="tab"
       >
@@ -22,6 +22,11 @@
 <script lang="ts">
 export default {
   name: 'VueTabGroup',
+  provide() {
+    return {
+      register: this.register,
+    };
+  },
   data(): any {
     return {
       tabs: [],

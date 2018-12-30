@@ -11,6 +11,12 @@ export default {
       default: false,
     },
   },
+  provide() {
+    return {
+      register: this.register,
+      openItem: this.openItem,
+    };
+  },
   data(): any {
     return {
       items: [],
@@ -57,6 +63,5 @@ export default {
 
 <style lang="scss" module>
 .vueAccordion {
-  display: block;
 }
 </style>

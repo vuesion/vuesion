@@ -34,6 +34,7 @@ export default {
       default: false,
     },
   },
+  inject: ['register', 'openItem'],
   data(): any {
     return {
       idx: null,
@@ -56,13 +57,11 @@ export default {
   },
   methods: {
     click() {
-      this.$parent.openItem(this.idx);
+      this.openItem(this.idx);
     },
   },
   created() {
-    if (this.$parent.register) {
-      this.$parent.register(this);
-    }
+    this.register(this);
   },
 };
 </script>
