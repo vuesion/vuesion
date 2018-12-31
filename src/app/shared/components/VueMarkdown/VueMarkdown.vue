@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../styles';
+@import '../../design-system';
 
 .vueMarkdown {
   h1,

@@ -46,6 +46,7 @@ describe('Counter.vue', () => {
       store,
       localVue,
       i18n,
+      stubs: ['router-link'],
     });
 
     expect(wrapper.find('h1').text()).toBe('Counter');
@@ -56,6 +57,7 @@ describe('Counter.vue', () => {
       store,
       localVue,
       i18n,
+      stubs: ['router-link'],
     });
 
     wrapper.vm.increment();

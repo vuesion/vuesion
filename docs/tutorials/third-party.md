@@ -4,62 +4,44 @@
 
 ### Installation
 
-Before we start please install vuetify and the webpack css-loader by running `npm install vuetify --save --save-exact && npm install --save-dev --save-exact css-loader` and follow the [Clean-Up-Guide](/guide/clean-up.md).
+Before we start please install vuetify and the webpack css-loader by running `npm install vuetify --save && npm install --save-dev css-loader` and follow the [Clean-Up-Guide](/guide/clean-up.md).
 
 ### Configure Webpack
 
-`./tools/webpack/base.ts`:
+`./.vue-starter/webpack.config.js`:
 
 ```js
-...
+const nodeExternals = require('webpack-node-externals');
+/**
+ * modify webpack config
+ * @param {webpack.Configuration} config - webpack config
+ * @param {string} target - build target, can  be "client" or "server"
+ * @returns {*}
+ */
+module.exports = (config, target) => {
+  config.performance = {
+    hints: 'warning',
+    maxEntrypointSize: 318000,
+    maxAssetSize: 267000,
+  };
 
-  resolve: {
-    // Modified
-    extensions: ['.ts', '.js', '.vue', '.json', '.node', '.css', '.scss'],
-    ...
-  },
+  config.resolve.extensions = ['.ts', '.js', '.vue', '.json', '.node', '.css', '.scss'];
 
-...
+  config.module.rules.push({
+    test: /\.css$/,
+    loader: ['vue-style-loader', 'css-loader'],
+  });
 
-      {
-        test:   /\.css$/,
-        loader: ['vue-style-loader', 'css-loader'],
-      },
-      {
-        test: /\.scss$/,
-        ...
-      }
+  if (target === 'server') {
+    config.externals = [
+      nodeExternals({
+        whitelist: ['webpack/hot/poll?1000', /\.css$/, /vuetify/],
+      }),
+    ];
+  }
 
-...
-
-```
-
-`./tools/webpack/server.ts`:
-
-```js
-...
-
-  externals: [
-    // Modified
-    utils.nodeExternals({
-                    whitelist: ['webpack/hot/poll?1000', /\.css$/, /vuetify/],
-                  }),
-  ],
-
-...
-```
-
-`./tools/webpack/isomorphic.ts`:
-
-```js
-...
-
-  externals: [
-    // Modified
-    utils.nodeExternals({ whitelist: [/\.css$/, /vuetify/] }),
-  ],
-
-...
+  return config;
+};
 ```
 
 ### Register vuetify

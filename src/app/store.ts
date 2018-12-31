@@ -2,9 +2,9 @@ import Vue from 'vue';
 import Vuex, { Module, Store } from 'vuex';
 import merge from 'deepmerge';
 import { DefaultState, IState } from './state';
-import { VuexPersist } from './shared/plugins/vuex-persist/vuex-persist';
-import { PersistLocalStorage } from './shared/plugins/vuex-persist/PersistLocalStorage';
-import { PersistCookieStorage } from './shared/plugins/vuex-persist/PersistCookieStorage';
+import { VuexPersist } from 'vue-starter-vuex-persist';
+import { PersistLocalStorage } from 'vue-starter-vuex-persist/dist/PersistLocalStorage';
+import { PersistCookieStorage } from 'vue-starter-vuex-persist/dist/PersistCookieStorage';
 import { AppModule } from './app/module';
 
 Vue.use(Vuex);

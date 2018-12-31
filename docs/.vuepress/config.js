@@ -138,7 +138,7 @@ module.exports = {
             {
               title: 'Docs',
               collapsable: false,
-              children: ['docs/style-guide', 'docs/pwa', 'docs/npm-scripts', 'docs/storybook'],
+              children: ['docs/style-guide', 'docs/pwa', 'docs/npm-scripts'],
             },
           ],
         },

@@ -4,8 +4,8 @@
       <vue-headline
         level="4"
         :native="false"
-        @click="setSelecting('year');"
-        @keypress.enter.space.stop.prevent="setSelecting('year');"
+        @click="setSelecting('year')"
+        @keypress.enter.space.stop.prevent="setSelecting('year')"
         role="button"
         tabindex="0"
         :aria-label="selectedYear"
@@ -15,8 +15,8 @@
       <vue-headline
         level="5"
         :native="false"
-        @click="setSelecting('date');"
-        @keypress.enter.space.stop.prevent="setSelecting('date');"
+        @click="setSelecting('date')"
+        @keypress.enter.space.stop.prevent="setSelecting('date')"
         role="button"
         tabindex="0"
         :aria-label="$d(calculatedDate, 'calendarHeader')"
@@ -29,8 +29,8 @@
       <div :class="$style.date">
         <div
           :class="$style.arrow"
-          @click="setByMonth(currentMonth - 1);"
-          @keypress.enter.space.stop.prevent="setByMonth(currentMonth - 1);"
+          @click="setByMonth(currentMonth - 1)"
+          @keypress.enter.space.stop.prevent="setByMonth(currentMonth - 1)"
           role="button"
           :aria-label="$t('components.calendar.previousMonth' /* previous month */)"
           tabindex="0"
@@ -40,8 +40,8 @@
 
         <div
           :class="$style.arrow"
-          @click="setByMonth(currentMonth + 1);"
-          @keypress.enter.space.stop.prevent="setByMonth(currentMonth + 1);"
+          @click="setByMonth(currentMonth + 1)"
+          @keypress.enter.space.stop.prevent="setByMonth(currentMonth + 1)"
           role="button"
           :aria-label="$t('components.calendar.nextMonth' /* next month */)"
           tabindex="0"
@@ -68,9 +68,9 @@
               v-for="day in days"
               :tabindex="day.day ? 0 : null"
               :aria-label="day.day ? $d(new Date(currentYear, currentMonth, day.day), 'calendarLabel') : null"
-              @keydown.enter.stop.prevent="setByDay(day);"
-              @keydown.space.stop.prevent="setByDay(day);"
-              @click="setByDay(day);"
+              @keydown.enter.stop.prevent="setByDay(day)"
+              @keydown.space.stop.prevent="setByDay(day)"
+              @click="setByDay(day)"
             >
               <span>{{ day.day }}</span>
             </td>
@@ -85,8 +85,8 @@
         :id="`${year.year}-calendar-year`"
         :key="year.year"
         v-for="year in years"
-        @click="setByYear(year.year);"
-        @keypress.enter.space.stop.prevent="setByYear(year.year);"
+        @click="setByYear(year.year)"
+        @keypress.enter.space.stop.prevent="setByYear(year.year)"
         :aria-label="year.year"
         tabindex="0"
       >
@@ -358,7 +358,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../styles';
+@import '../../design-system';
 
 .calendar {
   width: 100%;

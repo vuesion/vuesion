@@ -5,10 +5,16 @@ import { i18n } from '../../plugins/i18n/i18n';
 const localVue = createLocalVue();
 
 describe('VueDatePicker.vue', () => {
+  const defaultProps = {
+    name: 'test',
+    id: 'test',
+  };
+
   test('renders component', () => {
     const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
+      propsData: defaultProps,
     });
 
     expect(wrapper.findAll(`.vueDatePicker`)).toHaveLength(1);
@@ -20,6 +26,7 @@ describe('VueDatePicker.vue', () => {
     const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
+      propsData: defaultProps,
     });
 
     expect(wrapper.vm.inputValue).toBe('');
@@ -34,6 +41,7 @@ describe('VueDatePicker.vue', () => {
       i18n,
       propsData: {
         currentDate: new Date(),
+        ...defaultProps,
       },
     });
 
@@ -44,6 +52,7 @@ describe('VueDatePicker.vue', () => {
     const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
+      propsData: defaultProps,
     });
 
     wrapper.vm.onChange();
@@ -55,6 +64,7 @@ describe('VueDatePicker.vue', () => {
     const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
+      propsData: defaultProps,
     });
 
     expect(wrapper.vm.show).toBeFalsy();
@@ -67,6 +77,7 @@ describe('VueDatePicker.vue', () => {
     const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
+      propsData: defaultProps,
     });
 
     const event: any = {

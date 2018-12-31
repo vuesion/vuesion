@@ -1,15 +1,7 @@
 # Stay up to date
 
-::: tip Below version < 1.1.0
-Please download the file [./tools/scripts/update.ts](https://github.com/devCrossNet/vue-starter/blob/master/tools/scripts/update.ts)
-, copy it to `./tools/scripts/update.ts` and add the following script to your `package.json`:
-
-```json
-    "update": "npm run compile-tools && node ./tools/scripts/update.js",
-```
-:::
-
 ## Get the latest changes
+
 If you want to keep your copy of the vue-starter up to date follow these steps:
 
 - check that you use a Version Control System for your app (e.g. github, gitlab, butbucket, etc.)
@@ -29,7 +21,7 @@ But usually, you did not keep the history of the vue-starter in your own app so 
 Now you see the changes in your changelog:
 
 - go through all the files and merge your changes (revert the parts that would break your app)
-- run the tests and lint your project: `npm run test:coverage`, `npm run test:tools`, `npm run lint`
+- run the tests and lint your project: `npm run test && npm run lint`
 - start the app
 
 If everything works, commit your changes and merge it into your master.

@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../styles';
+@import '../../design-system';
 
 .vueTruncate {
   display: block;

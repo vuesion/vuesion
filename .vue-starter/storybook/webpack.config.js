@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const base = require('../tools/webpack/base').default;
+const base = require('../../node_modules/vue-starter-service/dist/webpack/config/base').default;
 
 module.exports = (storybookBaseConfig, env, defaultConfig) => {
   const config = defaultConfig;

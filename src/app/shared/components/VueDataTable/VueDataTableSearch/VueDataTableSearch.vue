@@ -5,7 +5,7 @@
       name="dataTableSearch"
       :placeholder="placeholder"
       :value="value"
-      @input="$emit('input', $event);"
+      @input="$emit('input', $event)"
     />
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../../styles';
+@import '../../../design-system';
 
 .vueDataTableSearch {
   padding-top: $space-unit * 2;

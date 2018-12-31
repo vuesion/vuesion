@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../shared/styles';
+@import '../../shared/design-system';
 
 .notFound {
   padding-top: $nav-bar-height;

@@ -80,3 +80,16 @@ Go to [http://localhost:3000/foo](http://localhost:3000/foo) and you should see 
 ::: tip Does everything work?
 To verify if you didn't break something, run `npm test`.
 :::
+
+## Configuration
+
+To change the paths for the generator CLI, see the following section in the file: `./.vue-starter/config.json`
+
+```js
+  "generators": {
+    "blueprintDirectory": "./.vue-starter/generators",
+    "outputDirectory": "./src/app",
+    "routerFile": "./src/app/router.ts",
+    "stateFile": "./src/app/state.ts"
+  },
+```

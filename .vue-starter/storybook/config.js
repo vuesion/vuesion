@@ -7,16 +7,16 @@ import { checkA11y } from '@storybook/addon-a11y';
 import { withOptions } from '@storybook/addon-options';
 import { setDefaults } from 'storybook-addon-vue-info';
 import '@storybook/addon-console';
-import '../src/app/shared/_styles.scss';
-import '../src/app/shared/styles/reset.scss';
-import '../src/app/shared/styles/global.scss';
-import '../src/app/shared/styles/typo.scss';
+import '../../src/app/shared/_design-system.scss';
+import '../../src/app/shared/designSystem/reset.scss';
+import '../../src/app/shared/designSystem/global.scss';
+import '../../src/app/shared/designSystem/typo.scss';
 
 Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(VeeValidate);
 
-const req = require.context('../src', true, /.stories.ts$/);
+const req = require.context('../../src', true, /.stories.ts$/);
 
 const loadStories = () => {
   req

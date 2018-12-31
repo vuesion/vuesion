@@ -1,0 +1,17 @@
+{
+  "currentVersion": "v1.4.0",
+  "generators": {
+    "blueprintDirectory": "./.vue-starter/generators",
+    "outputDirectory": "./src/app",
+    "routerFile": "./src/app/router.ts",
+    "stateFile": "./src/app/state.ts"
+  },
+  "i18n": {
+    "defaultLocale": "en",
+    "supportedLocales": ["en", "de", "pt", "zh-cn"]
+  },
+  "clean": ["./dist", "./coverage", "./storybook-static"],
+  "prettier": {
+    "extensions": "ts,vue,js,json,scss,sass,css,yaml,yml"
+  }
+}
