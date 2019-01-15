@@ -70,7 +70,7 @@ export default {
     position: absolute;
     transform: translate3d(0, 8px, 0);
     transition-property: opacity, transform;
-    transition-duration: $transition-duration;
+    transition-duration: $brand-transition-duration;
     transition-timing-function: ease-in-out;
   }
 

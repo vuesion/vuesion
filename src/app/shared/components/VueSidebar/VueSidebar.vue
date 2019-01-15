@@ -70,7 +70,7 @@ export default {
   margin: $sidebar-margin;
   overflow-y: scroll;
   transform: translateX(-100%);
-  transition: transform $transition-duration ease-in-out;
+  transition: transform $brand-transition-duration ease-in-out;
   width: $sidebar-width;
   -webkit-overflow-scrolling: touch;
 

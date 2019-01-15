@@ -529,7 +529,7 @@ export default {
     transition: background-color 0.15s;
 
     &:hover {
-      background-color: $bg-color;
+      background-color: $brand-bg-color;
     }
   }
 

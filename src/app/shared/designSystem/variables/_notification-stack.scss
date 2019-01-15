@@ -6,9 +6,9 @@ $notification-padding: $space-unit * 2 $space-unit * 5 $space-unit * 2 $space-un
 $notification-margin: 0 0 $space-unit 0;
 $notification-shadow: none;
 $notification-max-height: $space-unit * 10;
-$notification-close-bg: $bg-color;
+$notification-close-bg: $brand-bg-color;
 $notification-close-width: $space-unit * 5;
 $notification-close-cross-color: $brand-primary;
 
-$notification-default-bg: $bg-color-variant;
-$notification-default-border: 1px solid $border-color;
+$notification-default-bg: $brand-bg-color-variant;
+$notification-default-border: 1px solid $brand-border-color;

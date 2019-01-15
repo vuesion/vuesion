@@ -1,6 +1,6 @@
-$card-bg: $bg-color-variant;
+$card-bg: $brand-bg-color-variant;
 $card-shadow: none;
-$card-border: 1px solid $border-color;
+$card-border: 1px solid $brand-border-color;
 $card-border-radius: 0;
 $card-margin: 0;
 
@@ -12,10 +12,10 @@ $card-header-title-font-size: inherit;
 $card-header-title-font-weight: $font-weight-medium;
 $card-header-subtitle-font-size: inherit;
 $card-header-subtitle-font-weight: 300;
-$card-header-subtitle-color: $text-secondary-color;
+$card-header-subtitle-color: $brand-text-secondary-color;
 
 $card-body-padding: $space-unit $space-unit * 2;
 $card-body-font-size: inherit;
-$card-body-color: $text-color;
+$card-body-color: $brand-text-color;
 
 $card-footer-padding: $space-unit;

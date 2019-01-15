@@ -91,7 +91,7 @@ export default {
 
   :global {
     .vueCard {
-      background: $bg-color;
+      background: $brand-bg-color;
     }
   }
 }

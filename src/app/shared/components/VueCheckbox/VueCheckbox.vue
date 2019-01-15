@@ -143,7 +143,7 @@ export default {
       border-top: none;
       border-right: none;
       transition-property: opacity, transform;
-      transition-duration: $transition-duration;
+      transition-duration: $brand-transition-duration;
       transition-timing-function: cubic-bezier(0, 0.84, 0.83, 0.67);
       box-shadow: $checkbox-shadow;
     }
@@ -218,7 +218,7 @@ export default {
       border-radius: 50%;
       background-color: #fff;
       transition-property: opacity;
-      transition-duration: $transition-duration;
+      transition-duration: $brand-transition-duration;
       transition-timing-function: cubic-bezier(0, 0.84, 0.83, 0.67);
       box-shadow: $checkbox-shadow;
     }

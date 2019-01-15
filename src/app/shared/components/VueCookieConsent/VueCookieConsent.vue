@@ -79,7 +79,7 @@ export default {
   background-color: $card-bg;
   width: 100%;
   bottom: 0;
-  transition: opacity $transition-duration ease-in-out;
+  transition: opacity $brand-transition-duration ease-in-out;
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
 }
 

@@ -1,11 +1,11 @@
-$input-border-bottom: 1px solid $border-color;
+$input-border-bottom: 1px solid $brand-border-color;
 $input-background-color: transparent;
 $input-padding: $space-unit 0;
 $input-margin: 0;
 $input-font-family: $font-family;
 $input-font-size: inherit;
 $input-font-weight: $font-weight-medium;
-$input-color: $text-color;
+$input-color: $brand-text-color;
 $input-height: $space-unit * 4;
 $input-error-color: $brand-danger;
 

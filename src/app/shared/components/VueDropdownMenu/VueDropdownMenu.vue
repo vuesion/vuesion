@@ -176,7 +176,7 @@ export default {
       margin: 0;
       padding: 0;
       height: 0;
-      border-top: 1px solid $border-color;
+      border-top: 1px solid $brand-border-color;
     }
   }
 }
