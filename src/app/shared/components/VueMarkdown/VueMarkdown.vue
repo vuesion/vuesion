@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vueMarkdown" v-html="html" />
+  <div :class="$style.vueMarkdown" v-html="html" ref="content" />
 </template>
 
 <script lang="ts">
@@ -38,12 +38,29 @@ export default {
 
       this.html = (marked as any)(text);
     },
+    handleClick(event: any) {
+      const { target } = event;
+      const url = new URL(target.href);
+      const to = url.pathname;
+
+      event.preventDefault();
+      this.$router.push(to);
+    },
   },
   created() {
     this.createHTML();
   },
   beforeMount() {
     this.createHTML();
+  },
+  mounted() {
+    this.$refs.content.addEventListener('click', this.handleClick);
+  },
+  updated() {
+    this.createHTML();
+  },
+  beforeDestroy() {
+    this.$refs.content.removeEventListener('click', this.handleClick);
   },
 };
 </script>
