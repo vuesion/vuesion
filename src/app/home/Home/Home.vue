@@ -84,7 +84,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../shared/styles';
+@import '../../shared/design-system';
 
 .home {
   h2 {

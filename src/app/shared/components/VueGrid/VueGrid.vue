@@ -9,7 +9,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../styles';
+@import '../../design-system';
 
 .grid {
   max-width: 425px;

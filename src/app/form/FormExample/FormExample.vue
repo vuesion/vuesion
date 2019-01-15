@@ -108,7 +108,7 @@
           id="newsletterYes"
           label="I want to subscribe to the newsletter"
           :checked="form.newsletter === true"
-          @click="form.newsletter = !form.newsletter;"
+          @click="form.newsletter = !form.newsletter"
           radio
         />
         <br />
@@ -117,7 +117,7 @@
           id="newsletterNo"
           label="I don't want to subscribe to the newsletter"
           :checked="form.newsletter === false"
-          @click="form.newsletter = !form.newsletter;"
+          @click="form.newsletter = !form.newsletter"
           radio
         />
       </vue-grid-item>
@@ -212,7 +212,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../shared/styles';
+@import '../../shared/design-system';
 
 .formExample {
   display: block;

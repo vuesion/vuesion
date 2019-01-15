@@ -20,16 +20,6 @@ The service-worker implementation is based on the [serviceworker-webpack-plugin]
 We have chosen this plugin over the [Offline-Plugin](https://github.com/NekR/offline-plugin) because it gives much more
 freedom to the developer how the service-worker should behave for the specific app.
 
-If you want to change the plugin configuration, have a look into the file `./tools/webpack/client.ts`:
-
-```js
-...
-
-new ServiceWorkerWebpackPlugin({ entry: path.join(__dirname, '..', 'src/client/sw.ts') }),
-
-...
-```
-
 ::: tip Further read
 If you have issues with the service-worker and how the cache works - have a look at this [gist](https://gist.github.com/Rich-Harris/fd6c3c73e6e707e312d7c5d7d0f3b2f9).
 

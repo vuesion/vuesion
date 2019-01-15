@@ -34,7 +34,7 @@ the only files that are not hot-reloaded are the files in the `./i18n` directory
 ## Change web-server port
 
 Your app runs on port `3000` by default, set the `PORT` environment variable to configure a different port
-e.g. `PORT=8080 npm run dev` in development mode or `PORT=8080 npm start` for your production build.
+e.g. `npm run dev -- --port 8080` in development mode or `PORT=8080 npm start` for your production build.
 
 ## Run your application with docker
 

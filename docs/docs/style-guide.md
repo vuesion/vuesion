@@ -6,37 +6,34 @@ and the [Angular Style Guide](https://angular.io/guide/styleguide).
 ## File structure conventions
 
 ```
+├── .vue-starter              // vue-starter configuration
 ├── cypress                   // e2e tests
 ├── docs                      // can be deleted
 ├── i18n                      // language files used by vue-i18n
 ├── logs                      // express logs
-├── src
-│   ├── app                   // main app code
-│   │   ├── app               // app module - contains main component
-│   │   ├── config            // app config to pass data from the server environment to the client
-│   │   ├── shared            // shared code
-│   │   ├── ...               // new modules will be added on this directory level
-│   │   ├── app.ts            // app setup
-│   │   ├── router.ts         // global routing information
-│   │   ├── state.ts          // global app state
-│   │   └── store.ts          // vuex store
-│   ├── client
-│   │   ├── index.ts          // entry point for client application
-│   │   └── sw.ts             // service worker
-│   ├── index.template.html   // template, needed for SSR and webpack
-│   ├── server
-│   │   ├── dev               // dev server
-│   │   ├── server.ts         // express app
-│   │   ├── index.ts          // entry point for server application
-│   │   ├── isomorphic.ts     // entry point for server-side rendering
-│   │   ├── middlewares       // express middlewares
-│   │   ├── routes            // express routes
-│   │   └── utils             // utils for SSR
-│   └── static                // static files mapped to /
-└── tools
-    ├── generators            // generator cli
-    ├── scripts               // productivity tools
-    └── webpack               // webpack configs
+└── src
+    ├── app                   // main app code
+    │   ├── app               // app module - contains main component
+    │   ├── config            // app config to pass data from the server environment to the client
+    │   ├── shared            // shared code
+    │   ├── ...               // new modules will be added on this directory level
+    │   ├── app.ts            // app setup
+    │   ├── router.ts         // global routing information
+    │   ├── state.ts          // global app state
+    │   └── store.ts          // vuex store
+    ├── client
+    │   ├── index.ts          // entry point for client application
+    │   └── sw.ts             // service worker
+    ├── index.template.html   // template, needed for SSR and webpack
+    ├── server
+    │   ├── server.ts         // express app
+    │   ├── index.ts          // entry point for server application
+    │   ├── isomorphic.ts     // entry point for server-side rendering
+    │   ├── middlewares       // express middlewares
+    │   ├── routes            // express routes
+    │   └── utils             // utils for SSR
+    └── static                // static files mapped to /
+
 ```
 
 ### What is a Module?

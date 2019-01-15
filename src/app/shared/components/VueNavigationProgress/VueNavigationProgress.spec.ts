@@ -7,6 +7,9 @@ describe('VueNavigationProgress.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueNavigationProgress, {
       localVue,
+      propsData: {
+        isNavigating: false,
+      },
     });
 
     expect(wrapper.classes()).toContain('vueNavigationProgress');

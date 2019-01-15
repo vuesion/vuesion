@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../styles/variables';
+@import '../../designSystem/variables';
 
 .vueBreadcrumb {
   padding: 0;

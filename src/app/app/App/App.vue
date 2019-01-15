@@ -179,10 +179,10 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../shared/styles';
-@import '../../shared/styles/reset';
-@import '../../shared/styles/typo';
-@import '../../shared/styles/global';
+@import '../../shared/design-system';
+@import '../../shared/designSystem/reset';
+@import '../../shared/designSystem/typo';
+@import '../../shared/designSystem/global';
 
 .app {
   min-height: 100vh;

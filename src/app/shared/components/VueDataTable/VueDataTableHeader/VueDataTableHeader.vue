@@ -6,7 +6,7 @@
         v-if="column.visible"
         :key="idx"
         :class="$style.column"
-        @click="onClick(column);"
+        @click="onClick(column)"
       >
         {{ column.title }}
 
@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../../styles';
+@import '../../../design-system';
 
 .vueDataTableHeader {
   border: $data-table-header-border;

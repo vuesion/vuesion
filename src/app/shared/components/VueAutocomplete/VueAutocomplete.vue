@@ -47,7 +47,7 @@
         :id="`result-item-${index}-${instanceId}`"
         :aria-selected="isSelected(index)"
         :class="isSelected(index) ? $style.isSelected : ''"
-        @click="onOptionClick(index);"
+        @click="onOptionClick(index)"
       >
         {{ option.label }}
       </li>
@@ -258,7 +258,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../styles';
+@import '../../design-system';
 
 .vueAutocomplete {
   position: relative;

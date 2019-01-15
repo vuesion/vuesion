@@ -6,7 +6,7 @@ import acceptLanguage from 'accept-language';
 import { BundleRenderer } from 'vue-server-renderer';
 import { IServerContext } from '../isomorphic';
 import { Logger } from '../utils/Logger';
-import { AppConfig } from '../../app/config/AppConfig';
+import { AppConfig } from '@/app/config/AppConfig';
 import { isProd, resolve } from '../utils/Utils';
 import { RuntimeConfig } from '../utils/RuntimeConfig';
 
@@ -34,7 +34,7 @@ const setHeaders = (res: Response): void => {
   res.setHeader('Expires', '0');
   res.setHeader('max-age', '0');
 };
-const packageJson: any = JSON.parse(fs.readFileSync(resolve('../../package.json')).toString());
+const vueStarterConfig: any = JSON.parse(fs.readFileSync(resolve('../../.vue-starter/config.json')).toString());
 
 export const SSRRoutes = (app: Express.Application): any => {
   if (isProd) {
@@ -57,12 +57,12 @@ export const SSRRoutes = (app: Express.Application): any => {
       return res.end('waiting for compilation... refresh in a moment.');
     }
 
-    acceptLanguage.languages(packageJson.config['supported-locales']);
+    acceptLanguage.languages(vueStarterConfig.i18n.supportedLocales);
 
     const startTime: number = Date.now();
     const acceptLang: string = req.headers['accept-language']
       ? req.headers['accept-language'].toString()
-      : packageJson.config['default-locale'];
+      : vueStarterConfig.i18n.defaultLocale;
     const defaultLang: string = acceptLanguage.get(acceptLang);
     const errorHandler = (err: any) => {
       if (err && err.code === 404) {

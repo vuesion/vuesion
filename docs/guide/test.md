@@ -2,7 +2,7 @@
 
 Your app is installed and runs in development mode, but does every component in the app work correctly?
 
-To check if all the features, components, services, etc. work as intended, you should run the tests suite with `npm run test:coverage`.
+To check if all the features, components, services, etc. work as intended, you should run the tests suite with `npm run test`.
 
 You will see something like this:
 

@@ -2,8 +2,8 @@
   <div
     :class="$style.vueCarousel"
     :style="{ minHeight: `${minHeight}px` }"
-    @mouseenter="pause = true;"
-    @mouseleave="pause = false;"
+    @mouseenter="pause = true"
+    @mouseleave="pause = false"
   >
     <fade-animation
       v-for="(image, idx) in preloadedImages"
@@ -119,7 +119,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../styles';
+@import '../../design-system';
 
 .vueCarousel {
   position: relative;

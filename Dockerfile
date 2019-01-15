@@ -11,6 +11,7 @@ WORKDIR /app
 COPY --from=builder /app/package* ./
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/i18n ./i18n
+COPY --from=builder /app/.vue-starter/config.json ./.vue-starter/config.json
 RUN npm install --only=production
 EXPOSE 3001
 CMD PORT=3001 npm start

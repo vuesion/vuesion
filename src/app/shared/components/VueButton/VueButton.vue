@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../styles';
+@import '../../design-system';
 
 .button {
   display: inline-block;
