@@ -168,7 +168,7 @@ export default {
 }
 
 .text {
-  fill: $text-color;
+  fill: $brand-text-color;
   transform: translateY(0.25em);
 }
 

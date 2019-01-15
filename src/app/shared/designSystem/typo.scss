@@ -24,10 +24,10 @@ strong {
 }
 
 a {
-  color: $link-color;
+  color: $brand-link-color;
   font-weight: $link-font-weight;
 
   &:hover {
-    color: $link-hover-color;
+    color: $brand-link-hover-color;
   }
 }

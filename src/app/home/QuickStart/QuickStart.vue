@@ -54,12 +54,12 @@ export default {
   background: $primary-2-1;
 
   h2 {
-    color: $text-color-inverse;
+    color: $brand-text-color-inverse;
   }
 
   :global {
     .vueCard {
-      background: $bg-color;
+      background: $brand-bg-color;
     }
   }
 

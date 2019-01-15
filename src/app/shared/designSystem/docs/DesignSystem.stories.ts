@@ -257,6 +257,21 @@ Component     | Purpose
 VueGrid       | Container that is limited in the width, general page layout
 VueGridRow    | Row that is always 100% width and will be stacked on the page
 VueGridItem   | Item in the row that will be distributed equally on the page 
+
+### Spacing
+To keep the spacing consistent we have one variable \`$space-unit\` that is used for spacings,
+you can multiply or divide this value as you want.
+The default value in the blueprint is \`0.8rem\`.
+
+Name            | Value 
+----------------|----------
+$space-unit-4   |  0.4rem
+$space-unit-8   |  0.8rem
+$space-unit-16  |  1.6rem
+$space-unit-24  |  2.4rem
+$space-unit-32  |  3.2rem
+$space-unit-48  |  4.8rem
+$space-unit-64  |  6.4rem
 </vue-markdown>
 `,
   })),

@@ -81,7 +81,7 @@ export default {
 .userExperience {
   display: block;
   text-align: center;
-  background: $bg-color-variant;
+  background: $brand-bg-color-variant;
 
   i {
     display: inline-block;
@@ -91,10 +91,10 @@ export default {
   }
 
   a {
-    color: $text-color;
+    color: $brand-text-color;
 
     &:hover {
-      color: $text-color;
+      color: $brand-text-color;
     }
   }
 

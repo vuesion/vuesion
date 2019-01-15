@@ -2,8 +2,8 @@
 @import 'mixins';
 
 body {
-  color: $text-color;
-  background-color: $bg-color;
+  color: $brand-text-color;
+  background-color: $brand-bg-color;
 }
 
 // always make sure images have an alt attribute
@@ -16,7 +16,7 @@ i {
   display: inline-block;
   height: $font-size;
   width: $font-size;
-  fill: $text-color;
+  fill: $brand-text-color;
 
   svg {
     height: inherit;

@@ -89,7 +89,7 @@ export default {
   overflow: hidden;
   position: relative;
   text-align: center;
-  color: $text-color-inverse;
+  color: $brand-text-color-inverse;
   background: $secondary-1-1;
 
   @include mediaMin(tabletPortrait) {
@@ -146,10 +146,10 @@ export default {
   top: $space-unit * 17;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   display: inline-block;
-  background: $bg-color;
+  background: $brand-bg-color;
   transition: $button-transition;
   transition-property: box-shadow, background-color;
-  color: $link-color;
+  color: $brand-link-color;
   padding: $button-padding;
 
   &:hover {
