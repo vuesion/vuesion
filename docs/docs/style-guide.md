@@ -52,7 +52,7 @@ A module is an encapsulated piece of domain logic in your application, this coul
 
 _A module usually has routing information, state management or both._
 
-**You can easily create modules with `npm run g`**
+**You can easily create modules with `npm run generate`**
 
 ### What is a Connected Component?
 

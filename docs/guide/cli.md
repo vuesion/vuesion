@@ -19,7 +19,7 @@ A module is an encapsulated piece of domain logic in your application.
 ## Create a module
 
 Let's create a page that is dynamic and has to have stage-management,
-run `npm run g` and you will be asked some questions:
+run `npm run generate` and you will be asked some questions:
 
 ```bash
 ? [PLOP] Please choose a generator. (Use arrow keys)
