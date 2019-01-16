@@ -55,7 +55,7 @@ A module is an encapsulated piece of domain logic in your application, this coul
 
 _一个模块通常含有路由信息或者状态管理,或者两者兼具._
 
-**你可以很容易的通过 `npm run g` 创建模块**
+**你可以很容易的通过 `npm run generate` 创建模块**
 
 ### 什么是connected容器组件?
 

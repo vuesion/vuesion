@@ -26,7 +26,7 @@
 ## 创建一个模块
 
 让我创建一个有状态管理的动态页面
-运行 `npm run g` 然后你会被问一些问题:
+运行 `npm run generate` 然后你会被问一些问题:
 
 ```bash
 ? [PLOP] Please choose a generator. (Use arrow keys)
