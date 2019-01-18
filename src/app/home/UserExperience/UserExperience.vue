@@ -100,7 +100,7 @@ export default {
 
   :global {
     .vueCard {
-      background: $tertiary-4;
+      background: $tertiary-040;
     }
   }
 }

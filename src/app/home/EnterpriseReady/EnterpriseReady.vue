@@ -80,7 +80,7 @@ export default {
 .enterpriseReady {
   display: block;
   text-align: center;
-  background: $secondary-2-1;
+  background: $secondary-2-100;
 
   i {
     display: inline-block;

@@ -51,7 +51,7 @@ export default {
 .quickStart {
   display: block;
   text-align: center;
-  background: $primary-2-1;
+  background: $primary-2-100;
 
   h2 {
     color: $brand-text-color-inverse;

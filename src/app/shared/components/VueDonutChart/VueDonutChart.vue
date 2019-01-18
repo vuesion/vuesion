@@ -187,11 +187,11 @@ export default {
 }
 
 :export {
-  color1: $primary-2-1;
-  color2: $secondary-1-1;
-  color3: $secondary-2-1;
-  color4: $tertiary-1-1;
-  color5: $tertiary-2-1;
-  color6: $tertiary-3-1;
+  color1: $primary-2-100;
+  color2: $secondary-1-100;
+  color3: $secondary-2-100;
+  color4: $tertiary-1-100;
+  color5: $tertiary-2-100;
+  color6: $tertiary-3-100;
 }
 </style>

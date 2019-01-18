@@ -90,7 +90,7 @@ export default {
   position: relative;
   text-align: center;
   color: $brand-text-color-inverse;
-  background: $secondary-1-1;
+  background: $secondary-1-100;
 
   @include mediaMin(tabletPortrait) {
     min-height: 50vh;

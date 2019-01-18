@@ -65,7 +65,7 @@ story.add(
 
 The naming convention of the color palette is structured in the following way
 
-\`Meaning\`-\`ColorIndex\`-\`Shade\` for example \`$primary-1-1\`
+\`Meaning\`-\`ColorIndex\`-\`Shade\` for example \`$primary-1-100\`
 
 following _Meanings_ are included:
 
@@ -73,23 +73,21 @@ following _Meanings_ are included:
 - **secondary** (Accent Colors)
 - **tertiary** (Utility Colors)
 
-the following _Weights_ are included:
+the following _Indices_ are included:
 
 - primary **1-2**
 - secondary **1-5**
 - tertiary **1-5**
 
-and the following shades are included:
+and the following _Shades_ are included:
 
-Shade | Opacity
-------|--------
-1     | 100 %
-2     | 80 %
-3     | 60 %
-4     | 40 %
-5     | 20 %
-6     | 10 %
-7     | 5 %
+- 100
+- 80
+- 60
+- 40
+- 20
+- 10
+- 5
 </vue-markdown>
 `,
   })),
@@ -114,33 +112,33 @@ These are the colors that we use to create different variations of components.
 
 Variation        | Palette Color
 -----------------|--------------
-brand-primary   | primary-2-1
-brand-secondary | secondary-1-1
-brand-tertiary  | primary-1-5
-brand-danger    | tertiary-1-1
-brand-warn      | tertiary-2-1
-brand-success   | tertiary-3-1
+brand-primary   | primary-2-100
+brand-secondary | secondary-1-100
+brand-tertiary  | primary-1-020
+brand-danger    | tertiary-1-100
+brand-warn      | tertiary-2-100
+brand-success   | tertiary-3-100
 
 #### Background Colors
 These are the colors that we use for document backgrounds or sections on a page.
 
 Variation                | Palette Color
 -------------------------|--------------
-bg-color                 | tertiary-4
-bg-color-variant         | primary-1-6
-bg-color-inverse         | tertiary-5
-bg-color-variant-inverse | primary-1-3
+bg-color                 | tertiary-040
+bg-color-variant         | primary-1-010
+bg-color-inverse         | tertiary-020
+bg-color-variant-inverse | primary-1-060
 
 #### Text Colors
 These are the colors that we use for document text or sections on a page.
 
 Variation                    | Palette Color
 -----------------------------|--------------
-text-color                   | tertiary-5
-text-secondary-color         | primary-1-3
-text-color-inverse           | tertiary-4
-text-secondary-color-inverse | primary-1-6
-link-color                   | secondary-1-1
+text-color                   | tertiary-020
+text-secondary-color         | primary-1-060
+text-color-inverse           | tertiary-040
+text-secondary-color-inverse | primary-1-010
+link-color                   | secondary-1-100
 link-hover-color             | darken($link-color, 5%)
 
 #### Border Colors
@@ -148,39 +146,8 @@ These are the colors that we use for borders.
 
 Variation            | Palette Color
 ---------------------|--------------
-border-color         | primary-1-5
-border-color-inverse | primary-1-2
-</vue-markdown>
-`,
-  })),
-);
-
-story.add(
-  '3. General Branding',
-  withInfo({
-    header: false,
-    source: false,
-    propTables: false,
-    styles: { propTableHead: { display: 'none' } },
-    propTablesExclude: [VueMarkdown],
-  })(() => ({
-    components: { VueMarkdown },
-    template: `<vue-markdown>
-### General Branding
-General rules for your Brand identity.
-
-#### Spacing
-To keep the spacing consistent we have one variable \`$space-unit\` that is used for spacings,
-you can multiply or divide this value as you want. 
-The default value in the blueprint is \`0.8rem\`.
-
-#### Border Radius
-To keep the border-radius consistent we have one variable \`$border-radius\` with the value \`$space-unit * 0.5\` (0.4rem).
-
-#### Transitions
-It's good to keep your animation language consistent to achieve that we defined a variable
-for the transition duration \`$transition-duration\` with the value \`250ms\`
-and a variable for the easing-curve \`$easing-curve\` with the value \`cubic-bezier(.17,.67,.83,.67)\`.
+border-color         | primary-1-020
+border-color-inverse | primary-1-080
 </vue-markdown>
 `,
   })),
@@ -265,13 +232,13 @@ The default value in the blueprint is \`0.8rem\`.
 
 Name            | Value 
 ----------------|----------
-$space-unit-4   |  0.4rem
-$space-unit-8   |  0.8rem
-$space-unit-16  |  1.6rem
-$space-unit-24  |  2.4rem
-$space-unit-32  |  3.2rem
-$space-unit-48  |  4.8rem
-$space-unit-64  |  6.4rem
+$space-xxs      |  0.4rem
+$space-xs       |  0.8rem
+$space-sm       |  1.2rem
+$space-md       |  2.0rem
+$space-lg       |  3.2rem
+$space-xl       |  5.2rem
+$space-xxl      |  8.4rem
 </vue-markdown>
 `,
   })),
