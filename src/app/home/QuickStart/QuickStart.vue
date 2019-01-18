@@ -7,11 +7,21 @@
         <vue-grid-item class="vueGridItem">
           <vue-card class="vueCard">
             <vue-card-body class="vueCardBody">
+              <vue-headline level="4">Via <code>npx</code></vue-headline>
               <ol>
-                <li>Install node 10 or higher</li>
-                <li>Install npm 6 or higher</li>
                 <li>
-                  Clone repository <code>git clone https://github.com/<br />devCrossNet/vue-starter</code>
+                  Run <code>npx vue-starter-service create [project-name]</code> for example
+                  <code>npx vue-starter-service create my-app</code>
+                </li>
+                <li>Change directory <code>cd my-app</code></li>
+                <li>Run <code>npm run dev</code></li>
+              </ol>
+
+              <vue-headline level="4">Via Git</vue-headline>
+              <ol>
+                <li>
+                  Download or clone (<code>git clone https://github.com/<br />devCrossNet/vue-starter</code>) the
+                  repository
                 </li>
                 <li>Change directory <code>cd vue-starter</code></li>
                 <li>Install dependencies: <code>npm install</code></li>
@@ -67,9 +77,9 @@ export default {
     .vueCardBody {
       text-align: left;
       overflow: hidden;
+      padding: 0;
 
       ol {
-        margin-top: $space-unit * 5;
         padding: 0 0 0 $space-unit * 2;
 
         li {

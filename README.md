@@ -32,7 +32,7 @@
 
 Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.com/)** (sometimes not available because of the heroku free-plan)
 
-![vue-starter](https://user-images.githubusercontent.com/1667598/40796069-2721bc8e-6504-11e8-880c-d973fd37b73e.gif)
+![vue-starter](https://user-images.githubusercontent.com/1667598/51413193-5bae1a80-1b6e-11e9-8b4e-c41eff828f8c.gif)
 
 ### Lighthouse Score
 
@@ -40,12 +40,18 @@ Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.co
 
 # Getting started
 
-1. Install node 10 or higher
-2. Install npm 6 or higher
-3. Clone the repository `git clone https://github.com/devCrossNet/vue-starter`
-4. Change directory `cd vue-starter`
-5. Install dependencies: `npm install`
-6. Run `npm run dev`
+## Via `npx`
+
+1. Run `npx vue-starter-service create [project-name]` for example `npx vue-starter-service create my-app`
+2. Change directory `cd my-app`
+3. Run `npm run dev`
+
+## Via Git
+
+1. Download or clone (`git clone https://github.com/devCrossNet/vue-starter`) the repository
+2. Change directory `cd vue-starter`
+3. Install dependencies: `npm install`
+4. Run `npm run dev`
 
 # Sponsors
 
@@ -73,7 +79,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <!-- prettier-ignore -->
 | [<img src="https://avatars1.githubusercontent.com/u/1667598?v=4" width="64px;"/><br /><sub><b>Johannes Werner</b></sub>](https://twitter.com/_jwerner_)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=devCrossNet "Code") [🐛](https://github.com/devCrossNet/vue-starter/issues?q=author%3AdevCrossNet "Bug reports") [📖](https://github.com/devCrossNet/vue-starter/commits?author=devCrossNet "Documentation") [🎨](#design-devCrossNet "Design") [💡](#example-devCrossNet "Examples") [🔧](#tool-devCrossNet "Tools") | [<img src="https://avatars2.githubusercontent.com/u/2235499?s=460&v=4" width="64px;"/><br /><sub><b>Konstantin Kulinicenko</b></sub>](https://github.com/40818419)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=40818419 "Code") [🐛](https://github.com/devCrossNet/vue-starter/issues?q=author%3A40818419 "Bug reports") [📖](https://github.com/devCrossNet/vue-starter/commits?author=40818419 "Documentation") [💡](#example-40818419 "Examples") | [<img src="https://avatars2.githubusercontent.com/u/112532?v=4" width="64px;"/><br /><sub><b>xMartin</b></sub>](http://xmartin.de/)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=xMartin "Code") [🐛](https://github.com/devCrossNet/vue-starter/issues?q=author%3AxMartin "Bug reports") [📖](https://github.com/devCrossNet/vue-starter/commits?author=xMartin "Documentation") [💡](#example-xMartin "Examples") | [<img src="https://avatars0.githubusercontent.com/u/31165554?v=4" width="64px;"/><br /><sub><b>Silver·湫澲</b></sub>](http://saigao.fun)<br />[📖](https://github.com/devCrossNet/vue-starter/commits?author=SilverLeaves "Documentation") [🌍](#translation-SilverLeaves "Translation") | [<img src="https://avatars2.githubusercontent.com/u/17932287?v=4" width="64px;"/><br /><sub><b>Stavros Liaskos</b></sub>](https://stavrosliaskos.com/)<br />[🐛](https://github.com/devCrossNet/vue-starter/issues?q=author%3Astavros-liaskos "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/1898225?v=4" width="64px;"/><br /><sub><b>Marcelo Boeira</b></sub>](https://marceloboeira.com)<br />[🌍](#translation-marceloboeira "Translation") | [<img src="https://avatars3.githubusercontent.com/u/3583774?v=4" width="64px;"/><br /><sub><b>Rick Mann</b></sub>](http://teamteatime.net/)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=Riari "Code") |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [<img src="https://avatars0.githubusercontent.com/u/43061?v=4" width="64px;"/><br /><sub><b>Ryan McGuire</b></sub>](http://www.EnigmaCurry.com)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=EnigmaCurry "Code") | [<img src="https://avatars3.githubusercontent.com/u/28268680?v=4" width="64px;"/><br /><sub><b>Jay McDoniel</b></sub>](https://github.com/jmcdo29)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=jmcdo29 "Code") | [<img src="https://avatars3.githubusercontent.com/u/497957?v=4" width="64px;"/><br /><sub><b>Hugo Magalhães</b></sub>](http://hugomagalhaes.com)<br />[🌍](#translation-hugomn "Translation") | [<img src="https://avatars3.githubusercontent.com/u/7151993?v=4" width="64px;"/><br /><sub><b>glederer</b></sub>](https://github.com/glederer)<br />[📖](https://github.com/devCrossNet/vue-starter/commits?author=glederer "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/4436327?v=4" width="64px;"/><br /><sub><b>Tamer Mohamed</b></sub>](https://github.com/tamer-mohamed)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=tamer-mohamed "Code") |
+| [<img src="https://avatars0.githubusercontent.com/u/43061?v=4" width="64px;"/><br /><sub><b>Ryan McGuire</b></sub>](http://www.EnigmaCurry.com)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=EnigmaCurry "Code") | [<img src="https://avatars3.githubusercontent.com/u/28268680?v=4" width="64px;"/><br /><sub><b>Jay McDoniel</b></sub>](https://github.com/jmcdo29)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=jmcdo29 "Code") | [<img src="https://avatars3.githubusercontent.com/u/497957?v=4" width="64px;"/><br /><sub><b>Hugo Magalhães</b></sub>](http://hugomagalhaes.com)<br />[🌍](#translation-hugomn "Translation") | [<img src="https://avatars3.githubusercontent.com/u/7151993?v=4" width="64px;"/><br /><sub><b>glederer</b></sub>](https://github.com/glederer)<br />[📖](https://github.com/devCrossNet/vue-starter/commits?author=glederer "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/4436327?v=4" width="64px;"/><br /><sub><b>Tamer Mohamed</b></sub>](https://github.com/tamer-mohamed)<br />[💻](https://github.com/devCrossNet/vue-starter/commits?author=tamer-mohamed "Code") | [<img src="https://avatars3.githubusercontent.com/u/13586702?v=4" width="64px;"/><br /><sub><b>Rizwan Zaheer</b></sub>](https://github.com/rizwanzaheer)<br />[📖](https://github.com/devCrossNet/vue-starter/commits?author=rizwanzaheer "Documentation") |
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 

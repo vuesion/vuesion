@@ -229,16 +229,6 @@ VueGridItem   | Item in the row that will be distributed equally on the page
 To keep the spacing consistent we have one variable \`$space-unit\` that is used for spacings,
 you can multiply or divide this value as you want.
 The default value in the blueprint is \`0.8rem\`.
-
-Name            | Value 
-----------------|----------
-$space-xxs      |  0.4rem
-$space-xs       |  0.8rem
-$space-sm       |  1.2rem
-$space-md       |  2.0rem
-$space-lg       |  3.2rem
-$space-xl       |  5.2rem
-$space-xxl      |  8.4rem
 </vue-markdown>
 `,
   })),
