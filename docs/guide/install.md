@@ -4,11 +4,18 @@
 vue-starter requires Node.js >= 10 & npm >= 6.
 :::
 
-1. Install node 10 or higher
-2. Install npm 6 or higher
-3. Download or clone (`git clone https://github.com/devCrossNet/vue-starter`) the repository
-4. Change directory `cd vue-starter`
-5. Install dependencies: `npm install`
+## Via `npx`
+
+1. Run `npx vue-starter-service create [project-name]` for example `npx vue-starter-service create my-app`
+2. Change directory `cd my-app`
+3. Run `npm run dev`
+
+## Via Git
+
+1. Download or clone (`git clone https://github.com/devCrossNet/vue-starter`) the repository
+2. Change directory `cd vue-starter`
+3. Install dependencies: `npm install`
+4. Run `npm run dev`
 
 ## Configure your Code Editor
 

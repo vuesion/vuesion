@@ -35,7 +35,7 @@
           <vue-card class="vueCard">
             <vue-card-body>
               <vue-icon-certificate />
-              <vue-headline level="3">Tons of already implemented use-cases</vue-headline>
+              <vue-headline level="3">Tons of use-cases</vue-headline>
               <p>
                 e.g. HttpService with interceptors, vuex persist middleware, redirect scenarios, configs for different
                 environments, etc.
