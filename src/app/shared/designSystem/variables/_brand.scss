@@ -2,126 +2,126 @@
 $space-unit: 0.8rem;
 
 /* Spacing */
-$space-4: $space-unit * 0.5;
-$space-8: $space-unit;
-$space-16: $space-unit * 2;
-$space-24: $space-unit * 3;
-$space-32: $space-unit * 4;
-$space-48: $space-unit * 6;
-$space-64: $space-unit * 8;
+$space-xxs: $space-unit * 0.5; // 4px
+$space-xs: $space-unit; // 8px
+$space-sm: $space-unit * 1.5; // 12px
+$space-md: $space-unit * 2.5; // 20px
+$space-lg: $space-unit * 4; // 32px
+$space-xl: $space-unit * 6.5; // 52px
+$space-xxl: $space-unit * 10.5; // 84px
 
 /* Palette */
-$primary-1-1: #2b3a42;
-$primary-1-2: #525e65;
-$primary-1-3: #7b8489;
-$primary-1-4: #aab0b3;
-$primary-1-5: #d5d8da;
-$primary-1-6: #e9ebec;
-$primary-1-7: #f4f5f5;
+$primary-1-100: #2b3a42;
+$primary-1-080: #525e65;
+$primary-1-060: #7b8489;
+$primary-1-040: #aab0b3;
+$primary-1-020: #d5d8da;
+$primary-1-010: #e9ebec;
+$primary-1-005: #f4f5f5;
 
-$primary-2-1: #435365;
-$primary-2-2: #697584;
-$primary-2-3: #8e98a3;
-$primary-2-4: #b4bac1;
-$primary-2-5: #d9dde0;
-$primary-2-6: #ecedef;
-$primary-2-7: #f5f6f7;
+$primary-2-100: #435365;
+$primary-2-080: #697584;
+$primary-2-060: #8e98a3;
+$primary-2-040: #b4bac1;
+$primary-2-020: #d9dde0;
+$primary-2-010: #ecedef;
+$primary-2-005: #f5f6f7;
 
-$secondary-1-1: #008eaa;
-$secondary-1-2: #33a5bb;
-$secondary-1-3: #6bc;
-$secondary-1-4: #99d2dd;
-$secondary-1-5: #cce8ee;
-$secondary-1-6: #e5f3f6;
-$secondary-1-7: #f2f9fb;
+$secondary-1-100: #008eaa;
+$secondary-1-080: #33a5bb;
+$secondary-1-060: #6bc;
+$secondary-1-040: #99d2dd;
+$secondary-1-020: #cce8ee;
+$secondary-1-010: #e5f3f6;
+$secondary-1-005: #f2f9fb;
 
-$secondary-2-1: #a1cd3a;
-$secondary-2-2: #b4d761;
-$secondary-2-3: #c7e189;
-$secondary-2-4: #d9ebb0;
-$secondary-2-5: #ecf5d8;
-$secondary-2-6: #f5faeb;
-$secondary-2-7: #fafcf5;
+$secondary-2-100: #a1cd3a;
+$secondary-2-080: #b4d761;
+$secondary-2-060: #c7e189;
+$secondary-2-040: #d9ebb0;
+$secondary-2-020: #ecf5d8;
+$secondary-2-010: #f5faeb;
+$secondary-2-005: #fafcf5;
 
-$secondary-3-1: #cf4520;
-$secondary-3-2: #d96a4d;
-$secondary-3-3: #e3907a;
-$secondary-3-4: #ecb5a6;
-$secondary-3-5: #f5dad2;
-$secondary-3-6: #faece8;
-$secondary-3-7: #fcf5f4;
+$secondary-3-100: #cf4520;
+$secondary-3-080: #d96a4d;
+$secondary-3-060: #e3907a;
+$secondary-3-040: #ecb5a6;
+$secondary-3-020: #f5dad2;
+$secondary-3-010: #faece8;
+$secondary-3-005: #fcf5f4;
 
-$secondary-4-1: #a41e36;
-$secondary-4-2: #b64b5e;
-$secondary-4-3: #c87886;
-$secondary-4-4: #dba5af;
-$secondary-4-5: #edd2d7;
-$secondary-4-6: #f5e8ea;
-$secondary-4-7: #faf4f5;
+$secondary-4-100: #a41e36;
+$secondary-4-080: #b64b5e;
+$secondary-4-060: #c87886;
+$secondary-4-040: #dba5af;
+$secondary-4-020: #edd2d7;
+$secondary-4-010: #f5e8ea;
+$secondary-4-005: #faf4f5;
 
-$secondary-5-1: #177b57;
-$secondary-5-2: #459579;
-$secondary-5-3: #74b09a;
-$secondary-5-4: #a2cabc;
-$secondary-5-5: #d1e5dd;
-$secondary-5-6: #e7f1ee;
-$secondary-5-7: #f3f8f6;
+$secondary-5-100: #177b57;
+$secondary-5-080: #459579;
+$secondary-5-060: #74b09a;
+$secondary-5-040: #a2cabc;
+$secondary-5-020: #d1e5dd;
+$secondary-5-010: #e7f1ee;
+$secondary-5-005: #f3f8f6;
 
-$tertiary-1-1: #ed254e;
-$tertiary-1-2: #f15171;
-$tertiary-1-3: #f47c95;
-$tertiary-1-4: #f8a8b8;
-$tertiary-1-5: #fbd3dc;
-$tertiary-1-6: #fde9ed;
-$tertiary-1-7: #fef4f6;
+$tertiary-1-100: #ed254e;
+$tertiary-1-080: #f15171;
+$tertiary-1-060: #f47c95;
+$tertiary-1-040: #f8a8b8;
+$tertiary-1-020: #fbd3dc;
+$tertiary-1-010: #fde9ed;
+$tertiary-1-005: #fef4f6;
 
-$tertiary-2-1: #ffc857;
-$tertiary-2-2: #ffd379;
-$tertiary-2-3: #ffde9a;
-$tertiary-2-4: #ffe9bc;
-$tertiary-2-5: #fff4dd;
-$tertiary-2-6: #fff9ee;
-$tertiary-2-7: #fffcf6;
+$tertiary-2-100: #ffc857;
+$tertiary-2-080: #ffd379;
+$tertiary-2-060: #ffde9a;
+$tertiary-2-040: #ffe9bc;
+$tertiary-2-020: #fff4dd;
+$tertiary-2-010: #fff9ee;
+$tertiary-2-005: #fffcf6;
 
-$tertiary-3-1: #00a878;
-$tertiary-3-2: #33b993;
-$tertiary-3-3: #66cbae;
-$tertiary-3-4: #99dcc9;
-$tertiary-3-5: #cceee4;
-$tertiary-3-6: #e5f6f1;
-$tertiary-3-7: #f2faf8;
+$tertiary-3-100: #00a878;
+$tertiary-3-080: #33b993;
+$tertiary-3-060: #66cbae;
+$tertiary-3-040: #99dcc9;
+$tertiary-3-020: #cceee4;
+$tertiary-3-010: #e5f6f1;
+$tertiary-3-001: #f2faf8;
 
-$tertiary-4: #fff;
+$tertiary-040: #fff;
 
-$tertiary-5: #000;
+$tertiary-020: #000;
 
 /* Brand Variations */
-$brand-primary: $primary-2-1;
-$brand-secondary: $secondary-1-1;
-$brand-tertiary: $primary-1-5;
-$brand-danger: $tertiary-1-1;
-$brand-warning: $tertiary-2-1;
-$brand-success: $tertiary-3-1;
+$brand-primary: $primary-2-100;
+$brand-secondary: $secondary-1-100;
+$brand-tertiary: $primary-1-020;
+$brand-danger: $tertiary-1-100;
+$brand-warning: $tertiary-2-100;
+$brand-success: $tertiary-3-100;
 
 /* Background Colors */
-$brand-bg-color: $tertiary-4;
-$brand-bg-color-variant: $primary-1-6;
-$brand-bg-color-inverse: $tertiary-5;
-$brand-bg-color-variant-inverse: $primary-1-3;
+$brand-bg-color: $tertiary-040;
+$brand-bg-color-variant: $primary-1-010;
+$brand-bg-color-inverse: $tertiary-020;
+$brand-bg-color-variant-inverse: $primary-1-060;
 
 /* Text Colors */
-$brand-text-color: $tertiary-5;
-$brand-text-secondary-color: $primary-1-1;
-$brand-text-color-inverse: $tertiary-4;
-$brand-text-secondary-color-inverse: $primary-1-6;
+$brand-text-color: $tertiary-020;
+$brand-text-secondary-color: $primary-1-100;
+$brand-text-color-inverse: $tertiary-040;
+$brand-text-secondary-color-inverse: $primary-1-010;
 
 /* Links */
-$brand-link-color: $secondary-1-1;
+$brand-link-color: $secondary-1-100;
 $brand-link-hover-color: darken($brand-link-color, 5%);
 
 /* Borders */
-$brand-border-color: $primary-1-5;
-$brand-border-color-inverse: $primary-1-2;
+$brand-border-color: $primary-1-020;
+$brand-border-color-inverse: $primary-1-080;
 $brand-border-radius: $space-unit * 0.5;
 
 /* Animation Language */
