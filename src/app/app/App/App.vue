@@ -53,7 +53,7 @@
 
         <vue-sidebar-group-item>
           <a
-            href="/storybook/?selectedKind=1.%20Design%20System%7C1-Design%20System&selectedStory=Intro&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
+            href="/storybook/?selectedKind=1.%20Design%20System%7C1.%20Design%20System&selectedStory=Intro&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
           >
             <vue-icon-book />
             Design System
@@ -61,9 +61,7 @@
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a
-            href="/storybook/?selectedKind=2.%20Components%7CAccordion&selectedStory=Default&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
-          >
+          <a href="/storybook">
             <vue-icon-puzzle-piece />
             Components
           </a>
