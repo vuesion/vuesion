@@ -46,8 +46,7 @@
     "build:spa": "vue-starter-service build --silent --spa",
     "start": "node ./dist/server/server.js",
     "ci": "npm run lint && npm run test",
-    "postci": "codecov -f ./coverage/*.json && npm run build && npm run storybook:build && vuepress build docs",
-    "heroku-postbuild": "npm run build"
+    "postci": "codecov -f ./coverage/*.json && npm run build && npm run storybook:build && vuepress build docs"
   },
   "dependencies": {
     "accept-language": "3.0.18",

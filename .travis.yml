@@ -9,9 +9,9 @@ cache:
 node_js:
   - 10.14.1
 before_install:
-  - npm install -g vuepress
+  - npm install -g vuepress --silent
 install:
-  - npm install
+  - npm install --silent
 script:
   - npm run ci
 deploy:
