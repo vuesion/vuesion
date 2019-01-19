@@ -55,12 +55,6 @@ Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.co
 
 # Sponsors
 
-If you like what we're doing here, you can help us by funding the work on specific issues that you choose by using IssueHunt.io!
-
-This gives you the power to prioritize our work and support project contributors. Moreover, it'll guarantee the project will be updated and maintained in the long run.
-
-[![issuehunt-image](https://github.com/BoostIO/issuehunt-materials/blob/master/issuehunt-badge@2x.png?raw=true)](https://issuehunt.io/repos/111245305)
-
 <a href="https://careers.bcgdv.com/locations/berlin" title="BCG Digital Ventures">
   <img src="https://user-images.githubusercontent.com/1667598/38944976-89d5c03c-4335-11e8-92f4-910049c2166a.jpeg" alt="BCG Digital Ventures" />
 </a>
