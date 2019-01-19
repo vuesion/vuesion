@@ -37,6 +37,7 @@ Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.co
 ### Lighthouse Score
 
 <img width="761" alt="bildschirmfoto 2019-01-19 um 14 24 32" src="https://user-images.githubusercontent.com/1667598/51427252-00c00600-1bf6-11e9-9ab4-9f043226db35.png">
+
 # Getting started
 
 ## Via `npx`
