@@ -68,7 +68,7 @@
     "vue-meta": "1.5.8",
     "vue-router": "3.0.2",
     "vue-server-renderer": "2.5.21",
-    "vue-starter-vuex-persist": "1.0.0-beta.1",
+    "vue-starter-vuex-persist": "1.0.0-beta.2",
     "vuex": "3.0.1",
     "vuex-router-sync": "5.0.0",
     "winston": "3.1.0"
@@ -94,7 +94,7 @@
     "node-sass": "4.11.0",
     "ts-jest": "22.4.6",
     "typescript": "3.2.2",
-    "vue-starter-service": "1.0.0-beta.1",
+    "vue-starter-service": "1.0.0-beta.2",
     "vue-template-compiler": "2.5.21"
   },
   "engines": {
