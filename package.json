@@ -41,12 +41,12 @@
     "release:major": "vue-starter-service release --major --silent",
     "release:minor": "vue-starter-service release --minor --silent",
     "release:patch": "vue-starter-service release --patch --silent",
-    "build": "vue-starter-service build --silent",
-    "build:analyze": "vue-starter-service build --silent --analyze",
-    "build:spa": "vue-starter-service build --silent --spa",
+    "build": "vue-starter-service build",
+    "build:analyze": "vue-starter-service build --analyze",
+    "build:spa": "vue-starter-service build --spa",
     "start": "node ./dist/server/server.js",
-    "ci": "npm run lint && npm run test",
-    "postci": "codecov -f ./coverage/*.json && npm run build && npm run storybook:build && vuepress build docs"
+    "ci": "npm run lint -- --silent && npm run test -- --silent",
+    "postci": "codecov -f ./coverage/*.json && npm run build -- --silent && npm run storybook:build -- --silent && vuepress build docs"
   },
   "dependencies": {
     "accept-language": "3.0.18",
@@ -68,7 +68,7 @@
     "vue-meta": "1.5.8",
     "vue-router": "3.0.2",
     "vue-server-renderer": "2.5.21",
-    "vue-starter-vuex-persist": "1.0.0-beta.2",
+    "vue-starter-vuex-persist": "1.0.0-beta.3",
     "vuex": "3.0.1",
     "vuex-router-sync": "5.0.0",
     "winston": "3.1.0"
@@ -94,7 +94,7 @@
     "node-sass": "4.11.0",
     "ts-jest": "22.4.6",
     "typescript": "3.2.2",
-    "vue-starter-service": "1.0.0-beta.2",
+    "vue-starter-service": "1.0.0-beta.3",
     "vue-template-compiler": "2.5.21"
   },
   "engines": {
