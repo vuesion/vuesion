@@ -1,3 +1,17 @@
+#### 2.0.1 (2019-01-21)
+
+##### Chores
+
+- update vue-starter-packages ([6bc71f14](https://github.com/devCrossNet/vue-starter/commit/6bc71f140167c82f37f493c9cf75613120a9347a))
+
+##### Documentation Changes
+
+- update README.md ([33ad3f92](https://github.com/devCrossNet/vue-starter/commit/33ad3f92e81710fc717c860bd0810ce4c83bc729))
+
+##### Bug Fixes
+
+- downgrade webpack because of breaking change ([3c4f11af](https://github.com/devCrossNet/vue-starter/commit/3c4f11afde0514b5bea2349fe0b5c43b9f8a234d))
+
 ## 2.0.0 (2019-01-19)
 
 ##### Chores
