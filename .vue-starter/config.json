@@ -1,5 +1,5 @@
 {
-  "currentVersion": "v2.0.0",
+  "currentVersion": "v2.0.2",
   "generators": {
     "blueprintDirectory": "./.vue-starter/generators",
     "outputDirectory": "./src/app",
