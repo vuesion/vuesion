@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router';
 import axios, { AxiosInstance } from 'axios';
 import { Store } from 'vuex';
-import { IState } from '../../../state';
+import { IState } from '@/app/state';
 import { setupResponseInterceptor } from './setupResponseInterceptor';
 import { setupRequestInterceptor } from './setupRequestInterceptor';
 
