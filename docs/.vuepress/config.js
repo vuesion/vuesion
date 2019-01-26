@@ -128,6 +128,7 @@ module.exports = {
                 'guide/config',
                 'guide/contribute',
                 'guide/update',
+                'guide/deployment',
               ],
             },
             {
