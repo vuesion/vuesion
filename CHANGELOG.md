@@ -1,3 +1,9 @@
+#### 2.0.2 (2019-01-26)
+
+##### Bug Fixes
+
+- support Windows ([5ce5dbb8](https://github.com/devCrossNet/vue-starter/commit/5ce5dbb885f9bbcd929819114398bf71903cc37b))
+
 #### 2.0.1 (2019-01-21)
 
 ##### Chores
