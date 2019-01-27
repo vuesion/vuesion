@@ -26,7 +26,7 @@ To test if everything works - we get rid of everything in the file `./src/app/ap
 
 ```js
 <template>
-  <div id="app" class="foo">
+  <div id="app">
     <v-app id="inspire">
       <v-navigation-drawer :clipped="$vuetify.breakpoint.lgAndUp" v-model="drawer" fixed app>
         <v-list dense>
