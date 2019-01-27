@@ -97,6 +97,8 @@
 
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
+import { loadLocaleAsync } from '../../shared/plugins/i18n/i18n';
+import '../../shared/designSystem/global.scss';
 import VueNavBar from '../../shared/components/VueNavBar/VueNavBar.vue';
 import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
 import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
@@ -104,7 +106,6 @@ import VueFooter from '../../shared/components/VueFooter/VueFooter.vue';
 import VueNotificationStack from '../../shared/components/VueNotificationStack/VueNotificationStack.vue';
 import VueCookieConsent from '../../shared/components/VueCookieConsent/VueCookieConsent.vue';
 import VueNavigationProgress from '../../shared/components/VueNavigationProgress/VueNavigationProgress.vue';
-import { loadLocaleAsync } from '../../shared/plugins/i18n/i18n';
 import VueSidebar from '../../shared/components/VueSidebar/VueSidebar.vue';
 import VueSidebarGroup from '../../shared/components/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
 import VueSidebarGroupItem from '../../shared/components/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
@@ -180,7 +181,6 @@ export default {
 @import '../../shared/design-system';
 @import '../../shared/designSystem/reset';
 @import '../../shared/designSystem/typo';
-@import '../../shared/designSystem/global';
 
 .app {
   min-height: 100vh;

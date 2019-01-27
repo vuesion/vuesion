@@ -4,45 +4,7 @@
 
 ### Installation
 
-Before we start please install vuetify and the webpack css-loader by running `npm install vuetify --save && npm install --save-dev css-loader` and follow the [Clean-Up-Guide](/guide/clean-up.md).
-
-### Configure Webpack
-
-`./.vue-starter/webpack.config.js`:
-
-```js
-const nodeExternals = require('webpack-node-externals');
-/**
- * modify webpack config
- * @param {webpack.Configuration} config - webpack config
- * @param {string} target - build target, can  be "client" or "server"
- * @returns {*}
- */
-module.exports = (config, target) => {
-  config.performance = {
-    hints: 'warning',
-    maxEntrypointSize: 318000,
-    maxAssetSize: 267000,
-  };
-
-  config.resolve.extensions = ['.ts', '.js', '.vue', '.json', '.node', '.css', '.scss'];
-
-  config.module.rules.push({
-    test: /\.css$/,
-    loader: ['vue-style-loader', 'css-loader'],
-  });
-
-  if (target === 'server') {
-    config.externals = [
-      nodeExternals({
-        whitelist: ['webpack/hot/poll?1000', /\.css$/, /vuetify/],
-      }),
-    ];
-  }
-
-  return config;
-};
-```
+Before we start please install vuetify by running `npm install vuetify --save` and follow the [Clean-Up-Guide](/guide/clean-up.md).
 
 ### Register vuetify
 
@@ -66,20 +28,10 @@ To test if everything works - we get rid of everything in the file `./src/app/ap
 <template>
   <div id="app">
     <v-app id="inspire">
-      <v-navigation-drawer
-        :clipped="$vuetify.breakpoint.lgAndUp"
-        v-model="drawer"
-        fixed
-        app
-      >
+      <v-navigation-drawer :clipped="$vuetify.breakpoint.lgAndUp" v-model="drawer" fixed app>
         <v-list dense>
           <template v-for="item in items">
-            <v-layout
-              v-if="item.heading"
-              :key="item.heading"
-              row
-              align-center
-            >
+            <v-layout v-if="item.heading" :key="item.heading" row align-center>
               <v-flex xs6>
                 <v-subheader v-if="item.heading">
                   {{ item.heading }}
@@ -103,11 +55,7 @@ To test if everything works - we get rid of everything in the file `./src/app/ap
                   </v-list-tile-title>
                 </v-list-tile-content>
               </v-list-tile>
-              <v-list-tile
-                v-for="(child, i) in item.children"
-                :key="i"
-                @click=""
-              >
+              <v-list-tile v-for="(child, i) in item.children" :key="i" @click="">
                 <v-list-tile-action v-if="child.icon">
                   <v-icon>{{ child.icon }}</v-icon>
                 </v-list-tile-action>
@@ -131,13 +79,7 @@ To test if everything works - we get rid of everything in the file `./src/app/ap
           </template>
         </v-list>
       </v-navigation-drawer>
-      <v-toolbar
-        :clipped-left="$vuetify.breakpoint.lgAndUp"
-        color="blue darken-3"
-        dark
-        app
-        fixed
-      >
+      <v-toolbar :clipped-left="$vuetify.breakpoint.lgAndUp" color="blue darken-3" dark app fixed>
         <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
           <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
           <span class="hidden-sm-and-down">Google Contacts</span>
@@ -159,10 +101,7 @@ To test if everything works - we get rid of everything in the file `./src/app/ap
         </v-btn>
         <v-btn icon large>
           <v-avatar size="32px" tile>
-            <img
-              src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
-              alt="Vuetify"
-            >
+            <img src="https://cdn.vuetifyjs.com/images/logos/logo.svg" alt="Vuetify" />
           </v-avatar>
         </v-btn>
       </v-toolbar>
@@ -170,13 +109,7 @@ To test if everything works - we get rid of everything in the file `./src/app/ap
         <v-container fluid fill-height>
           <v-layout justify-center align-center>
             <v-tooltip right>
-              <v-btn
-                slot="activator"
-                :href="source"
-                icon
-                large
-                target="_blank"
-              >
+              <v-btn slot="activator" :href="source" icon large target="_blank">
                 <v-icon large>code</v-icon>
               </v-btn>
               <span>Source</span>
@@ -190,22 +123,12 @@ To test if everything works - we get rid of everything in the file `./src/app/ap
           </v-layout>
         </v-container>
       </v-content>
-      <v-btn
-        fab
-        bottom
-        right
-        color="pink"
-        dark
-        fixed
-        @click="dialog = !dialog"
-      >
+      <v-btn fab bottom right color="pink" dark fixed @click="dialog = !dialog">
         <v-icon>add</v-icon>
       </v-btn>
       <v-dialog v-model="dialog" width="800px">
         <v-card>
-          <v-card-title
-            class="grey lighten-4 py-4 title"
-          >
+          <v-card-title class="grey lighten-4 py-4 title">
             Create contact
           </v-card-title>
           <v-container grid-list-sm class="pa-4">
@@ -213,32 +136,19 @@ To test if everything works - we get rid of everything in the file `./src/app/ap
               <v-flex xs12 align-center justify-space-between>
                 <v-layout align-center>
                   <v-avatar size="40px" class="mr-3">
-                    <img
-                      src="//ssl.gstatic.com/s2/oz/images/sge/grey_silhouette.png"
-                      alt=""
-                    >
+                    <img src="//ssl.gstatic.com/s2/oz/images/sge/grey_silhouette.png" alt="" />
                   </v-avatar>
-                  <v-text-field
-                    placeholder="Name"
-                  ></v-text-field>
+                  <v-text-field placeholder="Name"></v-text-field>
                 </v-layout>
               </v-flex>
               <v-flex xs6>
-                <v-text-field
-                  prepend-icon="business"
-                  placeholder="Company"
-                ></v-text-field>
+                <v-text-field prepend-icon="business" placeholder="Company"></v-text-field>
               </v-flex>
               <v-flex xs6>
-                <v-text-field
-                  placeholder="Job title"
-                ></v-text-field>
+                <v-text-field placeholder="Job title"></v-text-field>
               </v-flex>
               <v-flex xs12>
-                <v-text-field
-                  prepend-icon="mail"
-                  placeholder="Email"
-                ></v-text-field>
+                <v-text-field prepend-icon="mail" placeholder="Email"></v-text-field>
               </v-flex>
               <v-flex xs12>
                 <v-text-field
@@ -249,10 +159,7 @@ To test if everything works - we get rid of everything in the file `./src/app/ap
                 ></v-text-field>
               </v-flex>
               <v-flex xs12>
-                <v-text-field
-                  prepend-icon="notes"
-                  placeholder="Notes"
-                ></v-text-field>
+                <v-text-field prepend-icon="notes" placeholder="Notes"></v-text-field>
               </v-flex>
             </v-layout>
           </v-container>
@@ -269,34 +176,36 @@ To test if everything works - we get rid of everything in the file `./src/app/ap
 </template>
 
 <script lang="ts">
-  export default {
-    data:  () => ({
-      drawer: true,
-      items:  [
-        { icon: 'trending_up', text: 'Most Popular' },
-        { icon: 'subscriptions', text: 'Subscriptions' },
-        { icon: 'history', text: 'History' },
-        { icon: 'featured_play_list', text: 'Playlists' },
-        { icon: 'watch_later', text: 'Watch Later' },
-      ],
-      items2: [
-        { picture: 28, text: 'Joseph' },
-        { picture: 38, text: 'Apple' },
-        { picture: 48, text: 'Xbox Ahoy' },
-        { picture: 58, text: 'Nokia' },
-        { picture: 78, text: 'MKBHD' },
-      ],
-    }),
-    props: {
-      source: String,
-      dialog: Object,
-    },
-  };
+import '../../../../node_modules/vuetify/dist/vuetify.css';
+import '../../shared/designSystem/global.scss';
+
+export default {
+  data: () => ({
+    drawer: true,
+    items: [
+      { icon: 'trending_up', text: 'Most Popular' },
+      { icon: 'subscriptions', text: 'Subscriptions' },
+      { icon: 'history', text: 'History' },
+      { icon: 'featured_play_list', text: 'Playlists' },
+      { icon: 'watch_later', text: 'Watch Later' },
+    ],
+    items2: [
+      { picture: 28, text: 'Joseph' },
+      { picture: 38, text: 'Apple' },
+      { picture: 48, text: 'Xbox Ahoy' },
+      { picture: 58, text: 'Nokia' },
+      { picture: 78, text: 'MKBHD' },
+    ],
+  }),
+  props: {
+    source: String,
+    dialog: Object,
+  },
+};
 </script>
 
-<style lang="css">
-  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons');
-  @import "../../../../node_modules/vuetify/dist/vuetify.css";
+<style lang="scss" module>
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons');
 </style>
 ```
 
