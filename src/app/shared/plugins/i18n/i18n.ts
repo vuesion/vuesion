@@ -51,17 +51,12 @@ const setI18nLocale = (locale: string) => {
   return locale;
 };
 
-export const loadLocaleAsync = (locale: string): Promise<any> => {
-  if (i18n.locale !== locale) {
-    if (!loadedLocales.find((l) => l === locale)) {
-      return axios.get(`/i18n/${locale}.json`).then((response: any) => {
-        i18n.setLocaleMessage(locale, response.data);
-        loadedLocales.push(locale);
-        return setI18nLocale(locale);
-      });
-    }
+export const loadLocaleAsync = async (locale: string) => {
+  if (i18n.locale !== locale && !loadedLocales.find((l) => l === locale)) {
+    const res = await axios.get(`/i18n/${locale}.json`);
 
-    return Promise.resolve(setI18nLocale(locale));
+    i18n.setLocaleMessage(locale, res.data);
+    loadedLocales.push(locale);
+    setI18nLocale(locale);
   }
-  return Promise.resolve(locale);
 };
