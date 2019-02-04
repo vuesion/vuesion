@@ -45,8 +45,8 @@
     "build:analyze": "vue-starter-service build --analyze",
     "build:spa": "vue-starter-service build --spa",
     "start": "node ./dist/server/server.js",
-    "ci": "npm run lint -- --silent && npm run test -- --silent",
-    "postci": "codecov -f ./coverage/*.json && npm run build -- --silent && npm run storybook:build -- --silent && vuepress build docs"
+    "ci": "vue-starter-service parallel \"npm run lint -- --silent\" \"npm run test -- --silent\"",
+    "postci": "codecov -f ./coverage/*.json && vue-starter-service parallel \"npm run build -- --silent\" \"npm run storybook:build -- --silent\" \"vuepress build docs\""
   },
   "dependencies": {
     "accept-language": "3.0.18",
@@ -68,7 +68,7 @@
     "vue-meta": "1.5.8",
     "vue-router": "^3.0.2",
     "vue-server-renderer": "^2.5.21",
-    "vue-starter-vuex-persist": "^1.0.0-beta.5",
+    "vue-starter-vuex-persist": "^1.0.0-beta.6",
     "vuex": "^3.0.1",
     "vuex-router-sync": "^5.0.0",
     "winston": "3.1.0"
@@ -94,7 +94,7 @@
     "node-sass": "4.11.0",
     "ts-jest": "22.4.6",
     "typescript": "3.2.2",
-    "vue-starter-service": "^1.0.0-beta.5",
+    "vue-starter-service": "^1.0.0-beta.6",
     "vue-template-compiler": "^2.5.21"
   },
   "engines": {
@@ -104,7 +104,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "vue-starter-service prettier --staged && npm run lint && npm run test"
+      "pre-commit": "vue-starter-service parallel \"vue-starter-service prettier --staged\" \"npm run lint\" \"npm run test\""
     }
   },
   "jest": {
