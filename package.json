@@ -46,7 +46,7 @@
     "build:spa": "vue-starter-service build --spa",
     "start": "node ./dist/server/server.js",
     "ci": "vue-starter-service parallel \"npm run lint -- --silent\" \"npm run test -- --silent\"",
-    "postci": "vue-starter-service parallel \"codecov -f ./coverage/*.json\" \"npm run build -- --silent\" \"npm run storybook:build -- --silent\" \"vuepress build docs\""
+    "postci": "codecov -f ./coverage/*.json && vue-starter-service parallel \"npm run build -- --silent\" \"npm run storybook:build -- --silent\" \"vuepress build docs\""
   },
   "dependencies": {
     "accept-language": "3.0.18",
