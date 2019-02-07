@@ -22,15 +22,15 @@
 
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
-import { IPreLoad } from '../../../server/isomorphic';
-import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
-import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
-import VueButton from '../../shared/components/VueButton/VueButton.vue';
-import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
-import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
-import { registerModule } from '../../store';
+import { IPreLoad } from '@/server/isomorphic';
+import VueGrid from '@/app/shared/components/VueGrid/VueGrid.vue';
+import VueGridItem from '@/app/shared/components/VueGridItem/VueGridItem.vue';
+import VueButton from '@/app/shared/components/VueButton/VueButton.vue';
+import VueGridRow from '@/app/shared/components/VueGridRow/VueGridRow.vue';
+import VueHeadline from '@/app/shared/components/VueHeadline/VueHeadline.vue';
+import { registerModule } from '@/app/store';
 import { CounterModule } from '../module';
-import VueBreadcrumb from '../../shared/components/VueBreadcrumb/VueBreadcrumb.vue';
+import VueBreadcrumb from '@/app/shared/components/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
   metaInfo: {
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../shared/design-system';
+@import '~@/app/shared/design-system';
 
 .counter {
   margin-top: $nav-bar-height;

@@ -1,8 +1,7 @@
 import { ActionContext } from 'vuex';
 import { ICounterState } from './state';
-import { IState } from '../state';
-import { HttpService } from '../shared/services/HttpService/HttpService';
-import { AxiosResponse } from 'axios';
+import { IState } from '@/app/state';
+import { HttpService } from '@/app/shared/services/HttpService/HttpService';
 
 export interface ICounterResponse {
   count: number;
@@ -15,26 +14,30 @@ export interface ICounterActions {
 }
 
 export const CounterActions: ICounterActions = {
-  increment({ commit, state }: ActionContext<ICounterState, IState>): Promise<any> {
+  async increment({ commit, state }: ActionContext<ICounterState, IState>) {
     commit('SET_INCREMENT_PENDING', true);
 
-    return HttpService.put('/counter/increment', { count: state.count })
-      .then((res: AxiosResponse<ICounterResponse>) => {
-        commit('SET_COUNT', res.data.count);
-        commit('SET_INCREMENT_PENDING', false);
-      })
-      .catch(() => {
-        commit('SET_INCREMENT_PENDING', false);
-      });
+    try {
+      const res = await HttpService.put<ICounterResponse>('/counter/increment', { count: state.count });
+
+      commit('SET_COUNT', res.data.count);
+      commit('SET_INCREMENT_PENDING', false);
+    } catch (e) {
+      commit('SET_INCREMENT_PENDING', false);
+      throw new Error(e);
+    }
   },
-  decrement({ commit, state }: ActionContext<ICounterState, IState>): Promise<any> {
+  async decrement({ commit, state }: ActionContext<ICounterState, IState>) {
     commit('SET_DECREMENT_PENDING', true);
 
-    return HttpService.put('/counter/decrement', { count: state.count })
-      .then((res: AxiosResponse<ICounterResponse>) => {
-        commit('SET_COUNT', res.data.count);
-        commit('SET_DECREMENT_PENDING', false);
-      })
-      .catch(() => commit('SET_DECREMENT_PENDING', false));
+    try {
+      const res = await HttpService.put<ICounterResponse>('/counter/decrement', { count: state.count });
+
+      commit('SET_COUNT', res.data.count);
+      commit('SET_DECREMENT_PENDING', false);
+    } catch (e) {
+      commit('SET_DECREMENT_PENDING', false);
+      throw new Error(e);
+    }
   },
 };
