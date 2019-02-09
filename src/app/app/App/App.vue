@@ -178,7 +178,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../shared/design-system';
+@import '~@/app/shared/design-system';
 @import '../../shared/designSystem/reset';
 @import '../../shared/designSystem/typo';
 

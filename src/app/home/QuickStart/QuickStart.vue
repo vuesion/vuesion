@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../shared/design-system';
+@import '~@/app/shared/design-system';
 
 .quickStart {
   display: block;

@@ -110,7 +110,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../design-system';
+@import '~@/app/shared/design-system';
 
 .vueDropdownMenu {
   display: inline-block;
