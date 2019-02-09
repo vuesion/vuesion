@@ -74,6 +74,7 @@ export default {
       type: String,
     },
     autocomplete: {
+      type: String,
       default: 'off',
     },
   },
