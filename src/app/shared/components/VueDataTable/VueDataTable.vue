@@ -231,7 +231,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../design-system';
+@import '~@/app/shared/design-system';
 
 .container {
   overflow-x: auto;
