@@ -30,7 +30,7 @@ story.add(
 :options="[{ label: 'Save', value: 'save' }, { label: '', value: 'separator' }, { label: 'Open', value: 'open' }, { label: 'Delete', value: 'delete' }]">
   File
 
-  <template slot="option" slot-scope="{option}">
+  <template v-slot:option="{ option }">
     [icon placeholder] {{ option.label }}
   </template>
 </vue-dropdown-menu>
