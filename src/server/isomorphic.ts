@@ -22,6 +22,7 @@ export interface IServerContext {
   htmlLang: string;
   appConfig: IAppConfig;
   redirect: boolean;
+  rendered?: () => void;
 }
 
 export interface IPreLoad {
@@ -107,7 +108,9 @@ export default (context: IServerContext) => {
           }),
         );
 
-        context.state = store.state;
+        context.rendered = () => {
+          context.state = store.state;
+        };
 
         // If the route from the VueRouter instance differs from the request we assume a redirect was triggered in
         // the Vue application. In case only the pending route is different, `router.push` or `router.replace`
