@@ -6,6 +6,7 @@ import VeeValidate from 'vee-validate';
 import { checkA11y } from '@storybook/addon-a11y';
 import { withOptions } from '@storybook/addon-options';
 import { setDefaults } from 'storybook-addon-vue-info';
+import { configureViewport, INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import '@storybook/addon-console';
 import '../../src/app/shared/_design-system.scss';
 import '../../src/app/shared/designSystem/reset.scss';
@@ -43,5 +44,22 @@ addDecorator(
   }),
 );
 setDefaults({ header: false });
+
+const newViewports = {
+  iMacPro: {
+    name: 'iMac Pro',
+    styles: {
+      width: '5120px',
+      height: '2880px',
+    },
+  },
+};
+
+configureViewport({
+  viewports: {
+    ...INITIAL_VIEWPORTS,
+    ...newViewports,
+  },
+});
 
 configure(loadStories, module);
