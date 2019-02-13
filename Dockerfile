@@ -1,10 +1,10 @@
-FROM node:8-alpine AS builder
+FROM node:10-alpine AS builder
 RUN mkdir /app
 WORKDIR /app
 COPY . .
 RUN npm install && npm run build
 
-FROM node:8-alpine
+FROM node:10-alpine
 ENV NODE_ENV=production
 RUN mkdir /app /app/logs
 WORKDIR /app
