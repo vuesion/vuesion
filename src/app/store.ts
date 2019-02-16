@@ -2,8 +2,8 @@ import Vue from 'vue';
 import Vuex, { Module, Store } from 'vuex';
 import merge from 'deepmerge';
 import { DefaultState, IState } from './state';
-import { VuexPersist } from 'vue-starter-vuex-persist';
-import { PersistCookieStorage } from 'vue-starter-vuex-persist/dist/PersistCookieStorage';
+import { VuexPersist } from '@vuesion/addon-vuex-persist';
+import { PersistCookieStorage } from '@vuesion/addon-vuex-persist/dist/PersistCookieStorage';
 import { AppModule } from './app/module';
 
 Vue.use(Vuex);

@@ -9,7 +9,7 @@ import App from '../app/app/App/App.vue';
 import { createApp, IApp } from '@/app/app';
 import { IState } from '@/app/state';
 import { IAppConfig } from '@/app/config/IAppConfig';
-import { PersistCookieStorage } from 'vue-starter-vuex-persist/dist/PersistCookieStorage';
+import { PersistCookieStorage } from '@vuesion/addon-vuex-persist/dist/PersistCookieStorage';
 import { Logger } from './utils/Logger';
 import { initHttpService } from '@/app/shared/services/HttpService/HttpService';
 
