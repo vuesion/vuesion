@@ -19,7 +19,23 @@
       }
     ],
     "prettier": [true, null, { "editorconfig": false }],
-    "cyclomatic-complexity": [true, 11]
+    "cyclomatic-complexity": [true, 11],
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "private-static-field",
+          "private-instance-field",
+          "public-static-field",
+          "public-instance-field",
+          "private-constructor",
+          "public-constructor",
+          "protected-instance-method",
+          "private-instance-method",
+          "public-instance-method"
+        ]
+      }
+    ]
   },
   "rulesDirectory": ["tslint-plugin-prettier"]
 }

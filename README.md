@@ -6,7 +6,7 @@
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/devCrossNet/vue-starter/graphs/commit-activity)
 [![Build Status](https://travis-ci.org/devCrossNet/vue-starter.svg?branch=master)](https://travis-ci.org/devCrossNet/vue-starter)
-[![codecov](https://codecov.io/gh/devCrossNet/vue-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/devCrossNet/vue-starter)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2ff891c2cf949a6a818a/test_coverage)](https://codeclimate.com/github/devCrossNet/vue-starter/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2ff891c2cf949a6a818a/maintainability)](https://codeclimate.com/github/devCrossNet/vue-starter/maintainability)
 [![Dependencies](https://img.shields.io/david/devCrossNet/vue-starter.svg)](https://david-dm.org/devCrossNet/vue-starter)
 [![DevDependencies](https://img.shields.io/david/dev/devCrossNet/vue-starter.svg)](https://david-dm.org/devCrossNet/vue-starter?type=dev)
