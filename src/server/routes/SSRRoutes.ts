@@ -34,7 +34,7 @@ const setHeaders = (res: Response): void => {
   res.setHeader('Expires', '0');
   res.setHeader('max-age', '0');
 };
-const vueStarterConfig: any = JSON.parse(fs.readFileSync(resolve('../../.vue-starter/config.json')).toString());
+const vueStarterConfig: any = JSON.parse(fs.readFileSync(resolve('../../.vuesion/config.json')).toString());
 
 export const SSRRoutes = (app: Express.Application): any => {
   if (isProd) {

@@ -10,8 +10,8 @@
               <vue-headline level="4">Via <code>npx</code></vue-headline>
               <ol>
                 <li>
-                  Run <code>npx vue-starter-service create [project-name]</code> for example
-                  <code>npx vue-starter-service create my-app</code>
+                  Run <code>npx @vuesion/service create [project-name]</code> for example
+                  <code>npx @vuesion/service create my-app</code>
                 </li>
                 <li>Change directory <code>cd my-app</code></li>
                 <li>Run <code>npm run dev</code></li>

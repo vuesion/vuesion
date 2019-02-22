@@ -42,7 +42,7 @@ Please visit the **[vue-starter app on heroku!](https://vue-starter.herokuapp.co
 
 ## Via `npx`
 
-1. Run `npx vue-starter-service create [project-name]` for example `npx vue-starter-service create my-app`
+1. Run `npx @vuesion/service create [project-name]` for example `npx @vuesion/service create my-app`
 2. Change directory `cd my-app`
 3. Run `npm run dev`
 
