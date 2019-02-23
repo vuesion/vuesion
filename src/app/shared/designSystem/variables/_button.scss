@@ -1,8 +1,8 @@
 $button-font-family: $font-family;
-$button-padding: $space-unit $space-unit * 2;
+$button-padding: $space-xxs $space-unit * 2;
 $button-margin: 0 $space-unit 0 0;
-$button-min-width: $space-unit * 14;
-$button-height: $space-unit * 5;
+$button-min-width: $space-lg;
+$button-height: $space-lg;
 $button-font-size: inherit;
 $button-font-weight: 400;
 $button-border-radius: $brand-border-radius;

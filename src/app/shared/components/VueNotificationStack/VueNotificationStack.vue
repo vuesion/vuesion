@@ -58,7 +58,7 @@ export default {
 
 .vueNotificationStack {
   position: fixed;
-  top: 0;
+  top: $nav-bar-height;
   left: 0;
   right: 0;
   z-index: $notifications-index;

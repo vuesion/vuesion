@@ -18,14 +18,6 @@ export const AppRoutes: RouteConfig[] = [
     redirect: '/',
   },
 
-  // example route for authentication guard
-  // will redirect to `/login` (implemented in `src/app/router`)
-  // TODO: remove from production code
-  {
-    path: '/requires-auth',
-    meta: { requiresAuth: true },
-  },
-
   // catch-all route
   // shows 404 page and also makes server respond with HTTP status code 404
   // make sure to also adjust `src/server/isomorphic` in case you implement a more complex behavior here
