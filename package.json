@@ -45,11 +45,12 @@
     "build:analyze": "vuesion build --analyze",
     "build:spa": "vuesion build --spa",
     "start": "node ./dist/server/server.js",
-    "ci": "vuesion parallel \"npm run lint -- --silent\" \"npm run test -- --silent\"",
-    "postci": "codecov -f ./coverage/*.json && vuesion parallel \"npm run build -- --silent\" \"npm run storybook:build -- --silent\" \"vuepress build docs\""
+    "e2e:ci": "./node_modules/.bin/start-server-and-test dev http://localhost:3000 e2e",
+    "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\" \"npm run e2e:ci\"",
+    "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\" \"./node_modules/.bin/vuepress build docs\""
   },
   "dependencies": {
-    "@vuesion/addon-vuex-persist": "^1.0.0-alpha.0",
+    "@vuesion/addon-vuex-persist": "^1.0.0-alpha.1",
     "accept-language": "3.0.18",
     "animejs": "3.0.1",
     "axios": "0.18.0",
@@ -87,9 +88,8 @@
     "@types/node": "10.12.24",
     "@types/serve-favicon": "2.2.30",
     "@vue/test-utils": "1.0.0-beta.27",
-    "@vuesion/service": "^1.0.0-alpha.0",
+    "@vuesion/service": "^1.0.0-alpha.1",
     "axios-mock-adapter": "1.16.0",
-    "codecov": "3.1.0",
     "husky": "1.3.1",
     "identity-obj-proxy": "3.0.0",
     "node-sass": "4.11.0",

@@ -1,0 +1,85 @@
+version: 2
+app-name: &app_name vue-starter
+workspace-name: &working_directory ~/repo
+jobs:
+  build:
+    environment:
+      CC_TEST_REPORTER_ID: e3e29d8d5a08a84fa0f7c9590af55139571554f05485828964c799e5bc9cc2c5
+    docker:
+      - image: cypress/base:10
+    working_directory: *working_directory
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
+      - run:
+          name: Install dependencies
+          command: |
+            npm ci --silent
+            npm install vuepress start-server-and-test --silent
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - ~/.npm
+            - ~/.cache
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
+          name: Code Climate before build
+          command: ./cc-test-reporter before-build
+      - run:
+          name: Building application
+          command: npm run ci
+      - run:
+          name: Sending Code Climate coverage report
+          command: ./cc-test-reporter after-build -t lcov coverage/lcov.info --exit-code $?
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - package*.json
+            - dist
+            - .vuesion
+            - i18n
+            - storybook-static
+            - Dockerfile
+  deploy:
+    machine: true
+    working_directory: *working_directory
+    environment:
+      APP_NAME: *app_name
+    steps:
+      - attach_workspace:
+          at: *working_directory
+      - run:
+          name: Push docker image to Heroku
+          command: |
+            docker build -t $APP_NAME .
+            set -eu -o pipefail
+            echo $HEROKU_API_KEY | docker login --username=$HEROKU_USERNAME --password-stdin registry.heroku.com
+            docker tag $APP_NAME registry.heroku.com/$APP_NAME/web
+            docker push registry.heroku.com/$APP_NAME/web
+            docker inspect registry.heroku.com/$APP_NAME/web --format={{.Id}} > WEB_DOCKER_IMAGE_ID_FILE
+            export WEB_DOCKER_IMAGE_ID=$(cat WEB_DOCKER_IMAGE_ID_FILE)
+            curl -n -X PATCH https://api.heroku.com/apps/$APP_NAME/formation \
+            -d '{ "updates": [ { "type": "web", "docker_image": "'"$WEB_DOCKER_IMAGE_ID"'" }]}' \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/vnd.heroku+json; version=3.docker-releases" \
+            -H "Authorization: Bearer $HEROKU_API_KEY"
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

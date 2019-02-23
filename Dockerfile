@@ -1,17 +1,15 @@
-FROM node:10-alpine AS builder
-RUN mkdir /app
-WORKDIR /app
-COPY . .
-RUN npm install && npm run build
+# build happens in the CI pipeline
+# no build inside this container because it would be redundant
 
 FROM node:10-alpine
 ENV NODE_ENV=production
-RUN mkdir /app /app/logs
-WORKDIR /app
-COPY --from=builder /app/package* ./
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/i18n ./i18n
-COPY --from=builder /app/.vuesion/config.json ./.vuesion/config.json
-RUN npm install --only=production
-EXPOSE 3001
-CMD PORT=3001 npm start
+ENV PORT=3000
+RUN mkdir /logs
+COPY ./package* ./
+COPY ./dist ./dist
+COPY ./.vuesion/config.json ./.vuesion/config.json
+COPY ./i18n ./i18n
+COPY ./storybook-static ./storybook-static
+RUN npm install --silent --only=production
+EXPOSE 3000
+CMD npm start
