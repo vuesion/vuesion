@@ -45,9 +45,9 @@
     "build:analyze": "vuesion build --analyze",
     "build:spa": "vuesion build --spa",
     "start": "node ./dist/server/server.js",
-    "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\"",
-    "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\" \"./node_modules/.bin/vuepress build docs\" && npm run e2e:ci",
-    "e2e:ci": "./node_modules/.bin/start-server-and-test start http://localhost:3000 e2e"
+    "e2e:ci": "./node_modules/.bin/start-server-and-test dev http://localhost:3000 e2e",
+    "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\" \"npm run e2e:ci\"",
+    "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\" \"./node_modules/.bin/vuepress build docs\""
   },
   "dependencies": {
     "@vuesion/addon-vuex-persist": "^1.0.0-alpha.1",
