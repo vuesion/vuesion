@@ -3,6 +3,8 @@ import { Request, Response } from 'express';
 import { serve } from '../utils/Utils';
 import { randomInt } from '@/app/shared/utils/misc';
 
+const getErrorWithProbability = (probability: number) => randomInt(0, 100) <= probability;
+
 export const DemoRoutes = (app: Express.Application) => {
   /**
    * http -> https redirect for heroku
@@ -24,9 +26,7 @@ export const DemoRoutes = (app: Express.Application) => {
    * Auth-Demo
    */
   app.post('/token', (req: Request, res: Response) => {
-    const isRandomError = randomInt(0, 100) > 95;
-
-    if (isRandomError) {
+    if (getErrorWithProbability(10)) {
       res.status(500).json({});
     } else if (req.body.grant_type === 'password') {
       res.status(200).json({ access_token: 'accessToken', refresh_token: 'refreshToken' });
@@ -38,7 +38,7 @@ export const DemoRoutes = (app: Express.Application) => {
   });
 
   app.delete('/token', (req: Request, res: Response) => {
-    if (randomInt(0, 100) > 95) {
+    if (getErrorWithProbability(10)) {
       res.status(500).json({});
     } else {
       res.status(200).json({});
@@ -46,7 +46,7 @@ export const DemoRoutes = (app: Express.Application) => {
   });
 
   app.get('/protected', (req: Request, res: Response) => {
-    if (randomInt(0, 100) > 60) {
+    if (getErrorWithProbability(40)) {
       res.status(401).json({});
     } else {
       res.status(200).json({});
