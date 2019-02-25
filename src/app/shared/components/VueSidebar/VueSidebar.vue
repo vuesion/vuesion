@@ -81,10 +81,11 @@ export default {
 
 .hamburger {
   position: fixed;
-  top: $space-unit;
-  left: $space-unit;
+  top: $space-xs * 1.5;
+  left: $space-md;
+  height: $space-lg;
   z-index: $modal-index + 2;
-  padding: $space-unit / 2 $space-unit;
+  padding: 0;
   display: inline-block;
   cursor: pointer;
   transition-property: opacity, filter;
@@ -98,8 +99,8 @@ export default {
   background: $sidebar-hamburger-bg;
 
   .box {
-    width: $space-unit * 4;
-    height: $space-unit * 4;
+    width: $space-lg;
+    height: $space-lg;
     display: inline-block;
     position: relative;
   }
@@ -112,8 +113,8 @@ export default {
     &,
     &::before,
     &::after {
-      width: $space-unit * 4;
-      height: $space-unit / 2;
+      width: $space-lg;
+      height: $space-xxs * 0.5;
       background: $sidebar-hamburger-color;
       border-radius: 0;
       position: absolute;

@@ -4,7 +4,15 @@
 
     <vue-navigation-progress :is-navigating="isNavigating" />
 
-    <vue-nav-bar />
+    <vue-nav-bar>
+      <vue-button v-if="isAuthenticated === false" color="primary" :class="$style.login" @click="showLoginModal = true">
+        Login Example
+      </vue-button>
+
+      <vue-button v-if="isAuthenticated" color="primary" :class="$style.login" @click="onLogout">
+        Logout
+      </vue-button>
+    </vue-nav-bar>
 
     <router-view :class="$style.content" />
 
@@ -92,6 +100,10 @@
         </vue-sidebar-group-item>
       </vue-sidebar-group>
     </vue-sidebar>
+
+    <vue-modal :show="showLoginModal" @close="showLoginModal = false">
+      <login-form :loading="isLoginPending" @submit="onLoginSubmit" />
+    </vue-modal>
   </div>
 </template>
 
@@ -116,10 +128,16 @@ import VueIconGithub from '../../shared/components/icons/VueIconGithub/VueIconGi
 import VueIconTwitterSquare from '../../shared/components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
 import VueSelect from '../../shared/components/VueSelect/VueSelect.vue';
 import VueIconPuzzlePiece from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
-
+import VueButton from '@/app/shared/components/VueButton/VueButton.vue';
+import VueModal from '@/app/shared/components/VueModal/VueModal.vue';
+import LoginForm from '@/app/shared/modules/auth/LoginForm/LoginForm.vue';
+import { addNotification } from '@/app/shared/components/VueNotificationStack/utils';
 export default {
   name: 'App',
   components: {
+    LoginForm,
+    VueModal,
+    VueButton,
     VueIconPuzzlePiece,
     VueSelect,
     VueIconTwitterSquare,
@@ -147,13 +165,17 @@ export default {
         { label: 'Português', value: 'pt' },
         { label: '中文', value: 'zh-cn' },
       ],
+      showLoginModal: false,
+      isLoginPending: false,
     };
   },
   computed: {
     ...mapGetters('app', ['cookieConsentVersion', 'getLocale']),
+    ...mapGetters('auth', ['isAuthenticated']),
   },
   methods: {
     ...mapActions('app', ['changeLocale', 'setCookieConsentVersion']),
+    ...mapActions('auth', ['createToken', 'revokeToken']),
     localeSwitch(locale: string): void {
       loadLocaleAsync(locale)
         // tslint:disable-next-line
@@ -170,6 +192,30 @@ export default {
         this.isNavigating = false;
       });
     },
+    async onLoginSubmit(formData: any) {
+      this.isLoginPending = true;
+
+      try {
+        await this.createToken(formData);
+
+        this.$router.push({ name: 'dashboard' });
+      } catch (e) {
+        addNotification({ title: 'Error during login', text: 'Please try again!' });
+      }
+
+      this.isLoginPending = false;
+      this.showLoginModal = false;
+    },
+    async onLogout() {
+      this.isLoginPending = true;
+
+      await this.revokeToken();
+
+      this.$router.push('/');
+
+      this.isLoginPending = false;
+      this.showLoginModal = false;
+    },
   },
   created() {
     this.initProgressBar();
@@ -179,8 +225,8 @@ export default {
 
 <style lang="scss" module>
 @import '~@/app/shared/design-system';
-@import '../../shared/designSystem/reset';
-@import '../../shared/designSystem/typo';
+@import '~@/app/shared/designSystem/reset';
+@import '~@/app/shared/designSystem/typo';
 
 .app {
   min-height: 100vh;
@@ -190,5 +236,9 @@ export default {
 
 .content {
   flex: 1;
+}
+
+.login {
+  float: right;
 }
 </style>

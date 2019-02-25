@@ -5,6 +5,7 @@ import { DefaultState, IState } from './state';
 import { VuexPersist } from '@vuesion/addon-vuex-persist';
 import { PersistCookieStorage } from '@vuesion/addon-vuex-persist/dist/PersistCookieStorage';
 import { AppModule } from './app/module';
+import { AuthModule } from '@/app/shared/modules/auth/module';
 
 Vue.use(Vuex);
 
@@ -23,7 +24,7 @@ export const store: Store<IState> = new Vuex.Store({
   state,
   plugins: [
     VuexPersist([
-      new PersistCookieStorage(['app'], {
+      new PersistCookieStorage(['app', 'auth'], {
         cookieOptions: {
           expires: 365,
         },
@@ -52,3 +53,4 @@ export const registerModule = (moduleName: string, module: Module<any, any>) => 
 };
 
 registerModule('app', AppModule);
+registerModule('auth', AuthModule);

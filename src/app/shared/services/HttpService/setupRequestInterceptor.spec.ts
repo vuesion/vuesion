@@ -1,6 +1,5 @@
 import MockAdapter from 'axios-mock-adapter';
 import { HttpService, initHttpService } from './HttpService';
-import { AxiosResponse } from 'axios';
 
 describe('RequestInterceptor', () => {
   let mockAxios: MockAdapter;
@@ -12,7 +11,11 @@ describe('RequestInterceptor', () => {
 
   test('should add the accessToken as header', async () => {
     HttpService.store = {
-      state: {},
+      state: {
+        auth: {
+          accessToken: 'TOKEN',
+        },
+      },
       dispatch: jest.fn(),
     } as any;
 

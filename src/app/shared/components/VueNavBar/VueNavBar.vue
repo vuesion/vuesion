@@ -1,5 +1,7 @@
 <template>
-  <div :class="$style.vueNavBar" ref="nav"></div>
+  <div :class="$style.vueNavBar" ref="nav">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">

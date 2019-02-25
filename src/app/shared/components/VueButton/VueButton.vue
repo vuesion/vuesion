@@ -140,7 +140,7 @@ export default {
   position: absolute;
   left: 50%;
   margin-left: -($space-unit * 2);
-  top: $space-unit * 0.25;
+  top: 0;
 }
 
 .primary {

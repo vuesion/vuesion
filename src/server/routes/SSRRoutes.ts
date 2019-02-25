@@ -54,7 +54,7 @@ export const SSRRoutes = (app: Express.Application): any => {
     setHeaders(res);
 
     if (!renderer) {
-      return res.end('waiting for compilation... refresh in a moment.');
+      return res.status(503).end('waiting for compilation... refresh in a moment.');
     }
 
     acceptLanguage.languages(vueStarterConfig.i18n.supportedLocales);
