@@ -1,17 +1,18 @@
 import { AppDefaultState, IAppState } from './app/state';
+import { AuthDefaultState, IAuthState } from './shared/modules/auth/state';
 import { ICounterState } from './counter/state';
-import { IAuthState } from './shared/modules/auth/state';
 
 export interface IState {
   [key: string]: any;
 
   app?: IAppState;
-  counter?: ICounterState;
   auth?: IAuthState;
+  counter?: ICounterState;
 }
 
 export const DefaultState: IState = {
   app: {
     ...AppDefaultState(),
+    ...AuthDefaultState(),
   },
 };
