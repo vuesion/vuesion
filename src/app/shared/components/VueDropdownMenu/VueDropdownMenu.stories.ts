@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueDropdownMenu from './VueDropdownMenu.vue';
 
-const story = storiesOf('2. Components|DropdownMenu', module) as any;
+const story = storiesOf('Atoms|DropdownMenu', module) as any;
 
 story.add(
   'Default',

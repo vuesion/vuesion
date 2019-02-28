@@ -1,0 +1,22 @@
+@import '~@/app/shared/design-system';
+
+:export {
+  mainBackground: $brand-bg-color-variant;
+  mainBorder: 1px solid $brand-border-color;
+  mainBorderColor: $brand-border-color;
+  mainBorderRadius: 0;
+  mainFill: $brand-bg-color;
+  barFill: $brand-bg-color;
+  inputFill: $brand-bg-color;
+  mainTextFace: $font-family;
+  mainTextColor: $brand-text-color;
+  mainTextSize: $font-size;
+  dimmedTextColor: $brand-text-secondary-color;
+  highlightColor: $brand-secondary;
+  successColor: $brand-success;
+  failColor: $brand-danger;
+  warnColor: $brand-warning;
+  monoTextFace: inherit;
+  layoutMargin: $screen-small-desktop-gutter;
+  overlayBackground: inherit;
+}

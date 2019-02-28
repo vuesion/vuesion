@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import LoginForm from './LoginForm.vue';
 import { i18n } from '@/app/shared/plugins/i18n/i18n';
 
-const story = storiesOf('3. Forms|LoginForm', module) as any;
+const story = storiesOf('Organisms|LoginForm', module) as any;
 
 story.addDecorator(VueInfoAddon);
 

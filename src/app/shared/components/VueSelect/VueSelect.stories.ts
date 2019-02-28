@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueSelect from './VueSelect.vue';
 
-const story = storiesOf('2. Components|Select', module) as any;
+const story = storiesOf('Atoms|Select', module) as any;
 
 story.add(
   'Default',

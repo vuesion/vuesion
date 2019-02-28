@@ -3,7 +3,7 @@ import { withInfo } from 'storybook-addon-vue-info';
 import VueModal from './VueModal.vue';
 import VueButton from '../VueButton/VueButton.vue';
 
-const story = storiesOf('2. Components|Modal', module) as any;
+const story = storiesOf('Molecules|Modal', module) as any;
 
 story.add(
   'Default',
