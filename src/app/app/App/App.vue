@@ -176,10 +176,8 @@ export default {
   methods: {
     ...mapActions('app', ['changeLocale', 'setCookieConsentVersion']),
     ...mapActions('auth', ['createToken', 'revokeToken']),
-    localeSwitch(locale: string): void {
-      loadLocaleAsync(locale)
-        // tslint:disable-next-line
-        .catch((error: Error) => console.log(error));
+    localeSwitch(locale: string) {
+      loadLocaleAsync(locale).catch((error: Error) => console.log(error)); // tslint:disable-line
 
       this.changeLocale(locale);
     },
