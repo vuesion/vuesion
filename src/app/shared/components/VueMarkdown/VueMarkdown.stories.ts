@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueMarkdown from './VueMarkdown.vue';
 
-const story = storiesOf('2. Components|Markdown', module) as any;
+const story = storiesOf('Organisms|Markdown', module) as any;
 
 story.add(
   'Default',

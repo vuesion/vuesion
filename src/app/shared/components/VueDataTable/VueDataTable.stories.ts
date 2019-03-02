@@ -6,7 +6,7 @@ import { i18n } from '../../plugins/i18n/i18n';
 import { dataTableDataFixture, dataTableHeaderFixture } from './DataTableFixtures';
 import VueDropdownMenu from '../VueDropdownMenu/VueDropdownMenu.vue';
 
-const story = storiesOf('2. Components|DataTable', module) as any;
+const story = storiesOf('Organisms|DataTable', module) as any;
 
 story.add(
   'Default',

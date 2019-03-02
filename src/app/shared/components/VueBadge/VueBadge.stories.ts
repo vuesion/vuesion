@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueBadge from './VueBadge.vue';
 
-const story = storiesOf('2. Components|Badge', module) as any;
+const story = storiesOf('Atoms|Badge', module) as any;
 
 story.add(
   'Badge Variants',

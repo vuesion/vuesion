@@ -4,7 +4,7 @@ import VueDateRangePicker from './VueDateRangePicker.vue';
 import { i18n } from '../../plugins/i18n/i18n';
 import { action } from '@storybook/addon-actions';
 
-const story = storiesOf('2. Components|DateRangePicker', module) as any;
+const story = storiesOf('Organisms|DateRangePicker', module) as any;
 
 story.add(
   'Default',

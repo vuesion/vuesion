@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueBreadcrumb from './VueBreadcrumb.vue';
 
-const story = storiesOf('2. Components|Breadcrumb', module);
+const story = storiesOf('Molecules|Breadcrumb', module);
 
 story.addDecorator(require('storybook-vue-router').default());
 

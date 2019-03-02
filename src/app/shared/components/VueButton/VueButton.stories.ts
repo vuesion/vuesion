@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueButton from './VueButton.vue';
 
-const story = storiesOf('2. Components|Button', module) as any;
+const story = storiesOf('Atoms|Button', module) as any;
 
 story.add(
   'Button Variants',

@@ -12,6 +12,7 @@ import '../../src/app/shared/_design-system.scss';
 import '../../src/app/shared/designSystem/reset.scss';
 import '../../src/app/shared/designSystem/global.scss';
 import '../../src/app/shared/designSystem/typo.scss';
+import customTheme from './theme';
 
 Vue.use(VueI18n);
 Vue.use(VueRouter);
@@ -41,6 +42,7 @@ addDecorator(
     hierarchyRootSeparator: /\|/,
     sidebarAnimations: true,
     selectedAddonPanel: undefined,
+    theme: customTheme,
   }),
 );
 setDefaults({ header: false });

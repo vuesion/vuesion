@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueToggle from './VueToggle.vue';
 
-const story = storiesOf('2. Components|Toggle', module) as any;
+const story = storiesOf('Atoms|Toggle', module) as any;
 
 story.add(
   'Default',

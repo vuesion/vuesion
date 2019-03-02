@@ -4,7 +4,7 @@ import VuePagination from './VuePagination.vue';
 import { action } from '@storybook/addon-actions';
 import { i18n } from '../../plugins/i18n/i18n';
 
-const story = storiesOf('2. Components|Pagination', module) as any;
+const story = storiesOf('Molecules|Pagination', module) as any;
 
 story.add(
   'Default',

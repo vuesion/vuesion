@@ -4,7 +4,7 @@ import VueNotificationStack from './VueNotificationStack.vue';
 import VueButton from '../VueButton/VueButton.vue';
 import { addNotification, INotification } from './utils';
 
-const story = storiesOf('2. Components|NotificationStack', module) as any;
+const story = storiesOf('Molecules|NotificationStack', module) as any;
 
 story.add(
   'Default',
