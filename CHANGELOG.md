@@ -1,3 +1,23 @@
+### 2.2.0 (2019-03-02)
+
+##### Chores
+
+- **storybook:** align component structure with atomic design ([#355](https://github.com/devCrossNet/vue-starter/pull/355)) ([a17a2627](https://github.com/devCrossNet/vue-starter/commit/a17a26270b2228c48baaba9291b16659e0eca83e))
+- update README.md ([3768a5b0](https://github.com/devCrossNet/vue-starter/commit/3768a5b0f745759cae2179c29bc6f61e8a839959))
+
+##### Documentation Changes
+
+- update clean-up guide to include dashboard ([b514d69d](https://github.com/devCrossNet/vue-starter/commit/b514d69dfe5febed6c943250eab7a6f9b24063cb))
+
+##### New Features
+
+- **vue-button:** support link as button ([#357](https://github.com/devCrossNet/vue-starter/pull/357)) ([ce59f0ba](https://github.com/devCrossNet/vue-starter/commit/ce59f0ba45ac4b74191c158406605701355d85b0))
+- add auth demo ([#352](https://github.com/devCrossNet/vue-starter/pull/352)) ([9d1983fc](https://github.com/devCrossNet/vue-starter/commit/9d1983fce0d86eec1cc9c76a3e74250f3e4b96d3))
+
+##### Bug Fixes
+
+- **i18n:** handle cached locales in client correctly ([#356](https://github.com/devCrossNet/vue-starter/pull/356)) ([d591596a](https://github.com/devCrossNet/vue-starter/commit/d591596a411d7f47da25f0a843bd302d04c43ff8))
+
 ### 2.1.0 (2019-02-23)
 
 ##### Build System / Dependencies
