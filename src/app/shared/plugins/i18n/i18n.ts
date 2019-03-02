@@ -56,8 +56,8 @@ export const loadLocaleAsync = async (locale: string) => {
 
   if (i18n.locale !== locale && !messages) {
     const res = await axios.get(`/i18n/${locale}.json`);
-    messages = res.data;
 
+    messages = res.data;
     loadedLocales[locale] = messages;
   }
 
