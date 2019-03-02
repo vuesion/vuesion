@@ -5,6 +5,8 @@ import VueButton from './VueButton.vue';
 
 const story = storiesOf('Atoms|Button', module) as any;
 
+story.addDecorator(require('storybook-vue-router').default());
+
 story.add(
   'Button Variants',
   withInfo({})(() => ({
@@ -50,6 +52,33 @@ story.add(
 <vue-button @click="action" color="success" outlined>Success Outlined</vue-button>
 <vue-button @click="action" color="success" ghost>Success Ghost</vue-button>
 <vue-button @click="action" color="success" loading>Success Loading</vue-button>
+</div>
+`,
+    methods: {
+      action: action('@onClick'),
+    },
+  })),
+);
+
+story.add(
+  'Button as Link',
+  withInfo({})(() => ({
+    components: { VueButton },
+    template: `<div>
+Router-Link<br/>
+<vue-button @click="action" as="router-link" color="primary" target="/">Router Link</vue-button>
+<vue-button @click="action" as="router-link" color="primary" target="/" disabled>Router Link</vue-button>
+<vue-button @click="action" as="router-link" color="primary" target="/" outlined>Router Link</vue-button>
+<vue-button @click="action" as="router-link" color="primary" target="/" ghost>Router Link</vue-button>
+<vue-button @click="action" as="router-link" color="primary" target="/" loading>Router Link</vue-button>
+<br/>
+<br/>
+A-Element: <br/>
+<vue-button @click="action" as="a" color="primary" target="/">Router Link</vue-button>
+<vue-button @click="action" as="a" color="primary" target="/" disabled>Router Link</vue-button>
+<vue-button @click="action" as="a" color="primary" target="/" outlined>Router Link</vue-button>
+<vue-button @click="action" as="a" color="primary" target="/" ghost>Router Link</vue-button>
+<vue-button @click="action" as="a" color="primary" target="/" loading>Router Link</vue-button>
 </div>
 `,
     methods: {
