@@ -1,8 +1,19 @@
 <template>
-  <button :class="cssClasses" :disabled="disabled" @click="click" ref="button" :style="{ width: actualWidth }">
+  <component
+    :is="as"
+    :to="isRouterLink && target"
+    :href="isRegularLink && target"
+    :disabled="disabled"
+    :class="cssClasses"
+    @click="click"
+    @click.native="click"
+    ref="button"
+    :style="{ width: actualWidth }"
+    :event="!isDisabled && isRouterLink ? 'click' : null"
+  >
     <slot v-if="loading === false" />
     <vue-loader :class="$style.loader" v-if="loading === true" />
-  </button>
+  </component>
 </template>
 
 <script lang="ts">
@@ -19,6 +30,13 @@ export default {
     },
     loading: {
       type: Boolean,
+    },
+    as: {
+      type: String,
+      default: 'button',
+    },
+    target: {
+      type: String,
     },
     outlined: {
       type: Boolean,
@@ -52,10 +70,24 @@ export default {
     actualWidth() {
       return this.loading && this.$refs.button ? `${this.$refs.button.getBoundingClientRect().width}px` : null;
     },
+    isDisabled() {
+      return this.disabled || this.loading;
+    },
+    isRouterLink() {
+      return this.as === 'router-link';
+    },
+    isRegularLink() {
+      return this.as === 'a';
+    },
   },
   methods: {
     click(e: Event) {
-      if (!this.disabled && !this.loading) {
+      if (this.isRegularLink && this.isDisabled) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      if (this.isDisabled === false) {
         this.$emit('click', e);
       }
     },
@@ -89,9 +121,15 @@ export default {
   height: $button-height;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  text-decoration: $button-text-decoration;
 
   &:active {
     box-shadow: $button-active-shadow;
+    text-decoration: $button-hover-text-decoration;
+  }
+
+  &:hover {
+    text-decoration: $button-hover-text-decoration;
   }
 
   &.disabled,
@@ -150,6 +188,7 @@ export default {
 
   &:hover {
     background: $button-primary-hover-bg;
+    color: $button-primary-hover-color;
   }
 
   :global {
@@ -166,6 +205,7 @@ export default {
 
   &:hover {
     background: $button-secondary-hover-bg;
+    color: $button-secondary-hover-color;
   }
 
   :global {
@@ -182,6 +222,7 @@ export default {
 
   &:hover {
     background: $button-tertiary-hover-bg;
+    color: $button-tertiary-hover-color;
   }
 
   :global {
@@ -198,6 +239,7 @@ export default {
 
   &:hover {
     background: $button-success-hover-bg;
+    color: $button-success-hover-color;
   }
 
   :global {
@@ -214,6 +256,7 @@ export default {
 
   &:hover {
     background: $button-warning-hover-bg;
+    color: $button-warning-hover-color;
   }
 
   :global {
@@ -230,6 +273,7 @@ export default {
 
   &:hover {
     background: $button-danger-hover-bg;
+    color: $button-danger-hover-color;
   }
 
   :global {
