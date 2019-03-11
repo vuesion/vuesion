@@ -18,12 +18,17 @@ export default {
       type: Boolean,
     },
   },
-  inject: ['register'],
+  inject: ['register', 'updateHeader'],
   data(): any {
     return {
       idx: null,
       active: false,
     };
+  },
+  watch: {
+    title(title: string) {
+      this.updateHeader(this.idx, { title });
+    },
   },
   computed: {
     show() {

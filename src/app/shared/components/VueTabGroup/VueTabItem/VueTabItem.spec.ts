@@ -6,6 +6,7 @@ const localVue = createLocalVue();
 describe('VueTabItem.vue', () => {
   test('renders component', () => {
     const register = jest.fn();
+    const updateHeader = jest.fn();
     const wrapper = mount<any>(VueTabItem, {
       localVue,
       slots: {
@@ -14,7 +15,7 @@ describe('VueTabItem.vue', () => {
       propsData: {
         title: 'foo',
       },
-      provide: { register },
+      provide: { register, updateHeader },
     });
 
     expect(wrapper.vm.cssClasses).toEqual(['vueTab']);
@@ -34,6 +35,9 @@ describe('VueTabItem.vue', () => {
 
     wrapper.setData({ active: true });
     expect(wrapper.findAll('p')).toHaveLength(1);
+
+    wrapper.setProps({ title: 'bar' });
+    expect(updateHeader).toHaveBeenCalledTimes(1);
 
     wrapper.vm.beforeEnter(wrapper.vm.$el);
     wrapper.vm.enter(wrapper.vm.$el, jest.fn());
