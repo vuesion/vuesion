@@ -1,6 +1,9 @@
 import * as Express from 'express';
 import { Request, Response } from 'express';
 import { serve } from '../utils/Utils';
+import { randomInt } from '@/app/shared/utils/misc';
+
+const getErrorWithProbability = (probability: number) => randomInt(0, 100) <= probability;
 
 export const DemoRoutes = (app: Express.Application) => {
   /**
@@ -18,4 +21,35 @@ export const DemoRoutes = (app: Express.Application) => {
   });
   app.use('/storybook', serve('../../storybook-static'));
   app.use('/docs', serve('../docs'));
+
+  /**
+   * Auth-Demo
+   */
+  app.post('/token', (req: Request, res: Response) => {
+    if (getErrorWithProbability(10)) {
+      res.status(500).json({});
+    } else if (req.body.grant_type === 'password') {
+      res.status(200).json({ access_token: 'accessToken', refresh_token: 'refreshToken' });
+    } else if (req.body.grant_type === 'refresh_token' && req.body.refresh_token === 'refreshToken') {
+      res.status(200).json({ access_token: 'accessToken2', refresh_token: 'refreshToken2' });
+    } else if (req.body.grant_type === 'refresh_token' && req.body.refresh_token === 'refreshToken2') {
+      res.status(200).json({ access_token: 'accessToken', refresh_token: 'refreshToken' });
+    }
+  });
+
+  app.delete('/token', (req: Request, res: Response) => {
+    if (getErrorWithProbability(10)) {
+      res.status(500).json({});
+    } else {
+      res.status(200).json({});
+    }
+  });
+
+  app.get('/protected', (req: Request, res: Response) => {
+    if (getErrorWithProbability(40)) {
+      res.status(401).json({});
+    } else {
+      res.status(200).json({});
+    }
+  });
 };

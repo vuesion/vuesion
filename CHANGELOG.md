@@ -1,3 +1,60 @@
+### 2.2.0 (2019-03-02)
+
+##### Chores
+
+- **storybook:** align component structure with atomic design ([#355](https://github.com/devCrossNet/vue-starter/pull/355)) ([a17a2627](https://github.com/devCrossNet/vue-starter/commit/a17a26270b2228c48baaba9291b16659e0eca83e))
+- update README.md ([3768a5b0](https://github.com/devCrossNet/vue-starter/commit/3768a5b0f745759cae2179c29bc6f61e8a839959))
+
+##### Documentation Changes
+
+- update clean-up guide to include dashboard ([b514d69d](https://github.com/devCrossNet/vue-starter/commit/b514d69dfe5febed6c943250eab7a6f9b24063cb))
+
+##### New Features
+
+- **vue-button:** support link as button ([#357](https://github.com/devCrossNet/vue-starter/pull/357)) ([ce59f0ba](https://github.com/devCrossNet/vue-starter/commit/ce59f0ba45ac4b74191c158406605701355d85b0))
+- add auth demo ([#352](https://github.com/devCrossNet/vue-starter/pull/352)) ([9d1983fc](https://github.com/devCrossNet/vue-starter/commit/9d1983fce0d86eec1cc9c76a3e74250f3e4b96d3))
+
+##### Bug Fixes
+
+- **i18n:** handle cached locales in client correctly ([#356](https://github.com/devCrossNet/vue-starter/pull/356)) ([d591596a](https://github.com/devCrossNet/vue-starter/commit/d591596a411d7f47da25f0a843bd302d04c43ff8))
+
+### 2.1.0 (2019-02-23)
+
+##### Build System / Dependencies
+
+- upgrade docker image to node:10 ([#347](https://github.com/devCrossNet/vue-starter/pull/347)) ([b039293e](https://github.com/devCrossNet/vue-starter/commit/b039293eb6ce1fe46bc82dbdc6ed041101c71d1b))
+
+##### Chores
+
+- update dependencies ([#346](https://github.com/devCrossNet/vue-starter/pull/346)) ([6b869b51](https://github.com/devCrossNet/vue-starter/commit/6b869b5124d1d41b732a3c5c4fff502d2a22d18f))
+- update dependencies ([ab6b5d90](https://github.com/devCrossNet/vue-starter/commit/ab6b5d909bf21810db30dd6171b85a38b034769c))
+- optimize npm scripts ([#337](https://github.com/devCrossNet/vue-starter/pull/337)) ([e8ff1545](https://github.com/devCrossNet/vue-starter/commit/e8ff15456a1bbdfa887f58bd673d1658c859753c))
+
+##### Continuous Integration
+
+- switch to circleci ([#351](https://github.com/devCrossNet/vue-starter/pull/351)) ([401a3727](https://github.com/devCrossNet/vue-starter/commit/401a37276ba077f5d6a7e8f8813c110ee5077fc6))
+
+##### Documentation Changes
+
+- update contributors ([7d8127cb](https://github.com/devCrossNet/vue-starter/commit/7d8127cb2b34be39c76aa0a1870f0d01a0732b25))
+- add different kinds of deployments ([1350eb51](https://github.com/devCrossNet/vue-starter/commit/1350eb5189d78f2147111de54f5c185bccd64847))
+
+##### New Features
+
+- upgrade to vue 2.6 ([#345](https://github.com/devCrossNet/vue-starter/pull/345)) ([6a839de7](https://github.com/devCrossNet/vue-starter/commit/6a839de76d3f130f9fc6a9ecb358def1d7e5de25))
+- **storybook:** add viewport addon ([#344](https://github.com/devCrossNet/vue-starter/pull/344)) ([6973459b](https://github.com/devCrossNet/vue-starter/commit/6973459b2b2364dd851fd43cea3f2c7ac8cef015))
+
+##### Bug Fixes
+
+- add type to all props ([72753216](https://github.com/devCrossNet/vue-starter/commit/72753216d85e429e1747d3ee1eb47a14fb439cb0))
+- use global css classes in global.scss ([#332](https://github.com/devCrossNet/vue-starter/pull/332)) ([3b4230ff](https://github.com/devCrossNet/vue-starter/commit/3b4230ff13d4e9d95c16bd94e0143e86ad37416d))
+
+##### Refactors
+
+- switch to vuesion org ([#348](https://github.com/devCrossNet/vue-starter/pull/348)) ([e7b13edc](https://github.com/devCrossNet/vue-starter/commit/e7b13edcddb7e56e425c9047e300175040cde46a))
+- change promises to async/await ([#339](https://github.com/devCrossNet/vue-starter/pull/339)) ([8594736c](https://github.com/devCrossNet/vue-starter/commit/8594736c370ba97140cbe2de3fdb57ab55be81d6))
+- **design-system:** replace relative path with alias ([c29d8768](https://github.com/devCrossNet/vue-starter/commit/c29d8768e9d8e365987b1b9500eaac7193d40062))
+
 #### 2.0.2 (2019-01-26)
 
 ##### Bug Fixes

@@ -5,7 +5,7 @@ import VueSidebarGroup from './VueSidebarGroup/VueSidebarGroup.vue';
 import VueSidebarGroupItem from './VueSidebarGroupItem/VueSidebarGroupItem.vue';
 import VueIconCode from '../icons/VueIconCode/VueIconCode.vue';
 
-const story = storiesOf('2. Components|Sidebar', module) as any;
+const story = storiesOf('Organisms|Sidebar', module) as any;
 
 story.addDecorator(require('storybook-vue-router').default());
 

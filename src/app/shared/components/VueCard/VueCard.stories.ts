@@ -6,7 +6,7 @@ import VueCardBody from './VueCardBody/VueCardBody.vue';
 import VueCardFooter from './VueCardFooter/VueCardFooter.vue';
 import VueButton from '../VueButton/VueButton.vue';
 
-const story = storiesOf('2. Components|Card', module) as any;
+const story = storiesOf('Molecules|Card', module) as any;
 
 story.add(
   'Default',

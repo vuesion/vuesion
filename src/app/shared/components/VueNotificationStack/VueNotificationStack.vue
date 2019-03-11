@@ -54,11 +54,11 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../design-system';
+@import '~@/app/shared/design-system';
 
 .vueNotificationStack {
   position: fixed;
-  top: 0;
+  top: $nav-bar-height;
   left: 0;
   right: 0;
   z-index: $notifications-index;

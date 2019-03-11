@@ -4,7 +4,7 @@ import { withInfo } from 'storybook-addon-vue-info';
 import VueCookieConsent from './VueCookieConsent.vue';
 import { i18n } from '../../plugins/i18n/i18n';
 
-const story = storiesOf('2. Components|CookieConsent', module) as any;
+const story = storiesOf('Organisms|CookieConsent', module) as any;
 
 story.add(
   'Default',

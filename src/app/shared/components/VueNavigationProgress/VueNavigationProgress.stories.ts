@@ -3,7 +3,7 @@ import { withInfo } from 'storybook-addon-vue-info';
 import VueNavigationProgress from './VueNavigationProgress.vue';
 import VueCheckbox from '../VueCheckbox/VueCheckbox.vue';
 
-const story = storiesOf('2. Components|NavigationProgress', module) as any;
+const story = storiesOf('Atoms|NavigationProgress', module) as any;
 
 story.add(
   'Default',

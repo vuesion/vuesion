@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueLoader from './VueLoader.vue';
 
-const story = storiesOf('2. Components|Loader', module) as any;
+const story = storiesOf('Atoms|Loader', module) as any;
 
 story.add(
   'Loader Variants',

@@ -1,7 +1,7 @@
 {
   "currentVersion": "v2.1.0",
   "generators": {
-    "blueprintDirectory": "./.vue-starter/generators",
+    "blueprintDirectory": "./.vuesion/generators",
     "outputDirectory": "./src/app",
     "routerFile": "./src/app/router.ts",
     "stateFile": "./src/app/state.ts"

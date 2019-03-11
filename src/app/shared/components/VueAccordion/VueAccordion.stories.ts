@@ -3,7 +3,7 @@ import { withInfo } from 'storybook-addon-vue-info';
 import VueAccordion from './VueAccordion.vue';
 import VueAccordionItem from './VueAccordionItem/VueAccordionItem.vue';
 
-const story = storiesOf('2. Components|Accordion', module) as any;
+const story = storiesOf('Organisms|Accordion', module) as any;
 const storySchema = [
   {
     label: 'Default',

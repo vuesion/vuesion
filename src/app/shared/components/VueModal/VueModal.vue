@@ -103,7 +103,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../design-system';
+@import '~@/app/shared/design-system';
 
 .vueModal {
   position: fixed;
@@ -119,6 +119,7 @@ export default {
   -webkit-overflow-scrolling: touch;
 
   @include mediaMin(tabletPortrait) {
+    min-width: $modal-min-width;
     max-width: $modal-max-width;
     max-height: 100%;
     position: fixed;

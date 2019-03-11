@@ -28,7 +28,7 @@ with the correct data.
 The CookieStorage adapter is already referenced in the file `./src/app/store.ts`.
 
 ```js
-import { PersistCookieStorage } from 'vue-starter-vuex-persist/dist/PersistCookieStorage';
+import { PersistCookieStorage } from '@vuesion/addon-vuex-persist/dist/PersistCookieStorage';
 
 ...
 
@@ -100,7 +100,7 @@ That means that data you save to it will not be rendered on the server. The DOM 
 It is already referenced in the file `./src/app/store.ts`.
 
 ```js
-import { PersistLocalStorage } from 'vue-starter-vuex-persist/dist/PersistLocalStorage';
+import { PersistLocalStorage } from '@vuesion/addon-vuex-persist/dist/PersistLocalStorage';
 
 ...
 

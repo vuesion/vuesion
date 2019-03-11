@@ -13,6 +13,7 @@ Directories and files that we would recommend to delete:
 └── src
     ├── app
     │   ├── counter
+    │   ├── dashboard
     │   └── form
     └── server
         └── routes
@@ -29,11 +30,13 @@ Now you have to remove references to this modules, remove the following code in 
 ```js
 import { CounterRoutes }    from './counter/routes';
 import { FormRoutes } from './form/routes';
+import { DashboardRoutes } from './dashboard/routes';
 
 ...
 
       ...CounterRoutes,
       ...FormRoutes,
+      ...DashboardRoutes,
 
 ...
 ```
@@ -46,24 +49,6 @@ import { CounterDefaultState, ICounterState } from './counter/state';
 ...
 
   counter?: ICounterState;
-
-...
-```
-
-`./src/app/store.ts`
-
-```js
-...
-
-  /**
-   * because the counter module is loaded on demand
-   * we have to check if it exists before we delete
-   * some state attributes
-   */
-  if (localState.counter) {
-    delete localState.counter.incrementPending;
-    delete localState.counter.decrementPending;
-  }
 
 ...
 ```

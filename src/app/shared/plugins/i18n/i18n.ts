@@ -42,26 +42,24 @@ if (TEST === true) {
   i18n.setLocaleMessage('en', require('../../../../../i18n/en.json'));
 }
 
-const loadedLocales: string[] = [];
+const loadedLocales: any = {};
 
-const setI18nLocale = (locale: string) => {
+const setI18nLocale = (locale: string, messages: any) => {
   i18n.locale = locale;
   axios.defaults.headers.common['Accept-Language'] = locale;
   document.querySelector('html').setAttribute('lang', locale.substr(0, 2));
-  return locale;
+  i18n.setLocaleMessage(locale, messages);
 };
 
-export const loadLocaleAsync = (locale: string): Promise<any> => {
-  if (i18n.locale !== locale) {
-    if (!loadedLocales.find((l) => l === locale)) {
-      return axios.get(`/i18n/${locale}.json`).then((response: any) => {
-        i18n.setLocaleMessage(locale, response.data);
-        loadedLocales.push(locale);
-        return setI18nLocale(locale);
-      });
-    }
+export const loadLocaleAsync = async (locale: string) => {
+  let messages = loadedLocales[locale];
 
-    return Promise.resolve(setI18nLocale(locale));
+  if (i18n.locale !== locale && !messages) {
+    const res = await axios.get(`/i18n/${locale}.json`);
+
+    messages = res.data;
+    loadedLocales[locale] = messages;
   }
-  return Promise.resolve(locale);
+
+  setI18nLocale(locale, messages);
 };

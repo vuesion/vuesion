@@ -6,7 +6,7 @@ import { i18n } from '../../plugins/i18n/i18n';
 import { dataTableDataFixture, dataTableHeaderFixture } from './DataTableFixtures';
 import VueDropdownMenu from '../VueDropdownMenu/VueDropdownMenu.vue';
 
-const story = storiesOf('2. Components|DataTable', module) as any;
+const story = storiesOf('Organisms|DataTable', module) as any;
 
 story.add(
   'Default',
@@ -56,7 +56,7 @@ story.add(
       };
     },
     template: `<vue-data-table :header="header" :data="data" placeholder="Search" @click="action">
-  <template slot="date" slot-scope="{cell}">{{ new Date(cell.value).toDateString() }}</template>
+  <template v-slot:date="{ cell }">{{ new Date(cell.value).toDateString() }}</template>
 </vue-data-table>`,
     methods: {
       action: action('@onClick'),
@@ -76,7 +76,7 @@ story.add(
       };
     },
     template: `<vue-data-table :header="header" :data="data" placeholder="Search" @click="action">
-  <template slot="actions" slot-scope="{row}">
+  <template v-slot:actions="{ row }">
     <vue-dropdown-menu :options="[{label:'Delete', value:'delete'}]" @click="click(row)" />
   </template>
 </vue-data-table>`,

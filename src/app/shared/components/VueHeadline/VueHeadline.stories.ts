@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueHeadline from './VueHeadline.vue';
 
-const story = storiesOf('2. Components|Headline', module) as any;
+const story = storiesOf('Atoms|Headline', module) as any;
 
 story.add(
   'Headlines regular',

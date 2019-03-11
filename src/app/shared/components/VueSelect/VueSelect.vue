@@ -67,6 +67,7 @@ export default {
       type: String,
     },
     autocomplete: {
+      type: String,
       default: 'off',
     },
     placeholder: {
@@ -129,7 +130,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../design-system';
+@import '~@/app/shared/design-system';
 
 .vueSelect {
   overflow: hidden;

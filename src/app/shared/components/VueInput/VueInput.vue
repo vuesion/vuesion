@@ -74,6 +74,7 @@ export default {
       type: String,
     },
     autocomplete: {
+      type: String,
       default: 'off',
     },
   },
@@ -138,7 +139,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../design-system';
+@import '~@/app/shared/design-system';
 
 .vueInput {
   position: relative;

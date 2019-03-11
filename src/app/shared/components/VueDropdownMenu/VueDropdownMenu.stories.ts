@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueDropdownMenu from './VueDropdownMenu.vue';
 
-const story = storiesOf('2. Components|DropdownMenu', module) as any;
+const story = storiesOf('Atoms|DropdownMenu', module) as any;
 
 story.add(
   'Default',
@@ -30,7 +30,7 @@ story.add(
 :options="[{ label: 'Save', value: 'save' }, { label: '', value: 'separator' }, { label: 'Open', value: 'open' }, { label: 'Delete', value: 'delete' }]">
   File
 
-  <template slot="option" slot-scope="{option}">
+  <template v-slot:option="{ option }">
     [icon placeholder] {{ option.label }}
   </template>
 </vue-dropdown-menu>

@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueDonutChart from './VueDonutChart.vue';
 
-const story = storiesOf('2. Components|DonutChart', module) as any;
+const story = storiesOf('Organisms|DonutChart', module) as any;
 
 story.add(
   'Donut',

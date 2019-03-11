@@ -4,7 +4,7 @@ import VueGrid from './VueGrid.vue';
 import VueGridItem from '../VueGridItem/VueGridItem.vue';
 import VueGridRow from '../VueGridRow/VueGridRow.vue';
 
-const story = storiesOf('2. Components|Grid', module) as any;
+const story = storiesOf('Molecules|Grid', module) as any;
 
 story.add(
   'Default',

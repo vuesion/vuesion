@@ -34,7 +34,7 @@ const setHeaders = (res: Response): void => {
   res.setHeader('Expires', '0');
   res.setHeader('max-age', '0');
 };
-const vueStarterConfig: any = JSON.parse(fs.readFileSync(resolve('../../.vue-starter/config.json')).toString());
+const vueStarterConfig: any = JSON.parse(fs.readFileSync(resolve('../../.vuesion/config.json')).toString());
 
 export const SSRRoutes = (app: Express.Application): any => {
   if (isProd) {
@@ -54,7 +54,7 @@ export const SSRRoutes = (app: Express.Application): any => {
     setHeaders(res);
 
     if (!renderer) {
-      return res.end('waiting for compilation... refresh in a moment.');
+      return res.status(503).end('waiting for compilation... refresh in a moment.');
     }
 
     acceptLanguage.languages(vueStarterConfig.i18n.supportedLocales);

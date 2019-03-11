@@ -19,7 +19,7 @@ import VueIconSpinner from './VueIconSpinner/VueIconSpinner.vue';
 import VueIconTimes from './VueIconTimes/VueIconTimes.vue';
 import VueIconTwitterSquare from './VueIconTwitterSquare/VueIconTwitterSquare.vue';
 
-const story = storiesOf('1. Design System|6. Icons', module) as any;
+const story = storiesOf('Atoms|Icons', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
