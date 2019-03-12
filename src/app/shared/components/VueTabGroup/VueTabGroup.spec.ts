@@ -89,4 +89,18 @@ describe('VueTabGroup.vue', () => {
 
     wrapper.destroy();
   });
+
+  test('should update props when required', () => {
+    const wrapper = mount<any>(VueTabGroup, {
+      localVue,
+      slots: {
+        default: '<vue-tab-item title="foo" /><vue-tab-item title="foo" :is-active="true" />',
+      },
+    });
+
+    wrapper.vm.updateHeader(0, { title: 'bar' });
+    expect(wrapper.vm.tabHeader[0].title).toEqual('bar');
+
+    wrapper.destroy();
+  });
 });

@@ -25,6 +25,7 @@ export default {
   provide() {
     return {
       register: this.register,
+      updateHeader: this.updateHeader,
     };
   },
   data(): any {
@@ -64,6 +65,9 @@ export default {
       });
 
       this.handleTabs();
+    },
+    updateHeader(index: number, props: object) {
+      this.tabHeader[index] = Object.assign(this.tabHeader[index], props);
     },
   },
   beforeDestroy() {
