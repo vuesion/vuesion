@@ -48,6 +48,7 @@ addDecorator(
     theme: customTheme,
   }),
 );
+addDecorator(require('storybook-vue-router').default());
 setDefaults({ header: false });
 
 const newViewports = {
