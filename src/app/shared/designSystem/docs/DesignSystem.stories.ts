@@ -1,7 +1,7 @@
 /* tslint:disable */
 import { storiesOf } from '@storybook/vue';
-import VueMarkdown from '../../components/VueMarkdown/VueMarkdown.vue';
 import { withInfo } from 'storybook-addon-vue-info';
+import VueMarkdown from '../../components/VueMarkdown/VueMarkdown.vue';
 
 let story = storiesOf('1. Design System|1. Design System', module) as any;
 

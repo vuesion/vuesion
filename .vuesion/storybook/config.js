@@ -1,5 +1,6 @@
 import { addDecorator, configure } from '@storybook/vue';
 import Vue from 'vue';
+import Vuex from 'vuex';
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
 import VeeValidate from 'vee-validate';
@@ -8,12 +9,14 @@ import { withOptions } from '@storybook/addon-options';
 import { setDefaults } from 'storybook-addon-vue-info';
 import { configureViewport, INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import '@storybook/addon-console';
+import '../../src/app/shared/directives';
 import '../../src/app/shared/_design-system.scss';
 import '../../src/app/shared/designSystem/reset.scss';
 import '../../src/app/shared/designSystem/global.scss';
 import '../../src/app/shared/designSystem/typo.scss';
 import customTheme from './theme';
 
+Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(VeeValidate);
