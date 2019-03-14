@@ -26,12 +26,10 @@ export default {
       el.style.overflow = 'hidden';
     },
     enter(el: HTMLElement, done: any) {
-      const height: number = el.getClientRects().length > 0 ? el.getClientRects().item(0).height : 0;
-
       anime({
         targets: el,
         height: {
-          value: `${el.scrollHeight - height + 32}px`,
+          value: `${el.scrollHeight}px`,
           duration: this.duration,
         },
         opacity: {
