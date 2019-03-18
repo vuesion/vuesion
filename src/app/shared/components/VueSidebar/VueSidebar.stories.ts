@@ -7,8 +7,6 @@ import VueIconCode from '../icons/VueIconCode/VueIconCode.vue';
 
 const story = storiesOf('Organisms|Sidebar', module) as any;
 
-story.addDecorator(require('storybook-vue-router').default());
-
 story.add(
   'Default',
   withInfo({})(() => ({

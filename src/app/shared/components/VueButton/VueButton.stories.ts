@@ -5,8 +5,6 @@ import VueButton from './VueButton.vue';
 
 const story = storiesOf('Atoms|Button', module) as any;
 
-story.addDecorator(require('storybook-vue-router').default());
-
 story.add(
   'Button Variants',
   withInfo({})(() => ({
