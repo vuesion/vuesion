@@ -33,40 +33,12 @@ describe('CollapseAnimation.vue', () => {
 
     (testElement as any).getClientRects = () => {
       return {
-        length: 1,
-        item: () => {
-          return {
-            height: 100,
-          };
-        },
-      };
-    };
-
-    wrapper.vm.enter(testElement, () => {
-      expect(testElement.style.height).toBe('-68px');
-      expect(testElement.style.opacity).toBe('1');
-      done();
-    });
-  });
-
-  test('should animate enter', (done) => {
-    const wrapper = mount<any>(CollapseAnimation, {
-      localVue,
-      slots: {
-        default: '<p>TEST</p>',
-      },
-    });
-
-    const testElement: HTMLElement = wrapper.find('p').element;
-
-    (testElement as any).getClientRects = () => {
-      return {
         length: 0,
       };
     };
 
     wrapper.vm.enter(testElement, () => {
-      expect(testElement.style.height).toBe('32px');
+      expect(testElement.style.height).toBe('0px');
       expect(testElement.style.opacity).toBe('1');
       done();
     });
@@ -89,7 +61,7 @@ describe('CollapseAnimation.vue', () => {
     expect(testElement.style.overflow).toBe('hidden');
   });
 
-  test('should animate enter', (done) => {
+  test('should animate leave', (done) => {
     const wrapper = mount<any>(CollapseAnimation, {
       localVue,
       slots: {
