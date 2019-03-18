@@ -4,8 +4,6 @@ import VueBreadcrumb from './VueBreadcrumb.vue';
 
 const story = storiesOf('Molecules|Breadcrumb', module);
 
-story.addDecorator(require('storybook-vue-router').default());
-
 story.add(
   'Default',
   withInfo({})(() => ({
