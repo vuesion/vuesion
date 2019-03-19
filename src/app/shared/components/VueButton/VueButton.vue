@@ -24,6 +24,9 @@ export default {
   props: {
     color: {
       type: String,
+      validator(value: string) {
+        return ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'].indexOf(value) !== -1;
+      },
     },
     disabled: {
       type: Boolean,

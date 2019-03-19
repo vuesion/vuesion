@@ -26,6 +26,9 @@ export default {
     },
     color: {
       type: String,
+      validator(value: string) {
+        return ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'].indexOf(value) !== -1;
+      },
     },
   },
   computed: {
