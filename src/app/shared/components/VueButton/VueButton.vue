@@ -17,16 +17,15 @@
 </template>
 
 <script lang="ts">
-import VueLoader from '../VueLoader/VueLoader.vue';
+import VueLoader              from '@/app/shared/components/VueLoader/VueLoader.vue';
+import { variationValidator } from '@/app/shared/components/utils';
 
 export default {
   name: 'VueButton',
   props: {
     color: {
       type: String,
-      validator(value: string) {
-        return ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'].indexOf(value) !== -1;
-      },
+      validator: variationValidator,
     },
     disabled: {
       type: Boolean,

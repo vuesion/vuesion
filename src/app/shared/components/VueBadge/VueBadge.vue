@@ -3,14 +3,14 @@
 </template>
 
 <script lang="ts">
+import { variationValidator } from '@/app/shared/components/utils';
+
 export default {
   name: 'VueBadge',
   props: {
     color: {
       type: String,
-      validator(value: string) {
-        return ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'].indexOf(value) !== -1;
-      },
+      validator: variationValidator,
     },
     outlined: {
       type: Boolean,
