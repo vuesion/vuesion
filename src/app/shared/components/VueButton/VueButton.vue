@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import VueLoader              from '@/app/shared/components/VueLoader/VueLoader.vue';
+import VueLoader from '@/app/shared/components/VueLoader/VueLoader.vue';
 import { variationValidator } from '@/app/shared/components/utils';
 
 export default {
