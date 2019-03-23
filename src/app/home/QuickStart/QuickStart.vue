@@ -60,15 +60,13 @@ export default {
 .quickStart {
   display: block;
   text-align: center;
-  background: $primary-2-100;
-
-  h2 {
-    color: $brand-text-color-inverse;
-  }
+  background: $brand-success;
+  color: foreground-color($brand-success);
 
   :global {
     .vueCard {
       background: $brand-bg-color;
+      color: foreground-color($brand-bg-color);
     }
   }
 

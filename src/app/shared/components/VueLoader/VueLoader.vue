@@ -134,12 +134,6 @@ export default {
   }
 }
 
-.tertiary {
-  .path {
-    stroke: $loader-tertiary-color;
-  }
-}
-
 .danger {
   .path {
     stroke: $loader-danger-color;

@@ -56,17 +56,6 @@ describe('VueLoader.vue', () => {
     expect(wrapper.findAll(`.secondary`)).toHaveLength(1);
   });
 
-  test('renders tertiary loader', () => {
-    const wrapper = mount(VueLoader, {
-      localVue,
-      propsData: {
-        color: 'tertiary',
-      },
-    });
-
-    expect(wrapper.findAll(`.tertiary`)).toHaveLength(1);
-  });
-
   test('renders danger loader', () => {
     const wrapper = mount(VueLoader, {
       localVue,

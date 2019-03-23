@@ -1,0 +1,22 @@
+$palette-colors: (
+  'wine': #503a66,
+  'sea': #0080ab,
+  'green': #80ab00,
+  'yellow': #edab28,
+  'red': #ab000b,
+  'black': #010b0a,
+);
+
+@function palette-color($key) {
+  @return map-get($palette-colors, $key);
+}
+
+// 0-100 tints
+// 100 - 200 shades
+@function palette-color-level($color-name, $level) {
+  $color: palette-color($color-name);
+  $color-base: if($level > 100, black, white);
+  $color-level: if($level > 100, $level - 100, 100 - $level);
+
+  @return mix($color-base, $color, $color-level);
+}

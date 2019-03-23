@@ -109,7 +109,7 @@ export default {
   touch-action: manipulation;
   cursor: pointer;
   white-space: nowrap;
-  text-transform: uppercase;
+  text-transform: $button-text-transform;
   min-width: $button-min-width;
   position: relative;
   overflow: hidden;
@@ -217,23 +217,6 @@ export default {
   }
 }
 
-.tertiary {
-  color: $button-tertiary-color;
-  background: $button-tertiary-bg;
-  border: $button-tertiary-border;
-
-  &:hover {
-    background: $button-tertiary-hover-bg;
-    color: $button-tertiary-hover-color;
-  }
-
-  :global {
-    .vueLoaderPath {
-      stroke: $button-tertiary-color;
-    }
-  }
-}
-
 .success {
   color: $button-success-color;
   background: $button-success-bg;
@@ -319,21 +302,6 @@ export default {
     :global {
       .vueLoaderPath {
         stroke: $button-secondary-bg;
-      }
-    }
-  }
-
-  &.tertiary {
-    color: $button-tertiary-color;
-
-    &:hover {
-      border-color: $button-tertiary-hover-bg;
-      color: darken($button-tertiary-color, 5%);
-    }
-
-    :global {
-      .vueLoaderPath {
-        stroke: $button-tertiary-bg;
       }
     }
   }

@@ -24,13 +24,6 @@ story.add(
 <vue-button @click="action" color="secondary" loading>Secondary Loading</vue-button>
 <br />
 <br />
-<vue-button @click="action" color="tertiary">Tertiary</vue-button>
-<vue-button @click="action" color="tertiary" disabled>Tertiary Disabled</vue-button>
-<vue-button @click="action" color="tertiary" outlined>Tertiary Outlined</vue-button>
-<vue-button @click="action" color="tertiary" ghost>Tertiary Ghost</vue-button>
-<vue-button @click="action" color="tertiary" loading>Tertiary Loading</vue-button>
-<br />
-<br />
 <vue-button @click="action" color="danger">Danger</vue-button>
 <vue-button @click="action" color="danger" disabled>Danger Disabled</vue-button>
 <vue-button @click="action" color="danger" outlined>Danger Outlined</vue-button>
@@ -72,11 +65,11 @@ Router-Link<br/>
 <br/>
 <br/>
 A-Element: <br/>
-<vue-button @click="action" as="a" color="primary" target="/">Router Link</vue-button>
-<vue-button @click="action" as="a" color="primary" target="/" disabled>Router Link</vue-button>
-<vue-button @click="action" as="a" color="primary" target="/" outlined>Router Link</vue-button>
-<vue-button @click="action" as="a" color="primary" target="/" ghost>Router Link</vue-button>
-<vue-button @click="action" as="a" color="primary" target="/" loading>Router Link</vue-button>
+<vue-button @click="action" as="a" color="primary" target="/">Anchor</vue-button>
+<vue-button @click="action" as="a" color="primary" target="/" disabled>Anchor</vue-button>
+<vue-button @click="action" as="a" color="primary" target="/" outlined>Anchor</vue-button>
+<vue-button @click="action" as="a" color="primary" target="/" ghost>Anchor</vue-button>
+<vue-button @click="action" as="a" color="primary" target="/" loading>Anchor</vue-button>
 </div>
 `,
     methods: {

@@ -69,17 +69,6 @@ describe('VueButton.vue', () => {
       expect(wrapper.findAll(`.secondary`)).toHaveLength(1);
     });
 
-    test('should show tertiary color', () => {
-      const wrapper = mount<any>(VueButton, {
-        localVue,
-        propsData: {
-          color: 'tertiary',
-        },
-      });
-
-      expect(wrapper.findAll(`.tertiary`)).toHaveLength(1);
-    });
-
     test('should show danger color', () => {
       const wrapper = mount<any>(VueButton, {
         localVue,
