@@ -17,13 +17,15 @@
 </template>
 
 <script lang="ts">
-import VueLoader from '../VueLoader/VueLoader.vue';
+import VueLoader from '@/app/shared/components/VueLoader/VueLoader.vue';
+import { variationValidator } from '@/app/shared/components/utils';
 
 export default {
   name: 'VueButton',
   props: {
     color: {
       type: String,
+      validator: variationValidator,
     },
     disabled: {
       type: Boolean,

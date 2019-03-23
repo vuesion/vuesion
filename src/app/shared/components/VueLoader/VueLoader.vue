@@ -15,6 +15,8 @@
 </template>
 
 <script lang="ts">
+import { variationValidator } from '@/app/shared/components/utils';
+
 export default {
   name: 'VueLoader',
   props: {
@@ -26,6 +28,7 @@ export default {
     },
     color: {
       type: String,
+      validator: variationValidator,
     },
   },
   computed: {

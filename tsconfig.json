@@ -17,5 +17,5 @@
     "rootDirs": ["src"]
   },
   "include": ["./src/**/*", "./src/**/*.vue"],
-  "exclude": ["./node_modules", "./dist", "./**/*.stories.ts"]
+  "exclude": ["./node_modules", "./dist"]
 }
