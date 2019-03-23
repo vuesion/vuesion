@@ -1,7 +1,7 @@
 # Installation
 
 ::: warning COMPATIBILITY NOTE
-vue-starter requires Node.js >= 10 & npm >= 6.
+vuesion requires Node.js >= 10 & npm >= 6.
 :::
 
 ## Via `npx`
@@ -12,8 +12,8 @@ vue-starter requires Node.js >= 10 & npm >= 6.
 
 ## Via Git
 
-1. Download or clone (`git clone https://github.com/devCrossNet/vue-starter`) the repository
-2. Change directory `cd vue-starter`
+1. Download or clone (`git clone https://github.com/vuesion/vuesion`) the repository
+2. Change directory `cd vuesion`
 3. Install dependencies: `npm install`
 4. Run `npm run dev`
 

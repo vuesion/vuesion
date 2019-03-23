@@ -1,5 +1,5 @@
 version: 2
-app-name: &app_name vue-starter
+app-name: &app_name vuesion
 workspace-name: &working_directory ~/repo
 jobs:
   build:
@@ -82,4 +82,4 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              only: vuesion

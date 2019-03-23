@@ -78,14 +78,14 @@
 
       <vue-sidebar-group title="Community">
         <vue-sidebar-group-item>
-          <a href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener">
+          <a href="https://github.com/vuesion/vuesion" target="_blank" rel="noopener">
             <vue-icon-github />
             Github
           </a>
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a href="https://slack-vue-starter.herokuapp.com/" target="_blank" rel="noopener"> Slack </a>
+          <a href="https://slack-vuesion.herokuapp.com/" target="_blank" rel="noopener"> Slack </a>
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>

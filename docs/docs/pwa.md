@@ -1,9 +1,9 @@
 # Progressive-Web-App
 
-The vue-starter comes with an integrated service-worker which makes it a so called `progressive-web-app`.
+Vuesion comes with an integrated service-worker which makes it a so called `progressive-web-app`.
 It enables the users of your app to install it on their home-screen and use the app offline.
 
-By default the vue-starter caches all assets, webpack chunks and the HTML of the index (`/`) route.
+By default vuesion caches all assets, webpack chunks and the HTML of the index (`/`) route.
 
 If you want to change the default behavior have a look in the file `./src/client/sw.ts`.
 

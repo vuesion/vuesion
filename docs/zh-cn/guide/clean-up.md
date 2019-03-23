@@ -79,7 +79,7 @@ import { CounterRoutes }    from './routes/CounterRoutes';
 ...
 
 /**
- * routes to demonstrate the possibilities of the vue-starter
+ * routes to demonstrate the possibilities of vuesion
  * can be removed if you don't need them in your application
  */
 DemoRoutes(app);
@@ -92,7 +92,7 @@ CounterRoutes(app);
 
 现在你已经清理了你的应用,你可以开始创建你自己的应用了.
 
-如果你你打开了[http://localhost:3000](http://localhost:3000).你应该仍旧能看到 vue-starter 主页.
+如果你你打开了[http://localhost:3000](http://localhost:3000).你应该仍旧能看到 vuesion 主页.
 但是其他路由应该重定向到 `/not-found`页面.
 
 ::: tip 它仍旧工作吗？

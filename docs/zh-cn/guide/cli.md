@@ -4,7 +4,7 @@
 
 ::: warning 此页文档有待完善
 在翻译此篇文档时，有一些特殊的概念，不是很明白原作者是如何理解的.
-比如容器组件,作者在原文中用connected组件,我也是在后面的文档中发现了引用文档才知道是容器组件.
+比如容器组件,作者在原文中用 connected 组件,我也是在后面的文档中发现了引用文档才知道是容器组件.
 
 我将持续改关注并参与善此文档.才疏学浅,敬请原谅.
 :::
@@ -13,7 +13,7 @@
 
 模块是应用程序中的"领域"逻辑的封装.
 
-###  模块用例
+### 模块用例
 
 **动态页面**: 由许多视图逻辑、至少一个路由和状态管理组成
 
@@ -30,9 +30,9 @@
 
 ```bash
 ? [PLOP] Please choose a generator. (Use arrow keys)
-  component - Add a single file component 
-❯ module - Add a module with VueX store and routes 
-  connected - Add a VueX connected component 
+  component - Add a single file component
+❯ module - Add a module with VueX store and routes
+  connected - Add a VueX connected component
 
 ```
 
@@ -40,10 +40,10 @@
 
 ```bash
 ? [PLOP] Please choose a generator. module - Add a module with vuex store and routes
-? What should it be called? 
+? What should it be called?
 ```
 
-这将会是你的模块,connected和路由的名字
+这将会是你的模块,connected 和路由的名字
 
 输入 `Foo` 然后按下`enter`
 
@@ -54,26 +54,26 @@
 ? Do you want vuex? Yes
 ```
 
-按下多次`enter` 然后你会看到CLI生成一些文件:
+按下多次`enter` 然后你会看到 CLI 生成一些文件:
 
 ```bash
-[SUCCESS] add /vue-starter/src/app/foo/Foo/Foo.vue
-[SUCCESS] add /vue-starter/src/app/foo/Foo/Foo.spec.ts
-[SUCCESS] add /vue-starter/src/app/foo/routes.ts
-[SUCCESS] add /vue-starter/src/app/foo/actions.spec.ts
-[SUCCESS] add /vue-starter/src/app/foo/actions.ts
-[SUCCESS] add /vue-starter/src/app/foo/getters.spec.ts
-[SUCCESS] add /vue-starter/src/app/foo/getters.ts
-[SUCCESS] add /vue-starter/src/app/foo/module.ts
-[SUCCESS] add /vue-starter/src/app/foo/mutations.spec.ts
-[SUCCESS] add /vue-starter/src/app/foo/mutations.ts
-[SUCCESS] add /vue-starter/src/app/foo/state.ts
+[SUCCESS] add /vuesion/src/app/foo/Foo/Foo.vue
+[SUCCESS] add /vuesion/src/app/foo/Foo/Foo.spec.ts
+[SUCCESS] add /vuesion/src/app/foo/routes.ts
+[SUCCESS] add /vuesion/src/app/foo/actions.spec.ts
+[SUCCESS] add /vuesion/src/app/foo/actions.ts
+[SUCCESS] add /vuesion/src/app/foo/getters.spec.ts
+[SUCCESS] add /vuesion/src/app/foo/getters.ts
+[SUCCESS] add /vuesion/src/app/foo/module.ts
+[SUCCESS] add /vuesion/src/app/foo/mutations.spec.ts
+[SUCCESS] add /vuesion/src/app/foo/mutations.ts
+[SUCCESS] add /vuesion/src/app/foo/state.ts
 ```
 
-你也会看到CLI已经引用了新的文件在必要的位置: `./src/app/router.ts`, `./src/app/state.ts` and `./src/app/store.ts`.
+你也会看到 CLI 已经引用了新的文件在必要的位置: `./src/app/router.ts`, `./src/app/state.ts` and `./src/app/store.ts`.
 
 ::: tip
-connected组件是指容器组件
+connected 组件是指容器组件
 :::
 
 ::: tip 名称可以包含路径

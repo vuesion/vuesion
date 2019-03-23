@@ -19,7 +19,7 @@ import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
 
 export default {
   metaInfo: {
-    title: 'vue-starter - an error occurred',
+    title: 'vuesion - an error occurred',
     meta: [
       {
         name: 'robots',

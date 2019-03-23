@@ -5,7 +5,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item class="vueGridItem">
-          <vue-headline level="1" :class="$style.title">vue-starter</vue-headline>
+          <vue-headline level="1" :class="$style.title">vuesion</vue-headline>
           <div :class="$style.subTitle">
             {{
               $t(
@@ -16,7 +16,7 @@
 
           <a
             :class="$style.github"
-            href="https://github.com/devCrossNet/vue-starter"
+            href="https://github.com/vuesion/vuesion"
             target="_blank"
             rel="noopener"
             aria-label="github repository"

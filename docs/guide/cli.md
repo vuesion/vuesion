@@ -50,17 +50,17 @@ Type `Foo` and press `enter`
 press two more times `enter` and you will see that the CLI generated a few files:
 
 ```bash
-[SUCCESS] add /vue-starter/src/app/foo/Foo/Foo.vue
-[SUCCESS] add /vue-starter/src/app/foo/Foo/Foo.spec.ts
-[SUCCESS] add /vue-starter/src/app/foo/routes.ts
-[SUCCESS] add /vue-starter/src/app/foo/actions.spec.ts
-[SUCCESS] add /vue-starter/src/app/foo/actions.ts
-[SUCCESS] add /vue-starter/src/app/foo/getters.spec.ts
-[SUCCESS] add /vue-starter/src/app/foo/getters.ts
-[SUCCESS] add /vue-starter/src/app/foo/module.ts
-[SUCCESS] add /vue-starter/src/app/foo/mutations.spec.ts
-[SUCCESS] add /vue-starter/src/app/foo/mutations.ts
-[SUCCESS] add /vue-starter/src/app/foo/state.ts
+[SUCCESS] add /vuesion/src/app/foo/Foo/Foo.vue
+[SUCCESS] add /vuesion/src/app/foo/Foo/Foo.spec.ts
+[SUCCESS] add /vuesion/src/app/foo/routes.ts
+[SUCCESS] add /vuesion/src/app/foo/actions.spec.ts
+[SUCCESS] add /vuesion/src/app/foo/actions.ts
+[SUCCESS] add /vuesion/src/app/foo/getters.spec.ts
+[SUCCESS] add /vuesion/src/app/foo/getters.ts
+[SUCCESS] add /vuesion/src/app/foo/module.ts
+[SUCCESS] add /vuesion/src/app/foo/mutations.spec.ts
+[SUCCESS] add /vuesion/src/app/foo/mutations.ts
+[SUCCESS] add /vuesion/src/app/foo/state.ts
 ```
 
 You will also see that the CLI already referenced the new files in the necessary places: `./src/app/router.ts`, `./src/app/state.ts` and `./src/app/store.ts`.
@@ -83,11 +83,11 @@ To verify if you didn't break something, run `npm test`.
 
 ## Configuration
 
-To change the paths for the generator CLI, see the following section in the file: `./.vue-starter/config.json`
+To change the paths for the generator CLI, see the following section in the file: `./.vuesion/config.json`
 
 ```js
   "generators": {
-    "blueprintDirectory": "./.vue-starter/generators",
+    "blueprintDirectory": "./.vuesion/generators",
     "outputDirectory": "./src/app",
     "routerFile": "./src/app/router.ts",
     "stateFile": "./src/app/state.ts"
