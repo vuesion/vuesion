@@ -1,6 +1,5 @@
-$modal-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+$modal-shadow: $brand-shadow-lg;
 $modal-padding: $space-unit * 3;
 $modal-index: 2001;
 $modal-bg: $brand-bg-color;
-$modal-min-width: 512px;
 $modal-max-width: 50%;
