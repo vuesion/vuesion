@@ -1,5 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueBadge from './VueBadge.vue';
+import { brandVariations } from '@/app/shared/components/utils';
 
 const localVue = createLocalVue();
 
@@ -15,59 +16,18 @@ describe('VueBadge.vue', () => {
     expect(wrapper.find('span').text()).toBe('VueBadge');
   });
 
-  test('renders primary', () => {
-    const wrapper = mount(VueBadge, {
-      localVue,
-      propsData: {
-        color: 'primary',
-      },
+  test('renders color variations', () => {
+    brandVariations.forEach((variation: string) => {
+      const wrapper = mount(VueBadge, {
+        localVue,
+        propsData: {
+          color: variation,
+        },
+      });
+      const actual = wrapper.findAll(`.${variation}`);
+      const expected = 1;
+      expect(actual).toHaveLength(expected);
     });
-
-    expect(wrapper.findAll('.primary')).toHaveLength(1);
-  });
-
-  test('renders secondary', () => {
-    const wrapper = mount(VueBadge, {
-      localVue,
-      propsData: {
-        color: 'secondary',
-      },
-    });
-
-    expect(wrapper.findAll('.secondary')).toHaveLength(1);
-  });
-
-  test('renders danger', () => {
-    const wrapper = mount(VueBadge, {
-      localVue,
-      propsData: {
-        color: 'danger',
-      },
-    });
-
-    expect(wrapper.findAll('.danger')).toHaveLength(1);
-  });
-
-  test('renders warning', () => {
-    const wrapper = mount(VueBadge, {
-      localVue,
-      propsData: {
-        color: 'warning',
-      },
-    });
-
-    expect(wrapper.findAll('.warning')).toHaveLength(1);
-  });
-
-  test('renders success', () => {
-    const wrapper = mount(VueBadge, {
-      localVue,
-      propsData: {
-        color: 'success',
-      },
-    });
-
-    expect(wrapper.findAll('.success')).toHaveLength(1);
   });
 
   test('renders outlined', () => {
