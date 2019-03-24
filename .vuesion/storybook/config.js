@@ -38,9 +38,9 @@ addParameters({
     url: 'https://vue-starter.herokuapp.com',
     hierarchySeparator: /\//,
     hierarchyRootSeparator: /\|/,
-    sidebarAnimations: true,
-    selectedAddonPanel: undefined,
-    theme: customTheme,
+    sortStoriesByKind: true,
+    goFullScreen: false,
+    isToolshown: true,
   },
 });
 
