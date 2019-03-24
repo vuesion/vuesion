@@ -33,7 +33,7 @@ const loadStories = () => {
 addDecorator(checkA11y);
 addDecorator(
   withOptions({
-    name: 'VueStarter',
+    name: 'Vuesion',
     url: '/',
     goFullScreen: false,
     showStoriesPanel: true,
