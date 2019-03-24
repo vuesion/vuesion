@@ -1,5 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueButton from './VueButton.vue';
+import { brandVariations } from '@/app/shared/components/utils';
 
 const localVue = createLocalVue();
 
@@ -47,62 +48,22 @@ describe('VueButton.vue', () => {
       expect(wrapper.emitted().click).toBeFalsy();
     });
 
-    test('should show primary color', () => {
-      const wrapper = mount<any>(VueButton, {
-        localVue,
-        propsData: {
-          color: 'primary',
-        },
-      });
+    test('should render color variations', () => {
+      brandVariations.forEach((variation: string) => {
+        const wrapper = mount<any>(VueButton, {
+          localVue,
+          propsData: {
+            color: variation,
+          },
+        });
+        const actual = wrapper.findAll(`.${variation}`);
+        const expected = 1;
 
-      expect(wrapper.findAll(`.primary`)).toHaveLength(1);
+        expect(actual).toHaveLength(expected);
+      });
     });
 
-    test('should show secondary color', () => {
-      const wrapper = mount<any>(VueButton, {
-        localVue,
-        propsData: {
-          color: 'secondary',
-        },
-      });
-
-      expect(wrapper.findAll(`.secondary`)).toHaveLength(1);
-    });
-
-    test('should show danger color', () => {
-      const wrapper = mount<any>(VueButton, {
-        localVue,
-        propsData: {
-          color: 'danger',
-        },
-      });
-
-      expect(wrapper.findAll(`.danger`)).toHaveLength(1);
-    });
-
-    test('should show warning color', () => {
-      const wrapper = mount<any>(VueButton, {
-        localVue,
-        propsData: {
-          color: 'warning',
-        },
-      });
-
-      expect(wrapper.findAll(`.warning`)).toHaveLength(1);
-    });
-
-    test('should show success color', () => {
-      const wrapper = mount<any>(VueButton, {
-        localVue,
-        propsData: {
-          color: 'success',
-        },
-      });
-
-      expect(wrapper.findAll(`.success`)).toHaveLength(1);
-    });
-
-    test('should show outlined color', () => {
+    test('should render outlined color', () => {
       const wrapper = mount<any>(VueButton, {
         localVue,
         propsData: {
@@ -113,7 +74,7 @@ describe('VueButton.vue', () => {
       expect(wrapper.findAll(`.outlined`)).toHaveLength(1);
     });
 
-    test('should show ghost color', () => {
+    test('should render ghost color', () => {
       const wrapper = mount<any>(VueButton, {
         localVue,
         propsData: {

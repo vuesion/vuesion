@@ -183,87 +183,38 @@ export default {
   top: 0;
 }
 
-.primary {
-  color: $button-primary-color;
-  background: $button-primary-bg;
-  border: $button-primary-border;
+@each $variation, $values in $button-variations {
+  .#{$variation} {
+    color: map-get($values, 'color');
+    background: map-get($values, 'bg');
+    border: map-get($values, 'border');
 
-  &:hover {
-    background: $button-primary-hover-bg;
-    color: $button-primary-hover-color;
-  }
+    &:hover {
+      background: map-get($values, 'hover-bg');
+      color: map-get($values, 'hover-color');
+    }
 
-  :global {
-    .vueLoaderPath {
-      stroke: $button-primary-color;
+    :global {
+      .vueLoaderPath {
+        stroke: map-get($values, 'color');
+      }
     }
   }
-}
 
-.secondary {
-  color: $button-secondary-color;
-  background: $button-secondary-bg;
-  border: $button-secondary-border;
+  .outlined {
+    &.#{$variation} {
+      color: map-get($values, 'bg');
 
-  &:hover {
-    background: $button-secondary-hover-bg;
-    color: $button-secondary-hover-color;
-  }
+      &:hover {
+        border-color: map-get($values, 'hover-bg');
+        color: map-get($values, 'hover-bg');
+      }
 
-  :global {
-    .vueLoaderPath {
-      stroke: $button-secondary-color;
-    }
-  }
-}
-
-.success {
-  color: $button-success-color;
-  background: $button-success-bg;
-  border: $button-success-border;
-
-  &:hover {
-    background: $button-success-hover-bg;
-    color: $button-success-hover-color;
-  }
-
-  :global {
-    .vueLoaderPath {
-      stroke: $button-success-color;
-    }
-  }
-}
-
-.warning {
-  color: $button-warning-color;
-  background: $button-warning-bg;
-  border: $button-warning-border;
-
-  &:hover {
-    background: $button-warning-hover-bg;
-    color: $button-warning-hover-color;
-  }
-
-  :global {
-    .vueLoaderPath {
-      stroke: $button-warning-color;
-    }
-  }
-}
-
-.danger {
-  color: $button-danger-color;
-  background: $button-danger-bg;
-  border: $button-danger-border;
-
-  &:hover {
-    background: $button-danger-hover-bg;
-    color: $button-danger-hover-color;
-  }
-
-  :global {
-    .vueLoaderPath {
-      stroke: $button-danger-color;
+      :global {
+        .vueLoaderPath {
+          stroke: map-get($values, 'bg');
+        }
+      }
     }
   }
 }
@@ -274,81 +225,6 @@ export default {
 
   &:hover {
     background: transparent;
-  }
-
-  &.primary {
-    color: $button-primary-bg;
-
-    &:hover {
-      border-color: $button-primary-hover-bg;
-      color: $button-primary-hover-bg;
-    }
-
-    :global {
-      .vueLoaderPath {
-        stroke: $button-primary-bg;
-      }
-    }
-  }
-
-  &.secondary {
-    color: $button-secondary-bg;
-
-    &:hover {
-      border-color: $button-secondary-hover-bg;
-      color: $button-secondary-hover-bg;
-    }
-
-    :global {
-      .vueLoaderPath {
-        stroke: $button-secondary-bg;
-      }
-    }
-  }
-
-  &.danger {
-    color: $button-danger-bg;
-
-    &:hover {
-      border-color: $button-danger-hover-bg;
-      color: $button-danger-hover-bg;
-    }
-
-    :global {
-      .vueLoaderPath {
-        stroke: $button-danger-bg;
-      }
-    }
-  }
-
-  &.warning {
-    color: $button-warning-bg;
-
-    &:hover {
-      border-color: $button-warning-hover-bg;
-      color: $button-warning-hover-bg;
-    }
-
-    :global {
-      .vueLoaderPath {
-        stroke: $button-warning-bg;
-      }
-    }
-  }
-
-  &.success {
-    color: $button-success-bg;
-
-    &:hover {
-      border-color: $button-success-hover-bg;
-      color: $button-success-hover-bg;
-    }
-
-    :global {
-      .vueLoaderPath {
-        stroke: $button-success-bg;
-      }
-    }
   }
 }
 
