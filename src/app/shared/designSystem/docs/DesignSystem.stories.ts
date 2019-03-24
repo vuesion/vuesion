@@ -20,7 +20,7 @@ story.add(
     template: `<vue-markdown>
 # Design System
 
-The vue-starter comes with a Design System that you can 100% customize.
+Vuesion comes with a Design System that you can 100% customize.
 
 **_The files for customizing the Design System are located in \`./src/app/shared/styles\`._**
 

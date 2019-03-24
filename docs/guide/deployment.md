@@ -13,7 +13,7 @@ Folders and files to include in your deployments:
 - package.json
 - ./dist
 - ./i18n
-- ./.vue-starter/config.json
+- ./.vuesion/config.json
 - ./node_modules (only production dependencies)
 
 ## Static Single Page Application

@@ -25,7 +25,7 @@ import VueBreadcrumb from '../../shared/components/VueBreadcrumb/VueBreadcrumb.v
 
 export default {
   metaInfo: {
-    title: 'vue-starter - Form Example',
+    title: 'vuesion - Form Example',
   },
   components: { VueBreadcrumb, VueHeadline, FormExample, VueGridItem, VueGridRow, VueGrid },
   computed: {},

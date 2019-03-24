@@ -11,11 +11,11 @@ This approach is ok for a small amount of data that is not confidential, e.g. fi
 But sometimes you have to store confidential data like access tokens or big data objects like a list of products.
 In these cases, you need to store your data in cookies or LocalStorage.
 
-The vue-starter comes with a VueX middleware that allows you to decide to persist VueX modules in different storages.
+Vuesion comes with a VueX middleware that allows you to decide to persist VueX modules in different storages.
 
 ## Persist to cookies
 
-The vue-starter includes a CookieStorage adapter for the VueX-persist middleware.
+Vuesion includes a CookieStorage adapter for the VueX-persist middleware.
 
 ::: tip Cookies
 **Before you apply this tip, have a talk with a security engineer!**
@@ -90,7 +90,7 @@ so you should consider just saving necessary data.
 
 ## Persist to LocalStorage
 
-The vue-starter includes a LocalStorage adapter for the VueX-persist middleware.
+Vuesion includes a LocalStorage adapter for the VueX-persist middleware.
 
 ::: tip LocalStorage
 LocalStorage works well for saving mid-sized data, but be aware that it is only available on the **client**.

@@ -1,6 +1,6 @@
 # Redirect to another page
 
-The vue-starter includes [VueRouter](https://router.vuejs.org/) to support navigating between pages.
+Vuesion includes [VueRouter](https://router.vuejs.org/) to support navigating between pages.
 
 ::: tip Server-side routing vs. client-side routing
 In isomorphic apps it is important to keep in mind that routing works differently if we are handling an initial page load,
@@ -33,7 +33,7 @@ On requesting or navigating to the path `/redirect`, the URL will be automatical
 
 ## Programmatic redirects
 
-The vue-starter also supports triggering a redirect depending on certain conditions, for example you want the user to see the login page
+Vuesion also supports triggering a redirect depending on certain conditions, for example you want the user to see the login page
 if your API responds with "Unauthorized".
 
 In module Vue files such as `src/app/counter/Counter/Counter.vue` the `prefetch` function gets the router instance passed as an argument.

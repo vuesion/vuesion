@@ -6,13 +6,13 @@ module.exports = {
   locales: {
     '/': {
       lang: 'en',
-      title: 'vue-starter',
+      title: 'vuesion',
       description:
         'The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices',
     },
     '/zh-cn/': {
       lang: 'zh-CN',
-      title: 'vue-starter',
+      title: 'vuesion',
       description:
         '一个灵活的、可扩展的、自定的，已经准备好用于生产的渐进式网络应用样板，聚焦于性能、开发速度和最佳实践',
     },
@@ -85,7 +85,7 @@ module.exports = {
   ],
   serviceWorker: false,
   themeConfig: {
-    repo: 'devCrossNet/vue-starter',
+    repo: 'vuesion/vuesion',
     editLinks: true,
     docsDir: 'docs',
     locales: {
@@ -100,15 +100,15 @@ module.exports = {
           },
           {
             text: 'Interactive Demo',
-            link: 'https://vue-starter.herokuapp.com/',
+            link: 'https://vuesion.herokuapp.com/',
           },
           {
             text: 'Components',
-            link: 'https://vue-starter.herokuapp.com/storybook',
+            link: 'https://vuesion.herokuapp.com/storybook',
           },
           {
             text: 'Slack',
-            link: 'https://slack-vue-starter.herokuapp.com/',
+            link: 'https://slack-vuesion.herokuapp.com/',
           },
         ],
         sidebar: {
@@ -155,15 +155,15 @@ module.exports = {
           },
           {
             text: '交互演示',
-            link: 'https://vue-starter.herokuapp.com/',
+            link: 'https://vuesion.herokuapp.com/',
           },
           {
             text: '组件',
-            link: 'https://vue-starter.herokuapp.com/storybook',
+            link: 'https://vuesion.herokuapp.com/storybook',
           },
           {
             text: '交流',
-            link: 'https://slack-vue-starter.herokuapp.com/',
+            link: 'https://slack-vuesion.herokuapp.com/',
           },
         ],
         sidebar: {

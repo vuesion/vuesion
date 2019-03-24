@@ -41,17 +41,17 @@ If you look for an easier way to get started with Vue and Webpack,
 
 ## Recommended architecture
 
-The vue-starter is build on top of the idea of micro-services or a service-oriented-architecture.
+Vuesion is build on top of the idea of micro-services or a service-oriented-architecture.
 
 This is because a separation of concerns approach is much better to maintain over time and it's much easier to manage a single technology
 per service instead of a mix of technologies e.g. PHP server-side-rendering and a Javascript client side app.
 
 ::: tip Deployment
-The vue-starter project should be it's own deployable unit, it should be dreaded as it's own service in the architecture.
+The vuesion project should be it's own deployable unit, it should be dreaded as it's own service in the architecture.
 :::
 
 ::: tip Example
-If the vue-starter needs to access a database - the database should be exposed as another service and the vue-starter
+If vuesion needs to access a database - the database should be exposed as another service and vuesion
 should access this service via RESTful API calls.
 :::
 
@@ -63,7 +63,7 @@ should access this service via RESTful API calls.
 
 This is an ever-evolving project,
 if you want to help or you have an idea how to improve this project -
-**feel free to file an [issue](https://github.com/devCrossNet/vue-starter/issues)**
+**feel free to file an [issue](https://github.com/vuesion/vuesion/issues)**
 
 ## Why not vue-cli or nuxt.js ?
 
