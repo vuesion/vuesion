@@ -34,8 +34,8 @@ addParameters(checkA11y);
 addParameters({
   options: {
     theme: customTheme,
-    name: 'Vue Starter Storybook',
-    url: 'https://vue-starter.herokuapp.com',
+    name: 'Vuesion Storybook',
+    url: 'https://vuesion.herokuapp.com',
     hierarchySeparator: /\//,
     hierarchyRootSeparator: /\|/,
     sortStoriesByKind: true,
