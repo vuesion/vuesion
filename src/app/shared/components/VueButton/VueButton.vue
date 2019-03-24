@@ -183,8 +183,8 @@ export default {
   top: 0;
 }
 
-@each $variant, $values in $button-variations {
-  .#{$variant} {
+@each $variation, $values in $button-variations {
+  .#{$variation} {
     color: map-get($values, 'color');
     background: map-get($values, 'bg');
     border: map-get($values, 'border');
@@ -202,7 +202,7 @@ export default {
   }
 
   .outlined {
-    &.#{$variant} {
+    &.#{$variation} {
       color: map-get($values, 'bg');
 
       &:hover {
