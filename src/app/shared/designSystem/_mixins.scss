@@ -23,7 +23,7 @@ $grid-breakpoints: (
       @content;
     }
   } @else {
-    @error "breakpoint not suported!";
+    @error "breakpoint not supported!";
   }
 }
 
@@ -41,6 +41,6 @@ $grid-breakpoints-max: (
       @content;
     }
   } @else {
-    @error "breakpoint not suported!";
+    @error "breakpoint not supported!";
   }
 }

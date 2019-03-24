@@ -2,6 +2,8 @@
 import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueMarkdown from '../../components/VueMarkdown/VueMarkdown.vue';
+import BrandColors from './components/BrandColors.vue';
+import ColorPalette from './components/ColorPalette.vue';
 
 let story = storiesOf('1. Design System|1. Design System', module) as any;
 
@@ -22,7 +24,7 @@ story.add(
 
 Vuesion comes with a Design System that you can 100% customize.
 
-**_The files for customizing the Design System are located in \`./src/app/shared/styles\`._**
+**_The files for customizing the Design System are located in \`./src/app/shared/design-system\`._**
 
 Design Systems are really complex and the key to a good Design System is
 consistency.
@@ -55,40 +57,15 @@ story.add(
     source: false,
     propTables: false,
     styles: { propTableHead: { display: 'none' } },
-    propTablesExclude: [VueMarkdown],
+    propTablesExclude: [VueMarkdown, ColorPalette],
   })(() => ({
-    components: { VueMarkdown },
-    template: `<vue-markdown>
-# Color Palette
-
-![color palette](/color-palette.jpg "color palette")
-
-The naming convention of the color palette is structured in the following way
-
-\`Meaning\`-\`ColorIndex\`-\`Shade\` for example \`$primary-1-100\`
-
-following _Meanings_ are included:
-
-- **primary** (Main Colors)
-- **secondary** (Accent Colors)
-- **tertiary** (Utility Colors)
-
-the following _Indices_ are included:
-
-- primary **1-2**
-- secondary **1-5**
-- tertiary **1-5**
-
-and the following _Shades_ are included:
-
-- 100
-- 80
-- 60
-- 40
-- 20
-- 10
-- 5
+    components: { VueMarkdown, ColorPalette },
+    template: `<div>
+<vue-markdown>
+### Color Palette
 </vue-markdown>
+<color-palette />
+</div>
 `,
   })),
 );
@@ -100,55 +77,16 @@ story.add(
     source: false,
     propTables: false,
     styles: { propTableHead: { display: 'none' } },
-    propTablesExclude: [VueMarkdown],
+    propTablesExclude: [VueMarkdown, BrandColors],
   })(() => ({
-    components: { VueMarkdown },
-    template: `<vue-markdown>
+    components: { VueMarkdown, BrandColors },
+    template: `<div>
+<vue-markdown>
 ### Brand Colors
 Every brand color is related to a color of the color palette.
-
-#### Brand Variations
-These are the colors that we use to create different variations of components.
-
-Variation        | Palette Color
------------------|--------------
-brand-primary   | primary-2-100
-brand-secondary | secondary-1-100
-brand-tertiary  | primary-1-020
-brand-danger    | tertiary-1-100
-brand-warn      | tertiary-2-100
-brand-success   | tertiary-3-100
-
-#### Background Colors
-These are the colors that we use for document backgrounds or sections on a page.
-
-Variation                | Palette Color
--------------------------|--------------
-bg-color                 | tertiary-040
-bg-color-variant         | primary-1-010
-bg-color-inverse         | tertiary-020
-bg-color-variant-inverse | primary-1-060
-
-#### Text Colors
-These are the colors that we use for document text or sections on a page.
-
-Variation                    | Palette Color
------------------------------|--------------
-text-color                   | tertiary-020
-text-secondary-color         | primary-1-060
-text-color-inverse           | tertiary-040
-text-secondary-color-inverse | primary-1-010
-link-color                   | secondary-1-100
-link-hover-color             | darken($link-color, 5%)
-
-#### Border Colors
-These are the colors that we use for borders.
-
-Variation            | Palette Color
----------------------|--------------
-border-color         | primary-1-020
-border-color-inverse | primary-1-080
 </vue-markdown>
+<brand-colors/>
+</div>
 `,
   })),
 );

@@ -19,11 +19,6 @@ story.add(
 <vue-loader color="secondary" large />
 <br />
 <br />
-<vue-loader color="tertiary" />
-<vue-loader color="tertiary" medium />
-<vue-loader color="tertiary" large />
-<br />
-<br />
 <vue-loader color="danger" />
 <vue-loader color="danger" medium />
 <vue-loader color="danger" large />

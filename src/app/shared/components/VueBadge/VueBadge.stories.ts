@@ -17,10 +17,6 @@ story.add(
 <vue-badge color="secondary" outlined>Secondary Outlined</vue-badge>
 <br />
 <br />
-<vue-badge color="tertiary">Tertiary</vue-badge>
-<vue-badge color="tertiary" outlined>Tertiary Outlined</vue-badge>
-<br />
-<br />
 <vue-badge color="danger">Danger</vue-badge>
 <vue-badge color="danger" outlined>Danger Outlined</vue-badge>
 <br />

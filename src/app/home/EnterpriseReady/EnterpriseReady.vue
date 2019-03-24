@@ -80,7 +80,8 @@ export default {
 .enterpriseReady {
   display: block;
   text-align: center;
-  background: $secondary-2-100;
+  background: $brand-secondary;
+  color: foreground-color($brand-secondary);
 
   i {
     display: inline-block;
@@ -92,6 +93,7 @@ export default {
   :global {
     .vueCard {
       background: $brand-bg-color;
+      color: foreground-color($brand-bg-color);
     }
   }
 }
