@@ -13,34 +13,42 @@ $button-text-decoration: none;
 $button-hover-text-decoration: none;
 $button-text-transform: uppercase;
 
-$button-primary-bg: $brand-primary;
-$button-primary-color: foreground-color($button-primary-bg);
-$button-primary-hover-bg: darken($button-primary-bg, 5%);
-$button-primary-hover-color: foreground-color($button-primary-hover-bg);
-$button-primary-border: 1px solid $button-primary-bg;
-
-$button-secondary-bg: $brand-secondary;
-$button-secondary-color: foreground-color($button-secondary-bg);
-$button-secondary-hover-bg: darken($button-secondary-bg, 5%);
-$button-secondary-hover-color: foreground-color($button-secondary-hover-bg);
-$button-secondary-border: 1px solid $button-secondary-bg;
-
-$button-success-bg: $brand-success;
-$button-success-color: foreground-color($button-success-bg);
-$button-success-hover-bg: darken($button-success-bg, 5%);
-$button-success-hover-color: foreground-color($button-success-hover-bg);
-$button-success-border: 1px solid $button-success-bg;
-
-$button-warning-bg: $brand-warning;
-$button-warning-color: foreground-color($button-warning-bg);
-$button-warning-hover-bg: darken($button-warning-bg, 5%);
-$button-warning-hover-color: foreground-color($button-warning-hover-bg);
-$button-warning-border: 1px solid $button-warning-bg;
-
-$button-danger-bg: $brand-danger;
-$button-danger-color: foreground-color($button-danger-bg);
-$button-danger-hover-bg: darken($button-danger-bg, 5%);
-$button-danger-hover-color: foreground-color($button-danger-hover-bg);
-$button-danger-border: 1px solid $button-danger-bg;
-
 $button-outlined-border-width: 0.2rem;
+
+$button-variations: (
+  'primary': (
+    'bg': $brand-primary,
+    'color': foreground-color($brand-primary),
+    'hover-bg': darken($brand-primary, 5%),
+    'hover-color': foreground-color(darken($brand-primary, 5%)),
+    'border': 1px solid $brand-primary,
+  ),
+  'secondary': (
+    'bg': $brand-secondary,
+    'color': foreground-color($brand-secondary),
+    'hover-bg': darken($brand-secondary, 5%),
+    'hover-color': foreground-color(darken($brand-secondary, 5%)),
+    'border': 1px solid $brand-secondary,
+  ),
+  'success': (
+    'bg': $brand-success,
+    'color': foreground-color($brand-success),
+    'hover-bg': darken($brand-success, 5%),
+    'hover-color': foreground-color(darken($brand-success, 5%)),
+    'border': 1px solid $brand-success,
+  ),
+  'warning': (
+    'bg': $brand-warning,
+    'color': foreground-color($brand-warning),
+    'hover-bg': darken($brand-warning, 5%),
+    'hover-color': foreground-color(darken($brand-warning, 5%)),
+    'border': 1px solid $brand-warning,
+  ),
+  'danger': (
+    'bg': $brand-danger,
+    'color': foreground-color($brand-danger),
+    'hover-bg': darken($brand-danger, 5%),
+    'hover-color': foreground-color(darken($brand-danger, 5%)),
+    'border': 1px solid $brand-danger,
+  ),
+);
