@@ -2,8 +2,10 @@ $loader-size: $space-unit * 4;
 $loader-medium-size: $space-unit * 8;
 $loader-large-size: $space-unit * 16;
 
-$loader-primary-color: $brand-primary;
-$loader-secondary-color: $brand-secondary;
-$loader-danger-color: $brand-danger;
-$loader-warning-color: $brand-warning;
-$loader-success-color: $brand-success;
+$loader-variations: (
+  'primary': $brand-primary,
+  'secondary': $brand-secondary,
+  'success': $brand-success,
+  'warning': $brand-warning,
+  'danger': $brand-danger,
+);

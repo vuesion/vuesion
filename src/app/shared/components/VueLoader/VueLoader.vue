@@ -122,33 +122,11 @@ export default {
   height: $loader-large-size;
 }
 
-.primary {
-  .path {
-    stroke: $loader-primary-color;
-  }
-}
-
-.secondary {
-  .path {
-    stroke: $loader-secondary-color;
-  }
-}
-
-.danger {
-  .path {
-    stroke: $loader-danger-color;
-  }
-}
-
-.warning {
-  .path {
-    stroke: $loader-warning-color;
-  }
-}
-
-.success {
-  .path {
-    stroke: $loader-success-color;
+@each $variation, $color in $loader-variations {
+  .#{$variation} {
+    .path {
+      stroke: $color;
+    }
   }
 }
 </style>
