@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueBadge from './VueBadge.vue';
+import { brandVariations } from '@/app/shared/components/utils';
 
 const story = storiesOf('Atoms|Badge', module) as any;
 
@@ -8,25 +9,18 @@ story.add(
   'Badge Variants',
   withInfo({})(() => ({
     components: { VueBadge },
+    data(): any {
+      return {
+        variations: brandVariations,
+      };
+    },
     template: `<div>
-<vue-badge color="primary">Primary</vue-badge>
-<vue-badge color="primary" outlined>Primary Outlined</vue-badge>
+<template v-for="variation in variations">
+<vue-badge :color="variation">{{ variation }}</vue-badge>
+<vue-badge :color="variation" outlined>{{ variation }} outlined</vue-badge>
 <br />
 <br />
-<vue-badge color="secondary">Secondary</vue-badge>
-<vue-badge color="secondary" outlined>Secondary Outlined</vue-badge>
-<br />
-<br />
-<vue-badge color="danger">Danger</vue-badge>
-<vue-badge color="danger" outlined>Danger Outlined</vue-badge>
-<br />
-<br />
-<vue-badge color="warning">Warning</vue-badge>
-<vue-badge color="warning" outlined>Warning Outlined</vue-badge>
-<br />
-<br />
-<vue-badge color="success">Success</vue-badge>
-<vue-badge color="success" outlined>Success Outlined</vue-badge>
+</template>
 </div>`,
   })),
 );
