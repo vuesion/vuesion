@@ -1,3 +1,4 @@
+import { create } from '@storybook/theming';
 import theme from './_theme.scss';
 
 const brand = {
@@ -6,7 +7,7 @@ const brand = {
   borderRadius: theme.mainBorderRadius,
 };
 
-export default {
+export default create({
   ...theme,
   brand: {
     color: theme.mainTextColor,
@@ -17,4 +18,4 @@ export default {
       ...brand,
     },
   },
-};
+});
