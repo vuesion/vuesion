@@ -10,8 +10,8 @@ $dropdown-menu-button-bg: $brand-bg-color;
 $dropdown-menu-button-hover-bg: $brand-bg-color-variant;
 $dropdown-menu-button-icon-size: $dropdown-menu-button-font-size;
 
-$dropdown-menu-list-margin: $space-unit * 0.5 0 0 0;
-$dropdown-menu-list-padding: $space-unit 0;
+$dropdown-menu-list-margin: $space-xxs 0 0 0;
+$dropdown-menu-list-padding: $space-xs 0;
 $dropdown-menu-list-index: 1000;
 $dropdown-menu-list-bg: $brand-bg-color;
 $dropdown-menu-list-color: $brand-text-color;
@@ -21,6 +21,7 @@ $dropdown-menu-list-min-width: 200px;
 $dropdown-menu-list-font-size: $font-size-small;
 $dropdown-menu-list-font-weight: $font-weight-medium;
 $dropdown-menu-list-line-height: $line-height;
+$dropdown-menu-list-shadow: $brand-shadow-sm;
 
 $dropdown-menu-list-item-padding: $space-unit $space-unit * 2;
 $dropdown-menu-list-item-hover-bg: $brand-bg-color-variant;
