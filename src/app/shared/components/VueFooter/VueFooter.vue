@@ -17,7 +17,7 @@
 
         <vue-grid-item>
           <small>
-            <a href="https://github.com/devCrossNet/vue-starter/blob/master/LICENSE" target="_blank" rel="noopener">
+            <a href="https://github.com/vuesion/vuesion/blob/master/LICENSE" target="_blank" rel="noopener">
               MIT License
             </a>
           </small>

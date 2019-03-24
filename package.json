@@ -1,10 +1,10 @@
 {
-  "name": "vue-starter",
+  "name": "vuesion",
   "version": "2.3.0",
   "description": "The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices",
   "repository": {
     "type": "git",
-    "url": "https://github.com/devCrossNet/vue-starter.git"
+    "url": "https://github.com/vuesion/vuesion.git"
   },
   "keywords": [
     "vue",
@@ -21,9 +21,9 @@
   ],
   "author": "Johannes Werner <johannes.werner86@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/devCrossNet/vue-starter",
+  "homepage": "https://github.com/vuesion/vuesion",
   "bugs": {
-    "url": "https://github.com/devCrossNet/vue-starter/issues"
+    "url": "https://github.com/vuesion/vuesion/issues"
   },
   "scripts": {
     "dev": "vuesion dev -o",

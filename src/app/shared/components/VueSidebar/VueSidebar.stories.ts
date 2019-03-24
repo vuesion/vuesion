@@ -40,7 +40,7 @@ story.add(
     template: `<vue-sidebar>
   <vue-sidebar-group title="Navigation">
         <vue-sidebar-group-item>
-          <a href="https://github.com/devCrossNet/vue-starter" target="_blank" rel="noopener">
+          <a href="https://github.com/vuesion/vuesion" target="_blank" rel="noopener">
             <vue-icon-code />
             Github
           </a>

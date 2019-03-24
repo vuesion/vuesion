@@ -19,7 +19,7 @@ import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
 
 export default {
   metaInfo: {
-    title: 'vue-starter - page not found',
+    title: 'vuesion - page not found',
     meta: [
       {
         name: 'robots',

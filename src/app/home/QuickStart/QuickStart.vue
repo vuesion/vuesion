@@ -20,10 +20,9 @@
               <vue-headline level="4">Via Git</vue-headline>
               <ol>
                 <li>
-                  Download or clone (<code>git clone https://github.com/<br />devCrossNet/vue-starter</code>) the
-                  repository
+                  Download or clone (<code>git clone https://github.com/<br />vuesion/vuesion</code>) the repository
                 </li>
-                <li>Change directory <code>cd vue-starter</code></li>
+                <li>Change directory <code>cd vuesion</code></li>
                 <li>Install dependencies: <code>npm install</code></li>
                 <li>Run <code>npm run dev</code></li>
               </ol>

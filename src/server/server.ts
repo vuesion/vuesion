@@ -12,7 +12,7 @@ app.disable('x-powered-by');
 applyMiddlewares(app);
 
 /**
- * routes to demonstrate the possibilities of the vue-starter
+ * routes to demonstrate the possibilities of vuesion
  * can be removed if you don't need them in your application
  */
 DemoRoutes(app);

@@ -49,7 +49,7 @@ If we have a look at the file `./src/server/isomorphic.ts`:
 ...
 ```
 
-we see that the vue-starter set-up expects us to call this static function `prefetch`.
+we see that the vuesion set-up expects us to call this static function `prefetch`.
 
 This part of the code is
 responsible for getting all the `prefetch` functions from all the components that match the current route.
@@ -66,7 +66,7 @@ If you want to see this concept in action, have a look at the file `./src/app/co
 ...
 ```
 
-We always have to return a `Promise` as result of this function, the vue-starter makes sure that every Promise resolves
+We always have to return a `Promise` as result of this function, vuesion makes sure that every Promise resolves
 before it renders the page.
 
 The function gets an `options` object as the first parameter - you can find the available options in the file `./src/server/isomorphic.ts`

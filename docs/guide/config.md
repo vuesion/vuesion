@@ -84,8 +84,8 @@ If you want to pass environment variables to your client application, just leave
 
 You have to implement a feature that is disabled by default but for testers, it should be already available behind a feature flag.
 
-The vue-starter comes already with a feature flag that explains the concept pretty well.
-If you go to [http://vue-starter.herokuapp.com/?disableParticles=true](http://vue-starter.herokuapp.com/?disableParticles=true)
+Vuesion comes already with a feature flag that explains the concept pretty well.
+If you go to [http://vuesion.herokuapp.com/?disableParticles=true](http://vuesion.herokuapp.com/?disableParticles=true)
 you will see that the particle animation in the `Stage` component is disabled.
 
 First add your feature flag in your configuration:

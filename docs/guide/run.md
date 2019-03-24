@@ -17,7 +17,7 @@ You have to wait for a second message that indicates that the client and the iso
 [1] ℹ ｢wdm｣: Compiled successfully.
 ```
 
-Now you know that everything works as expected, to see the `vue-starter` in action, go to [http://localhost:3000](http://localhost:3000).
+Now you know that everything works as expected, to see the `vuesion` in action, go to [http://localhost:3000](http://localhost:3000).
 
 ## Development mode and hot reloading
 
@@ -51,7 +51,7 @@ npm run ci && docker build -t "vue/starter:latest" .
 When building is complete, you can proceed with firing up the docker container:
 
 ```bash
-docker run -it --name vue-starter -p 3001:3000 vue/starter:latest
+docker run -it --name vuesion -p 3001:3000 vue/starter:latest
 ```
 
 You have to wait for the message:
@@ -62,4 +62,4 @@ info: node server started at http://localhost:3000
 
 Docker is available at port: 3001 so a developer can have both docker and local server running at the same time
 
-Now you know that everything works as expected, to see the `vue-starter` in action, go to [http://localhost:3001](http://localhost:3001).
+Now you know that everything works as expected, to see the `vuesion` in action, go to [http://localhost:3001](http://localhost:3001).
