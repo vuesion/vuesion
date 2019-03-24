@@ -48,58 +48,22 @@ export default {
   border-radius: $badge-border-radius;
 }
 
-.primary {
-  color: $badge-primary-color;
-  background: $badge-primary-bg;
-}
+@each $variation, $values in $badge-variations {
+  .#{$variation} {
+    color: map-get($values, 'color');
+    background: map-get($values, 'bg');
+  }
 
-.secondary {
-  color: $badge-secondary-color;
-  background: $badge-secondary-bg;
-}
-
-.success {
-  color: $badge-success-color;
-  background: $badge-success-bg;
-}
-
-.warning {
-  color: $badge-warning-color;
-  background: $badge-warning-bg;
-}
-
-.danger {
-  color: $badge-danger-color;
-  background: $badge-danger-bg;
+  .outlined {
+    &.#{$variation} {
+      border-color: map-get($values, 'bg');
+      color: map-get($values, 'bg');
+    }
+  }
 }
 
 .outlined {
   border: $badge-outlined-border-width solid transparent;
   background: transparent;
-
-  &.primary {
-    border-color: $badge-primary-bg;
-    color: $badge-primary-bg;
-  }
-
-  &.secondary {
-    border-color: $badge-secondary-bg;
-    color: $badge-secondary-bg;
-  }
-
-  &.danger {
-    border-color: $badge-danger-bg;
-    color: $badge-danger-bg;
-  }
-
-  &.warning {
-    border-color: $badge-warning-bg;
-    color: $badge-warning-bg;
-  }
-
-  &.success {
-    border-color: $badge-success-bg;
-    color: $badge-success-bg;
-  }
 }
 </style>
