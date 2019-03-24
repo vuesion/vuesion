@@ -1,9 +1,7 @@
 const webpack = require('webpack');
 const base = require('../../node_modules/@vuesion/service/dist/webpack/config/base').default;
 
-module.exports = (storybookBaseConfig, env, defaultConfig) => {
-  const config = defaultConfig;
-
+module.exports = ({ config, mode }) => {
   config.resolve = base.resolve;
   config.module.rules = base.module.rules;
 
