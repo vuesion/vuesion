@@ -148,6 +148,8 @@ export default {
   top: 100%;
   margin: $dropdown-menu-list-margin;
   z-index: 1000;
+  box-shadow: $dropdown-menu-list-shadow;
+  border-radius: $dropdown-menu-list-border-radius;
 
   ul {
     margin: 0;
