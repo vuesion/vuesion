@@ -81,7 +81,6 @@ export default {
 .userExperience {
   display: block;
   text-align: center;
-  background: $brand-bg-color-variant;
 
   i {
     display: inline-block;
@@ -95,12 +94,6 @@ export default {
 
     &:hover {
       color: $brand-text-color;
-    }
-  }
-
-  :global {
-    .vueCard {
-      background: $tertiary-040;
     }
   }
 }

@@ -187,11 +187,11 @@ export default {
 }
 
 :export {
-  color1: $primary-2-100;
-  color2: $secondary-1-100;
-  color3: $secondary-2-100;
-  color4: $tertiary-1-100;
-  color5: $tertiary-2-100;
-  color6: $tertiary-3-100;
+  color1: palette-color-level('wine', 100);
+  color2: palette-color-level('sea', 100);
+  color3: palette-color-level('red', 100);
+  color4: palette-color-level('green', 100);
+  color5: palette-color-level('yellow', 100);
+  color6: palette-color-level('wine', 40);
 }
 </style>

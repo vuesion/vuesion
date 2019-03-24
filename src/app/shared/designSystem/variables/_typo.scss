@@ -1,6 +1,5 @@
-$google-font: 'https://fonts.googleapis.com/css?family=Barlow:100,300,500,700';
-$font-family-headings: 'Barlow', Helvetica, sans-serif;
-$font-family: 'Barlow', Helvetica, sans-serif;
+$font-family-headings: 'Roboto Condensed', Helvetica, sans-serif;
+$font-family: 'Source Sans Pro', Helvetica, sans-serif;
 
 /* Font Sizes */
 $font-size-small: 80%;
@@ -13,13 +12,12 @@ $font-size-h5: 1.6rem;
 $font-size-h6: 1.4rem;
 
 /* Font Weights */
-$font-weight-thin: 100;
-$font-weight-regular: 300;
-$font-weight-medium: 500;
-$font-weight-bold: 700;
-$font-weight-h1: $font-weight-medium;
+$font-weight-regular: 200;
+$font-weight-medium: 400;
+$font-weight-bold: 600;
+$font-weight-h1: $font-weight-bold;
 $font-weight-h2: $font-weight-medium;
-$font-weight-h3: $font-weight-medium;
+$font-weight-h3: $font-weight-bold;
 $font-weight-h4: $font-weight-medium;
 $font-weight-h5: $font-weight-medium;
 $font-weight-h6: $font-weight-bold;

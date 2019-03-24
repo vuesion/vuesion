@@ -37,17 +37,6 @@ describe('VueBadge.vue', () => {
     expect(wrapper.findAll('.secondary')).toHaveLength(1);
   });
 
-  test('renders tertiary', () => {
-    const wrapper = mount(VueBadge, {
-      localVue,
-      propsData: {
-        color: 'tertiary',
-      },
-    });
-
-    expect(wrapper.findAll('.tertiary')).toHaveLength(1);
-  });
-
   test('renders danger', () => {
     const wrapper = mount(VueBadge, {
       localVue,

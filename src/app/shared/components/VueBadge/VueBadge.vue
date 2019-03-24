@@ -58,11 +58,6 @@ export default {
   background: $badge-secondary-bg;
 }
 
-.tertiary {
-  color: $badge-tertiary-color;
-  background: $badge-tertiary-bg;
-}
-
 .success {
   color: $badge-success-color;
   background: $badge-success-bg;
@@ -90,11 +85,6 @@ export default {
   &.secondary {
     border-color: $badge-secondary-bg;
     color: $badge-secondary-bg;
-  }
-
-  &.tertiary {
-    border-color: $badge-tertiary-bg;
-    color: $badge-tertiary-color;
   }
 
   &.danger {

@@ -1,5 +1,5 @@
 $button-font-family: $font-family;
-$button-padding: $space-xxs $space-unit * 2;
+$button-padding: $space-xxxs $space-sm;
 $button-margin: 0 $space-unit 0 0;
 $button-min-width: $space-lg;
 $button-height: $space-lg;
@@ -11,41 +11,36 @@ $button-transition: all 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
 $button-active-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.18);
 $button-text-decoration: none;
 $button-hover-text-decoration: none;
+$button-text-transform: uppercase;
 
-$button-primary-color: $brand-text-color-inverse;
 $button-primary-bg: $brand-primary;
+$button-primary-color: foreground-color($button-primary-bg);
 $button-primary-hover-bg: darken($button-primary-bg, 5%);
-$button-primary-hover-color: $button-primary-color;
+$button-primary-hover-color: foreground-color($button-primary-hover-bg);
 $button-primary-border: 1px solid $button-primary-bg;
 
-$button-secondary-color: $brand-text-color;
 $button-secondary-bg: $brand-secondary;
+$button-secondary-color: foreground-color($button-secondary-bg);
 $button-secondary-hover-bg: darken($button-secondary-bg, 5%);
-$button-secondary-hover-color: $button-secondary-color;
+$button-secondary-hover-color: foreground-color($button-secondary-hover-bg);
 $button-secondary-border: 1px solid $button-secondary-bg;
 
-$button-tertiary-color: $brand-text-color;
-$button-tertiary-bg: $brand-tertiary;
-$button-tertiary-hover-bg: darken($button-tertiary-bg, 5%);
-$button-tertiary-hover-color: $button-tertiary-color;
-$button-tertiary-border: 1px solid $button-tertiary-bg;
+$button-success-bg: $brand-success;
+$button-success-color: foreground-color($button-success-bg);
+$button-success-hover-bg: darken($button-success-bg, 5%);
+$button-success-hover-color: foreground-color($button-success-hover-bg);
+$button-success-border: 1px solid $button-success-bg;
 
-$button-danger-color: $brand-text-color;
-$button-danger-bg: $brand-danger;
-$button-danger-hover-bg: darken($button-danger-bg, 5%);
-$button-danger-hover-color: $button-danger-color;
-$button-danger-border: 1px solid $button-danger-bg;
-
-$button-warning-color: $brand-text-color;
 $button-warning-bg: $brand-warning;
+$button-warning-color: foreground-color($button-warning-bg);
 $button-warning-hover-bg: darken($button-warning-bg, 5%);
-$button-warning-hover-color: $button-warning-color;
+$button-warning-hover-color: foreground-color($button-warning-hover-bg);
 $button-warning-border: 1px solid $button-warning-bg;
 
-$button-success-color: $brand-text-color;
-$button-success-bg: $brand-success;
-$button-success-hover-bg: darken($button-success-bg, 5%);
-$button-success-hover-color: $button-success-color;
-$button-success-border: 1px solid $button-success-bg;
+$button-danger-bg: $brand-danger;
+$button-danger-color: foreground-color($button-danger-bg);
+$button-danger-hover-bg: darken($button-danger-bg, 5%);
+$button-danger-hover-color: foreground-color($button-danger-hover-bg);
+$button-danger-border: 1px solid $button-danger-bg;
 
 $button-outlined-border-width: 0.2rem;
