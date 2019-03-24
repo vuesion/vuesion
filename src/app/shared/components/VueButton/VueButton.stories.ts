@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueButton from './VueButton.vue';
+import { brandVariations } from '@/app/shared/components/utils';
 
 const story = storiesOf('Atoms|Button', module) as any;
 
@@ -9,40 +10,21 @@ story.add(
   'Button Variants',
   withInfo({})(() => ({
     components: { VueButton },
+    data(): any {
+      return {
+        variations: brandVariations,
+      };
+    },
     template: `<div>
-<vue-button @click="action" color="primary">Primary</vue-button>
-<vue-button @click="action" color="primary" disabled>Primary Disabled</vue-button>
-<vue-button @click="action" color="primary" outlined>Primary Outlined</vue-button>
-<vue-button @click="action" color="primary" ghost>Primary Ghost</vue-button>
-<vue-button @click="action" color="primary" loading>Primary Loading</vue-button>
+<template v-for="variation in variations">
+<vue-button @click="action" :color="variation">{{ variation }}</vue-button>
+<vue-button @click="action" :color="variation" disabled>{{ variation }} disabled</vue-button>
+<vue-button @click="action" :color="variation" outlined>{{ variation }} outlined</vue-button>
+<vue-button @click="action" :color="variation" ghost>{{ variation }} ghost</vue-button>
+<vue-button @click="action" :color="variation" loading>{{ variation }} loading</vue-button>
 <br />
 <br />
-<vue-button @click="action" color="secondary">Secondary</vue-button>
-<vue-button @click="action" color="secondary" disabled>Secondary Disabled</vue-button>
-<vue-button @click="action" color="secondary" outlined>Secondary Outlined</vue-button>
-<vue-button @click="action" color="secondary" ghost>Secondary Ghost</vue-button>
-<vue-button @click="action" color="secondary" loading>Secondary Loading</vue-button>
-<br />
-<br />
-<vue-button @click="action" color="danger">Danger</vue-button>
-<vue-button @click="action" color="danger" disabled>Danger Disabled</vue-button>
-<vue-button @click="action" color="danger" outlined>Danger Outlined</vue-button>
-<vue-button @click="action" color="danger" ghost>Danger Ghost</vue-button>
-<vue-button @click="action" color="danger" loading>Danger Loading</vue-button>
-<br />
-<br />
-<vue-button @click="action" color="warning">Warning</vue-button>
-<vue-button @click="action" color="warning" disabled>Warning Disabled</vue-button>
-<vue-button @click="action" color="warning" outlined>Warning Outlined</vue-button>
-<vue-button @click="action" color="warning" ghost>Warning Ghost</vue-button>
-<vue-button @click="action" color="warning" loading>Warning Loading</vue-button>
-<br />
-<br />
-<vue-button @click="action" color="success">Success</vue-button>
-<vue-button @click="action" color="success" disabled>Success Disabled</vue-button>
-<vue-button @click="action" color="success" outlined>Success Outlined</vue-button>
-<vue-button @click="action" color="success" ghost>Success Ghost</vue-button>
-<vue-button @click="action" color="success" loading>Success Loading</vue-button>
+</template>
 </div>
 `,
     methods: {
