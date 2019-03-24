@@ -219,6 +219,6 @@ export default {
 }
 
 .select {
-  margin-bottom: $space-unit * 2;
+  margin-bottom: $space-12;
 }
 </style>

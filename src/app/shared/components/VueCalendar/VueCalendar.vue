@@ -415,7 +415,7 @@ export default {
 
         span {
           position: relative;
-          top: $space-unit - 0.1;
+          top: $space-8;
 
           @include mediaMin(tabletPortrait) {
             top: 15%;
@@ -432,14 +432,15 @@ export default {
 
 .date {
   display: flex;
+  height: $space-32;
+  flex-direction: row;
 }
 
 .arrow {
-  height: $space-unit * 4;
   flex: 1 0 15%;
-  position: relative;
   cursor: pointer;
   background: $calendar-arrow-bg;
+  position: relative;
 
   &:hover {
     background: $calendar-arrow-hover-bg;
@@ -451,35 +452,32 @@ export default {
     transition: all 0.25s ease-in-out;
     position: absolute;
     background-color: $calendar-arrow-color;
-    width: 2px;
-    height: 13px;
-    top: 4px;
-    left: $space-unit * 2;
+    width: $space-2;
+    height: $space-12;
+    left: 50%;
+    margin-left: -($space-8 - $space-2);
+    top: $space-4;
   }
 
   &:before {
-    transform: translate(4px, 0) rotate(45deg);
+    transform: translate($space-4, 0) rotate(45deg);
   }
 
   &:after {
-    transform: translate(4px, 8px) rotate(135deg);
+    transform: translate($space-4, $space-8) rotate(135deg);
   }
 
   &:last-child {
-    text-align: right;
-
     &:before,
     &:after {
-      right: $space-unit * 3;
-      left: initial;
     }
 
     &:before {
-      transform: translate(4px, 0) rotate(-45deg);
+      transform: translate($space-4, 0) rotate(-45deg);
     }
 
     &:after {
-      transform: translate(4px, 8px) rotate(-135deg);
+      transform: translate($space-4, $space-8) rotate(-135deg);
     }
   }
 }
@@ -525,7 +523,7 @@ export default {
 
   div {
     cursor: pointer;
-    padding: $space-unit 0;
+    padding: $space-8 0;
     transition: background-color 0.15s;
 
     &:hover {
@@ -539,7 +537,7 @@ export default {
 }
 
 .footer {
-  padding: $space-unit * 2;
+  padding: $space-12;
   display: flex;
   justify-content: flex-end;
   border: $calendar-body-border;

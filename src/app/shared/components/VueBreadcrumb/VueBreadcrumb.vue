@@ -23,17 +23,17 @@ export default {
 @import '../../designSystem/variables';
 
 .vueBreadcrumb {
-  padding: 0;
-  margin: 0;
+  padding: $breadcrumb-padding;
+  margin: $breadcrumb-margin;
   list-style: none;
 }
 
 .item {
   display: inline-block;
-  padding: $space-unit 0;
+  padding: $space-8 0;
 
   &:before {
-    padding: $space-unit;
+    padding: $space-8;
     content: $breadcrumb-separator;
   }
 

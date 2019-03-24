@@ -3,7 +3,7 @@ $sidebar-shadow: $brand-shadow-md;
 $sidebar-bg: $brand-bg-color;
 $sidebar-color: $brand-text-color;
 $sidebar-max-width: 80%;
-$sidebar-padding: $space-xxl $space-md $space-md $space-md;
+$sidebar-padding: $space-84 $space-20 $space-20 $space-20;
 $sidebar-margin: 0;
 $sidebar-transition: transform $brand-transition-duration ease-in-out;
 $sidebar-width: 300px;
@@ -13,7 +13,7 @@ $sidebar-hamburger-color: $brand-text-color-inverse;
 $sidebar-hamburger-open-bg: transparent;
 $sidebar-hamburger-open-color: $brand-text-color;
 
-$sidebar-group-margin: 0 0 $space-unit * 6 0;
+$sidebar-group-margin: 0 0 $space-48 0;
 $sidebar-group-font-weight: $font-weight-medium;
 $sidebar-group-font-size: $font-size;
 $sidebar-group-border-bottom: 1px solid $brand-border-color;

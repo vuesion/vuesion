@@ -1,17 +1,17 @@
 $toggle-bg: $brand-bg-color-variant;
-$toggle-margin: 0 0 $space-unit * 2 0;
+$toggle-margin: 0 0 $space-12 0;
 $toggle-shadow: none;
 $toggle-border-radius: $brand-border-radius;
-$toggle-width: $space-unit * 6;
-$toggle-height: $space-unit * 1.5;
+$toggle-width: $space-40;
+$toggle-height: $space-12;
 $toggle-transition: all $brand-transition-duration ease-in-out;
 
 $toggle-handle-border-radius: 50%;
-$toggle-handle-size: $space-unit * 3;
+$toggle-handle-size: $space-24;
 $toggle-handle-bg: $brand-secondary;
 $toggle-handle-shadow: none;
 $toggle-handle-checked-bg: $brand-secondary;
-$toggle-handle-focused-shadow: 0 0 0 8px
+$toggle-handle-focused-shadow: 0 0 0 $space-8
   rgba(red($brand-secondary), green($brand-secondary), blue($brand-secondary), 0.5);
 
 $toggle-disabled-bg: $brand-bg-color-variant;

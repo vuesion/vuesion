@@ -119,7 +119,7 @@ export default {
 
   label {
     position: relative;
-    margin-left: $space-unit * 2;
+    margin-left: $space-12;
     cursor: pointer;
   }
 }

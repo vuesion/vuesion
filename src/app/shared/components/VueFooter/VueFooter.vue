@@ -64,7 +64,7 @@ export default {
     height: $font-size-h1;
     width: $font-size-h1;
     fill: $footer-link-color;
-    margin: 0 $space-unit * 2;
+    margin: 0 $space-12;
 
     &:hover {
       fill: $footer-link-hover-color;
@@ -73,7 +73,7 @@ export default {
 
   small {
     display: inline-block;
-    margin: $space-unit * 2 0;
+    margin: $space-12 0;
   }
 
   a {

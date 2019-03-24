@@ -1,5 +1,6 @@
 $tooltip-bg: $brand-secondary;
 $tooltip-color: $brand-bg-color;
-$tooltip-padding: $space-unit / 2 $space-unit;
+$tooltip-padding: 0 $space-8;
 $tooltip-shadow: none;
 $tooltip-highlight-color: $tooltip-bg;
+$tooltip-border-radius: $brand-border-radius;

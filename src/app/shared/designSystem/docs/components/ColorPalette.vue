@@ -53,7 +53,7 @@ export default {
 .sections {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: $space-md;
+  grid-gap: $space-20;
 }
 
 .palette {

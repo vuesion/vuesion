@@ -4,18 +4,18 @@ $card-border: 1px solid $brand-border-color;
 $card-border-radius: 0;
 $card-margin: 0;
 
-$card-header-padding: $space-unit $space-unit * 2;
-$card-header-image-size: $space-unit * 5;
+$card-header-padding: $space-8 $space-16;
+$card-header-image-size: $space-40;
 $card-header-image-border-radius: 50%;
-$card-header-image-margin: $space-unit $space-unit * 2 0 0;
+$card-header-image-margin: $space-8 $space-12 0 0;
 $card-header-title-font-size: inherit;
 $card-header-title-font-weight: $font-weight-medium;
 $card-header-subtitle-font-size: inherit;
 $card-header-subtitle-font-weight: 300;
 $card-header-subtitle-color: $brand-text-secondary-color;
 
-$card-body-padding: $space-unit $space-unit * 2;
+$card-body-padding: $space-8 $space-16;
 $card-body-font-size: inherit;
 $card-body-color: $brand-text-color;
 
-$card-footer-padding: $space-unit;
+$card-footer-padding: $space-8;
