@@ -84,7 +84,7 @@ export default {
   top: $space-xs * 1.5;
   left: $space-md;
   height: $space-lg;
-  z-index: $modal-index + 2;
+  z-index: $sidebar-index + 1;
   padding: 0;
   display: inline-block;
   cursor: pointer;
@@ -150,10 +150,18 @@ export default {
   }
 
   &.open {
+    background: $sidebar-hamburger-open-bg;
+
     .inner {
       transform: rotate(45deg);
       transition-delay: 0.12s;
       transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+      &,
+      &::before,
+      &::after {
+        background: $sidebar-hamburger-open-color;
+      }
 
       &::before {
         top: 0;
