@@ -1,5 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueLoader from './VueLoader.vue';
+import { brandVariations } from '@/app/shared/components/utils';
 
 const localVue = createLocalVue();
 
@@ -34,58 +35,17 @@ describe('VueLoader.vue', () => {
     expect(wrapper.findAll(`.large`)).toHaveLength(1);
   });
 
-  test('renders primary loader', () => {
-    const wrapper = mount(VueLoader, {
-      localVue,
-      propsData: {
-        color: 'primary',
-      },
+  test('renders color variations', () => {
+    brandVariations.forEach((variation: string) => {
+      const wrapper = mount(VueLoader, {
+        localVue,
+        propsData: {
+          color: variation,
+        },
+      });
+      const actual = wrapper.findAll(`.${variation}`);
+      const expected = 1;
+      expect(actual).toHaveLength(expected);
     });
-
-    expect(wrapper.findAll(`.primary`)).toHaveLength(1);
-  });
-
-  test('renders secondary loader', () => {
-    const wrapper = mount(VueLoader, {
-      localVue,
-      propsData: {
-        color: 'secondary',
-      },
-    });
-
-    expect(wrapper.findAll(`.secondary`)).toHaveLength(1);
-  });
-
-  test('renders danger loader', () => {
-    const wrapper = mount(VueLoader, {
-      localVue,
-      propsData: {
-        color: 'danger',
-      },
-    });
-
-    expect(wrapper.findAll(`.danger`)).toHaveLength(1);
-  });
-
-  test('renders warning loader', () => {
-    const wrapper = mount(VueLoader, {
-      localVue,
-      propsData: {
-        color: 'warning',
-      },
-    });
-
-    expect(wrapper.findAll(`.warning`)).toHaveLength(1);
-  });
-
-  test('renders success loader', () => {
-    const wrapper = mount(VueLoader, {
-      localVue,
-      propsData: {
-        color: 'success',
-      },
-    });
-
-    expect(wrapper.findAll(`.success`)).toHaveLength(1);
   });
 });

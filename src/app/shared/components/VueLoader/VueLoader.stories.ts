@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueLoader from './VueLoader.vue';
+import { brandVariations } from '@/app/shared/components/utils';
 
 const story = storiesOf('Atoms|Loader', module) as any;
 
@@ -8,30 +9,19 @@ story.add(
   'Loader Variants',
   withInfo({})(() => ({
     components: { VueLoader },
+    data(): any {
+      return {
+        variations: brandVariations,
+      };
+    },
     template: `<div>
-<vue-loader color="primary" />
-<vue-loader color="primary" medium />
-<vue-loader color="primary" large />
+<template v-for="variation in variations">
+<vue-loader :color="variation" />
+<vue-loader :color="variation" medium />
+<vue-loader :color="variation" large />
 <br />
 <br />
-<vue-loader color="secondary" />
-<vue-loader color="secondary" medium />
-<vue-loader color="secondary" large />
-<br />
-<br />
-<vue-loader color="danger" />
-<vue-loader color="danger" medium />
-<vue-loader color="danger" large />
-<br />
-<br />
-<vue-loader color="warning" />
-<vue-loader color="warning" medium />
-<vue-loader color="warning" large />
-<br />
-<br />
-<vue-loader color="success" />
-<vue-loader color="success" medium />
-<vue-loader color="success" large />
+</template>
 </div>`,
   })),
 );
