@@ -18,6 +18,7 @@ import VueIconSortUp from './VueIconSortUp/VueIconSortUp.vue';
 import VueIconSpinner from './VueIconSpinner/VueIconSpinner.vue';
 import VueIconTimes from './VueIconTimes/VueIconTimes.vue';
 import VueIconTwitterSquare from './VueIconTwitterSquare/VueIconTwitterSquare.vue';
+import VueIconVuesion from './VueIconVuesion/VueIconVuesion.vue';
 
 const story = storiesOf('Atoms|Icons', module) as any;
 
@@ -49,6 +50,7 @@ story.add(
       VueIconSpinner,
       VueIconTimes,
       VueIconTwitterSquare,
+      VueIconVuesion,
     ],
   })(() => ({
     components: {
@@ -70,6 +72,7 @@ story.add(
       VueIconSpinner,
       VueIconTimes,
       VueIconTwitterSquare,
+      VueIconVuesion,
     },
     template: `
 <div>
@@ -91,6 +94,7 @@ story.add(
   <vue-icon-spinner/>
   <vue-icon-times/>
   <vue-icon-twitter-square/>
+  <vue-icon-vuesion/>
 </div>`,
   })),
 );

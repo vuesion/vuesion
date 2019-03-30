@@ -18,7 +18,7 @@ $space-52: $space-unit * 6.5; // 52px
 $space-84: $space-unit * 10.5; // 84px
 
 /* Brand Variations */
-$brand-primary: palette-color-level('wine', 100);
+$brand-primary: palette-color-level('coral', 100);
 $brand-secondary: palette-color-level('sea', 100);
 $brand-success: palette-color-level('green', 100);
 $brand-warning: palette-color-level('yellow', 100);
@@ -37,8 +37,8 @@ $brand-text-color-inverse: palette-color-level('black', 2);
 $brand-text-secondary-color-inverse: palette-color-level('black', 40);
 
 /* Link Color */
-$brand-link-color: palette-color-level('sea', 100);
-$brand-link-hover-color: palette-color-level('sea', 120);
+$brand-link-color: palette-color-level('sea', 120);
+$brand-link-hover-color: palette-color-level('sea', 140);
 
 /* Border Colors */
 $brand-border-color: palette-color-level('black', 15);

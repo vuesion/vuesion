@@ -36,7 +36,7 @@ module.exports = {
       'meta',
       {
         name: 'theme-color',
-        content: '#A851E2',
+        content: '#f43b6c',
       },
     ],
     [
@@ -65,7 +65,7 @@ module.exports = {
       {
         rel: 'mask-icon',
         href: '/icons/safari-pinned-tab.svg',
-        color: '#A851E2',
+        color: '#f43b6c',
       },
     ],
     [
@@ -79,7 +79,7 @@ module.exports = {
       'meta',
       {
         name: 'msapplication-TileColor',
-        content: '#333333',
+        content: '#f43b6c',
       },
     ],
   ],

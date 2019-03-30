@@ -6,6 +6,11 @@ body {
   background-color: $brand-bg-color;
 }
 
+code {
+  background: $brand-bg-color-variant;
+  padding: $space-2 $space-4;
+}
+
 // vue-icon global style
 i {
   display: inline-block;

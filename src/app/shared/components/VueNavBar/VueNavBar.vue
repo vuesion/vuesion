@@ -1,6 +1,14 @@
 <template>
   <div :class="$style.vueNavBar" ref="nav">
-    <slot />
+    <div>
+      <slot name="left" />
+    </div>
+    <div>
+      <slot name="middle" />
+    </div>
+    <div>
+      <slot name="right" />
+    </div>
   </div>
 </template>
 
@@ -23,5 +31,20 @@ export default {
   top: 0;
   left: 0;
   background: $nav-bar-bg;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+
+  div {
+    flex: 0 0 33.333333%;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+  }
 }
 </style>

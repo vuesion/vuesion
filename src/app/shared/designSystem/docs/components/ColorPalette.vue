@@ -75,22 +75,22 @@ export default {
 }
 
 :export {
-  wine-wine-200: palette-color-level('wine', 200);
-  wine-wine-180: palette-color-level('wine', 180);
-  wine-wine-160: palette-color-level('wine', 160);
-  wine-wine-140: palette-color-level('wine', 140);
-  wine-wine-120: palette-color-level('wine', 120);
-  wine-wine-110: palette-color-level('wine', 110);
-  wine-wine-105: palette-color-level('wine', 105);
-  wine-wine-100: palette-color-level('wine', 100);
-  wine-wine-80: palette-color-level('wine', 80);
-  wine-wine-60: palette-color-level('wine', 60);
-  wine-wine-40: palette-color-level('wine', 40);
-  wine-wine-30: palette-color-level('wine', 30);
-  wine-wine-20: palette-color-level('wine', 20);
-  wine-wine-10: palette-color-level('wine', 10);
-  wine-wine-5: palette-color-level('wine', 5);
-  wine-wine-0: palette-color-level('wine', 0);
+  coral-coral-200: palette-color-level('coral', 200);
+  coral-coral-180: palette-color-level('coral', 180);
+  coral-coral-160: palette-color-level('coral', 160);
+  coral-coral-140: palette-color-level('coral', 140);
+  coral-coral-120: palette-color-level('coral', 120);
+  coral-coral-110: palette-color-level('coral', 110);
+  coral-coral-105: palette-color-level('coral', 105);
+  coral-coral-100: palette-color-level('coral', 100);
+  coral-coral-80: palette-color-level('coral', 80);
+  coral-coral-60: palette-color-level('coral', 60);
+  coral-coral-40: palette-color-level('coral', 40);
+  coral-coral-30: palette-color-level('coral', 30);
+  coral-coral-20: palette-color-level('coral', 20);
+  coral-coral-10: palette-color-level('coral', 10);
+  coral-coral-5: palette-color-level('coral', 5);
+  coral-coral-0: palette-color-level('coral', 0);
 
   sea-sea-200: palette-color-level('sea', 200);
   sea-sea-180: palette-color-level('sea', 180);
