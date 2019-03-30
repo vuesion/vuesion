@@ -77,10 +77,10 @@ export default {
       padding: 0;
 
       ol {
-        padding: 0 0 0 $space-unit * 2;
+        padding: 0 0 0 $space-12;
 
         li {
-          margin-bottom: $space-unit * 2;
+          margin-bottom: $space-12;
         }
       }
     }

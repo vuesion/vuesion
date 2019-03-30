@@ -265,20 +265,20 @@ export default {
 
   > i {
     position: absolute;
-    top: $space-unit;
+    top: $space-8;
     right: 0;
   }
 
   .loader {
     position: absolute;
-    top: $space-unit;
+    top: $space-8;
     right: 0;
-    width: $space-unit * 2;
-    height: $space-unit * 2;
+    width: $space-12;
+    height: $space-12;
 
     :global {
       .vueLoaderPath {
-        stroke-width: $space-unit;
+        stroke-width: $space-8;
       }
     }
   }

@@ -96,7 +96,7 @@ export default {
 
 .icons {
   display: inline-block;
-  width: $space-unit * 3;
+  width: $space-12;
   float: right;
 }
 </style>

@@ -94,11 +94,11 @@ export default {
   :global {
     .vueCard {
       height: 100%;
-      padding: $space-unit * 2;
+      padding: $space-12;
     }
 
     .vueGridItem {
-      margin-bottom: $space-unit * 2;
+      margin-bottom: $space-12;
     }
 
     .featureSection {
@@ -109,7 +109,7 @@ export default {
   @include mediaMin(tabletLandscape) {
     :global {
       .featureSection {
-        padding: $space-unit * 15 0;
+        padding: $space-84 * 2 0;
       }
     }
   }

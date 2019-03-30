@@ -24,13 +24,13 @@ $font-weight-h6: $font-weight-bold;
 $link-font-weight: $font-weight-medium;
 
 /* Line Heights */
-$line-height: $font-size + $space-xs;
-$line-height-h1: $font-size-h1 + $space-xs;
-$line-height-h2: $font-size-h2 + $space-xs;
-$line-height-h3: $font-size-h3 + $space-xs;
-$line-height-h4: $font-size-h4 + $space-xs;
-$line-height-h5: $font-size-h5 + $space-xs;
-$line-height-h6: $font-size-h6 + $space-xs;
+$line-height: $font-size + $space-8;
+$line-height-h1: $font-size-h1 + $space-8;
+$line-height-h2: $font-size-h2 + $space-8;
+$line-height-h3: $font-size-h3 + $space-8;
+$line-height-h4: $font-size-h4 + $space-8;
+$line-height-h5: $font-size-h5 + $space-8;
+$line-height-h6: $font-size-h6 + $space-8;
 
 /* Letter Spacings */
 $letter-spacing: normal;

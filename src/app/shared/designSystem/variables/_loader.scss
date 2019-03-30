@@ -1,6 +1,6 @@
-$loader-size: $space-unit * 4;
-$loader-medium-size: $space-unit * 8;
-$loader-large-size: $space-unit * 16;
+$loader-size: $space-20;
+$loader-medium-size: $space-32;
+$loader-large-size: $space-52;
 
 $loader-variations: (
   'primary': $brand-primary,

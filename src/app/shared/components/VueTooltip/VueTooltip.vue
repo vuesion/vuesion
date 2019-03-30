@@ -61,6 +61,7 @@ export default {
   display: inline-block;
   position: relative;
   border-bottom: 1px dashed transparent;
+  border-radius: $tooltip-border-radius;
 
   &:before,
   &:after {
@@ -79,19 +80,20 @@ export default {
     color: $tooltip-color;
     content: attr(data-tip);
     padding: $tooltip-padding;
-    top: -$space-unit * 4.5;
+    top: -$space-32;
     white-space: nowrap;
     box-shadow: $tooltip-shadow;
+    border-radius: $tooltip-border-radius;
   }
 
   &:after {
-    border-right: $space-unit solid transparent;
-    border-top: $space-unit solid $tooltip-bg;
-    border-left: $space-unit solid transparent;
+    border-right: $space-8 solid transparent;
+    border-top: $space-8 solid $tooltip-bg;
+    border-left: $space-8 solid transparent;
     content: '';
     height: 0;
-    top: -$space-unit * 0.5;
-    left: $space-unit;
+    top: -$space-8;
+    left: $space-8;
     width: 0;
   }
 }

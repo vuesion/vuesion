@@ -1,12 +1,12 @@
 $input-border-bottom: 1px solid $brand-border-color;
 $input-background-color: transparent;
-$input-padding: $space-unit 0;
-$input-margin: 0 0 $space-md 0;
+$input-padding: $space-8 0;
+$input-margin: 0 0 $space-20 0;
 $input-font-family: $font-family;
 $input-font-size: inherit;
 $input-font-weight: $font-weight-medium;
 $input-color: $brand-text-color;
-$input-height: $space-unit * 4;
+$input-height: $space-32;
 $input-error-color: $brand-danger;
 
 $input-placeholder-top: 0;
@@ -16,12 +16,12 @@ $input-placeholder-font-weight: $font-weight-medium;
 $input-placeholder-active-font-size: 75%;
 $input-placeholder-active-font-weight: $font-weight-regular;
 $input-placeholder-active-font-color: $brand-secondary;
-$input-placeholder-active-height: $space-unit * 2;
+$input-placeholder-active-height: $space-12;
 
 $input-bar-height: 2px;
 $input-bar-color: $brand-secondary;
 
-$input-message-height: $space-unit * 3;
+$input-message-height: $space-20;
 $input-message-padding: 0;
 $input-message-color: $input-color;
 $input-message-font-size: 75%;

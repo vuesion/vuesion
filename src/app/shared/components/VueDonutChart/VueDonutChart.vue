@@ -145,17 +145,17 @@ export default {
       top: 25%;
 
       li {
-        padding: $space-unit 0;
+        padding: $space-4 0;
         position: relative;
 
         span {
           position: absolute;
           display: inline-block;
-          height: $space-unit * 3;
-          width: $space-unit * 3;
+          height: $space-12;
+          width: $space-12;
           border-radius: 50%;
-          top: $space-unit;
-          left: $space-unit * -5;
+          top: $space-12;
+          left: -$space-32;
         }
       }
     }
@@ -163,7 +163,7 @@ export default {
 }
 
 .title {
-  margin: 0 0 $space-unit * 4 0;
+  margin: 0 0 $space-32 0;
   text-align: center;
 }
 

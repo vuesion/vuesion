@@ -83,7 +83,7 @@ export default {
   i {
     height: $font-size-h1;
     width: $font-size-h1;
-    margin-top: $space-unit;
+    margin-top: $space-8;
   }
 }
 </style>

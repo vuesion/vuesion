@@ -164,9 +164,22 @@ VueGridRow    | Row that is always 100% width and will be stacked on the page
 VueGridItem   | Item in the row that will be distributed equally on the page 
 
 ### Spacing
-To keep the spacing consistent we have one variable \`$space-unit\` that is used for spacings,
-you can multiply or divide this value as you want.
-The default value in the blueprint is \`0.8rem\`.
+To keep the spacing consistent we have a couple of variables with the prefix \`$space-\`
+
+Variable   | Space in pixel
+-----------|---------------
+$space-2   |   2px
+$space-4   |   4px
+$space-8   |   8px
+$space-12  |  12px
+$space-16  |  16px
+$space-20  |  20px
+$space-24  |  24px
+$space-32  |  32px
+$space-40  |  40px
+$space-48  |  48px
+$space-52  |  52px
+$space-84  |  84px
 </vue-markdown>
 `,
   })),

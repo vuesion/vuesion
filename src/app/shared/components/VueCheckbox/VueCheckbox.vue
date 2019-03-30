@@ -109,7 +109,7 @@ export default {
 
   label {
     display: inline-block;
-    padding-left: $checkbox-size + ($space-unit * 2);
+    padding-left: $checkbox-size + ($space-12);
     cursor: pointer;
   }
 
@@ -185,7 +185,7 @@ export default {
 
   label {
     display: inline-block;
-    padding-left: $checkbox-size + ($space-unit * 2);
+    padding-left: $checkbox-size + $space-12;
     cursor: pointer;
   }
 

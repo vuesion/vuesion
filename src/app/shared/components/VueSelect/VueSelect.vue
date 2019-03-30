@@ -182,8 +182,8 @@ export default {
 
 .icon {
   position: absolute;
-  right: $space-unit * 3;
-  top: $space-unit * 1.5;
+  right: $space-20;
+  top: $space-12;
   height: auto;
   width: auto;
 

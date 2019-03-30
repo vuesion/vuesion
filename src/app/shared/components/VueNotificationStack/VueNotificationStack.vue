@@ -114,13 +114,13 @@ export default {
 
 .title {
   font-weight: 500;
-  margin-bottom: $space-unit;
-  padding-right: $space-unit * 2;
+  margin-bottom: $space-8;
+  padding-right: $space-12;
 }
 
 .text {
   max-height: $notification-max-height;
-  padding-right: $space-unit * 2;
+  padding-right: $space-12;
   overflow-y: scroll;
 }
 
@@ -140,10 +140,10 @@ export default {
     position: absolute;
     background-color: $notification-close-cross-color;
     width: 2px;
-    height: $space-unit * 3;
-    right: $space-unit * 2.5;
+    height: $space-20;
+    right: $space-20;
     top: 50%;
-    margin-top: -($space-unit * 1.5);
+    margin-top: -$space-12;
   }
 
   &:before {

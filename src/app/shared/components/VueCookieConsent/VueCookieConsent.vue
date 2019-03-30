@@ -85,14 +85,14 @@ export default {
 
 .content {
   flex: 1;
-  padding: $space-unit * 2;
+  padding: $space-12;
 }
 
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 0 0 $space-unit * 8;
+  flex: 0 0 $space-52;
   background: $brand-secondary;
   cursor: pointer;
 
