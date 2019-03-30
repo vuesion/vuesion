@@ -177,10 +177,9 @@ export default {
 }
 
 .loader {
-  position: absolute;
-  left: 50%;
-  margin-left: -($space-unit * 2);
-  top: 0;
+  display: inline-block;
+  position: relative;
+  top: $space-2;
 }
 
 @each $variation, $values in $button-variations {

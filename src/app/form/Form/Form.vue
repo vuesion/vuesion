@@ -41,6 +41,6 @@ export default {
 
 .form {
   padding-top: $nav-bar-height;
-  padding-bottom: $space-unit * 2;
+  padding-bottom: $space-12;
 }
 </style>

@@ -28,7 +28,7 @@ export default {
   a {
     display: flex;
     flex-direction: row;
-    padding: $space-unit;
+    padding: $space-8;
     font-weight: $sidebar-group-item-font-weight;
     font-size: $sidebar-group-item-font-size;
     color: $sidebar-group-item-color;
@@ -40,10 +40,10 @@ export default {
     }
 
     i {
-      width: $space-unit * 3;
-      height: $space-unit * 3;
+      width: $space-24;
+      height: $space-24;
       flex: 0 0 auto;
-      margin-right: $space-unit * 2;
+      margin-right: $space-12;
     }
   }
 }

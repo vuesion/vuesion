@@ -118,6 +118,7 @@ export default {
 }
 
 .title {
+  margin-bottom: $space-32;
   top: $space-unit * 14;
 
   @include mediaMin(tabletPortrait) {

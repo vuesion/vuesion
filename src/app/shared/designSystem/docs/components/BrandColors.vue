@@ -53,8 +53,9 @@ export default {
 .section {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: $space-sm;
+  grid-gap: $space-12;
   grid-auto-rows: 200px;
+  margin-bottom: $space-32;
 
   div {
     display: flex;

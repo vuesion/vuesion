@@ -4,12 +4,12 @@ $calendar-bg: $brand-bg-color;
 $calendar-margin: 0;
 
 $calendar-header-color: $brand-text-color-inverse;
-$calendar-header-padding: $space-unit * 2 $space-unit * 3;
+$calendar-header-padding: $space-12 $space-24;
 $calendar-header-bg: $brand-primary;
 $calendar-header-text-shadow: 0 2px 5px rgba(0, 0, 0, 0.33);
 
 $calendar-body-border: 1px solid $brand-border-color;
-$calendar-body-padding: $space-unit $space-unit * 2;
+$calendar-body-padding: $space-8 $space-12;
 
 $calendar-arrow-color: $brand-secondary;
 $calendar-arrow-bg: $calendar-bg;

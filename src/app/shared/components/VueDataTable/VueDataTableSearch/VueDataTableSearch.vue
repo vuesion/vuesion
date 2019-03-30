@@ -36,6 +36,6 @@ export default {
 @import '../../../design-system';
 
 .vueDataTableSearch {
-  padding-top: $space-unit * 2;
+  padding-top: $space-12;
 }
 </style>
