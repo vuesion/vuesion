@@ -41,7 +41,6 @@ export default {
       entries.forEach((entry: IntersectionObserverEntry) => {
         if (entry.intersectionRatio > 0) {
           this.$refs.image.style.backgroundImage = `url(${this.image})`;
-          this.$refs.image.innerHTML = '';
         }
       });
     },
@@ -54,7 +53,7 @@ export default {
     if ((window as any).IntersectionObserver) {
       this.handleObserver();
     } else {
-      this.setBgImage();
+      this.$refs.image.style.backgroundImage = `url(${this.image})`;
     }
   },
   beforeDestroy /* istanbul ignore next */() {
