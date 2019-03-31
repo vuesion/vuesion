@@ -5,11 +5,13 @@
     <vue-navigation-progress :is-navigating="isNavigating" />
 
     <vue-nav-bar>
-      <vue-button v-if="isAuthenticated === false" color="primary" :class="$style.login" @click="showLoginModal = true">
-        Login Example
+      <vue-icon-vuesion :class="$style.logo" slot="middle" />
+
+      <vue-button slot="right" v-if="isAuthenticated === false" color="primary" @click="showLoginModal = true">
+        Login
       </vue-button>
 
-      <vue-button v-if="isAuthenticated" color="primary" :class="$style.login" @click="onLogout">
+      <vue-button slot="right" v-if="isAuthenticated" color="primary" @click="onLogout">
         Logout
       </vue-button>
     </vue-nav-bar>
@@ -132,9 +134,11 @@ import VueButton from '@/app/shared/components/VueButton/VueButton.vue';
 import VueModal from '@/app/shared/components/VueModal/VueModal.vue';
 import LoginForm from '@/app/shared/modules/auth/LoginForm/LoginForm.vue';
 import { addNotification } from '@/app/shared/components/VueNotificationStack/utils';
+import VueIconVuesion from '@/app/shared/components/icons/VueIconVuesion/VueIconVuesion.vue';
 export default {
   name: 'App',
   components: {
+    VueIconVuesion,
     LoginForm,
     VueModal,
     VueButton,
@@ -236,7 +240,8 @@ export default {
   flex: 1;
 }
 
-.login {
-  float: right;
+.logo {
+  width: $space-32;
+  height: $space-32;
 }
 </style>
