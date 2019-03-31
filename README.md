@@ -1,5 +1,7 @@
 # vuesion <sup>![version badge](https://v.egoist.moe/gh/vuesion/vuesion.svg)</sup> [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=flat)](https://twitter.com/intent/tweet?text=Vuesion%20an%20enterprise%20ready%20boilerplate%20for%20isomorphic,%20progressive%20web%20apps%20with%20Vue.JS&url=https://github.com/vuesion/vuesion&via=vuesion1&hashtags=Vuesion,VueJS,SEO,Enterprise) <a href="https://slack-vuesion.herokuapp.com/" target="_blank"><img src="https://home-assistant.io/images/supported_brands/slack.png" height="20px" /></a>
 
+<img width="256px" height="256px" src="https://user-images.githubusercontent.com/1667598/55292014-ea98a800-53e5-11e9-82ca-11ba7bb2bbcd.png" alt="vuesion logo" align="center" />
+
 > The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices
 
 > 一个灵活的、可扩展的、自定的，已经准备好用于生产的渐进式网络应用样板，聚焦于性能、开发速度和最佳实践
@@ -32,7 +34,7 @@
 
 Please visit the **[vuesion app on heroku!](https://vuesion.herokuapp.com/)** (sometimes not available because of the heroku free-plan)
 
-![vuesion](https://user-images.githubusercontent.com/1667598/51413193-5bae1a80-1b6e-11e9-8b4e-c41eff828f8c.gif)
+![vuesion](https://user-images.githubusercontent.com/1667598/55291969-6d6d3300-53e5-11e9-8bdb-c9e2940ca927.gif)
 
 ### Lighthouse Score
 
