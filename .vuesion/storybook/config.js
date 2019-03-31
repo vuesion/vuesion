@@ -1,13 +1,12 @@
-import { addDecorator, configure } from '@storybook/vue';
+import { addParameters, configure } from '@storybook/vue';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
 import VeeValidate from 'vee-validate';
 import { checkA11y } from '@storybook/addon-a11y';
-import { withOptions } from '@storybook/addon-options';
 import { setDefaults } from 'storybook-addon-vue-info';
-import { configureViewport, INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import '@storybook/addon-console';
 import '../../src/app/shared/directives';
 import '../../src/app/shared/_design-system.scss';
@@ -30,25 +29,22 @@ const loadStories = () => {
     .forEach((filename) => req(filename));
 };
 
-addDecorator(checkA11y);
-addDecorator(
-  withOptions({
-    name: 'VueStarter',
-    url: '/',
-    goFullScreen: false,
-    showStoriesPanel: true,
-    showAddonPanel: true,
-    showSearchBox: false,
-    addonPanelInRight: false,
-    sortStoriesByKind: true,
+addParameters(checkA11y);
+
+addParameters({
+  options: {
+    theme: customTheme,
+    name: 'Vue Starter Storybook',
+    url: 'https://vue-starter.herokuapp.com',
     hierarchySeparator: /\//,
     hierarchyRootSeparator: /\|/,
-    sidebarAnimations: true,
-    selectedAddonPanel: undefined,
-    theme: customTheme,
-  }),
-);
-addDecorator(require('storybook-vue-router').default());
+    sortStoriesByKind: true,
+    goFullScreen: false,
+    isToolshown: true,
+  },
+});
+
+addParameters(require('storybook-vue-router').default());
 setDefaults({ header: false });
 
 const newViewports = {
@@ -61,8 +57,8 @@ const newViewports = {
   },
 };
 
-configureViewport({
-  viewports: {
+addParameters({
+  viewport: {
     ...INITIAL_VIEWPORTS,
     ...newViewports,
   },
