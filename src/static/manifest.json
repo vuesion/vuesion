@@ -1,8 +1,8 @@
 {
-  "name": "VueStarter",
-  "short_name": "VueStarter",
-  "theme_color": "#17BEBB",
-  "background_color": "#333333",
+  "name": "Vuesion",
+  "short_name": "Vuesion",
+  "theme_color": "#f43b6c",
+  "background_color": "#f43b6c",
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",

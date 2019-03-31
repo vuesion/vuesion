@@ -39,8 +39,9 @@ h6 {
   font-weight: normal;
 }
 
-ul {
-  padding: 0 0 0 $space-32;
+ul,
+ol {
+  padding: 0 0 0 $space-16;
 }
 
 button,
