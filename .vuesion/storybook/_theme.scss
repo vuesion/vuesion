@@ -1,22 +1,35 @@
 @import '~@/app/shared/design-system';
 
 :export {
-  mainBackground: $brand-bg-color-variant;
-  mainBorder: 1px solid $brand-border-color;
-  mainBorderColor: $brand-border-color;
-  mainBorderRadius: 0;
-  mainFill: $brand-bg-color;
-  barFill: $brand-bg-color;
-  inputFill: $brand-bg-color;
-  mainTextFace: $font-family;
-  mainTextColor: $brand-text-color;
-  mainTextSize: $font-size;
-  dimmedTextColor: $brand-text-secondary-color;
-  highlightColor: $brand-secondary;
-  successColor: $brand-success;
-  failColor: $brand-danger;
-  warnColor: $brand-warning;
-  monoTextFace: inherit;
-  layoutMargin: $screen-small-desktop-gutter;
-  overlayBackground: inherit;
+  base: 'light';
+  colorPrimary: $brand-primary;
+  colorSecondary: $brand-secondary;
+  // UI
+  appBg: $brand-bg-color;
+  appContentBg: $brand-bg-color-variant;
+  appBorderColor: $brand-border-color;
+  appBorderRadius: $brand-border-radius;
+
+  // Typography
+  fontBase: $font-family;
+  fontCode: 'monospace';
+
+  // Text colors
+  textColor: $brand-text-color;
+  textInverseColor: $brand-text-color-inverse;
+
+  // Toolbar default and active colors
+  barTextColor: 'silver';
+  barSelectedColor: 'black';
+  barBg: 'hotpink';
+
+  // Form colors
+  inputBg: $brand-bg-color;
+  inputBorder: $brand-border-color;
+  inputTextColor: $brand-text-color;
+  inputBorderRadius: $brand-border-radius;
+
+  brandTitle: 'Vuesion';
+  brandUrl: 'https://vuesion.herokuapp.com';
+  brandImage: 'https://vuesion.herokuapp.com/logo.png';
 }

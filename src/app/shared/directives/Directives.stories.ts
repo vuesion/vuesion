@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 
-let story = storiesOf('2. Utilities|Directives', module) as any;
+let story = storiesOf('Utilities|Directives', module) as any;
 
 story.add(
   'sr-only',

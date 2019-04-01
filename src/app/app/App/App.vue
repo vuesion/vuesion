@@ -62,16 +62,14 @@
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a
-            href="/storybook/?selectedKind=1.%20Design%20System%7C1.%20Design%20System&selectedStory=Intro&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel"
-          >
+          <a href="/storybook/?path=/story/design-system-design-system--intro">
             <vue-icon-book />
             Design System
           </a>
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a href="/storybook">
+          <a href="/storybook/?path=/story/atoms-badge--badge-variants">
             <vue-icon-puzzle-piece />
             Components
           </a>

@@ -5,7 +5,7 @@ import VueMarkdown from '../../components/VueMarkdown/VueMarkdown.vue';
 import BrandColors from './components/BrandColors.vue';
 import ColorPalette from './components/ColorPalette.vue';
 
-let story = storiesOf('1. Design System|1. Design System', module) as any;
+let story = storiesOf('Design System|Design System', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
@@ -46,7 +46,7 @@ If this is the case for you, you might be interested in [integrating a 3rd party
   })),
 );
 
-story = storiesOf('1. Design System|2. Branding', module) as any;
+story = storiesOf('Design System|Branding', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
@@ -91,7 +91,7 @@ Every brand color is related to a color of the color palette.
   })),
 );
 
-story = storiesOf('1. Design System|3. Typography', module) as any;
+story = storiesOf('Design System|Typography', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
@@ -139,7 +139,7 @@ Lists are indented by 8px with an additional 0.8rem between the bullet and conte
   })),
 );
 
-story = storiesOf('1. Design System|4. Layout', module) as any;
+story = storiesOf('Design System|Layout', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
@@ -185,7 +185,7 @@ $space-84  |  84px
   })),
 );
 
-story = storiesOf('1. Design System|5. Break points', module) as any;
+story = storiesOf('Design System|Break points', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
