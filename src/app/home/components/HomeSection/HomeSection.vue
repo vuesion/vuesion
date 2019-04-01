@@ -3,7 +3,7 @@
     <vue-grid>
       <vue-grid-row :class="[flip ? $style.flip : null]">
         <vue-grid-item :class="$style.image">
-          <div ref="image" :class="$style.image"></div>
+          <vue-image :src="image" :native="false" :class="$style.image" />
         </vue-grid-item>
         <vue-grid-item :class="$style.text"><slot /></vue-grid-item>
       </vue-grid-row>
@@ -15,10 +15,11 @@
 import VueGrid from '@/app/shared/components/VueGrid/VueGrid.vue';
 import VueGridRow from '@/app/shared/components/VueGridRow/VueGridRow.vue';
 import VueGridItem from '@/app/shared/components/VueGridItem/VueGridItem.vue';
+import VueImage from '@/app/shared/components/VueImage/VueImage.vue';
 
 export default {
   name: 'HomeSection',
-  components: { VueGridItem, VueGridRow, VueGrid },
+  components: { VueImage, VueGridItem, VueGridRow, VueGrid },
   props: {
     image: {
       type: String,
@@ -30,34 +31,6 @@ export default {
     flip: {
       type: Boolean,
     },
-  },
-  data /* istanbul ignore next */(): any {
-    return {
-      observer: null,
-    };
-  },
-  methods: {
-    setBgImage /* istanbul ignore next */(entries: IntersectionObserverEntry[]) {
-      entries.forEach((entry: IntersectionObserverEntry) => {
-        if (entry.intersectionRatio > 0) {
-          this.$refs.image.style.backgroundImage = `url(${this.image})`;
-        }
-      });
-    },
-    handleObserver /* istanbul ignore next */() {
-      this.observer = new IntersectionObserver(this.setBgImage, { rootMargin: '0px', threshold: 0.1 });
-      this.observer.observe(this.$refs.image);
-    },
-  },
-  mounted /* istanbul ignore next */() {
-    if ((window as any).IntersectionObserver) {
-      this.handleObserver();
-    } else {
-      this.$refs.image.style.backgroundImage = `url(${this.image})`;
-    }
-  },
-  beforeDestroy /* istanbul ignore next */() {
-    this.observer = null;
   },
 };
 </script>

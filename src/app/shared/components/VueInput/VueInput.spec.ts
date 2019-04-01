@@ -104,14 +104,14 @@ describe('VueInput.vue', () => {
       },
     });
 
-    (wrapper as any).vm.$refs.input.focus = jest.fn();
+    wrapper.vm.$refs.input.focus = jest.fn();
 
     expect(wrapper.vm.observer).not.toBeNull();
-    expect((wrapper as any).vm.$refs.input.focus).not.toHaveBeenCalled();
+    expect(wrapper.vm.$refs.input.focus).not.toHaveBeenCalled();
 
     wrapper.setProps({ autofocus: true });
     wrapper.vm.observer.observe();
-    expect((wrapper as any).vm.$refs.input.focus).toHaveBeenCalled();
+    expect(wrapper.vm.$refs.input.focus).toHaveBeenCalled();
 
     wrapper.destroy();
   });
