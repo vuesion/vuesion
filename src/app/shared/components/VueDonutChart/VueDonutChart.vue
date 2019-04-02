@@ -25,7 +25,7 @@
 
     <figcaption>
       <ul aria-hidden="true" role="presentation">
-        <li v-for="circle in circles.reverse()">
+        <li v-for="(circle, idx) in circles.reverse()" :key="idx">
           <span :style="{ background: circle.color }"></span> {{ circle.roundedPercent }}% - {{ circle.label }} ({{
             circle.value
           }}

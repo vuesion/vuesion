@@ -113,7 +113,8 @@ describe('VueButton.vue', () => {
         stubs: ['router-link'],
       });
       const actual = wrapper.html();
-      const expected = '<router-link-stub event="click" class="button ripple" to="/foo"> <!----></router-link-stub>';
+      const expected =
+        '<router-link-stub event="click" tabindex="0" class="button ripple" to="/foo"> <!----></router-link-stub>';
 
       expect(actual).toBe(expected);
     });
@@ -130,7 +131,7 @@ describe('VueButton.vue', () => {
       });
       const actual = wrapper.html();
       const expected =
-        '<router-link-stub disabled="true" class="button ripple disabled" to="/foo"> <!----></router-link-stub>';
+        '<router-link-stub disabled="true" tabindex="-1" aria-hidden="true" class="button ripple disabled" to="/foo"> <!----></router-link-stub>';
 
       expect(actual).toBe(expected);
     });
@@ -144,7 +145,7 @@ describe('VueButton.vue', () => {
         },
       });
       const actual = wrapper.html();
-      const expected = '<a class="button ripple" href="/foo"> <!----></a>';
+      const expected = '<a tabindex="0" class="button ripple" href="/foo"> <!----></a>';
 
       expect(actual).toBe(expected);
     });

@@ -13,7 +13,7 @@
       v-bind="$attrs"
       v-on="handlers"
     >
-      <option v-for="option in options" :value="option.value" :selected="isSelected(option)">
+      <option v-for="(option, idx) in options" :key="idx" :value="option.value" :selected="isSelected(option)">
         {{ option.label }}
       </option>
     </select>
