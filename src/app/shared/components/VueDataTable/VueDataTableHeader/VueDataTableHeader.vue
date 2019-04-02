@@ -1,13 +1,7 @@
 <template>
   <thead :class="$style.vueDataTableHeader">
     <tr>
-      <th
-        v-for="(column, idx) in columns"
-        v-if="column.visible"
-        :key="idx"
-        :class="$style.column"
-        @click="onClick(column)"
-      >
+      <th v-for="(column, idx) in visibleColumns" :key="idx" :class="$style.column" @click="onClick(column)">
         {{ column.title }}
 
         <div :class="$style.icons" v-if="column.sortable">
@@ -40,6 +34,11 @@ export default {
     sortDirection: {
       type: String,
       required: true,
+    },
+  },
+  computed: {
+    visibleColumns() {
+      return this.columns.filter((column: IDataTableHeaderItem) => column.visible);
     },
   },
   methods: {

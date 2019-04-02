@@ -11,8 +11,8 @@
       />
 
       <tbody>
-        <tr v-for="row in rows" :class="$style.vueDataTableRow" @click="rowClick(row)">
-          <td v-for="(cell, idx) in row" v-if="cell.visible" :key="idx" :class="$style.column">
+        <tr v-for="(row, rowIdx) in rows" :key="rowIdx" :class="$style.vueDataTableRow" @click="rowClick(row)">
+          <td v-for="(cell, cellIdx) in getVisibleCells(row)" :key="cellIdx" :class="$style.column">
             <slot :name="cell.slot" :cell="cell" :row="getRowObject(row)">{{ cell.value }}</slot>
           </td>
         </tr>
@@ -208,6 +208,9 @@ export default {
     },
     paginationClick(page: number) {
       this.currentPage = page - 1;
+    },
+    getVisibleCells(cells: IComputedDataRowCell[]) {
+      return cells.filter((cell: IDataTableHeaderItem) => cell.visible);
     },
   },
   mounted() {

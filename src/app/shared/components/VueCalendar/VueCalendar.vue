@@ -51,21 +51,22 @@
       <table>
         <thead>
           <tr>
-            <td v-for="weekday in weekdays" :class="$style.disabledDay">
+            <td v-for="(weekday, idx) in weekdays" :key="`weekday-${idx}`" :class="$style.disabledDay">
               <span>{{ weekday }}</span>
             </td>
           </tr>
         </thead>
 
         <tbody>
-          <tr v-for="(days, index) in calendar" :key="index">
+          <tr v-for="(days, daysIdx) in calendar" :key="`days-${daysIdx}`">
             <td
               :class="[
                 day.currentDay ? $style.currentDay : '',
                 day.disabled ? $style.disabledDay : '',
                 day.selected ? $style.selectedDay : '',
               ]"
-              v-for="day in days"
+              v-for="(day, dayIdx) in days"
+              :key="`day-${dayIdx}`"
               :tabindex="day.day ? 0 : null"
               :aria-label="day.day ? $d(new Date(currentYear, currentMonth, day.day), 'calendarLabel') : null"
               @keydown.enter.stop.prevent="setByDay(day)"
@@ -83,8 +84,8 @@
       <div
         :class="[year.selected ? $style.selected : '']"
         :id="`${year.year}-calendar-year`"
-        :key="year.year"
         v-for="year in years"
+        :key="year.year"
         @click="setByYear(year.year)"
         @keypress.enter.space.stop.prevent="setByYear(year.year)"
         :aria-label="year.year"
