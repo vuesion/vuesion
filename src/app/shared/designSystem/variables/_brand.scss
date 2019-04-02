@@ -19,26 +19,26 @@ $space-84: $space-unit * 10.5; // 84px
 
 /* Brand Variations */
 $brand-primary: palette-color-level('coral', 100);
-$brand-secondary: palette-color-level('sea', 100);
+$brand-secondary: palette-color-level('blue', 100);
 $brand-success: palette-color-level('green', 100);
 $brand-warning: palette-color-level('yellow', 100);
-$brand-danger: palette-color-level('red', 100);
+$brand-danger: palette-color-level('red', 110);
 
 /* Background Colors */
 $brand-bg-color: palette-color-level('black', 0);
-$brand-bg-color-variant: palette-color-level('black', 5);
+$brand-bg-color-variant: palette-color-level('black', 2);
 $brand-bg-color-inverse: palette-color-level('black', 100);
 $brand-bg-color-variant-inverse: palette-color-level('black', 80);
 
 /* Text Colors */
 $brand-text-color: palette-color-level('black', 100);
-$brand-text-secondary-color: palette-color-level('black', 40);
-$brand-text-color-inverse: palette-color-level('black', 2);
+$brand-text-secondary-color: palette-color-level('black', 80);
+$brand-text-color-inverse: palette-color-level('black', 0);
 $brand-text-secondary-color-inverse: palette-color-level('black', 40);
 
 /* Link Color */
-$brand-link-color: palette-color-level('sea', 120);
-$brand-link-hover-color: palette-color-level('sea', 140);
+$brand-link-color: palette-color-level('blue', 100);
+$brand-link-hover-color: palette-color-level('blue', 120);
 
 /* Border Colors */
 $brand-border-color: palette-color-level('black', 15);

@@ -16,7 +16,7 @@
       :disabled="disabled"
       :required="required"
       :placeholder="placeholder"
-      :aria-activedescendant="hasOptions ? `result-item-${selectedOptionIndex}-${instanceId}` : null"
+      :aria-activedescendant="hasOptions ? `result-item${selectedOptionIndex}-${instanceId}` : null"
       @input="onInput"
       @keyup.down="onArrowDown"
       @keydown.up="onArrowUp"
@@ -25,7 +25,7 @@
     />
 
     <vue-icon-search v-show="isLoading === false" />
-    <vue-loader :class="$style.loader" color="primary" v-show="isLoading === true" />
+    <vue-loader :class="$style.loader" color="secondary" v-show="isLoading === true" />
 
     <ul
       ref="resultContainer"

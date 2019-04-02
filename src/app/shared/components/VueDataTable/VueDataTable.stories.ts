@@ -77,7 +77,7 @@ story.add(
     },
     template: `<vue-data-table :header="header" :data="data" placeholder="Search" @click="action">
   <template v-slot:actions="{ row }">
-    <vue-dropdown-menu :options="[{label:'Delete', value:'delete'}]" @click="click(row)" />
+    <vue-dropdown-menu :options="[{label:'Delete', value:'delete'}]" @click="click(row)">Select</vue-dropdown-menu>
   </template>
 </vue-data-table>`,
     methods: {

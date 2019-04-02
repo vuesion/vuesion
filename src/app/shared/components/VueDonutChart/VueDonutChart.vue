@@ -188,7 +188,7 @@ export default {
 
 :export {
   color1: palette-color-level('coral', 100);
-  color2: palette-color-level('sea', 100);
+  color2: palette-color-level('blue', 100);
   color3: palette-color-level('red', 100);
   color4: palette-color-level('green', 100);
   color5: palette-color-level('yellow', 100);

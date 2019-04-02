@@ -92,22 +92,22 @@ export default {
   coral-coral-5: palette-color-level('coral', 5);
   coral-coral-0: palette-color-level('coral', 0);
 
-  sea-sea-200: palette-color-level('sea', 200);
-  sea-sea-180: palette-color-level('sea', 180);
-  sea-sea-160: palette-color-level('sea', 160);
-  sea-sea-140: palette-color-level('sea', 140);
-  sea-sea-120: palette-color-level('sea', 120);
-  sea-sea-110: palette-color-level('sea', 110);
-  sea-sea-105: palette-color-level('sea', 105);
-  sea-sea-100: palette-color-level('sea', 100);
-  sea-sea-80: palette-color-level('sea', 80);
-  sea-sea-60: palette-color-level('sea', 60);
-  sea-sea-40: palette-color-level('sea', 40);
-  sea-sea-30: palette-color-level('sea', 30);
-  sea-sea-20: palette-color-level('sea', 20);
-  sea-sea-10: palette-color-level('sea', 10);
-  sea-sea-5: palette-color-level('sea', 5);
-  sea-sea-0: palette-color-level('sea', 0);
+  blue-blue-200: palette-color-level('blue', 200);
+  blue-blue-180: palette-color-level('blue', 180);
+  blue-blue-160: palette-color-level('blue', 160);
+  blue-blue-140: palette-color-level('blue', 140);
+  blue-blue-120: palette-color-level('blue', 120);
+  blue-blue-110: palette-color-level('blue', 110);
+  blue-blue-105: palette-color-level('blue', 105);
+  blue-blue-100: palette-color-level('blue', 100);
+  blue-blue-80: palette-color-level('blue', 80);
+  blue-blue-60: palette-color-level('blue', 60);
+  blue-blue-40: palette-color-level('blue', 40);
+  blue-blue-30: palette-color-level('blue', 30);
+  blue-blue-20: palette-color-level('blue', 20);
+  blue-blue-10: palette-color-level('blue', 10);
+  blue-blue-5: palette-color-level('blue', 5);
+  blue-blue-0: palette-color-level('blue', 0);
 
   green-green-200: palette-color-level('green', 200);
   green-green-180: palette-color-level('green', 180);
