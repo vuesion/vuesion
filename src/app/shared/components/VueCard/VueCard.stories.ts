@@ -30,7 +30,7 @@ story.add(
   </vue-card-body>
   <vue-card-footer>
     <vue-button color="danger">Delete</vue-button>
-    <vue-button color="primary" ghost>Cancel</vue-button>
+    <vue-button color="secondary" ghost>Cancel</vue-button>
   </vue-card-footer>
 </vue-card>`,
   })),

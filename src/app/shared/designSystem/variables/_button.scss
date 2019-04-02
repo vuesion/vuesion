@@ -3,7 +3,7 @@ $button-padding: $space-2 $space-12;
 $button-margin: 0 $space-8 0 0;
 $button-min-width: $space-32;
 $button-height: $space-32;
-$button-font-size: inherit;
+$button-font-size: $font-size;
 $button-font-weight: 400;
 $button-border-radius: $brand-border-radius;
 $button-shadow: none;
@@ -12,6 +12,7 @@ $button-active-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0,
 $button-text-decoration: none;
 $button-hover-text-decoration: none;
 $button-text-transform: uppercase;
+$button-disabled-opacity: 0.7;
 
 $button-outlined-border-width: 0.2rem;
 
@@ -21,34 +22,34 @@ $button-variations: (
     'color': foreground-color($brand-primary),
     'hover-bg': darken($brand-primary, 5%),
     'hover-color': foreground-color(darken($brand-primary, 5%)),
-    'border': 1px solid $brand-primary,
+    'border': $button-outlined-border-width solid $brand-primary,
   ),
   'secondary': (
     'bg': $brand-secondary,
     'color': foreground-color($brand-secondary),
     'hover-bg': darken($brand-secondary, 5%),
     'hover-color': foreground-color(darken($brand-secondary, 5%)),
-    'border': 1px solid $brand-secondary,
+    'border': $button-outlined-border-width solid $brand-secondary,
   ),
   'success': (
     'bg': $brand-success,
     'color': foreground-color($brand-success),
     'hover-bg': darken($brand-success, 5%),
     'hover-color': foreground-color(darken($brand-success, 5%)),
-    'border': 1px solid $brand-success,
+    'border': $button-outlined-border-width solid $brand-success,
   ),
   'warning': (
     'bg': $brand-warning,
     'color': foreground-color($brand-warning),
     'hover-bg': darken($brand-warning, 5%),
     'hover-color': foreground-color(darken($brand-warning, 5%)),
-    'border': 1px solid $brand-warning,
+    'border': $button-outlined-border-width solid $brand-warning,
   ),
   'danger': (
     'bg': $brand-danger,
     'color': foreground-color($brand-danger),
     'hover-bg': darken($brand-danger, 5%),
     'hover-color': foreground-color(darken($brand-danger, 5%)),
-    'border': 1px solid $brand-danger,
+    'border': $button-outlined-border-width solid $brand-danger,
   ),
 );

@@ -8,7 +8,6 @@
       id="username"
       name="username"
       type="text"
-      tabindex="1"
       autofocus
       :label="$t('common.username' /* Username */)"
       :placeholder="$t('common.username.placeholder' /* Enter any username */)"
@@ -21,7 +20,6 @@
       id="password"
       name="password"
       type="password"
-      tabindex="2"
       :label="$t('common.password' /* Password */)"
       :placeholder="$t('common.password.placeholder' /* Enter any password */)"
       validation="required|min:6"

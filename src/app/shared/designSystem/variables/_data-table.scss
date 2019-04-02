@@ -8,13 +8,12 @@ $data-table-header-border: 1px solid $brand-border-color;
 $data-table-header-bg: $brand-bg-color;
 $data-table-header-font-weight: $font-weight-medium;
 $data-table-header-column-padding: $space-8 $space-12;
-$data-table-header-icon-color: inherit;
+$data-table-header-icon-color: $brand-text-secondary-color;
 $data-table-header-icon-hover-color: $brand-secondary;
-$data-table-header-icon-opacity: 0.3;
 $data-table-header-icon-margin: 0;
 
 $data-table-row-border: $data-table-no-results-border;
 $data-table-row-hover-bg: $brand-bg-color-variant;
-$data-table-row-hover-color: $brand-text-color;
+$data-table-row-hover-color: foreground-color($data-table-row-hover-bg);
 
 $data-table-row-column-padding: $space-8 $space-12;

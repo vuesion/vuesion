@@ -245,7 +245,6 @@ export default {
   border: $data-table-no-results-border;
   border-top: none;
   text-align: center;
-  opacity: $data-table-no-results-opacity;
   padding: $data-table-no-results-padding;
 }
 

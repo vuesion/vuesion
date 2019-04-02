@@ -10,6 +10,8 @@
     ref="button"
     :style="{ width: actualWidth }"
     :event="!isDisabled && isRouterLink ? 'click' : null"
+    :tabindex="isDisabled ? -1 : 0"
+    :aria-hidden="isDisabled"
   >
     <slot v-if="loading === false" />
     <vue-loader :class="$style.loader" v-if="loading === true" />
@@ -137,7 +139,7 @@ export default {
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
-    opacity: 0.6;
+    opacity: $button-disabled-opacity;
     cursor: not-allowed;
     box-shadow: none;
 

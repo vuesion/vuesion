@@ -89,7 +89,6 @@ export default {
 
   i {
     margin: $data-table-header-icon-margin;
-    opacity: $data-table-header-icon-opacity;
     color: $data-table-header-icon-color;
   }
 }
