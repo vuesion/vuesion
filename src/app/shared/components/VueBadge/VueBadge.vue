@@ -11,6 +11,7 @@ export default {
     color: {
       type: String,
       validator: variationValidator,
+      default: 'default',
     },
     outlined: {
       type: Boolean,
@@ -24,9 +25,7 @@ export default {
         classes.push(this.$style.outlined);
       }
 
-      if (this.color) {
-        classes.push(this.$style[this.color]);
-      }
+      classes.push(this.$style[this.color]);
 
       return classes;
     },

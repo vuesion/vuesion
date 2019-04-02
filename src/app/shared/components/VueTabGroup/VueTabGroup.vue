@@ -122,7 +122,6 @@ export default {
     &.active {
       border: $tab-group-border;
       border-bottom: none;
-      top: 1px;
 
       .title {
         color: $tab-group-header-item-hover-color;

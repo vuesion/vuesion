@@ -1,5 +1,5 @@
 $nav-bar-bg: $brand-primary;
-$nav-bar-color: $brand-bg-color-inverse;
+$nav-bar-color: foreground-color($nav-bar-bg);
 $nav-bar-width: 100%;
 $nav-bar-height: $space-52;
 $nav-bar-padding: $space-12;

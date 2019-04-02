@@ -107,33 +107,32 @@ story.add(
     components: { VueMarkdown },
     template: `<vue-markdown>
 ## Typography
-Barlow is the standard type face for the Design System blueprint.
+Inter is the standard type face for the Design System blueprint.
 
 ### Font Weights
 Variable             | Weight
 ---------------------|-------
-$font-weight-thin    | 100
-$font-weight-regular | 300
-$font-weight-medium  | 500
-$font-weight-bold    | 700
+$font-weight-light   | 200
+$font-weight-regular | 400
+$font-weight-bold    | 600
 
 ### Font Sizes
 Level          | Font-size   | Font-weight
 ---------------|-------------|------------
-Small Text     | 80%         | $font-weight-regular
-Paragraph      | 1.6rem      | $font-weight-regular
-H1             | 4.8rem      | $font-weight-medium
-H2             | 3.2rem      | $font-weight-medium
-H3             | 2.4rem      | $font-weight-medium
-H4             | 2rem        | $font-weight-medium
-H5             | 1.6rem      | $font-weight-medium
-H4             | 1.6rem      | $font-weight-bold
+Small Text     | 80%         | $font-weight-light
+Paragraph      | 1.6rem      | $font-weight-light
+H1             | 4.8rem      | $font-weight-regular
+H2             | 3.2rem      | $font-weight-regular
+H3             | 2.4rem      | $font-weight-regular
+H4             | 2rem        | $font-weight-regular
+H5             | 1.6rem      | $font-weight-regular
+H4             | 1.6rem      | $font-weight-regular
 
 ### Line heights
 Line height is measured by taking the font size and adding 0.8rem. 
 
 ### List Style
-Lists are indented by 8px with an additional 0.8rem between the bullet and content.
+Lists are indented by 1.6rem.
 </vue-markdown>
 `,
   })),

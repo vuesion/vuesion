@@ -33,12 +33,12 @@
 </template>
 
 <script lang="ts">
-import { CircleAnimation } from '../../shared/animations/CircleAnimation';
-import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
-import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
-import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
-import VueIconGithub from '../../shared/components/icons/VueIconGithub/VueIconGithub.vue';
-import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
+import { CircleAnimation } from '../../../shared/animations/CircleAnimation';
+import VueGrid from '../../../shared/components/VueGrid/VueGrid.vue';
+import VueGridRow from '../../../shared/components/VueGridRow/VueGridRow.vue';
+import VueGridItem from '../../../shared/components/VueGridItem/VueGridItem.vue';
+import VueIconGithub from '../../../shared/components/icons/VueIconGithub/VueIconGithub.vue';
+import VueHeadline from '../../../shared/components/VueHeadline/VueHeadline.vue';
 
 export default {
   components: { VueHeadline, VueIconGithub, VueGridItem, VueGridRow, VueGrid },
@@ -92,7 +92,7 @@ export default {
   overflow: hidden;
   position: relative;
   text-align: center;
-
+  text-shadow: 0 0 5px rgba(15, 15, 15, 0.4);
   padding-top: $space-84;
 
   img {
@@ -101,6 +101,7 @@ export default {
 
   h1 {
     margin-bottom: $space-32;
+    font-weight: $font-weight-light;
   }
 
   @include mediaMin(tabletPortrait) {

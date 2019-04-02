@@ -1,6 +1,6 @@
-$tooltip-bg: $brand-secondary;
-$tooltip-color: $brand-bg-color;
-$tooltip-padding: 0 $space-8;
+$tooltip-bg: $brand-bg-color-inverse;
+$tooltip-color: foreground-color($tooltip-bg);
+$tooltip-padding: 0 $space-4;
 $tooltip-shadow: none;
 $tooltip-highlight-color: $tooltip-bg;
 $tooltip-border-radius: $brand-border-radius;

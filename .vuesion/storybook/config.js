@@ -30,8 +30,6 @@ addParameters(checkA11y);
 addParameters({
   options: {
     theme: customTheme,
-    name: 'Vuesion Storybook',
-    url: 'https://vuesion.herokuapp.com',
   },
 });
 

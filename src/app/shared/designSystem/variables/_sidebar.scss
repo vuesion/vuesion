@@ -1,7 +1,7 @@
 $sidebar-index: 1999;
 $sidebar-shadow: $brand-shadow-md;
 $sidebar-bg: $brand-bg-color;
-$sidebar-color: $brand-text-color;
+$sidebar-color: foreground-color($sidebar-bg);
 $sidebar-max-width: 80%;
 $sidebar-padding: $space-84 $space-20 $space-20 $space-20;
 $sidebar-margin: 0;
@@ -9,17 +9,17 @@ $sidebar-transition: transform $brand-transition-duration ease-in-out;
 $sidebar-width: 300px;
 $sidebar-height: 100%;
 $sidebar-hamburger-bg: transparent;
-$sidebar-hamburger-color: $brand-text-color;
+$sidebar-hamburger-color: $sidebar-color;
 $sidebar-hamburger-open-bg: transparent;
-$sidebar-hamburger-open-color: $brand-text-color;
+$sidebar-hamburger-open-color: $sidebar-color;
 
 $sidebar-group-margin: 0 0 $space-48 0;
-$sidebar-group-font-weight: $font-weight-medium;
+$sidebar-group-font-weight: $font-weight-light;
 $sidebar-group-font-size: $font-size;
 $sidebar-group-border-bottom: 1px solid $brand-border-color;
 
-$sidebar-group-item-font-weight: $font-weight-regular;
+$sidebar-group-item-font-weight: $font-weight-light;
 $sidebar-group-item-font-size: $font-size;
-$sidebar-group-item-color: $brand-text-color;
-$sidebar-group-item-hover-color: $brand-text-color;
+$sidebar-group-item-color: $sidebar-color;
+$sidebar-group-item-hover-color: $sidebar-color;
 $sidebar-group-item-hover-bg: $brand-bg-color-variant;

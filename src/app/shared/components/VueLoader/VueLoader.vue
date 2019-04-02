@@ -1,4 +1,4 @@
-<template>
+#<template>
   <div :class="cssClasses">
     <svg :class="[$style.circle, 'vueLoaderCircle']" viewBox="25 25 50 50">
       <circle
@@ -29,6 +29,7 @@ export default {
     color: {
       type: String,
       validator: variationValidator,
+      default: 'default',
     },
   },
   computed: {
@@ -41,9 +42,8 @@ export default {
       if (this.large) {
         classes.push(this.$style.large);
       }
-      if (this.color) {
-        classes.push(this.$style[this.color]);
-      }
+
+      classes.push(this.$style[this.color]);
 
       return classes;
     },

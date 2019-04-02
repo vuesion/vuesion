@@ -3,6 +3,7 @@ $loader-medium-size: $space-32;
 $loader-large-size: $space-52;
 
 $loader-variations: (
+  'default': $brand-default,
   'primary': $brand-primary,
   'secondary': $brand-secondary,
   'success': $brand-success,

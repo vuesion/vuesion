@@ -86,7 +86,7 @@ story.add(
 
   <vue-modal :show="show" @close="show = false">
     <vue-input autofocus placeholder="Name" name="name" id="name" v-model="model" />
-    <vue-button color="primary" ghost @click="show = !show">Close</vue-button>
+    <vue-button ghost @click="show = !show">Close</vue-button>
   </vue-modal>
 </div>`,
   })),

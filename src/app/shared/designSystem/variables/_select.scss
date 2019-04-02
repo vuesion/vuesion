@@ -3,8 +3,8 @@ $select-shadow: none;
 $select-margin: 0;
 $select-padding: $space-8 $space-12;
 $select-border: 1px solid $brand-border-color;
-$select-color: $brand-text-color;
-$select-font-size: inherit;
+$select-color: foreground-color($select-bg);
+$select-font-size: $font-size;
 $select-arrow-color: $brand-secondary;
 
 $select-multi-max-height: $space-84;
