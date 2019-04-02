@@ -147,8 +147,8 @@ export default {
       { name: 'og:image:url', content: 'https://vuesion.herokuapp.com/logo.png' },
 
       { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:site', content: '@_jwerner_' },
-      { name: 'twitter:creator', content: '@_jwerner_' },
+      { name: 'twitter:site', content: '@vuesion1' },
+      { name: 'twitter:creator', content: '@vuesion1' },
       {
         name: 'twitter:title',
         content:

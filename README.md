@@ -94,7 +94,7 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 # Contact
 
 - [Slack](https://slack-vuesion.herokuapp.com/)
-- [Twitter](https://twitter.com/_jwerner_)
+- [Twitter](https://twitter.com/vuesion1)
 
 # License
 

@@ -10,7 +10,7 @@
           <a href="https://github.com/devCrossNet" target="_blank" rel="noopener" aria-label="github profile">
             <vue-icon-github-alt />
           </a>
-          <a href="https://twitter.com/_jwerner_" target="_blank" rel="noopener" aria-label="twitter profile">
+          <a href="https://twitter.com/vuesion1" target="_blank" rel="noopener" aria-label="twitter profile">
             <vue-icon-twitter-square />
           </a>
         </vue-grid-item>

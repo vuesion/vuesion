@@ -93,7 +93,7 @@
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a href="https://twitter.com/_jwerner_" target="_blank" rel="noopener">
+          <a href="https://twitter.com/vuesion1" target="_blank" rel="noopener">
             <vue-icon-twitter-square />
             Twitter
           </a>
