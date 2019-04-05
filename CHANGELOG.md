@@ -2,20 +2,20 @@
 
 ##### Chores
 
-- update README.md ([ae277ef9](https://github.com/devCrossNet/vue-starter/commit/ae277ef9848ee59ccd5e67c74838ae620bcdfac8))
-- update dependencies ([#385](https://github.com/devCrossNet/vue-starter/pull/385)) ([6b88988e](https://github.com/devCrossNet/vue-starter/commit/6b88988e033b1d90381ff3c80bece57b4692f842))
+- update README.md ([ae277ef9](https://github.com/vuesion/vuesion/commit/ae277ef9848ee59ccd5e67c74838ae620bcdfac8))
+- update dependencies ([#385](https://github.com/vuesion/vuesion/pull/385)) ([6b88988e](https://github.com/vuesion/vuesion/commit/6b88988e033b1d90381ff3c80bece57b4692f842))
 
 ##### New Features
 
-- **storybook:** update storybook ([#372](https://github.com/devCrossNet/vue-starter/pull/372)) ([aa9bb465](https://github.com/devCrossNet/vue-starter/commit/aa9bb4656d4e9e02d4940ff67a287c493f0f2b88))
-- **directives:** add v-sr-only ([#364](https://github.com/devCrossNet/vue-starter/pull/364)) ([92054141](https://github.com/devCrossNet/vue-starter/commit/920541415e3812a322944020cfc0f2d8d2bba1b4))
-- **vue-tab-group:** adds reactivity to title prop ([#363](https://github.com/devCrossNet/vue-starter/pull/363)) ([7be6f5b0](https://github.com/devCrossNet/vue-starter/commit/7be6f5b0fdf5ff78d079eb5ec796c15e1108fc3c))
+- **storybook:** update storybook ([#372](https://github.com/vuesion/vuesion/pull/372)) ([aa9bb465](https://github.com/vuesion/vuesion/commit/aa9bb4656d4e9e02d4940ff67a287c493f0f2b88))
+- **directives:** add v-sr-only ([#364](https://github.com/vuesion/vuesion/pull/364)) ([92054141](https://github.com/vuesion/vuesion/commit/920541415e3812a322944020cfc0f2d8d2bba1b4))
+- **vue-tab-group:** adds reactivity to title prop ([#363](https://github.com/vuesion/vuesion/pull/363)) ([7be6f5b0](https://github.com/vuesion/vuesion/commit/7be6f5b0fdf5ff78d079eb5ec796c15e1108fc3c))
 
 ##### Refactors
 
-- add prop validators ([#367](https://github.com/devCrossNet/vue-starter/pull/367)) ([71c4a649](https://github.com/devCrossNet/vue-starter/commit/71c4a64965162b31bf44f56b6ea444888f12cf57))
-- **vue-collapse:** remove magic number ([#366](https://github.com/devCrossNet/vue-starter/pull/366)) ([1f207681](https://github.com/devCrossNet/vue-starter/commit/1f2076819de0061c7e928a763c75f48a12e3dde2))
-- **storybook:** register router as global decorator ([#365](https://github.com/devCrossNet/vue-starter/pull/365)) ([4554ae03](https://github.com/devCrossNet/vue-starter/commit/4554ae03a20fdcabf7cb9d4544e1e55c9acf37f8))
+- add prop validators ([#367](https://github.com/vuesion/vuesion/pull/367)) ([71c4a649](https://github.com/vuesion/vuesion/commit/71c4a64965162b31bf44f56b6ea444888f12cf57))
+- **vue-collapse:** remove magic number ([#366](https://github.com/vuesion/vuesion/pull/366)) ([1f207681](https://github.com/vuesion/vuesion/commit/1f2076819de0061c7e928a763c75f48a12e3dde2))
+- **storybook:** register router as global decorator ([#365](https://github.com/vuesion/vuesion/pull/365)) ([4554ae03](https://github.com/vuesion/vuesion/commit/4554ae03a20fdcabf7cb9d4544e1e55c9acf37f8))
 
 ### 2.2.0 (2019-03-02)
 
