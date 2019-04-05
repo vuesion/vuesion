@@ -17,6 +17,13 @@ $button-disabled-opacity: 0.7;
 $button-outlined-border-width: 0.2rem;
 
 $button-variations: (
+  'default': (
+    'bg': $brand-default,
+    'color': foreground-color($brand-default),
+    'hover-bg': darken($brand-default, 5%),
+    'hover-color': foreground-color(darken($brand-default, 5%)),
+    'border': $button-outlined-border-width solid $brand-default,
+  ),
   'primary': (
     'bg': $brand-primary,
     'color': foreground-color($brand-primary),

@@ -95,10 +95,7 @@ export default {
   flex: 0 0 $space-52;
   background: $brand-secondary;
   cursor: pointer;
-
-  i {
-    fill: foreground-color($brand-secondary);
-  }
+  color: foreground-color($brand-secondary);
 
   &:hover {
     background-color: darken($brand-secondary, 5%);

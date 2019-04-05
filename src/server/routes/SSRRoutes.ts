@@ -34,7 +34,7 @@ const setHeaders = (res: Response): void => {
   res.setHeader('Expires', '0');
   res.setHeader('max-age', '0');
 };
-const vueStarterConfig: any = JSON.parse(fs.readFileSync(resolve('../../.vuesion/config.json')).toString());
+const vuesionConfig: any = JSON.parse(fs.readFileSync(resolve('../../.vuesion/config.json')).toString());
 
 export const SSRRoutes = (app: Express.Application): any => {
   if (isProd) {
@@ -57,12 +57,12 @@ export const SSRRoutes = (app: Express.Application): any => {
       return res.status(503).end('waiting for compilation... refresh in a moment.');
     }
 
-    acceptLanguage.languages(vueStarterConfig.i18n.supportedLocales);
+    acceptLanguage.languages(vuesionConfig.i18n.supportedLocales);
 
     const startTime: number = Date.now();
     const acceptLang: string = req.headers['accept-language']
       ? req.headers['accept-language'].toString()
-      : vueStarterConfig.i18n.defaultLocale;
+      : vuesionConfig.i18n.defaultLocale;
     const defaultLang: string = acceptLanguage.get(acceptLang);
     const errorHandler = (err: any) => {
       if (err && err.code === 404) {

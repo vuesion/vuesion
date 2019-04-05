@@ -28,6 +28,7 @@ export default {
     color: {
       type: String,
       validator: variationValidator,
+      default: 'default',
     },
     disabled: {
       type: Boolean,
@@ -62,9 +63,9 @@ export default {
       if (this.ghost) {
         classes.push(this.$style.ghost);
       }
-      if (this.color) {
-        classes.push(this.$style[this.color]);
-      }
+
+      classes.push(this.$style[this.color]);
+
       if (this.disabled || this.loading) {
         classes.push(this.$style.disabled);
       }
@@ -193,6 +194,7 @@ export default {
     &:hover {
       background: map-get($values, 'hover-bg');
       color: map-get($values, 'hover-color');
+      border-color: map-get($values, 'hover-bg');
     }
 
     :global {

@@ -63,6 +63,7 @@ export default {
     align-items: center;
     box-shadow: $brand-shadow-lg;
     border-radius: $brand-border-radius;
+    padding: $space-16;
 
     span {
       background: inherit;

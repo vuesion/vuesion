@@ -14,12 +14,12 @@ $dropdown-menu-list-margin: $space-4 0 0 0;
 $dropdown-menu-list-padding: $space-8 0;
 $dropdown-menu-list-index: 1000;
 $dropdown-menu-list-bg: $brand-bg-color;
-$dropdown-menu-list-color: $brand-text-color;
+$dropdown-menu-list-color: foreground-color($dropdown-menu-list-bg);
 $dropdown-menu-list-border: 1px solid $brand-border-color;
 $dropdown-menu-list-border-radius: $brand-border-radius;
 $dropdown-menu-list-min-width: 200px;
 $dropdown-menu-list-font-size: $font-size-small;
-$dropdown-menu-list-font-weight: $font-weight-medium;
+$dropdown-menu-list-font-weight: $font-weight-light;
 $dropdown-menu-list-line-height: $line-height;
 $dropdown-menu-list-shadow: $brand-shadow-sm;
 

@@ -1,22 +1,71 @@
 $palette-colors: (
-  'coral': #f43b6c,
-  'blue': #063cbe,
-  'green': #0ca75f,
-  'yellow': #f3c811,
-  'red': #e84606,
-  'black': #17181c,
+  'coral-10': #fff8fc,
+  'coral-20': #ffc8e0,
+  'coral-30': #ff92bb,
+  'coral-40': #fc6293,
+  'coral-50': #f43b6c,
+  'coral-60': #cd0940,
+  'coral-70': #b30636,
+  'coral-80': #94032b,
+  'coral-90': #70011f,
+  'coral-100': #4d0014,
+  'blue-10': #f2f9ff,
+  'blue-20': #d8ecfe,
+  'blue-30': #8dc3f9,
+  'blue-40': #61a6f3,
+  'blue-50': #3d8beb,
+  'blue-60': #216fe0,
+  'blue-70': #063cbe,
+  'blue-80': #0427a7,
+  'blue-90': #01158d,
+  'blue-100': #000873,
+  'green-10': #f4fff3,
+  'green-20': #c6f7c6,
+  'green-30': #90e0a4,
+  'green-40': #40bf77,
+  'green-50': #0d9660,
+  'green-60': #096e4c,
+  'green-70': #045a3f,
+  'green-80': #004934,
+  'green-90': #003c2b,
+  'green-100': #003023,
+  'grey-10': #ffffff,
+  'grey-20': #ececee,
+  'grey-30': #c9cbcf,
+  'grey-40': #9ca2aa,
+  'grey-50': #6f7a86,
+  'grey-60': #55616c,
+  'grey-70': #434e5b,
+  'grey-80': #303a45,
+  'grey-90': #202831,
+  'grey-100': #0c1014,
+  'red-10': #fff4f4,
+  'red-20': #fdb5ac,
+  'red-30': #f9846c,
+  'red-40': #e84606,
+  'red-50': #de3700,
+  'red-60': #c82600,
+  'red-70': #b11900,
+  'red-80': #950e00,
+  'red-90': #770600,
+  'red-100': #570000,
+  'yellow-10': #fffaf2,
+  'yellow-20': #ffec95,
+  'yellow-30': #ffe15c,
+  'yellow-40': #f3c811,
+  'yellow-50': #d5aa00,
+  'yellow-60': #a56a01,
+  'yellow-70': #864800,
+  'yellow-80': #6c2c00,
+  'yellow-90': #561700,
+  'yellow-100': #440900,
 );
 
 @function palette-color($key) {
   @return map-get($palette-colors, $key);
 }
 
-// 0-100 tints
-// 100 - 200 shades
 @function palette-color-level($color-name, $level) {
-  $color: palette-color($color-name);
-  $color-base: if($level > 100, black, white);
-  $color-level: if($level > 100, $level - 100, 100 - $level);
-
-  @return mix($color-base, $color, $color-level);
+  $color: palette-color($color-name + '-' + $level);
+  @return $color;
 }

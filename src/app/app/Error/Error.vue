@@ -1,21 +1,14 @@
 <template>
   <div :class="$style.error">
-    <vue-grid>
-      <vue-grid-row>
-        <vue-grid-item>
-          <vue-headline level="1">Error</vue-headline>
-          <vue-headline level="3">Try again later!</vue-headline>
-        </vue-grid-item>
-      </vue-grid-row>
-    </vue-grid>
+    <vue-icon-vuesion :class="$style.logo" />
+    <vue-headline level="1">Error</vue-headline>
+    <vue-headline level="3">Try again later!</vue-headline>
   </div>
 </template>
 
 <script lang="ts">
-import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
-import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
-import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
 import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
+import VueIconVuesion from '@/app/shared/components/icons/VueIconVuesion/VueIconVuesion.vue';
 
 export default {
   metaInfo: {
@@ -28,7 +21,7 @@ export default {
     ],
   },
   name: 'Error',
-  components: { VueHeadline, VueGridItem, VueGridRow, VueGrid },
+  components: { VueIconVuesion, VueHeadline },
   props: {},
   data(): any {
     return {};
@@ -44,5 +37,14 @@ export default {
 .error {
   padding-top: $nav-bar-height;
   text-align: center;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  margin-top: 25%;
+}
+
+.logo {
+  width: $space-84;
+  height: $space-84;
 }
 </style>

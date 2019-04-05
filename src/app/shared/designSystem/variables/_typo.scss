@@ -1,5 +1,5 @@
-$font-family-headings: 'Roboto Condensed', Helvetica, sans-serif;
-$font-family: 'Source Sans Pro', Helvetica, sans-serif;
+$font-family-headings: 'Inter', Helvetica, sans-serif;
+$font-family: 'Inter', Helvetica, sans-serif;
 
 /* Font Sizes */
 $font-size-small: 80%;
@@ -12,16 +12,16 @@ $font-size-h5: 1.6rem;
 $font-size-h6: 1.4rem;
 
 /* Font Weights */
-$font-weight-regular: 200;
-$font-weight-medium: 400;
+$font-weight-light: 200;
+$font-weight-regular: 400;
 $font-weight-bold: 600;
-$font-weight-h1: $font-weight-bold;
-$font-weight-h2: $font-weight-medium;
-$font-weight-h3: $font-weight-bold;
-$font-weight-h4: $font-weight-medium;
-$font-weight-h5: $font-weight-medium;
-$font-weight-h6: $font-weight-bold;
-$link-font-weight: $font-weight-medium;
+$font-weight-h1: $font-weight-regular;
+$font-weight-h2: $font-weight-regular;
+$font-weight-h3: $font-weight-regular;
+$font-weight-h4: $font-weight-regular;
+$font-weight-h5: $font-weight-regular;
+$font-weight-h6: $font-weight-regular;
+$link-font-weight: $font-weight-regular;
 
 /* Line Heights */
 $line-height: $font-size + $space-8;

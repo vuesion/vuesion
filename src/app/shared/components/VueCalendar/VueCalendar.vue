@@ -96,9 +96,7 @@
     </div>
 
     <div :class="$style.footer">
-      <vue-button @click.stop.prevent="onClose" color="secondary" ghost>{{
-        $t('common.cancel' /* Cancel */)
-      }}</vue-button>
+      <vue-button @click.stop.prevent="onClose" ghost>{{ $t('common.cancel' /* Cancel */) }}</vue-button>
       <vue-button @click.stop.prevent="onChange" color="primary">{{ $t('common.ok' /* Ok */) }}</vue-button>
     </div>
   </div>
@@ -376,10 +374,12 @@ export default {
   padding: $calendar-header-padding;
   background: $calendar-header-bg;
   text-shadow: $calendar-header-text-shadow;
+
   cursor: pointer;
 
-  div {
+  * {
     margin: 0;
+    font-weight: $calendar-header-font-weight;
   }
 }
 
@@ -416,15 +416,7 @@ export default {
 
         span {
           position: relative;
-          top: $space-8;
-
-          @include mediaMin(tabletPortrait) {
-            top: 15%;
-          }
-
-          @include mediaMin(largeDesktop) {
-            top: 17%;
-          }
+          top: 20%;
         }
       }
     }

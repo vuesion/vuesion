@@ -19,17 +19,13 @@
   textInverseColor: $brand-text-color-inverse;
 
   // Toolbar default and active colors
-  barTextColor: 'silver';
-  barSelectedColor: 'black';
-  barBg: 'hotpink';
+  barTextColor: $brand-text-color;
+  barSelectedColor: $brand-text-color;
+  barBg: $brand-bg-color-variant;
 
   // Form colors
   inputBg: $brand-bg-color;
   inputBorder: $brand-border-color;
   inputTextColor: $brand-text-color;
   inputBorderRadius: $brand-border-radius;
-
-  brandTitle: 'Vuesion';
-  brandUrl: 'https://vuesion.herokuapp.com';
-  brandImage: 'https://vuesion.herokuapp.com/logo.png';
 }

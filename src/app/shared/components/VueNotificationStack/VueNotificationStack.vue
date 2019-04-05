@@ -4,7 +4,7 @@
       <div v-for="n in orderedNotifications" :class="[$style.notification, $style[n.type]]" :key="n.id">
         <div :class="$style.title">{{ n.title }}</div>
         <div :class="$style.text">{{ n.text }}</div>
-        <div :class="$style.close" role="button" @click="removeNotification(n)"></div>
+        <div :class="$style.close" @click="removeNotification(n)"></div>
       </div>
     </transition-group>
   </div>

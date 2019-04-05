@@ -10,7 +10,7 @@
   if (file.match(/\.(js|css)$/)) { %>
   <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
   <link rel="manifest" href="/manifest.json">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:200,400,600|Source+Sans+Pro:200,400,600" rel="stylesheet">
+  <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
 </head>
 <body>
 <% if (htmlWebpackPlugin.options.spa) { %><div id="app"></div><% } else { %><!--vue-ssr-outlet--><% } %>

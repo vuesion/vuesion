@@ -5,7 +5,9 @@
     <vue-navigation-progress :is-navigating="isNavigating" />
 
     <vue-nav-bar>
-      <vue-icon-vuesion :class="$style.logo" slot="middle" />
+      <router-link slot="middle" to="/">
+        <vue-icon-vuesion :class="$style.logo" />
+      </router-link>
 
       <vue-button slot="right" v-if="isAuthenticated === false" color="primary" @click="showLoginModal = true">
         Login
@@ -239,7 +241,9 @@ export default {
 }
 
 .logo {
-  width: $space-32;
-  height: $space-32;
+  position: relative;
+  top: $space-4;
+  width: $space-24;
+  height: $space-24;
 }
 </style>

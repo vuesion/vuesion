@@ -5,9 +5,8 @@ $tab-group-padding: $space-8 $space-12;
 $tab-group-margin: $space-32 0 0 0;
 
 $tab-group-header-bg: $brand-bg-color;
-$tab-group-header-bg: $brand-bg-color;
 $tab-group-header-item-padding: $space-8 $space-12;
 $tab-group-header-item-hover-bg: $brand-bg-color-variant;
-$tab-group-header-item-hover-color: $brand-text-color;
+$tab-group-header-item-hover-color: foreground-color($tab-group-header-item-hover-bg);
 
 $tab-item-transition: transform $brand-transition-duration linear;
