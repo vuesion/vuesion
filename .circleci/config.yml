@@ -4,7 +4,7 @@ workspace-name: &working_directory ~/repo
 jobs:
   build:
     environment:
-      CC_TEST_REPORTER_ID: e3e29d8d5a08a84fa0f7c9590af55139571554f05485828964c799e5bc9cc2c5
+      CC_TEST_REPORTER_ID: 458ce0b8f345c194e04dd299b901334c6c4f9457a512d00b75d8d4f36921726c
     docker:
       - image: cypress/base:10
     working_directory: *working_directory
