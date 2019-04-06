@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueLoader from './VueLoader.vue';
-import { brandVariations } from '@/app/shared/components/utils';
+import { brandVariations } from '@components/utils';
 
 const localVue = createLocalVue();
 

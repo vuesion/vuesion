@@ -16,12 +16,12 @@
 </template>
 
 <script lang="ts">
-import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
-import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
-import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
+import VueGrid from '@components/VueGrid/VueGrid.vue';
+import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
+import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
 import FormExample from '../FormExample/FormExample.vue';
-import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
-import VueBreadcrumb from '../../shared/components/VueBreadcrumb/VueBreadcrumb.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
+import VueBreadcrumb from '@components/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
   metaInfo: {

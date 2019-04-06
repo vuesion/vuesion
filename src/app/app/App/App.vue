@@ -111,30 +111,31 @@
 
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
-import { loadLocaleAsync } from '../../shared/plugins/i18n/i18n';
-import '../../shared/designSystem/global.scss';
-import VueNavBar from '../../shared/components/VueNavBar/VueNavBar.vue';
-import VueGrid from '../../shared/components/VueGrid/VueGrid.vue';
-import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
-import VueFooter from '../../shared/components/VueFooter/VueFooter.vue';
-import VueNotificationStack from '../../shared/components/VueNotificationStack/VueNotificationStack.vue';
-import VueCookieConsent from '../../shared/components/VueCookieConsent/VueCookieConsent.vue';
-import VueNavigationProgress from '../../shared/components/VueNavigationProgress/VueNavigationProgress.vue';
-import VueSidebar from '../../shared/components/VueSidebar/VueSidebar.vue';
-import VueSidebarGroup from '../../shared/components/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
-import VueSidebarGroupItem from '../../shared/components/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
-import VueIconCode from '../../shared/components/icons/VueIconCode/VueIconCode.vue';
-import VueIconBook from '../../shared/components/icons/VueIconBook/VueIconBook.vue';
-import VueIconHashtag from '../../shared/components/icons/VueIconHashtag/VueIconHashtag.vue';
-import VueIconGithub from '../../shared/components/icons/VueIconGithub/VueIconGithub.vue';
-import VueIconTwitterSquare from '../../shared/components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
-import VueSelect from '../../shared/components/VueSelect/VueSelect.vue';
-import VueIconPuzzlePiece from '../../shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
-import VueButton from '@/app/shared/components/VueButton/VueButton.vue';
-import VueModal from '@/app/shared/components/VueModal/VueModal.vue';
-import LoginForm from '@/app/shared/modules/auth/LoginForm/LoginForm.vue';
-import { addNotification } from '@/app/shared/components/VueNotificationStack/utils';
-import VueIconVuesion from '@/app/shared/components/icons/VueIconVuesion/VueIconVuesion.vue';
+import { loadLocaleAsync } from '@shared/plugins/i18n/i18n';
+import '@shared/designSystem/global.scss';
+import VueNavBar from '@components/VueNavBar/VueNavBar.vue';
+import VueGrid from '@components/VueGrid/VueGrid.vue';
+import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
+import VueFooter from '@components/VueFooter/VueFooter.vue';
+import VueNotificationStack from '@components/VueNotificationStack/VueNotificationStack.vue';
+import VueCookieConsent from '@components/VueCookieConsent/VueCookieConsent.vue';
+import VueNavigationProgress from '@components/VueNavigationProgress/VueNavigationProgress.vue';
+import VueSidebar from '@components/VueSidebar/VueSidebar.vue';
+import VueSidebarGroup from '@components/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
+import VueSidebarGroupItem from '@components/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
+import VueIconCode from '@components/icons/VueIconCode/VueIconCode.vue';
+import VueIconBook from '@components/icons/VueIconBook/VueIconBook.vue';
+import VueIconHashtag from '@components/icons/VueIconHashtag/VueIconHashtag.vue';
+import VueIconGithub from '@components/icons/VueIconGithub/VueIconGithub.vue';
+import VueIconTwitterSquare from '@components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
+import VueSelect from '@components/VueSelect/VueSelect.vue';
+import VueIconPuzzlePiece from '@components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
+import VueButton from '@components/VueButton/VueButton.vue';
+import VueModal from '@components/VueModal/VueModal.vue';
+import LoginForm from '@shared/modules/auth/LoginForm/LoginForm.vue';
+import { addNotification } from '@components/VueNotificationStack/utils';
+import VueIconVuesion from '@components/icons/VueIconVuesion/VueIconVuesion.vue';
+
 export default {
   name: 'App',
   components: {

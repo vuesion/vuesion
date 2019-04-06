@@ -11,7 +11,7 @@ import { IState } from '@/app/state';
 import { IAppConfig } from '@/app/config/IAppConfig';
 import { PersistCookieStorage } from '@vuesion/addon-vuex-persist/dist/PersistCookieStorage';
 import { Logger } from './utils/Logger';
-import { initHttpService } from '@/app/shared/services/HttpService/HttpService';
+import { initHttpService } from '@shared/services/HttpService/HttpService';
 
 export interface IServerContext {
   url: string;

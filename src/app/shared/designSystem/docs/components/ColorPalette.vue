@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import VueHeadline from '@/app/shared/components/VueHeadline/VueHeadline.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
 
 export default {
   name: 'ColorPalette',

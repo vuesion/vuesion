@@ -1,7 +1,7 @@
 import * as Express from 'express';
 import { Request, Response } from 'express';
 import { serve } from '../utils/Utils';
-import { randomInt } from '@/app/shared/utils/misc';
+import { randomInt } from '@shared/utils/misc';
 
 const getErrorWithProbability = (probability: number) => randomInt(0, 100) <= probability;
 

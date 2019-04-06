@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter';
 import { CounterDefaultState, ICounterState } from './state';
 import { IState } from '@/app/state';
 import { CounterActions } from './actions';
-import { HttpService } from '@/app/shared/services/HttpService/HttpService';
+import { HttpService } from '@shared/services/HttpService/HttpService';
 
 describe('CounterActions', () => {
   let testContext: ActionContext<ICounterState, IState>;

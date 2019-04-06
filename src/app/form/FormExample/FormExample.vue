@@ -129,13 +129,13 @@
 </template>
 
 <script lang="ts">
-import VueInput from '../../shared/components/VueInput/VueInput.vue';
-import VueSelect from '../../shared/components/VueSelect/VueSelect.vue';
-import VueCheckbox from '../../shared/components/VueCheckbox/VueCheckbox.vue';
-import VueGridRow from '../../shared/components/VueGridRow/VueGridRow.vue';
-import VueGridItem from '../../shared/components/VueGridItem/VueGridItem.vue';
-import VueButton from '../../shared/components/VueButton/VueButton.vue';
-import { addNotification, INotification } from '../../shared/components/VueNotificationStack/utils';
+import VueInput from '@components/VueInput/VueInput.vue';
+import VueSelect from '@components/VueSelect/VueSelect.vue';
+import VueCheckbox from '@components/VueCheckbox/VueCheckbox.vue';
+import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
+import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
+import VueButton from '@components/VueButton/VueButton.vue';
+import { addNotification, INotification } from '@components/VueNotificationStack/utils';
 
 export default {
   $_veeValidate: {
