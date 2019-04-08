@@ -1,6 +1,6 @@
 ---
 prev: ./
-next: ./guide/install
+next: ./FAQ
 ---
 
 # Introduction
@@ -39,41 +39,8 @@ If you look for an easier way to get started with Vue and Webpack,
 [this template](https://github.com/vuejs-templates/webpack) may be more your cup of tea.
 :::
 
-## Recommended architecture
-
-Vuesion is build on top of the idea of micro-services or a service-oriented-architecture.
-
-This is because a separation of concerns approach is much better to maintain over time and it's much easier to manage a single technology
-per service instead of a mix of technologies e.g. PHP server-side-rendering and a Javascript client side app.
-
-::: tip Deployment
-The vuesion project should be it's own deployable unit, it should be dreaded as it's own service in the architecture.
-:::
-
-::: tip Example
-If vuesion needs to access a database - the database should be exposed as another service and vuesion
-should access this service via RESTful API calls.
-:::
-
-#### Architecture diagram
-
-<img :src="$withBase('/architecture.jpg')" alt="architecture">
-
 ## Todo
 
 This is an ever-evolving project,
 if you want to help or you have an idea how to improve this project -
 **feel free to file an [issue](https://github.com/vuesion/vuesion/issues)**
-
-## Why not vue-cli or nuxt.js ?
-
-This boilerplate is opinionated, aiming to educate and empower users to essentially configure their own framework,
-ideally suited to their needs. It also includes as few libraries as possible to keep you flexible and to enable you
-to implement every product requirement that comes down the road.
-
-Use cases for this boilerplate:
-
-- The requirements for the product might change and you want to maintain maximum flexibility and control.
-- You'd like to focus on developing skills that will transfer across any Vue project.
-- You're working in a large team, so you need tooling to help everyone avoid common mistakes,
-  write in a consistent style, and avoid bikeshedding in PRs.

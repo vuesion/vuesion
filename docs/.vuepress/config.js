@@ -95,6 +95,10 @@ module.exports = {
         editLinkText: 'Edit this page on GitHub',
         nav: [
           {
+            text: 'FAQ',
+            link: '/FAQ',
+          },
+          {
             text: 'Guide',
             link: '/introduction',
           },
@@ -117,6 +121,7 @@ module.exports = {
               title: 'Getting started',
               collapsable: false,
               children: [
+                'FAQ',
                 'guide/install',
                 'guide/run',
                 'guide/test',
