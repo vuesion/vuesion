@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueBadge from './VueBadge.vue';
-import { brandVariations } from '@/app/shared/components/utils';
+import { brandVariations } from '@components/utils';
 
 const localVue = createLocalVue();
 

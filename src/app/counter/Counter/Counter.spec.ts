@@ -4,7 +4,7 @@ import Counter from './Counter.vue';
 import { CounterGetters, ICounterGetters } from '../getters';
 import { CounterDefaultState, ICounterState } from '../state';
 import { CounterActions, ICounterActions } from '../actions';
-import { i18n } from '@/app/shared/plugins/i18n/i18n';
+import { i18n } from '@shared/plugins/i18n/i18n';
 
 const localVue = createLocalVue();
 

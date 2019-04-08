@@ -110,7 +110,7 @@ import { mapState } from 'vuex';
 import Stage from '../components/Stage/Stage.vue';
 import HomeSection from '@/app/home/components/HomeSection/HomeSection.vue';
 import { IState } from '@/app/state';
-import VueHeadline from '@/app/shared/components/VueHeadline/VueHeadline.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
 
 export default {
   metaInfo: {

@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import HomeSection from './HomeSection.vue';
-import VueHeadline from '../../../shared/components/VueHeadline/VueHeadline.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
 
 const story = storiesOf('Organisms|HomeSection', module) as any;
 

@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueBadge from './VueBadge.vue';
-import { brandVariations } from '@/app/shared/components/utils';
+import { brandVariations } from '@components/utils';
 
 const story = storiesOf('Atoms|Badge', module) as any;
 

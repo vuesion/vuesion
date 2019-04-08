@@ -13,5 +13,13 @@
   "clean": ["./dist", "./coverage", "./storybook-static"],
   "prettier": {
     "extensions": "ts,vue,js,json,scss,sass,css,yaml,yml"
+  },
+  "webpack": {
+    "aliases": {
+      "@": "src",
+      "@shared": "src/app/shared",
+      "@components": "src/app/shared/components",
+      "@static": "src/static"
+    }
   }
 }

@@ -7,8 +7,8 @@
 </template>
 
 <script lang="ts">
-import VueHeadline from '../../shared/components/VueHeadline/VueHeadline.vue';
-import VueIconVuesion from '@/app/shared/components/icons/VueIconVuesion/VueIconVuesion.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
+import VueIconVuesion from '@components/icons/VueIconVuesion/VueIconVuesion.vue';
 
 export default {
   metaInfo: {

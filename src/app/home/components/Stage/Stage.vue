@@ -34,11 +34,11 @@
 
 <script lang="ts">
 import { CircleAnimation } from '../../../shared/animations/CircleAnimation';
-import VueGrid from '../../../shared/components/VueGrid/VueGrid.vue';
-import VueGridRow from '../../../shared/components/VueGridRow/VueGridRow.vue';
-import VueGridItem from '../../../shared/components/VueGridItem/VueGridItem.vue';
-import VueIconGithub from '../../../shared/components/icons/VueIconGithub/VueIconGithub.vue';
-import VueHeadline from '../../../shared/components/VueHeadline/VueHeadline.vue';
+import VueGrid from '@components/VueGrid/VueGrid.vue';
+import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
+import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
+import VueIconGithub from '@components/icons/VueIconGithub/VueIconGithub.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
 
 export default {
   components: { VueHeadline, VueIconGithub, VueGridItem, VueGridRow, VueGrid },
