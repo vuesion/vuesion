@@ -12,10 +12,10 @@
 </template>
 
 <script lang="ts">
-import VueGrid from '@/app/shared/components/VueGrid/VueGrid.vue';
-import VueGridRow from '@/app/shared/components/VueGridRow/VueGridRow.vue';
-import VueGridItem from '@/app/shared/components/VueGridItem/VueGridItem.vue';
-import VueImage from '@/app/shared/components/VueImage/VueImage.vue';
+import VueGrid from '@components/VueGrid/VueGrid.vue';
+import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
+import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
+import VueImage from '@components/VueImage/VueImage.vue';
 
 export default {
   name: 'HomeSection',

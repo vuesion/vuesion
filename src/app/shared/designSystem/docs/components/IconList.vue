@@ -27,26 +27,26 @@
 </template>
 
 <script lang="ts">
-import VueHeadline from '@/app/shared/components/VueHeadline/VueHeadline.vue';
-import VueIconBook from '@/app/shared/components/icons/VueIconBook/VueIconBook.vue';
-import VueIconBullhorn from '@/app/shared/components/icons/VueIconBullhorn/VueIconBullhorn.vue';
-import VueIconCertificate from '@/app/shared/components/icons/VueIconCertificate/VueIconCertificate.vue';
-import VueIconChartLine from '@/app/shared/components/icons/VueIconChartLine/VueIconChartLine.vue';
-import VueIconCode from '@/app/shared/components/icons/VueIconCode/VueIconCode.vue';
-import VueIconFlag from '@/app/shared/components/icons/VueIconFlag/VueIconFlag.vue';
-import VueIconGithub from '@/app/shared/components/icons/VueIconGithub/VueIconGithub.vue';
-import VueIconGithubAlt from '@/app/shared/components/icons/VueIconGithubAlt/VueIconGithubAlt.vue';
-import VueIconHashtag from '@/app/shared/components/icons/VueIconHashtag/VueIconHashtag.vue';
-import VueIconMobile from '@/app/shared/components/icons/VueIconMobile/VueIconMobile.vue';
-import VueIconPuzzlePiece from '@/app/shared/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
-import VueIconSearch from '@/app/shared/components/icons/VueIconSearch/VueIconSearch.vue';
-import VueIconSort from '@/app/shared/components/icons/VueIconSort/VueIconSort.vue';
-import VueIconSortDown from '@/app/shared/components/icons/VueIconSortDown/VueIconSortDown.vue';
-import VueIconSortUp from '@/app/shared/components/icons/VueIconSortUp/VueIconSortUp.vue';
-import VueIconSpinner from '@/app/shared/components/icons/VueIconSpinner/VueIconSpinner.vue';
-import VueIconTimes from '@/app/shared/components/icons/VueIconTimes/VueIconTimes.vue';
-import VueIconTwitterSquare from '@/app/shared/components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
-import VueIconVuesion from '@/app/shared/components/icons/VueIconVuesion/VueIconVuesion.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
+import VueIconBook from '@components/icons/VueIconBook/VueIconBook.vue';
+import VueIconBullhorn from '@components/icons/VueIconBullhorn/VueIconBullhorn.vue';
+import VueIconCertificate from '@components/icons/VueIconCertificate/VueIconCertificate.vue';
+import VueIconChartLine from '@components/icons/VueIconChartLine/VueIconChartLine.vue';
+import VueIconCode from '@components/icons/VueIconCode/VueIconCode.vue';
+import VueIconFlag from '@components/icons/VueIconFlag/VueIconFlag.vue';
+import VueIconGithub from '@components/icons/VueIconGithub/VueIconGithub.vue';
+import VueIconGithubAlt from '@components/icons/VueIconGithubAlt/VueIconGithubAlt.vue';
+import VueIconHashtag from '@components/icons/VueIconHashtag/VueIconHashtag.vue';
+import VueIconMobile from '@components/icons/VueIconMobile/VueIconMobile.vue';
+import VueIconPuzzlePiece from '@components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
+import VueIconSearch from '@components/icons/VueIconSearch/VueIconSearch.vue';
+import VueIconSort from '@components/icons/VueIconSort/VueIconSort.vue';
+import VueIconSortDown from '@components/icons/VueIconSortDown/VueIconSortDown.vue';
+import VueIconSortUp from '@components/icons/VueIconSortUp/VueIconSortUp.vue';
+import VueIconSpinner from '@components/icons/VueIconSpinner/VueIconSpinner.vue';
+import VueIconTimes from '@components/icons/VueIconTimes/VueIconTimes.vue';
+import VueIconTwitterSquare from '@components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
+import VueIconVuesion from '@components/icons/VueIconVuesion/VueIconVuesion.vue';
 
 export default {
   name: 'IconList',

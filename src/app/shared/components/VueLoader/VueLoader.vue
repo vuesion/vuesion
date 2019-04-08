@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { variationValidator } from '@/app/shared/components/utils';
+import { variationValidator } from '@components/utils';
 
 export default {
   name: 'VueLoader',

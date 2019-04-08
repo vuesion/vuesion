@@ -43,13 +43,13 @@
 </template>
 
 <script lang="ts">
-import VueGrid from '@/app/shared/components/VueGrid/VueGrid.vue';
-import VueGridItem from '@/app/shared/components/VueGridItem/VueGridItem.vue';
-import VueButton from '@/app/shared/components/VueButton/VueButton.vue';
-import VueGridRow from '@/app/shared/components/VueGridRow/VueGridRow.vue';
-import VueHeadline from '@/app/shared/components/VueHeadline/VueHeadline.vue';
-import { HttpService } from '@/app/shared/services/HttpService/HttpService';
-import VueBreadcrumb from '@/app/shared/components/VueBreadcrumb/VueBreadcrumb.vue';
+import VueGrid from '@components/VueGrid/VueGrid.vue';
+import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
+import VueButton from '@components/VueButton/VueButton.vue';
+import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
+import { HttpService } from '@shared/services/HttpService/HttpService';
+import VueBreadcrumb from '@components/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
   metaInfo: {

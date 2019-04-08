@@ -34,9 +34,9 @@
 </template>
 
 <script lang="ts">
-import VueHeadline from '@/app/shared/components/VueHeadline/VueHeadline.vue';
-import VueInput from '@/app/shared/components/VueInput/VueInput.vue';
-import VueButton from '@/app/shared/components/VueButton/VueButton.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
+import VueInput from '@components/VueInput/VueInput.vue';
+import VueButton from '@components/VueButton/VueButton.vue';
 
 export default {
   $_veeValidate: {

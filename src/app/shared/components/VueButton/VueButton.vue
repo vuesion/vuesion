@@ -19,8 +19,8 @@
 </template>
 
 <script lang="ts">
-import VueLoader from '@/app/shared/components/VueLoader/VueLoader.vue';
-import { variationValidator } from '@/app/shared/components/utils';
+import VueLoader from '@components/VueLoader/VueLoader.vue';
+import { variationValidator } from '@components/utils';
 
 export default {
   name: 'VueButton',

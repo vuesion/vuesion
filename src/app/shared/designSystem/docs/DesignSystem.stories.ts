@@ -1,7 +1,7 @@
 /* tslint:disable */
 import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
-import VueMarkdown from '../../components/VueMarkdown/VueMarkdown.vue';
+import VueMarkdown from '@components/VueMarkdown/VueMarkdown.vue';
 import BrandColors from './components/BrandColors.vue';
 import ColorPalette from './components/ColorPalette.vue';
 

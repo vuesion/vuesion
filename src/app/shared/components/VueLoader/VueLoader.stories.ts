@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { withInfo } from 'storybook-addon-vue-info';
 import VueLoader from './VueLoader.vue';
-import { brandVariations } from '@/app/shared/components/utils';
+import { brandVariations } from '@components/utils';
 
 const story = storiesOf('Atoms|Loader', module) as any;
 

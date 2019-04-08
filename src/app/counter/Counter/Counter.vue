@@ -23,14 +23,14 @@
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
 import { IPreLoad } from '@/server/isomorphic';
-import VueGrid from '@/app/shared/components/VueGrid/VueGrid.vue';
-import VueGridItem from '@/app/shared/components/VueGridItem/VueGridItem.vue';
-import VueButton from '@/app/shared/components/VueButton/VueButton.vue';
-import VueGridRow from '@/app/shared/components/VueGridRow/VueGridRow.vue';
-import VueHeadline from '@/app/shared/components/VueHeadline/VueHeadline.vue';
+import VueGrid from '@components/VueGrid/VueGrid.vue';
+import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
+import VueButton from '@components/VueButton/VueButton.vue';
+import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
 import { registerModule } from '@/app/store';
 import { CounterModule } from '../module';
-import VueBreadcrumb from '@/app/shared/components/VueBreadcrumb/VueBreadcrumb.vue';
+import VueBreadcrumb from '@components/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
   metaInfo: {
