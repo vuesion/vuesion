@@ -39,6 +39,26 @@ If you look for an easier way to get started with Vue and Webpack,
 [this template](https://github.com/vuejs-templates/webpack) may be more your cup of tea.
 :::
 
+## Recommended Architecture
+
+Vuesion is build on top of the idea of micro-services or a service-oriented-architecture.
+
+This is because a separation of concerns approach is much better to maintain over time and it's much easier to manage a single technology
+per service instead of a mix of technologies e.g. PHP server-side-rendering and a Javascript client side app.
+
+::: tip Deployment
+The vuesion project should be it's own deployable unit, it should be treated as it's own service in the architecture.
+:::
+
+::: tip Example
+If vuesion needs to access a database - the database should be exposed as another service and vuesion
+should access this service via RESTful API calls.
+:::
+
+#### Architecture diagram
+
+<img :src="$withBase('/architecture.jpg')" alt="architecture">
+
 ## Todo
 
 This is an ever-evolving project,
