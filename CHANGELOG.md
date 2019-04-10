@@ -1,3 +1,48 @@
+## 3.0.0 (2019-04-10)
+
+##### Chores
+
+- update vuesion packages ([220c9fff](https://github.com/vuesion/vuesion/commit/220c9fffcdf02986dd1c88ba86bc64b167480e1c))
+- update contributors ([c2dd892d](https://github.com/vuesion/vuesion/commit/c2dd892dc3eab483280c9737f8945244df279bd6))
+- enforce LF line endings ([5b62057a](https://github.com/vuesion/vuesion/commit/5b62057a52e6c0e626812154f92c077cf63a39ad))
+- update circle-ci test reporter id ([8b88cb91](https://github.com/vuesion/vuesion/commit/8b88cb91487dc560e6da3814ffa74e7c9241a9bc))
+- update CHANGELOG.md ([5627cda0](https://github.com/vuesion/vuesion/commit/5627cda03459c4fff523d0e5ed1f1f1bc211a36c))
+- update README.md ([62b14a9c](https://github.com/vuesion/vuesion/commit/62b14a9c6f0df6b7052f89136788d768b879d473))
+- add official twitter account ([f284fe6e](https://github.com/vuesion/vuesion/commit/f284fe6ee4f85026f995189a852b8916dc57b7a9))
+- update contributors ([2411a21d](https://github.com/vuesion/vuesion/commit/2411a21d7bf1fe63cd147db4af66e7eeee65b109))
+- update README.md ([#384](https://github.com/vuesion/vuesion/pull/384)) ([b851565d](https://github.com/vuesion/vuesion/commit/b851565d759d92be052af270878090158cecd272))
+- rename storybook name to vuesion ([3690246f](https://github.com/vuesion/vuesion/commit/3690246f33e49934c8335a19d0fb9718fc8c1f5a))
+- **brand:** iteration on colors and typo ([#392](https://github.com/vuesion/vuesion/pull/392)) ([7604279e](https://github.com/vuesion/vuesion/commit/7604279e1a87911dd4da2c37d6bba648e7478a07))
+- **storybook:** apply brand colors ([d1415900](https://github.com/vuesion/vuesion/commit/d14159005139ed35d0016c990a804805c065b79d))
+
+##### Documentation Changes
+
+- add FAQ section ([#396](https://github.com/vuesion/vuesion/pull/396)) ([020926e5](https://github.com/vuesion/vuesion/commit/020926e53ddd0519fd9eb27b8edbd6780c68a305))
+- fix link to 3rd party UI libs tutorial ([#395](https://github.com/vuesion/vuesion/pull/395)) ([0560cc16](https://github.com/vuesion/vuesion/commit/0560cc16f8e7aff0704379601f90ed178759e3fb))
+
+##### New Features
+
+- custom webpack aliases ([#393](https://github.com/vuesion/vuesion/pull/393)) ([36de6312](https://github.com/vuesion/vuesion/commit/36de6312b603e59f8812047c02bf4c96444e000d))
+- **components:** add vue-image ([#386](https://github.com/vuesion/vuesion/pull/386)) ([287b2ac8](https://github.com/vuesion/vuesion/commit/287b2ac850cc8ca653d4b6bc7709f9d9b7108e35))
+
+##### Bug Fixes
+
+- **home-section:** add fallback for older browser ([d0b77fc5](https://github.com/vuesion/vuesion/commit/d0b77fc5678dd6a49f8abe831e0506952586f538))
+- **vue-sidebar:** remove gap to the navbar ([#377](https://github.com/vuesion/vuesion/pull/377)) ([76ca0a48](https://github.com/vuesion/vuesion/commit/76ca0a481da6494ec72cf69d3c050b3f041ca663))
+- **vue-modal:** remove min-width ([#376](https://github.com/vuesion/vuesion/pull/376)) ([6166eae2](https://github.com/vuesion/vuesion/commit/6166eae2379df3ece2a3c844f5a7e0332fa0773c))
+
+##### Refactors
+
+- apply best practices for v-for and v-if ([#389](https://github.com/vuesion/vuesion/pull/389)) ([f4a6f7c6](https://github.com/vuesion/vuesion/commit/f4a6f7c62cc03f910c4cd5594086295823ad4b87))
+- accessibility iteration ([#388](https://github.com/vuesion/vuesion/pull/388)) ([fc82e784](https://github.com/vuesion/vuesion/commit/fc82e784967b3a10bb75310145e84e6dbe955000))
+- re-branding ([#383](https://github.com/vuesion/vuesion/pull/383)) ([9e4ee93b](https://github.com/vuesion/vuesion/commit/9e4ee93b53f4975e4be3c355b57b5d6b52a8d462))
+- rename space variables ([#380](https://github.com/vuesion/vuesion/pull/380)) ([d9facdf0](https://github.com/vuesion/vuesion/commit/d9facdf001c85a4657815b81e833d2bd34c0ec85))
+- change name to vuesion ([#371](https://github.com/vuesion/vuesion/pull/371)) ([e8bf36fa](https://github.com/vuesion/vuesion/commit/e8bf36fa22bd124055cb46315faec94aab645f0f))
+- **vue-loader:** add dynamic variations ([#375](https://github.com/vuesion/vuesion/pull/375)) ([0d846001](https://github.com/vuesion/vuesion/commit/0d8460010e332dbf211b4b9f369e6d021ba8f212))
+- **vue-badge:** add dynamic variations ([#374](https://github.com/vuesion/vuesion/pull/374)) ([9dcf4deb](https://github.com/vuesion/vuesion/commit/9dcf4debc6bc9251fa38de53f16bef24cc65bbb2))
+- **vue-button:** add dynamic variations ([#373](https://github.com/vuesion/vuesion/pull/373)) ([21815e91](https://github.com/vuesion/vuesion/commit/21815e91404d092d44212ae61dcdbc4ced2a8353))
+- **design-system:** color-palette ([#370](https://github.com/vuesion/vuesion/pull/370)) ([8f18bf99](https://github.com/vuesion/vuesion/commit/8f18bf9962debbd5f2a0fad32487944914cb243c))
+
 ### 2.3.0 (2019-04-01)
 
 ##### Chores
