@@ -16,8 +16,6 @@
 [![GitHub release](https://img.shields.io/github/release/vuesion/vuesion.svg)](https://GitHub.com/vuesion/vuesion/releases/)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-[**Show your support by giving a :star:**](https://github.com/vuesion/vuesion/stargazers)
-
 # Documentation
 
 **[https://vuesion.herokuapp.com/docs](https://vuesion.herokuapp.com/docs)** (sometimes not available because of the heroku free-plan)
@@ -62,6 +60,14 @@ Please visit the **[vuesion app on heroku!](https://vuesion.herokuapp.com/)** (s
 <a href="https://careers.bcgdv.com/locations/berlin" title="BCG Digital Ventures">
   <img src="https://user-images.githubusercontent.com/1667598/38944976-89d5c03c-4335-11e8-92f4-910049c2166a.jpeg" alt="BCG Digital Ventures" />
 </a>
+
+# Support this project
+
+- [Give a :star:!](https://github.com/vuesion/vuesion/stargazers)
+- [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=flat)](https://twitter.com/intent/tweet?text=Vuesion%20an%20enterprise%20ready%20boilerplate%20for%20isomorphic,%20progressive%20web%20apps%20with%20Vue.JS&url=https://github.com/vuesion/vuesion&via=vuesion1&hashtags=Vuesion,VueJS,SEO,Enterprise) it!
+- Join <a href="https://slack-vuesion.herokuapp.com/" target="_blank"><img src="https://home-assistant.io/images/supported_brands/slack.png" height="20px" /></a>!
+- [Contribute!](https://github.com/vuesion/vuesion/blob/master/.github/CONTRIBUTING.md)
+- [Fund an Issue!](https://issuehunt.io/r/vuesion/vuesion)
 
 # Contribute
 
