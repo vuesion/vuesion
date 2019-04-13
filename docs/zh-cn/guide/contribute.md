@@ -2,7 +2,7 @@
 
 如果你喜欢这个项目 & 你想帮助它变得更好,请贡献.
 
-- 你可以加入我们的 [聊天频道 Slack channel](https://slack-vuesion.herokuapp.com/) & 帮助我们建立社区.
+- 你可以加入我们的 [聊天频道 Slack server](https://slack-vuesion.herokuapp.com/) / [Discord server](https://discord.gg/WshBKF) & 帮助我们建立社区.
 
 - 你可以 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=flat)](https://twitter.com/intent/tweet?text=Vuesion%20an%20enterprise%20ready%20boilerplate%20for%20isomorphic,%20progressive%20web%20apps%20with%20Vue.JS&url=https://github.com/vuesion/vuesion&via=vuesion1&hashtags=vuesion,VueJS,SEO,Enterprise)
   分享这个项目来使它更加流行.

@@ -111,6 +111,10 @@ module.exports = {
             link: 'https://vuesion.herokuapp.com/storybook',
           },
           {
+            text: 'Discord',
+            link: 'https://discord.gg/WshBKF',
+          },
+          {
             text: 'Slack',
             link: 'https://slack-vuesion.herokuapp.com/',
           },
@@ -165,6 +169,10 @@ module.exports = {
           {
             text: '组件',
             link: 'https://vuesion.herokuapp.com/storybook',
+          },
+          {
+            text: 'Discord',
+            link: 'https://discord.gg/WshBKF',
           },
           {
             text: '交流',
