@@ -112,7 +112,7 @@ module.exports = {
           },
           {
             text: 'Discord',
-            link: 'https://discord.gg/WshBKF',
+            link: 'https://discord.gg/59x5cg2',
           },
           {
             text: 'Slack',
@@ -172,7 +172,7 @@ module.exports = {
           },
           {
             text: 'Discord',
-            link: 'https://discord.gg/WshBKF',
+            link: 'https://discord.gg/59x5cg2',
           },
           {
             text: '交流',

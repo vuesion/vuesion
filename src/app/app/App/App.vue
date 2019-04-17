@@ -87,7 +87,7 @@
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
-          <a href="https://discord.gg/WshBKF" target="_blank" rel="noopener"> Discord </a>
+          <a href="https://discord.gg/59x5cg2" target="_blank" rel="noopener"> Discord </a>
         </vue-sidebar-group-item>
 
         <vue-sidebar-group-item>
