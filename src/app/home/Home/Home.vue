@@ -170,7 +170,8 @@ export default {
   },
   computed: {
     ...mapState({
-      disableParticles: (state: IState) => state.app.config && state.app.config.features.disableParticles,
+      disableParticles: (state: IState) =>
+        (state.app.config && state.app.config.features && state.app.config.features.disableParticles) || false,
     }),
   },
 };

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html <% if (htmlWebpackPlugin.options.spa) { %>lang="en"<% } else { %>lang="{{ htmlLang }}" data-vue-meta-server-rendered {{{ meta.inject().htmlAttrs.text() }}}<% } %>>
+<html lang="{{ htmlLang }}" data-vue-meta-server-rendered {{{ meta.inject().htmlAttrs.text() }}}>
 <head>
   <meta charset="utf-8">
-  <% if (!htmlWebpackPlugin.options.spa) { %>{{{ meta.inject().meta.text() }}} {{{ meta.inject().title.text() }}} {{{ meta.inject().link.text() }}} {{{ meta.inject().style.text() }}} {{{ meta.inject().script.text() }}} {{{ meta.inject().noscript.text() }}}<% } else { %><title>vuesion</title><link rel="shortcut icon" href="/favicon.png" type="image/png" /><link rel="icon" href="/favicon.png" type="image/png" /><% } %>
+  {{{ meta.inject().meta.text() }}} {{{ meta.inject().title.text() }}} {{{ meta.inject().link.text() }}} {{{ meta.inject().style.text() }}} {{{ meta.inject().script.text() }}} {{{ meta.inject().noscript.text() }}}
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimal-ui">
   <meta name="theme-color" content="#17BEBB"><% for (var chunk of webpack.chunks) {
@@ -13,6 +13,6 @@
   <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
 </head>
 <body>
-<% if (htmlWebpackPlugin.options.spa) { %><div id="app"></div><% } else { %><!--vue-ssr-outlet--><% } %>
+<!--vue-ssr-outlet-->
 </body>
 </html>
