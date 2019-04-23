@@ -21,18 +21,15 @@ Folders and files to include in your deployments:
 Sometimes it's enough to deploy a static version of your application without server-side-rendering. If you want to host
 your application on a CDN or a file storage like Netlify, Github pages or AWS S3, run the command `npm run build:spa`.
 
-This will create a build that only contents the client side application.
+This will create a build that only contains the client side application.
 
 You need a webserver to serve the static files.
 
 ::: tip Support
-The single page application build is not a first class support in this project, you can't use the following features
-if you decide for this deployment
+The Single Page Application build does not have first class support; the following features are unavailable because they depend on the server component.
 
 - App Config
 - Runtime Config
-
-Because this features depend on the server component.
 
 That means that you have to remove all the references to the vuex
 state `app.config` e.g. you have to change this line in
