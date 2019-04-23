@@ -47,7 +47,7 @@ This is because a separation of concerns approach is much better to maintain ove
 per service instead of a mix of technologies e.g. PHP server-side-rendering and a Javascript client side app.
 
 ::: tip Deployment
-The vuesion project should be it's own deployable unit, it should be treated as it's own service in the architecture.
+The vuesion project should be its own deployable unit, and should be treated as its own service in the architecture.
 :::
 
 ::: tip Example
