@@ -1,5 +1,5 @@
 {
-  "currentVersion": "v3.0.0",
+  "currentVersion": "v3.1.0",
   "generators": {
     "blueprintDirectory": "./.vuesion/generators",
     "outputDirectory": "./src/app",
@@ -21,5 +21,9 @@
       "@components": "src/app/shared/components",
       "@static": "src/static"
     }
+  },
+  "spa": {
+    "appShellRoute": "/",
+    "additionalRoutes": ["/form"]
   }
 }

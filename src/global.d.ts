@@ -3,3 +3,4 @@ declare var SERVER: boolean;
 declare var PRODUCTION: boolean;
 declare var DEVELOPMENT: boolean;
 declare var TEST: boolean;
+declare var SPA: boolean;
