@@ -17,9 +17,7 @@ jobs:
             - v1-deps
       - run:
           name: Install dependencies
-          command: |
-            npm ci --silent
-            npm install vuepress start-server-and-test --silent
+          command: npm ci --silent
       - save_cache:
           key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
           paths:

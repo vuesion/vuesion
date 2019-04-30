@@ -45,9 +45,9 @@
     "build:analyze": "vuesion build --analyze",
     "build:spa": "vuesion build --spa",
     "start": "node ./dist/server/server.js",
-    "e2e:ci": "./node_modules/.bin/start-server-and-test dev http://localhost:3000 e2e",
-    "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\" \"npm run e2e:ci\" \"npm run build:spa\"",
-    "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\" \"./node_modules/.bin/vuepress build docs\""
+    "e2e:ci": "npx start-server-and-test dev http://localhost:3000 e2e",
+    "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\" \"npm run e2e:ci\" && npm run build:spa",
+    "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\" \"npx vuepress build docs\""
   },
   "dependencies": {
     "@vuesion/addon-vuex-persist": "^2.1.1",
@@ -64,12 +64,14 @@
     "lru-cache": "5.1.1",
     "marked": "0.6.0",
     "serve-favicon": "2.5.0",
+    "start-server-and-test": "1.9.0",
     "vee-validate": "2.0.9",
     "vue": "^2.6.10",
     "vue-i18n": "8.8.1",
     "vue-meta": "1.5.8",
     "vue-router": "^3.0.2",
     "vue-server-renderer": "^2.6.10",
+    "vuepress": "0.14.11",
     "vuex": "^3.1.0",
     "vuex-router-sync": "^5.0.0",
     "winston": "3.2.1"
