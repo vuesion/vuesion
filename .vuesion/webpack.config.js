@@ -4,12 +4,16 @@
  * @param {string} target - build target, can  be "client" or "server"
  * @returns {*}
  */
-module.exports = (config) => {
-  config.performance = {
-    hints: 'warning',
-    maxEntrypointSize: 318000,
-    maxAssetSize: 267000,
-  };
+const isProd = process.env.NODE_ENV === 'production';
+
+module.exports = (config, target) => {
+  if (target === 'client' && isProd) {
+    config.performance = {
+      hints: 'warning',
+      maxEntrypointSize: 400000,
+      maxAssetSize: 300000,
+    };
+  }
 
   return config;
 };
