@@ -25,5 +25,11 @@
   "spa": {
     "appShellRoute": "/",
     "additionalRoutes": ["/form"]
+  },
+  "devServer": {
+    "watchOptions": {
+      "aggregateTimeout": 300,
+      "poll": false
+    }
   }
 }
