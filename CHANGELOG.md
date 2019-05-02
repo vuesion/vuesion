@@ -1,3 +1,27 @@
+### 3.1.0 (2019-05-02)
+
+##### Chores
+
+- update dependencies ([#402](https://github.com/vuesion/vuesion/pull/402)) ([6c3f29d9](https://github.com/vuesion/vuesion/commit/6c3f29d9b31a640907b2608e80bf910e771d519e))
+- update discord invite link ([358f4165](https://github.com/vuesion/vuesion/commit/358f41658a44517deeddae8dc7c89858a89f8d13))
+- add discord server ([76e3b5b5](https://github.com/vuesion/vuesion/commit/76e3b5b5483e4a8f294529ed6c2374db9ba7fd65))
+- **readme:**
+  - add shield for license scan ([1b728725](https://github.com/vuesion/vuesion/commit/1b7287256b3c2f8e6e2339f79dbb017f413b30c5))
+  - add support section ([edb9a76d](https://github.com/vuesion/vuesion/commit/edb9a76d7d9878f8c42b884e9bc7bf11552ccb07))
+
+##### Continuous Integration
+
+- fix pipeline by running spa build not in parallel ([f3c14ea3](https://github.com/vuesion/vuesion/commit/f3c14ea321e5267b894c9b276d67aebc185900a6))
+
+##### Documentation Changes
+
+- **deployment:** grammar fixes and minor rewrite ([#399](https://github.com/vuesion/vuesion/pull/399)) ([65ce528e](https://github.com/vuesion/vuesion/commit/65ce528e9d60505485d7e40a2558a319c859a7d2))
+- grammar fixes ([#398](https://github.com/vuesion/vuesion/pull/398)) ([811a8942](https://github.com/vuesion/vuesion/commit/811a8942dbcab9e2730800b2b72d0b0c0a0b35fc))
+
+##### New Features
+
+- **spa:** render static pages ([#400](https://github.com/vuesion/vuesion/pull/400)) ([f51b9ae1](https://github.com/vuesion/vuesion/commit/f51b9ae1e9b2e4093f52e5907b3073f6d6ffbdfc))
+
 ## 3.0.0 (2019-04-10)
 
 ##### Chores
