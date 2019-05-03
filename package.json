@@ -50,7 +50,7 @@
     "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\" \"npx vuepress build docs\""
   },
   "dependencies": {
-    "@vuesion/addon-vuex-persist": "^2.1.2",
+    "@vuesion/addon-vuex-persist": "^2.2.0",
     "accept-language": "3.0.18",
     "animejs": "3.0.1",
     "axios": "0.18.0",
@@ -88,7 +88,7 @@
     "@types/node": "10.12.24",
     "@types/serve-favicon": "2.2.30",
     "@vue/test-utils": "1.0.0-beta.28",
-    "@vuesion/service": "^2.1.2",
+    "@vuesion/service": "^2.2.0",
     "axios-mock-adapter": "1.16.0",
     "husky": "2.1.0",
     "identity-obj-proxy": "3.0.0",
