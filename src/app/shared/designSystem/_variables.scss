@@ -1,5 +1,8 @@
+@import 'mixins';
+
 /* Branding */
-@import 'variables/brand';
+@import "variables/color-palette";
+@import 'variables/spacings';
 @import 'variables/typo';
 @import 'variables/grid';
 /* Components */

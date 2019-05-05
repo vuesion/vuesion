@@ -122,8 +122,8 @@ export default {
   bottom: 0;
   width: 100%;
   @include background-gradient(
-    rgba(red($brand-bg-color), green($brand-bg-color), blue($brand-bg-color), 0),
-    $brand-bg-color,
+    transparent,
+    var(--brand-bg-color),
     'vertical'
   );
 }

@@ -2,30 +2,30 @@
 
 :export {
   base: 'light';
-  colorPrimary: $brand-primary;
-  colorSecondary: $brand-secondary;
+  colorPrimary: palette-color-level('coral', 50);
+  colorSecondary: palette-color-level('blue', 50);
   // UI
-  appBg: $brand-bg-color;
-  appContentBg: $brand-bg-color-variant;
-  appBorderColor: $brand-border-color;
-  appBorderRadius: $brand-border-radius;
+  appBg: palette-color-level('grey', 10);
+  appContentBg: palette-color-level('grey', 20);
+  appBorderColor: palette-color-level('grey', 30);
+  appBorderRadius: $space-4;
 
   // Typography
   fontBase: $font-family;
   fontCode: 'monospace';
 
   // Text colors
-  textColor: $brand-text-color;
-  textInverseColor: $brand-text-color-inverse;
+  textColor: palette-color-level('grey', 100);
+  textInverseColor: palette-color-level('grey', 10);
 
   // Toolbar default and active colors
-  barTextColor: $brand-text-color;
-  barSelectedColor: $brand-text-color;
-  barBg: $brand-bg-color-variant;
+  barTextColor: palette-color-level('grey', 100);
+  barSelectedColor: palette-color-level('grey', 100);
+  barBg: palette-color-level('grey', 20);
 
   // Form colors
-  inputBg: $brand-bg-color;
-  inputBorder: $brand-border-color;
-  inputTextColor: $brand-text-color;
-  inputBorderRadius: $brand-border-radius;
+  inputBg: palette-color-level('grey', 10);
+  inputBorder: palette-color-level('grey', 30);
+  inputTextColor: palette-color-level('grey', 100);
+  inputBorderRadius: $space-4;
 }

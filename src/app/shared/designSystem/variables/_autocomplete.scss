@@ -1,10 +1,10 @@
-$autocomplete-bg: $brand-bg-color;
+$autocomplete-bg: var(--brand-bg-color);
 $autocomplete-padding: 0;
 $autocomplete-margin: -$space-16 0 0 0;
 $autocomplete-shadow: none;
-$autocomplete-border: 1px solid $brand-border-color;
+$autocomplete-border: 1px solid var(--brand-border-color);
 
 $autocomplete-item-padding: $space-8 $space-12;
-$autocomplete-item-border: 1px solid $brand-border-color;
-$autocomplete-item-selected-bg: $brand-bg-color-variant;
-$autocomplete-item-selected-color: foreground-color($autocomplete-item-selected-bg);
+$autocomplete-item-border: 1px solid var(--brand-border-color);
+$autocomplete-item-selected-bg: var(--brand-bg-color-variant);
+$autocomplete-item-selected-color: var(--brand-text-color);

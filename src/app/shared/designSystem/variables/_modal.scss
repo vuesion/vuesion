@@ -1,5 +1,5 @@
-$modal-shadow: $brand-shadow-lg;
+$modal-shadow: var(--brand-shadow-lg);
 $modal-padding: $space-12;
 $modal-index: 2001;
-$modal-bg: $brand-bg-color;
+$modal-bg: var(--brand-bg-color);
 $modal-max-width: 50%;

@@ -28,6 +28,12 @@
     </vue-cookie-consent>
 
     <vue-sidebar>
+      <vue-sidebar-group title="Themes">
+        <vue-sidebar-group-item>
+          <vue-select name="theme" id="theme" :options="themes" @input="themeSwitch" :value="theme" />
+        </vue-sidebar-group-item>
+      </vue-sidebar-group>
+
       <vue-sidebar-group title="Languages">
         <vue-sidebar-group-item>
           <vue-select name="lang" id="lang" :options="languages" @input="localeSwitch" :value="getLocale" />
@@ -170,19 +176,24 @@ export default {
       ],
       showLoginModal: false,
       isLoginPending: false,
+      themes: [{ label: 'Light Theme', value: 'light' }, { label: 'Dark Theme', value: 'dark' }],
     };
   },
   computed: {
-    ...mapGetters('app', ['cookieConsentVersion', 'getLocale']),
+    ...mapGetters('app', ['cookieConsentVersion', 'getLocale', 'theme']),
     ...mapGetters('auth', ['isAuthenticated']),
   },
   methods: {
-    ...mapActions('app', ['changeLocale', 'setCookieConsentVersion']),
+    ...mapActions('app', ['changeLocale', 'setCookieConsentVersion', 'changeTheme']),
     ...mapActions('auth', ['createToken', 'revokeToken']),
     localeSwitch(locale: string) {
       loadLocaleAsync(locale).catch((error: Error) => console.log(error)); // tslint:disable-line
 
       this.changeLocale(locale);
+    },
+    themeSwitch(theme: string) {
+      this.changeTheme(theme);
+      document.documentElement.className = theme;
     },
     initProgressBar() {
       this.$router.beforeEach((to: any, from: any, next: any) => {
@@ -244,5 +255,6 @@ export default {
   top: $space-4;
   width: $space-24;
   height: $space-24;
+  color: $nav-bar-color;
 }
 </style>

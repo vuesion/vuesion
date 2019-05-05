@@ -1,6 +1,6 @@
 $footer-padding: $space-12 0 $space-12 0;
-$footer-bg: $brand-bg-color-inverse;
-$footer-color: foreground-color($footer-bg);
+$footer-bg: var(--brand-bg-color-variant);
+$footer-color: var(--brand-text-color);
 $footer-link-color: $footer-color;
 $footer-link-hover-color: $footer-link-color;
 $footer-link-font-weight: $link-font-weight;
