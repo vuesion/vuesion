@@ -1,13 +1,15 @@
-@import 'variables';
 @import 'mixins';
+@import 'variables';
+@import "themes/light";
+@import "themes/dark";
 
 body {
-  color: $brand-text-color;
-  background-color: $brand-bg-color;
+  color: var(--brand-text-color);
+  background-color: var(--brand-bg-color);
 }
 
 code {
-  background: $brand-bg-color-variant;
+  background: var(--brand-bg-color-variant);
   padding: $space-2 $space-4;
 }
 
@@ -16,7 +18,7 @@ i {
   display: inline-block;
   height: $font-size;
   width: $font-size;
-  fill: $brand-text-color;
+  fill: var(--brand-text-color);
 
   svg {
     height: inherit;
@@ -35,7 +37,7 @@ i {
 
 // always make sure images have an alt attribute
 img:not([alt]) {
-  border: 5px dashed $brand-danger;
+  border: 5px dashed var(--brand-danger);
 }
 
 // Only display content to screen readers

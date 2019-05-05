@@ -1,14 +1,13 @@
 $slider-margin: 0;
 $slider-padding: $space-20 $space-12;
-$slider-track-bg: $brand-border-color;
+$slider-track-bg: var(--brand-border-color);
 $slider-track-shadow: none;
 $slider-progress-height: $space-4;
-$slider-progress-bg: $brand-secondary;
+$slider-progress-bg: var(--brand-secondary);
 $slider-handle-size: $space-32;
 $slider-handle-shadow: none;
-$slider-handle-bg: $brand-bg-color;
-$slider-handle-border: 2px solid $brand-secondary;
-$slider-handle-transition: box-shadow $brand-transition-duration / 2 ease-in-out;
-$slider-handle-active-shadow: 0 0 0 8px
-  rgba(red($brand-secondary), green($brand-secondary), blue($brand-secondary), 0.5);
+$slider-handle-bg: var(--brand-bg-color);
+$slider-handle-border: 2px solid var(--brand-secondary);
+$slider-handle-transition: box-shadow var(--brand-transition-duration) ease-in-out;
+$slider-handle-active-shadow: var(--brand-shadow-outline);
 $slider-values-margin: 0 0 40px -16px;
