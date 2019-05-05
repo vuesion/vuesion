@@ -1,36 +1,43 @@
+@include add-theme-variable(
+  button-color,
+  (
+    'light': var(--brand-text-color),
+    'dark': var(--brand-text-color-inverse),
+  )
+);
 $badge-padding: $space-4 $space-8;
 $badge-margin: 0;
 $badge-font-size: $font-size-small;
 $badge-line-height: inherit;
 $badge-letter-spacing: inherit;
-$badge-border-radius: $brand-border-radius;
+$badge-border-radius: var(--brand-border-radius);
 $badge-font-weight: $font-weight-regular;
 
 $badge-outlined-border-width: 1px;
 
 $badge-variations: (
   'default': (
-    'bg': $brand-default,
-    'color': foreground-color($brand-default),
+    'bg': var(--brand-default),
+    'color': var(--brand-text-color-inverse),
   ),
   'primary': (
-    'bg': $brand-primary,
-    'color': foreground-color($brand-primary),
+    'bg': var(--brand-primary),
+    'color': var(--button-color),
   ),
   'secondary': (
-    'bg': $brand-secondary,
-    'color': foreground-color($brand-secondary),
+    'bg': var(--brand-secondary),
+    'color': var(--button-color),
   ),
   'success': (
-    'bg': $brand-success,
-    'color': foreground-color($brand-success),
+    'bg': var(--brand-success),
+    'color': var(--button-color),
   ),
   'warning': (
-    'bg': $brand-warning,
-    'color': foreground-color($brand-warning),
+    'bg': var(--brand-warning),
+    'color': var(--button-color),
   ),
   'danger': (
-    'bg': $brand-danger,
-    'color': foreground-color($brand-danger),
+    'bg': var(--brand-danger),
+    'color': var(--brand-text-color-inverse),
   ),
 );

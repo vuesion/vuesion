@@ -47,7 +47,7 @@ export default {
 }
 
 .alternative {
-  background: $brand-bg-color-variant;
+  background: var(--brand-bg-color-variant);
 }
 
 .flip {

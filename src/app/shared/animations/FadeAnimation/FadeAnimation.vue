@@ -22,7 +22,7 @@ export default {
 
 .enterActive,
 .leaveActive {
-  transition: $brand-fade-animation-transition;
+  transition: var(--brand-fade-animation-transition);
 }
 
 .enterTo,

@@ -128,10 +128,9 @@ export default {
 .github {
   font-size: $font-size-h1;
   display: inline-block;
-  background: $brand-bg-color;
+  background: var(--brand-bg-color);
   transition: $button-transition;
-  transition-property: box-shadow, background-color;
-  color: $brand-link-color;
+  transition-property: box-shadow;
 
   &:hover {
     box-shadow: $button-active-shadow;

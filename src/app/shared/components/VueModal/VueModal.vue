@@ -83,7 +83,7 @@ export default {
       overlay.style.width = '100%';
       overlay.style.height = '100%';
       overlay.style.zIndex = '2000';
-      overlay.style.background = '#000';
+      overlay.style.background = 'var(--brand-bg-color-variant)';
       overlay.style.opacity = '0';
       overlay.style.visibility = 'hidden';
       overlay.style.transition = 'opacity 250ms linear';

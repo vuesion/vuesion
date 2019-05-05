@@ -6,6 +6,7 @@ export interface IAppState {
   defaultMessages: any;
   redirectTo: string;
   cookieConsentVersion: string;
+  theme: string;
 }
 
 export const AppDefaultState = (): IAppState => {
@@ -15,5 +16,6 @@ export const AppDefaultState = (): IAppState => {
     defaultMessages: {},
     redirectTo: null,
     cookieConsentVersion: '',
+    theme: 'light',
   };
 };

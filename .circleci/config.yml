@@ -1,5 +1,6 @@
 version: 2
 app-name: &app_name vuesion
+app-name-staging: &app-name-staging vuesion-next
 workspace-name: &working_directory ~/repo
 jobs:
   build:
@@ -46,11 +47,34 @@ jobs:
             - i18n
             - storybook-static
             - Dockerfile
-  deploy:
+  deploy-prod:
     machine: true
     working_directory: *working_directory
     environment:
       APP_NAME: *app_name
+    steps:
+      - attach_workspace:
+          at: *working_directory
+      - run:
+          name: Push docker image to Heroku
+          command: |
+            docker build -t $APP_NAME .
+            set -eu -o pipefail
+            echo $HEROKU_API_KEY | docker login --username=$HEROKU_USERNAME --password-stdin registry.heroku.com
+            docker tag $APP_NAME registry.heroku.com/$APP_NAME/web
+            docker push registry.heroku.com/$APP_NAME/web
+            docker inspect registry.heroku.com/$APP_NAME/web --format={{.Id}} > WEB_DOCKER_IMAGE_ID_FILE
+            export WEB_DOCKER_IMAGE_ID=$(cat WEB_DOCKER_IMAGE_ID_FILE)
+            curl -n -X PATCH https://api.heroku.com/apps/$APP_NAME/formation \
+            -d '{ "updates": [ { "type": "web", "docker_image": "'"$WEB_DOCKER_IMAGE_ID"'" }]}' \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/vnd.heroku+json; version=3.docker-releases" \
+            -H "Authorization: Bearer $HEROKU_API_KEY"
+  deploy-staging:
+    machine: true
+    working_directory: *working_directory
+    environment:
+      APP_NAME: *app-name-staging
     steps:
       - attach_workspace:
           at: *working_directory
@@ -75,9 +99,15 @@ workflows:
   build-deploy:
     jobs:
       - build
-      - deploy:
+      - deploy-prod:
           requires:
             - build
           filters:
             branches:
               only: master
+      - deploy-staging:
+          requires:
+            - build
+          filters:
+            branches:
+              only: feat/theming

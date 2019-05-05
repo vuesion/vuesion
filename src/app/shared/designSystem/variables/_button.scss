@@ -1,3 +1,11 @@
+@include add-theme-variable(
+  button-color,
+  (
+    'light': var(--brand-text-color),
+    'dark': var(--brand-text-color-inverse),
+  )
+);
+
 $button-font-family: $font-family;
 $button-padding: $space-8 $space-12;
 $button-margin: 0 $space-8 0 0;
@@ -5,7 +13,7 @@ $button-min-width: $space-32;
 $button-height: auto;
 $button-font-size: $font-size;
 $button-font-weight: 400;
-$button-border-radius: $brand-border-radius;
+$button-border-radius: var(--brand-border-radius);
 $button-shadow: none;
 $button-transition: all 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
 $button-active-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.18);
@@ -18,45 +26,45 @@ $button-outlined-border-width: 0.2rem;
 
 $button-variations: (
   'default': (
-    'bg': $brand-default,
-    'color': foreground-color($brand-default),
-    'hover-bg': darken($brand-default, 5%),
-    'hover-color': foreground-color(darken($brand-default, 5%)),
-    'border': $button-outlined-border-width solid $brand-default,
+    'bg': var(--brand-default),
+    'color': var(--brand-text-color-inverse),
+    'hover-bg': var(--brand-default-hover),
+    'hover-color': var(--brand-text-color-inverse),
+    'border': $button-outlined-border-width solid var(--brand-default),
   ),
   'primary': (
-    'bg': $brand-primary,
-    'color': foreground-color($brand-primary),
-    'hover-bg': darken($brand-primary, 5%),
-    'hover-color': foreground-color(darken($brand-primary, 5%)),
-    'border': $button-outlined-border-width solid $brand-primary,
+    'bg': var(--brand-primary),
+    'color': var(--button-color),
+    'hover-bg': var(--brand-primary-hover),
+    'hover-color': var(--button-color),
+    'border': $button-outlined-border-width solid var(--brand-primary),
   ),
   'secondary': (
-    'bg': $brand-secondary,
-    'color': foreground-color($brand-secondary),
-    'hover-bg': darken($brand-secondary, 5%),
-    'hover-color': foreground-color(darken($brand-secondary, 5%)),
-    'border': $button-outlined-border-width solid $brand-secondary,
+    'bg': var(--brand-secondary),
+    'color': var(--button-color),
+    'hover-bg': var(--brand-secondary-hover),
+    'hover-color': var(--button-color),
+    'border': $button-outlined-border-width solid var(--brand-secondary),
   ),
   'success': (
-    'bg': $brand-success,
-    'color': foreground-color($brand-success),
-    'hover-bg': darken($brand-success, 5%),
-    'hover-color': foreground-color(darken($brand-success, 5%)),
-    'border': $button-outlined-border-width solid $brand-success,
+    'bg': var(--brand-success),
+    'color': var(--button-color),
+    'hover-bg': var(--brand-success-hover),
+    'hover-color': var(--button-color),
+    'border': $button-outlined-border-width solid var(--brand-success),
   ),
   'warning': (
-    'bg': $brand-warning,
-    'color': foreground-color($brand-warning),
-    'hover-bg': darken($brand-warning, 5%),
-    'hover-color': foreground-color(darken($brand-warning, 5%)),
-    'border': $button-outlined-border-width solid $brand-warning,
+    'bg': var(--brand-warning),
+    'color': var(--button-color),
+    'hover-bg': var(--brand-warning-hover),
+    'hover-color': var(--button-color),
+    'border': $button-outlined-border-width solid var(--brand-warning),
   ),
   'danger': (
-    'bg': $brand-danger,
-    'color': foreground-color($brand-danger),
-    'hover-bg': darken($brand-danger, 5%),
-    'hover-color': foreground-color(darken($brand-danger, 5%)),
-    'border': $button-outlined-border-width solid $brand-danger,
+    'bg': var(--brand-danger),
+    'color': var(--brand-text-color-inverse),
+    'hover-bg': var(--brand-danger-hover),
+    'hover-color': var(--brand-text-color-inverse),
+    'border': $button-outlined-border-width solid var(--brand-danger),
   ),
 );

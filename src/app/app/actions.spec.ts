@@ -25,4 +25,11 @@ describe('AppActions', () => {
     expect(testContext.commit).toHaveBeenCalled();
     expect(testContext.commit).toHaveBeenCalledWith('SET_COOKIE_CONSENT_VERSION', '1.0.0');
   });
+
+  test('it should change the theme', () => {
+    AppActions.changeTheme(testContext, 'dark');
+
+    expect(testContext.commit).toHaveBeenCalled();
+    expect(testContext.commit).toHaveBeenCalledWith('CHANGE_THEME', 'dark');
+  });
 });
