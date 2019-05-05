@@ -162,7 +162,7 @@ export default {
 
     &:after {
       opacity: 0;
-      transition-duration: $brand-transition-duration;
+      transition-duration: var(--brand-transition-duration);
       transition-timing-function: cubic-bezier(0, 0.84, 0.83, 0.67);
       box-shadow: $checkbox-shadow;
     }

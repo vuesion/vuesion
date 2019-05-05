@@ -138,7 +138,7 @@ export default {
   }
 
   table tr {
-    border: 1px solid $brand-border-color;
+    border: 1px solid var(--brand-border-color);
   }
 
   table td,

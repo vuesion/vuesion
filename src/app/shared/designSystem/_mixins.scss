@@ -1,3 +1,5 @@
+@import 'variables/grid';
+
 @mixin background-gradient($start-color, $end-color, $orientation) {
   background: $start-color;
 
@@ -42,5 +44,13 @@ $grid-breakpoints-max: (
     }
   } @else {
     @error "breakpoint not supported!";
+  }
+}
+
+@mixin add-theme-variable($variable-name, $value-map) {
+  @each $theme, $value in $value-map {
+    :root.#{$theme} {
+      --#{$variable-name}: #{$value};
+    }
   }
 }

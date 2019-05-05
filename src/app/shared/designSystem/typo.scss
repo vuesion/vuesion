@@ -23,10 +23,10 @@ strong {
 }
 
 a {
-  color: $brand-link-color;
+  color: var(--brand-link-color);
   font-weight: $link-font-weight;
 
   &:hover {
-    color: $brand-link-hover-color;
+    color: var(--brand-link-hover-color);
   }
 }

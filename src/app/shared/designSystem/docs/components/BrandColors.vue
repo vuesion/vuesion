@@ -4,7 +4,7 @@
       <vue-headline level="4">{{ section.name.toUpperCase() }}</vue-headline>
       <div :class="$style.section">
         <div v-for="color in section.colors" :style="{ background: color.hex }">
-          <span>{{ color.name }} ({{ color.hex }})</span>
+          <span>{{ color.name }}</span>
         </div>
       </div>
     </div>
@@ -61,8 +61,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: $brand-shadow-lg;
-    border-radius: $brand-border-radius;
+    box-shadow: var(--brand-shadow-lg);
+    border-radius: var(--brand-border-radius);
     padding: $space-16;
 
     span {
@@ -75,25 +75,25 @@ export default {
 }
 
 :export {
-  brand_variations-brand-primary: $brand-primary;
-  brand_variations-brand-secondary: $brand-secondary;
-  brand_variations-brand-success: $brand-success;
-  brand_variations-brand-warning: $brand-warning;
-  brand_variations-brand-danger: $brand-danger;
+  brand_variations-brand-primary: var(--brand-primary);
+  brand_variations-brand-secondary: var(--brand-secondary);
+  brand_variations-brand-success: var(--brand-success);
+  brand_variations-brand-warning: var(--brand-warning);
+  brand_variations-brand-danger: var(--brand-danger);
 
-  background_Colors-brand-bg-color: $brand-bg-color;
-  background_Colors-brand-bg-color-variant: $brand-bg-color-variant;
-  background_Colors-brand-bg-color-inverse: $brand-bg-color-inverse;
-  background_Colors-brand-bg-color-variant-inverse: $brand-bg-color-variant-inverse;
+  background_Colors-brand-bg-color: var(--brand-bg-color);
+  background_Colors-brand-bg-color-variant: var(--brand-bg-color-variant);
+  background_Colors-brand-bg-color-inverse: var(--brand-bg-color-inverse);
+  background_Colors-brand-bg-color-variant-inverse: var(--brand-bg-color-variant-inverse);
 
-  text_Colors-brand-text-color: $brand-text-color;
-  text_Colors-brand-text-secondary-color: $brand-text-secondary-color;
-  text_Colors-brand-text-color-inverse: $brand-text-color-inverse;
-  text_Colors-brand-text-secondary-color-inverse: $brand-text-secondary-color-inverse;
-  text_Colors-brand-link-color: $brand-link-color;
-  text_Colors-brand-link-hover-color: $brand-link-hover-color;
+  text_Colors-brand-text-color: var(--brand-text-color);
+  text_Colors-brand-text-secondary-color: var(--brand-text-secondary-color);
+  text_Colors-brand-text-color-inverse: var(--brand-text-color-inverse);
+  text_Colors-brand-text-secondary-color-inverse: var(--brand-text-secondary-color-inverse);
+  text_Colors-brand-link-color: var(--brand-link-color);
+  text_Colors-brand-link-hover-color: var(--brand-link-hover-color);
 
-  border_Colors-brand-border-color: $brand-border-color;
-  border_Colors-brand-border-color-inverse: $brand-border-color-inverse;
+  border_Colors-brand-border-color: var(--brand-border-color);
+  border_Colors-brand-border-color-inverse: var(--brand-border-color-inverse);
 }
 </style>

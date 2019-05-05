@@ -33,6 +33,12 @@ addParameters({
   },
 });
 
+addParameters({
+  themeSwitcher: {
+    themes: [{ label: 'Light Theme', value: 'light' }, { label: 'Dark Theme', value: 'dark' }],
+  },
+});
+
 addDecorator(require('storybook-vue-router').default());
 setDefaults({ header: false });
 

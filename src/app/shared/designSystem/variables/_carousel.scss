@@ -1,12 +1,12 @@
 $carousel-min-height: 500px;
-$carousel-copyright-color: $brand-text-color-inverse;
+$carousel-copyright-color: var(--brand-text-color-inverse);
 $carousel-copyright-bottom: $space-12;
 $carousel-copyright-left: $space-12;
-$carousel-copyright-shadow: 0 0 3px $brand-bg-color-inverse;
+$carousel-copyright-shadow: 0 0 3px var(--brand-bg-color-inverse);
 $carousel-copyright-font-size: 75%;
 $carousel-indicator-bottom: 0;
 $carousel-indicator-size: $space-8;
 $carousel-indicator-space: $space-8;
 $carousel-indicator-shadow: none;
-$carousel-indicator-bg: $brand-bg-color;
-$carousel-indicator-active-bg: $brand-secondary;
+$carousel-indicator-bg: var(--brand-bg-color);
+$carousel-indicator-active-bg: var(--brand-secondary);

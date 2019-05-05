@@ -1,6 +1,14 @@
-$tooltip-bg: $brand-bg-color-inverse;
-$tooltip-color: foreground-color($tooltip-bg);
+@include add-theme-variable(
+  tooltip-bg,
+  (
+    'light': var(--brand-bg-color-inverse),
+    'dark': var(--brand-secondary),
+  )
+);
+
+$tooltip-bg: var(--tooltip-bg);
+$tooltip-color: var(--brand-text-color-inverse);
 $tooltip-padding: 0 $space-4;
 $tooltip-shadow: none;
 $tooltip-highlight-color: $tooltip-bg;
-$tooltip-border-radius: $brand-border-radius;
+$tooltip-border-radius: var(--brand-border-radius);

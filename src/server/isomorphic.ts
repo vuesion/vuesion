@@ -23,6 +23,7 @@ export interface IServerContext {
   appConfig: IAppConfig;
   redirect: boolean;
   rendered?: () => void;
+  theme: string;
 }
 
 export interface IPreLoad {
@@ -47,6 +48,10 @@ const setDefaultState = (context: IServerContext, store: Store<IState>) => {
 
   if (context.redirect === true) {
     state.app.redirectTo = context.url;
+  }
+
+  if (state.app && state.app.theme) {
+    context.theme = state.app.theme;
   }
 
   store.replaceState(state);

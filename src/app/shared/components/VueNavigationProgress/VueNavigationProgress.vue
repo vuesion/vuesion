@@ -82,7 +82,7 @@ export default {
   right: 0;
   z-index: 9999;
   height: 2px;
-  @include background-gradient($brand-secondary, lighten($brand-secondary, 30%), 'horizontal');
+  background: var(--brand-secondary);
   opacity: 0;
 }
 

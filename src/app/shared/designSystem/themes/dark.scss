@@ -1,0 +1,47 @@
+:root.dark {
+  /* Brand Variations */
+  --brand-default: #{palette-color-level('grey', 20)};
+  --brand-default-hover: #{palette-color-level('grey', 10)};
+  --brand-primary: #{palette-color-level('coral', 50)};
+  --brand-primary-hover: #{palette-color-level('coral', 40)};
+  --brand-secondary: #{palette-color-level('blue', 50)};
+  --brand-secondary-hover: #{palette-color-level('blue', 40)};
+  --brand-success: #{palette-color-level('green', 40)};
+  --brand-success-hover: #{palette-color-level('green', 30)};
+  --brand-warning: #{palette-color-level('yellow', 40)};
+  --brand-warning-hover: #{palette-color-level('yellow', 30)};
+  --brand-danger: #{palette-color-level('red', 50)};
+  --brand-danger-hover: #{palette-color-level('red', 40)};
+
+  /* Background Colors */
+  --brand-bg-color: #{palette-color-level('grey', 90)};
+  --brand-bg-color-variant: #{palette-color-level('grey', 80)};
+  --brand-bg-color-inverse: #{palette-color-level('grey', 20)};
+  --brand-bg-color-variant-inverse: #{palette-color-level('grey', 50)};
+
+  /* Text Colors */
+  --brand-text-color: #{palette-color-level('grey', 10)};
+  --brand-text-secondary-color: #{palette-color-level('grey', 30)};
+  --brand-text-color-inverse: #{palette-color-level('grey', 100)};
+  --brand-text-secondary-color-inverse: #{palette-color-level('grey', 60)};
+
+  /* Link Color */
+  --brand-link-color: #{palette-color-level('green', 40)};
+  --brand-link-hover-color: #{palette-color-level('green', 50)};
+
+  /* Border Colors */
+  --brand-border-color: #{palette-color-level('grey', 70)};
+  --brand-border-color-inverse: #{palette-color-level('grey', 30)};
+  --brand-border-radius: #{$space-4};
+
+  /* Box Shadows */
+  --brand-shadow-sm: 0 1px 1px 0 rgba(18, 19, 21, 0.12);
+  --brand-shadow-md: 0 -1px 2px 0 rgba(18, 19, 21, 0.12), 0 2px 4px 0 rgba(18, 19, 21, 0.12);
+  --brand-shadow-lg: 0 0 4px 0 rgba(18, 19, 21, 0.12), 0 4px 12px 0 rgba(18, 19, 21, 0.12);
+  --brand-shadow-outline: 0 0 0 #{$space-8} #{rgba(palette-color-level('blue', 50), 0.5)};
+
+  /* Animation Language */
+  --brand-transition-duration: 250ms;
+  --brand-easing-curve: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  --brand-fade-animation-transition: opacity var(--brand-transition-duration) var(--brand-easing-curve);
+}
