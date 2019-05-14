@@ -7,16 +7,16 @@ import { {{ properCase moduleName }}Mutations } from './mutations';
 
 export const {{ properCase moduleName }}Module: Module<I{{ properCase moduleName }}State, IState> = {
   namespaced: true,
-  actions:    {
+  actions: {
     ...{{ properCase moduleName }}Actions,
   },
-  getters:    {
+  getters: {
     ...{{ properCase moduleName }}Getters,
   },
-  state:      {
+  state: {
     ...{{ properCase moduleName }}DefaultState(),
   },
-  mutations:  {
+  mutations: {
     ...{{ properCase moduleName }}Mutations,
   },
 };
