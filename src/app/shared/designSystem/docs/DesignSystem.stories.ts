@@ -19,7 +19,7 @@ story.add(
     propTablesExclude: [VueMarkdown],
   })(() => ({
     components: { VueMarkdown },
-    template: `<vue-markdown>
+    template: `<vue-markdown :use-router="false">
 # Design System
 
 Vuesion comes with a Design System that you can 100% customize.
@@ -61,7 +61,7 @@ story.add(
   })(() => ({
     components: { VueMarkdown, ColorPalette },
     template: `<div>
-<vue-markdown>
+<vue-markdown :use-router="false">
 ### Color Palette
 </vue-markdown>
 <color-palette />
@@ -81,7 +81,7 @@ story.add(
   })(() => ({
     components: { VueMarkdown, BrandColors },
     template: `<div>
-<vue-markdown>
+<vue-markdown :use-router="false">
 ### Brand Colors
 Every brand color is related to a color of the color palette.
 </vue-markdown>
@@ -105,7 +105,7 @@ story.add(
     propTablesExclude: [VueMarkdown],
   })(() => ({
     components: { VueMarkdown },
-    template: `<vue-markdown>
+    template: `<vue-markdown :use-router="false">
 ## Typography
 Inter is the standard type face for the Design System blueprint.
 
@@ -152,7 +152,7 @@ story.add(
     propTablesExclude: [VueMarkdown],
   })(() => ({
     components: { VueMarkdown },
-    template: `<vue-markdown>
+    template: `<vue-markdown :use-router="false">
 ## Layout
 The Grid-System is based on Flex box and comes in form of three included components.
 
@@ -198,7 +198,7 @@ story.add(
     propTablesExclude: [VueMarkdown],
   })(() => ({
     components: { VueMarkdown },
-    template: `<vue-markdown>
+    template: `<vue-markdown :use-router="false">
 ## Break points
 If you want to use a break point inside one of your components, we provide you width
 mixins to keep everything consistent and to avoid unnecessary media definitions:

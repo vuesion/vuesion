@@ -20,6 +20,12 @@ marked.setOptions({
 
 export default {
   name: 'VueMarkdown',
+  props: {
+    useRouter: {
+      type: Boolean,
+      default: true,
+    },
+  },
   data(): any {
     return {
       html: '',
@@ -39,6 +45,10 @@ export default {
       this.html = (marked as any)(text);
     },
     handleClick(event: any) {
+      if (this.useRouter === false) {
+        return true;
+      }
+
       const { target } = event;
       const url = new URL(target.href);
       const to = url.pathname;
