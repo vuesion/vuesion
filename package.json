@@ -47,7 +47,7 @@
     "start": "node ./dist/server/server.js",
     "e2e:ci": "npx start-server-and-test dev http://localhost:3000 e2e",
     "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\" \"npm run e2e:ci\" && npm run build:spa",
-    "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\" \"npx vuepress build docs\""
+    "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\""
   },
   "dependencies": {
     "@vuesion/addon-vuex-persist": "^2.2.0",
@@ -126,7 +126,10 @@
       "ts"
     ],
     "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "^@shared/(.*)$": "<rootDir>/src/app/shared/$1",
+      "^@components/(.*)$": "<rootDir>/src/app/shared/components/$1",
+      "^@static/(.*)$": "<rootDir>/src/static/$1"
     },
     "transform": {
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
