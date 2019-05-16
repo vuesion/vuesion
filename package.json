@@ -126,7 +126,10 @@
       "ts"
     ],
     "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "^@shared/(.*)$": "<rootDir>/src/app/shared/$1",
+      "^@components/(.*)$": "<rootDir>/src/app/shared/components/$1",
+      "^@static/(.*)$": "<rootDir>/src/static/$1"
     },
     "transform": {
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",

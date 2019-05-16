@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.calendar">
+  <div :class="$style.calendar" ref="calendar">
     <div :class="$style.header">
       <vue-headline
         level="4"
@@ -192,7 +192,7 @@ export default {
           let selected: boolean = date.getTime() === this.calculatedDate.getTime();
 
           if (this.startDate) {
-            disabled = date.getTime() < this.startDate.getTime();
+            disabled = disabled || date.getTime() < this.startDate.getTime();
             selected = date.getTime() >= this.startDate.getTime() && date.getTime() <= this.calculatedDate.getTime();
           }
 
@@ -212,17 +212,18 @@ export default {
     },
     years(): IYear[] {
       let firstYear;
+      const yearRange = 100;
 
       if (this.minDate) {
         firstYear = this.minDate.getFullYear();
+      } else if (this.maxDate) {
+        firstYear = this.maxDate.getFullYear() - yearRange;
       } else {
-        firstYear = new Date().getFullYear();
+        firstYear = new Date().getFullYear() - yearRange / 2;
       }
-
-      const through = this.maxDate ? this.maxDate.getFullYear() + 1 - firstYear : 101;
       const years = [];
 
-      for (let i = firstYear, len = firstYear + through; i < len; i++) {
+      for (let i = firstYear; i < firstYear + (yearRange + 1); i++) {
         years.push(i);
       }
 
@@ -271,8 +272,21 @@ export default {
     };
   },
   methods: {
-    setSelecting(value: string): void {
+    async setSelecting(value: string) {
       this.selecting = value;
+
+      if (this.selecting === 'year') {
+        await this.$nextTick();
+        this.scrollSelectedYearIntoView();
+      }
+    },
+    scrollSelectedYearIntoView() {
+      const yearContainer: HTMLElement = this.$refs.calendar.querySelector(`.${this.$style.year}`);
+      const selectedYear: HTMLElement = yearContainer.querySelector(`.${this.$style.selected}`);
+
+      yearContainer.scrollTop =
+        selectedYear.offsetTop -
+        (yearContainer.getBoundingClientRect().height / 2 + selectedYear.getBoundingClientRect().height);
     },
     setByDay(day: IDay): void {
       if (day.disabled) {
@@ -509,23 +523,31 @@ export default {
 }
 
 .year {
-  box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.075);
+  border: $calendar-body-border;
+  padding: $calendar-body-padding;
   max-height: 312px;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   text-align: center;
 
-  div {
+  > div {
     cursor: pointer;
     padding: $space-8 0;
     transition: background-color 0.15s;
 
     &:hover {
-      background-color: $brand-bg-color;
+      background: $calendar-day-hover;
     }
   }
 
   .selected {
     font-size: $font-size-h4;
+    color: $calendar-selected-day-color;
+    background: $calendar-selected-day-bg;
+
+    &:hover {
+      background: $calendar-selected-day-bg;
+    }
   }
 }
 
