@@ -19,9 +19,9 @@
 
 # Documentation
 
-**[https://vuesion.herokuapp.com/docs](https://vuesion.herokuapp.com/docs)** (sometimes not available because of the heroku free-plan)
+**[https://vuesion.github.io/docs/en/](https://vuesion.github.io/docs/en/)**
 
-**[https://vuesion.herokuapp.com/docs/zh-cn](https://vuesion.herokuapp.com/docs/zh-cn)** (欢迎改善中文文档(๑• . •๑))
+**[https://vuesion.github.io/docs/zh-cn/](https://vuesion.github.io/docs/zh-cn)**
 
 ## Run documentation on your local machine
 
@@ -31,7 +31,7 @@
 
 # Live demo
 
-Please visit the **[vuesion app on heroku!](https://vuesion.herokuapp.com/)** (sometimes not available because of the heroku free-plan)
+Please visit the **[vuesion app on heroku!](https://vuesion.herokuapp.com/)**
 
 ![vuesion](https://user-images.githubusercontent.com/1667598/55291969-6d6d3300-53e5-11e9-8bdb-c9e2940ca927.gif)
 
