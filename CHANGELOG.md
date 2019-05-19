@@ -1,3 +1,23 @@
+### 3.2.0 (2019-05-19)
+
+##### Chores
+
+- update vuesion packages ([f0c0aced](https://github.com/vuesion/vuesion/commit/f0c0aced647ae778babb1d5b01bb1c4d2a477dde))
+
+##### Documentation Changes
+
+- move docs to vuesion/docs ([#412](https://github.com/vuesion/vuesion/pull/412)) ([152d7f44](https://github.com/vuesion/vuesion/commit/152d7f44115468e4f15c30ef01772ae0dbea3d15))
+
+##### New Features
+
+- **vue-markdown:** prop for using router or native links ([#411](https://github.com/vuesion/vuesion/pull/411)) ([76b792f2](https://github.com/vuesion/vuesion/commit/76b792f27ae9c430245c570bd815987a821e0822))
+- add devServer watchOptions to vuesion cfg ([#403](https://github.com/vuesion/vuesion/pull/403)) ([eaca388d](https://github.com/vuesion/vuesion/commit/eaca388de5ecec48d9ed64f28811199403043931))
+
+##### Bug Fixes
+
+- **vue-calender:** year view for min/max date ([#413](https://github.com/vuesion/vuesion/pull/413)) ([b277cade](https://github.com/vuesion/vuesion/commit/b277cade4df45d86214100a53f21bd8ee168df48))
+- **generators:** implement conditionals, fix kebabCase ([#410](https://github.com/vuesion/vuesion/pull/410)) ([1a57b508](https://github.com/vuesion/vuesion/commit/1a57b5085fb73c5494e5a6997872c22649ddf03d))
+
 ### 3.1.0 (2019-05-02)
 
 ##### Chores
