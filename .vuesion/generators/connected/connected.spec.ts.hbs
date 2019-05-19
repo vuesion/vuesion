@@ -1,16 +1,17 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';{{#if wantVuex}}
 import Vuex, { ActionTree, GetterTree, Store } from 'vuex';
-import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
 import { {{ properCase componentName }}Getters, I{{ properCase componentName }}Getters } from '../getters';
 import { {{ properCase componentName }}DefaultState, I{{ properCase componentName }}State } from '../state';
-import { {{ properCase componentName }}Actions, I{{ properCase componentName }}Actions } from '../actions';
+import { {{ properCase componentName }}Actions, I{{ properCase componentName }}Actions } from '../actions';{{/if}}
+import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
 import { i18n } from '@/app/shared/plugins/i18n/i18n';
 
-const localVue = createLocalVue();
+const localVue = createLocalVue();{{#if wantVuex}}
 
-localVue.use(Vuex);
+localVue.use(Vuex);{{/if}}
 
 describe('{{ properCase componentName }}.vue', () => {
+{{#if wantVuex}}
   let store: Store<I{{ properCase componentName }}State>;
   let getters: GetterTree<I{{ properCase componentName }}State, I{{ properCase componentName }}Getters>;
   let actions: ActionTree<I{{ properCase componentName }}State, I{{ properCase componentName }}Actions>;
@@ -30,26 +31,27 @@ describe('{{ properCase componentName }}.vue', () => {
     };
 
     store = new Vuex.Store({
-                             modules: {
-                               {{ camelCase moduleName }}: {
-                                 namespaced: true,
-                                 getters,
-                                 actions,
-                                 state,
-                               },
-                             },
-                           } as any);
+      modules: {
+        {{ camelCase moduleName }}: {
+          namespaced: true,
+          getters,
+          actions,
+          state,
+        },
+      },
+    } as any);
   });
 
-  test('renders component', () => {
+{{/if}}  test('renders component', () => {
     const wrapper = mount<any>({{ properCase componentName }}, {
-      store,
-      localVue,
+    {{#if wantVuex}}  store,
+    {{/if}}  localVue,
       i18n,
     });
 
     expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
   });
+{{#if wantVuex}}
 
   test('should increment and decrement', () => {
     const wrapper: any = mount<any>({{ properCase componentName }}, {
@@ -73,5 +75,5 @@ describe('{{ properCase componentName }}.vue', () => {
     expect(store.dispatch).toHaveBeenCalled();
     expect(store.dispatch).toHaveBeenCalledWith(`{{ camelCase moduleName }}/increment`);
   });
-
+{{/if}}
 });

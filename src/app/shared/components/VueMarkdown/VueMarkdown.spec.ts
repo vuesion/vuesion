@@ -64,4 +64,29 @@ describe('VueMarkdown.vue', () => {
 
     expect(actual).toHaveBeenCalledWith(expected);
   });
+
+  test('click on a link should not use the router', () => {
+    const $router = {
+      push: jest.fn(),
+    };
+    const wrapper = mount(VueMarkdown, {
+      localVue,
+      propsData: {
+        useRouter: false,
+      },
+      mocks: {
+        $router,
+      },
+      slots: {
+        default: ['[test](/test)'],
+      },
+    });
+
+    const actual = $router.push;
+    const expected = '/test';
+
+    wrapper.find('a').trigger('click');
+
+    expect(actual).not.toHaveBeenCalledWith(expected);
+  });
 });
