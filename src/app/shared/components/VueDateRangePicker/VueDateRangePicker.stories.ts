@@ -17,3 +17,27 @@ story.add(
     },
   })),
 );
+
+story.add(
+  'MinDate',
+  withInfo({})(() => ({
+    data: () => ({
+      today: new Date(),
+    }),
+    components: { VueDateRangePicker },
+    template: `<vue-date-range-picker @change="action" :first-day-of-week="1" placeholder-start="Select a start date" placeholder-end="Select a end date" :min-date="today" />`,
+    i18n,
+  })),
+);
+
+story.add(
+  'MaxDate',
+  withInfo({})(() => ({
+    data: () => ({
+      today: new Date(),
+    }),
+    components: { VueDateRangePicker },
+    template: `<vue-date-range-picker @change="action" :first-day-of-week="1" placeholder-start="Select a start date" placeholder-end="Select a end date" :max-date="today" />`,
+    i18n,
+  })),
+);

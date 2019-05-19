@@ -13,3 +13,27 @@ story.add(
     i18n,
   })),
 );
+
+story.add(
+  'MinDate',
+  withInfo({})(() => ({
+    data: () => ({
+      today: new Date(),
+    }),
+    components: { VueCalendar },
+    template: `<vue-calendar :min-date="today" />`,
+    i18n,
+  })),
+);
+
+story.add(
+  'MaxDate',
+  withInfo({})(() => ({
+    data: () => ({
+      today: new Date(),
+    }),
+    components: { VueCalendar },
+    template: `<vue-calendar :max-date="today" />`,
+    i18n,
+  })),
+);

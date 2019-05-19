@@ -17,3 +17,27 @@ story.add(
     },
   })),
 );
+
+story.add(
+  'MinDate',
+  withInfo({})(() => ({
+    data: () => ({
+      today: new Date(),
+    }),
+    components: { VueDatePicker },
+    template: `<vue-date-picker name="date" id="date" @change="action" :first-day-of-week="1" placeholder="Select a date" :min-date="today" />`,
+    i18n,
+  })),
+);
+
+story.add(
+  'MaxDate',
+  withInfo({})(() => ({
+    data: () => ({
+      today: new Date(),
+    }),
+    components: { VueDatePicker },
+    template: `<vue-date-picker name="date" id="date" @change="action" :first-day-of-week="1" placeholder="Select a date" :max-date="today" />`,
+    i18n,
+  })),
+);

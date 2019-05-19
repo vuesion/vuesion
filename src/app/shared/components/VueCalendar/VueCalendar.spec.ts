@@ -1,4 +1,4 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { createLocalVue, mount, WrapperArray } from '@vue/test-utils';
 import VueCalendar from './VueCalendar.vue';
 import { i18n } from '../../plugins/i18n/i18n';
 
@@ -164,5 +164,60 @@ describe('VueCalendar.vue', () => {
     });
 
     expect(wrapper.findAll(`.currentDay`)).toHaveLength(0);
+  });
+
+  test('should render 100 years minDate + 100 years in future', async () => {
+    const wrapper = mount<any>(VueCalendar, {
+      localVue,
+      i18n,
+      propsData: {
+        minDate: new Date(2000, 1, 1),
+      },
+    });
+
+    wrapper.find('.h4').trigger('click');
+
+    const years = wrapper.find(`.year`).findAll('div');
+
+    expect(years).toHaveLength(102);
+    expect(years.at(1).text()).toBe('2000');
+    expect(years.at(years.length - 1).text()).toBe('2100');
+  });
+
+  test('should render 100 years maxDate - 100 years in the past', async () => {
+    const wrapper = mount<any>(VueCalendar, {
+      localVue,
+      i18n,
+      propsData: {
+        maxDate: new Date(2000, 1, 1),
+        selectedDate: new Date(2000, 1, 1),
+      },
+    });
+
+    wrapper.find('.h4').trigger('click');
+
+    const years = wrapper.find(`.year`).findAll('div');
+
+    expect(years).toHaveLength(102);
+    expect(years.at(1).text()).toBe('1900');
+    expect(years.at(years.length - 1).text()).toBe('2000');
+  });
+
+  test('should render 50 in the past and 50 years in the future', async () => {
+    const wrapper = mount<any>(VueCalendar, {
+      localVue,
+      i18n,
+      propsData: {
+        today: new Date(2000, 1, 1),
+      },
+    });
+
+    wrapper.find('.h4').trigger('click');
+
+    const years = wrapper.find(`.year`).findAll('div');
+
+    expect(years).toHaveLength(102);
+    expect(years.at(1).text()).toBe('1969');
+    expect(years.at(years.length - 1).text()).toBe('2069');
   });
 });
