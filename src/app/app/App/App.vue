@@ -57,7 +57,7 @@
 
       <vue-sidebar-group title="Documentation">
         <vue-sidebar-group-item>
-          <a href="/docs">
+          <a href="https://vuesion.github.io/docs/en/">
             <vue-icon-book />
             Documentation
           </a>

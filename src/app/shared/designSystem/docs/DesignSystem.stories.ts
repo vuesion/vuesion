@@ -40,7 +40,7 @@ This Design System is the next step, it is a blueprint that enables you to creat
 Brand or your clients Corporate Identity.
 
 We are aware that not everyone has to implement their own professional Design System.
-If this is the case for you, you might be interested in [integrating a 3rd party UI library](/docs/tutorials/third-party.html)
+If this is the case for you, you might be interested in [integrating a 3rd party UI library](https://vuesion.github.io/docs/en/tutorials/third-party.html)
 </vue-markdown>
 `,
   })),

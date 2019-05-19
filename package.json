@@ -47,7 +47,7 @@
     "start": "node ./dist/server/server.js",
     "e2e:ci": "npx start-server-and-test dev http://localhost:3000 e2e",
     "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\" \"npm run e2e:ci\" && npm run build:spa",
-    "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\" \"npx vuepress build docs\""
+    "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\""
   },
   "dependencies": {
     "@vuesion/addon-vuex-persist": "^2.3.0-alpha.2",
