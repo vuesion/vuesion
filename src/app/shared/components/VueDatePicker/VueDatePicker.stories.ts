@@ -27,6 +27,9 @@ story.add(
     components: { VueDatePicker },
     template: `<vue-date-picker name="date" id="date" @change="action" :first-day-of-week="1" placeholder="Select a date" :min-date="today" />`,
     i18n,
+    methods: {
+      action: action('@change'),
+    },
   })),
 );
 
@@ -39,5 +42,8 @@ story.add(
     components: { VueDatePicker },
     template: `<vue-date-picker name="date" id="date" @change="action" :first-day-of-week="1" placeholder="Select a date" :max-date="today" />`,
     i18n,
+    methods: {
+      action: action('@change'),
+    },
   })),
 );
