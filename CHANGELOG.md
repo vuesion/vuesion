@@ -1,3 +1,9 @@
+#### 3.2.2 (2019-05-30)
+
+##### Chores
+
+- update dependencies ([27d1b9a7](https://github.com/vuesion/vuesion/commit/27d1b9a78eecc3c82ce5ce4d23e094a9c37c0665))
+
 #### 3.2.1 (2019-05-30)
 
 ##### Bug Fixes
