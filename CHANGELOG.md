@@ -1,3 +1,9 @@
+#### 3.2.3 (2019-06-09)
+
+##### Bug Fixes
+
+- **storybook:** merge webpack resolve attributes ([163c95d8](https://github.com/vuesion/vuesion/commit/163c95d8fe33dbe2fb337ef125e69028367d03f8))
+
 #### 3.2.2 (2019-05-30)
 
 ##### Chores
