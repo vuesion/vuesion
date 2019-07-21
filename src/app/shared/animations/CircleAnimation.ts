@@ -1,7 +1,7 @@
-import { random, randomInt } from '../utils/misc';
+import { getFloatInRange, getIntInRange } from '@vuesion/utils/dist/randomGenerator';
 
 class Circle {
-  private opacity: number = random(0.05, 0.9);
+  private opacity: number = getFloatInRange(0.05, 0.9);
   private counter: number = 0;
   private direction: number = 0;
 
@@ -13,14 +13,14 @@ class Circle {
     private xPos: number,
     private yPos: number,
   ) {
-    this.direction = randomInt(0, 1) === 1 ? -1 : 1;
+    this.direction = getIntInRange(0, 1) === 1 ? -1 : 1;
   }
 
   public update(): void {
     this.counter += this.direction * this.speed;
 
-    const opacityDirection: number = randomInt(0, 1) === 1 ? -1 : 1;
-    this.opacity += opacityDirection * (randomInt(0, 999) / 50000);
+    const opacityDirection: number = getIntInRange(0, 1) === 1 ? -1 : 1;
+    this.opacity += opacityDirection * (getIntInRange(0, 999) / 50000);
 
     this.context.beginPath();
 
@@ -40,9 +40,9 @@ class Circle {
 
     if (this.opacity <= 0) {
       this.counter = 0;
-      this.opacity = random(0.05, 0.9);
-      this.width = randomInt(2, 10);
-      this.speed = random(0.1, 1);
+      this.opacity = getFloatInRange(0.05, 0.9);
+      this.width = getIntInRange(2, 10);
+      this.speed = getFloatInRange(0.1, 1);
     }
   }
 }
@@ -58,11 +58,11 @@ const getCircles = (
     localCircles.push(
       new Circle(
         context,
-        randomInt(50, 350),
-        random(0.1, 1),
-        random(2, 10),
-        randomInt(0, canvas.width),
-        randomInt(0, canvas.height),
+        getIntInRange(50, 350),
+        getFloatInRange(0.1, 1),
+        getFloatInRange(2, 10),
+        getIntInRange(0, canvas.width),
+        getIntInRange(0, canvas.height),
       ),
     );
   }

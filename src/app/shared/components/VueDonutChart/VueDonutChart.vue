@@ -37,8 +37,8 @@
 </template>
 
 <script lang="ts">
+import { getIntInRange } from '@vuesion/utils/dist/randomGenerator';
 import { IChartDataItem } from './IChartDataItem';
-import { randomInt } from '../../utils/misc';
 import VueHeadline from '../VueHeadline/VueHeadline.vue';
 
 let usedColors: string[] = [];
@@ -91,13 +91,13 @@ export default {
   },
   methods: {
     getRandomColor /* istanbul ignore next */() {
-      const color = this.$style[`color${randomInt(1, this.colorCount)}`];
+      const color = this.$style[`color${getIntInRange(1, this.colorCount)}`];
 
       if (usedColors.indexOf(color) === -1) {
         usedColors.push(color);
         return color;
       } else if (usedColors.length === this.colorCount) {
-        return this.$style[`color${randomInt(1, this.colorCount)}`];
+        return this.$style[`color${getIntInRange(1, this.colorCount)}`];
       } else {
         return this.getRandomColor();
       }

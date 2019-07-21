@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { randomInt } from '../../utils/misc';
+import { getIntInRange } from '@vuesion/utils/dist/randomGenerator';
 import VueIconSortDown from '../icons/VueIconSortDown/VueIconSortDown.vue';
 import VueCollapse from '../VueCollapse/VueCollapse.vue';
 
@@ -42,7 +42,7 @@ export default {
   data(): any {
     return {
       show: false,
-      id: randomInt(213123123, 98982984398),
+      id: getIntInRange(213123123, 98982984398),
       index: -1,
     };
   },

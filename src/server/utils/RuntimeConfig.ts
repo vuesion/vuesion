@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import cloneDeep from 'lodash/cloneDeep';
-import { IAppConfig } from '../../app/config/IAppConfig';
+import { IAppConfig } from '@/app/config/IAppConfig';
 
 /**
  * The runtime config can be used to override the AppConfig per request,
