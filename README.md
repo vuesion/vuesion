@@ -45,7 +45,7 @@ Please visit the **[vuesion app on heroku!](https://vuesion.herokuapp.com/)**
 
 > Important note for **Windows users only**: https://github.com/zkat/npx/issues/146#issuecomment-384016791
 
-1. Run `npx @vuesion/service create [project-name]` for example `npx @vuesion/service create my-app`
+1. Run `npx @vuesion/create [project-name]` for example `npx @vuesion/create my-app`
 2. Change directory `cd my-app`
 3. Run `npm run dev`
 

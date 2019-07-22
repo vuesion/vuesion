@@ -83,8 +83,8 @@
       <br />
       <ol>
         <li>
-          Run <code>npx @vuesion/service create [project-name]</code><br />
-          for example <code>npx @vuesion/service create my-app</code>
+          Run <code>npx @vuesion/create [project-name]</code><br />
+          for example <code>npx @vuesion/create my-app</code>
         </li>
         <li>Change directory <code>cd my-app</code></li>
         <li>Run <code>npm run dev</code></li>
