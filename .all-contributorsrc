@@ -191,6 +191,33 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "einfalles",
+      "name": "Duylam Nguyen-Ngo",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/855206?v=4",
+      "profile": "http://duylam.pleaserevise.xyz",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "majroth",
+      "name": "Martin Merschroth",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19751007?v=4",
+      "profile": "https://www.merschroth.design/",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "campunknita",
+      "name": "Camila Peralta Wieland",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1984124?v=4",
+      "profile": "http://www.camswork.com",
+      "contributions": [
+        "design"
+      ]
     }
   ]
 }

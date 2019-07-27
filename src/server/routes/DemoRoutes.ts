@@ -1,9 +1,9 @@
 import * as Express from 'express';
 import { Request, Response } from 'express';
 import { serve } from '../utils/Utils';
-import { randomInt } from '@shared/utils/misc';
+import { getIntInRange } from '@vuesion/utils/dist/randomGenerator';
 
-const getErrorWithProbability = (probability: number) => randomInt(0, 100) <= probability;
+const getErrorWithProbability = (probability: number) => getIntInRange(0, 100) <= probability;
 
 export const DemoRoutes = (app: Express.Application) => {
   /**

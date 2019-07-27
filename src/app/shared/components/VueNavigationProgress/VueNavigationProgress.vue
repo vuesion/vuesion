@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { randomInt } from '../../utils/misc';
+import { getIntInRange } from '@vuesion/utils/dist/randomGenerator';
 
 export default {
   name: 'VueNavigationProgress',
@@ -30,11 +30,11 @@ export default {
       this.interval = setInterval(() => {
         this.show = true;
         if (this.percent <= 50) {
-          this.percent += randomInt(30, 40);
+          this.percent += getIntInRange(30, 40);
         } /* istanbul ignore next */ else if (this.percent <= 70) {
-          this.percent += randomInt(5, 10);
+          this.percent += getIntInRange(5, 10);
         } /* istanbul ignore next */ else if (this.percent <= 95) {
-          this.percent += randomInt(1, 2);
+          this.percent += getIntInRange(1, 2);
         } else {
           this.percent = 99;
         }
