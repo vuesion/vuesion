@@ -22,6 +22,7 @@
       <vue-icon-times />
       <vue-icon-twitter-square />
       <vue-icon-vuesion />
+      <vue-icon-star />
     </div>
   </div>
 </template>
@@ -47,6 +48,7 @@ import VueIconSpinner from '@components/icons/VueIconSpinner/VueIconSpinner.vue'
 import VueIconTimes from '@components/icons/VueIconTimes/VueIconTimes.vue';
 import VueIconTwitterSquare from '@components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
 import VueIconVuesion from '@components/icons/VueIconVuesion/VueIconVuesion.vue';
+import VueIconStar from '@components/icons/VueIconStar/VueIconStar.vue';
 
 export default {
   name: 'IconList',
@@ -71,6 +73,7 @@ export default {
     VueIconBullhorn,
     VueIconBook,
     VueHeadline,
+    VueIconStar,
   },
 };
 </script>
