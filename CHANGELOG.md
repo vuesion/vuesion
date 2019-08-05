@@ -1,3 +1,15 @@
+### 3.3.0 (2019-08-05)
+
+##### Chores
+
+- update dependencies ([fc4cae23](https://github.com/vuesion/vuesion/commit/fc4cae23875d38c46b647b42bbcf239cfa66e098))
+
+##### New Features
+
+- **components:** add star rating ([#425](https://github.com/vuesion/vuesion/pull/425)) ([681b23eb](https://github.com/vuesion/vuesion/commit/681b23ebf66df81f2713adf6b6018f8c3c04f201))
+- update vuesion/service version ([#427](https://github.com/vuesion/vuesion/pull/427)) ([ae0909a4](https://github.com/vuesion/vuesion/commit/ae0909a40b83df94888748d0548f30b23841e626))
+- update installation to use the new create cli ([c08e44a9](https://github.com/vuesion/vuesion/commit/c08e44a9535f35ba8ad05e6c708d782c0c7fa665))
+
 #### 3.2.3 (2019-06-09)
 
 ##### Bug Fixes
