@@ -1,3 +1,9 @@
+#### 3.3.1 (2019-08-12)
+
+##### Chores
+
+- **deps:** update vuesion packages ([b79db603](https://github.com/vuesion/vuesion/commit/b79db603ece4490d202f615f90053c502d052f07))
+
 ### 3.3.0 (2019-08-05)
 
 ##### Chores
