@@ -94,6 +94,7 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 
 # Reference resources
 
+- [FAQ](https://vuesion.github.io/docs/en/FAQ.html#why-not-vue-cli-or-nuxt-js)
 - [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate)
 - [vue-ssr-starter-kit](https://github.com/doabit/vue-ssr-starter-kit)
 - [Angular](https://github.com/angular/angular)
