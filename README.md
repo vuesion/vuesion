@@ -94,6 +94,7 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 
 # Reference resources
 
+- [FAQ](https://github.com/vuesion/docs/blob/master/en/FAQ.md)
 - [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate)
 - [vue-ssr-starter-kit](https://github.com/doabit/vue-ssr-starter-kit)
 - [Angular](https://github.com/angular/angular)
