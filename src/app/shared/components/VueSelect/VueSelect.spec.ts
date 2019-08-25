@@ -40,7 +40,7 @@ describe('VueSelect.vue', () => {
       },
     });
 
-    expect(wrapper.findAll('option')).toHaveLength(5);
+    expect(wrapper.findAll('option')).toHaveLength(6);
     expect(wrapper.find('select').attributes().multiple).toBe(undefined);
   });
 
@@ -70,7 +70,7 @@ describe('VueSelect.vue', () => {
       },
     });
 
-    expect(wrapper.findAll('option')).toHaveLength(5);
+    expect(wrapper.findAll('option')).toHaveLength(6);
     expect(wrapper.findAll('.disabled')).toHaveLength(1);
   });
 

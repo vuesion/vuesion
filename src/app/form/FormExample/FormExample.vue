@@ -79,7 +79,7 @@
       </vue-grid-item>
       <vue-grid-item>
         <vue-select
-          :class="$style.select"
+          placeholder="Choose Country"
           name="country"
           id="country"
           v-model="form.country"
@@ -157,7 +157,6 @@ export default {
         newsletter: false,
       },
       countryOptions: [
-        { label: 'Choose a Country', value: '' },
         { label: 'Germany', value: 'de' },
         { label: 'USA', value: 'us' },
         { label: 'Other', value: 'other' },
@@ -203,7 +202,7 @@ export default {
               title: 'Data has been saved!',
               text: 'Have a look at the console!',
             } as INotification);
-          }, 500);
+          }, 1000);
         },
       );
     },
@@ -216,9 +215,5 @@ export default {
 
 .formExample {
   display: block;
-}
-
-.select {
-  margin-bottom: $space-12;
 }
 </style>
