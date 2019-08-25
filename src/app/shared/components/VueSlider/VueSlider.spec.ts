@@ -79,7 +79,7 @@ describe('VueSlider.vue', () => {
     expect(wrapper.vm.currentSlider).toBe(0);
   });
 
-  test('should remove handlers on moveEnd', () => {
+  test('should remove handlers on moveEnd', (done) => {
     document.removeEventListener = jest.fn();
     const wrapper = mount<any>(VueSlider, {
       localVue,
@@ -93,9 +93,13 @@ describe('VueSlider.vue', () => {
     wrapper.vm.currentSlider = 1;
     wrapper.vm.moveEnd(null, 0);
 
-    expect(document.removeEventListener).toHaveBeenCalledTimes(5);
-    expect(wrapper.vm.currentSlider).toBe(null);
-    expect(wrapper.emitted('change')).toBeTruthy();
+    setTimeout(() => {
+      expect(document.removeEventListener).toHaveBeenCalledTimes(5);
+      expect(wrapper.vm.currentSlider).toBe(null);
+      expect(wrapper.emitted('change')).toBeTruthy();
+
+      done();
+    }, 100);
   });
 
   test('should do nothing on moveEnd if currentSlider is null', () => {
