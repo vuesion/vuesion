@@ -4,12 +4,10 @@
       <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'Form Example' }]" />
 
       <vue-grid-row>
-        <vue-grid-item class="vueGridItem">
+        <vue-grid-item>
           <vue-headline level="1">Form example</vue-headline>
           <form-example />
         </vue-grid-item>
-
-        <vue-grid-item class="vueGridItem"></vue-grid-item>
       </vue-grid-row>
     </vue-grid>
   </div>
@@ -41,6 +39,5 @@ export default {
 
 .form {
   padding-top: $nav-bar-height;
-  padding-bottom: $space-12;
 }
 </style>

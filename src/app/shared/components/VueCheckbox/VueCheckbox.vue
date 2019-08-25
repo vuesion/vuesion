@@ -11,8 +11,8 @@
       @change.prevent="onClick"
       v-bind="$attrs"
     />
-    <div :class="$style.box" @click="onClick" />
-    <label :for="name" v-html="label" />
+    <div :class="$style.box" @click="onClick"></div>
+    <label :for="name" v-html="label"></label>
   </div>
 </template>
 
@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     cssClasses() {
-      const classes = [];
+      const classes = [this.$style.input];
 
       if (this.radio) {
         classes.push(this.$style.radio);
@@ -99,13 +99,41 @@ export default {
 <style lang="scss" module>
 @import '~@/app/shared/design-system';
 
-.checkbox {
+.input {
   user-select: none;
   color: $checkbox-color;
   display: inline-block;
   margin: $checkbox-margin;
   padding: $checkbox-padding;
   position: relative;
+  top: $space-8;
+
+  input {
+    outline: none !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    user-select: none;
+    left: $space-4;
+    top: $space-4;
+    width: 0;
+    height: 0;
+    margin: $checkbox-check-margin;
+    position: absolute;
+
+    &:focus {
+      + .box:before {
+        background: $checkbox-checked-bg;
+      }
+    }
+
+    &:checked {
+      + .box:before {
+        background: $checkbox-checked-bg;
+      }
+    }
+  }
 
   label {
     display: inline-block;
@@ -134,6 +162,16 @@ export default {
 
     &:after {
       opacity: 0;
+      transition-duration: $brand-transition-duration;
+      transition-timing-function: cubic-bezier(0, 0.84, 0.83, 0.67);
+      box-shadow: $checkbox-shadow;
+    }
+  }
+}
+
+.checkbox {
+  .box {
+    &:after {
       transform: rotate(-45deg) scale(3);
       top: $checkbox-size / 8;
       left: $checkbox-size / 12;
@@ -143,29 +181,11 @@ export default {
       border-top: none;
       border-right: none;
       transition-property: opacity, transform;
-      transition-duration: $brand-transition-duration;
-      transition-timing-function: cubic-bezier(0, 0.84, 0.83, 0.67);
-      box-shadow: $checkbox-shadow;
     }
   }
 
   input[type='checkbox'] {
-    outline: 0;
-    margin: $checkbox-check-margin;
-    position: absolute;
-    top: 2px;
-
-    &:focus {
-      + .box:before {
-        background: $checkbox-checked-bg;
-      }
-    }
-
     &:checked {
-      + .box:before {
-        background: $checkbox-checked-bg;
-      }
-
       + .box:after {
         transform: rotate(-45deg) scale(1);
         opacity: 1;
@@ -176,41 +196,12 @@ export default {
 }
 
 .radio {
-  user-select: none;
-  color: $checkbox-color;
-  display: inline-block;
-  margin: $checkbox-margin;
-  padding: $checkbox-padding;
-  position: relative;
-
-  label {
-    display: inline-block;
-    padding-left: $checkbox-size + $space-12;
-    cursor: pointer;
-  }
-
   .box {
-    &:before,
-    &:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      cursor: pointer;
-    }
-
     &:before {
-      width: $checkbox-size;
-      height: $checkbox-size;
-      background: $checkbox-bg;
-      border: $checkbox-border;
-      cursor: pointer;
-      transition: $checkbox-transition;
       border-radius: 50%;
     }
 
     &:after {
-      opacity: 0;
       top: $checkbox-size / 6;
       left: $checkbox-size / 6;
       width: $checkbox-size / 1.5;
@@ -218,30 +209,14 @@ export default {
       border-radius: 50%;
       background-color: #fff;
       transition-property: opacity;
-      transition-duration: $brand-transition-duration;
-      transition-timing-function: cubic-bezier(0, 0.84, 0.83, 0.67);
-      box-shadow: $checkbox-shadow;
     }
   }
 
   input[type='radio'] {
-    outline: 0;
-    margin: $checkbox-check-margin;
     left: 6px;
     top: 6px;
-    position: absolute;
-
-    &:focus {
-      + .box:before {
-        background: $checkbox-checked-bg;
-      }
-    }
 
     &:checked {
-      + .box:before {
-        background: $checkbox-checked-bg;
-      }
-
       + .box:after {
         opacity: 1;
       }

@@ -1,14 +1,12 @@
 <template>
   <div :class="cssClasses">
-    <input
+    <textarea
       v-validate="validation"
       :data-vv-as="placeholder"
       :name="name"
       :id="id"
       :required="required"
       :value="value"
-      :type="type"
-      :autocomplete="autocomplete"
       :disabled="disabled"
       :readonly="readonly"
       :class="[value ? $style.hasValue : '']"
@@ -16,9 +14,8 @@
       v-bind="$attrs"
       v-on="handlers"
       ref="input"
-    />
-    <span :class="$style.bar"></span>
-    <label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
+    ></textarea>
+    <span :class="$style.bar"></span> <label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
     <div :class="$style.message">{{ messageOrError }}</div>
   </div>
 </template>
@@ -27,7 +24,7 @@
 import { Validator } from 'vee-validate';
 
 export default {
-  name: 'VueInput',
+  name: 'VueTextarea',
   inheritAttrs: false,
   inject: {
     $validator: {
@@ -55,10 +52,6 @@ export default {
     value: {
       type: String,
     },
-    type: {
-      type: String,
-      default: 'text',
-    },
     disabled: {
       type: Boolean,
     },
@@ -74,10 +67,6 @@ export default {
     validation: {
       type: String,
     },
-    autocomplete: {
-      type: String,
-      default: 'off',
-    },
   },
   computed: {
     isValid() {
@@ -87,7 +76,7 @@ export default {
       return this.isValid ? this.message : this.errorMessage;
     },
     cssClasses() {
-      const classes = [this.$style.vueInput];
+      const classes = [this.$style.vueTextarea];
 
       if (this.disabled) {
         classes.push(this.$style.disabled);
@@ -142,17 +131,17 @@ export default {
 <style lang="scss" module>
 @import '~@/app/shared/design-system';
 
-.vueInput {
+.vueTextarea {
   position: relative;
   margin: $input-margin;
 
-  input,
-  input:active,
-  input:focus,
-  input:hover {
+  textarea,
+  textarea:active,
+  textarea:focus,
+  textarea:hover {
     outline: none !important;
   }
-  input {
+  textarea {
     background-color: $input-background-color;
     border: none;
     border-bottom: $input-border-bottom;
@@ -163,19 +152,19 @@ export default {
     font-size: $input-font-size;
     font-weight: $input-font-weight;
     color: $input-color;
-    height: $input-height;
+    height: $input-height + $space-4;
     border-radius: 0;
   }
-  input:focus ~ label,
-  input.hasValue ~ label {
+  textarea:focus ~ label,
+  textarea.hasValue ~ label {
     top: -$space-20;
     font-size: $input-placeholder-active-font-size;
     font-weight: $input-placeholder-active-font-weight;
     color: $input-placeholder-active-font-color;
     height: $input-placeholder-active-height;
   }
-  input:focus ~ .bar:before,
-  input:focus ~ .bar:after {
+  textarea:focus ~ .bar:before,
+  textarea:focus ~ .bar:after {
     width: 50%;
   }
 
@@ -194,11 +183,11 @@ export default {
   label {
     color: $input-error-color;
   }
-  input {
+  textarea {
     border-bottom-color: $input-error-color;
   }
-  input:focus ~ label,
-  input.hasValue ~ label {
+  textarea:focus ~ label,
+  textarea.hasValue ~ label {
     color: $input-error-color;
   }
 
