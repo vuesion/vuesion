@@ -2,7 +2,6 @@
   <div :class="cssClasses">
     <select
       :title="placeholder"
-      :aria-labelledby="id"
       :name="name"
       :id="id"
       v-validate="validation"
@@ -13,16 +12,19 @@
       v-bind="$attrs"
       v-on="handlers"
     >
-      <option v-for="(option, idx) in options" :key="idx" :value="option.value" :selected="isSelected(option)">
+      <option v-for="(option, idx) in selectOptions" :key="idx" :value="option.value" :selected="isSelected(option)">
         {{ option.label }}
       </option>
     </select>
-    <i :class="$style.icon" v-if="!multiple" />
+    <i :class="$style.icon" v-if="!multiple"></i>
+    <span :class="$style.bar"></span>
+    <label :for="id">{{ placeholder }}</label>
   </div>
 </template>
 
 <script lang="ts">
 import { Validator } from 'vee-validate';
+import { IAutocompleteOption } from '@components/VueAutocomplete/IAutocompleteOption';
 
 export interface IVueSelectOption {
   label: string;
@@ -74,6 +76,11 @@ export default {
       type: String,
     },
   },
+  data(): { selectOptions: IAutocompleteOption[] } {
+    return {
+      selectOptions: [],
+    };
+  },
   computed: {
     isValid() {
       return this.errors ? this.errors.first(this.name) === null : true;
@@ -91,6 +98,10 @@ export default {
 
       if (!this.isValid) {
         classes.push(this.$style.error);
+      }
+
+      if (this.value.length > 0) {
+        classes.push(this.$style.hasValue);
       }
 
       return classes;
@@ -126,6 +137,20 @@ export default {
       this.$emit('input', selected.map((option: IVueSelectOption) => option.value).join('|'));
     },
   },
+  watch: {
+    options: {
+      immediate: true,
+      handler(options: IAutocompleteOption[]) {
+        const selectOptions = [...options];
+
+        if (this.multiple === false) {
+          selectOptions.unshift({ label: '', value: '' });
+        }
+
+        this.selectOptions = selectOptions;
+      },
+    },
+  },
 };
 </script>
 
@@ -133,12 +158,17 @@ export default {
 @import '~@/app/shared/design-system';
 
 .vueSelect {
-  overflow: hidden;
   background: $select-bg;
-  box-shadow: $select-shadow;
   margin: $select-margin;
   position: relative;
-  border: $select-border;
+  border: none;
+
+  select,
+  select:active,
+  select:focus,
+  select:hover {
+    outline: none !important;
+  }
 
   select::-ms-expand {
     display: none;
@@ -147,7 +177,6 @@ export default {
   select {
     padding: $select-padding;
     color: $select-color;
-    font-size: $select-font-size;
     display: block;
     width: 100%;
     box-shadow: none;
@@ -157,6 +186,8 @@ export default {
     -moz-appearance: none;
     appearance: none;
     border: none;
+    border-bottom: $input-border-bottom;
+    border-radius: 0;
 
     &:focus ~ .icon {
       &:before {
@@ -167,6 +198,35 @@ export default {
         transform: translate(4px, 0) rotate(-45deg);
       }
     }
+    &:focus ~ label {
+      top: -$space-20;
+      font-size: $input-placeholder-active-font-size;
+      font-weight: $input-placeholder-active-font-weight;
+      color: $input-placeholder-active-font-color;
+      height: $input-placeholder-active-height;
+    }
+    &:focus ~ .bar:before,
+    &:focus ~ .bar:after {
+      width: 50%;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  select,
+  option {
+    font-size: $select-font-size;
+    font-family: $select-font-family;
+    font-weight: $select-font-weight;
+  }
+  label {
+    position: absolute;
+    left: 0;
+    top: $space-8;
+    pointer-events: none;
+    transition: 0.2s ease all;
   }
 }
 
@@ -178,11 +238,28 @@ export default {
       padding: $select-multi-option-padding;
     }
   }
+
+  label {
+    top: -$space-20;
+    font-size: $input-placeholder-active-font-size;
+    font-weight: $input-placeholder-active-font-weight;
+    height: $input-placeholder-active-height;
+  }
+}
+
+.hasValue {
+  label {
+    top: -$space-20;
+    font-size: $input-placeholder-active-font-size;
+    font-weight: $input-placeholder-active-font-weight;
+    color: $input-placeholder-active-font-color;
+    height: $input-placeholder-active-height;
+  }
 }
 
 .icon {
   position: absolute;
-  right: $space-20;
+  right: $space-12;
   top: $space-12;
   height: auto;
   width: auto;
@@ -211,6 +288,54 @@ export default {
 }
 
 .error {
-  border: 1px solid $brand-danger;
+  select {
+    border-bottom-color: $input-error-color;
+
+    &:focus ~ label,
+    &.hasValue ~ label {
+      color: $input-error-color;
+    }
+  }
+
+  label {
+    color: $input-error-color;
+  }
+
+  .bar {
+    &:before,
+    &:after {
+      background: $input-error-color;
+    }
+  }
+
+  .icon {
+    &:before,
+    &:after {
+      background-color: $input-error-color;
+    }
+  }
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  &:before,
+  &:after {
+    content: '';
+    height: $input-bar-height;
+    width: 0;
+    bottom: 0;
+    position: absolute;
+    background: $input-bar-color;
+    transition: all 0.2s ease-in-out;
+  }
+  &:before {
+    left: 50%;
+  }
+  &:after {
+    right: 50%;
+  }
 }
 </style>
