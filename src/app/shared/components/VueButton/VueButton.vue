@@ -180,9 +180,9 @@ export default {
 }
 
 .loader {
-  display: inline-block;
-  position: relative;
   top: $space-2;
+  width: $loader-size - $space-4;
+  height: $loader-size - $space-4;
 }
 
 @each $variation, $values in $button-variations {
