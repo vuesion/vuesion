@@ -17,7 +17,8 @@
       v-on="handlers"
       ref="input"
     />
-    <span :class="$style.bar"></span> <label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
+    <span :class="$style.bar"></span>
+    <label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
     <div :class="$style.message">{{ messageOrError }}</div>
   </div>
 </template>
