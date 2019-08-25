@@ -15,13 +15,13 @@
     </ul>
 
     <div :class="cssClasses">
-      <div :class="$style.progress" :style="{ width: progressWidth, marginLeft: progressLeft }" />
+      <div :class="$style.progress" :style="{ width: progressWidth, marginLeft: progressLeft }"></div>
 
       <button
         :class="handleCssClasses(0)"
         :style="{ left: handleLeftPosition }"
         :disabled="disabled"
-        aria-disabled="false"
+        :aria-disabled="disabled"
         tabindex="0"
         type="button"
         aria-label="left handle"
@@ -29,14 +29,14 @@
         @focus="currentSlider = 0"
         @keydown="onKeyDown"
         @keyup="onKeyUp"
-      />
+      ></button>
 
       <button
         v-if="isMultiRange"
         :class="handleCssClasses(1)"
         :style="{ left: handleRightPosition }"
         :disabled="disabled"
-        aria-disabled="false"
+        :aria-disabled="disabled"
         tabindex="0"
         type="button"
         aria-label="right handle"
@@ -44,7 +44,7 @@
         @focus="currentSlider = 1"
         @keydown="onKeyDown"
         @keyup="onKeyUp"
-      />
+      ></button>
     </div>
   </div>
 </template>
@@ -173,8 +173,11 @@ export default {
       }
 
       this.$emit('change', { values: [this.currentMin, this.currentMax] });
-      this.currentSlider = null;
-      this.unbindEvents();
+
+      setTimeout(() => {
+        this.currentSlider = null;
+        this.unbindEvents();
+      }, 10);
     },
     moving(e: any) {
       const value: number = algorithm.getValue(this.percentageDiff(e), this.min, this.max);
