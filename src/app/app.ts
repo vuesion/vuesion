@@ -8,8 +8,8 @@ import App from './app/App/App.vue';
 import { store } from './store';
 import { router } from './router';
 import { IState } from './state';
-import { i18n } from './shared/plugins/i18n/i18n';
-import { HttpService } from './shared/services/HttpService/HttpService';
+import { i18n } from '@shared/plugins/i18n/i18n';
+import { HttpService } from '@shared/services/HttpService/HttpService';
 import './shared/directives';
 
 Vue.use(VeeValidate, { inject: false, delay: 1 });

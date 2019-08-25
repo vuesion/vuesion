@@ -43,7 +43,7 @@ describe('VueTextarea.vue', () => {
       },
     }) as any;
 
-    wrapper.find('input').trigger('input');
+    wrapper.find('textarea').trigger('input');
     expect(wrapper.emitted('input')).toBeTruthy();
   });
 

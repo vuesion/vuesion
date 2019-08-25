@@ -18,7 +18,7 @@
     </select>
     <i :class="$style.icon" v-if="!multiple"></i>
     <span :class="$style.bar"></span>
-    <label :for="id">{{ placeholder }}</label>
+    <label :for="id">{{ placeholder }}<sup v-if="required">*</sup></label>
   </div>
 </template>
 
