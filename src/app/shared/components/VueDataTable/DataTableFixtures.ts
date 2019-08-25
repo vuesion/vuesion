@@ -13,6 +13,7 @@ export const dataTableHeaderFixture: IDataTableHeader = {
   age: {
     title: 'Age',
     slot: 'age',
+    cssClass: 'ageColumn',
   },
   address: {
     title: 'Address',
