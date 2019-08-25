@@ -1,3 +1,25 @@
+### 3.4.0 (2019-08-25)
+
+##### Chores
+
+- update contributors ([e72d178f](https://github.com/vuesion/vuesion/commit/e72d178f2b83c395941b495a058a50f28e85f126))
+- update dependencies ([275eade0](https://github.com/vuesion/vuesion/commit/275eade00da90b5e3d2085a6a3ca15098fc3d362))
+- updarte README.md ([#434](https://github.com/vuesion/vuesion/pull/434)) ([1409c41d](https://github.com/vuesion/vuesion/commit/1409c41deba72f29c73268c999e9359a8f1b268f))
+- add helmet ([#433](https://github.com/vuesion/vuesion/pull/433)) ([4b41a332](https://github.com/vuesion/vuesion/commit/4b41a3329fabaf3542cf96d8099b7f8a6dd55c41))
+
+##### New Features
+
+- **vue-select:**
+  - add required indicator ([d41de496](https://github.com/vuesion/vuesion/commit/d41de49658c59e322991398d95136b2331399915))
+  - add label ([#444](https://github.com/vuesion/vuesion/pull/444)) ([7269c888](https://github.com/vuesion/vuesion/commit/7269c88867c68521fe64ff9555b52e1921de809d))
+- **components:** add textarea ([#440](https://github.com/vuesion/vuesion/pull/440)) ([d104951c](https://github.com/vuesion/vuesion/commit/d104951c8d6ea36fc21f4c09d8e4477cf385621d))
+
+##### Bug Fixes
+
+- **vue-data-table:** add custom css class property ([#446](https://github.com/vuesion/vuesion/pull/446)) ([7bebf23e](https://github.com/vuesion/vuesion/commit/7bebf23e04ff0fef4a9c63bde3e9aa7e1c2a6987))
+- **components:** align input elements ([#445](https://github.com/vuesion/vuesion/pull/445)) ([2ae57bc2](https://github.com/vuesion/vuesion/commit/2ae57bc21be138d280bf4d65db0a26c09d16cf5f))
+- **vue-slider:** remove focus indicator after move end ([#443](https://github.com/vuesion/vuesion/pull/443)) ([eba0d9b0](https://github.com/vuesion/vuesion/commit/eba0d9b07b4c31b10b9f8589e9c70669288fdf5a))
+
 #### 3.3.1 (2019-08-12)
 
 ##### Chores
