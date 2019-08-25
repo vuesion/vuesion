@@ -118,8 +118,8 @@ describe('VueDataTable.vue', () => {
       },
     });
     const cells: IComputedDataRowCell[] = [
-      { key: 'id', value: 2, visible: false, slot: undefined },
-      { key: 'name', value: 'foo', visible: false, slot: undefined },
+      { key: 'id', value: 2, visible: false, slot: undefined, cssClass: null },
+      { key: 'name', value: 'foo', visible: false, slot: undefined, cssClass: null },
     ];
 
     wrapper.vm.rowClick(cells);
@@ -154,7 +154,22 @@ describe('VueDataTable.vue', () => {
     expect(wrapper.vm.internalSortDirection).toBe('asc');
   });
 
-  test('should display all the data if maxRows is set to 0', () => {
+  test('should display all the data if maxRows is set less or equal 0', () => {
+    const wrapper = mount<any>(VueDataTable, {
+      i18n,
+      localVue,
+      propsData: {
+        header,
+        data,
+        maxRows: -1,
+      },
+    });
+
+    expect(wrapper.vm.displayData).toHaveLength(20);
+    expect(wrapper.vm.maxPages).toBe(0);
+  });
+
+  test('should add custom css class', () => {
     const wrapper = mount<any>(VueDataTable, {
       i18n,
       localVue,
@@ -165,7 +180,6 @@ describe('VueDataTable.vue', () => {
       },
     });
 
-    expect(wrapper.vm.displayData).toHaveLength(20);
-    expect(wrapper.vm.maxPages).toBe(0);
+    expect(wrapper.findAll('.ageColumn')).toHaveLength(21);
   });
 });

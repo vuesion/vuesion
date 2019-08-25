@@ -106,3 +106,21 @@ story.add(
     },
   })),
 );
+
+story.add(
+  'Column Css Classes',
+  withInfo({})(() => ({
+    i18n,
+    components: { VueDataTable },
+    data() {
+      return {
+        header: dataTableHeaderFixture,
+        data: dataTableDataFixture,
+      };
+    },
+    template: `<div>Look at the source for a second css class in the age column<br/><vue-data-table :header="header" :data="data" @click="action" /></div>`,
+    methods: {
+      action: action('@onClick'),
+    },
+  })),
+);

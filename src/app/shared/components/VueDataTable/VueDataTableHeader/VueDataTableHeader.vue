@@ -1,7 +1,12 @@
 <template>
   <thead :class="$style.vueDataTableHeader">
     <tr>
-      <th v-for="(column, idx) in visibleColumns" :key="idx" :class="$style.column" @click="onClick(column)">
+      <th
+        v-for="(column, idx) in visibleColumns"
+        :key="idx"
+        :class="[$style.column, column.cssClass && column.cssClass]"
+        @click="onClick(column)"
+      >
         {{ column.title }}
 
         <div :class="$style.icons" v-if="column.sortable">

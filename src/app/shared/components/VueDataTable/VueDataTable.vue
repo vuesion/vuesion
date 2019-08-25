@@ -12,7 +12,11 @@
 
       <tbody>
         <tr v-for="(row, rowIdx) in rows" :key="rowIdx" :class="$style.vueDataTableRow" @click="rowClick(row)">
-          <td v-for="(cell, cellIdx) in getVisibleCells(row)" :key="cellIdx" :class="$style.column">
+          <td
+            v-for="(cell, cellIdx) in getVisibleCells(row)"
+            :key="cellIdx"
+            :class="[$style.column, cell.cssClass && cell.cssClass]"
+          >
             <slot :name="cell.slot" :cell="cell" :row="getRowObject(row)">{{ cell.value }}</slot>
           </td>
         </tr>
@@ -118,7 +122,7 @@ export default {
       return this.filteredData.slice(0).sort(sort);
     },
     displayData() {
-      if (this.maxRows === 0 || this.maxRows >= this.count) {
+      if (this.maxRows <= 0 || this.maxRows >= this.count) {
         return this.sortedData;
       }
 
@@ -156,6 +160,7 @@ export default {
             value: row[key],
             visible: column.visible,
             slot: column.slot,
+            cssClass: column.cssClass || null,
           };
           computedRow.push(computedColumn);
         });
@@ -167,7 +172,7 @@ export default {
       return this.filteredData.length;
     },
     maxPages() {
-      if (this.maxRows === 0) {
+      if (this.maxRows <= 0) {
         return 0;
       }
 
