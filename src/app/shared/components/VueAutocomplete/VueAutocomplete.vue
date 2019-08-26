@@ -9,7 +9,7 @@
     <vue-input
       role="searchbox"
       aria-autocomplete="list"
-      aria-controls="autocomplete-results"
+      :aria-controls="`autocomplete-results-${id}`"
       :name="name"
       :id="id"
       :placeholder="placeholder"
@@ -22,7 +22,7 @@
       :errorMessage="errorMessage"
       :validation="validation"
       :autocomplete="autocomplete"
-      :aria-activedescendant="hasOptions ? `result-item${selectedOptionIndex}-${id}` : null"
+      :aria-activedescendant="hasOptions ? `result-item-${selectedOptionIndex}-${id}` : null"
       @input="onInput"
       @keyup.stop.prevent.down="onArrowDown"
       @keydown.stop.prevent.up="onArrowUp"
@@ -36,7 +36,7 @@
     <ul
       ref="resultContainer"
       role="listbox"
-      id="autocomplete-results"
+      :id="`autocomplete-results-${id}`"
       :style="{ height: resultContainerHeight + 'px' }"
       v-show="isOpen === true && isLoading === false"
     >
