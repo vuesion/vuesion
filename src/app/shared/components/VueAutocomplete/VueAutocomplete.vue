@@ -9,19 +9,25 @@
     <vue-input
       role="searchbox"
       aria-autocomplete="list"
-      aria-controls="autocomplete-results"
-      :name="name || instanceId"
-      :id="id || instanceId"
+      :aria-controls="`autocomplete-results-${id}`"
+      :name="name"
+      :id="id"
+      :placeholder="placeholder"
+      :required="required"
+      :autofocus="autofocus"
       :value="searchQuery"
       :disabled="disabled"
-      :required="required"
-      :placeholder="placeholder"
-      :aria-activedescendant="hasOptions ? `result-item${selectedOptionIndex}-${instanceId}` : null"
+      :readonly="readonly"
+      :message="message"
+      :errorMessage="errorMessage"
+      :validation="validation"
+      :autocomplete="autocomplete"
+      :aria-activedescendant="hasOptions ? `result-item-${selectedOptionIndex}-${id}` : null"
       @input="onInput"
-      @keyup.down="onArrowDown"
-      @keydown.up="onArrowUp"
-      @keydown.enter="onEnterKeyPress"
-      @focus="onFocus"
+      @keyup.stop.prevent.down="onArrowDown"
+      @keydown.stop.prevent.up="onArrowUp"
+      @keydown.stop.prevent.enter="onEnterKeyPress"
+      @focus.stop.prevent="onFocus"
     />
 
     <vue-icon-search v-show="isLoading === false" />
@@ -30,7 +36,7 @@
     <ul
       ref="resultContainer"
       role="listbox"
-      id="autocomplete-results"
+      :id="`autocomplete-results-${id}`"
       :style="{ height: resultContainerHeight + 'px' }"
       v-show="isOpen === true && isLoading === false"
     >
@@ -44,7 +50,7 @@
         v-else
         v-for="(option, index) in options"
         :key="index"
-        :id="`result-item-${index}-${instanceId}`"
+        :id="`result-item-${index}-${id}`"
         :aria-selected="isSelected(index)"
         :class="isSelected(index) ? $style.isSelected : ''"
         @click="onOptionClick(index)"
@@ -73,18 +79,50 @@ export default {
   props: {
     name: {
       type: String,
-      default: '',
+      required: true,
     },
     id: {
       type: String,
-      default: '',
+      required: true,
+    },
+    placeholder: {
+      type: String,
+    },
+    required: {
+      type: Boolean,
+    },
+    autofocus: {
+      type: Boolean,
+    },
+    value: {
+      type: String,
+    },
+    type: {
+      type: String,
+      default: 'text',
+    },
+    disabled: {
+      type: Boolean,
+    },
+    readonly: {
+      type: Boolean,
+    },
+    message: {
+      type: String,
+    },
+    errorMessage: {
+      type: String,
+    },
+    validation: {
+      type: String,
+    },
+    autocomplete: {
+      type: String,
+      default: 'off',
     },
     options: {
       type: Array,
       default: (): any[] => [],
-    },
-    placeholder: {
-      type: String,
     },
     maxOptions: {
       type: Number,
@@ -98,14 +136,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    required: {
-      type: Boolean,
-      default: false,
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
   },
   data(): any {
     return {
@@ -114,7 +144,6 @@ export default {
       previousQuery: '',
       selectedOptionIndex: 0,
       resultContainerHeight: 0,
-      instanceId: getGUID(),
     };
   },
   computed: {
@@ -153,8 +182,13 @@ export default {
 
       if (resultContainerScrollHeight > resultContainerClientHeight) {
         const element: HTMLElement = document.querySelector(
-          `#result-item-${this.selectedOptionIndex}-${this.instanceId}`,
+          `#result-item-${this.selectedOptionIndex}-${this.id}`,
         ) as HTMLElement;
+
+        if (element === null) {
+          return;
+        }
+
         const scrollBottom: number = resultContainerClientHeight + resultContainer.scrollTop;
         const elementBottom: number = element.offsetTop + element.offsetHeight;
 
