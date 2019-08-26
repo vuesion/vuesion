@@ -32,6 +32,8 @@ story.add(
       change: action('@change'),
     },
     template: `<vue-autocomplete
+            name="foo"
+            id="foo"
             :options="autocompleteOptions"
             :max-options="3"
             placeholder="Type something (e.g. foo)"
@@ -72,10 +74,16 @@ story.add(
       change: action('@change'),
     },
     template: `<vue-autocomplete
+            name="foo"
+            id="foo"
+            validation="required"
+            required
             :options="autocompleteOptions"
+            message="Type something (e.g. foo)"
+            error-message="This field is mandatory"
             :max-options="3"
             :is-loading="isLoading"
-            placeholder="Type something (e.g. foo)"
+            placeholder="Search query"
             @request="onRequest($event);request($event)"
             @change="change"/>`,
     i18n,

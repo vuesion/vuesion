@@ -12,6 +12,8 @@ describe('VueAutocomplete.vue', () => {
       localVue,
       i18n,
       propsData: {
+        id: 'foo',
+        name: 'foo',
         placeholder: 'Type something',
         options: AutocompleteOptionsFixture,
       },
@@ -27,6 +29,8 @@ describe('VueAutocomplete.vue', () => {
       localVue,
       i18n,
       propsData: {
+        id: 'foo',
+        name: 'foo',
         placeholder: 'Type something',
         options: AutocompleteOptionsFixture,
         isLoading: true,
@@ -41,6 +45,8 @@ describe('VueAutocomplete.vue', () => {
       localVue,
       i18n,
       propsData: {
+        id: 'foo',
+        name: 'foo',
         placeholder: 'Type something',
         options: AutocompleteOptionsFixture,
       },
@@ -59,6 +65,8 @@ describe('VueAutocomplete.vue', () => {
       localVue,
       i18n,
       propsData: {
+        id: 'foo',
+        name: 'foo',
         placeholder: 'Type something',
         options: AutocompleteOptionsFixture,
       },
@@ -83,6 +91,8 @@ describe('VueAutocomplete.vue', () => {
       localVue,
       i18n,
       propsData: {
+        id: 'foo',
+        name: 'foo',
         placeholder: 'Type something',
         options: AutocompleteOptionsFixture,
       },
@@ -106,6 +116,8 @@ describe('VueAutocomplete.vue', () => {
       localVue,
       i18n,
       propsData: {
+        id: 'foo',
+        name: 'foo',
         options: AutocompleteOptionsFixture,
       },
     });
@@ -124,6 +136,8 @@ describe('VueAutocomplete.vue', () => {
       localVue,
       i18n,
       propsData: {
+        id: 'foo',
+        name: 'foo',
         placeholder: 'Type something',
         options: AutocompleteOptionsFixture,
       },
@@ -147,6 +161,8 @@ describe('VueAutocomplete.vue', () => {
       localVue,
       i18n,
       propsData: {
+        id: 'foo',
+        name: 'foo',
         placeholder: 'Type something',
         options: AutocompleteOptionsFixture,
       },
@@ -169,6 +185,8 @@ describe('VueAutocomplete.vue', () => {
       localVue,
       i18n,
       propsData: {
+        id: 'foo',
+        name: 'foo',
         placeholder: 'Type something',
         options: AutocompleteOptionsFixture,
       },
@@ -190,6 +208,8 @@ describe('VueAutocomplete.vue', () => {
       localVue,
       i18n,
       propsData: {
+        id: 'foo',
+        name: 'foo',
         placeholder: 'Type something',
         options: AutocompleteOptionsFixture,
       },
@@ -208,6 +228,8 @@ describe('VueAutocomplete.vue', () => {
       localVue,
       i18n,
       propsData: {
+        id: 'foo',
+        name: 'foo',
         placeholder: 'Type something',
         maxOptions: 10,
       },
@@ -239,6 +261,8 @@ describe('VueAutocomplete.vue', () => {
       localVue,
       i18n,
       propsData: {
+        id: 'foo',
+        name: 'foo',
         placeholder: 'Type something',
         maxOptions: 10,
       },
@@ -298,6 +322,11 @@ describe('VueAutocomplete.vue', () => {
         offsetHeight: 10,
       };
     };
+
+    wrapper.vm.onFocusItem();
+    expect((wrapper as any).vm.$refs.resultContainer.scrollTop).toBe(100);
+
+    document.querySelector = (): any => null;
 
     wrapper.vm.onFocusItem();
     expect((wrapper as any).vm.$refs.resultContainer.scrollTop).toBe(100);
