@@ -1,3 +1,9 @@
+### 3.5.0 (2019-08-26)
+
+##### New Features
+
+- **vue-autocomplete:** add autofocus and validation ([#448](https://github.com/vuesion/vuesion/pull/448)) ([89b4ad76](https://github.com/vuesion/vuesion/commit/89b4ad76db658fec01d88ea0b0ffc013a3b15fc5))
+
 ### 3.4.0 (2019-08-25)
 
 ##### Chores
