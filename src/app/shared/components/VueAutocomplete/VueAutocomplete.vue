@@ -248,7 +248,7 @@ export default {
       }
     },
     onEnterKeyPress() {
-      if (this.searchQuery.length === 0 || this.options.length === 0) {
+      if (this.searchQuery.length < this.minInputChars || this.options.length === 0) {
         return;
       }
 
@@ -274,8 +274,7 @@ export default {
     },
   },
   watch: {
-    options(options: IAutocompleteOption[]) {
-      this.options = options;
+    options() {
       this.isOpen = true;
       this.$nextTick(() => {
         this.setResultContainerHeight();
