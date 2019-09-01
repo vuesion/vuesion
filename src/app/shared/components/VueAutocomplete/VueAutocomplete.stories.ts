@@ -14,6 +14,7 @@ story.add(
     data(): any {
       return {
         autocompleteOptions: [],
+        model: { label: 'foo9', value: 'bar9' },
       };
     },
     methods: {
@@ -31,14 +32,18 @@ story.add(
       request: action('@request'),
       change: action('@change'),
     },
-    template: `<vue-autocomplete
+    template: `<div>model: {{ model }}
+        <br/>
+        <br/>
+        <vue-autocomplete
+            v-model="model"
             name="foo"
             id="foo"
             :options="autocompleteOptions"
             :max-options="3"
             placeholder="Type something (e.g. foo)"
             @request="onRequest($event);request($event)"
-            @change="change"/>`,
+            @change="change"/></div>`,
     i18n,
   })),
 );

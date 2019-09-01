@@ -95,7 +95,8 @@ export default {
       type: Boolean,
     },
     value: {
-      type: String,
+      type: Object,
+      default: () => ({ label: '', value: '' }),
     },
     type: {
       type: String,
@@ -265,6 +266,7 @@ export default {
       this.searchQuery = option.label;
 
       this.$emit('change', option);
+      this.$emit('input', option);
 
       if (this.isSameSearchQuery()) {
         return;
@@ -282,6 +284,7 @@ export default {
     },
   },
   mounted() {
+    this.searchQuery = this.value.label;
     document.addEventListener('click', this.handleOutsideClick);
   },
   destroyed() {
