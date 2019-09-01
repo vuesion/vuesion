@@ -1,10 +1,9 @@
 import { createLocalVue, mount } from '@vue/test-utils';{{#if wantVuex}}
-import Vuex, { ActionTree, GetterTree, Store } from 'vuex';
-import { {{ properCase componentName }}Getters, I{{ properCase componentName }}Getters } from '../getters';
-import { {{ properCase componentName }}DefaultState, I{{ properCase componentName }}State } from '../state';
-import { {{ properCase componentName }}Actions, I{{ properCase componentName }}Actions } from '../actions';{{/if}}
-import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
+import Vuex, { Store } from 'vuex';
 import { i18n } from '@/app/shared/plugins/i18n/i18n';
+import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
+import { I{{ properCase componentName }}State } from '../state';
+import { {{ properCase componentName }}Module } from '../module';{{/if}}
 
 const localVue = createLocalVue();{{#if wantVuex}}
 
@@ -13,31 +12,11 @@ localVue.use(Vuex);{{/if}}
 describe('{{ properCase componentName }}.vue', () => {
 {{#if wantVuex}}
   let store: Store<I{{ properCase componentName }}State>;
-  let getters: GetterTree<I{{ properCase componentName }}State, I{{ properCase componentName }}Getters>;
-  let actions: ActionTree<I{{ properCase componentName }}State, I{{ properCase componentName }}Actions>;
-  let state: I{{ properCase componentName }}State;
 
   beforeEach(() => {
-    getters = {
-      ...{{ properCase componentName }}Getters,
-    };
-    actions = {
-      ...{{ properCase componentName }}Actions,
-      increment: jest.fn(),
-      decrement: jest.fn(),
-    };
-    state = {
-      ...{{ properCase componentName }}DefaultState(),
-    };
-
     store = new Vuex.Store({
       modules: {
-        {{ camelCase moduleName }}: {
-          namespaced: true,
-          getters,
-          actions,
-          state,
-        },
+        {{ camelCase moduleName }}: {{ properCase componentName }}Module,
       },
     } as any);
   });
@@ -47,6 +26,7 @@ describe('{{ properCase componentName }}.vue', () => {
     {{#if wantVuex}}  store,
     {{/if}}  localVue,
       i18n,
+      stubs: ['router-link'],
     });
 
     expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
@@ -54,17 +34,19 @@ describe('{{ properCase componentName }}.vue', () => {
 {{#if wantVuex}}
 
   test('should increment and decrement', () => {
+    store.dispatch = jest.fn();
     const wrapper: any = mount<any>({{ properCase componentName }}, {
       store,
       localVue,
       i18n,
+      stubs: ['router-link'],
     });
 
     wrapper.vm.increment();
-    expect(actions.increment).toHaveBeenCalled();
+    expect(store.dispatch).toHaveBeenCalledWith(`{{ camelCase componentName }}/increment`, undefined);
 
     wrapper.vm.decrement();
-    expect(actions.decrement).toHaveBeenCalled();
+    expect(store.dispatch).toHaveBeenCalledWith(`{{ camelCase componentName }}/decrement`, undefined);
   });
 
   test('dispatches action on the server', () => {
