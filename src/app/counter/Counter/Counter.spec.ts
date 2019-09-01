@@ -1,10 +1,9 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import Vuex, { ActionTree, GetterTree, Store } from 'vuex';
-import Counter from './Counter.vue';
-import { CounterGetters, ICounterGetters } from '../getters';
-import { CounterDefaultState, ICounterState } from '../state';
-import { CounterActions, ICounterActions } from '../actions';
+import Vuex, { Store } from 'vuex';
 import { i18n } from '@shared/plugins/i18n/i18n';
+import Counter from './Counter.vue';
+import { ICounterState } from '../state';
+import { CounterModule } from '../module';
 
 const localVue = createLocalVue();
 
@@ -12,31 +11,11 @@ localVue.use(Vuex);
 
 describe('Counter.vue', () => {
   let store: Store<ICounterState>;
-  let getters: GetterTree<ICounterState, ICounterGetters>;
-  let actions: ActionTree<ICounterState, ICounterActions>;
-  let state: ICounterState;
 
   beforeEach(() => {
-    getters = {
-      ...CounterGetters,
-    };
-    actions = {
-      ...CounterActions,
-      increment: jest.fn(),
-      decrement: jest.fn(),
-    };
-    state = {
-      ...CounterDefaultState(),
-    };
-
     store = new Vuex.Store({
       modules: {
-        counter: {
-          namespaced: true,
-          getters,
-          actions,
-          state,
-        },
+        counter: CounterModule,
       },
     } as any);
   });
@@ -53,6 +32,7 @@ describe('Counter.vue', () => {
   });
 
   test('should increment and decrement', () => {
+    store.dispatch = jest.fn();
     const wrapper = mount<any>(Counter, {
       store,
       localVue,
@@ -61,10 +41,10 @@ describe('Counter.vue', () => {
     });
 
     wrapper.vm.increment();
-    expect(actions.increment).toHaveBeenCalled();
+    expect(store.dispatch).toHaveBeenCalledWith(`counter/increment`, undefined);
 
     wrapper.vm.decrement();
-    expect(actions.decrement).toHaveBeenCalled();
+    expect(store.dispatch).toHaveBeenCalledWith(`counter/decrement`, undefined);
   });
 
   test('dispatches action on the server', () => {
