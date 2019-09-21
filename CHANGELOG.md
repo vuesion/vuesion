@@ -1,3 +1,22 @@
+### 3.6.0 (2019-09-21)
+
+##### Chores
+
+- add FUNDING.yml ([21b83c53](https://github.com/vuesion/vuesion/commit/21b83c53ce4833f02509df4b3e032dfcfb9b680a))
+
+##### New Features
+
+- **vue-slider:** improve SSR support ([#461](https://github.com/vuesion/vuesion/pull/461)) ([477a2079](https://github.com/vuesion/vuesion/commit/477a20794e6a9df1b2619507eb31f050575f4756))
+- **vue-autocomplete:** add v-model support ([#451](https://github.com/vuesion/vuesion/pull/451)) ([f2874a07](https://github.com/vuesion/vuesion/commit/f2874a07409e8d2e30e9d9a032f1c02ca7ae16ee))
+
+##### Bug Fixes
+
+- **components:** remove duplicate event handlers ([#462](https://github.com/vuesion/vuesion/pull/462)) ([0abd6e5f](https://github.com/vuesion/vuesion/commit/0abd6e5f3a0f3b3e3ed23f7f37f41ec342e0b71a))
+
+##### Tests
+
+- simplify tests for connected components ([#450](https://github.com/vuesion/vuesion/pull/450)) ([2f3a0203](https://github.com/vuesion/vuesion/commit/2f3a0203c38b64923c4ac26b50759665c1c9f2bf))
+
 ### 3.5.0 (2019-08-26)
 
 ##### New Features
