@@ -14,7 +14,12 @@
       :class="[value ? $style.hasValue : '']"
       :autofocus="autofocus"
       v-bind="$attrs"
-      v-on="handlers"
+      v-on="{
+        ...this.$listeners,
+        input: (e) => {
+          $emit('input', e.target.value);
+        },
+      }"
       ref="input"
     />
     <span :class="$style.bar"></span>
@@ -98,16 +103,6 @@ export default {
       }
 
       return classes;
-    },
-    handlers() {
-      delete this.$listeners.input;
-
-      return {
-        ...this.$listeners,
-        input: (e: any) => {
-          this.$emit('input', e.target.value);
-        },
-      };
     },
   },
   data(): any {

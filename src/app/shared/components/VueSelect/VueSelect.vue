@@ -10,7 +10,10 @@
       :disabled="disabled"
       :autocomplete="autocomplete"
       v-bind="$attrs"
-      v-on="handlers"
+      v-on="{
+        ...this.$listeners,
+        input: onInput,
+      }"
     >
       <option v-for="(option, idx) in selectOptions" :key="idx" :value="option.value" :selected="isSelected(option)">
         {{ option.label }}
@@ -108,14 +111,6 @@ export default {
     },
     currentValueAsArray(): string[] {
       return this.value.split('|');
-    },
-    handlers() {
-      delete this.$listeners.input;
-
-      return {
-        ...this.$listeners,
-        input: this.onInput,
-      };
     },
   },
   methods: {
