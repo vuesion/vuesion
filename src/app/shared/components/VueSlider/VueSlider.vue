@@ -236,13 +236,20 @@ export default {
     },
   },
   mounted() {
-    this.currentMin = this.values[0];
-    this.currentMax = this.isMultiRange ? this.values[1] : this.max;
     this.sliderBox = this.$refs.slider.getBoundingClientRect();
     window.addEventListener('resize', this.refresh);
   },
   destroyed() {
     window.removeEventListener('resize', this.refresh);
+  },
+  watch: {
+    values: {
+      immediate: true,
+      handler(values: number[]) {
+        this.currentMin = values[0];
+        this.currentMax = this.isMultiRange ? values[1] : this.max;
+      },
+    },
   },
 };
 </script>
