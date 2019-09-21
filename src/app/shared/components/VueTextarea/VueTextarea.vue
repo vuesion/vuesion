@@ -12,7 +12,12 @@
       :class="[value ? $style.hasValue : '']"
       :autofocus="autofocus"
       v-bind="$attrs"
-      v-on="handlers"
+      v-on="{
+        ...this.$listeners,
+        input: (e) => {
+          $emit('input', e.target.value);
+        },
+      }"
       ref="input"
     ></textarea>
     <span :class="$style.bar"></span> <label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
@@ -87,16 +92,6 @@ export default {
       }
 
       return classes;
-    },
-    handlers() {
-      delete this.$listeners.input;
-
-      return {
-        ...this.$listeners,
-        input: (e: any) => {
-          this.$emit('input', e.target.value);
-        },
-      };
     },
   },
   data(): any {
