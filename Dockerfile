@@ -1,7 +1,7 @@
 # build happens in the CI pipeline
 # no build inside this container because it would be redundant
 
-FROM node:10-alpine
+FROM node:12.6.0-alpine
 ENV NODE_ENV=production
 ENV PORT=3000
 RUN mkdir /logs
