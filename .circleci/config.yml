@@ -7,7 +7,7 @@ jobs:
     environment:
       CC_TEST_REPORTER_ID: 458ce0b8f345c194e04dd299b901334c6c4f9457a512d00b75d8d4f36921726c
     docker:
-      - image: cypress/base:10
+      - image: cypress/base:12.6.0
     working_directory: *working_directory
     steps:
       - checkout
@@ -110,4 +110,4 @@ workflows:
             - build
           filters:
             branches:
-              only: feat/theming
+              only: next
