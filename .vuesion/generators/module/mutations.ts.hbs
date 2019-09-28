@@ -1,21 +1,17 @@
 import { I{{ properCase moduleName }}State } from './state';
 
 export interface I{{ properCase moduleName }}Mutations {
-  SET_INCREMENT_PENDING(state: I{{ properCase moduleName }}State, pending: boolean): void;
-
-  SET_DECREMENT_PENDING(state: I{{ properCase moduleName }}State, pending: boolean): void;
-
-  SET_COUNT(state: I{{ properCase moduleName }}State, count: number): void;
+  /**
+   * put your mutations names, parameters and return values here, for example:
+   * MY_MUTATION(context: ActionContext<I{{ properCase moduleName }}State, IState>, param: any): void;
+   */
 }
 
 export const {{ properCase moduleName }}Mutations: I{{ properCase moduleName }}Mutations = {
-  SET_INCREMENT_PENDING: (state: I{{ properCase moduleName }}State, pending: boolean) => {
-    state.incrementPending = pending;
-  },
-  SET_DECREMENT_PENDING: (state: I{{ properCase moduleName }}State, pending: boolean) => {
-    state.decrementPending = pending;
-  },
-  SET_COUNT: (state: I{{ properCase moduleName }}State, count: number) => {
-    state.count = count;
-  },
+  /**
+   * here comes the implementation of your mutations, for example:
+   * MY_MUTATION: (state, param) {
+   *   return state.myAttribute = param;
+   * }
+   */
 };
