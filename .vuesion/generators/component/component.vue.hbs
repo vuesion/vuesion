@@ -9,9 +9,7 @@ export default {
   name: '{{ properCase componentName }}',
   components: {},
   props: {},
-  data(): any {
-    return {};
-  },
+  data: (): any => ({}),
   computed: {},
   methods: {},
 };
@@ -21,6 +19,6 @@ export default {
 @import '~@/app/shared/design-system';
 
 .{{ camelCase componentName }} {
-  display: block;
+  // this class is only applied if you add css properties
 }
 </style>

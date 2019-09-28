@@ -3,41 +3,18 @@ import { I{{ properCase moduleName }}State } from './state';
 import { IState } from '@/app/state';
 import { HttpService } from '@/app/shared/services/HttpService/HttpService';
 
-export interface I{{ properCase moduleName }}Response {
-  count: number;
-}
-
 export interface I{{ properCase moduleName }}Actions {
-  increment(context: ActionContext<I{{ properCase moduleName }}State, IState>): Promise<any>;
-
-  decrement(context: ActionContext<I{{ properCase moduleName }}State, IState>): Promise<any>;
+  /**
+   * put your action names, parameters and return values here, for example:
+   * myAction(context: ActionContext<I{{ properCase moduleName }}State, IState>, param: any): Promise<any>;
+   */
 }
 
 export const {{ properCase moduleName }}Actions: I{{ properCase moduleName }}Actions = {
-  async increment({ commit, state }: ActionContext<I{{ properCase moduleName }}State, IState>) {
-    commit('SET_INCREMENT_PENDING', true);
-
-    try {
-      const res = await HttpService.put<I{{ properCase moduleName }}Response>('/counter/increment', { count: state.count });
-
-      commit('SET_COUNT', res.data.count);
-      commit('SET_INCREMENT_PENDING', false);
-    } catch (e) {
-      commit('SET_INCREMENT_PENDING', false);
-      throw new Error(e);
-    }
-  },
-  async decrement({ commit, state }: ActionContext<I{{ properCase moduleName }}State, IState>) {
-    commit('SET_DECREMENT_PENDING', true);
-
-    try {
-      const res = await HttpService.put<I{{ properCase moduleName }}Response>('/counter/decrement', { count: state.count });
-
-      commit('SET_COUNT', res.data.count);
-      commit('SET_DECREMENT_PENDING', false);
-    } catch (e) {
-      commit('SET_DECREMENT_PENDING', false);
-      throw new Error(e);
-    }
-  },
+  /**
+   * here comes the implementation of your actions, for example:
+   * myAction({ commit }, param) {
+   *   commit('MY_MUTATION);
+   * }
+   */
 };

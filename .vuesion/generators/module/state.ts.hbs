@@ -1,13 +1,15 @@
 export interface I{{ properCase moduleName }}State {
-  incrementPending: boolean;
-  decrementPending: boolean;
-  count: number;
+  /**
+   * put your state attributes here, for example:
+   * myAttribute: any;
+   */
 }
 
 export const {{ properCase moduleName }}DefaultState = (): I{{ properCase moduleName }}State => {
   return {
-    incrementPending: false,
-    decrementPending: false,
-    count: 0,
+    /**
+     * put your default value here, for example:
+     * myAttribute: null,
+     */
   };
 };

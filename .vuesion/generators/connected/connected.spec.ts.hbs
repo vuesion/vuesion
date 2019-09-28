@@ -29,33 +29,8 @@ describe('{{ properCase componentName }}.vue', () => {
       stubs: ['router-link'],
     });
 
+    {{ properCase componentName }}.prefetch({});
+
     expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
   });
-{{#if wantVuex}}
-
-  test('should increment and decrement', () => {
-    store.dispatch = jest.fn();
-    const wrapper: any = mount<any>({{ properCase componentName }}, {
-      store,
-      localVue,
-      i18n,
-      stubs: ['router-link'],
-    });
-
-    wrapper.vm.increment();
-    expect(store.dispatch).toHaveBeenCalledWith(`{{ camelCase componentName }}/increment`, undefined);
-
-    wrapper.vm.decrement();
-    expect(store.dispatch).toHaveBeenCalledWith(`{{ camelCase componentName }}/decrement`, undefined);
-  });
-
-  test('dispatches action on the server', () => {
-    store.dispatch = jest.fn();
-
-    {{ properCase componentName }}.prefetch({ store });
-
-    expect(store.dispatch).toHaveBeenCalled();
-    expect(store.dispatch).toHaveBeenCalledWith(`{{ camelCase moduleName }}/increment`);
-  });
-{{/if}}
 });

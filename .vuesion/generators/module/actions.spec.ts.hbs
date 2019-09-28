@@ -19,53 +19,8 @@ describe('{{ properCase moduleName }}Actions', () => {
     mockAxios = new MockAdapter(HttpService);
   });
 
-  test('it should call INCREMENT action on success', async () => {
-    const commitMock: jest.Mock = testContext.commit as jest.Mock;
-
-    mockAxios.onPut('/counter/increment').reply(200, { count: 1337 });
-
-    await {{ properCase moduleName }}Actions.increment(testContext);
-
-    expect(commitMock.mock.calls[0]).toEqual(['SET_INCREMENT_PENDING', true]);
-    expect(commitMock.mock.calls[1]).toEqual(['SET_COUNT', 1337]);
-    expect(commitMock.mock.calls[2]).toEqual(['SET_INCREMENT_PENDING', false]);
-  });
-
-  test('it should set INCREMENT pending to false on fail', async () => {
-    const commitMock: jest.Mock = testContext.commit as jest.Mock;
-
-    mockAxios.onPut('/counter/increment').reply(500);
-
-    try {
-      await {{ properCase moduleName }}Actions.increment(testContext);
-    } catch (e) {
-      expect(commitMock.mock.calls[0]).toEqual(['SET_INCREMENT_PENDING', true]);
-      expect(commitMock.mock.calls[1]).toEqual(['SET_INCREMENT_PENDING', false]);
-    }
-  });
-
-  test('it should call DECREMENT action on success', async () => {
-    const commitMock: jest.Mock = testContext.commit as jest.Mock;
-
-    mockAxios.onPut('/counter/decrement').reply(200, { count: 1337 });
-
-    await {{ properCase moduleName }}Actions.decrement(testContext);
-
-    expect(commitMock.mock.calls[0]).toEqual(['SET_DECREMENT_PENDING', true]);
-    expect(commitMock.mock.calls[1]).toEqual(['SET_COUNT', 1337]);
-    expect(commitMock.mock.calls[2]).toEqual(['SET_DECREMENT_PENDING', false]);
-  });
-
-  test('it should set DECREMENT pending to false on fail', async () => {
-    const commitMock: jest.Mock = testContext.commit as jest.Mock;
-
-    mockAxios.onPut('/counter/decrement').reply(500);
-
-    try {
-      await {{ properCase moduleName }}Actions.decrement(testContext);
-    } catch (e) {
-      expect(commitMock.mock.calls[0]).toEqual(['SET_DECREMENT_PENDING', true]);
-      expect(commitMock.mock.calls[1]).toEqual(['SET_DECREMENT_PENDING', false]);
-    }
+  test('Please right the tests for the actions here', () => {
+    // here is an example: https://github.com/vuesion/vuesion/blob/master/src/app/counter/actions.spec.ts
+    expect(true).toBeFalsy();
   });
 });

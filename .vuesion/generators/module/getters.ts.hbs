@@ -1,19 +1,17 @@
 import { I{{ properCase moduleName }}State } from './state';
 
 export interface I{{ properCase moduleName }}Getters {
-  incrementPending(state: I{{ properCase moduleName }}State): boolean;
-  decrementPending(state: I{{ properCase moduleName }}State): boolean;
-  count(state: I{{ properCase moduleName }}State): number;
+  /**
+   * put your getter names, parameters and return values here, for example:
+   * myAction(context: ActionContext<I{{ properCase moduleName }}State, IState>, param: any): Promise<any>;
+   */
 }
 
 export const {{ properCase moduleName }}Getters: I{{ properCase moduleName }}Getters = {
-  incrementPending(state: I{{ properCase moduleName }}State): boolean {
-    return state.incrementPending;
-  },
-  decrementPending(state: I{{ properCase moduleName }}State): boolean {
-    return state.decrementPending;
-  },
-  count(state: I{{ properCase moduleName }}State): number {
-    return state.count;
-  },
+  /**
+   * here comes the implementation of your getters, for example:
+   * myGetter(state: I{{ properCase moduleName }}State) {
+   *   return state.myAttribute;
+   * }
+   */
 };

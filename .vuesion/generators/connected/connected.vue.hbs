@@ -5,23 +5,12 @@
         <vue-grid-item fill>
           <vue-headline level="1">{{ properCase componentName }}</vue-headline>
         </vue-grid-item>
-
-        <vue-grid-item fill>
-          <vue-button color="secondary" :loading="incrementPending" @click='increment'>Increment +1</vue-button>
-          <br />
-          <br />
-        </vue-grid-item>
-        <vue-grid-item fill>
-          <vue-button color="primary" :loading="decrementPending" @click='decrement'>Decrement -1</vue-button>
-          <vue-headline level="3">Count is \{{ count }}</vue-headline>
-        </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
   </div>
 </template>
 
 <script lang="ts">{{#if wantVuex}}
-import { mapActions, mapGetters } from 'vuex';
 import { registerModule } from '@/app/store';
 import { {{ properCase moduleName }}Module } from '../module';
 import { IPreLoad } from '@/server/isomorphic';{{/if}}
@@ -42,18 +31,28 @@ export default {
     VueGridRow,
     VueHeadline,
   },
-  methods: {
-{{#if wantVuex}}    ...mapActions('{{ camelCase moduleName }}', ['increment', 'decrement']),{{/if}}
-  },
-  computed: {
-{{#if wantVuex}}    ...mapGetters('{{ camelCase moduleName }}', ['count', 'incrementPending', 'decrementPending']),{{/if}}
-  },{{#if wantVuex}}
+  data: (): any => ({}),
+  methods: {},
+  computed: {},{{#if wantVuex}}
   beforeCreate() {
     registerModule('{{ camelCase moduleName }}', {{ properCase moduleName }}Module);
   },
   prefetch: (options: IPreLoad) => {
     registerModule('{{ camelCase moduleName }}', {{ properCase moduleName }}Module);
-    return options.store.dispatch('{{ camelCase moduleName }}/increment');
+
+    /**
+     * This is the function where you can load all the data that is needed
+     * to render the page on the server and client side
+     *
+     * This function always returns a promise that means, if you want to
+     * call a vuex action you have to return it, here is an example
+     *
+     * return options.store.dispatch('myAction');
+     *
+     * If you need to fetch data from multiple source your can also return
+     * a Promise chain or a Promise.all()
+     */
+    return Promise.resolve();
   },{{/if}}
 };
 </script>
@@ -63,6 +62,7 @@ export default {
 
 .{{ camelCase componentName }} {
   margin-top: $nav-bar-height;
+  padding: $space-32 0;
   min-height: 500px;
 }
 </style>
