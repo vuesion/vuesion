@@ -142,17 +142,23 @@ describe('VueAutocomplete.vue', () => {
         options: AutocompleteOptionsFixture,
       },
     });
+    const e: any = {
+      preventDefault: jest.fn(),
+    };
 
-    wrapper.vm.onEnterKeyPress();
+    wrapper.vm.onEnterKeyPress(e);
+    expect(e.preventDefault).not.toHaveBeenCalled();
 
     wrapper.vm.searchQuery = 'Test';
     wrapper.vm.selectedOptionIndex = -1;
-    wrapper.vm.onEnterKeyPress();
+    wrapper.setData({ isOpen: true });
+    wrapper.vm.onEnterKeyPress(e);
     expect(wrapper.emitted().change[0][0]).toEqual(AutocompleteOptionsFixture[0]);
+    expect(e.preventDefault).toHaveBeenCalled();
 
     wrapper.vm.searchQuery = 'Test2';
     wrapper.vm.selectedOptionIndex = 1;
-    wrapper.vm.onEnterKeyPress();
+    wrapper.vm.onEnterKeyPress(e);
     expect(wrapper.emitted().change[1][0]).toEqual(AutocompleteOptionsFixture[1]);
   });
 

@@ -26,7 +26,7 @@
       @input="onInput"
       @keyup.stop.prevent.down="onArrowDown"
       @keydown.stop.prevent.up="onArrowUp"
-      @keydown.stop.prevent.enter="onEnterKeyPress"
+      @keydown.stop.enter.tab="onEnterKeyPress"
       @focus.stop.prevent="onFocus"
     />
 
@@ -248,7 +248,11 @@ export default {
         this.isOpen = false;
       }
     },
-    onEnterKeyPress() {
+    onEnterKeyPress(e: any) {
+      if (this.isOpen) {
+        e.preventDefault();
+      }
+
       if (this.searchQuery.length < this.minInputChars || this.options.length === 0) {
         return;
       }
