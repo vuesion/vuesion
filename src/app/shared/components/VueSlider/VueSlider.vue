@@ -29,6 +29,7 @@
         @focus="currentSlider = 0"
         @keydown="onKeyDown"
         @keyup="onKeyUp"
+        @focusout="currentSlider = null"
       ></button>
 
       <button
@@ -44,6 +45,7 @@
         @focus="currentSlider = 1"
         @keydown="onKeyDown"
         @keyup="onKeyUp"
+        @focusout="currentSlider = null"
       ></button>
     </div>
   </div>
