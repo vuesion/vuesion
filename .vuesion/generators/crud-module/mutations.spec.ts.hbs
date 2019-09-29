@@ -1,0 +1,44 @@
+import { {{ properCase singularName }}Mutations } from './mutations';
+import { {{ properCase singularName }}DefaultState, I{{ properCase singularName }}State } from './state';
+
+describe('{{ properCase singularName }}Mutations', () => {
+  let testState: I{{ properCase singularName }}State;
+
+  beforeEach(() => {
+    testState = {{ properCase singularName }}DefaultState();
+  });
+
+  test('it should set {{ camelCase pluralName }}', () => {
+    const expected = [{ id: '1' }];
+
+    {{ properCase singularName }}Mutations.SET_{{ constantCase pluralName }}(testState, expected);
+    expect(testState.{{ camelCase pluralName }}).toEqual(expected);
+  });
+
+  test('it should set current{{ properCase singularName }}', () => {
+    const expected = { id: '1' };
+
+    {{ properCase singularName }}Mutations.SET_CURRENT_{{ constantCase singularName }}(testState, expected);
+    expect(testState.current{{ properCase singularName }}).toEqual(expected);
+  });
+
+  test('it should add and update a {{ camelCase singularName }}', () => {
+    const {{ camelCase singularName }} = { id: '1' };
+    {{ properCase singularName }}Mutations.ADD_{{ constantCase singularName }}(testState, {{ camelCase singularName }});
+    expect(testState.{{ camelCase pluralName }}).toEqual([{{ camelCase singularName }}]);
+
+    {{ camelCase singularName }}.id = '2';
+
+    {{ properCase singularName }}Mutations.UPDATE_{{ constantCase singularName }}(testState, {{ camelCase singularName }});
+    expect(testState.{{ camelCase pluralName }}).toEqual([{{ camelCase singularName }}]);
+  });
+
+  test('it should delete a {{ camelCase singularName }}', () => {
+    const {{ camelCase singularName }} = { id: '1' };
+    {{ properCase singularName }}Mutations.ADD_{{ constantCase singularName }}(testState, {{ camelCase singularName }});
+    expect(testState.{{ camelCase pluralName }}).toHaveLength(1);
+
+    {{ properCase singularName }}Mutations.DELETE_{{ constantCase singularName }}(testState, {{ camelCase singularName }});
+    expect(testState.{{ camelCase pluralName }}).toHaveLength(0);
+  });
+});

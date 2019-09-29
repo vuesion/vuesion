@@ -1,0 +1,146 @@
+import { ActionContext, Commit, Dispatch } from 'vuex';
+import MockAdapter from 'axios-mock-adapter';
+import { IState } from '@/app/state';
+import { HttpService } from '@/app/shared/services/HttpService/HttpService';
+import { {{ properCase singularName }}Actions } from './actions';
+import { {{ properCase singularName }}DefaultState, I{{ properCase singularName }}State } from './state';
+
+describe('{{ properCase singularName }}Actions', () => {
+  let testContext: ActionContext<I{{ properCase singularName }}State, IState>;
+  let mockAxios: MockAdapter;
+
+  beforeEach(() => {
+    testContext = {
+      dispatch: jest.fn() as Dispatch,
+      commit: jest.fn() as Commit,
+      state: {{ properCase singularName }}DefaultState(),
+    } as ActionContext<I{{ properCase singularName }}State, IState>;
+
+    mockAxios = new MockAdapter(HttpService);
+  });
+
+  describe('fetch{{ properCase pluralName }}', () => {
+    test('it should call SET_{{ constantCase pluralName }} on success', async () => {
+      const commitMock: jest.Mock = testContext.commit as jest.Mock;
+      const expected = {};
+
+      mockAxios.onGet('/{{ singularName }}').reply(200, expected);
+
+      await {{ properCase singularName }}Actions.fetch{{ properCase pluralName }}(testContext);
+
+      const actual = commitMock.mock.calls[0];
+
+      expect(actual).toEqual(['SET_{{ constantCase pluralName }}', expected]);
+    });
+
+    test('it should throw an error on failure', async () => {
+      mockAxios.onGet('/{{ singularName }}').reply(500);
+
+      try {
+        await {{ properCase singularName }}Actions.fetch{{ properCase pluralName }}(testContext);
+      } catch (e) {
+        expect(e.message).toEqual('Request failed with status code 500');
+      }
+    });
+  });
+
+  describe('fetch{{ properCase singularName }}', () => {
+    test('it should call SET_CURRENT_{{ constantCase singularName }} on success', async () => {
+      const commitMock: jest.Mock = testContext.commit as jest.Mock;
+      const expected = {};
+
+      mockAxios.onGet('/{{ singularName }}/1').reply(200, expected);
+
+      await {{ properCase singularName }}Actions.fetch{{ properCase singularName }}(testContext, '1');
+
+      const actual = commitMock.mock.calls[0];
+
+      expect(actual).toEqual(['SET_CURRENT_{{ constantCase singularName }}', expected]);
+    });
+
+    test('it should throw an error on failure', async () => {
+      mockAxios.onGet('/{{ singularName }}/1').reply(500);
+
+      try {
+        await {{ properCase singularName }}Actions.fetch{{ properCase singularName }}(testContext, '1');
+      } catch (e) {
+        expect(e.message).toEqual('Request failed with status code 500');
+      }
+    });
+  });
+
+  describe('add{{ properCase singularName }}', () => {
+    test('it should call ADD_{{ constantCase singularName }} on success', async () => {
+      const commitMock: jest.Mock = testContext.commit as jest.Mock;
+      const expected = {};
+
+      mockAxios.onPost('/{{ singularName }}').reply(200, expected);
+
+      await {{ properCase singularName }}Actions.add{{ properCase singularName }}(testContext, expected);
+
+      const actual = commitMock.mock.calls[0];
+
+      expect(actual).toEqual(['ADD_{{ constantCase singularName }}', expected]);
+    });
+
+    test('it should throw an error on failure', async () => {
+      mockAxios.onPost('/{{ singularName }}').reply(500);
+
+      try {
+        await {{ properCase singularName }}Actions.add{{ properCase singularName }}(testContext, {});
+      } catch (e) {
+        expect(e.message).toEqual('Request failed with status code 500');
+      }
+    });
+  });
+
+  describe('update{{ properCase singularName }}', () => {
+    test('it should call UPDATE_{{ constantCase singularName }} on success', async () => {
+      const commitMock: jest.Mock = testContext.commit as jest.Mock;
+      const expected = { id: '1' };
+
+      mockAxios.onPut('/{{ singularName }}/1').reply(200, expected);
+
+      await {{ properCase singularName }}Actions.update{{ properCase singularName }}(testContext, expected);
+
+      const actual = commitMock.mock.calls[0];
+
+      expect(actual).toEqual(['UPDATE_{{ constantCase singularName }}', expected]);
+    });
+
+    test('it should throw an error on failure', async () => {
+      mockAxios.onPut('/{{ singularName }}/1').reply(500);
+
+      try {
+        await {{ properCase singularName }}Actions.update{{ properCase singularName }}(testContext, { id: '1' });
+      } catch (e) {
+        expect(e.message).toEqual('Request failed with status code 500');
+      }
+    });
+  });
+
+  describe('delete{{ properCase singularName }}', () => {
+    test('it should call DELETE_{{ constantCase singularName }} on success', async () => {
+      const commitMock: jest.Mock = testContext.commit as jest.Mock;
+      const expected = { id: '1' };
+
+      mockAxios.onDelete('/{{ singularName }}/1').reply(200, expected);
+
+      await {{ properCase singularName }}Actions.delete{{ properCase singularName }}(testContext, expected);
+
+      const actual = commitMock.mock.calls[0];
+
+      expect(actual).toEqual(['DELETE_{{ constantCase singularName }}', expected]);
+    });
+
+    test('it should throw an error on failure', async () => {
+      mockAxios.onDelete('/{{ singularName }}/1').reply(500);
+
+      try {
+        await {{ properCase singularName }}Actions.delete{{ properCase singularName }}(testContext, { id: '1' });
+      } catch (e) {
+        expect(e.message).toEqual('Request failed with status code 500');
+      }
+    });
+  });
+});
