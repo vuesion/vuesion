@@ -1,6 +1,8 @@
 <template>
   <div :class="$style.{{ camelCase componentName }}">
     <vue-grid>
+      <vue-breadcrumb :items="breadCrumbItems"></vue-breadcrumb>
+
       <vue-grid-row>
         <vue-grid-item fill>
           <vue-headline level="1">{{ properCase componentName }}</vue-headline>
@@ -14,10 +16,12 @@
 import { registerModule } from '@/app/store';
 import { IPreLoad } from '@/server/isomorphic';
 import VueGrid from '@/app/shared/components/VueGrid/VueGrid.vue';
+import VueBreadcrumb from '@components/VueBreadcrumb/VueBreadcrumb.vue';
+import VueGridRow from '@/app/shared/components/VueGridRow/VueGridRow.vue';
 import VueGridItem from '@/app/shared/components/VueGridItem/VueGridItem.vue';
 import VueButton from '@/app/shared/components/VueButton/VueButton.vue';
-import VueGridRow from '@/app/shared/components/VueGridRow/VueGridRow.vue';
 import VueHeadline from '@/app/shared/components/VueHeadline/VueHeadline.vue';
+
 import { {{ properCase singularName }}Module } from '../module';
 
 export default {
@@ -26,14 +30,22 @@ export default {
   },
   components: {
     VueGrid,
+    VueBreadcrumb,
+    VueGridRow,
     VueGridItem,
     VueButton,
-    VueGridRow,
     VueHeadline,
   },
   data: (): any => ({}),
   methods: {},
-  computed: {},
+  computed: {
+    breadCrumbItems() {
+      return [
+        { label: this.$t('common.home' /* Home */), href: '/' },
+        { label: this.$t('common.{{ properCase singularName }}' /* {{ properCase singularName }} */), href: '/{{ dashCase singularName }}' },
+      ];
+    },
+  },
   beforeCreate() {
     registerModule('{{ camelCase singularName }}', {{ properCase singularName }}Module);
   },
@@ -62,7 +74,6 @@ export default {
 
 .{{ camelCase componentName }} {
   margin-top: $nav-bar-height;
-  padding: $space-32 0;
   min-height: 500px;
 }
 </style>
