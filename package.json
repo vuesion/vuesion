@@ -50,10 +50,10 @@
     "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\""
   },
   "dependencies": {
-    "@vuesion/addon-vuex-persist": "^3.0.4",
-    "@vuesion/models": "^3.0.4",
-    "@vuesion/utils": "^3.0.4",
-    "@vuesion/webpack": "^3.0.4",
+    "@vuesion/addon-vuex-persist": "^3.1.1",
+    "@vuesion/models": "^3.1.1",
+    "@vuesion/utils": "^3.1.1",
+    "@vuesion/webpack": "^3.1.1",
     "accept-language": "3.0.18",
     "animejs": "3.1.0",
     "axios": "^0.19.0",
@@ -93,7 +93,7 @@
     "@types/node": "10.12.24",
     "@types/serve-favicon": "2.2.31",
     "@vue/test-utils": "1.0.0-beta.28",
-    "@vuesion/service": "^3.0.4",
+    "@vuesion/service": "^3.1.1",
     "axios-mock-adapter": "1.17.0",
     "husky": "3.0.5",
     "identity-obj-proxy": "3.0.0",

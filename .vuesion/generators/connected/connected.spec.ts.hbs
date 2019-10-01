@@ -1,30 +1,29 @@
-import { createLocalVue, mount } from '@vue/test-utils';{{#if wantVuex}}
+import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex, { Store } from 'vuex';
 import { i18n } from '@/app/shared/plugins/i18n/i18n';
 import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
-import { I{{ properCase componentName }}State } from '../state';
-import { {{ properCase componentName }}Module } from '../module';{{/if}}
+import { I{{ properCase singularName }}State } from '../state';
+import { {{ properCase singularName }}Module } from '../module';
 
 const localVue = createLocalVue();{{#if wantVuex}}
 
 localVue.use(Vuex);{{/if}}
 
 describe('{{ properCase componentName }}.vue', () => {
-{{#if wantVuex}}
-  let store: Store<I{{ properCase componentName }}State>;
+  let store: Store<I{{ properCase singularName }}State>;
 
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        {{ camelCase moduleName }}: {{ properCase componentName }}Module,
+        {{ camelCase singularName }}: {{ properCase singularName }}Module,
       },
     } as any);
   });
 
-{{/if}}  test('renders component', () => {
+  test('renders component', () => {
     const wrapper = mount<any>({{ properCase componentName }}, {
-    {{#if wantVuex}}  store,
-    {{/if}}  localVue,
+      store,
+      localVue,
       i18n,
       stubs: ['router-link'],
     });
