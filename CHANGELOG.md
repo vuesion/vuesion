@@ -1,3 +1,15 @@
+### 3.7.0 (2019-10-01)
+
+##### Chores
+
+- **generators:** make the templates generic with hints ([04fbabbc](https://github.com/vuesion/vuesion/commit/04fbabbc6c5f2aee2161d7399427be66e9b4b66d))
+
+##### New Features
+
+- **generators:** add blueprint for CRUD module ([#467](https://github.com/vuesion/vuesion/pull/467)) ([05ee8d92](https://github.com/vuesion/vuesion/commit/05ee8d92cf423a469d13d229e3978d55437a7b15))
+- **vue-slider:** handle focusout event ([4f2f8179](https://github.com/vuesion/vuesion/commit/4f2f8179b52a00b0cdbbec36439f03dfc68b0e42))
+- **vue-autocomplete:** only prevent default when list is open ([01c4592a](https://github.com/vuesion/vuesion/commit/01c4592a2960fb85b03a2af56523d2af01957ac1))
+
 ### 3.6.0 (2019-09-21)
 
 ##### Chores
