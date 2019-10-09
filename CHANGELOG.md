@@ -1,3 +1,9 @@
+#### 3.7.1 (2019-10-09)
+
+##### Chores
+
+- update dependencies ([#469](https://github.com/vuesion/vuesion/pull/469)) ([8552f936](https://github.com/vuesion/vuesion/commit/8552f936fa903ea7c69fb35fc692d73f918897bf))
+
 ### 3.7.0 (2019-10-01)
 
 ##### Chores
