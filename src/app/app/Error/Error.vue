@@ -1,6 +1,5 @@
 <template>
   <div :class="$style.error">
-    <vue-icon-vuesion :class="$style.logo" />
     <vue-headline level="1">Error</vue-headline>
     <vue-headline level="3">Try again later!</vue-headline>
   </div>
@@ -8,7 +7,6 @@
 
 <script lang="ts">
 import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
-import VueIconVuesion from '@components/icons/VueIconVuesion/VueIconVuesion.vue';
 
 export default {
   metaInfo: {
@@ -21,7 +19,7 @@ export default {
     ],
   },
   name: 'Error',
-  components: { VueIconVuesion, VueHeadline },
+  components: { VueHeadline },
   props: {},
   data(): any {
     return {};
@@ -41,10 +39,5 @@ export default {
   height: 300px;
   margin: auto;
   margin-top: 25%;
-}
-
-.logo {
-  width: $space-84;
-  height: $space-84;
 }
 </style>
