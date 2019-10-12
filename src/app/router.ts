@@ -3,9 +3,9 @@ import VueRouter, { Route, RouteRecord } from 'vue-router';
 import Meta from 'vue-meta';
 import { AppRoutes } from './app/routes';
 import { HomeRoutes } from './home/routes';
-import { CounterRoutes } from './counter/routes';
-import { FormRoutes } from './form/routes';
-import { DashboardRoutes } from './dashboard/routes';
+import { CounterRoutes } from './examples/counter/routes';
+import { FormRoutes } from './examples/form/routes';
+import { DashboardRoutes } from './examples/dashboard/routes';
 import { store } from '@/app/store';
 
 Vue.use(VueRouter);

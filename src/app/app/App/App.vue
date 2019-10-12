@@ -5,10 +5,6 @@
     <vue-navigation-progress :is-navigating="isNavigating" />
 
     <vue-nav-bar>
-      <router-link slot="middle" to="/">
-        <vue-icon-vuesion :class="$style.logo" />
-      </router-link>
-
       <vue-button slot="right" v-if="isAuthenticated === false" color="primary" @click="showLoginModal = true">
         Login
       </vue-button>
@@ -138,12 +134,10 @@ import VueButton from '@components/VueButton/VueButton.vue';
 import VueModal from '@components/VueModal/VueModal.vue';
 import LoginForm from '@shared/modules/auth/LoginForm/LoginForm.vue';
 import { addNotification } from '@components/VueNotificationStack/utils';
-import VueIconVuesion from '@components/icons/VueIconVuesion/VueIconVuesion.vue';
 
 export default {
   name: 'App',
   components: {
-    VueIconVuesion,
     LoginForm,
     VueModal,
     VueButton,

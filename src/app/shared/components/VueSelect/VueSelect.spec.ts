@@ -127,4 +127,18 @@ describe('VueSelect.vue', () => {
 
     expect(wrapper.findAll(`.error`)).toHaveLength(1);
   });
+
+  it('should render with value', () => {
+    const wrapper = mount<any>(VueSelect, {
+      localVue,
+      propsData: {
+        options,
+        value: 'bar',
+        name: 'name',
+        id: 'id',
+      },
+    });
+
+    expect(wrapper.findAll('.hasValue')).toHaveLength(1);
+  });
 });
