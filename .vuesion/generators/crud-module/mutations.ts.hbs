@@ -24,6 +24,7 @@ export const {{ properCase singularName }}Mutations: I{{ properCase singularName
     state.{{ camelCase pluralName }}.splice(idx, 1, {{ camelCase singularName}});
   },
   DELETE_{{ constantCase singularName }}: (state, {{ camelCase singularName}}) => {
-    state.{{ camelCase pluralName }} = state.{{ camelCase pluralName }}.filter((item) => item.id !== {{ camelCase singularName}}.id);
+    const idx = state.{{ camelCase pluralName }}.findIndex((item) => item.id === {{ camelCase singularName}}.id);
+    state.{{ camelCase pluralName }}.splice(idx, 1);
   },
 };
