@@ -220,4 +220,22 @@ describe('VueCalendar.vue', () => {
     expect(years.at(1).text()).toBe('1969');
     expect(years.at(years.length - 1).text()).toBe('2069');
   });
+
+  test('should render the right week days if firstDayOdWeek is 1 and the first day of the month is a sunday', () => {
+    const testDate = new Date(2019, 11, 1);
+    const wrapper = mount<any>(VueCalendar, {
+      localVue,
+      i18n,
+      propsData: {
+        today: testDate,
+        firstDayOfWeek: 1,
+      },
+    });
+    const cell = wrapper
+      .find('tbody')
+      .find('tr')
+      .findAll('td')
+      .at(6);
+    expect(cell.text()).toBe('1');
+  });
 });

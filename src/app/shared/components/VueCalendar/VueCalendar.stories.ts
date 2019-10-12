@@ -9,7 +9,7 @@ story.add(
   'Default',
   withInfo({})(() => ({
     components: { VueCalendar },
-    template: `<vue-calendar />`,
+    template: `<vue-calendar :firstDayOfWeek="1"/>`,
     i18n,
   })),
 );
