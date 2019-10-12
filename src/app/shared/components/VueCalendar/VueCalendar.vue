@@ -167,12 +167,14 @@ export default {
     calendar(): IDay[][] {
       let days: number[] = [];
 
-      const paddingLeft = new Date(this.currentYear, this.currentMonth, 1).getDay() - this.firstDayOfWeek;
+      let paddingLeft = new Date(this.currentYear, this.currentMonth, 1).getDay() - this.firstDayOfWeek;
       const daysInMonth = 32 - new Date(this.currentYear, this.currentMonth, 32).getDate();
 
-      if (paddingLeft >= 0) {
-        days = days.concat(Array(paddingLeft).fill(null));
+      if (paddingLeft === -1) {
+        paddingLeft = 6;
       }
+
+      days = days.concat(Array(paddingLeft).fill(null));
 
       for (let i = 0; i < daysInMonth; i++) {
         days.push(i + 1);
