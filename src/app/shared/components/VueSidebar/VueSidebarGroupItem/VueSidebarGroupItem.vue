@@ -12,9 +12,7 @@
 export default {
   name: 'VueSidebarGroupItem',
   props: {
-    to: {
-      type: String,
-    },
+    to: {},
   },
 };
 </script>

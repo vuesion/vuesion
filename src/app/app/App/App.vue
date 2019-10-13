@@ -40,12 +40,12 @@
           Home
         </vue-sidebar-group-item>
 
-        <vue-sidebar-group-item to="/counter">
+        <vue-sidebar-group-item :to="{ name: 'counter' }">
           <vue-icon-hashtag />
           VueX Example
         </vue-sidebar-group-item>
 
-        <vue-sidebar-group-item to="/form">
+        <vue-sidebar-group-item :to="{ name: 'form' }">
           <vue-icon-hashtag />
           Form Example
         </vue-sidebar-group-item>
