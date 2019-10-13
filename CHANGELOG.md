@@ -1,3 +1,18 @@
+#### 3.7.2 (2019-10-13)
+
+##### Chores
+
+- **style-guide:** rename examples folder to example ([2bb66082](https://github.com/vuesion/vuesion/commit/2bb66082beda01b5d3982200d52c9a340d656da5))
+
+##### Bug Fixes
+
+- **vue-calendar:** fix left padding for negative values ([#476](https://github.com/vuesion/vuesion/pull/476)) ([478b9cb4](https://github.com/vuesion/vuesion/commit/478b9cb4efde19c105a221eedbeef928c9397ff0))
+- **generators:** make delete mutation reactive ([#474](https://github.com/vuesion/vuesion/pull/474)) ([47f74a45](https://github.com/vuesion/vuesion/commit/47f74a45d5c11c1beea476c8af946c38bb1888a5))
+
+##### Tests
+
+- increase coverage for components in isolation ([#475](https://github.com/vuesion/vuesion/pull/475)) ([6d662cff](https://github.com/vuesion/vuesion/commit/6d662cfffa768c9d5f2d4e6222c7617ed2aafa04))
+
 #### 3.7.1 (2019-10-09)
 
 ##### Chores
