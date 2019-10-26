@@ -54,3 +54,21 @@ img:not([alt]) {
   white-space: nowrap;
   border: 0;
 }
+
+// MODAL-BACKDROP
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--brand-bg-color);
+  opacity: 0;
+  transition: var(--brand-fade-animation-transition);
+  z-index: -1;
+
+  &.show {
+    opacity: 0.5;
+    z-index: 999;
+  }
+}
