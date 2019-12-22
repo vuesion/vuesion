@@ -12,5 +12,22 @@ module.exports = ({ config }) => {
 
   config.plugins.push(new webpack.DefinePlugin({ PRODUCTION: false, DEVELOPMENT: true, CLIENT: true, TEST: true }));
 
+  config.module.rules.push({
+    test: /\.vue$/,
+    loader: 'vue-docgen-loader',
+    enforce: 'post',
+  });
+
+  config.module.rules.push({
+    test: /\.stories\.tsx?$/,
+    loaders: [
+      {
+        loader: require.resolve('@storybook/source-loader'),
+        options: { parser: 'typescript' },
+      },
+    ],
+    enforce: 'pre',
+  });
+
   return config;
 };

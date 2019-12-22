@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueAccordion from './VueAccordion.vue';
 import VueAccordionItem from './VueAccordionItem/VueAccordionItem.vue';
 
@@ -17,7 +16,7 @@ const storySchema = [
 for (const item of storySchema) {
   story.add(
     item.label,
-    withInfo({})(() => ({
+    () => ({
       components: {
         VueAccordion,
         VueAccordionItem,
@@ -38,6 +37,11 @@ for (const item of storySchema) {
     et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
   </vue-accordion-item>
 </vue-accordion>`,
-    })),
+    }),
+    {
+      info: {
+        components: { VueAccordion, VueAccordionItem },
+      },
+    },
   );
 }

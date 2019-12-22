@@ -95,7 +95,7 @@ export default {
   flex: 0 0 $space-52;
   background: var(--brand-secondary);
   cursor: pointer;
-  color:  var(--button-color);
+  color: var(--button-color);
 
   &:hover {
     background-color: var(--brand-secondary);

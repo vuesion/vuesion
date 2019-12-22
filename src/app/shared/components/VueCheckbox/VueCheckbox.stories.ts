@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueCheckbox from './VueCheckbox.vue';
 import { action } from '@storybook/addon-actions';
 
@@ -7,7 +6,7 @@ const story = storiesOf('Atoms|Checkbox', module) as any;
 
 story.add(
   'Checkbox',
-  withInfo({})(() => ({
+  () => ({
     components: { VueCheckbox },
     data() {
       return {
@@ -18,12 +17,17 @@ story.add(
     methods: {
       action: action('@onClick'),
     },
-  })),
+  }),
+  {
+    info: {
+      components: { VueCheckbox },
+    },
+  },
 );
 
 story.add(
   'Checkbox Disabled',
-  withInfo({})(() => ({
+  () => ({
     components: { VueCheckbox },
     data() {
       return {
@@ -34,12 +38,17 @@ story.add(
     methods: {
       action: action('@onClick'),
     },
-  })),
+  }),
+  {
+    info: {
+      components: { VueCheckbox },
+    },
+  },
 );
 
 story.add(
   'Radio Button',
-  withInfo({})(() => ({
+  () => ({
     components: { VueCheckbox },
     data() {
       return {
@@ -50,12 +59,17 @@ story.add(
     methods: {
       action: action('@onClick'),
     },
-  })),
+  }),
+  {
+    info: {
+      components: { VueCheckbox },
+    },
+  },
 );
 
 story.add(
   'Radio Button disabled',
-  withInfo({})(() => ({
+  () => ({
     components: { VueCheckbox },
     data() {
       return {
@@ -66,5 +80,10 @@ story.add(
     methods: {
       action: action('@onClick'),
     },
-  })),
+  }),
+  {
+    info: {
+      components: { VueCheckbox },
+    },
+  },
 );

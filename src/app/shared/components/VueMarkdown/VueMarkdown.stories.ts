@@ -1,12 +1,11 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueMarkdown from './VueMarkdown.vue';
 
 const story = storiesOf('Organisms|Markdown', module) as any;
 
 story.add(
   'Default',
-  withInfo({})(() => ({
+  () => ({
     components: { VueMarkdown },
     template: `
 <vue-markdown>
@@ -17,5 +16,10 @@ story.add(
 - test
   - test
 </vue-markdown>`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueMarkdown },
+    },
+  },
 );

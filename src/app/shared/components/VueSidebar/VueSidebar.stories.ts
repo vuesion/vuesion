@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueSidebar from './VueSidebar.vue';
 import VueSidebarGroup from './VueSidebarGroup/VueSidebarGroup.vue';
 import VueSidebarGroupItem from './VueSidebarGroupItem/VueSidebarGroupItem.vue';
@@ -9,15 +8,20 @@ const story = storiesOf('Organisms|Sidebar', module) as any;
 
 story.add(
   'Default',
-  withInfo({})(() => ({
+  () => ({
     components: { VueSidebar },
     template: `<vue-sidebar>VueSidebar</vue-sidebar>`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueSidebar, VueSidebarGroup, VueSidebarGroupItem },
+    },
+  },
 );
 
 story.add(
   'Internal Navigation',
-  withInfo({})(() => ({
+  () => ({
     components: { VueSidebar, VueSidebarGroup, VueSidebarGroupItem, VueIconCode },
     template: `<vue-sidebar>
   <vue-sidebar-group title="Navigation">
@@ -30,12 +34,17 @@ story.add(
 </vue-sidebar-group-item>
   </vue-sidebar-group>
 </vue-sidebar>`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueSidebar, VueSidebarGroup, VueSidebarGroupItem },
+    },
+  },
 );
 
 story.add(
   'External Navigation',
-  withInfo({})(() => ({
+  () => ({
     components: { VueSidebar, VueSidebarGroup, VueSidebarGroupItem, VueIconCode },
     template: `<vue-sidebar>
   <vue-sidebar-group title="Navigation">
@@ -47,5 +56,10 @@ story.add(
         </vue-sidebar-group-item>
   </vue-sidebar-group>
 </vue-sidebar>`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueSidebar, VueSidebarGroup, VueSidebarGroupItem },
+    },
+  },
 );

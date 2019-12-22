@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import { action } from '@storybook/addon-actions';
 import VueDataTable from './VueDataTable.vue';
 import { i18n } from '../../plugins/i18n/i18n';
@@ -10,7 +9,7 @@ const story = storiesOf('Organisms|DataTable', module) as any;
 
 story.add(
   'Default',
-  withInfo({})(() => ({
+  () => ({
     i18n,
     components: { VueDataTable },
     data() {
@@ -23,12 +22,17 @@ story.add(
     methods: {
       action: action('@onClick'),
     },
-  })),
+  }),
+  {
+    info: {
+      components: { VueDataTable },
+    },
+  },
 );
 
 story.add(
   'All Props',
-  withInfo({})(() => ({
+  () => ({
     i18n,
     components: { VueDataTable },
     data() {
@@ -41,12 +45,17 @@ story.add(
     methods: {
       action: action('@onClick'),
     },
-  })),
+  }),
+  {
+    info: {
+      components: { VueDataTable },
+    },
+  },
 );
 
 story.add(
   'Custom Cell Renderer',
-  withInfo({})(() => ({
+  () => ({
     i18n,
     components: { VueDataTable },
     data() {
@@ -61,12 +70,17 @@ story.add(
     methods: {
       action: action('@onClick'),
     },
-  })),
+  }),
+  {
+    info: {
+      components: { VueDataTable },
+    },
+  },
 );
 
 story.add(
   'Access Row',
-  withInfo({})(() => ({
+  () => ({
     i18n,
     components: { VueDataTable, VueDropdownMenu },
     data() {
@@ -86,12 +100,17 @@ story.add(
         alert(JSON.stringify(row));
       },
     },
-  })),
+  }),
+  {
+    info: {
+      components: { VueDataTable },
+    },
+  },
 );
 
 story.add(
   'Initial sort',
-  withInfo({})(() => ({
+  () => ({
     i18n,
     components: { VueDataTable },
     data() {
@@ -104,12 +123,17 @@ story.add(
     methods: {
       action: action('@onClick'),
     },
-  })),
+  }),
+  {
+    info: {
+      components: { VueDataTable },
+    },
+  },
 );
 
 story.add(
   'Column Css Classes',
-  withInfo({})(() => ({
+  () => ({
     i18n,
     components: { VueDataTable },
     data() {
@@ -122,5 +146,10 @@ story.add(
     methods: {
       action: action('@onClick'),
     },
-  })),
+  }),
+  {
+    info: {
+      components: { VueDataTable },
+    },
+  },
 );
