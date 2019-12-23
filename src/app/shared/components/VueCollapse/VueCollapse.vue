@@ -1,5 +1,7 @@
 <template>
-  <collapse-animation :duration="duration"> <slot v-if="show" /> </collapse-animation>
+  <collapse-animation :duration="duration">
+    <slot v-if="show" />
+  </collapse-animation>
 </template>
 
 <script lang="ts">

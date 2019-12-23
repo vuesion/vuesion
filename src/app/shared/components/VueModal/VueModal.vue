@@ -1,6 +1,6 @@
 <template>
   <transition @beforeEnter="beforeEnter" @enter="enter" @beforeLeave="beforeLeave" @leave="leave">
-    <div :class="[$style.vueModal, fitContent ? $style.fitContent : '']" v-if="show" :aria-modal="show" ref="modal">
+    <div v-if="show" ref="modal" :class="[$style.vueModal, fitContent ? $style.fitContent : '']" :aria-modal="show">
       <slot />
     </div>
   </transition>
@@ -18,6 +18,34 @@ export default {
     fitContent: {
       type: Boolean,
     },
+  },
+  beforeMount() {
+    let overlay: HTMLElement = document.getElementById('overlay');
+
+    if (overlay === null) {
+      overlay = document.createElement('div');
+      overlay.id = 'overlay';
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100%';
+      overlay.style.height = '100%';
+      overlay.style.zIndex = '2000';
+      overlay.style.background = 'var(--brand-bg-color-variant)';
+      overlay.style.opacity = '0';
+      overlay.style.visibility = 'hidden';
+      overlay.style.transition = 'opacity 250ms linear';
+      document.body.appendChild(overlay);
+    }
+
+    document.addEventListener('mousedown', this.handleDocumentClick);
+    document.addEventListener('touchstart', this.handleDocumentClick);
+    document.addEventListener('keydown', this.handleDocumentKeyDown);
+  },
+  beforeDestroy() {
+    document.removeEventListener('mousedown', this.handleDocumentClick);
+    document.removeEventListener('touchstart', this.handleDocumentClick);
+    document.removeEventListener('keydown', this.handleDocumentKeyDown);
   },
   methods: {
     beforeEnter(el: HTMLElement) {
@@ -70,34 +98,6 @@ export default {
         this.$emit('close');
       }
     },
-  },
-  beforeMount() {
-    let overlay: HTMLElement = document.getElementById('overlay');
-
-    if (overlay === null) {
-      overlay = document.createElement('div');
-      overlay.id = 'overlay';
-      overlay.style.position = 'fixed';
-      overlay.style.top = '0';
-      overlay.style.left = '0';
-      overlay.style.width = '100%';
-      overlay.style.height = '100%';
-      overlay.style.zIndex = '2000';
-      overlay.style.background = 'var(--brand-bg-color-variant)';
-      overlay.style.opacity = '0';
-      overlay.style.visibility = 'hidden';
-      overlay.style.transition = 'opacity 250ms linear';
-      document.body.appendChild(overlay);
-    }
-
-    document.addEventListener('mousedown', this.handleDocumentClick);
-    document.addEventListener('touchstart', this.handleDocumentClick);
-    document.addEventListener('keydown', this.handleDocumentKeyDown);
-  },
-  beforeDestroy() {
-    document.removeEventListener('mousedown', this.handleDocumentClick);
-    document.removeEventListener('touchstart', this.handleDocumentClick);
-    document.removeEventListener('keydown', this.handleDocumentKeyDown);
   },
 };
 </script>

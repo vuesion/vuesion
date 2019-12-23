@@ -1,5 +1,7 @@
 <template>
-  <div :class="cssClasses"><slot /></div>
+  <div :class="cssClasses">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">

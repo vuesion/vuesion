@@ -3,7 +3,9 @@
     <button :class="hamburgerCssClasses" type="button" aria-label="menu" @click="open = !open">
       <span :class="$style.box"> <span :class="$style.inner" /> </span>
     </button>
-    <div :class="sidebarClasses"><slot /></div>
+    <div :class="sidebarClasses">
+      <slot />
+    </div>
   </aside>
 </template>
 
@@ -35,13 +37,6 @@ export default {
       return classes;
     },
   },
-  methods: {
-    handleDocumentClick(e: Event) {
-      if (this.$refs.sidebar.contains(e.target) === false) {
-        this.open = false;
-      }
-    },
-  },
   beforeMount() {
     document.addEventListener('click', this.handleDocumentClick);
     document.addEventListener('touchstart', this.handleDocumentClick);
@@ -49,6 +44,13 @@ export default {
   beforeDestroy() {
     document.removeEventListener('click', this.handleDocumentClick);
     document.removeEventListener('touchstart', this.handleDocumentClick);
+  },
+  methods: {
+    handleDocumentClick(e: Event) {
+      if (this.$refs.sidebar.contains(e.target) === false) {
+        this.open = false;
+      }
+    },
   },
 };
 </script>

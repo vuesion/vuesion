@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueInput from './VueInput.vue';
 import VueButton from '../VueButton/VueButton.vue';
 import VueModal from '../VueModal/VueModal.vue';

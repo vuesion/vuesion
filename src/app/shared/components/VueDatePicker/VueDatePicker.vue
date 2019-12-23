@@ -1,8 +1,8 @@
 <template>
   <div :class="$style.vueDatePicker" @click="show = true">
     <vue-input
-      :name="name"
       :id="id"
+      :name="name"
       :value="inputValue"
       :placeholder="placeholder"
       :required="required"
@@ -22,8 +22,7 @@
         :end-date="endDate"
         @close="show = false"
         @change="onChange"
-      >
-      </vue-calendar>
+      />
     </vue-modal>
   </div>
 </template>
@@ -41,48 +40,19 @@ export default {
     VueCalendar,
   },
   props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-    minDate: {
-      type: Date,
-    },
-    maxDate: {
-      type: Date,
-    },
-    firstDayOfWeek: {
-      type: Number,
-      default: 0,
-    },
-    placeholder: {
-      type: String,
-    },
-    startDate: {
-      type: Date,
-    },
-    endDate: {
-      type: Date,
-    },
-    currentDate: {
-      type: Date,
-    },
-    required: {
-      type: Boolean,
-    },
-    disabled: {
-      type: Boolean,
-    },
-    readonly: {
-      type: Boolean,
-    },
-    message: {
-      type: String,
-    },
+    name: { type: String, required: true },
+    id: { type: String, required: true },
+    minDate: { type: Date, default: null },
+    maxDate: { type: Date, default: null },
+    firstDayOfWeek: { type: Number, default: 0 },
+    placeholder: { type: String, default: '' },
+    startDate: { type: Date, default: null },
+    endDate: { type: Date, default: null },
+    currentDate: { type: Date, default: null },
+    required: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    readonly: { type: Boolean, default: false },
+    message: { type: String, default: '' },
   },
   data(): any {
     return {

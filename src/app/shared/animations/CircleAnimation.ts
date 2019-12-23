@@ -2,8 +2,8 @@ import { getFloatInRange, getIntInRange } from '@vuesion/utils/dist/randomGenera
 
 class Circle {
   private opacity: number = getFloatInRange(0.05, 0.9);
-  private counter: number = 0;
-  private direction: number = 0;
+  private counter = 0;
+  private direction = 0;
 
   constructor(
     private context: CanvasRenderingContext2D | any,
@@ -85,7 +85,7 @@ const draw = (canvas: HTMLCanvasElement | any, context: CanvasRenderingContext2D
 
 export const CircleAnimation = (canvas: HTMLCanvasElement | any): any => {
   const context: CanvasRenderingContext2D | any = canvas.getContext('2d');
-  const circleCount: number = 50;
+  const circleCount = 50;
   const circles: Circle[] = getCircles(circleCount, canvas, context);
 
   if (context) {

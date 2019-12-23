@@ -1,5 +1,7 @@
 <template>
-  <div :class="$style.vueGridRow"><slot /></div>
+  <div :class="$style.vueGridRow">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">

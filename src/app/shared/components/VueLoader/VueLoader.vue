@@ -9,7 +9,7 @@
         fill="none"
         stroke-width="2"
         stroke-miterlimit="10"
-      ></circle>
+      />
     </svg>
   </div>
 </template>

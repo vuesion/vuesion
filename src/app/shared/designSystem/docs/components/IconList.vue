@@ -1,6 +1,8 @@
 <template>
   <div>
-    <vue-headline level="1">Icons</vue-headline>
+    <vue-headline level="1">
+      Icons
+    </vue-headline>
     <br />
     <div :class="$style.icons">
       <vue-icon-book />

@@ -2,7 +2,7 @@
   <div
     :class="[$style.vueNavigationProgress, show ? $style.show : '']"
     :style="{ width: `${percent}%`, transition: transitionStyle }"
-  ></div>
+  />
 </template>
 
 <script lang="ts">
@@ -24,6 +24,23 @@ export default {
       percent: 0,
       show: false,
     };
+  },
+  computed: {
+    transitionStyle() {
+      return `width ${this.widthTransitionDuration}ms linear, opacity ${this.opacityTransitionDuration}ms`;
+    },
+  },
+  watch: {
+    isNavigating: {
+      immediate: true,
+      handler(isNavigating: boolean) {
+        if (isNavigating) {
+          this.startAnimation();
+        } else {
+          this.stopAnimation();
+        }
+      },
+    },
   },
   methods: {
     startAnimation() {
@@ -50,23 +67,6 @@ export default {
           this.percent = 0;
         }, this.opacityTransitionDuration);
       }, this.widthTransitionDuration);
-    },
-  },
-  computed: {
-    transitionStyle() {
-      return `width ${this.widthTransitionDuration}ms linear, opacity ${this.opacityTransitionDuration}ms`;
-    },
-  },
-  watch: {
-    isNavigating: {
-      immediate: true,
-      handler(isNavigating: boolean) {
-        if (isNavigating) {
-          this.startAnimation();
-        } else {
-          this.stopAnimation();
-        }
-      },
     },
   },
 };

@@ -7,11 +7,11 @@
     role="combobox"
   >
     <vue-input
+      :id="id"
       role="searchbox"
       aria-autocomplete="list"
       :aria-controls="`autocomplete-results-${id}`"
       :name="name"
-      :id="id"
       :placeholder="placeholder"
       :required="required"
       :autofocus="autofocus"
@@ -19,7 +19,7 @@
       :disabled="disabled"
       :readonly="readonly"
       :message="message"
-      :errorMessage="errorMessage"
+      :error-message="errorMessage"
       :validation="validation"
       :autocomplete="autocomplete"
       :aria-activedescendant="hasOptions ? `result-item-${selectedOptionIndex}-${id}` : null"
@@ -31,26 +31,26 @@
     />
 
     <vue-icon-search v-show="isLoading === false" />
-    <vue-loader :class="$style.loader" color="secondary" v-show="isLoading === true" />
+    <vue-loader v-show="isLoading === true" :class="$style.loader" color="secondary" />
 
     <ul
+      v-show="isOpen === true && isLoading === false"
+      :id="`autocomplete-results-${id}`"
       ref="resultContainer"
       role="listbox"
-      :id="`autocomplete-results-${id}`"
       :style="{ height: resultContainerHeight + 'px' }"
-      v-show="isOpen === true && isLoading === false"
     >
       <li
         v-if="hasOptions === false"
         v-html="$t('components.autocomplete.emptyMessage' /* No options found for %s */).replace('%s', searchQuery)"
-      ></li>
+      />
 
       <li
-        role="option"
-        v-else
         v-for="(option, index) in options"
-        :key="index"
+        v-else
         :id="`result-item-${index}-${id}`"
+        :key="index"
+        role="option"
         :aria-selected="isSelected(index)"
         :class="isSelected(index) ? $style.isSelected : ''"
         @click="onOptionClick(index)"
@@ -63,7 +63,6 @@
 
 <script lang="ts">
 import debounce from 'lodash/debounce';
-import { getGUID } from '@vuesion/utils/dist/randomGenerator';
 import { IAutocompleteOption } from './IAutocompleteOption';
 import VueInput from '../VueInput/VueInput.vue';
 import VueLoader from '../VueLoader/VueLoader.vue';
@@ -77,66 +76,23 @@ export default {
     VueInput,
   },
   props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-    placeholder: {
-      type: String,
-    },
-    required: {
-      type: Boolean,
-    },
-    autofocus: {
-      type: Boolean,
-    },
-    value: {
-      type: Object,
-      default: () => ({ label: '', value: '' }),
-    },
-    type: {
-      type: String,
-      default: 'text',
-    },
-    disabled: {
-      type: Boolean,
-    },
-    readonly: {
-      type: Boolean,
-    },
-    message: {
-      type: String,
-    },
-    errorMessage: {
-      type: String,
-    },
-    validation: {
-      type: String,
-    },
-    autocomplete: {
-      type: String,
-      default: 'off',
-    },
-    options: {
-      type: Array,
-      default: (): any[] => [],
-    },
-    maxOptions: {
-      type: Number,
-      default: 5,
-    },
-    minInputChars: {
-      type: Number,
-      default: 3,
-    },
-    isLoading: {
-      type: Boolean,
-      default: false,
-    },
+    name: { type: String, required: true },
+    id: { type: String, required: true },
+    placeholder: { type: String, default: '' },
+    required: { type: Boolean, default: false },
+    autofocus: { type: Boolean, default: false },
+    value: { type: Object, default: () => ({ label: '', value: '' }) },
+    type: { type: String, default: 'text' },
+    disabled: { type: Boolean, default: false },
+    readonly: { type: Boolean, default: false },
+    message: { type: String, default: '' },
+    errorMessage: { type: String, default: '' },
+    validation: { type: String, default: '' },
+    autocomplete: { type: String, default: 'off' },
+    options: { type: Array, default: (): any[] => [] },
+    maxOptions: { type: Number, default: 5 },
+    minInputChars: { type: Number, default: 3 },
+    isLoading: { type: Boolean, default: false },
   },
   data(): any {
     return {
@@ -151,6 +107,21 @@ export default {
     hasOptions() {
       return this.options.length > 0;
     },
+  },
+  watch: {
+    options() {
+      this.isOpen = true;
+      this.$nextTick(() => {
+        this.setResultContainerHeight();
+      });
+    },
+  },
+  mounted() {
+    this.searchQuery = this.value.label;
+    document.addEventListener('click', this.handleOutsideClick);
+  },
+  destroyed() {
+    document.removeEventListener('click', this.handleOutsideClick);
   },
   methods: {
     setResultContainerHeight() {
@@ -278,21 +249,6 @@ export default {
       this.previousQuery = this.searchQuery;
       this.isOpen = false;
     },
-  },
-  watch: {
-    options() {
-      this.isOpen = true;
-      this.$nextTick(() => {
-        this.setResultContainerHeight();
-      });
-    },
-  },
-  mounted() {
-    this.searchQuery = this.value.label;
-    document.addEventListener('click', this.handleOutsideClick);
-  },
-  destroyed() {
-    document.removeEventListener('click', this.handleOutsideClick);
   },
 };
 </script>

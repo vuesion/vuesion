@@ -42,6 +42,25 @@ export default {
     };
   },
   computed: {},
+  created(): void {
+    // initialise stars & their activeness
+    for (let idx = 0; idx < this.maxNumStars; idx++) {
+      this.stars.push({ active: idx < this.selectedNumStars });
+    }
+
+    // initialise number display & selected number of stars
+    // selected stars cannot be greater that the max num of stars or < 0
+    if (this.selectedNumStars > this.maxNumStars) {
+      this.numStarDisplay = this.maxNumStars;
+      this.numSelectedStars = this.maxNumStars;
+    } else if (this.selectedNumStars < 0) {
+      this.numStarDisplay = 0;
+      this.numSelectedStars = 0;
+    } else {
+      this.numStarDisplay = this.selectedNumStars;
+      this.numSelectedStars = this.selectedNumStars;
+    }
+  },
   methods: {
     onStarMouseEnter(idx: number) {
       // update star number display
@@ -71,25 +90,6 @@ export default {
       }
       return styles;
     },
-  },
-  created(): void {
-    // initialise stars & their activeness
-    for (let idx = 0; idx < this.maxNumStars; idx++) {
-      this.stars.push({ active: idx < this.selectedNumStars });
-    }
-
-    // initialise number display & selected number of stars
-    // selected stars cannot be greater that the max num of stars or < 0
-    if (this.selectedNumStars > this.maxNumStars) {
-      this.numStarDisplay = this.maxNumStars;
-      this.numSelectedStars = this.maxNumStars;
-    } else if (this.selectedNumStars < 0) {
-      this.numStarDisplay = 0;
-      this.numSelectedStars = 0;
-    } else {
-      this.numStarDisplay = this.selectedNumStars;
-      this.numSelectedStars = this.selectedNumStars;
-    }
   },
 };
 </script>

@@ -1,5 +1,7 @@
 <template>
-  <div :class="$style.vueCardFooter"><slot /></div>
+  <div :class="$style.vueCardFooter">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">

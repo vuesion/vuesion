@@ -1,6 +1,8 @@
 <template>
   <figure :class="$style.vueDonutChart">
-    <vue-headline level="2" :native="false" :class="$style.title"> {{ title }} </vue-headline>
+    <vue-headline level="2" :native="false" :class="$style.title">
+      {{ title }}
+    </vue-headline>
 
     <svg viewBox="0 0 42 42" :aria-label="title" role="img">
       <circle
@@ -15,9 +17,9 @@
         :stroke-dasharray="`${circle.percent} ${100 - circle.percent}`"
         :stroke-dashoffset="getOffset(idx)"
         :aria-label="circle.label"
-      ></circle>
+      />
 
-      <g :class="$style.text" v-if="type === 'donut'">
+      <g v-if="type === 'donut'" :class="$style.text">
         <text x="50%" y="50%" :class="$style.sum">{{ sum }}</text>
         <text x="50%" y="50%" :class="$style.label">{{ unit }}</text>
       </g>
@@ -26,7 +28,7 @@
     <figcaption>
       <ul aria-hidden="true" role="presentation">
         <li v-for="(circle, idx) in circles.reverse()" :key="idx">
-          <span :style="{ background: circle.color }"></span> {{ circle.roundedPercent }}% - {{ circle.label }} ({{
+          <span :style="{ background: circle.color }" /> {{ circle.roundedPercent }}% - {{ circle.label }} ({{
             circle.value
           }}
           {{ unit }})
@@ -47,24 +49,11 @@ export default {
   name: 'VueDonutChart',
   components: { VueHeadline },
   props: {
-    title: {
-      type: String,
-    },
-    data: {
-      type: Array,
-      required: true,
-    },
-    unit: {
-      type: String,
-    },
-    strokeWidth: {
-      type: Number,
-      default: 1,
-    },
-    type: {
-      type: String,
-      default: 'donut',
-    },
+    title: { type: String, default: '' },
+    data: { type: Array, required: true },
+    unit: { type: String, default: '' },
+    strokeWidth: { type: Number, default: 1 },
+    type: { type: String, default: 'donut' },
   },
   computed: {
     sum() {
@@ -89,6 +78,11 @@ export default {
       return this.type === 'donut' ? this.strokeWidth : 32;
     },
   },
+  watch: {
+    data() {
+      usedColors = [];
+    },
+  },
   methods: {
     getRandomColor /* istanbul ignore next */() {
       const color = this.$style[`color${getIntInRange(1, this.colorCount)}`];
@@ -110,11 +104,6 @@ export default {
       }
 
       return sum;
-    },
-  },
-  watch: {
-    data() {
-      usedColors = [];
     },
   },
 };
