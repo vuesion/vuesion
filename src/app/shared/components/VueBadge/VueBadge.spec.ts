@@ -1,43 +1,41 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { render } from '@testing-library/vue';
 import VueBadge from './VueBadge.vue';
 import { brandVariations } from '@components/utils';
 
-const localVue = createLocalVue();
-
 describe('VueBadge.vue', () => {
   test('renders component', () => {
-    const wrapper = mount(VueBadge, {
-      localVue,
+    const { getByText } = render(VueBadge, {
       slots: {
         default: 'VueBadge',
       },
     });
 
-    expect(wrapper.find('span').text()).toBe('VueBadge');
+    getByText('VueBadge');
   });
 
   test('renders color variations', () => {
     brandVariations.forEach((variation: string) => {
-      const wrapper = mount(VueBadge, {
-        localVue,
+      const { container } = render(VueBadge, {
         propsData: {
           color: variation,
         },
       });
-      const actual = wrapper.findAll(`.${variation}`);
+
+      const actual = container.querySelectorAll(`.${variation}`);
       const expected = 1;
       expect(actual).toHaveLength(expected);
     });
   });
 
   test('renders outlined', () => {
-    const wrapper = mount(VueBadge, {
-      localVue,
+    const { container } = render(VueBadge, {
       propsData: {
         outlined: true,
       },
     });
 
-    expect(wrapper.findAll('.outlined')).toHaveLength(1);
+    const actual = container.querySelectorAll(`.outlined`);
+    const expected = 1;
+    expect(actual).toHaveLength(expected);
   });
 });
