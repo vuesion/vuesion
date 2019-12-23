@@ -1,7 +1,9 @@
 <template>
   <fade-animation>
-    <div :class="$style.vueCookieConsent" v-if="show" ref="cookieConsent">
-      <div :class="$style.content"><slot /></div>
+    <div v-if="show" ref="cookieConsent" :class="$style.vueCookieConsent">
+      <div :class="$style.content">
+        <slot />
+      </div>
 
       <div
         role="button"
@@ -10,7 +12,9 @@
         :class="$style.button"
         @click="onConsent"
       >
-        <div :class="$style.icon"><vue-icon-times /></div>
+        <div :class="$style.icon">
+          <vue-icon-times />
+        </div>
       </div>
     </div>
   </fade-animation>
@@ -42,6 +46,18 @@ export default {
       return this.currentVersion !== this.cookieConsentVersion;
     },
   },
+  watch: {
+    show(show: boolean) {
+      if (!show) {
+        this.removeBodyPadding();
+      }
+    },
+  },
+  mounted() {
+    if (this.show) {
+      this.addBodyPadding();
+    }
+  },
   methods: {
     onConsent() {
       this.setCookieConsentVersion(this.currentVersion);
@@ -51,18 +67,6 @@ export default {
     },
     removeBodyPadding() {
       document.body.style.paddingBottom = `0px`;
-    },
-  },
-  mounted() {
-    if (this.show) {
-      this.addBodyPadding();
-    }
-  },
-  watch: {
-    show(show: boolean) {
-      if (!show) {
-        this.removeBodyPadding();
-      }
     },
   },
 };

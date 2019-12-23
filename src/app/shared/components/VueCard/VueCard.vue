@@ -1,5 +1,7 @@
 <template>
-  <div :class="$style.vueCard"><slot /></div>
+  <div :class="$style.vueCard">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">

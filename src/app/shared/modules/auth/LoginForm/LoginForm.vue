@@ -1,11 +1,14 @@
 <template>
   <form :class="$style.loginForm" @submit.stop.prevent="onSubmit">
-    <vue-headline level="3">{{ $t('auth.LoginForm.title' /* Login Example */) }}</vue-headline>
+    <vue-headline level="3">
+      {{ $t('auth.LoginForm.title' /* Login Example */) }}
+    </vue-headline>
 
     <br />
 
     <vue-input
       id="username"
+      v-model="username"
       name="username"
       type="text"
       autofocus
@@ -13,18 +16,17 @@
       :placeholder="$t('common.username.placeholder' /* Enter any username */)"
       validation="required"
       :error-message="$t('auth.LoginForm.username.error' /* The username can not be empty */)"
-      v-model="username"
     />
 
     <vue-input
       id="password"
+      v-model="password"
       name="password"
       type="password"
       :label="$t('common.password' /* Password */)"
       :placeholder="$t('common.password.placeholder' /* Enter any password */)"
       validation="required|min:6"
       :error-message="$t('auth.LoginForm.password.error' /* The password has to have at least 6 characters */)"
-      v-model="password"
     />
 
     <vue-button color="primary" tabindex="3" type="submit" :disabled="isSubmitDisabled" :loading="loading">
@@ -45,10 +47,7 @@ export default {
   name: 'LoginForm',
   components: { VueButton, VueInput, VueHeadline },
   props: {
-    loading: {
-      type: Boolean,
-      default: false,
-    },
+    loading: { type: Boolean, default: false },
   },
   data(): any {
     return {

@@ -1,18 +1,18 @@
 <template>
   <div :class="cssClasses">
     <input
+      :id="id"
       ref="input"
+      v-validate="validation"
       type="checkbox"
       :name="name"
-      :id="id"
       :checked="isChecked"
       :required="required"
       :disabled="disabled"
-      v-validate="validation"
+      v-bind="$attrs"
       @change.prevent="onClick"
       @focus="focus = true"
       @blur="focus = false"
-      v-bind="$attrs"
     />
     <div :class="$style.container" @click="onClick">
       <div :class="$style.handle" :aria-checked="isChecked ? 'true' : 'false'" role="checkbox" />
@@ -33,33 +33,14 @@ export default {
     },
   },
   props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-    checked: {
-      type: Boolean,
-    },
-    value: {
-      type: Boolean,
-    },
-    disabled: {
-      type: Boolean,
-    },
-    required: {
-      type: Boolean,
-    },
-    validation: {
-      type: String,
-    },
-    label: {
-      type: String,
-      required: true,
-    },
+    name: { type: String, required: true },
+    id: { type: String, required: true },
+    checked: { type: Boolean, default: false },
+    value: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    required: { type: Boolean, default: false },
+    validation: { type: String, default: '' },
+    label: { type: String, required: true },
   },
   data(): any {
     return {
@@ -95,7 +76,7 @@ export default {
 
       if (!this.disabled) {
         this.$emit('click', e);
-        this.$emit('input', !Boolean(this.value));
+        this.$emit('input', !this.value);
       }
     },
   },

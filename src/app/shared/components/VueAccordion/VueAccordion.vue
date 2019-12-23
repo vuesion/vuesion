@@ -1,5 +1,7 @@
 <template>
-  <div :class="$style.vueAccordion"><slot /></div>
+  <div :class="$style.vueAccordion">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">
@@ -22,6 +24,10 @@ export default {
       items: [],
       openItems: [],
     };
+  },
+  beforeDestroy() {
+    this.items = [];
+    this.openItems = [];
   },
   methods: {
     openItem(idx: number) {
@@ -53,10 +59,6 @@ export default {
 
       this.handleItems();
     },
-  },
-  beforeDestroy() {
-    this.items = [];
-    this.openItems = [];
   },
 };
 </script>

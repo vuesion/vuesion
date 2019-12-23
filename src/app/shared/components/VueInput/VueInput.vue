@@ -1,10 +1,11 @@
 <template>
   <div :class="cssClasses">
     <input
+      :id="id"
+      ref="input"
       v-validate="validation"
       :data-vv-as="placeholder"
       :name="name"
-      :id="id"
       :required="required"
       :value="value"
       :type="type"
@@ -20,11 +21,12 @@
           $emit('input', e.target.value);
         },
       }"
-      ref="input"
     />
-    <span :class="$style.bar"></span>
+    <span :class="$style.bar" />
     <label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
-    <div :class="$style.message">{{ messageOrError }}</div>
+    <div :class="$style.message">
+      {{ messageOrError }}
+    </div>
   </div>
 </template>
 
@@ -40,49 +42,24 @@ export default {
     },
   },
   props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-    placeholder: {
-      type: String,
-    },
-    required: {
-      type: Boolean,
-    },
-    autofocus: {
-      type: Boolean,
-    },
-    value: {
-      type: String,
-    },
-    type: {
-      type: String,
-      default: 'text',
-    },
-    disabled: {
-      type: Boolean,
-    },
-    readonly: {
-      type: Boolean,
-    },
-    message: {
-      type: String,
-    },
-    errorMessage: {
-      type: String,
-    },
-    validation: {
-      type: String,
-    },
-    autocomplete: {
-      type: String,
-      default: 'off',
-    },
+    name: { type: String, required: true },
+    id: { type: String, required: true },
+    placeholder: { type: String, default: '' },
+    required: { type: Boolean, default: false },
+    autofocus: { type: Boolean, default: false },
+    value: { type: [String, Number], default: '' },
+    type: { type: String, default: 'text' },
+    disabled: { type: Boolean, default: false },
+    readonly: { type: Boolean, default: false },
+    message: { type: String, default: '' },
+    errorMessage: { type: String, default: '' },
+    validation: { type: String, default: '' },
+    autocomplete: { type: String, default: 'off' },
+  },
+  data(): any {
+    return {
+      observer: null,
+    };
   },
   computed: {
     isValid() {
@@ -105,10 +82,13 @@ export default {
       return classes;
     },
   },
-  data(): any {
-    return {
-      observer: null,
-    };
+  mounted() {
+    if ((window as any).IntersectionObserver) {
+      this.handleObserver();
+    }
+  },
+  beforeDestroy() {
+    this.observer = null;
   },
   methods: {
     handleObserver() {
@@ -122,14 +102,6 @@ export default {
       );
       this.observer.observe(this.$refs.input);
     },
-  },
-  mounted() {
-    if ((window as any).IntersectionObserver) {
-      this.handleObserver();
-    }
-  },
-  beforeDestroy() {
-    this.observer = null;
   },
 };
 </script>

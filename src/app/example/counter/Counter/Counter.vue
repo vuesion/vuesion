@@ -4,16 +4,24 @@
       <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'VueX Example' }]" />
 
       <vue-grid-row>
-        <vue-grid-item fill> <vue-headline level="1">Counter</vue-headline> </vue-grid-item>
+        <vue-grid-item fill>
+          <vue-headline level="1">
+            Counter
+          </vue-headline>
+        </vue-grid-item>
 
         <vue-grid-item fill>
-          <vue-button color="secondary" :loading="incrementPending" @click="increment">Increment +1 </vue-button>
+          <vue-button color="secondary" :loading="incrementPending" @click="increment">
+            Increment +1
+          </vue-button>
           <br />
           <br />
         </vue-grid-item>
         <vue-grid-item fill>
-          <vue-button color="primary" :loading="decrementPending" @click="decrement">Decrement -1 </vue-button>
-          <vue-headline level="3">Count is {{ count }}</vue-headline>
+          <vue-button color="primary" :loading="decrementPending" @click="decrement">
+            Decrement -1
+          </vue-button>
+          <vue-headline level="3"> Count is {{ count }} </vue-headline>
         </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
@@ -44,14 +52,14 @@ export default {
     VueButton,
     VueGridRow,
   },
-  methods: {
-    ...mapActions('counter', ['increment', 'decrement']),
-  },
   computed: {
     ...mapGetters('counter', ['count', 'incrementPending', 'decrementPending']),
   },
   beforeCreate() {
     registerModule('counter', CounterModule);
+  },
+  methods: {
+    ...mapActions('counter', ['increment', 'decrement']),
   },
   prefetch: (options: IPreLoad) => {
     registerModule('counter', CounterModule);

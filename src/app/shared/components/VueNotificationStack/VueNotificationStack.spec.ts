@@ -9,10 +9,6 @@ describe('VueNotificationStack.vue', () => {
     const wrapper = mount<any>(VueNotificationStack, {
       localVue,
     });
-    const notification: INotification = {
-      title: 'this is a test',
-      text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
-    } as INotification;
 
     expect(wrapper.vm.notifications).toHaveLength(0);
   });

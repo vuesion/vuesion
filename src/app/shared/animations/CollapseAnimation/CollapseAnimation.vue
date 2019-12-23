@@ -1,5 +1,5 @@
 <template>
-  <transition @beforeEnter="beforeEnter" @enter="enter" @beforeLeave="beforeLeave" @leave="leave" :css="false">
+  <transition :css="false" @beforeEnter="beforeEnter" @enter="enter" @beforeLeave="beforeLeave" @leave="leave">
     <slot />
   </transition>
 </template>

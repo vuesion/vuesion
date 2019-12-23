@@ -1,10 +1,10 @@
 <template>
   <div :class="cssClasses">
     <select
-      :title="placeholder"
-      :name="name"
       :id="id"
       v-validate="validation"
+      :title="placeholder"
+      :name="name"
       :multiple="multiple"
       :required="required"
       :disabled="disabled"
@@ -19,8 +19,8 @@
         {{ option.label }}
       </option>
     </select>
-    <i :class="$style.icon" v-if="!multiple"></i>
-    <span :class="$style.bar"></span>
+    <i v-if="!multiple" :class="$style.icon" />
+    <span :class="$style.bar" />
     <label :for="id">{{ placeholder }}<sup v-if="required">*</sup></label>
   </div>
 </template>
@@ -43,41 +43,16 @@ export default {
     },
   },
   props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-    options: {
-      required: true,
-      type: Array,
-    },
-    value: {
-      type: String,
-      default: '',
-    },
-    multiple: {
-      type: Boolean,
-    },
-    required: {
-      type: Boolean,
-    },
-    disabled: {
-      type: Boolean,
-    },
-    validation: {
-      type: String,
-    },
-    autocomplete: {
-      type: String,
-      default: 'off',
-    },
-    placeholder: {
-      type: String,
-    },
+    name: { type: String, required: true },
+    id: { type: String, required: true },
+    options: { type: Array, required: true },
+    value: { type: [String, Number], default: '' },
+    multiple: { type: Boolean, default: false },
+    required: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    validation: { type: String, default: '' },
+    autocomplete: { type: String, default: 'off' },
+    placeholder: { type: String, default: '' },
   },
   data(): { selectOptions: IAutocompleteOption[] } {
     return {
@@ -113,6 +88,20 @@ export default {
       return this.value.split('|');
     },
   },
+  watch: {
+    options: {
+      immediate: true,
+      handler(options: IAutocompleteOption[]) {
+        const selectOptions = [...options];
+
+        if (this.multiple === false) {
+          selectOptions.unshift({ label: '', value: '' });
+        }
+
+        this.selectOptions = selectOptions;
+      },
+    },
+  },
   methods: {
     isSelected(option: IVueSelectOption): boolean {
       return this.currentValueAsArray.indexOf(option.value) > -1;
@@ -130,20 +119,6 @@ export default {
       }
 
       this.$emit('input', selected.map((option: IVueSelectOption) => option.value).join('|'));
-    },
-  },
-  watch: {
-    options: {
-      immediate: true,
-      handler(options: IAutocompleteOption[]) {
-        const selectOptions = [...options];
-
-        if (this.multiple === false) {
-          selectOptions.unshift({ label: '', value: '' });
-        }
-
-        this.selectOptions = selectOptions;
-      },
     },
   },
 };

@@ -5,7 +5,9 @@
 
       <vue-grid-row>
         <vue-grid-item>
-          <vue-headline level="1">Form example</vue-headline>
+          <vue-headline level="1">
+            Form example
+          </vue-headline>
           <form-example />
         </vue-grid-item>
       </vue-grid-row>
@@ -26,10 +28,10 @@ export default {
     title: 'vuesion - Form Example',
   },
   components: { VueBreadcrumb, VueHeadline, FormExample, VueGridItem, VueGridRow, VueGrid },
-  computed: {},
   data(): any {
     return {};
   },
+  computed: {},
   methods: {},
 };
 </script>
