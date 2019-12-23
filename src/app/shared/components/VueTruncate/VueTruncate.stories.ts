@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueTruncate from './VueTruncate.vue';
 import { i18n } from '../../plugins/i18n/i18n';
 
@@ -7,7 +6,7 @@ const story = storiesOf('Molecules|Truncate', module) as any;
 
 story.add(
   'Default',
-  withInfo({})(() => ({
+  () => ({
     i18n,
     components: { VueTruncate },
     template: `<vue-truncate>
@@ -18,12 +17,17 @@ story.add(
   sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br/>
   no sea takimata sanctus est Lorem ipsum dolor sit amet.
 </vue-truncate>`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueTruncate },
+    },
+  },
 );
 
 story.add(
   'Without truncation',
-  withInfo({})(() => ({
+  () => ({
     i18n,
     components: { VueTruncate },
     template: `<vue-truncate :lines="6">
@@ -34,12 +38,17 @@ story.add(
   sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br/>
   no sea takimata sanctus est Lorem ipsum dolor sit amet.
 </vue-truncate>`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueTruncate },
+    },
+  },
 );
 
 story.add(
   'Lines and Duration',
-  withInfo({})(() => ({
+  () => ({
     i18n,
     components: { VueTruncate },
     template: `<vue-truncate :lines="2" :duration="500">
@@ -50,5 +59,10 @@ story.add(
   sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,<br/>
   no sea takimata sanctus est Lorem ipsum dolor sit amet.
 </vue-truncate>`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueTruncate },
+    },
+  },
 );

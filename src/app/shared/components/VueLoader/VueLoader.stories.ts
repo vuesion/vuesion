@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueLoader from './VueLoader.vue';
 import { brandVariations } from '@components/utils';
 
@@ -7,7 +6,7 @@ const story = storiesOf('Atoms|Loader', module) as any;
 
 story.add(
   'Loader Variants',
-  withInfo({})(() => ({
+  () => ({
     components: { VueLoader },
     data(): any {
       return {
@@ -23,5 +22,10 @@ story.add(
 <br />
 </template>
 </div>`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueLoader },
+    },
+  },
 );

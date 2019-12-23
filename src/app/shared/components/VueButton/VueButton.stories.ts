@@ -1,6 +1,5 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueButton from './VueButton.vue';
 import { brandVariations } from '@components/utils';
 
@@ -8,7 +7,7 @@ const story = storiesOf('Atoms|Button', module) as any;
 
 story.add(
   'Button Variants',
-  withInfo({})(() => ({
+  () => ({
     components: { VueButton },
     data(): any {
       return {
@@ -30,12 +29,17 @@ story.add(
     methods: {
       action: action('@onClick'),
     },
-  })),
+  }),
+  {
+    info: {
+      components: { VueButton },
+    },
+  },
 );
 
 story.add(
   'Button as Link',
-  withInfo({})(() => ({
+  () => ({
     components: { VueButton },
     template: `<div>
 Router-Link<br/>
@@ -57,5 +61,10 @@ A-Element: <br/>
     methods: {
       action: action('@onClick'),
     },
-  })),
+  }),
+  {
+    info: {
+      components: { VueButton },
+    },
+  },
 );

@@ -41,7 +41,11 @@ describe('VueDropdownMenuMenu.vue', () => {
     const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
-        options: [{ label: 'foo', value: 'foo' }, { label: '', value: 'separator' }, { label: 'foo', value: 'foo' }],
+        options: [
+          { label: 'foo', value: 'foo' },
+          { label: '', value: 'separator' },
+          { label: 'foo', value: 'foo' },
+        ],
       },
       slots: {
         default: 'foo',
@@ -120,7 +124,11 @@ describe('VueDropdownMenuMenu.vue', () => {
     const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
-        options: [{ label: 'foo', value: 'foo' }, { label: 'foo', value: 'foo' }, { label: 'foo', value: 'foo' }],
+        options: [
+          { label: 'foo', value: 'foo' },
+          { label: 'foo', value: 'foo' },
+          { label: 'foo', value: 'foo' },
+        ],
       },
       slots: {
         default: '<p>foo</p>',
