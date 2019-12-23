@@ -28,7 +28,9 @@
     </fade-animation>
 
     <ul v-if="showIndicator" :class="$style.indicator">
-      <li v-for="(image, idx) in preloadedImages" :key="idx" :class="isActiveSlide(idx) && $style.active">&nbsp;</li>
+      <li v-for="(image, idx) in preloadedImages" :key="idx" :class="isActiveSlide(idx) && $style.active">
+        &nbsp;
+      </li>
     </ul>
   </div>
 </template>
@@ -76,6 +78,12 @@ export default {
       preloadedImages: [],
     };
   },
+  mounted() {
+    this.preloadImages();
+  },
+  beforeDestroy() {
+    clearInterval(this.intervalInstance);
+  },
   methods: {
     isActiveSlide(idx: number) {
       return this.currentSlide === idx;
@@ -108,12 +116,6 @@ export default {
       }
       this.intervalInstance = setInterval(this.changeSlide, this.interval);
     },
-  },
-  mounted() {
-    this.preloadImages();
-  },
-  beforeDestroy() {
-    clearInterval(this.intervalInstance);
   },
 };
 </script>

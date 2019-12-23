@@ -33,7 +33,7 @@ if (store.state.app.redirectTo !== null) {
  * global error handler that redirects to error page and logs error to express app
  */
 Vue.config.errorHandler = (error: Error) => {
-  console.error(error); // tslint:disable-line
+  console.error(error);
 
   HttpService.post('/log/error', {
     error: {
@@ -49,7 +49,7 @@ router.onReady(() => {
   router.beforeResolve(async (to: Route, from: Route, next: any) => {
     const matched: Component[] = router.getMatchedComponents(to);
     const prevMatched: Component[] = router.getMatchedComponents(from);
-    let diffed: boolean = false;
+    let diffed = false;
 
     const activated: Component[] = matched.filter((component: Component, i: number) => {
       return diffed || (diffed = prevMatched[i] !== component);
@@ -72,7 +72,7 @@ router.onReady(() => {
 
       next();
     } catch (e) {
-      console.error(e); // tslint:disable-line
+      console.error(e);
       next();
     }
   });

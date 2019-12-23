@@ -1,7 +1,11 @@
 <template>
   <div :class="$style.notFound">
-    <vue-headline level="1">404</vue-headline>
-    <vue-headline level="3">Page not found!</vue-headline>
+    <vue-headline level="1">
+      404
+    </vue-headline>
+    <vue-headline level="3">
+      Page not found!
+    </vue-headline>
   </div>
 </template>
 

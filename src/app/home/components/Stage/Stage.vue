@@ -1,12 +1,14 @@
 <template>
-  <div :class="$style.stage" ref="stage">
-    <canvas :class="$style.canvas" ref="canvas"></canvas>
+  <div ref="stage" :class="$style.stage">
+    <canvas ref="canvas" :class="$style.canvas"></canvas>
 
     <vue-grid>
       <vue-grid-row>
         <vue-grid-item class="vueGridItem">
           <img src="logo.png" alt="vuesion" />
-          <vue-headline level="1">vuesion</vue-headline>
+          <vue-headline level="1">
+            vuesion
+          </vue-headline>
           <div :class="$style.subTitle">
             {{
               $t(
@@ -52,6 +54,19 @@ export default {
     return {};
   },
   computed: {},
+  beforeMount() {
+    window.addEventListener('resize', this.handleResize);
+  },
+  mounted() {
+    this.handleResize();
+
+    if (!this.disableParticles) {
+      CircleAnimation(this.$refs.canvas);
+    }
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleResize);
+  },
   methods: {
     handleResize() {
       const canvas: HTMLCanvasElement = this.$refs.canvas;
@@ -67,19 +82,6 @@ export default {
       canvas.width = stageRect.width;
       canvas.height = stageRect.height;
     },
-  },
-  beforeMount() {
-    window.addEventListener('resize', this.handleResize);
-  },
-  mounted() {
-    this.handleResize();
-
-    if (!this.disableParticles) {
-      CircleAnimation(this.$refs.canvas);
-    }
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.handleResize);
   },
 };
 </script>

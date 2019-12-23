@@ -4,7 +4,9 @@
       <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'VueX Example' }]" />
       <vue-grid-row>
         <vue-grid-item fill>
-          <vue-headline level="1">Dashboard</vue-headline>
+          <vue-headline level="1">
+            Dashboard
+          </vue-headline>
           This demo demonstrates the authentication and re-authentication flow.
           <br />
           <strong>Make sure to open the console to see the whole flow.</strong>
@@ -13,7 +15,9 @@
         </vue-grid-item>
 
         <vue-grid-item>
-          Press this&nbsp;&nbsp;&nbsp;&nbsp;<vue-button outlined @click="onClick">button</vue-button>
+          Press this&nbsp;&nbsp;&nbsp;&nbsp;<vue-button outlined @click="onClick">
+            button
+          </vue-button>
           and the following will happen:
 
           <br />
@@ -66,6 +70,7 @@ export default {
   data(): any {
     return { pending: false };
   },
+  computed: {},
   methods: {
     onClick() {
       const requests = [];
@@ -81,12 +86,11 @@ export default {
           this.pending = false;
         })
         .catch((e) => {
-          console.log(e); // tslint:disable-line
+          console.log(e);
           this.pending = false;
         });
     },
   },
-  computed: {},
 };
 </script>
 

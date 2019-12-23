@@ -26,6 +26,13 @@ export default {
       return this.native ? 'img' : 'div';
     },
   },
+  mounted() {
+    if ((window as any).IntersectionObserver) {
+      this.createObserver();
+    } else {
+      this.setImage();
+    }
+  },
   methods: {
     setImage() {
       if (this.native) {
@@ -46,13 +53,6 @@ export default {
       this.observer = new IntersectionObserver(this.handleObserver, { rootMargin: '0px', threshold: 0.1 });
       this.observer.observe(this.$refs.image);
     },
-  },
-  mounted() {
-    if ((window as any).IntersectionObserver) {
-      this.createObserver();
-    } else {
-      this.setImage();
-    }
   },
 };
 </script>

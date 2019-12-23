@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.{{ camelCase componentName }}">
     <vue-grid>
-      <vue-breadcrumb :items="breadCrumbItems"></vue-breadcrumb>
+      <vue-breadcrumb :items="breadCrumbItems" />
 
       <vue-grid-row>
         <vue-grid-item fill>
@@ -14,12 +14,10 @@
 
 <script lang="ts">
 import { registerModule } from '@/app/store';
-import { IPreLoad } from '@/server/isomorphic';
 import VueGrid from '@/app/shared/components/VueGrid/VueGrid.vue';
 import VueBreadcrumb from '@components/VueBreadcrumb/VueBreadcrumb.vue';
 import VueGridRow from '@/app/shared/components/VueGridRow/VueGridRow.vue';
 import VueGridItem from '@/app/shared/components/VueGridItem/VueGridItem.vue';
-import VueButton from '@/app/shared/components/VueButton/VueButton.vue';
 import VueHeadline from '@/app/shared/components/VueHeadline/VueHeadline.vue';
 
 import { {{ properCase singularName }}Module } from '../module';
@@ -33,7 +31,6 @@ export default {
     VueBreadcrumb,
     VueGridRow,
     VueGridItem,
-    VueButton,
     VueHeadline,
   },
   data: (): any => ({}),
@@ -49,7 +46,7 @@ export default {
   beforeCreate() {
     registerModule('{{ camelCase singularName }}', {{ properCase singularName }}Module);
   },
-  prefetch: (options: IPreLoad) => {
+  prefetch: () => {
     registerModule('{{ camelCase singularName }}', {{ properCase singularName }}Module);
 
     /**

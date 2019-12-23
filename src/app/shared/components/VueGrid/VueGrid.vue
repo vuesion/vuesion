@@ -1,5 +1,7 @@
 <template>
-  <div :class="$style.grid"><slot /></div>
+  <div :class="$style.grid">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">
