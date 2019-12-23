@@ -1,7 +1,6 @@
-/* tslint:disable */
 import { storiesOf } from '@storybook/vue';
 
-let story = storiesOf('Utilities|Directives', module) as any;
+const story = storiesOf('Utilities|Directives', module) as any;
 
 story.add('sr-only', () => ({
   components: {},

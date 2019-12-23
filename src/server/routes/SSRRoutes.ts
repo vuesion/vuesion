@@ -89,7 +89,7 @@ export const SSRRoutes = (app: Express.Application): any => {
         render('/error', true);
       }
     };
-    const render = (url: string, redirect: boolean = false): void => {
+    const render = (url: string, redirect = false): void => {
       const serverContext: IServerContext = {
         url,
         cookies: req.cookies,

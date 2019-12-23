@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style.vueDropdownMenu" @keydown="onKeyPress" ref="dropdownMenu">
-    <span @click.stop.prevent="show = !show" role="button" tabindex="0" :aria-expanded="show.toString()">
+  <div ref="dropdownMenu" :class="$style.vueDropdownMenu" @keydown="onKeyPress">
+    <span role="button" tabindex="0" :aria-expanded="show.toString()" @click.stop.prevent="show = !show">
       <slot />
       <vue-icon-sort-down />
     </span>
@@ -10,15 +10,15 @@
         <ul>
           <li
             v-for="(option, idx) in options"
-            v-if="option.value !== 'separator'"
             :key="`${id}-${idx}`"
+            :class="[index === idx ? $style.active : '', option.value === 'separator' ? $style.separator : '']"
             @mouseenter="index = idx"
-            :class="index === idx ? $style.active : ''"
             @click.stop.prevent="onClick(option)"
           >
-            <slot name="option" :option="option">{{ option.label }}</slot>
+            <slot v-if="option.value !== 'separator'" name="option" :option="option">
+              {{ option.label }}
+            </slot>
           </li>
-          <li v-else :class="$style.separator"></li>
         </ul>
       </div>
     </vue-collapse>
@@ -45,6 +45,14 @@ export default {
       id: getIntInRange(213123123, 98982984398),
       index: -1,
     };
+  },
+  beforeMount() {
+    document.addEventListener('mousedown', this.handleDocumentClick);
+    document.addEventListener('touchstart', this.handleDocumentClick);
+  },
+  beforeDestroy() {
+    document.removeEventListener('mousedown', this.handleDocumentClick);
+    document.removeEventListener('touchstart', this.handleDocumentClick);
   },
   methods: {
     onClick(option: any) {
@@ -97,14 +105,6 @@ export default {
         this.close();
       }
     },
-  },
-  beforeMount() {
-    document.addEventListener('mousedown', this.handleDocumentClick);
-    document.addEventListener('touchstart', this.handleDocumentClick);
-  },
-  beforeDestroy() {
-    document.removeEventListener('mousedown', this.handleDocumentClick);
-    document.removeEventListener('touchstart', this.handleDocumentClick);
   },
 };
 </script>

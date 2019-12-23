@@ -1,6 +1,8 @@
 <template>
   <transition @beforeEnter="beforeEnter" @enter="enter" @beforeLeave="beforeLeave" @leave="leave">
-    <section :class="cssClasses" v-if="show" role="tabpanel"><slot /></section>
+    <section v-if="show" :class="cssClasses" role="tabpanel">
+      <slot />
+    </section>
   </transition>
 </template>
 
@@ -25,11 +27,6 @@ export default {
       active: false,
     };
   },
-  watch: {
-    title(title: string) {
-      this.updateHeader(this.idx, { title });
-    },
-  },
   computed: {
     show() {
       return this.active;
@@ -43,6 +40,16 @@ export default {
 
       return classes;
     },
+  },
+  watch: {
+    title(title: string) {
+      this.updateHeader(this.idx, { title });
+    },
+  },
+  created() {
+    this.active = this.isActive;
+
+    this.register(this);
   },
   methods: {
     beforeEnter(el: HTMLElement) {
@@ -77,11 +84,6 @@ export default {
         complete: done,
       });
     },
-  },
-  created() {
-    this.active = this.isActive;
-
-    this.register(this);
   },
 };
 </script>

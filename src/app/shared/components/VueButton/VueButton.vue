@@ -1,19 +1,19 @@
 <template>
   <component
     :is="as"
+    ref="button"
     :to="isRouterLink && target"
     :href="isRegularLink && target"
     :disabled="disabled"
     :class="cssClasses"
-    @click="click"
-    ref="button"
     :style="{ width: actualWidth }"
     :event="!isDisabled && isRouterLink ? 'click' : null"
     :tabindex="isDisabled ? -1 : 0"
     :aria-hidden="isDisabled"
+    @click="click"
   >
     <slot v-if="loading === false" />
-    <vue-loader :class="$style.loader" v-if="loading === true" />
+    <vue-loader v-if="loading === true" :class="$style.loader" />
   </component>
 </template>
 
@@ -23,34 +23,17 @@ import { variationValidator } from '@components/utils';
 
 export default {
   name: 'VueButton',
-  props: {
-    color: {
-      type: String,
-      validator: variationValidator,
-      default: 'default',
-    },
-    disabled: {
-      type: Boolean,
-    },
-    loading: {
-      type: Boolean,
-    },
-    as: {
-      type: String,
-      default: 'button',
-    },
-    target: {
-      type: String,
-    },
-    outlined: {
-      type: Boolean,
-    },
-    ghost: {
-      type: Boolean,
-    },
-  },
   components: {
     VueLoader,
+  },
+  props: {
+    color: { type: String, validator: variationValidator, default: 'default' },
+    disabled: { type: Boolean, default: false },
+    loading: { type: Boolean, default: false },
+    as: { type: String, default: 'button' },
+    target: { type: String, default: null },
+    outlined: { type: Boolean, default: false },
+    ghost: { type: Boolean, default: false },
   },
   computed: {
     cssClasses() {

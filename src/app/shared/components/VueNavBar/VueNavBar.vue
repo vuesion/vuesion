@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vueNavBar" ref="nav">
+  <div ref="nav" :class="$style.vueNavBar">
     <div>
       <slot name="left" />
     </div>

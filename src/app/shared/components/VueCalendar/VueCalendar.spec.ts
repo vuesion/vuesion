@@ -1,4 +1,4 @@
-import { createLocalVue, mount, WrapperArray } from '@vue/test-utils';
+import { createLocalVue, mount } from '@vue/test-utils';
 import VueCalendar from './VueCalendar.vue';
 import { i18n } from '../../plugins/i18n/i18n';
 

@@ -23,7 +23,7 @@ export interface IServerContext {
   appConfig: IAppConfig;
   redirect: boolean;
   rendered?: () => void;
-  theme: string;
+  theme?: string;
 }
 
 export interface IPreLoad {

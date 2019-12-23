@@ -1,5 +1,3 @@
-/* tslint:disable:no-console */
-
 /**
  * good resource if you think you have caching issues:
  * https://gist.github.com/Rich-Harris/fd6c3c73e6e707e312d7c5d7d0f3b2f9

@@ -11,11 +11,13 @@
   >
     <ul :class="isMultiRange ? [$style.values, $style.multi] : $style.values">
       <li>{{ formatValue(currentMin) }}</li>
-      <li v-if="isMultiRange">{{ formatValue(currentMax) }}</li>
+      <li v-if="isMultiRange">
+        {{ formatValue(currentMax) }}
+      </li>
     </ul>
 
     <div :class="cssClasses">
-      <div :class="$style.progress" :style="{ width: progressWidth, marginLeft: progressLeft }"></div>
+      <div :class="$style.progress" :style="{ width: progressWidth, marginLeft: progressLeft }" />
 
       <button
         :class="handleCssClasses(0)"
@@ -30,7 +32,7 @@
         @keydown="onKeyDown"
         @keyup="onKeyUp"
         @focusout="currentSlider = null"
-      ></button>
+      />
 
       <button
         v-if="isMultiRange"
@@ -46,7 +48,7 @@
         @keydown="onKeyDown"
         @keyup="onKeyUp"
         @focusout="currentSlider = null"
-      ></button>
+      />
     </div>
   </div>
 </template>
@@ -123,6 +125,22 @@ export default {
       return this.values.length > 1;
     },
   },
+  watch: {
+    values: {
+      immediate: true,
+      handler(values: number[]) {
+        this.currentMin = values[0];
+        this.currentMax = this.isMultiRange ? values[1] : this.max;
+      },
+    },
+  },
+  mounted() {
+    this.sliderBox = this.$refs.slider.getBoundingClientRect();
+    window.addEventListener('resize', this.refresh);
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.refresh);
+  },
   methods: {
     getClosestHandle(percentageDiff: number) {
       const handlePos: number[] = [parseInt(this.handleLeftPosition, 10), parseInt(this.handleRightPosition, 10)];
@@ -197,7 +215,7 @@ export default {
     refresh() {
       this.sliderBox = this.$refs.slider.getBoundingClientRect();
     },
-    handleCssClasses(index: number = 0) {
+    handleCssClasses(index = 0) {
       const classes: string[] = [this.$style.handle];
 
       if (index === this.currentSlider) {
@@ -235,22 +253,6 @@ export default {
     },
     onKeyUp() {
       this.$emit('change', { values: [this.currentMin, this.currentMax] });
-    },
-  },
-  mounted() {
-    this.sliderBox = this.$refs.slider.getBoundingClientRect();
-    window.addEventListener('resize', this.refresh);
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.refresh);
-  },
-  watch: {
-    values: {
-      immediate: true,
-      handler(values: number[]) {
-        this.currentMin = values[0];
-        this.currentMax = this.isMultiRange ? values[1] : this.max;
-      },
     },
   },
 };

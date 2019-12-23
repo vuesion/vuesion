@@ -1,6 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueMarkdown from './VueMarkdown.vue';
-import apply = Reflect.apply;
 
 const localVue = createLocalVue();
 

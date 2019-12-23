@@ -5,11 +5,11 @@
     <vue-navigation-progress :is-navigating="isNavigating" />
 
     <vue-nav-bar>
-      <vue-button slot="right" v-if="isAuthenticated === false" color="primary" @click="showLoginModal = true">
+      <vue-button v-if="isAuthenticated === false" slot="right" color="primary" @click="showLoginModal = true">
         Login
       </vue-button>
 
-      <vue-button slot="right" v-if="isAuthenticated" color="primary" @click="onLogout">
+      <vue-button v-if="isAuthenticated" slot="right" color="primary" @click="onLogout">
         Logout
       </vue-button>
     </vue-nav-bar>
@@ -30,13 +30,13 @@
     <vue-sidebar>
       <vue-sidebar-group title="Themes">
         <vue-sidebar-group-item>
-          <vue-select name="theme" id="theme" :options="themes" @input="themeSwitch" :value="theme" />
+          <vue-select id="theme" name="theme" :options="themes" :value="theme" @input="themeSwitch" />
         </vue-sidebar-group-item>
       </vue-sidebar-group>
 
       <vue-sidebar-group title="Languages">
         <vue-sidebar-group-item>
-          <vue-select name="lang" id="lang" :options="languages" @input="localeSwitch" :value="getLocale" />
+          <vue-select id="lang" name="lang" :options="languages" :value="getLocale" @input="localeSwitch" />
         </vue-sidebar-group-item>
       </vue-sidebar-group>
 
@@ -120,8 +120,6 @@ import { mapActions, mapGetters } from 'vuex';
 import { loadLocaleAsync } from '@shared/plugins/i18n/i18n';
 import '@shared/designSystem/global.scss';
 import VueNavBar from '@components/VueNavBar/VueNavBar.vue';
-import VueGrid from '@components/VueGrid/VueGrid.vue';
-import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
 import VueFooter from '@components/VueFooter/VueFooter.vue';
 import VueNotificationStack from '@components/VueNotificationStack/VueNotificationStack.vue';
 import VueCookieConsent from '@components/VueCookieConsent/VueCookieConsent.vue';
@@ -160,8 +158,6 @@ export default {
     VueNavigationProgress,
     VueCookieConsent,
     VueNavBar,
-    VueGrid,
-    VueGridItem,
     VueFooter,
     VueNotificationStack,
   },
@@ -186,11 +182,14 @@ export default {
     ...mapGetters('app', ['cookieConsentVersion', 'getLocale', 'theme']),
     ...mapGetters('auth', ['isAuthenticated']),
   },
+  created() {
+    this.initProgressBar();
+  },
   methods: {
     ...mapActions('app', ['changeLocale', 'setCookieConsentVersion', 'changeTheme']),
     ...mapActions('auth', ['createToken', 'revokeToken']),
     localeSwitch(locale: string) {
-      loadLocaleAsync(locale).catch((error: Error) => console.log(error)); // tslint:disable-line
+      loadLocaleAsync(locale).catch((error: Error) => console.log(error));
 
       this.changeLocale(locale);
     },
@@ -231,9 +230,6 @@ export default {
       this.isLoginPending = false;
       this.showLoginModal = false;
     },
-  },
-  created() {
-    this.initProgressBar();
   },
 };
 </script>

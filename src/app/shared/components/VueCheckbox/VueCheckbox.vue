@@ -1,18 +1,18 @@
 <template>
   <div :class="cssClasses" :aria-label="label">
     <input
+      :id="id"
+      v-validate="validation"
       :type="inputType"
       :name="name"
-      :id="id"
       :checked="checked || value"
       :required="required"
       :disabled="disabled"
-      v-validate="validation"
-      @change.prevent="onClick"
       v-bind="$attrs"
+      @change.prevent="onClick"
     />
-    <div :class="$style.box" @click="onClick"></div>
-    <label :for="name" v-html="label"></label>
+    <div :class="$style.box" @click="onClick" />
+    <label :for="name" v-html="label" />
   </div>
 </template>
 
@@ -28,36 +28,15 @@ export default {
     },
   },
   props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-    checked: {
-      type: Boolean,
-    },
-    value: {
-      type: Boolean,
-    },
-    disabled: {
-      type: Boolean,
-    },
-    required: {
-      type: Boolean,
-    },
-    validation: {
-      type: String,
-    },
-    radio: {
-      type: Boolean,
-    },
-    label: {
-      type: String,
-      required: true,
-    },
+    name: { type: String, required: true },
+    id: { type: String, required: true },
+    checked: { type: Boolean, default: false },
+    value: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    required: { type: Boolean, default: false },
+    validation: { type: String, default: '' },
+    radio: { type: Boolean, default: false },
+    label: { type: String, required: true },
   },
   computed: {
     cssClasses() {
@@ -89,7 +68,7 @@ export default {
 
       if (!this.disabled) {
         this.$emit('click', e);
-        this.$emit('input', !Boolean(this.value));
+        this.$emit('input', !this.value);
       }
     },
   },

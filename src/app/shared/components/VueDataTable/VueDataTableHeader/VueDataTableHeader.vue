@@ -9,7 +9,7 @@
       >
         {{ column.title }}
 
-        <div :class="$style.icons" v-if="column.sortable">
+        <div v-if="column.sortable" :class="$style.icons">
           <vue-icon-sort v-if="!sortKey && !isActive(column.sortKey)" />
           <vue-icon-sort-up v-if="isActive(column.sortKey) && sortDirection === 'asc'" />
           <vue-icon-sort-down v-if="isActive(column.sortKey) && sortDirection === 'desc'" />
@@ -29,17 +29,9 @@ export default {
   name: 'VueDataTableHeader',
   components: { VueIconSortDown, VueIconSortUp, VueIconSort },
   props: {
-    columns: {
-      type: Array,
-      required: true,
-    },
-    sortKey: {
-      type: String,
-    },
-    sortDirection: {
-      type: String,
-      required: true,
-    },
+    columns: { type: Array, required: true },
+    sortKey: { type: String, default: null },
+    sortDirection: { type: String, required: true },
   },
   computed: {
     visibleColumns() {

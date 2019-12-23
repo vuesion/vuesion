@@ -1,7 +1,9 @@
 <template>
   <ul :class="$style.vueBreadcrumb">
-    <li :class="$style.item" v-for="(item, idx) in items" :key="idx">
-      <router-link :to="item.href" v-if="idx < items.length - 1">{{ item.label }}</router-link>
+    <li v-for="(item, idx) in items" :key="idx" :class="$style.item">
+      <router-link v-if="idx < items.length - 1" :to="item.href">
+        {{ item.label }}
+      </router-link>
       <span v-else>{{ item.label }}</span>
     </li>
   </ul>
