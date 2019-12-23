@@ -1,51 +1,53 @@
 <template>
-  <div :class="$style.calendar" ref="calendar">
+  <div ref="calendar" :class="$style.calendar">
     <div :class="$style.header">
       <vue-headline
         level="4"
         :native="false"
-        @click="setSelecting('year')"
-        @keypress.enter.space.stop.prevent="setSelecting('year')"
         role="button"
         tabindex="0"
         :aria-label="selectedYear"
+        @click="setSelecting('year')"
+        @keypress.enter.space.stop.prevent="setSelecting('year')"
       >
         {{ selectedYear }}
       </vue-headline>
       <vue-headline
         level="5"
         :native="false"
-        @click="setSelecting('date')"
-        @keypress.enter.space.stop.prevent="setSelecting('date')"
         role="button"
         tabindex="0"
         :aria-label="$d(calculatedDate, 'calendarHeader')"
+        @click="setSelecting('date')"
+        @keypress.enter.space.stop.prevent="setSelecting('date')"
       >
         {{ $d(calculatedDate, 'calendarHeader') }}
       </vue-headline>
     </div>
 
-    <div :class="$style.body" v-if="selecting === 'date'">
+    <div v-if="selecting === 'date'" :class="$style.body">
       <div :class="$style.date">
         <div
           :class="$style.arrow"
-          @click="setByMonth(currentMonth - 1)"
-          @keypress.enter.space.stop.prevent="setByMonth(currentMonth - 1)"
           role="button"
           :aria-label="$t('components.calendar.previousMonth' /* previous month */)"
           tabindex="0"
-        ></div>
+          @click="setByMonth(currentMonth - 1)"
+          @keypress.enter.space.stop.prevent="setByMonth(currentMonth - 1)"
+        />
 
-        <div :class="$style.currentDate">{{ $d(new Date(currentYear, currentMonth, 1), 'calendarNav') }}</div>
+        <div :class="$style.currentDate">
+          {{ $d(new Date(currentYear, currentMonth, 1), 'calendarNav') }}
+        </div>
 
         <div
           :class="$style.arrow"
-          @click="setByMonth(currentMonth + 1)"
-          @keypress.enter.space.stop.prevent="setByMonth(currentMonth + 1)"
           role="button"
           :aria-label="$t('components.calendar.nextMonth' /* next month */)"
           tabindex="0"
-        ></div>
+          @click="setByMonth(currentMonth + 1)"
+          @keypress.enter.space.stop.prevent="setByMonth(currentMonth + 1)"
+        />
       </div>
 
       <table>
@@ -60,13 +62,13 @@
         <tbody>
           <tr v-for="(days, daysIdx) in calendar" :key="`days-${daysIdx}`">
             <td
+              v-for="(day, dayIdx) in days"
+              :key="`day-${dayIdx}`"
               :class="[
                 day.currentDay ? $style.currentDay : '',
                 day.disabled ? $style.disabledDay : '',
                 day.selected ? $style.selectedDay : '',
               ]"
-              v-for="(day, dayIdx) in days"
-              :key="`day-${dayIdx}`"
               :tabindex="day.day ? 0 : null"
               :aria-label="day.day ? $d(new Date(currentYear, currentMonth, day.day), 'calendarLabel') : null"
               @keydown.enter.stop.prevent="setByDay(day)"
@@ -80,24 +82,28 @@
       </table>
     </div>
 
-    <div :class="$style.year" v-if="selecting === 'year'">
+    <div v-if="selecting === 'year'" :class="$style.year">
       <div
-        :class="[year.selected ? $style.selected : '']"
-        :id="`${year.year}-calendar-year`"
         v-for="year in years"
+        :id="`${year.year}-calendar-year`"
         :key="year.year"
-        @click="setByYear(year.year)"
-        @keypress.enter.space.stop.prevent="setByYear(year.year)"
+        :class="[year.selected ? $style.selected : '']"
         :aria-label="year.year"
         tabindex="0"
+        @click="setByYear(year.year)"
+        @keypress.enter.space.stop.prevent="setByYear(year.year)"
       >
         {{ year.year }}
       </div>
     </div>
 
     <div :class="$style.footer">
-      <vue-button @click.stop.prevent="onClose" ghost>{{ $t('common.cancel' /* Cancel */) }}</vue-button>
-      <vue-button @click.stop.prevent="onChange" color="primary">{{ $t('common.ok' /* Ok */) }}</vue-button>
+      <vue-button ghost @click.stop.prevent="onClose">
+        {{ $t('common.cancel' /* Cancel */) }}
+      </vue-button>
+      <vue-button color="primary" @click.stop.prevent="onChange">
+        {{ $t('common.ok' /* Ok */) }}
+      </vue-button>
     </div>
   </div>
 </template>
@@ -136,29 +142,24 @@ export default {
     VueButton,
   },
   props: {
-    today: {
-      type: Date,
-      default: () => new Date(),
-    },
-    minDate: {
-      type: Date,
-    },
-    maxDate: {
-      type: Date,
-    },
-    firstDayOfWeek: {
-      type: Number,
-      default: 0,
-    },
-    startDate: {
-      type: Date,
-    },
-    endDate: {
-      type: Date,
-    },
-    selectedDate: {
-      type: Date,
-    },
+    today: { type: Date, default: () => new Date() },
+    minDate: { type: Date, default: null },
+    maxDate: { type: Date, default: null },
+    firstDayOfWeek: { type: Number, default: 0 },
+    startDate: { type: Date, default: null },
+    endDate: { type: Date, default: null },
+    selectedDate: { type: Date, default: null },
+  },
+  data(): IData {
+    return {
+      selecting: 'date',
+      currentMonth: null,
+      currentYear: null,
+      selectedDayOfWeek: null,
+      selectedDay: null,
+      selectedMonth: null,
+      selectedYear: null,
+    };
   },
   computed: {
     calculatedDate(): Date {
@@ -262,17 +263,6 @@ export default {
   created() {
     this.setDate();
   },
-  data(): IData {
-    return {
-      selecting: 'date',
-      currentMonth: null,
-      currentYear: null,
-      selectedDayOfWeek: null,
-      selectedDay: null,
-      selectedMonth: null,
-      selectedYear: null,
-    };
-  },
   methods: {
     async setSelecting(value: string) {
       this.selecting = value;
@@ -349,7 +339,7 @@ export default {
       this.currentYear = date.getFullYear();
     },
     dayDisabled(day: number, date: Date): boolean {
-      let disabled: boolean = false;
+      let disabled = false;
 
       if (!day) {
         disabled = true;

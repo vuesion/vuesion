@@ -1,9 +1,13 @@
 <template>
   <div :class="cssClasses">
-    <img :src="image" v-if="image" :alt="title" />
+    <img v-if="image" :src="image" :alt="title" />
     <div>
-      <div :class="$style.title" v-if="title">{{ title }}</div>
-      <div :class="$style.subtitle" v-if="subtitle">{{ subtitle }}</div>
+      <div v-if="title" :class="$style.title">
+        {{ title }}
+      </div>
+      <div v-if="subtitle" :class="$style.subtitle">
+        {{ subtitle }}
+      </div>
     </div>
   </div>
 </template>
@@ -12,15 +16,9 @@
 export default {
   name: 'VueCardHeader',
   props: {
-    title: {
-      type: String,
-    },
-    subtitle: {
-      type: String,
-    },
-    image: {
-      type: String,
-    },
+    title: { type: String, default: '' },
+    subtitle: { type: String, default: '' },
+    image: { type: String, default: '' },
   },
   computed: {
     cssClasses() {

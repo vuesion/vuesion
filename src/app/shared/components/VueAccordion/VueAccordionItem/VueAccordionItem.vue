@@ -2,16 +2,18 @@
   <div :class="$style.vueAccordionItem">
     <div
       :class="$style.header"
-      @click="click"
-      @keypress.enter.space.prevent.stop="click"
       tabindex="0"
       role="button"
       :aria-label="title"
+      @click="click"
+      @keypress.enter.space.prevent.stop="click"
     >
       {{ title }} <i :class="iconClasses" />
     </div>
     <vue-collapse :show="show">
-      <section :class="$style.body" :aria-expanded="show"><slot /></section>
+      <section :class="$style.body" :aria-expanded="show">
+        <slot />
+      </section>
     </vue-collapse>
   </div>
 </template>
@@ -55,13 +57,13 @@ export default {
       return classes;
     },
   },
+  created() {
+    this.register(this);
+  },
   methods: {
     click() {
       this.openItem(this.idx);
     },
-  },
-  created() {
-    this.register(this);
   },
 };
 </script>

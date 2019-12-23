@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.vueMarkdown" v-html="html" ref="content" />
+  <div ref="content" :class="$style.vueMarkdown" v-html="html" />
 </template>
 
 <script lang="ts">
@@ -31,9 +31,24 @@ export default {
       html: '',
     };
   },
+  created() {
+    this.createHTML();
+  },
+  beforeMount() {
+    this.createHTML();
+  },
+  mounted() {
+    this.$refs.content.addEventListener('click', this.handleClick);
+  },
+  updated() {
+    this.createHTML();
+  },
+  beforeDestroy() {
+    this.$refs.content.removeEventListener('click', this.handleClick);
+  },
   methods: {
     createHTML() {
-      let text: string = '';
+      let text = '';
 
       this.$slots.default.forEach((slot: VNode) => {
         if (slot.text) {
@@ -56,21 +71,6 @@ export default {
       event.preventDefault();
       this.$router.push(to);
     },
-  },
-  created() {
-    this.createHTML();
-  },
-  beforeMount() {
-    this.createHTML();
-  },
-  mounted() {
-    this.$refs.content.addEventListener('click', this.handleClick);
-  },
-  updated() {
-    this.createHTML();
-  },
-  beforeDestroy() {
-    this.$refs.content.removeEventListener('click', this.handleClick);
   },
 };
 </script>

@@ -5,7 +5,9 @@
         <vue-grid-item :class="$style.image">
           <vue-image :src="image" :native="false" :class="$style.image" />
         </vue-grid-item>
-        <vue-grid-item :class="$style.text"><slot /></vue-grid-item>
+        <vue-grid-item :class="$style.text">
+          <slot />
+        </vue-grid-item>
       </vue-grid-row>
     </vue-grid>
   </div>

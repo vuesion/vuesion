@@ -1,5 +1,3 @@
-/* tslint:disable:no-shadowed-variable */
-
 import Vue from 'vue';
 import { MetaInfo } from 'vue-meta';
 import { DefaultProps, PropsDefinition } from 'vue/types/options';

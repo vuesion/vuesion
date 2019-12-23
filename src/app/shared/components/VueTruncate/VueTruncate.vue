@@ -1,9 +1,9 @@
 <template>
   <div :class="$style.vueTruncate">
-    <div :class="$style.text" ref="text">
+    <div ref="text" :class="$style.text">
       <slot />
 
-      <div :class="$style.fadeOut" ref="fadeOut" :style="{ height: `${height}px` }" v-show="isTruncated"></div>
+      <div v-show="isTruncated" ref="fadeOut" :class="$style.fadeOut" :style="{ height: `${height}px` }" />
     </div>
 
     <a v-show="isTruncated && showMoreButton" href="#" @click.prevent="showMore">
@@ -31,11 +31,6 @@ export default {
       default: 250,
     },
   },
-  computed: {
-    height() {
-      return this.lineHeight * (this.lines > 1 ? 2 : 0.6);
-    },
-  },
   data(): any {
     return {
       offsetHeight: 0,
@@ -44,6 +39,24 @@ export default {
       isTruncated: false,
       showMoreButton: false,
     };
+  },
+  computed: {
+    height() {
+      return this.lineHeight * (this.lines > 1 ? 2 : 0.6);
+    },
+  },
+  mounted() {
+    this.offsetHeight = this.$refs.text.offsetHeight;
+    this.lineHeight = parseFloat((window as any).getComputedStyle(this.$refs.text)['line-height']);
+    this.collapsedHeight = this.lines * this.lineHeight;
+
+    if (this.offsetHeight <= this.collapsedHeight) {
+      return;
+    }
+
+    this.isTruncated = true;
+    this.showMoreButton = true;
+    this.$refs.text.style.height = this.collapsedHeight + 'px';
   },
   methods: {
     showMore() {
@@ -88,19 +101,6 @@ export default {
         easing: 'easeInOutCirc',
       });
     },
-  },
-  mounted() {
-    this.offsetHeight = this.$refs.text.offsetHeight;
-    this.lineHeight = parseFloat((window as any).getComputedStyle(this.$refs.text)['line-height']);
-    this.collapsedHeight = this.lines * this.lineHeight;
-
-    if (this.offsetHeight <= this.collapsedHeight) {
-      return;
-    }
-
-    this.isTruncated = true;
-    this.showMoreButton = true;
-    this.$refs.text.style.height = this.collapsedHeight + 'px';
   },
 };
 </script>

@@ -3,7 +3,7 @@ interface Window {
   __INITIAL_STATE__: any;
 }
 
-declare var nodeRequire: any;
+declare let nodeRequire: any;
 
 declare module 'marked' {
   const marked: any;

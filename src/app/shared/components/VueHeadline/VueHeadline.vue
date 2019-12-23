@@ -1,5 +1,7 @@
 <template>
-  <component :is="component" :class="[$style.vueHeadline, cssClass]" v-on="$listeners"> <slot /> </component>
+  <component :is="component" :class="[$style.vueHeadline, cssClass]" v-on="$listeners">
+    <slot />
+  </component>
 </template>
 
 <script lang="ts">
@@ -7,21 +9,13 @@ export default {
   name: 'VueHeadline',
   components: {},
   props: {
-    level: {
-      type: String,
-      required: true,
-    },
-    appearanceLevel: {
-      type: String,
-    },
-    native: {
-      type: Boolean,
-      default: true,
-    },
+    level: { type: String, required: true },
+    appearanceLevel: { type: String, default: null },
+    native: { type: Boolean, default: true },
   },
   computed: {
     component() {
-      let component: string = `h${this.level}`;
+      let component = `h${this.level}`;
 
       if (this.native === false) {
         component = 'div';

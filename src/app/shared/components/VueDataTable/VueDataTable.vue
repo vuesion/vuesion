@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.container">
-    <vue-data-table-search v-model="searchTerm" v-if="showSearch" :placeholder="placeholder" />
+    <vue-data-table-search v-if="showSearch" v-model="searchTerm" :placeholder="placeholder" />
 
     <table :class="$style.vueDataTable">
       <vue-data-table-header
@@ -17,7 +17,9 @@
             :key="cellIdx"
             :class="[$style.column, cell.cssClass && cell.cssClass]"
           >
-            <slot :name="cell.slot" :cell="cell" :row="getRowObject(row)">{{ cell.value }}</slot>
+            <slot :name="cell.slot" :cell="cell" :row="getRowObject(row)">
+              {{ cell.value }}
+            </slot>
           </td>
         </tr>
 
@@ -47,37 +49,22 @@ export default {
   name: 'VueDataTable',
   components: { VueDataTableSearch, VuePagination, VueDataTableHeader },
   props: {
-    header: {
-      type: Object,
-      required: true,
-    },
-    data: {
-      type: Array,
-      required: true,
-    },
-    page: {
-      type: Number,
-      default: 0,
-    },
-    maxRows: {
-      type: Number,
-      default: 5,
-    },
-    showSearch: {
-      type: Boolean,
-      default: true,
-    },
-    placeholder: {
-      type: String,
-    },
-    sortKey: {
-      type: String,
-      default: null,
-    },
-    sortDirection: {
-      type: String,
-      default: 'asc',
-    },
+    header: { type: Object, required: true },
+    data: { type: Array, required: true },
+    page: { type: Number, default: 0 },
+    maxRows: { type: Number, default: 5 },
+    showSearch: { type: Boolean, default: true },
+    placeholder: { type: String, default: '' },
+    sortKey: { type: String, default: null },
+    sortDirection: { type: String, default: 'asc' },
+  },
+  data(): any {
+    return {
+      internalSortKey: null,
+      internalSortDirection: null,
+      currentPage: 0,
+      searchTerm: '',
+    };
   },
   computed: {
     filteredData() {
@@ -87,9 +74,9 @@ export default {
         return this.data;
       }
 
-      const searchRegex: RegExp = new RegExp(`${query}`, 'gmi');
+      const searchRegex = new RegExp(`${query}`, 'gmi');
       const filter = (row: any) => {
-        let match: boolean = false;
+        let match = false;
 
         Object.keys(row).forEach((key: string) => {
           const column: IDataTableHeaderItem = this.header[key];
@@ -179,13 +166,22 @@ export default {
       return Math.ceil(this.count / this.maxRows);
     },
   },
-  data(): any {
-    return {
-      internalSortKey: null,
-      internalSortDirection: null,
-      currentPage: 0,
-      searchTerm: '',
-    };
+  watch: {
+    sortKey: {
+      immediate: true,
+      handler(newSortKey: any) {
+        this.internalSortKey = newSortKey;
+      },
+    },
+    sortDirection: {
+      immediate: true,
+      handler(newSortDirection: any) {
+        this.internalSortDirection = newSortDirection;
+      },
+    },
+  },
+  mounted() {
+    this.currentPage = this.page;
   },
   methods: {
     columnClick(column: IDataTableHeaderItem) {
@@ -216,23 +212,6 @@ export default {
     },
     getVisibleCells(cells: IComputedDataRowCell[]) {
       return cells.filter((cell: IDataTableHeaderItem) => cell.visible);
-    },
-  },
-  mounted() {
-    this.currentPage = this.page;
-  },
-  watch: {
-    sortKey: {
-      immediate: true,
-      handler(newSortKey: any) {
-        this.internalSortKey = newSortKey;
-      },
-    },
-    sortDirection: {
-      immediate: true,
-      handler(newSortDirection: any) {
-        this.internalSortDirection = newSortDirection;
-      },
     },
   },
 };

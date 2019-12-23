@@ -1,10 +1,14 @@
 <template>
   <li :class="$style.vueSidebarGroupItem">
     <div v-if="to">
-      <router-link :to="to"> <slot /> </router-link>
+      <router-link :to="to">
+        <slot />
+      </router-link>
     </div>
 
-    <div v-else><slot /></div>
+    <div v-else>
+      <slot />
+    </div>
   </li>
 </template>
 
@@ -12,7 +16,7 @@
 export default {
   name: 'VueSidebarGroupItem',
   props: {
-    to: {},
+    to: { type: [String, Object], default: null },
   },
 };
 </script>

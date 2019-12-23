@@ -9,55 +9,55 @@
     <vue-grid-row>
       <vue-grid-item>
         <vue-input
-          name="firstname"
           id="firstname"
+          v-model="form.firstname"
+          name="firstname"
           required
           placeholder="First Name"
           validation="required"
-          v-model="form.firstname"
         />
       </vue-grid-item>
       <vue-grid-item>
         <vue-input
-          name="lastname"
           id="lastname"
+          v-model="form.lastname"
+          name="lastname"
           required
           placeholder="Last Name"
           validation="required"
-          v-model="form.lastname"
         />
       </vue-grid-item>
     </vue-grid-row>
 
     <vue-input
-      name="email"
       id="email"
+      v-model="form.email"
+      name="email"
       required
       type="email"
       placeholder="E-mail"
       validation="required|email"
-      v-model="form.email"
     />
 
     <vue-grid-row>
       <vue-grid-item>
         <vue-input
-          name="street"
           id="street"
+          v-model="form.street"
+          name="street"
           required
           placeholder="Street"
-          v-model="form.street"
           validation="required"
           :disabled="addressDisabled"
         />
       </vue-grid-item>
       <vue-grid-item>
         <vue-input
-          name="zipCode"
           id="zipCode"
+          v-model="form.zipCode"
+          name="zipCode"
           required
           placeholder="Zip code"
-          v-model="form.zipCode"
           validation="required|integer"
           :error-message="$t('components.formExample.zipCode.error' /* Please enter a Number */)"
           :disabled="addressDisabled"
@@ -68,21 +68,21 @@
     <vue-grid-row>
       <vue-grid-item>
         <vue-input
-          name="city"
           id="city"
+          v-model="form.city"
+          name="city"
           required
           placeholder="City"
-          v-model="form.city"
           validation="required"
           :disabled="addressDisabled"
         />
       </vue-grid-item>
       <vue-grid-item>
         <vue-select
-          placeholder="Choose Country"
-          name="country"
           id="country"
           v-model="form.country"
+          placeholder="Choose Country"
+          name="country"
           :options="countryOptions"
           validation="required"
           required
@@ -94,9 +94,9 @@
     <vue-grid-row>
       <vue-grid-item>
         <vue-checkbox
-          name="acceptTerms"
           id="acceptTerms"
           v-model="form.acceptTerms"
+          name="acceptTerms"
           label="I accept the terms"
           validation="required"
           required
@@ -104,27 +104,29 @@
       </vue-grid-item>
       <vue-grid-item>
         <vue-checkbox
-          name="newsletterYes"
           id="newsletterYes"
+          name="newsletterYes"
           label="I want to subscribe to the newsletter"
           :checked="form.newsletter === true"
-          @click="form.newsletter = !form.newsletter"
           radio
+          @click="form.newsletter = !form.newsletter"
         />
         <br />
         <vue-checkbox
-          name="newsletterNo"
           id="newsletterNo"
+          name="newsletterNo"
           label="I don't want to subscribe to the newsletter"
           :checked="form.newsletter === false"
-          @click="form.newsletter = !form.newsletter"
           radio
+          @click="form.newsletter = !form.newsletter"
         />
       </vue-grid-item>
     </vue-grid-row>
 
     <br />
-    <vue-button color="primary" :disabled="isSubmitDisabled" :loading="isLoading"> Save </vue-button>
+    <vue-button color="primary" :disabled="isSubmitDisabled" :loading="isLoading">
+      Save
+    </vue-button>
   </form>
 </template>
 
@@ -172,7 +174,7 @@ export default {
       return this.errors && this.errors.items.length > 0;
     },
     hasEmptyFields() {
-      let hasEmptyField: boolean = false;
+      let hasEmptyField = false;
 
       Object.keys(this.form).forEach((key: string) => {
         if (key !== 'newsletter' && (this.form[key] === '' || this.form[key] === false)) {
@@ -189,7 +191,7 @@ export default {
   methods: {
     onSubmit() {
       this.isLoading = true;
-      // tslint:disable-next-line
+
       console.log(JSON.parse(JSON.stringify(this.form)));
 
       this.$emit('submit', this.form);

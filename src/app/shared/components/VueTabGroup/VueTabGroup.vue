@@ -5,17 +5,19 @@
         v-for="header in headerItems"
         :key="header.idx"
         tabindex="0"
-        @click="changeTab(header.idx)"
-        @keypress.space.enter.stop.prevent="changeTab(header.idx)"
         :class="currentTab === header.idx ? $style.active : ''"
         role="tab"
+        @click="changeTab(header.idx)"
+        @keypress.space.enter.stop.prevent="changeTab(header.idx)"
       >
-        <div :class="$style.bg"></div>
+        <div :class="$style.bg" />
         <span :class="$style.title">{{ header.title }}</span>
       </li>
     </ul>
 
-    <div :class="$style.body"><slot /></div>
+    <div :class="$style.body">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -39,6 +41,11 @@ export default {
     headerItems() {
       return this.tabHeader;
     },
+  },
+  beforeDestroy() {
+    this.tabs = [];
+    this.tabHeader = [];
+    this.currentTab = 0;
   },
   methods: {
     changeTab(idx: number) {
@@ -69,11 +76,6 @@ export default {
     updateHeader(index: number, props: object) {
       this.tabHeader[index] = Object.assign(this.tabHeader[index], props);
     },
-  },
-  beforeDestroy() {
-    this.tabs = [];
-    this.tabHeader = [];
-    this.currentTab = 0;
   },
 };
 </script>

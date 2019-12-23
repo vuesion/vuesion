@@ -1,7 +1,11 @@
 <template>
   <div :class="$style.error">
-    <vue-headline level="1">Error</vue-headline>
-    <vue-headline level="3">Try again later!</vue-headline>
+    <vue-headline level="1">
+      Error
+    </vue-headline>
+    <vue-headline level="3">
+      Try again later!
+    </vue-headline>
   </div>
 </template>
 

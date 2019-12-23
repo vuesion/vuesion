@@ -1,9 +1,11 @@
 <template>
   <div :class="$style.sections">
-    <div v-for="section in colorSections">
-      <vue-headline level="4">{{ section.name.toUpperCase() }}</vue-headline>
+    <div v-for="section in colorSections" :key="section.name">
+      <vue-headline level="4">
+        {{ section.name.toUpperCase() }}
+      </vue-headline>
       <div :class="$style.palette">
-        <div v-for="color in section.colors" :style="{ background: color.hex }">
+        <div v-for="color in section.colors" :key="color.hex" :style="{ background: color.hex }">
           <span>{{ color.name }} ({{ color.hex }})</span>
         </div>
       </div>

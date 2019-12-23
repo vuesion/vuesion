@@ -1,4 +1,3 @@
-/* tslint:disable */
 import { storiesOf } from '@storybook/vue';
 import VueMarkdown from '@components/VueMarkdown/VueMarkdown.vue';
 import BrandColors from './components/BrandColors.vue';
