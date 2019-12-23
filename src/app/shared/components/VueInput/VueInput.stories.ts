@@ -8,7 +8,7 @@ const story = storiesOf('Atoms|Input', module) as any;
 
 story.add(
   'Default',
-  withInfo({})(() => ({
+  () => ({
     components: { VueInput },
     data() {
       return {
@@ -16,12 +16,17 @@ story.add(
       };
     },
     template: `<vue-input placeholder="Name" name="name" id="name" v-model="model" />`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueInput },
+    },
+  },
 );
 
 story.add(
   'Disabled',
-  withInfo({})(() => ({
+  () => ({
     components: { VueInput },
     data() {
       return {
@@ -29,12 +34,17 @@ story.add(
       };
     },
     template: `<vue-input placeholder="Name" name="name" id="name" v-model="model" :disabled="true" />`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueInput },
+    },
+  },
 );
 
 story.add(
   'Hint',
-  withInfo({})(() => ({
+  () => ({
     components: { VueInput },
     data() {
       return {
@@ -42,12 +52,17 @@ story.add(
       };
     },
     template: `<vue-input placeholder="Name" name="name" id="name" v-model="model" message="description" />`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueInput },
+    },
+  },
 );
 
 story.add(
   'Validation/Error state',
-  withInfo({})(() => ({
+  () => ({
     components: { VueInput },
     data() {
       return {
@@ -55,12 +70,17 @@ story.add(
       };
     },
     template: `<vue-input placeholder="Name" name="name" id="name" v-model="model" validation="required|integer" required message="please enter a number" errorMessage="This is not a number" />`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueInput },
+    },
+  },
 );
 
 story.add(
   'Readonly',
-  withInfo({})(() => ({
+  () => ({
     components: { VueInput },
     data() {
       return {
@@ -68,12 +88,17 @@ story.add(
       };
     },
     template: `<vue-input placeholder="Name" name="name" id="name" value="foo" readonly />`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueInput },
+    },
+  },
 );
 
 story.add(
   'SPA autofocus',
-  withInfo({ propTablesExclude: [VueButton, VueModal] })(() => ({
+  () => ({
     components: { VueInput, VueButton, VueModal },
     data() {
       return {
@@ -89,5 +114,10 @@ story.add(
     <vue-button ghost @click="show = !show">Close</vue-button>
   </vue-modal>
 </div>`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueInput },
+    },
+  },
 );

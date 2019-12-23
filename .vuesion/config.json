@@ -24,7 +24,7 @@
   },
   "spa": {
     "appShellRoute": "/",
-    "additionalRoutes": ["/form"]
+    "additionalRoutes": ["/example/form"]
   },
   "devServer": {
     "watchOptions": {

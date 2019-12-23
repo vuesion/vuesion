@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import HomeSection from './HomeSection.vue';
 import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
 
@@ -7,7 +6,7 @@ const story = storiesOf('Organisms|HomeSection', module) as any;
 
 story.add(
   'Default',
-  withInfo({})(() => ({
+  () => ({
     components: { HomeSection, VueHeadline },
     template: `<home-section image="https://via.placeholder.com/512">
       <vue-headline level="2">Quick start</vue-headline>
@@ -35,12 +34,17 @@ story.add(
         <li>Run <code>npm run dev</code></li>
       </ol>
     </home-section>`,
-  })),
+  }),
+  {
+    info: {
+      components: { HomeSection },
+    },
+  },
 );
 
 story.add(
   'Alternative',
-  withInfo({})(() => ({
+  () => ({
     components: { HomeSection, VueHeadline },
     template: `<home-section image="https://via.placeholder.com/512" alternative>
       <vue-headline level="2">Quick start</vue-headline>
@@ -68,12 +72,17 @@ story.add(
         <li>Run <code>npm run dev</code></li>
       </ol>
     </home-section>`,
-  })),
+  }),
+  {
+    info: {
+      components: { HomeSection },
+    },
+  },
 );
 
 story.add(
   'Flip',
-  withInfo({})(() => ({
+  () => ({
     components: { HomeSection, VueHeadline },
     template: `<home-section image="https://via.placeholder.com/512" flip>
       <vue-headline level="2">Quick start</vue-headline>
@@ -101,5 +110,10 @@ story.add(
         <li>Run <code>npm run dev</code></li>
       </ol>
     </home-section>`,
-  })),
+  }),
+  {
+    info: {
+      components: { HomeSection },
+    },
+  },
 );

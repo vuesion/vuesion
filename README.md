@@ -23,12 +23,6 @@
 
 **[https://vuesion.github.io/docs/zh-cn/](https://vuesion.github.io/docs/zh-cn)**
 
-## Run documentation on your local machine
-
-1. Complete the [Getting started](#getting-started) guide
-2. Install [vuepress](https://vuepress.vuejs.org/) `npm i -g vuepress`
-3. run `vuepress dev docs`
-
 # Live demo
 
 Please visit the **[vuesion app on heroku!](https://vuesion.herokuapp.com/)**

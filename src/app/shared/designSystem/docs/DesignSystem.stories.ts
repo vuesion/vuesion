@@ -1,6 +1,5 @@
 /* tslint:disable */
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueMarkdown from '@components/VueMarkdown/VueMarkdown.vue';
 import BrandColors from './components/BrandColors.vue';
 import ColorPalette from './components/ColorPalette.vue';
@@ -9,17 +8,9 @@ let story = storiesOf('Design System|Design System', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
-story.add(
-  'Intro',
-  withInfo({
-    header: false,
-    source: false,
-    propTables: false,
-    styles: { propTableHead: { display: 'none' } },
-    propTablesExclude: [VueMarkdown],
-  })(() => ({
-    components: { VueMarkdown },
-    template: `<vue-markdown :use-router="false">
+story.add('Intro', () => ({
+  components: { VueMarkdown },
+  template: `<vue-markdown :use-router="false">
 # Design System
 
 Vuesion comes with a Design System that you can 100% customize.
@@ -43,44 +34,26 @@ We are aware that not everyone has to implement their own professional Design Sy
 If this is the case for you, you might be interested in [integrating a 3rd party UI library](https://vuesion.github.io/docs/en/tutorials/third-party.html)
 </vue-markdown>
 `,
-  })),
-);
+}));
 
 story = storiesOf('Design System|Branding', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
-story.add(
-  '1. Color Palette',
-  withInfo({
-    header: false,
-    source: false,
-    propTables: false,
-    styles: { propTableHead: { display: 'none' } },
-    propTablesExclude: [VueMarkdown, ColorPalette],
-  })(() => ({
-    components: { VueMarkdown, ColorPalette },
-    template: `<div>
+story.add('1. Color Palette', () => ({
+  components: { VueMarkdown, ColorPalette },
+  template: `<div>
 <vue-markdown :use-router="false">
 ### Color Palette
 </vue-markdown>
 <color-palette />
 </div>
 `,
-  })),
-);
+}));
 
-story.add(
-  '2. Brand Colors',
-  withInfo({
-    header: false,
-    source: false,
-    propTables: false,
-    styles: { propTableHead: { display: 'none' } },
-    propTablesExclude: [VueMarkdown, BrandColors],
-  })(() => ({
-    components: { VueMarkdown, BrandColors },
-    template: `<div>
+story.add('2. Brand Colors', () => ({
+  components: { VueMarkdown, BrandColors },
+  template: `<div>
 <vue-markdown :use-router="false">
 ### Brand Colors
 Every brand color is related to a color of the color palette.
@@ -88,24 +61,15 @@ Every brand color is related to a color of the color palette.
 <brand-colors/>
 </div>
 `,
-  })),
-);
+}));
 
 story = storiesOf('Design System|Typography', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
-story.add(
-  'Typography',
-  withInfo({
-    header: false,
-    source: false,
-    propTables: false,
-    styles: { propTableHead: { display: 'none' } },
-    propTablesExclude: [VueMarkdown],
-  })(() => ({
-    components: { VueMarkdown },
-    template: `<vue-markdown :use-router="false">
+story.add('Typography', () => ({
+  components: { VueMarkdown },
+  template: `<vue-markdown :use-router="false">
 ## Typography
 Inter is the standard type face for the Design System blueprint.
 
@@ -135,24 +99,15 @@ Line height is measured by taking the font size and adding 0.8rem.
 Lists are indented by 1.6rem.
 </vue-markdown>
 `,
-  })),
-);
+}));
 
 story = storiesOf('Design System|Layout', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
-story.add(
-  'Layout',
-  withInfo({
-    header: false,
-    source: false,
-    propTables: false,
-    styles: { propTableHead: { display: 'none' } },
-    propTablesExclude: [VueMarkdown],
-  })(() => ({
-    components: { VueMarkdown },
-    template: `<vue-markdown :use-router="false">
+story.add('Layout', () => ({
+  components: { VueMarkdown },
+  template: `<vue-markdown :use-router="false">
 ## Layout
 The Grid-System is based on Flex box and comes in form of three included components.
 
@@ -181,24 +136,15 @@ $space-52  |  52px
 $space-84  |  84px
 </vue-markdown>
 `,
-  })),
-);
+}));
 
 story = storiesOf('Design System|Break points', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
-story.add(
-  'Break points',
-  withInfo({
-    header: false,
-    source: false,
-    propTables: false,
-    styles: { propTableHead: { display: 'none' } },
-    propTablesExclude: [VueMarkdown],
-  })(() => ({
-    components: { VueMarkdown },
-    template: `<vue-markdown :use-router="false">
+story.add('Break points', () => ({
+  components: { VueMarkdown },
+  template: `<vue-markdown :use-router="false">
 ## Break points
 If you want to use a break point inside one of your components, we provide you width
 mixins to keep everything consistent and to avoid unnecessary media definitions:
@@ -216,5 +162,4 @@ smallDesktop     | 1280px   | 1279px   | 3.2rem
 largeDesktop     | 1440px   | 1439px   | 3.2rem
 </vue-markdown>
 `,
-  })),
-);
+}));
