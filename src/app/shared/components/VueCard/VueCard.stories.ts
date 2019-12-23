@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueCard from './VueCard.vue';
 import VueCardHeader from './VueCardHeader/VueCardHeader.vue';
 import VueCardBody from './VueCardBody/VueCardBody.vue';
@@ -10,7 +9,7 @@ const story = storiesOf('Molecules|Card', module) as any;
 
 story.add(
   'Default',
-  withInfo({ propTablesExclude: [VueButton] })(() => ({
+  () => ({
     components: {
       VueCard,
       VueCardHeader,
@@ -33,5 +32,10 @@ story.add(
     <vue-button ghost>Cancel</vue-button>
   </vue-card-footer>
 </vue-card>`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueCard, VueCardHeader, VueCardBody, VueCardFooter },
+    },
+  },
 );

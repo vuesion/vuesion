@@ -176,7 +176,10 @@ export default {
       ],
       showLoginModal: false,
       isLoginPending: false,
-      themes: [{ label: 'Light Theme', value: 'light' }, { label: 'Dark Theme', value: 'dark' }],
+      themes: [
+        { label: 'Light Theme', value: 'light' },
+        { label: 'Dark Theme', value: 'dark' },
+      ],
     };
   },
   computed: {

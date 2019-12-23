@@ -1,5 +1,5 @@
-import { AppDefaultState, IAppState } from './app/state';
-import { AuthDefaultState, IAuthState } from './shared/modules/auth/state';
+import { IAppState } from './app/state';
+import { IAuthState } from '@shared/modules/auth/state';
 import { ICounterState } from './example/counter/state';
 
 export interface IState {
@@ -10,9 +10,4 @@ export interface IState {
   counter?: ICounterState;
 }
 
-export const DefaultState: IState = {
-  app: {
-    ...AppDefaultState(),
-    ...AuthDefaultState(),
-  },
-};
+export const DefaultState: IState = {};

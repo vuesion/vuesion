@@ -6,7 +6,6 @@
     :disabled="disabled"
     :class="cssClasses"
     @click="click"
-    @click.native="click"
     ref="button"
     :style="{ width: actualWidth }"
     :event="!isDisabled && isRouterLink ? 'click' : null"

@@ -1,12 +1,11 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueDonutChart from './VueDonutChart.vue';
 
 const story = storiesOf('Organisms|DonutChart', module) as any;
 
 story.add(
   'Donut',
-  withInfo({})(() => ({
+  () => ({
     components: { VueDonutChart },
     data(): any {
       return {
@@ -25,12 +24,17 @@ story.add(
   <vue-donut-chart title="Who would win?" :data="data" unit="Votes" />
 </div>
 `,
-  })),
+  }),
+  {
+    info: {
+      components: { VueDonutChart },
+    },
+  },
 );
 
 story.add(
   'Pie',
-  withInfo({})(() => ({
+  () => ({
     components: { VueDonutChart },
     data(): any {
       return {
@@ -49,5 +53,10 @@ story.add(
   <vue-donut-chart title="Who would win?" :data="data" unit="Votes" type="pie" />
 </div>
 `,
-  })),
+  }),
+  {
+    info: {
+      components: { VueDonutChart },
+    },
+  },
 );

@@ -5,7 +5,7 @@ import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
 import VeeValidate from 'vee-validate';
 import { checkA11y } from '@storybook/addon-a11y';
-import { setDefaults } from 'storybook-addon-vue-info';
+import { setDefaults, withInfo } from 'storybook-addon-vue-info';
 import '@storybook/addon-console';
 import '../../src/app/shared/directives';
 import '../../src/app/shared/_design-system.scss';
@@ -35,11 +35,24 @@ addParameters({
 
 addParameters({
   themeSwitcher: {
-    themes: [{ label: 'Light Theme', value: 'light' }, { label: 'Dark Theme', value: 'dark' }],
+    themes: [
+      { label: 'Light Theme', value: 'light' },
+      { label: 'Dark Theme', value: 'dark' },
+    ],
   },
 });
 
 addDecorator(require('storybook-vue-router').default());
-setDefaults({ header: false });
+addDecorator(withInfo);
+setDefaults({
+  header: false,
+  docsInPanel: true,
+  useDocgen: false,
+  source: false,
+  casing: {
+    props: 'camel',
+    component: 'kebab',
+  },
+});
 
 configure(loadStories, module);

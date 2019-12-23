@@ -8,7 +8,10 @@ describe('VueBreadcrumb.vue', () => {
     const wrapper = mount(VueBreadcrumb, {
       localVue,
       propsData: {
-        items: [{ label: 'Home', href: '/' }, { label: 'Components', href: '/components' }],
+        items: [
+          { label: 'Home', href: '/' },
+          { label: 'Components', href: '/components' },
+        ],
       },
       stubs: ['router-link'],
     });
