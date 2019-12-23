@@ -34,8 +34,8 @@ export default {
     VueDatePicker,
   },
   props: {
-    minDate: { type: Date, default: false },
-    maxDate: { type: Date, default: false },
+    minDate: { type: Date, default: null },
+    maxDate: { type: Date, default: null },
     firstDayOfWeek: { type: Number, default: 0 },
     placeholderStart: { type: String, default: '' },
     placeholderEnd: { type: String, default: '' },
