@@ -81,6 +81,7 @@
   "devDependencies": {
     "@commitlint/cli": "8.2.0",
     "@commitlint/config-conventional": "8.2.0",
+    "@testing-library/vue": "4.1.0",
     "@types/animejs": "3.1.0",
     "@types/body-parser": "1.17.1",
     "@types/compression": "1.0.1",
