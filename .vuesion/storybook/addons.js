@@ -5,4 +5,4 @@ import '@storybook/addon-links/register';
 import '@storybook/addon-a11y/register';
 import '@storybook/addon-options/register';
 import '@storybook/addon-viewport/register';
-import '@vuesion/addon-theme-switcher/register';
+import '@vuesion/storybook-theme-switcher/register';
