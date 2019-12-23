@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueTextarea from './VueTextarea.vue';
 import VueButton from '../VueButton/VueButton.vue';
 import VueModal from '../VueModal/VueModal.vue';
@@ -8,7 +7,7 @@ const story = storiesOf('Atoms|Textarea', module) as any;
 
 story.add(
   'Default',
-  withInfo({})(() => ({
+  () => ({
     components: { VueTextarea },
     data() {
       return {
@@ -16,12 +15,17 @@ story.add(
       };
     },
     template: `<vue-textarea placeholder="Name" name="name" id="name" v-model="model" />`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueTextarea },
+    },
+  },
 );
 
 story.add(
   'Disabled',
-  withInfo({})(() => ({
+  () => ({
     components: { VueTextarea },
     data() {
       return {
@@ -29,12 +33,17 @@ story.add(
       };
     },
     template: `<vue-textarea placeholder="Name" name="name" id="name" v-model="model" :disabled="true" />`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueTextarea },
+    },
+  },
 );
 
 story.add(
   'Hint',
-  withInfo({})(() => ({
+  () => ({
     components: { VueTextarea },
     data() {
       return {
@@ -42,12 +51,17 @@ story.add(
       };
     },
     template: `<vue-textarea placeholder="Name" name="name" id="name" v-model="model" message="description" />`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueTextarea },
+    },
+  },
 );
 
 story.add(
   'Validation/Error state',
-  withInfo({})(() => ({
+  () => ({
     components: { VueTextarea },
     data() {
       return {
@@ -55,12 +69,17 @@ story.add(
       };
     },
     template: `<vue-textarea placeholder="Name" name="name" id="name" v-model="model" validation="required|integer" required message="please enter a number" errorMessage="This is not a number" />`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueTextarea },
+    },
+  },
 );
 
 story.add(
   'Readonly',
-  withInfo({})(() => ({
+  () => ({
     components: { VueTextarea },
     data() {
       return {
@@ -68,12 +87,17 @@ story.add(
       };
     },
     template: `<vue-textarea placeholder="Name" name="name" id="name" value="foo" readonly />`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueTextarea },
+    },
+  },
 );
 
 story.add(
   'SPA autofocus',
-  withInfo({ propTablesExclude: [VueButton, VueModal] })(() => ({
+  () => ({
     components: { VueTextarea, VueButton, VueModal },
     data() {
       return {
@@ -89,5 +113,10 @@ story.add(
     <vue-button ghost @click="show = !show">Close</vue-button>
   </vue-modal>
 </div>`,
-  })),
+  }),
+  {
+    info: {
+      components: { VueTextarea },
+    },
+  },
 );

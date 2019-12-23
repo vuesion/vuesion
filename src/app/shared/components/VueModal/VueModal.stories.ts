@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueModal from './VueModal.vue';
 import VueButton from '../VueButton/VueButton.vue';
 
@@ -7,7 +6,7 @@ const story = storiesOf('Molecules|Modal', module) as any;
 
 story.add(
   'Default',
-  withInfo({ propTablesExclude: [VueButton] })(() => ({
+  () => ({
     components: { VueModal, VueButton },
     data() {
       return {
@@ -22,12 +21,17 @@ story.add(
   </vue-modal>
 </div>
   `,
-  })),
+  }),
+  {
+    info: {
+      components: { VueModal },
+    },
+  },
 );
 
 story.add(
   'Fit Content',
-  withInfo({ propTablesExclude: [VueButton] })(() => ({
+  () => ({
     components: { VueModal, VueButton },
     data() {
       return {
@@ -42,5 +46,10 @@ story.add(
   </vue-modal>
 </div>
   `,
-  })),
+  }),
+  {
+    info: {
+      components: { VueModal },
+    },
+  },
 );

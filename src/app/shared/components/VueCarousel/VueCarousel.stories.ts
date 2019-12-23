@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/vue';
-import { withInfo } from 'storybook-addon-vue-info';
 import VueCarousel from './VueCarousel.vue';
 
 const story = storiesOf('Molecules|Carousel', module) as any;
@@ -44,39 +43,54 @@ const images: any[] = [
 
 story.add(
   'Default',
-  withInfo({})(() => ({
+  () => ({
     data() {
       return {
         images,
       };
     },
     components: { VueCarousel },
-    template: `<vue-carousel :images="images"></vue-carousel>`,
-  })),
+    template: `<vue-carousel :images="images"/>`,
+  }),
+  {
+    info: {
+      components: { VueCarousel },
+    },
+  },
 );
 
 story.add(
   'No Indicator',
-  withInfo({})(() => ({
+  () => ({
     data() {
       return {
         images,
       };
     },
     components: { VueCarousel },
-    template: `<vue-carousel :show-indicator="false" :images="images"></vue-carousel>`,
-  })),
+    template: `<vue-carousel :show-indicator="false" :images="images"/>`,
+  }),
+  {
+    info: {
+      components: { VueCarousel },
+    },
+  },
 );
 
 story.add(
   'Fast Slider',
-  withInfo({})(() => ({
+  () => ({
     data() {
       return {
         images,
       };
     },
     components: { VueCarousel },
-    template: `<vue-carousel :interval="1000" :images="images"></vue-carousel>`,
-  })),
+    template: `<vue-carousel :interval="1000" :images="images"/>`,
+  }),
+  {
+    info: {
+      components: { VueCarousel },
+    },
+  },
 );
