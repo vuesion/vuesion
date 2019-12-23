@@ -9,8 +9,8 @@ import App from '../app/app/App/App.vue';
 import { createApp, IApp } from '@/app/app';
 import { IState } from '@/app/state';
 import { IAppConfig } from '@/app/config/IAppConfig';
-import { PersistCookieStorage } from '@vuesion/addon-vuex-persist/dist/PersistCookieStorage';
-import { createLogger } from '@/server/utils/createLogger';
+import { PersistCookieStorage } from '@vuesion/vuex-persist/dist/PersistCookieStorage';
+import { Logger } from './utils/Logger';
 import { initHttpService } from '@shared/services/HttpService/HttpService';
 
 export interface IServerContext {
@@ -133,17 +133,11 @@ export default (context: IServerContext) => {
           resolve(app);
         }
       } catch (e) {
-        // Only create logger when necessary and make sure to clean up resources
-        // as we're running this in a new V8 context for every request.
-        // See also https://github.com/winstonjs/winston/issues/512 and https://ssr.vuejs.org/api/#runinnewcontext.
-        const Logger = createLogger();
         Logger.warn(
           'error in prefetch for route: %s; error: %s',
           router.currentRoute.fullPath,
           JSON.stringify(e, Object.getOwnPropertyNames(e)),
         );
-        Logger.clear();
-        Logger.close();
 
         reject(e);
       }
