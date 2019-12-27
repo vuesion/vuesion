@@ -1,4 +1,5 @@
 {
+  "outputDirectory": "./dist",
   "currentVersion": "v3.1.0",
   "generators": {
     "blueprintDirectory": "./.vuesion/generators",
