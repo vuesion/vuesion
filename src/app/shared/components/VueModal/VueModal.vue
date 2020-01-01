@@ -1,105 +1,52 @@
 <template>
-  <transition @beforeEnter="beforeEnter" @enter="enter" @beforeLeave="beforeLeave" @leave="leave">
-    <div v-if="show" ref="modal" :class="[$style.vueModal, fitContent ? $style.fitContent : '']" :aria-modal="show">
-      <slot />
-    </div>
-  </transition>
+  <div
+    v-if="show"
+    ref="modal"
+    :class="[$style.vueModal, fitContent ? $style.fitContent : '', show ? $style.show : '']"
+    :aria-modal="show"
+  >
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">
-import anime from 'animejs';
+import { createComponent, ref, computed } from '@vue/composition-api';
+import { useOutsideClickBehaviour } from '@shared/composables/use-outside-click-behaviour';
+import { useKeyDownBehavior } from '@shared/composables/use-keydown-behaviour';
+import { useBackdrop } from '@shared/composables/use-backdrop';
 
-export default {
+export default createComponent({
   name: 'VueModal',
   props: {
-    show: {
-      type: Boolean,
-    },
-    fitContent: {
-      type: Boolean,
-    },
+    show: { type: Boolean, default: false },
+    backdrop: { type: Boolean, default: true },
+    scrollable: { type: Boolean, default: false },
+    closeOnEscape: { type: Boolean, default: true },
+    fitContent: Boolean,
   },
-  beforeMount() {
-    let overlay: HTMLElement = document.getElementById('overlay');
+  setup(props, { emit }) {
+    const modal = ref(null);
+    const show = computed(() => props.show);
+    const { onOutsideClick } = useOutsideClickBehaviour(modal);
+    const { onKeyDown } = useKeyDownBehavior();
+    const onClose = () => emit('close');
 
-    if (overlay === null) {
-      overlay = document.createElement('div');
-      overlay.id = 'overlay';
-      overlay.style.position = 'fixed';
-      overlay.style.top = '0';
-      overlay.style.left = '0';
-      overlay.style.width = '100%';
-      overlay.style.height = '100%';
-      overlay.style.zIndex = '2000';
-      overlay.style.background = 'var(--brand-bg-color-variant)';
-      overlay.style.opacity = '0';
-      overlay.style.visibility = 'hidden';
-      overlay.style.transition = 'opacity 250ms linear';
-      document.body.appendChild(overlay);
+    onOutsideClick(() => onClose());
+    onKeyDown((event) => {
+      if (event.key === 'Escape' && props.show === true && props.closeOnEscape === true) {
+        onClose();
+      }
+    });
+
+    if (props.backdrop) {
+      useBackdrop(show, { scrollable: props.scrollable });
     }
 
-    document.addEventListener('mousedown', this.handleDocumentClick);
-    document.addEventListener('touchstart', this.handleDocumentClick);
-    document.addEventListener('keydown', this.handleDocumentKeyDown);
+    return {
+      modal,
+    };
   },
-  beforeDestroy() {
-    document.removeEventListener('mousedown', this.handleDocumentClick);
-    document.removeEventListener('touchstart', this.handleDocumentClick);
-    document.removeEventListener('keydown', this.handleDocumentKeyDown);
-  },
-  methods: {
-    beforeEnter(el: HTMLElement) {
-      el.style.opacity = '0';
-
-      document.getElementById('overlay').style.visibility = 'visible';
-    },
-    enter(el: HTMLElement, done: any) {
-      document.getElementById('overlay').style.opacity = '0.5';
-      document.body.style.overflow = 'hidden';
-
-      anime({
-        targets: el,
-        opacity: {
-          value: '1',
-          duration: 500,
-          elasticity: 0,
-        },
-        complete: done,
-      });
-    },
-    beforeLeave(el: HTMLElement) {
-      el.style.opacity = '1';
-    },
-    leave(el: HTMLElement, done: any) {
-      const overlay: HTMLElement = document.getElementById('overlay');
-      overlay.style.opacity = '0';
-      document.body.style.overflow = 'initial';
-
-      anime({
-        targets: el,
-        opacity: {
-          value: '0',
-          duration: 500,
-          elasticity: 0,
-        },
-        complete() {
-          overlay.style.visibility = 'hidden';
-          done();
-        },
-      });
-    },
-    handleDocumentClick(e: Event) {
-      if (this.$refs.modal && this.$refs.modal.contains(e.target) === false) {
-        this.$emit('close');
-      }
-    },
-    handleDocumentKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') {
-        this.$emit('close');
-      }
-    },
-  },
-};
+});
 </script>
 
 <style lang="scss" module>
@@ -117,6 +64,13 @@ export default {
   padding: $modal-padding;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  opacity: 0;
+  transition: $modal-transition;
+  border-radius: $modal-border-radius;
+
+  &.show {
+    opacity: 1;
+  }
 
   @include mediaMin(tabletPortrait) {
     max-width: $modal-max-width;

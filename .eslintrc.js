@@ -3,7 +3,6 @@ const path = require('path');
 module.exports = {
   parserOptions: {
     parser: '@typescript-eslint/parser',
-    project: path.resolve(__dirname, './tsconfig.json'),
     tsconfigRootDir: path.resolve(__dirname),
     ecmaVersion: 2018,
     sourceType: 'module',

@@ -1,5 +1,5 @@
 $dropdown-menu-button-padding: $space-4;
-$dropdown-menu-button-border-radius: var(--brand-border-radius);
+$dropdown-menu-button-border-radius: var(--brand-border-radius-sm);
 $dropdown-menu-button-font-family: $font-family;
 $dropdown-menu-button-font-size: $font-size;
 $dropdown-menu-button-font-weight: $font-weight-regular;
@@ -16,7 +16,7 @@ $dropdown-menu-list-index: 1000;
 $dropdown-menu-list-bg: var(--brand-bg-color);
 $dropdown-menu-list-color: var(--brand-text-color);
 $dropdown-menu-list-border: 1px solid var(--brand-border-color);
-$dropdown-menu-list-border-radius: var(--brand-border-radius);
+$dropdown-menu-list-border-radius: var(--brand-border-radius-sm);
 $dropdown-menu-list-min-width: 200px;
 $dropdown-menu-list-font-size: $font-size-small;
 $dropdown-menu-list-font-weight: $font-weight-light;
