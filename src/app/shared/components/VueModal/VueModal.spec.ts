@@ -1,78 +1,60 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import Vue from 'vue';
+import { render } from '@testing-library/vue';
 import VueModal from './VueModal.vue';
-
-const localVue = createLocalVue();
+import { triggerDocument } from '@shared/testing/test-utils';
 
 describe('VueModal.vue', () => {
-  test('renders slot', async (done) => {
-    const wrapper = mount<any>(VueModal, {
-      localVue,
+  test('renders slot', async () => {
+    const { queryByText, getByText, updateProps } = render<any>(VueModal as any, {
       slots: {
         default: '<p>TEST</p>',
       },
-    }) as any;
+    });
 
-    expect(wrapper.findAll('p')).toHaveLength(0);
+    await updateProps({ show: true });
+    getByText('TEST');
 
-    await wrapper.setProps({ show: true });
-    expect(wrapper.findAll('p')).toHaveLength(1);
-
-    await wrapper.setProps({ show: false });
-    expect(wrapper.findAll('p')).toHaveLength(0);
-
-    await wrapper.setProps({ show: true });
-
-    wrapper.vm.beforeEnter(wrapper.vm.$el);
-    wrapper.vm.enter(wrapper.vm.$el, jest.fn());
-    wrapper.vm.beforeLeave(wrapper.vm.$el);
-    wrapper.vm.leave(wrapper.vm.$el, done);
-  });
-
-  test('registers and unregisters scroll/click/keydown event', () => {
-    document.addEventListener = jest.fn();
-    document.removeEventListener = jest.fn();
-
-    const wrapper = mount<any>(VueModal, { localVue });
-
-    wrapper.destroy();
-
-    expect(document.addEventListener).toHaveBeenCalledTimes(3);
-    expect(document.removeEventListener).toHaveBeenCalledTimes(3);
+    await updateProps({ show: false });
+    expect(queryByText('TEST')).toBe(null);
   });
 
   test('should close on outside click', async () => {
-    const wrapper = mount<any>(VueModal, {
-      localVue,
+    const { queryByText, emitted } = render<any>(VueModal as any, {
       slots: {
         default: '<p>TEST</p>',
       },
+      propsData: {
+        show: true,
+      },
     });
+    const paragraph = queryByText('TEST');
 
-    wrapper.vm.$emit = jest.fn();
+    await Vue.nextTick();
 
-    expect(wrapper.vm.$emit).toHaveBeenCalledTimes(0);
-    wrapper.vm.handleDocumentClick({ target: wrapper.find(`p`).element });
-    expect(wrapper.vm.$emit).toHaveBeenCalledTimes(0);
+    triggerDocument.mousedown({ target: paragraph });
+    expect(emitted().close).toBeFalsy();
 
-    wrapper.vm.handleDocumentClick({ target: null });
-    expect(wrapper.vm.$emit).toHaveBeenCalledTimes(0);
-
-    await wrapper.setProps({ show: true });
-    wrapper.vm.handleDocumentClick({ target: null });
-    expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
+    triggerDocument.mousedown({ target: null });
+    expect(emitted().close).toBeTruthy();
   });
 
-  test('should close on ESC press', () => {
-    const wrapper = mount<any>(VueModal, {
-      localVue,
+  test('should close on ESC press', async () => {
+    const { emitted, updateProps } = render<any>(VueModal as any, {
+      propsData: { closeOnEscape: false, backdrop: false },
     });
 
-    wrapper.vm.$emit = jest.fn();
+    triggerDocument.keydown({ key: 'Enter' });
+    expect(emitted().close).toBeFalsy();
 
-    wrapper.vm.handleDocumentKeyDown({ key: 'Enter' });
-    expect(wrapper.vm.$emit).toHaveBeenCalledTimes(0);
+    triggerDocument.keydown({ key: 'Escape' });
+    expect(emitted().close).toBeFalsy();
 
-    wrapper.vm.handleDocumentKeyDown({ key: 'Escape' });
-    expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
+    await updateProps({ show: true });
+    triggerDocument.keydown({ key: 'Escape' });
+    expect(emitted().close).toBeFalsy;
+
+    await updateProps({ show: true, closeOnEscape: true });
+    triggerDocument.keydown({ key: 'Escape' });
+    expect(emitted().close).toBeTruthy;
   });
 });

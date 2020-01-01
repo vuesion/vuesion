@@ -11,8 +11,10 @@ import { IState } from './state';
 import { i18n } from '@shared/plugins/i18n/i18n';
 import { HttpService } from '@shared/services/HttpService/HttpService';
 import './shared/directives';
+import VueCompositionApi from '@vue/composition-api';
 
-Vue.use(VeeValidate, { inject: false, delay: 1, events: 'input|blur' });
+Vue.use(VueCompositionApi);
+Vue.use(VeeValidate, { inject: false, delay: 1 });
 
 export interface IApp {
   app: Vue;

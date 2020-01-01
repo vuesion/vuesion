@@ -29,10 +29,12 @@
   --brand-link-color: #{palette-color-level('blue', 70)};
   --brand-link-hover-color: #{palette-color-level('blue', 70)};
 
-  /* Border Colors */
+  /* Borders */
   --brand-border-color: #{palette-color-level('grey', 30)};
   --brand-border-color-inverse: #{palette-color-level('grey', 60)};
-  --brand-border-radius: #{$space-4};
+  --brand-border-radius-sm: #{$space-4};
+  --brand-border-radius-md: #{$space-8};
+  --brand-border-radius-lg: #{$space-16};
 
   /* Box Shadows */
   --brand-shadow-sm: 0 1px 1px 0 rgba(18, 19, 21, 0.12);
