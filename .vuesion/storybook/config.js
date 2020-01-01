@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
 import VeeValidate from 'vee-validate';
+import VueCompositionApi from '@vue/composition-api';
 import { checkA11y } from '@storybook/addon-a11y';
 import { setDefaults, withInfo } from 'storybook-addon-vue-info';
 import '@storybook/addon-console';
@@ -18,6 +19,7 @@ Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(VeeValidate);
+Vue.use(VueCompositionApi);
 
 const req = require.context('../../src', true, /.stories.ts$/);
 

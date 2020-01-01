@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
+import VueCompositionApi from '@vue/composition-api';
 
 Vue.use(VeeValidate);
+Vue.use(VueCompositionApi);
 
 const $style: any = require('identity-obj-proxy');
 

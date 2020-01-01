@@ -4,7 +4,7 @@ import { brandVariations } from '@components/utils';
 
 describe('VueBadge.vue', () => {
   test('renders component', () => {
-    const { getByText } = render(VueBadge, {
+    const { getByText } = render<any>(VueBadge as any, {
       slots: {
         default: 'VueBadge',
       },
@@ -15,7 +15,7 @@ describe('VueBadge.vue', () => {
 
   test('renders color variations', () => {
     brandVariations.forEach((variation: string) => {
-      const { container } = render(VueBadge, {
+      const { container } = render<any>(VueBadge as any, {
         propsData: {
           color: variation,
         },
@@ -28,7 +28,7 @@ describe('VueBadge.vue', () => {
   });
 
   test('renders outlined', () => {
-    const { container } = render(VueBadge, {
+    const { container } = render<any>(VueBadge as any, {
       propsData: {
         outlined: true,
       },
