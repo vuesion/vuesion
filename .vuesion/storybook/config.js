@@ -8,7 +8,6 @@ import VueCompositionApi from '@vue/composition-api';
 import { checkA11y } from '@storybook/addon-a11y';
 import { setDefaults, withInfo } from 'storybook-addon-vue-info';
 import '@storybook/addon-console';
-import '../../src/app/shared/directives';
 import '../../src/app/shared/_design-system.scss';
 import '../../src/app/shared/designSystem/reset.scss';
 import '../../src/app/shared/designSystem/global.scss';
