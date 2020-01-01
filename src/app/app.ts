@@ -10,7 +10,6 @@ import { router } from './router';
 import { IState } from './state';
 import { i18n } from '@shared/plugins/i18n/i18n';
 import { HttpService } from '@shared/services/HttpService/HttpService';
-import './shared/directives';
 import VueCompositionApi from '@vue/composition-api';
 
 Vue.use(VueCompositionApi);
