@@ -64,7 +64,7 @@ export default {
     justify-content: center;
     align-items: center;
     box-shadow: var(--brand-shadow-lg);
-    border-radius: var(--brand-border-radius);
+    border-radius: var(--brand-border-radius-sm);
     padding: $space-16;
 
     span {
