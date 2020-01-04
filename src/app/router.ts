@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import VueRouter, { Route, RouteRecord } from 'vue-router';
 import Meta from 'vue-meta';
+import { Store } from 'vuex';
+import { IState } from '@/app/state';
 import { AppRoutes } from './app/routes';
 import { HomeRoutes } from './home/routes';
 import { CounterRoutes } from './example/counter/routes';
 import { FormRoutes } from './example/form/routes';
 import { DashboardRoutes } from './example/dashboard/routes';
-import { store } from '@/app/store';
 
 Vue.use(VueRouter);
 Vue.use(Meta);
@@ -25,16 +26,16 @@ export const router: VueRouter = new VueRouter({
 
 // example guard
 // TODO remove or adjust in production code
-router.beforeEach((to: Route, from: Route, next: any) => {
-  if (to.matched.some((record: RouteRecord) => record.meta.requiresAuth)) {
+export const AuthGuard = (route: Route, resolve: any, store: Store<IState>) => {
+  if (route.matched.some((record: RouteRecord) => record.meta.requiresAuth)) {
     const isAuthenticated = store.getters['auth/isAuthenticated'];
 
     if (!isAuthenticated) {
-      next({ path: '/', query: { redirect: to.fullPath } });
+      resolve({ path: '/', query: { redirect: route.fullPath } });
     } else {
-      next();
+      resolve();
     }
   } else {
-    next();
+    resolve();
   }
-});
+};

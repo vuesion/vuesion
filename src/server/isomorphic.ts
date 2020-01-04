@@ -12,6 +12,7 @@ import { IAppConfig } from '@/app/config/IAppConfig';
 import { PersistCookieStorage } from '@vuesion/vuex-persist/dist/PersistCookieStorage';
 import { Logger } from './utils/Logger';
 import { initHttpService } from '@shared/services/HttpService/HttpService';
+import { AuthGuard } from '@/app/router';
 
 export interface IServerContext {
   url: string;
@@ -91,18 +92,32 @@ export default (context: IServerContext) => {
     router.push(context.url);
 
     router.onReady(async () => {
-      if (router.currentRoute.fullPath !== context.url) {
-        return reject({ code: 302, cookies: [], path: router.currentRoute.fullPath });
-      }
-
-      const routeMatchesCatchAll = router.currentRoute.matched.some((match) => match.path === '*');
-      if (routeMatchesCatchAll) {
-        return reject({ code: 404 });
-      }
-
-      const matchedComponents: Component[] = [App as Component].concat(router.getMatchedComponents());
-
       try {
+        if ((App as any).prefetch) {
+          await (App as any).prefetch({ store, route: router.currentRoute, router } as IPreLoad);
+        }
+
+        AuthGuard(
+          router.currentRoute,
+          (route: any) => {
+            if (route) {
+              router.push(route);
+            }
+          },
+          store,
+        );
+
+        if (router.currentRoute.fullPath !== context.url) {
+          return reject({ code: 302, cookies: [], path: router.currentRoute.fullPath });
+        }
+
+        const routeMatchesCatchAll = router.currentRoute.matched.some((match) => match.path === '*');
+        if (routeMatchesCatchAll) {
+          return reject({ code: 404 });
+        }
+
+        const matchedComponents: Component[] = router.getMatchedComponents();
+
         await Promise.all(
           matchedComponents.map((component: Component) => {
             if ((component as any).prefetch) {
@@ -126,7 +141,7 @@ export default (context: IServerContext) => {
         if (currentPath !== context.url || (pendingPath && pendingPath !== context.url)) {
           reject({
             code: 302,
-            cookies: PersistCookieStorage.getCookiesFromState(context.cookies, context.state),
+            cookies: PersistCookieStorage.getCookiesFromState(context.cookies, store.state),
             path: pendingPath || currentPath,
           });
         } else {

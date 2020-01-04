@@ -17,14 +17,7 @@ export let HttpService: IHttpService = axios.create();
 export const initHttpService = (store?: Store<IState>, router?: VueRouter) => {
   /* istanbul ignore next */
   HttpService = axios.create({
-    baseURL:
-      (store &&
-        store.state &&
-        store.state.app &&
-        store.state.app.config &&
-        store.state.app.config.api &&
-        store.state.app.config.api.baseUrl) ||
-      '',
+    baseURL: store?.state?.app?.config?.api?.baseUrl || '',
   });
 
   HttpService.store = store;

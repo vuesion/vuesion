@@ -4,6 +4,8 @@ import { Component } from 'vue-router/types/router';
 import { createApp, IApp } from '@/app/app';
 import { IPreLoad } from '@/server/isomorphic';
 import { HttpService, initHttpService } from '@shared/services/HttpService/HttpService';
+import App from '@/app/app/App/App.vue';
+import { AuthGuard } from '@/app/router';
 
 if (PRODUCTION) {
   const runtime: any = require('serviceworker-webpack-plugin/lib/runtime');
@@ -45,21 +47,27 @@ Vue.config.errorHandler = (error: Error) => {
   router.replace('/error');
 };
 
-router.onReady(() => {
+router.onReady(async () => {
+  if ((App as any).prefetch) {
+    await (App as any).prefetch({ store, route: router.currentRoute, router } as IPreLoad);
+  }
+
   router.beforeResolve(async (to: Route, from: Route, next: any) => {
-    const matched: Component[] = router.getMatchedComponents(to);
-    const prevMatched: Component[] = router.getMatchedComponents(from);
-    let diffed = false;
-
-    const activated: Component[] = matched.filter((component: Component, i: number) => {
-      return diffed || (diffed = prevMatched[i] !== component);
-    });
-
-    if (!activated.length) {
-      return next();
-    }
-
     try {
+      AuthGuard(to, next, store);
+
+      const matched: Component[] = router.getMatchedComponents(to);
+      const prevMatched: Component[] = router.getMatchedComponents(from);
+      let diffed = false;
+
+      const activated: Component[] = matched.filter((component: Component, i: number) => {
+        return diffed || (diffed = prevMatched[i] !== component);
+      });
+
+      if (!activated.length) {
+        return next();
+      }
+
       await Promise.all(
         activated.map((component: Component) => {
           if ((component as any).prefetch) {
