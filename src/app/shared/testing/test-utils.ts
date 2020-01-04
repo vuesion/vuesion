@@ -12,7 +12,7 @@ beforeEach(() => {
     triggerDocument[event] = cb;
   });
 
-  document.removeEventListener = jest.fn((event, cb) => {
+  document.removeEventListener = jest.fn((event) => {
     delete triggerDocument[event];
   });
 });
