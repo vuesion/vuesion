@@ -9,7 +9,6 @@ import { store } from './store';
 import { router } from './router';
 import { IState } from './state';
 import { i18n } from '@shared/plugins/i18n/i18n';
-import { HttpService } from '@shared/services/HttpService/HttpService';
 import VueCompositionApi from '@vue/composition-api';
 
 Vue.use(VueCompositionApi);
@@ -24,8 +23,6 @@ export interface IApp {
 
 export const createApp = (): IApp => {
   sync(store, router);
-
-  HttpService.store = store;
 
   const app: Vue = new Vue({
     router,
