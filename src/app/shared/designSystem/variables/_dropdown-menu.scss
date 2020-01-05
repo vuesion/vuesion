@@ -1,9 +1,9 @@
 $dropdown-menu-button-padding: $space-4;
 $dropdown-menu-button-border-radius: var(--brand-border-radius-sm);
 $dropdown-menu-button-font-family: $font-family;
-$dropdown-menu-button-font-size: $font-size;
+$dropdown-menu-button-font-size: $font-size-md;
 $dropdown-menu-button-font-weight: $font-weight-regular;
-$dropdown-menu-button-line-height: $line-height;
+$dropdown-menu-button-line-height: $line-height-md;
 $dropdown-menu-button-letter-spacing: $letter-spacing;
 $dropdown-menu-button-border: none;
 $dropdown-menu-button-bg: var(--brand-bg-color);
@@ -18,9 +18,9 @@ $dropdown-menu-list-color: var(--brand-text-color);
 $dropdown-menu-list-border: 1px solid var(--brand-border-color);
 $dropdown-menu-list-border-radius: var(--brand-border-radius-sm);
 $dropdown-menu-list-min-width: 200px;
-$dropdown-menu-list-font-size: $font-size-small;
+$dropdown-menu-list-font-size: $font-size-sm;
 $dropdown-menu-list-font-weight: $font-weight-light;
-$dropdown-menu-list-line-height: $line-height;
+$dropdown-menu-list-line-height: $line-height-md;
 $dropdown-menu-list-shadow: var(--brand-shadow-sm);
 
 $dropdown-menu-list-item-padding: $space-8 $space-12;

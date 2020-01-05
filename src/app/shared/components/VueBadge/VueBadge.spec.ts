@@ -20,9 +20,9 @@ describe('VueBadge.vue', () => {
           color: variation,
         },
       });
-
       const actual = container.querySelectorAll(`.${variation}`);
       const expected = 1;
+
       expect(actual).toHaveLength(expected);
     });
   });
@@ -33,9 +33,9 @@ describe('VueBadge.vue', () => {
         outlined: true,
       },
     });
-
     const actual = container.querySelectorAll(`.outlined`);
     const expected = 1;
+
     expect(actual).toHaveLength(expected);
   });
 });

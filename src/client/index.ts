@@ -1,18 +1,28 @@
 import Vue from 'vue';
+import axios from 'axios';
 import { Route } from 'vue-router';
 import { Component } from 'vue-router/types/router';
 import { createApp, IApp } from '@/app/app';
-import { IPreLoad } from '@/server/isomorphic';
-import { HttpService, initHttpService } from '@shared/services/HttpService/HttpService';
+import { initHttpService } from '@shared/services/HttpService/HttpService';
 import App from '@/app/app/App/App.vue';
 import { AuthGuard } from '@/app/router';
+
+const logError = (error: Error) => {
+  axios.post('/log/error', {
+    error: {
+      message: error.message,
+      stack: error.stack,
+    },
+  });
+};
 
 if (PRODUCTION) {
   const runtime: any = require('serviceworker-webpack-plugin/lib/runtime');
   if ('serviceWorker' in navigator) {
-    runtime.register().then((registration: ServiceWorkerRegistration) => {
-      registration.update();
-    });
+    runtime
+      .register()
+      .then((registration: any) => registration.update())
+      .catch((e: any) => logError({ message: e, stack: e, name: 'register-service-worker' }));
   }
 }
 
@@ -35,26 +45,27 @@ if (store.state.app.redirectTo !== null) {
  * global error handler that redirects to error page and logs error to express app
  */
 Vue.config.errorHandler = (error: Error) => {
-  console.error(error);
-
-  HttpService.post('/log/error', {
-    error: {
-      message: error.message,
-      stack: error.stack,
-    },
-  });
+  logError(error);
 
   router.replace('/error');
 };
 
 router.onReady(async () => {
   if ((App as any).prefetch) {
-    await (App as any).prefetch({ store, route: router.currentRoute, router } as IPreLoad);
+    await (App as any).prefetch({ store, route: router.currentRoute, router });
   }
 
   router.beforeResolve(async (to: Route, from: Route, next: any) => {
     try {
-      AuthGuard(to, next, store);
+      AuthGuard(
+        to,
+        (route: any) => {
+          if (route) {
+            router.push(route);
+          }
+        },
+        store,
+      );
 
       const matched: Component[] = router.getMatchedComponents(to);
       const prevMatched: Component[] = router.getMatchedComponents(from);
@@ -71,7 +82,7 @@ router.onReady(async () => {
       await Promise.all(
         activated.map((component: Component) => {
           if ((component as any).prefetch) {
-            return (component as any).prefetch({ store, route: to, router } as IPreLoad);
+            return (component as any).prefetch({ store, route: to, router });
           }
 
           return Promise.resolve();
@@ -80,7 +91,7 @@ router.onReady(async () => {
 
       next();
     } catch (e) {
-      console.error(e);
+      logError({ message: e, stack: e, name: 'prefetch-error' });
       next();
     }
   });

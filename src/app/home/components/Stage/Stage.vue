@@ -1,6 +1,6 @@
 <template>
   <div ref="stage" :class="$style.stage">
-    <canvas ref="canvas" :class="$style.canvas"></canvas>
+    <canvas ref="canvas" :class="$style.canvas" />
 
     <vue-grid>
       <vue-grid-row>
@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { CircleAnimation } from '../../../shared/animations/CircleAnimation';
+import { CircleAnimation } from '@shared/animations/CircleAnimation';
 import VueGrid from '@components/VueGrid/VueGrid.vue';
 import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
 import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
@@ -131,11 +131,9 @@ export default {
   font-size: $font-size-h1;
   display: inline-block;
   background: var(--brand-bg-color);
-  transition: $button-transition;
-  transition-property: box-shadow;
 
   &:hover {
-    box-shadow: $button-active-shadow;
+    box-shadow: var(--brand-shadow-lg);
   }
 
   i {

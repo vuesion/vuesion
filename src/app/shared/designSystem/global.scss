@@ -16,8 +16,8 @@ code {
 // vue-icon global style
 i {
   display: inline-block;
-  height: $font-size;
-  width: $font-size;
+  height: $font-size-md;
+  width: $font-size-md;
   fill: var(--brand-text-color);
 
   svg {
