@@ -1,15 +1,7 @@
 #<template>
   <div :class="cssClasses">
-    <svg :class="[$style.circle, 'vueLoaderCircle']" viewBox="25 25 50 50">
-      <circle
-        :class="[$style.path, 'vueLoaderPath']"
-        cx="50"
-        cy="50"
-        r="20"
-        fill="none"
-        stroke-width="2"
-        stroke-miterlimit="10"
-      />
+    <svg :class="$style.circle" viewBox="25 25 50 50">
+      <circle :class="$style.path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
     </svg>
   </div>
 </template>

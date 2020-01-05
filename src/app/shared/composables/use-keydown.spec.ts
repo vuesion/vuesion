@@ -1,6 +1,6 @@
 import { render } from '@testing-library/vue';
 import { TestComponent, triggerDocument } from '@shared/testing/test-utils';
-import { useKeyDownBehavior } from '@shared/composables/use-keydown-behaviour';
+import { useKeydown } from '@shared/composables/use-keydown';
 
 describe('use-keydown-behaviour.ts', () => {
   beforeEach(() => (document.body.style.overflow = ''));
@@ -9,9 +9,9 @@ describe('use-keydown-behaviour.ts', () => {
     let keydownEvent: KeyboardEvent = null;
     const { unmount } = render<any>(
       TestComponent(() => {
-        const { onKeyDown } = useKeyDownBehavior();
+        const { onKeydown } = useKeydown();
 
-        onKeyDown((e) => (keydownEvent = e));
+        onKeydown((e) => (keydownEvent = e));
       }),
     );
 

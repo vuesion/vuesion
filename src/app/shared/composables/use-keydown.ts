@@ -1,8 +1,8 @@
 import { onMounted, onBeforeUnmount } from '@vue/composition-api';
 
-export const useKeyDownBehavior = () => {
+export const useKeydown = () => {
   let callback: (event: KeyboardEvent) => void;
-  const onKeyDown = (cb: (event: KeyboardEvent) => void) => (callback = cb);
+  const onKeydown = (cb: (event: KeyboardEvent) => void) => (callback = cb);
   const handleDocumentKeyPress = (event: KeyboardEvent) => {
     callback(event);
   };
@@ -15,5 +15,5 @@ export const useKeyDownBehavior = () => {
     document.removeEventListener('keydown', handleDocumentKeyPress);
   });
 
-  return { onKeyDown };
+  return { onKeydown };
 };

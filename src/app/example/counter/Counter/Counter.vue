@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
-import { IPreLoad } from '@/server/isomorphic';
+import { IPrefetch } from '@/server/isomorphic';
 import VueGrid from '@components/VueGrid/VueGrid.vue';
 import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
 import VueButton from '@components/VueButton/VueButton.vue';
@@ -61,7 +61,7 @@ export default {
   methods: {
     ...mapActions('counter', ['increment', 'decrement']),
   },
-  prefetch: (options: IPreLoad) => {
+  prefetch: (options: IPrefetch) => {
     registerModule('counter', CounterModule);
     return options.store.dispatch('counter/increment');
   },
