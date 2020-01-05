@@ -12,3 +12,4 @@ logs
 .cache
 .vscode/
 .eslintcache
+report.*.json

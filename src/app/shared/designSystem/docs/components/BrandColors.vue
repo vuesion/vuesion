@@ -30,11 +30,13 @@ export default {
         const name = split.join('-');
         const hex = this.$style[key];
 
-        if (!sections[section]) {
+        if (!sections[section] && name) {
           sections[section] = [];
         }
 
-        sections[section].push({ name, hex });
+        if (name) {
+          sections[section].push({ name, hex });
+        }
       });
 
       Object.keys(sections).forEach((key: string) => {
