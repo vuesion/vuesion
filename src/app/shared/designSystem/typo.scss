@@ -10,12 +10,12 @@ body {
   font-size: 1.6em;
   font-weight: $font-weight-light;
   letter-spacing: $letter-spacing;
-  line-height: $line-height;
+  line-height: $line-height-md;
   font-display: swap;
 }
 
 small {
-  font-size: $font-size-small;
+  font-size: $font-size-sm;
 }
 
 strong {

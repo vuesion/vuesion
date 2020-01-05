@@ -1,6 +1,6 @@
 {
   "outputDirectory": "./dist",
-  "currentVersion": "v3.1.0",
+  "currentVersion": "v4.0.0",
   "generators": {
     "blueprintDirectory": "./.vuesion/generators",
     "outputDirectory": "./src/app",

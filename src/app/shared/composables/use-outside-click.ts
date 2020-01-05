@@ -1,6 +1,6 @@
 import { onMounted, onBeforeUnmount, watch, Ref } from '@vue/composition-api';
 
-export const useOutsideClickBehaviour = (elementRef: Ref<HTMLElement>) => {
+export const useOutsideClick = (elementRef: Ref<HTMLElement>) => {
   let el: HTMLElement;
   let callback: (event: MouseEvent) => void;
   const onOutsideClick = (cb: (event: MouseEvent) => void) => (callback = cb);

@@ -10,12 +10,13 @@
 </template>
 
 <script lang="ts">
-import { createComponent, ref, computed } from '@vue/composition-api';
-import { useOutsideClickBehaviour } from '@shared/composables/use-outside-click-behaviour';
-import { useKeyDownBehavior } from '@shared/composables/use-keydown-behaviour';
+import { defineComponent, computed } from '@vue/composition-api';
+import { useOutsideClick } from '@shared/composables/use-outside-click';
+import { useKeydown } from '@shared/composables/use-keydown';
 import { useBackdrop } from '@shared/composables/use-backdrop';
+import { getDomRef } from '@shared/composables/get-dom-ref';
 
-export default createComponent({
+export default defineComponent({
   name: 'VueModal',
   props: {
     show: { type: Boolean, default: false },
@@ -25,14 +26,14 @@ export default createComponent({
     fitContent: Boolean,
   },
   setup(props, { emit }) {
-    const modal = ref(null);
+    const modal = getDomRef(null);
     const show = computed(() => props.show);
-    const { onOutsideClick } = useOutsideClickBehaviour(modal);
-    const { onKeyDown } = useKeyDownBehavior();
+    const { onOutsideClick } = useOutsideClick(modal);
+    const { onKeydown } = useKeydown();
     const onClose = () => emit('close');
 
     onOutsideClick(() => onClose());
-    onKeyDown((event) => {
+    onKeydown((event) => {
       if (event.key === 'Escape' && props.show === true && props.closeOnEscape === true) {
         onClose();
       }

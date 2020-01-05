@@ -10,7 +10,7 @@
   if (file.match(/\.(js|css)$/)) { %>
   <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
   <link rel="manifest" href="/manifest.json">
-  <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inter:200,400,600&display=swap" rel="stylesheet">
 </head>
 <body>
 <!--vue-ssr-outlet-->

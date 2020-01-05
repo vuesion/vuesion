@@ -27,7 +27,7 @@ export interface IServerContext {
   theme?: string;
 }
 
-export interface IPreLoad {
+export interface IPrefetch {
   store?: Store<IState> | any;
   route?: Route | any;
   router?: VueRouter;
@@ -94,7 +94,7 @@ export default (context: IServerContext) => {
     router.onReady(async () => {
       try {
         if ((App as any).prefetch) {
-          await (App as any).prefetch({ store, route: router.currentRoute, router } as IPreLoad);
+          await (App as any).prefetch({ store, route: router.currentRoute, router } as IPrefetch);
         }
 
         AuthGuard(
@@ -121,7 +121,7 @@ export default (context: IServerContext) => {
         await Promise.all(
           matchedComponents.map((component: Component) => {
             if ((component as any).prefetch) {
-              return (component as any).prefetch({ store, route: router.currentRoute, router } as IPreLoad);
+              return (component as any).prefetch({ store, route: router.currentRoute, router } as IPrefetch);
             }
 
             return Promise.resolve();

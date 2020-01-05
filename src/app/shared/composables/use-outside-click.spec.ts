@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { render } from '@testing-library/vue';
 import { triggerDocument, TestComponent } from '@shared/testing/test-utils';
 import { ref } from '@vue/composition-api';
-import { useOutsideClickBehaviour } from '@shared/composables/use-outside-click-behaviour';
+import { useOutsideClick } from '@shared/composables/use-outside-click';
 
 describe('use-outside-click-behaviour', () => {
   test('should not trigger outside click', async () => {
@@ -11,7 +11,7 @@ describe('use-outside-click-behaviour', () => {
     const { getByTestId } = render<any>(
       TestComponent(() => {
         const element = ref<HTMLElement>(null);
-        const { onOutsideClick } = useOutsideClickBehaviour(element);
+        const { onOutsideClick } = useOutsideClick(element);
 
         onOutsideClick(() => (clicked = true));
 
@@ -34,7 +34,7 @@ describe('use-outside-click-behaviour', () => {
     render<any>(
       TestComponent(() => {
         const element = ref<HTMLElement>(null);
-        const { onOutsideClick } = useOutsideClickBehaviour(element);
+        const { onOutsideClick } = useOutsideClick(element);
 
         onOutsideClick(() => (clicked = true));
 
