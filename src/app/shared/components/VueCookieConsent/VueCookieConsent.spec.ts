@@ -5,7 +5,7 @@ import { i18n } from '../../plugins/i18n/i18n';
 const localVue = createLocalVue();
 
 describe('VueCookieConsent.vue', () => {
-  test('renders visible component and simulates consent click', () => {
+  test('renders visible component and simulates consent click', async () => {
     const setCookieConsentVersion: any = jest.fn();
 
     const wrapper = mount<any>(VueCookieConsent, {
@@ -26,6 +26,7 @@ describe('VueCookieConsent.vue', () => {
     expect(wrapper.vm.show).toBeTruthy();
 
     wrapper.find('.button').trigger('click');
+    await wrapper.vm.$nextTick();
 
     expect(setCookieConsentVersion).toHaveBeenCalledWith('1.1.0');
   });

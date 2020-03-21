@@ -42,7 +42,7 @@ describe('VueMarkdown.vue', () => {
     expect(wrapper.find('code').text()).toBe('foo bar');
   });
 
-  test('click on a link should use the router', () => {
+  test('click on a link should use the router', async () => {
     const $router = {
       push: jest.fn(),
     };
@@ -60,11 +60,12 @@ describe('VueMarkdown.vue', () => {
     const expected = '/test';
 
     wrapper.find('a').trigger('click');
+    await wrapper.vm.$nextTick();
 
     expect(actual).toHaveBeenCalledWith(expected);
   });
 
-  test('click on a link should not use the router', () => {
+  test('click on a link should not use the router', async () => {
     const $router = {
       push: jest.fn(),
     };
@@ -85,6 +86,7 @@ describe('VueMarkdown.vue', () => {
     const expected = '/test';
 
     wrapper.find('a').trigger('click');
+    await wrapper.vm.$nextTick();
 
     expect(actual).not.toHaveBeenCalledWith(expected);
   });

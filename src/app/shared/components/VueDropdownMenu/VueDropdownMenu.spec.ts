@@ -18,7 +18,7 @@ describe('VueDropdownMenuMenu.vue', () => {
     expect(wrapper.text()).toBe('foo');
   });
 
-  test('onClick', () => {
+  test('onClick', async () => {
     const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
@@ -30,6 +30,8 @@ describe('VueDropdownMenuMenu.vue', () => {
     });
 
     wrapper.find('span').trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect((wrapper as any).vm.show).toBeTruthy();
 
     (wrapper as any).vm.onClick({ label: 'foo', value: 'foo' });
@@ -98,7 +100,7 @@ describe('VueDropdownMenuMenu.vue', () => {
     expect(document.removeEventListener).toHaveBeenCalledTimes(2);
   });
 
-  test('should close on outside click', () => {
+  test('should close on outside click', async () => {
     const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
@@ -112,7 +114,10 @@ describe('VueDropdownMenuMenu.vue', () => {
     wrapper.vm.$emit = jest.fn();
 
     wrapper.find('span').trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect((wrapper as any).vm.show).toBeTruthy();
+
     wrapper.vm.handleDocumentClick({ target: wrapper.find(`p`).element });
     expect((wrapper as any).vm.show).toBeTruthy();
 

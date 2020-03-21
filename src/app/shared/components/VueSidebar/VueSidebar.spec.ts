@@ -15,7 +15,7 @@ describe('VueSidebar.vue', () => {
     expect(wrapper.text()).toBe('foo');
   });
 
-  test('should open', () => {
+  test('should open', async () => {
     const wrapper = mount<any>(VueSidebar, {
       localVue,
       slots: {
@@ -24,6 +24,7 @@ describe('VueSidebar.vue', () => {
     });
 
     wrapper.find('button').trigger('click');
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.findAll('.open')).toHaveLength(2);
   });
@@ -43,7 +44,7 @@ describe('VueSidebar.vue', () => {
     expect(document.removeEventListener).toHaveBeenCalledTimes(2);
   });
 
-  test('should open menu and close it on outside click', () => {
+  test('should open menu and close it on outside click', async () => {
     const wrapper = mount<any>(VueSidebar, {
       localVue,
       stubs: ['router-link'],
@@ -52,6 +53,8 @@ describe('VueSidebar.vue', () => {
     expect(wrapper.vm.open).toBeFalsy();
 
     wrapper.find(`.hamburger`).trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.vm.open).toBeTruthy();
 
     wrapper.vm.handleDocumentClick({ target: wrapper.find(`.hamburger`).element });

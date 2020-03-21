@@ -35,7 +35,7 @@ describe('VueCheckbox.vue', () => {
     expect(wrapper.findAll(`.radio`)).toHaveLength(1);
   });
 
-  test('should emit click event', () => {
+  test('should emit click event', async () => {
     const wrapper = mount(VueCheckbox, {
       localVue,
       propsData: {
@@ -46,10 +46,12 @@ describe('VueCheckbox.vue', () => {
     });
 
     wrapper.find(`.box`).trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted().click).toBeTruthy();
   });
 
-  test('should disable checkbox', () => {
+  test('should disable checkbox', async () => {
     const wrapper = mount(VueCheckbox, {
       localVue,
       propsData: {
@@ -61,7 +63,10 @@ describe('VueCheckbox.vue', () => {
     });
 
     expect(wrapper.findAll(`.disabled`)).toHaveLength(1);
+
     wrapper.find(`.box`).trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted().click).toBeFalsy();
   });
 });

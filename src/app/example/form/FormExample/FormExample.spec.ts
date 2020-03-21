@@ -5,7 +5,7 @@ import { i18n } from '@shared/plugins/i18n/i18n';
 const localVue = createLocalVue();
 
 describe('FormExample.vue', () => {
-  test('renders component', () => {
+  test('renders component', async () => {
     const wrapper = mount<any>(FormExample, {
       localVue,
       i18n,
@@ -30,6 +30,8 @@ describe('FormExample.vue', () => {
     expect(wrapper.vm.isSubmitDisabled).toBeFalsy();
 
     wrapper.find('form').trigger('submit');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted('submit')).toBeTruthy();
   });
 });
