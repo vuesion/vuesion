@@ -60,7 +60,7 @@ describe('VueDatePicker.vue', () => {
     expect(wrapper.emitted('change')).toBeTruthy();
   });
 
-  test('should open calendar on focus', () => {
+  test('should open calendar on focus', async () => {
     const wrapper = mount<any>(VueDatePicker, {
       localVue,
       i18n,
@@ -70,6 +70,8 @@ describe('VueDatePicker.vue', () => {
     expect(wrapper.vm.show).toBeFalsy();
 
     wrapper.find('input').trigger('focus');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.vm.show).toBeTruthy();
   });
 

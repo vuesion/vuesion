@@ -34,7 +34,7 @@ describe('VueTextarea.vue', () => {
     expect(wrapper.findAll(`.disabled`)).toHaveLength(1);
   });
 
-  test('should emit input', () => {
+  test('should emit input', async () => {
     const wrapper = mount<any>(VueTextarea, {
       localVue,
       propsData: {
@@ -44,6 +44,8 @@ describe('VueTextarea.vue', () => {
     }) as any;
 
     wrapper.find('textarea').trigger('input');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted('input')).toBeTruthy();
   });
 

@@ -34,7 +34,7 @@ describe('VueInput.vue', () => {
     expect(wrapper.findAll(`.disabled`)).toHaveLength(1);
   });
 
-  test('should emit input', () => {
+  test('should emit input', async () => {
     const wrapper = mount<any>(VueInput, {
       localVue,
       propsData: {
@@ -44,6 +44,8 @@ describe('VueInput.vue', () => {
     }) as any;
 
     wrapper.find('input').trigger('input');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted('input')).toBeTruthy();
   });
 
