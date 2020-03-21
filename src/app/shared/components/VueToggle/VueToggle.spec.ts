@@ -18,7 +18,7 @@ describe('VueToggle.vue', () => {
     expect(wrapper.findAll('#foo')).toHaveLength(1);
   });
 
-  test('renders focused component', () => {
+  test('renders focused component', async () => {
     const wrapper = mount(VueToggle, {
       localVue,
       propsData: {
@@ -31,6 +31,8 @@ describe('VueToggle.vue', () => {
     expect(wrapper.findAll('.focus')).toHaveLength(0);
 
     wrapper.find('.container').trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.findAll('.focus')).toHaveLength(1);
   });
 
@@ -48,7 +50,7 @@ describe('VueToggle.vue', () => {
     expect(wrapper.findAll('.checked')).toHaveLength(1);
   });
 
-  test('should trigger events', () => {
+  test('should trigger events', async () => {
     const wrapper = mount(VueToggle, {
       localVue,
       propsData: {
@@ -63,12 +65,13 @@ describe('VueToggle.vue', () => {
     expect(wrapper.emitted().input).toBeFalsy();
 
     wrapper.findAll('.container').trigger('click');
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.emitted().click).toBeTruthy();
     expect(wrapper.emitted().input).toBeTruthy();
   });
 
-  test('should not trigger eventsif disabled', () => {
+  test('should not trigger eventsif disabled', async () => {
     const wrapper = mount(VueToggle, {
       localVue,
       propsData: {
@@ -84,6 +87,7 @@ describe('VueToggle.vue', () => {
     expect(wrapper.emitted().input).toBeFalsy();
 
     wrapper.findAll('.container').trigger('click');
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.emitted().click).toBeFalsy();
     expect(wrapper.emitted().input).toBeFalsy();

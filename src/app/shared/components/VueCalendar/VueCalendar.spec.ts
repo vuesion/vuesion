@@ -7,7 +7,7 @@ const today: Date = new Date();
 const nextWeek: Date = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
 describe('VueCalendar.vue', () => {
-  test('renders component', () => {
+  test('renders component', async () => {
     const wrapper = mount<any>(VueCalendar, {
       localVue,
       i18n,
@@ -17,12 +17,14 @@ describe('VueCalendar.vue', () => {
     expect(wrapper.findAll(`.body`)).toHaveLength(1);
 
     wrapper.find('.h4').trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(0);
     expect(wrapper.findAll(`.year`)).toHaveLength(1);
   });
 
-  test('renders component with min max date', () => {
+  test('renders component with min max date', async () => {
     const min: Date = new Date(2018, 1, 8);
     const max: Date = new Date(2018, 1, 15);
     const wrapper = mount<any>(VueCalendar, {
@@ -38,6 +40,8 @@ describe('VueCalendar.vue', () => {
     expect(wrapper.findAll(`.body`)).toHaveLength(1);
 
     wrapper.find('.h4').trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(0);
     expect(wrapper.findAll(`.year`)).toHaveLength(1);
@@ -176,6 +180,7 @@ describe('VueCalendar.vue', () => {
     });
 
     wrapper.find('.h4').trigger('click');
+    await wrapper.vm.$nextTick();
 
     const years = wrapper.find(`.year`).findAll('div');
 
@@ -195,6 +200,7 @@ describe('VueCalendar.vue', () => {
     });
 
     wrapper.find('.h4').trigger('click');
+    await wrapper.vm.$nextTick();
 
     const years = wrapper.find(`.year`).findAll('div');
 
@@ -213,6 +219,7 @@ describe('VueCalendar.vue', () => {
     });
 
     wrapper.find('.h4').trigger('click');
+    await wrapper.vm.$nextTick();
 
     const years = wrapper.find(`.year`).findAll('div');
 

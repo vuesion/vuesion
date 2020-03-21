@@ -8,6 +8,7 @@
     :class="[$style.button, $style[color], isDisabled && $style.disabled, ghost && $style.ghost, block && $style.block]"
     :style="{ width: actualWidth }"
     :event="!isDisabled && isRouterLink ? 'click' : null"
+    :tabindex="isDisabled ? -1 : 0"
     :aria-hidden="isDisabled"
     @click="onClick"
   >
