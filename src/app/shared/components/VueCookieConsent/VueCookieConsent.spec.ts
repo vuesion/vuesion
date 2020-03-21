@@ -25,7 +25,8 @@ describe('VueCookieConsent.vue', () => {
     expect(wrapper.findAll('.button')).toHaveLength(1);
     expect(wrapper.vm.show).toBeTruthy();
 
-    await wrapper.find('.button').trigger('click');
+    wrapper.find('.button').trigger('click');
+    await wrapper.vm.$nextTick();
 
     expect(setCookieConsentVersion).toHaveBeenCalledWith('1.1.0');
   });
@@ -49,7 +50,7 @@ describe('VueCookieConsent.vue', () => {
     expect(wrapper.vm.show).toBeFalsy();
   });
 
-  test('test watchers', async () => {
+  test('test watchers', () => {
     const wrapper = mount<any>(VueCookieConsent, {
       localVue,
       i18n,
@@ -67,10 +68,10 @@ describe('VueCookieConsent.vue', () => {
     expect(wrapper.findAll('.button')).toHaveLength(1);
     expect(wrapper.vm.show).toBeTruthy();
 
-    await wrapper.setProps({ cookieConsentVersion: '1.1.0' });
+    wrapper.setProps({ cookieConsentVersion: '1.1.0' });
     expect(wrapper.vm.show).toBeFalsy();
 
-    await wrapper.setProps({ cookieConsentVersion: '1.0.0' });
+    wrapper.setProps({ cookieConsentVersion: '1.0.0' });
     expect(wrapper.vm.show).toBeTruthy();
   });
 });

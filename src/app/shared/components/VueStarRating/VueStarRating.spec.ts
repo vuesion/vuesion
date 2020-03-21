@@ -56,14 +56,16 @@ describe('VueStarRating.vue', () => {
     }
 
     // 5/5 stars
-    await starComponents.at(4).trigger('mouseenter');
+    starComponents.at(4).trigger('mouseenter');
+    await wrapper.vm.$nextTick();
 
     for (let i = 4; i >= 0; i--) {
       expect(starComponents.at(i).attributes('class')).toEqual('star active');
     }
 
     // 3/5 stars
-    await starComponents.at(2).trigger('mouseenter');
+    starComponents.at(2).trigger('mouseenter');
+    await wrapper.vm.$nextTick();
 
     for (let i = 4; i >= 3; i--) {
       expect(starComponents.at(i).attributes('class')).toEqual('star');
@@ -74,7 +76,8 @@ describe('VueStarRating.vue', () => {
     }
 
     // 1/5 stars
-    await starComponents.at(0).trigger('mouseenter');
+    starComponents.at(0).trigger('mouseenter');
+    await wrapper.vm.$nextTick();
 
     for (let i = 4; i >= 1; i--) {
       expect(starComponents.at(i).attributes('class')).toEqual('star');
@@ -89,7 +92,9 @@ describe('VueStarRating.vue', () => {
     const starComponents = wrapper.findAll(`.star`);
 
     // 5/5 stars
-    await starComponents.at(4).trigger('mouseenter');
+    starComponents.at(4).trigger('mouseenter');
+    await wrapper.vm.$nextTick();
+
     expect(
       wrapper
         .find('.numberDisplay')
@@ -98,7 +103,9 @@ describe('VueStarRating.vue', () => {
     ).toEqual('5');
 
     // 2/5 stars
-    await starComponents.at(1).trigger('mouseenter');
+    starComponents.at(1).trigger('mouseenter');
+    await wrapper.vm.$nextTick();
+
     expect(
       wrapper
         .find('.numberDisplay')
@@ -117,14 +124,16 @@ describe('VueStarRating.vue', () => {
     const starComponents = wrapper.findAll(`.star`);
 
     // 5/5 stars mouseenter
-    await starComponents.at(4).trigger('mouseenter');
+    starComponents.at(4).trigger('mouseenter');
+    await wrapper.vm.$nextTick();
 
     for (let i = 4; i >= 0; i--) {
       expect(starComponents.at(i).attributes('class')).toEqual('star active');
     }
 
     // 5/5 stars mouseleave
-    await starComponents.at(4).trigger('mouseleave');
+    starComponents.at(4).trigger('mouseleave');
+    await wrapper.vm.$nextTick();
 
     for (let i = 4; i >= 2; i--) {
       expect(starComponents.at(i).attributes('class')).toEqual('star');
@@ -145,7 +154,9 @@ describe('VueStarRating.vue', () => {
     const starComponents = wrapper.findAll(`.star`);
 
     // 5/5 star mouseenter
-    await starComponents.at(4).trigger('mouseenter');
+    starComponents.at(4).trigger('mouseenter');
+    await wrapper.vm.$nextTick();
+
     expect(
       wrapper
         .find('.numberDisplay')
@@ -154,7 +165,9 @@ describe('VueStarRating.vue', () => {
     ).toEqual('5');
 
     // 5/5 star mouseleave
-    await starComponents.at(4).trigger('mouseleave');
+    starComponents.at(4).trigger('mouseleave');
+    await wrapper.vm.$nextTick();
+
     expect(
       wrapper
         .find('.numberDisplay')
@@ -169,7 +182,9 @@ describe('VueStarRating.vue', () => {
     });
     const starComponents = wrapper.findAll(`.star`);
 
-    await starComponents.at(3).trigger('click');
+    starComponents.at(3).trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.vm.numSelectedStars).toEqual(4);
   });
 

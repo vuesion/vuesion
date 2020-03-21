@@ -17,10 +17,14 @@ describe('VuePagination.vue', () => {
 
     expect(wrapper.text()).toMatch('1 / 10');
 
-    await wrapper.find(`.prev`).trigger('click');
+    wrapper.find(`.prev`).trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted().change).toBeFalsy();
 
-    await wrapper.find(`.next`).trigger('click');
+    wrapper.find(`.next`).trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted().change).toBeTruthy();
   });
 
@@ -36,10 +40,14 @@ describe('VuePagination.vue', () => {
 
     expect(wrapper.text()).toMatch('10 / 10');
 
-    await wrapper.find(`.next`).trigger('click');
+    wrapper.find(`.next`).trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted().change).toBeFalsy();
 
-    await wrapper.find(`.prev`).trigger('click');
+    wrapper.find(`.prev`).trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted().change).toBeTruthy();
   });
 });

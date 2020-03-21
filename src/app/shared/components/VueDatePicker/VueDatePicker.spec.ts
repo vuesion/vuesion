@@ -69,7 +69,9 @@ describe('VueDatePicker.vue', () => {
 
     expect(wrapper.vm.show).toBeFalsy();
 
-    await wrapper.find('input').trigger('focus');
+    wrapper.find('input').trigger('focus');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.vm.show).toBeTruthy();
   });
 

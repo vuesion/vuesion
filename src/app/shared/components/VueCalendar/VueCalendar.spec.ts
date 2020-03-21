@@ -16,7 +16,9 @@ describe('VueCalendar.vue', () => {
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(1);
 
-    await wrapper.find('.h4').trigger('click');
+    wrapper.find('.h4').trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(0);
     expect(wrapper.findAll(`.year`)).toHaveLength(1);
@@ -37,7 +39,9 @@ describe('VueCalendar.vue', () => {
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(1);
 
-    await wrapper.find('.h4').trigger('click');
+    wrapper.find('.h4').trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(0);
     expect(wrapper.findAll(`.year`)).toHaveLength(1);
@@ -175,7 +179,8 @@ describe('VueCalendar.vue', () => {
       },
     });
 
-    await wrapper.find('.h4').trigger('click');
+    wrapper.find('.h4').trigger('click');
+    await wrapper.vm.$nextTick();
 
     const years = wrapper.find(`.year`).findAll('div');
 
@@ -194,7 +199,8 @@ describe('VueCalendar.vue', () => {
       },
     });
 
-    await wrapper.find('.h4').trigger('click');
+    wrapper.find('.h4').trigger('click');
+    await wrapper.vm.$nextTick();
 
     const years = wrapper.find(`.year`).findAll('div');
 
@@ -212,7 +218,8 @@ describe('VueCalendar.vue', () => {
       },
     });
 
-    await wrapper.find('.h4').trigger('click');
+    wrapper.find('.h4').trigger('click');
+    await wrapper.vm.$nextTick();
 
     const years = wrapper.find(`.year`).findAll('div');
 

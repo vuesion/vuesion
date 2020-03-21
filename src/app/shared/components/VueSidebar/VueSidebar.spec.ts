@@ -23,7 +23,8 @@ describe('VueSidebar.vue', () => {
       },
     });
 
-    await wrapper.find('button').trigger('click');
+    wrapper.find('button').trigger('click');
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.findAll('.open')).toHaveLength(2);
   });
@@ -51,7 +52,9 @@ describe('VueSidebar.vue', () => {
 
     expect(wrapper.vm.open).toBeFalsy();
 
-    await wrapper.find(`.hamburger`).trigger('click');
+    wrapper.find(`.hamburger`).trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.vm.open).toBeTruthy();
 
     wrapper.vm.handleDocumentClick({ target: wrapper.find(`.hamburger`).element });

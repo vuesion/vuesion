@@ -25,7 +25,8 @@ describe('LoginForm.vue', () => {
       password: '123456',
     });
 
-    await wrapper.find('form').trigger('submit');
+    wrapper.find('form').trigger('submit');
+    await wrapper.vm.$nextTick();
 
     const actual = wrapper.emitted('submit');
     const expected = [[{ password: '123456', username: 'foo' }]];

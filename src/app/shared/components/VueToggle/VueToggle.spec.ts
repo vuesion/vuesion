@@ -30,7 +30,9 @@ describe('VueToggle.vue', () => {
 
     expect(wrapper.findAll('.focus')).toHaveLength(0);
 
-    await wrapper.find('.container').trigger('click');
+    wrapper.find('.container').trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.findAll('.focus')).toHaveLength(1);
   });
 
@@ -62,7 +64,8 @@ describe('VueToggle.vue', () => {
     expect(wrapper.emitted().click).toBeFalsy();
     expect(wrapper.emitted().input).toBeFalsy();
 
-    await wrapper.findAll('.container').trigger('click');
+    wrapper.findAll('.container').trigger('click');
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.emitted().click).toBeTruthy();
     expect(wrapper.emitted().input).toBeTruthy();
@@ -83,7 +86,8 @@ describe('VueToggle.vue', () => {
     expect(wrapper.emitted().click).toBeFalsy();
     expect(wrapper.emitted().input).toBeFalsy();
 
-    await wrapper.findAll('.container').trigger('click');
+    wrapper.findAll('.container').trigger('click');
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.emitted().click).toBeFalsy();
     expect(wrapper.emitted().input).toBeFalsy();

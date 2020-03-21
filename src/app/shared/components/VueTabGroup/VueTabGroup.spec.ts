@@ -19,6 +19,7 @@ describe('VueTabGroup.vue', () => {
 
     tabWrapper.vm.$parent = wrapper.vm;
     tabWrapper.vm.$options.created[1].call(tabWrapper.vm);
+    await wrapper.vm.$nextTick();
 
     await wrapper.vm.$nextTick();
 
@@ -63,6 +64,7 @@ describe('VueTabGroup.vue', () => {
     ).toEqual([]);
 
     wrapper.vm.changeTab(1);
+    await wrapper.vm.$nextTick();
 
     await wrapper.vm.$nextTick();
 

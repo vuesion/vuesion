@@ -29,7 +29,9 @@ describe('VueDropdownMenuMenu.vue', () => {
       },
     });
 
-    await wrapper.find('span').trigger('click');
+    wrapper.find('span').trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect((wrapper as any).vm.show).toBeTruthy();
 
     (wrapper as any).vm.onClick({ label: 'foo', value: 'foo' });
@@ -111,8 +113,11 @@ describe('VueDropdownMenuMenu.vue', () => {
 
     wrapper.vm.$emit = jest.fn();
 
-    await wrapper.find('span').trigger('click');
+    wrapper.find('span').trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect((wrapper as any).vm.show).toBeTruthy();
+
     wrapper.vm.handleDocumentClick({ target: wrapper.find(`p`).element });
     expect((wrapper as any).vm.show).toBeTruthy();
 

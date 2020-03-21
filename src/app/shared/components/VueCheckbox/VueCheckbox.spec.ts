@@ -45,7 +45,9 @@ describe('VueCheckbox.vue', () => {
       },
     });
 
-    await wrapper.find(`.box`).trigger('click');
+    wrapper.find(`.box`).trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted().click).toBeTruthy();
   });
 
@@ -61,7 +63,10 @@ describe('VueCheckbox.vue', () => {
     });
 
     expect(wrapper.findAll(`.disabled`)).toHaveLength(1);
-    await wrapper.find(`.box`).trigger('click');
+
+    wrapper.find(`.box`).trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted().click).toBeFalsy();
   });
 });

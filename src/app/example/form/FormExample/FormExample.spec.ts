@@ -29,7 +29,9 @@ describe('FormExample.vue', () => {
     });
     expect(wrapper.vm.isSubmitDisabled).toBeFalsy();
 
-    await wrapper.find('form').trigger('submit');
+    wrapper.find('form').trigger('submit');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted('submit')).toBeTruthy();
   });
 });

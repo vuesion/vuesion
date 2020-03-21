@@ -4,7 +4,7 @@ import VueMarkdown from './VueMarkdown.vue';
 const localVue = createLocalVue();
 
 describe('VueMarkdown.vue', () => {
-  test('renders component', async () => {
+  test('renders component', () => {
     const wrapper = mount(VueMarkdown, {
       localVue,
       slots: {
@@ -16,7 +16,7 @@ describe('VueMarkdown.vue', () => {
     expect(wrapper.find('h2').text()).toBe('bar');
     expect(wrapper.find('h3').text()).toBe('baz');
 
-    await wrapper.vm.$forceUpdate();
+    wrapper.vm.$forceUpdate();
 
     wrapper.destroy();
   });
@@ -59,7 +59,8 @@ describe('VueMarkdown.vue', () => {
     const actual = $router.push;
     const expected = '/test';
 
-    await wrapper.find('a').trigger('click');
+    wrapper.find('a').trigger('click');
+    await wrapper.vm.$nextTick();
 
     expect(actual).toHaveBeenCalledWith(expected);
   });
@@ -84,7 +85,8 @@ describe('VueMarkdown.vue', () => {
     const actual = $router.push;
     const expected = '/test';
 
-    await wrapper.find('a').trigger('click');
+    wrapper.find('a').trigger('click');
+    await wrapper.vm.$nextTick();
 
     expect(actual).not.toHaveBeenCalledWith(expected);
   });

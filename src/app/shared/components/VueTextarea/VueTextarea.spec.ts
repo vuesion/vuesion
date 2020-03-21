@@ -43,7 +43,9 @@ describe('VueTextarea.vue', () => {
       },
     }) as any;
 
-    await wrapper.find('textarea').trigger('input');
+    wrapper.find('textarea').trigger('input');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted('input')).toBeTruthy();
   });
 
@@ -81,7 +83,7 @@ describe('VueTextarea.vue', () => {
     expect(wrapper.vm.observer).toBeNull();
   });
 
-  test('autofocus in modern browsers', async () => {
+  test('autofocus in modern browsers', () => {
     (window as any).IntersectionObserver = class IntersectionObserver {
       public cb: any;
       public options: any;
@@ -109,7 +111,7 @@ describe('VueTextarea.vue', () => {
     expect(wrapper.vm.observer).not.toBeNull();
     expect(wrapper.vm.$refs.input.focus).not.toHaveBeenCalled();
 
-    await wrapper.setProps({ autofocus: true });
+    wrapper.setProps({ autofocus: true });
     wrapper.vm.observer.observe();
     expect(wrapper.vm.$refs.input.focus).toHaveBeenCalled();
 

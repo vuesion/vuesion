@@ -32,7 +32,8 @@ describe('VueAccordionItem.vue', () => {
       },
     });
 
-    await wrapper.setData({ idx: 0, open: true });
+    wrapper.setData({ idx: 0, open: true });
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.findAll(`.open`)).toHaveLength(1);
   });

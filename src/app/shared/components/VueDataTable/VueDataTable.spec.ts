@@ -58,12 +58,14 @@ describe('VueDataTable.vue', () => {
 
     wrapper.vm.searchTerm = 'julia';
     await wrapper.vm.$nextTick();
+
     expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(1);
     expect(wrapper.findAll(VueDataTableHeader)).toHaveLength(1);
     expect(wrapper.findAll('.vueDataTableRow')).toHaveLength(4);
 
     wrapper.vm.searchTerm = 'z';
     await wrapper.vm.$nextTick();
+
     expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(1);
     expect(wrapper.findAll(VueDataTableHeader)).toHaveLength(1);
     expect(wrapper.findAll('.noResults')).toHaveLength(1);
@@ -80,14 +82,16 @@ describe('VueDataTable.vue', () => {
       },
     });
 
-    await wrapper.setProps({ sortKey: 'firstname' });
+    wrapper.setProps({ sortKey: 'firstname' });
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.sortedData[0].firstname).toBe('Julia');
     expect(wrapper.vm.sortedData[1].firstname).toBe('Julia');
     expect(wrapper.vm.sortedData[2].firstname).toBe('Julia');
     expect(wrapper.vm.sortedData[3].firstname).toBe('Julia');
 
-    await wrapper.setProps({ sortDirection: 'desc' });
+    wrapper.setProps({ sortDirection: 'desc' });
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.sortedData[0].firstname).toBe('Toni');
     expect(wrapper.vm.sortedData[1].firstname).toBe('Toni');

@@ -43,7 +43,9 @@ describe('VueInput.vue', () => {
       },
     }) as any;
 
-    await wrapper.find('input').trigger('input');
+    wrapper.find('input').trigger('input');
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.emitted('input')).toBeTruthy();
   });
 
