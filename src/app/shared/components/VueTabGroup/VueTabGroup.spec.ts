@@ -48,18 +48,8 @@ describe('VueTabGroup.vue', () => {
     expect(wrapper.find('li').text()).toMatch('foo');
     expect(wrapper.find('li').classes()).toEqual(['active']);
 
-    expect(
-      wrapper
-        .findAll('li')
-        .at(1)
-        .text(),
-    ).toMatch('foo2');
-    expect(
-      wrapper
-        .findAll('li')
-        .at(1)
-        .classes(),
-    ).toEqual([]);
+    expect(wrapper.findAll('li').at(1).text()).toMatch('foo2');
+    expect(wrapper.findAll('li').at(1).classes()).toEqual([]);
 
     wrapper.vm.changeTab(1);
     await wrapper.vm.$nextTick();
@@ -67,18 +57,8 @@ describe('VueTabGroup.vue', () => {
     expect(wrapper.find('li').text()).toMatch('foo');
     expect(wrapper.find('li').classes()).toEqual([]);
 
-    expect(
-      wrapper
-        .findAll('li')
-        .at(1)
-        .text(),
-    ).toMatch('foo2');
-    expect(
-      wrapper
-        .findAll('li')
-        .at(1)
-        .classes(),
-    ).toEqual(['active']);
+    expect(wrapper.findAll('li').at(1).text()).toMatch('foo2');
+    expect(wrapper.findAll('li').at(1).classes()).toEqual(['active']);
   });
 
   test('should select second tab because of its properties', () => {
