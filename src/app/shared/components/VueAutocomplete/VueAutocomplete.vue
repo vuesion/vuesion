@@ -205,7 +205,7 @@ export default {
     isSelected(index: number) {
       return index === this.selectedOptionIndex;
     },
-    emitRequest: debounce(function() {
+    emitRequest: debounce(function () {
       this.$emit('request', this.searchQuery);
       this.isOpen = true;
       this.selectedOptionIndex = -1;
