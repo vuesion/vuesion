@@ -5,9 +5,9 @@
   colorPrimary: palette-color-level('coral', 50);
   colorSecondary: palette-color-level('blue', 50);
   // UI
-  appBg: palette-color-level('grey', 10);
-  appContentBg: palette-color-level('grey', 20);
-  appBorderColor: palette-color-level('grey', 30);
+  appBg: palette-color-level('grey', 90);
+  appContentBg: palette-color-level('grey', 10);
+  appBorderColor: palette-color-level('grey', 70);
   appBorderRadius: $space-4;
 
   // Typography
@@ -15,17 +15,17 @@
   fontCode: 'Courier New';
 
   // Text colors
-  textColor: palette-color-level('grey', 100);
-  textInverseColor: palette-color-level('grey', 10);
+  textColor: palette-color-level('grey', 10);
+  textInverseColor: palette-color-level('grey', 100);
 
   // Toolbar default and active colors
-  barTextColor: palette-color-level('grey', 100);
-  barSelectedColor: palette-color-level('grey', 100);
-  barBg: palette-color-level('grey', 20);
+  barTextColor: palette-color-level('grey', 10);
+  barSelectedColor: palette-color-level('grey', 70);
+  barBg: palette-color-level('grey', 100);
 
   // Form colors
-  inputBg: palette-color-level('grey', 10);
-  inputBorder: palette-color-level('grey', 30);
-  inputTextColor: palette-color-level('grey', 100);
+  inputBg: palette-color-level('grey', 90);
+  inputBorder: palette-color-level('grey', 70);
+  inputTextColor: palette-color-level('grey', 10);
   inputBorderRadius: $space-4;
 }

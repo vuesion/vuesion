@@ -1,14 +1,12 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { render, fireEvent } from '@testing-library/vue';
 import VueInput from './VueInput.vue';
 
-const localVue = createLocalVue();
-
 describe('VueInput.vue', () => {
-  test('renders component', () => {
-    const wrapper = mount<any>(VueInput, {
-      localVue,
+  test('should render label and message', () => {
+    const { getByText } = render<any>(VueInput, {
       propsData: {
-        message: 'MESSAGE!',
+        label: 'this is the label',
+        message: 'this is the message',
         name: 'name',
         id: 'id',
       },
@@ -17,41 +15,58 @@ describe('VueInput.vue', () => {
       },
     });
 
-    expect(wrapper.findAll(`.vueInput`)).toHaveLength(1);
-    expect(wrapper.find(`.message`).text()).toBe('MESSAGE!');
+    getByText('this is the label');
+    getByText('this is the message');
   });
 
   test('renders disabled component', () => {
-    const wrapper = mount<any>(VueInput, {
-      localVue,
+    const { getByDisplayValue } = render<any>(VueInput, {
       propsData: {
+        label: 'this is the label',
+        value: 'this is the text box value',
         disabled: true,
         name: 'name',
         id: 'id',
       },
     });
 
-    expect(wrapper.findAll(`.disabled`)).toHaveLength(1);
+    expect(getByDisplayValue('this is the text box value')).toBeDisabled();
   });
 
-  test('should emit input', async () => {
-    const wrapper = mount<any>(VueInput, {
-      localVue,
+  test('renders readonly component', () => {
+    const { getByDisplayValue } = render<any>(VueInput, {
       propsData: {
+        label: 'this is the label',
+        value: 'this is the text box value',
+        readonly: true,
         name: 'name',
         id: 'id',
       },
-    }) as any;
+    });
 
-    wrapper.find('input').trigger('input');
-    await wrapper.vm.$nextTick();
+    expect(getByDisplayValue('this is the text box value')).toHaveAttribute('readonly');
+  });
 
-    expect(wrapper.emitted('input')).toBeTruthy();
+  test('should emit input', async () => {
+    const { getByDisplayValue, emitted } = render<any>(VueInput, {
+      propsData: {
+        label: 'this is the label',
+        value: 'this is the value',
+        name: 'name',
+        id: 'id',
+      },
+    });
+
+    await fireEvent.input(getByDisplayValue('this is the value'), { target: { value: 'this is the new value' } });
+
+    const actual = emitted().input[0][0];
+    const exptected = 'this is the new value';
+
+    expect(actual).toBe(exptected);
   });
 
   test('should display error state', () => {
-    const wrapper = mount<any>(VueInput, {
-      localVue,
+    const { getByText } = render<any>(VueInput, {
       mocks: {
         errors: {
           first() {
@@ -60,61 +75,14 @@ describe('VueInput.vue', () => {
         },
       },
       propsData: {
-        errorMessage: 'ERROR!',
+        label: 'this is the label',
+        errorMessage: 'this is the error',
         name: 'name',
         id: 'id',
       },
     });
 
-    expect(wrapper.findAll(`.error`)).toHaveLength(1);
-    expect(wrapper.find(`.message`).text()).toBe('ERROR!');
-  });
-
-  test('autofocus fallback', () => {
-    const wrapper = mount<any>(VueInput, {
-      localVue,
-      propsData: {
-        name: 'name',
-        id: 'id',
-        autofocus: true,
-      },
-    });
-
-    expect(wrapper.vm.observer).toBeNull();
-  });
-
-  test('autofocus in modern browsers', () => {
-    (window as any).IntersectionObserver = class IntersectionObserver {
-      public cb: any;
-      public options: any;
-
-      constructor(cb: any, options: any) {
-        this.cb = cb;
-        this.options = options;
-      }
-
-      public observe() {
-        this.cb();
-      }
-    };
-    const wrapper = mount<any>(VueInput, {
-      localVue,
-      propsData: {
-        name: 'name',
-        id: 'id',
-        autofocus: false,
-      },
-    });
-
-    wrapper.vm.$refs.input.focus = jest.fn();
-
-    expect(wrapper.vm.observer).not.toBeNull();
-    expect(wrapper.vm.$refs.input.focus).not.toHaveBeenCalled();
-
-    wrapper.setProps({ autofocus: true });
-    wrapper.vm.observer.observe();
-    expect(wrapper.vm.$refs.input.focus).toHaveBeenCalled();
-
-    wrapper.destroy();
+    getByText('this is the label');
+    getByText('this is the error');
   });
 });
