@@ -10,7 +10,10 @@
     :event="!isDisabled && isRouterLink ? 'click' : null"
     :tabindex="isDisabled ? -1 : 0"
     :aria-hidden="isDisabled"
-    @click="onClick"
+    v-on="{
+      ...this.$listeners,
+      click: onClick,
+    }"
   >
     <slot v-if="loading === false" />
     <vue-loader v-else :class="$style.loader" />

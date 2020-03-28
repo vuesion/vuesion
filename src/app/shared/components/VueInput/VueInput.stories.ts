@@ -14,7 +14,7 @@ story.add(
         model: '',
       };
     },
-    template: `<vue-input placeholder="Name" name="name" id="name" v-model="model" />`,
+    template: `<vue-input label="Name" name="name" id="name" v-model="model" />`,
   }),
   {
     info: {
@@ -32,7 +32,7 @@ story.add(
         model: '',
       };
     },
-    template: `<vue-input placeholder="Name" name="name" id="name" v-model="model" :disabled="true" />`,
+    template: `<vue-input label="Name" name="name" id="name" v-model="model" :disabled="true" />`,
   }),
   {
     info: {
@@ -50,7 +50,7 @@ story.add(
         model: '',
       };
     },
-    template: `<vue-input placeholder="Name" name="name" id="name" v-model="model" message="description" />`,
+    template: `<vue-input label="Name" name="name" id="name" v-model="model" message="description" />`,
   }),
   {
     info: {
@@ -68,7 +68,7 @@ story.add(
         model: '',
       };
     },
-    template: `<vue-input placeholder="Name" name="name" id="name" v-model="model" validation="required|integer" required message="please enter a number" errorMessage="This is not a number" />`,
+    template: `<vue-input label="Name" name="name" id="name" v-model="model" validation="required|integer" required message="please enter a number" errorMessage="This is not a number" />`,
   }),
   {
     info: {
@@ -86,7 +86,7 @@ story.add(
         model: '',
       };
     },
-    template: `<vue-input placeholder="Name" name="name" id="name" value="foo" readonly />`,
+    template: `<vue-input label="Name" name="name" id="name" value="foo" readonly />`,
   }),
   {
     info: {
@@ -109,7 +109,7 @@ story.add(
   <vue-button @click="show = !show" color="primary">Login</vue-button>
 
   <vue-modal :show="show" @close="show = false">
-    <vue-input autofocus placeholder="Name" name="name" id="name" v-model="model" />
+    <vue-input autofocus label="Name" name="name" id="name" v-model="model" />
     <vue-button ghost @click="show = !show">Close</vue-button>
   </vue-modal>
 </div>`,
