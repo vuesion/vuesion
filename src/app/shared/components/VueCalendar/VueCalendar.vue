@@ -371,7 +371,6 @@ export default {
   position: relative;
   box-shadow: $calendar-shadow;
   background: $calendar-bg;
-  margin: $calendar-margin;
   display: inline-block;
 }
 
@@ -384,7 +383,6 @@ export default {
   cursor: pointer;
 
   * {
-    margin: 0;
     font-weight: $calendar-header-font-weight;
   }
 }
@@ -454,7 +452,6 @@ export default {
     width: $space-2;
     height: $space-12;
     left: 50%;
-    margin-left: -($space-8 - $space-2);
     top: $space-4;
   }
 
@@ -549,13 +546,5 @@ export default {
   justify-content: flex-end;
   border: $calendar-body-border;
   border-top: none;
-
-  button {
-    margin-bottom: 0;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
 }
 </style>

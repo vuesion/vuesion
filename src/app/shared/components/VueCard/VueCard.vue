@@ -18,7 +18,6 @@ export default {
   box-shadow: $card-shadow;
   border: $card-border;
   border-radius: $card-border-radius;
-  margin: $card-margin;
   color: $card-color;
 }
 </style>

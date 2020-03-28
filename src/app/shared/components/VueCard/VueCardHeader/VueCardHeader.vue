@@ -53,7 +53,6 @@ export default {
       border-radius: $card-header-image-border-radius;
       flex-shrink: 0;
       display: block;
-      margin: $card-header-image-margin;
     }
   }
 

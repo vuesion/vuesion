@@ -41,7 +41,5 @@ export default {
   text-align: center;
   width: 300px;
   height: 300px;
-  margin: auto;
-  margin-top: 25%;
 }
 </style>

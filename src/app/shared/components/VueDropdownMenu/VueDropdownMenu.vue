@@ -146,13 +146,11 @@ export default {
 .list {
   position: absolute;
   top: 100%;
-  margin: $dropdown-menu-list-margin;
   z-index: 1000;
   box-shadow: $dropdown-menu-list-shadow;
   border-radius: $dropdown-menu-list-border-radius;
 
   ul {
-    margin: 0;
     padding: $dropdown-menu-list-padding;
     list-style: none;
     background: $dropdown-menu-list-bg;
@@ -175,7 +173,6 @@ export default {
     }
 
     &.separator {
-      margin: 0;
       padding: 0;
       height: 0;
       border-top: 1px solid var(--brand-border-color);

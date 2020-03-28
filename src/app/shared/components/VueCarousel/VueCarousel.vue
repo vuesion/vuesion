@@ -154,7 +154,6 @@ export default {
 .indicator {
   display: inline-block;
   position: absolute;
-  margin: 0;
   padding: 0;
   bottom: $carousel-indicator-bottom;
   flex: 1 1 auto;
@@ -163,7 +162,7 @@ export default {
     display: inline-block;
     width: $carousel-indicator-size;
     height: $carousel-indicator-size;
-    margin-right: $carousel-indicator-space;
+    padding-right: $carousel-indicator-space;
     border-radius: 50%;
     box-shadow: $carousel-indicator-shadow;
     background-color: $carousel-indicator-bg;

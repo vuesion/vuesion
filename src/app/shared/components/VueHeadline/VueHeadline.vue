@@ -35,7 +35,6 @@ export default {
 
 .vueHeadline {
   font-family: $font-family-headings;
-  margin: 0;
 }
 
 .h1 {

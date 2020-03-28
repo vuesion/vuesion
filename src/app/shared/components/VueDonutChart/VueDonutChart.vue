@@ -152,7 +152,6 @@ export default {
 }
 
 .title {
-  margin: 0 0 $space-32 0;
   text-align: center;
 }
 
