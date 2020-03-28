@@ -2,13 +2,23 @@
   <div ref="stage" :class="$style.stage">
     <canvas ref="canvas" :class="$style.canvas" />
 
-    <vue-grid>
+    <vue-grid :class="$style.content" with-vertical-space text-align="center">
       <vue-grid-row>
-        <vue-grid-item class="vueGridItem">
+        <vue-grid-column>
           <img src="logo.png" alt="vuesion" />
+        </vue-grid-column>
+      </vue-grid-row>
+
+      <vue-grid-row>
+        <vue-grid-column>
           <vue-headline level="1">
             vuesion
           </vue-headline>
+        </vue-grid-column>
+      </vue-grid-row>
+
+      <vue-grid-row>
+        <vue-grid-column>
           <div :class="$style.subTitle">
             {{
               $t(
@@ -16,9 +26,11 @@
               )
             }}
           </div>
+        </vue-grid-column>
+      </vue-grid-row>
 
-          <br />
-
+      <vue-grid-row>
+        <vue-grid-column>
           <a
             :class="$style.github"
             href="https://github.com/vuesion/vuesion"
@@ -28,7 +40,7 @@
           >
             <vue-icon-github />
           </a>
-        </vue-grid-item>
+        </vue-grid-column>
       </vue-grid-row>
     </vue-grid>
   </div>
@@ -37,13 +49,13 @@
 <script lang="ts">
 import { CircleAnimation } from '@shared/animations/CircleAnimation';
 import VueGrid from '@components/VueGrid/VueGrid.vue';
-import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
-import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
+import VueGridRow from '@components/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@components/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueIconGithub from '@components/icons/VueIconGithub/VueIconGithub.vue';
 import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
 
 export default {
-  components: { VueHeadline, VueIconGithub, VueGridItem, VueGridRow, VueGrid },
+  components: { VueHeadline, VueIconGithub, VueGridColumn, VueGridRow, VueGrid },
   props: {
     disableParticles: {
       type: Boolean,
@@ -93,52 +105,54 @@ export default {
   min-height: 100vh;
   overflow: hidden;
   position: relative;
-  text-align: center;
   text-shadow: 0 0 5px rgba(15, 15, 15, 0.4);
-  padding-top: $space-84;
+  padding-top: $nav-bar-height;
 
   img {
-    max-width: 12.8rem;
+    max-width: $space-128;
   }
 
-  h1 {
-    margin-bottom: $space-32;
-    font-weight: $font-weight-light;
+  .canvas {
+    position: absolute;
+    background-color: transparent;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
   }
 
-  @include mediaMin(tabletPortrait) {
-    min-height: 50vh;
-    img {
-      max-width: 25.6rem;
+  .content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    .github {
+      font-size: $font-size-h1;
+      display: inline-block;
+      background: var(--brand-bg-color);
+
+      &:hover {
+        box-shadow: var(--brand-shadow-lg);
+      }
+
+      i {
+        height: $font-size-h1;
+        width: $font-size-h1;
+      }
     }
   }
 }
 
-.canvas {
-  min-height: 100vh;
-  width: 100%;
-  position: absolute;
-  background-color: transparent;
-  left: 0;
-  top: 0;
-
-  @include mediaMin(tabletPortrait) {
+@include mediaMin(tabletPortrait) {
+  .stage {
     min-height: 50vh;
   }
 }
 
-.github {
-  font-size: $font-size-h1;
-  display: inline-block;
-  background: var(--brand-bg-color);
-
-  &:hover {
-    box-shadow: var(--brand-shadow-lg);
-  }
-
-  i {
-    height: $font-size-h1;
-    width: $font-size-h1;
+@include mediaMin(tabletLandscape) {
+  .stage {
+    min-height: 60vh;
   }
 }
 </style>

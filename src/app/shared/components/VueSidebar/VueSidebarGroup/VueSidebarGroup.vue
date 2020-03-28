@@ -24,7 +24,6 @@ export default {
 
 .vueSidebarGroup {
   display: block;
-  margin: $sidebar-group-margin;
 
   ul {
     padding: 0;
@@ -36,7 +35,6 @@ export default {
     font-size: $sidebar-group-font-size;
     border-bottom: $sidebar-group-border-bottom;
     padding-bottom: $space-4;
-    margin-bottom: $space-12;
   }
 }
 </style>

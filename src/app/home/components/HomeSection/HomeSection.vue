@@ -1,13 +1,13 @@
 <template>
   <div :class="[$style.homeSection, alternative ? $style.alternative : null]">
-    <vue-grid>
+    <vue-grid space="none">
       <vue-grid-row :class="[flip ? $style.flip : null]">
-        <vue-grid-item :class="$style.image">
+        <vue-grid-column>
           <vue-image :src="image" :native="false" :class="$style.image" />
-        </vue-grid-item>
-        <vue-grid-item :class="$style.text">
+        </vue-grid-column>
+        <vue-grid-column>
           <slot />
-        </vue-grid-item>
+        </vue-grid-column>
       </vue-grid-row>
     </vue-grid>
   </div>
@@ -15,24 +15,17 @@
 
 <script lang="ts">
 import VueGrid from '@components/VueGrid/VueGrid.vue';
-import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
-import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
+import VueGridRow from '@components/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@components/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueImage from '@components/VueImage/VueImage.vue';
 
 export default {
   name: 'HomeSection',
-  components: { VueImage, VueGridItem, VueGridRow, VueGrid },
+  components: { VueImage, VueGridColumn, VueGridRow, VueGrid },
   props: {
-    image: {
-      type: String,
-      required: true,
-    },
-    alternative: {
-      type: Boolean,
-    },
-    flip: {
-      type: Boolean,
-    },
+    image: { type: String, required: true },
+    alternative: { type: Boolean, default: false },
+    flip: { type: Boolean, default: false },
   },
 };
 </script>
@@ -41,11 +34,6 @@ export default {
 @import '~@/app/shared/design-system';
 
 .homeSection {
-  padding: $space-48 0;
-
-  @include mediaMin(tabletPortrait) {
-    padding: $space-84 0;
-  }
 }
 
 .alternative {
@@ -63,11 +51,9 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;
-  margin-bottom: $space-32;
 
   @include mediaMin(tabletPortrait) {
     min-height: 512px;
-    margin-bottom: 0;
   }
 }
 </style>

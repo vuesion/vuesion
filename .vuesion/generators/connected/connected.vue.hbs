@@ -4,7 +4,7 @@
       <vue-breadcrumb :items="breadCrumbItems" />
 
       <vue-grid-row>
-        <vue-grid-item fill>
+        <vue-grid-item>
           <vue-headline level="1">{{ properCase componentName }}</vue-headline>
         </vue-grid-item>
       </vue-grid-row>
@@ -16,8 +16,8 @@
 import { registerModule } from '@/app/store';
 import VueGrid from '@/app/shared/components/VueGrid/VueGrid.vue';
 import VueBreadcrumb from '@components/VueBreadcrumb/VueBreadcrumb.vue';
-import VueGridRow from '@/app/shared/components/VueGridRow/VueGridRow.vue';
-import VueGridItem from '@/app/shared/components/VueGridItem/VueGridItem.vue';
+import VueGridRow from '@/app/shared/components/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridItem from '../../../src/app/shared/components/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueHeadline from '@/app/shared/components/VueHeadline/VueHeadline.vue';
 
 import { {{ properCase singularName }}Module } from '../module';

@@ -1,12 +1,38 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { render } from '@testing-library/vue';
 import VueGrid from './VueGrid.vue';
 
-const localVue = createLocalVue();
-
 describe('VueGrid.vue', () => {
-  test('renders component', () => {
-    const wrapper = mount(VueGrid, { localVue });
+  test('renders component', async () => {
+    const { getByText } = render<any>(VueGrid, { slots: { default: 'this is the slot' } });
 
-    expect(wrapper.findAll(`.grid`)).toHaveLength(1);
+    getByText('this is the slot');
+  });
+
+  test('renders component with 100% width', () => {
+    const { container } = render<any>(VueGrid, {
+      slots: { default: 'this is the slot' },
+      propsData: {
+        fill: true,
+      },
+    });
+
+    const actual = container.querySelectorAll('.fill');
+    const expected = 1;
+
+    expect(actual).toHaveLength(expected);
+  });
+
+  test('renders component with text align center', () => {
+    const { getByText } = render<any>(VueGrid, {
+      slots: { default: 'this is the slot' },
+      propsData: {
+        textAlign: 'center',
+      },
+    });
+
+    const actual = getByText('this is the slot').style.textAlign;
+    const expected = 'center';
+
+    expect(actual).toBe(expected);
   });
 });

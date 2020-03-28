@@ -86,7 +86,6 @@ export default {
   h5,
   h6 {
     font-family: $font-family-headings;
-    margin: 0;
   }
 
   h1 {
@@ -132,7 +131,7 @@ export default {
   }
 
   table {
-    margin-bottom: $space-12;
+    padding-bottom: $space-12;
     width: 100%;
     table-layout: fixed;
   }
@@ -147,7 +146,7 @@ export default {
   }
 
   p {
-    margin: $space-12 0;
+    padding: $space-12 0;
   }
 }
 </style>

@@ -82,10 +82,8 @@ export default {
   user-select: none;
   color: $checkbox-color;
   display: inline-block;
-  margin: $checkbox-margin;
   padding: $checkbox-padding;
   position: relative;
-  top: $space-8;
 
   input {
     outline: none !important;
@@ -98,7 +96,6 @@ export default {
     top: $space-4;
     width: 0;
     height: 0;
-    margin: $checkbox-check-margin;
     position: absolute;
 
     &:focus {

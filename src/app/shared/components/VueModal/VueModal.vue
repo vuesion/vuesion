@@ -55,9 +55,8 @@ export default defineComponent({
 
 .vueModal {
   position: fixed;
-  top: $space-8;
+  top: 50%;
   left: $space-8;
-  bottom: $space-8;
   right: $space-8;
   background: $modal-bg;
   z-index: $modal-index;
@@ -68,6 +67,7 @@ export default defineComponent({
   opacity: 0;
   transition: $modal-transition;
   border-radius: $modal-border-radius;
+  transform: translateY(-50%);
 
   &.show {
     opacity: 1;

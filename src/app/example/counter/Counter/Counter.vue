@@ -1,28 +1,28 @@
 <template>
   <div :class="$style.counter">
-    <vue-grid>
-      <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'VueX Example' }]" />
+    <vue-grid with-vertical-space>
+      <vue-grid-row>
+        <vue-grid-column>
+          <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'VueX Example' }]" />
+        </vue-grid-column>
+      </vue-grid-row>
 
       <vue-grid-row>
-        <vue-grid-item fill>
-          <vue-headline level="1">
-            Counter
-          </vue-headline>
-        </vue-grid-item>
+        <vue-grid-column>
+          <vue-headline level="1"> Counter: {{ count }} </vue-headline>
+        </vue-grid-column>
+      </vue-grid-row>
 
-        <vue-grid-item fill>
+      <vue-grid-row>
+        <vue-grid-column>
           <vue-button color="secondary" :loading="incrementPending" @click="increment">
             Increment +1
           </vue-button>
-          <br />
-          <br />
-        </vue-grid-item>
-        <vue-grid-item fill>
+
           <vue-button color="primary" :loading="decrementPending" @click="decrement">
             Decrement -1
           </vue-button>
-          <vue-headline level="3"> Count is {{ count }} </vue-headline>
-        </vue-grid-item>
+        </vue-grid-column>
       </vue-grid-row>
     </vue-grid>
   </div>
@@ -30,27 +30,27 @@
 
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
-import { IPrefetch } from '@/server/isomorphic';
-import VueGrid from '@components/VueGrid/VueGrid.vue';
-import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
-import VueButton from '@components/VueButton/VueButton.vue';
-import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
-import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
 import { registerModule } from '@/app/store';
+import { IPrefetch } from '@/server/isomorphic';
 import { CounterModule } from '../module';
+import VueGrid from '@components/VueGrid/VueGrid.vue';
+import VueGridRow from '@components/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@components/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueBreadcrumb from '@components/VueBreadcrumb/VueBreadcrumb.vue';
+import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
+import VueButton from '@components/VueButton/VueButton.vue';
 
 export default {
   metaInfo: {
     title: 'Counter',
   },
   components: {
+    VueGrid,
+    VueGridRow,
+    VueGridColumn,
     VueBreadcrumb,
     VueHeadline,
-    VueGrid,
-    VueGridItem,
     VueButton,
-    VueGridRow,
   },
   computed: {
     ...mapGetters('counter', ['count', 'incrementPending', 'decrementPending']),
@@ -72,7 +72,6 @@ export default {
 @import '~@/app/shared/design-system';
 
 .counter {
-  margin-top: $nav-bar-height;
-  min-height: 500px;
+  padding-top: $nav-bar-height;
 }
 </style>

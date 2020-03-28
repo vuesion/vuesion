@@ -91,7 +91,6 @@ export default {
   user-select: none;
   cursor: pointer;
   align-items: baseline;
-  margin: $toggle-margin;
 
   input {
     position: absolute;
@@ -100,7 +99,6 @@ export default {
 
   label {
     position: relative;
-    margin-left: $space-12;
     cursor: pointer;
   }
 }

@@ -106,7 +106,6 @@ export default {
 
 .notification {
   padding: $notification-padding;
-  margin: $notification-margin;
   position: relative;
   box-shadow: $notification-shadow;
 }
@@ -118,7 +117,6 @@ export default {
 
 .title {
   font-weight: 500;
-  margin-bottom: $space-8;
   padding-right: $space-12;
 }
 
@@ -147,7 +145,6 @@ export default {
     height: $space-20;
     right: $space-20;
     top: 50%;
-    margin-top: -$space-12;
   }
 
   &:before {

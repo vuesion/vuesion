@@ -28,7 +28,7 @@ describe('Counter.vue', () => {
       stubs: ['router-link'],
     });
 
-    expect(wrapper.find('h1').text()).toBe('Counter');
+    expect(wrapper.find('h1').text()).toBe('Counter: 0');
   });
 
   test('should increment and decrement', () => {

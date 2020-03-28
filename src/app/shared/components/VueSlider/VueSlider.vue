@@ -264,7 +264,6 @@ export default {
 .vueSlider {
   user-select: none;
   display: block;
-  margin: $slider-margin;
   padding: $slider-padding;
 }
 
@@ -290,7 +289,6 @@ export default {
   top: ($slider-handle-size * 0.5) * -1;
   display: block;
   padding: 0;
-  margin: 0 ($slider-handle-size * 0.5) * -1;
   width: $slider-handle-size;
   height: $slider-handle-size;
   border-radius: 50%;
@@ -309,7 +307,6 @@ export default {
 .values {
   list-style: none;
   padding: 0;
-  margin: $slider-values-margin;
   display: flex;
 
   li {
@@ -322,7 +319,6 @@ export default {
         &:after {
           content: '-';
           display: inline-block;
-          margin: 0 $space-8;
         }
       }
     }

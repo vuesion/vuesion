@@ -73,7 +73,6 @@ export default {
 
 .vuePagination {
   padding: $pagination-padding;
-  margin: $pagination-margin;
   display: inline-flex;
   user-select: none;
 }

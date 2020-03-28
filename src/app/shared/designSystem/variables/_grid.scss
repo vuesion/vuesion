@@ -8,10 +8,10 @@ $screen-tablet-landscape: 1024px;
 $screen-tablet-landscape-max: $screen-tablet-landscape - 1;
 $screen-small-desktop: 1280px;
 $screen-small-desktop-max: $screen-small-desktop - 1;
-$screen-large-desktop: 1440px;
+$screen-large-desktop: 1280px;
 $screen-large-desktop-max: $screen-large-desktop - 1;
-$screen-phone-gutter: $space-32;
-$screen-tablet-portrait-gutter: $space-32;
-$screen-tablet-landscape-gutter: $space-32;
-$screen-small-desktop-gutter: $space-32;
-$screen-large-desktop-gutter: $space-32;
+
+/* Gutters */
+$gutter-sm: $space-8;
+$gutter-md: $space-16;
+$gutter-lg: $space-32;
