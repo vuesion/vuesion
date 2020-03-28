@@ -82,7 +82,6 @@ export default defineComponent({
 .button {
   display: inline-flex;
   align-items: center;
-  margin: $button-margin;
   padding: $button-padding;
   text-align: center;
   vertical-align: middle;

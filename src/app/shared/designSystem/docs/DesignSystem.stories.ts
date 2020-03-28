@@ -50,7 +50,7 @@ story.add('1. Color Palette', () => ({
 `,
 }));
 
-story.add('2. Brand Colors', () => ({
+story.add('2. Color Tokens', () => ({
   components: { VueMarkdown, BrandColors },
   template: `<div>
 <vue-markdown :use-router="false">
@@ -114,7 +114,7 @@ Component     | Purpose
 --------------|-------
 VueGrid       | Container that is limited in the width, general page layout
 VueGridRow    | Row that is always 100% width and will be stacked on the page
-VueGridItem   | Item in the row that will be distributed equally on the page 
+VueGridColumn | Column in the row that will be distributed equally on the page 
 
 ### Spacing
 To keep the spacing consistent we have a couple of variables with the prefix \`$space-\`

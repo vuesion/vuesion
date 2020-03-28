@@ -59,13 +59,12 @@ export default {
   grid-template-columns: repeat(5, 1fr);
   grid-gap: $space-12;
   grid-auto-rows: 200px;
-  margin-bottom: $space-32;
 
   div {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: var(--brand-shadow-lg);
+    box-shadow: var(--brand-shadow-md);
     border-radius: var(--brand-border-radius-sm);
     padding: $space-16;
 

@@ -45,7 +45,6 @@ export default {
       width: $space-24;
       height: $space-24;
       flex: 0 0 auto;
-      margin-right: $space-12;
     }
   }
 }

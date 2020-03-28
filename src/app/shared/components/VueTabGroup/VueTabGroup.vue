@@ -86,12 +86,10 @@ export default {
 .vueTabGroup {
   background: $tab-group-bg;
   box-shadow: $tab-group-shadow;
-  margin: $tab-group-margin;
 }
 
 .headerList {
   list-style: none;
-  margin: 0;
   padding: 0;
   display: flex;
   width: 100%;

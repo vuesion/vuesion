@@ -1,33 +1,29 @@
 <template>
   <div :class="$style.form">
-    <vue-grid>
-      <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'Form Example' }]" />
-
+    <vue-grid with-vertical-space>
       <vue-grid-row>
-        <vue-grid-item>
-          <vue-headline level="1">
-            Form example
-          </vue-headline>
-          <form-example />
-        </vue-grid-item>
+        <vue-grid-column>
+          <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'Form Example' }]" />
+        </vue-grid-column>
       </vue-grid-row>
+
+      <form-example />
     </vue-grid>
   </div>
 </template>
 
 <script lang="ts">
 import VueGrid from '@components/VueGrid/VueGrid.vue';
-import VueGridRow from '@components/VueGridRow/VueGridRow.vue';
-import VueGridItem from '@components/VueGridItem/VueGridItem.vue';
+import VueGridRow from '@components/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@components/VueGrid/VueGridColumn/VueGridColumn.vue';
 import FormExample from '../FormExample/FormExample.vue';
-import VueHeadline from '@components/VueHeadline/VueHeadline.vue';
 import VueBreadcrumb from '@components/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
   metaInfo: {
     title: 'vuesion - Form Example',
   },
-  components: { VueBreadcrumb, VueHeadline, FormExample, VueGridItem, VueGridRow, VueGrid },
+  components: { VueBreadcrumb, FormExample, VueGridColumn, VueGridRow, VueGrid },
   data(): any {
     return {};
   },

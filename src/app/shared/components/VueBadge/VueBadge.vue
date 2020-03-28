@@ -39,7 +39,6 @@ export default {
 .vueBadge {
   display: inline-block;
   padding: $badge-padding;
-  margin: $badge-margin;
   font-size: $badge-font-size;
   line-height: $badge-line-height;
   font-weight: $badge-font-weight;

@@ -69,7 +69,6 @@ export default {
   color: $sidebar-color;
   max-width: $sidebar-max-width;
   padding: $sidebar-padding;
-  margin: $sidebar-margin;
   overflow-y: scroll;
   transform: translateX(-100%);
   transition: transform var(--brand-transition-duration) ease-in-out;
@@ -110,7 +109,6 @@ export default {
   .inner {
     display: block;
     top: 50%;
-    margin-top: 0;
 
     &,
     &::before,

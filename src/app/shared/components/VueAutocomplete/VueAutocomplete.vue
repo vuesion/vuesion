@@ -282,7 +282,6 @@ export default {
   ul {
     background: $autocomplete-bg;
     padding: $autocomplete-padding;
-    margin: $autocomplete-margin;
     position: absolute;
     width: 100%;
     list-style: none;
