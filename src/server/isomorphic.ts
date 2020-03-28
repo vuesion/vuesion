@@ -33,6 +33,27 @@ export interface IPrefetch {
   router?: VueRouter;
 }
 
+const setDefaultLocale = (context: IServerContext, state: IState) => {
+  if (state.app && state.app.locale) {
+    context.acceptLanguage = state.app.locale;
+    context.htmlLang = state.app.locale.substr(0, 2);
+  } else {
+    state.app.locale = context.acceptLanguage;
+  }
+};
+
+const setRedirect = (context: IServerContext, state: IState) => {
+  if (context.redirect === true) {
+    state.app.redirectTo = context.url;
+  }
+};
+
+const setTheme = (context: IServerContext, state: IState) => {
+  if (state.app && state.app.theme) {
+    context.theme = state.app.theme;
+  }
+};
+
 const setDefaultState = (context: IServerContext, store: Store<IState>) => {
   let state: IState = store.state;
   const cookies = context.cookies;
@@ -40,20 +61,9 @@ const setDefaultState = (context: IServerContext, store: Store<IState>) => {
   state = PersistCookieStorage.getMergedStateFromServerContext<IState>(cookies, state);
   state.app.config = context.appConfig;
 
-  if (state.app && state.app.locale) {
-    context.acceptLanguage = state.app.locale;
-    context.htmlLang = state.app.locale.substr(0, 2);
-  } else {
-    state.app.locale = context.acceptLanguage;
-  }
-
-  if (context.redirect === true) {
-    state.app.redirectTo = context.url;
-  }
-
-  if (state.app && state.app.theme) {
-    context.theme = state.app.theme;
-  }
+  setDefaultLocale(context, state);
+  setRedirect(context, state);
+  setTheme(context, state);
 
   store.replaceState(state);
 };
