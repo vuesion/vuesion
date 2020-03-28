@@ -1,27 +1,27 @@
 <template>
   <div :class="$style.vueFooter">
-    <vue-grid>
+    <vue-grid with-vertical-space text-align="center">
       <vue-grid-row>
-        <vue-grid-item>
+        <vue-grid-column>
           <small>&copy; Copyright {{ year }} Johannes Werner</small>
-        </vue-grid-item>
+        </vue-grid-column>
 
-        <vue-grid-item>
+        <vue-grid-column>
           <a href="https://github.com/devCrossNet" target="_blank" rel="noopener" aria-label="github profile">
             <vue-icon-github-alt />
           </a>
           <a href="https://twitter.com/vuesion1" target="_blank" rel="noopener" aria-label="twitter profile">
             <vue-icon-twitter-square />
           </a>
-        </vue-grid-item>
+        </vue-grid-column>
 
-        <vue-grid-item>
+        <vue-grid-column>
           <small>
             <a href="https://github.com/vuesion/vuesion/blob/master/LICENSE" target="_blank" rel="noopener">
               MIT License
             </a>
           </small>
-        </vue-grid-item>
+        </vue-grid-column>
       </vue-grid-row>
     </vue-grid>
   </div>
@@ -29,8 +29,8 @@
 
 <script lang="ts">
 import VueGrid from '../VueGrid/VueGrid.vue';
-import VueGridItem from '../VueGridItem/VueGridItem.vue';
-import VueGridRow from '../VueGridRow/VueGridRow.vue';
+import VueGridRow from '../VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '../VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueIconGithubAlt from '../icons/VueIconGithubAlt/VueIconGithubAlt.vue';
 import VueIconTwitterSquare from '../icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
 
@@ -40,7 +40,7 @@ export default {
     VueIconTwitterSquare,
     VueIconGithubAlt,
     VueGrid,
-    VueGridItem,
+    VueGridColumn,
     VueGridRow,
   },
   computed: {
@@ -61,19 +61,13 @@ export default {
   text-align: center;
 
   i {
-    height: $font-size-h1;
-    width: $font-size-h1;
+    height: $font-size-lg;
+    width: $font-size-lg;
     fill: $footer-link-color;
-    margin: 0 $space-12;
 
     &:hover {
       fill: $footer-link-hover-color;
     }
-  }
-
-  small {
-    display: inline-block;
-    margin: $space-12 0;
   }
 
   a {

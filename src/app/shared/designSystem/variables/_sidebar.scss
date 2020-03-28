@@ -4,7 +4,6 @@ $sidebar-bg: var(--brand-bg-color);
 $sidebar-color: var(--brand-text-color);
 $sidebar-max-width: 80%;
 $sidebar-padding: $space-84 $space-20 $space-20 $space-20;
-$sidebar-margin: 0;
 $sidebar-transition: transform var(--brand-transition-duration) ease-in-out;
 $sidebar-width: 300px;
 $sidebar-height: 100%;
@@ -13,7 +12,6 @@ $sidebar-hamburger-color: var(--nav-bar-color);
 $sidebar-hamburger-open-bg: transparent;
 $sidebar-hamburger-open-color: $sidebar-color;
 
-$sidebar-group-margin: 0 0 $space-48 0;
 $sidebar-group-font-weight: $font-weight-light;
 $sidebar-group-font-size: $font-size-md;
 $sidebar-group-border-bottom: 1px solid var(--brand-border-color);

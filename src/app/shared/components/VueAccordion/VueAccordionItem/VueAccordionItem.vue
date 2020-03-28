@@ -87,7 +87,6 @@ export default {
 
 .icon {
   position: absolute;
-  margin-top: $space-4;
   right: $space-8;
 
   &:before,

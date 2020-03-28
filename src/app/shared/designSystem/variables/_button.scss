@@ -14,8 +14,7 @@
 );
 
 $button-font-family: $font-family;
-$button-padding: ($space-4 + $space-2) $space-16;
-$button-margin: 0;
+$button-padding: 0 $space-16;
 $button-min-width: $space-32;
 $button-height: $space-32;
 $button-font-size: $font-size-md;

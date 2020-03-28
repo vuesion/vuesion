@@ -1,13 +1,30 @@
 <template>
-  <div :class="$style.grid">
+  <div
+    :class="[$style.grid, fill && $style.fill, space && $style[space], withVerticalSpace && $style.withVerticalSpace]"
+    :style="{ textAlign }"
+  >
     <slot />
   </div>
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent, provide } from '@vue/composition-api';
+import { spacingValidator } from '@components/utils';
+
+export default defineComponent({
   name: 'VueGrid',
-};
+  props: {
+    space: { type: String, validator: spacingValidator, default: 'md' },
+    textAlign: { type: String, default: 'left' },
+    withVerticalSpace: { type: Boolean, default: false },
+    fill: { type: Boolean, default: false },
+  },
+  setup(props) {
+    provide('gridSpace', props.space);
+    provide('gridWithVerticalSpace', props.withVerticalSpace);
+    provide('gridTextAlign', props.textAlign);
+  },
+});
 </script>
 
 <style lang="scss" module>
@@ -17,26 +34,51 @@ export default {
   max-width: 425px;
   margin: 0 auto;
   position: relative;
-  padding: 0 $screen-phone-gutter * 0.5;
+  padding: 0;
 
   @include mediaMin(tabletPortrait) {
     max-width: $screen-tablet-portrait;
-    padding: 0 $screen-tablet-portrait-gutter * 0.5;
   }
 
   @include mediaMin(tabletLandscape) {
     max-width: $screen-tablet-landscape;
-    padding: 0 $screen-tablet-landscape-gutter * 0.5;
   }
 
   @include mediaMin(smallDesktop) {
     max-width: $screen-small-desktop;
-    padding: 0 $screen-small-desktop-gutter * 0.5;
   }
 
   @include mediaMin(largeDesktop) {
     max-width: $screen-large-desktop;
-    padding: 0 $screen-large-desktop-gutter * 0.5;
+  }
+
+  &.fill {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  &.sm {
+    padding: 0 $gutter-sm;
+
+    &.withVerticalSpace {
+      padding-bottom: $gutter-sm;
+    }
+  }
+
+  &.md {
+    padding: 0 $gutter-md;
+
+    &.withVerticalSpace {
+      padding-bottom: $gutter-md;
+    }
+  }
+
+  &.lg {
+    padding: 0 $gutter-lg;
+
+    &.withVerticalSpace {
+      padding-bottom: $gutter-lg;
+    }
   }
 }
 </style>

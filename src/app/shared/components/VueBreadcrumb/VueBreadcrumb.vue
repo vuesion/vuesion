@@ -26,7 +26,6 @@ export default {
 
 .vueBreadcrumb {
   padding: $breadcrumb-padding;
-  margin: $breadcrumb-margin;
   list-style: none;
 }
 
