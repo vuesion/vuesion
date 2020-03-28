@@ -1,11 +1,13 @@
 <template>
-  <div :class="cssClasses">
+  <div :class="[$style.vueInput, disabled && $style.disabled, !isValid(errors) && $style.error]">
+    <label :for="name"> {{ label }}<sup v-if="required">*</sup> </label>
     <input
       :id="id"
       ref="input"
       v-validate="validation"
-      :data-vv-as="placeholder"
       :name="name"
+      :data-vv-as="label"
+      :placeholder="placeholder"
       :required="required"
       :value="value"
       :type="type"
@@ -22,18 +24,19 @@
         },
       }"
     />
-    <span :class="$style.bar" />
-    <label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
-    <div :class="$style.message">
-      {{ messageOrError }}
-    </div>
+    <span>
+      {{ messageOrError(errors) }}
+    </span>
   </div>
 </template>
 
 <script lang="ts">
 import { Validator } from 'vee-validate';
+import { defineComponent } from '@vue/composition-api';
+import { useIntersectionObserver } from '@shared/composables/use-intersection-observer';
+import { getDomRef } from '@shared/composables/get-dom-ref';
 
-export default {
+export default defineComponent({
   name: 'VueInput',
   inheritAttrs: false,
   inject: {
@@ -42,8 +45,9 @@ export default {
     },
   },
   props: {
-    name: { type: String, required: true },
     id: { type: String, required: true },
+    name: { type: String, required: true },
+    label: { type: String, required: true },
     placeholder: { type: String, default: '' },
     required: { type: Boolean, default: false },
     autofocus: { type: Boolean, default: false },
@@ -56,62 +60,32 @@ export default {
     validation: { type: String, default: '' },
     autocomplete: { type: String, default: 'off' },
   },
-  data(): any {
+  setup(props) {
+    const input = getDomRef(null);
+    const isValid = (errors: any) => (errors ? errors.first(props.name) === null : true);
+    const messageOrError = (errors: any) => (isValid(errors) ? props.message : props.errorMessage);
+
+    useIntersectionObserver(input, () => {
+      if (props.autofocus && input?.value) {
+        input.value.focus();
+      }
+    });
+
     return {
-      observer: null,
+      input,
+      isValid,
+      messageOrError,
     };
   },
-  computed: {
-    isValid() {
-      return this.errors ? this.errors.first(this.name) === undefined : true;
-    },
-    messageOrError() {
-      return this.isValid ? this.message : this.errorMessage;
-    },
-    cssClasses() {
-      const classes = [this.$style.vueInput];
-
-      if (this.disabled) {
-        classes.push(this.$style.disabled);
-      }
-
-      if (!this.isValid) {
-        classes.push(this.$style.error);
-      }
-
-      return classes;
-    },
-  },
-  mounted() {
-    if ((window as any).IntersectionObserver) {
-      this.handleObserver();
-    }
-  },
-  beforeDestroy() {
-    this.observer = null;
-  },
-  methods: {
-    handleObserver() {
-      this.observer = new IntersectionObserver(
-        () => {
-          if (this.autofocus && this.$refs.input) {
-            this.$refs.input.focus();
-          }
-        },
-        { root: this.$refs.input.parentElement, threshold: 1 },
-      );
-      this.observer.observe(this.$refs.input);
-    },
-  },
-};
+});
 </script>
 
 <style lang="scss" module>
 @import '~@/app/shared/design-system';
 
 .vueInput {
-  position: relative;
-  margin: $input-margin;
+  display: flex;
+  flex-direction: column;
 
   input,
   input:active,
@@ -119,102 +93,77 @@ export default {
   input:hover {
     outline: none !important;
   }
+
+  label {
+    display: inline-flex;
+    flex: 1;
+    padding: $input-label-padding;
+    color: $input-label-color;
+    font-size: $input-label-font-size;
+    line-height: $input-label-line-height;
+    font-weight: $input-label-font-weight;
+  }
+
   input {
-    background-color: $input-background-color;
-    border: none;
-    border-bottom: $input-border-bottom;
-    padding: $input-padding;
-    display: block;
-    width: 100%;
-    font-family: $input-font-family;
-    font-size: $input-font-size;
-    font-weight: $input-font-weight;
     color: $input-color;
-    height: $input-height;
-    border-radius: 0;
-  }
-  input:focus ~ label,
-  input.hasValue ~ label {
-    top: -$space-20;
-    font-size: $input-placeholder-active-font-size;
-    font-weight: $input-placeholder-active-font-weight;
-    color: $input-placeholder-active-font-color;
-    height: $input-placeholder-active-height;
-  }
-  input:focus ~ .bar:before,
-  input:focus ~ .bar:after {
-    width: 50%;
-  }
+    font-size: $input-font-size;
+    font-family: $input-font-family;
+    font-weight: $input-font-weight;
+    background: $input-background-color;
+    border: $input-border;
+    border-radius: $input-border-radius;
+    padding: $input-padding;
+    line-height: $input-line-height;
 
-  label {
-    color: $input-placeholder-color;
-    font-size: $input-placeholder-font-size;
-    font-weight: $input-placeholder-font-weight;
-    position: absolute;
-    pointer-events: none;
-    top: $input-placeholder-top;
-    transition: 0.2s ease all;
-  }
-}
+    &:hover {
+      border: $input-border-hover;
+    }
 
-.error {
-  label {
-    color: $input-error-color;
-  }
-  input {
-    border-bottom-color: $input-error-color;
-  }
-  input:focus ~ label,
-  input.hasValue ~ label {
-    color: $input-error-color;
-  }
-
-  .bar {
-    &:before,
-    &:after {
-      background: $input-error-color;
+    &:focus {
+      border: $input-border-focus;
     }
   }
 
-  .message {
-    color: $input-error-color;
+  input::placeholder {
+    color: $input-placeholder-color;
+    font-size: $input-font-size;
+    font-family: $input-font-family;
+    font-weight: $input-font-weight;
+    opacity: 1;
   }
-}
 
-.bar {
-  position: relative;
-  display: block;
-  width: 100%;
-
-  &:before,
-  &:after {
-    content: '';
-    height: $input-bar-height;
-    width: 0;
-    bottom: 0;
-    position: absolute;
-    background: $input-bar-color;
-    transition: all 0.2s ease-in-out;
+  span {
+    display: inline-flex;
+    flex: 1;
+    padding: $input-message-padding;
+    min-height: $space-20 + $space-2;
+    color: $input-message-color;
+    font-size: $input-message-font-size;
+    line-height: $input-message-line-height;
+    font-weight: $input-message-font-weight;
   }
-  &:before {
-    left: 50%;
-  }
-  &:after {
-    right: 50%;
-  }
-}
 
-.message {
-  display: block;
-  height: $input-message-height;
-  padding: $input-message-padding;
-  position: relative;
-  color: $input-message-color;
-  font-size: $input-message-font-size;
-  font-weight: $input-message-font-weight;
-}
+  &.error {
+    label {
+      color: $input-label-error-color;
+    }
 
-.disabled {
-  opacity: 0.6;
+    input {
+      background: $input-background-error-color;
+      border: $input-border-error;
+    }
+
+    input::placeholder {
+      color: $input-placeholder-error-color;
+    }
+
+    span {
+      color: $input-message-error-color;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+  }
 }
 </style>
