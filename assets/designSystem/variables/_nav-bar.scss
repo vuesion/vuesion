@@ -1,0 +1,14 @@
+@include add-theme-variable(
+  nav-bar-color,
+  (
+    'light': var(--brand-text-color),
+    'dark': var(--brand-text-color-inverse),
+  )
+);
+
+$nav-bar-bg: var(--brand-primary);
+$nav-bar-color: var(--nav-bar-color);
+$nav-bar-width: 100%;
+$nav-bar-height: $space-52;
+$nav-bar-padding: $space-12;
+$nav-bar-index: 100;

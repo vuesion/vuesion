@@ -1,0 +1,98 @@
+@include add-theme-variable(
+  button-color,
+  (
+    'light': var(--brand-text-color),
+    'dark': var(--brand-text-color-inverse),
+  )
+);
+@include add-theme-variable(
+  button-color-inverse,
+  (
+    'light': var(--brand-text-color-inverse),
+    'dark': var(--brand-text-color),
+  )
+);
+
+$button-font-family: $font-family;
+$button-padding: 0 $space-16;
+$button-min-width: $space-32;
+$button-height: $space-32;
+$button-font-size: $font-size-md;
+$button-font-weight: $font-weight-bold;
+$button-line-height: $line-height-md;
+$button-border-radius: var(--brand-border-radius-sm);
+$button-text-decoration: none;
+$button-hover-text-decoration: none;
+$button-text-transform: none;
+$button-disabled-opacity: 0.5;
+$button-border-width: 0.2rem;
+$button-icon-size: $space-24;
+
+$button-variations: (
+  'default': (
+    'bg': var(--brand-default),
+    'color': var(--button-color-inverse),
+    'hover-bg': var(--brand-default-hover),
+    'hover-color': var(--button-color),
+    'focus-bg': var(--brand-default-focus),
+    'focus-color': var(--button-color),
+    'active-bg': var(--brand-default-active),
+    'active-color': var(--button-color-inverse),
+    'border': $button-border-width solid var(--brand-default),
+  ),
+  'primary': (
+    'bg': var(--brand-primary),
+    'color': var(--button-color-inverse),
+    'hover-bg': var(--brand-primary-hover),
+    'hover-color': var(--button-color),
+    'active-bg': var(--brand-primary-active),
+    'active-color': var(--button-color-inverse),
+    'focus-bg': var(--brand-primary-focus),
+    'focus-color': var(--button-color-inverse),
+    'border': $button-border-width solid var(--brand-primary),
+  ),
+  'secondary': (
+    'bg': var(--brand-secondary),
+    'color': var(--button-color-inverse),
+    'hover-bg': var(--brand-secondary-hover),
+    'hover-color': var(--button-color),
+    'active-bg': var(--brand-secondary-active),
+    'active-color': var(--button-color-inverse),
+    'focus-bg': var(--brand-secondary-focus),
+    'focus-color': var(--button-color-inverse),
+    'border': $button-border-width solid var(--brand-secondary),
+  ),
+  'success': (
+    'bg': var(--brand-success),
+    'color': var(--button-color),
+    'hover-bg': var(--brand-success-hover),
+    'hover-color': var(--button-color),
+    'active-bg': var(--brand-success-active),
+    'active-color': var(--button-color-inverse),
+    'focus-bg': var(--brand-success-focus),
+    'focus-color': var(--button-color),
+    'border': $button-border-width solid var(--brand-success),
+  ),
+  'warning': (
+    'bg': var(--brand-warning),
+    'color': var(--button-color),
+    'hover-bg': var(--brand-warning-hover),
+    'hover-color': var(--button-color),
+    'active-bg': var(--brand-warning-active),
+    'active-color': var(--button-color-inverse),
+    'focus-bg': var(--brand-warning-focus),
+    'focus-color': var(--button-color),
+    'border': $button-border-width solid var(--brand-warning),
+  ),
+  'danger': (
+    'bg': var(--brand-danger),
+    'color': var(--button-color-inverse),
+    'hover-bg': var(--brand-danger-hover),
+    'hover-color': var(--button-color),
+    'active-bg': var(--brand-danger-active),
+    'active-color': var(--button-color-inverse),
+    'focus-bg': var(--brand-danger-focus),
+    'focus-color': var(--button-color-inverse),
+    'border': $button-border-width solid var(--brand-danger),
+  ),
+);
