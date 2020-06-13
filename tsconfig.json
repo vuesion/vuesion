@@ -8,12 +8,12 @@
       "esnext.asynciterable",
       "dom"
     ],
-    "esModuleInterop": true,
-    "allowJs": true,
     "sourceMap": true,
-    "strict": true,
-    "noEmit": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "~/*": [
@@ -28,7 +28,9 @@
       "@types/node",
       "@nuxt/types",
       "@types/animejs",
-      "nuxt-i18n"
+      "@types/lodash",
+      "nuxt-i18n",
+      "jest"
     ]
   },
   "include": ["./src/**/*", "./src/**/*.vue"],
@@ -37,5 +39,5 @@
     ".nuxt",
     "dist"
   ],
-  "files": ["src/vue-shim.d.ts"]
+  "files": ["src/vue-shim.d.ts", "src/custom-typings.d.ts"]
 }

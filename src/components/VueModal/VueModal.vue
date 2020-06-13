@@ -10,44 +10,99 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from '@vue/composition-api';
-import { useOutsideClick } from '@/components/composables/use-outside-click';
-import { useKeydown } from '@/components/composables/use-keydown';
-import { useBackdrop } from '@/components/composables/use-backdrop';
-import { getDomRef } from '@/components/composables/get-dom-ref';
+import anime from 'animejs';
 
-export default defineComponent({
+export default {
   name: 'VueModal',
   props: {
-    show: { type: Boolean, default: false },
-    backdrop: { type: Boolean, default: true },
-    scrollable: { type: Boolean, default: false },
-    closeOnEscape: { type: Boolean, default: true },
-    fitContent: Boolean,
+    show: {
+      type: Boolean,
+    },
+    fitContent: {
+      type: Boolean,
+    },
   },
-  setup(props, { emit }) {
-    const modal = getDomRef(null);
-    const show = computed(() => props.show);
-    const { onOutsideClick } = useOutsideClick(modal);
-    const { onKeydown } = useKeydown();
-    const onClose = () => emit('close');
+  beforeMount() {
+    let overlay: HTMLElement = document.getElementById('overlay');
 
-    onOutsideClick(() => onClose());
-    onKeydown((event) => {
-      if (event.key === 'Escape' && props.show === true && props.closeOnEscape === true) {
-        onClose();
-      }
-    });
-
-    if (props.backdrop) {
-      useBackdrop(show, { scrollable: props.scrollable });
+    if (overlay === null) {
+      overlay = document.createElement('div');
+      overlay.id = 'overlay';
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100%';
+      overlay.style.height = '100%';
+      overlay.style.zIndex = '2000';
+      overlay.style.background = '#000';
+      overlay.style.opacity = '0';
+      overlay.style.visibility = 'hidden';
+      overlay.style.transition = 'opacity 250ms linear';
+      document.body.appendChild(overlay);
     }
 
-    return {
-      modal,
-    };
+    document.addEventListener('mousedown', this.handleDocumentClick);
+    document.addEventListener('touchstart', this.handleDocumentClick);
+    document.addEventListener('keydown', this.handleDocumentKeyDown);
   },
-});
+  beforeDestroy() {
+    document.removeEventListener('mousedown', this.handleDocumentClick);
+    document.removeEventListener('touchstart', this.handleDocumentClick);
+    document.removeEventListener('keydown', this.handleDocumentKeyDown);
+  },
+  methods: {
+    beforeEnter(el: HTMLElement) {
+      el.style.opacity = '0';
+
+      document.getElementById('overlay').style.visibility = 'visible';
+    },
+    enter(el: HTMLElement, done: any) {
+      document.getElementById('overlay').style.opacity = '0.5';
+      document.body.style.overflow = 'hidden';
+
+      anime({
+        targets: el,
+        opacity: {
+          value: '1',
+          duration: 500,
+          elasticity: 0,
+        },
+        complete: done,
+      });
+    },
+    beforeLeave(el: HTMLElement) {
+      el.style.opacity = '1';
+    },
+    leave(el: HTMLElement, done: any) {
+      const overlay: HTMLElement = document.getElementById('overlay');
+      overlay.style.opacity = '0';
+      document.body.style.overflow = 'initial';
+
+      anime({
+        targets: el,
+        opacity: {
+          value: '0',
+          duration: 500,
+          elasticity: 0,
+        },
+        complete() {
+          overlay.style.visibility = 'hidden';
+          done();
+        },
+      });
+    },
+    handleDocumentClick(e: Event) {
+      if (this.$refs.modal && this.$refs.modal.contains(e.target) === false) {
+        this.$emit('close');
+      }
+    },
+    handleDocumentKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        this.$emit('close');
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" module>

@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../../design-system';
+@import '@/assets/design-system';
 
 .vueCardBody {
   display: block;

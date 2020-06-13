@@ -1,9 +1,22 @@
 <template>
   <div :class="cssClasses">
-    <input
+    <!-- <input
       :id="id"
       ref="input"
       v-validate="validation"
+      type="checkbox"
+      :name="name"
+      :checked="isChecked"
+      :required="required"
+      :disabled="disabled"
+      v-bind="$attrs"
+      @change.prevent="onClick"
+      @focus="focus = true"
+      @blur="focus = false"
+    /> -->
+    <input
+      :id="id"
+      ref="input"
       type="checkbox"
       :name="name"
       :checked="isChecked"
@@ -22,16 +35,16 @@
 </template>
 
 <script lang="ts">
-import { Validator } from 'vee-validate';
+// import { Validator } from 'vee-validate';
 
 export default {
   name: 'VueToggle',
   inheritAttrs: false,
-  inject: {
-    $validator: {
-      default: new Validator({}, {}),
-    },
-  },
+  // inject: {
+  //   $validator: {
+  //     default: new Validator({}, {}),
+  //   },
+  // },
   props: {
     name: { type: String, required: true },
     id: { type: String, required: true },

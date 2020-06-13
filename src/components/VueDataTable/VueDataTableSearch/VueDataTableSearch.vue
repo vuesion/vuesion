@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '../../../design-system';
+@import '@/assets/design-system';
 
 .vueDataTableSearch {
   padding-top: $space-12;
