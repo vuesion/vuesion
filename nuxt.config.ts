@@ -2,6 +2,7 @@ import { Configuration } from '@nuxt/types';
 
 const config: Configuration = {
   mode: 'universal',
+  srcDir: 'src',
   /*
    ** Headers of the page
    */
@@ -73,7 +74,7 @@ const config: Configuration = {
     ],
     defaultLocale: 'en',
     lazy: true,
-    langDir: './i18n/',
+    langDir: '../i18n/',
   },
   /*
    ** Build configuration

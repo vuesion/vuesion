@@ -12,7 +12,14 @@ export interface IAppState {
 export default (): IAppState => {
   return {
     locale: '',
-    config: null,
+    config: {
+      api: {
+        baseUrl: '',
+      },
+      features: {
+        disableParticles: false,
+      },
+    },
     defaultMessages: {},
     redirectTo: '',
     cookieConsentVersion: '',

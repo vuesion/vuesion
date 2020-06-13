@@ -17,12 +17,13 @@
     "baseUrl": ".",
     "paths": {
       "~/*": [
-        "./*"
+        "src/*"
       ],
       "@/*": [
-        "./*"
+        "src/*"
       ]
     },
+    "rootDirs": ["src"],
     "types": [
       "@types/node",
       "@nuxt/types",
@@ -30,10 +31,11 @@
       "nuxt-i18n"
     ]
   },
+  "include": ["./src/**/*", "./src/**/*.vue"],
   "exclude": [
     "node_modules",
     ".nuxt",
     "dist"
   ],
-  "files": ["vue-shim.d.ts"]
+  "files": ["src/vue-shim.d.ts"]
 }
