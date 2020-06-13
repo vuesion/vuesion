@@ -5,7 +5,7 @@ module.exports = {
       tsConfig: 'tsconfig.test.json',
     },
   },
-  rootDir: '.',
+  rootDir: 'src',
   setupFiles: ['<rootDir>/test/jestsetup.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
