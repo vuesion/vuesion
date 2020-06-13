@@ -224,8 +224,7 @@ export default {
       this.isLoginPending = true;
 
       await this.revokeToken();
-
-      this.$router.push('/');
+      this.$router.push({ path: this.localePath('/') });
 
       this.isLoginPending = false;
       this.showLoginModal = false;

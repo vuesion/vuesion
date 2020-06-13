@@ -80,7 +80,7 @@ export default {
   computed: {},
   methods: {
     onClick() {
-      const requests = [];
+      const requests: any[] = [];
 
       this.pending = true;
 

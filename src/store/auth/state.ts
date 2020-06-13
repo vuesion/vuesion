@@ -3,9 +3,11 @@ export interface IAuthState {
   refreshToken: string;
 }
 
-export default (): IAuthState => {
+export const AuthDefaultState = (): IAuthState => {
   return {
     accessToken: '',
     refreshToken: '',
   };
 };
+
+export default AuthDefaultState;
