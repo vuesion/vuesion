@@ -41,7 +41,7 @@
 
 <script lang="ts">
 import VueDataTableHeader from './VueDataTableHeader/VueDataTableHeader.vue';
-import VuePagination from '../VuePagination/VuePagination.vue';
+import VuePagination from '@/components/VuePagination/VuePagination.vue';
 import VueDataTableSearch from './VueDataTableSearch/VueDataTableSearch.vue';
 import { IComputedDataRowCell, IDataTableHeaderItem } from './IDataTable';
 

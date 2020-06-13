@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import FadeAnimation from '../../animations/FadeAnimation/FadeAnimation.vue';
+import FadeAnimation from '@/assets/animations/FadeAnimation/FadeAnimation.vue';
 
 export interface ICarouselImage {
   copyright?: string;

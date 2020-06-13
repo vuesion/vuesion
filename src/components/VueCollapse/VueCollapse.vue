@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import CollapseAnimation from '../../animations/CollapseAnimation/CollapseAnimation.vue';
+import CollapseAnimation from '@/assets/animations/CollapseAnimation/CollapseAnimation.vue';
 
 export default {
   name: 'VueCollapse',

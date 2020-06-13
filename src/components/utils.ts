@@ -2,9 +2,9 @@ export const brandVariations = ['default', 'primary', 'secondary', 'success', 'w
 export const brandSpacings = ['none', 'sm', 'md', 'lg'];
 
 export const variationValidator = (value: string) => {
-  return brandVariations.indexOf(value.toLowerCase()) !== -1;
+  return brandVariations.includes(value.toLowerCase());
 };
 
 export const spacingValidator = (value: string) => {
-  return brandSpacings.indexOf(value.toLowerCase()) !== -1;
+  return brandSpacings.includes(value.toLowerCase());
 };

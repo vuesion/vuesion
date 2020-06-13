@@ -1,9 +1,9 @@
 <template>
   <ul :class="$style.vueBreadcrumb">
     <li v-for="(item, idx) in items" :key="idx" :class="$style.item">
-      <router-link v-if="idx < items.length - 1" :to="item.href">
+      <nuxt-link v-if="idx < items.length - 1" :to="localePath(item.href)">
         {{ item.label }}
-      </router-link>
+      </nuxt-link>
       <span v-else>{{ item.label }}</span>
     </li>
   </ul>
