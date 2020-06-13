@@ -25,12 +25,15 @@
     },
     "types": [
       "@types/node",
-      "@nuxt/types"
+      "@nuxt/types",
+      "@types/animejs",
+      "nuxt-i18n"
     ]
   },
   "exclude": [
     "node_modules",
     ".nuxt",
     "dist"
-  ]
+  ],
+  "files": ["vue-shim.d.ts"]
 }
