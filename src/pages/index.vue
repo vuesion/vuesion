@@ -74,7 +74,7 @@
           <vue-grid-column>
             <vue-headline level="3">i18n</vue-headline>
             <p>
-              Scalable apps need to support multiple languages, easily add and support multiple languages with vue-i18n.
+              Scalable apps need to support multiple, easily add and support multiple languages with vue-i18n.
             </p>
           </vue-grid-column>
         </vue-grid-row>

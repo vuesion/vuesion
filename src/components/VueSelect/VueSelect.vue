@@ -118,7 +118,7 @@ export default {
   },
   methods: {
     isSelected(option: IVueSelectOption): boolean {
-      return this.currentValueAsArray.indexOf(option.value) > -1;
+      return this.currentValueAsArray.includes(option.value);
     },
     onInput(e: Event) {
       const selected: IVueSelectOption[] = [];
@@ -140,7 +140,4 @@ export default {
 
 <style lang="scss" module>
 @import '~@/assets/design-system';
-
-.vueSelect {
-}
 </style>

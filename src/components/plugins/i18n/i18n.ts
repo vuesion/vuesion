@@ -39,7 +39,7 @@ export const i18n = new VueI18n({
 if (TEST === true || SPA === true) {
   i18n.locale = 'en';
   i18n.fallbackLocale = 'en';
-  i18n.setLocaleMessage('en', require('../../../../../i18n/en.json'));
+  i18n.setLocaleMessage('en', require('~/../i18n/en.json'));
 }
 
 const loadedLocales: any = {};
