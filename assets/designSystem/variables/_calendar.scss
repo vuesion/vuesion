@@ -1,0 +1,35 @@
+@include add-theme-variable(
+  calendar-a11y-color,
+  (
+    'light': var(--brand-text-color),
+    'dark': var(--brand-text-color-inverse),
+  )
+);
+
+$calendar-max-width: $screen-phone;
+$calendar-shadow: none;
+$calendar-bg: var(--brand-bg-color);
+
+$calendar-header-bg: var(--brand-primary);
+$calendar-header-color: var(--calendar-a11y-color);
+$calendar-header-padding: $space-12 $space-24;
+$calendar-header-text-shadow: none;
+$calendar-header-font-weight: $font-weight-regular;
+
+$calendar-body-border: 1px solid var(--brand-border-color);
+$calendar-body-padding: $space-8 $space-12;
+
+$calendar-arrow-color: var(--brand-text-color);
+$calendar-arrow-bg: $calendar-bg;
+$calendar-arrow-hover-bg: var(--brand-bg-color-variant);
+
+$calendar-day-border-radius: 0;
+$calendar-day-hover: var(--brand-bg-color-variant);
+
+$calendar-current-day-bg: var(--brand-primary);
+$calendar-current-day-color: var(--calendar-a11y-color);
+$calendar-current-day-font-weight: $font-weight-light;
+
+$calendar-selected-day-bg: var(--brand-secondary);
+$calendar-selected-day-color: var(--calendar-a11y-color);
+$calendar-selected-day-font-weight: $font-weight-light;

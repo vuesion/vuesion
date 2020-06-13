@@ -1,0 +1,74 @@
+@import 'mixins';
+@import 'variables';
+@import 'themes/light';
+@import 'themes/dark';
+
+body {
+  color: var(--brand-text-color);
+  background-color: var(--brand-bg-color);
+}
+
+code {
+  background: var(--brand-bg-color-variant);
+  padding: $space-2 $space-4;
+}
+
+// vue-icon global style
+i {
+  display: inline-block;
+  height: $font-size-md;
+  width: $font-size-md;
+  fill: var(--brand-text-color);
+
+  svg {
+    height: inherit;
+    width: inherit;
+    fill: currentColor;
+    stroke: currentColor;
+  }
+
+  g {
+    stroke: currentColor;
+  }
+}
+
+// UTILITIES
+// =========
+
+// always make sure images have an alt attribute
+img:not([alt]) {
+  border: 5px dashed var(--brand-danger);
+}
+
+// Only display content to screen readers
+//
+// See: https://a11yproject.com/posts/how-to-hide-content/
+// See: https://hugogiraudel.com/2016/10/13/css-hide-and-seek/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// MODAL-BACKDROP
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--brand-bg-color);
+  opacity: 0;
+  transition: var(--brand-fade-animation-transition);
+  z-index: -1;
+
+  &.show {
+    opacity: 0.5;
+    z-index: 999;
+  }
+}
