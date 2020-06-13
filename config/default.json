@@ -1,0 +1,8 @@
+{
+  "api": {
+    "baseUrl": "http://localhost:3000"
+  },
+  "features": {
+    "disableParticles": false
+  }
+}

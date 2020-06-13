@@ -1,0 +1,67 @@
+:root.dark {
+  /* Brand Variations */
+  --brand-default: #{palette-color-level('grey', 100)};
+  --brand-default-hover: #{palette-color-level('grey', 70)};
+  --brand-default-focus: #{palette-color-level('grey', 30)};
+  --brand-default-active: #{palette-color-level('grey', 90)};
+  --brand-primary: #{palette-color-level('blue', 70)};
+  --brand-primary-hover: #{palette-color-level('blue', 30)};
+  --brand-primary-focus: #{palette-color-level('blue', 30)};
+  --brand-primary-active: #{palette-color-level('blue', 100)};
+  --brand-secondary: #{palette-color-level('coral', 70)};
+  --brand-secondary-hover: #{palette-color-level('coral', 30)};
+  --brand-secondary-focus: #{palette-color-level('coral', 30)};
+  --brand-secondary-active: #{palette-color-level('coral', 100)};
+  --brand-success: #{palette-color-level('green', 70)};
+  --brand-success-hover: #{palette-color-level('green', 30)};
+  --brand-success-focus: #{palette-color-level('green', 30)};
+  --brand-success-active: #{palette-color-level('green', 100)};
+  --brand-warning: #{palette-color-level('yellow', 70)};
+  --brand-warning-hover: #{palette-color-level('yellow', 30)};
+  --brand-warning-focus: #{palette-color-level('yellow', 30)};
+  --brand-warning-active: #{palette-color-level('yellow', 100)};
+  --brand-danger: #{palette-color-level('red', 70)};
+  --brand-danger-hover: #{palette-color-level('red', 30)};
+  --brand-danger-focus: #{palette-color-level('red', 30)};
+  --brand-danger-active: #{palette-color-level('red', 100)};
+
+  /* Background Colors */
+  --brand-bg-color: #{palette-color-level('grey', 90)};
+  --brand-bg-color-variant: #{palette-color-level('grey', 70)};
+
+  /* Background Colors Inverse */
+  --brand-bg-color-inverse: #{palette-color-level('grey', 30)};
+  --brand-bg-color-variant-inverse: #{palette-color-level('grey', 70)};
+
+  /* Text Colors */
+  --brand-text-color: #{palette-color-level('grey', 10)};
+  --brand-text-secondary-color: #{palette-color-level('grey', 50)};
+  --brand-text-tertiary-color: #{palette-color-level('grey', 90)};
+
+  /* Text Colors Inverse */
+  --brand-text-color-inverse: #{palette-color-level('grey', 100)};
+  --brand-text-secondary-color-inverse: #{palette-color-level('grey', 70)};
+  --brand-text-tertiary-color-inverse: #{palette-color-level('grey', 30)};
+
+  /* Link Color */
+  --brand-link-color: #{palette-color-level('blue', 70)};
+  --brand-link-hover-color: #{palette-color-level('blue', 90)};
+
+  /* Borders */
+  --brand-border-color: #{palette-color-level('grey', 70)};
+  --brand-border-color-inverse: #{palette-color-level('grey', 50)};
+  --brand-border-radius-sm: #{$space-4};
+  --brand-border-radius-md: #{$space-8};
+  --brand-border-radius-lg: #{$space-16};
+
+  /* Box Shadows */
+  --brand-shadow-sm: 0 1px 1px 0 rgba(18, 19, 21, 0.12);
+  --brand-shadow-md: 0 -1px 2px 0 rgba(18, 19, 21, 0.12), 0 2px 4px 0 rgba(18, 19, 21, 0.12);
+  --brand-shadow-lg: 0 0 4px 0 rgba(18, 19, 21, 0.12), 0 4px 12px 0 rgba(18, 19, 21, 0.12);
+  --brand-shadow-outline: 0 0 0 #{$space-8} #{rgba(palette-color-level('blue', 70), 0.5)};
+
+  /* Animation Language */
+  --brand-transition-duration: 250ms;
+  --brand-easing-curve: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  --brand-fade-animation-transition: opacity var(--brand-transition-duration) var(--brand-easing-curve);
+}

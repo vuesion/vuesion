@@ -1,6 +1,7 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "esModuleInterop": true
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "esModuleInterop": true
+    }
   }
-}
+  
