@@ -1,32 +1,29 @@
 <template>
   <div :class="cssClasses" :aria-label="label">
-    <input
-      :id="id"
-      v-validate="validation"
-      :type="inputType"
-      :name="name"
-      :checked="checked || value"
-      :required="required"
-      :disabled="disabled"
-      v-bind="$attrs"
-      @change.prevent="onClick"
-    />
-    <div :class="$style.box" @click="onClick" />
-    <label :for="name" v-html="label" />
+    <ValidationProvider :vid="id" :name="name" :rules="validation">
+      <input
+        :id="id"
+        :type="inputType"
+        :checked="checked || value"
+        :required="required"
+        :disabled="disabled"
+        v-bind="$attrs"
+        @change.prevent="onClick"
+      />
+      <div :class="$style.box" @click="onClick" />
+    </ValidationProvider>
+
+    <label :for="id" v-html="label" />
   </div>
 </template>
 
 <script lang="ts">
-import { validate } from 'vee-validate';
+import { ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'VueCheckbox',
+  components: { ValidationProvider },
   inheritAttrs: false,
-  inject: {
-    $validator: {
-      default: validate({}, {}),
-    },
-  },
   props: {
     name: { type: String, required: true },
     id: { type: String, required: true },

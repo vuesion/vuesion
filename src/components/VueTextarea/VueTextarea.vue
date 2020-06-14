@@ -28,16 +28,9 @@
 </template>
 
 <script lang="ts">
-import { validate } from 'vee-validate';
-
 export default {
   name: 'VueTextarea',
   inheritAttrs: false,
-  inject: {
-    $validator: {
-      default: validate({}, {}),
-    },
-  },
   props: {
     name: { type: String, required: true },
     id: { type: String, required: true },

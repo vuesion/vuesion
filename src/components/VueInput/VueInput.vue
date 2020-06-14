@@ -1,49 +1,44 @@
 <template>
   <div :class="[$style.vueInput, disabled && $style.disabled, !isValid(errors) && $style.error]">
     <label :for="name"> {{ label }}<sup v-if="required">*</sup> </label>
-    <input
-      :id="id"
-      ref="input"
-      v-validate="validation"
-      :name="name"
-      :data-vv-as="label"
-      :placeholder="placeholder"
-      :required="required"
-      :value="value"
-      :type="type"
-      :autocomplete="autocomplete"
-      :disabled="disabled"
-      :readonly="readonly"
-      :class="[value ? $style.hasValue : '']"
-      :autofocus="autofocus"
-      v-bind="$attrs"
-      v-on="{
-        ...this.$listeners,
-        input: (e) => {
-          $emit('input', e.target.value);
-        },
-      }"
-    />
-    <span>
-      {{ messageOrError(errors) }}
-    </span>
+    <ValidationProvider v-slot="{ errors }" :vid="name" :name="name" :rules="validation">
+      <input
+        :id="id"
+        ref="input"
+        :name="name"
+        :placeholder="placeholder"
+        :required="required"
+        :value="value"
+        :type="type"
+        :autocomplete="autocomplete"
+        :disabled="disabled"
+        :readonly="readonly"
+        :class="[value ? $style.hasValue : '']"
+        :autofocus="autofocus"
+        v-bind="$attrs"
+        v-on="{
+          input: (e) => {
+            $emit('input', e.target.value);
+          },
+        }"
+      />
+      <span>
+        {{ messageOrError(errors) }}
+      </span>
+    </ValidationProvider>
   </div>
 </template>
 
 <script lang="ts">
-import { validate } from 'vee-validate';
+import { ValidationProvider } from 'vee-validate';
 import { defineComponent } from '@vue/composition-api';
 import { useIntersectionObserver } from '@/components/composables/use-intersection-observer';
 import { getDomRef } from '@/components/composables/get-dom-ref';
 
 export default defineComponent({
   name: 'VueInput',
+  components: { ValidationProvider },
   inheritAttrs: false,
-  inject: {
-    $validator: {
-      default: validate({}, {}),
-    },
-  },
   props: {
     id: { type: String, required: true },
     name: { type: String, required: true },
@@ -62,7 +57,7 @@ export default defineComponent({
   },
   setup(props) {
     const input = getDomRef(null);
-    const isValid = (errors: any) => (errors ? errors.first(props.name) === null : true);
+    const isValid = (errors: any) => (errors ? errors.length === 0 : false);
     const messageOrError = (errors: any) => (isValid(errors) ? props.message : props.errorMessage);
 
     useIntersectionObserver(input, () => {
