@@ -16,7 +16,7 @@
 import VueGrid from '@/components/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue';
-// import FormExample from '../FormExample/FormExample.vue';
+import FormExample from '@/components/form/FormExample.vue';
 import VueBreadcrumb from '@/components/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
@@ -25,7 +25,7 @@ export default {
   },
   components: {
     VueBreadcrumb,
-    // FormExample,
+    FormExample,
     VueGridColumn,
     VueGridRow,
     VueGrid

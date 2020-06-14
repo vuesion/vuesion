@@ -1,5 +1,5 @@
 import MockAdapter from 'axios-mock-adapter';
-import { HttpService, initHttpService } from './HttpService';
+import { HttpService, initHttpService } from '@/components/services/HttpService/HttpService';
 
 describe('ResponseInterceptor', () => {
   let mockAxios: MockAdapter;

@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { INotification } from './utils';
-// import { EventBus } from '../../services/EventBus';
+import { EventBus } from '@/components/services/EventBus';
 
 let id = 0;
 
@@ -38,9 +38,9 @@ export default {
       return this.notifications.slice(0).reverse();
     },
   },
-  // mounted() {
-  //   EventBus.$on('notification.add', this.addNotification);
-  // },
+  mounted() {
+    EventBus.$on('notification.add', this.addNotification);
+  },
   methods: {
     addNotification(n: INotification): void {
       n.id = id++;
