@@ -165,11 +165,16 @@ import { addNotification, INotification } from '@/components/VueNotificationStac
 import VueHeadline from '@/components/VueHeadline/VueHeadline.vue';
 
 export default {
-  $_veeValidate: {
-    validator: 'new' as 'new',
-  },
   name: 'FormExample',
-  components: { VueHeadline, VueButton, VueGridColumn, VueGridRow, VueCheckbox, VueSelect, VueInput },
+  components: {
+    VueHeadline,
+    VueButton,
+    VueGridColumn,
+    VueGridRow,
+    VueCheckbox,
+    VueSelect,
+    VueInput,
+  },
   data(): any {
     return {
       form: {
