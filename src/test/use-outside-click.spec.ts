@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { render } from '@testing-library/vue';
-import { triggerDocument, TestComponent } from '@/components/testing/test-utils';
 import { ref } from '@vue/composition-api';
+import { triggerDocument, TestComponent } from '@/components/testing/test-utils';
 import { useOutsideClick } from '@/components/composables/use-outside-click';
 
 describe('use-outside-click-behaviour', () => {

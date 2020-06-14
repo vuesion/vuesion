@@ -40,5 +40,5 @@
     ".nuxt",
     "dist"
   ],
-  "files": ["src/vue-shim.d.ts", "src/custom-typings.d.ts"]
+  "files": ["src/vue-shim.d.ts", "src/custom-typings.d.ts", "src/vue.plugins.d.ts"]
 }

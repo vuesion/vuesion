@@ -1,28 +1,9 @@
 <template>
   <div :class="cssClasses">
-    <!-- <textarea
-      :id="id"
-      ref="input"
-      v-validate="validation"
-      :data-vv-as="placeholder"
-      :name="name"
-      :required="required"
-      :value="value"
-      :disabled="disabled"
-      :readonly="readonly"
-      :class="[value ? $style.hasValue : '']"
-      :autofocus="autofocus"
-      v-bind="$attrs"
-      v-on="{
-        ...this.$listeners,
-        input: (e) => {
-          $emit('input', e.target.value);
-        },
-      }"
-    /> -->
     <textarea
       :id="id"
       ref="input"
+      v-validate="validation"
       :data-vv-as="placeholder"
       :name="name"
       :required="required"
@@ -47,16 +28,16 @@
 </template>
 
 <script lang="ts">
-// import { Validator } from 'vee-validate';
+import { validate } from 'vee-validate';
 
 export default {
   name: 'VueTextarea',
   inheritAttrs: false,
-  // inject: {
-  //   $validator: {
-  //     default: new Validator({}, {}),
-  //   },
-  // },
+  inject: {
+    $validator: {
+      default: validate({}, {}),
+    },
+  },
   props: {
     name: { type: String, required: true },
     id: { type: String, required: true },
@@ -122,7 +103,4 @@ export default {
 
 <style lang="scss" module>
 @import '~@/assets/design-system';
-
-.vueTextarea {
-}
 </style>
