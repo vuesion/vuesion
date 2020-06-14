@@ -29,6 +29,7 @@
       "@nuxt/types",
       "@types/animejs",
       "@types/lodash",
+      "@types/testing-library__jest-dom",
       "nuxt-i18n",
       "jest"
     ]
