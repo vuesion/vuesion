@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-// import { Validator } from 'vee-validate';
+import { validate } from 'vee-validate';
 import { defineComponent } from '@vue/composition-api';
 import { useIntersectionObserver } from '@/components/composables/use-intersection-observer';
 import { getDomRef } from '@/components/composables/get-dom-ref';
@@ -41,7 +41,7 @@ export default defineComponent({
   inheritAttrs: false,
   inject: {
     $validator: {
-      // default: new Validator({}, {}),
+      default: validate({}, {}),
     },
   },
   props: {

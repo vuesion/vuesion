@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-// import { Validator } from 'vee-validate';
+import { validate } from 'vee-validate';
 import { IAutocompleteOption } from '@/components/VueAutocomplete/IAutocompleteOption';
 
 export interface IVueSelectOption {
@@ -51,11 +51,11 @@ export interface IVueSelectOption {
 export default {
   name: 'VueSelect',
   inheritAttrs: false,
-  // inject: {
-  //   $validator: {
-  //     default: new Validator({}, {}),
-  //   },
-  // },
+  inject: {
+    $validator: {
+      default: validate({}, {}),
+    },
+  },
   props: {
     name: { type: String, required: true },
     id: { type: String, required: true },
