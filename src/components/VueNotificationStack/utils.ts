@@ -1,4 +1,4 @@
-// import { EventBus } from '../../services/EventBus';
+import { EventBus } from '@/components/services/EventBus';
 
 export interface INotification {
   id?: number;
@@ -8,5 +8,5 @@ export interface INotification {
 }
 
 export const addNotification = (n: INotification): void => {
-  // EventBus.$emit('notification.add', n);
+  EventBus.$emit('notification.add', n);
 };
