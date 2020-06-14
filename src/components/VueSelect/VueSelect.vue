@@ -1,38 +1,25 @@
 <template>
   <div :class="cssClasses">
-    <!-- <select
-      :id="id"
-      v-validate="validation"
-      :title="placeholder"
-      :name="name"
-      :multiple="multiple"
-      :required="required"
-      :disabled="disabled"
-      :autocomplete="autocomplete"
-      v-bind="$attrs"
-      v-on="{
-        ...this.$listeners,
-        input: onInput,
-      }"
-    > -->
-    <select
-      :id="id"
-      :title="placeholder"
-      :name="name"
-      :multiple="multiple"
-      :required="required"
-      :disabled="disabled"
-      :autocomplete="autocomplete"
-      v-bind="$attrs"
-      v-on="{
-        ...this.$listeners,
-        input: onInput,
-      }"
-    >
-      <option v-for="(option, idx) in selectOptions" :key="idx" :value="option.value" :selected="isSelected(option)">
-        {{ option.label }}
-      </option>
-    </select>
+    <ValidationProvider :vid="id" :name="name" :rules="validation">
+      <select
+        :id="id"
+        :title="placeholder"
+        :multiple="multiple"
+        :required="required"
+        :disabled="disabled"
+        :autocomplete="autocomplete"
+        v-bind="$attrs"
+        v-on="{
+          ...this.$listeners,
+          input: onInput,
+        }"
+      >
+        <option v-for="(option, idx) in selectOptions" :key="idx" :value="option.value" :selected="isSelected(option)">
+          {{ option.label }}
+        </option>
+      </select>
+    </ValidationProvider>
+
     <i v-if="!multiple" :class="$style.icon" />
     <span :class="$style.bar" />
     <label :for="id">{{ placeholder }}<sup v-if="required">*</sup></label>
@@ -40,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { validate } from 'vee-validate';
+import { ValidationProvider } from 'vee-validate';
 import { IAutocompleteOption } from '@/components/VueAutocomplete/IAutocompleteOption';
 
 export interface IVueSelectOption {
@@ -50,12 +37,10 @@ export interface IVueSelectOption {
 
 export default {
   name: 'VueSelect',
-  inheritAttrs: false,
-  inject: {
-    $validator: {
-      default: validate({}, {}),
-    },
+  components: {
+    ValidationProvider,
   },
+  inheritAttrs: false,
   props: {
     name: { type: String, required: true },
     id: { type: String, required: true },

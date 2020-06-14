@@ -15,7 +15,7 @@ describe('Counter.vue', () => {
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        counter: CounterModule,
+        // counter: CounterModule,
       },
     } as any);
   });
