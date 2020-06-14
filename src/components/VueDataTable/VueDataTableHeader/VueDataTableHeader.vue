@@ -21,9 +21,9 @@
 
 <script lang="ts">
 import { IDataTableHeaderItem } from '../IDataTable';
-import VueIconSort from '../../icons/VueIconSort/VueIconSort.vue';
-import VueIconSortUp from '../../icons/VueIconSortUp/VueIconSortUp.vue';
-import VueIconSortDown from '../../icons/VueIconSortDown/VueIconSortDown.vue';
+import VueIconSort from '@/components/icons/VueIconSort/VueIconSort.vue';
+import VueIconSortUp from '@/components/icons/VueIconSortUp/VueIconSortUp.vue';
+import VueIconSortDown from '@/components/icons/VueIconSortDown/VueIconSortDown.vue';
 
 export default {
   name: 'VueDataTableHeader',

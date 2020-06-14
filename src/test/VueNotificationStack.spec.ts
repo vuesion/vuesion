@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueNotificationStack from './VueNotificationStack.vue';
-import { INotification, addNotification } from '@/components/utils';
+import VueNotificationStack from '@/components/VueNotificationStack/VueNotificationStack.vue';
+import { INotification, addNotification } from '@/components/VueNotificationStack/utils';
 
 const localVue = createLocalVue();
 

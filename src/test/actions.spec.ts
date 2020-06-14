@@ -1,12 +1,12 @@
 import { ActionContext, Commit, Dispatch } from 'vuex';
 import MockAdapter from 'axios-mock-adapter';
 import { AuthDefaultState, IAuthState } from '@/store/auth/state';
-import { IState } from '@/store/state';
+// import { IState } from '@/store/state';
 import { AuthActions } from '@/store/auth/actions';
-import { HttpService } from '@shared/services/HttpService/HttpService';
+import { HttpService } from '@/components/services/HttpService/HttpService';
 
 describe('AuthActions', () => {
-  let testContext: ActionContext<IAuthState, IState>;
+  let testContext: ActionContext<IAuthState, IAuthState>;
   let mockAxios: MockAdapter;
 
   beforeEach(() => {
@@ -14,7 +14,7 @@ describe('AuthActions', () => {
       dispatch: jest.fn() as Dispatch,
       commit: jest.fn() as Commit,
       state: AuthDefaultState(),
-    } as ActionContext<IAuthState, IState>;
+    } as ActionContext<IAuthState, IAuthState>;
 
     mockAxios = new MockAdapter(HttpService);
   });
