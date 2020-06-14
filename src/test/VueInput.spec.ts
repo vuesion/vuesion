@@ -60,9 +60,9 @@ describe('VueInput.vue', () => {
     await fireEvent.input(getByDisplayValue('this is the value'), { target: { value: 'this is the new value' } });
 
     const actual = emitted().input[0][0];
-    const exptected = 'this is the new value';
+    const expected = 'this is the new value';
 
-    expect(actual).toBe(exptected);
+    expect(actual).toBe(expected);
   });
 
   test('should display error state', () => {

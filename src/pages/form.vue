@@ -28,7 +28,7 @@ export default {
     FormExample,
     VueGridColumn,
     VueGridRow,
-    VueGrid
+    VueGrid,
   },
   data(): any {
     return {};
