@@ -60,9 +60,6 @@ import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue';
 
 export default {
-  $_veeValidate: {
-    validator: 'new' as 'new',
-  },
   name: 'LoginForm',
   components: { VueGridColumn, VueGridRow, VueGrid, VueButton, VueInput, VueHeadline },
   props: {

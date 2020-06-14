@@ -30,7 +30,11 @@ const config: Configuration = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/vuex-persist', ssr: false }, { src: '~/plugins/vue-composition-api' }],
+  plugins: [
+    { src: '~/plugins/vee-validate' },
+    { src: '~/plugins/vuex-persist', ssr: false },
+    { src: '~/plugins/vue-composition-api' },
+  ],
   /*
    ** Nuxt.js dev-modules
    */

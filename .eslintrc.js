@@ -20,14 +20,31 @@ module.exports = {
     'prettier',
     'prettier/vue',
     'plugin:prettier/recommended',
-    'plugin:nuxt/recommended'
+    'plugin:nuxt/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'eslint:recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
+    'plugin:vue/recommended',
   ],
   plugins: [
     'prettier'
   ],
   // add your custom rules here
   rules: {
+    '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/interface-name-prefix': 0,
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/no-use-before-define': 0,
+    'no-async-promise-executor': 0,
     '@typescript-eslint/camelcase': ['error', { allow: ['$_veeValidate', 'access_token', 'refresh_token'] }],
+    'vue/max-attributes-per-line': 0,
+    'vue/no-v-html': 0,
+    'vue/html-self-closing': 0,
+    'vue/singleline-html-element-content-newline': 0,
+    'vue/html-closing-bracket-newline': 0,
+    'vue/html-indent': 0,
   },
   globals: {
     CLIENT: false,
