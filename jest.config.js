@@ -7,6 +7,7 @@ module.exports = {
   },
   rootDir: 'src',
   setupFiles: ['<rootDir>/test/jestsetup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/test/jest-dom-importer.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
