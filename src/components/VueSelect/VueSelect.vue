@@ -1,6 +1,6 @@
 <template>
-  <div :class="cssClasses">
-    <ValidationProvider :vid="id" :name="name" :rules="validation">
+  <ValidationProvider v-slot="{ errors, valid }" :vid="id" :name="name" :rules="validation">
+    <div :class="[...cssClasses, !valid ? $style.error : '']">
       <select
         :id="id"
         :title="placeholder"
@@ -10,7 +10,6 @@
         :autocomplete="autocomplete"
         v-bind="$attrs"
         v-on="{
-          ...this.$listeners,
           input: onInput,
         }"
       >
@@ -18,12 +17,12 @@
           {{ option.label }}
         </option>
       </select>
-    </ValidationProvider>
 
-    <i v-if="!multiple" :class="$style.icon" />
-    <span :class="$style.bar" />
-    <label :for="id">{{ placeholder }}<sup v-if="required">*</sup></label>
-  </div>
+      <i v-if="!multiple" :class="$style.icon" />
+      <span :class="$style.bar" />
+      <label :for="id">{{ placeholder }}<sup v-if="required">*</sup></label>
+    </div>
+  </ValidationProvider>
 </template>
 
 <script lang="ts">
@@ -59,9 +58,6 @@ export default {
     };
   },
   computed: {
-    isValid() {
-      return this.errors ? this.errors.first(this.name) === null : true;
-    },
     cssClasses() {
       const classes = [this.$style.vueSelect];
 
@@ -71,10 +67,6 @@ export default {
 
       if (this.disabled) {
         classes.push(this.$style.disabled);
-      }
-
-      if (!this.isValid) {
-        classes.push(this.$style.error);
       }
 
       if (this.value.length > 0) {

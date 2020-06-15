@@ -1,11 +1,10 @@
 <template>
-  <div :class="[$style.vueInput, disabled && $style.disabled, !isValid(errors) && $style.error]">
-    <label :for="name"> {{ label }}<sup v-if="required">*</sup> </label>
-    <ValidationProvider v-slot="{ errors }" :vid="name" :name="name" :rules="validation">
+  <ValidationProvider v-slot="{ errors }" :vid="id" :name="name" :rules="validation">
+    <div :class="[$style.vueInput, disabled && $style.disabled, !isValid(errors) && $style.error]">
+      <label :for="name"> {{ label }}<sup v-if="required">*</sup></label>
       <input
         :id="id"
         ref="input"
-        :name="name"
         :placeholder="placeholder"
         :required="required"
         :value="value"
@@ -25,8 +24,8 @@
       <span>
         {{ messageOrError(errors) }}
       </span>
-    </ValidationProvider>
-  </div>
+    </div>
+  </ValidationProvider>
 </template>
 
 <script lang="ts">

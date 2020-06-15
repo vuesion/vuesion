@@ -9,6 +9,6 @@ describe('VueDataTableSearch.vue', () => {
       localVue,
     });
 
-    expect(wrapper).toBe(true);
+    expect(wrapper).toBeTruthy();
   });
 });

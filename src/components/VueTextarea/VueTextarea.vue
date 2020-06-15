@@ -1,35 +1,36 @@
 <template>
-  <div :class="cssClasses">
-    <textarea
-      :id="id"
-      ref="input"
-      v-validate="validation"
-      :data-vv-as="placeholder"
-      :name="name"
-      :required="required"
-      :value="value"
-      :disabled="disabled"
-      :readonly="readonly"
-      :class="[value ? $style.hasValue : '']"
-      :autofocus="autofocus"
-      v-bind="$attrs"
-      v-on="{
-        ...this.$listeners,
-        input: (e) => {
-          $emit('input', e.target.value);
-        },
-      }"
-    />
-    <span :class="$style.bar" /> <label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
-    <div :class="$style.message">
-      {{ messageOrError }}
+  <ValidationProvider v-slot="{ errors, valid }" :vid="id" :name="placeholder" :rules="validation">
+    <div :class="[...cssClasses, !valid ? $style.error : '']">
+      <textarea
+        :id="id"
+        ref="input"
+        :required="required"
+        :value="value"
+        :disabled="disabled"
+        :readonly="readonly"
+        :class="[value ? $style.hasValue : '']"
+        :autofocus="autofocus"
+        v-bind="$attrs"
+        v-on="{
+          input: (e) => {
+            $emit('input', e.target.value);
+          },
+        }"
+      />
+      <span :class="$style.bar" /> <label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
+      <div :class="$style.message">
+        {{ valid ? message : errors[0] }}
+      </div>
     </div>
-  </div>
+  </ValidationProvider>
 </template>
 
 <script lang="ts">
+import { ValidationProvider } from 'vee-validate';
+
 export default {
   name: 'VueTextarea',
+  components: { ValidationProvider },
   inheritAttrs: false,
   props: {
     name: { type: String, required: true },
@@ -50,21 +51,11 @@ export default {
     };
   },
   computed: {
-    isValid() {
-      return this.errors ? this.errors.first(this.name) === null : true;
-    },
-    messageOrError() {
-      return this.isValid ? this.message : this.errorMessage;
-    },
     cssClasses() {
       const classes = [this.$style.vueTextarea];
 
       if (this.disabled) {
         classes.push(this.$style.disabled);
-      }
-
-      if (!this.isValid) {
-        classes.push(this.$style.error);
       }
 
       return classes;
