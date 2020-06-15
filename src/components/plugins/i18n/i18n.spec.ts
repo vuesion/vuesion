@@ -19,7 +19,7 @@ describe('i18n', () => {
   });
 
   test('should throw error', async () => {
-    axios.get = jest.fn().mockReturnValue(Promise.reject({ message: 'foo' }));
+    axios.get = jest.fn().mockReturnValue(Promise.reject(new Error('foo')));
 
     try {
       await loadLocaleAsync('de');

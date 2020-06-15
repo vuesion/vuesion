@@ -4,10 +4,12 @@ export interface ICounterState {
   count: number;
 }
 
-export default (): ICounterState => {
+export const CounterDefaultState = (): ICounterState => {
   return {
     incrementPending: false,
     decrementPending: false,
     count: 0,
   };
 };
+
+export default CounterDefaultState;

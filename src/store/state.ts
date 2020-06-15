@@ -9,20 +9,15 @@ export interface IAppState {
   theme: string;
 }
 
-export default (): IAppState => {
+export const AppDefaultState = (): IAppState => {
   return {
-    locale: '',
-    config: {
-      api: {
-        baseUrl: '',
-      },
-      features: {
-        disableParticles: false,
-      },
-    },
+    locale: null,
+    config: null,
     defaultMessages: {},
-    redirectTo: '',
+    redirectTo: null,
     cookieConsentVersion: '',
     theme: 'light',
   };
 };
+
+export default AppDefaultState;

@@ -12,6 +12,7 @@
       aria-autocomplete="list"
       :aria-controls="`autocomplete-results-${id}`"
       :name="name"
+      :label="name"
       :placeholder="placeholder"
       :required="required"
       :autofocus="autofocus"
@@ -63,10 +64,10 @@
 
 <script lang="ts">
 import debounce from 'lodash/debounce';
-import { IAutocompleteOption } from './IAutocompleteOption';
-import VueInput from '../VueInput/VueInput.vue';
-import VueLoader from '../VueLoader/VueLoader.vue';
-import VueIconSearch from '../icons/VueIconSearch/VueIconSearch.vue';
+import { IAutocompleteOption } from '@/components/VueAutocomplete/IAutocompleteOption';
+import VueInput from '@/components/VueInput/VueInput.vue';
+import VueLoader from '@/components/VueLoader/VueLoader.vue';
+import VueIconSearch from '@/components/icons/VueIconSearch/VueIconSearch.vue';
 
 export default {
   name: 'VueAutocomplete',
@@ -205,7 +206,7 @@ export default {
     isSelected(index: number) {
       return index === this.selectedOptionIndex;
     },
-    emitRequest: debounce(function () {
+    emitRequest: debounce(function() {
       this.$emit('request', this.searchQuery);
       this.isOpen = true;
       this.selectedOptionIndex = -1;
