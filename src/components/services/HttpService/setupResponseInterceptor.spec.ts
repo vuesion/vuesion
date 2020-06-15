@@ -78,7 +78,7 @@ describe('ResponseInterceptor', () => {
   });
 
   test('redirect to sign-in page when auth/refreshToken fails', async () => {
-    HttpService.store.dispatch = jest.fn(() => Promise.reject({}));
+    HttpService.store.dispatch = jest.fn(() => Promise.reject(new Error()));
 
     mockAxios.onGet('/me').replyOnce(401);
     mockAxios.onGet('/protected-route').replyOnce(401);

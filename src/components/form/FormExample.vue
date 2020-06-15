@@ -222,6 +222,7 @@ export default {
     onSubmit() {
       this.isLoading = true;
 
+      // eslint-disable-next-line no-console
       console.log(JSON.parse(JSON.stringify(this.form)));
 
       this.$emit('submit', this.form);

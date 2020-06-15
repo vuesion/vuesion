@@ -51,10 +51,10 @@ describe('VueModal.vue', () => {
 
     await updateProps({ show: true });
     triggerDocument.keydown({ key: 'Escape' });
-    expect(emitted().close).toBeFalsy;
+    expect(emitted().close).toBeFalsy();
 
     await updateProps({ show: true, closeOnEscape: true });
     triggerDocument.keydown({ key: 'Escape' });
-    expect(emitted().close).toBeTruthy;
+    expect(emitted().close).toBeTruthy();
   });
 });
