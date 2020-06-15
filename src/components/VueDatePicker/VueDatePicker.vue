@@ -3,6 +3,7 @@
     <vue-input
       :id="id"
       :name="name"
+      :label="name"
       :value="inputValue"
       :placeholder="placeholder"
       :required="required"
@@ -28,9 +29,9 @@
 </template>
 
 <script lang="ts">
-import VueInput from '../VueInput/VueInput.vue';
-import VueModal from '../VueModal/VueModal.vue';
-import VueCalendar from '../VueCalendar/VueCalendar.vue';
+import VueInput from '@/components/VueInput/VueInput.vue';
+import VueModal from '@/components/VueModal/VueModal.vue';
+import VueCalendar from '@/components/VueCalendar/VueCalendar.vue';
 
 export default {
   name: 'VueDatePicker',

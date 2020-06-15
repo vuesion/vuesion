@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import VueInput from '../../VueInput/VueInput.vue';
+import VueInput from '@/components/VueInput/VueInput.vue';
 
 export default {
   name: 'VueDataTableSearch',
