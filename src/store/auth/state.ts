@@ -5,8 +5,8 @@ export interface IAuthState {
 
 export const AuthDefaultState = (): IAuthState => {
   return {
-    accessToken: '',
-    refreshToken: '',
+    accessToken: null,
+    refreshToken: null,
   };
 };
 

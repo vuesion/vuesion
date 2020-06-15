@@ -102,6 +102,7 @@ const config: Configuration = {
         },
       },
     },
+    transpile: ['vee-validate'],
   },
   // extend(config, ctx) {},
 };

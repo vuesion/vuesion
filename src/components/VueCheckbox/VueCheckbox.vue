@@ -12,7 +12,6 @@
       />
       <div :class="$style.box" @click="onClick" />
     </ValidationProvider>
-
     <label :for="id" v-html="label" />
   </div>
 </template>

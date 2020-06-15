@@ -14,7 +14,7 @@ describe('VueCarousel.vue', () => {
       localVue,
     });
 
-    expect(wrapper).toBe(true);
+    expect(wrapper).toBeTruthy();
 
     wrapper.destroy();
   });
