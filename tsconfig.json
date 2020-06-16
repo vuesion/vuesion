@@ -31,7 +31,8 @@
       "@types/lodash",
       "@types/testing-library__jest-dom",
       "nuxt-i18n",
-      "jest"
+      "express",
+      "jest",
     ]
   },
   "include": ["./src/**/*", "./src/**/*.vue"],
