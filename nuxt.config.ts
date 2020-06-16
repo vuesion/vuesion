@@ -104,6 +104,7 @@ const config: Configuration = {
     },
     transpile: ['vee-validate'],
   },
+  serverMiddleware: ['~/api/index.ts'],
   // extend(config, ctx) {},
 };
 

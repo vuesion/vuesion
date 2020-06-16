@@ -46,12 +46,12 @@
           Home
         </vue-sidebar-group-item>
 
-        <vue-sidebar-group-item :to="{ name: 'counter' }">
+        <vue-sidebar-group-item :to="{ name: 'example-counter' }">
           <vue-icon-hashtag />
           VueX Example
         </vue-sidebar-group-item>
 
-        <vue-sidebar-group-item :to="{ name: 'form' }">
+        <vue-sidebar-group-item :to="{ name: 'example-form' }">
           <vue-icon-hashtag />
           Form Example
         </vue-sidebar-group-item>
@@ -212,7 +212,7 @@ export default {
       try {
         await this.createToken(formData);
 
-        this.$router.push({ path: this.localePath('/dashboard') });
+        this.$router.push({ path: this.localePath('/example/dashboard') });
       } catch (e) {
         addNotification({ title: 'Error during login', text: 'Please try again!' });
       }
