@@ -60,12 +60,13 @@ import VueGridColumn from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue'
 import VueBreadcrumb from '@/components/VueBreadcrumb/VueBreadcrumb.vue';
 import VueHeadline from '@/components/VueHeadline/VueHeadline.vue';
 import VueButton from '@/components/VueButton/VueButton.vue';
-// import { HttpService } from '@shared/services/HttpService/HttpService';
+import { HttpService } from '@/components/services/HttpService/HttpService';
 
 export default {
   metaInfo: {
     title: 'Dashboard',
   },
+  middleware: ['auth'],
   components: {
     VueBreadcrumb,
     VueGrid,
@@ -84,8 +85,8 @@ export default {
 
       this.pending = true;
 
-      for (let i = 0; i < 1; i++) {
-        // requests.push(HttpService.get('/protected'));
+      for (let i = 0; i < 10; i++) {
+        requests.push(HttpService.get('/protected'));
       }
 
       Promise.all(requests)
