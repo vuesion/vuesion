@@ -21,6 +21,7 @@ module.exports = {
     '^.+\\.js$': 'babel-jest',
     '.*\\.(vue)$': 'vue-jest',
   },
+  testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
   collectCoverageFrom: [
     '<rootDir>/assets/**/*.vue',
     '<rootDir>/components/**/*.vue',
