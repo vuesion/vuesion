@@ -17,9 +17,7 @@ module.exports = {
   },
   extends: [
     '@nuxtjs/eslint-config-typescript',
-    'prettier',
     'prettier/vue',
-    'plugin:prettier/recommended',
     'plugin:nuxt/recommended',
     'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
@@ -28,9 +26,10 @@ module.exports = {
     'plugin:vue/recommended',
   ],
   plugins: [
-    'prettier'
+    'prettier',
+    '@typescript-eslint', 
+    'vue'
   ],
-  // add your custom rules here
   rules: {
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/interface-name-prefix': 0,
@@ -38,7 +37,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-use-before-define': 0,
     'no-async-promise-executor': 0,
-    '@typescript-eslint/camelcase': ['error', { allow: ['$_veeValidate', 'access_token', 'refresh_token'] }],
+    '@typescript-eslint/camelcase': ['error', { allow: ['access_token', 'refresh_token'] }],
     'vue/max-attributes-per-line': 0,
     'vue/no-v-html': 0,
     'vue/html-self-closing': 0,
