@@ -1,5 +1,5 @@
 import * as express from 'express';
-import helmet from 'helmet';
+import * as helmet from 'helmet';
 import * as cookieParser from 'cookie-parser';
 import * as compression from 'compression';
 import { DemoRoutes } from './routes/DemoRoutes';
