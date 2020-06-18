@@ -12,9 +12,6 @@ describe('VueTextarea.vue', () => {
         name: 'name',
         id: 'id',
       },
-      mocks: {
-        errors: null,
-      },
     });
 
     expect(wrapper.findAll(`.vueTextarea`)).toHaveLength(1);
@@ -52,17 +49,11 @@ describe('VueTextarea.vue', () => {
   test('should display error state', () => {
     const wrapper = mount<any>(VueTextarea, {
       localVue,
-      mocks: {
-        errors: {
-          first() {
-            return true;
-          },
-        },
-      },
       propsData: {
         errorMessage: 'ERROR!',
         name: 'name',
         id: 'id',
+        validation: 'required',
       },
     });
 

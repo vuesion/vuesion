@@ -18,9 +18,9 @@
           },
         }"
       />
-      <span :class="$style.bar" /> <label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
+      <span :class="$style.bar" /><label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
       <div :class="$style.message">
-        {{ valid ? message : errors[0] }}
+        {{ valid ? message : errorMessage !== '' ? errorMessage : errors[0] }}
       </div>
     </div>
   </ValidationProvider>
