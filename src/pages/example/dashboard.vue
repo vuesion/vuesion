@@ -94,6 +94,7 @@ export default {
           this.pending = false;
         })
         .catch((e) => {
+          // eslint-disable-next-line no-console
           console.log(e);
           this.pending = false;
         });
