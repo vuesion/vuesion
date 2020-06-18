@@ -16,6 +16,7 @@
         :autofocus="autofocus"
         v-bind="$attrs"
         v-on="{
+          // ...this.$listeners,
           input: (e) => {
             $emit('input', e.target.value);
           },
