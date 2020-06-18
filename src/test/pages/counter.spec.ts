@@ -1,7 +1,7 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex, { Store } from 'vuex';
 import { i18n } from '@/components/plugins/i18n/i18n';
-import Counter from '@/pages/counter.vue';
+import Counter from '@/pages/example/counter.vue';
 import { ICounterState } from '@/store/counter/state';
 // import { CounterModule } from '../module';
 
@@ -47,12 +47,12 @@ describe('Counter.vue', () => {
     expect(store.dispatch).toHaveBeenCalledWith(`counter/decrement`, undefined);
   });
 
-  test('dispatches action on the server', () => {
-    store.dispatch = jest.fn();
+  // test('dispatches action on the server', () => {
+  //   store.dispatch = jest.fn();
 
-    Counter.prefetch({ store });
+  //   Counter.prefetch({ store });
 
-    expect(store.dispatch).toHaveBeenCalled();
-    expect(store.dispatch).toHaveBeenCalledWith(`counter/increment`);
-  });
+  //   expect(store.dispatch).toHaveBeenCalled();
+  //   expect(store.dispatch).toHaveBeenCalledWith(`counter/increment`);
+  // });
 });
