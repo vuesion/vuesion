@@ -10,6 +10,7 @@
         :autocomplete="autocomplete"
         v-bind="$attrs"
         v-on="{
+          // ...this.$listeners,
           input: onInput,
         }"
       >
