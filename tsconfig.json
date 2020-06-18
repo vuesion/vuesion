@@ -25,14 +25,15 @@
     },
     "rootDirs": ["src"],
     "types": [
-      "@types/node",
       "@nuxt/types",
-      "@types/animejs",
-      "@types/lodash",
-      "@types/testing-library__jest-dom",
-      "nuxt-i18n",
+      "node",
+      "animejs",
       "express",
       "jest",
+      "helmet",
+      "lodash",
+      "nuxt-i18n",
+      "testing-library__jest-dom"
     ]
   },
   "include": ["./src/**/*", "./src/**/*.vue"],
