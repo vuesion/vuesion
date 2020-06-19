@@ -105,6 +105,7 @@ const config: Configuration = {
     transpile: ['vee-validate'],
   },
   serverMiddleware: ['~/api/index.ts'],
+  telemetry: false,
   // extend(config, ctx) {},
 };
 
