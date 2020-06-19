@@ -25,11 +25,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:vue/recommended',
   ],
-  plugins: [
-    'prettier',
-    '@typescript-eslint', 
-    'vue'
-  ],
+  plugins: ['@typescript-eslint', 'prettier', 'vue'],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/interface-name-prefix': 0,
@@ -54,4 +50,4 @@ module.exports = {
     SPA: false,
     nodeRequire: false,
   },
-}
+};
