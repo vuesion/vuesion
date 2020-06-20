@@ -22,10 +22,11 @@ module.exports = {
     '.*\\.(vue)$': 'vue-jest',
   },
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
-  collectCoverageFrom: [
-    '<rootDir>/assets/**/*.vue',
-    '<rootDir>/components/**/*.vue',
-    '<rootDir>/pages/**/*.vue',
-    '<rootDir>/store/**/*.vue',
-  ],
+  // collectCoverage: true,
+  // collectCoverageFrom: [
+  //   '<rootDir>/assets/**/*.vue',
+  //   '<rootDir>/components/**/*.vue',
+  //   '<rootDir>/pages/**/*.vue',
+  //   '<rootDir>/store/**/*.vue',
+  // ],
 };
