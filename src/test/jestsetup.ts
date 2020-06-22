@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueCompositionApi from '@vue/composition-api';
+import '@/plugins/vee-validate.ts';
 
 Vue.use(VueCompositionApi);
 
@@ -17,7 +18,7 @@ Vue.config.productionTip = false;
 
 Vue.mixin({
   created() {
-    this.localePath = function(path: string) {
+    this.localePath = function (path: string) {
       return path;
     };
     this.$style = $style;

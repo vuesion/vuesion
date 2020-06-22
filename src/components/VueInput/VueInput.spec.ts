@@ -1,4 +1,6 @@
+import { mount } from '@vue/test-utils';
 import { render, fireEvent } from '@testing-library/vue';
+import flushPromises from 'flush-promises';
 import VueInput from '@/components/VueInput/VueInput.vue';
 
 describe('VueInput.vue', () => {
@@ -65,24 +67,26 @@ describe('VueInput.vue', () => {
     expect(actual).toBe(expected);
   });
 
-  test('should display error state', () => {
-    const { getByText } = render<any>(VueInput, {
-      mocks: {
-        errors: {
-          first() {
-            return true;
-          },
-        },
-      },
+  test('should display error state', async () => {
+    const wrapper = mount<any>(VueInput, {
       propsData: {
         label: 'this is the label',
         errorMessage: 'this is the error',
         name: 'name',
         id: 'id',
+        validation: 'required',
       },
     });
 
-    getByText('this is the label');
-    getByText('this is the error');
+    wrapper.find('input').setValue('');
+    // flush the pending validation.
+    await flushPromises();
+    // Get the error message from the ref
+    const error = wrapper.vm.$refs.validator.errors;
+
+    expect(error).toBeTruthy();
+
+    expect(wrapper.text()).toMatch(/this is the label/);
+    expect(wrapper.text()).toMatch(/this is the error/);
   });
 });
