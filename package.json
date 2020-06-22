@@ -62,6 +62,7 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
+    "flush-promises": "1.0.2",
     "husky": "^4.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.0",
