@@ -1,10 +1,11 @@
 import { createLocalVue, mount } from '@vue/test-utils';
+import flushPromises from 'flush-promises';
 import VueTextarea from '@/components/VueTextarea/VueTextarea.vue';
 
 const localVue = createLocalVue();
 
 describe('VueTextarea.vue', () => {
-  test('renders component', () => {
+  test('renders component', async () => {
     const wrapper = mount<any>(VueTextarea, {
       localVue,
       propsData: {
@@ -13,6 +14,8 @@ describe('VueTextarea.vue', () => {
         id: 'id',
       },
     });
+
+    await flushPromises();
 
     expect(wrapper.findAll(`.vueTextarea`)).toHaveLength(1);
     expect(wrapper.find(`.message`).text()).toBe('MESSAGE!');
