@@ -15,7 +15,7 @@ describe('VueTabGroup.vue', () => {
       },
     });
 
-    const tabWrapper: any = wrapper.find(VueTabItem);
+    const tabWrapper: any = wrapper.findComponent(VueTabItem);
 
     tabWrapper.vm.$parent = wrapper.vm;
     tabWrapper.vm.$options.created[1].call(tabWrapper.vm);
@@ -34,8 +34,8 @@ describe('VueTabGroup.vue', () => {
       },
     });
 
-    const tabWrapper: any = wrapper.findAll(VueTabItem).at(0);
-    const tabWrapper2: any = wrapper.findAll(VueTabItem).at(1);
+    const tabWrapper: any = wrapper.findAllComponents(VueTabItem).at(0);
+    const tabWrapper2: any = wrapper.findAllComponents(VueTabItem).at(1);
 
     tabWrapper.vm.$parent = wrapper.vm;
     tabWrapper.vm.$options.created[1].call(tabWrapper.vm);
@@ -48,18 +48,8 @@ describe('VueTabGroup.vue', () => {
     expect(wrapper.find('li').text()).toMatch('foo');
     expect(wrapper.find('li').classes()).toEqual(['active']);
 
-    expect(
-      wrapper
-        .findAll('li')
-        .at(1)
-        .text(),
-    ).toMatch('foo2');
-    expect(
-      wrapper
-        .findAll('li')
-        .at(1)
-        .classes(),
-    ).toEqual([]);
+    expect(wrapper.findAll('li').at(1).text()).toMatch('foo2');
+    expect(wrapper.findAll('li').at(1).classes()).toEqual([]);
 
     wrapper.vm.changeTab(1);
     await wrapper.vm.$nextTick();
@@ -67,18 +57,8 @@ describe('VueTabGroup.vue', () => {
     expect(wrapper.find('li').text()).toMatch('foo');
     expect(wrapper.find('li').classes()).toEqual([]);
 
-    expect(
-      wrapper
-        .findAll('li')
-        .at(1)
-        .text(),
-    ).toMatch('foo2');
-    expect(
-      wrapper
-        .findAll('li')
-        .at(1)
-        .classes(),
-    ).toEqual(['active']);
+    expect(wrapper.findAll('li').at(1).text()).toMatch('foo2');
+    expect(wrapper.findAll('li').at(1).classes()).toEqual(['active']);
   });
 
   test('should select second tab because of its properties', () => {

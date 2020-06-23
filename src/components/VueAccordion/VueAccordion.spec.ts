@@ -15,7 +15,7 @@ describe('VueAccordion.vue', () => {
       },
     });
 
-    const accordionItemWrapper: any = wrapper.find(VueAccordionItem);
+    const accordionItemWrapper: any = wrapper.findComponent(VueAccordionItem);
 
     accordionItemWrapper.vm.$parent = wrapper.vm;
     accordionItemWrapper.vm.$options.created[1].call(accordionItemWrapper.vm);
@@ -34,7 +34,7 @@ describe('VueAccordion.vue', () => {
       },
     });
 
-    const accordionItemWrapper: any = wrapper.find(VueAccordionItem);
+    const accordionItemWrapper: any = wrapper.findComponent(VueAccordionItem);
 
     accordionItemWrapper.vm.$parent = wrapper.vm;
     accordionItemWrapper.vm.$options.created[1].call(accordionItemWrapper.vm);

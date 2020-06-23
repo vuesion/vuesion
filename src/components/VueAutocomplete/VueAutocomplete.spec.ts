@@ -37,7 +37,7 @@ describe('VueAutocomplete.vue', () => {
       },
     });
 
-    expect(wrapper.findAll(VueLoader)).toHaveLength(1);
+    expect(wrapper.findAllComponents(VueLoader)).toHaveLength(1);
   });
 
   test('onFocus', () => {
