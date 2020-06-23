@@ -1,5 +1,5 @@
-import { HttpService } from '@/components/services/HttpService/HttpService';
 import { AxiosRequestConfig, AxiosError } from 'axios';
+import { HttpService } from '@/components/services/HttpService/HttpService';
 
 export function setupRequestInterceptor() {
   HttpService.interceptors.request.use(
