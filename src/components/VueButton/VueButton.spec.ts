@@ -102,31 +102,31 @@ describe('VueButton.vue', () => {
   });
 
   describe('Link', () => {
-    test('renders router-link', () => {
+    test('renders nuxt-link', () => {
       const { html } = render<any>(VueButton as any, {
         propsData: {
-          as: 'router-link',
+          as: 'nuxt-link',
           to: '/foo',
         },
-        stubs: ['router-link'],
+        stubs: ['nuxt-link'],
       });
       const actual = html();
-      const expected = 'router-link-stub';
+      const expected = 'nuxt-link-stub';
 
       expect(actual).toMatch(expected);
     });
 
-    test('renders disabled router-link', () => {
+    test('renders disabled nuxt-link', () => {
       const { html } = render<any>(VueButton as any, {
         propsData: {
-          as: 'router-link',
+          as: 'nuxt-link',
           to: '/foo',
           disabled: true,
         },
-        stubs: ['router-link'],
+        stubs: ['nuxt-link'],
       });
       const actual = html();
-      const expected = 'router-link-stub disabled';
+      const expected = 'nuxt-link-stub disabled';
 
       expect(actual).toMatch(expected);
     });

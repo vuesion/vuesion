@@ -7,7 +7,7 @@ describe('VueSidebarGroupItem.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueSidebarGroupItem, {
       localVue,
-      stubs: ['router-link'],
+      stubs: ['nuxt-link'],
       slots: {
         default: 'foo',
       },
