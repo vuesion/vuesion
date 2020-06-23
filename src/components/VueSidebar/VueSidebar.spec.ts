@@ -35,7 +35,7 @@ describe('VueSidebar.vue', () => {
 
     const wrapper = mount<any>(VueSidebar, {
       localVue,
-      stubs: ['router-link'],
+      stubs: ['nuxt-link'],
     });
 
     wrapper.destroy();
@@ -47,7 +47,7 @@ describe('VueSidebar.vue', () => {
   test('should open menu and close it on outside click', async () => {
     const wrapper = mount<any>(VueSidebar, {
       localVue,
-      stubs: ['router-link'],
+      stubs: ['nuxt-link'],
     });
 
     expect(wrapper.vm.open).toBeFalsy();
