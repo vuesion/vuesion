@@ -7,7 +7,7 @@ describe('VueNavBar.vue', () => {
   test('renders component', () => {
     const wrapper = mount(VueNavBar, {
       localVue,
-      stubs: ['router-link'],
+      stubs: ['nuxt-link'],
     });
 
     expect(wrapper.findAll(`.vueNavBar`)).toHaveLength(1);

@@ -52,7 +52,7 @@ export default defineComponent({
       return props.loading ? `${$el.getBoundingClientRect().width}px` : null;
     });
     const isDisabled = computed(() => props.disabled || props.loading);
-    const isRouterLink = computed(() => props.as === 'router-link');
+    const isRouterLink = computed(() => props.as === 'nuxt-link');
     const isRegularLink = computed(() => props.as === 'a');
     const onClick = (e: Event) => {
       if (isRegularLink.value && isDisabled.value) {
