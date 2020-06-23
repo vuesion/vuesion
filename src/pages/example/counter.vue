@@ -30,9 +30,6 @@
 
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
-// import { registerModule } from '@/app/store';
-// import { IPrefetch } from '@/server/isomorphic';
-// import { CounterModule } from '../module';
 import VueGrid from '@/components/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue';
@@ -52,19 +49,15 @@ export default {
     VueHeadline,
     VueButton,
   },
+  async fetch({ store }: any) {
+    return await store.dispatch('counter/increment');
+  },
   computed: {
     ...mapGetters('counter', ['count', 'incrementPending', 'decrementPending']),
   },
-  // beforeCreate() {
-  //   registerModule('counter', CounterModule);
-  // },
   methods: {
     ...mapActions('counter', ['increment', 'decrement']),
   },
-  // prefetch: (options: IPrefetch) => {
-  //   registerModule('counter', CounterModule);
-  //   return options.store.dispatch('counter/increment');
-  // },
 };
 </script>
 
