@@ -26,7 +26,7 @@ describe('VueDataTableHeader.vue', () => {
     });
 
     expect(wrapper.findAll('.column')).toHaveLength(4);
-    expect(wrapper.findAll(VueIconSort)).toHaveLength(3);
+    expect(wrapper.findAllComponents(VueIconSort)).toHaveLength(3);
   });
 
   test('renders component with active sorting asc', () => {
@@ -40,8 +40,8 @@ describe('VueDataTableHeader.vue', () => {
       },
     });
 
-    expect(wrapper.findAll(VueIconSort)).toHaveLength(0);
-    expect(wrapper.findAll(VueIconSortUp)).toHaveLength(1);
+    expect(wrapper.findAllComponents(VueIconSort)).toHaveLength(0);
+    expect(wrapper.findAllComponents(VueIconSortUp)).toHaveLength(1);
   });
 
   test('renders component with active sorting desc', () => {
@@ -55,8 +55,8 @@ describe('VueDataTableHeader.vue', () => {
       },
     });
 
-    expect(wrapper.findAll(VueIconSort)).toHaveLength(0);
-    expect(wrapper.findAll(VueIconSortDown)).toHaveLength(1);
+    expect(wrapper.findAllComponents(VueIconSort)).toHaveLength(0);
+    expect(wrapper.findAllComponents(VueIconSortDown)).toHaveLength(1);
   });
 
   test('should populate sortKey on click', () => {

@@ -23,10 +23,10 @@ describe('VueDataTable.vue', () => {
       },
     });
 
-    expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(1);
-    expect(wrapper.findAll(VueDataTableHeader)).toHaveLength(1);
+    expect(wrapper.findAllComponents(VueDataTableSearch)).toHaveLength(1);
+    expect(wrapper.findAllComponents(VueDataTableHeader)).toHaveLength(1);
     expect(wrapper.findAll('.vueDataTableRow')).toHaveLength(5);
-    expect(wrapper.findAll(VuePagination)).toHaveLength(1);
+    expect(wrapper.findAllComponents(VuePagination)).toHaveLength(1);
   });
 
   test('renders component without search', () => {
@@ -40,10 +40,10 @@ describe('VueDataTable.vue', () => {
       },
     });
 
-    expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(0);
-    expect(wrapper.findAll(VueDataTableHeader)).toHaveLength(1);
+    expect(wrapper.findAllComponents(VueDataTableSearch)).toHaveLength(0);
+    expect(wrapper.findAllComponents(VueDataTableHeader)).toHaveLength(1);
     expect(wrapper.findAll('.vueDataTableRow')).toHaveLength(5);
-    expect(wrapper.findAll(VuePagination)).toHaveLength(1);
+    expect(wrapper.findAllComponents(VuePagination)).toHaveLength(1);
   });
 
   test('should filter data', async () => {
@@ -59,15 +59,15 @@ describe('VueDataTable.vue', () => {
     wrapper.vm.searchTerm = 'julia';
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(1);
-    expect(wrapper.findAll(VueDataTableHeader)).toHaveLength(1);
+    expect(wrapper.findAllComponents(VueDataTableSearch)).toHaveLength(1);
+    expect(wrapper.findAllComponents(VueDataTableHeader)).toHaveLength(1);
     expect(wrapper.findAll('.vueDataTableRow')).toHaveLength(4);
 
     wrapper.vm.searchTerm = 'z';
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.findAll(VueDataTableSearch)).toHaveLength(1);
-    expect(wrapper.findAll(VueDataTableHeader)).toHaveLength(1);
+    expect(wrapper.findAllComponents(VueDataTableSearch)).toHaveLength(1);
+    expect(wrapper.findAllComponents(VueDataTableHeader)).toHaveLength(1);
     expect(wrapper.findAll('.noResults')).toHaveLength(1);
     expect(wrapper.findAll('.vueDataTableRow')).toHaveLength(0);
   });

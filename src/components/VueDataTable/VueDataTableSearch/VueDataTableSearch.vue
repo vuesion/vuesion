@@ -3,6 +3,7 @@
     <vue-input
       id="dataTableSearch"
       name="dataTableSearch"
+      label="Search"
       :placeholder="placeholder"
       :value="value"
       @input="$emit('input', $event)"
