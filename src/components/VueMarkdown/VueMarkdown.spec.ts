@@ -28,7 +28,7 @@ describe('VueMarkdown.vue', () => {
         default: ['       foo bar'],
       },
     });
-    expect(wrapper.contains('code')).toBe(false);
+    expect(wrapper.find('code').exists()).toBe(false);
     expect(wrapper.find('div').text()).toBe('foo bar');
   });
 
