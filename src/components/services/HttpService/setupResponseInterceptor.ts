@@ -1,5 +1,5 @@
-import { HttpService, replaceOldToken } from '@/components/services/HttpService/HttpService';
 import { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
+import { HttpService, replaceOldToken } from '@/components/services/HttpService/HttpService';
 
 function flushPendingRequests(error: any, accessToken?: string) {
   HttpService.pendingRequests.forEach((promise: any) => {
