@@ -2,8 +2,10 @@ import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex, { Store } from 'vuex';
 import { i18n } from '@/components/plugins/i18n/i18n';
 import Counter from '@/pages/example/counter.vue';
-import { ICounterState } from '@/store/counter/state';
-// import { CounterModule } from '../module';
+import { CounterDefaultState, ICounterState } from '@/store/counter/state';
+import { CounterActions } from '@/store/counter/actions';
+import { CounterGetters } from '@/store/counter/getters';
+import { CounterMutations } from '@/store/counter/mutations';
 
 const localVue = createLocalVue();
 
@@ -12,10 +14,18 @@ localVue.use(Vuex);
 describe('Counter.vue', () => {
   let store: Store<ICounterState>;
 
+  const CounterModule = {
+    namespaced: true,
+    state: () => CounterDefaultState(),
+    mutations: CounterMutations,
+    actions: CounterActions,
+    getters: CounterGetters,
+  };
+
   beforeEach(() => {
     store = new Vuex.Store({
       modules: {
-        // counter: CounterModule,
+        counter: CounterModule,
       },
     } as any);
   });
@@ -25,7 +35,7 @@ describe('Counter.vue', () => {
       store,
       localVue,
       i18n,
-      stubs: ['router-link'],
+      stubs: ['nuxt-link'],
     });
 
     expect(wrapper.find('h1').text()).toBe('Counter: 0');
@@ -37,7 +47,7 @@ describe('Counter.vue', () => {
       store,
       localVue,
       i18n,
-      stubs: ['router-link'],
+      stubs: ['nuxt-link'],
     });
 
     wrapper.vm.increment();
@@ -47,12 +57,12 @@ describe('Counter.vue', () => {
     expect(store.dispatch).toHaveBeenCalledWith(`counter/decrement`, undefined);
   });
 
-  // test('dispatches action on the server', () => {
-  //   store.dispatch = jest.fn();
+  test('dispatches action on the server', () => {
+    store.dispatch = jest.fn();
 
-  //   Counter.prefetch({ store });
+    (Counter as any).fetch({ store });
 
-  //   expect(store.dispatch).toHaveBeenCalled();
-  //   expect(store.dispatch).toHaveBeenCalledWith(`counter/increment`);
-  // });
+    expect(store.dispatch).toHaveBeenCalled();
+    expect(store.dispatch).toHaveBeenCalledWith(`counter/increment`);
+  });
 });
