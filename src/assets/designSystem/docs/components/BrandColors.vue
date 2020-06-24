@@ -40,7 +40,7 @@ export default {
       });
 
       Object.keys(sections).forEach((key: string) => {
-        if (['section'].indexOf(key) === -1) {
+        if (!['section'].includes(key)) {
           arr.push({ name: key, colors: sections[key] });
         }
       });
