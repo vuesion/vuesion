@@ -31,11 +31,11 @@ export default {
   },
   methods: {
     openItem(idx: number) {
-      if (this.multiple && this.openItems.indexOf(idx) > -1) {
+      if (this.multiple && this.openItems.includes(idx)) {
         this.openItems = this.openItems.filter((item: number) => item !== idx);
       } else if (this.multiple) {
         this.openItems.push(idx);
-      } else if (this.openItems.indexOf(idx) > -1) {
+      } else if (this.openItems.includes(idx)) {
         this.openItems = [];
       } else {
         this.openItems = [idx];
@@ -45,7 +45,7 @@ export default {
     },
     handleItems() {
       this.items.forEach((item: any) => {
-        item.$data.open = this.openItems.indexOf(item.$data.idx) > -1;
+        item.$data.open = this.openItems.includes(item.$data.idx);
       });
     },
     register(item: any) {
