@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '@/assets/design-system';
+@import '~@/assets/design-system';
 
 .vueDataTableHeader {
   border: $data-table-header-border;
