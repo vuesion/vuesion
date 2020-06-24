@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '@/assets/design-system';
+@import '~@/assets/design-system';
 
 .vueCardHeader {
   display: block;

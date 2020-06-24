@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import VueCollapse from '../../VueCollapse/VueCollapse.vue';
+import VueCollapse from '@/components/VueCollapse/VueCollapse.vue';
 
 export default {
   name: 'VueAccordionItem',
@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '@/assets/design-system';
+@import '~@/assets/design-system';
 
 .vueAccordionItem {
   display: block;
