@@ -38,7 +38,7 @@ export default {
       });
 
       Object.keys(sections).forEach((key: string) => {
-        if (['sections', 'palette'].indexOf(key) === -1) {
+        if (!['sections', 'palette'].includes(key)) {
           arr.push({ name: key, colors: sections[key] });
         }
       });
