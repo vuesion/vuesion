@@ -46,6 +46,8 @@
     "@nuxt/typescript-build": "^1.0.0",
     "@nuxtjs/eslint-config-typescript": "^2.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
+    "@storybook/addon-actions": "5.3.19",
+    "@storybook/vue": "5.3.19",
     "@testing-library/jest-dom": "^5.10.0",
     "@testing-library/vue": "^5.0.4",
     "@types/jest": "^26.0.0",
