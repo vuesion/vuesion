@@ -1,5 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import Stage from '@/components/home1/Stage/Stage.vue';
+import Stage from '@/components/home/Stage/Stage.vue';
 import { i18n } from '@/components/plugins/i18n/i18n';
 
 const localVue = createLocalVue();
