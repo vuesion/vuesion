@@ -11,7 +11,7 @@
     "start": "nuxt-ts start",
     "lint": "eslint --ext .js,.ts.vue --ignore-path .gitignore .",
     "test": "jest",
-    "ci": "nuxt-ts build"
+    "ci": "nuxt-ts build && npm run test -- --runInBand"
   },
   "lint-staged": {
     "*.{js,ts,vue}": "npm run lint"
