@@ -3,9 +3,9 @@ import { HttpService, initHttpService } from '~/plugins/http-service/HttpService
 
 describe('ResponseInterceptor', () => {
   let mockAxios: MockAdapter;
-
   beforeEach(() => {
     initHttpService(
+      null,
       {
         state: {
           app: { config: { api: { baseUrl: '' } } },
@@ -17,9 +17,7 @@ describe('ResponseInterceptor', () => {
         commit: jest.fn(),
         dispatch: jest.fn(() => Promise.resolve()),
       } as any,
-      {
-        push: jest.fn(),
-      } as any,
+      jest.fn(),
     );
 
     mockAxios = new MockAdapter(HttpService);

@@ -13,14 +13,11 @@
 </template>
 
 <script lang="ts">
-import { registerModule } from '@/app/store';
-import VueGrid from '@/app/shared/components/VueGrid/VueGrid.vue';
-import VueBreadcrumb from '@components/VueBreadcrumb/VueBreadcrumb.vue';
-import VueGridRow from '@/app/shared/components/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridItem from '../../../src/app/shared/components/VueGrid/VueGridColumn/VueGridColumn.vue';
-import VueHeadline from '@/app/shared/components/VueHeadline/VueHeadline.vue';
-
-import { {{ properCase singularName }}Module } from '../module';
+import VueGrid from '@/components/VueGrid/VueGrid.vue';
+import VueBreadcrumb from '@/components/shared/VueBreadcrumb/VueBreadcrumb.vue';
+import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridItem from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue';
+import VueHeadline from '@/components/VueHeadline/VueHeadline.vue';
 
 export default {
   metaInfo:   {
@@ -42,26 +39,6 @@ export default {
         { label: this.$t('common.{{ properCase singularName }}' /* {{ properCase singularName }} */), href: '/{{ dashCase singularName }}' },
       ];
     },
-  },
-  beforeCreate() {
-    registerModule('{{ camelCase singularName }}', {{ properCase singularName }}Module);
-  },
-  prefetch: () => {
-    registerModule('{{ camelCase singularName }}', {{ properCase singularName }}Module);
-
-    /**
-     * This is the function where you can load all the data that is needed
-     * to render the page on the server and client side
-     *
-     * This function always returns a promise that means, if you want to
-     * call a vuex action you have to return it, here is an example
-     *
-     * return options.store.dispatch('fetch{{ properCase singularName }}', '1');
-     *
-     * If you need to fetch data from multiple source your can also return
-     * a Promise chain or a Promise.all()
-     */
-    return Promise.resolve();
   },
 };
 </script>

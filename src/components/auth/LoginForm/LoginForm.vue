@@ -52,12 +52,12 @@
 </template>
 
 <script lang="ts">
-import VueHeadline from '@/components/VueHeadline/VueHeadline.vue';
-import VueInput from '@/components/VueInput/VueInput.vue';
-import VueButton from '@/components/VueButton/VueButton.vue';
-import VueGrid from '@/components/VueGrid/VueGrid.vue';
-import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue';
+import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
+import VueInput from '@/components/shared/VueInput/VueInput.vue';
+import VueButton from '@/components/shared/VueButton/VueButton.vue';
+import VueGrid from '@/components/shared/VueGrid/VueGrid.vue';
+import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@/components/shared/VueGrid/VueGridColumn/VueGridColumn.vue';
 
 export default {
   name: 'LoginForm',
