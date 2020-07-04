@@ -5,4 +5,4 @@
 **/i18n/**
 **/logs/**
 **/node_modules/**
-jestsetup.ts
+**/.nuxt/**
