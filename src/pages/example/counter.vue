@@ -29,6 +29,7 @@
 </template>
 
 <script lang="ts">
+import { Context } from '@nuxt/types';
 import { mapActions, mapGetters } from 'vuex';
 import VueGrid from '@/components/shared/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
@@ -49,8 +50,8 @@ export default {
     VueHeadline,
     VueButton,
   },
-  async fetch({ store }: any) {
-    return await store.dispatch('counter/increment');
+  fetch({ store }: Context) {
+    return store.dispatch('counter/increment');
   },
   computed: {
     ...mapGetters('counter', ['count', 'incrementPending', 'decrementPending']),
