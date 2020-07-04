@@ -1,5 +1,5 @@
-import { AppGetters } from '@/store/getters';
-import { AppDefaultState, IAppState } from '@/store/state';
+import { AppGetters } from '~/store/app/getters';
+import { AppDefaultState, IAppState } from '~/store/app/state';
 
 describe('AppGetters', () => {
   let testState: IAppState;
