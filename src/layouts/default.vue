@@ -117,7 +117,6 @@
 
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
-// import { loadLocaleAsync } from '@shared/plugins/i18n/i18n';
 import '@/assets/designSystem/global.scss';
 import VueNavBar from '@/components/VueNavBar/VueNavBar.vue';
 import VueFooter from '@/components/VueFooter/VueFooter.vue';
@@ -140,13 +139,6 @@ import LoginForm from '@/components/auth/LoginForm/LoginForm.vue';
 import { addNotification } from '@/components/VueNotificationStack/utils';
 
 export default {
-  head() {
-    return {
-      htmlAttrs: {
-        class: this.theme,
-      },
-    };
-  },
   name: 'App',
   components: {
     LoginForm,
@@ -186,14 +178,11 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('app', ['cookieConsentVersion', 'getLocale', 'theme']),
+    ...mapGetters('app', ['cookieConsentVersion', 'locale', 'theme']),
     ...mapGetters('auth', ['isAuthenticated']),
   },
-  // created() {
-  //   this.initProgressBar();
-  // },
   methods: {
-    ...mapActions('app', ['changeLocale', 'setCookieConsentVersion', 'changeTheme']),
+    ...mapActions('app', ['setCookieConsentVersion', 'changeTheme']),
     ...mapActions('auth', ['createToken', 'revokeToken']),
     switchLocale(locale: string) {
       this.$router.push({
@@ -204,15 +193,6 @@ export default {
       this.changeTheme(theme);
       document.documentElement.className = theme;
     },
-    // initProgressBar() {
-    //   this.$router.beforeEach((to: any, from: any, next: any) => {
-    //     this.isNavigating = true;
-    //     next();
-    //   });
-    //   this.$router.afterEach(() => {
-    //     this.isNavigating = false;
-    //   });
-    // },
     async onLoginSubmit(formData: any) {
       this.isLoginPending = true;
 
@@ -236,6 +216,14 @@ export default {
       this.isLoginPending = false;
       this.showLoginModal = false;
     },
+  },
+  head() {
+    return {
+      htmlAttrs: {
+        class: this.theme,
+        lang: this.locale.substr(0, 2),
+      },
+    };
   },
 };
 </script>
