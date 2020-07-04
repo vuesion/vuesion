@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex, { Store } from 'vuex';
-import Counter from '@/pages/example/counter.vue';
+import Counter from './counter.vue';
 import { CounterDefaultState, ICounterState } from '@/store/counter/state';
 import { CounterActions } from '@/store/counter/actions';
 import { CounterGetters } from '@/store/counter/getters';

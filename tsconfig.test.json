@@ -1,7 +1,17 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-      "esModuleInterop": true
-    }
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["es2015", "es2016", "dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es5",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "esModuleInterop": true
   }
-  
+}

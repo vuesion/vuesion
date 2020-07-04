@@ -60,12 +60,9 @@ import VueGridColumn from '@/components/shared/VueGrid/VueGridColumn/VueGridColu
 import VueBreadcrumb from '@/components/shared/VueBreadcrumb/VueBreadcrumb.vue';
 import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
 import VueButton from '@/components/shared/VueButton/VueButton.vue';
-import { HttpService } from '~/plugins/http-service/HttpService';
+import { HttpService } from '@/plugins/http-service/HttpService';
 
 export default {
-  metaInfo: {
-    title: 'Dashboard',
-  },
   middleware: ['auth'],
   components: {
     VueBreadcrumb,
@@ -99,6 +96,11 @@ export default {
           this.pending = false;
         });
     },
+  },
+  head /* istanbul ignore next */() {
+    return {
+      title: 'vuesion - Dashboard',
+    };
   },
 };
 </script>
