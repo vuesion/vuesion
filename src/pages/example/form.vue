@@ -13,11 +13,11 @@
 </template>
 
 <script lang="ts">
-import VueGrid from '@/components/VueGrid/VueGrid.vue';
-import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue';
+import VueGrid from '@/components/shared/VueGrid/VueGrid.vue';
+import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@/components/shared/VueGrid/VueGridColumn/VueGridColumn.vue';
 import FormExample from '@/components/form/FormExample.vue';
-import VueBreadcrumb from '@/components/VueBreadcrumb/VueBreadcrumb.vue';
+import VueBreadcrumb from '@/components/shared/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
   metaInfo: {
