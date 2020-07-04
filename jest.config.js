@@ -29,15 +29,14 @@ module.exports = {
     '<rootDir>/pages/**/*.vue',
     '<rootDir>/store/**/*.vue',
   ],
-  // coverageThreshold: {
-  //   global: {
-  //     branches: 95,
-  //     functions: 95,
-  //     lines: 95,
-  //     statements: 95
-  //   }
-  // },
-  // coveragePathIgnorePatterns: [/node_modules/, '<rootDir>/jestsetup.ts'],
+  coverageThreshold: {
+    global: {
+      branches: 90,
+      functions: 90,
+      lines: 90,
+      statements: 90,
+    },
+  },
   coverageDirectory: '../coverage',
   coverageReporters: ['html', 'text', 'lcov', 'json'],
   preset: 'ts-jest',

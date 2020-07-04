@@ -2,7 +2,7 @@ import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
 import VueLoader from '../VueLoader/VueLoader.vue';
 import VueAutocomplete from './VueAutocomplete.vue';
 import { AutocompleteOptionsFixture } from './fixtures/IAutocompleteFixture';
-import { i18n } from '@/components/plugins/i18n/i18n';
+import { i18n } from '@/test/test-utils';
 
 const localVue = createLocalVue();
 

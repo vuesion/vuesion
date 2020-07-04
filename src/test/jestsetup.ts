@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import VueCompositionApi from '@vue/composition-api';
+import VueI18n from 'vue-i18n';
 import '~/plugins/vee-validate/vee-validate.ts';
 
 Vue.use(VueCompositionApi);
+Vue.use(VueI18n);
 
 const $style: any = require('identity-obj-proxy');
 

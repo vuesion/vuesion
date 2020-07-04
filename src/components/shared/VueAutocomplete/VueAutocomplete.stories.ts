@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import VueAutocomplete from './VueAutocomplete.vue';
 import { AutocompleteOptionsFixture } from './fixtures/IAutocompleteFixture';
-import { i18n } from '@/components/plugins/i18n/i18n';
+import { i18n } from '@/test/test-utils';
 
 const story = storiesOf('Organisms|Autocomplete', module) as any;
 
