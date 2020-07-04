@@ -14,8 +14,8 @@
     "paths": {
       "~/*": ["src/*"],
       "@/*": ["src/*"],
-      "@shared/*": ["src/components/*"],
-      "@components/*": ["src/components/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@components/*": ["src/app/shared/components/*"],
       "@static/*": ["src/static/*"]
     },
     "rootDirs": ["src"],
@@ -34,7 +34,5 @@
   },
   "include": ["./src/**/*", "./src/**/*.vue"],
   "exclude": ["node_modules", ".nuxt", "dist"],
-  "files": ["src/vue-shim.d.ts", "src/custom-typings.d.ts",
-    "src/vue.plugins.d.ts"
-  ]
+  "files": ["src/vue-shim.d.ts", "src/custom-typings.d.ts", "src/vue.plugins.d.ts"]
 }

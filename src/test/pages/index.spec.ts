@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import { i18n } from '@/components/plugins/i18n/i18n';
+import { i18n } from '@/test/test-utils';
 import Home from '@/pages/index.vue';
 import Stage from '@/components/home/Stage/Stage.vue';
 import HomeSection from '@/components/home/HomeSection/HomeSection.vue';

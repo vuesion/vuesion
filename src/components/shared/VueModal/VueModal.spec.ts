@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { render } from '@testing-library/vue';
 import VueModal from './VueModal.vue';
-import { triggerDocument } from '@/components/testing/test-utils';
+import { triggerDocument } from '@/test/test-utils';
 
 describe('VueModal.vue', () => {
   test('renders slot', async () => {

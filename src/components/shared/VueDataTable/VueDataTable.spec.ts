@@ -5,7 +5,7 @@ import VueDataTable from './VueDataTable.vue';
 import VueDataTableSearch from './VueDataTableSearch/VueDataTableSearch.vue';
 import VueDataTableHeader from './VueDataTableHeader/VueDataTableHeader.vue';
 import { dataTableDataFixture, dataTableHeaderFixture } from './DataTableFixtures';
-import { i18n } from '@/components/plugins/i18n/i18n';
+import { i18n } from '@/test/test-utils';
 
 const localVue = createLocalVue();
 
