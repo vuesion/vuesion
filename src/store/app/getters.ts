@@ -1,4 +1,4 @@
-import { IAppState } from '@/store/state';
+import { IAppState } from '~/store/app/state';
 
 export interface IAppGetters {
   getLocale(state: IAppState): string;

@@ -168,7 +168,7 @@
 import { mapState } from 'vuex';
 import Stage from '../components/home/Stage/Stage.vue';
 import HomeSection from '@/components/home/HomeSection/HomeSection.vue';
-import { IAppState } from '@/store/state';
+import { IAppState } from '~/store/app/state';
 import VueHeadline from '@/components/VueHeadline/VueHeadline.vue';
 import VueGrid from '@/components/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
