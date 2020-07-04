@@ -1,6 +1,6 @@
 interface Window {
   store: any;
-  __INITIAL_STATE__: any;
+  __NUXT__: any;
 }
 
 declare let nodeRequire: any;

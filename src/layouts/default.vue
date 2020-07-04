@@ -140,6 +140,13 @@ import LoginForm from '@/components/auth/LoginForm/LoginForm.vue';
 import { addNotification } from '@/components/VueNotificationStack/utils';
 
 export default {
+  head() {
+    return {
+      htmlAttrs: {
+        class: this.theme,
+      },
+    };
+  },
   name: 'App',
   components: {
     LoginForm,
@@ -179,14 +186,14 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['cookieConsentVersion', 'getLocale', 'theme']),
+    ...mapGetters('app', ['cookieConsentVersion', 'getLocale', 'theme']),
     ...mapGetters('auth', ['isAuthenticated']),
   },
   // created() {
   //   this.initProgressBar();
   // },
   methods: {
-    ...mapActions(['changeLocale', 'setCookieConsentVersion', 'changeTheme']),
+    ...mapActions('app', ['changeLocale', 'setCookieConsentVersion', 'changeTheme']),
     ...mapActions('auth', ['createToken', 'revokeToken']),
     switchLocale(locale: string) {
       this.$router.push({

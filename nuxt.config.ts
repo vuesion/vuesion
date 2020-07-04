@@ -32,7 +32,8 @@ const config: Configuration = {
    */
   plugins: [
     { src: '~/plugins/vee-validate' },
-    { src: '~/plugins/vuex-persist', ssr: false },
+    { src: '~/plugins/vuex-persist.client' },
+    { src: '~/plugins/vuex-persist.server' },
     { src: '~/plugins/vue-composition-api' },
   ],
   /*
