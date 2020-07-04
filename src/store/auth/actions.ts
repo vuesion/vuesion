@@ -5,7 +5,7 @@
 import { ActionContext } from 'vuex';
 import { IAuthState } from './state';
 // import { IState } from '@/store/state';
-import { HttpService } from '@/components/services/HttpService/HttpService';
+import { HttpService } from '~/plugins/http-service/HttpService';
 
 export interface IAuthResponse {
   access_token: string;
