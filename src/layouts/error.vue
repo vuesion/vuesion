@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import VueHeadline from '@/components/VueHeadline/VueHeadline.vue';
+import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
 
 export default {
   metaInfo: {

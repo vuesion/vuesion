@@ -118,25 +118,25 @@
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
 import '@/assets/designSystem/global.scss';
-import VueNavBar from '@/components/VueNavBar/VueNavBar.vue';
-import VueFooter from '@/components/VueFooter/VueFooter.vue';
-import VueNotificationStack from '@/components/VueNotificationStack/VueNotificationStack.vue';
-import VueCookieConsent from '@/components/VueCookieConsent/VueCookieConsent.vue';
-import VueNavigationProgress from '@/components/VueNavigationProgress/VueNavigationProgress.vue';
-import VueSidebar from '@/components/VueSidebar/VueSidebar.vue';
-import VueSidebarGroup from '@/components/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
-import VueSidebarGroupItem from '@/components/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
-import VueIconCode from '@/components/icons/VueIconCode/VueIconCode.vue';
-import VueIconBook from '@/components/icons/VueIconBook/VueIconBook.vue';
-import VueIconHashtag from '@/components/icons/VueIconHashtag/VueIconHashtag.vue';
-import VueIconGithub from '@/components/icons/VueIconGithub/VueIconGithub.vue';
-import VueIconTwitterSquare from '@/components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
-import VueSelect from '@/components/VueSelect/VueSelect.vue';
-import VueIconPuzzlePiece from '@/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
-import VueButton from '@/components/VueButton/VueButton.vue';
-import VueModal from '@/components/VueModal/VueModal.vue';
+import VueNavBar from '@/components/shared/VueNavBar/VueNavBar.vue';
+import VueFooter from '@/components/shared/VueFooter/VueFooter.vue';
+import VueNotificationStack from '@/components/shared/VueNotificationStack/VueNotificationStack.vue';
+import VueCookieConsent from '@/components/shared/VueCookieConsent/VueCookieConsent.vue';
+import VueNavigationProgress from '@/components/shared/VueNavigationProgress/VueNavigationProgress.vue';
+import VueSidebar from '@/components/shared/VueSidebar/VueSidebar.vue';
+import VueSidebarGroup from '@/components/shared/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
+import VueSidebarGroupItem from '@/components/shared/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
+import VueIconCode from '@/components/shared/icons/VueIconCode/VueIconCode.vue';
+import VueIconBook from '@/components/shared/icons/VueIconBook/VueIconBook.vue';
+import VueIconHashtag from '@/components/shared/icons/VueIconHashtag/VueIconHashtag.vue';
+import VueIconGithub from '@/components/shared/icons/VueIconGithub/VueIconGithub.vue';
+import VueIconTwitterSquare from '@/components/shared/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
+import VueSelect from '@/components/shared/VueSelect/VueSelect.vue';
+import VueIconPuzzlePiece from '@/components/shared/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
+import VueButton from '@/components/shared/VueButton/VueButton.vue';
+import VueModal from '@/components/shared/VueModal/VueModal.vue';
 import LoginForm from '@/components/auth/LoginForm/LoginForm.vue';
-import { addNotification } from '@/components/VueNotificationStack/utils';
+import { addNotification } from '@/components/shared/VueNotificationStack/utils';
 
 export default {
   name: 'App',
