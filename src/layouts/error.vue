@@ -35,10 +35,7 @@ export default {
   name: 'Error',
   components: { VueHeadline },
   props: {
-    error: {
-      type: Object,
-      required: true,
-    },
+    error: { type: Object, required: true },
   },
 };
 </script>

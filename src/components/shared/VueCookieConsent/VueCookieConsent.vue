@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import VueIconTimes from '../icons/VueIconTimes/VueIconTimes.vue';
-import FadeAnimation from '@/assets/animations/FadeAnimation/FadeAnimation.vue';
+import FadeAnimation from '../animations/FadeAnimation/FadeAnimation.vue';
 
 export default {
   name: 'VueCookieConsent',

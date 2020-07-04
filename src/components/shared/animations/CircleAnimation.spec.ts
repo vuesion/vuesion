@@ -1,4 +1,4 @@
-import { CircleAnimation } from '@/assets/animations/CircleAnimation';
+import { CircleAnimation } from './CircleAnimation';
 
 describe('CircleAnimation', () => {
   test('should animate', () => {

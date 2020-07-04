@@ -1,5 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import CollapseAnimation from '@/assets/animations/CollapseAnimation/CollapseAnimation.vue';
+import CollapseAnimation from './CollapseAnimation.vue';
 
 const localVue = createLocalVue();
 
