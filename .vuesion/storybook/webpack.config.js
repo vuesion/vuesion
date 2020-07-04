@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 const base = require('@vuesion/webpack/dist/config/base').default;
 
@@ -28,6 +29,11 @@ module.exports = ({ config }) => {
     ],
     enforce: 'pre',
   });
+
+  config.resolve.alias['@'] = path.join(path.dirname(path.resolve(__dirname)), '../src');
+  config.resolve.alias['@shared'] = path.join(path.dirname(path.resolve(__dirname)), '../src/components');
+  config.resolve.alias['@components'] = path.join(path.dirname(path.resolve(__dirname)), '../src/components');
+  config.resolve.alias['@static'] = path.join(path.dirname(path.resolve(__dirname)), '../src/static');
 
   return config;
 };
