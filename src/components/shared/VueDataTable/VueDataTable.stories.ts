@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import VueDropdownMenu from '../VueDropdownMenu/VueDropdownMenu.vue';
 import VueDataTable from './VueDataTable.vue';
 import { dataTableDataFixture, dataTableHeaderFixture } from './DataTableFixtures';
-import { i18n } from '@/components/plugins/i18n/i18n';
+import { i18n } from '@/test/test-utils';
 
 const story = storiesOf('Organisms|DataTable', module) as any;
 

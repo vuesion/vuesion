@@ -2,8 +2,6 @@
   <div id="app" :class="$style.app">
     <vue-notification-stack />
 
-    <vue-navigation-progress :is-navigating="isNavigating" />
-
     <vue-nav-bar>
       <vue-button v-if="isAuthenticated === false" slot="right" color="primary" @click="showLoginModal = true">
         Login
@@ -122,7 +120,6 @@ import VueNavBar from '@/components/shared/VueNavBar/VueNavBar.vue';
 import VueFooter from '@/components/shared/VueFooter/VueFooter.vue';
 import VueNotificationStack from '@/components/shared/VueNotificationStack/VueNotificationStack.vue';
 import VueCookieConsent from '@/components/shared/VueCookieConsent/VueCookieConsent.vue';
-import VueNavigationProgress from '@/components/shared/VueNavigationProgress/VueNavigationProgress.vue';
 import VueSidebar from '@/components/shared/VueSidebar/VueSidebar.vue';
 import VueSidebarGroup from '@/components/shared/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
 import VueSidebarGroupItem from '@/components/shared/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
@@ -154,7 +151,6 @@ export default {
     VueSidebarGroupItem,
     VueSidebarGroup,
     VueSidebar,
-    VueNavigationProgress,
     VueCookieConsent,
     VueNavBar,
     VueFooter,

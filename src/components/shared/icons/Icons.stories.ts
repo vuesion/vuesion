@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import IconList from '~/assets/designSystem/docs/components/IconList.js';
+import IconList from '@/assets/designSystem/docs/components/IconList.vue';
 
 const story = storiesOf('Atoms|Icons', module) as any;
 
