@@ -29,6 +29,7 @@
     "@types/animejs": "^3.1.1",
     "@types/cookie-parser": "^1.4.2",
     "@types/helmet": "^0.0.47",
+    "@vuesion/vuex-persist": "4.0.0-alpha.11",
     "animejs": "^3.2.0",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
