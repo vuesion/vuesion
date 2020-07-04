@@ -1,5 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import FadeAnimation from '@/assets/animations/FadeAnimation/FadeAnimation.vue';
+import FadeAnimation from './FadeAnimation.vue';
 
 const localVue = createLocalVue();
 

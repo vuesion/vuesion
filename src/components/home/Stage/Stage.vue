@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { CircleAnimation } from '@/assets/animations/CircleAnimation';
+import { CircleAnimation } from '@/components/shared/animations/CircleAnimation';
 import VueGrid from '@/components/shared/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/shared/VueGrid/VueGridColumn/VueGridColumn.vue';
