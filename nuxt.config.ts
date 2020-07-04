@@ -3,9 +3,6 @@ import { Configuration } from '@nuxt/types';
 const config: Configuration = {
   mode: 'universal',
   srcDir: 'src',
-  /*
-   ** Headers of the page
-   */
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -19,45 +16,22 @@ const config: Configuration = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-  /*
-   ** Customize the progress-bar color
-   */
   loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
   css: [],
-  /*
-   ** Plugins to load before mounting the App
-   */
   plugins: [
     { src: '~/plugins/vee-validate' },
     { src: '~/plugins/vuex-persist.client' },
     { src: '~/plugins/vuex-persist.server' },
     { src: '~/plugins/vue-composition-api' },
   ],
-  /*
-   ** Nuxt.js dev-modules
-   */
   buildModules: ['@nuxt/typescript-build'],
-  /*
-   ** Nuxt.js modules
-   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     'nuxt-i18n',
   ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
   axios: {},
-  /*
-   ** I18n module configuration
-   ** See https://nuxt-community.github.io/nuxt-i18n/options-reference.html
-   */
   i18n: {
     locales: [
       {
@@ -80,14 +54,21 @@ const config: Configuration = {
     defaultLocale: 'en',
     lazy: true,
     langDir: '../i18n/',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieDomain: null,
+      cookieKey: 'i18n_redirected',
+      alwaysRedirect: true,
+      fallbackLocale: 'en',
+    },
+    vuex: {
+      moduleName: 'i18n',
+      syncLocale: true,
+      syncMessages: false,
+      syncRouteParams: true,
+    },
   },
-  /*
-   ** Build configuration
-   */
   build: {
-    /*
-     ** You can extend webpack config here
-     */
     extractCSS: true,
     loaders: {
       cssModules: {
