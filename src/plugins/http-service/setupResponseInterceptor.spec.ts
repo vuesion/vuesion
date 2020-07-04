@@ -1,5 +1,5 @@
 import MockAdapter from 'axios-mock-adapter';
-import { HttpService, initHttpService } from '@/components/services/HttpService/HttpService';
+import { HttpService, initHttpService } from '~/plugins/http-service/HttpService';
 
 describe('ResponseInterceptor', () => {
   let mockAxios: MockAdapter;
@@ -86,7 +86,7 @@ describe('ResponseInterceptor', () => {
     try {
       await Promise.all([HttpService.get('/me'), HttpService.get('/protected-route')]);
     } catch (e) {
-      const actual = HttpService.router.push;
+      const actual = HttpService.redirect;
       const expected = '/';
 
       expect(actual).toBeCalledWith(expected);

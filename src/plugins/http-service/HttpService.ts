@@ -1,4 +1,4 @@
-import VueRouter from 'vue-router';
+import { NuxtAxiosInstance } from '@nuxtjs/axios';
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Store } from 'vuex';
 import { setupResponseInterceptor } from './setupResponseInterceptor';
@@ -7,7 +7,7 @@ import { IState } from '~/store/IState';
 
 export interface IHttpService extends AxiosInstance {
   store?: Store<any>;
-  router?: VueRouter;
+  redirect?: (path: string) => void;
   isReAuthenticating?: boolean;
   pendingRequests?: any[];
 }
@@ -15,14 +15,19 @@ export interface IHttpService extends AxiosInstance {
 // eslint-disable-next-line import/no-mutable-exports
 export let HttpService: IHttpService = axios.create();
 
-export const initHttpService = (store?: Store<IState>, router?: VueRouter) => {
-  /* istanbul ignore next */
-  HttpService = axios.create({
-    baseURL: store?.state?.app?.config?.api?.baseUrl || '',
-  });
+export const initHttpService = (
+  axiosInstance?: NuxtAxiosInstance,
+  store?: Store<IState>,
+  redirect?: (path: string) => void,
+) => {
+  if (axiosInstance && store?.state?.app?.config?.api?.baseUrl) {
+    axiosInstance.setBaseURL(store.state.app.config.api.baseUrl);
+    HttpService = axiosInstance;
+  }
 
   HttpService.store = store;
-  HttpService.router = router;
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  HttpService.redirect = redirect || function () {};
   HttpService.isReAuthenticating = false;
   HttpService.pendingRequests = [];
 

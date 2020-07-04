@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter';
 import { AuthDefaultState, IAuthState } from '@/store/auth/state';
 // import { IState } from '@/store/state';
 import { AuthActions } from '@/store/auth/actions';
-import { HttpService } from '@/components/services/HttpService/HttpService';
+import { HttpService } from '~/plugins/http-service/HttpService';
 
 describe('AuthActions', () => {
   let testContext: ActionContext<IAuthState, IAuthState>;
