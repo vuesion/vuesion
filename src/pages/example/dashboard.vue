@@ -60,7 +60,7 @@ import VueGridColumn from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue'
 import VueBreadcrumb from '@/components/VueBreadcrumb/VueBreadcrumb.vue';
 import VueHeadline from '@/components/VueHeadline/VueHeadline.vue';
 import VueButton from '@/components/VueButton/VueButton.vue';
-import { HttpService } from '@/components/services/HttpService/HttpService';
+import { HttpService } from '~/plugins/http-service/HttpService';
 
 export default {
   metaInfo: {

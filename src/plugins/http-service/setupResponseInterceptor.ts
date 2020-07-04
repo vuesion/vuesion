@@ -1,5 +1,5 @@
 import { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
-import { HttpService, replaceOldToken } from '@/components/services/HttpService/HttpService';
+import { HttpService, replaceOldToken } from '~/plugins/http-service/HttpService';
 
 function flushPendingRequests(error: any, accessToken?: string) {
   HttpService.pendingRequests.forEach((promise: any) => {
@@ -55,7 +55,7 @@ export const setupResponseInterceptor = () => {
 
           flushPendingRequests(e);
           reject(e);
-          HttpService.router.push('/');
+          HttpService.redirect('/');
         }
       });
     }

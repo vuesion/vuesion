@@ -16,14 +16,15 @@ const config: Configuration = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-  loading: { color: '#fff' },
+  loading: { color: '#cd235b' },
   css: [],
   plugins: [
     { src: '~/plugins/vuex-persist/vuex-persist.client' },
     { src: '~/plugins/vuex-persist/vuex-persist.server' },
     { src: '~/plugins/app-config/app-config.server' },
-    { src: '~/plugins/vee-validate/vee-validate' },
+    { src: '~/plugins/http-service/http-service' },
     { src: '~/plugins/vue-composition-api/vue-composition-api' },
+    { src: '~/plugins/vee-validate/vee-validate' },
   ],
   buildModules: ['@nuxt/typescript-build'],
   modules: [
