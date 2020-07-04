@@ -21,6 +21,7 @@
     "rootDirs": ["src"],
     "types": [
       "@nuxt/types",
+      "@nuxtjs/axios",
       "node",
       "animejs",
       "express",
@@ -33,5 +34,7 @@
   },
   "include": ["./src/**/*", "./src/**/*.vue"],
   "exclude": ["node_modules", ".nuxt", "dist"],
-  "files": ["src/vue-shim.d.ts", "src/custom-typings.d.ts", "src/plugins/vue.plugins.d.ts"]
+  "files": ["src/vue-shim.d.ts", "src/custom-typings.d.ts",
+    "src/vue.plugins.d.ts"
+  ]
 }

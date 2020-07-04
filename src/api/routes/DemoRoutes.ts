@@ -1,5 +1,4 @@
 import * as express from 'express';
-// import { serve } from '../utils/Utils';
 import { getIntInRange } from '@vuesion/utils/dist/randomGenerator';
 
 const getErrorWithProbability = (probability: number) => getIntInRange(0, 100) <= probability;

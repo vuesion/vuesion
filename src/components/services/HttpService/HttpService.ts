@@ -1,9 +1,9 @@
 import VueRouter from 'vue-router';
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Store } from 'vuex';
-// import { IState } from '@/app/state';
 import { setupResponseInterceptor } from './setupResponseInterceptor';
 import { setupRequestInterceptor } from './setupRequestInterceptor';
+import { IState } from '~/store/IState';
 
 export interface IHttpService extends AxiosInstance {
   store?: Store<any>;
@@ -12,9 +12,10 @@ export interface IHttpService extends AxiosInstance {
   pendingRequests?: any[];
 }
 
+// eslint-disable-next-line import/no-mutable-exports
 export let HttpService: IHttpService = axios.create();
 
-export const initHttpService = (store?: Store<any>, router?: VueRouter) => {
+export const initHttpService = (store?: Store<IState>, router?: VueRouter) => {
   /* istanbul ignore next */
   HttpService = axios.create({
     baseURL: store?.state?.app?.config?.api?.baseUrl || '',
