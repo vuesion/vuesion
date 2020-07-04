@@ -12,13 +12,6 @@ describe('AppActions', () => {
     } as ActionContext<IAppState, IAppState>;
   });
 
-  test('it should change the locale', () => {
-    AppActions.changeLocale(testContext, 'de');
-
-    expect(testContext.commit).toHaveBeenCalled();
-    expect(testContext.commit).toHaveBeenCalledWith('CHANGE_LOCALE', 'de');
-  });
-
   test('it should change the cookie consent version', () => {
     AppActions.setCookieConsentVersion(testContext, '1.0.0');
 
