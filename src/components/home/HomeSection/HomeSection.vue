@@ -14,10 +14,10 @@
 </template>
 
 <script lang="ts">
-import VueGrid from '@/components/VueGrid/VueGrid.vue';
-import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue';
-import VueImage from '@/components/VueImage/VueImage.vue';
+import VueGrid from '@/components/shared/VueGrid/VueGrid.vue';
+import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@/components/shared/VueGrid/VueGridColumn/VueGridColumn.vue';
+import VueImage from '@/components/shared/VueImage/VueImage.vue';
 
 export default {
   name: 'HomeSection',

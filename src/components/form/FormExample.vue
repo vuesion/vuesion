@@ -155,14 +155,14 @@
 </template>
 
 <script lang="ts">
-import VueInput from '@/components/VueInput/VueInput.vue';
-import VueSelect from '@/components/VueSelect/VueSelect.vue';
-import VueCheckbox from '@/components/VueCheckbox/VueCheckbox.vue';
-import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue';
-import VueButton from '@/components/VueButton/VueButton.vue';
-import { addNotification, INotification } from '@/components/VueNotificationStack/utils';
-import VueHeadline from '@/components/VueHeadline/VueHeadline.vue';
+import VueInput from '@/components/shared/VueInput/VueInput.vue';
+import VueSelect from '@/components/shared/VueSelect/VueSelect.vue';
+import VueCheckbox from '@/components/shared/VueCheckbox/VueCheckbox.vue';
+import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@/components/shared/VueGrid/VueGridColumn/VueGridColumn.vue';
+import VueButton from '@/components/shared/VueButton/VueButton.vue';
+import { addNotification, INotification } from '@/components/shared/VueNotificationStack/utils';
+import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
 
 export default {
   name: 'FormExample',

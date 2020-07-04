@@ -30,12 +30,12 @@
 
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
-import VueGrid from '@/components/VueGrid/VueGrid.vue';
-import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue';
-import VueBreadcrumb from '@/components/VueBreadcrumb/VueBreadcrumb.vue';
-import VueHeadline from '@/components/VueHeadline/VueHeadline.vue';
-import VueButton from '@/components/VueButton/VueButton.vue';
+import VueGrid from '@/components/shared/VueGrid/VueGrid.vue';
+import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@/components/shared/VueGrid/VueGridColumn/VueGridColumn.vue';
+import VueBreadcrumb from '@/components/shared/VueBreadcrumb/VueBreadcrumb.vue';
+import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
+import VueButton from '@/components/shared/VueButton/VueButton.vue';
 
 export default {
   metaInfo: {

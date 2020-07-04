@@ -48,11 +48,11 @@
 
 <script lang="ts">
 import { CircleAnimation } from '@/assets/animations/CircleAnimation';
-import VueGrid from '@/components/VueGrid/VueGrid.vue';
-import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue';
-import VueIconGithub from '@/components/icons/VueIconGithub/VueIconGithub.vue';
-import VueHeadline from '@/components/VueHeadline/VueHeadline.vue';
+import VueGrid from '@/components/shared/VueGrid/VueGrid.vue';
+import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@/components/shared/VueGrid/VueGridColumn/VueGridColumn.vue';
+import VueIconGithub from '@/components/shared/icons/VueIconGithub/VueIconGithub.vue';
+import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
 
 export default {
   components: { VueHeadline, VueIconGithub, VueGridColumn, VueGridRow, VueGrid },

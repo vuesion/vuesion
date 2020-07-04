@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import BrandColors from './components/BrandColors.vue';
 import ColorPalette from './components/ColorPalette.vue';
-import VueMarkdown from '@/components/VueMarkdown/VueMarkdown.vue';
+import VueMarkdown from '@/components/shared/VueMarkdown/VueMarkdown.vue';
 
 let story = storiesOf('Design System|Design System', module) as any;
 
@@ -92,7 +92,7 @@ H5             | 1.6rem      | $font-weight-regular
 H4             | 1.6rem      | $font-weight-regular
 
 ### Line heights
-Line height is measured by taking the font size and adding 0.8rem. 
+Line height is measured by taking the font size and adding 0.8rem.
 
 ### List Style
 Lists are indented by 1.6rem.
@@ -114,7 +114,7 @@ Component     | Purpose
 --------------|-------
 VueGrid       | Container that is limited in the width, general page layout
 VueGridRow    | Row that is always 100% width and will be stacked on the page
-VueGridColumn | Column in the row that will be distributed equally on the page 
+VueGridColumn | Column in the row that will be distributed equally on the page
 
 ### Spacing
 To keep the spacing consistent we have a couple of variables with the prefix \`$space-\`
