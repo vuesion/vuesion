@@ -19,10 +19,11 @@ const config: Configuration = {
   loading: { color: '#fff' },
   css: [],
   plugins: [
-    { src: '~/plugins/vee-validate' },
-    { src: '~/plugins/vuex-persist.client' },
-    { src: '~/plugins/vuex-persist.server' },
-    { src: '~/plugins/vue-composition-api' },
+    { src: '~/plugins/vuex-persist/vuex-persist.client' },
+    { src: '~/plugins/vuex-persist/vuex-persist.server' },
+    { src: '~/plugins/app-config/app-config.server' },
+    { src: '~/plugins/vee-validate/vee-validate' },
+    { src: '~/plugins/vue-composition-api/vue-composition-api' },
   ],
   buildModules: ['@nuxt/typescript-build'],
   modules: [

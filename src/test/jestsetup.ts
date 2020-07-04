@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueCompositionApi from '@vue/composition-api';
-import '@/plugins/vee-validate.ts';
+import '~/plugins/vee-validate/vee-validate.ts';
 
 Vue.use(VueCompositionApi);
 
