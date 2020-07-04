@@ -11,7 +11,9 @@
     "start": "nuxt-ts start",
     "lint": "eslint --ext .js,.ts.vue --ignore-path .gitignore .",
     "test": "jest",
-    "ci": "nuxt-ts build && npm run test -- --runInBand"
+    "ci": "nuxt-ts build && npm run test -- --runInBand",
+    "storybook:dev": "start-storybook -p 6060 --config-dir ./.vuesion/storybook",
+    "storybook:build": "vuesion storybook"
   },
   "lint-staged": {
     "*.{js,ts,vue}": "npm run lint"
@@ -56,7 +58,10 @@
     "@types/testing-library__jest-dom": "^5.9.1",
     "@vue/composition-api": "^0.6.3",
     "@vue/test-utils": "^1.0.0-beta.27",
+    "@vuesion/service": "4.0.0-alpha.11",
+    "@vuesion/storybook-theme-switcher": "4.0.0-alpha.11",
     "@vuesion/utils": "^4.0.0-alpha.11",
+    "@vuesion/webpack": "4.0.0-alpha.11",
     "axios-mock-adapter": "^1.18.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",

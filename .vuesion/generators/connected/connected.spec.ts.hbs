@@ -1,0 +1,35 @@
+import { createLocalVue, mount } from '@vue/test-utils';
+import Vuex, { Store } from 'vuex';
+import { i18n } from '@/app/shared/plugins/i18n/i18n';
+import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
+import { I{{ properCase singularName }}State } from '../state';
+import { {{ properCase singularName }}Module } from '../module';
+
+const localVue = createLocalVue();{{#if wantVuex}}
+
+localVue.use(Vuex);{{/if}}
+
+describe('{{ properCase componentName }}.vue', () => {
+  let store: Store<I{{ properCase singularName }}State>;
+
+  beforeEach(() => {
+    store = new Vuex.Store({
+      modules: {
+        {{ camelCase singularName }}: {{ properCase singularName }}Module,
+      },
+    } as any);
+  });
+
+  test('renders component', () => {
+    const wrapper = mount<any>({{ properCase componentName }}, {
+      store,
+      localVue,
+      i18n,
+      stubs: ['router-link'],
+    });
+
+    {{ properCase componentName }}.prefetch({});
+
+    expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
+  });
+});

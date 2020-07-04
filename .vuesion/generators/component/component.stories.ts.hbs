@@ -1,0 +1,17 @@
+import { storiesOf } from '@storybook/vue';
+import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
+
+const story = storiesOf('{{ properCase componentName }}', module) as any;
+
+story.add(
+  'Default',
+  () => ({
+    components: { {{ properCase componentName }} },
+    template: `<{{ kebabCase componentName }}>{{ properCase componentName }}</{{ kebabCase componentName }}>`,
+  }),
+  {
+    info: {
+      components: { {{ properCase componentName }} },
+    },
+  },
+);

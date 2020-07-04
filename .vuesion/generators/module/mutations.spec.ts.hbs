@@ -1,0 +1,15 @@
+import { {{ properCase singularName }}Mutations } from './mutations';
+import { {{ properCase singularName }}DefaultState, I{{ properCase singularName }}State } from './state';
+
+describe('{{ properCase singularName }}Mutations', () => {
+  let testState: I{{ properCase singularName }}State;
+
+  beforeEach(() => {
+    testState = {{ properCase singularName }}DefaultState();
+  });
+
+  test('Please write the tests for the mutations here', () => {
+    // here is an example: https://github.com/vuesion/vuesion/blob/master/src/app/counter/mutations.spec.ts
+    expect(true).toBeFalsy();
+  });
+});

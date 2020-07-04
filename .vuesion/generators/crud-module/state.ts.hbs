@@ -1,0 +1,21 @@
+import { I{{ properCase singularName }} } from './I{{ properCase singularName }}';
+
+export interface I{{ properCase singularName }}State {
+  /**
+   * put your state attributes here, for example:
+   * myAttribute: any;
+   */
+  {{ camelCase pluralName }}: I{{ properCase singularName }}[];
+  current{{ properCase singularName }}: I{{ properCase singularName }};
+}
+
+export const {{ properCase singularName }}DefaultState = (): I{{ properCase singularName }}State => {
+  return {
+    /**
+     * put your default value here, for example:
+     * myAttribute: null,
+     */
+    {{ camelCase pluralName }}: [],
+    current{{ properCase singularName }}: null,
+  };
+};

@@ -1,0 +1,232 @@
+{
+  "projectName": "vuesion",
+  "projectOwner": "vuesion",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 64,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "devCrossNet",
+      "name": "Johannes Werner",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1667598?v=4",
+      "profile": "https://twitter.com/_jwerner_",
+      "contributions": [
+        "code",
+        "bug",
+        "doc",
+        "design",
+        "example",
+        "tool"
+      ]
+    },
+    {
+      "login": "40818419",
+      "name": "Konstantin Kulinicenko",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2235499?s=460&v=4",
+      "profile": "https://github.com/40818419",
+      "contributions": [
+        "code",
+        "bug",
+        "doc",
+        "example"
+      ]
+    },
+    {
+      "login": "xMartin",
+      "name": "xMartin",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/112532?v=4",
+      "profile": "http://xmartin.de/",
+      "contributions": [
+        "code",
+        "bug",
+        "doc",
+        "example"
+      ]
+    },
+    {
+      "login": "SilverLeaves",
+      "name": "Silver·湫澲",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/31165554?v=4",
+      "profile": "http://saigao.fun",
+      "contributions": [
+        "doc",
+        "translation"
+      ]
+    },
+    {
+      "login": "stavros-liaskos",
+      "name": "Stavros Liaskos",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/17932287?v=4",
+      "profile": "https://stavrosliaskos.com/",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "marceloboeira",
+      "name": "Marcelo Boeira",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1898225?v=4",
+      "profile": "https://marceloboeira.com",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "Riari",
+      "name": "Rick Mann",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3583774?v=4",
+      "profile": "http://teamteatime.net/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "EnigmaCurry",
+      "name": "Ryan McGuire",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/43061?v=4",
+      "profile": "http://www.EnigmaCurry.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jmcdo29",
+      "name": "Jay McDoniel",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/28268680?v=4",
+      "profile": "https://github.com/jmcdo29",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "livgrhm",
+      "name": "Olivia Graham",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3798005?v=4",
+      "profile": "http://livgrhm.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "hugomn",
+      "name": "Hugo Magalhães",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/497957?v=4",
+      "profile": "http://hugomagalhaes.com",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "glederer",
+      "name": "glederer",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/7151993?v=4",
+      "profile": "https://github.com/glederer",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "tamer-mohamed",
+      "name": "Tamer Mohamed",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4436327?v=4",
+      "profile": "https://github.com/tamer-mohamed",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "rizwanzaheer",
+      "name": "Rizwan Zaheer",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13586702?v=4",
+      "profile": "https://github.com/rizwanzaheer",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "rgrosjean",
+      "name": "rgrosjean",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/39985706?v=4",
+      "profile": "https://github.com/rgrosjean",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "bernardocorbella",
+      "name": "Bernardo Corbella",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4535719?v=4",
+      "profile": "https://corbella.me",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "MohitTilwani15",
+      "name": "Mohit Tilwani",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13518712?v=4",
+      "profile": "http://mohittilwani.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "eipiminus1",
+      "name": "eipiminus1 ",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11791837?v=4",
+      "profile": "https://github.com/eipiminus1",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "jezmck",
+      "name": "Jez McKean",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/89996?v=4",
+      "profile": "http://jezmck.com",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "einfalles",
+      "name": "Duylam Nguyen-Ngo",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/855206?v=4",
+      "profile": "http://duylam.pleaserevise.xyz",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "majroth",
+      "name": "Martin Merschroth",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19751007?v=4",
+      "profile": "https://www.merschroth.design/",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "campunknita",
+      "name": "Camila Peralta Wieland",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1984124?v=4",
+      "profile": "http://www.camswork.com",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "HeavenlyEntity",
+      "name": "Alec M",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/39228141?v=4",
+      "profile": "http://alecsoftolio.com",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+import { Module } from 'vuex';
+import { IState } from '@/app/state';
+import { {{ properCase singularName }}DefaultState, I{{ properCase singularName }}State } from './state';
+import { {{ properCase singularName }}Actions } from './actions';
+import { {{ properCase singularName }}Getters } from './getters';
+import { {{ properCase singularName }}Mutations } from './mutations';
+
+export const {{ properCase singularName }}Module: Module<I{{ properCase singularName }}State, IState> = {
+  namespaced: true,
+  actions: {
+    ...{{ properCase singularName }}Actions,
+  },
+  getters: {
+    ...{{ properCase singularName }}Getters,
+  },
+  state: {
+    ...{{ properCase singularName }}DefaultState(),
+  },
+  mutations: {
+    ...{{ properCase singularName }}Mutations,
+  },
+};

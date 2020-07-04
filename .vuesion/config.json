@@ -1,0 +1,36 @@
+{
+  "outputDirectory": "./dist",
+  "currentVersion": "v4.0.0",
+  "generators": {
+    "blueprintDirectory": "./.vuesion/generators",
+    "outputDirectory": "./src/app",
+    "routerFile": "./src/app/router.ts",
+    "stateFile": "./src/app/state.ts"
+  },
+  "i18n": {
+    "defaultLocale": "en",
+    "supportedLocales": ["en", "de", "pt", "zh-cn"]
+  },
+  "clean": ["./dist", "./coverage", "./storybook-static"],
+  "prettier": {
+    "extensions": "ts,vue,js,json,scss,sass,css,yaml,yml"
+  },
+  "webpack": {
+    "aliases": {
+      "@": "src",
+      "@shared": "src/app/shared",
+      "@components": "src/app/shared/components",
+      "@static": "src/static"
+    }
+  },
+  "spa": {
+    "appShellRoute": "/",
+    "additionalRoutes": ["/example/form"]
+  },
+  "devServer": {
+    "watchOptions": {
+      "aggregateTimeout": 300,
+      "poll": false
+    }
+  }
+}

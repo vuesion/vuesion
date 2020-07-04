@@ -1,0 +1,30 @@
+import { I{{ properCase singularName }}State } from './state';
+import { I{{ properCase singularName }} } from './I{{ properCase singularName }}';
+
+export interface I{{ properCase singularName }}Mutations {
+  SET_{{ constantCase pluralName }}(state: I{{ properCase singularName }}State, {{ camelCase pluralName }}: I{{ properCase singularName }}[]): void;
+  SET_CURRENT_{{ constantCase singularName }}(state: I{{ properCase singularName }}State, {{ camelCase singularName}}: I{{ properCase singularName }}): void;
+  ADD_{{ constantCase singularName }}(state: I{{ properCase singularName }}State, {{ camelCase singularName}}: I{{ properCase singularName }}): void;
+  UPDATE_{{ constantCase singularName }}(state: I{{ properCase singularName }}State, {{ camelCase singularName}}: I{{ properCase singularName }}): void;
+  DELETE_{{ constantCase singularName }}(state: I{{ properCase singularName }}State, {{ camelCase singularName}}: I{{ properCase singularName }}): void;
+}
+
+export const {{ properCase singularName }}Mutations: I{{ properCase singularName }}Mutations = {
+  SET_{{ constantCase pluralName }}: (state, {{ camelCase pluralName }}) => {
+    state.{{ camelCase pluralName }} = {{ camelCase pluralName }};
+  },
+  SET_CURRENT_{{ constantCase singularName }}: (state, {{ camelCase singularName}}) => {
+    state.current{{ properCase singularName }} = {{ camelCase singularName }};
+  },
+  ADD_{{ constantCase singularName }}: (state, {{ camelCase singularName}}) => {
+    state.{{ camelCase pluralName }}.push({{ camelCase singularName}});
+  },
+  UPDATE_{{ constantCase singularName }}: (state, {{ camelCase singularName}}) => {
+    const idx = state.{{ camelCase pluralName }}.findIndex((item) => item.id === {{ camelCase singularName}}.id);
+    state.{{ camelCase pluralName }}.splice(idx, 1, {{ camelCase singularName}});
+  },
+  DELETE_{{ constantCase singularName }}: (state, {{ camelCase singularName}}) => {
+    const idx = state.{{ camelCase pluralName }}.findIndex((item) => item.id === {{ camelCase singularName}}.id);
+    state.{{ camelCase pluralName }}.splice(idx, 1);
+  },
+};

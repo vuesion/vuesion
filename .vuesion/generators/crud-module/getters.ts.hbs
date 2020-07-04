@@ -1,0 +1,16 @@
+import { I{{ properCase singularName }}State } from './state';
+import { I{{ properCase singularName }} } from './I{{ properCase singularName }}';
+
+export interface I{{ properCase singularName }}Getters {
+  {{ camelCase pluralName }}(state: I{{ properCase singularName }}State): I{{ properCase singularName }}[];
+  current{{ properCase singularName }}(state: I{{ properCase singularName }}State): I{{ properCase singularName }};
+}
+
+export const {{ properCase singularName }}Getters: I{{ properCase singularName }}Getters = {
+  {{ camelCase pluralName }}(state) {
+    return state.{{ camelCase pluralName }};
+  },
+  current{{ properCase singularName }}(state) {
+    return state.current{{ properCase singularName }};
+  },
+};

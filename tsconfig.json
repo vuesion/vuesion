@@ -3,11 +3,7 @@
     "target": "es2018",
     "module": "esnext",
     "moduleResolution": "node",
-    "lib": [
-      "esnext",
-      "esnext.asynciterable",
-      "dom"
-    ],
+    "lib": ["esnext", "esnext.asynciterable", "dom"],
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -16,12 +12,11 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "src/*"
-      ],
-      "@/*": [
-        "src/*"
-      ]
+      "~/*": ["src/*"],
+      "@/*": ["src/*"],
+      "@shared/*": ["src/components/*"],
+      "@components/*": ["src/components/*"],
+      "@static/*": ["src/static/*"]
     },
     "rootDirs": ["src"],
     "types": [
@@ -37,10 +32,6 @@
     ]
   },
   "include": ["./src/**/*", "./src/**/*.vue"],
-  "exclude": [
-    "node_modules",
-    ".nuxt",
-    "dist"
-  ],
+  "exclude": ["node_modules", ".nuxt", "dist"],
   "files": ["src/vue-shim.d.ts", "src/custom-typings.d.ts", "src/plugins/vue.plugins.d.ts"]
 }
