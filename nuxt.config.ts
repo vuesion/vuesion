@@ -14,7 +14,10 @@ const config: Configuration = {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Inter:200,400,600&display=swap' },
+    ],
   },
   loading: { color: '#cd235b' },
   css: [],
@@ -35,6 +38,7 @@ const config: Configuration = {
   ],
   axios: {},
   i18n: {
+    vueI18n: '~/plugins/vue-i18n/vue-i18n',
     locales: [
       {
         code: 'en',

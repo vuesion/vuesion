@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { render } from '@testing-library/vue';
 import { ref } from '@vue/composition-api';
 import { useBackdrop } from './use-backdrop';
-import { TestComponent } from '@/components/testing/test-utils';
+import { TestComponent } from '@/test/test-utils';
 
 describe('use-backdrop.ts', () => {
   beforeEach(() => (document.body.style.overflow = ''));
