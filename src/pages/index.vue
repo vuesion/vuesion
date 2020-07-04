@@ -168,11 +168,11 @@
 import { mapState } from 'vuex';
 import Stage from '../components/home/Stage/Stage.vue';
 import HomeSection from '@/components/home/HomeSection/HomeSection.vue';
-import { IAppState } from '~/store/app/state';
 import VueHeadline from '@/components/VueHeadline/VueHeadline.vue';
 import VueGrid from '@/components/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue';
+import { IState } from '~/store/IState';
 
 export default {
   components: {
@@ -185,8 +185,8 @@ export default {
   },
   computed: {
     ...mapState({
-      disableParticles: (state: IAppState) =>
-        (state.config && state.config.features && state.config.features.disableParticles) || false,
+      disableParticles: (state: IState) =>
+        (state.app.config && state.app.config.features && state.app.config.features.disableParticles) || false,
     }),
   },
   head() {
