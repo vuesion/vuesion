@@ -39,9 +39,6 @@ import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
 import VueButton from '@/components/shared/VueButton/VueButton.vue';
 
 export default {
-  metaInfo: {
-    title: 'Counter',
-  },
   components: {
     VueGrid,
     VueGridRow,
@@ -58,6 +55,11 @@ export default {
   },
   methods: {
     ...mapActions('counter', ['increment', 'decrement']),
+  },
+  head /* istanbul ignore next */() {
+    return {
+      title: 'vuesion - Counter',
+    };
   },
 };
 </script>

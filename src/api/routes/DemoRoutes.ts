@@ -18,7 +18,7 @@ export const DemoRoutes = (app: express.Application) => {
     }
   });
   // app.use('/storybook', serve('../../storybook-static'));
-  app.use('/docs', (req: express.Request, res: express.Response) => {
+  app.use('/docs', (_: express.Request, res: express.Response) => {
     res.status(301).redirect('https://vuesion.github.io/docs/en/');
   });
 
@@ -37,7 +37,7 @@ export const DemoRoutes = (app: express.Application) => {
     }
   });
 
-  app.delete('/token', (req: express.Request, res: express.Response) => {
+  app.delete('/token', (_: express.Request, res: express.Response) => {
     if (getErrorWithProbability(10)) {
       res.status(500).json({});
     } else {
@@ -45,7 +45,7 @@ export const DemoRoutes = (app: express.Application) => {
     }
   });
 
-  app.get('/protected', (req: express.Request, res: express.Response) => {
+  app.get('/protected', (_: express.Request, res: express.Response) => {
     if (getErrorWithProbability(40)) {
       res.status(401).json({});
     } else {

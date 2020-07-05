@@ -146,7 +146,7 @@ export default {
       const handlePos: number[] = [parseInt(this.handleLeftPosition, 10), parseInt(this.handleRightPosition, 10)];
       const startIndex: number = this.isMultiRange ? 1 : 0;
 
-      return handlePos.reduce((closestIdx, node, idx) => {
+      return handlePos.reduce((closestIdx, _, idx) => {
         const challenger = Math.abs(handlePos[idx] - percentageDiff);
         const current = Math.abs(handlePos[closestIdx] - percentageDiff);
         return challenger < current ? idx : closestIdx;

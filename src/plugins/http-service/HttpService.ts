@@ -3,7 +3,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Store } from 'vuex';
 import { setupResponseInterceptor } from './setupResponseInterceptor';
 import { setupRequestInterceptor } from './setupRequestInterceptor';
-import { IState } from '~/store/IState';
+import { IState } from '@/store/IState';
 
 export interface IHttpService extends AxiosInstance {
   store?: Store<any>;

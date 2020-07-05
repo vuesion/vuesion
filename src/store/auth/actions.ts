@@ -1,11 +1,11 @@
-// /**
-//  * based on Springboot security
-//  */
+/**
+ * based on Springboot security
+ */
 
 import { ActionContext } from 'vuex';
 import { IAuthState } from './state';
-// import { IState } from '@/store/state';
-import { HttpService } from '~/plugins/http-service/HttpService';
+import { IState } from '@/store/IState';
+import { HttpService } from '@/plugins/http-service/HttpService';
 
 export interface IAuthResponse {
   access_token: string;
@@ -18,11 +18,11 @@ export interface IAuthRequest {
 }
 
 export interface IAuthActions {
-  createToken(context: ActionContext<IAuthState, IAuthState>, data: IAuthRequest): Promise<any>;
+  createToken(context: ActionContext<IAuthState, IState>, data: IAuthRequest): Promise<any>;
 
-  refreshToken(context: ActionContext<IAuthState, IAuthState>): Promise<any>;
+  refreshToken(context: ActionContext<IAuthState, IState>): Promise<any>;
 
-  revokeToken(context: ActionContext<IAuthState, IAuthState>): Promise<any>;
+  revokeToken(context: ActionContext<IAuthState, IState>): Promise<any>;
 }
 
 const getFormData = (username: string, password: string) =>

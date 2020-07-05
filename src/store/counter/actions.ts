@@ -1,19 +1,20 @@
 import { ActionContext } from 'vuex';
 import { ICounterState } from './state';
-import { HttpService } from '~/plugins/http-service/HttpService';
+import { HttpService } from '@/plugins/http-service/HttpService';
+import { IState } from '@/store/IState';
 
 export interface ICounterResponse {
   count: number;
 }
 
 export interface ICounterActions {
-  increment(context: ActionContext<ICounterState, ICounterState>): Promise<any>;
+  increment(context: ActionContext<ICounterState, IState>): Promise<any>;
 
-  decrement(context: ActionContext<ICounterState, ICounterState>): Promise<any>;
+  decrement(context: ActionContext<ICounterState, IState>): Promise<any>;
 }
 
 export const CounterActions: ICounterActions = {
-  async increment({ commit, state }: ActionContext<ICounterState, ICounterState>) {
+  async increment({ commit, state }) {
     commit('SET_INCREMENT_PENDING', true);
 
     try {
@@ -26,7 +27,7 @@ export const CounterActions: ICounterActions = {
       throw new Error(e);
     }
   },
-  async decrement({ commit, state }: ActionContext<ICounterState, ICounterState>) {
+  async decrement({ commit, state }) {
     commit('SET_DECREMENT_PENDING', true);
 
     try {

@@ -1,5 +1,5 @@
 import { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
-import { HttpService, replaceOldToken } from '~/plugins/http-service/HttpService';
+import { HttpService, replaceOldToken } from '@/plugins/http-service/HttpService';
 
 function flushPendingRequests(error: any, accessToken?: string) {
   HttpService.pendingRequests.forEach((promise: any) => {
@@ -36,12 +36,13 @@ export const setupResponseInterceptor = () => {
       }
 
       HttpService.isReAuthenticating = true;
-
+      // eslint-disable-next-line no-console
       console.log('refreshing token ...');
       return new Promise(async (resolve, reject) => {
         try {
           await HttpService.store.dispatch('auth/refreshToken');
 
+          // eslint-disable-next-line no-console
           console.log('refreshing token successful ...');
           const {
             auth: { accessToken },
@@ -50,6 +51,7 @@ export const setupResponseInterceptor = () => {
           flushPendingRequests(null, accessToken);
           resolve(HttpService(replaceOldToken(originalRequest, accessToken)));
         } catch (e) {
+          // eslint-disable-next-line no-console
           console.log('refreshing token failure ...');
           e.status = 403;
 

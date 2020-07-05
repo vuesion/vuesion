@@ -23,19 +23,21 @@
 import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
 
 export default {
-  metaInfo: {
-    title: 'vuesion - an error occurred',
-    meta: [
-      {
-        name: 'robots',
-        content: 'NOINDEX,NOFOLLOW',
-      },
-    ],
-  },
   name: 'Error',
   components: { VueHeadline },
   props: {
     error: { type: Object, required: true },
+  },
+  head() {
+    return {
+      title: this.error.statusCode === 404 ? 'vuesion - page not found' : 'vuesion - an error occurred',
+      meta: [
+        {
+          name: 'robots',
+          content: 'NOINDEX,NOFOLLOW',
+        },
+      ],
+    };
   },
 };
 </script>

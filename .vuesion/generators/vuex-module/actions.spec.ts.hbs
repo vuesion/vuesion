@@ -1,9 +1,9 @@
 import { ActionContext, Commit, Dispatch } from 'vuex';
 import MockAdapter from 'axios-mock-adapter';
-import { IState } from '@/app/state';
-import { HttpService } from '@/app/shared/services/HttpService/HttpService';
 import { {{ properCase singularName }}Actions } from './actions';
 import { {{ properCase singularName }}DefaultState, I{{ properCase singularName }}State } from './state';
+import { IState } from '@/store/IState';
+import { HttpService } from '@/plugins/http-service/HttpService';
 
 describe('{{ properCase singularName }}Actions', () => {
   let testContext: ActionContext<I{{ properCase singularName }}State, IState>;
@@ -24,7 +24,7 @@ describe('{{ properCase singularName }}Actions', () => {
       const commitMock: jest.Mock = testContext.commit as jest.Mock;
       const expected = {};
 
-      mockAxios.onGet('/{{ singularName }}').reply(200, expected);
+      mockAxios.onGet('/{{ pluralName }}').reply(200, expected);
 
       await {{ properCase singularName }}Actions.fetch{{ properCase pluralName }}(testContext);
 
@@ -34,7 +34,7 @@ describe('{{ properCase singularName }}Actions', () => {
     });
 
     test('it should throw an error on failure', async () => {
-      mockAxios.onGet('/{{ singularName }}').reply(500);
+      mockAxios.onGet('/{{ pluralName }}').reply(500);
 
       try {
         await {{ properCase singularName }}Actions.fetch{{ properCase pluralName }}(testContext);
@@ -49,7 +49,7 @@ describe('{{ properCase singularName }}Actions', () => {
       const commitMock: jest.Mock = testContext.commit as jest.Mock;
       const expected = {};
 
-      mockAxios.onGet('/{{ singularName }}/1').reply(200, expected);
+      mockAxios.onGet('/{{ pluralName }}/1').reply(200, expected);
 
       await {{ properCase singularName }}Actions.fetch{{ properCase singularName }}(testContext, '1');
 
@@ -59,7 +59,7 @@ describe('{{ properCase singularName }}Actions', () => {
     });
 
     test('it should throw an error on failure', async () => {
-      mockAxios.onGet('/{{ singularName }}/1').reply(500);
+      mockAxios.onGet('/{{ pluralName }}/1').reply(500);
 
       try {
         await {{ properCase singularName }}Actions.fetch{{ properCase singularName }}(testContext, '1');
@@ -69,14 +69,14 @@ describe('{{ properCase singularName }}Actions', () => {
     });
   });
 
-  describe('add{{ properCase singularName }}', () => {
+  describe('create{{ properCase singularName }}', () => {
     test('it should call ADD_{{ constantCase singularName }} on success', async () => {
       const commitMock: jest.Mock = testContext.commit as jest.Mock;
       const expected = {};
 
-      mockAxios.onPost('/{{ singularName }}').reply(200, expected);
+      mockAxios.onPost('/{{ pluralName }}').reply(200, expected);
 
-      await {{ properCase singularName }}Actions.add{{ properCase singularName }}(testContext, expected);
+      await {{ properCase singularName }}Actions.create{{ properCase singularName }}(testContext, expected);
 
       const actual = commitMock.mock.calls[0];
 
@@ -84,10 +84,10 @@ describe('{{ properCase singularName }}Actions', () => {
     });
 
     test('it should throw an error on failure', async () => {
-      mockAxios.onPost('/{{ singularName }}').reply(500);
+      mockAxios.onPost('/{{ pluralName }}').reply(500);
 
       try {
-        await {{ properCase singularName }}Actions.add{{ properCase singularName }}(testContext, {});
+        await {{ properCase singularName }}Actions.create{{ properCase singularName }}(testContext, {});
       } catch (e) {
         expect(e.message).toEqual('Request failed with status code 500');
       }
@@ -99,7 +99,7 @@ describe('{{ properCase singularName }}Actions', () => {
       const commitMock: jest.Mock = testContext.commit as jest.Mock;
       const expected = { id: '1' };
 
-      mockAxios.onPut('/{{ singularName }}/1').reply(200, expected);
+      mockAxios.onPut('/{{ pluralName }}/1').reply(200, expected);
 
       await {{ properCase singularName }}Actions.update{{ properCase singularName }}(testContext, expected);
 
@@ -109,7 +109,7 @@ describe('{{ properCase singularName }}Actions', () => {
     });
 
     test('it should throw an error on failure', async () => {
-      mockAxios.onPut('/{{ singularName }}/1').reply(500);
+      mockAxios.onPut('/{{ pluralName }}/1').reply(500);
 
       try {
         await {{ properCase singularName }}Actions.update{{ properCase singularName }}(testContext, { id: '1' });
@@ -124,7 +124,7 @@ describe('{{ properCase singularName }}Actions', () => {
       const commitMock: jest.Mock = testContext.commit as jest.Mock;
       const expected = { id: '1' };
 
-      mockAxios.onDelete('/{{ singularName }}/1').reply(200, expected);
+      mockAxios.onDelete('/{{ pluralName }}/1').reply(200, expected);
 
       await {{ properCase singularName }}Actions.delete{{ properCase singularName }}(testContext, expected);
 
@@ -134,7 +134,7 @@ describe('{{ properCase singularName }}Actions', () => {
     });
 
     test('it should throw an error on failure', async () => {
-      mockAxios.onDelete('/{{ singularName }}/1').reply(500);
+      mockAxios.onDelete('/{{ pluralName }}/1').reply(500);
 
       try {
         await {{ properCase singularName }}Actions.delete{{ properCase singularName }}(testContext, { id: '1' });

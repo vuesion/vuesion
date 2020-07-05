@@ -1,0 +1,44 @@
+import { createLocalVue, mount, Wrapper } from '@vue/test-utils';
+import Vuex, { Store } from 'vuex';
+import {{ properCase componentName }} from './{{ dashCase componentName }}.vue';
+import AppActions from '@/store/app/actions';
+import AppGetters from '@/store/app/getters';
+import AppMutations from '@/store/app/mutations';
+import AppDefaultState, { IAppState } from '@/store/app/state';
+import { i18n } from '@/test/test-utils';
+
+const localVue = createLocalVue();
+
+localVue.use(Vuex);
+
+describe('{{ properCase componentName }}.vue', () => {
+  let store: Store<IAppState>;
+  let wrapper: Wrapper<any>;
+
+  beforeEach(() => {
+    store = new Vuex.Store({
+      modules: {
+        app: {
+          namespaced: true,
+          actions: AppActions,
+          getters: AppGetters,
+          mutations: AppMutations,
+          state: AppDefaultState(),
+        },
+      },
+    } as any);
+
+    store.dispatch = jest.fn();
+
+    wrapper = mount<any>({{ properCase componentName }}, {
+      store,
+      localVue,
+      i18n,
+      stubs: ['nuxt-link'],
+    });
+  });
+
+  test('renders component', () => {
+    expect(wrapper.find('h1').text()).toBe('{{ properCase componentName }}');
+  });
+});

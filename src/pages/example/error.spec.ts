@@ -1,5 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import Error from '~/layouts/error.vue';
+import Error from '@/layouts/error.vue';
 
 const localVue = createLocalVue();
 

@@ -1,5 +1,5 @@
-import { IState } from '~/store/IState';
-import { IAppState } from '~/store/app/state';
+import { IState } from '@/store/IState';
+import { IAppState } from '@/store/app/state';
 
 export interface IAppGetters {
   locale(state: IAppState, getters: IAppGetters, rootState: IState): string;
@@ -10,7 +10,7 @@ export interface IAppGetters {
 }
 
 export const AppGetters: IAppGetters = {
-  locale(state, getters, rootsState) {
+  locale(_, __, rootsState) {
     return rootsState.i18n.locale;
   },
   cookieConsentVersion(state) {

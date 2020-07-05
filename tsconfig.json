@@ -12,11 +12,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"],
-      "@/*": ["src/*"],
-      "@shared/*": ["src/app/shared/*"],
-      "@components/*": ["src/app/shared/components/*"],
-      "@static/*": ["src/static/*"]
+      "@/*": ["src/*"]
     },
     "rootDirs": ["src"],
     "types": [
@@ -33,6 +29,6 @@
     ]
   },
   "include": ["./src/**/*", "./src/**/*.vue"],
-  "exclude": ["node_modules", ".nuxt", "dist"],
+  "exclude": ["node_modules", ".nuxt"],
   "files": ["src/vue-shim.d.ts", "src/custom-typings.d.ts", "src/vue.plugins.d.ts"]
 }

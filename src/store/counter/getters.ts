@@ -7,13 +7,13 @@ export interface ICounterGetters {
 }
 
 export const CounterGetters: ICounterGetters = {
-  incrementPending(state: ICounterState): boolean {
+  incrementPending(state) {
     return state.incrementPending;
   },
-  decrementPending(state: ICounterState): boolean {
+  decrementPending(state) {
     return state.decrementPending;
   },
-  count(state: ICounterState): number {
+  count(state): number {
     return state.count;
   },
 };
