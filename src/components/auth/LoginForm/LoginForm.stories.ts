@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import LoginForm from './LoginForm.vue';
 import { i18n } from '@/test/test-utils';
 
-const story = storiesOf('Organisms|LoginForm', module) as any;
+const story = storiesOf('Auth|LoginForm', module) as any;
 
 story.add(
   'Default',
