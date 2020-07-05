@@ -9,13 +9,13 @@ export interface ICounterMutations {
 }
 
 export const CounterMutations: ICounterMutations = {
-  SET_INCREMENT_PENDING: (state: ICounterState, pending: boolean) => {
+  SET_INCREMENT_PENDING: (state, pending) => {
     state.incrementPending = pending;
   },
-  SET_DECREMENT_PENDING: (state: ICounterState, pending: boolean) => {
+  SET_DECREMENT_PENDING: (state, pending) => {
     state.decrementPending = pending;
   },
-  SET_COUNT: (state: ICounterState, count: number) => {
+  SET_COUNT: (state, count) => {
     state.count = count;
   },
 };

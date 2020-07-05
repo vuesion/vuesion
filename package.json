@@ -1,19 +1,57 @@
 {
-  "name": "vuesion-nuxt",
-  "version": "1.0.0",
-  "description": "My splendiferous Nuxt.js project",
-  "author": "Thomas Misikoff",
+  "name": "vuesion",
   "private": true,
+  "version": "3.7.2",
+  "description": "The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vuesion/vuesion.git"
+  },
+  "keywords": [
+    "vue",
+    "vuex",
+    "vue-router",
+    "webpack",
+    "typescript",
+    "server-side-rendering",
+    "boilerplate",
+    "jest",
+    "enterprise",
+    "components",
+    "design-system",
+    "nuxt.js",
+    "nuxt"
+  ],
+  "author": "Johannes Werner <johannes.werner86@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/vuesion/vuesion",
+  "bugs": {
+    "url": "https://github.com/vuesion/vuesion/issues"
+  },
   "scripts": {
     "dev": "nuxt-ts",
+    "generate": "vuesion generate",
+    "add": "vuesion add",
+    "extract-i18n-messages": "vuesion extract-i18n-messages",
+    "test": "vuesion test --coverage",
+    "test:watch": "vuesion test --coverage --watch",
+    "e2e": "vuesion e2e",
+    "lint": "vuesion lint --cache",
+    "clean": "vuesion clean",
+    "storybook:dev": "vuesion storybook --dev",
+    "storybook:build": "vuesion storybook",
+    "update": "vuesion update",
+    "prettier": "vuesion prettier",
+    "release:major": "vuesion release --major",
+    "release:minor": "vuesion release --minor",
+    "release:patch": "vuesion release --patch",
     "build": "nuxt-ts build",
-    "generate": "nuxt-ts generate",
+    "build:analyze": "nuxt-ts build --analyze",
+    "build:spa": "nuxt-ts generate",
     "start": "nuxt-ts start",
-    "lint": "eslint . --ext .js,.ts.vue --fix",
-    "test": "jest",
-    "ci": "nuxt-ts build && npm run test -- --runInBand",
-    "storybook:dev": "start-storybook -p 6060 --config-dir ./.vuesion/storybook",
-    "storybook:build": "vuesion storybook"
+    "e2e:ci": "npx start-server-and-test dev http://localhost:3000 e2e",
+    "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\" \"npm run e2e:ci\"",
+    "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\""
   },
   "lint-staged": {
     "*.{js,ts,vue}": "npm run lint"
@@ -21,7 +59,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
+      "pre-commit": "vuesion parallel \"vuesion prettier --staged\" \"npm run lint\" \"npm run test\""
     }
   },
   "dependencies": {
@@ -31,7 +69,8 @@
     "@types/animejs": "^3.1.1",
     "@types/cookie-parser": "^1.4.2",
     "@types/helmet": "^0.0.47",
-    "@vuesion/vuex-persist": "4.0.0-alpha.11",
+    "@vuesion/utils": "^4.0.0-alpha.12",
+    "@vuesion/vuex-persist": "4.0.0-alpha.12",
     "animejs": "^3.2.0",
     "compression": "^1.7.4",
     "config": "3.3.1",
@@ -42,8 +81,7 @@
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^6.12.2",
     "query-string": "6.13.1",
-    "vee-validate": "^3.3.3",
-    "vuex-persist": "^2.2.0"
+    "vee-validate": "^3.3.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.0.1",
@@ -61,10 +99,8 @@
     "@types/testing-library__jest-dom": "^5.9.1",
     "@vue/composition-api": "^0.6.3",
     "@vue/test-utils": "^1.0.0-beta.27",
-    "@vuesion/service": "4.0.0-alpha.11",
-    "@vuesion/storybook-theme-switcher": "4.0.0-alpha.11",
-    "@vuesion/utils": "^4.0.0-alpha.11",
-    "@vuesion/webpack": "4.0.0-alpha.11",
+    "@vuesion/service": "4.0.0-alpha.12",
+    "@vuesion/storybook-theme-switcher": "4.0.0-alpha.12",
     "axios-mock-adapter": "^1.18.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
@@ -88,5 +124,60 @@
   "engines": {
     "node": ">= 12.0.0",
     "npm": ">= 6.0.0"
+  },
+  "jest": {
+    "globals": {
+      "window": true,
+      "ts-jest": {
+        "tsConfig": "tsconfig.test.json"
+      }
+    },
+    "rootDir": ".",
+    "setupFiles": [
+      "<rootDir>/src/test/jestsetup.ts"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/test/jest-dom-importer.ts"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "^vue$": "vue/dist/vue.common.js"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "/cypress/"
+    ],
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/layouts/",
+      "/plugins/",
+      "/test/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageDirectory": "./coverage",
+    "coverageReporters": [
+      "html",
+      "text",
+      "lcov",
+      "json"
+    ],
+    "preset": "ts-jest",
+    "testMatch": null
   }
 }

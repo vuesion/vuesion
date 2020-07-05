@@ -1,15 +1,16 @@
 import { ActionContext, Commit, Dispatch } from 'vuex';
-import { IAppState } from '~/store/app/state';
-import { AppActions } from '~/store/app/actions';
+import { IAppState } from '@/store/app/state';
+import { AppActions } from '@/store/app/actions';
+import { IState } from '@/store/IState';
 
 describe('AppActions', () => {
-  let testContext: ActionContext<IAppState, IAppState>;
+  let testContext: ActionContext<IAppState, IState>;
 
   beforeEach(() => {
     testContext = {
       dispatch: jest.fn() as Dispatch,
       commit: jest.fn() as Commit,
-    } as ActionContext<IAppState, IAppState>;
+    } as ActionContext<IAppState, IState>;
   });
 
   test('it should change the cookie consent version', () => {

@@ -1,7 +1,4 @@
 *.yml
-src/index.template.html
-dist
-logs
 node_modules
 storybook-static
 coverage

@@ -1,4 +1,4 @@
-import { IAppConfig } from '~/plugins/app-config/IAppConfig';
+import { IAppConfig } from '@/plugins/app-config/IAppConfig';
 
 export interface IAppState {
   config: IAppConfig;

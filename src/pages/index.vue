@@ -172,7 +172,7 @@ import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
 import VueGrid from '@/components/shared/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/shared/VueGrid/VueGridColumn/VueGridColumn.vue';
-import { IState } from '~/store/IState';
+import { IState } from '@/store/IState';
 
 export default {
   components: {

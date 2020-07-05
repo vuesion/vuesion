@@ -1,4 +1,5 @@
-:root, :root.light {
+:root,
+:root.light {
   /* Brand Variations */
   --brand-default: #{palette-color-level('grey', 90)};
   --brand-default-hover: #{palette-color-level('grey', 30)};

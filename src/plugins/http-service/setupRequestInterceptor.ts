@@ -1,5 +1,5 @@
 import { AxiosRequestConfig, AxiosError } from 'axios';
-import { HttpService } from '~/plugins/http-service/HttpService';
+import { HttpService } from '@/plugins/http-service/HttpService';
 
 export function setupRequestInterceptor() {
   HttpService.interceptors.request.use(

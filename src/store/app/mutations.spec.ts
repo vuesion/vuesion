@@ -1,5 +1,5 @@
-import { AppMutations } from '~/store/app/mutations';
-import { AppDefaultState, IAppState } from '~/store/app/state';
+import { AppMutations } from '@/store/app/mutations';
+import { AppDefaultState, IAppState } from '@/store/app/state';
 
 describe('AppMutations', () => {
   let testState: IAppState;

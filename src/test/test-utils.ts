@@ -1,5 +1,5 @@
 import VueI18n from 'vue-i18n';
-import { dateTimeFormats } from '~/plugins/vue-i18n/vue-i18n';
+import { dateTimeFormats } from '@/plugins/vue-i18n/vue-i18n';
 
 export const TestComponent = (setup: (props?: any, options?: any) => void, template = '<div/>'): any => ({
   setup,
@@ -30,3 +30,7 @@ if (typeof beforeEach !== 'undefined') {
 export const i18n = new VueI18n({
   dateTimeFormats,
 });
+
+i18n.locale = 'en';
+i18n.fallbackLocale = 'en';
+i18n.setLocaleMessage('en', require('../../i18n/en.json'));

@@ -1,4 +1,3 @@
-import { Context } from '@nuxt/types';
 import VueI18n from 'vue-i18n';
 
 export const calendarFormats: any = {
@@ -28,7 +27,7 @@ export const dateTimeFormats: VueI18n.DateTimeFormats = {
   de: calendarFormats,
 };
 
-export default function (context: Context): any {
+export default function (): any {
   return {
     dateTimeFormats,
   };
