@@ -1,0 +1,36 @@
+import { ActionContext } from 'vuex';
+import { I{{ properCase singularName }}State } from './state';
+import { I{{ properCase singularName }} } from './I{{ properCase singularName }}';
+import { IState } from '@/store/IState';
+import { HttpService } from '@/plugins/http-service/HttpService';
+
+export interface I{{ properCase singularName }}Actions {
+  fetch{{ properCase pluralName }}(context: ActionContext<I{{ properCase singularName }}State, IState>): Promise<any>;
+  fetch{{ properCase singularName }}(context: ActionContext<I{{ properCase singularName }}State, IState>, id: string): Promise<any>;
+  create{{ properCase singularName }}(context: ActionContext<I{{ properCase singularName }}State, IState>, {{ camelCase singularName }}: I{{ properCase singularName }}): Promise<any>;
+  update{{ properCase singularName }}(context: ActionContext<I{{ properCase singularName }}State, IState>, {{ camelCase singularName }}: I{{ properCase singularName }}): Promise<any>;
+  delete{{ properCase singularName }}(context: ActionContext<I{{ properCase singularName }}State, IState>, {{ camelCase singularName }}: I{{ properCase singularName }}): Promise<any>;
+}
+
+export const {{ properCase singularName }}Actions: I{{ properCase singularName }}Actions = {
+  async fetch{{ properCase pluralName }}({ commit }) {
+    const response = await HttpService.get<I{{ properCase singularName }}[]>('/{{ pluralName }}');
+    commit('SET_{{ constantCase pluralName }}', response.data);
+  },
+  async fetch{{ properCase singularName  }}({ commit }, id) {
+    const response = await HttpService.get<I{{ properCase singularName }}>(`/{{ pluralName }}/${id}`);
+    commit('SET_CURRENT_{{ constantCase singularName }}', response.data);
+  },
+  async create{{ properCase singularName }}({ commit }, {{ camelCase singularName }}) {
+    const response = await HttpService.post<I{{ properCase singularName }}>('/{{ pluralName }}', {{ camelCase singularName }});
+    commit('ADD_{{ constantCase singularName }}', response.data);
+  },
+  async update{{ properCase singularName }}({ commit }, {{ camelCase singularName }}) {
+    const response = await HttpService.put<I{{ properCase singularName }}>(`/{{ pluralName }}/${ {{ camelCase singularName }}.id }`, {{ camelCase singularName }});
+    commit('UPDATE_{{ constantCase singularName }}', response.data);
+  },
+  async delete{{ properCase singularName }}({ commit }, {{ camelCase singularName }}) {
+    await HttpService.delete<I{{ properCase singularName }}>(`/{{ pluralName }}/${ {{ camelCase singularName }}.id }`);
+    commit('DELETE_{{ constantCase singularName }}', {{ camelCase singularName }});
+  },
+};

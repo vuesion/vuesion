@@ -226,7 +226,7 @@ describe('VueAutocomplete.vue', () => {
     setTimeout(() => {
       expect(wrapper.emitted().request).toBeTruthy();
       done();
-    }, 300);
+    }, 500);
   });
 
   test('setResultContainerHeight', () => {

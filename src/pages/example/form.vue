@@ -20,9 +20,6 @@ import FormExample from '@/components/form/FormExample.vue';
 import VueBreadcrumb from '@/components/shared/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
-  metaInfo: {
-    title: 'vuesion - Form Example',
-  },
   components: {
     VueBreadcrumb,
     FormExample,
@@ -35,6 +32,11 @@ export default {
   },
   computed: {},
   methods: {},
+  head /* istanbul ignore next */() {
+    return {
+      title: 'vuesion - Form Example',
+    };
+  },
 };
 </script>
 

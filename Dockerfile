@@ -6,7 +6,7 @@ ENV NODE_ENV=production
 ENV PORT=3000
 RUN mkdir /logs
 COPY ./package* ./
-COPY ./dist ./dist
+COPY ./nuxt ./nuxt
 COPY ./.vuesion/config.json ./.vuesion/config.json
 COPY ./i18n ./i18n
 COPY ./storybook-static ./storybook-static

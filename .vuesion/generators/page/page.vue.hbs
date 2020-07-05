@@ -13,16 +13,13 @@
 </template>
 
 <script lang="ts">
-import VueGrid from '@/components/VueGrid/VueGrid.vue';
+import VueGrid from '@/components/shared/VueGrid/VueGrid.vue';
 import VueBreadcrumb from '@/components/shared/VueBreadcrumb/VueBreadcrumb.vue';
-import VueGridRow from '@/components/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridItem from '@/components/VueGrid/VueGridColumn/VueGridColumn.vue';
-import VueHeadline from '@/components/VueHeadline/VueHeadline.vue';
+import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridItem from '@/components/shared/VueGrid/VueGridColumn/VueGridColumn.vue';
+import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
 
 export default {
-  metaInfo:   {
-    title: '{{ properCase componentName }}',
-  },
   components: {
     VueGrid,
     VueBreadcrumb,
@@ -31,20 +28,25 @@ export default {
     VueHeadline,
   },
   data: (): any => ({}),
-  methods: {},
   computed: {
     breadCrumbItems() {
       return [
         { label: this.$t('common.home' /* Home */), href: '/' },
-        { label: this.$t('common.{{ properCase singularName }}' /* {{ properCase singularName }} */), href: '/{{ dashCase singularName }}' },
+        { label: this.$t('common.{{ properCase componentName }}' /* {{ properCase componentName }} */), href: '/{{filePath}}/{{ dashCase componentName }}' },
       ];
     },
+  },
+  methods: {},
+  head /* istanbul ignore next */() {
+    return {
+      title: '{{ properCase componentName }}',
+    };
   },
 };
 </script>
 
 <style lang="scss" module>
-@import "~@/app/shared/design-system";
+@import '~@/assets/design-system';
 
 .{{ camelCase componentName }} {
   margin-top: $nav-bar-height;

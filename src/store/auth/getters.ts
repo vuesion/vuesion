@@ -5,7 +5,7 @@ export interface IAuthGetters {
 }
 
 export const AuthGetters: IAuthGetters = {
-  isAuthenticated(state: IAuthState): boolean {
+  isAuthenticated(state) {
     return state.accessToken !== null;
   },
 };

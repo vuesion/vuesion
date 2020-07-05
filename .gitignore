@@ -67,6 +67,7 @@ typings/
 
 # nuxt.js build output
 .nuxt
+nuxt.config.js
 
 # Nuxt generate
 dist
@@ -88,3 +89,9 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# Storybook
+storybook-static
+
+# Cypress
+cypress/videos
