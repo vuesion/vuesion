@@ -36,6 +36,6 @@ export const useBackdrop = (show: Ref<boolean>, { scrollable }: IBackdropOptions
         }
       }
     },
-    // { lazy: true },
+    { immediate: false },
   );
 };

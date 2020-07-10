@@ -166,12 +166,12 @@
 
 <script lang="ts">
 import { mapState } from 'vuex';
-import Stage from '../components/home/Stage/Stage.vue';
-import HomeSection from '@/components/home/HomeSection/HomeSection.vue';
-import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
-import VueGrid from '@/components/shared/VueGrid/VueGrid.vue';
-import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/shared/VueGrid/VueGridColumn/VueGridColumn.vue';
+import Stage from '../components/organisms/Stage/Stage.vue';
+import HomeSection from '@/components/organisms/HomeSection/HomeSection.vue';
+import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
+import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
+import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import { IState } from '@/store/IState';
 
 export default {

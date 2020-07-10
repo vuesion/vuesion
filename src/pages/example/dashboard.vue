@@ -54,12 +54,12 @@
 </template>
 
 <script lang="ts">
-import VueGrid from '@/components/shared/VueGrid/VueGrid.vue';
-import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/shared/VueGrid/VueGridColumn/VueGridColumn.vue';
-import VueBreadcrumb from '@/components/shared/VueBreadcrumb/VueBreadcrumb.vue';
-import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
-import VueButton from '@/components/shared/VueButton/VueButton.vue';
+import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
+import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
+import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vue';
+import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
+import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 import { HttpService } from '@/plugins/http-service/HttpService';
 
 export default {

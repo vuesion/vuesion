@@ -13,11 +13,11 @@
 </template>
 
 <script lang="ts">
-import VueGrid from '@/components/shared/VueGrid/VueGrid.vue';
-import VueGridRow from '@/components/shared/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/shared/VueGrid/VueGridColumn/VueGridColumn.vue';
-import FormExample from '@/components/form/FormExample.vue';
-import VueBreadcrumb from '@/components/shared/VueBreadcrumb/VueBreadcrumb.vue';
+import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
+import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
+import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
+import FormExample from '@/components/organisms/FormExample/FormExample.vue';
+import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
   components: {
