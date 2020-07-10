@@ -1,25 +1,6 @@
 {
   "presets": [
-    [
-      "env",
-      {
-        "modules": false
-      }
-    ],
-    "vue"
-  ],
-  "env": {
-    "test": {
-      "presets": [
-        [
-          "env",
-          {
-            "targets": {
-              "node": 12
-            }
-          }
-        ]
-      ]
-    }
-  }
+    "@babel/preset-env",
+    "babel-preset-vue"
+  ]
 }

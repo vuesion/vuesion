@@ -3,21 +3,26 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
-import VeeValidate from 'vee-validate';
 import VueCompositionApi from '@vue/composition-api';
 import { checkA11y } from '@storybook/addon-a11y';
 import { setDefaults, withInfo } from 'storybook-addon-vue-info';
 import '@storybook/addon-console';
-import '../../src/app/shared/_design-system.scss';
-import '../../src/app/shared/designSystem/reset.scss';
-import '../../src/app/shared/designSystem/global.scss';
-import '../../src/app/shared/designSystem/typo.scss';
+import '../../src/assets/_design-system.scss';
+import '../../src/assets/designSystem/reset.scss';
+import '../../src/assets/designSystem/global.scss';
+import '../../src/assets/designSystem/typo.scss';
 import customTheme from './theme';
+import { extend } from 'vee-validate';
+import { required, email, integer, min } from 'vee-validate/dist/rules.umd.js';
+
+extend('required', required);
+extend('email', email);
+extend('integer', integer);
+extend('min', min);
 
 Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
-Vue.use(VeeValidate);
 Vue.use(VueCompositionApi);
 
 const req = require.context('../../src', true, /.stories.ts$/);
