@@ -116,24 +116,24 @@
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
 import '@/assets/designSystem/global.scss';
-import VueNavBar from '@/components/shared/VueNavBar/VueNavBar.vue';
-import VueFooter from '@/components/shared/VueFooter/VueFooter.vue';
-import VueNotificationStack from '@/components/shared/VueNotificationStack/VueNotificationStack.vue';
-import VueCookieConsent from '@/components/shared/VueCookieConsent/VueCookieConsent.vue';
-import VueSidebar from '@/components/shared/VueSidebar/VueSidebar.vue';
-import VueSidebarGroup from '@/components/shared/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
-import VueSidebarGroupItem from '@/components/shared/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
-import VueIconCode from '@/components/shared/icons/VueIconCode/VueIconCode.vue';
-import VueIconBook from '@/components/shared/icons/VueIconBook/VueIconBook.vue';
-import VueIconHashtag from '@/components/shared/icons/VueIconHashtag/VueIconHashtag.vue';
-import VueIconGithub from '@/components/shared/icons/VueIconGithub/VueIconGithub.vue';
-import VueIconTwitterSquare from '@/components/shared/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
-import VueSelect from '@/components/shared/VueSelect/VueSelect.vue';
-import VueIconPuzzlePiece from '@/components/shared/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
-import VueButton from '@/components/shared/VueButton/VueButton.vue';
-import VueModal from '@/components/shared/VueModal/VueModal.vue';
-import LoginForm from '@/components/auth/LoginForm/LoginForm.vue';
-import { addNotification } from '@/components/shared/VueNotificationStack/utils';
+import VueNavBar from '@/components/organisms/VueNavBar/VueNavBar.vue';
+import VueFooter from '@/components/organisms/VueFooter/VueFooter.vue';
+import VueNotificationStack from '@/components/molecules/VueNotificationStack/VueNotificationStack.vue';
+import VueCookieConsent from '@/components/organisms/VueCookieConsent/VueCookieConsent.vue';
+import VueSidebar from '@/components/organisms/VueSidebar/VueSidebar.vue';
+import VueSidebarGroup from '@/components/organisms/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
+import VueSidebarGroupItem from '@/components/organisms/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
+import VueIconCode from '@/components/atoms/icons/VueIconCode/VueIconCode.vue';
+import VueIconBook from '@/components/atoms/icons/VueIconBook/VueIconBook.vue';
+import VueIconHashtag from '@/components/atoms/icons/VueIconHashtag/VueIconHashtag.vue';
+import VueIconGithub from '@/components/atoms/icons/VueIconGithub/VueIconGithub.vue';
+import VueIconTwitterSquare from '@/components/atoms/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
+import VueSelect from '@/components/atoms/VueSelect/VueSelect.vue';
+import VueIconPuzzlePiece from '@/components/atoms/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
+import VueButton from '@/components/atoms/VueButton/VueButton.vue';
+import VueModal from '@/components/molecules/VueModal/VueModal.vue';
+import LoginForm from '@/components/organisms/LoginForm/LoginForm.vue';
+import { addNotification } from '@/components/molecules/VueNotificationStack/utils';
 
 export default {
   name: 'App',

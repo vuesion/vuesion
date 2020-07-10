@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import BrandColors from './components/BrandColors.vue';
 import ColorPalette from './components/ColorPalette.vue';
-import VueMarkdown from '@/components/shared/VueMarkdown/VueMarkdown.vue';
+import VueMarkdown from '@/components/organisms/VueMarkdown/VueMarkdown.vue';
 
 let story = storiesOf('Design System|Design System', module) as any;
 
