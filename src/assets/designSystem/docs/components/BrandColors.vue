@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
+import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
 
 export default {
   name: 'BrandColors',

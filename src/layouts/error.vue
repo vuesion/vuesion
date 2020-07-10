@@ -20,7 +20,8 @@
 </template>
 
 <script lang="ts">
-import VueHeadline from '@/components/shared/VueHeadline/VueHeadline.vue';
+import { mapGetters } from 'vuex';
+import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
 
 export default {
   name: 'Error',
@@ -28,9 +29,16 @@ export default {
   props: {
     error: { type: Object, required: true },
   },
+  computed: {
+    ...mapGetters('app', ['cookieConsentVersion', 'locale', 'theme']),
+  },
   head() {
     return {
       title: this.error.statusCode === 404 ? 'vuesion - page not found' : 'vuesion - an error occurred',
+      htmlAttrs: {
+        class: this.theme,
+        lang: this.locale.substr(0, 2),
+      },
       meta: [
         {
           name: 'robots',
