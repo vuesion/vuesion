@@ -124,12 +124,6 @@ module.exports = ({ config }) => {
   };
 
   config.resolve.alias['@'] = path.join(path.dirname(path.resolve(__dirname)), '../src');
-  config.resolve.alias['@assets'] = path.join(path.dirname(path.resolve(__dirname)), '../src/assets');
-  config.resolve.alias['@components'] = path.join(path.dirname(path.resolve(__dirname)), '../src/components');
-  config.resolve.alias['@composables'] = path.join(path.dirname(path.resolve(__dirname)), '../src/composables');
-  config.resolve.alias['@plugins'] = path.join(path.dirname(path.resolve(__dirname)), '../src/plugins');
-  config.resolve.alias['@static'] = path.join(path.dirname(path.resolve(__dirname)), '../src/static');
-  config.resolve.alias['@store'] = path.join(path.dirname(path.resolve(__dirname)), '../src/store');
 
   return config;
 };

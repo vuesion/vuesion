@@ -4,8 +4,8 @@
       <label :for="name"> {{ label }}<sup v-if="required">*</sup></label>
       <input
         :id="id"
-        :name="name"
         ref="input"
+        :name="name"
         :placeholder="placeholder"
         :required="required"
         :value="value"
