@@ -41,11 +41,15 @@ jobs:
       - persist_to_workspace:
           root: ./
           paths:
-            - package*.json
-            - dist
+            - .nuxt
             - .vuesion
             - i18n
+            - src
             - storybook-static
+            - jsconfig.json
+            - nuxt.config.ts
+            - package*.json
+            - tsconfig.json
             - Dockerfile
   deploy-prod:
     machine: true
