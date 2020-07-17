@@ -1,7 +1,14 @@
+import * as path from 'path';
 import * as express from 'express';
 import { getIntInRange } from '@vuesion/utils/dist/randomGenerator';
 
+const isProd: boolean = process.env.NODE_ENV === 'production';
 const getErrorWithProbability = (probability: number) => getIntInRange(0, 100) <= probability;
+const resolve = (file: string): string => path.resolve(__dirname, file);
+const serve = (servePath: string, cache = true): express.Handler =>
+  express.static(resolve(servePath), {
+    maxAge: cache && isProd ? '4w' : 0,
+  });
 
 export const DemoRoutes = (app: express.Application) => {
   /**
@@ -17,7 +24,7 @@ export const DemoRoutes = (app: express.Application) => {
       next();
     }
   });
-  // app.use('/storybook', serve('../../storybook-static'));
+  app.use('/storybook', serve('../../../storybook-static'));
   app.use('/docs', (_: express.Request, res: express.Response) => {
     res.status(301).redirect('https://vuesion.github.io/docs/en/');
   });
