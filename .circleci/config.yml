@@ -42,7 +42,6 @@ jobs:
           root: ./
           paths:
             - .nuxt
-            - .vuesion
             - i18n
             - src
             - storybook-static
