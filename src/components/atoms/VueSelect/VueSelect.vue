@@ -1,6 +1,6 @@
 <template>
-  <ValidationProvider v-slot="{ errors, valid }" :vid="id" :name="name" :rules="validation">
-    <div :class="[...cssClasses, !valid ? $style.error : '']">
+  <ValidationProvider v-slot="{ invalid }" ref="validator" :vid="id" :name="name" :rules="validation">
+    <div :class="[...cssClasses, invalid ? $style.error : '']">
       <select
         :id="id"
         :title="placeholder"
@@ -10,7 +10,7 @@
         :autocomplete="autocomplete"
         v-bind="$attrs"
         v-on="{
-          // ...this.$listeners,
+          ...$listeners,
           input: onInput,
         }"
       >
@@ -49,7 +49,7 @@ export default {
     multiple: { type: Boolean, default: false },
     required: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
-    validation: { type: String, default: '' },
+    validation: { type: [String, Object], default: null },
     autocomplete: { type: String, default: 'off' },
     placeholder: { type: String, default: '' },
   },
@@ -84,13 +84,7 @@ export default {
     options: {
       immediate: true,
       handler(options: IAutocompleteOption[]) {
-        const selectOptions = [...options];
-
-        if (this.multiple === false) {
-          selectOptions.unshift({ label: '', value: '' });
-        }
-
-        this.selectOptions = selectOptions;
+        this.selectOptions = [...options];
       },
     },
   },
@@ -118,4 +112,9 @@ export default {
 
 <style lang="scss" module>
 @import '~@/assets/design-system';
+.vueSelect {
+  &.error {
+    color: red;
+  }
+}
 </style>

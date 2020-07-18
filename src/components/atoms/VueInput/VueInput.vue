@@ -53,7 +53,7 @@ export default defineComponent({
     readonly: { type: Boolean, default: false },
     message: { type: String, default: '' },
     errorMessage: { type: String, default: '' },
-    validation: { type: String, default: '' },
+    validation: { type: [String, Object], default: null },
     autocomplete: { type: String, default: 'off' },
   },
   setup(props) {

@@ -82,7 +82,7 @@
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^6.12.2",
     "query-string": "6.13.1",
-    "vee-validate": "^3.3.3"
+    "vee-validate": "^3.3.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.0.1",
