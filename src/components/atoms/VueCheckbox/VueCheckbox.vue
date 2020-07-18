@@ -1,6 +1,6 @@
 <template>
   <div :class="cssClasses" :aria-label="label">
-    <ValidationProvider :vid="id" :name="name" :rules="validation">
+    <ValidationProvider ref="validator" :vid="id" :name="name" :rules="validation">
       <input
         :id="id"
         :type="inputType"
@@ -8,11 +8,12 @@
         :required="required"
         :disabled="disabled"
         v-bind="$attrs"
+        :value="checked || value"
         @change.prevent="onClick"
       />
       <div :class="$style.box" @click="onClick" />
+      <label :for="id" v-html="label" />
     </ValidationProvider>
-    <label :for="id" v-html="label" />
   </div>
 </template>
 
@@ -30,7 +31,7 @@ export default {
     value: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
     required: { type: Boolean, default: false },
-    validation: { type: String, default: '' },
+    validation: { type: [String, Object], default: null },
     radio: { type: Boolean, default: false },
     label: { type: String, required: true },
   },

@@ -16,23 +16,19 @@ describe('FormExample.vue', () => {
       }),
     });
 
-    expect(wrapper).toBeTruthy();
-    expect(wrapper.vm.isSubmitDisabled).toBeTruthy();
-
     wrapper.setData({
-      form: {
+      model: {
         firstname: 'John',
         lastname: 'Doe',
         email: 'john.doe@emample.com',
         street: 'Elmstreet',
-        zipCode: '1337',
+        zipCode: 1337,
         city: 'Moetown',
-        country: 'Tomorrowland',
+        country: 'de',
         acceptTerms: true,
         newsletter: false,
       },
     });
-    expect(wrapper.vm.isSubmitDisabled).toBeFalsy();
 
     wrapper.find('form').trigger('submit');
     await wrapper.vm.$nextTick();
