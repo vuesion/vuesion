@@ -13,13 +13,6 @@ describe('AppActions', () => {
     } as ActionContext<IAppState, IState>;
   });
 
-  test('it should change the cookie consent version', () => {
-    AppActions.setCookieConsentVersion(testContext, '1.0.0');
-
-    expect(testContext.commit).toHaveBeenCalled();
-    expect(testContext.commit).toHaveBeenCalledWith('SET_COOKIE_CONSENT_VERSION', '1.0.0');
-  });
-
   test('it should change the theme', () => {
     AppActions.changeTheme(testContext, 'dark');
 

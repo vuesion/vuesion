@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import VueButton from '../../atoms/VueButton/VueButton.vue';
-import { addNotification, INotification } from './utils';
+import { addNotification } from './utils';
 import VueNotificationStack from './VueNotificationStack.vue';
 
 const story = storiesOf('Molecules|NotificationStack', module) as any;
@@ -20,7 +20,7 @@ story.add(
         addNotification({
           title: 'this is a test',
           text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
-        } as INotification);
+        });
       },
     },
   }),

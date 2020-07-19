@@ -1,14 +1,14 @@
 <template>
-  <div :class="cssClasses" :aria-label="label">
+  <div :class="[$style.input, radio ? $style.radio : $style.checkbox, disabled && $style.disabled]" :aria-label="label">
     <ValidationProvider ref="validator" :vid="id" :name="name" :rules="validation">
       <input
         :id="id"
-        :type="inputType"
-        :checked="checked || value"
+        :type="radio ? 'radio' : 'checkbox'"
+        :checked="checked"
         :required="required"
         :disabled="disabled"
         v-bind="$attrs"
-        :value="checked || value"
+        :value="checked"
         @change.prevent="onClick"
       />
       <div :class="$style.box" @click="onClick" />
@@ -18,58 +18,41 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from '@vue/composition-api';
 import { ValidationProvider } from 'vee-validate';
 
-export default {
+export default defineComponent({
   name: 'VueCheckbox',
   components: { ValidationProvider },
   inheritAttrs: false,
+  model: {
+    prop: 'checked',
+    event: 'click',
+  },
   props: {
-    name: { type: String, required: true },
     id: { type: String, required: true },
-    checked: { type: Boolean, default: false },
-    value: { type: Boolean, default: false },
-    disabled: { type: Boolean, default: false },
+    name: { type: String, required: true },
+    label: { type: String, required: true },
     required: { type: Boolean, default: false },
     validation: { type: [String, Object], default: null },
+    disabled: { type: Boolean, default: false },
+    checked: { type: Boolean, default: false },
     radio: { type: Boolean, default: false },
-    label: { type: String, required: true },
   },
-  computed: {
-    cssClasses() {
-      const classes = [this.$style.input];
-
-      if (this.radio) {
-        classes.push(this.$style.radio);
-      } else {
-        classes.push(this.$style.checkbox);
-      }
-
-      if (this.disabled) {
-        classes.push(this.$style.disabled);
-      }
-
-      return classes;
-    },
-    inputType() {
-      if (this.radio) {
-        return 'radio';
-      } else {
-        return 'checkbox';
-      }
-    },
-  },
-  methods: {
-    onClick(e: Event) {
+  setup(props, { emit }) {
+    const onClick = (e: Event) => {
       e.preventDefault();
 
-      if (!this.disabled) {
-        this.$emit('click', e);
-        this.$emit('input', !this.value);
+      if (!props.disabled) {
+        emit('click', !props.checked);
       }
-    },
+    };
+
+    return {
+      onClick,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" module>

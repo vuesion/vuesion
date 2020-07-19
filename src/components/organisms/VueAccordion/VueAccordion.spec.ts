@@ -15,11 +15,6 @@ describe('VueAccordion.vue', () => {
       },
     });
 
-    const accordionItemWrapper: any = wrapper.findComponent(VueAccordionItem);
-
-    accordionItemWrapper.vm.$parent = wrapper.vm;
-    accordionItemWrapper.vm.$options.created[1].call(accordionItemWrapper.vm);
-
     expect(wrapper.vm.items.length).toBeGreaterThan(0);
     expect(wrapper.vm.openItems.length).toBe(0);
 
@@ -33,11 +28,6 @@ describe('VueAccordion.vue', () => {
         default: '<vueA-accordion-item title="foo" :initOpen="true"/>',
       },
     });
-
-    const accordionItemWrapper: any = wrapper.findComponent(VueAccordionItem);
-
-    accordionItemWrapper.vm.$parent = wrapper.vm;
-    accordionItemWrapper.vm.$options.created[1].call(accordionItemWrapper.vm);
 
     expect(wrapper.vm.items.length).toBeGreaterThan(0);
     expect(wrapper.vm.openItems.length).toBeGreaterThan(0);
@@ -55,13 +45,13 @@ describe('VueAccordion.vue', () => {
 
     expect(wrapper.vm.openItems).toEqual([]);
 
-    wrapper.vm.openItem(0);
+    wrapper.vm.openItem({ value: 0 });
     expect(wrapper.vm.openItems).toEqual([0]);
 
-    wrapper.vm.openItem(1);
+    wrapper.vm.openItem({ value: 1 });
     expect(wrapper.vm.openItems).toEqual([1]);
 
-    wrapper.vm.openItem(1);
+    wrapper.vm.openItem({ value: 1 });
     expect(wrapper.vm.openItems).toEqual([]);
   });
 
@@ -75,16 +65,16 @@ describe('VueAccordion.vue', () => {
 
     expect(wrapper.vm.openItems).toEqual([]);
 
-    wrapper.vm.openItem(0);
+    wrapper.vm.openItem({ value: 0 });
     expect(wrapper.vm.openItems).toEqual([0]);
 
-    wrapper.vm.openItem(1);
+    wrapper.vm.openItem({ value: 1 });
     expect(wrapper.vm.openItems).toEqual([0, 1]);
 
-    wrapper.vm.openItem(1);
+    wrapper.vm.openItem({ value: 1 });
     expect(wrapper.vm.openItems).toEqual([0]);
 
-    wrapper.vm.openItem(0);
+    wrapper.vm.openItem({ value: 0 });
     expect(wrapper.vm.openItems).toEqual([]);
   });
 });

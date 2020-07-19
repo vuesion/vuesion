@@ -3,6 +3,7 @@
     <div :class="[$style.vueInput, disabled && $style.disabled, !isValid(errors) && $style.error]">
       <label :for="name"> {{ label }}<sup v-if="required">*</sup></label>
       <input
+        v-if="isTextarea === false"
         :id="id"
         ref="input"
         :name="name"
@@ -23,16 +24,36 @@
           },
         }"
       />
-      <span>
-        {{ messageOrError(errors) }}
-      </span>
+      <textarea
+        v-else
+        :id="id"
+        ref="input"
+        :name="name"
+        :placeholder="placeholder"
+        :required="required"
+        :value="value"
+        :type="type"
+        :autocomplete="autocomplete"
+        :disabled="disabled"
+        :readonly="readonly"
+        :class="[value ? $style.hasValue : '']"
+        :autofocus="autofocus"
+        v-bind="$attrs"
+        v-on="{
+          ...$listeners,
+          input: (e) => {
+            $emit('input', e.target.value);
+          },
+        }"
+      />
+      <span>{{ messageOrError(errors) }}</span>
     </div>
   </ValidationProvider>
 </template>
 
 <script lang="ts">
 import { ValidationProvider } from 'vee-validate';
-import { defineComponent } from '@vue/composition-api';
+import { computed, defineComponent } from '@vue/composition-api';
 import { useIntersectionObserver } from '@/composables/use-intersection-observer';
 import { getDomRef } from '@/composables/get-dom-ref';
 
@@ -44,26 +65,27 @@ export default defineComponent({
     id: { type: String, required: true },
     name: { type: String, required: true },
     label: { type: String, required: true },
-    placeholder: { type: String, default: '' },
     required: { type: Boolean, default: false },
-    autofocus: { type: Boolean, default: false },
-    value: { type: [String, Number], default: '' },
-    type: { type: String, default: 'text' },
-    disabled: { type: Boolean, default: false },
-    readonly: { type: Boolean, default: false },
-    message: { type: String, default: '' },
-    errorMessage: { type: String, default: '' },
     validation: { type: [String, Object], default: null },
+    value: { type: [String, Number], default: null },
+    disabled: { type: Boolean, default: false },
+    placeholder: { type: String, default: null },
+    autofocus: { type: Boolean, default: false },
+    type: { type: String, default: 'text' },
+    readonly: { type: Boolean, default: false },
+    description: { type: String, default: '' },
+    errorMessage: { type: String, default: '' },
     autocomplete: { type: String, default: 'off' },
   },
   setup(props) {
     const input = getDomRef(null);
-    const isValid = (errors: any) => (errors ? errors.length === 0 : false);
-    const messageOrError = (errors: any) => (isValid(errors) ? props.message : props.errorMessage);
+    const isValid = (errors: any) => errors.length === 0;
+    const messageOrError = (errors: any) => (isValid(errors) ? props.description : props.errorMessage);
+    const isTextarea = computed(() => props.type === 'textarea');
 
-    useIntersectionObserver(input, () => {
-      if (props.autofocus && input?.value) {
-        input.value.focus();
+    useIntersectionObserver(input, (entries: IntersectionObserverEntry[]) => {
+      if (props.autofocus) {
+        entries.forEach((entry) => (entry.target as HTMLInputElement).focus());
       }
     });
 
@@ -71,6 +93,7 @@ export default defineComponent({
       input,
       isValid,
       messageOrError,
+      isTextarea,
     };
   },
 });
@@ -86,7 +109,11 @@ export default defineComponent({
   input,
   input:active,
   input:focus,
-  input:hover {
+  input:hover,
+  textarea,
+  textarea:active,
+  textarea:focus,
+  textarea:hover {
     outline: none !important;
   }
 
@@ -100,7 +127,8 @@ export default defineComponent({
     font-weight: $input-label-font-weight;
   }
 
-  input {
+  input,
+  textarea {
     color: $input-color;
     font-size: $input-font-size;
     font-family: $input-font-family;
@@ -120,7 +148,12 @@ export default defineComponent({
     }
   }
 
-  input::placeholder {
+  textarea {
+    min-height: $space-64;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
     color: $input-placeholder-color;
     font-size: $input-font-size;
     font-family: $input-font-family;
@@ -144,12 +177,14 @@ export default defineComponent({
       color: $input-label-error-color;
     }
 
-    input {
+    input,
+    textarea {
       background: $input-background-error-color;
       border: $input-border-error;
     }
 
-    input::placeholder {
+    input::placeholder,
+    textarea::placeholder {
       color: $input-placeholder-error-color;
     }
 

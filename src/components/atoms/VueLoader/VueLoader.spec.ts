@@ -10,29 +10,29 @@ describe('VueLoader.vue', () => {
       localVue,
     });
 
-    expect(wrapper.findAll(`.loader`)).toHaveLength(1);
+    expect(wrapper.findAll(`.vueLoader`)).toHaveLength(1);
   });
 
   test('renders medium loader', () => {
     const wrapper = mount(VueLoader, {
       localVue,
       propsData: {
-        medium: true,
+        size: 'md',
       },
     });
 
-    expect(wrapper.findAll(`.medium`)).toHaveLength(1);
+    expect(wrapper.findAll(`.md`)).toHaveLength(1);
   });
 
   test('renders large loader', () => {
     const wrapper = mount(VueLoader, {
       localVue,
       propsData: {
-        large: true,
+        size: 'lg',
       },
     });
 
-    expect(wrapper.findAll(`.large`)).toHaveLength(1);
+    expect(wrapper.findAll(`.lg`)).toHaveLength(1);
   });
 
   test('renders color variations', () => {

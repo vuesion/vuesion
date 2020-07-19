@@ -4,7 +4,6 @@ $card-border: 1px solid var(--brand-border-color);
 $card-border-radius: 0;
 $card-color: var(--brand-text-color);
 
-$card-header-padding: $space-8 $space-16;
 $card-header-image-size: $space-40;
 $card-header-image-border-radius: 50%;
 $card-header-title-font-size: $font-size-md;
@@ -13,7 +12,7 @@ $card-header-subtitle-font-size: $font-size-md;
 $card-header-subtitle-font-weight: $font-weight-light;
 $card-header-subtitle-color: var(--brand-text-secondary-color);
 
-$card-body-padding: $space-8 $space-16;
+$card-body-padding: 0 $space-16 $space-8 $space-16;
 $card-body-font-size: inherit;
 
 $card-footer-padding: $space-8;

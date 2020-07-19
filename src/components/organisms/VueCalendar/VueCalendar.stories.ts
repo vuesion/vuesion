@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/vue';
+import { action } from '@storybook/addon-actions';
 import VueCalendar from './VueCalendar.vue';
 import { i18n } from '@/test/test-utils';
 
@@ -8,8 +9,12 @@ story.add(
   'Default',
   () => ({
     components: { VueCalendar },
-    template: `<vue-calendar :firstDayOfWeek="1"/>`,
+    template: `<vue-calendar :firstDayOfWeek="1" @change="onChange" @close="onClose" />`,
     i18n,
+    methods: {
+      onChange: action('@change'),
+      onClose: action('@close'),
+    },
   }),
   {
     info: {
@@ -25,8 +30,12 @@ story.add(
       today: new Date(),
     }),
     components: { VueCalendar },
-    template: `<vue-calendar :min-date="today" />`,
+    template: `<vue-calendar :min-date="today" @change="onChange" @close="onClose" />`,
     i18n,
+    methods: {
+      onChange: action('@change'),
+      onClose: action('@close'),
+    },
   }),
   {
     info: {
@@ -42,8 +51,12 @@ story.add(
       today: new Date(),
     }),
     components: { VueCalendar },
-    template: `<vue-calendar :max-date="today" />`,
+    template: `<vue-calendar :max-date="today" @change="onChange" @close="onClose" />`,
     i18n,
+    methods: {
+      onChange: action('@change'),
+      onClose: action('@close'),
+    },
   }),
   {
     info: {

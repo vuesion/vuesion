@@ -3,8 +3,8 @@ import VueGridRow from './VueGridRow.vue';
 
 describe('VueGridRow.vue', () => {
   const provide = {
-    gridSpace: 'sm',
-    gridWithVerticalSpace: false,
+    gridVerticalSpace: 'sm',
+    gridHorizontalSpace: 'sm',
     gridTextAlign: 'right',
   };
 

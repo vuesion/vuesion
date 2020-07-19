@@ -8,17 +8,10 @@
 import anime from 'animejs';
 
 export default {
-  components: {},
+  name: 'CollapseAnimation',
   props: {
-    duration: {
-      type: Number,
-      default: 250,
-    },
+    duration: { type: Number, default: 250 },
   },
-  data() {
-    return {};
-  },
-  computed: {},
   methods: {
     beforeEnter(el: HTMLElement) {
       el.style.height = '0';

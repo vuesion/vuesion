@@ -1,16 +1,16 @@
 <template>
   <div :class="$style.vuePagination">
     <div
-      :class="prevCssClasses"
+      :class="[$style.prev, selectedPage <= 1 && $style.disabled]"
       role="button"
       tabindex="0"
       :aria-label="$t('components.pagination.previous' /* Previous */)"
       @click="prevClick"
       @keypress="prevClick"
     ></div>
-    <div :class="$style.label">{{ current }} / {{ pages }}</div>
+    <div :class="$style.label">{{ selectedPage }} / {{ pages }}</div>
     <div
-      :class="nextCssClasses"
+      :class="[$style.next, selectedPage >= pages && $style.disabled]"
       role="button"
       tabindex="0"
       :aria-label="$t('components.pagination.next' /* Next */)"
@@ -21,51 +21,31 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from '@vue/composition-api';
+
+export default defineComponent({
   name: 'VuePagination',
   props: {
-    pages: {
-      type: Number,
-      required: true,
-    },
-    current: {
-      type: Number,
-      required: true,
-    },
+    pages: { type: Number, required: true },
+    selectedPage: { type: Number, required: true },
   },
-  computed: {
-    prevCssClasses() {
-      const classes = [this.$style.prev];
-
-      if (this.current <= 1) {
-        classes.push(this.$style.disabled);
+  setup(props, { emit }) {
+    const prevClick = () => {
+      if (props.selectedPage > 1) {
+        emit('click', props.selectedPage - 1);
       }
-
-      return classes;
-    },
-    nextCssClasses() {
-      const classes = [this.$style.next];
-
-      if (this.current >= this.pages) {
-        classes.push(this.$style.disabled);
+    };
+    const nextClick = () => {
+      if (props.selectedPage < props.pages) {
+        emit('click', props.selectedPage + 1);
       }
-
-      return classes;
-    },
+    };
+    return {
+      prevClick,
+      nextClick,
+    };
   },
-  methods: {
-    prevClick() {
-      if (this.current > 1) {
-        this.$emit('change', this.current - 1);
-      }
-    },
-    nextClick() {
-      if (this.current < this.pages) {
-        this.$emit('change', this.current + 1);
-      }
-    },
-  },
-};
+});
 </script>
 
 <style lang="scss" module>

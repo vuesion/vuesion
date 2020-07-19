@@ -9,8 +9,8 @@ story.add(
   () => ({
     components: { VueDropdownMenu },
     template: `<div>This is a dropdown menu within
-<vue-dropdown-menu @click="action"
-:options="[{ label: 'Save', value: 'save' }, { label: '', value: 'separator' }, { label: 'Open', value: 'open' }, { label: 'Delete', value: 'delete' }]">
+<vue-dropdown-menu @click="action" @item-click="action"
+:items="[{ label: 'Save', value: 'save' }, { label: '', value: 'separator' }, { label: 'Open', value: 'open' }, { label: 'Delete', value: 'delete' }]">
 File
 </vue-dropdown-menu>
 a normal text. It should perfectly fit.</div>`,
@@ -30,8 +30,8 @@ story.add(
   () => ({
     components: { VueDropdownMenu },
     template: `<div>This is a dropdown menu within
-<vue-dropdown-menu @click="action"
-:options="[{ label: 'Save', value: 'save' }, { label: '', value: 'separator' }, { label: 'Open', value: 'open' }, { label: 'Delete', value: 'delete' }]">
+<vue-dropdown-menu @click="action" @item-click="action"
+:items="[{ label: 'Save', value: 'save' }, { label: '', value: 'separator' }, { label: 'Open', value: 'open' }, { label: 'Delete', value: 'delete' }]">
   File
 
   <template v-slot:option="{ option }">

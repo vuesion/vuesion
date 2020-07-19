@@ -1,5 +1,5 @@
 <template>
-  <div ref="content" :class="$style.vueMarkdown" v-html="html" />
+  <div ref="content" :class="$style.vueMarkdown" v-html="html"></div>
 </template>
 
 <script lang="ts">
@@ -40,7 +40,7 @@ export default {
   mounted() {
     this.$refs.content.addEventListener('click', this.handleClick);
   },
-  updated() {
+  updated /* istanbul ignore next */() {
     this.createHTML();
   },
   beforeDestroy() {

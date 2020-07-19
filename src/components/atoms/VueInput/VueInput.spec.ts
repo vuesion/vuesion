@@ -3,11 +3,11 @@ import flushPromises from 'flush-promises';
 import VueInput from './VueInput.vue';
 
 describe('VueInput.vue', () => {
-  test('should render label and message', () => {
+  test('should render label and description', () => {
     const { getByText } = render<any>(VueInput, {
       propsData: {
         label: 'this is the label',
-        message: 'this is the message',
+        description: 'this is the description',
         name: 'name',
         id: 'id',
       },
@@ -17,7 +17,7 @@ describe('VueInput.vue', () => {
     });
 
     getByText('this is the label');
-    getByText('this is the message');
+    getByText('this is the description');
   });
 
   test('renders disabled component', () => {
@@ -83,5 +83,65 @@ describe('VueInput.vue', () => {
 
     getByText('this is the label');
     getByText('this is the error');
+  });
+
+  test('should autofocus input element', () => {
+    const entry = {
+      target: {
+        focus: jest.fn(),
+      },
+    };
+
+    (global as any).IntersectionObserver = class {
+      constructor(callback: any) {
+        callback([entry]);
+      }
+
+      observe() {
+        return false;
+      }
+    };
+
+    render<any>(VueInput, {
+      propsData: {
+        label: 'this is the label',
+        name: 'test',
+        id: 'test',
+        value: 'this is the value',
+        autofocus: true,
+      },
+    });
+
+    expect(entry.target.focus).toHaveBeenCalled();
+  });
+
+  test('should not autofocus input element', () => {
+    const entry = {
+      target: {
+        focus: jest.fn(),
+      },
+    };
+
+    (global as any).IntersectionObserver = class {
+      constructor(callback: any) {
+        callback([entry]);
+      }
+
+      observe() {
+        return false;
+      }
+    };
+
+    render<any>(VueInput, {
+      propsData: {
+        label: 'this is the label',
+        name: 'test',
+        id: 'test',
+        value: 'this is the value',
+        autofocus: false,
+      },
+    });
+
+    expect(entry.target.focus).not.toHaveBeenCalled();
   });
 });

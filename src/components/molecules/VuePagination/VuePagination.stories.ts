@@ -15,7 +15,7 @@ story.add(
         page: 1,
       };
     },
-    template: `<vue-pagination :pages="10 " :current="page" @change="action($event);page=$event" />`,
+    template: `<vue-pagination :pages="10 " :selected-page="page" @click="action($event);page=$event" />`,
     methods: {
       action: action('@change'),
     },

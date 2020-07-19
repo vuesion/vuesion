@@ -6,11 +6,12 @@ import VueRouter from 'vue-router';
 import VueCompositionApi from '@vue/composition-api';
 import { checkA11y } from '@storybook/addon-a11y';
 import { setDefaults, withInfo } from 'storybook-addon-vue-info';
+import { action } from '@storybook/addon-actions';
 import '@storybook/addon-console';
 import '../../src/assets/_design-system.scss';
-import '../../src/assets/designSystem/reset.scss';
-import '../../src/assets/designSystem/global.scss';
-import '../../src/assets/designSystem/typo.scss';
+import '../../src/assets/reset.scss';
+import '../../src/assets/global.scss';
+import '../../src/assets/typo.scss';
 import customTheme from './theme';
 import { extend } from 'vee-validate';
 import { required, email, integer, min } from 'vee-validate/dist/rules.umd.js';
@@ -25,6 +26,21 @@ Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(VueCompositionApi);
 
+Vue.component('nuxt-link', {
+  props: ['to'],
+  methods: {
+    log() {
+      action('link target')(this.to);
+    },
+  },
+  template: '<a href="#" @click.prevent="log()"><slot>NuxtLink</slot></a>',
+});
+Vue.mixin({
+  created() {
+    this.localePath = (path) => path;
+  },
+});
+
 const req = require.context('../../src', true, /.stories.ts$/);
 
 const loadStories = () => {
@@ -37,9 +53,38 @@ addParameters({
   options: {
     theme: customTheme,
   },
-});
-
-addParameters({
+  viewport: {
+    viewports: {
+      phone: {
+        name: 'Phone',
+        styles: {
+          width: '320px',
+          height: '568px',
+        },
+      },
+      tablet: {
+        name: 'Tablet',
+        styles: {
+          width: '786px',
+          height: '1024px',
+        },
+      },
+      smallDesktop: {
+        name: 'Small Desktop',
+        styles: {
+          width: '1280px',
+          height: '800px',
+        },
+      },
+      largeDesktop: {
+        name: 'Large Desktop',
+        styles: {
+          width: '1440px',
+          height: '900px',
+        },
+      },
+    },
+  },
   themeSwitcher: {
     themes: [
       { label: 'Light Theme', value: 'light' },

@@ -2,10 +2,10 @@
   <div :class="[$style.homeSection, alternative ? $style.alternative : null]">
     <vue-grid space="none">
       <vue-grid-row :class="[flip ? $style.flip : null]">
-        <vue-grid-column>
+        <vue-grid-column tablet-portrait="50%">
           <vue-image :src="image" :native="false" :class="$style.image" />
         </vue-grid-column>
-        <vue-grid-column>
+        <vue-grid-column tablet-portrait="50%">
           <slot />
         </vue-grid-column>
       </vue-grid-row>

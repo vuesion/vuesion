@@ -1,4 +1,4 @@
-@import 'variables/grid';
+@import 'components/organisms/grid';
 
 @mixin background-gradient($start-color, $end-color, $orientation) {
   background: $start-color;

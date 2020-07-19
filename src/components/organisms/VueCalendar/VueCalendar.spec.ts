@@ -129,7 +129,7 @@ describe('VueCalendar.vue', () => {
       i18n,
     });
 
-    wrapper.vm.$data.selecting = 'year';
+    wrapper.vm.selecting = 'year';
 
     expect(wrapper.vm.selectedYear).toBe(today.getFullYear());
     expect(wrapper.vm.currentYear).toBe(today.getFullYear());

@@ -1,15 +1,11 @@
 <template>
-  <div :class="$style.form">
-    <vue-grid with-vertical-space>
-      <vue-grid-row>
-        <vue-grid-column>
-          <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'Form Example' }]" />
-        </vue-grid-column>
-      </vue-grid-row>
-
-      <form-example />
-    </vue-grid>
-  </div>
+  <vue-grid>
+    <vue-grid-row :class="$style.form" justify-content="center" align-items="top">
+      <vue-grid-column vertical-space="lg" width="100%" tablet-landscape="70%" large-desktop="50%" :can-grow="false">
+        <form-example />
+      </vue-grid-column>
+    </vue-grid-row>
+  </vue-grid>
 </template>
 
 <script lang="ts">
@@ -17,11 +13,9 @@ import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import FormExample from '@/components/organisms/FormExample/FormExample.vue';
-import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vue';
 
 export default {
   components: {
-    VueBreadcrumb,
     FormExample,
     VueGridColumn,
     VueGridRow,
@@ -45,5 +39,6 @@ export default {
 
 .form {
   padding-top: $nav-bar-height;
+  min-height: 100vh;
 }
 </style>

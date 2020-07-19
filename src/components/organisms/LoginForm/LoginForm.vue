@@ -1,7 +1,7 @@
 <template>
   <validation-observer v-slot="{ invalid }">
     <form :class="$style.loginForm" @submit.stop.prevent="onSubmit">
-      <vue-grid with-vertical-space space="sm">
+      <vue-grid>
         <vue-grid-row>
           <vue-grid-column>
             <vue-headline level="3">
@@ -10,7 +10,7 @@
           </vue-grid-column>
         </vue-grid-row>
 
-        <vue-grid-row>
+        <vue-grid-row vertical-space="lg">
           <vue-grid-column>
             <vue-input
               id="username"
@@ -44,7 +44,7 @@
         </vue-grid-row>
 
         <vue-grid-row>
-          <vue-grid-column>
+          <vue-grid-column justify-content="flex-end">
             <vue-button color="primary" tabindex="3" type="submit" :disabled="invalid" :loading="loading">
               {{ $t('auth.LoginForm.cta' /* Login */) }}
             </vue-button>

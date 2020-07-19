@@ -5,62 +5,63 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent, onBeforeUnmount, provide, Ref, ref } from '@vue/composition-api';
+
+export default defineComponent({
   name: 'VueAccordion',
   props: {
-    multiple: {
-      type: Boolean,
-      default: false,
-    },
+    multiple: { type: Boolean, default: false },
   },
-  provide() {
-    return {
-      register: this.register,
-      openItem: this.openItem,
-    };
-  },
-  data(): any {
-    return {
-      items: [],
-      openItems: [],
-    };
-  },
-  beforeDestroy() {
-    this.items = [];
-    this.openItems = [];
-  },
-  methods: {
-    openItem(idx: number) {
-      if (this.multiple && this.openItems.includes(idx)) {
-        this.openItems = this.openItems.filter((item: number) => item !== idx);
-      } else if (this.multiple) {
-        this.openItems.push(idx);
-      } else if (this.openItems.includes(idx)) {
-        this.openItems = [];
-      } else {
-        this.openItems = [idx];
-      }
-
-      this.handleItems();
-    },
-    handleItems() {
-      this.items.forEach((item: any) => {
-        item.$data.open = this.openItems.includes(item.$data.idx);
+  setup(props) {
+    const items = ref<Array<{ idx: Ref<number>; open: Ref<boolean> }>>([]);
+    const openItems = ref<number[]>([]);
+    const handleItems = () => {
+      items.value.forEach((item: { idx: Ref<number>; open: Ref<boolean> }) => {
+        item.open.value = openItems.value.includes(item.idx.value);
       });
-    },
-    register(item: any) {
-      item.$data.idx = this.items.length;
-
-      this.items.push(item);
-
-      if (item.initOpen) {
-        this.openItems.push(item.$data.idx);
+    };
+    const openItem = (idx: Ref<number>) => {
+      if (props.multiple && openItems.value.includes(idx.value)) {
+        openItems.value = openItems.value.filter((item: number) => item !== idx.value);
+      } else if (props.multiple) {
+        openItems.value.push(idx.value);
+      } else if (openItems.value.includes(idx.value)) {
+        openItems.value = [];
+      } else {
+        openItems.value = [idx.value];
       }
 
-      this.handleItems();
-    },
+      handleItems();
+    };
+    const register = (idx: Ref<number>, open: Ref<boolean>, initOpen: boolean) => {
+      idx.value = items.value.length;
+
+      items.value.push({ idx, open });
+
+      if (initOpen) {
+        openItems.value.push(idx.value);
+      }
+
+      handleItems();
+    };
+
+    provide('register', register);
+    provide('openItem', openItem);
+
+    onBeforeUnmount(() => {
+      items.value = [];
+      openItems.value = [];
+    });
+
+    return {
+      items,
+      openItems,
+      handleItems,
+      openItem,
+      register,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" module>
