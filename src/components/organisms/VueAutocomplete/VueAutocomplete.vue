@@ -66,13 +66,13 @@
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from '@vue/composition-api';
 import debounce from 'lodash/debounce';
-import VueInput from '../../atoms/VueInput/VueInput.vue';
-import VueLoader from '../../atoms/VueLoader/VueLoader.vue';
-import VueIconSearch from '../../atoms/icons/VueIconSearch/VueIconSearch.vue';
 import { IItem } from '@/components/IItem';
 import { getDomRef } from '@/composables/get-dom-ref';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import { useKeydown } from '@/composables/use-keydown';
+import VueIconSearch from '../../atoms/icons/VueIconSearch/VueIconSearch.vue';
+import VueLoader from '../../atoms/VueLoader/VueLoader.vue';
+import VueInput from '../../atoms/VueInput/VueInput.vue';
 
 export default defineComponent({
   name: 'VueAutocomplete',

@@ -22,9 +22,9 @@
 
 <script lang="ts">
 import { defineComponent, computed } from '@vue/composition-api';
-import VueLoader from '../VueLoader/VueLoader.vue';
 import { getDomRef } from '@/composables/get-dom-ref';
 import { variationValidator } from '@/components/utils';
+import VueLoader from '../VueLoader/VueLoader.vue';
 
 export default defineComponent({
   name: 'VueButton',

@@ -156,9 +156,7 @@
 
         <vue-grid-row vertical-space="lg" justify-content="flex-end">
           <vue-grid-column>
-            <vue-button color="primary" :disabled="invalid" :loading="isLoading">
-              Save
-            </vue-button>
+            <vue-button color="primary" :disabled="invalid" :loading="isLoading"> Save </vue-button>
           </vue-grid-column>
         </vue-grid-row>
       </form>

@@ -5,7 +5,7 @@ import VueButton from './VueButton.vue';
 describe('VueButton.vue', () => {
   describe('Button', () => {
     test('renders component', () => {
-      const { getByText } = render<any>(VueButton as any, {
+      const { getByText } = render(VueButton, {
         slots: {
           default: 'VueButton',
         },
@@ -15,7 +15,7 @@ describe('VueButton.vue', () => {
     });
 
     test('should emit onClick event', async () => {
-      const { getByText, emitted } = render<any>(VueButton as any, {
+      const { getByText, emitted } = render(VueButton, {
         slots: {
           default: 'VueButton',
         },
@@ -29,7 +29,7 @@ describe('VueButton.vue', () => {
     });
 
     test('should disable button and not emit onClick event', async () => {
-      const { getByText, emitted } = render<any>(VueButton as any, {
+      const { getByText, emitted } = render(VueButton, {
         slots: {
           default: 'VueButton',
         },
@@ -46,7 +46,7 @@ describe('VueButton.vue', () => {
     });
 
     test('should show loader and not emit onClick event', async () => {
-      const { container, emitted } = render<any>(VueButton as any, {
+      const { container, emitted } = render(VueButton, {
         slots: {
           default: 'VueButton',
         },
@@ -64,7 +64,7 @@ describe('VueButton.vue', () => {
 
     test('should render color variations', () => {
       brandVariations.forEach((variation: string) => {
-        const { container } = render<any>(VueButton as any, {
+        const { container } = render(VueButton, {
           propsData: {
             color: variation,
           },
@@ -77,7 +77,7 @@ describe('VueButton.vue', () => {
     });
 
     test('should render ghost button', () => {
-      const { container } = render<any>(VueButton as any, {
+      const { container } = render(VueButton, {
         propsData: {
           ghost: true,
         },
@@ -89,7 +89,7 @@ describe('VueButton.vue', () => {
     });
 
     test('should render block button', () => {
-      const { container } = render<any>(VueButton as any, {
+      const { container } = render(VueButton, {
         propsData: {
           block: true,
         },
@@ -103,7 +103,7 @@ describe('VueButton.vue', () => {
 
   describe('Link', () => {
     test('renders nuxt-link', () => {
-      const { html } = render<any>(VueButton as any, {
+      const { html } = render(VueButton, {
         propsData: {
           as: 'nuxt-link',
           to: '/foo',
@@ -117,7 +117,7 @@ describe('VueButton.vue', () => {
     });
 
     test('renders disabled nuxt-link', () => {
-      const { html } = render<any>(VueButton as any, {
+      const { html } = render(VueButton, {
         propsData: {
           as: 'nuxt-link',
           to: '/foo',
@@ -132,7 +132,7 @@ describe('VueButton.vue', () => {
     });
 
     test('renders a', () => {
-      const wrapper = render<any>(VueButton as any, {
+      const wrapper = render(VueButton, {
         propsData: {
           as: 'a',
           href: '/foo',
@@ -145,7 +145,7 @@ describe('VueButton.vue', () => {
     });
 
     test('should prevent and stop click event if disabled', async () => {
-      const { getByText } = render<any>(VueButton as any, {
+      const { getByText } = render(VueButton, {
         propsData: {
           as: 'a',
           href: '/foo',

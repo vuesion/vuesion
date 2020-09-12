@@ -3,13 +3,13 @@
  */
 
 import { ActionContext } from 'vuex';
-import { IAuthState } from './state';
 import { IState } from '@/store/IState';
 import { HttpService } from '@/plugins/http-service/HttpService';
+import { IAuthState } from './state';
 
 export interface IAuthResponse {
-  access_token: string;
-  refresh_token: string;
+  access_token: string; // eslint-disable-line
+  refresh_token: string; // eslint-disable-line
 }
 
 export interface IAuthRequest {
@@ -32,7 +32,7 @@ export const AuthActions: IAuthActions = {
   async createToken({ commit }, { username, password }) {
     try {
       const {
-        data: { access_token, refresh_token },
+        data: { access_token, refresh_token }, // eslint-disable-line
       } = await HttpService.post<IAuthResponse>('/token', getFormData(username, password), {
         headers: {
           Authorization: 'Basic Zm9vYmFy',
@@ -51,7 +51,7 @@ export const AuthActions: IAuthActions = {
   async refreshToken({ commit, state: { refreshToken } }) {
     try {
       const {
-        data: { access_token, refresh_token },
+        data: { access_token, refresh_token }, // eslint-disable-line
       } = await HttpService.post<IAuthResponse>('/token', `grant_type=refresh_token&refresh_token=${refreshToken}`, {
         headers: {
           Authorization: 'Basic Zm9vYmFy',

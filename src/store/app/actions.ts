@@ -1,6 +1,6 @@
 import { ActionContext } from 'vuex';
-import { IAppState } from './state';
 import { IState } from '@/store/IState';
+import { IAppState } from './state';
 
 export interface IAppActions {
   changeTheme(context: ActionContext<IAppState, IState>, theme: string): void;

@@ -55,9 +55,9 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref, watch } from '@vue/composition-api';
-import { IAlgorithm, linear } from './algorithms';
 import { getDomRef } from '@/composables/get-dom-ref';
 import { useEvent } from '@/composables/use-event';
+import { IAlgorithm, linear } from './algorithms';
 
 const algorithm: IAlgorithm = linear;
 

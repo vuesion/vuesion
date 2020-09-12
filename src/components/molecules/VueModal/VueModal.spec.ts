@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import { render } from '@testing-library/vue';
-import VueModal from './VueModal.vue';
 import { triggerDocument } from '@/test/test-utils';
+import VueModal from './VueModal.vue';
 
 describe('VueModal.vue', () => {
-  test('renders slot', async () => {
-    const { queryByText, getByText, updateProps } = render<any>(VueModal as any, {
+  test('opens modal', async () => {
+    const { getByText, updateProps } = render(VueModal, {
       slots: {
         default: '<p>TEST</p>',
       },
@@ -13,13 +13,24 @@ describe('VueModal.vue', () => {
 
     await updateProps({ show: true });
     getByText('TEST');
+  });
+
+  test('closes modal', async () => {
+    const { queryByText, updateProps } = render(VueModal, {
+      slots: {
+        default: '<p>TEST</p>',
+      },
+      propsData: {
+        show: true,
+      },
+    });
 
     await updateProps({ show: false });
     expect(queryByText('TEST')).toBe(null);
   });
 
   test('should close on outside click', async () => {
-    const { queryByText, emitted } = render<any>(VueModal as any, {
+    const { queryByText, emitted } = render(VueModal, {
       slots: {
         default: '<p>TEST</p>',
       },
@@ -39,7 +50,7 @@ describe('VueModal.vue', () => {
   });
 
   test('should close on ESC press', async () => {
-    const { emitted, updateProps } = render<any>(VueModal as any, {
+    const { emitted, updateProps } = render(VueModal, {
       propsData: { closeOnEscape: false, backdrop: false },
     });
 

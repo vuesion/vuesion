@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import FormExample from './FormExample.vue';
 import { i18n } from '@/test/test-utils';
+import FormExample from './FormExample.vue';
 
 const localVue = createLocalVue();
 

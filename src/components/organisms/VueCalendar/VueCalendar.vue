@@ -124,9 +124,9 @@
 <script lang="ts">
 import { computed, defineComponent, ref, onBeforeMount } from '@vue/composition-api';
 import chunk from 'lodash/chunk';
+import { getDomRef } from '@/composables/get-dom-ref';
 import VueButton from '../../atoms/VueButton/VueButton.vue';
 import VueHeadline from '../../atoms/VueHeadline/VueHeadline.vue';
-import { getDomRef } from '@/composables/get-dom-ref';
 
 interface IDay {
   day: number;
