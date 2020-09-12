@@ -4,7 +4,7 @@ import queryString from 'query-string';
 import { Context } from '@nuxt/types';
 import { IAppConfig } from './IAppConfig';
 
-export default function ({ store, req }: Context) {
+export default function({ store, req }: Context) {
   /**
    * read default config and merge it with CONFIG environment variable
    */

@@ -12,7 +12,7 @@ Vue.config.productionTip = false;
 
 Vue.mixin({
   created() {
-    this.localePath = function (path: string) {
+    this.localePath = function(path: string) {
       return path;
     };
     this.$style = $style;
