@@ -7,86 +7,30 @@ import VueGridColumn from './VueGridColumn/VueGridColumn.vue';
 const story = storiesOf('Organisms|Grid', module) as any;
 
 story.add(
-  'With vertical spacing',
-  () => ({
-    components: { VueGrid, VueGridRow, VueGridColumn, VueButton },
-    template: `<vue-grid with-vertical-space>
-        <vue-grid-row>
-            <vue-grid-column>
-                <vue-button block>Item 1</vue-button>
-            </vue-grid-column>
-            <vue-grid-column :width="50">
-                <vue-button block>Item 2</vue-button>
-            </vue-grid-column>
-            <vue-grid-column>
-                <vue-button block>Item 3</vue-button>
-            </vue-grid-column>
-        </vue-grid-row>
-        <vue-grid-row>
-            <vue-grid-column :width="50">
-                <vue-button block>Item 1</vue-button>
-            </vue-grid-column>
-            <vue-grid-column>
-                <vue-button block>Item 2</vue-button>
-            </vue-grid-column>
-            <vue-grid-column>
-                <vue-button block>Item 3</vue-button>
-            </vue-grid-column>
-        </vue-grid-row>
-    </vue-grid>`,
-  }),
-  {
-    info: {
-      components: { VueGrid, VueGridRow, VueGridColumn },
-    },
-  },
-);
-
-story.add(
-  'Stack with vertical spacing',
-  () => ({
-    components: { VueGrid, VueGridRow, VueGridColumn, VueButton },
-    template: `<vue-grid with-vertical-space>
-        <vue-grid-row>
-            <vue-grid-column>
-                <vue-button block>Item 1</vue-button>
-            </vue-grid-column>
-        </vue-grid-row>
-        <vue-grid-row>
-            <vue-grid-column>
-                <vue-button block>Item 2</vue-button>
-            </vue-grid-column>
-        </vue-grid-row>
-    </vue-grid>`,
-  }),
-  {
-    info: {
-      components: { VueGrid, VueGridRow, VueGridColumn },
-    },
-  },
-);
-
-story.add(
-  'Mixed with vertical spacing',
+  'Simple Grid',
   () => ({
     components: { VueGrid, VueGridRow, VueGridColumn, VueButton },
     template: `<vue-grid>
         <vue-grid-row>
             <vue-grid-column>
-                <vue-grid-row with-vertical-space>
-                    <vue-grid-column><vue-button block>Item 1</vue-button></vue-grid-column>
-                </vue-grid-row>
-                <vue-grid-row with-vertical-space>
-                    <vue-grid-column><vue-button block>Item 2</vue-button></vue-grid-column>
-                </vue-grid-row>
+                <vue-button block>Item 1</vue-button>
+            </vue-grid-column>
+            <vue-grid-column width="50%">
+                <vue-button block>Item 2</vue-button>
             </vue-grid-column>
             <vue-grid-column>
-                <vue-grid-row with-vertical-space>
-                    <vue-grid-column><vue-button block>Item 1</vue-button></vue-grid-column>
-                </vue-grid-row>
-                <vue-grid-row with-vertical-space>
-                    <vue-grid-column><vue-button block>Item 2</vue-button></vue-grid-column>
-                </vue-grid-row>
+                <vue-button block>Item 3</vue-button>
+            </vue-grid-column>
+        </vue-grid-row>
+        <vue-grid-row>
+            <vue-grid-column width="50%">
+                <vue-button block>Item 1</vue-button>
+            </vue-grid-column>
+            <vue-grid-column>
+                <vue-button block>Item 2</vue-button>
+            </vue-grid-column>
+            <vue-grid-column>
+                <vue-button block>Item 3</vue-button>
             </vue-grid-column>
         </vue-grid-row>
     </vue-grid>`,
@@ -102,12 +46,12 @@ story.add(
   'No spacings',
   () => ({
     components: { VueGrid, VueGridRow, VueGridColumn, VueButton },
-    template: `<vue-grid space="none">
+    template: `<vue-grid vertical-space="none" horizontal-space="none">
         <vue-grid-row>
             <vue-grid-column>
                 <vue-button block>Item 1</vue-button>
             </vue-grid-column>
-            <vue-grid-column :width="50">
+            <vue-grid-column width="50%">
                 <vue-button block>Item 2</vue-button>
             </vue-grid-column>
             <vue-grid-column>
@@ -115,7 +59,7 @@ story.add(
             </vue-grid-column>
         </vue-grid-row>
         <vue-grid-row>
-            <vue-grid-column :width="50">
+            <vue-grid-column width="50%">
                 <vue-button block>Item 1</vue-button>
             </vue-grid-column>
             <vue-grid-column>
@@ -138,7 +82,7 @@ story.add(
   'Text align',
   () => ({
     components: { VueGrid, VueGridRow, VueGridColumn, VueButton },
-    template: `<vue-grid with-vertical-space text-align="center">
+    template: `<vue-grid text-align="center">
         <vue-grid-row>
             <vue-grid-column>Text 1</vue-grid-column>
             <vue-grid-column>Text 2</vue-grid-column>
@@ -172,12 +116,12 @@ story.add(
   '100% width',
   () => ({
     components: { VueGrid, VueGridRow, VueGridColumn, VueButton },
-    template: `<vue-grid with-vertical-space fill>
+    template: `<vue-grid fluid>
         <vue-grid-row>
             <vue-grid-column>
                 <vue-button block>Item 1</vue-button>
             </vue-grid-column>
-            <vue-grid-column :width="50">
+            <vue-grid-column width="50%">
                 <vue-button block>Item 2</vue-button>
             </vue-grid-column>
             <vue-grid-column>
@@ -185,7 +129,7 @@ story.add(
             </vue-grid-column>
         </vue-grid-row>
         <vue-grid-row>
-            <vue-grid-column :width="50">
+            <vue-grid-column width="50%">
                 <vue-button block>Item 1</vue-button>
             </vue-grid-column>
             <vue-grid-column>
@@ -205,39 +149,134 @@ story.add(
 );
 
 story.add(
-  'Width, Grow and Shrink',
+  'Complex Grid',
   () => ({
     components: { VueGrid, VueGridRow, VueGridColumn, VueButton },
-    template: `<vue-grid space="none" fill>
-        <vue-grid-row>
-            <vue-grid-column :width="25" :can-grow="false">
-                <vue-button block>Item 1</vue-button>
+    template: `<vue-grid vertical-space="none" fluid>
+    <vue-grid-row>
+      <vue-grid-column width="30%" :can-grow="false">
+        <vue-grid horizontal-space="lg" vertical-space="lg" fluid>
+          <vue-grid-row>
+            <vue-grid-column>
+              <vue-button block>Item 1</vue-button>
             </vue-grid-column>
             <vue-grid-column>
-                <vue-button color="primary" block>Item 2</vue-button>
+              <vue-button block>Item 2</vue-button>
             </vue-grid-column>
-            <vue-grid-column :can-grow="false">
-                <vue-button color="secondary" block>Item 3</vue-button>
+          </vue-grid-row>
+          <vue-grid-row>
+            <vue-grid-column>
+              <vue-button color="primary" block>Item 1</vue-button>
             </vue-grid-column>
-        </vue-grid-row>
-        <vue-grid-row>
-            <vue-grid-column :width="70" :can-shrink="false">
-                <vue-button block>Item 1</vue-button>
+            <vue-grid-column>
+              <vue-button  color="primary" block>Item 2</vue-button>
             </vue-grid-column>
-            <vue-grid-column :width="15" :can-shrink="false">
-                <vue-button color="primary" block>Item 2</vue-button>
+          </vue-grid-row>
+        </vue-grid>
+      </vue-grid-column>
+      <vue-grid-column>
+        <vue-grid fluid>
+          <vue-grid-row>
+            <vue-grid-column>
+              <vue-button color="primary" block>Item 1</vue-button>
             </vue-grid-column>
-            <vue-grid-column :width="15" :can-shrink="false">
-                <vue-button color="secondary" block>Item 3</vue-button>
+          </vue-grid-row>
+          <vue-grid-row>
+            <vue-grid-column>
+              <vue-button color="secondary" block>Item 1</vue-button>
             </vue-grid-column>
-        </vue-grid-row>
-
-        <vue-grid-row>
-            <vue-grid-column :width="25" :can-grow="false">
-                <vue-button color="success" block>Item 1</vue-button>
+          </vue-grid-row>
+          <vue-grid-row>
+            <vue-grid-column>
+              <vue-button color="success" block>Item 1</vue-button>
             </vue-grid-column>
-        </vue-grid-row>
+          </vue-grid-row>
+          <vue-grid-row>
+            <vue-grid-column>
+              <vue-button color="warning" block>Item 1</vue-button>
+            </vue-grid-column>
+          </vue-grid-row>
+        </vue-grid>
+      </vue-grid-column>
+      <vue-grid-column width="20%" :can-grow="false">
+        <vue-grid horizontal-space="sm" vertical-space="sm" fluid>
+          <vue-grid-row>
+            <vue-grid-column>
+              <vue-button color="primary" block>Item 1</vue-button>
+            </vue-grid-column>
+            <vue-grid-column>
+              <vue-button color="primary" block>Item 2</vue-button>
+            </vue-grid-column>
+          </vue-grid-row>
+          <vue-grid-row>
+            <vue-grid-column>
+              <vue-button color="secondary" block>item 1</vue-button>
+            </vue-grid-column>
+          </vue-grid-row>
+          <vue-grid-row vertical-space="none">
+            <vue-grid-column>
+              <vue-button color="success" block>Item 1</vue-button>
+            </vue-grid-column>
+          </vue-grid-row>
+        </vue-grid>
+      </vue-grid-column>
+    </vue-grid-row>
+    <vue-grid-row>
+      <vue-grid-column>
+        <vue-button color="primary" block>Item 1</vue-button>
+      </vue-grid-column>
+      <vue-grid-column>
+        <vue-button color="primary" block>Item 1</vue-button>
+      </vue-grid-column>
+    </vue-grid-row>
     </vue-grid>`,
+  }),
+  {
+    info: {
+      components: { VueGrid, VueGridRow, VueGridColumn },
+    },
+  },
+);
+
+story.add(
+  'Responsive Grid',
+  () => ({
+    components: { VueGrid, VueGridRow, VueGridColumn, VueButton },
+    template: `<div>
+    <vue-grid>
+      <vue-grid-row>
+        <vue-grid-column width="100%" tablet-portrait="50%" tablet-landscape="33.3333%" large-desktop="100%">
+          <vue-button block>Item 1</vue-button>
+        </vue-grid-column>
+        <vue-grid-column width="100%" tablet-portrait="50%" tablet-landscape="33.3333%" large-desktop="100%">
+          <vue-button block>Item 2</vue-button>
+        </vue-grid-column>
+        <vue-grid-column width="100%" tablet-portrait="50%" tablet-landscape="33.3333%" large-desktop="100%">
+          <vue-button block>Item 3</vue-button>
+        </vue-grid-column>
+        <vue-grid-column width="100%" tablet-portrait="50%" tablet-landscape="33.3333%" large-desktop="100%">
+          <vue-button block>Item 4</vue-button>
+        </vue-grid-column>
+      </vue-grid-row>
+    </vue-grid>
+
+    <vue-grid>
+      <vue-grid-row>
+        <vue-grid-column tablet-portrait="50%" small-desktop="33.3333%" large-desktop="25%">
+          <vue-button block color="primary">Item 1</vue-button>
+        </vue-grid-column>
+        <vue-grid-column tablet-portrait="50%" small-desktop="33.3333%" large-desktop="25%">
+          <vue-button block color="primary">Item 2</vue-button>
+        </vue-grid-column>
+        <vue-grid-column tablet-portrait="50%" small-desktop="33.3333%" large-desktop="25%">
+          <vue-button block color="primary">Item 3</vue-button>
+        </vue-grid-column>
+        <vue-grid-column tablet-portrait="50%" small-desktop="33.3333%" large-desktop="25%">
+          <vue-button block color="primary">Item 4</vue-button>
+        </vue-grid-column>
+      </vue-grid-row>
+    </vue-grid>
+</div>`,
   }),
   {
     info: {

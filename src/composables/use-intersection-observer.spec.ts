@@ -42,11 +42,12 @@ describe('use-intersection-observer.ts', () => {
 
   test('should not create an observer and call the call back function', async () => {
     let testObserver: Ref<IntersectionObserver>;
+    const callback = jest.fn();
 
     render<any>(
       TestComponent(() => {
         const ref = getDomRef(null);
-        const { observer } = useIntersectionObserver(ref, null);
+        const { observer } = useIntersectionObserver(ref, callback);
 
         testObserver = observer;
 
@@ -59,5 +60,6 @@ describe('use-intersection-observer.ts', () => {
     await Vue.nextTick();
 
     expect(testObserver.value).toBeNull();
+    expect(callback).toHaveBeenCalled();
   });
 });

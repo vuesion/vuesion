@@ -11,7 +11,7 @@ describe('VuePagination.vue', () => {
       i18n,
       propsData: {
         pages: 10,
-        current: 1,
+        selectedPage: 1,
       },
     });
 
@@ -20,12 +20,12 @@ describe('VuePagination.vue', () => {
     wrapper.find(`.prev`).trigger('click');
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.emitted().change).toBeFalsy();
+    expect(wrapper.emitted().click).toBeFalsy();
 
     wrapper.find(`.next`).trigger('click');
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.emitted().change).toBeTruthy();
+    expect(wrapper.emitted().click).toBeTruthy();
   });
 
   test('should go to pev page but not next', async () => {
@@ -34,7 +34,7 @@ describe('VuePagination.vue', () => {
       i18n,
       propsData: {
         pages: 10,
-        current: 10,
+        selectedPage: 10,
       },
     });
 
@@ -43,11 +43,11 @@ describe('VuePagination.vue', () => {
     wrapper.find(`.next`).trigger('click');
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.emitted().change).toBeFalsy();
+    expect(wrapper.emitted().click).toBeFalsy();
 
     wrapper.find(`.prev`).trigger('click');
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.emitted().change).toBeTruthy();
+    expect(wrapper.emitted().click).toBeTruthy();
   });
 });

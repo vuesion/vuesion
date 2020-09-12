@@ -1,5 +1,5 @@
 <template>
-  <div ref="calendar" :class="$style.calendar">
+  <div ref="calendarRef" :class="$style.calendar">
     <div :class="$style.header">
       <vue-headline
         level="4"
@@ -53,7 +53,19 @@
       <table>
         <thead>
           <tr>
-            <td v-for="(weekday, idx) in weekdays" :key="`weekday-${idx}`" :class="$style.disabledDay">
+            <td
+              v-for="(weekday, idx) in weekdays([
+                $t('components.calendar.sunday.short' /* S */).toString(),
+                $t('components.calendar.monday.short' /* M */).toString(),
+                $t('components.calendar.tuesday.short' /* T */).toString(),
+                $t('components.calendar.wednesday.short' /* W */).toString(),
+                $t('components.calendar.thursday.short' /* T */).toString(),
+                $t('components.calendar.friday.short' /* F */).toString(),
+                $t('components.calendar.saturday.short' /* S */).toString(),
+              ])"
+              :key="`weekday-${idx}`"
+              :class="$style.disabledDay"
+            >
               <span>{{ weekday }}</span>
             </td>
           </tr>
@@ -82,12 +94,12 @@
       </table>
     </div>
 
-    <div v-if="selecting === 'year'" :class="$style.year">
+    <div v-if="selecting === 'year'" :class="[$style.year, 'year']">
       <div
         v-for="year in years"
         :id="`${year.year}-calendar-year`"
         :key="year.year"
-        :class="[year.selected ? $style.selected : '']"
+        :class="[year.selected && $style.selected, year.selected && 'selected']"
         :aria-label="year.year"
         tabindex="0"
         @click="setByYear(year.year)"
@@ -101,6 +113,7 @@
       <vue-button ghost @click.stop.prevent="onClose">
         {{ $t('common.cancel' /* Cancel */) }}
       </vue-button>
+      &nbsp;
       <vue-button color="primary" @click.stop.prevent="onChange">
         {{ $t('common.ok' /* Ok */) }}
       </vue-button>
@@ -109,19 +122,11 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, ref, onBeforeMount } from '@vue/composition-api';
 import chunk from 'lodash/chunk';
 import VueButton from '../../atoms/VueButton/VueButton.vue';
 import VueHeadline from '../../atoms/VueHeadline/VueHeadline.vue';
-
-interface IData {
-  selecting: string;
-  currentMonth: number;
-  currentYear: number;
-  selectedDayOfWeek: number;
-  selectedDay: number;
-  selectedMonth: number;
-  selectedYear: number;
-}
+import { getDomRef } from '@/composables/get-dom-ref';
 
 interface IDay {
   day: number;
@@ -135,41 +140,53 @@ interface IYear {
   selected: boolean;
 }
 
-export default {
+export default defineComponent({
   name: 'VueCalendar',
+  model: {
+    prop: 'selectedDate',
+    event: 'change',
+  },
   components: {
     VueHeadline,
     VueButton,
   },
   props: {
-    today: { type: Date, default: () => new Date() },
+    selectedDate: { type: Date, default: null },
     minDate: { type: Date, default: null },
     maxDate: { type: Date, default: null },
     firstDayOfWeek: { type: Number, default: 0 },
     startDate: { type: Date, default: null },
     endDate: { type: Date, default: null },
-    selectedDate: { type: Date, default: null },
+    today: { type: Date as new () => Date, default: (): Date => new Date() },
   },
-  data(): IData {
-    return {
-      selecting: 'date',
-      currentMonth: null,
-      currentYear: null,
-      selectedDayOfWeek: null,
-      selectedDay: null,
-      selectedMonth: null,
-      selectedYear: null,
+  setup(props, { root, emit }) {
+    const calendarRef = getDomRef(null);
+    const selecting = ref('date');
+    const currentMonth = ref<number>(null);
+    const currentYear = ref<number>(null);
+    const selectedDayOfWeek = ref<number>(null);
+    const selectedDay = ref<number>(null);
+    const selectedMonth = ref<number>(null);
+    const selectedYear = ref<number>(null);
+    const calculatedDate = computed(() => new Date(selectedYear.value, selectedMonth.value, selectedDay.value));
+    const dayDisabled = (day: number, date: Date) => {
+      let disabled = false;
+
+      if (!day) {
+        disabled = true;
+      } else if (props.minDate && date.getTime() < props.minDate.getTime()) {
+        disabled = true;
+      } else if (props.maxDate && date.getTime() > props.maxDate.getTime()) {
+        disabled = true;
+      }
+
+      return disabled;
     };
-  },
-  computed: {
-    calculatedDate(): Date {
-      return new Date(this.selectedYear, this.selectedMonth, this.selectedDay);
-    },
-    calendar(): IDay[][] {
+    const calendar = computed<IDay[][]>(() => {
       let days: number[] = [];
 
-      let paddingLeft = new Date(this.currentYear, this.currentMonth, 1).getDay() - this.firstDayOfWeek;
-      const daysInMonth = 32 - new Date(this.currentYear, this.currentMonth, 32).getDate();
+      let paddingLeft = new Date(currentYear.value, currentMonth.value, 1).getDay() - props.firstDayOfWeek;
+      const daysInMonth = 32 - new Date(currentYear.value, currentMonth.value, 32).getDate();
 
       if (paddingLeft === -1) {
         paddingLeft = 6;
@@ -187,68 +204,59 @@ export default {
 
       const dayObjects: IDay[] = days.map(
         (day: number): IDay => {
-          const date: Date = day ? new Date(this.currentYear, this.currentMonth, day) : new Date(0, 0, 0);
+          const date: Date = day ? new Date(currentYear.value, currentMonth.value, day) : new Date(0, 0, 0);
           const currentDay: boolean =
             date.getTime() ===
-            new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate()).getTime();
-          let disabled: boolean = this.dayDisabled(day, date);
-          let selected: boolean = date.getTime() === this.calculatedDate.getTime();
+            new Date(props.today.getFullYear(), props.today.getMonth(), props.today.getDate()).getTime();
+          let disabled: boolean = dayDisabled(day, date);
+          let selected: boolean = date.getTime() === calculatedDate.value.getTime();
 
-          if (this.startDate) {
-            disabled = disabled || date.getTime() < this.startDate.getTime();
-            selected = date.getTime() >= this.startDate.getTime() && date.getTime() <= this.calculatedDate.getTime();
+          if (props.startDate) {
+            disabled = disabled || date.getTime() < props.startDate.getTime();
+            selected = date.getTime() >= props.startDate.getTime() && date.getTime() <= calculatedDate.value.getTime();
           }
 
-          if (this.endDate) {
-            selected = date.getTime() <= this.endDate.getTime() && date.getTime() >= this.calculatedDate.getTime();
+          if (props.endDate) {
+            selected = date.getTime() <= props.endDate.getTime() && date.getTime() >= calculatedDate.value.getTime();
           }
 
           if (day === null) {
             selected = false;
           }
 
-          return { day, currentDay, selected, disabled } as IDay;
+          return { day, currentDay, selected, disabled };
         },
       );
 
       return chunk(dayObjects, 7);
-    },
-    years(): IYear[] {
+    });
+    const years = computed<IYear[]>(() => {
       let firstYear;
       const yearRange = 100;
 
-      if (this.minDate) {
-        firstYear = this.minDate.getFullYear();
-      } else if (this.maxDate) {
-        firstYear = this.maxDate.getFullYear() - yearRange;
+      if (props.minDate) {
+        firstYear = props.minDate.getFullYear();
+      } else if (props.maxDate) {
+        firstYear = props.maxDate.getFullYear() - yearRange;
       } else {
         firstYear = new Date().getFullYear() - yearRange / 2;
       }
-      const years = [];
+      const yearNumbers = [];
 
       for (let i = firstYear; i < firstYear + (yearRange + 1); i++) {
-        years.push(i);
+        yearNumbers.push(i);
       }
 
-      return years.map((year) => {
-        return { year, selected: year === this.selectedYear } as IYear;
+      return yearNumbers.map((year) => {
+        return { year, selected: year === selectedYear.value };
       });
-    },
-    weekdays(): string[] {
-      const weekdays: string[] = [
-        this.$t('components.calendar.sunday.short' /* S */),
-        this.$t('components.calendar.monday.short' /* M */),
-        this.$t('components.calendar.tuesday.short' /* T */),
-        this.$t('components.calendar.wednesday.short' /* W */),
-        this.$t('components.calendar.thursday.short' /* T */),
-        this.$t('components.calendar.friday.short' /* F */),
-        this.$t('components.calendar.saturday.short' /* S */),
-      ];
+    });
+    const weekdays = computed(() => (weekdayTanslations: string[]) => {
       const orderedDays: string[] = [];
-      let startDay: number = this.firstDayOfWeek;
+      let startDay: number = props.firstDayOfWeek;
 
       for (let i = 0; i < 7; i++) {
-        orderedDays.push(weekdays[startDay]);
+        orderedDays.push(weekdayTanslations[startDay]);
 
         startDay++;
 
@@ -258,108 +266,114 @@ export default {
       }
 
       return orderedDays;
-    },
-  },
-  created() {
-    this.setDate();
-  },
-  methods: {
-    async setSelecting(value: string) {
-      this.selecting = value;
+    });
+    const setDate = () => {
+      let date: Date = props.today;
 
-      if (this.selecting === 'year') {
-        await this.$nextTick();
-        this.scrollSelectedYearIntoView();
+      selectedDay.value = date.getDate();
+
+      if (props.minDate) {
+        date = props.minDate;
+        selectedDay.value = props.minDate.getDate() + 1;
       }
-    },
-    scrollSelectedYearIntoView() {
-      const yearContainer: HTMLElement = this.$refs.calendar.querySelector(`.${this.$style.year}`);
-      const selectedYear: HTMLElement = yearContainer.querySelector(`.${this.$style.selected}`);
+
+      if (props.startDate) {
+        date = props.startDate;
+        selectedDay.value = props.startDate.getDate();
+      }
+
+      if (props.selectedDate) {
+        date = props.selectedDate;
+        selectedDay.value = props.selectedDate.getDate();
+      }
+
+      selectedDayOfWeek.value = date.getDay();
+      selectedMonth.value = date.getMonth();
+      currentMonth.value = date.getMonth();
+      selectedYear.value = date.getFullYear();
+      currentYear.value = date.getFullYear();
+    };
+    const scrollSelectedYearIntoView = () => {
+      const yearContainer: HTMLElement = calendarRef.value.querySelector(`.year`);
+      const selectedYear: HTMLElement = yearContainer.querySelector(`.selected`);
 
       yearContainer.scrollTop =
         selectedYear.offsetTop -
         (yearContainer.getBoundingClientRect().height / 2 + selectedYear.getBoundingClientRect().height);
-    },
-    setByDay(day: IDay): void {
+    };
+    const setSelecting = (value: string) => {
+      selecting.value = value;
+
+      if (selecting.value === 'year') {
+        root.$nextTick(() => scrollSelectedYearIntoView());
+      }
+    };
+    const setByDay = (day: IDay) => {
       if (day.disabled) {
         return;
       }
 
-      this.selectedYear = this.currentYear;
-      this.selectedDay = day.day;
-      this.selectedMonth = this.currentMonth;
-      this.selectedDayOfWeek = new Date(this.selectedYear, this.selectedMonth, day.day).getDay();
-    },
-    setByMonth(month: number): void {
+      selectedYear.value = currentYear.value;
+      selectedDay.value = day.day;
+      selectedMonth.value = currentMonth.value;
+      selectedDayOfWeek.value = new Date(selectedYear.value, selectedMonth.value, day.day).getDay();
+    };
+    const setByMonth = (month: number) => {
       if (month === 12) {
-        this.currentYear = this.currentYear + 1;
-        this.currentMonth = 0;
+        currentYear.value = currentYear.value + 1;
+        currentMonth.value = 0;
 
         return;
       }
 
       if (month === -1) {
-        this.currentYear = this.currentYear - 1;
-        this.currentMonth = 11;
+        currentYear.value = currentYear.value - 1;
+        currentMonth.value = 11;
 
         return;
       }
 
-      this.currentMonth = month;
-    },
-    setByYear(year: number): void {
-      this.selectedYear = year;
-      this.currentYear = year;
-      this.selecting = 'date';
-    },
-    setDate(): void {
-      let date: Date = this.today;
+      currentMonth.value = month;
+    };
+    const setByYear = (year: number) => {
+      selectedYear.value = year;
+      currentYear.value = year;
+      selecting.value = 'date';
+    };
+    const onClose = () => {
+      emit('close');
+    };
+    const onChange = () => {
+      emit('change', calculatedDate.value);
+    };
 
-      this.selectedDay = date.getDate();
+    onBeforeMount(() => setDate());
 
-      if (this.minDate) {
-        date = this.minDate;
-        this.selectedDay = this.minDate.getDate() + 1;
-      }
-
-      if (this.startDate) {
-        date = this.startDate;
-        this.selectedDay = this.startDate.getDate();
-      }
-
-      if (this.selectedDate) {
-        date = this.selectedDate;
-        this.selectedDay = this.selectedDate.getDate();
-      }
-
-      this.selectedDayOfWeek = date.getDay();
-      this.selectedMonth = date.getMonth();
-      this.currentMonth = date.getMonth();
-      this.selectedYear = date.getFullYear();
-      this.currentYear = date.getFullYear();
-    },
-    dayDisabled(day: number, date: Date): boolean {
-      let disabled = false;
-
-      if (!day) {
-        disabled = true;
-      } else if (this.minDate && date.getTime() < this.minDate.getTime()) {
-        disabled = true;
-      } else if (this.maxDate && date.getTime() > this.maxDate.getTime()) {
-        disabled = true;
-      }
-
-      return disabled;
-    },
-    onChange(): void {
-      this.$emit('change', this.calculatedDate);
-      this.onClose();
-    },
-    onClose(): void {
-      this.$emit('close');
-    },
+    return {
+      calendarRef,
+      selecting,
+      currentMonth,
+      currentYear,
+      selectedDayOfWeek,
+      selectedDay,
+      selectedMonth,
+      selectedYear,
+      calculatedDate,
+      dayDisabled,
+      calendar,
+      years,
+      weekdays,
+      setDate,
+      scrollSelectedYearIntoView,
+      setSelecting,
+      setByDay,
+      setByMonth,
+      setByYear,
+      onChange,
+      onClose,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" module>

@@ -9,18 +9,18 @@
     @mousedown="moveStart($event)"
     @touchstart="moveStart($event)"
   >
-    <ul :class="isMultiRange ? [$style.values, $style.multi] : $style.values">
+    <ul :class="[$style.values]">
       <li>{{ formatValue(currentMin) }}</li>
       <li v-if="isMultiRange">
         {{ formatValue(currentMax) }}
       </li>
     </ul>
 
-    <div :class="cssClasses">
+    <div :class="[$style.track, disabled && $style.disabled]">
       <div :class="$style.progress" :style="{ width: progressWidth, marginLeft: progressLeft }" />
 
       <button
-        :class="handleCssClasses(0)"
+        :class="[$style.handle, $style.leftHandle, currentSlider === 0 && $style.active]"
         :style="{ left: handleLeftPosition }"
         :disabled="disabled"
         :aria-disabled="disabled"
@@ -36,7 +36,7 @@
 
       <button
         v-if="isMultiRange"
-        :class="handleCssClasses(1)"
+        :class="[$style.handle, $style.rightHandle, currentSlider === 1 && $style.active]"
         :style="{ left: handleRightPosition }"
         :disabled="disabled"
         :aria-disabled="disabled"
@@ -54,128 +54,102 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, onMounted, ref, watch } from '@vue/composition-api';
 import { IAlgorithm, linear } from './algorithms';
+import { getDomRef } from '@/composables/get-dom-ref';
+import { useEvent } from '@/composables/use-event';
 
 const algorithm: IAlgorithm = linear;
 
-export default {
+export default defineComponent({
   name: 'VueSlider',
   props: {
-    min: {
-      type: Number,
-      required: true,
-    },
-    max: {
-      type: Number,
-      required: true,
-    },
-    values: {
-      type: Array,
-      required: true,
-    },
+    disabled: { type: Boolean, default: false },
+    min: { type: Number, required: true },
+    max: { type: Number, required: true },
+    values: { type: Array, required: true },
     formatValue: {
       type: Function,
       default: (value: number) => {
         return value;
       },
     },
-    disabled: {
-      type: Boolean,
-    },
   },
-  data(): any {
-    return {
-      sliderBox: null,
-      currentSlider: null,
-      currentMin: 0,
-      currentMax: 0,
-    };
-  },
-  computed: {
-    handleLeftPosition(): string {
-      return `${algorithm.getPosition(this.currentMin, this.min, this.max)}%`;
-    },
-    handleRightPosition(): string {
-      return `${algorithm.getPosition(this.currentMax, this.min, this.max)}%`;
-    },
-    progressLeft(): string {
-      if (this.isMultiRange) {
-        return `${algorithm.getPosition(this.currentMin, this.min, this.max)}%`;
+  setup(props, { emit }) {
+    const values = computed<number[]>(() => props.values as number[]);
+    const slider = getDomRef(null);
+    const sliderBox = ref<DOMRect>(null);
+    const currentSlider = ref<number>(null);
+    const currentMin = ref(0);
+    const currentMax = ref(0);
+    const isMultiRange = computed(() => props.values.length > 1);
+    const handleLeftPosition = computed(() => `${algorithm.getPosition(currentMin.value, props.min, props.max)}%`);
+    const handleRightPosition = computed(() => `${algorithm.getPosition(currentMax.value, props.min, props.max)}%`);
+    const progressLeft = computed(() => {
+      if (isMultiRange.value) {
+        return `${algorithm.getPosition(currentMin.value, props.min, props.max)}%`;
       } else {
         return '0';
       }
-    },
-    progressWidth(): string {
-      if (this.isMultiRange) {
-        return `${parseInt(this.handleRightPosition, 10) - parseInt(this.handleLeftPosition, 10)}%`;
+    });
+    const progressWidth = computed(() => {
+      if (isMultiRange.value) {
+        return `${parseInt(handleRightPosition.value, 10) - parseInt(handleLeftPosition.value, 10)}%`;
       } else {
-        return `${parseInt(this.handleLeftPosition, 10)}%`;
+        return `${parseInt(handleLeftPosition.value, 10)}%`;
       }
-    },
-    cssClasses(): string[] {
-      const classes: string[] = [this.$style.track];
-
-      if (this.disabled) {
-        classes.push(this.$style.disabled);
-      }
-
-      return classes;
-    },
-    isMultiRange(): boolean {
-      return this.values.length > 1;
-    },
-  },
-  watch: {
-    values: {
-      immediate: true,
-      handler(values: number[]) {
-        this.currentMin = values[0];
-        this.currentMax = this.isMultiRange ? values[1] : this.max;
-      },
-    },
-  },
-  mounted() {
-    this.sliderBox = this.$refs.slider.getBoundingClientRect();
-    window.addEventListener('resize', this.refresh);
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.refresh);
-  },
-  methods: {
-    getClosestHandle(percentageDiff: number) {
-      const handlePos: number[] = [parseInt(this.handleLeftPosition, 10), parseInt(this.handleRightPosition, 10)];
-      const startIndex: number = this.isMultiRange ? 1 : 0;
+    });
+    const getClosestHandle = (percentageDiff: number) => {
+      const handlePos: number[] = [parseInt(handleLeftPosition.value, 10), parseInt(handleRightPosition.value, 10)];
+      const startIndex: number = isMultiRange.value ? 1 : 0;
 
       return handlePos.reduce((closestIdx, _, idx) => {
         const challenger = Math.abs(handlePos[idx] - percentageDiff);
         const current = Math.abs(handlePos[closestIdx] - percentageDiff);
         return challenger < current ? idx : closestIdx;
       }, startIndex);
-    },
-    percentageDiff(e: any) {
+    };
+    const percentageDiff = (e: any) => {
       const positionX: number =
         e.changedTouches && e.changedTouches.length > 0
           ? e.changedTouches[e.changedTouches.length - 1].clientX
           : e.clientX;
 
-      return ((positionX - this.sliderBox.left) / this.sliderBox.width) * 100;
-    },
-    bindEvents() {
-      document.addEventListener('touchmove', this.moving, { passive: false });
-      document.addEventListener('mousemove', this.moving);
-      document.addEventListener('touchend', this.moveEnd, { passive: false });
-      document.addEventListener('mouseup', this.moveEnd);
-      document.addEventListener('mouseleave', this.moveEnd);
-    },
-    unbindEvents() {
-      document.removeEventListener('touchmove', this.moving);
-      document.removeEventListener('mousemove', this.moving);
-      document.removeEventListener('touchend', this.moveEnd);
-      document.removeEventListener('mouseup', this.moveEnd);
-      document.removeEventListener('mouseleave', this.moveEnd);
-    },
-    moveStart(e: any) {
-      if (this.disabled) {
+      return ((positionX - sliderBox.value.left) / sliderBox.value.width) * 100;
+    };
+    const moving = (e: any) => {
+      const value: number = algorithm.getValue(percentageDiff(e), props.min, props.max);
+      const padding: number = isMultiRange.value ? 1 : 0;
+      let newValue = value;
+
+      if (currentSlider.value === 0 && value >= currentMax.value - padding) {
+        newValue = currentMax.value - padding;
+      } else if (currentSlider.value === 1 && value <= currentMin.value + padding) {
+        newValue = currentMin.value + padding;
+      }
+
+      if (currentSlider.value === 0) {
+        currentMin.value = newValue;
+      } else {
+        currentMax.value = newValue;
+      }
+    };
+    const bindEvents = () => {
+      document.addEventListener('touchmove', moving, { passive: false });
+      document.addEventListener('mousemove', moving);
+      document.addEventListener('touchend', moveEnd, { passive: false });
+      document.addEventListener('mouseup', moveEnd);
+      document.addEventListener('mouseleave', moveEnd);
+    };
+    const unbindEvents = () => {
+      document.removeEventListener('touchmove', moving);
+      document.removeEventListener('mousemove', moving);
+      document.removeEventListener('touchend', moveEnd);
+      document.removeEventListener('mouseup', moveEnd);
+      document.removeEventListener('mouseleave', moveEnd);
+    };
+    const moveStart = (e: any) => {
+      if (props.disabled) {
         return;
       }
 
@@ -183,51 +157,26 @@ export default {
         return;
       }
 
-      this.currentSlider = this.getClosestHandle(this.percentageDiff(e));
-      this.moving(e);
-      this.bindEvents();
-    },
-    moveEnd() {
-      if (this.currentSlider === null) {
+      currentSlider.value = getClosestHandle(percentageDiff(e));
+      moving(e);
+      bindEvents();
+    };
+    const moveEnd = () => {
+      if (currentSlider.value === null) {
         return;
       }
 
-      this.$emit('change', { values: [this.currentMin, this.currentMax] });
+      emit('change', [currentMin.value, currentMax.value]);
 
       setTimeout(() => {
-        this.currentSlider = null;
-        this.unbindEvents();
+        currentSlider.value = null;
+        unbindEvents();
       }, 10);
-    },
-    moving(e: any) {
-      const value: number = algorithm.getValue(this.percentageDiff(e), this.min, this.max);
-      const valueId: string = this.currentSlider === 0 ? 'currentMin' : 'currentMax';
-      const padding: number = this.isMultiRange ? 1 : 0;
-
-      if (valueId === 'currentMin' && value >= this.currentMax - padding) {
-        this[valueId] = this.currentMax - padding;
-      } else if (valueId === 'currentMax' && value <= this.currentMin + padding) {
-        this[valueId] = this.currentMin + padding;
-      } else {
-        this[valueId] = value;
-      }
-    },
-    refresh() {
-      this.sliderBox = this.$refs.slider.getBoundingClientRect();
-    },
-    handleCssClasses(index = 0) {
-      const classes: string[] = [this.$style.handle];
-
-      if (index === this.currentSlider) {
-        classes.push(this.$style.active);
-      }
-
-      return classes;
-    },
-    onKeyDown(e: any) {
-      const valueId: string = this.currentSlider === 0 ? 'currentMin' : 'currentMax';
-      const padding: number = this.isMultiRange ? 1 : 0;
-      let value: number = this[valueId];
+    };
+    const refresh = () => (sliderBox.value = slider.value.getBoundingClientRect());
+    const onKeyDown = (e: any) => {
+      const padding: number = isMultiRange.value ? 1 : 0;
+      let value: number = currentSlider.value === 0 ? currentMin.value : currentMax.value;
 
       if (e.code === 'ArrowLeft') {
         value = value - 5;
@@ -235,27 +184,65 @@ export default {
         value = value + 5;
       }
 
-      if (value < this.min) {
-        this.currentMin = this.min;
+      if (value < props.min) {
+        currentMin.value = props.min;
         return;
-      } else if (value > this.max) {
-        this.currentMax = this.max;
+      } else if (value > props.max) {
+        currentMax.value = props.max;
         return;
       }
 
-      if (valueId === 'currentMin' && value >= this.currentMax - padding) {
-        this[valueId] = this.currentMax - padding;
-      } else if (valueId === 'currentMax' && value <= this.currentMin + padding) {
-        this[valueId] = this.currentMin + padding;
-      } else {
-        this[valueId] = value;
+      if (currentSlider.value === 0 && value >= currentMax.value - padding) {
+        value = currentMax.value - padding;
+      } else if (currentSlider.value === 1 && value <= currentMin.value + padding) {
+        value = currentMin.value + padding;
       }
-    },
-    onKeyUp() {
-      this.$emit('change', { values: [this.currentMin, this.currentMax] });
-    },
+
+      if (currentSlider.value === 0) {
+        currentMin.value = value;
+      } else {
+        currentMax.value = value;
+      }
+    };
+    const onKeyUp = () => {
+      emit('change', [currentMin.value, currentMax.value]);
+    };
+
+    watch(
+      values,
+      () => {
+        currentMin.value = values.value[0];
+        currentMax.value = isMultiRange.value ? values.value[1] : props.max;
+      },
+      { immediate: true },
+    );
+
+    onMounted(() => refresh());
+
+    useEvent('resize', refresh, {}, ref(window));
+
+    return {
+      slider,
+      sliderBox,
+      currentSlider,
+      currentMin,
+      currentMax,
+      isMultiRange,
+      handleLeftPosition,
+      handleRightPosition,
+      progressLeft,
+      progressWidth,
+      getClosestHandle,
+      percentageDiff,
+      moving,
+      moveStart,
+      moveEnd,
+      refresh,
+      onKeyDown,
+      onKeyUp,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" module>
@@ -265,61 +252,51 @@ export default {
   user-select: none;
   display: block;
   padding: $slider-padding;
-}
 
-.track {
-  position: relative;
-  width: 100%;
-  height: 4px;
-  background-color: $slider-track-bg;
-  box-shadow: $slider-track-shadow;
+  .values {
+    list-style: none;
+    padding: 0 0 $space-16 0;
+    display: flex;
+    justify-content: space-between;
 
-  &.disabled {
-    opacity: 0.6;
-  }
-}
-
-.progress {
-  height: 4px;
-  background: $slider-progress-bg;
-}
-
-.handle {
-  position: absolute;
-  top: ($slider-handle-size * 0.5) * -1;
-  display: block;
-  padding: 0;
-  width: $slider-handle-size;
-  height: $slider-handle-size;
-  border-radius: 50%;
-  box-shadow: $slider-handle-shadow;
-  background-color: $slider-handle-bg;
-  cursor: pointer;
-  border: $slider-handle-border;
-  user-select: none;
-  transition: $slider-handle-transition;
-
-  &.active {
-    box-shadow: $slider-handle-active-shadow;
-  }
-}
-
-.values {
-  list-style: none;
-  padding: 0;
-  display: flex;
-
-  li {
-    display: inline-flex;
-  }
-
-  &.multi {
     li {
-      &:first-child {
-        &:after {
-          content: '-';
-          display: inline-block;
-        }
+      display: inline-flex;
+    }
+  }
+
+  .track {
+    position: relative;
+    width: 100%;
+    height: $slider-track-height;
+    background-color: $slider-track-bg;
+    box-shadow: $slider-track-shadow;
+
+    &.disabled {
+      opacity: 0.6;
+    }
+
+    .progress {
+      height: $slider-track-height;
+      background: $slider-progress-bg;
+    }
+
+    .handle {
+      position: absolute;
+      top: ($slider-handle-size * 0.5) * -1;
+      display: block;
+      padding: 0;
+      width: $slider-handle-size;
+      height: $slider-handle-size;
+      border-radius: 50%;
+      box-shadow: $slider-handle-shadow;
+      background-color: $slider-handle-bg;
+      cursor: pointer;
+      border: $slider-handle-border;
+      user-select: none;
+      transition: $slider-handle-transition;
+
+      &.active {
+        box-shadow: $slider-handle-active-shadow;
       }
     }
   }

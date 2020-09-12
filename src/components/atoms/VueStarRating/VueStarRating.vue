@@ -1,97 +1,79 @@
 <template>
-  <div v-if="maxNumStars > 0" :class="$style.vueStarRating">
+  <div :class="$style.vueStarRating">
     <div
       v-for="(star, idx) in stars"
       :key="idx"
-      :class="starClasses(star)"
+      :class="[$style.star, star.active && $style.active]"
       @click="onStarClick(idx)"
       @mouseenter="onStarMouseEnter(idx)"
       @mouseleave="onStarMouseLeave(idx)"
     >
       <vue-icon-star />
     </div>
-    <div :class="$style.numberDisplay">
-      <span>{{ numStarDisplay }}</span>
-    </div>
   </div>
 </template>
 
 <script lang="ts">
+import { defineComponent, ref } from '@vue/composition-api';
 import VueIconStar from '../icons/VueIconStar/VueIconStar.vue';
 
-export default {
+export default defineComponent({
   name: 'VueStarRating',
   components: {
     VueIconStar,
   },
   props: {
-    maxNumStars: {
-      type: Number,
-      default: 5,
-    },
-    selectedNumStars: {
-      type: Number,
-      default: 0,
-    },
+    maxNumStars: { type: Number, default: 5 },
+    selectedNumStars: { type: Number, default: 0 },
   },
-  data(): any {
+  setup(props) {
+    const stars = ref<Array<{ active: boolean }>>([]);
+    const numStarDisplay = ref(0);
+    const numSelectedStars = ref(0);
+
+    for (let idx = 0; idx < props.maxNumStars; idx++) {
+      stars.value.push({ active: idx < props.selectedNumStars });
+    }
+
+    if (props.selectedNumStars > props.maxNumStars) {
+      numStarDisplay.value = props.maxNumStars;
+      numSelectedStars.value = props.maxNumStars;
+    } else if (props.selectedNumStars < 0) {
+      numStarDisplay.value = 0;
+      numSelectedStars.value = 0;
+    } else {
+      numStarDisplay.value = props.selectedNumStars;
+      numSelectedStars.value = props.selectedNumStars;
+    }
+
+    const onStarMouseEnter = (idx: number) => {
+      numStarDisplay.value = idx + 1;
+
+      for (let i = props.maxNumStars - 1; i >= 0; i--) {
+        stars.value[i].active = i <= idx;
+      }
+    };
+    const onStarMouseLeave = () => {
+      numStarDisplay.value = numSelectedStars.value;
+
+      for (let i = props.maxNumStars - 1; i >= numSelectedStars.value; i--) {
+        stars.value[i].active = false;
+      }
+    };
+    const onStarClick = (idx: number) => {
+      numSelectedStars.value = idx + 1;
+    };
+
     return {
-      stars: [],
-      numStarDisplay: 0,
-      numSelectedStars: 0,
+      stars,
+      numStarDisplay,
+      numSelectedStars,
+      onStarMouseEnter,
+      onStarMouseLeave,
+      onStarClick,
     };
   },
-  computed: {},
-  created(): void {
-    // initialise stars & their activeness
-    for (let idx = 0; idx < this.maxNumStars; idx++) {
-      this.stars.push({ active: idx < this.selectedNumStars });
-    }
-
-    // initialise number display & selected number of stars
-    // selected stars cannot be greater that the max num of stars or < 0
-    if (this.selectedNumStars > this.maxNumStars) {
-      this.numStarDisplay = this.maxNumStars;
-      this.numSelectedStars = this.maxNumStars;
-    } else if (this.selectedNumStars < 0) {
-      this.numStarDisplay = 0;
-      this.numSelectedStars = 0;
-    } else {
-      this.numStarDisplay = this.selectedNumStars;
-      this.numSelectedStars = this.selectedNumStars;
-    }
-  },
-  methods: {
-    onStarMouseEnter(idx: number) {
-      // update star number display
-      this.numStarDisplay = idx + 1;
-
-      // update activeness of stars
-      for (let i = this.maxNumStars - 1; i >= 0; i--) {
-        this.stars[i].active = i <= idx;
-      }
-    },
-    onStarMouseLeave() {
-      // reset star number display to actual selected number
-      this.numStarDisplay = this.numSelectedStars;
-
-      // reset activeness of stars to actual selected number
-      for (let i = this.maxNumStars - 1; i >= this.numSelectedStars; i--) {
-        this.stars[i].active = false;
-      }
-    },
-    onStarClick(idx: number) {
-      this.numSelectedStars = idx + 1;
-    },
-    starClasses(star: any) {
-      const styles = [this.$style.star];
-      if (star.active) {
-        styles.push(this.$style.active);
-      }
-      return styles;
-    },
-  },
-};
+});
 </script>
 
 <style lang="scss" module>
@@ -116,18 +98,6 @@ export default {
 
     &:hover {
       cursor: pointer;
-    }
-  }
-
-  .numberDisplay {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 $space-24;
-
-    span {
-      font-size: $font-size-h3;
-      font-weight: $font-weight-h3;
     }
   }
 }

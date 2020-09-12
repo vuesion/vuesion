@@ -15,46 +15,41 @@
 </template>
 
 <script lang="ts">
-import { INotification } from './utils';
+import { computed, defineComponent, onMounted, ref } from '@vue/composition-api';
+import { getGUID } from '@vuesion/utils/dist/randomGenerator';
+import { INotification } from './INotification';
 import { EventBus } from '@/services/EventBus';
 
-let id = 0;
-
-export default {
+export default defineComponent({
   name: 'VueNotificationStack',
   props: {
-    duration: {
-      type: Number,
-      default: 10000,
-    },
+    duration: { type: Number, default: 10000 },
   },
-  data(): any {
-    return {
-      notifications: [],
+  setup(props) {
+    const notifications = ref<INotification[]>([]);
+    const orderedNotifications = computed<INotification[]>(() => notifications.value.slice(0).reverse());
+    const removeNotification = (n: INotification) => {
+      notifications.value = notifications.value.filter((notification: INotification) => notification.id !== n.id);
     };
-  },
-  computed: {
-    orderedNotifications() {
-      return this.notifications.slice(0).reverse();
-    },
-  },
-  mounted() {
-    EventBus.$on('notification.add', this.addNotification);
-  },
-  methods: {
-    addNotification(n: INotification): void {
-      n.id = id++;
+    const addNotification = (n: INotification) => {
+      n.id = getGUID();
       n.type = n.type || 'default';
 
-      this.notifications.push(n);
+      notifications.value.push(n);
 
-      setTimeout(() => this.removeNotification(n), this.duration);
-    },
-    removeNotification(n: INotification): void {
-      this.notifications = this.notifications.filter((notification: INotification) => notification.id !== n.id);
-    },
+      setTimeout(() => removeNotification(n), props.duration);
+    };
+
+    onMounted(() => {
+      EventBus.$on('notification.add', addNotification);
+    });
+
+    return {
+      orderedNotifications,
+      removeNotification,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" module>

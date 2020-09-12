@@ -12,13 +12,8 @@ import anime from 'animejs';
 export default {
   name: 'VueTabItem',
   props: {
-    title: {
-      type: String,
-      required: true,
-    },
-    isActive: {
-      type: Boolean,
-    },
+    title: { type: String, required: true },
+    isActive: { type: Boolean, default: false },
   },
   inject: ['register', 'updateHeader'],
   data(): any {

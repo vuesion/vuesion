@@ -8,10 +8,10 @@
       @click="click"
       @keypress.enter.space.prevent.stop="click"
     >
-      {{ title }} <i :class="iconClasses" />
+      {{ title }} <i :class="[$style.icon, open && $style.open]" />
     </div>
-    <vue-collapse :show="show">
-      <section :class="$style.body" :aria-expanded="show">
+    <vue-collapse :show="open">
+      <section :class="$style.body" :aria-expanded="open">
         <slot />
       </section>
     </vue-collapse>
@@ -19,53 +19,36 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, inject, ref, onBeforeMount, Ref } from '@vue/composition-api';
 import VueCollapse from '../../../molecules/VueCollapse/VueCollapse.vue';
 
-export default {
+export default defineComponent({
   name: 'VueAccordionItem',
   components: {
     VueCollapse,
   },
   props: {
-    title: {
-      type: String,
-      required: true,
-    },
-    initOpen: {
-      type: Boolean,
-      default: false,
-    },
+    title: { type: String, required: true },
+    initOpen: { type: Boolean, default: false },
   },
-  inject: ['register', 'openItem'],
-  data(): any {
+  setup(props) {
+    const register = inject<(idx: Ref<number>, open: Ref<boolean>, initOpen: boolean) => void>('register');
+    const openItem = inject<(idx: Ref<number>) => void>('openItem');
+    const idx = ref<number>(null);
+    const open = ref(false);
+    const click = () => openItem(idx);
+
+    onBeforeMount(() => register(idx, open, props.initOpen));
+
     return {
-      idx: null,
-      open: false,
+      register,
+      openItem,
+      idx,
+      open,
+      click,
     };
   },
-  computed: {
-    show() {
-      return this.open;
-    },
-    iconClasses() {
-      const classes = [this.$style.icon];
-
-      if (this.show) {
-        classes.push(this.$style.open);
-      }
-
-      return classes;
-    },
-  },
-  created() {
-    this.register(this);
-  },
-  methods: {
-    click() {
-      this.openItem(this.idx);
-    },
-  },
-};
+});
 </script>
 
 <style lang="scss" module>

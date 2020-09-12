@@ -17,92 +17,96 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, onMounted, ref } from '@vue/composition-api';
 import anime from 'animejs';
+import { getDomRef } from '@/composables/get-dom-ref';
 
-export default {
+export default defineComponent({
   name: 'VueTruncate',
   props: {
-    lines: {
-      type: Number,
-      default: 3,
-    },
-    duration: {
-      type: Number,
-      default: 250,
-    },
+    duration: { type: Number, default: 250 },
+    lines: { type: Number, default: 3 },
   },
-  data(): any {
-    return {
-      offsetHeight: 0,
-      collapsedHeight: 0,
-      lineHeight: 0,
-      isTruncated: false,
-      showMoreButton: false,
-    };
-  },
-  computed: {
-    height() {
-      return this.lineHeight * (this.lines > 1 ? 2 : 0.6);
-    },
-  },
-  mounted() {
-    this.offsetHeight = this.$refs.text.offsetHeight;
-    this.lineHeight = parseFloat((window as any).getComputedStyle(this.$refs.text)['line-height']);
-    this.collapsedHeight = this.lines * this.lineHeight;
-
-    if (this.offsetHeight <= this.collapsedHeight) {
-      return;
-    }
-
-    this.isTruncated = true;
-    this.showMoreButton = true;
-    this.$refs.text.style.height = this.collapsedHeight + 'px';
-  },
-  methods: {
-    showMore() {
+  setup(props) {
+    const text = getDomRef(null);
+    const fadeOut = getDomRef(null);
+    const offsetHeight = ref(0);
+    const collapsedHeight = ref(0);
+    const lineHeight = ref(0);
+    const isTruncated = ref(false);
+    const showMoreButton = ref(false);
+    const height = computed(() => lineHeight.value * (props.lines > 1 ? 2 : 0.6));
+    const showMore = () => {
       anime({
-        targets: this.$refs.text,
+        targets: text.value,
         height: {
-          value: `${this.offsetHeight}px`,
-          duration: this.duration,
+          value: `${offsetHeight.value}px`,
+          duration: props.duration,
         },
         round: 1,
         easing: 'easeInOutCirc',
-        complete: () => (this.showMoreButton = false),
+        complete: () => (showMoreButton.value = false),
       });
       anime({
-        targets: this.$refs.fadeOut,
+        targets: fadeOut.value,
         opacity: {
           value: 0,
-          duration: this.duration,
+          duration: props.duration,
         },
         round: 1,
         easing: 'easeInOutCirc',
       });
-    },
-    showLess() {
+    };
+    const showLess = () => {
       anime({
-        targets: this.$refs.text,
+        targets: text.value,
         height: {
-          value: `${this.collapsedHeight}px`,
-          duration: this.duration,
+          value: `${collapsedHeight.value}px`,
+          duration: props.duration,
         },
         round: 1,
         easing: 'easeInOutCirc',
-        complete: () => (this.showMoreButton = true),
+        complete: () => (showMoreButton.value = true),
       });
       anime({
-        targets: this.$refs.fadeOut,
+        targets: fadeOut.value,
         opacity: {
           value: 1,
-          duration: this.duration,
+          duration: props.duration,
         },
         round: 1,
         easing: 'easeInOutCirc',
       });
-    },
+    };
+
+    onMounted(() => {
+      offsetHeight.value = text.value.offsetHeight;
+      lineHeight.value = parseFloat((window as any).getComputedStyle(text.value)['line-height']);
+      collapsedHeight.value = props.lines * lineHeight.value;
+
+      if (offsetHeight.value <= collapsedHeight.value) {
+        return;
+      }
+
+      isTruncated.value = true;
+      showMoreButton.value = true;
+      text.value.style.height = collapsedHeight.value + 'px';
+    });
+
+    return {
+      text,
+      fadeOut,
+      offsetHeight,
+      collapsedHeight,
+      lineHeight,
+      isTruncated,
+      showMoreButton,
+      height,
+      showMore,
+      showLess,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" module>

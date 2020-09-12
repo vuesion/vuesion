@@ -34,7 +34,7 @@
     <div v-show="maxPages > 1">
       <br />
 
-      <vue-pagination :current="currentPage + 1" :pages="maxPages" @change="paginationClick" />
+      <vue-pagination :selected-page="currentPage + 1" :pages="maxPages" @click="paginationClick" />
     </div>
   </div>
 </template>

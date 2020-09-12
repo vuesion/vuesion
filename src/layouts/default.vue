@@ -16,25 +16,23 @@
 
     <vue-footer />
 
-    <vue-cookie-consent
-      current-version="1.0.0"
-      :cookie-consent-version="cookieConsentVersion"
-      :set-cookie-consent-version="setCookieConsentVersion"
-    >
-      This is a cookie consent component which shows the cookie consent every time you change the version of the
-      consent.
-    </vue-cookie-consent>
-
     <vue-sidebar>
       <vue-sidebar-group title="Themes">
         <vue-sidebar-group-item>
-          <vue-select id="theme" name="theme" :options="themes" :value="theme" @input="themeSwitch" />
+          <vue-select id="theme" label="Theme" name="theme" :items="themes" :value="theme" @input="themeSwitch" />
         </vue-sidebar-group-item>
       </vue-sidebar-group>
 
       <vue-sidebar-group title="Languages">
         <vue-sidebar-group-item>
-          <vue-select id="lang" name="lang" :options="languages" :value="$i18n.locale" @input="switchLocale" />
+          <vue-select
+            id="lang"
+            label="Languages"
+            name="lang"
+            :items="languages"
+            :value="$i18n.locale"
+            @input="switchLocale"
+          />
         </vue-sidebar-group-item>
       </vue-sidebar-group>
 
@@ -115,11 +113,10 @@
 
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex';
-import '@/assets/designSystem/global.scss';
+import '@/assets/global.scss';
 import VueNavBar from '@/components/organisms/VueNavBar/VueNavBar.vue';
 import VueFooter from '@/components/organisms/VueFooter/VueFooter.vue';
 import VueNotificationStack from '@/components/molecules/VueNotificationStack/VueNotificationStack.vue';
-import VueCookieConsent from '@/components/organisms/VueCookieConsent/VueCookieConsent.vue';
 import VueSidebar from '@/components/organisms/VueSidebar/VueSidebar.vue';
 import VueSidebarGroup from '@/components/organisms/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
 import VueSidebarGroupItem from '@/components/organisms/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
@@ -151,7 +148,6 @@ export default {
     VueSidebarGroupItem,
     VueSidebarGroup,
     VueSidebar,
-    VueCookieConsent,
     VueNavBar,
     VueFooter,
     VueNotificationStack,
@@ -174,11 +170,11 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('app', ['cookieConsentVersion', 'locale', 'theme']),
+    ...mapGetters('app', ['locale', 'theme']),
     ...mapGetters('auth', ['isAuthenticated']),
   },
   methods: {
-    ...mapActions('app', ['setCookieConsentVersion', 'changeTheme']),
+    ...mapActions('app', ['changeTheme']),
     ...mapActions('auth', ['createToken', 'revokeToken']),
     switchLocale(locale: string) {
       this.$router.push({
@@ -226,8 +222,8 @@ export default {
 
 <style lang="scss" module>
 @import '~@/assets/design-system';
-@import '~@/assets/designSystem/reset';
-@import '~@/assets/designSystem/typo';
+@import '~@/assets/reset';
+@import '~@/assets/typo';
 
 .app {
   min-height: 100vh;

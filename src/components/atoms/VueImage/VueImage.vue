@@ -3,56 +3,45 @@
 </template>
 
 <script lang="ts">
-export default {
+import { computed, defineComponent } from '@vue/composition-api';
+import { getDomRef } from '@/composables/get-dom-ref';
+import { useIntersectionObserver } from '@/composables/use-intersection-observer';
+
+export default defineComponent({
   name: 'VueImage',
   components: {},
   props: {
-    native: {
-      type: Boolean,
-      default: true,
-    },
-    src: {
-      type: String,
-      required: true,
-    },
+    native: { type: Boolean, default: true },
+    src: { type: String, required: true },
   },
-  data(): any {
-    return {
-      observer: null,
-    };
-  },
-  computed: {
-    component() {
-      return this.native ? 'img' : 'div';
-    },
-  },
-  mounted() {
-    if ((window as any).IntersectionObserver) {
-      this.createObserver();
-    } else {
-      this.setImage();
-    }
-  },
-  methods: {
-    setImage() {
-      if (this.native) {
-        this.$refs.image.src = this.src;
+  setup(props) {
+    const image = getDomRef(null);
+    const component = computed(() => (props.native ? 'img' : 'div'));
+    const setImage = () => {
+      if (props.native) {
+        image.value.src = props.src;
       } else {
-        this.$refs.image.style.backgroundImage = `url(${this.src})`;
+        image.value.style.backgroundImage = `url(${props.src})`;
       }
-    },
-    handleObserver(entries: IntersectionObserverEntry[]) {
-      entries.forEach((entry: IntersectionObserverEntry) => {
+    };
+
+    useIntersectionObserver(image, (entries, observer) => {
+      entries.forEach((entry) => {
         if (entry.intersectionRatio > 0) {
-          this.setImage();
-          this.observer.disconnect();
+          setImage();
+          observer.disconnect();
         }
       });
-    },
-    createObserver() {
-      this.observer = new IntersectionObserver(this.handleObserver, { rootMargin: '0px', threshold: 0.1 });
-      this.observer.observe(this.$refs.image);
-    },
+
+      if (!observer) {
+        setImage();
+      }
+    });
+
+    return {
+      image,
+      component,
+    };
   },
-};
+});
 </script>

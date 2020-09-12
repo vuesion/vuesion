@@ -8,68 +8,73 @@
   >
     <vue-input
       :id="id"
+      :disabled="disabled"
+      :label="label"
+      :name="name"
+      :required="required"
+      :validation="validation"
+      :value="searchQuery"
       role="searchbox"
+      :placeholder="placeholder"
+      :autofocus="autofocus"
+      :type="type"
+      :readonly="readonly"
+      :description="description"
+      :error-message="errorMessage"
+      :autocomplete="autocomplete"
       aria-autocomplete="list"
       :aria-controls="`autocomplete-results-${id}`"
-      :name="name"
-      :label="name"
-      :placeholder="placeholder"
-      :required="required"
-      :autofocus="autofocus"
-      :value="searchQuery"
-      :disabled="disabled"
-      :readonly="readonly"
-      :message="message"
-      :error-message="errorMessage"
-      :validation="validation"
-      :autocomplete="autocomplete"
-      :aria-activedescendant="hasOptions ? `result-item-${selectedOptionIndex}-${id}` : null"
+      :aria-activedescendant="hasItems ? `result-item-${selectedOptionIndex}-${id}` : null"
       @input="onInput"
-      @keyup.stop.prevent.down="onArrowDown"
+      @keydown.stop.prevent.down="onArrowDown"
       @keydown.stop.prevent.up="onArrowUp"
       @keydown.stop.enter.tab="onEnterKeyPress"
       @focus.stop.prevent="onFocus"
     />
 
-    <vue-icon-search v-show="isLoading === false" />
-    <vue-loader v-show="isLoading === true" :class="$style.loader" color="secondary" />
+    <vue-icon-search v-show="loading === false" />
+    <vue-loader v-show="loading === true" :class="$style.loader" color="secondary" />
 
     <ul
-      v-show="isOpen === true && isLoading === false"
+      v-show="isOpen === true && loading === false"
       :id="`autocomplete-results-${id}`"
-      ref="resultContainer"
+      ref="resultContainerRef"
       role="listbox"
       :style="{ height: resultContainerHeight + 'px' }"
     >
       <li
-        v-if="hasOptions === false"
-        v-html="$t('components.autocomplete.emptyMessage' /* No options found for %s */).replace('%s', searchQuery)"
+        v-if="hasItems === false"
+        v-html="$t('components.autocomplete.emptyMessage' /* No items found for %s */).replace('%s', searchQuery)"
       />
 
       <li
-        v-for="(option, index) in options"
+        v-for="(item, index) in items"
         v-else
         :id="`result-item-${index}-${id}`"
         :key="index"
         role="option"
         :aria-selected="isSelected(index)"
         :class="isSelected(index) ? $style.isSelected : ''"
-        @click="onOptionClick(index)"
+        @click="onItemClick(index)"
       >
-        {{ option.label }}
+        {{ item.label }}
       </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, ref, watch } from '@vue/composition-api';
 import debounce from 'lodash/debounce';
 import VueInput from '../../atoms/VueInput/VueInput.vue';
 import VueLoader from '../../atoms/VueLoader/VueLoader.vue';
 import VueIconSearch from '../../atoms/icons/VueIconSearch/VueIconSearch.vue';
-import { IAutocompleteOption } from './IAutocompleteOption';
+import { IItem } from '@/components/IItem';
+import { getDomRef } from '@/composables/get-dom-ref';
+import { useOutsideClick } from '@/composables/use-outside-click';
+import { useKeydown } from '@/composables/use-keydown';
 
-export default {
+export default defineComponent({
   name: 'VueAutocomplete',
   components: {
     VueIconSearch,
@@ -77,85 +82,65 @@ export default {
     VueInput,
   },
   props: {
-    name: { type: String, required: true },
     id: { type: String, required: true },
-    placeholder: { type: String, default: '' },
+    name: { type: String, required: true },
+    label: { type: String, required: true },
     required: { type: Boolean, default: false },
-    autofocus: { type: Boolean, default: false },
-    value: { type: Object, default: () => ({ label: '', value: '' }) },
-    type: { type: String, default: 'text' },
+    validation: { type: [String, Object], default: null },
+    value: { type: [String, Number], default: null },
     disabled: { type: Boolean, default: false },
+    placeholder: { type: String, default: null },
+    autofocus: { type: Boolean, default: false },
+    type: { type: String, default: 'text' },
     readonly: { type: Boolean, default: false },
-    message: { type: String, default: '' },
+    description: { type: String, default: '' },
     errorMessage: { type: String, default: '' },
-    validation: { type: String, default: '' },
     autocomplete: { type: String, default: 'off' },
-    options: { type: Array, default: (): any[] => [] },
-    maxOptions: { type: Number, default: 5 },
-    minInputChars: { type: Number, default: 3 },
-    isLoading: { type: Boolean, default: false },
+    items: { type: Array, default: (): IItem[] => [] },
+    loading: { type: Boolean, default: false },
+    maxItems: { type: Number, default: 5 },
+    minChars: { type: Number, default: 3 },
   },
-  data(): any {
-    return {
-      isOpen: false,
-      searchQuery: '',
-      previousQuery: '',
-      selectedOptionIndex: 0,
-      resultContainerHeight: 0,
-    };
-  },
-  computed: {
-    hasOptions() {
-      return this.options.length > 0;
-    },
-  },
-  watch: {
-    options() {
-      this.isOpen = true;
-      this.$nextTick(() => {
-        this.setResultContainerHeight();
-      });
-    },
-  },
-  mounted() {
-    this.searchQuery = this.value.label;
-    document.addEventListener('click', this.handleOutsideClick);
-  },
-  destroyed() {
-    document.removeEventListener('click', this.handleOutsideClick);
-  },
-  methods: {
-    setResultContainerHeight() {
-      const resultContainerItem: HTMLElement = this.$refs.resultContainer.firstChild;
+  setup(props, { emit }) {
+    const resultContainerRef = getDomRef(null);
+    const isOpen = ref(false);
+    const searchQuery = ref('');
+    const previousQuery = ref('');
+    const selectedOptionIndex = ref(0);
+    const resultContainerHeight = ref(0);
+    const items = computed<IItem[]>(() => props.items as IItem[]);
+    const value = computed(() => props.value);
+    const hasItems = computed(() => items.value.length > 0);
+    const isSameSearchQuery = computed(() => previousQuery.value === searchQuery.value);
+    const isSelected = (index: number) => index === selectedOptionIndex.value;
+    const setResultContainerHeight = () => {
+      const resultContainerItem: HTMLElement = resultContainerRef.value.firstChild;
       const resultContainerItemHeight = resultContainerItem.offsetHeight;
       let newHeight: number = resultContainerItemHeight;
 
-      if (this.options.length > 0) {
-        newHeight = resultContainerItemHeight * this.options.length;
+      if (hasItems.value) {
+        newHeight = resultContainerItemHeight * items.value.length;
 
-        if (this.options.length > this.maxOptions) {
-          newHeight = this.maxOptions * resultContainerItemHeight + resultContainerItemHeight / 2;
+        if (items.value.length > props.maxItems) {
+          newHeight = props.maxItems * resultContainerItemHeight + resultContainerItemHeight / 2;
         }
       }
 
-      this.resultContainerHeight = newHeight;
-    },
-    isSameSearchQuery() {
-      return this.previousQuery === this.searchQuery;
-    },
-    onFocus() {
-      if (this.options.length > 0 && this.searchQuery.length >= this.minInputChars) {
-        this.isOpen = true;
+      resultContainerHeight.value = newHeight;
+    };
+    const onFocus = () => {
+      if (hasItems.value && searchQuery.value.length >= props.minChars) {
+        isOpen.value = true;
       }
-    },
-    onFocusItem() {
-      const resultContainer: HTMLElement = this.$refs.resultContainer;
+    };
+    const onFocusItem = () => {
+      const resultContainer: HTMLElement = resultContainerRef.value;
       const resultContainerClientHeight: number = resultContainer.clientHeight;
       const resultContainerScrollHeight: number = resultContainer.scrollHeight;
 
       if (resultContainerScrollHeight > resultContainerClientHeight) {
         const element: HTMLElement = document.querySelector(
-          `#result-item-${this.selectedOptionIndex}-${this.id}`,
+          `#result-item-${selectedOptionIndex.value}-${props.id}`,
         ) as HTMLElement;
 
         if (element === null) {
@@ -171,87 +156,111 @@ export default {
           resultContainer.scrollTop = element.offsetTop;
         }
       }
-    },
-    handleOutsideClick(e: Event) {
-      if (!this.$el.contains(e.target as Node)) {
-        this.isOpen = false;
-      }
-    },
-    onArrowUp() {
-      if (!this.isOpen) {
+    };
+    const onArrowUp = () => {
+      if (!isOpen.value) {
         return;
       }
 
-      if (this.selectedOptionIndex > 0) {
-        this.selectedOptionIndex -= 1;
+      if (selectedOptionIndex.value > 0) {
+        selectedOptionIndex.value -= 1;
       } else {
-        this.selectedOptionIndex = this.options.length - 1;
+        selectedOptionIndex.value = items.value.length - 1;
       }
 
-      this.onFocusItem();
-    },
-    onArrowDown() {
-      if (!this.isOpen) {
+      onFocusItem();
+    };
+    const onArrowDown = () => {
+      if (!isOpen.value) {
         return;
       }
 
-      if (this.selectedOptionIndex < this.options.length - 1) {
-        this.selectedOptionIndex += 1;
+      if (selectedOptionIndex.value < items.value.length - 1) {
+        selectedOptionIndex.value += 1;
       } else {
-        this.selectedOptionIndex = 0;
+        selectedOptionIndex.value = 0;
       }
 
-      this.onFocusItem();
-    },
-    isSelected(index: number) {
-      return index === this.selectedOptionIndex;
-    },
-    emitRequest: debounce(function () {
-      this.$emit('request', this.searchQuery);
-      this.isOpen = true;
-      this.selectedOptionIndex = -1;
-    }, 300),
-    onInput(query: string) {
-      this.searchQuery = query;
+      onFocusItem();
+    };
+    const emitRequest = debounce(function () {
+      emit('search', searchQuery.value);
+      isOpen.value = true;
+      selectedOptionIndex.value = -1;
+    }, 300);
+    const onInput = (query: string) => {
+      searchQuery.value = query;
 
-      if (this.searchQuery.length >= this.minInputChars) {
-        this.emitRequest();
+      if (searchQuery.value.length >= props.minChars) {
+        emitRequest();
       } else {
-        this.isOpen = false;
+        isOpen.value = false;
       }
-    },
-    onEnterKeyPress(e: any) {
-      if (this.isOpen) {
+    };
+    const onEnterKeyPress = (e: any) => {
+      if (isOpen.value) {
         e.preventDefault();
       }
 
-      if (this.searchQuery.length < this.minInputChars || this.options.length === 0) {
+      if (searchQuery.value.length < props.minChars || hasItems.value === false) {
         return;
       }
 
-      if (this.selectedOptionIndex === -1) {
-        this.selectedOptionIndex = 0;
+      if (selectedOptionIndex.value === -1) {
+        selectedOptionIndex.value = 0;
       }
 
-      this.onOptionClick(this.selectedOptionIndex);
-    },
-    onOptionClick(index: number) {
-      this.triggerChange(this.options[index]);
-    },
-    triggerChange(option: IAutocompleteOption) {
-      this.searchQuery = option.label;
+      onItemClick(selectedOptionIndex.value);
+    };
+    const triggerChange = (item: IItem) => {
+      searchQuery.value = item.label;
 
-      this.$emit('change', option);
-      this.$emit('input', option);
+      emit('input', item);
 
-      if (this.isSameSearchQuery()) {
+      if (isSameSearchQuery.value) {
         return;
       }
-      this.previousQuery = this.searchQuery;
-      this.isOpen = false;
-    },
+      previousQuery.value = searchQuery.value;
+      isOpen.value = false;
+    };
+    const onItemClick = (index: number) => triggerChange(items.value[index]);
+    const { onKeydown } = useKeydown();
+
+    watch(items, () => {
+      isOpen.value = true;
+      setResultContainerHeight();
+    });
+    watch(value, () => (searchQuery.value = value.value?.label || ''), { immediate: true });
+
+    useOutsideClick(resultContainerRef, () => (isOpen.value = false));
+    onKeydown((event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen.value === true) {
+        isOpen.value = false;
+      }
+    });
+
+    return {
+      resultContainerRef,
+      isOpen,
+      searchQuery,
+      previousQuery,
+      selectedOptionIndex,
+      resultContainerHeight,
+      hasItems,
+      isSameSearchQuery,
+      isSelected,
+      setResultContainerHeight,
+      onFocus,
+      onFocusItem,
+      onArrowUp,
+      onArrowDown,
+      emitRequest,
+      onInput,
+      onEnterKeyPress,
+      onItemClick,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" module>

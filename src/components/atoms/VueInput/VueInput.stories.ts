@@ -50,7 +50,7 @@ story.add(
         model: '',
       };
     },
-    template: `<vue-input label="Name" name="name" id="name" v-model="model" message="description" />`,
+    template: `<vue-input label="Name" name="name" id="name" v-model="model" description="description" />`,
   }),
   {
     info: {
@@ -68,7 +68,7 @@ story.add(
         model: '',
       };
     },
-    template: `<vue-input label="Name" name="name" id="name" v-model="model" validation="required|integer" required message="please enter a number" errorMessage="This is not a number" />`,
+    template: `<vue-input label="Name" name="name" id="name" v-model="model" validation="required|integer" required description="please enter a number" errorMessage="This is not a number" />`,
   }),
   {
     info: {
@@ -106,12 +106,30 @@ story.add(
       };
     },
     template: `<div>
-  <vue-button @click="show = !show" color="primary">Login</vue-button>
-  <vue-modal :show="show" @close="show = false">
-    <vue-input autofocus label="Name" name="name" id="name" v-model="model" />
-    <vue-button ghost @click="show = !show">Close</vue-button>
-  </vue-modal>
-</div>`,
+    <vue-button @click="show = !show" color="primary">Login</vue-button>
+    <vue-modal :show="show" @close="show = false">
+      <vue-input autofocus label="Name" name="name" id="name" v-model="model" />
+      <vue-button ghost @click="show = !show">Close</vue-button>
+    </vue-modal>
+    </div>`,
+  }),
+  {
+    info: {
+      components: { VueInput },
+    },
+  },
+);
+
+story.add(
+  'Textarea',
+  () => ({
+    components: { VueInput, VueButton, VueModal },
+    data() {
+      return {
+        model: '',
+      };
+    },
+    template: `<vue-input label="Name" name="name" placeholder="Placeholder" id="name" type="textarea" v-model="model" />`,
   }),
   {
     info: {

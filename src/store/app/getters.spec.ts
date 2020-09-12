@@ -8,10 +8,6 @@ describe('AppGetters', () => {
     testState = AppDefaultState();
   });
 
-  test('it should get the cookie consent version', () => {
-    expect(AppGetters.cookieConsentVersion(testState)).toBe('');
-  });
-
   test('it should get the theme', () => {
     expect(AppGetters.theme(testState)).toBe('light');
   });

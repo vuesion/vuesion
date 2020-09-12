@@ -1,36 +1,20 @@
 <template>
-  <span :class="cssClasses"> <slot /> </span>
+  <span :class="[$style.vueBadge, outlined && $style.outlined, $style[color]]">
+    <slot />
+  </span>
 </template>
 
 <script lang="ts">
-import { variationValidator } from '../../utils';
+import { defineComponent } from '@vue/composition-api';
+import { variationValidator } from '@/components/utils';
 
-export default {
+export default defineComponent({
   name: 'VueBadge',
   props: {
-    color: {
-      type: String,
-      validator: variationValidator,
-      default: 'default',
-    },
-    outlined: {
-      type: Boolean,
-    },
+    color: { type: String, validator: variationValidator, default: 'default' },
+    outlined: { type: Boolean, default: false },
   },
-  computed: {
-    cssClasses() {
-      const classes: string[] = [this.$style.vueBadge];
-
-      if (this.outlined) {
-        classes.push(this.$style.outlined);
-      }
-
-      classes.push(this.$style[this.color]);
-
-      return classes;
-    },
-  },
-};
+});
 </script>
 
 <style lang="scss" module>
@@ -44,24 +28,24 @@ export default {
   font-weight: $badge-font-weight;
   letter-spacing: $badge-letter-spacing;
   border-radius: $badge-border-radius;
-}
 
-@each $variation, $values in $badge-variations {
-  .#{$variation} {
-    color: map-get($values, 'color');
-    background: map-get($values, 'bg');
-  }
-
-  .outlined {
+  @each $variation, $values in $badge-variations {
     &.#{$variation} {
-      border-color: map-get($values, 'bg');
-      color: map-get($values, 'bg');
+      color: map-get($values, 'color');
+      background: map-get($values, 'bg');
+    }
+
+    &.outlined {
+      &.#{$variation} {
+        border-color: map-get($values, 'bg');
+        color: map-get($values, 'bg');
+      }
     }
   }
-}
 
-.outlined {
-  border: $badge-outlined-border-width solid transparent;
-  background: transparent;
+  &.outlined {
+    border: $badge-outlined-border-width solid transparent;
+    background: transparent;
+  }
 }
 </style>

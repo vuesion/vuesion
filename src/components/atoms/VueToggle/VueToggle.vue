@@ -1,6 +1,9 @@
 <template>
-  <div :class="cssClasses">
-    <ValidationProvider :vid="name" :name="name" :rules="validation">
+  <div
+    :class="[$style.vueToggle, focus && $style.focus, isChecked && $style.checked, disabled && $style.disabled]"
+    :aria-label="label"
+  >
+    <ValidationProvider ref="validator" :vid="name" :name="name" :rules="validation">
       <input
         :id="id"
         ref="input"
@@ -13,7 +16,7 @@
         @focus="focus = true"
         @blur="focus = false"
       />
-      <div :class="$style.container" @click="onClick">
+      <div :class="$style.container" @click.prevent="onClick">
         <div :class="$style.handle" :aria-checked="isChecked ? 'true' : 'false'" role="checkbox" />
       </div>
     </ValidationProvider>
@@ -22,61 +25,47 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, ref } from '@vue/composition-api';
 import { ValidationProvider } from 'vee-validate';
+import { getDomRef } from '@/composables/get-dom-ref';
 
-export default {
+export default defineComponent({
   name: 'VueToggle',
   components: { ValidationProvider },
   inheritAttrs: false,
-  props: {
-    name: { type: String, required: true },
-    id: { type: String, required: true },
-    checked: { type: Boolean, default: false },
-    value: { type: Boolean, default: false },
-    disabled: { type: Boolean, default: false },
-    required: { type: Boolean, default: false },
-    validation: { type: String, default: '' },
-    label: { type: String, required: true },
+  model: {
+    prop: 'checked',
+    event: 'click',
   },
-  data(): any {
+  props: {
+    id: { type: String, required: true },
+    name: { type: String, required: true },
+    label: { type: String, required: true },
+    required: { type: Boolean, default: false },
+    validation: { type: [String, Object], default: null },
+    disabled: { type: Boolean, default: false },
+    checked: { type: Boolean, default: false },
+  },
+  setup(props, { emit }) {
+    const input = getDomRef(null);
+    const focus = ref(false);
+    const isChecked = computed(() => props.checked);
+    const onClick = () => {
+      input.value.focus();
+
+      if (!props.disabled) {
+        emit('click', !props.checked);
+      }
+    };
+
     return {
-      focus: false,
+      input,
+      focus,
+      isChecked,
+      onClick,
     };
   },
-  computed: {
-    isChecked() {
-      return this.checked || this.value;
-    },
-    cssClasses() {
-      const classes: string[] = [this.$style.vueToggle];
-
-      if (this.focus) {
-        classes.push(this.$style.focus);
-      }
-
-      if (this.isChecked) {
-        classes.push(this.$style.checked);
-      }
-
-      if (this.disabled) {
-        classes.push(this.$style.disabled);
-      }
-
-      return classes;
-    },
-  },
-  methods: {
-    onClick(e: Event) {
-      e.preventDefault();
-      this.$refs.input.focus();
-
-      if (!this.disabled) {
-        this.$emit('click', e);
-        this.$emit('input', !this.value);
-      }
-    },
-  },
-};
+});
 </script>
 
 <style lang="scss" module>

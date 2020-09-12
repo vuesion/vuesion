@@ -120,7 +120,7 @@ describe('VueSlider.vue', () => {
     expect(wrapper.emitted('change')).toBeFalsy();
   });
 
-  test('should add active class to handle', () => {
+  test('should add active class to handle', async () => {
     document.removeEventListener = jest.fn();
     const wrapper = mount<any>(VueSlider, {
       localVue,
@@ -131,13 +131,13 @@ describe('VueSlider.vue', () => {
       },
     });
 
-    wrapper.vm.currentSlider = 1;
+    await wrapper.setData({ currentSlider: 0 });
 
-    expect(wrapper.vm.handleCssClasses()).toEqual(['handle']);
-    expect(wrapper.vm.handleCssClasses(1)).toEqual(['handle', 'active']);
+    expect(wrapper.findAll('.handle')).toHaveLength(1);
+    expect(wrapper.findAll('.active')).toHaveLength(1);
   });
 
-  test('should move left handle with multi handles', () => {
+  test('should move left handle with multi handles', async () => {
     const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
@@ -147,11 +147,13 @@ describe('VueSlider.vue', () => {
       },
     });
 
-    wrapper.vm.currentSlider = 0;
-    wrapper.vm.sliderBox = {
-      left: 0,
-      width: 100,
-    };
+    await wrapper.setData({
+      currentSlider: 0,
+      sliderBox: {
+        left: 0,
+        width: 100,
+      },
+    });
 
     wrapper.vm.moving({ clientX: 50 });
     expect(wrapper.vm.currentMin).toBe(50);
@@ -170,40 +172,7 @@ describe('VueSlider.vue', () => {
     expect(wrapper.vm.currentMax).toBe(100);
   });
 
-  test('should move left handle with multi handles', () => {
-    const wrapper = mount<any>(VueSlider, {
-      localVue,
-      propsData: {
-        min: 0,
-        max: 100,
-        values: [50],
-      },
-    });
-
-    wrapper.vm.currentSlider = 0;
-    wrapper.vm.sliderBox = {
-      left: 0,
-      width: 100,
-    };
-
-    wrapper.vm.moving({ clientX: 50 });
-    expect(wrapper.vm.currentMin).toBe(50);
-    expect(wrapper.vm.currentMax).toBe(100);
-
-    wrapper.vm.moving({ changedTouches: [{ clientX: 50 }] });
-    expect(wrapper.vm.currentMin).toBe(50);
-    expect(wrapper.vm.currentMax).toBe(100);
-
-    wrapper.vm.moving({ clientX: -50 });
-    expect(wrapper.vm.currentMin).toBe(0);
-    expect(wrapper.vm.currentMax).toBe(100);
-
-    wrapper.vm.moving({ clientX: 150 });
-    expect(wrapper.vm.currentMin).toBe(100);
-    expect(wrapper.vm.currentMax).toBe(100);
-  });
-
-  test('should move right handle', () => {
+  test('should move right handle', async () => {
     const wrapper = mount<any>(VueSlider, {
       localVue,
       propsData: {
@@ -213,11 +182,13 @@ describe('VueSlider.vue', () => {
       },
     });
 
-    wrapper.vm.currentSlider = 1;
-    wrapper.vm.sliderBox = {
-      left: 0,
-      width: 100,
-    };
+    await wrapper.setData({
+      currentSlider: 1,
+      sliderBox: {
+        left: 0,
+        width: 100,
+      },
+    });
 
     wrapper.vm.moving({ clientX: 50 });
     expect(wrapper.vm.currentMin).toBe(50);
@@ -371,6 +342,6 @@ describe('VueSlider.vue', () => {
     wrapper.vm.onKeyUp();
 
     expect(wrapper.emitted('change')).toBeTruthy();
-    expect(wrapper.emitted('change')[0][0]).toEqual({ values: [10, 80] });
+    expect(wrapper.emitted('change')[0][0]).toEqual([10, 80]);
   });
 });
