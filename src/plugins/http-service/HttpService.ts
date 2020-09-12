@@ -27,7 +27,7 @@ export const initHttpService = (
 
   HttpService.store = store;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  HttpService.redirect = redirect || function () {};
+  HttpService.redirect = redirect || function() {};
   HttpService.isReAuthenticating = false;
   HttpService.pendingRequests = [];
 
