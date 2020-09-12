@@ -53,9 +53,6 @@
     "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\" \"npm run e2e:ci\"",
     "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\""
   },
-  "lint-staged": {
-    "*.{js,ts,vue}": "npm run lint"
-  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
@@ -90,8 +87,6 @@
     "@nuxt/typescript-build": "1.0.3",
     "@nuxtjs/eslint-config-typescript": "2.1.0",
     "@nuxtjs/eslint-module": "2.0.0",
-    "@storybook/addon-actions": "5.3.21",
-    "@storybook/vue": "5.3.21",
     "@testing-library/jest-dom": "5.11.4",
     "@testing-library/vue": "5.0.4",
     "@types/jest": "26.0.13",
@@ -106,20 +101,11 @@
     "babel-eslint": "10.1.0",
     "babel-jest": "26.3.0",
     "eslint": "7.8.1",
-    "eslint-config-prettier": "6.11.0",
     "eslint-plugin-nuxt": ">=0.4.2",
-    "eslint-plugin-prettier": "3.1.4",
     "flush-promises": "1.0.2",
     "husky": "4.3.0",
     "identity-obj-proxy": "3.0.0",
-    "jest": "26.4.2",
-    "lint-staged": "10.3.0",
-    "node-sass": "4.14.1",
-    "prettier": "2.1.1",
-    "sass": "1.26.10",
-    "sass-loader": "8.0.2",
-    "ts-jest": "26.3.0",
-    "vue-jest": "3.0.6"
+    "node-sass": "4.14.1"
   },
   "engines": {
     "node": ">= 12.0.0",
