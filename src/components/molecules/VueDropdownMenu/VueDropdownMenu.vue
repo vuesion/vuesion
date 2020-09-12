@@ -38,7 +38,7 @@ export default defineComponent({
   name: 'VueDropdownMenu',
   components: { VueCollapse, VueIconSortDown },
   props: {
-    items: { type: Array, required: true },
+    items: { type: Array as new () => IItem[], required: true },
     duration: { type: Number, default: 250 },
   },
   setup(props, { emit }) {

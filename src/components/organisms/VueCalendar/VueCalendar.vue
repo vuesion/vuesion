@@ -157,7 +157,7 @@ export default defineComponent({
     firstDayOfWeek: { type: Number, default: 0 },
     startDate: { type: Date, default: null },
     endDate: { type: Date, default: null },
-    today: { type: Date, default: () => new Date() },
+    today: { type: Date as new () => Date, default: (): Date => new Date() },
   },
   setup(props, { root, emit }) {
     const calendarRef = getDomRef(null);
