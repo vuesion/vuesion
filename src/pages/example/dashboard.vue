@@ -9,9 +9,7 @@
 
       <vue-grid-row>
         <vue-grid-column>
-          <vue-headline level="1">
-            Dashboard
-          </vue-headline>
+          <vue-headline level="1"> Dashboard </vue-headline>
         </vue-grid-column>
       </vue-grid-row>
 

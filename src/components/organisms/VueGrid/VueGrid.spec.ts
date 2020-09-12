@@ -3,13 +3,13 @@ import VueGrid from './VueGrid.vue';
 
 describe('VueGrid.vue', () => {
   test('renders component', () => {
-    const { getByText } = render<any>(VueGrid, { slots: { default: 'this is the slot' } });
+    const { getByText } = render(VueGrid, { slots: { default: 'this is the slot' } });
 
     getByText('this is the slot');
   });
 
   test('renders component with 100% width', () => {
-    const { container } = render<any>(VueGrid, {
+    const { container } = render(VueGrid, {
       slots: { default: 'this is the slot' },
       propsData: {
         fluid: true,
@@ -23,7 +23,7 @@ describe('VueGrid.vue', () => {
   });
 
   test('renders component with text align center', () => {
-    const { getByText } = render<any>(VueGrid, {
+    const { getByText } = render(VueGrid, {
       slots: { default: 'this is the slot' },
       propsData: {
         textAlign: 'center',

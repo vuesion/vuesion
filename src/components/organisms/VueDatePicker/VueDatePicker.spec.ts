@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueDatePicker from './VueDatePicker.vue';
 import { i18n } from '@/test/test-utils';
+import VueDatePicker from './VueDatePicker.vue';
 
 const localVue = createLocalVue();
 

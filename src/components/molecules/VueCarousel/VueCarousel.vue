@@ -28,9 +28,7 @@
     </fade-animation>
 
     <ul v-if="showIndicator" :class="$style.indicator">
-      <li v-for="(_, idx) in preloadedImages" :key="idx" :class="isActiveSlide(idx) && $style.active">
-        &nbsp;
-      </li>
+      <li v-for="(_, idx) in preloadedImages" :key="idx" :class="isActiveSlide(idx) && $style.active">&nbsp;</li>
     </ul>
   </div>
 </template>

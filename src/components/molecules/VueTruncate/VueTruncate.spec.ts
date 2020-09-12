@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueTruncate from './VueTruncate.vue';
 import { i18n } from '@/test/test-utils';
+import VueTruncate from './VueTruncate.vue';
 
 const localVue = createLocalVue();
 

@@ -9,7 +9,7 @@ describe('VueGridRow.vue', () => {
   };
 
   test('renders component', () => {
-    const { getByText } = render<any>(VueGridRow, {
+    const { getByText } = render(VueGridRow, {
       slots: { default: 'this is the slot' },
       provide,
     });
@@ -18,7 +18,7 @@ describe('VueGridRow.vue', () => {
   });
 
   test('should use provided value', () => {
-    const { getByText } = render<any>(VueGridRow, {
+    const { getByText } = render(VueGridRow, {
       slots: { default: 'this is the slot' },
       provide,
     });
@@ -30,7 +30,7 @@ describe('VueGridRow.vue', () => {
   });
 
   test('should use alignItems prop', () => {
-    const { getByText } = render<any>(VueGridRow, {
+    const { getByText } = render(VueGridRow, {
       slots: { default: 'this is the slot' },
       provide,
       propsData: {

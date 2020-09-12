@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueDateRangePicker from './VueDateRangePicker.vue';
 import { i18n } from '@/test/test-utils';
+import VueDateRangePicker from './VueDateRangePicker.vue';
 
 const localVue = createLocalVue();
 const today: Date = new Date();

@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import VuePagination from './VuePagination.vue';
 import { i18n } from '@/test/test-utils';
+import VuePagination from './VuePagination.vue';
 
 const story = storiesOf('Molecules|Pagination', module) as any;
 

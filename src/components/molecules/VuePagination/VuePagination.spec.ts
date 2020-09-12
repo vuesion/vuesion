@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import VuePagination from './VuePagination.vue';
 import { i18n } from '@/test/test-utils';
+import VuePagination from './VuePagination.vue';
 
 const localVue = createLocalVue();
 

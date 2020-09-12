@@ -4,7 +4,7 @@ import VueBadge from './VueBadge.vue';
 
 describe('VueBadge.vue', () => {
   test('renders component', () => {
-    const { getByText } = render<any>(VueBadge as any, {
+    const { getByText } = render(VueBadge, {
       slots: {
         default: 'VueBadge',
       },
@@ -15,7 +15,7 @@ describe('VueBadge.vue', () => {
 
   test('renders color variations', () => {
     brandVariations.forEach((variation: string) => {
-      const { container } = render<any>(VueBadge as any, {
+      const { container } = render(VueBadge, {
         propsData: {
           color: variation,
         },
@@ -28,7 +28,7 @@ describe('VueBadge.vue', () => {
   });
 
   test('renders outlined', () => {
-    const { container } = render<any>(VueBadge as any, {
+    const { container } = render(VueBadge, {
       propsData: {
         outlined: true,
       },

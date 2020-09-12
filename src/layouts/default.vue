@@ -7,9 +7,7 @@
         Login
       </vue-button>
 
-      <vue-button v-if="isAuthenticated" slot="right" color="primary" @click="onLogout">
-        Logout
-      </vue-button>
+      <vue-button v-if="isAuthenticated" slot="right" color="primary" @click="onLogout"> Logout </vue-button>
     </vue-nav-bar>
 
     <nuxt :class="$style.content" />

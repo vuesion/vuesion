@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import { render } from '@testing-library/vue';
 import { ref } from '@vue/composition-api';
-import { useBackdrop } from './use-backdrop';
 import { TestComponent } from '@/test/test-utils';
+import { useBackdrop } from './use-backdrop';
 
 describe('use-backdrop.ts', () => {
   beforeEach(() => (document.body.style.overflow = ''));
 
   test('set body to overflow hidden', async () => {
-    render<any>(
+    render(
       TestComponent(() => {
         const show = ref(false);
 
@@ -24,7 +24,7 @@ describe('use-backdrop.ts', () => {
   });
 
   test('set body to overflow initial', async () => {
-    render<any>(
+    render(
       TestComponent(() => {
         const show = ref(true);
 
@@ -40,7 +40,7 @@ describe('use-backdrop.ts', () => {
   });
 
   test('dont set body to overflow hidden', async () => {
-    render<any>(
+    render(
       TestComponent(() => {
         const show = ref(false);
 
@@ -56,7 +56,7 @@ describe('use-backdrop.ts', () => {
   });
 
   test('dont set body to overflow initial', async () => {
-    render<any>(
+    render(
       TestComponent(() => {
         const show = ref(true);
 

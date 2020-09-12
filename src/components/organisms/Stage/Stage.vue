@@ -11,9 +11,7 @@
 
       <vue-grid-row>
         <vue-grid-column>
-          <vue-headline level="1">
-            vuesion
-          </vue-headline>
+          <vue-headline level="1"> vuesion </vue-headline>
         </vue-grid-column>
       </vue-grid-row>
 

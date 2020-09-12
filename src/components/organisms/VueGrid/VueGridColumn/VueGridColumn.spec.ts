@@ -10,7 +10,7 @@ describe('VueGridColumn.vue', () => {
   };
 
   test('renders gridColumn with slot', () => {
-    const { getByText } = render<any>(VueGridColumns, {
+    const { getByText } = render(VueGridColumns, {
       slots: { default: 'this is the slot' },
       provide,
     });
@@ -19,7 +19,7 @@ describe('VueGridColumn.vue', () => {
   });
 
   test('renders gridColumn with custom width', () => {
-    const { getByText } = render<any>(VueGridColumns, {
+    const { getByText } = render(VueGridColumns, {
       slots: { default: 'this is the slot' },
       provide,
       propsData: {
@@ -34,7 +34,7 @@ describe('VueGridColumn.vue', () => {
   });
 
   test('renders gridColumn with custom width for small Desktop', () => {
-    const { getByText } = render<any>(VueGridColumns, {
+    const { getByText } = render(VueGridColumns, {
       slots: { default: 'this is the slot' },
       provide,
       propsData: {
@@ -49,7 +49,7 @@ describe('VueGridColumn.vue', () => {
   });
 
   test('renders gridColumn with custom width and other viewports should inherit this value', () => {
-    const { getByText } = render<any>(VueGridColumns, {
+    const { getByText } = render(VueGridColumns, {
       slots: { default: 'this is the slot' },
       provide,
       propsData: {
@@ -70,7 +70,7 @@ describe('VueGridColumn.vue', () => {
   });
 
   test('renders gridColumn with injected text-align', () => {
-    const { getByText } = render<any>(VueGridColumns, {
+    const { getByText } = render(VueGridColumns, {
       slots: { default: 'this is the slot' },
       provide,
     });
@@ -82,7 +82,7 @@ describe('VueGridColumn.vue', () => {
   });
 
   test('renders gridColumn with custom text-align', () => {
-    const { getByText } = render<any>(VueGridColumns, {
+    const { getByText } = render(VueGridColumns, {
       slots: { default: 'this is the slot' },
       provide,
       propsData: {
@@ -97,7 +97,7 @@ describe('VueGridColumn.vue', () => {
   });
 
   test('renders gridColumn that can grow and shrink', () => {
-    const { getByText } = render<any>(VueGridColumns, {
+    const { getByText } = render(VueGridColumns, {
       slots: { default: 'this is the slot' },
       provide,
       propsData: {
@@ -112,7 +112,7 @@ describe('VueGridColumn.vue', () => {
   });
 
   test('renders gridColumn that can not grow', () => {
-    const { getByText } = render<any>(VueGridColumns, {
+    const { getByText } = render(VueGridColumns, {
       slots: { default: 'this is the slot' },
       provide,
       propsData: {
@@ -127,7 +127,7 @@ describe('VueGridColumn.vue', () => {
   });
 
   test('renders gridColumn that can not shrink', () => {
-    const { getByText } = render<any>(VueGridColumns, {
+    const { getByText } = render(VueGridColumns, {
       slots: { default: 'this is the slot' },
       provide,
       propsData: {
@@ -142,7 +142,7 @@ describe('VueGridColumn.vue', () => {
   });
 
   test('renders gridColumn that has a flex display if alignSelf is set', () => {
-    const { getByText } = render<any>(VueGridColumns, {
+    const { getByText } = render(VueGridColumns, {
       slots: { default: 'this is the slot' },
       provide,
       propsData: {
@@ -157,7 +157,7 @@ describe('VueGridColumn.vue', () => {
   });
 
   test('renders gridColumn that has a flex display if justifyContent is set', () => {
-    const { getByText } = render<any>(VueGridColumns, {
+    const { getByText } = render(VueGridColumns, {
       slots: { default: 'this is the slot' },
       provide,
       propsData: {
