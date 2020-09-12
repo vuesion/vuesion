@@ -33,7 +33,6 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-use-before-define': 0,
     'no-async-promise-executor': 0,
-    '@typescript-eslint/camelcase': ['error', { allow: ['access_token', 'refresh_token'] }],
     'vue/max-attributes-per-line': 0,
     'vue/no-v-html': 0,
     'vue/html-self-closing': 0,
@@ -41,6 +40,7 @@ module.exports = {
     'vue/html-closing-bracket-newline': 0,
     'vue/html-indent': 0,
     'standard/no-callback-literal': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 0,
   },
   globals: {
     CLIENT: false,

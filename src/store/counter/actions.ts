@@ -1,7 +1,7 @@
 import { ActionContext } from 'vuex';
-import { ICounterState } from './state';
 import { HttpService } from '@/plugins/http-service/HttpService';
 import { IState } from '@/store/IState';
+import { ICounterState } from './state';
 
 export interface ICounterResponse {
   count: number;

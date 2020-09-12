@@ -1,9 +1,9 @@
-import { NuxtAxiosInstance } from '@nuxtjs/axios';
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Store } from 'vuex';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { NuxtAxiosInstance } from '@nuxtjs/axios';
+import { IState } from '@/store/IState';
 import { setupResponseInterceptor } from './setupResponseInterceptor';
 import { setupRequestInterceptor } from './setupRequestInterceptor';
-import { IState } from '@/store/IState';
 
 export interface IHttpService extends AxiosInstance {
   store?: Store<any>;
@@ -22,7 +22,7 @@ export const initHttpService = (
 ) => {
   if (axiosInstance && store?.state?.app?.config?.api?.baseUrl) {
     axiosInstance.setBaseURL(store.state.app.config.api.baseUrl);
-    HttpService = axiosInstance;
+    HttpService = (axiosInstance as unknown) as AxiosInstance;
   }
 
   HttpService.store = store;

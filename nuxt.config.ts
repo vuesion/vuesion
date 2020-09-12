@@ -72,7 +72,6 @@ const config: Configuration = {
     color: '#cd235b',
     background: 'white',
   },
-  mode: 'universal',
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',

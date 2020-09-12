@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import { render } from '@testing-library/vue';
-import { useEvent } from './use-event';
 import { TestComponent } from '@/test/test-utils';
+import { useEvent } from './use-event';
 
 describe('use-event.ts', () => {
   test('should add and remove eventListener', async () => {
     document.addEventListener = jest.fn();
     document.removeEventListener = jest.fn();
 
-    const { unmount } = render<any>(
+    const { unmount } = render(
       TestComponent(() => {
         useEvent('click', null);
         return {};
@@ -29,7 +29,7 @@ describe('use-event.ts', () => {
     document.addEventListener = jest.fn();
     document.removeEventListener = jest.fn();
 
-    const { unmount } = render<any>(
+    const { unmount } = render(
       TestComponent(() => {
         useEvent('click', null, {}, null);
         return {};

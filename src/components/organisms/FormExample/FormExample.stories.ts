@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import FormExample from './FormExample.vue';
 import { i18n } from '@/test/test-utils';
+import FormExample from './FormExample.vue';
 
 const story = storiesOf('Organisms|FormExample', module) as any;
 

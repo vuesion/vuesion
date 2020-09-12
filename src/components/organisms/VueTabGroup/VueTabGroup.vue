@@ -73,7 +73,7 @@ export default {
 
       this.handleTabs();
     },
-    updateHeader(index: number, props: object) {
+    updateHeader(index: number, props: any) {
       this.tabHeader[index] = Object.assign(this.tabHeader[index], props);
     },
   },

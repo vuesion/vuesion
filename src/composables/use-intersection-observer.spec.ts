@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import { Ref } from '@vue/composition-api';
 import { render } from '@testing-library/vue';
+import { TestComponent } from '@/test/test-utils';
 import { getDomRef } from './get-dom-ref';
 import { useIntersectionObserver } from './use-intersection-observer';
-import { TestComponent } from '@/test/test-utils';
 
 describe('use-intersection-observer.ts', () => {
   test('should create an observer and call the call back function', async () => {
@@ -13,7 +13,7 @@ describe('use-intersection-observer.ts', () => {
       return { observe: jest.fn() };
     });
 
-    const { unmount } = render<any>(
+    const { unmount } = render(
       TestComponent(() => {
         const ref = getDomRef(null);
         const { observer } = useIntersectionObserver(ref, null);
@@ -44,7 +44,7 @@ describe('use-intersection-observer.ts', () => {
     let testObserver: Ref<IntersectionObserver>;
     const callback = jest.fn();
 
-    render<any>(
+    render(
       TestComponent(() => {
         const ref = getDomRef(null);
         const { observer } = useIntersectionObserver(ref, callback);

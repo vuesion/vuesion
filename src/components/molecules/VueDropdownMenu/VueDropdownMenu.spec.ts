@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import VueDropdownMenu from './VueDropdownMenu.vue';
 import { triggerDocument } from '@/test/test-utils';
+import VueDropdownMenu from './VueDropdownMenu.vue';
 
 const localVue = createLocalVue();
 

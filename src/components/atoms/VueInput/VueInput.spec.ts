@@ -4,7 +4,7 @@ import VueInput from './VueInput.vue';
 
 describe('VueInput.vue', () => {
   test('should render label and description', () => {
-    const { getByText } = render<any>(VueInput, {
+    const { getByText } = render(VueInput, {
       propsData: {
         label: 'this is the label',
         description: 'this is the description',
@@ -21,7 +21,7 @@ describe('VueInput.vue', () => {
   });
 
   test('renders disabled component', () => {
-    const { getByDisplayValue } = render<any>(VueInput, {
+    const { getByDisplayValue } = render(VueInput, {
       propsData: {
         label: 'this is the label',
         value: 'this is the text box value',
@@ -35,7 +35,7 @@ describe('VueInput.vue', () => {
   });
 
   test('renders readonly component', () => {
-    const { getByDisplayValue } = render<any>(VueInput, {
+    const { getByDisplayValue } = render(VueInput, {
       propsData: {
         label: 'this is the label',
         value: 'this is the text box value',
@@ -49,7 +49,7 @@ describe('VueInput.vue', () => {
   });
 
   test('should emit input', async () => {
-    const { getByDisplayValue, emitted } = render<any>(VueInput, {
+    const { getByDisplayValue, emitted } = render(VueInput, {
       propsData: {
         label: 'this is the label',
         value: 'this is the value',
@@ -67,7 +67,7 @@ describe('VueInput.vue', () => {
   });
 
   test('should display error state', async () => {
-    const { getByText, getByDisplayValue } = render<any>(VueInput, {
+    const { getByText, getByDisplayValue } = render(VueInput, {
       propsData: {
         label: 'this is the label',
         errorMessage: 'this is the error',
@@ -102,7 +102,7 @@ describe('VueInput.vue', () => {
       }
     };
 
-    render<any>(VueInput, {
+    render(VueInput, {
       propsData: {
         label: 'this is the label',
         name: 'test',
@@ -132,7 +132,7 @@ describe('VueInput.vue', () => {
       }
     };
 
-    render<any>(VueInput, {
+    render(VueInput, {
       propsData: {
         label: 'this is the label',
         name: 'test',
