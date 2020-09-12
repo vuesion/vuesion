@@ -9,7 +9,6 @@ describe('VueStarRating.vue', () => {
       localVue,
     });
     expect(wrapper.findAll(`.star`)).toHaveLength(5);
-    expect(wrapper.findAll(`.numberDisplay`)).toHaveLength(1);
   });
 
   test('renders component with max num stars', () => {
@@ -20,7 +19,6 @@ describe('VueStarRating.vue', () => {
       },
     });
     expect(wrapper.findAll(`.star`)).toHaveLength(10);
-    expect(wrapper.findAll(`.numberDisplay`)).toHaveLength(1);
   });
 
   test('renders component with max num stars', () => {
@@ -33,7 +31,6 @@ describe('VueStarRating.vue', () => {
     });
     expect(wrapper.findAll(`.star`)).toHaveLength(10);
     expect(wrapper.findAll(`.active`)).toHaveLength(5);
-    expect(wrapper.findAll(`.numberDisplay`)).toHaveLength(1);
 
     const starComponents = wrapper.findAll(`.star`);
     for (let i = 9; i >= 5; i--) {
@@ -95,13 +92,9 @@ describe('VueStarRating.vue', () => {
     starComponents.at(4).trigger('mouseenter');
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.find('.numberDisplay').find('span').text()).toEqual('5');
-
     // 2/5 stars
     starComponents.at(1).trigger('mouseenter');
     await wrapper.vm.$nextTick();
-
-    expect(wrapper.find('.numberDisplay').find('span').text()).toEqual('2');
   });
 
   test('mouse leaving a star resets active stars to selected number', async () => {
@@ -147,13 +140,9 @@ describe('VueStarRating.vue', () => {
     starComponents.at(4).trigger('mouseenter');
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.find('.numberDisplay').find('span').text()).toEqual('5');
-
     // 5/5 star mouseleave
     starComponents.at(4).trigger('mouseleave');
     await wrapper.vm.$nextTick();
-
-    expect(wrapper.find('.numberDisplay').find('span').text()).toEqual('3');
   });
 
   test('star click sets selected num stars', async () => {

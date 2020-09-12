@@ -1,5 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueDropdownMenu from './VueDropdownMenu.vue';
+import { triggerDocument } from '@/test/test-utils';
 
 const localVue = createLocalVue();
 
@@ -8,7 +9,7 @@ describe('VueDropdownMenuMenu.vue', () => {
     const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
-        options: [],
+        items: [],
       },
       slots: {
         default: 'foo',
@@ -18,11 +19,11 @@ describe('VueDropdownMenuMenu.vue', () => {
     expect(wrapper.text()).toBe('foo');
   });
 
-  test('onClick', async () => {
+  test('onItemClick', async () => {
     const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
-        options: [{ label: 'foo', value: 'foo' }],
+        items: [{ label: 'foo', value: 'foo' }],
       },
       slots: {
         default: 'foo',
@@ -34,8 +35,8 @@ describe('VueDropdownMenuMenu.vue', () => {
 
     expect((wrapper as any).vm.show).toBeTruthy();
 
-    (wrapper as any).vm.onClick({ label: 'foo', value: 'foo' });
-    expect(wrapper.emitted('click')).toBeTruthy();
+    (wrapper as any).vm.onItemClick({ label: 'foo', value: 'foo' });
+    expect(wrapper.emitted('item-click')).toBeTruthy();
     expect((wrapper as any).vm.show).toBeFalsy();
   });
 
@@ -43,7 +44,7 @@ describe('VueDropdownMenuMenu.vue', () => {
     const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
-        options: [
+        items: [
           { label: 'foo', value: 'foo' },
           { label: '', value: 'separator' },
           { label: 'foo', value: 'foo' },
@@ -80,31 +81,11 @@ describe('VueDropdownMenuMenu.vue', () => {
     expect((wrapper as any).vm.show).toBeFalsy();
   });
 
-  test('registers and unregisters click event', () => {
-    document.addEventListener = jest.fn();
-    document.removeEventListener = jest.fn();
-
-    const wrapper = mount<any>(VueDropdownMenu, {
-      localVue,
-      propsData: {
-        options: [{ label: 'foo', value: 'foo' }],
-      },
-      slots: {
-        default: 'foo',
-      },
-    });
-
-    wrapper.destroy();
-
-    expect(document.addEventListener).toHaveBeenCalledTimes(2);
-    expect(document.removeEventListener).toHaveBeenCalledTimes(2);
-  });
-
   test('should close on outside click', async () => {
     const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
-        options: [{ label: 'foo', value: 'foo' }],
+        items: [{ label: 'foo', value: 'foo' }],
       },
       slots: {
         default: '<p>foo</p>',
@@ -118,10 +99,10 @@ describe('VueDropdownMenuMenu.vue', () => {
 
     expect((wrapper as any).vm.show).toBeTruthy();
 
-    wrapper.vm.handleDocumentClick({ target: wrapper.find(`p`).element });
+    triggerDocument.mousedown({ target: wrapper.find(`p`).element });
     expect((wrapper as any).vm.show).toBeTruthy();
 
-    wrapper.vm.handleDocumentClick({ target: null });
+    triggerDocument.mousedown({ target: null });
     expect((wrapper as any).vm.show).toBeFalsy();
   });
 
@@ -129,7 +110,7 @@ describe('VueDropdownMenuMenu.vue', () => {
     const wrapper = mount<any>(VueDropdownMenu, {
       localVue,
       propsData: {
-        options: [
+        items: [
           { label: 'foo', value: 'foo' },
           { label: 'foo', value: 'foo' },
           { label: 'foo', value: 'foo' },

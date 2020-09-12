@@ -10,6 +10,8 @@ export const useIntersectionObserver = (elementRef: Ref<HTMLElement>, callback: 
         threshold: 1,
       });
       observer.value.observe(elementRef.value);
+    } else {
+      callback([], null);
     }
   });
 

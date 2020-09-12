@@ -4,7 +4,7 @@ import VueSelect from './VueSelect.vue';
 const localVue = createLocalVue();
 
 describe('VueSelect.vue', () => {
-  const options = [
+  const items = [
     {
       label: 'Foo',
       value: 'foo',
@@ -31,24 +31,26 @@ describe('VueSelect.vue', () => {
     const wrapper = mount<any>(VueSelect, {
       localVue,
       propsData: {
-        options,
-        name: 'name',
-        id: 'id',
+        items,
+        name: 'foo',
+        id: 'foo',
+        label: 'foo',
       },
     });
 
     expect(wrapper.findAll('option')).toHaveLength(5);
-    expect(wrapper.find('select').attributes().multiple).toBe(undefined);
+    expect(wrapper.find('select').attributes().multiSelect).toBe(undefined);
   });
 
   test('renders multi component', () => {
     const wrapper = mount<any>(VueSelect, {
       localVue,
       propsData: {
-        options,
-        multiple: true,
-        name: 'name',
-        id: 'id',
+        items,
+        multiSelect: true,
+        name: 'foo',
+        id: 'foo',
+        label: 'foo',
       },
     });
 
@@ -60,10 +62,11 @@ describe('VueSelect.vue', () => {
     const wrapper = mount<any>(VueSelect, {
       localVue,
       propsData: {
-        options,
+        items,
         disabled: true,
-        name: 'name',
-        id: 'id',
+        name: 'foo',
+        id: 'foo',
+        label: 'foo',
       },
     });
 
@@ -71,14 +74,15 @@ describe('VueSelect.vue', () => {
     expect(wrapper.findAll('.disabled')).toHaveLength(1);
   });
 
-  it('should return list of options', () => {
+  it('should return list of items', () => {
     const wrapper = mount<any>(VueSelect, {
       localVue,
       propsData: {
-        options,
-        multiple: true,
-        name: 'name',
-        id: 'id',
+        items,
+        multiSelect: true,
+        name: 'foo',
+        id: 'foo',
+        label: 'foo',
       },
     });
 
@@ -108,7 +112,7 @@ describe('VueSelect.vue', () => {
   //   const wrapper = mount<any>(VueSelect, {
   //     localVue,
   //     propsData: {
-  //       options,
+  //       items,
   //       name: 'name',
   //       id: 'id',
   //       validation: 'integer',
@@ -118,18 +122,4 @@ describe('VueSelect.vue', () => {
   //
   //   expect(wrapper.findAll(`.error`)).toHaveLength(1);
   // });
-
-  it('should render with value', () => {
-    const wrapper = mount<any>(VueSelect, {
-      localVue,
-      propsData: {
-        options,
-        value: 'bar',
-        name: 'name',
-        id: 'id',
-      },
-    });
-
-    expect(wrapper.findAll('.hasValue')).toHaveLength(1);
-  });
 });

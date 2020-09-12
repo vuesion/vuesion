@@ -1,11 +1,17 @@
 <template>
-  <component :is="component" :class="[$style.vueHeadline, cssClass]" v-on="$listeners">
+  <component
+    :is="component"
+    :class="[$style.vueHeadline, appearanceLevel ? $style[`h${appearanceLevel}`] : $style[`h${level}`]]"
+    v-on="$listeners"
+  >
     <slot />
   </component>
 </template>
 
 <script lang="ts">
-export default {
+import { computed, defineComponent } from '@vue/composition-api';
+
+export default defineComponent({
   name: 'VueHeadline',
   components: {},
   props: {
@@ -13,21 +19,22 @@ export default {
     appearanceLevel: { type: String, default: null },
     native: { type: Boolean, default: true },
   },
-  computed: {
-    component() {
-      let component = `h${this.level}`;
+  setup(props) {
+    const component = computed(() => {
+      let component = `h${props.level}`;
 
-      if (this.native === false) {
+      if (props.native === false) {
         component = 'div';
       }
 
       return component;
-    },
-    cssClass() {
-      return this.appearanceLevel ? this.$style[`h${this.appearanceLevel}`] : this.$style[`h${this.level}`];
-    },
+    });
+
+    return {
+      component,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" module>

@@ -28,16 +28,16 @@ export default defineComponent({
   setup(props, { emit }) {
     const modal = getDomRef(null);
     const show = computed(() => props.show);
-    const { onOutsideClick } = useOutsideClick(modal);
     const { onKeydown } = useKeydown();
     const onClose = () => emit('close');
 
-    onOutsideClick(() => onClose());
     onKeydown((event: KeyboardEvent) => {
       if (event.key === 'Escape' && props.show === true && props.closeOnEscape === true) {
         onClose();
       }
     });
+
+    useOutsideClick(modal, () => onClose());
 
     if (props.backdrop) {
       useBackdrop(show, { scrollable: props.scrollable });

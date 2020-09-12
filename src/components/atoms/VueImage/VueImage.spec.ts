@@ -43,7 +43,7 @@ describe('VueImage.vue', () => {
       }
 
       public observe() {
-        this.cb([{ intersectionRatio: 0 }, { intersectionRatio: 1 }]);
+        this.cb([{ intersectionRatio: 0 }, { intersectionRatio: 1 }], this);
       }
 
       public disconnect() {
@@ -58,8 +58,6 @@ describe('VueImage.vue', () => {
     });
     let actual: any = wrapper.html();
     let expected: any = '<img src="foo">';
-
-    wrapper.vm.observer.observe();
 
     expect(actual).toBe(expected);
 

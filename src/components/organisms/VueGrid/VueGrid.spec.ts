@@ -12,11 +12,11 @@ describe('VueGrid.vue', () => {
     const { container } = render<any>(VueGrid, {
       slots: { default: 'this is the slot' },
       propsData: {
-        fill: true,
+        fluid: true,
       },
     });
 
-    const actual = container.querySelectorAll('.fill');
+    const actual = container.querySelectorAll('.fluid');
     const expected = 1;
 
     expect(actual).toHaveLength(expected);

@@ -1,7 +1,7 @@
-@import 'mixins';
-@import 'variables';
-@import 'themes/light';
-@import 'themes/dark';
+@import 'designSystem/mixins';
+@import 'designSystem/variables';
+@import 'designSystem/themes/light';
+@import 'designSystem/themes/dark';
 
 body {
   color: var(--brand-text-color);
@@ -15,10 +15,12 @@ code {
 
 // vue-icon global style
 i {
-  display: inline-block;
+  display: inline-flex;
   height: $font-size-md;
   width: $font-size-md;
   fill: var(--brand-text-color);
+  justify-content: center;
+  align-items: center;
 
   svg {
     height: inherit;

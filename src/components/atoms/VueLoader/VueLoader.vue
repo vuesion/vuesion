@@ -1,5 +1,5 @@
 #<template>
-  <div :class="cssClasses">
+  <div :class="[$style.vueLoader, $style[size], $style[color]]">
     <svg :class="$style.circle" viewBox="25 25 50 50">
       <circle :class="$style.path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
     </svg>
@@ -7,46 +7,22 @@
 </template>
 
 <script lang="ts">
-import { variationValidator } from '../../utils';
+import { defineComponent } from '@vue/composition-api';
+import { spacingValidator, variationValidator } from '@/components/utils';
 
-export default {
+export default defineComponent({
   name: 'VueLoader',
   props: {
-    medium: {
-      type: Boolean,
-    },
-    large: {
-      type: Boolean,
-    },
-    color: {
-      type: String,
-      validator: variationValidator,
-      default: 'default',
-    },
+    color: { type: String, validator: variationValidator, default: 'default' },
+    size: { type: String, validator: spacingValidator, default: 'sm' },
   },
-  computed: {
-    cssClasses() {
-      const classes = [this.$style.loader];
-
-      if (this.medium) {
-        classes.push(this.$style.medium);
-      }
-      if (this.large) {
-        classes.push(this.$style.large);
-      }
-
-      classes.push(this.$style[this.color]);
-
-      return classes;
-    },
-  },
-};
+});
 </script>
 
 <style lang="scss" module>
 @import '~@/assets/design-system';
 
-.loader {
+.vueLoader {
   display: inline-block;
   position: relative;
   width: $loader-size;
@@ -57,67 +33,67 @@ export default {
     display: block;
     padding-top: 100%;
   }
-}
 
-.circle {
-  animation: rotate 2s linear infinite;
-  height: 100%;
-  transform-origin: center center;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+  &.md {
+    width: $loader-medium-size;
+    height: $loader-medium-size;
+  }
 
-  @keyframes rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
+  &.lg {
+    width: $loader-large-size;
+    height: $loader-large-size;
+  }
+
+  @each $variation, $color in $loader-variations {
+    &.#{$variation} {
+      .path {
+        stroke: $color;
+      }
     }
   }
-}
 
-.path {
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
-  animation: dash 1.5s ease-in-out infinite;
-  stroke-linecap: round;
-  stroke: currentColor;
+  .circle {
+    animation: rotate 2s linear infinite;
+    height: 100%;
+    transform-origin: center center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 
-  @keyframes dash {
-    0% {
-      stroke-dasharray: 1, 200;
-      stroke-dashoffset: 0;
-    }
-    50% {
-      stroke-dasharray: 89, 200;
-      stroke-dashoffset: -35px;
-    }
-    100% {
-      stroke-dasharray: 89, 200;
-      stroke-dashoffset: -124px;
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
     }
   }
-}
 
-.medium {
-  width: $loader-medium-size;
-  height: $loader-medium-size;
-}
+  .path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    animation: dash 1.5s ease-in-out infinite;
+    stroke-linecap: round;
+    stroke: currentColor;
 
-.large {
-  width: $loader-large-size;
-  height: $loader-large-size;
-}
-
-@each $variation, $color in $loader-variations {
-  .#{$variation} {
-    .path {
-      stroke: $color;
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+      }
+      100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+      }
     }
   }
 }

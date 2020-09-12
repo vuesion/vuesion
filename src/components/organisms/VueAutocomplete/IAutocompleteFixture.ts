@@ -1,6 +1,6 @@
-import { IAutocompleteOption } from '../IAutocompleteOption';
+import { IItem } from '@/components/IItem';
 
-export const AutocompleteOptionsFixture: IAutocompleteOption[] = [
+export const AutocompleteFixture: IItem[] = [
   { label: 'foo1', value: 'bar1' },
   { label: 'foo2', value: 'bar2' },
   { label: 'foo3', value: 'bar3' },

@@ -11,9 +11,8 @@ describe('use-outside-click-behaviour', () => {
     const { getByTestId } = render<any>(
       TestComponent(() => {
         const element = ref<HTMLElement>(null);
-        const { onOutsideClick } = useOutsideClick(element);
 
-        onOutsideClick(() => (clicked = true));
+        useOutsideClick(element, () => (clicked = true));
 
         return { element };
       }, '<div ref="element" data-testid="foo" />'),
@@ -34,9 +33,8 @@ describe('use-outside-click-behaviour', () => {
     render<any>(
       TestComponent(() => {
         const element = ref<HTMLElement>(null);
-        const { onOutsideClick } = useOutsideClick(element);
 
-        onOutsideClick(() => (clicked = true));
+        useOutsideClick(element, () => (clicked = true));
 
         return { element };
       }, '<div ref="element" data-testid="foo" />'),

@@ -40,6 +40,7 @@ module.exports = {
     'vue/singleline-html-element-content-newline': 0,
     'vue/html-closing-bracket-newline': 0,
     'vue/html-indent': 0,
+    'standard/no-callback-literal': 0,
   },
   globals: {
     CLIENT: false,

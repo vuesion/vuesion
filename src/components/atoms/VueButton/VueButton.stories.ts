@@ -18,21 +18,21 @@ story.add(
     },
     template: `<div>
 <template v-for="variation in variations">
-<vue-button @click="action" :color="variation">{{ variation }}</vue-button>
-<vue-button @click="action" :color="variation"><vue-icon-github />&nbsp;{{ variation }} with icon</vue-button>
-<vue-button @click="action" :color="variation" disabled>{{ variation }} disabled</vue-button>
-<vue-button @click="action" :color="variation" :loading="loading">{{ variation }} loading</vue-button>
-<vue-button @click="action" :color="variation" ghost>{{ variation }} ghost</vue-button>
+<vue-button @click="onClick" :color="variation">{{ variation }}</vue-button>
+<vue-button @click="onClick" :color="variation"><vue-icon-github />&nbsp;{{ variation }} with icon</vue-button>
+<vue-button @click="onClick" :color="variation" disabled>{{ variation }} disabled</vue-button>
+<vue-button @click="onClick" :color="variation" :loading="loading">{{ variation }} loading</vue-button>
+<vue-button @click="onClick" :color="variation" ghost>{{ variation }} ghost</vue-button>
 <br />
 <br />
-<vue-button @click="action" :color="variation" block>{{ variation }} block</vue-button>
+<vue-button @click="onClick" :color="variation" block>{{ variation }} block</vue-button>
 <br />
 <br />
 </template>
 </div>
 `,
     methods: {
-      action: action('@onClick'),
+      onClick: action('@click'),
     },
     mounted() {
       setInterval(() => {
@@ -53,21 +53,21 @@ story.add(
     components: { VueButton },
     template: `<div>
 Router-Link<br/>
-<vue-button @click="action" as="router-link" color="primary" href="/">Router Link</vue-button>
-<vue-button @click="action" as="router-link" color="primary" href="/" disabled>Router Link</vue-button>
-<vue-button @click="action" as="router-link" color="primary" href="/" loading>Router Link</vue-button>
+<vue-button @click="onClick" as="router-link" color="primary" href="/">Router Link</vue-button>
+<vue-button @click="onClick" as="router-link" color="primary" href="/" disabled>Router Link</vue-button>
+<vue-button @click="onClick" as="router-link" color="primary" href="/" loading>Router Link</vue-button>
 <br/>
 <br/>
 A-Element: <br/>
-<vue-button @click="action" as="a" color="primary" href="/">Anchor</vue-button>
-<vue-button @click="action" as="a" color="primary" href="/" disabled>Anchor</vue-button>
-<vue-button @click="action" as="a" color="primary" href="/" outlined>Anchor</vue-button>
-<vue-button @click="action" as="a" color="primary" href="/" ghost>Anchor</vue-button>
-<vue-button @click="action" as="a" color="primary" href="/" loading>Anchor</vue-button>
+<vue-button @click="onClick" as="a" color="primary" href="/">Anchor</vue-button>
+<vue-button @click="onClick" as="a" color="primary" href="/" disabled>Anchor</vue-button>
+<vue-button @click="onClick" as="a" color="primary" href="/" outlined>Anchor</vue-button>
+<vue-button @click="onClick" as="a" color="primary" href="/" ghost>Anchor</vue-button>
+<vue-button @click="onClick" as="a" color="primary" href="/" loading>Anchor</vue-button>
 </div>
 `,
     methods: {
-      action: action('@onClick'),
+      onClick: action('@onClick'),
     },
   }),
   {

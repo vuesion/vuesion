@@ -16,8 +16,8 @@ story.add(
     template: `<div>
 <template v-for="variation in variations">
 <vue-loader :color="variation" />
-<vue-loader :color="variation" medium />
-<vue-loader :color="variation" large />
+<vue-loader :color="variation" size="md" />
+<vue-loader :color="variation" size="lg" />
 <br />
 <br />
 </template>

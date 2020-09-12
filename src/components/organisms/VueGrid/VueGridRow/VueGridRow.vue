@@ -1,40 +1,43 @@
 <template>
   <div
-    :class="[$style.vueGridRow, rowSpace && $style[rowSpace]]"
-    :style="{ alignItems: alignItems, justifyContent: rowTextAlign, textAlign: rowTextAlign }"
+    :class="[$style.vueGridRow, $style[gridHorizontalSpace]]"
+    :style="{ alignItems, justifyContent, textAlign: rowTextAlign, flexWrap }"
   >
     <slot />
   </div>
 </template>
 
 <script lang="ts">
+import defaultTo from 'lodash/defaultTo';
 import { computed, defineComponent, inject, provide } from '@vue/composition-api';
 import { spacingValidator } from '../../../utils';
 
 export default defineComponent({
   name: 'VueGridRow',
   props: {
-    space: { type: String, validator: spacingValidator, default: null },
+    verticalSpace: { type: String, validator: spacingValidator, default: null },
+    horizontalSpace: { type: String, validator: spacingValidator, default: null },
     alignItems: { type: String, default: 'center' },
-    withVerticalSpace: { type: Boolean, default: null },
     textAlign: { type: String, default: null },
+    justifyContent: { type: String, default: null },
+    flexWrap: { type: String, default: 'wrap' },
   },
   setup(props) {
-    const gridSpace = inject<string>('gridSpace');
-    const gridWithVerticalSpace = inject<boolean>('gridWithVerticalSpace');
+    const gridVerticalSpace = inject<string>('gridVerticalSpace');
+    const gridHorizontalSpace = inject<string>('gridHorizontalSpace');
     const gridTextAlign = inject<string>('gridTextAlign');
 
-    const rowSpace = computed(() => props.space || gridSpace);
-    const rowWithVerticalSpace = computed(() => props.withVerticalSpace || gridWithVerticalSpace);
-    const rowTextAlign = computed(() => props.textAlign || gridTextAlign);
+    const rowVerticalSpace = computed(() => defaultTo(props.verticalSpace, gridVerticalSpace));
+    const rowHorizontalSpace = computed(() => defaultTo(props.horizontalSpace, gridHorizontalSpace));
+    const rowTextAlign = computed(() => defaultTo(props.textAlign, gridTextAlign));
 
-    provide('rowSpace', rowSpace.value);
-    provide('rowWithVerticalSpace', rowWithVerticalSpace.value);
+    provide('rowVerticalSpace', rowVerticalSpace.value);
+    provide('rowHorizontalSpace', rowHorizontalSpace.value);
     provide('rowTextAlign', rowTextAlign.value);
+    provide('rowJustifyContent', props.justifyContent);
 
     return {
-      rowSpace,
-      rowWithVerticalSpace,
+      gridHorizontalSpace,
       rowTextAlign,
     };
   },
@@ -46,7 +49,6 @@ export default defineComponent({
 
 .vueGridRow {
   display: flex;
-  flex-wrap: wrap;
 
   &.sm {
     margin-left: -$gutter-sm;

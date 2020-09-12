@@ -1,8 +1,8 @@
 import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
 import VueLoader from '../../atoms/VueLoader/VueLoader.vue';
 import VueAutocomplete from './VueAutocomplete.vue';
-import { AutocompleteOptionsFixture } from './fixtures/IAutocompleteFixture';
-import { i18n } from '@/test/test-utils';
+import { AutocompleteFixture } from './IAutocompleteFixture';
+import { i18n, triggerDocument } from '@/test/test-utils';
 
 const localVue = createLocalVue();
 
@@ -14,8 +14,9 @@ describe('VueAutocomplete.vue', () => {
       propsData: {
         id: 'foo',
         name: 'foo',
+        label: 'foo',
         placeholder: 'Type something',
-        options: AutocompleteOptionsFixture,
+        items: AutocompleteFixture,
       },
     });
 
@@ -31,8 +32,9 @@ describe('VueAutocomplete.vue', () => {
       propsData: {
         id: 'foo',
         name: 'foo',
+        label: 'foo',
         placeholder: 'Type something',
-        options: AutocompleteOptionsFixture,
+        items: AutocompleteFixture,
         isLoading: true,
       },
     });
@@ -47,8 +49,9 @@ describe('VueAutocomplete.vue', () => {
       propsData: {
         id: 'foo',
         name: 'foo',
+        label: 'foo',
         placeholder: 'Type something',
-        options: AutocompleteOptionsFixture,
+        items: AutocompleteFixture,
       },
     });
     wrapper.vm.searchQuery = 'Te';
@@ -67,8 +70,9 @@ describe('VueAutocomplete.vue', () => {
       propsData: {
         id: 'foo',
         name: 'foo',
+        label: 'foo',
         placeholder: 'Type something',
-        options: AutocompleteOptionsFixture,
+        items: AutocompleteFixture,
       },
     });
 
@@ -81,7 +85,7 @@ describe('VueAutocomplete.vue', () => {
     expect(wrapper.vm.selectedOptionIndex).toBe(1);
 
     wrapper.vm.isOpen = true;
-    wrapper.vm.selectedOptionIndex = AutocompleteOptionsFixture.length;
+    wrapper.vm.selectedOptionIndex = AutocompleteFixture.length;
     wrapper.vm.onArrowDown();
     expect(wrapper.vm.selectedOptionIndex).toBe(0);
   });
@@ -93,8 +97,9 @@ describe('VueAutocomplete.vue', () => {
       propsData: {
         id: 'foo',
         name: 'foo',
+        label: 'foo',
         placeholder: 'Type something',
-        options: AutocompleteOptionsFixture,
+        items: AutocompleteFixture,
       },
     });
 
@@ -111,24 +116,51 @@ describe('VueAutocomplete.vue', () => {
     expect(wrapper.vm.selectedOptionIndex).toBe(7);
   });
 
-  test('handleClickOutside', () => {
+  test('should close on outside click', async () => {
     const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
         id: 'foo',
         name: 'foo',
-        options: AutocompleteOptionsFixture,
+        label: 'foo',
       },
     });
 
-    wrapper.vm.search = 'Test';
-    wrapper.vm.handleOutsideClick({ target: null });
+    await wrapper.setProps({ items: AutocompleteFixture });
+
+    const input = wrapper.find('li');
+
+    triggerDocument.mousedown({ target: input.element });
+    expect(wrapper.vm.isOpen).toBeTruthy();
+
+    triggerDocument.mousedown({ target: null });
+    expect(wrapper.vm.isOpen).toBeFalsy();
+  });
+
+  test('should close on ESC press', async () => {
+    const wrapper = mount<any>(VueAutocomplete, {
+      localVue,
+      i18n,
+      propsData: {
+        id: 'foo',
+        name: 'foo',
+        label: 'foo',
+      },
+    });
+
+    triggerDocument.keydown({ key: 'Enter' });
     expect(wrapper.vm.isOpen).toBeFalsy();
 
-    wrapper.vm.isOpen = true;
-    wrapper.vm.handleOutsideClick({ target: wrapper.find('div').element });
+    triggerDocument.keydown({ key: 'Escape' });
+    expect(wrapper.vm.isOpen).toBeFalsy();
+
+    await wrapper.setProps({ items: AutocompleteFixture });
+    triggerDocument.keydown({ key: 'Enter' });
     expect(wrapper.vm.isOpen).toBeTruthy();
+
+    triggerDocument.keydown({ key: 'Escape' });
+    expect(wrapper.vm.isOpen).toBeFalsy();
   });
 
   test('onEnterKeyPress', () => {
@@ -138,8 +170,9 @@ describe('VueAutocomplete.vue', () => {
       propsData: {
         id: 'foo',
         name: 'foo',
+        label: 'foo',
         placeholder: 'Type something',
-        options: AutocompleteOptionsFixture,
+        items: AutocompleteFixture,
       },
     });
     const e: any = {
@@ -153,60 +186,62 @@ describe('VueAutocomplete.vue', () => {
     wrapper.vm.selectedOptionIndex = -1;
     wrapper.setData({ isOpen: true });
     wrapper.vm.onEnterKeyPress(e);
-    expect(wrapper.emitted().change[0][0]).toEqual(AutocompleteOptionsFixture[0]);
+    expect(wrapper.emitted().input[0][0]).toEqual(AutocompleteFixture[0]);
     expect(e.preventDefault).toHaveBeenCalled();
 
     wrapper.vm.searchQuery = 'Test2';
     wrapper.vm.selectedOptionIndex = 1;
     wrapper.vm.onEnterKeyPress(e);
-    expect(wrapper.emitted().change[1][0]).toEqual(AutocompleteOptionsFixture[1]);
+    expect(wrapper.emitted().input[1][0]).toEqual(AutocompleteFixture[1]);
   });
 
-  test('onOptionClick', () => {
+  test('onItemClick', () => {
     const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
         id: 'foo',
         name: 'foo',
+        label: 'foo',
         placeholder: 'Type something',
-        options: AutocompleteOptionsFixture,
+        items: AutocompleteFixture,
       },
     });
 
     wrapper.vm.searchQuery = 'foo2';
-    wrapper.vm.onOptionClick(1);
-    expect(wrapper.emitted().change).toHaveLength(1);
+    wrapper.vm.onItemClick(1);
+    expect(wrapper.emitted().input).toHaveLength(1);
 
-    wrapper.vm.onOptionClick(1);
-    expect(wrapper.emitted().change).toHaveLength(2);
+    wrapper.vm.onItemClick(1);
+    expect(wrapper.emitted().input).toHaveLength(2);
 
     wrapper.vm.searchQuery = 'Test';
-    wrapper.vm.onOptionClick(1);
-    expect(wrapper.emitted().change[0][0]).toEqual(AutocompleteOptionsFixture[1]);
+    wrapper.vm.onItemClick(1);
+    expect(wrapper.emitted().input[0][0]).toEqual(AutocompleteFixture[1]);
   });
 
-  test('onInput', () => {
+  test('onInput', (done) => {
     const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
       propsData: {
         id: 'foo',
         name: 'foo',
+        label: 'foo',
         placeholder: 'Type something',
-        options: AutocompleteOptionsFixture,
+        items: AutocompleteFixture,
       },
     });
 
-    wrapper.vm.searchQuery = '';
     wrapper.vm.onInput('');
     expect(wrapper.vm.isOpen).toBe(false);
 
-    wrapper.vm.searchQuery = 'Test';
-    wrapper.vm.emitRequest = jest.fn();
     wrapper.vm.onInput('Test');
 
-    expect(wrapper.vm.emitRequest).toHaveBeenCalled();
+    setTimeout(() => {
+      expect(wrapper.emitted('search')).toBeTruthy();
+      done();
+    }, 500);
   });
 
   test('emitRequest', (done) => {
@@ -216,15 +251,16 @@ describe('VueAutocomplete.vue', () => {
       propsData: {
         id: 'foo',
         name: 'foo',
+        label: 'foo',
         placeholder: 'Type something',
-        options: AutocompleteOptionsFixture,
+        items: AutocompleteFixture,
       },
     });
     wrapper.vm.searchQuery = 'Test';
     wrapper.vm.emitRequest();
 
     setTimeout(() => {
-      expect(wrapper.emitted().request).toBeTruthy();
+      expect(wrapper.emitted('search')).toBeTruthy();
       done();
     }, 500);
   });
@@ -236,13 +272,14 @@ describe('VueAutocomplete.vue', () => {
       propsData: {
         id: 'foo',
         name: 'foo',
+        label: 'foo',
         placeholder: 'Type something',
-        maxOptions: 10,
+        maxItems: 10,
       },
     });
 
     wrapper.vm.isOpen = true;
-    wrapper.vm.$refs.resultContainer = {
+    wrapper.vm.resultContainerRef = {
       firstChild: {
         offsetHeight: 10,
       },
@@ -251,12 +288,12 @@ describe('VueAutocomplete.vue', () => {
     wrapper.vm.setResultContainerHeight();
     expect(wrapper.vm.resultContainerHeight).toBe(10);
 
-    wrapper.setProps({ options: AutocompleteOptionsFixture });
+    wrapper.setProps({ items: AutocompleteFixture });
 
     wrapper.vm.setResultContainerHeight();
     expect(wrapper.vm.resultContainerHeight).toBe(90);
 
-    wrapper.setProps({ maxOptions: 5 });
+    wrapper.setProps({ maxItems: 5 });
 
     wrapper.vm.setResultContainerHeight();
     expect(wrapper.vm.resultContainerHeight).toBe(55);
@@ -269,22 +306,23 @@ describe('VueAutocomplete.vue', () => {
       propsData: {
         id: 'foo',
         name: 'foo',
+        label: 'foo',
         placeholder: 'Type something',
-        maxOptions: 10,
+        maxItems: 10,
       },
     });
 
     wrapper.vm.isOpen = true;
-    wrapper.vm.$refs.resultContainer = {
+    wrapper.vm.resultContainerRef = {
       clientHeight: 100,
       scrollHeight: 0,
       scrollTop: 0,
     } as any;
 
     wrapper.vm.onFocusItem();
-    expect((wrapper as any).vm.$refs.resultContainer.scrollTop).toBe(0);
+    expect((wrapper as any).vm.resultContainerRef.scrollTop).toBe(0);
 
-    wrapper.vm.$refs.resultContainer = {
+    wrapper.vm.resultContainerRef = {
       clientHeight: 100,
       scrollHeight: 101,
       scrollTop: 0,
@@ -298,9 +336,9 @@ describe('VueAutocomplete.vue', () => {
     };
 
     wrapper.vm.onFocusItem();
-    expect((wrapper as any).vm.$refs.resultContainer.scrollTop).toBe(10);
+    expect((wrapper as any).vm.resultContainerRef.scrollTop).toBe(10);
 
-    wrapper.vm.$refs.resultContainer = {
+    wrapper.vm.resultContainerRef = {
       clientHeight: 100,
       scrollHeight: 101,
       scrollTop: 100,
@@ -314,9 +352,9 @@ describe('VueAutocomplete.vue', () => {
     };
 
     wrapper.vm.onFocusItem();
-    expect((wrapper as any).vm.$refs.resultContainer.scrollTop).toBe(10);
+    expect((wrapper as any).vm.resultContainerRef.scrollTop).toBe(10);
 
-    wrapper.vm.$refs.resultContainer = {
+    wrapper.vm.resultContainerRef = {
       clientHeight: 100,
       scrollHeight: 101,
       scrollTop: 100,
@@ -330,11 +368,11 @@ describe('VueAutocomplete.vue', () => {
     };
 
     wrapper.vm.onFocusItem();
-    expect((wrapper as any).vm.$refs.resultContainer.scrollTop).toBe(100);
+    expect((wrapper as any).vm.resultContainerRef.scrollTop).toBe(100);
 
     document.querySelector = (): any => null;
 
     wrapper.vm.onFocusItem();
-    expect((wrapper as any).vm.$refs.resultContainer.scrollTop).toBe(100);
+    expect((wrapper as any).vm.resultContainerRef.scrollTop).toBe(100);
   });
 });

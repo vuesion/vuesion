@@ -28,7 +28,7 @@
     </fade-animation>
 
     <ul v-if="showIndicator" :class="$style.indicator">
-      <li v-for="(image, idx) in preloadedImages" :key="idx" :class="isActiveSlide(idx) && $style.active">
+      <li v-for="(_, idx) in preloadedImages" :key="idx" :class="isActiveSlide(idx) && $style.active">
         &nbsp;
       </li>
     </ul>
@@ -36,88 +36,68 @@
 </template>
 
 <script lang="ts">
-import FadeAnimation from '../../animations/FadeAnimation/FadeAnimation.vue';
+import { defineComponent, onBeforeUnmount, onMounted, ref } from '@vue/composition-api';
+import FadeAnimation from '@/components/animations/FadeAnimation/FadeAnimation.vue';
+import { ICarouselImage } from '@/components/molecules/VueCarousel/ICarouselImage';
 
-export interface ICarouselImage {
-  copyright?: string;
-  alt?: string;
-  url: string;
-}
-
-export default {
+export default defineComponent({
   name: 'VueCarousel',
   components: { FadeAnimation },
   props: {
-    images: {
-      type: Array,
-      default: (): any[] => [],
-    },
-    interval: {
-      type: Number,
-      default: 5000,
-    },
-    activeSlide: {
-      type: Number,
-      default: 1,
-    },
-    minHeight: {
-      type: Number,
-      default: 500,
-    },
-    showIndicator: {
-      type: Boolean,
-      default: true,
-    },
+    images: { type: Array, default: (): any[] => [] },
+    interval: { type: Number, default: 5000 },
+    selectedSlide: { type: Number, default: 1 },
+    minHeight: { type: Number, default: 500 },
+    showIndicator: { type: Boolean, default: true },
   },
-  data(): any {
-    return {
-      currentSlide: this.activeSlide - 1,
-      maxSlides: this.images.length - 1,
-      intervalInstance: null,
-      pause: false,
-      preloadedImages: [],
+  setup(props) {
+    const currentSlide = ref<number>(props.selectedSlide - 1);
+    const maxSlides = ref<number>(props.images.length - 1);
+    const intervalInstance = ref<any>(null);
+    const pause = ref(false);
+    const preloadedImages = ref([]);
+    const isActiveSlide = (idx: number) => currentSlide.value === idx;
+    const changeSlide = () => {
+      if (pause.value) {
+        return;
+      }
+      if (currentSlide.value === maxSlides.value) {
+        currentSlide.value = 0;
+      } else {
+        currentSlide.value += 1;
+      }
     };
-  },
-  mounted() {
-    this.preloadImages();
-  },
-  beforeDestroy() {
-    clearInterval(this.intervalInstance);
-  },
-  methods: {
-    isActiveSlide(idx: number) {
-      return this.currentSlide === idx;
-    },
-    preloadImages() {
-      this.images.forEach((image: ICarouselImage) => {
+    const createIntervalInstance = () => {
+      if (props.images.length <= 1) {
+        return;
+      }
+      intervalInstance.value = setInterval(changeSlide, props.interval);
+    };
+    const preloadImages = () => {
+      props.images.forEach((image: ICarouselImage) => {
         const imageInstance: HTMLImageElement = new Image();
 
         imageInstance.src = image.url;
         imageInstance.alt = image.alt;
         imageInstance.title = image.copyright;
 
-        this.preloadedImages.push(imageInstance);
+        preloadedImages.value.push(imageInstance);
       });
-      this.setInterval();
-    },
-    changeSlide() {
-      if (this.pause) {
-        return;
-      }
-      if (this.currentSlide === this.maxSlides) {
-        this.currentSlide = 0;
-      } else {
-        this.currentSlide += 1;
-      }
-    },
-    setInterval() {
-      if (this.images.length <= 1) {
-        return;
-      }
-      this.intervalInstance = setInterval(this.changeSlide, this.interval);
-    },
+      createIntervalInstance();
+    };
+
+    onMounted(() => preloadImages());
+    onBeforeUnmount(() => clearInterval(intervalInstance.value));
+
+    return {
+      currentSlide,
+      pause,
+      preloadedImages,
+      isActiveSlide,
+      changeSlide,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" module>

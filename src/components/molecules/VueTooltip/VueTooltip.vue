@@ -1,57 +1,52 @@
 <template>
-  <div :class="cssClasses" :data-tip="tip" @mouseenter="onEnter" @mouseleave="onLeave" @touchend="onTouchEnd">
+  <div
+    :class="[
+      $style.vueTooltip,
+      show && $style.show,
+      !disabled && $slots.default && $slots.default[0].tag === undefined && $style.highlight,
+    ]"
+    :data-tip="tip"
+    @mouseenter="onEnter"
+    @mouseleave="onLeave"
+    @touchend="onTouchEnd"
+  >
     <slot />
   </div>
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent, ref } from '@vue/composition-api';
+
+export default defineComponent({
   name: 'VueTooltip',
   props: {
-    tip: {
-      type: String,
-      required: true,
-    },
-    disabled: {
-      type: Boolean,
-    },
+    disabled: { type: Boolean, default: false },
+    tip: { type: String, required: true },
   },
-  data(): any {
+  setup(props) {
+    const show = ref(false);
+    const onEnter = () => {
+      if (props.disabled === false) {
+        show.value = true;
+      }
+    };
+    const onLeave = () => {
+      show.value = false;
+    };
+    const onTouchEnd = () => {
+      if (props.disabled === false) {
+        show.value = !show.value;
+      }
+    };
+
     return {
-      show: false,
+      show,
+      onEnter,
+      onLeave,
+      onTouchEnd,
     };
   },
-  computed: {
-    cssClasses() {
-      const classes: string[] = [this.$style.vueTooltip];
-
-      if (this.show) {
-        classes.push(this.$style.show);
-      }
-
-      if (!this.disabled && this.$slots.default && this.$slots.default[0].tag === undefined) {
-        classes.push(this.$style.highlight);
-      }
-
-      return classes;
-    },
-  },
-  methods: {
-    onEnter() {
-      if (!this.disabled) {
-        this.show = true;
-      }
-    },
-    onLeave() {
-      this.show = false;
-    },
-    onTouchEnd() {
-      if (!this.disabled) {
-        this.show = !this.show;
-      }
-    },
-  },
-};
+});
 </script>
 
 <style lang="scss" module>

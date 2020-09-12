@@ -81,6 +81,7 @@ export default {
     onChange(date: Date): void {
       this.selectedDate = date;
       this.$emit('change', this.selectedDate);
+      this.show = false;
     },
   },
 };

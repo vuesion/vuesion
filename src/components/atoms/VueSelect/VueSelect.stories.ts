@@ -9,7 +9,7 @@ story.add(
     components: { VueSelect },
     data() {
       return {
-        options: [
+        items: [
           { label: 'foo', value: 'foo' },
           { label: 'bar', value: 'bar' },
           { label: 'baz', value: 'baz' },
@@ -17,7 +17,7 @@ story.add(
         model: '',
       };
     },
-    template: `<vue-select name="select" id="select" placeholder="Select" :options="options" v-model="model" />`,
+    template: `<vue-select name="select" id="select" label="Select" :items="items" v-model="model" />`,
   }),
   {
     info: {
@@ -32,7 +32,7 @@ story.add(
     components: { VueSelect },
     data() {
       return {
-        options: [
+        items: [
           { label: 'foo', value: 'foo' },
           { label: 'bar', value: 'bar' },
           { label: 'baz', value: 'baz' },
@@ -40,7 +40,7 @@ story.add(
         model: '',
       };
     },
-    template: `<vue-select name="select" id="select" placeholder="Select" :options="options" multiple v-model="model" />`,
+    template: `<vue-select name="select" id="select" label="Select" :items="items" multi-select v-model="model" />`,
   }),
   {
     info: {

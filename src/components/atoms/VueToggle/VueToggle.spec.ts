@@ -68,7 +68,6 @@ describe('VueToggle.vue', () => {
     await wrapper.vm.$nextTick();
 
     expect(wrapper.emitted().click).toBeTruthy();
-    expect(wrapper.emitted().input).toBeTruthy();
   });
 
   test('should not trigger eventsif disabled', async () => {
@@ -84,12 +83,10 @@ describe('VueToggle.vue', () => {
     });
 
     expect(wrapper.emitted().click).toBeFalsy();
-    expect(wrapper.emitted().input).toBeFalsy();
 
     wrapper.findAll('.container').trigger('click');
     await wrapper.vm.$nextTick();
 
     expect(wrapper.emitted().click).toBeFalsy();
-    expect(wrapper.emitted().input).toBeFalsy();
   });
 });

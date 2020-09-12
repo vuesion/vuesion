@@ -5,9 +5,11 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from '@vue/composition-api';
+
+export default defineComponent({
   name: 'VueCardBody',
-};
+});
 </script>
 
 <style lang="scss" module>

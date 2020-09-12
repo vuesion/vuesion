@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import VueAutocomplete from './VueAutocomplete.vue';
-import { AutocompleteOptionsFixture } from './fixtures/IAutocompleteFixture';
+import { AutocompleteFixture } from './IAutocompleteFixture';
 import { i18n } from '@/test/test-utils';
 
 const story = storiesOf('Organisms|Autocomplete', module) as any;
@@ -12,89 +12,49 @@ story.add(
     components: { VueAutocomplete },
     data(): any {
       return {
-        autocompleteOptions: [],
-        model: { label: 'foo9', value: 'bar9' },
-      };
-    },
-    methods: {
-      onRequest(query: string) {
-        action('@request');
-
-        const returnOptions: boolean = Math.random() > 0.5 || query.includes('foo');
-
-        if (returnOptions) {
-          this.autocompleteOptions = AutocompleteOptionsFixture;
-        } else {
-          this.autocompleteOptions = [];
-        }
-      },
-      request: action('@request'),
-      change: action('@change'),
-    },
-    template: `<div>model: {{ model }}
-        <br/>
-        <br/>
-        <vue-autocomplete
-            v-model="model"
-            name="foo"
-            id="foo"
-            :options="autocompleteOptions"
-            :max-options="3"
-            placeholder="Type something (e.g. foo)"
-            @request="onRequest($event);request($event)"
-            @change="change"/></div>`,
-    i18n,
-  }),
-  {
-    info: {
-      components: { VueAutocomplete },
-    },
-  },
-);
-
-story.add(
-  'Loading',
-  () => ({
-    components: { VueAutocomplete },
-    data(): any {
-      return {
         isLoading: false,
-        autocompleteOptions: [],
+        items: [],
+        model: { label: 'foo3', value: 'bar3' },
       };
     },
     methods: {
-      onRequest(query: string) {
-        action('@request');
+      onSearch(query: string) {
+        action('@search');
         this.isLoading = true;
 
         setTimeout(() => {
-          const returnOptions: boolean = Math.random() > 0.5 || query.includes('foo');
+          const returnItems: boolean = Math.random() > 0.5 || query.includes('foo');
 
-          if (returnOptions) {
-            this.autocompleteOptions = AutocompleteOptionsFixture;
+          if (returnItems) {
+            this.items = AutocompleteFixture;
           } else {
-            this.autocompleteOptions = [];
+            this.items = [];
           }
 
           this.isLoading = false;
-        }, 2000);
+        }, 500);
       },
-      request: action('@request'),
-      change: action('@change'),
+      onInput: action('@input'),
     },
-    template: `<vue-autocomplete
-            name="foo"
-            id="foo"
-            validation="required"
-            required
-            :options="autocompleteOptions"
-            message="Type something (e.g. foo)"
-            error-message="This field is mandatory"
-            :max-options="3"
-            :is-loading="isLoading"
-            placeholder="Search query"
-            @request="onRequest($event);request($event)"
-            @change="change"/>`,
+    template: `<div><vue-autocomplete
+      v-model="model"
+      id="foo"
+      name="foo"
+      validation="required"
+      required
+      :items="items"
+      description="Type something (e.g. foo)"
+      error-message="This field is mandatory"
+      :max-items="3"
+      :loading="isLoading"
+      placeholder="Search query"
+      label="items"
+      @search="onSearch($event)"
+      @input="onInput"/>
+    <br/>
+    <br/>
+    {{ model }}
+    </div>`,
     i18n,
   }),
   {

@@ -1,22 +1,22 @@
 <template>
   <div ref="dropdownMenu" :class="$style.vueDropdownMenu" @keydown="onKeyPress">
-    <span role="button" tabindex="0" :aria-expanded="show.toString()" @click.stop.prevent="show = !show">
+    <span role="button" tabindex="0" :aria-expanded="show.toString()" @click.stop.prevent="onClick">
       <slot />
       <vue-icon-sort-down />
     </span>
 
-    <vue-collapse :show="show">
+    <vue-collapse :show="show" :duration="duration">
       <div :class="$style.list">
         <ul>
           <li
-            v-for="(option, idx) in options"
+            v-for="(item, idx) in items"
             :key="`${id}-${idx}`"
-            :class="[index === idx ? $style.active : '', option.value === 'separator' ? $style.separator : '']"
+            :class="[index === idx ? $style.active : '', item.value === 'separator' ? $style.separator : '']"
             @mouseenter="index = idx"
-            @click.stop.prevent="onClick(option)"
+            @click.stop.prevent="onItemClick(item)"
           >
-            <slot v-if="option.value !== 'separator'" name="option" :option="option">
-              {{ option.label }}
+            <slot v-if="item.value !== 'separator'" name="option" :option="item">
+              {{ item.label }}
             </slot>
           </li>
         </ul>
@@ -26,87 +26,90 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, ref } from '@vue/composition-api';
 import { getIntInRange } from '@vuesion/utils/dist/randomGenerator';
 import VueIconSortDown from '../../atoms/icons/VueIconSortDown/VueIconSortDown.vue';
 import VueCollapse from '../VueCollapse/VueCollapse.vue';
+import { getDomRef } from '@/composables/get-dom-ref';
+import { IItem } from '@/components/IItem';
+import { useOutsideClick } from '@/composables/use-outside-click';
 
-export default {
+export default defineComponent({
   name: 'VueDropdownMenu',
   components: { VueCollapse, VueIconSortDown },
   props: {
-    options: {
-      type: Array,
-      required: true,
-    },
+    items: { type: Array as new () => IItem[], required: true },
+    duration: { type: Number, default: 250 },
   },
-  data(): any {
-    return {
-      show: false,
-      id: getIntInRange(213123123, 98982984398),
-      index: -1,
+  setup(props, { emit }) {
+    const dropdownMenu = getDomRef(null);
+    const show = ref(false);
+    const id = ref(getIntInRange(213123123, 98982984398));
+    const index = ref(-1);
+    const close = () => {
+      show.value = false;
+      index.value = -1;
     };
-  },
-  beforeMount() {
-    document.addEventListener('mousedown', this.handleDocumentClick);
-    document.addEventListener('touchstart', this.handleDocumentClick);
-  },
-  beforeDestroy() {
-    document.removeEventListener('mousedown', this.handleDocumentClick);
-    document.removeEventListener('touchstart', this.handleDocumentClick);
-  },
-  methods: {
-    onClick(option: any) {
-      this.$emit('click', option);
-      this.close();
-    },
-    close() {
-      this.show = false;
-      this.index = -1;
-    },
-    checkForPropagation(e: KeyboardEvent) {
+    const onClick = () => {
+      show.value = !show.value;
+      emit('click');
+    };
+    const onItemClick = (item: IItem) => {
+      emit('item-click', item);
+      close();
+    };
+    const checkForPropagation = (e: KeyboardEvent) => {
       if (['Enter', 'Space', 'ArrowDown', 'ArrowUp', 'Escape'].includes(e.code)) {
         e.stopPropagation();
         e.preventDefault();
       }
-    },
-    onKeyPress(e: KeyboardEvent) {
-      this.checkForPropagation(e);
-
-      if (['Enter', 'Space', 'ArrowDown', 'ArrowUp'].includes(e.code) && this.show === false) {
-        this.show = true;
-      } else if (['Enter', 'Space'].includes(e.code) && this.index > -1) {
-        this.onClick(this.options[this.index]);
-      } else if (e.code === 'ArrowDown') {
-        this.handleSelection(this.getNewIndex('down'));
-      } else if (e.code === 'ArrowUp') {
-        this.handleSelection(this.getNewIndex('up'));
-      } else if (e.code === 'Escape') {
-        this.close();
+    };
+    const handleSelection = (newIndex: number) => {
+      if (newIndex === props.items.length) {
+        index.value = 0;
+      } else if (newIndex <= -1) {
+        index.value = props.items.length - 1;
+      } else {
+        index.value = newIndex;
       }
-    },
-    getNewIndex(direction: string) {
-      let newIndex: number = direction === 'down' ? this.index + 1 : this.index - 1;
-      if (this.options[newIndex] && this.options[newIndex].value === 'separator') {
+    };
+    const getNewIndex = (direction: string) => {
+      let newIndex: number = direction === 'down' ? index.value + 1 : index.value - 1;
+      if (props.items[newIndex] && props.items[newIndex].value === 'separator') {
         newIndex = direction === 'down' ? newIndex + 1 : newIndex - 1;
       }
       return newIndex;
-    },
-    handleSelection(newIndex: number) {
-      if (newIndex === this.options.length) {
-        this.index = 0;
-      } else if (newIndex <= -1) {
-        this.index = this.options.length - 1;
-      } else {
-        this.index = newIndex;
+    };
+    const onKeyPress = (e: KeyboardEvent) => {
+      checkForPropagation(e);
+
+      if (['Enter', 'Space', 'ArrowDown', 'ArrowUp'].includes(e.code) && show.value === false) {
+        show.value = true;
+      } else if (['Enter', 'Space'].includes(e.code) && index.value > -1) {
+        onItemClick(props.items[index.value]);
+      } else if (e.code === 'ArrowDown') {
+        handleSelection(getNewIndex('down'));
+      } else if (e.code === 'ArrowUp') {
+        handleSelection(getNewIndex('up'));
+      } else if (e.code === 'Escape') {
+        close();
       }
-    },
-    handleDocumentClick(e: Event) {
-      if (this.$refs.dropdownMenu && this.$refs.dropdownMenu.contains(e.target) === false) {
-        this.close();
-      }
-    },
+    };
+
+    useOutsideClick(dropdownMenu, () => close());
+
+    return {
+      dropdownMenu,
+      show,
+      id,
+      index,
+      onClick,
+      onItemClick,
+      handleSelection,
+      onKeyPress,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" module>
@@ -118,7 +121,7 @@ export default {
 
   > span {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
     padding: $dropdown-menu-button-padding;
     cursor: pointer;
     border-radius: $dropdown-menu-button-border-radius;
@@ -129,6 +132,7 @@ export default {
     letter-spacing: $dropdown-menu-button-letter-spacing;
     border: $dropdown-menu-button-border;
     background: $dropdown-menu-button-bg;
+    align-items: baseline;
 
     &:hover {
       background: $dropdown-menu-button-hover-bg;
