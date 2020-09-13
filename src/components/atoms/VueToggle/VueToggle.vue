@@ -52,6 +52,7 @@ export default defineComponent({
     const isChecked = computed(() => props.checked);
     const onClick = () => {
       input.value.focus();
+      focus.value = true;
 
       if (!props.disabled) {
         emit('click', !props.checked);
