@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/vue';
-import { brandVariations } from '../../utils';
+import { brandVariations } from '../../prop-validators';
 import VueButton from './VueButton.vue';
 
 describe('VueButton.vue', () => {

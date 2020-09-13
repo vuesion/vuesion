@@ -1,5 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import { brandVariations } from '../../utils';
+import { brandVariations } from '../../prop-validators';
 import VueLoader from './VueLoader.vue';
 
 const localVue = createLocalVue();

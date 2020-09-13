@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { brandVariations } from '../../utils';
+import { brandVariations } from '../../prop-validators';
 import VueIconGithub from '../icons/VueIconGithub/VueIconGithub.vue';
 import VueButton from './VueButton.vue';
 

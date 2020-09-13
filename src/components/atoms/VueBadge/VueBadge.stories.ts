@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { brandVariations } from '../../utils';
+import { brandVariations } from '../../prop-validators';
 import VueBadge from './VueBadge.vue';
 
 const story = storiesOf('Atoms|Badge', module) as any;
