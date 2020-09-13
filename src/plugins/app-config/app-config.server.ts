@@ -13,7 +13,7 @@ export default function({ store, req }: Context) {
   const envConfig: IAppConfig = JSON.parse(process.env.CONFIG || '{}');
   const appConfig = Object.assign({}, require('config'), envConfig);
   const runtimeConfig: IAppConfig = cloneDeep(appConfig);
-  const query: any = queryString.parseUrl(req.url).query;
+  const query: any = req ? queryString.parseUrl(req.url).query : {};
 
   runtimeConfig.features.disableParticles = query.disableParticles
     ? Boolean(query.disableParticles)

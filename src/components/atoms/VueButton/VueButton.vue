@@ -23,7 +23,7 @@
 <script lang="ts">
 import { defineComponent, computed } from '@vue/composition-api';
 import { getDomRef } from '@/composables/get-dom-ref';
-import { variationValidator } from '@/components/utils';
+import { variationValidator } from '@/components/prop-validators';
 import VueLoader from '../VueLoader/VueLoader.vue';
 
 export default defineComponent({

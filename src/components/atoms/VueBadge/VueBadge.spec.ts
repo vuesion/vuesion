@@ -1,5 +1,5 @@
 import { render } from '@testing-library/vue';
-import { brandVariations } from '../../utils';
+import { brandVariations } from '../../prop-validators';
 import VueBadge from './VueBadge.vue';
 
 describe('VueBadge.vue', () => {

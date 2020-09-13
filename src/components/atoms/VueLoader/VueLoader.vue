@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { spacingValidator, variationValidator } from '@/components/utils';
+import { spacingValidator, variationValidator } from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueLoader',

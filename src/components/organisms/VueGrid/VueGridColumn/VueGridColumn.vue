@@ -11,7 +11,7 @@
 <script lang="ts">
 import defaultTo from 'lodash/defaultTo';
 import { computed, defineComponent, inject } from '@vue/composition-api';
-import { spacingValidator } from '../../../utils';
+import { spacingValidator } from '../../../prop-validators';
 
 export default defineComponent({
   name: 'VueGridColumn',
