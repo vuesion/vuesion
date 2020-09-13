@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, provide } from '@vue/composition-api';
-import { spacingValidator } from '../../utils';
+import { spacingValidator } from '../../prop-validators';
 
 export default defineComponent({
   name: 'VueGrid',

@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { variationValidator } from '@/components/utils';
+import { variationValidator } from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueBadge',
