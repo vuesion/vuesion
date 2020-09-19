@@ -3,7 +3,7 @@
     <vue-grid with-vertical-space>
       <vue-grid-row>
         <vue-grid-column>
-          <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'VueX Example' }]" />
+          <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'Dashboard' }]" />
         </vue-grid-column>
       </vue-grid-row>
 
@@ -52,6 +52,7 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, ref } from '@nuxtjs/composition-api';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
@@ -60,8 +61,11 @@ import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
 import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 import { HttpService } from '@/plugins/http-service/HttpService';
 
-export default {
+export default defineComponent({
   middleware: ['auth'],
+  head: {
+    title: 'vuesion - Dashboard',
+  },
   components: {
     VueBreadcrumb,
     VueGrid,
@@ -70,37 +74,30 @@ export default {
     VueGridRow,
     VueHeadline,
   },
-  data(): any {
-    return { pending: false };
-  },
-  computed: {},
-  methods: {
-    onClick() {
+  setup() {
+    const pending = ref(false);
+    const onClick = async () => {
       const requests: any[] = [];
-
-      this.pending = true;
 
       for (let i = 0; i < 10; i++) {
         requests.push(HttpService.get('/protected'));
       }
 
-      Promise.all(requests)
-        .then(() => {
-          this.pending = false;
-        })
-        .catch((e) => {
-          // eslint-disable-next-line no-console
-          console.log(e);
-          this.pending = false;
-        });
-    },
-  },
-  head /* istanbul ignore next */() {
-    return {
-      title: 'vuesion - Dashboard',
+      try {
+        pending.value = true;
+
+        await Promise.all(requests);
+      } catch (e) {
+        // eslint-disable-next-line
+        console.error(e);
+      } finally {
+        pending.value = false;
+      }
     };
+
+    return { pending, onClick };
   },
-};
+});
 </script>
 
 <style lang="scss" module>

@@ -59,25 +59,20 @@
     }
   },
   "dependencies": {
+    "@nuxtjs/composition-api": "0.12.5",
     "@nuxt/typescript-runtime": "0.4.10",
     "@nuxtjs/axios": "5.12.2",
     "@nuxtjs/pwa": "3.0.2",
-    "@types/animejs": "3.1.2",
-    "@types/cookie-parser": "1.4.2",
-    "@types/helmet": "0.0.48",
-    "@vue/composition-api": "0.6.7",
-    "@vuesion/utils": "4.0.0-alpha.13",
-    "@vuesion/vuex-persist": "4.0.0-alpha.13",
+    "@vuesion/utils": "4.0.0-alpha.14",
+    "@vuesion/vuex-persist": "4.0.0-alpha.14",
     "animejs": "3.2.0",
     "compression": "1.7.4",
-    "config": "3.3.1",
     "cookie-parser": "1.4.5",
     "helmet": "3.23.3",
     "lodash": "4.17.20",
     "marked": "1.1.1",
     "nuxt": "2.14.5",
     "nuxt-i18n": "6.15.1",
-    "query-string": "6.13.1",
     "vee-validate": "3.3.11"
   },
   "devDependencies": {
@@ -88,13 +83,16 @@
     "@nuxtjs/eslint-module": "2.0.0",
     "@testing-library/jest-dom": "5.11.4",
     "@testing-library/vue": "5.0.4",
+    "@types/animejs": "3.1.2",
+    "@types/cookie-parser": "1.4.2",
+    "@types/helmet": "0.0.48",
     "@types/jest": "26.0.13",
     "@types/lodash": "4.14.161",
     "@types/marked": "1.1.0",
     "@types/testing-library__jest-dom": "5.9.2",
     "@vue/test-utils": "1.1.0",
-    "@vuesion/service": "4.0.0-alpha.13",
-    "@vuesion/storybook-theme-switcher": "4.0.0-alpha.13",
+    "@vuesion/service": "4.0.0-alpha.14",
+    "@vuesion/storybook-theme-switcher": "4.0.0-alpha.14",
     "axios-mock-adapter": "1.18.2",
     "babel-core": "7.0.0-bridge.0",
     "eslint-plugin-nuxt": ">=0.4.2",
@@ -123,7 +121,8 @@
     ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1",
-      "^vue$": "vue/dist/vue.common.js"
+      "^vue$": "vue/dist/vue.common.js",
+      "@nuxtjs/composition-api": "@nuxtjs/composition-api/lib/cjs/entrypoint.js"
     },
     "moduleFileExtensions": [
       "ts",

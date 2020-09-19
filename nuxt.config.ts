@@ -19,7 +19,7 @@ const config: Configuration = {
     },
     transpile: ['vee-validate'],
   },
-  buildModules: ['@nuxt/typescript-build'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/composition-api'],
   css: [],
   head: {
     title: process.env.npm_package_name || '',
@@ -72,20 +72,17 @@ const config: Configuration = {
     color: '#cd235b',
     background: 'white',
   },
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    'nuxt-i18n',
-  ],
+  modules: ['@nuxtjs/axios', '@nuxtjs/pwa', 'nuxt-i18n'],
   plugins: [
     { src: '@/plugins/vuex-persist/vuex-persist.client' },
     { src: '@/plugins/vuex-persist/vuex-persist.server' },
-    { src: '@/plugins/app-config/app-config.server' },
     { src: '@/plugins/http-service/http-service' },
-    { src: '@/plugins/vue-composition-api/vue-composition-api' },
     { src: '@/plugins/vee-validate/vee-validate' },
   ],
+  publicRuntimeConfig: {
+    baseUrl: 'http://localhost:3000',
+  },
+  privateRuntimeConfig: {},
   srcDir: 'src',
   serverMiddleware: ['@/api/index.ts'],
   telemetry: false,

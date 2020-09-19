@@ -13,7 +13,7 @@ export default defineComponent({
     multiple: { type: Boolean, default: false },
   },
   setup(props) {
-    const items = ref<Array<{ idx: Ref<number>; open: Ref<boolean> }>>([]);
+    const items = ref<any[]>([]);
     const openItems = ref<number[]>([]);
     const handleItems = () => {
       items.value.forEach((item: { idx: Ref<number>; open: Ref<boolean> }) => {

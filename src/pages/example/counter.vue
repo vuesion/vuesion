@@ -25,8 +25,7 @@
 </template>
 
 <script lang="ts">
-import { Context } from '@nuxt/types';
-import { mapActions, mapGetters } from 'vuex';
+import { defineComponent, useContext, useFetch, computed, useMeta } from '@nuxtjs/composition-api';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
@@ -34,7 +33,9 @@ import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vu
 import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
 import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 
-export default {
+export default defineComponent({
+  name: 'Counter',
+  head: {},
   components: {
     VueGrid,
     VueGridRow,
@@ -43,21 +44,24 @@ export default {
     VueHeadline,
     VueButton,
   },
-  fetch({ store }: Context) {
-    return store.dispatch('counter/increment');
-  },
-  computed: {
-    ...mapGetters('counter', ['count', 'incrementPending', 'decrementPending']),
-  },
-  methods: {
-    ...mapActions('counter', ['increment', 'decrement']),
-  },
-  head /* istanbul ignore next */() {
-    return {
-      title: 'vuesion - Counter',
+  setup() {
+    useMeta({ title: 'vuesion - Counter' });
+    const { store } = useContext();
+    const count = computed(() => store.getters['counter/count']);
+    const incrementPending = computed(() => store.getters['counter/incrementPending']);
+    const decrementPending = computed(() => store.getters['counter/decrementPending']);
+    const increment = async () => {
+      await store.dispatch('counter/increment');
     };
+    const decrement = async () => {
+      await store.dispatch('counter/decrement');
+    };
+
+    useFetch(() => store.dispatch('counter/increment'));
+
+    return { count, incrementPending, decrementPending, increment, decrement };
   },
-};
+});
 </script>
 
 <style lang="scss" module>

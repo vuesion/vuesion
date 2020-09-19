@@ -7,7 +7,7 @@
         Login
       </vue-button>
 
-      <vue-button v-if="isAuthenticated" slot="right" color="primary" @click="onLogout"> Logout </vue-button>
+      <vue-button v-if="isAuthenticated" slot="right" color="primary" @click="onLogoutClick"> Logout </vue-button>
     </vue-nav-bar>
 
     <nuxt :class="$style.content" />
@@ -17,7 +17,7 @@
     <vue-sidebar>
       <vue-sidebar-group title="Themes">
         <vue-sidebar-group-item>
-          <vue-select id="theme" label="Theme" name="theme" :items="themes" :value="theme" @input="themeSwitch" />
+          <vue-select id="theme" label="Theme" name="theme" :items="themes" :value="theme" @input="onThemeChange" />
         </vue-sidebar-group-item>
       </vue-sidebar-group>
 
@@ -29,7 +29,7 @@
             name="lang"
             :items="languages"
             :value="$i18n.locale"
-            @input="switchLocale"
+            @input="onLocaleSwitch"
           />
         </vue-sidebar-group-item>
       </vue-sidebar-group>
@@ -104,14 +104,16 @@
     </vue-sidebar>
 
     <vue-modal :show="showLoginModal" @close="showLoginModal = false">
-      <login-form :loading="isLoginPending" @submit="onLoginSubmit" />
+      <login-form :loading="loginRequestStatus === 'PENDING'" @submit="onLoginSubmit" />
     </vue-modal>
   </div>
 </template>
 
 <script lang="ts">
-import { mapActions, mapGetters } from 'vuex';
 import '@/assets/global.scss';
+import { defineComponent, computed, ref, useContext, useMeta } from '@nuxtjs/composition-api';
+import { RequestStatus } from '@/enums/RequestStatus';
+import { addNotification } from '@/components/molecules/VueNotificationStack/utils';
 import VueNavBar from '@/components/organisms/VueNavBar/VueNavBar.vue';
 import VueFooter from '@/components/organisms/VueFooter/VueFooter.vue';
 import VueNotificationStack from '@/components/molecules/VueNotificationStack/VueNotificationStack.vue';
@@ -128,10 +130,10 @@ import VueIconPuzzlePiece from '@/components/atoms/icons/VueIconPuzzlePiece/VueI
 import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 import VueModal from '@/components/molecules/VueModal/VueModal.vue';
 import LoginForm from '@/components/organisms/LoginForm/LoginForm.vue';
-import { addNotification } from '@/components/molecules/VueNotificationStack/utils';
 
-export default {
+export default defineComponent({
   name: 'App',
+  head: {},
   components: {
     LoginForm,
     VueModal,
@@ -150,72 +152,68 @@ export default {
     VueFooter,
     VueNotificationStack,
   },
-  data(): any {
-    return {
-      isNavigating: false,
-      languages: [
-        { label: 'English', value: 'en' },
-        { label: 'Deutsch', value: 'de' },
-        { label: 'Português', value: 'pt' },
-        { label: '中文', value: 'zh-cn' },
-      ],
-      showLoginModal: false,
-      isLoginPending: false,
-      themes: [
-        { label: 'Light Theme', value: 'light' },
-        { label: 'Dark Theme', value: 'dark' },
-      ],
+  setup() {
+    const { store, redirect, app } = useContext();
+    const { htmlAttrs } = useMeta();
+    const languages = computed(() => [
+      { label: 'English', value: 'en' },
+      { label: 'Deutsch', value: 'de' },
+      { label: 'Português', value: 'pt' },
+      { label: '中文', value: 'zh-cn' },
+    ]);
+    const themes = computed(() => [
+      { label: 'Light Theme', value: 'light' },
+      { label: 'Dark Theme', value: 'dark' },
+    ]);
+    const showLoginModal = ref(false);
+    const loginRequestStatus = ref(RequestStatus.INIT);
+    const locale = computed(() => store.getters['app/locale']);
+    const theme = computed(() => store.getters['app/theme']);
+    const isAuthenticated = computed(() => store.getters['auth/isAuthenticated']);
+    const onLocaleSwitch = (selectedLocale: string) => redirect({ path: app.switchLocalePath(selectedLocale) });
+    const onThemeChange = async (selectedTheme: string) => {
+      await store.dispatch('app/changeTheme', selectedTheme);
+      document.documentElement.className = selectedTheme;
     };
-  },
-  computed: {
-    ...mapGetters('app', ['locale', 'theme']),
-    ...mapGetters('auth', ['isAuthenticated']),
-  },
-  methods: {
-    ...mapActions('app', ['changeTheme']),
-    ...mapActions('auth', ['createToken', 'revokeToken']),
-    switchLocale(locale: string) {
-      this.$router.push({
-        path: this.switchLocalePath(locale),
-      });
-    },
-    themeSwitch(theme: string) {
-      this.changeTheme(theme);
-      document.documentElement.className = theme;
-    },
-    async onLoginSubmit(formData: any) {
-      this.isLoginPending = true;
+    const onLoginSubmit = async (formData: any) => {
+      loginRequestStatus.value = RequestStatus.PENDING;
 
       try {
-        await this.createToken(formData);
-
-        this.$router.push({ path: this.localePath('/example/dashboard') });
+        await store.dispatch('auth/createToken', formData);
+        redirect({ path: app.localePath('/example/dashboard') });
+        loginRequestStatus.value = RequestStatus.IDLE;
       } catch (e) {
+        loginRequestStatus.value = RequestStatus.FAILED;
         addNotification({ title: 'Error during login', text: 'Please try again!' });
       }
 
-      this.isLoginPending = false;
-      this.showLoginModal = false;
-    },
-    async onLogout() {
-      this.isLoginPending = true;
+      showLoginModal.value = false;
+    };
+    const onLogoutClick = async () => {
+      await store.dispatch('auth/revokeToken');
+      redirect({ path: app.localePath('/') });
+    };
 
-      await this.revokeToken();
-      this.$router.push({ path: this.localePath('/') });
+    htmlAttrs.value = {
+      class: theme.value,
+      lang: locale.value.substr(0, 2),
+    };
 
-      this.isLoginPending = false;
-      this.showLoginModal = false;
-    },
-  },
-  head() {
     return {
-      htmlAttrs: {
-        class: this.theme,
-        lang: this.locale.substr(0, 2),
-      },
+      languages,
+      themes,
+      showLoginModal,
+      loginRequestStatus,
+      locale,
+      theme,
+      isAuthenticated,
+      onLocaleSwitch,
+      onThemeChange,
+      onLoginSubmit,
+      onLogoutClick,
     };
   },
-};
+});
 </script>
 
 <style lang="scss" module>

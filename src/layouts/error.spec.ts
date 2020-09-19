@@ -1,32 +1,68 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { ComponentHarness, render } from '@testing-library/vue';
+import Vuex, { Store } from 'vuex';
+import { IState } from '@/store/IState';
+import AppDefaultState from '@/store/app/state';
+import AppMutations from '@/store/app/mutations';
+import AppActions from '@/store/app/actions';
+import AppGetters from '@/store/app/getters';
 import Error from '@/layouts/error.vue';
 
-const localVue = createLocalVue();
-
 describe('error.vue', () => {
-  test('renders component for error', () => {
-    const wrapper = mount(Error, {
-      localVue,
+  let store: Store<IState>;
+  let harness: ComponentHarness;
+
+  const AppModule = {
+    namespaced: true,
+    state: () => AppDefaultState(),
+    mutations: AppMutations,
+    actions: AppActions,
+    getters: AppGetters,
+  };
+
+  beforeEach(() => {
+    store = new Vuex.Store({
+      modules: {
+        app: AppModule,
+        i18n: {
+          namespaced: true,
+          state: {
+            locale: 'en',
+          },
+        },
+      },
+    } as any);
+
+    harness = render(Error, {
+      mocks: {
+        $nuxt: {
+          context: {
+            store,
+          },
+        },
+      },
       propsData: {
         error: {
           statusCode: 500,
         },
       },
     });
-
-    expect(wrapper.find('h1').text()).toBe('Error');
   });
 
-  test('renders component for 404', () => {
-    const wrapper = mount(Error, {
-      localVue,
-      propsData: {
-        error: {
-          statusCode: 404,
-        },
+  test('renders component for error', () => {
+    const { getByText } = harness;
+
+    getByText('Error');
+  });
+
+  test('renders component for 404', async () => {
+    const { getByText, updateProps } = harness;
+
+    await updateProps({
+      error: {
+        statusCode: 404,
       },
     });
 
-    expect(wrapper.find('h1').text()).toBe('404');
+    getByText('404');
   });
 });

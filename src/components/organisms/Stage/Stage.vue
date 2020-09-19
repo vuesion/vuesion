@@ -54,12 +54,6 @@ import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
 
 export default {
   components: { VueHeadline, VueIconGithub, VueGridColumn, VueGridRow, VueGrid },
-  props: {
-    disableParticles: {
-      type: Boolean,
-      required: true,
-    },
-  },
   data() {
     return {};
   },
@@ -70,9 +64,7 @@ export default {
   mounted() {
     this.handleResize();
 
-    if (!this.disableParticles) {
-      CircleAnimation(this.$refs.canvas);
-    }
+    CircleAnimation(this.$refs.canvas);
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.handleResize);

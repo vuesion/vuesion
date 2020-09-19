@@ -1,6 +1,6 @@
 <template>
   <div>
-    <stage :disable-particles="disableParticles" />
+    <stage />
     <home-section
       image="https://images.unsplash.com/photo-1549082984-1323b94df9a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=512&q=60"
       alternative
@@ -163,13 +163,11 @@
 </template>
 
 <script lang="ts">
-import { mapState } from 'vuex';
 import HomeSection from '@/components/organisms/HomeSection/HomeSection.vue';
 import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
-import { IState } from '@/store/IState';
 import Stage from '../components/organisms/Stage/Stage.vue';
 
 export default {
@@ -180,12 +178,6 @@ export default {
     VueHeadline,
     HomeSection,
     Stage,
-  },
-  computed: {
-    ...mapState({
-      disableParticles: (state: IState) =>
-        (state.app.config && state.app.config.features && state.app.config.features.disableParticles) || false,
-    }),
   },
   head() {
     return {
