@@ -20,8 +20,7 @@ export const initHttpService = (
   store?: Store<IState>,
   redirect?: (path: string) => void,
 ) => {
-  if (axiosInstance && store?.state?.app?.config?.api?.baseUrl) {
-    axiosInstance.setBaseURL(store.state.app.config.api.baseUrl);
+  if (axiosInstance) {
     HttpService = (axiosInstance as unknown) as AxiosInstance;
   }
 

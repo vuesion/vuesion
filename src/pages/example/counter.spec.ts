@@ -1,4 +1,4 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { ComponentHarness, render, fireEvent } from '@testing-library/vue';
 import Vuex, { Store } from 'vuex';
 import { CounterDefaultState, ICounterState } from '@/store/counter/state';
 import { CounterActions } from '@/store/counter/actions';
@@ -6,12 +6,9 @@ import { CounterGetters } from '@/store/counter/getters';
 import { CounterMutations } from '@/store/counter/mutations';
 import Counter from './counter.vue';
 
-const localVue = createLocalVue();
-
-localVue.use(Vuex);
-
 describe('Counter.vue', () => {
   let store: Store<ICounterState>;
+  let harness: ComponentHarness;
 
   const CounterModule = {
     namespaced: true,
@@ -27,39 +24,39 @@ describe('Counter.vue', () => {
         counter: CounterModule,
       },
     } as any);
-  });
 
-  test('renders component', () => {
-    const wrapper = mount<any>(Counter, {
-      store,
-      localVue,
-      stubs: ['nuxt-link'],
-    });
-
-    expect(wrapper.find('h1').text()).toBe('Counter: 0');
-  });
-
-  test('should increment and decrement', () => {
-    store.dispatch = jest.fn();
-    const wrapper = mount<any>(Counter, {
-      store,
-      localVue,
-      stubs: ['nuxt-link'],
-    });
-
-    wrapper.vm.increment();
-    expect(store.dispatch).toHaveBeenCalledWith(`counter/increment`, undefined);
-
-    wrapper.vm.decrement();
-    expect(store.dispatch).toHaveBeenCalledWith(`counter/decrement`, undefined);
-  });
-
-  test('dispatches action on the server', () => {
     store.dispatch = jest.fn();
 
-    (Counter as any).fetch({ store });
+    harness = render(Counter, {
+      mocks: {
+        $nuxt: {
+          context: {
+            store,
+          },
+        },
+      },
+      stubs: ['nuxt-link'],
+    });
+  });
 
-    expect(store.dispatch).toHaveBeenCalled();
+  test('renders component and fetches data', () => {
+    const { getByText } = harness;
+
+    getByText('Counter: 0');
+
     expect(store.dispatch).toHaveBeenCalledWith(`counter/increment`);
+  });
+
+  test('should increment and decrement', async () => {
+    const { getByText } = harness;
+    const incrementButton = getByText('Increment +1');
+    const decrementButton = getByText('Decrement -1');
+
+    await fireEvent.click(incrementButton);
+    await fireEvent.click(decrementButton);
+
+    expect(store.dispatch).toHaveBeenNthCalledWith(1, 'counter/increment');
+    expect(store.dispatch).toHaveBeenNthCalledWith(2, 'counter/increment');
+    expect(store.dispatch).toHaveBeenNthCalledWith(3, 'counter/decrement');
   });
 });

@@ -8,13 +8,6 @@ export default function({ store }: Context) {
       cookieOptions: {
         expires: 365,
       },
-      beforePersist: (localState: any) => {
-        delete localState.app.config;
-        delete localState.app.defaultMessages;
-        delete localState.app.redirectTo;
-
-        return localState;
-      },
     }),
   ])(store);
 }
