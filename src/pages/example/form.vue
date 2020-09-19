@@ -21,15 +21,8 @@ export default {
     VueGridRow,
     VueGrid,
   },
-  data(): any {
-    return {};
-  },
-  computed: {},
-  methods: {},
-  head /* istanbul ignore next */() {
-    return {
-      title: 'vuesion - Form Example',
-    };
+  head: {
+    title: 'vuesion - Form Example',
   },
 };
 </script>
@@ -39,6 +32,5 @@ export default {
 
 .form {
   padding-top: $nav-bar-height;
-  min-height: 100vh;
 }
 </style>
