@@ -111,7 +111,7 @@
 
 <script lang="ts">
 import '@/assets/global.scss';
-import { defineComponent, computed, ref, useContext, useMeta } from '@nuxtjs/composition-api';
+import { defineComponent, computed, ref, useContext, useMeta, watch } from '@nuxtjs/composition-api';
 import { RequestStatus } from '@/enums/RequestStatus';
 import { addNotification } from '@/components/molecules/VueNotificationStack/utils';
 import VueNavBar from '@/components/organisms/VueNavBar/VueNavBar.vue';
@@ -199,10 +199,16 @@ export default defineComponent({
       redirect('/');
     };
 
-    htmlAttrs.value = {
-      class: theme.value,
-      lang: locale.value.substr(0, 2),
-    };
+    watch(
+      [theme, locale],
+      () => {
+        htmlAttrs.value = {
+          class: theme.value,
+          lang: locale.value.substr(0, 2),
+        };
+      },
+      { immediate: true },
+    );
 
     return {
       languages,
