@@ -3,11 +3,11 @@
     <vue-notification-stack />
 
     <vue-nav-bar>
-      <vue-button v-if="isAuthenticated === false" slot="right" color="primary" @click="showLoginModal = true">
-        Login
-      </vue-button>
+      <template v-if="user" slot="middle"> Hello, {{ user.name }}! </template>
 
-      <vue-button v-if="isAuthenticated" slot="right" color="primary" @click="onLogoutClick"> Logout </vue-button>
+      <vue-button v-if="!loggedIn" slot="right" color="primary" @click="showLoginModal = true"> Login </vue-button>
+
+      <vue-button v-if="loggedIn" slot="right" color="primary" @click="onLogoutClick"> Logout </vue-button>
     </vue-nav-bar>
 
     <nuxt :class="$style.content" />
@@ -130,6 +130,7 @@ import VueIconPuzzlePiece from '@/components/atoms/icons/VueIconPuzzlePiece/VueI
 import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 import VueModal from '@/components/molecules/VueModal/VueModal.vue';
 import LoginForm from '@/components/organisms/LoginForm/LoginForm.vue';
+import { useLocaleSwitch } from '@/composables/use-local-switch';
 
 export default defineComponent({
   name: 'App',
@@ -155,6 +156,7 @@ export default defineComponent({
   setup() {
     const { store, redirect, app } = useContext();
     const { htmlAttrs } = useMeta();
+    const { switchLocaleTo } = useLocaleSwitch(app.i18n);
     const languages = computed(() => [
       { label: 'English', value: 'en' },
       { label: 'Deutsch', value: 'de' },
@@ -169,8 +171,11 @@ export default defineComponent({
     const loginRequestStatus = ref(RequestStatus.INIT);
     const locale = computed(() => store.getters['app/locale']);
     const theme = computed(() => store.getters['app/theme']);
-    const isAuthenticated = computed(() => store.getters['auth/isAuthenticated']);
-    const onLocaleSwitch = (selectedLocale: string) => redirect({ path: app.switchLocalePath(selectedLocale) });
+    const loggedIn = computed(() => app.$auth.loggedIn);
+    const user = computed(() => app.$auth.user);
+    const onLocaleSwitch = (selectedLocale: string) => {
+      switchLocaleTo(selectedLocale);
+    };
     const onThemeChange = async (selectedTheme: string) => {
       await store.dispatch('app/changeTheme', selectedTheme);
       document.documentElement.className = selectedTheme;
@@ -179,8 +184,8 @@ export default defineComponent({
       loginRequestStatus.value = RequestStatus.PENDING;
 
       try {
-        await store.dispatch('auth/createToken', formData);
-        redirect({ path: app.localePath('/example/dashboard') });
+        await app.$auth.loginWith('local', { data: formData });
+        redirect('/example/dashboard');
         loginRequestStatus.value = RequestStatus.IDLE;
       } catch (e) {
         loginRequestStatus.value = RequestStatus.FAILED;
@@ -190,8 +195,8 @@ export default defineComponent({
       showLoginModal.value = false;
     };
     const onLogoutClick = async () => {
-      await store.dispatch('auth/revokeToken');
-      redirect({ path: app.localePath('/') });
+      await app.$auth.logout();
+      redirect('/');
     };
 
     htmlAttrs.value = {
@@ -206,7 +211,8 @@ export default defineComponent({
       loginRequestStatus,
       locale,
       theme,
-      isAuthenticated,
+      loggedIn,
+      user,
       onLocaleSwitch,
       onThemeChange,
       onLoginSubmit,

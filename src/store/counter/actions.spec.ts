@@ -1,71 +1,80 @@
-import { ActionContext, Commit, Dispatch } from 'vuex';
-import MockAdapter from 'axios-mock-adapter';
-import { CounterDefaultState, ICounterState } from '@/store/counter/state';
-import { IState } from '@/store/IState';
+import Vuex, { Store } from 'vuex';
+import { CounterDefaultState } from '@/store/counter/state';
+import { IState } from '@/interfaces/IState';
 import { CounterActions } from '@/store/counter/actions';
-import { HttpService } from '@/plugins/http-service/HttpService';
+import { CounterMutations } from '@/store/counter/mutations';
+import { CounterGetters } from '@/store/counter/getters';
+import { AxiosMock, getAxiosMock } from '@/test/test-utils';
 
 describe('CounterActions', () => {
-  let testContext: ActionContext<ICounterState, IState>;
-  let mockAxios: MockAdapter;
+  let store: Store<IState>;
+  let axiosMock: AxiosMock;
+
+  const CounterModule = {
+    namespaced: true,
+    state: () => CounterDefaultState(),
+    mutations: CounterMutations,
+    actions: CounterActions,
+    getters: CounterGetters,
+  };
 
   beforeEach(() => {
-    testContext = {
-      dispatch: jest.fn() as Dispatch,
-      commit: jest.fn() as Commit,
-      state: CounterDefaultState(),
-    } as ActionContext<ICounterState, IState>;
+    store = new Vuex.Store({
+      modules: {
+        counter: CounterModule,
+      },
+    } as any);
 
-    mockAxios = new MockAdapter(HttpService);
+    axiosMock = getAxiosMock();
+
+    store.$axios = axiosMock;
+
+    store.commit = jest.fn();
   });
 
-  test('it should call INCREMENT action on success', async () => {
-    const commitMock: jest.Mock = testContext.commit as jest.Mock;
+  describe('increment', () => {
+    test('it should call INCREMENT action on success', async () => {
+      axiosMock.onPut('/counter/increment').reply(200, { count: 1337 });
 
-    mockAxios.onPut('/counter/increment').reply(200, { count: 1337 });
+      await store.dispatch('counter/increment');
 
-    await CounterActions.increment(testContext);
+      expect(store.commit).toHaveBeenNthCalledWith(1, 'counter/SET_INCREMENT_PENDING', true, undefined);
+      expect(store.commit).toHaveBeenNthCalledWith(2, 'counter/SET_COUNT', 1337, undefined);
+      expect(store.commit).toHaveBeenNthCalledWith(3, 'counter/SET_INCREMENT_PENDING', false, undefined);
+    });
 
-    expect(commitMock.mock.calls[0]).toEqual(['SET_INCREMENT_PENDING', true]);
-    expect(commitMock.mock.calls[1]).toEqual(['SET_COUNT', 1337]);
-    expect(commitMock.mock.calls[2]).toEqual(['SET_INCREMENT_PENDING', false]);
+    test('it should set INCREMENT pending to false on fail', async () => {
+      axiosMock.onPut('/counter/increment').reply(500);
+
+      try {
+        await store.dispatch('counter/increment');
+      } catch (e) {
+        expect(store.commit).toHaveBeenNthCalledWith(1, 'counter/SET_INCREMENT_PENDING', true, undefined);
+        expect(store.commit).toHaveBeenNthCalledWith(2, 'counter/SET_INCREMENT_PENDING', false, undefined);
+      }
+    });
   });
 
-  test('it should set INCREMENT pending to false on fail', async () => {
-    const commitMock: jest.Mock = testContext.commit as jest.Mock;
+  describe('decrement', () => {
+    test('it should call DECREMENT action on success', async () => {
+      axiosMock.onPut('/counter/decrement').reply(200, { count: 1337 });
 
-    mockAxios.onPut('/counter/increment').reply(500);
+      await store.dispatch('counter/decrement');
 
-    try {
-      await CounterActions.increment(testContext);
-    } catch (e) {
-      expect(commitMock.mock.calls[0]).toEqual(['SET_INCREMENT_PENDING', true]);
-      expect(commitMock.mock.calls[1]).toEqual(['SET_INCREMENT_PENDING', false]);
-    }
-  });
+      expect(store.commit).toHaveBeenNthCalledWith(1, 'counter/SET_DECREMENT_PENDING', true, undefined);
+      expect(store.commit).toHaveBeenNthCalledWith(2, 'counter/SET_COUNT', 1337, undefined);
+      expect(store.commit).toHaveBeenNthCalledWith(3, 'counter/SET_DECREMENT_PENDING', false, undefined);
+    });
 
-  test('it should call DECREMENT action on success', async () => {
-    const commitMock: jest.Mock = testContext.commit as jest.Mock;
+    test('it should set DECREMENT pending to false on fail', async () => {
+      axiosMock.onPut('/counter/decrement').reply(500);
 
-    mockAxios.onPut('/counter/decrement').reply(200, { count: 1337 });
-
-    await CounterActions.decrement(testContext);
-
-    expect(commitMock.mock.calls[0]).toEqual(['SET_DECREMENT_PENDING', true]);
-    expect(commitMock.mock.calls[1]).toEqual(['SET_COUNT', 1337]);
-    expect(commitMock.mock.calls[2]).toEqual(['SET_DECREMENT_PENDING', false]);
-  });
-
-  test('it should set DECREMENT pending to false on fail', async () => {
-    const commitMock: jest.Mock = testContext.commit as jest.Mock;
-
-    mockAxios.onPut('/counter/decrement').reply(500);
-
-    try {
-      await CounterActions.decrement(testContext);
-    } catch (e) {
-      expect(commitMock.mock.calls[0]).toEqual(['SET_DECREMENT_PENDING', true]);
-      expect(commitMock.mock.calls[1]).toEqual(['SET_DECREMENT_PENDING', false]);
-    }
+      try {
+        await store.dispatch('counter/decrement');
+      } catch (e) {
+        expect(store.commit).toHaveBeenNthCalledWith(1, 'counter/SET_DECREMENT_PENDING', true, undefined);
+        expect(store.commit).toHaveBeenNthCalledWith(2, 'counter/SET_DECREMENT_PENDING', false, undefined);
+      }
+    });
   });
 });

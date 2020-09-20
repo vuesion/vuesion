@@ -1,4 +1,4 @@
-import { IState } from '@/store/IState';
+import { IState } from '@/interfaces/IState';
 import { IAppState } from '@/store/app/state';
 
 export interface IAppGetters {

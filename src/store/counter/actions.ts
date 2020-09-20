@@ -1,11 +1,6 @@
 import { ActionContext } from 'vuex';
-import { HttpService } from '@/plugins/http-service/HttpService';
-import { IState } from '@/store/IState';
+import { IState } from '@/interfaces/IState';
 import { ICounterState } from './state';
-
-export interface ICounterResponse {
-  count: number;
-}
 
 export interface ICounterActions {
   increment(context: ActionContext<ICounterState, IState>): Promise<any>;
@@ -18,9 +13,9 @@ export const CounterActions: ICounterActions = {
     commit('SET_INCREMENT_PENDING', true);
 
     try {
-      const res = await HttpService.put<ICounterResponse>('/counter/increment', { count: state.count });
+      const res = await this.$axios.$put('/counter/increment', { count: state.count });
 
-      commit('SET_COUNT', res.data.count);
+      commit('SET_COUNT', res.count);
       commit('SET_INCREMENT_PENDING', false);
     } catch (e) {
       commit('SET_INCREMENT_PENDING', false);
@@ -31,9 +26,9 @@ export const CounterActions: ICounterActions = {
     commit('SET_DECREMENT_PENDING', true);
 
     try {
-      const res = await HttpService.put<ICounterResponse>('/counter/decrement', { count: state.count });
+      const res = await this.$axios.$put('/counter/decrement', { count: state.count });
 
-      commit('SET_COUNT', res.data.count);
+      commit('SET_COUNT', res.count);
       commit('SET_DECREMENT_PENDING', false);
     } catch (e) {
       commit('SET_DECREMENT_PENDING', false);

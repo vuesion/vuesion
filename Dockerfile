@@ -12,6 +12,7 @@ COPY ./storybook-static ./storybook-static
 COPY ./nuxt.config.ts ./
 COPY ./package*.json ./
 COPY ./tsconfig.json ./
+COPY ./.env-prod ./.env
 RUN npm install --silent --only=production
 EXPOSE 3000
 CMD npm start

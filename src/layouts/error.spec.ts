@@ -1,6 +1,6 @@
 import { ComponentHarness, render } from '@testing-library/vue';
 import Vuex, { Store } from 'vuex';
-import { IState } from '@/store/IState';
+import { IState } from '@/interfaces/IState';
 import AppDefaultState from '@/store/app/state';
 import AppMutations from '@/store/app/mutations';
 import AppActions from '@/store/app/actions';
