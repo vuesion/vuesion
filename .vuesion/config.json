@@ -3,7 +3,7 @@
   "generators": {
     "blueprintDirectory": "./.vuesion/generators",
     "outputDirectory": "./src",
-    "stateFile": "./src/store/IState.ts"
+    "stateFile": "./src/interfaces/IState.ts"
   },
   "clean": ["./dist", "./.nuxt", "./coverage", "./storybook-static", "./nuxt.config.js"],
   "prettier": {

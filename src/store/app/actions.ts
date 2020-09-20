@@ -1,5 +1,5 @@
 import { ActionContext } from 'vuex';
-import { IState } from '@/store/IState';
+import { IState } from '@/interfaces/IState';
 import { IAppState } from './state';
 
 export interface IAppActions {

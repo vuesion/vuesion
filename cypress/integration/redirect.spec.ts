@@ -12,6 +12,5 @@ describe('auth guard', () => {
     });
 
     expect(res.status).to.equal(302);
-    expect(res.headers.location).to.equal('/?redirect=/example/dashboard');
   });
 });

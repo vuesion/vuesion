@@ -1,6 +1,46 @@
 import { Configuration } from '@nuxt/types';
 
 const config: Configuration = {
+  auth: {
+    cookie: {
+      options: {
+        expires: 365,
+      },
+    },
+    localStorage: false,
+    redirect: {
+      login: '/',
+      logout: '/',
+      callback: '/',
+      home: '/',
+    },
+    strategies: {
+      local: {
+        scheme: 'refresh',
+        token: {
+          property: 'access_token',
+          maxAge: 1800,
+        },
+        refreshToken: {
+          property: 'refresh_token',
+          data: 'refresh_token',
+          maxAge: 60 * 60 * 24 * 30,
+        },
+        user: {
+          property: 'user',
+          autoFetch: true,
+        },
+        endpoints: {
+          login: { url: '/auth/token', method: 'post' },
+          refresh: { url: '/auth/refresh', method: 'post' },
+          user: { url: '/auth/user', method: 'get' },
+          logout: { url: '/auth/logout', method: 'post' },
+        },
+        autoLogout: true,
+      },
+    },
+    plugins: ['@/plugins/axios/response-interceptor'],
+  },
   build: {
     extractCSS: true,
     loaders: {
@@ -23,13 +63,10 @@ const config: Configuration = {
   css: [],
   head: {
     title: process.env.npm_package_name || '',
-    meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Inter:200,400,600&display=swap' },
-    ],
+    link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Inter:200,400,600&display=swap' }],
   },
   i18n: {
+    strategy: 'no_prefix',
     vueI18n: '@/plugins/vue-i18n/vue-i18n',
     locales: [
       {
@@ -72,17 +109,23 @@ const config: Configuration = {
     color: '#cd235b',
     background: 'white',
   },
-  modules: ['@nuxtjs/axios', '@nuxtjs/pwa', 'nuxt-i18n'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/pwa', 'nuxt-i18n'],
   plugins: [
+    { src: '@/plugins/vee-validate/vee-validate' },
     { src: '@/plugins/vuex-persist/vuex-persist.client' },
     { src: '@/plugins/vuex-persist/vuex-persist.server' },
-    { src: '@/plugins/http-service/http-service' },
-    { src: '@/plugins/vee-validate/vee-validate' },
   ],
   publicRuntimeConfig: {
-    baseUrl: 'http://localhost:3000',
+    axios: {
+      baseURL: process.env.baseURL,
+    },
   },
   privateRuntimeConfig: {},
+  pwa: {
+    icon: {
+      fileName: 'logo.png',
+    },
+  },
   srcDir: 'src',
   serverMiddleware: ['@/api/index.ts'],
   telemetry: false,

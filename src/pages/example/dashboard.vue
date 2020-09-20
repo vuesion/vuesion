@@ -52,17 +52,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api';
+import { defineComponent, ref, useContext } from '@nuxtjs/composition-api';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vue';
 import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
 import VueButton from '@/components/atoms/VueButton/VueButton.vue';
-import { HttpService } from '@/plugins/http-service/HttpService';
 
 export default defineComponent({
-  middleware: ['auth'],
+  name: 'Dashboard',
+  middleware: 'auth',
   head: {
     title: 'vuesion - Dashboard',
   },
@@ -75,12 +75,13 @@ export default defineComponent({
     VueHeadline,
   },
   setup() {
+    const { $axios } = useContext();
     const pending = ref(false);
     const onClick = async () => {
       const requests: any[] = [];
 
       for (let i = 0; i < 10; i++) {
-        requests.push(HttpService.get('/protected'));
+        requests.push($axios.$get('/protected'));
       }
 
       try {

@@ -1,7 +1,7 @@
 import { ActionContext, Commit, Dispatch } from 'vuex';
 import { IAppState } from '@/store/app/state';
 import { AppActions } from '@/store/app/actions';
-import { IState } from '@/store/IState';
+import { IState } from '@/interfaces/IState';
 
 describe('AppActions', () => {
   let testContext: ActionContext<IAppState, IState>;

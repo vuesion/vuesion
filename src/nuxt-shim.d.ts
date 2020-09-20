@@ -17,10 +17,6 @@ declare module '@nuxt/types' {
   interface NuxtAppOptions {
     $config: any;
   }
-
-  interface Configuration {
-    axios?: AxiosOptions;
-  }
 }
 
 declare module 'vue/types/vue' {

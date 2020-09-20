@@ -32,24 +32,33 @@ export const DemoRoutes = (app: express.Application) => {
   /**
    * Auth-Demo
    */
-  app.post('/token', (req: express.Request, res: express.Response) => {
-    if (getErrorWithProbability(10)) {
-      res.status(500).json({});
-    } else if (req.body.grant_type === 'password') {
-      res.status(200).json({ access_token: 'accessToken', refresh_token: 'refreshToken' });
-    } else if (req.body.grant_type === 'refresh_token' && req.body.refresh_token === 'refreshToken') {
-      res.status(200).json({ access_token: 'accessToken2', refresh_token: 'refreshToken2' });
-    } else if (req.body.grant_type === 'refresh_token' && req.body.refresh_token === 'refreshToken2') {
-      res.status(200).json({ access_token: 'accessToken', refresh_token: 'refreshToken' });
-    }
-  });
-
-  app.delete('/token', (_: express.Request, res: express.Response) => {
+  app.post('/auth/token', (_: express.Request, res: express.Response) => {
     if (getErrorWithProbability(10)) {
       res.status(500).json({});
     } else {
-      res.status(200).json({});
+      res.status(200).json({ access_token: 'accessToken1', refresh_token: 'refreshToken1' });
     }
+  });
+
+  app.post('/auth/refresh', (_: express.Request, res: express.Response) => {
+    if (getErrorWithProbability(10)) {
+      res.status(500).json({});
+    } else {
+      res.status(200).json({ access_token: 'accessToken2', refresh_token: 'refreshToken2' });
+    }
+  });
+
+  app.post('/auth/logout', (_: express.Request, res: express.Response) => {
+    res.status(200).json({});
+  });
+
+  app.get('/auth/user', (_: express.Request, res: express.Response) => {
+    res.status(200).json({
+      user: {
+        name: 'Johannes Werner',
+        email: 'johannes.werner@hey.com',
+      },
+    });
   });
 
   app.get('/protected', (_: express.Request, res: express.Response) => {

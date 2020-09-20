@@ -171,6 +171,8 @@ import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridC
 import Stage from '../components/organisms/Stage/Stage.vue';
 
 export default {
+  name: 'Home',
+  auth: false,
   components: {
     VueGridColumn,
     VueGridRow,
