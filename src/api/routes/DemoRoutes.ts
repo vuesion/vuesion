@@ -63,9 +63,9 @@ export const DemoRoutes = (app: express.Application) => {
 
   app.get('/protected', (_: express.Request, res: express.Response) => {
     if (getErrorWithProbability(40)) {
-      res.status(401).json({});
+      res.status(401).json({ message: 'access token invalid' });
     } else {
-      res.status(200).json({});
+      res.status(200).json({ message: 'Hey! it seems that you try out vuesion, I hope you like it. Cheers, Johannes' });
     }
   });
 };

@@ -2,39 +2,61 @@ import { Context } from '@nuxt/types';
 import { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
 
 let isReAuthenticating = false;
-let pendingRequests: AxiosRequestConfig[] = [];
+let pendingRequests: any[] = [];
 
+const flushPendingRequests = (error: any) => {
+  pendingRequests.forEach((promise: any) => {
+    if (error) {
+      promise.reject(error);
+    } else {
+      promise.resolve();
+    }
+  });
+
+  isReAuthenticating = false;
+  pendingRequests = [];
+};
 const isAuthError = (error: AxiosError): boolean => {
   return error.response && error.response.status === 401;
 };
 
 export default function({ $axios, $auth }: Context) {
-  const onRejected = async (error: AxiosError) => {
+  const onRejected = (error: AxiosError) => {
     const originalRequest: AxiosRequestConfig = error.config;
 
     if (isAuthError(error)) {
-      pendingRequests.push(originalRequest);
-
       if (isReAuthenticating) {
-        return Promise.resolve();
+        return new Promise((resolve, reject) => {
+          pendingRequests.push({ resolve, reject });
+        })
+          .then(() => {
+            return $axios(originalRequest);
+          })
+          .catch((err) => {
+            return Promise.reject(err);
+          });
       }
 
       isReAuthenticating = true;
 
-      try {
-        await $auth.refreshTokens();
+      console.log('refreshing token ...'); // eslint-disable-line
+      return new Promise(async (resolve, reject) => {
+        try {
+          await $auth.refreshTokens();
 
-        const retryRequests = pendingRequests.map((request) => {
-          return $axios(request);
-        });
+          console.log('refreshing token successful ...'); // eslint-disable-line
 
-        await Promise.all(retryRequests);
+          flushPendingRequests(null);
+          resolve($axios(originalRequest));
+        } catch (e) {
+          console.log('refreshing token failure ...'); // eslint-disable-line
+          e.status = 403;
 
-        isReAuthenticating = false;
-        pendingRequests = [];
-      } catch (e) {
-        await $auth.logout();
-      }
+          flushPendingRequests(e);
+          reject(e);
+          $auth.logout();
+        }
+      });
     }
 
     return Promise.reject(error);

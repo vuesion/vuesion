@@ -87,10 +87,11 @@ export default defineComponent({
       try {
         pending.value = true;
 
-        await Promise.all(requests);
+        const data = await Promise.all(requests);
+
+        console.info(data); // eslint-disable-line
       } catch (e) {
-        // eslint-disable-next-line
-        console.error(e);
+        console.error(e); // eslint-disable-line
       } finally {
         pending.value = false;
       }
