@@ -45,10 +45,11 @@ jobs:
             - i18n
             - src
             - storybook-static
-            - jsconfig.json
             - nuxt.config.ts
             - package*.json
             - tsconfig.json
+            - .env-prod
+            - jsconfig.json
             - Dockerfile
   deploy-prod:
     machine: true
