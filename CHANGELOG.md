@@ -1,3 +1,19 @@
+#### 3.7.3 (2020-09-26)
+
+##### Chores
+
+- remove version badge and use new twitter badge ([#512](https://github.com/vuesion/vuesion/pull/512)) ([6c0974aa](https://github.com/vuesion/vuesion/commit/6c0974aa15df7da052a28da62f22ace7f866f39b))
+- add german translations ([#511](https://github.com/vuesion/vuesion/pull/511)) ([7990dcf6](https://github.com/vuesion/vuesion/commit/7990dcf6a8ff567d443bece428735674c6bf1292))
+
+##### Bug Fixes
+
+- spa example config.json ([0c69149d](https://github.com/vuesion/vuesion/commit/0c69149d786520acbf1b8a2464d35679b3cc95e8))
+- memory leak related to logging within server-side rendering ([#520](https://github.com/vuesion/vuesion/pull/520)) ([88ba3688](https://github.com/vuesion/vuesion/commit/88ba368852988841798a6d25c5baa2ff58883efc))
+
+##### Tests
+
+- **calendar:** correct existing test ([#496](https://github.com/vuesion/vuesion/pull/496)) ([b6223771](https://github.com/vuesion/vuesion/commit/b622377156ec7b8d7424eb76ee0cd01f5521d829))
+
 #### 3.7.2 (2019-10-13)
 
 ##### Chores
