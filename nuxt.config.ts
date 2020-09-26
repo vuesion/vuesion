@@ -117,7 +117,7 @@ const config: Configuration = {
   ],
   publicRuntimeConfig: {
     axios: {
-      baseURL: process.env.baseURL,
+      baseURL: process.env.baseURL || 'http://localhost:3000',
     },
   },
   privateRuntimeConfig: {},
