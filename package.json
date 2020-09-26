@@ -97,7 +97,7 @@
     "axios-mock-adapter": "1.17.0",
     "husky": "3.0.8",
     "identity-obj-proxy": "3.0.0",
-    "node-sass": "4.12.0",
+    "node-sass": "4.13.1",
     "ts-jest": "24.1.0",
     "typescript": "3.6.4",
     "vue-template-compiler": "^2.6.10"
