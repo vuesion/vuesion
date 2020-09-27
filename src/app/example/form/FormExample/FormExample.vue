@@ -99,8 +99,6 @@
             id="acceptTerms"
             v-model="form.acceptTerms"
             label="I accept the terms"
-            :validation="{ required: { allowFalse: false } }"
-            required
           />
         </vue-grid-item>
         <vue-grid-item>
@@ -125,7 +123,7 @@
       </vue-grid-row>
 
       <br />
-      <vue-button color="primary" :disabled="invalid" :loading="isLoading"> Save </vue-button>
+      <vue-button color="primary" :disabled="invalid || form.acceptTerms === false" :loading="isLoading"> Save </vue-button>
     </form>
   </validation-observer>
 </template>
