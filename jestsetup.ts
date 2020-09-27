@@ -1,7 +1,12 @@
 import Vue from 'vue';
-import VeeValidate from 'vee-validate';
+import { extend } from 'vee-validate';
 
-Vue.use(VeeValidate);
+const { required, email, integer, min } = require('vee-validate/dist/rules.umd.js');
+
+extend('required', required);
+extend('email', email);
+extend('integer', integer);
+extend('min', min);
 
 const $style: any = require('identity-obj-proxy');
 

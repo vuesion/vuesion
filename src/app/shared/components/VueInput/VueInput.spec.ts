@@ -1,4 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
+import flushPromises from 'flush-promises';
 import VueInput from './VueInput.vue';
 
 const localVue = createLocalVue();
@@ -47,22 +48,22 @@ describe('VueInput.vue', () => {
     expect(wrapper.emitted('input')).toBeTruthy();
   });
 
-  test('should display error state', () => {
+  test('should display error state', async () => {
     const wrapper = mount<any>(VueInput, {
       localVue,
-      mocks: {
-        errors: {
-          first() {
-            return true;
-          },
-        },
-      },
       propsData: {
         errorMessage: 'ERROR!',
         name: 'name',
         id: 'id',
+        validation: 'required|integer',
+        value: 'this is the value',
       },
     });
+    const input: any = wrapper.find('input');
+    input.element.value = 'foo bar';
+    input.trigger('input');
+
+    await flushPromises();
 
     expect(wrapper.findAll(`.error`)).toHaveLength(1);
     expect(wrapper.find(`.message`).text()).toBe('ERROR!');

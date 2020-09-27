@@ -1,5 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueTextarea from './VueTextarea.vue';
+import flushPromises from 'flush-promises';
 
 const localVue = createLocalVue();
 
@@ -11,9 +12,6 @@ describe('VueTextarea.vue', () => {
         message: 'MESSAGE!',
         name: 'name',
         id: 'id',
-      },
-      mocks: {
-        errors: null,
       },
     });
 
@@ -47,22 +45,23 @@ describe('VueTextarea.vue', () => {
     expect(wrapper.emitted('input')).toBeTruthy();
   });
 
-  test('should display error state', () => {
+  test('should display error state', async () => {
     const wrapper = mount<any>(VueTextarea, {
       localVue,
-      mocks: {
-        errors: {
-          first() {
-            return true;
-          },
-        },
-      },
       propsData: {
         errorMessage: 'ERROR!',
         name: 'name',
         id: 'id',
+        validation: 'required|integer',
+        value: 'this is the value',
       },
     });
+
+    const textarea: any = wrapper.find('textarea');
+    textarea.element.value = 'foo bar';
+    textarea.trigger('input');
+
+    await flushPromises();
 
     expect(wrapper.findAll(`.error`)).toHaveLength(1);
     expect(wrapper.find(`.message`).text()).toBe('ERROR!');

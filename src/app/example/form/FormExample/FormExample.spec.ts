@@ -12,7 +12,6 @@ describe('FormExample.vue', () => {
     });
 
     expect(wrapper.isVueInstance()).toBeTruthy();
-    expect(wrapper.vm.isSubmitDisabled).toBeTruthy();
 
     wrapper.setData({
       form: {

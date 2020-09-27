@@ -1,18 +1,23 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import VeeValidate from 'vee-validate';
+import { extend } from 'vee-validate';
 import { Store } from 'vuex';
 import { sync } from 'vuex-router-sync';
 import { VueRouter } from 'vue-router/types/router';
-import App from './app/App/App.vue';
 import { store } from './store';
 import { router } from './router';
 import { IState } from './state';
 import { i18n } from '@shared/plugins/i18n/i18n';
 import { HttpService } from '@shared/services/HttpService/HttpService';
+import App from './app/App/App.vue';
 import './shared/directives';
 
-Vue.use(VeeValidate, { inject: false, delay: 1 });
+const { required, email, integer, min } = require('vee-validate/dist/rules.umd.js');
+
+extend('required', required);
+extend('email', email);
+extend('integer', integer);
+extend('min', min);
 
 export interface IApp {
   app: Vue;

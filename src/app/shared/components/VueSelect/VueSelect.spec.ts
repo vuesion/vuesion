@@ -1,5 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import VueSelect from './VueSelect.vue';
+import flushPromises from 'flush-promises';
 
 const localVue = createLocalVue();
 
@@ -107,23 +108,24 @@ describe('VueSelect.vue', () => {
     expect(wrapper.emitted().input[0][0]).toBe('foo2');
   });
 
-  test('should display error state', () => {
+  test('should display error state', async () => {
     const wrapper = mount<any>(VueSelect, {
       localVue,
-      mocks: {
-        errors: {
-          first() {
-            return true;
-          },
-        },
-      },
       propsData: {
         options,
         multiple: true,
         name: 'name',
         id: 'id',
+        validation: 'required|integer',
+        value: 'this is the value',
       },
     });
+
+    const textarea: any = wrapper.find('select');
+    textarea.element.value = 'foo bar';
+    textarea.trigger('input');
+
+    await flushPromises();
 
     expect(wrapper.findAll(`.error`)).toHaveLength(1);
   });

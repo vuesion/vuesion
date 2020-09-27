@@ -1,32 +1,34 @@
 <template>
-  <div :class="cssClasses">
-    <select
-      :title="placeholder"
-      :name="name"
-      :id="id"
-      v-validate="validation"
-      :multiple="multiple"
-      :required="required"
-      :disabled="disabled"
-      :autocomplete="autocomplete"
-      v-bind="$attrs"
-      v-on="{
-        ...this.$listeners,
-        input: onInput,
-      }"
-    >
-      <option v-for="(option, idx) in selectOptions" :key="idx" :value="option.value" :selected="isSelected(option)">
-        {{ option.label }}
-      </option>
-    </select>
-    <i :class="$style.icon" v-if="!multiple"></i>
-    <span :class="$style.bar"></span>
-    <label :for="id">{{ placeholder }}<sup v-if="required">*</sup></label>
-  </div>
+  <ValidationProvider v-slot="{ invalid }" ref="validator" :vid="id" :name="name" :rules="validation">
+    <div :class="cssClasses(invalid)">
+      <select
+        :title="placeholder"
+        :name="name"
+        :id="id"
+        :multiple="multiple"
+        :required="required"
+        :disabled="disabled"
+        :autocomplete="autocomplete"
+        :value="value"
+        v-bind="$attrs"
+        v-on="{
+          ...$listeners,
+          input: onInput,
+        }"
+      >
+        <option v-for="(option, idx) in selectOptions" :key="idx" :value="option.value" :selected="isSelected(option)">
+          {{ option.label }}
+        </option>
+      </select>
+      <i :class="$style.icon" v-if="!multiple"></i>
+      <span :class="$style.bar"></span>
+      <label :for="id">{{ placeholder }}<sup v-if="required">*</sup></label>
+    </div>
+  </ValidationProvider>
 </template>
 
 <script lang="ts">
-import { Validator } from 'vee-validate';
+import { ValidationProvider } from 'vee-validate';
 import { IAutocompleteOption } from '@components/VueAutocomplete/IAutocompleteOption';
 
 export interface IVueSelectOption {
@@ -37,10 +39,8 @@ export interface IVueSelectOption {
 export default {
   name: 'VueSelect',
   inheritAttrs: false,
-  inject: {
-    $validator: {
-      default: new Validator({}, {}),
-    },
+  components: {
+    ValidationProvider,
   },
   props: {
     name: {
@@ -68,9 +68,7 @@ export default {
     disabled: {
       type: Boolean,
     },
-    validation: {
-      type: String,
-    },
+    validation: { type: [String, Object], default: null },
     autocomplete: {
       type: String,
       default: 'off',
@@ -85,10 +83,12 @@ export default {
     };
   },
   computed: {
-    isValid() {
-      return this.errors ? this.errors.first(this.name) === null : true;
+    currentValueAsArray(): string[] {
+      return this.value.split('|');
     },
-    cssClasses() {
+  },
+  methods: {
+    cssClasses(invalid: boolean) {
       const classes = [this.$style.vueSelect];
 
       if (this.multiple) {
@@ -99,7 +99,7 @@ export default {
         classes.push(this.$style.disabled);
       }
 
-      if (!this.isValid) {
+      if (invalid) {
         classes.push(this.$style.error);
       }
 
@@ -109,11 +109,6 @@ export default {
 
       return classes;
     },
-    currentValueAsArray(): string[] {
-      return this.value.split('|');
-    },
-  },
-  methods: {
     isSelected(option: IVueSelectOption): boolean {
       return this.currentValueAsArray.indexOf(option.value) > -1;
     },

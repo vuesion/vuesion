@@ -3,9 +3,9 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
-import VeeValidate from 'vee-validate';
 import { checkA11y } from '@storybook/addon-a11y';
 import { setDefaults } from 'storybook-addon-vue-info';
+import { extend } from 'vee-validate';
 import '@storybook/addon-console';
 import '../../src/app/shared/directives';
 import '../../src/app/shared/_design-system.scss';
@@ -14,10 +14,16 @@ import '../../src/app/shared/designSystem/global.scss';
 import '../../src/app/shared/designSystem/typo.scss';
 import customTheme from './theme';
 
+const { required, email, integer, min } = require('vee-validate/dist/rules.umd.js');
+
 Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(VueRouter);
-Vue.use(VeeValidate);
+
+extend('required', required);
+extend('email', email);
+extend('integer', integer);
+extend('min', min);
 
 const req = require.context('../../src', true, /.stories.ts$/);
 

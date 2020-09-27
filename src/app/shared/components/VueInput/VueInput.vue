@@ -1,44 +1,40 @@
 <template>
-  <div :class="cssClasses">
-    <input
-      v-validate="validation"
-      :data-vv-as="placeholder"
-      :name="name"
-      :id="id"
-      :required="required"
-      :value="value"
-      :type="type"
-      :autocomplete="autocomplete"
-      :disabled="disabled"
-      :readonly="readonly"
-      :class="[value ? $style.hasValue : '']"
-      :autofocus="autofocus"
-      v-bind="$attrs"
-      v-on="{
-        ...this.$listeners,
-        input: (e) => {
-          $emit('input', e.target.value);
-        },
-      }"
-      ref="input"
-    />
-    <span :class="$style.bar"></span>
-    <label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
-    <div :class="$style.message">{{ messageOrError }}</div>
-  </div>
+  <ValidationProvider v-slot="{ errors }" ref="validator" :vid="id" :name="name" :rules="validation">
+    <div :class="cssClasses(errors)">
+      <input
+        :name="name"
+        :id="id"
+        :required="required"
+        :value="value"
+        :type="type"
+        :autocomplete="autocomplete"
+        :disabled="disabled"
+        :readonly="readonly"
+        :class="[value ? $style.hasValue : '']"
+        :autofocus="autofocus"
+        v-bind="$attrs"
+        v-on="{
+          ...$listeners,
+          input: (e) => {
+            $emit('input', e.target.value);
+          },
+        }"
+        ref="input"
+      />
+      <span :class="$style.bar"></span>
+      <label :for="name"> {{ placeholder }}<sup v-if="required">*</sup> </label>
+      <div :class="$style.message">{{ messageOrError(errors) }}</div>
+    </div>
+  </ValidationProvider>
 </template>
 
 <script lang="ts">
-import { Validator } from 'vee-validate';
+import { ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'VueInput',
+  components: { ValidationProvider },
   inheritAttrs: false,
-  inject: {
-    $validator: {
-      default: new Validator({}, {}),
-    },
-  },
   props: {
     name: {
       type: String,
@@ -76,33 +72,10 @@ export default {
     errorMessage: {
       type: String,
     },
-    validation: {
-      type: String,
-    },
+    validation: { type: [String, Object], default: null },
     autocomplete: {
       type: String,
       default: 'off',
-    },
-  },
-  computed: {
-    isValid() {
-      return this.errors ? this.errors.first(this.name) === null : true;
-    },
-    messageOrError() {
-      return this.isValid ? this.message : this.errorMessage;
-    },
-    cssClasses() {
-      const classes = [this.$style.vueInput];
-
-      if (this.disabled) {
-        classes.push(this.$style.disabled);
-      }
-
-      if (!this.isValid) {
-        classes.push(this.$style.error);
-      }
-
-      return classes;
     },
   },
   data(): any {
@@ -111,6 +84,25 @@ export default {
     };
   },
   methods: {
+    cssClasses(errors: any) {
+      const classes = [this.$style.vueInput];
+
+      if (this.disabled) {
+        classes.push(this.$style.disabled);
+      }
+
+      if (!this.isValid(errors)) {
+        classes.push(this.$style.error);
+      }
+
+      return classes;
+    },
+    isValid(errors: any) {
+      return errors.length === 0;
+    },
+    messageOrError(errors: any) {
+      return this.isValid(errors) ? this.message : this.errorMessage;
+    },
     handleObserver() {
       this.observer = new IntersectionObserver(
         () => {

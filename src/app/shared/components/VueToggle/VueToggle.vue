@@ -1,37 +1,34 @@
 <template>
   <div :class="cssClasses">
-    <input
-      ref="input"
-      type="checkbox"
-      :name="name"
-      :id="id"
-      :checked="isChecked"
-      :required="required"
-      :disabled="disabled"
-      v-validate="validation"
-      @change.prevent="onClick"
-      @focus="focus = true"
-      @blur="focus = false"
-      v-bind="$attrs"
-    />
-    <div :class="$style.container" @click="onClick">
-      <div :class="$style.handle" :aria-checked="isChecked ? 'true' : 'false'" role="checkbox" />
-    </div>
-    <label :for="name" v-html="label" />
+    <ValidationProvider ref="validator" :vid="name" :name="name" :rules="validation">
+      <input
+        ref="input"
+        type="checkbox"
+        :name="name"
+        :id="id"
+        :checked="isChecked"
+        :required="required"
+        :disabled="disabled"
+        @change.prevent="onClick"
+        @focus="focus = true"
+        @blur="focus = false"
+        v-bind="$attrs"
+      />
+      <div :class="$style.container" @click="onClick">
+        <div :class="$style.handle" :aria-checked="isChecked ? 'true' : 'false'" role="checkbox" />
+      </div>
+      <label :for="name" v-html="label" />
+    </ValidationProvider>
   </div>
 </template>
 
 <script lang="ts">
-import { Validator } from 'vee-validate';
+import { ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'VueToggle',
   inheritAttrs: false,
-  inject: {
-    $validator: {
-      default: new Validator({}, {}),
-    },
-  },
+  components: { ValidationProvider },
   props: {
     name: {
       type: String,
@@ -53,9 +50,7 @@ export default {
     required: {
       type: Boolean,
     },
-    validation: {
-      type: String,
-    },
+    validation: { type: [String, Object], default: null },
     label: {
       type: String,
       required: true,
