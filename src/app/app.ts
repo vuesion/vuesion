@@ -12,6 +12,7 @@ import { HttpService } from '@shared/services/HttpService/HttpService';
 import App from './app/App/App.vue';
 import './shared/directives';
 
+// workaround: the TS style import throws an unexpected token error during compile time
 const { required, email, integer, min } = require('vee-validate/dist/rules.umd.js');
 
 extend('required', required);

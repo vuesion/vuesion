@@ -14,6 +14,7 @@ import '../../src/app/shared/designSystem/global.scss';
 import '../../src/app/shared/designSystem/typo.scss';
 import customTheme from './theme';
 
+// workaround: the TS style import throws an unexpected token error during compile time
 const { required, email, integer, min } = require('vee-validate/dist/rules.umd.js');
 
 Vue.use(Vuex);

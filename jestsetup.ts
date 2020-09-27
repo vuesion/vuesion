@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import { extend } from 'vee-validate';
 
+// workaround: the TS style import throws an unexpected token error during compile time
 const { required, email, integer, min } = require('vee-validate/dist/rules.umd.js');
 
 extend('required', required);
