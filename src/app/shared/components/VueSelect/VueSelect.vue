@@ -1,6 +1,7 @@
 <template>
-  <ValidationProvider v-slot="{ invalid }" ref="validator" :vid="id" :name="name" :rules="validation">
-    <div :class="cssClasses(invalid)">
+  <ValidationProvider v-slot="{ errors }" ref="validator" :vid="id" :name="name" :rules="validation">
+    {{ errors }} {{ value }}
+    <div :class="cssClasses(errors)">
       <select
         :title="placeholder"
         :name="name"
@@ -88,7 +89,7 @@ export default {
     },
   },
   methods: {
-    cssClasses(invalid: boolean) {
+    cssClasses(errors: any[]) {
       const classes = [this.$style.vueSelect];
 
       if (this.multiple) {
@@ -99,7 +100,7 @@ export default {
         classes.push(this.$style.disabled);
       }
 
-      if (invalid) {
+      if (errors.length > 0) {
         classes.push(this.$style.error);
       }
 

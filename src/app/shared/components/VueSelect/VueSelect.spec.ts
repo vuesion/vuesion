@@ -121,9 +121,10 @@ describe('VueSelect.vue', () => {
       },
     });
 
-    const textarea: any = wrapper.find('select');
-    textarea.element.value = 'foo bar';
-    textarea.trigger('input');
+    const select: any = wrapper.find('select');
+    select.findAll('option').at(1).element.selected = true;
+    select.trigger('input');
+    select.trigger('change');
 
     await flushPromises();
 
