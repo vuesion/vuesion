@@ -34,7 +34,7 @@ describe('VueTextarea.vue', () => {
     expect(wrapper.findAll(`.disabled`)).toHaveLength(1);
   });
 
-  test('should emit input', () => {
+  test('should emit input', async () => {
     const wrapper = mount<any>(VueTextarea, {
       localVue,
       propsData: {
@@ -43,7 +43,7 @@ describe('VueTextarea.vue', () => {
       },
     }) as any;
 
-    wrapper.find('textarea').trigger('input');
+    await wrapper.find('textarea').trigger('input');
     expect(wrapper.emitted('input')).toBeTruthy();
   });
 
@@ -81,7 +81,7 @@ describe('VueTextarea.vue', () => {
     expect(wrapper.vm.observer).toBeNull();
   });
 
-  test('autofocus in modern browsers', () => {
+  test('autofocus in modern browsers', async () => {
     (window as any).IntersectionObserver = class IntersectionObserver {
       public cb: any;
       public options: any;
@@ -109,7 +109,7 @@ describe('VueTextarea.vue', () => {
     expect(wrapper.vm.observer).not.toBeNull();
     expect(wrapper.vm.$refs.input.focus).not.toHaveBeenCalled();
 
-    wrapper.setProps({ autofocus: true });
+    await wrapper.setProps({ autofocus: true });
     wrapper.vm.observer.observe();
     expect(wrapper.vm.$refs.input.focus).toHaveBeenCalled();
 

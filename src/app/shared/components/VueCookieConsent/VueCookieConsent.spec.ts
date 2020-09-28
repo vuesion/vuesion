@@ -5,7 +5,7 @@ import { i18n } from '../../plugins/i18n/i18n';
 const localVue = createLocalVue();
 
 describe('VueCookieConsent.vue', () => {
-  test('renders visible component and simulates consent click', () => {
+  test('renders visible component and simulates consent click', async () => {
     const setCookieConsentVersion: any = jest.fn();
 
     const wrapper = mount<any>(VueCookieConsent, {
@@ -25,7 +25,7 @@ describe('VueCookieConsent.vue', () => {
     expect(wrapper.findAll('.button')).toHaveLength(1);
     expect(wrapper.vm.show).toBeTruthy();
 
-    wrapper.find('.button').trigger('click');
+    await wrapper.find('.button').trigger('click');
 
     expect(setCookieConsentVersion).toHaveBeenCalledWith('1.1.0');
   });
@@ -49,7 +49,7 @@ describe('VueCookieConsent.vue', () => {
     expect(wrapper.vm.show).toBeFalsy();
   });
 
-  test('test watchers', () => {
+  test('test watchers', async () => {
     const wrapper = mount<any>(VueCookieConsent, {
       localVue,
       i18n,
@@ -67,10 +67,10 @@ describe('VueCookieConsent.vue', () => {
     expect(wrapper.findAll('.button')).toHaveLength(1);
     expect(wrapper.vm.show).toBeTruthy();
 
-    wrapper.setProps({ cookieConsentVersion: '1.1.0' });
+    await wrapper.setProps({ cookieConsentVersion: '1.1.0' });
     expect(wrapper.vm.show).toBeFalsy();
 
-    wrapper.setProps({ cookieConsentVersion: '1.0.0' });
+    await wrapper.setProps({ cookieConsentVersion: '1.0.0' });
     expect(wrapper.vm.show).toBeTruthy();
   });
 });

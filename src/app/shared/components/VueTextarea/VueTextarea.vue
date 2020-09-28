@@ -75,7 +75,7 @@ export default {
   },
   computed: {
     isValid() {
-      return this.errors ? this.errors.first(this.name) === null : true;
+      return this.errors ? this.errors.first(this.name) === undefined : true;
     },
     messageOrError() {
       return this.isValid ? this.message : this.errorMessage;

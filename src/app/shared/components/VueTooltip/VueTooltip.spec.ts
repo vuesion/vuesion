@@ -52,7 +52,7 @@ describe('VueTooltip.vue', () => {
     expect(wrapper.classes()).not.toContain('highlight');
   });
 
-  test('should show and hide tooltip', () => {
+  test('should show and hide tooltip', async () => {
     const wrapper = mount(VueTooltip, {
       localVue,
       propsData: {
@@ -65,24 +65,24 @@ describe('VueTooltip.vue', () => {
 
     expect(wrapper.classes()).not.toContain('show');
 
-    wrapper.vm.$el.dispatchEvent(new Event('mouseenter'));
+    await wrapper.vm.$el.dispatchEvent(new Event('mouseenter'));
     expect(wrapper.classes()).toContain('show');
 
-    wrapper.vm.$el.dispatchEvent(new Event('mouseleave'));
+    await wrapper.vm.$el.dispatchEvent(new Event('mouseleave'));
     expect(wrapper.classes()).not.toContain('show');
 
     /**
      * touch
      */
 
-    wrapper.vm.$el.dispatchEvent(new Event('touchend'));
+    await wrapper.vm.$el.dispatchEvent(new Event('touchend'));
     expect(wrapper.classes()).toContain('show');
 
-    wrapper.vm.$el.dispatchEvent(new Event('touchend'));
+    await wrapper.vm.$el.dispatchEvent(new Event('touchend'));
     expect(wrapper.classes()).not.toContain('show');
   });
 
-  test('should not show the tooltip', () => {
+  test('should not show the tooltip', async () => {
     const wrapper = mount(VueTooltip, {
       localVue,
       propsData: {
@@ -96,14 +96,14 @@ describe('VueTooltip.vue', () => {
 
     expect(wrapper.classes()).not.toContain('show');
 
-    wrapper.vm.$el.dispatchEvent(new Event('mouseenter'));
+    await wrapper.vm.$el.dispatchEvent(new Event('mouseenter'));
     expect(wrapper.classes()).not.toContain('show');
 
     /**
      * touch
      */
 
-    wrapper.vm.$el.dispatchEvent(new Event('touchend'));
+    await wrapper.vm.$el.dispatchEvent(new Event('touchend'));
     expect(wrapper.classes()).not.toContain('show');
   });
 });

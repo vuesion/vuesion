@@ -7,7 +7,7 @@ const localVue = createLocalVue();
 localVue.component('vue-tab-item', VueTabItem);
 
 describe('VueTabGroup.vue', () => {
-  test('renders component with a tab', () => {
+  test('renders component with a tab', async () => {
     const wrapper = mount<any>(VueTabGroup, {
       localVue,
       slots: {
@@ -20,12 +20,14 @@ describe('VueTabGroup.vue', () => {
     tabWrapper.vm.$parent = wrapper.vm;
     tabWrapper.vm.$options.created[1].call(tabWrapper.vm);
 
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.find('li').text()).toMatch('foo');
 
     wrapper.destroy();
   });
 
-  test('should change tab', () => {
+  test('should change tab', async () => {
     const wrapper = mount<any>(VueTabGroup, {
       localVue,
       slots: {
@@ -41,6 +43,8 @@ describe('VueTabGroup.vue', () => {
 
     tabWrapper2.vm.$parent = wrapper.vm;
     tabWrapper2.vm.$options.created[1].call(tabWrapper2.vm);
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.find('li').text()).toMatch('foo');
     expect(wrapper.find('li').classes()).toEqual(['active']);
@@ -59,6 +63,8 @@ describe('VueTabGroup.vue', () => {
     ).toEqual([]);
 
     wrapper.vm.changeTab(1);
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.find('li').text()).toMatch('foo');
     expect(wrapper.find('li').classes()).toEqual([]);

@@ -86,7 +86,7 @@ export default {
   },
   computed: {
     isValid() {
-      return this.errors ? this.errors.first(this.name) === null : true;
+      return this.errors ? this.errors.first(this.name) === undefined : true;
     },
     cssClasses() {
       const classes = [this.$style.vueSelect];

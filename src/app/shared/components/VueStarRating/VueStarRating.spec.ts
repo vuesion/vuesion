@@ -45,7 +45,7 @@ describe('VueStarRating.vue', () => {
     }
   });
 
-  test('mousing over a star adds active to that star & all prior stars', () => {
+  test('mousing over a star adds active to that star & all prior stars', async () => {
     const wrapper = mount<any>(VueStarRating, {
       localVue,
     });
@@ -56,14 +56,14 @@ describe('VueStarRating.vue', () => {
     }
 
     // 5/5 stars
-    starComponents.at(4).trigger('mouseenter');
+    await starComponents.at(4).trigger('mouseenter');
 
     for (let i = 4; i >= 0; i--) {
       expect(starComponents.at(i).attributes('class')).toEqual('star active');
     }
 
     // 3/5 stars
-    starComponents.at(2).trigger('mouseenter');
+    await starComponents.at(2).trigger('mouseenter');
 
     for (let i = 4; i >= 3; i--) {
       expect(starComponents.at(i).attributes('class')).toEqual('star');
@@ -74,7 +74,7 @@ describe('VueStarRating.vue', () => {
     }
 
     // 1/5 stars
-    starComponents.at(0).trigger('mouseenter');
+    await starComponents.at(0).trigger('mouseenter');
 
     for (let i = 4; i >= 1; i--) {
       expect(starComponents.at(i).attributes('class')).toEqual('star');
@@ -82,14 +82,14 @@ describe('VueStarRating.vue', () => {
     expect(starComponents.at(0).attributes('class')).toEqual('star active');
   });
 
-  test('mousing over a star updates display number', () => {
+  test('mousing over a star updates display number', async () => {
     const wrapper = mount<any>(VueStarRating, {
       localVue,
     });
     const starComponents = wrapper.findAll(`.star`);
 
     // 5/5 stars
-    starComponents.at(4).trigger('mouseenter');
+    await starComponents.at(4).trigger('mouseenter');
     expect(
       wrapper
         .find('.numberDisplay')
@@ -98,7 +98,7 @@ describe('VueStarRating.vue', () => {
     ).toEqual('5');
 
     // 2/5 stars
-    starComponents.at(1).trigger('mouseenter');
+    await starComponents.at(1).trigger('mouseenter');
     expect(
       wrapper
         .find('.numberDisplay')
@@ -107,7 +107,7 @@ describe('VueStarRating.vue', () => {
     ).toEqual('2');
   });
 
-  test('mouse leaving a star resets active stars to selected number', () => {
+  test('mouse leaving a star resets active stars to selected number', async () => {
     const wrapper = mount<any>(VueStarRating, {
       localVue,
       propsData: {
@@ -117,14 +117,14 @@ describe('VueStarRating.vue', () => {
     const starComponents = wrapper.findAll(`.star`);
 
     // 5/5 stars mouseenter
-    starComponents.at(4).trigger('mouseenter');
+    await starComponents.at(4).trigger('mouseenter');
 
     for (let i = 4; i >= 0; i--) {
       expect(starComponents.at(i).attributes('class')).toEqual('star active');
     }
 
     // 5/5 stars mouseleave
-    starComponents.at(4).trigger('mouseleave');
+    await starComponents.at(4).trigger('mouseleave');
 
     for (let i = 4; i >= 2; i--) {
       expect(starComponents.at(i).attributes('class')).toEqual('star');
@@ -135,7 +135,7 @@ describe('VueStarRating.vue', () => {
     }
   });
 
-  test('mouse leaving a star updates display number', () => {
+  test('mouse leaving a star updates display number', async () => {
     const wrapper = mount<any>(VueStarRating, {
       localVue,
       propsData: {
@@ -145,7 +145,7 @@ describe('VueStarRating.vue', () => {
     const starComponents = wrapper.findAll(`.star`);
 
     // 5/5 star mouseenter
-    starComponents.at(4).trigger('mouseenter');
+    await starComponents.at(4).trigger('mouseenter');
     expect(
       wrapper
         .find('.numberDisplay')
@@ -154,7 +154,7 @@ describe('VueStarRating.vue', () => {
     ).toEqual('5');
 
     // 5/5 star mouseleave
-    starComponents.at(4).trigger('mouseleave');
+    await starComponents.at(4).trigger('mouseleave');
     expect(
       wrapper
         .find('.numberDisplay')
@@ -163,13 +163,13 @@ describe('VueStarRating.vue', () => {
     ).toEqual('3');
   });
 
-  test('star click sets selected num stars', () => {
+  test('star click sets selected num stars', async () => {
     const wrapper = mount<any>(VueStarRating, {
       localVue,
     });
     const starComponents = wrapper.findAll(`.star`);
 
-    starComponents.at(3).trigger('click');
+    await starComponents.at(3).trigger('click');
     expect(wrapper.vm.numSelectedStars).toEqual(4);
   });
 
