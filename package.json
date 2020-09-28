@@ -92,7 +92,7 @@
     "@types/marked": "0.6.5",
     "@types/node": "10.12.24",
     "@types/serve-favicon": "2.2.31",
-    "@vue/test-utils": "1.0.0-beta.28",
+    "@vue/test-utils": "1.1.0",
     "@vuesion/service": "^3.1.2",
     "axios-mock-adapter": "1.17.0",
     "husky": "3.0.8",

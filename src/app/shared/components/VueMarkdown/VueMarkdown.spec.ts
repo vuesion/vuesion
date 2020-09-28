@@ -5,7 +5,7 @@ import apply = Reflect.apply;
 const localVue = createLocalVue();
 
 describe('VueMarkdown.vue', () => {
-  test('renders component', () => {
+  test('renders component', async () => {
     const wrapper = mount(VueMarkdown, {
       localVue,
       slots: {
@@ -17,7 +17,7 @@ describe('VueMarkdown.vue', () => {
     expect(wrapper.find('h2').text()).toBe('bar');
     expect(wrapper.find('h3').text()).toBe('baz');
 
-    wrapper.vm.$forceUpdate();
+    await wrapper.vm.$forceUpdate();
 
     wrapper.destroy();
   });
@@ -43,7 +43,7 @@ describe('VueMarkdown.vue', () => {
     expect(wrapper.find('code').text()).toBe('foo bar');
   });
 
-  test('click on a link should use the router', () => {
+  test('click on a link should use the router', async () => {
     const $router = {
       push: jest.fn(),
     };
@@ -60,12 +60,12 @@ describe('VueMarkdown.vue', () => {
     const actual = $router.push;
     const expected = '/test';
 
-    wrapper.find('a').trigger('click');
+    await wrapper.find('a').trigger('click');
 
     expect(actual).toHaveBeenCalledWith(expected);
   });
 
-  test('click on a link should not use the router', () => {
+  test('click on a link should not use the router', async () => {
     const $router = {
       push: jest.fn(),
     };
@@ -85,7 +85,7 @@ describe('VueMarkdown.vue', () => {
     const actual = $router.push;
     const expected = '/test';
 
-    wrapper.find('a').trigger('click');
+    await wrapper.find('a').trigger('click');
 
     expect(actual).not.toHaveBeenCalledWith(expected);
   });

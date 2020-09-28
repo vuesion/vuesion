@@ -14,7 +14,7 @@ describe('LoginForm.vue', () => {
     expect(wrapper.vm).toBeDefined();
   });
 
-  test('should submit form values', () => {
+  test('should submit form values', async () => {
     const wrapper = mount<any>(LoginForm, {
       i18n,
       localVue,
@@ -25,7 +25,7 @@ describe('LoginForm.vue', () => {
       password: '123456',
     });
 
-    wrapper.find('form').trigger('submit');
+    await wrapper.find('form').trigger('submit');
 
     const actual = wrapper.emitted('submit');
     const expected = [[{ password: '123456', username: 'foo' }]];

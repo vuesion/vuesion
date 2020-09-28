@@ -4,7 +4,7 @@ import VueModal from './VueModal.vue';
 const localVue = createLocalVue();
 
 describe('VueModal.vue', () => {
-  test('renders slot', (done) => {
+  test('renders slot', async (done) => {
     const wrapper = mount<any>(VueModal, {
       localVue,
       slots: {
@@ -14,13 +14,13 @@ describe('VueModal.vue', () => {
 
     expect(wrapper.findAll('p')).toHaveLength(0);
 
-    wrapper.setProps({ show: true });
+    await wrapper.setProps({ show: true });
     expect(wrapper.findAll('p')).toHaveLength(1);
 
-    wrapper.setProps({ show: false });
+    await wrapper.setProps({ show: false });
     expect(wrapper.findAll('p')).toHaveLength(0);
 
-    wrapper.setProps({ show: true });
+    await wrapper.setProps({ show: true });
 
     wrapper.vm.beforeEnter(wrapper.vm.$el);
     wrapper.vm.enter(wrapper.vm.$el, jest.fn());
@@ -40,7 +40,7 @@ describe('VueModal.vue', () => {
     expect(document.removeEventListener).toHaveBeenCalledTimes(3);
   });
 
-  test('should close on outside click', () => {
+  test('should close on outside click', async () => {
     const wrapper = mount<any>(VueModal, {
       localVue,
       slots: {
@@ -57,7 +57,7 @@ describe('VueModal.vue', () => {
     wrapper.vm.handleDocumentClick({ target: null });
     expect(wrapper.vm.$emit).toHaveBeenCalledTimes(0);
 
-    wrapper.setProps({ show: true });
+    await wrapper.setProps({ show: true });
     wrapper.vm.handleDocumentClick({ target: null });
     expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
   });

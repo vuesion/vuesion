@@ -19,7 +19,7 @@ describe('VueAccordionItem.vue', () => {
     expect(wrapper.find(`.header`).text()).toMatch('foo');
   });
 
-  test('opens component', () => {
+  test('opens component', async () => {
     const wrapper = mount<any>(VueAccordionItem, {
       localVue,
       propsData: {
@@ -32,7 +32,7 @@ describe('VueAccordionItem.vue', () => {
       },
     });
 
-    wrapper.setData({ idx: 0, open: true });
+    await wrapper.setData({ idx: 0, open: true });
 
     expect(wrapper.findAll(`.open`)).toHaveLength(1);
   });
