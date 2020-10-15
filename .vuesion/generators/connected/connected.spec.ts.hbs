@@ -2,7 +2,7 @@ import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex, { Store } from 'vuex';
 import { i18n } from '@/app/shared/plugins/i18n/i18n';
 import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
-import { I{{ properCase singularName }}State } from '../state';
+import { IState } from '@/app/state';
 import { {{ properCase singularName }}Module } from '../module';
 
 const localVue = createLocalVue();{{#if wantVuex}}
@@ -10,7 +10,7 @@ const localVue = createLocalVue();{{#if wantVuex}}
 localVue.use(Vuex);{{/if}}
 
 describe('{{ properCase componentName }}.vue', () => {
-  let store: Store<I{{ properCase singularName }}State>;
+  let store: Store<IState>;
 
   beforeEach(() => {
     store = new Vuex.Store({

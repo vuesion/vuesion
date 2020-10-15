@@ -2,7 +2,7 @@ import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex, { Store } from 'vuex';
 import { i18n } from '@shared/plugins/i18n/i18n';
 import Counter from './Counter.vue';
-import { ICounterState } from '../state';
+import { IState } from '@/app/state';
 import { CounterModule } from '../module';
 
 const localVue = createLocalVue();
@@ -10,7 +10,7 @@ const localVue = createLocalVue();
 localVue.use(Vuex);
 
 describe('Counter.vue', () => {
-  let store: Store<ICounterState>;
+  let store: Store<IState>;
 
   beforeEach(() => {
     store = new Vuex.Store({
