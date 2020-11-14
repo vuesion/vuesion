@@ -67,22 +67,25 @@ export default defineComponent({
     disabled: { type: Boolean, default: false },
     min: { type: Number, required: true },
     max: { type: Number, required: true },
-    values: { type: Array, required: true },
+    value: { type: Array, required: true },
     formatValue: {
       type: Function,
       default: (value: number) => {
         return value;
       },
     },
+    keyboardStepInterval: { type: Number, default: 5 },
   },
   setup(props, { emit }) {
-    const values = computed<number[]>(() => props.values as number[]);
+    // TODO: get dynamic handleSize
+    const handleSize = computed(() => 24);
+    const value = computed<number[]>(() => props.value as number[]);
     const slider = getDomRef(null);
     const sliderBox = ref<DOMRect>(null);
     const currentSlider = ref<number>(null);
     const currentMin = ref(0);
     const currentMax = ref(0);
-    const isMultiRange = computed(() => props.values.length > 1);
+    const isMultiRange = computed(() => props.value.length > 1);
     const handleLeftPosition = computed(() => `${algorithm.getPosition(currentMin.value, props.min, props.max)}%`);
     const handleRightPosition = computed(() => `${algorithm.getPosition(currentMax.value, props.min, props.max)}%`);
     const progressLeft = computed(() => {
@@ -94,13 +97,13 @@ export default defineComponent({
     });
     const progressWidth = computed(() => {
       if (isMultiRange.value) {
-        return `${parseInt(handleRightPosition.value, 10) - parseInt(handleLeftPosition.value, 10)}%`;
+        return `${parseFloat(handleRightPosition.value) - parseFloat(handleLeftPosition.value)}%`;
       } else {
-        return `${parseInt(handleLeftPosition.value, 10)}%`;
+        return `${parseFloat(handleLeftPosition.value)}%`;
       }
     });
     const getClosestHandle = (percentageDiff: number) => {
-      const handlePos: number[] = [parseInt(handleLeftPosition.value, 10), parseInt(handleRightPosition.value, 10)];
+      const handlePos: number[] = [parseFloat(handleLeftPosition.value), parseFloat(handleRightPosition.value)];
       const startIndex: number = isMultiRange.value ? 1 : 0;
 
       return handlePos.reduce((closestIdx, _, idx) => {
@@ -114,8 +117,9 @@ export default defineComponent({
         e.changedTouches && e.changedTouches.length > 0
           ? e.changedTouches[e.changedTouches.length - 1].clientX
           : e.clientX;
+      const centerHandle = currentSlider.value === 0 ? handleSize.value : (handleSize.value / 2) * -1;
 
-      return ((positionX - sliderBox.value.left) / sliderBox.value.width) * 100;
+      return ((positionX - centerHandle - sliderBox.value.left) / sliderBox.value.width) * 100;
     };
     const moving = (e: any) => {
       const value: number = algorithm.getValue(percentageDiff(e), props.min, props.max);
@@ -166,7 +170,7 @@ export default defineComponent({
         return;
       }
 
-      emit('change', [currentMin.value, currentMax.value]);
+      emit('input', [currentMin.value, currentMax.value]);
 
       setTimeout(() => {
         currentSlider.value = null;
@@ -179,9 +183,9 @@ export default defineComponent({
       let value: number = currentSlider.value === 0 ? currentMin.value : currentMax.value;
 
       if (e.code === 'ArrowLeft') {
-        value = value - 5;
+        value = value - props.keyboardStepInterval;
       } else if (e.code === 'ArrowRight') {
-        value = value + 5;
+        value = value + props.keyboardStepInterval;
       }
 
       if (value < props.min) {
@@ -197,7 +201,6 @@ export default defineComponent({
       } else if (currentSlider.value === 1 && value <= currentMin.value + padding) {
         value = currentMin.value + padding;
       }
-
       if (currentSlider.value === 0) {
         currentMin.value = value;
       } else {
@@ -205,21 +208,22 @@ export default defineComponent({
       }
     };
     const onKeyUp = () => {
-      emit('change', [currentMin.value, currentMax.value]);
+      emit('input', [currentMin.value, currentMax.value]);
     };
 
     watch(
-      values,
+      value,
       () => {
-        currentMin.value = values.value[0];
-        currentMax.value = isMultiRange.value ? values.value[1] : props.max;
+        currentMin.value = value.value[0];
+        currentMax.value = isMultiRange.value ? value.value[1] : props.max;
       },
       { immediate: true },
     );
 
-    onMounted(() => refresh());
-
-    useEvent('resize', refresh, {}, ref(window));
+    onMounted(() => {
+      useEvent('resize', refresh, {}, ref(window));
+      refresh();
+    });
 
     return {
       slider,
@@ -250,7 +254,8 @@ export default defineComponent({
 
 .vueSlider {
   user-select: none;
-  display: block;
+  display: flex;
+  flex-direction: column;
   padding: $slider-padding;
 
   .values {
@@ -283,17 +288,18 @@ export default defineComponent({
     .handle {
       position: absolute;
       top: ($slider-handle-size * 0.5) * -1;
-      display: block;
+      display: flex;
       padding: 0;
       width: $slider-handle-size;
       height: $slider-handle-size;
+      cursor: pointer;
+      user-select: none;
       border-radius: 50%;
       box-shadow: $slider-handle-shadow;
       background-color: $slider-handle-bg;
-      cursor: pointer;
       border: $slider-handle-border;
-      user-select: none;
       transition: $slider-handle-transition;
+      transform: translateX(-50%);
 
       &.active {
         box-shadow: $slider-handle-active-shadow;

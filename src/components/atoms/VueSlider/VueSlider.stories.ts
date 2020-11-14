@@ -8,9 +8,9 @@ story.add(
   'Default',
   () => ({
     components: { VueSlider },
-    template: `<vue-slider :min="0" :max="200" :values="[0]" @change="action" />`,
+    template: `<vue-slider :min="0" :max="200" :value="[0]" @input="action" />`,
     methods: {
-      action: action('@change'),
+      action: action('@input'),
     },
   }),
   {
@@ -24,9 +24,9 @@ story.add(
   'Range',
   () => ({
     components: { VueSlider },
-    template: `<vue-slider :min="0" :max="200" :values="[0, 50]" @change="action" />`,
+    template: `<vue-slider :min="0" :max="200" :value="[0, 200]" @input="action" />`,
     methods: {
-      action: action('@change'),
+      action: action('@input'),
     },
   }),
   {
@@ -40,9 +40,9 @@ story.add(
   'Disabled',
   () => ({
     components: { VueSlider },
-    template: `<vue-slider disabled :min="0" :max="200" :values="[0, 50]" @change="action" />`,
+    template: `<vue-slider disabled :min="0" :max="200" :value="[0, 50]" @input="action" />`,
     methods: {
-      action: action('@change'),
+      action: action('@input'),
     },
   }),
   {
