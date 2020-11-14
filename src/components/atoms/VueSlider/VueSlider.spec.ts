@@ -12,14 +12,13 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [0, 100],
+        value: [0, 100],
       },
     });
 
     wrapper.vm.refresh();
 
     expect(wrapper.findAll('button')).toHaveLength(2);
-    expect(window.addEventListener).toHaveBeenCalled();
 
     wrapper.vm.$destroy();
     expect(window.removeEventListener).toHaveBeenCalled();
@@ -31,7 +30,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [50],
+        value: [50],
       },
     });
 
@@ -45,7 +44,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [50],
+        value: [50],
         disabled: true,
       },
     });
@@ -64,7 +63,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [50],
+        value: [50],
       },
     });
 
@@ -86,7 +85,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [50],
+        value: [50],
       },
     });
 
@@ -96,7 +95,7 @@ describe('VueSlider.vue', () => {
     setTimeout(() => {
       expect(document.removeEventListener).toHaveBeenCalledTimes(5);
       expect(wrapper.vm.currentSlider).toBe(null);
-      expect(wrapper.emitted('change')).toBeTruthy();
+      expect(wrapper.emitted('input')).toBeTruthy();
 
       done();
     }, 100);
@@ -109,7 +108,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [50],
+        value: [50],
       },
     });
 
@@ -117,7 +116,7 @@ describe('VueSlider.vue', () => {
 
     expect(document.removeEventListener).toHaveBeenCalledTimes(0);
     expect(wrapper.vm.currentSlider).toBe(null);
-    expect(wrapper.emitted('change')).toBeFalsy();
+    expect(wrapper.emitted('input')).toBeFalsy();
   });
 
   test('should add active class to handle', async () => {
@@ -127,7 +126,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [50],
+        value: [50],
       },
     });
 
@@ -143,7 +142,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [50, 100],
+        value: [50, 100],
       },
     });
 
@@ -156,11 +155,11 @@ describe('VueSlider.vue', () => {
     });
 
     wrapper.vm.moving({ clientX: 50 });
-    expect(wrapper.vm.currentMin).toBe(50);
+    expect(wrapper.vm.currentMin).toBe(26);
     expect(wrapper.vm.currentMax).toBe(100);
 
     wrapper.vm.moving({ changedTouches: [{ clientX: 50 }] });
-    expect(wrapper.vm.currentMin).toBe(50);
+    expect(wrapper.vm.currentMin).toBe(26);
     expect(wrapper.vm.currentMax).toBe(100);
 
     wrapper.vm.moving({ clientX: -50 });
@@ -178,7 +177,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [50, 100],
+        value: [50, 100],
       },
     });
 
@@ -192,7 +191,7 @@ describe('VueSlider.vue', () => {
 
     wrapper.vm.moving({ clientX: 50 });
     expect(wrapper.vm.currentMin).toBe(50);
-    expect(wrapper.vm.currentMax).toBe(51);
+    expect(wrapper.vm.currentMax).toBe(62);
 
     wrapper.vm.moving({ clientX: 150 });
     expect(wrapper.vm.currentMin).toBe(50);
@@ -209,7 +208,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [0, 100],
+        value: [0, 100],
       },
     });
 
@@ -224,7 +223,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [50],
+        value: [50],
       },
     });
 
@@ -239,7 +238,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [10, 100],
+        value: [10, 100],
       },
     });
 
@@ -271,7 +270,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [0, 90],
+        value: [0, 90],
       },
     });
 
@@ -302,7 +301,7 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [10],
+        value: [10],
       },
     });
 
@@ -335,13 +334,13 @@ describe('VueSlider.vue', () => {
       propsData: {
         min: 0,
         max: 100,
-        values: [10, 80],
+        value: [10, 80],
       },
     });
 
     wrapper.vm.onKeyUp();
 
-    expect(wrapper.emitted('change')).toBeTruthy();
-    expect(wrapper.emitted('change')[0][0]).toEqual([10, 80]);
+    expect(wrapper.emitted('input')).toBeTruthy();
+    expect(wrapper.emitted('input')[0][0]).toEqual([10, 80]);
   });
 });
