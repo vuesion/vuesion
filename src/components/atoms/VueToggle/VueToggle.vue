@@ -20,7 +20,7 @@
         <div :class="$style.handle" :aria-checked="isChecked ? 'true' : 'false'" role="checkbox" />
       </div>
     </ValidationProvider>
-    <label :for="name" v-html="label" />
+    <label :for="id" v-html="label" />
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <ValidationProvider v-slot="{ errors }" ref="validator" :vid="id" :name="name" :rules="validation">
     <div :class="[$style.vueInput, disabled && $style.disabled, !isValid(errors) && $style.error]">
-      <label :for="name"> {{ label }}<sup v-if="required">*</sup></label>
+      <label :for="id"> {{ label }}<sup v-if="required">*</sup></label>
       <input
         v-if="isTextarea === false"
         :id="id"
