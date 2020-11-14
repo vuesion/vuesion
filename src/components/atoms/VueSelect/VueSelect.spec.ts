@@ -31,6 +31,7 @@ describe('VueSelect.vue', () => {
     const wrapper = mount<any>(VueSelect, {
       localVue,
       propsData: {
+        value: 'foo',
         items,
         name: 'foo',
         id: 'foo',
