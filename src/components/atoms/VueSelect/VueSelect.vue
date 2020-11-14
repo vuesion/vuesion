@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api';
+import { computed, defineComponent } from '@vue/composition-api';
 import { ValidationProvider } from 'vee-validate';
 import { IItem } from '@/components/IItem';
 
@@ -55,8 +55,8 @@ export default defineComponent({
     multiSelect: { type: Boolean, default: false },
   },
   setup(props, { emit }) {
-    const currentValueAsArray = ref<string[]>(props.value ? props.value.toString().split('|') : []);
-    const isSelected = (option: IItem) => currentValueAsArray.value.includes(option.value);
+    const currentValueAsArray = computed<string[]>(() => props.value?.toString().split('|'));
+    const isSelected = (option: IItem) => currentValueAsArray.value?.includes(option.value);
     const onInput = (e: Event) => {
       const selected: IItem[] = [];
       const target: HTMLSelectElement = e.target as HTMLSelectElement;
@@ -73,7 +73,6 @@ export default defineComponent({
     };
 
     return {
-      currentValueAsArray,
       isSelected,
       onInput,
     };
