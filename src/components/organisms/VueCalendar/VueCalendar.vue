@@ -304,6 +304,7 @@ export default defineComponent({
     const setSelecting = (value: string) => {
       selecting.value = value;
 
+      /* istanbul ignore next */
       if (selecting.value === 'year') {
         root.$nextTick(() => scrollSelectedYearIntoView());
       }

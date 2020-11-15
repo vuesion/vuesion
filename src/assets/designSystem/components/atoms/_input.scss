@@ -1,5 +1,5 @@
 $input-label-padding: 0 0 $space-4 0;
-$input-label-color: var(--brand-text-secondary-color);
+$input-label-color: var(--brand-secondary-text-color);
 $input-label-font-size: $font-size-sm;
 $input-label-font-weight: $font-weight-regular;
 $input-label-line-height: $line-height-sm - $space-4;
@@ -7,28 +7,28 @@ $input-label-line-height: $line-height-sm - $space-4;
 $input-label-error-color: var(--brand-danger);
 
 $input-padding: ($space-2 + $space-4) $space-8;
-$input-color: var(--brand-text-color);
+$input-color: var(--brand-primary-text-color);
 $input-background-color: transparent;
 $input-font-family: $font-family;
 $input-font-size: $font-size-md;
 $input-font-weight: $font-weight-light;
 $input-line-height: $line-height-sm - $space-2;
-$input-border: 1px solid var(--brand-border-color);
+$input-border: 1px solid var(--brand-primary-border-color);
 $input-border-radius: var(--brand-border-radius-sm);
 
 $input-error-color: var(--brand-danger);
 $input-background-error-color: palette-color-level('red', 10);
 $input-border-error: 1px solid var(--brand-danger);
 
-$input-border-hover: 1px solid var(--brand-border-color-inverse);
+$input-border-hover: 1px solid var(--brand-primary-border-color-inverse);
 
 $input-border-focus: 1px solid var(--brand-primary);
 
-$input-placeholder-color: var(--brand-text-secondary-color);
+$input-placeholder-color: var(--brand-secondary-text-color);
 
 $input-placeholder-error-color: palette-color-level('red', 50);
 
-$input-message-color: var(--brand-text-tertiary-color);
+$input-message-color: var(--brand-tertiary-text-color);
 $input-message-font-size: $font-size-sm;
 $input-message-line-height: $line-height-sm - $space-4;
 $input-message-font-weight: $font-weight-regular;

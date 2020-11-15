@@ -1,4 +1,3 @@
-:root,
 :root.light {
   /* Brand Variations */
   --brand-default: #{palette-color-level('grey', 90)};
@@ -27,38 +26,40 @@
   --brand-danger-active: #{palette-color-level('red', 100)};
 
   /* Background Colors */
-  --brand-bg-color: #{palette-color-level('grey', 10)};
-  --brand-bg-color-variant: #{palette-color-level('grey', 30)};
+  --brand-primary-bg-color: #{palette-color-level('neutral-1', 0)};
+  --brand-secondary-bg-color: #{palette-color-level('neutral-1', 10)};
+  --brand-tertiary-bg-color: #{palette-color-level('neutral-1', 20)};
 
   /* Background Colors Inverse */
-  --brand-bg-color-inverse: #{palette-color-level('grey', 100)};
-  --brand-bg-color-variant-inverse: #{palette-color-level('grey', 90)};
+  --brand-primary-bg-color-inverse: #{palette-color-level('neutral-1', 100)};
+  --brand-secondary-bg-color-inverse: #{palette-color-level('neutral-1', 80)};
+  --brand-tertiary-bg-color-inverse: #{palette-color-level('neutral-1', 60)};
 
   /* Text Colors */
-  --brand-text-color: #{palette-color-level('grey', 100)};
-  --brand-text-secondary-color: #{palette-color-level('grey', 70)};
-  --brand-text-tertiary-color: #{palette-color-level('grey', 30)};
+  --brand-primary-text-color: #{palette-color-level('neutral-1', 100)};
+  --brand-secondary-text-color: #{palette-color-level('neutral-1', 70)};
+  --brand-tertiary-text-color: #{palette-color-level('neutral-1', 60)};
 
   /* Text Colors Inverse */
-  --brand-text-color-inverse: #{palette-color-level('grey', 10)};
-  --brand-text-secondary-color-inverse: #{palette-color-level('grey', 50)};
-  --brand-text-tertiary-color-inverse: #{palette-color-level('grey', 90)};
+  --brand-primary-text-color-inverse: #{palette-color-level('neutral-1', 0)};
+  --brand-secondary-text-color-inverse: #{palette-color-level('neutral-1', 30)};
+  --brand-tertiary-text-color-inverse: #{palette-color-level('neutral-1', 50)};
 
   /* Link Color */
   --brand-link-color: #{palette-color-level('blue', 90)};
   --brand-link-hover-color: #{palette-color-level('blue', 90)};
 
   /* Borders */
-  --brand-border-color: #{palette-color-level('grey', 50)};
-  --brand-border-color-inverse: #{palette-color-level('grey', 70)};
+  --brand-primary-border-color: #{palette-color-level('neutral-1', 30)};
+  --brand-primary-border-color-inverse: #{palette-color-level('neutral-1', 50)};
   --brand-border-radius-sm: #{$space-4};
   --brand-border-radius-md: #{$space-8};
   --brand-border-radius-lg: #{$space-16};
 
   /* Box Shadows */
-  --brand-shadow-sm: 0 1px 1px 0 rgba(18, 19, 21, 0.12);
-  --brand-shadow-md: 0 -1px 2px 0 rgba(18, 19, 21, 0.12), 0 2px 4px 0 rgba(18, 19, 21, 0.12);
-  --brand-shadow-lg: 0 0 4px 0 rgba(18, 19, 21, 0.12), 0 4px 12px 0 rgba(18, 19, 21, 0.12);
+  --brand-elevation-1: 0 -1px 2px rgba(19, 20, 22, 0.08), 0 3px 5px rgba(19, 20, 22, 0.12);
+  --brand-elevation-2: 0 -1px 3px rgba(19, 20, 22, 0.1), 0 4px 6px rgba(19, 20, 22, 0.2);
+  --brand-elevation-3: 0 -1px 3px rgba(19, 20, 22, 0.1), 0 4px 6px rgba(19, 20, 22, 0.2);
   --brand-shadow-outline: 0 0 0 #{$space-8} #{rgba(palette-color-level('blue', 70), 0.5)};
 
   /* Animation Language */

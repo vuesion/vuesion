@@ -4,12 +4,12 @@
 @import 'designSystem/themes/dark';
 
 body {
-  color: var(--brand-text-color);
-  background-color: var(--brand-bg-color);
+  color: var(--brand-primary-text-color);
+  background-color: var(--brand-primary-bg-color);
 }
 
 code {
-  background: var(--brand-bg-color-variant);
+  background: var(--brand-secondary-bg-color);
   padding: $space-2 $space-4;
 }
 
@@ -18,7 +18,7 @@ i {
   display: inline-flex;
   height: $font-size-md;
   width: $font-size-md;
-  fill: var(--brand-text-color);
+  fill: var(--brand-primary-text-color);
   justify-content: center;
   align-items: center;
 
@@ -64,7 +64,7 @@ img:not([alt]) {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--brand-bg-color);
+  background: var(--brand-primary-bg-color);
   opacity: 0;
   transition: var(--brand-fade-animation-transition);
   z-index: -1;

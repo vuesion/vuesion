@@ -1,14 +1,10 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { render } from '@testing-library/vue';
 import {{ properCase componentName }} from './{{ properCase componentName }}.vue';
-
-const localVue = createLocalVue();
 
 describe('{{ properCase componentName }}.vue', () => {
   test('renders component', () => {
-    const wrapper = mount<any>({{ properCase componentName }}, {
-      localVue,
-    });
+    const { getByText } = render(VueText);
 
-    expect(wrapper.text()).toBe('{{ properCase componentName }}');
+    getByText('{{ properCase componentName }}');
   });
 });

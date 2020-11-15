@@ -1,4 +1,4 @@
-$toggle-bg: var(--brand-border-color);
+$toggle-bg: var(--brand-primary-border-color);
 $toggle-shadow: none;
 $toggle-border-radius: var(--brand-border-radius-sm);
 $toggle-width: $space-40;
@@ -12,5 +12,5 @@ $toggle-handle-shadow: none;
 $toggle-handle-checked-bg: var(--brand-secondary);
 $toggle-handle-focused-shadow: var(--brand-shadow-outline);
 
-$toggle-disabled-bg: var(--brand-bg-color-variant);
-$toggle-handle-disabled-bg: var(--brand-border-color);
+$toggle-disabled-bg: var(--brand-secondary-bg-color);
+$toggle-handle-disabled-bg: var(--brand-primary-border-color);

@@ -40,7 +40,8 @@ export default {
   mounted() {
     this.$refs.content.addEventListener('click', this.handleClick);
   },
-  updated /* istanbul ignore next */() {
+  /* istanbul ignore next */
+  updated() {
     this.createHTML();
   },
   beforeDestroy() {
@@ -137,7 +138,7 @@ export default {
   }
 
   table tr {
-    border: 1px solid var(--brand-border-color);
+    border: 1px solid var(--brand-primary-border-color);
   }
 
   table td,
