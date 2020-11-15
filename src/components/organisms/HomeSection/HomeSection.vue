@@ -37,7 +37,7 @@ export default {
 }
 
 .alternative {
-  background: var(--brand-bg-color-variant);
+  background: var(--brand-secondary-bg-color);
 }
 
 .flip {

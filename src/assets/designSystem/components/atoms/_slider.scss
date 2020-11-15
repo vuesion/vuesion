@@ -1,12 +1,12 @@
 $slider-padding: $space-20 $space-24;
-$slider-track-bg: var(--brand-border-color);
+$slider-track-bg: var(--brand-primary-border-color);
 $slider-track-height: $space-2;
 $slider-track-shadow: none;
 $slider-progress-height: $space-4;
 $slider-progress-bg: var(--brand-secondary);
 $slider-handle-size: $space-24;
 $slider-handle-shadow: none;
-$slider-handle-bg: var(--brand-bg-color);
+$slider-handle-bg: var(--brand-primary-bg-color);
 $slider-handle-border: 2px solid var(--brand-secondary);
 $slider-handle-transition: box-shadow var(--brand-transition-duration) ease-in-out;
 $slider-handle-active-shadow: var(--brand-shadow-outline);

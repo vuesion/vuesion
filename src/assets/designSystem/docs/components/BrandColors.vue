@@ -64,7 +64,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: var(--brand-shadow-md);
+    box-shadow: var(--brand-elevation-2);
     border-radius: var(--brand-border-radius-sm);
     padding: $space-16;
 
@@ -84,19 +84,19 @@ export default {
   brand_variations-brand-warning: var(--brand-warning);
   brand_variations-brand-danger: var(--brand-danger);
 
-  background_Colors-brand-bg-color: var(--brand-bg-color);
-  background_Colors-brand-bg-color-variant: var(--brand-bg-color-variant);
-  background_Colors-brand-bg-color-inverse: var(--brand-bg-color-inverse);
-  background_Colors-brand-bg-color-variant-inverse: var(--brand-bg-color-variant-inverse);
+  background_Colors-brand-bg-color: var(--brand-primary-bg-color);
+  background_Colors-brand-bg-color-variant: var(--brand-secondary-bg-color);
+  background_Colors-brand-bg-color-inverse: var(--brand-primary-bg-color-inverse);
+  background_Colors-brand-bg-color-variant-inverse: var(--brand-secondary-bg-color-inverse);
 
-  text_Colors-brand-text-color: var(--brand-text-color);
-  text_Colors-brand-text-secondary-color: var(--brand-text-secondary-color);
-  text_Colors-brand-text-color-inverse: var(--brand-text-color-inverse);
-  text_Colors-brand-text-secondary-color-inverse: var(--brand-text-secondary-color-inverse);
+  text_Colors-brand-text-color: var(--brand-primary-text-color);
+  text_Colors-brand-text-secondary-color: var(--brand-secondary-text-color);
+  text_Colors-brand-text-color-inverse: var(--brand-primary-text-color-inverse);
+  text_Colors-brand-text-secondary-color-inverse: var(--brand-secondary-text-color-inverse);
   text_Colors-brand-link-color: var(--brand-link-color);
   text_Colors-brand-link-hover-color: var(--brand-link-hover-color);
 
-  border_Colors-brand-border-color: var(--brand-border-color);
-  border_Colors-brand-border-color-inverse: var(--brand-border-color-inverse);
+  border_Colors-brand-border-color: var(--brand-primary-border-color);
+  border_Colors-brand-border-color-inverse: var(--brand-primary-border-color-inverse);
 }
 </style>

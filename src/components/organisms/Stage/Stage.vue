@@ -120,10 +120,10 @@ export default {
     .github {
       font-size: $font-size-h1;
       display: inline-block;
-      background: var(--brand-bg-color);
+      background: var(--brand-primary-bg-color);
 
       &:hover {
-        box-shadow: var(--brand-shadow-lg);
+        box-shadow: var(--brand-elevation-3);
       }
 
       i {

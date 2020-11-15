@@ -125,6 +125,6 @@ export default defineComponent({
   position: absolute;
   bottom: 0;
   width: 100%;
-  @include background-gradient(transparent, var(--brand-bg-color), 'vertical');
+  @include background-gradient(transparent, var(--brand-primary-bg-color), 'vertical');
 }
 </style>

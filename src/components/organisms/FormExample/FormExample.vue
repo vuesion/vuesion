@@ -245,6 +245,6 @@ export default {
 
 .formExample {
   border-radius: var(--brand-border-radius-md);
-  box-shadow: var(--brand-shadow-md);
+  box-shadow: var(--brand-elevation-2);
 }
 </style>

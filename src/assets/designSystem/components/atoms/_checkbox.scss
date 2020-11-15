@@ -1,7 +1,7 @@
-$checkbox-color: var(--brand-text-color);
+$checkbox-color: var(--brand-primary-text-color);
 $checkbox-padding: 0;
 $checkbox-size: $space-20;
-$checkbox-bg: var(--brand-bg-color);
+$checkbox-bg: var(--brand-primary-bg-color);
 $checkbox-border: 1px solid var(--brand-secondary);
 $checkbox-transition: background var(--brand-transition-duration) cubic-bezier(0, 0.84, 0.83, 0.67);
 $checkbox-check: 2px solid #fff;

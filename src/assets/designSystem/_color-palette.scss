@@ -41,6 +41,17 @@ $palette-colors: (
   'yellow-70': #ecb309,
   'yellow-90': #6b4700,
   'yellow-100': #382500,
+  'neutral-1-0': #ffffff,
+  'neutral-1-10': #f2f4f8,
+  'neutral-1-20': #dde1e6,
+  'neutral-1-30': #c1c7cd,
+  'neutral-1-40': #a2a9b0,
+  'neutral-1-50': #878d96,
+  'neutral-1-60': #70767d,
+  'neutral-1-70': #4d5358,
+  'neutral-1-80': #343a3f,
+  'neutral-1-90': #21272a,
+  'neutral-1-100': #121619,
 );
 
 @function palette-color($key) {

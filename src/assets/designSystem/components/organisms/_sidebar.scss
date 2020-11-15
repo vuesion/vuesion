@@ -1,23 +1,23 @@
 $sidebar-index: 1999;
-$sidebar-shadow: var(--brand-shadow-md);
-$sidebar-bg: var(--brand-bg-color);
-$sidebar-color: var(--brand-text-color);
+$sidebar-shadow: var(--brand-elevation-2);
+$sidebar-bg: var(--brand-primary-bg-color);
+$sidebar-color: var(--brand-primary-text-color);
 $sidebar-max-width: 80%;
 $sidebar-padding: $space-84 $space-20 $space-20 $space-20;
 $sidebar-transition: transform var(--brand-transition-duration) ease-in-out;
 $sidebar-width: 300px;
 $sidebar-height: 100%;
 $sidebar-hamburger-bg: transparent;
-$sidebar-hamburger-color: var(--brand-text-color);
+$sidebar-hamburger-color: var(--brand-primary-text-color);
 $sidebar-hamburger-open-bg: transparent;
 $sidebar-hamburger-open-color: $sidebar-color;
 
 $sidebar-group-font-weight: $font-weight-light;
 $sidebar-group-font-size: $font-size-md;
-$sidebar-group-border-bottom: 1px solid var(--brand-border-color);
+$sidebar-group-border-bottom: 1px solid var(--brand-primary-border-color);
 
 $sidebar-group-item-font-weight: $font-weight-light;
 $sidebar-group-item-font-size: $font-size-md;
 $sidebar-group-item-color: $sidebar-color;
 $sidebar-group-item-hover-color: $sidebar-color;
-$sidebar-group-item-hover-bg: var(--brand-bg-color-variant);
+$sidebar-group-item-hover-bg: var(--brand-secondary-bg-color);

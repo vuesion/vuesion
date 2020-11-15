@@ -1,14 +1,14 @@
 @include add-theme-variable(
   calendar-a11y-color,
   (
-    'light': var(--brand-text-color),
-    'dark': var(--brand-text-color-inverse),
+    'light': var(--brand-primary-text-color),
+    'dark': var(--brand-primary-text-color-inverse),
   )
 );
 
 $calendar-max-width: $screen-phone;
 $calendar-shadow: none;
-$calendar-bg: var(--brand-bg-color);
+$calendar-bg: var(--brand-primary-bg-color);
 
 $calendar-header-bg: var(--brand-primary);
 $calendar-header-color: var(--calendar-a11y-color);
@@ -16,15 +16,15 @@ $calendar-header-padding: $space-12 $space-24;
 $calendar-header-text-shadow: none;
 $calendar-header-font-weight: $font-weight-regular;
 
-$calendar-body-border: 1px solid var(--brand-border-color);
+$calendar-body-border: 1px solid var(--brand-primary-border-color);
 $calendar-body-padding: $space-8 $space-12;
 
-$calendar-arrow-color: var(--brand-text-color);
+$calendar-arrow-color: var(--brand-primary-text-color);
 $calendar-arrow-bg: $calendar-bg;
-$calendar-arrow-hover-bg: var(--brand-bg-color-variant);
+$calendar-arrow-hover-bg: var(--brand-secondary-bg-color);
 
 $calendar-day-border-radius: 0;
-$calendar-day-hover: var(--brand-bg-color-variant);
+$calendar-day-hover: var(--brand-secondary-bg-color);
 
 $calendar-current-day-bg: var(--brand-primary);
 $calendar-current-day-color: var(--calendar-a11y-color);
