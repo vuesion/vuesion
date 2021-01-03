@@ -130,7 +130,7 @@ import VueIconPuzzlePiece from '@/components/atoms/icons/VueIconPuzzlePiece/VueI
 import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 import VueModal from '@/components/molecules/VueModal/VueModal.vue';
 import LoginForm from '@/components/organisms/LoginForm/LoginForm.vue';
-import { useLocaleSwitch } from '@/composables/use-local-switch';
+import { useLocaleSwitch } from '@/composables/use-locale-switch';
 
 export default defineComponent({
   name: 'App',

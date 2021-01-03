@@ -58,7 +58,7 @@ describe('VueInput.vue', () => {
       },
     });
 
-    await fireEvent.input(getByDisplayValue('this is the value'), { target: { value: 'this is the new value' } });
+    await fireEvent.update(getByDisplayValue('this is the value'), 'this is the new value');
 
     const actual = emitted().input[0][0];
     const expected = 'this is the new value';
@@ -78,7 +78,7 @@ describe('VueInput.vue', () => {
       },
     });
 
-    await fireEvent.input(getByDisplayValue('this is the value'), { target: { value: 'foo bar' } });
+    await fireEvent.update(getByDisplayValue('this is the value'), 'foo bar');
     await flushPromises();
 
     getByText('this is the label');

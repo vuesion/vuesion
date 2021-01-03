@@ -1,7 +1,3 @@
-export interface IDataTableHeader {
-  [key: string]: IDataTableHeaderItem;
-}
-
 export interface IDataTableHeaderItem {
   title?: string;
   visible?: boolean;
@@ -9,6 +5,10 @@ export interface IDataTableHeaderItem {
   slot?: string;
   sortable?: boolean;
   cssClass?: string;
+}
+
+export interface IDataTableHeader {
+  [key: string]: IDataTableHeaderItem;
 }
 
 export interface IComputedDataRowCell {

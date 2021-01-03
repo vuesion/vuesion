@@ -1,4 +1,4 @@
-import { ComponentHarness, render, fireEvent } from '@testing-library/vue';
+import { render, fireEvent, RenderResult } from '@testing-library/vue';
 import Vuex, { Store } from 'vuex';
 import { CounterDefaultState, ICounterState } from '@/store/counter/state';
 import { CounterActions } from '@/store/counter/actions';
@@ -8,7 +8,7 @@ import Counter from './counter.vue';
 
 describe('Counter.vue', () => {
   let store: Store<ICounterState>;
-  let harness: ComponentHarness;
+  let harness: RenderResult;
 
   const CounterModule = {
     namespaced: true,

@@ -1,4 +1,4 @@
-import { ComponentHarness, render } from '@testing-library/vue';
+import { render, RenderResult } from '@testing-library/vue';
 import Vuex, { Store } from 'vuex';
 import { IState } from '@/interfaces/IState';
 import AppDefaultState from '@/store/app/state';
@@ -9,7 +9,7 @@ import Error from '@/layouts/error.vue';
 
 describe('error.vue', () => {
   let store: Store<IState>;
-  let harness: ComponentHarness;
+  let harness: RenderResult;
 
   const AppModule = {
     namespaced: true,
