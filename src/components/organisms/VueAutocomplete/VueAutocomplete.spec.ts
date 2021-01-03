@@ -20,9 +20,9 @@ describe('VueAutocomplete.vue', () => {
       },
     });
 
-    wrapper.vm.$destroy();
-
     expect(wrapper.props().placeholder).toBe('Type something');
+
+    wrapper.vm.$destroy();
   });
 
   test('renders component with loader', () => {

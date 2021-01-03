@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 export const useLocaleSwitch = (i18n: any) => {
   const loadedMessages: any = {};
 

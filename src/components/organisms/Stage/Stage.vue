@@ -73,13 +73,13 @@ export default {
     handleResize() {
       const canvas: HTMLCanvasElement = this.$refs.canvas;
       const stage: HTMLElement = this.$refs.stage;
-      const stageRect: ClientRect =
+      const stageRect: DOMRect =
         stage.getClientRects().length > 0
           ? stage.getClientRects().item(0)
           : ({
               width: 0,
               height: 0,
-            } as ClientRect);
+            } as DOMRect);
 
       canvas.width = stageRect.width;
       canvas.height = stageRect.height;

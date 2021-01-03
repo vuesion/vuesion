@@ -3,8 +3,12 @@ import { onMounted, onBeforeUnmount, ref } from '@vue/composition-api';
 export const useEvent = (
   eventName: string,
   handler: any,
-  options: AddEventListenerOptions = {},
-  elementRef = ref<any>(document),
+  options: {
+    capture?: boolean;
+    once?: boolean;
+    passive?: boolean;
+  } = {},
+  elementRef = ref<HTMLElement | Document>(document),
 ) => {
   const el = elementRef?.value;
   const remove = () => {

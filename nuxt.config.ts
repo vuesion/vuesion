@@ -5,9 +5,10 @@ const config: Configuration = {
     cookie: {
       options: {
         expires: 365,
+        secure: true,
       },
     },
-    localStorage: false,
+    localStorage: null,
     redirect: {
       login: '/',
       logout: '/',

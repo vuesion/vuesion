@@ -1,6 +1,9 @@
 import { onMounted, onBeforeUnmount, Ref, ref } from '@vue/composition-api';
 
-export const useIntersectionObserver = (elementRef: Ref<HTMLElement>, callback: IntersectionObserverCallback) => {
+export const useIntersectionObserver = (
+  elementRef: Ref<HTMLElement>,
+  callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => void,
+) => {
   const observer = ref<IntersectionObserver>(null);
 
   onMounted(() => {

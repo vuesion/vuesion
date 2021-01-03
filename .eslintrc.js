@@ -40,6 +40,7 @@ module.exports = {
     'vue/html-closing-bracket-newline': 0,
     'vue/html-indent': 0,
     'standard/no-callback-literal': 0,
+    'node/no-callback-literal': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
   },
   globals: {
