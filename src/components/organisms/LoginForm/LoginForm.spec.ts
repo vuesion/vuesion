@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import LoginForm from '@/components/organisms/LoginForm/LoginForm.vue';
-import { i18n } from '@/test/test-utils';
+import { i18n } from '@/test/i18n';
 
 const localVue = createLocalVue();
 

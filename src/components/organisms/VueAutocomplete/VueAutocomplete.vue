@@ -66,7 +66,7 @@
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from '@vue/composition-api';
 import debounce from 'lodash/debounce';
-import { IItem } from '@/components/IItem';
+import { IItem } from '@/interfaces/IItem';
 import { getDomRef } from '@/composables/get-dom-ref';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import { useKeydown } from '@/composables/use-keydown';

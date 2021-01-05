@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { i18n } from '@/test/test-utils';
+import { i18n } from '@/test/i18n';
 import VueDropdownMenu from '../../molecules/VueDropdownMenu/VueDropdownMenu.vue';
 import VueDataTable from './VueDataTable.vue';
 import { dataTableDataFixture, dataTableHeaderFixture } from './DataTableFixtures';

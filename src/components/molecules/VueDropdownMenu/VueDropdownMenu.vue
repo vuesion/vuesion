@@ -29,7 +29,7 @@
 import { defineComponent, ref } from '@vue/composition-api';
 import { getIntInRange } from '@vuesion/utils/dist/randomGenerator';
 import { getDomRef } from '@/composables/get-dom-ref';
-import { IItem } from '@/components/IItem';
+import { IItem } from '@/interfaces/IItem';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import VueCollapse from '../VueCollapse/VueCollapse.vue';
 import VueIconSortDown from '../../atoms/icons/VueIconSortDown/VueIconSortDown.vue';

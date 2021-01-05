@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { i18n } from '@/test/test-utils';
+import { i18n } from '@/test/i18n';
 import VueAutocomplete from './VueAutocomplete.vue';
 import { AutocompleteFixture } from './IAutocompleteFixture';
 
