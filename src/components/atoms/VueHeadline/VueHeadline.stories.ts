@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/vue';
+import { textVariations } from '@/components/prop-validators';
 import VueHeadline from './VueHeadline.vue';
 
 const story = storiesOf('Atoms|Headline', module) as any;
@@ -45,6 +46,28 @@ story.add(
     template: `<div>
 <vue-headline level="1" :native="false">Headline 1 without semantics</vue-headline>
 </div>`,
+  }),
+  {
+    info: {
+      components: { VueHeadline },
+    },
+  },
+);
+
+story.add(
+  'Colors',
+  () => ({
+    components: { VueHeadline },
+    data() {
+      return {
+        textVariations,
+      };
+    },
+    template: `<div>
+    <vue-headline v-for="color in textVariations" :key="color" :color="color" level="6">
+      {{ color }}
+    </vue-headline>
+    </div>`,
   }),
   {
     info: {

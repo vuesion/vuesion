@@ -8,11 +8,11 @@ $data-table-header-border: 1px solid var(--brand-primary-border-color);
 $data-table-header-bg: var(--brand-primary-bg-color);
 $data-table-header-font-weight: $font-weight-regular;
 $data-table-header-column-padding: $space-8 $space-12;
-$data-table-header-icon-color: var(--brand-secondary-text-color);
+$data-table-header-icon-color: var(--brand-medium-emphasis-text-color);
 $data-table-header-icon-hover-color: var(--brand-secondary);
 
 $data-table-row-border: $data-table-no-results-border;
 $data-table-row-hover-bg: var(--brand-secondary-bg-color);
-$data-table-row-hover-color: var(--brand-primary-text-color);
+$data-table-row-hover-color: var(--brand-high-emphasis-text-color);
 
 $data-table-row-column-padding: $space-8 $space-12;

@@ -14,7 +14,7 @@ export default defineComponent({
   props: {
     as: { type: String, default: 'span' },
     appearance: { type: String, default: 'body' },
-    color: { type: String, default: 'primary-text', validator: textVariationValidator },
+    color: { type: String, default: 'high-emphasis', validator: textVariationValidator },
   },
   setup() {
     return {};
@@ -46,16 +46,16 @@ export default defineComponent({
     color: var(--brand-danger);
   }
 
-  &.primary-text {
-    color: var(--brand-primary-text-color);
+  &.high-emphasis {
+    color: var(--brand-high-emphasis-text-color);
   }
 
-  &.secondary-text {
-    color: var(--brand-secondary-text-color);
+  &.medium-emphasis {
+    color: var(--brand-medium-emphasis-text-color);
   }
 
-  &.tertiary-text {
-    color: var(--brand-tertiary-text-color);
+  &.low-emphasis {
+    color: var(--brand-low-emphasis-text-color);
   }
 }
 </style>

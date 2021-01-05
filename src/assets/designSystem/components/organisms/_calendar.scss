@@ -1,8 +1,8 @@
 @include add-theme-variable(
   calendar-a11y-color,
   (
-    'light': var(--brand-primary-text-color),
-    'dark': var(--brand-primary-text-color-inverse),
+    'light': var(--brand-high-emphasis-text-color),
+    'dark': var(--brand-high-emphasis-text-color-inverse),
   )
 );
 
@@ -19,7 +19,7 @@ $calendar-header-font-weight: $font-weight-regular;
 $calendar-body-border: 1px solid var(--brand-primary-border-color);
 $calendar-body-padding: $space-8 $space-12;
 
-$calendar-arrow-color: var(--brand-primary-text-color);
+$calendar-arrow-color: var(--brand-high-emphasis-text-color);
 $calendar-arrow-bg: $calendar-bg;
 $calendar-arrow-hover-bg: var(--brand-secondary-bg-color);
 

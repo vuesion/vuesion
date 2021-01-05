@@ -36,14 +36,14 @@
   --brand-tertiary-bg-color-inverse: #{palette-color-level('neutral-1', 20)};
 
   /* Text Colors */
-  --brand-primary-text-color: #{palette-color-level('neutral-1', 0)};
-  --brand-secondary-text-color: #{palette-color-level('neutral-1', 30)};
-  --brand-tertiary-text-color: #{palette-color-level('neutral-1', 50)};
+  --brand-high-emphasis-text-color: #{palette-color-level('neutral-1', 0)};
+  --brand-medium-emphasis-text-color: #{palette-color-level('neutral-1', 30)};
+  --brand-low-emphasis-text-color: #{palette-color-level('neutral-1', 50)};
 
   /* Text Colors Inverse */
-  --brand-primary-text-color-inverse: #{palette-color-level('neutral-1', 100)};
-  --brand-secondary-text-color-inverse: #{palette-color-level('neutral-1', 70)};
-  --brand-tertiary-text-color-inverse: #{palette-color-level('neutral-1', 60)};
+  --brand-high-emphasis-text-color-inverse: #{palette-color-level('neutral-1', 100)};
+  --brand-medium-emphasis-text-color-inverse: #{palette-color-level('neutral-1', 70)};
+  --brand-low-emphasis-text-color-inverse: #{palette-color-level('neutral-1', 60)};
 
   /* Link Color */
   --brand-link-color: #{palette-color-level('blue', 70)};
