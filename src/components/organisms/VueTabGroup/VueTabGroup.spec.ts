@@ -4,7 +4,7 @@ import VueTabItem from './VueTabItem/VueTabItem.vue';
 
 const localVue = createLocalVue();
 
-localVue.component('vue-tab-item', VueTabItem);
+localVue.component('VueTabItem', VueTabItem);
 
 describe('VueTabGroup.vue', () => {
   test('renders component with a tab', async () => {

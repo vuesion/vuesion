@@ -4,7 +4,7 @@ import VueAccordionItem from './VueAccordionItem/VueAccordionItem.vue';
 
 const localVue = createLocalVue();
 
-localVue.component('vueA-accordion-item', VueAccordionItem);
+localVue.component('VueAAccordionItem', VueAccordionItem);
 
 describe('VueAccordion.vue', () => {
   test('renders component with an accordion item', () => {

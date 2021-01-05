@@ -62,10 +62,6 @@ import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 
 export default defineComponent({
   name: 'Dashboard',
-  middleware: 'auth',
-  head: {
-    title: 'vuesion - Dashboard',
-  },
   components: {
     VueBreadcrumb,
     VueGrid,
@@ -74,6 +70,7 @@ export default defineComponent({
     VueGridRow,
     VueHeadline,
   },
+  middleware: 'auth',
   setup() {
     const { $axios } = useContext();
     const pending = ref(false);
@@ -98,6 +95,9 @@ export default defineComponent({
     };
 
     return { pending, onClick };
+  },
+  head: {
+    title: 'vuesion - Dashboard',
   },
 });
 </script>

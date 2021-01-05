@@ -24,7 +24,6 @@ import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridC
 
 export default defineComponent({
   name: 'Error',
-  head: {},
   components: { VueHeadline, VueGrid, VueGridRow, VueGridColumn },
   props: {
     error: { type: Object, required: true },
@@ -49,6 +48,7 @@ export default defineComponent({
       },
     ];
   },
+  head: {},
 });
 </script>
 
