@@ -1,4 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
+import { textVariations } from '@/components/prop-validators';
+import { render } from '@testing-library/vue';
 import VueHeadline from './VueHeadline.vue';
 
 const localVue = createLocalVue();
@@ -49,5 +51,20 @@ describe('VueHeadline.vue', () => {
 
     expect(wrapper.find('div').text()).toBe('foo');
     expect(wrapper.find('.h1').text()).toBe('foo');
+  });
+
+  test('renders color variations', () => {
+    textVariations.forEach((variation: string) => {
+      const { container } = render(VueHeadline, {
+        propsData: {
+          color: variation,
+          level: '1',
+        },
+      });
+      const actual = container.querySelectorAll(`.${variation}`);
+      const expected = 1;
+
+      expect(actual).toHaveLength(expected);
+    });
   });
 });

@@ -1,15 +1,15 @@
 @include add-theme-variable(
   button-color,
   (
-    'light': var(--brand-primary-text-color),
-    'dark': var(--brand-primary-text-color-inverse),
+    'light': var(--brand-high-emphasis-text-color),
+    'dark': var(--brand-high-emphasis-text-color-inverse),
   )
 );
 @include add-theme-variable(
   button-color-inverse,
   (
-    'light': var(--brand-primary-text-color-inverse),
-    'dark': var(--brand-primary-text-color),
+    'light': var(--brand-high-emphasis-text-color-inverse),
+    'dark': var(--brand-high-emphasis-text-color),
   )
 );
 

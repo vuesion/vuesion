@@ -5,9 +5,9 @@ export const textVariations = [
   'success',
   'warning',
   'danger',
-  'primary-text',
-  'secondary-text',
-  'tertiary-text',
+  'high-emphasis',
+  'medium-emphasis',
+  'low-emphasis',
 ];
 export const brandSpacings = ['none', 'sm', 'md', 'lg'];
 

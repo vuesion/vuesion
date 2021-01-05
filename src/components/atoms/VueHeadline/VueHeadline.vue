@@ -1,7 +1,7 @@
 <template>
   <component
     :is="component"
-    :class="[$style.vueHeadline, appearanceLevel ? $style[`h${appearanceLevel}`] : $style[`h${level}`]]"
+    :class="[$style.vueHeadline, appearanceLevel ? $style[`h${appearanceLevel}`] : $style[`h${level}`], $style[color]]"
     v-on="$listeners"
   >
     <slot />
@@ -10,6 +10,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from '@vue/composition-api';
+import { textVariationValidator } from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueHeadline',
@@ -18,6 +19,7 @@ export default defineComponent({
     level: { type: String, required: true },
     appearanceLevel: { type: String, default: null },
     native: { type: Boolean, default: true },
+    color: { type: String, default: 'high-emphasis', validator: textVariationValidator },
   },
   setup(props) {
     const component = computed(() => {
@@ -42,6 +44,38 @@ export default defineComponent({
 
 .vueHeadline {
   font-family: $font-family-headings;
+
+  &.primary {
+    color: var(--brand-primary);
+  }
+
+  &.secondary {
+    color: var(--brand-secondary);
+  }
+
+  &.success {
+    color: var(--brand-success);
+  }
+
+  &.warning {
+    color: var(--brand-warning);
+  }
+
+  &.danger {
+    color: var(--brand-danger);
+  }
+
+  &.high-emphasis {
+    color: var(--brand-high-emphasis-text-color);
+  }
+
+  &.medium-emphasis {
+    color: var(--brand-medium-emphasis-text-color);
+  }
+
+  &.low-emphasis {
+    color: var(--brand-low-emphasis-text-color);
+  }
 }
 
 .h1 {

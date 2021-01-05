@@ -4,7 +4,7 @@
 @import 'designSystem/themes/dark';
 
 body {
-  color: var(--brand-primary-text-color);
+  color: var(--brand-high-emphasis-text-color);
   background-color: var(--brand-primary-bg-color);
 }
 
@@ -18,7 +18,7 @@ i {
   display: inline-flex;
   height: $font-size-md;
   width: $font-size-md;
-  fill: var(--brand-primary-text-color);
+  fill: var(--brand-high-emphasis-text-color);
   justify-content: center;
   align-items: center;
 

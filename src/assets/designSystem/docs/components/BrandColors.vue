@@ -89,10 +89,10 @@ export default {
   background_Colors-brand-bg-color-inverse: var(--brand-primary-bg-color-inverse);
   background_Colors-brand-bg-color-variant-inverse: var(--brand-secondary-bg-color-inverse);
 
-  text_Colors-brand-text-color: var(--brand-primary-text-color);
-  text_Colors-brand-text-secondary-color: var(--brand-secondary-text-color);
-  text_Colors-brand-text-color-inverse: var(--brand-primary-text-color-inverse);
-  text_Colors-brand-text-secondary-color-inverse: var(--brand-secondary-text-color-inverse);
+  text_Colors-brand-text-color: var(--brand-high-emphasis-text-color);
+  text_Colors-brand-text-secondary-color: var(--brand-medium-emphasis-text-color);
+  text_Colors-brand-text-color-inverse: var(--brand-high-emphasis-text-color-inverse);
+  text_Colors-brand-text-secondary-color-inverse: var(--brand-medium-emphasis-text-color-inverse);
   text_Colors-brand-link-color: var(--brand-link-color);
   text_Colors-brand-link-hover-color: var(--brand-link-hover-color);
 
