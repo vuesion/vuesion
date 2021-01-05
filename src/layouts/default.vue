@@ -134,7 +134,6 @@ import { useLocaleSwitch } from '@/composables/use-locale-switch';
 
 export default defineComponent({
   name: 'App',
-  head: {},
   components: {
     LoginForm,
     VueModal,
@@ -225,6 +224,7 @@ export default defineComponent({
       onLogoutClick,
     };
   },
+  head: {},
 });
 </script>
 

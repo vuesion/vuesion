@@ -11,11 +11,11 @@ import anime from 'animejs';
 
 export default {
   name: 'VueTabItem',
+  inject: ['register', 'updateHeader'],
   props: {
     title: { type: String, required: true },
     isActive: { type: Boolean, default: false },
   },
-  inject: ['register', 'updateHeader'],
   data(): any {
     return {
       idx: null,

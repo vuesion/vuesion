@@ -142,13 +142,13 @@ interface IYear {
 
 export default defineComponent({
   name: 'VueCalendar',
-  model: {
-    prop: 'selectedDate',
-    event: 'change',
-  },
   components: {
     VueHeadline,
     VueButton,
+  },
+  model: {
+    prop: 'selectedDate',
+    event: 'change',
   },
   props: {
     selectedDate: { type: Date, default: null },

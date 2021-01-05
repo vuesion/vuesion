@@ -35,7 +35,6 @@ import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 
 export default defineComponent({
   name: 'Counter',
-  head: {},
   components: {
     VueGrid,
     VueGridRow,
@@ -61,6 +60,7 @@ export default defineComponent({
 
     return { count, incrementPending, decrementPending, increment, decrement };
   },
+  head: {},
 });
 </script>
 
