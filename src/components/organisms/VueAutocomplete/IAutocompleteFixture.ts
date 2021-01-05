@@ -1,4 +1,4 @@
-import { IItem } from '@/components/IItem';
+import { IItem } from '@/interfaces/IItem';
 
 export const AutocompleteFixture: IItem[] = [
   { label: 'foo1', value: 'bar1' },

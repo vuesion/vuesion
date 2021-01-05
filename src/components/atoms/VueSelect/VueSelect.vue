@@ -35,7 +35,7 @@
 <script lang="ts">
 import { computed, defineComponent } from '@vue/composition-api';
 import { ValidationProvider } from 'vee-validate';
-import { IItem } from '@/components/IItem';
+import { IItem } from '@/interfaces/IItem';
 
 export default defineComponent({
   name: 'VueSelect',

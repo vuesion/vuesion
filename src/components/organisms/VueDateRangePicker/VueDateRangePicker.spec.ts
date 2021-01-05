@@ -1,5 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import { i18n } from '@/test/test-utils';
+import { i18n } from '@/test/i18n';
 import VueDateRangePicker from './VueDateRangePicker.vue';
 
 const localVue = createLocalVue();

@@ -13,13 +13,15 @@
 </template>
 
 <script lang="ts">
+import { computed, defineComponent, useContext, useMeta } from '@nuxtjs/composition-api';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridItem from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
 
-export default {
+export default defineComponent({
+  name: '{{ properCase componentName }}',
   components: {
     VueGrid,
     VueBreadcrumb,
@@ -27,22 +29,21 @@ export default {
     VueGridItem,
     VueHeadline,
   },
-  data: (): any => ({}),
-  computed: {
-    breadCrumbItems() {
-      return [
-        { label: this.$t('common.home' /* Home */), href: '/' },
-        { label: this.$t('common.{{ properCase componentName }}' /* {{ properCase componentName }} */), href: '/{{filePath}}/{{ dashCase componentName }}' },
-      ];
-    },
-  },
-  methods: {},
-  head /* istanbul ignore next */() {
+  setup() {
+    useMeta({ title: '{{ properCase componentName }}' });
+    const { app } = useContext();
+
+    const breadCrumbItems = computed(() => [
+      { label: app.i18n.t('common.home' /* Home */), href: '/' },
+      { label: app.i18n.t('common.{{ properCase componentName }}' /* {{ properCase componentName }} */), href: '/{{filePath}}/{{ dashCase componentName }}' },
+    ]);
+
     return {
-      title: '{{ properCase componentName }}',
-    };
+      breadCrumbItems,
+    }
   },
-};
+  head: {},
+});
 </script>
 
 <style lang="scss" module>

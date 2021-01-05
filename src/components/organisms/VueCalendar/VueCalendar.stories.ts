@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { i18n } from '@/test/test-utils';
+import { i18n } from '@/test/i18n';
 import VueCalendar from './VueCalendar.vue';
 
 const story = storiesOf('Organisms|Calendar', module) as any;

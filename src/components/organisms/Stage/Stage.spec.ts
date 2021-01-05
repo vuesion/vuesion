@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import Stage from '@/components/organisms/Stage/Stage.vue';
-import { i18n } from '@/test/test-utils';
+import { i18n } from '@/test/i18n';
 
 const localVue = createLocalVue();
 
