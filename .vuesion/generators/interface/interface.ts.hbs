@@ -6,6 +6,6 @@
 {{/if}}
 export interface {{ properCase interfaceName }} {
 {{#each interfaceDefinition}}
-  {{this.id}}: {{this.type}};
+  {{{this.id}}}: {{{this.type}}};
 {{/each}}
 }
