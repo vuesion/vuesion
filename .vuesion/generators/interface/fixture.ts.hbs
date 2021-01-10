@@ -1,0 +1,12 @@
+import { {{ properCase interfaceName }} } from '{{ interfaceImportPath }}';
+{{#each fixtureImports}}
+{{{this}}};
+{{/each}}
+
+export const {{ properCase interfaceName }}CollectionFixture = (): {{ properCase interfaceName }}[] => [
+{{#each fixtures}}
+  {{{this}}},
+{{/each}}
+];
+
+export const {{ properCase interfaceName }}Fixture = (): {{ properCase interfaceName }} => {{ properCase interfaceName }}CollectionFixture()[0];

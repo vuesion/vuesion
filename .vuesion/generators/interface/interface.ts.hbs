@@ -1,0 +1,11 @@
+{{#if interfaceImports.length}}
+{{#each interfaceImports}}
+{{{this}}};
+{{/each}}
+
+{{/if}}
+export interface {{ properCase interfaceName }} {
+{{#each interfaceDefinition}}
+  {{{this.id}}}: {{{this.type}}};
+{{/each}}
+}
