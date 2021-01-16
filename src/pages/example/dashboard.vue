@@ -52,6 +52,8 @@
 </template>
 
 <script lang="ts">
+/* istanbul ignore file */
+
 import { defineComponent, ref, useContext } from '@nuxtjs/composition-api';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';

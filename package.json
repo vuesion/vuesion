@@ -130,7 +130,8 @@
     },
     "moduleFileExtensions": [
       "ts",
-      "js"
+      "js",
+      "vue"
     ],
     "transform": {
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
@@ -142,20 +143,23 @@
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/**/*"
+      "src/**/*",
+      "!src/**/*.stories.ts",
+      "!src/**/*.d.ts"
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
+      "/api/",
+      "/assets/",
+      "/enums/",
+      "/fixtures/",
+      "/interfaces/",
       "/layouts/",
       "/plugins/",
-      "/enums/",
-      "/interfaces/",
-      "/test/",
+      "/services/",
       "/static/",
-      "/api/",
-      "src/store/index.ts",
-      ".stories.",
-      ".d.ts"
+      "/test/",
+      "src/store/index.ts"
     ],
     "coverageThreshold": {
       "global": {

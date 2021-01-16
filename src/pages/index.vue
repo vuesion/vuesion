@@ -163,6 +163,8 @@
 </template>
 
 <script lang="ts">
+/* istanbul ignore file */
+
 import HomeSection from '@/components/organisms/HomeSection/HomeSection.vue';
 import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
