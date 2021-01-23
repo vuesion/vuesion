@@ -1,5 +1,5 @@
 import { render } from '@testing-library/vue';
-import { textVariations } from '@/components/prop-validators';
+import { textColorVariations } from '@/components/prop-validators';
 import VueText from './VueText.vue';
 
 describe('VueText.vue', () => {
@@ -14,7 +14,7 @@ describe('VueText.vue', () => {
   });
 
   test('renders color variations', () => {
-    textVariations.forEach((variation: string) => {
+    textColorVariations.forEach((variation: string) => {
       const { container } = render(VueText, {
         propsData: {
           color: variation,

@@ -2,9 +2,7 @@
 
 <img width="256px" height="256px" src="https://user-images.githubusercontent.com/1667598/55292014-ea98a800-53e5-11e9-82ca-11ba7bb2bbcd.png" alt="vuesion logo" align="center" />
 
-> The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices
-
-> 一个灵活的、可扩展的、自定的，已经准备好用于生产的渐进式网络应用样板，聚焦于性能、开发速度和最佳实践
+_**The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices build with Nuxt.js**_
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/vuesion/vuesion/graphs/commit-activity)
 [![CircleCI](https://circleci.com/gh/vuesion/vuesion.svg?style=svg)](https://circleci.com/gh/vuesion/vuesion)
@@ -17,44 +15,76 @@
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fvuesion%2Fvuesion.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fvuesion%2Fvuesion?ref=badge_shield)
 
-# Documentation
-
-**[https://vuesion.github.io/docs/en/](https://vuesion.github.io/docs/en/)**
-
-**[https://vuesion.github.io/docs/zh-cn/](https://vuesion.github.io/docs/zh-cn)**
-
 # Live demo
 
 Please visit the **[vuesion app on heroku!](https://vuesion.herokuapp.com/)**
+Or have a look into the future and visit the **[vuesion-next app on heroku!](https://vuesion-next.herokuapp.com/)**
 
 ![vuesion](https://user-images.githubusercontent.com/1667598/55291969-6d6d3300-53e5-11e9-8bdb-c9e2940ca927.gif)
 
-### Lighthouse Score
+# Features
 
-<img width="761" alt="bildschirmfoto 2019-01-19 um 14 24 32" src="https://user-images.githubusercontent.com/1667598/51427252-00c00600-1bf6-11e9-9ab4-9f043226db35.png">
+## Testing
+
+- Cypress.io
+- Jest
+- Testing-library setup
+- 250+ example tests included
+
+## DX, Code quality and maintenance
+
+- TypeScript
+- Eslint
+- Commit message linting
+- Prettier code formatting
+- Semantic releases
+- Husky pre-commit hooks
+- Dockerfile included
+- .env support
+
+## Core
+
+- server-side-rendering, single-page-app or statically generated HTML with Nuxt.js
+- 100% customizable Design-system with 35+ components including
+  - typography, button, input, select, checkbox, radio, (range-)slider, toggle
+  - dropdown, modal, tooltip, carousel, notifications
+  - data-table, accordion, auto-complete, calendar, date-(range-)picker, grid, tabs
+  - theming support
+- SEO support
+- i18n support
+- Authentication module
+- PWA module
+- State management with vuex
+- Code generators for
+  - components
+  - pages
+  - interfaces and fixtures
+  - vuex modules
+- Storybook with the following add-ons
+  - a11y
+  - actions
+  - console
+  - links
+  - options
+  - story-source
+  - viewport
+  - theme-switcher
+- Form validation with vee-validate
+- Composition-api module
+- Axios module
+- Anime.js integration
 
 # Getting started
 
-## Via `npx`
-
 > Important note for **Windows users only**: https://github.com/zkat/npx/issues/146#issuecomment-384016791
 
-1. Run `npx @vuesion/create [project-name]` for example `npx @vuesion/create my-app`
+1. Run `npx @vuesion/create [project-name]` for example `npx @vuesion/create my-app` _(try the latest version by adding the `--next` flag)_
 2. Change directory `cd my-app`
 3. Run `npm run dev`
 
-## Via Git
+# Documentation
 
-1. Download or clone (`git clone https://github.com/vuesion/vuesion`) the repository
-2. Change directory `cd vuesion`
-3. Install dependencies: `npm install`
-4. Run `npm run dev`
-
-# Sponsors
-
-<a href="https://careers.bcgdv.com/locations/berlin" title="BCG Digital Ventures">
-  <img src="https://user-images.githubusercontent.com/1667598/38944976-89d5c03c-4335-11e8-92f4-910049c2166a.jpeg" alt="BCG Digital Ventures" />
-</a>
+**[https://vuesion.github.io/docs/en/](https://vuesion.github.io/docs/en/)**
 
 # Support this project
 
@@ -67,10 +97,6 @@ Please visit the **[vuesion app on heroku!](https://vuesion.herokuapp.com/)**
 # Contribute
 
 Contributions are always welcome! Please read the [contribution guidelines](https://github.com/vuesion/vuesion/blob/master/.github/CONTRIBUTING.md) first.
-
-欢迎贡献! 请阅读 [贡献指南](https://github.com/vuesion/vuesion/blob/master/.github/CONTRIBUTING.md) 先 ο(=•ω ＜=)ρ⌒☆.
-
-## Contributors
 
 Thanks goes to these wonderful people:
 
@@ -86,13 +112,20 @@ Thanks goes to these wonderful people:
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
 
-# Reference resources
+# References
 
-- [FAQ](https://github.com/vuesion/docs/blob/master/en/FAQ.md)
-- [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate)
-- [vue-ssr-starter-kit](https://github.com/doabit/vue-ssr-starter-kit)
-- [Angular](https://github.com/angular/angular)
-- [vue-enterprise-boilerplate](https://github.com/chrisvfritz/vue-enterprise-boilerplate)
+- [nuxt](https://nuxtjs.org/)
+- [nuxt/auth](https://auth.nuxtjs.org/guide/setup/)
+- [nuxt/axios](https://axios.nuxtjs.org/)
+- [nuxt/composition-api](https://composition-api.nuxtjs.org/)
+- [nuxt/pwa](https://pwa.nuxtjs.org/)
+- [nuxt/i18n](https://i18n.nuxtjs.org/)
+- [Storybook](https://storybook.js.org/)
+- [jest](https://jestjs.io/)
+- [cypress.io](https://www.cypress.io/)
+- [testing-library](https://testing-library.com/docs/vue-testing-library/intro/)
+- [vee-validate](https://vee-validate.logaretm.com/v3)
+- [animejs](https://animejs.com/)
 
 # Contact
 

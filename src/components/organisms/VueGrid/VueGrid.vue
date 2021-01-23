@@ -14,8 +14,8 @@ import { spacingValidator } from '../../prop-validators';
 export default defineComponent({
   name: 'VueGrid',
   props: {
-    verticalSpace: { type: String, validator: spacingValidator, default: 'md' },
-    horizontalSpace: { type: String, validator: spacingValidator, default: 'md' },
+    verticalSpace: { type: String, validator: spacingValidator, default: '24' },
+    horizontalSpace: { type: String, validator: spacingValidator, default: '24' },
     textAlign: { type: String, default: 'left' },
     fluid: { type: Boolean, default: false },
   },
@@ -52,31 +52,15 @@ export default defineComponent({
     max-width: $screen-large-desktop;
   }
 
-  &.hsm {
-    padding-left: $gutter-sm;
-    padding-right: $gutter-sm;
-  }
+  @each $name, $space in $spacings {
+    &.h#{$name} {
+      padding-left: $space;
+      padding-right: $space;
+    }
 
-  &.hmd {
-    padding-left: $gutter-md;
-    padding-right: $gutter-md;
-  }
-
-  &.hlg {
-    padding-left: $gutter-lg;
-    padding-right: $gutter-lg;
-  }
-
-  &.vsm {
-    padding-bottom: $gutter-sm;
-  }
-
-  &.vmd {
-    padding-bottom: $gutter-md;
-  }
-
-  &.vlg {
-    padding-bottom: $gutter-lg;
+    &.v#{$name} {
+      padding-bottom: $space;
+    }
   }
 
   &.fluid {

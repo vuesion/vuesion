@@ -1,9 +1,9 @@
 <template>
   <div ref="calendarRef" :class="$style.calendar">
     <div :class="$style.header">
-      <vue-headline
-        level="4"
-        :native="false"
+      <vue-text
+        appearance="h4"
+        as="div"
         role="button"
         tabindex="0"
         :aria-label="selectedYear"
@@ -11,10 +11,10 @@
         @keypress.enter.space.stop.prevent="setSelecting('year')"
       >
         {{ selectedYear }}
-      </vue-headline>
-      <vue-headline
-        level="5"
-        :native="false"
+      </vue-text>
+      <vue-text
+        appearance="h5"
+        as="div"
         role="button"
         tabindex="0"
         :aria-label="$d(calculatedDate, 'calendarHeader')"
@@ -22,7 +22,7 @@
         @keypress.enter.space.stop.prevent="setSelecting('date')"
       >
         {{ $d(calculatedDate, 'calendarHeader') }}
-      </vue-headline>
+      </vue-text>
     </div>
 
     <div v-if="selecting === 'date'" :class="$style.body">
@@ -126,7 +126,7 @@ import { computed, defineComponent, ref, onBeforeMount } from '@vue/composition-
 import chunk from 'lodash/chunk';
 import { getDomRef } from '@/composables/get-dom-ref';
 import VueButton from '../../atoms/VueButton/VueButton.vue';
-import VueHeadline from '../../atoms/VueHeadline/VueHeadline.vue';
+import VueText from '../../atoms/VueText/VueText.vue';
 
 interface IDay {
   day: number;
@@ -143,7 +143,7 @@ interface IYear {
 export default defineComponent({
   name: 'VueCalendar',
   components: {
-    VueHeadline,
+    VueText,
     VueButton,
   },
   model: {
@@ -545,7 +545,7 @@ export default defineComponent({
   }
 
   .selected {
-    font-size: $font-size-h4;
+    font-size: $text-4;
     color: $calendar-selected-day-color;
     background: $calendar-selected-day-bg;
 

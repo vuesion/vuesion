@@ -9,12 +9,12 @@ story.addParameters({ options: { showAddonPanel: false } });
 
 story.add('Intro', () => ({
   components: { VueMarkdown },
-  template: `<vue-markdown :use-router="false">
+  template: `<vue-markdown :style="{padding:'32px'}" :use-router="false">
 # Design System
 
 Vuesion comes with a Design System that you can 100% customize.
 
-**_The files for customizing the Design System are located in \`./src/app/shared/design-system\`._**
+**_The files for customizing the Design System are located in \`./src/assets/shared/designSystem\`._**
 
 Design Systems are really complex and the key to a good Design System is
 consistency.
@@ -24,13 +24,13 @@ It is also hard to achieve consistency if you have to combine multiple UI librar
 and customizing them to fit your Brand Identity.
 
 _Over the years we discovered that it's much harder to maintain all of these forks for a project than
-building our own set of components that are **100% customizable** because the code is 100% accessible._
+building our own set of components that are **100% customizable** because the code is 100% accessible in your code base._
 
 This Design System is the next step, it is a blueprint that enables you to create your very own Design System that perfectly fits your
 Brand or your clients Corporate Identity.
 
 We are aware that not everyone has to implement their own professional Design System.
-If this is the case for you, you might be interested in [integrating a 3rd party UI library](https://vuesion.github.io/docs/en/tutorials/third-party.html)
+If this is the case for you, you might be interested in [Vuetify](https://github.com/nuxt-community/vuetify-module) or [tailwind](https://tailwindcss.nuxtjs.org/)
 </vue-markdown>
 `,
 }));
@@ -39,9 +39,9 @@ story = storiesOf('Design System|Branding', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
-story.add('1. Color Palette', () => ({
+story.add('Color Palette', () => ({
   components: { VueMarkdown, ColorPalette },
-  template: `<div>
+  template: `<div :style="{padding:'32px'}">
 <vue-markdown :use-router="false">
 ### Color Palette
 </vue-markdown>
@@ -50,55 +50,19 @@ story.add('1. Color Palette', () => ({
 `,
 }));
 
-story.add('2. Color Tokens', () => ({
+story.add('Color Tokens', () => ({
   components: { VueMarkdown, BrandColors },
-  template: `<div>
+  template: `<div :style="{padding:'32px'}">
 <vue-markdown :use-router="false">
 ### Brand Colors
-Every brand color is related to a color of the color palette.
+Every brand color is related to a color in the color palette.
 </vue-markdown>
 <brand-colors/>
 </div>
 `,
 }));
 
-story = storiesOf('Design System|Typography', module) as any;
-
 story.addParameters({ options: { showAddonPanel: false } });
-
-story.add('Typography', () => ({
-  components: { VueMarkdown },
-  template: `<vue-markdown :use-router="false">
-## Typography
-Inter is the standard type face for the Design System blueprint.
-
-### Font Weights
-Variable             | Weight
----------------------|-------
-$font-weight-light   | 200
-$font-weight-regular | 400
-$font-weight-bold    | 600
-
-### Font Sizes
-Level          | Font-size   | Font-weight
----------------|-------------|------------
-Small Text     | 80%         | $font-weight-light
-Paragraph      | 1.6rem      | $font-weight-light
-H1             | 4.8rem      | $font-weight-regular
-H2             | 3.2rem      | $font-weight-regular
-H3             | 2.4rem      | $font-weight-regular
-H4             | 2rem        | $font-weight-regular
-H5             | 1.6rem      | $font-weight-regular
-H4             | 1.6rem      | $font-weight-regular
-
-### Line heights
-Line height is measured by taking the font size and adding 0.8rem.
-
-### List Style
-Lists are indented by 1.6rem.
-</vue-markdown>
-`,
-}));
 
 story = storiesOf('Design System|Layout', module) as any;
 
@@ -106,7 +70,7 @@ story.addParameters({ options: { showAddonPanel: false } });
 
 story.add('Layout', () => ({
   components: { VueMarkdown },
-  template: `<vue-markdown :use-router="false">
+  template: `<vue-markdown :style="{padding:'32px'}" :use-router="false">
 ## Layout
 The Grid-System is based on Flex box and comes in form of three included components.
 
@@ -143,7 +107,7 @@ story.addParameters({ options: { showAddonPanel: false } });
 
 story.add('Break points', () => ({
   components: { VueMarkdown },
-  template: `<vue-markdown :use-router="false">
+  template: `<vue-markdown :style="{padding:'32px'}" :use-router="false">
 ## Break points
 If you want to use a break point inside one of your components, we provide you width
 mixins to keep everything consistent and to avoid unnecessary media definitions:

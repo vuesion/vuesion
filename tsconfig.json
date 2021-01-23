@@ -23,6 +23,8 @@
       "@nuxtjs/pwa",
       "node",
       "animejs",
+      "cookie-parser",
+      "compression",
       "express",
       "jest",
       "helmet",

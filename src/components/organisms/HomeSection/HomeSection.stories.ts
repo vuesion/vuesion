@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
+import VueText from '@/components/atoms/VueText/VueText.vue';
 import HomeSection from './HomeSection.vue';
 
 const story = storiesOf('Organisms|HomeSection', module) as any;
@@ -7,11 +7,11 @@ const story = storiesOf('Organisms|HomeSection', module) as any;
 story.add(
   'Default',
   () => ({
-    components: { HomeSection, VueHeadline },
+    components: { HomeSection, VueText },
     template: `<home-section image="https://via.placeholder.com/512">
-      <vue-headline level="2">Quick start</vue-headline>
+      <vue-text appearance="h2" as="h2">Quick start</vue-text>
       <br />
-      <vue-headline level="3">Via <code>npx</code></vue-headline>
+      <vue-text appearance="h3" as="h3">Via <code>npx</code></vue-text>
       <br />
       <ol>
         <li>
@@ -23,7 +23,7 @@ story.add(
       </ol>
       <br />
       <br />
-      <vue-headline level="3">Via Git</vue-headline>
+      <vue-text appearance="h3" as="h3">Via Git</vue-text>
       <br />
       <ol>
         <li>
@@ -45,11 +45,11 @@ story.add(
 story.add(
   'Alternative',
   () => ({
-    components: { HomeSection, VueHeadline },
+    components: { HomeSection, VueText },
     template: `<home-section image="https://via.placeholder.com/512" alternative>
-      <vue-headline level="2">Quick start</vue-headline>
+      <vue-text appearance="h2" as="h2">Quick start</vue-text>
       <br />
-      <vue-headline level="3">Via <code>npx</code></vue-headline>
+      <vue-text appearance="h3" as="h3">Via <code>npx</code></vue-text>
       <br />
       <ol>
         <li>
@@ -61,7 +61,7 @@ story.add(
       </ol>
       <br />
       <br />
-      <vue-headline level="3">Via Git</vue-headline>
+      <vue-text appearance="h3" as="h3">Via Git</vue-text>
       <br />
       <ol>
         <li>
@@ -83,11 +83,11 @@ story.add(
 story.add(
   'Flip',
   () => ({
-    components: { HomeSection, VueHeadline },
+    components: { HomeSection, VueText },
     template: `<home-section image="https://via.placeholder.com/512" flip>
-      <vue-headline level="2">Quick start</vue-headline>
+      <vue-text appearance="h2" as="h2">Quick start</vue-text>
       <br />
-      <vue-headline level="3">Via <code>npx</code></vue-headline>
+      <vue-text appearance="h3" as="h3">Via <code>npx</code></vue-text>
       <br />
       <ol>
         <li>
@@ -99,7 +99,7 @@ story.add(
       </ol>
       <br />
       <br />
-      <vue-headline level="3">Via Git</vue-headline>
+      <vue-text appearance="h3" as="h3">Via Git</vue-text>
       <br />
       <ol>
         <li>

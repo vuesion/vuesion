@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { brandVariations } from '../../prop-validators';
+import { brandColorVariations } from '../../prop-validators';
 import VueIconGithub from '../icons/VueIconGithub/VueIconGithub.vue';
 import VueButton from './VueButton.vue';
 
@@ -12,11 +12,11 @@ story.add(
     components: { VueButton, VueIconGithub },
     data(): any {
       return {
-        variations: brandVariations,
+        variations: brandColorVariations,
         loading: false,
       };
     },
-    template: `<div>
+    template: `<div :style="{padding:'32px'}">
 <template v-for="variation in variations">
 <vue-button @click="onClick" :color="variation">{{ variation }}</vue-button>
 <vue-button @click="onClick" :color="variation"><vue-icon-github />&nbsp;{{ variation }} with icon</vue-button>
@@ -51,11 +51,11 @@ story.add(
   'Button as Link',
   () => ({
     components: { VueButton },
-    template: `<div>
+    template: `<div :style="{padding:'32px'}">
 Router-Link<br/>
-<vue-button @click="onClick" as="router-link" color="primary" href="/">Router Link</vue-button>
-<vue-button @click="onClick" as="router-link" color="primary" href="/" disabled>Router Link</vue-button>
-<vue-button @click="onClick" as="router-link" color="primary" href="/" loading>Router Link</vue-button>
+<vue-button @click="onClick" as="nuxt-link" color="primary" href="/">Nuxt Link</vue-button>
+<vue-button @click="onClick" as="nuxt-link" color="primary" href="/" disabled>Nuxt Link</vue-button>
+<vue-button @click="onClick" as="nuxt-link" color="primary" href="/" loading>Nuxt Link</vue-button>
 <br/>
 <br/>
 A-Element: <br/>

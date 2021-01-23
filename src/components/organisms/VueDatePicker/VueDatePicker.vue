@@ -101,7 +101,7 @@ export default {
     table {
       tr {
         td {
-          font-size: $font-size-h5;
+          font-size: $text-3;
 
           span {
             top: 17%;

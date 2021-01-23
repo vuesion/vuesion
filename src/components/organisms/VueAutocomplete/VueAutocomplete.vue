@@ -33,7 +33,7 @@
     />
 
     <vue-icon-search v-show="loading === false" />
-    <vue-loader v-show="loading === true" :class="$style.loader" color="secondary" />
+    <vue-loader v-show="loading === true" :class="$style.loader" color="neutral" />
 
     <ul
       v-show="isOpen === true && loading === false"
@@ -87,7 +87,7 @@ export default defineComponent({
     label: { type: String, required: true },
     required: { type: Boolean, default: false },
     validation: { type: [String, Object], default: null },
-    value: { type: [String, Number], default: null },
+    value: { type: Object, default: null },
     disabled: { type: Boolean, default: false },
     placeholder: { type: String, default: null },
     autofocus: { type: Boolean, default: false },
@@ -109,7 +109,7 @@ export default defineComponent({
     const selectedOptionIndex = ref(0);
     const resultContainerHeight = ref(0);
     const items = computed<IItem[]>(() => props.items as IItem[]);
-    const value = computed(() => props.value);
+    const value = computed<IItem>(() => props.value as IItem);
     const hasItems = computed(() => items.value.length > 0);
     const isSameSearchQuery = computed(() => previousQuery.value === searchQuery.value);
     const isSelected = (index: number) => index === selectedOptionIndex.value;

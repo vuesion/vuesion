@@ -6,12 +6,12 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { variationValidator } from '@/components/prop-validators';
+import { colorVariationValidator } from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueBadge',
   props: {
-    color: { type: String, validator: variationValidator, default: 'default' },
+    color: { type: String, validator: colorVariationValidator, default: 'neutral' },
     outlined: { type: Boolean, default: false },
   },
 });

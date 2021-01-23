@@ -159,8 +159,6 @@ export default defineComponent({
     const languages = computed(() => [
       { label: 'English', value: 'en' },
       { label: 'Deutsch', value: 'de' },
-      { label: 'Português', value: 'pt' },
-      { label: '中文', value: 'zh-cn' },
     ]);
     const themes = computed(() => [
       { label: 'Light Theme', value: 'light' },

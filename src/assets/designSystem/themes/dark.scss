@@ -1,66 +1,71 @@
 :root.dark {
   /* Brand Variations */
-  --brand-default: #{palette-color-level('grey', 100)};
-  --brand-default-hover: #{palette-color-level('grey', 70)};
-  --brand-default-focus: #{palette-color-level('grey', 30)};
-  --brand-default-active: #{palette-color-level('grey', 90)};
-  --brand-primary: #{palette-color-level('blue', 70)};
-  --brand-primary-hover: #{palette-color-level('blue', 30)};
-  --brand-primary-focus: #{palette-color-level('blue', 30)};
-  --brand-primary-active: #{palette-color-level('blue', 100)};
-  --brand-secondary: #{palette-color-level('coral', 70)};
-  --brand-secondary-hover: #{palette-color-level('coral', 30)};
-  --brand-secondary-focus: #{palette-color-level('coral', 30)};
-  --brand-secondary-active: #{palette-color-level('coral', 100)};
-  --brand-success: #{palette-color-level('green', 70)};
-  --brand-success-hover: #{palette-color-level('green', 30)};
-  --brand-success-focus: #{palette-color-level('green', 30)};
-  --brand-success-active: #{palette-color-level('green', 100)};
-  --brand-warning: #{palette-color-level('yellow', 70)};
-  --brand-warning-hover: #{palette-color-level('yellow', 30)};
-  --brand-warning-focus: #{palette-color-level('yellow', 30)};
-  --brand-warning-active: #{palette-color-level('yellow', 100)};
-  --brand-danger: #{palette-color-level('red', 70)};
-  --brand-danger-hover: #{palette-color-level('red', 30)};
-  --brand-danger-focus: #{palette-color-level('red', 30)};
-  --brand-danger-active: #{palette-color-level('red', 100)};
+  --brand-primary: #{palette-color-level('primary', 6)};
+  --brand-primary-hover: #{palette-color-level('primary', 7)};
+  --brand-primary-focus: #{palette-color-level('primary', 7)};
+  --brand-primary-active: #{palette-color-level('primary', 9)};
+
+  --brand-neutral: #{palette-color-level('neutral', 6)};
+  --brand-neutral-hover: #{palette-color-level('neutral', 7)};
+  --brand-neutral-focus: #{palette-color-level('neutral', 7)};
+  --brand-neutral-active: #{palette-color-level('neutral', 9)};
+
+  --brand-danger: #{palette-color-level('danger', 6)};
+  --brand-danger-hover: #{palette-color-level('danger', 7)};
+  --brand-danger-focus: #{palette-color-level('danger', 7)};
+  --brand-danger-active: #{palette-color-level('danger', 9)};
+
+  --brand-warning: #{palette-color-level('warning', 6)};
+  --brand-warning-hover: #{palette-color-level('warning', 7)};
+  --brand-warning-focus: #{palette-color-level('warning', 7)};
+  --brand-warning-active: #{palette-color-level('warning', 9)};
+
+  --brand-success: #{palette-color-level('success', 6)};
+  --brand-success-hover: #{palette-color-level('success', 7)};
+  --brand-success-focus: #{palette-color-level('success', 7)};
+  --brand-success-active: #{palette-color-level('success', 9)};
+
+  --brand-info: #{palette-color-level('info', 6)};
+  --brand-info-hover: #{palette-color-level('info', 7)};
+  --brand-info-focus: #{palette-color-level('info', 7)};
+  --brand-info-active: #{palette-color-level('info', 9)};
 
   /* Background Colors */
-  --brand-primary-bg-color: #{palette-color-level('neutral-1', 100)};
-  --brand-secondary-bg-color: #{palette-color-level('neutral-1', 80)};
-  --brand-tertiary-bg-color: #{palette-color-level('neutral-1', 60)};
+  --brand-primary-bg-color: #{palette-color-level('neutral', 9)};
+  --brand-secondary-bg-color: #{palette-color-level('neutral', 8)};
+  --brand-tertiary-bg-color: #{palette-color-level('neutral', 6)};
 
   /* Background Colors Inverse */
-  --brand-primary-bg-color-inverse: #{palette-color-level('neutral-1', 0)};
-  --brand-secondary-bg-color-inverse: #{palette-color-level('neutral-1', 10)};
-  --brand-tertiary-bg-color-inverse: #{palette-color-level('neutral-1', 20)};
+  --brand-primary-bg-color-inverse: #{palette-color-level('neutral', 1)};
+  --brand-secondary-bg-color-inverse: #{palette-color-level('neutral', 2)};
+  --brand-tertiary-bg-color-inverse: #{palette-color-level('neutral', 3)};
 
   /* Text Colors */
-  --brand-high-emphasis-text-color: #{palette-color-level('neutral-1', 0)};
-  --brand-medium-emphasis-text-color: #{palette-color-level('neutral-1', 30)};
-  --brand-low-emphasis-text-color: #{palette-color-level('neutral-1', 50)};
+  --brand-high-emphasis-text-color: #{palette-color-level('neutral', 1)};
+  --brand-medium-emphasis-text-color: #{palette-color-level('neutral', 3)};
+  --brand-low-emphasis-text-color: #{palette-color-level('neutral', 5)};
 
   /* Text Colors Inverse */
-  --brand-high-emphasis-text-color-inverse: #{palette-color-level('neutral-1', 100)};
-  --brand-medium-emphasis-text-color-inverse: #{palette-color-level('neutral-1', 70)};
-  --brand-low-emphasis-text-color-inverse: #{palette-color-level('neutral-1', 60)};
+  --brand-high-emphasis-text-color-inverse: #{palette-color-level('neutral', 10)};
+  --brand-medium-emphasis-text-color-inverse: #{palette-color-level('neutral', 7)};
+  --brand-low-emphasis-text-color-inverse: #{palette-color-level('neutral', 6)};
 
   /* Link Color */
-  --brand-link-color: #{palette-color-level('blue', 70)};
-  --brand-link-hover-color: #{palette-color-level('blue', 90)};
+  --brand-link-color: #{palette-color-level('primary', 6)};
+  --brand-link-hover-color: #{palette-color-level('primary', 7)};
 
   /* Borders */
-  --brand-primary-border-color: #{palette-color-level('neutral-1', 70)};
-  --brand-primary-border-color-inverse: #{palette-color-level('neutral-1', 50)};
+  --brand-primary-border-color: #{palette-color-level('neutral', 3)};
+  --brand-primary-border-color-inverse: #{palette-color-level('neutral', 5)};
   --brand-border-radius-sm: #{$space-4};
   --brand-border-radius-md: #{$space-8};
   --brand-border-radius-lg: #{$space-16};
 
   /* Box Shadows */
-  --brand-elevation-1: 0 -1px 2px rgba(19, 20, 22, 0.08), 0 3px 5px rgba(19, 20, 22, 0.12);
-  --brand-elevation-2: 0 -1px 3px rgba(19, 20, 22, 0.1), 0 4px 6px rgba(19, 20, 22, 0.2);
-  --brand-elevation-3: 0 -1px 3px rgba(19, 20, 22, 0.1), 0 4px 6px rgba(19, 20, 22, 0.2);
-  --brand-shadow-outline: 0 0 0 #{$space-8} #{rgba(palette-color-level('blue', 70), 0.5)};
+  --brand-elevation-1: 0 -1px 2px rgba(19, 20, 22, 0.78), 0 3px 5px rgba(19, 20, 22, 0.82);
+  --brand-elevation-2: 0 -1px 3px rgba(19, 20, 22, 0.8), 0 4px 6px rgba(19, 20, 22, 0.9);
+  --brand-elevation-3: 0 -1px 3px rgba(19, 20, 22, 0.8), 0 4px 6px rgba(19, 20, 22, 0.9);
+  --brand-shadow-outline: 0 0 0 #{$space-8} #{rgba(palette-color-level('primary', 6), 0.5)};
 
   /* Animation Language */
   --brand-transition-duration: 250ms;

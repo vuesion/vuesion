@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-headline level="1"> Icons </vue-headline>
+    <vue-text appearance="h1" as="h1"> Icons </vue-text>
     <br />
     <div :class="$style.icons">
       <vue-icon-book />
@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
+import VueText from '@/components/atoms/VueText/VueText.vue';
 import VueIconBook from '@/components/atoms/icons/VueIconBook/VueIconBook.vue';
 import VueIconBullhorn from '@/components/atoms/icons/VueIconBullhorn/VueIconBullhorn.vue';
 import VueIconCertificate from '@/components/atoms/icons/VueIconCertificate/VueIconCertificate.vue';
@@ -72,7 +72,7 @@ export default {
     VueIconCertificate,
     VueIconBullhorn,
     VueIconBook,
-    VueHeadline,
+    VueText,
     VueIconStar,
   },
 };

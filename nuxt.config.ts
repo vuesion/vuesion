@@ -1,4 +1,5 @@
 import { Configuration } from '@nuxt/types';
+import { VuesionConfig } from '@vuesion/models';
 
 const config: Configuration = {
   auth: {
@@ -13,7 +14,7 @@ const config: Configuration = {
       login: '/',
       logout: '/',
       callback: '/',
-      home: '/',
+      home: '/example/dashboard',
     },
     strategies: {
       local: {
@@ -64,30 +65,19 @@ const config: Configuration = {
   css: [],
   head: {
     title: process.env.npm_package_name || '',
-    link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Inter:200,400,600&display=swap' }],
+    link: [
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800|Lora:300,400,500,600,700,800&display=swap',
+      },
+    ],
   },
   i18n: {
     strategy: 'no_prefix',
     vueI18n: '@/plugins/vue-i18n/vue-i18n',
-    locales: [
-      {
-        code: 'en',
-        file: 'en.json',
-      },
-      {
-        code: 'de',
-        file: 'de.json',
-      },
-      {
-        code: 'pt',
-        file: 'pt.json',
-      },
-      {
-        code: 'zh-cn',
-        file: 'zh-cn.json',
-      },
-    ],
-    defaultLocale: 'en',
+    locales: VuesionConfig.i18n.locales,
+    defaultLocale: VuesionConfig.i18n.defaultLocale,
     lazy: true,
     langDir: '../i18n/',
     detectBrowserLanguage: {
@@ -95,7 +85,7 @@ const config: Configuration = {
       cookieDomain: null,
       cookieKey: 'i18n_redirected',
       alwaysRedirect: true,
-      fallbackLocale: 'en',
+      fallbackLocale: VuesionConfig.i18n.defaultLocale,
     },
     vuex: {
       moduleName: 'i18n',
@@ -126,6 +116,9 @@ const config: Configuration = {
     icon: {
       fileName: 'logo.png',
     },
+  },
+  router: {
+    middleware: ['auth'],
   },
   srcDir: 'src',
   serverMiddleware: ['@/api/index.ts'],

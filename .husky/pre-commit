@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+vuesion prettier --staged && vuesion parallel "npm run lint" "npm run test"

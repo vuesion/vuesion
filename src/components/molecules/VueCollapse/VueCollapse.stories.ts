@@ -15,7 +15,7 @@ story.add(
     },
     template: `
 <div>
-  <vue-button @click="show = !show" color="secondary">Collapse toggle</vue-button>
+  <vue-button @click="show = !show" color="primary">Collapse toggle</vue-button>
   <br />
   <br />
   <vue-collapse :show="show">

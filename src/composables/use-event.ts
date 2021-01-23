@@ -8,7 +8,7 @@ export const useEvent = (
     once?: boolean;
     passive?: boolean;
   } = {},
-  elementRef = ref<HTMLElement | Document>(document),
+  elementRef = ref<HTMLElement | Document | Window>(document),
 ) => {
   const el = elementRef?.value;
   const remove = () => {
