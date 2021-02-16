@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.dashboard">
-    <vue-grid with-vertical-space>
+    <vue-grid>
       <vue-grid-row>
         <vue-grid-column>
           <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'Dashboard' }]" />

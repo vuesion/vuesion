@@ -2,7 +2,7 @@
   <div ref="stage" :class="$style.stage">
     <canvas ref="canvas" :class="$style.canvas" />
 
-    <vue-grid :class="$style.content" with-vertical-space text-align="center">
+    <vue-grid :class="$style.content" text-align="center">
       <vue-grid-row>
         <vue-grid-column>
           <img src="logo.png" alt="vuesion" />

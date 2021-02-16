@@ -5,7 +5,7 @@
       image="https://images.unsplash.com/photo-1549082984-1323b94df9a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=512&q=60"
       alternative
     >
-      <vue-grid with-vertical-space>
+      <vue-grid>
         <vue-grid-row>
           <vue-grid-column>
             <vue-headline level="2">Developer Experience</vue-headline>
@@ -46,7 +46,7 @@
       image="https://images.unsplash.com/photo-1521790361543-f645cf042ec4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=512&q=60"
       flip
     >
-      <vue-grid with-vertical-space>
+      <vue-grid>
         <vue-grid-row>
           <vue-grid-column>
             <vue-headline level="2">Enterprise ready</vue-headline>
@@ -85,7 +85,7 @@
       image="https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=512&q=60"
       alternative
     >
-      <vue-grid with-vertical-space>
+      <vue-grid>
         <vue-grid-row>
           <vue-grid-column>
             <vue-headline level="2">User experience</vue-headline>
@@ -123,7 +123,7 @@
       image="https://images.unsplash.com/photo-1516381548400-349d680edb56?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=512&q=60"
       flip
     >
-      <vue-grid with-vertical-space>
+      <vue-grid>
         <vue-grid-row>
           <vue-grid-column>
             <vue-headline level="2">Quick start</vue-headline>

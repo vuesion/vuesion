@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.counter">
-    <vue-grid with-vertical-space>
+    <vue-grid>
       <vue-grid-row>
         <vue-grid-column>
           <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'VueX Example' }]" />
