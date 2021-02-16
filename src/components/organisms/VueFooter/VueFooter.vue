@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.vueFooter">
-    <vue-grid with-vertical-space text-align="center">
+    <vue-grid text-align="center">
       <vue-grid-row>
         <vue-grid-column>
           <small>&copy; Copyright {{ year }} Johannes Werner</small>
