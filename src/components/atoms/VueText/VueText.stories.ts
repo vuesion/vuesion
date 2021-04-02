@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import { textColorVariations } from '@/components/prop-validators';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueText from './VueText.vue';
 
 const story = storiesOf('Design System|Typography', module) as any;
@@ -7,13 +8,13 @@ const story = storiesOf('Design System|Typography', module) as any;
 story.add(
   'Text Styles',
   () => ({
-    components: { VueText },
+    components: { VueText, VueBox },
     data() {
       return {
         textVariations: textColorVariations,
       };
     },
-    template: `<div :style="{padding:'32px'}">
+    template: `<vue-box>
     <vue-text appearance="h1" as="h1">H1</vue-text>
     <vue-text appearance="h2" as="h2">H2</vue-text>
     <vue-text appearance="h3" as="h3">H3</vue-text>
@@ -27,7 +28,7 @@ story.add(
     <vue-text appearance="label" as="div">Label</vue-text>
     <vue-text appearance="button" weight="semi-bold" as="div">Button</vue-text>
     <vue-text appearance="support" as="div">Support</vue-text>
-    </div>`,
+    </vue-box>`,
   }),
   {
     info: {
@@ -39,13 +40,13 @@ story.add(
 story.add(
   'Text Colors',
   () => ({
-    components: { VueText },
+    components: { VueText, VueBox },
     data() {
       return {
         textVariations: textColorVariations,
       };
     },
-    template: `<div :style="{padding:'32px'}">
+    template: `<vue-box>
     <vue-text v-for="color in textVariations" :key="color" :color="color" as="div">
       {{ color }}
     </vue-text>
@@ -54,7 +55,7 @@ story.add(
     <vue-text v-for="color in textVariations" :key="color + '_2'" :color="color" as="div" serifs>
       {{ color }}
     </vue-text>
-    </div>`,
+    </vue-box>`,
   }),
   {
     info: {

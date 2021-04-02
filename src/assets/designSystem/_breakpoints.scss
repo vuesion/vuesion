@@ -1,0 +1,11 @@
+$screen-phone-min: 0;
+$screen-tablet-portrait-min: 768px;
+$screen-tablet-landscape-min: 1024px;
+$screen-small-desktop-min: 1280px;
+$screen-large-desktop-min: 1440px;
+
+$screen-phone-max: $screen-tablet-portrait-min - 1;
+$screen-tablet-portrait-max: $screen-tablet-landscape-min - 1;
+$screen-tablet-landscape-max: $screen-small-desktop-min - 1;
+$screen-small-desktop-max: $screen-large-desktop-min - 1;
+$screen-large-desktop-max: 4095px;

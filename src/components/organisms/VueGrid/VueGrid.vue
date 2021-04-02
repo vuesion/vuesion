@@ -37,19 +37,19 @@ export default defineComponent({
   position: relative;
 
   @include mediaMin(tabletPortrait) {
-    max-width: $screen-tablet-portrait;
+    max-width: $screen-tablet-portrait-min;
   }
 
   @include mediaMin(tabletLandscape) {
-    max-width: $screen-tablet-landscape;
+    max-width: $screen-tablet-landscape-min;
   }
 
   @include mediaMin(smallDesktop) {
-    max-width: $screen-small-desktop;
+    max-width: $screen-small-desktop-min;
   }
 
   @include mediaMin(largeDesktop) {
-    max-width: $screen-large-desktop;
+    max-width: $screen-large-desktop-min;
   }
 
   @each $name, $space in $spacings {

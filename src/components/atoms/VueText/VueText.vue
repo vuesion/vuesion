@@ -18,7 +18,12 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { fontWeightValidator, textColorVariationValidator, textStyleValidator } from '@/components/prop-validators';
+import {
+  fontWeightValidator,
+  responsiveAlignmentValidator,
+  textColorVariationValidator,
+  textStyleValidator,
+} from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueText',
@@ -31,6 +36,7 @@ export default defineComponent({
     serifs: { type: Boolean, default: false },
     underline: { type: Boolean, default: false },
     uppercase: { type: Boolean, default: false },
+    align: { type: [String, Array as () => Array<string>], validator: responsiveAlignmentValidator, default: null },
   },
   setup() {
     return {};
