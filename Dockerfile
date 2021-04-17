@@ -5,6 +5,7 @@ FROM node:12.11.0-alpine
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 WORKDIR app
+COPY ./.vuesion ./.vuesion
 COPY ./.nuxt ./.nuxt
 COPY ./i18n ./i18n
 COPY ./src ./src

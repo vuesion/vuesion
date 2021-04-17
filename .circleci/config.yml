@@ -41,6 +41,7 @@ jobs:
       - persist_to_workspace:
           root: ./
           paths:
+            - .vuesion
             - .nuxt
             - i18n
             - src
