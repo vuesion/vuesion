@@ -63,7 +63,7 @@ export default {
   box-shadow: $sidebar-shadow;
   position: fixed;
   top: 0;
-  left: 0;
+  left: -$space-24;
   height: $sidebar-height;
   background: $sidebar-bg;
   color: $sidebar-color;
@@ -76,7 +76,7 @@ export default {
   -webkit-overflow-scrolling: touch;
 
   &.open {
-    transform: translateX(0);
+    transform: translateX($space-24);
   }
 }
 

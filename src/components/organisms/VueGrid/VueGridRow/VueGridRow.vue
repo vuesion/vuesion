@@ -50,16 +50,10 @@ export default defineComponent({
 .vueGridRow {
   display: flex;
 
-  &.sm {
-    margin-left: -$gutter-sm;
-  }
-
-  &.md {
-    margin-left: -$gutter-md;
-  }
-
-  &.lg {
-    margin-left: -$gutter-lg;
+  @each $name, $space in $spacings {
+    &.#{$name} {
+      margin-left: -$space;
+    }
   }
 }
 </style>

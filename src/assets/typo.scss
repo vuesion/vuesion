@@ -7,19 +7,20 @@ html {
 
 body {
   font-family: $font-family;
-  font-size: 1.6em;
-  font-weight: $font-weight-light;
-  letter-spacing: $letter-spacing;
-  line-height: $line-height-md;
+  font-size: $text-1;
+  font-weight: $font-weight-regular;
+  letter-spacing: $letter-spacing-1;
+  line-height: $line-height-2;
   font-display: swap;
+  color: var(--brand-medium-emphasis-text-color);
 }
 
 small {
-  font-size: $font-size-sm;
+  font-size: $text-1;
 }
 
 strong {
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-semi-bold;
 }
 
 a {

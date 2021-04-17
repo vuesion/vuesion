@@ -11,7 +11,7 @@
 
       <vue-grid-row>
         <vue-grid-column>
-          <vue-headline level="1"> vuesion </vue-headline>
+          <vue-text appearance="h1" as="h1"> vuesion </vue-text>
         </vue-grid-column>
       </vue-grid-row>
 
@@ -50,10 +50,10 @@ import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueIconGithub from '@/components/atoms/icons/VueIconGithub/VueIconGithub.vue';
-import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
+import VueText from '@/components/atoms/VueText/VueText.vue';
 
 export default {
-  components: { VueHeadline, VueIconGithub, VueGridColumn, VueGridRow, VueGrid },
+  components: { VueText, VueIconGithub, VueGridColumn, VueGridRow, VueGrid },
   data() {
     return {};
   },
@@ -118,7 +118,7 @@ export default {
     transform: translate(-50%, -50%);
 
     .github {
-      font-size: $font-size-h1;
+      font-size: $text-8;
       display: inline-block;
       background: var(--brand-primary-bg-color);
 
@@ -127,8 +127,8 @@ export default {
       }
 
       i {
-        height: $font-size-h1;
-        width: $font-size-h1;
+        height: $text-8;
+        width: $text-8;
       }
     }
   }

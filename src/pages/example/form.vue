@@ -1,7 +1,7 @@
 <template>
   <vue-grid>
     <vue-grid-row :class="$style.form" justify-content="center" align-items="top">
-      <vue-grid-column vertical-space="lg" width="100%" tablet-landscape="70%" large-desktop="50%" :can-grow="false">
+      <vue-grid-column vertical-space="32" width="100%" tablet-landscape="70%" large-desktop="50%" :can-grow="false">
         <form-example />
       </vue-grid-column>
     </vue-grid-row>
@@ -17,7 +17,8 @@ import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridC
 import FormExample from '@/components/organisms/FormExample/FormExample.vue';
 
 export default {
-  name: 'FormExample',
+  name: 'FormExamplePage',
+  auth: false,
   components: {
     FormExample,
     VueGridColumn,

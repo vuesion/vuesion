@@ -1,6 +1,6 @@
 #
 <template>
-  <div :class="[$style.vueLoader, $style[size], $style[color]]">
+  <div :class="[$style.vueLoader, $style[`s${size}`], $style[color]]">
     <svg :class="$style.circle" viewBox="25 25 50 50">
       <circle :class="$style.path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
     </svg>
@@ -9,13 +9,13 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { spacingValidator, variationValidator } from '@/components/prop-validators';
+import { spacingValidator, colorVariationValidator } from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueLoader',
   props: {
-    color: { type: String, validator: variationValidator, default: 'default' },
-    size: { type: String, validator: spacingValidator, default: 'sm' },
+    color: { type: String, validator: colorVariationValidator, default: 'neutral' },
+    size: { type: String, validator: spacingValidator, default: '16' },
   },
 });
 </script>
@@ -35,14 +35,11 @@ export default defineComponent({
     padding-top: 100%;
   }
 
-  &.md {
-    width: $loader-medium-size;
-    height: $loader-medium-size;
-  }
-
-  &.lg {
-    width: $loader-large-size;
-    height: $loader-large-size;
+  @each $name, $space in $spacings {
+    &.s#{$name} {
+      width: $space;
+      height: $space;
+    }
   }
 
   @each $variation, $color in $loader-variations {

@@ -1,47 +1,36 @@
-$font-family-headings: 'Inter', Helvetica, sans-serif;
+$font-family-serif: 'Lora', Helvetica, sans-serif;
 $font-family: 'Inter', Helvetica, sans-serif;
 
 /* Font Sizes */
-$font-size-sm: 1.2rem;
-$font-size-md: 1.4rem;
-$font-size-lg: 2rem;
-
-$font-size-h1: 4.8rem;
-$font-size-h2: 3.2rem;
-$font-size-h3: 2.4rem;
-$font-size-h4: 2rem;
-$font-size-h5: 1.6rem;
-$font-size-h6: 1.4rem;
+$text-1: 1.2rem;
+$text-2: 1.4rem;
+$text-3: 1.6rem;
+$text-4: 2rem;
+$text-5: 2.4rem;
+$text-6: 3rem;
+$text-7: 3.6rem;
+$text-8: 4.8rem;
+$text-9: 5.6rem;
 
 /* Line Heights */
-$line-height-sm: $font-size-sm + $space-8;
-$line-height-md: $font-size-md + $space-8;
-$line-height-lg: $font-size-lg + $space-8;
-
-$line-height-h1: $font-size-h1 + $space-8;
-$line-height-h2: $font-size-h2 + $space-8;
-$line-height-h3: $font-size-h3 + $space-8;
-$line-height-h4: $font-size-h4 + $space-8;
-$line-height-h5: $font-size-h5 + $space-8;
-$line-height-h6: $font-size-h6 + $space-8;
+$line-height-1: 1.6rem;
+$line-height-2: 2rem;
+$line-height-3: 2.4rem;
+$line-height-4: 2.8rem;
+$line-height-5: 3.2rem;
+$line-height-6: 3.6rem;
+$line-height-7: 4.4rem;
+$line-height-8: 5.6rem;
+$line-height-9: 6.4rem;
 
 /* Letter Spacings */
-$letter-spacing: normal;
-$letter-spacing-h1: normal;
-$letter-spacing-h2: normal;
-$letter-spacing-h3: normal;
-$letter-spacing-h4: normal;
-$letter-spacing-h5: normal;
-$letter-spacing-h6: normal;
+$letter-spacing-1: 0px;
+$letter-spacing-2: 0.2px;
+$letter-spacing-3: 0.3px;
+$letter-spacing-4: 0.4px;
 
 /* Font Weights */
-$font-weight-light: 200;
 $font-weight-regular: 400;
-$font-weight-bold: 600;
-$font-weight-h1: $font-weight-regular;
-$font-weight-h2: $font-weight-regular;
-$font-weight-h3: $font-weight-regular;
-$font-weight-h4: $font-weight-regular;
-$font-weight-h5: $font-weight-regular;
-$font-weight-h6: $font-weight-regular;
+$font-weight-semi-bold: 600;
+
 $link-font-weight: $font-weight-regular;

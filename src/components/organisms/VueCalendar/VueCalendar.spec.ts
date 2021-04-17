@@ -16,8 +16,7 @@ describe('VueCalendar.vue', () => {
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(1);
 
-    wrapper.find('.h4').trigger('click');
-    await wrapper.vm.$nextTick();
+    await wrapper.find('.h4').trigger('click');
 
     expect(wrapper.findAll(`.calendar`)).toHaveLength(1);
     expect(wrapper.findAll(`.body`)).toHaveLength(0);

@@ -4,13 +4,13 @@
       <vue-grid>
         <vue-grid-row>
           <vue-grid-column>
-            <vue-headline level="3">
+            <vue-text appearance="h3" as="h3">
               {{ $t('auth.LoginForm.title' /* Login Example */) }}
-            </vue-headline>
+            </vue-text>
           </vue-grid-column>
         </vue-grid-row>
 
-        <vue-grid-row vertical-space="lg">
+        <vue-grid-row vertical-space="32">
           <vue-grid-column>
             <vue-input
               id="username"
@@ -57,7 +57,7 @@
 
 <script lang="ts">
 import { ValidationObserver } from 'vee-validate';
-import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
+import VueText from '@/components/atoms/VueText/VueText.vue';
 import VueInput from '@/components/atoms/VueInput/VueInput.vue';
 import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
@@ -66,7 +66,7 @@ import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridC
 
 export default {
   name: 'LoginForm',
-  components: { ValidationObserver, VueGridColumn, VueGridRow, VueGrid, VueButton, VueInput, VueHeadline },
+  components: { ValidationObserver, VueGridColumn, VueGridRow, VueGrid, VueButton, VueInput, VueText },
   props: {
     loading: { type: Boolean, default: false },
   },

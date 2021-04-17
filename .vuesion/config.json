@@ -8,5 +8,18 @@
   "clean": ["./dist", "./.nuxt", "./coverage", "./storybook-static", "./nuxt.config.js"],
   "prettier": {
     "extensions": "ts,vue,js,json,scss,sass,css,yaml,yml"
+  },
+  "i18n": {
+    "locales": [
+      {
+        "code": "en",
+        "file": "en.json"
+      },
+      {
+        "code": "de",
+        "file": "de.json"
+      }
+    ],
+    "defaultLocale": "en"
   }
 }

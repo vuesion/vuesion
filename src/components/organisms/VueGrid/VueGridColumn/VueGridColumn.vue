@@ -103,28 +103,14 @@ export default defineComponent({
     flex-basis: var(--large-desktop);
   }
 
-  &.hsm {
-    padding-left: $gutter-sm;
-  }
+  @each $name, $space in $spacings {
+    &.h#{$name} {
+      padding-left: $space;
+    }
 
-  &.hmd {
-    padding-left: $gutter-md;
-  }
-
-  &.hlg {
-    padding-left: $gutter-lg;
-  }
-
-  &.vsm {
-    padding-top: $gutter-sm;
-  }
-
-  &.vmd {
-    padding-top: $gutter-md;
-  }
-
-  &.vlg {
-    padding-top: $gutter-lg;
+    &.v#{$name} {
+      padding-top: $space;
+    }
   }
 }
 </style>

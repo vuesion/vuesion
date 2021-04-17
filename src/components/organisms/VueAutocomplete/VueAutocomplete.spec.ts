@@ -266,7 +266,7 @@ describe('VueAutocomplete.vue', () => {
     }, 500);
   });
 
-  test('setResultContainerHeight', () => {
+  test('setResultContainerHeight', async () => {
     const wrapper = mount<any>(VueAutocomplete, {
       localVue,
       i18n,
@@ -289,12 +289,24 @@ describe('VueAutocomplete.vue', () => {
     wrapper.vm.setResultContainerHeight();
     expect(wrapper.vm.resultContainerHeight).toBe(10);
 
-    wrapper.setProps({ items: AutocompleteFixture });
+    await wrapper.setProps({ items: AutocompleteFixture });
+
+    wrapper.vm.resultContainerRef = {
+      firstChild: {
+        offsetHeight: 10,
+      },
+    } as any;
 
     wrapper.vm.setResultContainerHeight();
     expect(wrapper.vm.resultContainerHeight).toBe(90);
 
-    wrapper.setProps({ maxItems: 5 });
+    await wrapper.setProps({ maxItems: 5 });
+
+    wrapper.vm.resultContainerRef = {
+      firstChild: {
+        offsetHeight: 10,
+      },
+    } as any;
 
     wrapper.vm.setResultContainerHeight();
     expect(wrapper.vm.resultContainerHeight).toBe(55);

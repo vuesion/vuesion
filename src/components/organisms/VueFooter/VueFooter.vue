@@ -61,8 +61,8 @@ export default {
   text-align: center;
 
   i {
-    height: $font-size-lg;
-    width: $font-size-lg;
+    height: $text-4;
+    width: $text-4;
     fill: $footer-link-color;
 
     &:hover {

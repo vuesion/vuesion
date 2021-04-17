@@ -4,7 +4,7 @@ import VueGrid from './VueGrid.vue';
 import VueGridRow from './VueGridRow/VueGridRow.vue';
 import VueGridColumn from './VueGridColumn/VueGridColumn.vue';
 
-const story = storiesOf('Organisms|Grid', module) as any;
+const story = storiesOf('Design System|Layout', module) as any;
 
 story.add(
   'Simple Grid',
@@ -46,7 +46,7 @@ story.add(
   'No spacings',
   () => ({
     components: { VueGrid, VueGridRow, VueGridColumn, VueButton },
-    template: `<vue-grid vertical-space="none" horizontal-space="none">
+    template: `<vue-grid vertical-space="0" horizontal-space="0">
         <vue-grid-row>
             <vue-grid-column>
                 <vue-button block>Item 1</vue-button>
@@ -152,10 +152,10 @@ story.add(
   'Complex Grid',
   () => ({
     components: { VueGrid, VueGridRow, VueGridColumn, VueButton },
-    template: `<vue-grid vertical-space="none" fluid>
+    template: `<vue-grid vertical-space="0" fluid>
     <vue-grid-row>
       <vue-grid-column width="30%" :can-grow="false">
-        <vue-grid horizontal-space="lg" vertical-space="lg" fluid>
+        <vue-grid horizontal-space="32" vertical-space="32" fluid>
           <vue-grid-row>
             <vue-grid-column>
               <vue-button block>Item 1</vue-button>
@@ -183,7 +183,7 @@ story.add(
           </vue-grid-row>
           <vue-grid-row>
             <vue-grid-column>
-              <vue-button color="secondary" block>Item 1</vue-button>
+              <vue-button color="neutral" block>Item 1</vue-button>
             </vue-grid-column>
           </vue-grid-row>
           <vue-grid-row>
@@ -199,7 +199,7 @@ story.add(
         </vue-grid>
       </vue-grid-column>
       <vue-grid-column width="20%" :can-grow="false">
-        <vue-grid horizontal-space="sm" vertical-space="sm" fluid>
+        <vue-grid horizontal-space="8" vertical-space="8" fluid>
           <vue-grid-row>
             <vue-grid-column>
               <vue-button color="primary" block>Item 1</vue-button>
@@ -210,10 +210,10 @@ story.add(
           </vue-grid-row>
           <vue-grid-row>
             <vue-grid-column>
-              <vue-button color="secondary" block>item 1</vue-button>
+              <vue-button color="neutral" block>item 1</vue-button>
             </vue-grid-column>
           </vue-grid-row>
-          <vue-grid-row vertical-space="none">
+          <vue-grid-row vertical-space="0">
             <vue-grid-column>
               <vue-button color="success" block>Item 1</vue-button>
             </vue-grid-column>

@@ -1,7 +1,7 @@
-import * as express from 'express';
-import * as helmet from 'helmet';
-import * as cookieParser from 'cookie-parser';
-import * as compression from 'compression';
+import express from 'express';
+import helmet from 'helmet';
+import cookieParser from 'cookie-parser';
+import compression from 'compression';
 import { DemoRoutes } from './routes/DemoRoutes';
 import { CounterRoutes } from './routes/CounterRoutes';
 

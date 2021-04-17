@@ -1,5 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import { brandVariations } from '../../prop-validators';
+import { brandColorVariations } from '../../prop-validators';
 import VueLoader from './VueLoader.vue';
 
 const localVue = createLocalVue();
@@ -17,26 +17,26 @@ describe('VueLoader.vue', () => {
     const wrapper = mount(VueLoader, {
       localVue,
       propsData: {
-        size: 'md',
+        size: '24',
       },
     });
 
-    expect(wrapper.findAll(`.md`)).toHaveLength(1);
+    expect(wrapper.findAll(`.s24`)).toHaveLength(1);
   });
 
   test('renders large loader', () => {
     const wrapper = mount(VueLoader, {
       localVue,
       propsData: {
-        size: 'lg',
+        size: '64',
       },
     });
 
-    expect(wrapper.findAll(`.lg`)).toHaveLength(1);
+    expect(wrapper.findAll(`.s64`)).toHaveLength(1);
   });
 
   test('renders color variations', () => {
-    brandVariations.forEach((variation: string) => {
+    brandColorVariations.forEach((variation: string) => {
       const wrapper = mount(VueLoader, {
         localVue,
         propsData: {

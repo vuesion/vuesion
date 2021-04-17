@@ -15,7 +15,9 @@
       click: onClick,
     }"
   >
-    <slot v-if="loading === false" />
+    <vue-text v-if="loading === false" :class="$style.text" appearance="button" weight="semi-bold" as="span">
+      <slot />
+    </vue-text>
     <vue-loader v-else :class="$style.loader" />
   </component>
 </template>
@@ -23,18 +25,20 @@
 <script lang="ts">
 import { defineComponent, computed } from '@vue/composition-api';
 import { getDomRef } from '@/composables/get-dom-ref';
-import { variationValidator } from '@/components/prop-validators';
-import VueLoader from '../VueLoader/VueLoader.vue';
+import { colorVariationValidator } from '@/components/prop-validators';
+import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueLoader from '@/components/atoms/VueLoader/VueLoader.vue';
 
 export default defineComponent({
   name: 'VueButton',
   components: {
     VueLoader,
+    VueText,
   },
   props: {
     disabled: { type: Boolean, default: false },
     block: { type: Boolean, default: false },
-    color: { type: String, validator: variationValidator, default: 'default' },
+    color: { type: String, validator: colorVariationValidator, default: 'neutral' },
     loading: { type: Boolean, default: false },
     ghost: { type: Boolean, default: false },
     as: { type: String, default: 'button' },
@@ -88,33 +92,16 @@ export default defineComponent({
   touch-action: manipulation;
   cursor: pointer;
   white-space: nowrap;
-  text-transform: $button-text-transform;
   min-width: $button-min-width;
   position: relative;
   overflow: hidden;
-  font-family: $button-font-family;
-  font-size: $button-font-size;
-  font-weight: $button-font-weight;
-  line-height: $button-line-height;
   border-radius: $button-border-radius;
   height: $button-height;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
-  text-decoration: $button-text-decoration;
   border: $button-border-width solid transparent;
   outline: none;
-
-  &:hover {
-    text-decoration: $button-hover-text-decoration;
-  }
-
-  &:focus {
-    text-decoration: $button-hover-text-decoration;
-  }
-
-  &:active {
-    text-decoration: $button-hover-text-decoration;
-  }
+  text-decoration: none;
 
   &.disabled,
   &[disabled] fieldset[disabled] & {
@@ -190,11 +177,17 @@ export default defineComponent({
     height: $button-icon-size;
     width: $button-icon-size;
   }
+
+  .text {
+    display: inline-flex;
+    align-items: center;
+    height: $button-height;
+  }
 }
 
 .loader {
   position: initial;
-  width: $button-font-size;
-  height: $button-font-size;
+  width: $text-2;
+  height: $text-2;
 }
 </style>

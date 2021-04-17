@@ -4,11 +4,11 @@
       <form @submit.prevent="onSubmit">
         <vue-grid-row>
           <vue-grid-column>
-            <vue-headline level="2">Form example</vue-headline>
+            <vue-text appearance="h2" as="h2">Form example</vue-text>
           </vue-grid-column>
         </vue-grid-row>
 
-        <vue-grid-row vertical-space="none">
+        <vue-grid-row vertical-space="0">
           <vue-grid-column>
             <small>
               This example uses <a href="https://github.com/baianat/vee-validate">vee-validate</a> for field validation.
@@ -16,11 +16,11 @@
           </vue-grid-column>
         </vue-grid-row>
 
-        <vue-grid-row vertical-space="md">
+        <vue-grid-row vertical-space="16">
           <vue-grid-column />
         </vue-grid-row>
 
-        <vue-grid-row vertical-space="sm">
+        <vue-grid-row vertical-space="8">
           <vue-grid-column>
             <vue-input
               id="firstname"
@@ -32,7 +32,7 @@
               validation="required"
             />
           </vue-grid-column>
-          <vue-grid-column vertical-space="sm">
+          <vue-grid-column vertical-space="8">
             <vue-input
               id="lastname"
               v-model="model.lastname"
@@ -45,7 +45,7 @@
           </vue-grid-column>
         </vue-grid-row>
 
-        <vue-grid-row vertical-space="sm">
+        <vue-grid-row vertical-space="8">
           <vue-grid-column>
             <vue-input
               id="email"
@@ -60,7 +60,7 @@
           </vue-grid-column>
         </vue-grid-row>
 
-        <vue-grid-row vertical-space="sm">
+        <vue-grid-row vertical-space="8">
           <vue-grid-column>
             <vue-input
               id="street"
@@ -88,7 +88,7 @@
           </vue-grid-column>
         </vue-grid-row>
 
-        <vue-grid-row vertical-space="sm">
+        <vue-grid-row vertical-space="8">
           <vue-grid-column>
             <vue-input
               id="city"
@@ -115,7 +115,7 @@
           </vue-grid-column>
         </vue-grid-row>
 
-        <vue-grid-row vertical-space="md">
+        <vue-grid-row vertical-space="16">
           <vue-grid-column>
             <vue-checkbox
               id="acceptTerms"
@@ -154,7 +154,7 @@
           </vue-grid-column>
         </vue-grid-row>
 
-        <vue-grid-row vertical-space="lg" justify-content="flex-end">
+        <vue-grid-row vertical-space="32" justify-content="flex-end">
           <vue-grid-column>
             <vue-button color="primary" :disabled="invalid" :loading="isLoading"> Save </vue-button>
           </vue-grid-column>
@@ -173,14 +173,14 @@ import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 import { addNotification } from '@/components/molecules/VueNotificationStack/utils';
-import VueHeadline from '@/components/atoms/VueHeadline/VueHeadline.vue';
+import VueText from '@/components/atoms/VueText/VueText.vue';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 
 export default {
   name: 'FormExample',
   components: {
     ValidationObserver,
-    VueHeadline,
+    VueText,
     VueButton,
     VueGridColumn,
     VueGridRow,

@@ -28,7 +28,6 @@ describe('CounterActions', () => {
     axiosMock = getAxiosMock();
 
     store.$axios = axiosMock;
-
     store.commit = jest.fn();
   });
 

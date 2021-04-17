@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { brandVariations } from '../../prop-validators';
+import { brandColorVariations } from '../../prop-validators';
 import VueLoader from './VueLoader.vue';
 
 const story = storiesOf('Atoms|Loader', module) as any;
@@ -10,14 +10,14 @@ story.add(
     components: { VueLoader },
     data(): any {
       return {
-        variations: brandVariations,
+        variations: brandColorVariations,
       };
     },
     template: `<div>
 <template v-for="variation in variations">
 <vue-loader :color="variation" />
-<vue-loader :color="variation" size="md" />
-<vue-loader :color="variation" size="lg" />
+<vue-loader :color="variation" size="32" />
+<vue-loader :color="variation" size="120" />
 <br />
 <br />
 </template>

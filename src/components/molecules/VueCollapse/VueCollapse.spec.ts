@@ -4,7 +4,7 @@ import VueCollapse from './VueCollapse.vue';
 const localVue = createLocalVue();
 
 describe('VueCollapse.vue', () => {
-  test('renders component', () => {
+  test('renders component', async () => {
     const wrapper = mount(VueCollapse, {
       localVue,
       slots: {
@@ -14,7 +14,7 @@ describe('VueCollapse.vue', () => {
 
     expect(wrapper.find('h1').text()).toBe('content');
 
-    wrapper.setProps({ show: false });
+    await wrapper.setProps({ show: false });
 
     expect(wrapper.props().show).toBe(false);
   });

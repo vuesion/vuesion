@@ -1,5 +1,5 @@
 import { render } from '@testing-library/vue';
-import { brandVariations } from '../../prop-validators';
+import { brandColorVariations } from '../../prop-validators';
 import VueBadge from './VueBadge.vue';
 
 describe('VueBadge.vue', () => {
@@ -14,7 +14,7 @@ describe('VueBadge.vue', () => {
   });
 
   test('renders color variations', () => {
-    brandVariations.forEach((variation: string) => {
+    brandColorVariations.forEach((variation: string) => {
       const { container } = render(VueBadge, {
         propsData: {
           color: variation,

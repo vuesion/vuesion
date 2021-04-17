@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { brandVariations } from '../../prop-validators';
+import { brandColorVariations } from '../../prop-validators';
 import VueBadge from './VueBadge.vue';
 
 const story = storiesOf('Atoms|Badge', module) as any;
@@ -10,7 +10,7 @@ story.add(
     components: { VueBadge },
     data(): any {
       return {
-        variations: brandVariations,
+        variations: brandColorVariations,
       };
     },
     template: `<div>
