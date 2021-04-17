@@ -58,6 +58,7 @@
     "@nuxtjs/axios": "5.13.1",
     "@nuxtjs/composition-api": "0.20.2",
     "@nuxtjs/pwa": "3.3.5",
+    "@vuesion/models": "4.0.0-beta.3",
     "@vuesion/utils": "4.0.0-beta.3",
     "@vuesion/vuex-persist": "4.0.0-beta.3",
     "animejs": "3.2.1",
