@@ -2,7 +2,6 @@
   <div
     :class="[$style.vueGridColumn, $style[`v${columnVerticalSpace}`], $style[`h${columnHorizontalSpace}`]]"
     :style="styles"
-    :data-width="width"
   >
     <slot />
   </div>

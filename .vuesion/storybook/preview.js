@@ -62,11 +62,18 @@ addParameters({
           height: '568px',
         },
       },
-      tablet: {
-        name: 'Tablet',
+      tabletPortrait: {
+        name: 'Tablet Portrait',
         styles: {
-          width: '786px',
+          width: '768px',
           height: '1024px',
+        },
+      },
+      tabletLandscape: {
+        name: 'Tablet Landscape',
+        styles: {
+          width: '1024px',
+          height: '768px',
         },
       },
       smallDesktop: {

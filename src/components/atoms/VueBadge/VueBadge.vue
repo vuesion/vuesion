@@ -28,6 +28,7 @@ export default defineComponent({
   font-weight: $badge-font-weight;
   letter-spacing: $badge-letter-spacing;
   border-radius: $badge-border-radius;
+  white-space: nowrap;
 
   @each $variation, $values in $badge-variations {
     &.#{$variation} {

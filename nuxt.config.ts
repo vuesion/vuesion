@@ -48,7 +48,7 @@ const config: Configuration = {
     loaders: {
       cssModules: {
         modules: {
-          localIdentName: '[local]_[hash:base64:4]',
+          localIdentName: process.env.NODE_ENV !== 'production' ? '[local]_[hash:base64:4]' : '[hash:base64:4]',
         },
       },
     },

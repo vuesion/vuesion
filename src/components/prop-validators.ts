@@ -1,3 +1,6 @@
+import isArray from 'lodash/isArray';
+import { BreakPoint } from '@/enums/BreakPoint';
+
 export const brandColorVariations = ['primary', 'neutral', 'danger', 'warning', 'success', 'info'];
 export const textColorVariations = [
   'primary',
@@ -51,6 +54,7 @@ export const brandSpacings = [
   '128',
   '192',
 ];
+export const brandBreakpoints = Object.keys(BreakPoint);
 
 export const colorVariationValidator = (value: string) => {
   return brandColorVariations.includes(value.toLowerCase());
@@ -68,6 +72,57 @@ export const fontWeightValidator = (value: string) => {
   return fontWeights.includes(value.toLowerCase());
 };
 
-export const spacingValidator = (value: string) => {
-  return brandSpacings.includes(value.toLowerCase());
+export const alignmentValidator = (value: string) => {
+  return ['left', 'center', 'right', 'top', 'bottom', 'inherit', 'initial'].includes(value.toLowerCase());
+};
+
+export const responsiveAlignmentValidator = (alignmentProps: string | string[]) => {
+  if (isArray(alignmentProps)) {
+    let valid = true;
+
+    alignmentProps.forEach((spacingProp) => {
+      if (valid === true && alignmentValidator(spacingProp) === false) {
+        valid = false;
+      }
+    });
+
+    return valid;
+  } else {
+    return alignmentValidator(alignmentProps);
+  }
+};
+
+export const breakpointValidator = (value: string) => {
+  return brandBreakpoints.includes(value);
+};
+
+export const spacingValidator = (spacingProp: string | number) => {
+  let valid = true;
+
+  spacingProp
+    .toString()
+    .split(' ')
+    .forEach((value) => {
+      if (valid === true && brandSpacings.includes(value.toLowerCase()) === false) {
+        valid = false;
+      }
+    });
+
+  return valid;
+};
+
+export const responsiveSpacingValidator = (spacingProps: string | string[]) => {
+  if (isArray(spacingProps)) {
+    let valid = true;
+
+    spacingProps.forEach((spacingProp) => {
+      if (valid === true && spacingValidator(spacingProp) === false) {
+        valid = false;
+      }
+    });
+
+    return valid;
+  } else {
+    return spacingValidator(spacingProps);
+  }
 };

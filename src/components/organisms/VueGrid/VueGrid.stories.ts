@@ -4,7 +4,7 @@ import VueGrid from './VueGrid.vue';
 import VueGridRow from './VueGridRow/VueGridRow.vue';
 import VueGridColumn from './VueGridColumn/VueGridColumn.vue';
 
-const story = storiesOf('Design System|Layout', module) as any;
+const story = storiesOf('Design System|Layout/Grid (deprecated)', module) as any;
 
 story.add(
   'Simple Grid',

@@ -1,7 +1,7 @@
 @import 'designSystem/variables';
 @import 'designSystem/mixins';
 
-/*! minireset.css v0.0.3 | MIT License | github.com/jgthms/minireset.css */
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
 html,
 body,
 p,
@@ -39,15 +39,13 @@ h6 {
   font-weight: normal;
 }
 
-ul,
-ol {
-  padding: 0 0 0 $space-16;
+ul {
+  list-style: none;
 }
 
 button,
 input,
-select,
-textarea {
+select {
   margin: 0;
 }
 
@@ -56,17 +54,12 @@ html {
 }
 
 *,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 img,
-embed,
-iframe,
-object,
-audio,
 video {
   height: auto;
   max-width: 100%;
@@ -84,5 +77,4 @@ table {
 td,
 th {
   padding: 0;
-  text-align: left;
 }

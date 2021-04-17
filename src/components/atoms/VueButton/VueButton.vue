@@ -11,7 +11,7 @@
     :tabindex="isDisabled ? -1 : 0"
     :aria-hidden="isDisabled"
     v-on="{
-      ...this.$listeners,
+      ...$listeners,
       click: onClick,
     }"
   >

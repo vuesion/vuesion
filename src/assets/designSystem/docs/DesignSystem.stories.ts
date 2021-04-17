@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueMarkdown from '@/components/organisms/VueMarkdown/VueMarkdown.vue';
 import BrandColors from './components/BrandColors.vue';
 import ColorPalette from './components/ColorPalette.vue';
@@ -8,8 +9,8 @@ let story = storiesOf('Design System|Design System', module) as any;
 story.addParameters({ options: { showAddonPanel: false } });
 
 story.add('Intro', () => ({
-  components: { VueMarkdown },
-  template: `<vue-markdown :style="{padding:'32px'}" :use-router="false">
+  components: { VueMarkdown, VueBox },
+  template: `<vue-box><vue-markdown :use-router="false">
 # Design System
 
 Vuesion comes with a Design System that you can 100% customize.
@@ -31,7 +32,7 @@ Brand or your clients Corporate Identity.
 
 We are aware that not everyone has to implement their own professional Design System.
 If this is the case for you, you might be interested in [Vuetify](https://github.com/nuxt-community/vuetify-module) or [tailwind](https://tailwindcss.nuxtjs.org/)
-</vue-markdown>
+</vue-markdown></vue-box>
 `,
 }));
 
@@ -40,25 +41,25 @@ story = storiesOf('Design System|Branding', module) as any;
 story.addParameters({ options: { showAddonPanel: false } });
 
 story.add('Color Palette', () => ({
-  components: { VueMarkdown, ColorPalette },
-  template: `<div :style="{padding:'32px'}">
+  components: { VueMarkdown, ColorPalette, VueBox },
+  template: `<vue-box>
 <vue-markdown :use-router="false">
 ### Color Palette
 </vue-markdown>
 <color-palette />
-</div>
+</vue-box>
 `,
 }));
 
 story.add('Color Tokens', () => ({
-  components: { VueMarkdown, BrandColors },
-  template: `<div :style="{padding:'32px'}">
+  components: { VueMarkdown, BrandColors, VueBox },
+  template: `<vue-box>
 <vue-markdown :use-router="false">
 ### Brand Colors
 Every brand color is related to a color in the color palette.
 </vue-markdown>
 <brand-colors/>
-</div>
+</vue-box>
 `,
 }));
 
@@ -68,19 +69,10 @@ story = storiesOf('Design System|Layout', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
-story.add('Layout', () => ({
-  components: { VueMarkdown },
-  template: `<vue-markdown :style="{padding:'32px'}" :use-router="false">
-## Layout
-The Grid-System is based on Flex box and comes in form of three included components.
-
-Component     | Purpose
---------------|-------
-VueGrid       | Container that is limited in the width, general page layout
-VueGridRow    | Row that is always 100% width and will be stacked on the page
-VueGridColumn | Column in the row that will be distributed equally on the page
-
-### Spacing
+story.add('Spacings', () => ({
+  components: { VueMarkdown, VueBox },
+  template: `<vue-box><vue-markdown :use-router="false">
+## Spacings
 To keep the spacing consistent we have a couple of variables with the prefix \`$space-\`
 
 Variable   | Space in pixel
@@ -96,33 +88,38 @@ $space-32  |  32px
 $space-40  |  40px
 $space-48  |  48px
 $space-52  |  52px
+$space-56  |  56px
+$space-64  |  64px
+$space-72  |  72px
 $space-84  |  84px
-</vue-markdown>
+$space-96  |  96px
+$space-120  |  120px
+$space-128  |  128px
+$space-192  |  192px
+</vue-markdown></vue-box>
 `,
 }));
 
-story = storiesOf('Design System|Break points', module) as any;
-
-story.addParameters({ options: { showAddonPanel: false } });
-
 story.add('Break points', () => ({
-  components: { VueMarkdown },
-  template: `<vue-markdown :style="{padding:'32px'}" :use-router="false">
+  components: { VueMarkdown, VueBox },
+  template: `<vue-box><vue-markdown :use-router="false">
 ## Break points
-If you want to use a break point inside one of your components, we provide you width
+If you want to use a break points inside one of your components, we provide you width
 mixins to keep everything consistent and to avoid unnecessary media definitions:
 
 \`@include mediaMin(break-point-id)\`
 
 \`@include mediaMax(break-point-id)\`
 
-Break Point Id   | MinWidth | MaxWidth | GutterWidth
------------------|----------|----------|------------
-phone            | 320px    | 319px    | 3.2rem
-tabletPortrait   | 768px    | 767px    | 3.2rem
-tabletLandscape  | 1024px   | 1023px   | 3.2rem
-smallDesktop     | 1280px   | 1279px   | 3.2rem
-largeDesktop     | 1440px   | 1439px   | 3.2rem
-</vue-markdown>
+\`@include mediaMinMax(break-point-id)\`
+
+Break Point Id   | Min-width | Max-width
+-----------------|----------|----------
+phone            | 0        | 767px
+tabletPortrait   | 768px    | 1023px
+tabletLandscape  | 1024px   | 1279px
+smallDesktop     | 1280px   | 1439px
+largeDesktop     | 1440px   | 4095px
+</vue-markdown></vue-box>
 `,
 }));
