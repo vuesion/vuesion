@@ -89,7 +89,7 @@ export default defineComponent({
       marginTabletLandscapeValues,
       marginSmallDesktopValues,
       marginLargeDesktopValues,
-      applyClasses: ($style: any, values: any, classNamePrefix: string, breakpointPrefix = null) => {
+      applyClasses: ($style: any, values: any, classNamePrefix: string, breakpointPrefix: string = null) => {
         const result: any = {};
         const map: any = {
           top: 't',

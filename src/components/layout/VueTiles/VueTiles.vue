@@ -38,7 +38,7 @@ export default defineComponent({
     },
     horizontalSpace: {
       type: [Number, String, Array as () => Array<string | number>],
-      validator: responsivePropValidator(spacingValidator()),
+      validator: responsivePropValidator(spacingValidator),
       default: null,
     },
     columns: {
