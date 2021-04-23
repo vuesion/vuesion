@@ -16,7 +16,7 @@ describe('VueText.vue', () => {
   test('renders color variations', () => {
     textColorVariations.forEach((variation: string) => {
       const { container } = render(VueText, {
-        propsData: {
+        props: {
           color: variation,
         },
       });
@@ -25,5 +25,20 @@ describe('VueText.vue', () => {
 
       expect(actual).toHaveLength(expected);
     });
+  });
+
+  test('renders responsive alignment', () => {
+    const { html } = render(VueText, {
+      slots: {
+        default: 'VueText',
+      },
+      props: {
+        align: ['left', 'center', 'right'],
+      },
+    });
+    const actual = html();
+    const expected = 'block align-left align-tp-center align-tl-right';
+
+    expect(actual).toMatch(expected);
   });
 });

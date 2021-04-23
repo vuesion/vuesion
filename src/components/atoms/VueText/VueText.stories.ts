@@ -63,3 +63,25 @@ story.add(
     },
   },
 );
+
+story.add(
+  'Responsive alignments',
+  () => ({
+    components: { VueText, VueBox },
+    data() {
+      return {
+        textVariations: textColorVariations,
+      };
+    },
+    template: `<vue-box>
+    <vue-text as="div" :align="['left', 'left', 'center', 'left', 'right']">Foo Bar</vue-text>
+    <vue-text as="div" :align="['center', 'right', 'left', 'right', 'center']">Foo Bar</vue-text>
+    <vue-text as="div" :align="['right', 'center', 'right', 'center', 'left']">Foo Bar</vue-text>
+    </vue-box>`,
+  }),
+  {
+    info: {
+      components: { VueText },
+    },
+  },
+);
