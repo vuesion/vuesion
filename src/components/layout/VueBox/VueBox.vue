@@ -61,7 +61,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from '@vue/composition-api';
-import { responsiveSpacingValidator } from '@/components/prop-validators';
+import { responsivePropValidator, spacingValidator } from '@/components/prop-validators';
 import { parseCssSpacingProp, parseResponsivePropValue } from '@/components/utils';
 
 export default defineComponent({
@@ -74,12 +74,12 @@ export default defineComponent({
     },
     padding: {
       type: [Number, String, Array as () => Array<string | number>],
-      validator: responsiveSpacingValidator,
+      validator: responsivePropValidator(spacingValidator),
       default: 24,
     },
     margin: {
       type: [Number, String, Array as () => Array<string | number>],
-      validator: responsiveSpacingValidator,
+      validator: responsivePropValidator(spacingValidator),
       default: 0,
     },
     styles: {
