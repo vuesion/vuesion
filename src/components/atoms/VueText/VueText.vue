@@ -9,6 +9,8 @@
       serifs && $style.serifs,
       underline && $style.underline,
       uppercase && $style.uppercase,
+      align && $style.block,
+      ...applyResponsiveClasses($style, {}, responsiveAlignments, 'align'),
     ]"
     v-on="$listeners"
   >
@@ -25,6 +27,7 @@ import {
   textColorVariationValidator,
   textStyleValidator,
 } from '@/components/prop-validators';
+import { applyResponsiveClasses, parseResponsivePropValue } from '@/components/utils';
 
 export default defineComponent({
   name: 'VueText',
@@ -43,8 +46,13 @@ export default defineComponent({
       default: null,
     },
   },
-  setup() {
-    return {};
+  setup(props) {
+    const responsiveAlignments = parseResponsivePropValue(props.align);
+
+    return {
+      responsiveAlignments,
+      applyResponsiveClasses,
+    };
   },
 });
 </script>
@@ -192,6 +200,79 @@ export default defineComponent({
 
   &.low-emphasis-inverse {
     color: var(--brand-low-emphasis-text-color-inverse);
+  }
+
+  // Responsive alignment
+  &.block {
+    display: block;
+  }
+
+  &.align-left {
+    text-align: left;
+  }
+
+  &.align-center {
+    text-align: center;
+  }
+
+  &.align-right {
+    text-align: right;
+  }
+
+  @include mediaMin(tabletPortrait) {
+    &.align-tp-left {
+      text-align: left;
+    }
+
+    &.align-tp-center {
+      text-align: center;
+    }
+
+    &.align-tp-right {
+      text-align: right;
+    }
+  }
+
+  @include mediaMin(tabletLandscape) {
+    &.align-tl-left {
+      text-align: left;
+    }
+
+    &.align-tl-center {
+      text-align: center;
+    }
+
+    &.align-tl-right {
+      text-align: right;
+    }
+  }
+
+  @include mediaMin(smallDesktop) {
+    &.align-sd-left {
+      text-align: left;
+    }
+
+    &.align-sd-center {
+      text-align: center;
+    }
+
+    &.align-sd-right {
+      text-align: right;
+    }
+  }
+
+  @include mediaMin(largeDesktop) {
+    &.align-ld-left {
+      text-align: left;
+    }
+
+    &.align-ld-center {
+      text-align: center;
+    }
+
+    &.align-ld-right {
+      text-align: right;
+    }
   }
 }
 </style>
