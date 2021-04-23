@@ -234,15 +234,15 @@ export default defineComponent({
       }
     }
 
-    &.alignv-sld-top {
+    &.alignv-ld-top {
       align-items: flex-start;
     }
 
-    &.alignv-sld-center {
+    &.alignv-ld-center {
       align-items: center;
     }
 
-    &.alignv-sld-bottom {
+    &.alignv-ld-bottom {
       align-items: flex-end;
     }
 

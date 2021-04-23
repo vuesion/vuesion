@@ -72,7 +72,7 @@ export const parseResponsivePropValue = (propValues: any | any[], interpolate = 
   }
 
   brandBreakpoints.forEach((name, index) => {
-    result[name] = propAsArray[index] || null;
+    result[name] = propAsArray[index] !== undefined ? propAsArray[index] : null;
   });
 
   return result;

@@ -42,6 +42,8 @@ export default defineComponent({
       validator: responsivePropValidator(verticalAlignmentValidator),
       default: null,
     },
+    revert: { type: [Boolean, Array as () => Array<boolean>], default: null },
+    noWrap: { type: Boolean, default: false },
     stackPhone: { type: Boolean, default: false },
     stackTabletPortrait: { type: Boolean, default: false },
     stackTabletLandscape: { type: Boolean, default: false },
@@ -65,6 +67,10 @@ export default defineComponent({
 
     cssClasses[this.$style.vueInline] = true;
 
+    if (this.noWrap) {
+      cssClasses[this.$style.noWrap] = true;
+    }
+
     const responsiveSpacings = parseResponsivePropValue(this.space);
     applyResponsiveClasses(this.$style, cssClasses, responsiveSpacings, 'space');
 
@@ -73,6 +79,9 @@ export default defineComponent({
 
     const responsiveVerticalAlignments = parseResponsivePropValue(this.alignY);
     applyResponsiveClasses(this.$style, cssClasses, responsiveVerticalAlignments, 'alignv');
+
+    const responsiveRevert = parseResponsivePropValue(this.revert);
+    applyResponsiveClasses(this.$style, cssClasses, responsiveRevert, 'revert', false);
 
     if (this.stackPhone) {
       cssClasses[this.$style.stack] = true;
@@ -245,15 +254,15 @@ export default defineComponent({
       }
     }
 
-    &.alignv-sld-top {
+    &.alignv-ld-top {
       align-items: flex-start;
     }
 
-    &.alignv-sld-center {
+    &.alignv-ld-center {
       align-items: center;
     }
 
-    &.alignv-sld-bottom {
+    &.alignv-ld-bottom {
       align-items: flex-end;
     }
 
@@ -269,30 +278,50 @@ export default defineComponent({
       justify-content: flex-end;
     }
 
+    &.revert-ld {
+      flex-direction: row-reverse;
+    }
+
     &.stack-ld {
       flex-direction: column;
     }
   }
 
   @include mediaMinMax(phone) {
+    &.revert {
+      flex-direction: row-reverse;
+    }
+
     &.stack {
       flex-direction: column;
     }
   }
 
   @include mediaMinMax(tabletPortrait) {
+    &.revert-tp {
+      flex-direction: row-reverse;
+    }
+
     &.stack-tp {
       flex-direction: column;
     }
   }
 
   @include mediaMinMax(tabletLandscape) {
+    &.revert-tl {
+      flex-direction: row-reverse;
+    }
+
     &.stack-tl {
       flex-direction: column;
     }
   }
 
   @include mediaMinMax(smallDesktop) {
+    &.revert-sd {
+      flex-direction: row-reverse;
+    }
+
     &.stack-sd {
       flex-direction: column;
     }
