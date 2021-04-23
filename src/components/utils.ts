@@ -3,12 +3,15 @@ import isArray from 'lodash/isArray';
 import { brandBreakpoints } from '@/components/prop-validators';
 import { IBreakpoints } from '@/interfaces/IBreakpoints';
 
+export const isNullOrUndefined = (value: any) =>
+  value === null || value === undefined || value === 'null' || value === 'undefined';
+
 export const parseCssSpacingProp = (spacingPropValue: string) => {
-  const values = spacingPropValue
+  const values = !isNullOrUndefined(spacingPropValue)
     ? spacingPropValue
         .toString()
         .split(' ')
-        .map((value) => parseInt(value, 10))
+        .map((value) => value)
     : null;
 
   if (values === null) {
@@ -21,10 +24,10 @@ export const parseCssSpacingProp = (spacingPropValue: string) => {
   }
 
   const result = {
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
+    top: '0',
+    right: '0',
+    bottom: '0',
+    left: '0',
   };
 
   if (values.length === 4) {
@@ -72,7 +75,7 @@ export const parseResponsivePropValue = (propValues: any | any[], interpolate = 
   }
 
   brandBreakpoints.forEach((name, index) => {
-    result[name] = propAsArray[index] !== undefined ? propAsArray[index] : null;
+    result[name] = !isNullOrUndefined(propAsArray[index]) ? propAsArray[index] : null;
   });
 
   return result;
@@ -119,7 +122,7 @@ export const applyResponsiveClasses = (
     const breakPointValue = breakPointValues[key];
     const breakPointPrefix = map[key];
 
-    if (breakPointValue !== null) {
+    if (isNullOrUndefined(breakPointValue) === false) {
       const className = applyValueToClassName
         ? `${classPrefix}${breakPointPrefix}-${breakPointValue}`
         : `${classPrefix}${breakPointPrefix}`;

@@ -55,12 +55,14 @@ export default defineComponent({
       let margin: string[] = [];
 
       if (isArray(this.space)) {
-        margin = this.space.map((space: any) => `${space} 0 0 ${space}`);
+        margin = this.space.map((space: any) => `${space} null null ${space}`);
       } else {
-        margin.push(`${this.space} 0 0 ${this.space}`);
+        margin.push(`${this.space} null null ${this.space}`);
       }
 
-      return createElement('vue-box', { props: { padding: 0, margin, as: getComponentElementType(this.as) } }, [vNode]);
+      return createElement('vue-box', { props: { padding: null, margin, as: getComponentElementType(this.as) } }, [
+        vNode,
+      ]);
     });
 
     const cssClasses: any = {};

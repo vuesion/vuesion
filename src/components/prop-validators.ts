@@ -91,7 +91,7 @@ export const spacingValidator = (spacingProp: string | number) => {
     ?.toString()
     .split(' ')
     .forEach((value) => {
-      if (valid === true && brandSpacings.includes(value.toLowerCase()) === false) {
+      if (valid === true && value.toLowerCase() !== 'null' && brandSpacings.includes(value.toLowerCase()) === false) {
         valid = false;
       }
     });

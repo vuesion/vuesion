@@ -45,9 +45,9 @@ export default defineComponent({
       applyResponsiveClasses(this.$style, cssClasses, responsiveAlignments, 'align');
 
       if (isArray(space)) {
-        padding = space.map((space: any) => `${space} 0 0 0`);
+        padding = space.map((space: any) => `${space} null null null`);
       } else {
-        padding.push(`${space} 0 0 0`);
+        padding.push(`${space} null null null`);
       }
 
       return createElement('vue-box', { props: { padding, as: getComponentElementType(this.as) }, class: cssClasses }, [

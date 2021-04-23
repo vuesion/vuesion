@@ -14,19 +14,19 @@ describe('component utils', () => {
     });
 
     test('should parse one padding value', () => {
-      expect(parseCssSpacingProp('24')).toEqual({ top: 24, right: 24, bottom: 24, left: 24 });
+      expect(parseCssSpacingProp('24')).toEqual({ top: '24', right: '24', bottom: '24', left: '24' });
     });
 
     test('should parse two padding values', () => {
-      expect(parseCssSpacingProp('24 16')).toEqual({ top: 24, right: 16, bottom: 24, left: 16 });
+      expect(parseCssSpacingProp('24 16')).toEqual({ top: '24', right: '16', bottom: '24', left: '16' });
     });
 
     test('should parse three padding values', () => {
-      expect(parseCssSpacingProp('24 16 8')).toEqual({ top: 24, right: 16, bottom: 8, left: 16 });
+      expect(parseCssSpacingProp('24 16 8')).toEqual({ top: '24', right: '16', bottom: '8', left: '16' });
     });
 
     test('should parse four padding values', () => {
-      expect(parseCssSpacingProp('24 16 8 4')).toEqual({ top: 24, right: 16, bottom: 8, left: 4 });
+      expect(parseCssSpacingProp('24 16 8 4')).toEqual({ top: '24', right: '16', bottom: '8', left: '4' });
     });
   });
 

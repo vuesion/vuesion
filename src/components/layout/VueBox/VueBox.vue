@@ -3,55 +3,17 @@
     :is="as"
     :class="[
       $style.vueBox,
-      paddingPhoneValues.top && $style[`pt-${paddingPhoneValues.top}`],
-      paddingPhoneValues.right && $style[`pr-${paddingPhoneValues.right}`],
-      paddingPhoneValues.bottom && $style[`pb-${paddingPhoneValues.bottom}`],
-      paddingPhoneValues.left && $style[`pl-${paddingPhoneValues.left}`],
+      ...applyClasses($style, paddingPhoneValues, 'p'),
+      ...applyClasses($style, paddingTabletPortraitValues, 'p', 'tp'),
+      ...applyClasses($style, paddingTabletLandscapeValues, 'p', 'tl'),
+      ...applyClasses($style, paddingSmallDesktopValues, 'p', 'sd'),
+      ...applyClasses($style, paddingLargeDesktopValues, 'p', 'ld'),
 
-      paddingTabletPortraitValues.top && $style[`pt-tp-${paddingTabletPortraitValues.top}`],
-      paddingTabletPortraitValues.right && $style[`pr-tp-${paddingTabletPortraitValues.right}`],
-      paddingTabletPortraitValues.bottom && $style[`pb-tp-${paddingTabletPortraitValues.bottom}`],
-      paddingTabletPortraitValues.left && $style[`pl-tp-${paddingTabletPortraitValues.left}`],
-
-      paddingTabletLandscapeValues.top && $style[`pt-tl-${paddingTabletLandscapeValues.top}`],
-      paddingTabletLandscapeValues.right && $style[`pr-tl-${paddingTabletLandscapeValues.right}`],
-      paddingTabletLandscapeValues.bottom && $style[`pb-tl-${paddingTabletLandscapeValues.bottom}`],
-      paddingTabletLandscapeValues.left && $style[`pl-tl-${paddingTabletLandscapeValues.left}`],
-
-      paddingSmallDesktopValues.top && $style[`pt-sd-${paddingSmallDesktopValues.top}`],
-      paddingSmallDesktopValues.right && $style[`pr-sd-${paddingSmallDesktopValues.right}`],
-      paddingSmallDesktopValues.bottom && $style[`pb-sd-${paddingSmallDesktopValues.bottom}`],
-      paddingSmallDesktopValues.left && $style[`pl-sd-${paddingSmallDesktopValues.left}`],
-
-      paddingLargeDesktopValues.top && $style[`pt-ld-${paddingLargeDesktopValues.top}`],
-      paddingLargeDesktopValues.right && $style[`pr-ld-${paddingLargeDesktopValues.right}`],
-      paddingLargeDesktopValues.bottom && $style[`pb-ld-${paddingLargeDesktopValues.bottom}`],
-      paddingLargeDesktopValues.left && $style[`pl-ld-${paddingLargeDesktopValues.left}`],
-
-      marginPhoneValues.top && $style[`mt-${marginPhoneValues.top}`],
-      marginPhoneValues.right && $style[`mr-${marginPhoneValues.right}`],
-      marginPhoneValues.bottom && $style[`mb-${marginPhoneValues.bottom}`],
-      marginPhoneValues.left && $style[`ml-${marginPhoneValues.left}`],
-
-      marginTabletPortraitValues.top && $style[`mt-tp-${marginTabletPortraitValues.top}`],
-      marginTabletPortraitValues.right && $style[`mr-tp-${marginTabletPortraitValues.right}`],
-      marginTabletPortraitValues.bottom && $style[`mb-tp-${marginTabletPortraitValues.bottom}`],
-      marginTabletPortraitValues.left && $style[`ml-tp-${marginTabletPortraitValues.left}`],
-
-      marginTabletLandscapeValues.top && $style[`mt-tl-${marginTabletLandscapeValues.top}`],
-      marginTabletLandscapeValues.right && $style[`mr-tl-${marginTabletLandscapeValues.right}`],
-      marginTabletLandscapeValues.bottom && $style[`mb-tl-${marginTabletLandscapeValues.bottom}`],
-      marginTabletLandscapeValues.left && $style[`ml-tl-${marginTabletLandscapeValues.left}`],
-
-      marginSmallDesktopValues.top && $style[`mt-sd-${marginSmallDesktopValues.top}`],
-      marginSmallDesktopValues.right && $style[`mr-sd-${marginSmallDesktopValues.right}`],
-      marginSmallDesktopValues.bottom && $style[`mb-sd-${marginSmallDesktopValues.bottom}`],
-      marginSmallDesktopValues.left && $style[`ml-sd-${marginSmallDesktopValues.left}`],
-
-      marginLargeDesktopValues.top && $style[`mt-ld-${marginLargeDesktopValues.top}`],
-      marginLargeDesktopValues.right && $style[`mr-ld-${marginLargeDesktopValues.right}`],
-      marginLargeDesktopValues.bottom && $style[`mb-ld-${marginLargeDesktopValues.bottom}`],
-      marginLargeDesktopValues.left && $style[`ml-ld-${marginLargeDesktopValues.left}`],
+      ...applyClasses($style, marginPhoneValues, 'm'),
+      ...applyClasses($style, marginTabletPortraitValues, 'm', 'tp'),
+      ...applyClasses($style, marginTabletLandscapeValues, 'm', 'tl'),
+      ...applyClasses($style, marginSmallDesktopValues, 'm', 'sd'),
+      ...applyClasses($style, marginLargeDesktopValues, 'm', 'ld'),
     ]"
     :style="[styles]"
   >
@@ -62,7 +24,7 @@
 <script lang="ts">
 import { computed, defineComponent } from '@vue/composition-api';
 import { responsivePropValidator, spacingValidator } from '@/components/prop-validators';
-import { parseCssSpacingProp, parseResponsivePropValue } from '@/components/utils';
+import { isNullOrUndefined, parseCssSpacingProp, parseResponsivePropValue } from '@/components/utils';
 
 export default defineComponent({
   name: 'VueBox',
@@ -80,7 +42,7 @@ export default defineComponent({
     margin: {
       type: [Number, String, Array as () => Array<string | number>],
       validator: responsivePropValidator(spacingValidator),
-      default: 0,
+      default: null,
     },
     styles: {
       type: Object,
@@ -127,6 +89,28 @@ export default defineComponent({
       marginTabletLandscapeValues,
       marginSmallDesktopValues,
       marginLargeDesktopValues,
+      applyClasses: ($style: any, values: any, classNamePrefix: string, breakpointPrefix = null) => {
+        const result: any = {};
+        const map: any = {
+          top: 't',
+          right: 'r',
+          bottom: 'b',
+          left: 'l',
+        };
+
+        Object.keys(map).forEach((key) => {
+          const prefix = map[key];
+          const value = values[key];
+
+          if (isNullOrUndefined(value) === false) {
+            result[
+              $style[`${classNamePrefix}${prefix}-${breakpointPrefix ? breakpointPrefix + '-' : ''}${value}`]
+            ] = true;
+          }
+        });
+
+        return result;
+      },
     };
   },
 });
