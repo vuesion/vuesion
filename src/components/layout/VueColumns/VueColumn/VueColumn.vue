@@ -2,7 +2,7 @@
   <vue-box
     :as="as"
     padding="null"
-    margin="null"
+    :margin="margin"
     :class="[
       $style.vueColumn,
       fullWidth && $style.fullWidth,
@@ -43,6 +43,17 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const margin = computed(() => {
+      let result: string[] = [];
+
+      if (isArray(props.space)) {
+        result = props.space.map((space: any) => `${space} null null ${space}`);
+      } else {
+        result.push(`${props.space} null null ${props.space}`);
+      }
+
+      return result;
+    });
     const responsiveWidth = computed(() => parseResponsivePropValue(props.width, true));
     const responsiveHorizontalAlignments = computed(() => parseResponsivePropValue(props.align));
     const styles = computed(() => {
@@ -77,6 +88,7 @@ export default defineComponent({
     });
 
     return {
+      margin,
       responsiveWidth,
       responsiveHorizontalAlignments,
       styles,
@@ -164,8 +176,6 @@ export default defineComponent({
   @include mediaMin(largeDesktop) {
     &.fit-ld {
       flex-basis: var(--large-desktop);
-      flex-grow: 0;
-      flex-shrink: 0;
     }
 
     &.alignh-ld-left {
@@ -187,32 +197,24 @@ export default defineComponent({
   @include mediaMinMax(phone) {
     &.fit {
       flex-basis: var(--phone);
-      flex-grow: 0;
-      flex-shrink: 0;
     }
   }
 
   @include mediaMinMax(tabletPortrait) {
     &.fit-tp {
       flex-basis: var(--tablet-portrait);
-      flex-grow: 0;
-      flex-shrink: 0;
     }
   }
 
   @include mediaMinMax(tabletLandscape) {
     &.fit-tl {
       flex-basis: var(--tablet-landscape);
-      flex-grow: 0;
-      flex-shrink: 0;
     }
   }
 
   @include mediaMinMax(smallDesktop) {
     &.fit-sd {
       flex-basis: var(--small-desktop);
-      flex-grow: 0;
-      flex-shrink: 0;
     }
   }
 }

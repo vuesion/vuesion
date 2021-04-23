@@ -10,31 +10,25 @@ const story = storiesOf('Design System|Layout/Columns', module) as any;
 story.add(
   'Nested columns with responsive spacings and width',
   () => ({
-    components: { VueBox, VueColumns, VueColumn },
+    components: { VueBox, VueColumns, VueColumn, VueStack, VueText },
     template: `<vue-box :padding="[8, 16, 24, 32]">
     <vue-columns :space="[8, 16, 24, 32]" :align-y="['top', 'center']" stack-phone>
       <vue-column :width="['100%', '250px']">
         Sidebar
       </vue-column>
-      <vue-column>
+      <vue-column :width="['content', '100%']">
         <vue-columns :space="[8, 16, 24, 32]" :align-y="['top', 'bottom']" stack-phone>
           <vue-column>
-            Main Content
-            <br/>
-            Main Content
-            <br/>
-            Main Content
-            <br/>
-            Main Content
-            <br/>
-            Main Content
-            <br/>
+            <vue-stack :space="[8, 16, 24, 32]">
+              <vue-text>Main Content</vue-text>
+              <vue-text>Main Content</vue-text>
+              <vue-text>Main Content</vue-text>
+              <vue-text>Main Content</vue-text>
+              <vue-text>Main Content</vue-text>
+            </vue-stack>
           </vue-column>
-          <vue-column :width="['100%', 'content']">Menu</vue-column>
-          <vue-column :width="['100%', 'content']">
-            <vue-columns>
-              <vue-column>Test</vue-column>
-            </vue-columns>
+          <vue-column :width="[null, 'content']">
+            Menu
           </vue-column>
         </vue-columns>
       </vue-column>
@@ -52,55 +46,62 @@ story.add(
   'Complex example',
   () => ({
     components: { VueBox, VueColumns, VueColumn, VueStack, VueText },
-    template: `<vue-stack>
-  <vue-columns  align-y="center">
-    <vue-column width="content">Image</vue-column>
-    <vue-column>
-      <vue-columns stack-phone>
+    template: `<vue-box>
+    <vue-stack space="32">
+      <vue-columns  :align-y="['top', 'center']">
+        <vue-column width="content">Image</vue-column>
         <vue-column>
-          <vue-stack space="4">
-            <vue-text>Text</vue-text>
-            <vue-text>Text</vue-text>
-            <vue-text>Text</vue-text>
-            <vue-text>Text</vue-text>
-          </vue-stack>
-        </vue-column>
-        <vue-column>
-          <vue-columns align="right" :space="[4, 24]" stack-phone>
-            <vue-column width="content"><vue-text>Price</vue-text></vue-column>
-            <vue-column :width="['content', '250px']"><vue-text>Dropdown</vue-text></vue-column>
-            <vue-column width="180px" align="right"><vue-text align="right">Summary</vue-text></vue-column>
-          </vue-columns>
-        </vue-column>
-      </vue-columns>
-    </vue-column>
-  </vue-columns>
-
-  <vue-columns align-y="center">
-    <vue-column width="content">Image</vue-column>
-    <vue-column>
-      <vue-columns stack-phone>
-        <vue-column>
-          <vue-stack space="4">
-            <vue-text>Text</vue-text>
-            <vue-text>Text</vue-text>
-            <vue-text>Text</vue-text>
-            <vue-text>Text</vue-text>
-          </vue-stack>
-        </vue-column>
-        <vue-column>
-          <vue-columns align="right" :space="[4, 24]" stack-phone>
-            <vue-column width="content"><vue-text>Price</vue-text></vue-column>
-            <vue-column :width="['content', '250px']"><vue-text>Dropdown</vue-text></vue-column>
-            <vue-column width="180px" align="right">
-              <vue-text>Summary Summary</vue-text>
+          <vue-columns stack-phone>
+            <vue-column>
+              <vue-stack space="4">
+                <vue-text>Text</vue-text>
+                <vue-text>Text</vue-text>
+                <vue-text>Text</vue-text>
+                <vue-text>Text</vue-text>
+              </vue-stack>
+            </vue-column>
+            <vue-column>
+              <vue-columns :align="['left', 'right']" :space="[4, 24]" stack-phone>
+                <vue-column width="content"><vue-text>Price</vue-text></vue-column>
+                <vue-column :width="['content', '150px', '250px']">
+                  <vue-text>Dropdown</vue-text>
+                </vue-column>
+                <vue-column :width="['content', '180px']" :align="['left', 'right']">
+                  <vue-text>Summary</vue-text>
+                </vue-column>
+              </vue-columns>
             </vue-column>
           </vue-columns>
         </vue-column>
       </vue-columns>
-    </vue-column>
-  </vue-columns>
-</vue-stack>`,
+      <vue-columns  :align-y="['top', 'center']">
+        <vue-column width="content">Image</vue-column>
+        <vue-column>
+          <vue-columns stack-phone>
+            <vue-column>
+              <vue-stack space="4">
+                <vue-text>Text</vue-text>
+                <vue-text>Text</vue-text>
+                <vue-text>Text</vue-text>
+                <vue-text>Text</vue-text>
+              </vue-stack>
+            </vue-column>
+            <vue-column>
+              <vue-columns :align="['left', 'right']" :space="[4, 24]" stack-phone>
+                <vue-column width="content"><vue-text>Price</vue-text></vue-column>
+                <vue-column :width="['content', '150px', '250px']">
+                  <vue-text>Dropdown</vue-text>
+                </vue-column>
+                <vue-column :width="['content', '180px']" :align="['left', 'right']">
+                  <vue-text>Summary Summary</vue-text>
+                </vue-column>
+              </vue-columns>
+            </vue-column>
+          </vue-columns>
+        </vue-column>
+      </vue-columns>
+    </vue-stack>
+    </vue-box>`,
   }),
   {
     info: {
