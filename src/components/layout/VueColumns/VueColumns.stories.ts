@@ -139,3 +139,25 @@ story.add(
     },
   },
 );
+
+story.add(
+  'With responsive revert',
+  () => ({
+    components: { VueBox, VueColumns, VueColumn },
+    template: `<vue-box :padding="[8, 16, 24, 32]">
+    <vue-columns :revert="[null, null, null, true, true]">
+      <vue-column>
+        Test 1
+      </vue-column>
+      <vue-column>
+        Test 2
+      </vue-column>
+    </vue-columns>
+    </vue-box>`,
+  }),
+  {
+    info: {
+      components: { VueColumns },
+    },
+  },
+);
