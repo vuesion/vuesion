@@ -81,7 +81,11 @@ export default defineComponent({
 
       return result;
     });
-    const fullWidth = computed(() => props.width !== 'content');
+    const fullWidth = computed(() => {
+      const widthAsArray = isArray(props.width) ? props.width : [props.width];
+
+      return widthAsArray.includes('content') === false;
+    });
 
     return {
       margin,
