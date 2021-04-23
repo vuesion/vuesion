@@ -31,6 +31,11 @@ story.add(
             <br/>
           </vue-column>
           <vue-column :width="['100%', 'content']">Menu</vue-column>
+          <vue-column :width="['100%', 'content']">
+            <vue-columns>
+              <vue-column>Test</vue-column>
+            </vue-columns>
+          </vue-column>
         </vue-columns>
       </vue-column>
     </vue-columns>
