@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import VueBadge from '@/components/atoms/VueBadge/VueBadge.vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueText from '@/components/atoms/VueText/VueText.vue';
 import VueInline from './VueInline.vue';
 
 const story = storiesOf('Design System|Layout/Inline', module) as any;
@@ -42,7 +43,7 @@ story.add(
 );
 
 story.add(
-  'With responsive alignment',
+  'With responsive horizontal alignment',
   () => ({
     components: { VueInline, VueBadge, VueBox, VueStack },
     template: `<vue-box :padding="[8, 16, 24]">
@@ -65,6 +66,24 @@ story.add(
         <vue-badge>Test</vue-badge>
       </vue-inline>
     </vue-stack>
+    </vue-box>`,
+  }),
+  {
+    info: {
+      components: { VueInline },
+    },
+  },
+);
+
+story.add(
+  'With responsive vertical alignment',
+  () => ({
+    components: { VueInline, VueBadge, VueBox, VueText },
+    template: `<vue-box :padding="[8, 16, 24]">
+      <vue-inline :space="[8, 16, 24]" :align-y="['top', 'top', 'center', 'center', 'bottom']">
+        <vue-badge>Test</vue-badge>
+        <vue-text>Test</vue-text>
+      </vue-inline>
     </vue-box>`,
   }),
   {
