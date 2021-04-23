@@ -80,7 +80,25 @@ story.add(
   () => ({
     components: { VueInline, VueBadge, VueBox, VueText },
     template: `<vue-box :padding="[8, 16, 24]">
-      <vue-inline :space="[8, 16, 24]" :align-y="['top', 'top', 'center', 'center', 'bottom']">
+    <vue-inline :space="[8, 16, 24]" :align-y="['top', 'top', 'center', 'center', 'bottom']">
+      <vue-badge>Test</vue-badge>
+      <vue-text>Test</vue-text>
+    </vue-inline>
+    </vue-box>`,
+  }),
+  {
+    info: {
+      components: { VueInline },
+    },
+  },
+);
+
+story.add(
+  'With responsive revert',
+  () => ({
+    components: { VueInline, VueBadge, VueBox, VueText },
+    template: `<vue-box :padding="[8, 16, 24]">
+      <vue-inline :space="[8, 16, 24]" :revert="[true, true]" :align="['right', 'right', 'left']" align-y="center">
         <vue-badge>Test</vue-badge>
         <vue-text>Test</vue-text>
       </vue-inline>

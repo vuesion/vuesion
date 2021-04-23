@@ -85,4 +85,24 @@ describe('VueInline.vue', () => {
 
     expect(html()).toMatch('stack stack-tp stack-tl stack-sd stack-ld');
   });
+
+  test('renders component with responsive revert', async () => {
+    const { html, updateProps } = harness;
+
+    await updateProps({
+      revert: [true, true, true],
+    });
+
+    expect(html()).toMatch('vueInline space-24 revert revert-tp revert-tl');
+  });
+
+  test('renders component with nowrap', async () => {
+    const { html, updateProps } = harness;
+
+    await updateProps({
+      noWrap: true,
+    });
+
+    expect(html()).toMatch('vueInline noWrap');
+  });
 });
