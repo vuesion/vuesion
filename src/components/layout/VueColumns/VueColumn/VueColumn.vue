@@ -47,9 +47,9 @@ export default defineComponent({
       let result: string[] = [];
 
       if (isArray(props.space)) {
-        result = props.space.map((space: any) => `${space} 0 0 ${space}`);
+        result = props.space.map((space: any) => `${space} null null ${space}`);
       } else {
-        result.push(`${props.space} 0 0 ${props.space}`);
+        result.push(`${props.space} null null ${props.space}`);
       }
 
       return result;

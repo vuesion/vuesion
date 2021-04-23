@@ -33,7 +33,7 @@ story.add(
   'With responsive padding',
   () => ({
     components: { VueBox },
-    template: `<vue-box :padding="['4 16', 24, '24 48', 64, '64 192']">VueBox</vue-box>`,
+    template: `<vue-box :padding="['4 16', 24, '24 48', 64, 0]">VueBox</vue-box>`,
   }),
   {
     info: {

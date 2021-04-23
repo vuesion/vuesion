@@ -70,4 +70,8 @@ describe('prop-validators', () => {
   test('spacingValidator should return false', () => {
     expect(spacingValidator('8 foo')).toBeFalsy();
   });
+
+  test('spacingValidator should return true for null as string', () => {
+    expect(spacingValidator('8 null')).toBeTruthy();
+  });
 });
