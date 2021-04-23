@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { alignmentValidator, responsivePropValidator, spacingValidator } from '@/components/prop-validators';
+import { horizontalAlignmentValidator, responsivePropValidator, spacingValidator } from '@/components/prop-validators';
 import { CreateElement } from 'vue/types/vue';
 import Vue from 'vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
@@ -29,7 +29,7 @@ export default defineComponent({
     },
     align: {
       type: [String, Array as () => Array<string>],
-      validator: responsivePropValidator(alignmentValidator),
+      validator: responsivePropValidator(horizontalAlignmentValidator),
       default: null,
     },
     stackPhone: { type: Boolean, default: false },

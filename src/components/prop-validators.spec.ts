@@ -1,5 +1,6 @@
 import {
-  alignmentValidator,
+  horizontalAlignmentValidator,
+  verticalAlignmentValidator,
   breakpointValidator,
   colorVariationValidator,
   fontWeightValidator,
@@ -26,8 +27,12 @@ describe('prop-validators', () => {
     expect(fontWeightValidator('foo')).toBeFalsy();
   });
 
-  test('alignmentValidator should return false', () => {
-    expect(alignmentValidator('foo')).toBeFalsy();
+  test('horizontalAlignmentValidator should return false', () => {
+    expect(horizontalAlignmentValidator('foo')).toBeFalsy();
+  });
+
+  test('verticalAlignmentValidator should return false', () => {
+    expect(verticalAlignmentValidator('foo')).toBeFalsy();
   });
 
   test('responsivePropValidator should return true with single null value', () => {

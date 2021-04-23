@@ -19,7 +19,7 @@
 import { computed, defineComponent } from '@vue/composition-api';
 import { applyResponsiveClasses, parseResponsivePropValue } from '@/components/utils';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import { alignmentValidator, responsivePropValidator, spacingValidator } from '@/components/prop-validators';
+import { horizontalAlignmentValidator, responsivePropValidator, spacingValidator } from '@/components/prop-validators';
 import isArray from 'lodash/isArray';
 
 export default defineComponent({
@@ -38,7 +38,7 @@ export default defineComponent({
     width: { type: [String, Array as () => Array<string>], default: () => null },
     align: {
       type: [String, Array as () => Array<string>],
-      validator: responsivePropValidator(alignmentValidator),
+      validator: responsivePropValidator(horizontalAlignmentValidator),
       default: null,
     },
   },

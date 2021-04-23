@@ -72,8 +72,12 @@ export const fontWeightValidator = (value: string) => {
   return fontWeights.includes(value.toLowerCase());
 };
 
-export const alignmentValidator = (value: string) => {
-  return ['left', 'center', 'right', 'top', 'bottom', 'inherit', 'initial'].includes(value.toLowerCase());
+export const horizontalAlignmentValidator = (value: string) => {
+  return ['left', 'center', 'right', 'inherit', 'initial'].includes(value.toLowerCase());
+};
+
+export const verticalAlignmentValidator = (value: string) => {
+  return ['center', 'top', 'bottom', 'inherit', 'initial'].includes(value.toLowerCase());
 };
 
 export const breakpointValidator = (value: string) => {
