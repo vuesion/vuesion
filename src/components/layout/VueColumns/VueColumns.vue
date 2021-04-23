@@ -1,7 +1,12 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
 import { CreateElement } from 'vue/types/vue';
-import { alignmentValidator, responsivePropValidator, spacingValidator } from '@/components/prop-validators';
+import {
+  horizontalAlignmentValidator,
+  responsivePropValidator,
+  spacingValidator,
+  verticalAlignmentValidator,
+} from '@/components/prop-validators';
 import {
   applyResponsiveClasses,
   decorateChildComponents,
@@ -24,12 +29,12 @@ export default defineComponent({
     },
     align: {
       type: [String, Array as () => Array<string>],
-      validator: responsivePropValidator(alignmentValidator),
+      validator: responsivePropValidator(horizontalAlignmentValidator),
       default: null,
     },
     alignY: {
       type: [String, Array as () => Array<string>],
-      validator: responsivePropValidator(alignmentValidator),
+      validator: responsivePropValidator(verticalAlignmentValidator),
       default: null,
     },
     stackPhone: { type: Boolean, default: false },

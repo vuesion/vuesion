@@ -19,8 +19,8 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
 import {
-  alignmentValidator,
   fontWeightValidator,
+  horizontalAlignmentValidator,
   responsivePropValidator,
   textColorVariationValidator,
   textStyleValidator,
@@ -39,7 +39,7 @@ export default defineComponent({
     uppercase: { type: Boolean, default: false },
     align: {
       type: [String, Array as () => Array<string>],
-      validator: responsivePropValidator(alignmentValidator),
+      validator: responsivePropValidator(horizontalAlignmentValidator),
       default: null,
     },
   },
