@@ -20,7 +20,7 @@ story.add(
   'With different padding',
   () => ({
     components: { VueBox },
-    template: `<vue-box padding="8 32 4 12">VueBox</vue-box>`,
+    template: `<vue-box padding="8 32">VueBox</vue-box>`,
   }),
   {
     info: {

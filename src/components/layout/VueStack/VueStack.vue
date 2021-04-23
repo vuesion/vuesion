@@ -3,7 +3,7 @@ import Vue from 'vue';
 import { VNode } from 'vue/types/vnode';
 import isArray from 'lodash/isArray';
 import { defineComponent } from '@vue/composition-api';
-import { responsiveAlignmentValidator, responsiveSpacingValidator } from '@/components/prop-validators';
+import { alignmentValidator, responsivePropValidator, spacingValidator } from '@/components/prop-validators';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import { CreateElement } from 'vue/types/vue';
 import {
@@ -24,10 +24,14 @@ export default defineComponent({
     },
     space: {
       type: [Number, String, Array as () => Array<string | number>],
-      validator: responsiveSpacingValidator,
+      validator: responsivePropValidator(spacingValidator),
       default: 24,
     },
-    align: { type: [String, Array as () => Array<string>], validator: responsiveAlignmentValidator, default: null },
+    align: {
+      type: [String, Array as () => Array<string>],
+      validator: responsivePropValidator(alignmentValidator),
+      default: null,
+    },
   },
   render(createElement: CreateElement) {
     const items = decorateChildComponents(this.$slots.default, (vnode: VNode, idx: number) => {

@@ -19,7 +19,7 @@
 import { computed, defineComponent } from '@vue/composition-api';
 import { applyResponsiveClasses, parseResponsivePropValue } from '@/components/utils';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import { responsiveAlignmentValidator, responsiveSpacingValidator } from '@/components/prop-validators';
+import { alignmentValidator, responsivePropValidator, spacingValidator } from '@/components/prop-validators';
 import isArray from 'lodash/isArray';
 
 export default defineComponent({
@@ -32,11 +32,15 @@ export default defineComponent({
     },
     space: {
       type: [Number, String, Array as () => Array<string | number>],
-      validator: responsiveSpacingValidator,
+      validator: responsivePropValidator(spacingValidator),
       default: 24,
     },
     width: { type: [String, Array as () => Array<string>], default: () => null },
-    align: { type: [String, Array as () => Array<string>], validator: responsiveAlignmentValidator, default: null },
+    align: {
+      type: [String, Array as () => Array<string>],
+      validator: responsivePropValidator(alignmentValidator),
+      default: null,
+    },
   },
   setup(props) {
     const margin = computed(() => {

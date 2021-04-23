@@ -3,8 +3,7 @@ import {
   breakpointValidator,
   colorVariationValidator,
   fontWeightValidator,
-  responsiveAlignmentValidator,
-  responsiveSpacingValidator,
+  responsivePropValidator,
   spacingValidator,
   textColorVariationValidator,
   textStyleValidator,
@@ -31,12 +30,28 @@ describe('prop-validators', () => {
     expect(alignmentValidator('foo')).toBeFalsy();
   });
 
-  test('responsiveAlignmentValidator should return false with single value', () => {
-    expect(responsiveAlignmentValidator('foo')).toBeFalsy();
+  test('responsivePropValidator should return true with single null value', () => {
+    expect(responsivePropValidator(spacingValidator)(null)).toBeTruthy();
   });
 
-  test('responsiveAlignmentValidator should return false with array value', () => {
-    expect(responsiveAlignmentValidator(['foo', 'bar'])).toBeFalsy();
+  test('responsivePropValidator should return false with single value', () => {
+    expect(responsivePropValidator(spacingValidator)('foo')).toBeFalsy();
+  });
+
+  test('responsivePropValidator should return true with single value', () => {
+    expect(responsivePropValidator(spacingValidator)('8')).toBeTruthy();
+  });
+
+  test('responsivePropValidator should return true with array of null values', () => {
+    expect(responsivePropValidator(spacingValidator)([null, null])).toBeTruthy();
+  });
+
+  test('responsivePropValidator should return false with array value', () => {
+    expect(responsivePropValidator(spacingValidator)([8, 'foo'])).toBeFalsy();
+  });
+
+  test('responsivePropValidator should return true with array value', () => {
+    expect(responsivePropValidator(spacingValidator)([8, 32])).toBeTruthy();
   });
 
   test('breakpointValidator should return false', () => {
@@ -49,13 +64,5 @@ describe('prop-validators', () => {
 
   test('spacingValidator should return false', () => {
     expect(spacingValidator('8 foo')).toBeFalsy();
-  });
-
-  test('responsiveSpacingValidator should return false with single value', () => {
-    expect(responsiveSpacingValidator('foo')).toBeFalsy();
-  });
-
-  test('responsiveSpacingValidator should return false with array value', () => {
-    expect(responsiveSpacingValidator(['foo', 'bar'])).toBeFalsy();
   });
 });

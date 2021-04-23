@@ -76,22 +76,6 @@ export const alignmentValidator = (value: string) => {
   return ['left', 'center', 'right', 'top', 'bottom', 'inherit', 'initial'].includes(value.toLowerCase());
 };
 
-export const responsiveAlignmentValidator = (alignmentProps: string | string[]) => {
-  if (isArray(alignmentProps)) {
-    let valid = true;
-
-    alignmentProps.forEach((spacingProp) => {
-      if (valid === true && alignmentValidator(spacingProp) === false) {
-        valid = false;
-      }
-    });
-
-    return valid;
-  } else {
-    return alignmentValidator(alignmentProps);
-  }
-};
-
 export const breakpointValidator = (value: string) => {
   return brandBreakpoints.includes(value);
 };
@@ -100,7 +84,7 @@ export const spacingValidator = (spacingProp: string | number) => {
   let valid = true;
 
   spacingProp
-    .toString()
+    ?.toString()
     .split(' ')
     .forEach((value) => {
       if (valid === true && brandSpacings.includes(value.toLowerCase()) === false) {
@@ -111,18 +95,20 @@ export const spacingValidator = (spacingProp: string | number) => {
   return valid;
 };
 
-export const responsiveSpacingValidator = (spacingProps: string | string[]) => {
-  if (isArray(spacingProps)) {
-    let valid = true;
+export const responsivePropValidator = (validator: (value: any) => boolean) => {
+  return (prop: any | any[]) => {
+    if (isArray(prop)) {
+      let valid = true;
 
-    spacingProps.forEach((spacingProp) => {
-      if (valid === true && spacingValidator(spacingProp) === false) {
-        valid = false;
-      }
-    });
+      prop.forEach((p) => {
+        if (valid === true && validator(p) === false) {
+          valid = false;
+        }
+      });
 
-    return valid;
-  } else {
-    return spacingValidator(spacingProps);
-  }
+      return valid;
+    } else {
+      return validator(prop);
+    }
+  };
 };
