@@ -1,6 +1,11 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { horizontalAlignmentValidator, responsivePropValidator, spacingValidator } from '@/components/prop-validators';
+import {
+  horizontalAlignmentValidator,
+  responsivePropValidator,
+  spacingValidator,
+  verticalAlignmentValidator,
+} from '@/components/prop-validators';
 import { CreateElement } from 'vue/types/vue';
 import Vue from 'vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
@@ -32,6 +37,11 @@ export default defineComponent({
       validator: responsivePropValidator(horizontalAlignmentValidator),
       default: null,
     },
+    alignY: {
+      type: [String, Array as () => Array<string>],
+      validator: responsivePropValidator(verticalAlignmentValidator),
+      default: null,
+    },
     stackPhone: { type: Boolean, default: false },
     stackTabletPortrait: { type: Boolean, default: false },
     stackTabletLandscape: { type: Boolean, default: false },
@@ -58,8 +68,11 @@ export default defineComponent({
     const responsiveSpacings = parseResponsivePropValue(this.space);
     applyResponsiveClasses(this.$style, cssClasses, responsiveSpacings, 'space');
 
-    const responsiveAlignments = parseResponsivePropValue(this.align);
-    applyResponsiveClasses(this.$style, cssClasses, responsiveAlignments, 'align');
+    const responsiveHorizontalAlignments = parseResponsivePropValue(this.align);
+    applyResponsiveClasses(this.$style, cssClasses, responsiveHorizontalAlignments, 'align');
+
+    const responsiveVerticalAlignments = parseResponsivePropValue(this.alignY);
+    applyResponsiveClasses(this.$style, cssClasses, responsiveVerticalAlignments, 'alignv');
 
     if (this.stackPhone) {
       cssClasses[this.$style.stack] = true;
@@ -94,6 +107,18 @@ export default defineComponent({
   flex-wrap: wrap;
   flex-direction: row;
 
+  &.alignv-top {
+    align-items: flex-start;
+  }
+
+  &.alignv-center {
+    align-items: center;
+  }
+
+  &.alignv-bottom {
+    align-items: flex-end;
+  }
+
   &.align-left {
     justify-content: flex-start;
   }
@@ -121,6 +146,18 @@ export default defineComponent({
       }
     }
 
+    &.alignv-tp-top {
+      align-items: flex-start;
+    }
+
+    &.alignv-tp-center {
+      align-items: center;
+    }
+
+    &.alignv-tp-bottom {
+      align-items: flex-end;
+    }
+
     &.align-tp-left {
       justify-content: flex-start;
     }
@@ -140,6 +177,18 @@ export default defineComponent({
         margin: calc(-1 * #{$space}) 0 0 calc(-1 * #{$space});
         width: calc(100% + #{$space});
       }
+    }
+
+    &.alignv-tl-top {
+      align-items: flex-start;
+    }
+
+    &.alignv-tl-center {
+      align-items: center;
+    }
+
+    &.alignv-tl-bottom {
+      align-items: flex-end;
     }
 
     &.align-tl-left {
@@ -163,6 +212,18 @@ export default defineComponent({
       }
     }
 
+    &.alignv-sd-top {
+      align-items: flex-start;
+    }
+
+    &.alignv-sd-center {
+      align-items: center;
+    }
+
+    &.alignv-sd-bottom {
+      align-items: flex-end;
+    }
+
     &.align-sd-left {
       justify-content: flex-start;
     }
@@ -182,6 +243,18 @@ export default defineComponent({
         margin: calc(-1 * #{$space}) 0 0 calc(-1 * #{$space});
         width: calc(100% + #{$space});
       }
+    }
+
+    &.alignv-sld-top {
+      align-items: flex-start;
+    }
+
+    &.alignv-sld-center {
+      align-items: center;
+    }
+
+    &.alignv-sld-bottom {
+      align-items: flex-end;
     }
 
     &.align-ld-left {
