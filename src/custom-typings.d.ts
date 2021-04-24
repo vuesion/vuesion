@@ -1,6 +1,7 @@
 interface Window {
   store: any;
   __NUXT__: any;
+  $workbox: any;
 }
 
 declare module 'marked' {
