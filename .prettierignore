@@ -5,3 +5,4 @@ coverage
 .nuxt
 dist
 src/interfaces/graphql
+src/interfaces/swagger.ts
