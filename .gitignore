@@ -95,3 +95,7 @@ storybook-static
 
 # Cypress
 cypress/videos
+cypress/screenshots
+
+# graphql-codegen artifacts
+src/interfaces/graphql

@@ -7,3 +7,5 @@ declare module 'marked' {
   const marked: any;
   export = marked;
 }
+
+declare module 'form-data';

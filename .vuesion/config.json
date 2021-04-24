@@ -5,7 +5,7 @@
     "outputDirectory": "./src",
     "stateFile": "./src/interfaces/IState.ts"
   },
-  "clean": ["./dist", "./.nuxt", "./coverage", "./storybook-static", "./nuxt.config.js"],
+  "clean": ["./dist", "./.nuxt", "./coverage", "./storybook-static", "./nuxt.config.js", "./src/interfaces/graphql"],
   "prettier": {
     "extensions": "ts,vue,js,json,scss,sass,css,yaml,yml"
   },

@@ -1,5 +1,7 @@
 <template>
-  <div :class="$style.vueContentBlock">VueContentBlock</div>
+  <div :class="$style.vueContentBlock">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts">

@@ -4,3 +4,4 @@ storybook-static
 coverage
 .nuxt
 dist
+src/interfaces/graphql

@@ -1,0 +1,18 @@
+schema: 'https://rickandmortyapi.com/graphql'
+overwrite: true
+documents: 'src/graphql/**/*.ts'
+generates:
+  src/interfaces/graphql/types.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+    config:
+      withCompositionFunctions: false
+      addDocBlocks: true
+      namingConvention: 'keep'
+  src/interfaces/graphql/schema.json:
+    plugins:
+      - 'introspection'
+  src/interfaces/graphql/schema.graphql:
+    plugins:
+      - 'schema-ast'

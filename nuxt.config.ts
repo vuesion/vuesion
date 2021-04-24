@@ -2,6 +2,11 @@ import { Configuration } from '@nuxt/types';
 import { VuesionConfig } from '@vuesion/models';
 
 const config: Configuration = {
+  apollo: {
+    clientConfigs: {
+      default: '@/plugins/apollo/apollo-client-config.ts',
+    },
+  },
   auth: {
     cookie: {
       options: {
@@ -59,7 +64,7 @@ const config: Configuration = {
         },
       },
     },
-    transpile: ['vee-validate'],
+    transpile: ['vee-validate', '@vue/apollo-composable'],
   },
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/composition-api'],
   css: [],
@@ -100,8 +105,9 @@ const config: Configuration = {
     color: '#cd235b',
     background: 'white',
   },
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/pwa', 'nuxt-i18n', 'nuxt-winston-log'],
+  modules: ['@nuxtjs/apollo', 'nuxt-i18n', '@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/pwa', 'nuxt-winston-log'],
   plugins: [
+    { src: '@/plugins/apollo/provide-apollo-client' },
     { src: '@/plugins/vee-validate/vee-validate' },
     { src: '@/plugins/vuex-persist/vuex-persist.client' },
     { src: '@/plugins/vuex-persist/vuex-persist.server' },
@@ -109,6 +115,9 @@ const config: Configuration = {
   publicRuntimeConfig: {
     axios: {
       baseURL: process.env.baseURL || 'http://localhost:3000',
+    },
+    apollo: {
+      baseURL: process.env.graphQlEndpoint || 'https://rickandmortyapi.com/graphql',
     },
   },
   privateRuntimeConfig: {},
