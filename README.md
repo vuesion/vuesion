@@ -53,6 +53,10 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 - SEO support
 - i18n support
 - Authentication module
+- Axios module
+- Vue-Apollo module
+  - with apollo-composable
+  - integrated with Authentication- and Axios module
 - PWA module
 - State management with vuex
 - Code generators for
@@ -71,7 +75,6 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
   - theme-switcher
 - Form validation with vee-validate
 - Composition-api module
-- Axios module
 - Anime.js integration
 
 # Getting started

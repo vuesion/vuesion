@@ -45,6 +45,11 @@
           VueX Example
         </vue-sidebar-group-item>
 
+        <vue-sidebar-group-item :to="{ name: 'example-apollo' }">
+          <vue-icon-hashtag />
+          Apollo Example
+        </vue-sidebar-group-item>
+
         <vue-sidebar-group-item :to="{ name: 'example-form' }">
           <vue-icon-hashtag />
           Form Example

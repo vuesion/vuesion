@@ -1,0 +1,8 @@
+{
+  "schemaPath": "src/graphql/generated/schema.json",
+  "extensions": {
+    "endpoints": {
+      "dev": "https://rickandmortyapi.com/graphql"
+    }
+  }
+}
