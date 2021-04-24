@@ -70,6 +70,7 @@
     "marked": "2.0.1",
     "nuxt": "2.15.2",
     "nuxt-i18n": "6.20.3",
+    "nuxt-winston-log": "1.2.0",
     "vee-validate": "3.4.5"
   },
   "devDependencies": {

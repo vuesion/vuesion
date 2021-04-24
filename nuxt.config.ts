@@ -100,7 +100,7 @@ const config: Configuration = {
     color: '#cd235b',
     background: 'white',
   },
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/pwa', 'nuxt-i18n'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/pwa', 'nuxt-i18n', 'nuxt-winston-log'],
   plugins: [
     { src: '@/plugins/vee-validate/vee-validate' },
     { src: '@/plugins/vuex-persist/vuex-persist.client' },
@@ -123,6 +123,14 @@ const config: Configuration = {
   srcDir: 'src',
   serverMiddleware: ['@/api/index.ts'],
   telemetry: false,
+  winstonLog: {
+    logPath: './logs',
+    logName: `${process.env.NODE_ENV}.log`,
+    autoCreateLogPath: true,
+    useDefaultLogger: true,
+    skipRequestMiddlewareHandler: false,
+    skipErrorMiddlewareHandler: false,
+  },
 };
 
 export default config;

@@ -30,6 +30,7 @@
       "helmet",
       "lodash",
       "nuxt-i18n",
+      "nuxt-winston-log",
       "testing-library__jest-dom"
     ]
   },
