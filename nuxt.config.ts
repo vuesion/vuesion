@@ -111,6 +111,7 @@ const config: Configuration = {
     { src: '@/plugins/vee-validate/vee-validate' },
     { src: '@/plugins/vuex-persist/vuex-persist.client' },
     { src: '@/plugins/vuex-persist/vuex-persist.server' },
+    { src: '@/plugins/pwa/update.client' },
   ],
   publicRuntimeConfig: {
     axios: {
