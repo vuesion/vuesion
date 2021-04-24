@@ -99,3 +99,4 @@ cypress/screenshots
 
 # graphql-codegen artifacts
 src/interfaces/graphql
+src/interfaces/swagger.ts

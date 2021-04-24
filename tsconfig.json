@@ -37,6 +37,6 @@
     ]
   },
   "include": ["./src/**/*", "./src/**/*.vue"],
-  "exclude": ["node_modules", ".nuxt", "src/interfaces/graphql/types.ts"],
+  "exclude": ["node_modules", ".nuxt", "src/interfaces/graphql/types.ts", "src/interfaces/swagger.ts"],
   "files": ["src/vue-shim.d.ts", "src/custom-typings.d.ts", "src/vue.plugins.d.ts"]
 }

@@ -32,6 +32,7 @@
     "dev": "nuxt -o",
     "generate": "vuesion generate",
     "type-gen:gql": "graphql-codegen",
+    "type-gen:swagger": "openapi-typescript https://petstore.swagger.io/v2/swagger.json --output src/interfaces/swagger.ts",
     "extract-i18n-messages": "vuesion em -s -u -t",
     "test": "vuesion test --coverage",
     "test:watch": "vuesion test --coverage --watch",
@@ -84,6 +85,7 @@
     "nuxt": "2.15.2",
     "nuxt-i18n": "6.20.3",
     "nuxt-winston-log": "1.2.0",
+    "openapi-typescript": "3.2.3",
     "react": "16.14.0",
     "vee-validate": "3.4.5"
   },
@@ -173,7 +175,8 @@
       "/static/",
       "/test/",
       "src/store/index.ts",
-      "src/interfaces/graphql"
+      "src/interfaces/graphql",
+      "src/interfaces/swagger"
     ],
     "coverageThreshold": {
       "global": {
