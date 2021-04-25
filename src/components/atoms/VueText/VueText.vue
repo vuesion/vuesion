@@ -178,27 +178,27 @@ export default defineComponent({
     color: var(--brand-info);
   }
 
-  &.high-emphasis {
+  &.text-high {
     color: var(--brand-high-emphasis-text-color);
   }
 
-  &.medium-emphasis {
+  &.text-medium {
     color: var(--brand-medium-emphasis-text-color);
   }
 
-  &.low-emphasis {
+  &.text-low {
     color: var(--brand-low-emphasis-text-color);
   }
 
-  &.high-emphasis-inverse {
+  &.text-high-inverse {
     color: var(--brand-high-emphasis-text-color-inverse);
   }
 
-  &.medium-emphasis-inverse {
+  &.text-medium-inverse {
     color: var(--brand-medium-emphasis-text-color-inverse);
   }
 
-  &.low-emphasis-inverse {
+  &.text-low-inverse {
     color: var(--brand-low-emphasis-text-color-inverse);
   }
 

@@ -9,12 +9,12 @@ export const textColorVariations = [
   'warning',
   'success',
   'info',
-  'high-emphasis',
-  'medium-emphasis',
-  'low-emphasis',
-  'high-emphasis-inverse',
-  'medium-emphasis-inverse',
-  'low-emphasis-inverse',
+  'text-high',
+  'text-medium',
+  'text-low',
+  'text-high-inverse',
+  'text-medium-inverse',
+  'text-low-inverse',
 ];
 export const textStyles = [
   'h1',
