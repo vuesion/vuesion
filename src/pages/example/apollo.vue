@@ -13,7 +13,7 @@
 
               <vue-box :padding="[8, 8, 8, 16]">
                 <vue-stack space="4">
-                  <vue-text appearance="large-title" color="high-emphasis" serifs>{{ character.name }}</vue-text>
+                  <vue-text appearance="large-title" color="text-high" serifs>{{ character.name }}</vue-text>
                   <vue-text appearance="support">
                     {{ character.species }} | {{ character.gender }} |
                     {{ character.status }}
