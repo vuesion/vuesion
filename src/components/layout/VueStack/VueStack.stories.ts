@@ -3,7 +3,7 @@ import VueText from '@/components/atoms/VueText/VueText.vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueStack from './VueStack.vue';
 
-const story = storiesOf('Design System|Layout/Stack', module) as any;
+const story = storiesOf('Foundation|Layout/Stack', module) as any;
 
 story.add(
   'With responsive spacing',

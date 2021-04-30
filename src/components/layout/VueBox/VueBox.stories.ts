@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import VueBox from './VueBox.vue';
 
-const story = storiesOf('Design System|Layout/Box', module) as any;
+const story = storiesOf('Foundation|Layout/Box', module) as any;
 
 story.add(
   'With equal padding',

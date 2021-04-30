@@ -4,11 +4,11 @@ import VueMarkdown from '@/components/organisms/VueMarkdown/VueMarkdown.vue';
 import BrandColors from './components/BrandColors.vue';
 import ColorPalette from './components/ColorPalette.vue';
 
-let story = storiesOf('Design System|Design System', module) as any;
+let story = storiesOf('Foundation|Intro', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
-story.add('Intro', () => ({
+story.add('Design System', () => ({
   components: { VueMarkdown, VueBox },
   template: `<vue-box><vue-markdown :use-router="false">
 # Design System
@@ -36,7 +36,7 @@ If this is the case for you, you might be interested in [Vuetify](https://github
 `,
 }));
 
-story = storiesOf('Design System|Branding', module) as any;
+story = storiesOf('Foundation|General', module) as any;
 
 story.addParameters({ options: { showAddonPanel: false } });
 
@@ -62,12 +62,6 @@ Every brand color is related to a color in the color palette.
 </vue-box>
 `,
 }));
-
-story.addParameters({ options: { showAddonPanel: false } });
-
-story = storiesOf('Design System|Layout', module) as any;
-
-story.addParameters({ options: { showAddonPanel: false } });
 
 story.add('Spacings', () => ({
   components: { VueMarkdown, VueBox },
@@ -122,4 +116,40 @@ smallDesktop     | 1280px   | 1439px
 largeDesktop     | 1440px   | 4095px
 </vue-markdown></vue-box>
 `,
+}));
+
+story.add('Elevation / Box shadows', () => ({
+  components: { VueMarkdown, VueBox },
+  template: `<vue-box>
+  <vue-markdown :use-router="false">
+    ### Box Shadows
+
+    We have three different kinds of elevations:.
+
+    \`--brand-elevation-1: 0 -1px 2px rgba(19, 20, 22, 0.08), 0 3px 5px rgba(19, 20, 22, 0.12);\`
+    \`--brand-elevation-2: 0 -1px 3px rgba(19, 20, 22, 0.1), 0 4px 6px rgba(19, 20, 22, 0.2);\`
+    \`--brand-elevation-3: 0 -1px 3px rgba(19, 20, 22, 0.1), 0 4px 6px rgba(19, 20, 22, 0.2);\`
+
+    We have one box-shadow that is used as outline, e.g. for focus states
+    \`--brand-shadow-outline: 0 0 0 #{$space-8} #{rgba(palette-color-level('primary', 6), 0.5)};\`
+  </vue-markdown>
+  </vue-box>
+  `,
+}));
+
+story.add('Border Radius', () => ({
+  components: { VueMarkdown, VueBox },
+  template: `<vue-box>
+  <vue-markdown :use-router="false">
+
+    ### Border Radius
+
+    We have three different kinds of border radius.
+
+    \`--brand-border-radius-sm: #{$space-4};\`
+    \`--brand-border-radius-md: #{$space-8};\`
+    \`--brand-border-radius-lg: #{$space-16};\`
+  </vue-markdown>
+  </vue-box>
+  `,
 }));

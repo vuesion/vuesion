@@ -3,7 +3,7 @@ import { textColorVariations } from '@/components/prop-validators';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueText from './VueText.vue';
 
-const story = storiesOf('Design System|Typography', module) as any;
+const story = storiesOf('Foundation|Typography', module) as any;
 
 story.add(
   'Text Styles',

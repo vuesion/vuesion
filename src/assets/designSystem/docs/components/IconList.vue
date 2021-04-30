@@ -1,34 +1,32 @@
 <template>
-  <div>
-    <vue-text appearance="h1" as="h1"> Icons </vue-text>
-    <br />
-    <div :class="$style.icons">
-      <vue-icon-book />
-      <vue-icon-bullhorn />
-      <vue-icon-certificate />
-      <vue-icon-chart-line />
-      <vue-icon-code />
-      <vue-icon-flag />
-      <vue-icon-github />
-      <vue-icon-github-alt />
-      <vue-icon-hashtag />
-      <vue-icon-mobile />
-      <vue-icon-puzzle-piece />
-      <vue-icon-search />
-      <vue-icon-sort />
-      <vue-icon-sort-down />
-      <vue-icon-sort-up />
-      <vue-icon-spinner />
-      <vue-icon-times />
-      <vue-icon-twitter-square />
-      <vue-icon-vuesion />
-      <vue-icon-star />
-    </div>
-  </div>
+  <vue-box>
+    <vue-inline :class="$style.icons" space="56">
+      <div :class="$style.icon"><vue-icon-book />book</div>
+      <div :class="$style.icon"><vue-icon-bullhorn />bullhorn</div>
+      <div :class="$style.icon"><vue-icon-certificate />certificate</div>
+      <div :class="$style.icon"><vue-icon-chart-line />chart-line</div>
+      <div :class="$style.icon"><vue-icon-code />code</div>
+      <div :class="$style.icon"><vue-icon-flag />flag</div>
+      <div :class="$style.icon"><vue-icon-github />github</div>
+      <div :class="$style.icon"><vue-icon-github-alt />github-alt</div>
+      <div :class="$style.icon"><vue-icon-hashtag />hashtag</div>
+      <div :class="$style.icon"><vue-icon-mobile />mobile</div>
+      <div :class="$style.icon"><vue-icon-puzzle-piece />puzzle-piece</div>
+      <div :class="$style.icon"><vue-icon-search />search</div>
+      <div :class="$style.icon"><vue-icon-sort />sort</div>
+      <div :class="$style.icon"><vue-icon-sort-down />sort-down</div>
+      <div :class="$style.icon"><vue-icon-sort-up />sort-up</div>
+      <div :class="$style.icon"><vue-icon-spinner />spinner</div>
+      <div :class="$style.icon"><vue-icon-star />star</div>
+      <div :class="$style.icon"><vue-icon-times />times</div>
+      <div :class="$style.icon"><vue-icon-vuesion />vuesion</div>
+    </vue-inline>
+  </vue-box>
 </template>
 
 <script lang="ts">
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
 import VueIconBook from '@/components/atoms/icons/VueIconBook/VueIconBook.vue';
 import VueIconBullhorn from '@/components/atoms/icons/VueIconBullhorn/VueIconBullhorn.vue';
 import VueIconCertificate from '@/components/atoms/icons/VueIconCertificate/VueIconCertificate.vue';
@@ -45,17 +43,16 @@ import VueIconSort from '@/components/atoms/icons/VueIconSort/VueIconSort.vue';
 import VueIconSortDown from '@/components/atoms/icons/VueIconSortDown/VueIconSortDown.vue';
 import VueIconSortUp from '@/components/atoms/icons/VueIconSortUp/VueIconSortUp.vue';
 import VueIconSpinner from '@/components/atoms/icons/VueIconSpinner/VueIconSpinner.vue';
-import VueIconTimes from '@/components/atoms/icons/VueIconTimes/VueIconTimes.vue';
-import VueIconTwitterSquare from '@/components/atoms/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
-import VueIconVuesion from '@/components/atoms/icons/VueIconVuesion/VueIconVuesion.vue';
 import VueIconStar from '@/components/atoms/icons/VueIconStar/VueIconStar.vue';
+import VueIconTimes from '@/components/atoms/icons/VueIconTimes/VueIconTimes.vue';
+import VueIconVuesion from '@/components/atoms/icons/VueIconVuesion/VueIconVuesion.vue';
 
 export default {
   name: 'IconList',
   components: {
     VueIconVuesion,
-    VueIconTwitterSquare,
     VueIconTimes,
+    VueIconStar,
     VueIconSpinner,
     VueIconSortUp,
     VueIconSortDown,
@@ -72,8 +69,8 @@ export default {
     VueIconCertificate,
     VueIconBullhorn,
     VueIconBook,
-    VueText,
-    VueIconStar,
+    VueInline,
+    VueBox,
   },
 };
 </script>
@@ -82,13 +79,17 @@ export default {
 @import '~@/assets/design-system';
 
 .icons {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-gap: $space-20;
+  .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 150px;
 
-  i {
-    width: $space-32;
-    height: $space-32;
+    i {
+      width: $space-32;
+      height: $space-32;
+    }
   }
 }
 </style>

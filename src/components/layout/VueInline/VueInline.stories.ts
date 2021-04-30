@@ -5,7 +5,7 @@ import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueText from '@/components/atoms/VueText/VueText.vue';
 import VueInline from './VueInline.vue';
 
-const story = storiesOf('Design System|Layout/Inline', module) as any;
+const story = storiesOf('Foundation|Layout/Inline', module) as any;
 
 story.add(
   'With responsive spacing',
