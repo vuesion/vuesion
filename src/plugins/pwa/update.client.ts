@@ -1,6 +1,6 @@
 import { Context } from '@nuxt/types';
 
-export default async function (_: Context) {
+export default async (_: Context) => {
   const workbox = await window.$workbox;
 
   if (!workbox) {
@@ -21,4 +21,4 @@ export default async function (_: Context) {
 
     console.debug('The PWA is on the latest version.'); // eslint-disable-line
   });
-}
+};
