@@ -221,7 +221,7 @@ export default defineComponent({
     );
 
     onMounted(() => {
-      useEvent('resize', refresh, {}, ref(window));
+      useEvent('resize', refresh, ref(window));
       refresh();
     });
 

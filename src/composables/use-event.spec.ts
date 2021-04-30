@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import { ref } from '@vue/composition-api';
 import { render } from '@testing-library/vue';
 import { TestComponent } from '@/test/test-utils';
 import { useEvent } from './use-event';
@@ -10,7 +11,7 @@ describe('use-event.ts', () => {
 
     const { unmount } = render(
       TestComponent(() => {
-        useEvent('click', null);
+        useEvent('click', null, ref(document));
         return {};
       }),
     );
@@ -31,7 +32,7 @@ describe('use-event.ts', () => {
 
     const { unmount } = render(
       TestComponent(() => {
-        useEvent('click', null, {}, null);
+        useEvent('click', null, null);
         return {};
       }),
     );

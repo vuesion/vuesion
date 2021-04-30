@@ -111,6 +111,8 @@
     <vue-modal :show="showLoginModal" @close="showLoginModal = false">
       <login-form :loading="loginRequestStatus === 'PENDING'" @submit="onLoginSubmit" />
     </vue-modal>
+
+    <vue-back-to-top />
   </div>
 </template>
 
@@ -136,10 +138,12 @@ import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 import VueModal from '@/components/molecules/VueModal/VueModal.vue';
 import LoginForm from '@/components/organisms/LoginForm/LoginForm.vue';
 import { useLocaleSwitch } from '@/composables/use-locale-switch';
+import VueBackToTop from '@/components/molecules/VueBackToTop/VueBackToTop.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
+    VueBackToTop,
     LoginForm,
     VueModal,
     VueButton,
