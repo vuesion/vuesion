@@ -67,6 +67,7 @@
     "@nuxtjs/axios": "5.13.1",
     "@nuxtjs/composition-api": "0.20.2",
     "@nuxtjs/pwa": "3.3.5",
+    "@nuxtjs/robots": "2.5.0",
     "@vue/apollo-composable": "4.0.0-alpha.12",
     "@vuesion/models": "4.0.0-beta.3",
     "@vuesion/utils": "4.0.0-beta.3",
