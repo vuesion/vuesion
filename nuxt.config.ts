@@ -66,7 +66,7 @@ const config: Configuration = {
     },
     transpile: ['vee-validate', '@vue/apollo-composable'],
   },
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/composition-api'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/composition-api', '@nuxtjs/eslint-module'],
   css: [],
   head: {
     title: process.env.npm_package_name || '',
