@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import VueContentBlock from './VueContentBlock.vue';
 
-const story = storiesOf('Design System|Layout/ContentBlock', module) as any;
+const story = storiesOf('Foundation|Layout/ContentBlock', module) as any;
 
 story.add(
   'Limit and center content based on view port',

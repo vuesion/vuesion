@@ -5,7 +5,7 @@ import VueText from '@/components/atoms/VueText/VueText.vue';
 import VueColumn from './VueColumn/VueColumn.vue';
 import VueColumns from './VueColumns.vue';
 
-const story = storiesOf('Design System|Layout/Columns', module) as any;
+const story = storiesOf('Foundation|Layout/Columns', module) as any;
 
 story.add(
   'Nested columns with responsive spacings and width',

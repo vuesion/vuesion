@@ -3,7 +3,7 @@ import VueBadge from '@/components/atoms/VueBadge/VueBadge.vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueTiles from './VueTiles.vue';
 
-const story = storiesOf('Design System|Layout/Tiles', module) as any;
+const story = storiesOf('Foundation|Layout/Tiles', module) as any;
 
 story.add(
   'With responsive columns and spacings',
