@@ -11,7 +11,7 @@ async function axiosFetch(axios: NuxtAxiosInstance, transformer?: any, input?: a
   // Convert the `fetch` style arguments into a Axios style config
   transformer = transformer || identity;
 
-  const lowerCasedHeaders = mapKeys(init.headers, function (_, key) {
+  const lowerCasedHeaders = mapKeys(init.headers, (_, key) => {
     return key.toLowerCase();
   });
 
@@ -43,7 +43,7 @@ async function axiosFetch(axios: NuxtAxiosInstance, transformer?: any, input?: a
   const responseBody = typeof result.data === `object` ? JSON.stringify(result.data) : result.data;
 
   const headers = new Headers();
-  Object.entries(result.headers).forEach(function ([key, value]) {
+  Object.entries(result.headers).forEach(([key, value]) => {
     headers.append(key, value as string);
   });
 

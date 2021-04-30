@@ -4,7 +4,7 @@ import { setContext } from '@apollo/client/link/context';
 import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { transformAxiosToFetch } from '@/plugins/axios/transform-axios-to-fetch';
 
-export default function ({ $axios, $config, store }: Context) {
+export default ({ $axios, $config, store }: Context) => {
   const httpLink = createHttpLink({
     uri: $config.apollo.baseURL,
     fetch: transformAxiosToFetch($axios),
@@ -43,4 +43,4 @@ export default function ({ $axios, $config, store }: Context) {
       },
     },
   };
-}
+};
