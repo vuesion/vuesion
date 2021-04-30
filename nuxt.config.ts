@@ -66,7 +66,7 @@ const config: Configuration = {
     },
     transpile: ['vee-validate', '@vue/apollo-composable'],
   },
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/composition-api', '@nuxtjs/eslint-module'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/composition-api', '@nuxtjs/eslint-module', '@nuxtjs/robots'],
   css: [],
   head: {
     title: process.env.npm_package_name || '',
@@ -126,6 +126,11 @@ const config: Configuration = {
     icon: {
       fileName: 'logo.png',
     },
+  },
+  robots: {
+    UserAgent: '*',
+    Disallow: '/*?*',
+    Allow: '/',
   },
   router: {
     middleware: ['auth'],
