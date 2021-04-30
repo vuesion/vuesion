@@ -10,6 +10,7 @@
       <div :class="$style.icon"><vue-icon-github />github</div>
       <div :class="$style.icon"><vue-icon-github-alt />github-alt</div>
       <div :class="$style.icon"><vue-icon-hashtag />hashtag</div>
+      <div :class="$style.icon"><vue-icon-info-circle />info-circle</div>
       <div :class="$style.icon"><vue-icon-mobile />mobile</div>
       <div :class="$style.icon"><vue-icon-puzzle-piece />puzzle-piece</div>
       <div :class="$style.icon"><vue-icon-search />search</div>
@@ -46,10 +47,12 @@ import VueIconSpinner from '@/components/atoms/icons/VueIconSpinner/VueIconSpinn
 import VueIconStar from '@/components/atoms/icons/VueIconStar/VueIconStar.vue';
 import VueIconTimes from '@/components/atoms/icons/VueIconTimes/VueIconTimes.vue';
 import VueIconVuesion from '@/components/atoms/icons/VueIconVuesion/VueIconVuesion.vue';
+import VueIconInfoCircle from '@/components/atoms/icons/VueIconInfoCircle/VueIconInfoCircle.vue';
 
 export default {
   name: 'IconList',
   components: {
+    VueIconInfoCircle,
     VueIconVuesion,
     VueIconTimes,
     VueIconStar,
