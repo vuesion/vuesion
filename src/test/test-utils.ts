@@ -8,10 +8,12 @@ export const TestComponent = (setup: (props?: any, options?: any) => void, templ
 });
 
 export const triggerDocument: any = {};
+export const triggerWindow: any = {};
 
 if (typeof beforeEach !== 'undefined') {
   const addEventListener = document.addEventListener;
   const removeEventListener = document.removeEventListener;
+
   beforeEach(() => {
     document.addEventListener = jest.fn((event, cb) => {
       triggerDocument[event] = cb;
@@ -19,6 +21,14 @@ if (typeof beforeEach !== 'undefined') {
 
     document.removeEventListener = jest.fn((event) => {
       delete triggerDocument[event];
+    });
+
+    window.addEventListener = jest.fn((event, cb) => {
+      triggerWindow[event] = cb;
+    });
+
+    window.removeEventListener = jest.fn((event) => {
+      delete triggerWindow[event];
     });
   });
 

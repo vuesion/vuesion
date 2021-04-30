@@ -1,31 +1,37 @@
-import { onMounted, onBeforeUnmount, ref } from '@vue/composition-api';
+import { onBeforeUnmount, Ref, watch } from '@vue/composition-api';
 
 export const useEvent = (
   eventName: string,
   handler: any,
-  options: {
+  elementRef: Ref<HTMLElement | Document | Window>,
+  options?: {
     capture?: boolean;
     once?: boolean;
     passive?: boolean;
-  } = {},
-  elementRef = ref<HTMLElement | Document | Window>(document),
+  },
 ) => {
-  const el = elementRef?.value;
+  let el = elementRef?.value;
+  const add = () => {
+    if (!el) return;
+
+    el.addEventListener(eventName, handler, options);
+  };
   const remove = () => {
-    if (!el) {
-      return;
-    }
-    el.removeEventListener(eventName, handler);
+    if (!el) return;
+
+    el.removeEventListener(eventName, handler, options);
   };
 
-  onMounted(() => {
-    if (!el) {
-      return;
-    }
-    el.addEventListener(eventName, handler, options);
-  });
+  watch(
+    () => elementRef,
+    (value) => {
+      el = value?.value;
+      add();
+    },
+    { immediate: true },
+  );
 
   onBeforeUnmount(remove);
 
-  return remove;
+  return { add, remove };
 };

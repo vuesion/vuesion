@@ -1,6 +1,6 @@
 @import 'mixins';
 
-/* Branding */
+/* Foundation */
 @import 'color-palette';
 @import 'spacings';
 @import 'typo';
@@ -31,3 +31,4 @@
 @import 'components/molecules/tooltip';
 @import 'components/atoms/toggle';
 @import 'components/atoms/star-rating';
+@import 'components/molecules/back-to-top';
