@@ -10,6 +10,7 @@
     :event="!isDisabled && isRouterLink ? 'click' : null"
     :tabindex="isDisabled ? -1 : 0"
     :aria-hidden="isDisabled"
+    :type="type"
     v-on="{
       ...$listeners,
       click: onClick,
@@ -42,6 +43,7 @@ export default defineComponent({
     loading: { type: Boolean, default: false },
     ghost: { type: Boolean, default: false },
     as: { type: String, default: 'button' },
+    type: { type: String, default: 'button' },
     href: { type: String, default: null },
   },
   setup(props, { emit }) {

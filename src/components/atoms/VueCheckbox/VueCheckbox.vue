@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.input, radio ? $style.radio : $style.checkbox, disabled && $style.disabled]" :aria-label="label">
-    <ValidationProvider ref="validator" :vid="id" :name="name" :rules="validation">
+    <ValidationProvider ref="validator" :vid="id" :name="name" :rules="validation" tag="div">
       <input
         :id="id"
         :type="radio ? 'radio' : 'checkbox'"

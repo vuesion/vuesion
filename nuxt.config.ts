@@ -78,6 +78,22 @@ const config: Configuration = {
       },
     ],
   },
+  htmlValidator: {
+    usePrettier: false,
+    options: {
+      extends: ['html-validate:document', 'html-validate:recommended', 'html-validate:standard'],
+      rules: {
+        'svg-focusable': 'off',
+        'no-unknown-elements': 'error',
+        'void-style': 'off',
+        'no-trailing-whitespace': 'off',
+        'require-sri': 'off',
+        'attribute-boolean-style': 'off',
+        'doctype-style': 'off',
+        'no-inline-style': 'off',
+      },
+    },
+  },
   i18n: {
     strategy: 'no_prefix',
     vueI18n: '@/plugins/vue-i18n/vue-i18n',
@@ -105,7 +121,15 @@ const config: Configuration = {
     color: '#cd235b',
     background: 'white',
   },
-  modules: ['@nuxtjs/apollo', 'nuxt-i18n', '@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/pwa', 'nuxt-winston-log'],
+  modules: [
+    '@nuxtjs/apollo',
+    'nuxt-i18n',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
+    '@nuxtjs/pwa',
+    'nuxt-winston-log',
+    '@nuxtjs/html-validator',
+  ],
   plugins: [
     { src: '@/plugins/apollo/provide-apollo-client' },
     { src: '@/plugins/vee-validate/vee-validate' },

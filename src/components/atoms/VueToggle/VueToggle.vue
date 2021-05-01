@@ -3,7 +3,7 @@
     :class="[$style.vueToggle, focus && $style.focus, isChecked && $style.checked, disabled && $style.disabled]"
     :aria-label="label"
   >
-    <ValidationProvider ref="validator" :vid="name" :name="name" :rules="validation">
+    <ValidationProvider ref="validator" :vid="name" :name="name" :rules="validation" tag="div">
       <input
         :id="id"
         ref="input"
