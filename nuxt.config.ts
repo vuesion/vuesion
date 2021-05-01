@@ -124,7 +124,7 @@ const config: Configuration = {
   privateRuntimeConfig: {},
   pwa: {
     icon: {
-      fileName: 'logo.png',
+      fileName: 'images/vuesion-logo.png',
     },
   },
   robots: {
