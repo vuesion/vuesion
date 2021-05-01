@@ -22,6 +22,7 @@
       "@nuxtjs/axios",
       "@nuxtjs/composition-api",
       "@nuxtjs/pwa",
+      "@nuxtjs/color-mode",
       "animejs",
       "cookie-parser",
       "compression",

@@ -4,7 +4,7 @@ import { PersistCookieStorage } from '@vuesion/vuex-persist/dist/PersistCookieSt
 
 export default ({ store }: Context) => {
   VuexPersist([
-    new PersistCookieStorage(['app', 'counter'], {
+    new PersistCookieStorage(['counter'], {
       cookieOptions: {
         expires: 365,
       },

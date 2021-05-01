@@ -237,11 +237,7 @@ describe('VueCalendar.vue', () => {
         firstDayOfWeek: 1,
       },
     });
-    const cell = wrapper
-      .find('tbody')
-      .find('tr')
-      .findAll('td')
-      .at(6);
+    const cell = wrapper.find('tbody').find('tr').findAll('td').at(6);
     expect(cell.text()).toBe('1');
   });
 });

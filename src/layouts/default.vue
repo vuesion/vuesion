@@ -17,7 +17,14 @@
     <vue-sidebar>
       <vue-sidebar-group title="Themes">
         <vue-sidebar-group-item>
-          <vue-select id="theme" label="Theme" name="theme" :items="themes" :value="theme" @input="onThemeChange" />
+          <vue-select
+            id="theme"
+            label="Theme"
+            name="theme"
+            :items="themes"
+            :value="$colorMode.value"
+            @input="$colorMode.preference = $event"
+          />
         </vue-sidebar-group-item>
       </vue-sidebar-group>
 
@@ -162,7 +169,7 @@ export default defineComponent({
     VueNotificationStack,
   },
   setup() {
-    const { store, redirect, app } = useContext();
+    const { redirect, app } = useContext();
     const { htmlAttrs } = useMeta();
     const { switchLocaleTo } = useLocaleSwitch(app.i18n);
     const languages = computed(() => [
@@ -170,21 +177,17 @@ export default defineComponent({
       { label: 'Deutsch', value: 'de' },
     ]);
     const themes = computed(() => [
-      { label: 'Light Theme', value: 'light' },
-      { label: 'Dark Theme', value: 'dark' },
+      { label: 'System', value: 'system' },
+      { label: 'Light', value: 'light' },
+      { label: 'Dark', value: 'dark' },
     ]);
     const showLoginModal = ref(false);
     const loginRequestStatus = ref(RequestStatus.INIT);
-    const locale = computed(() => store.getters['app/locale']);
-    const theme = computed(() => store.getters['app/theme']);
+    const locale = computed(() => app.i18n.locale);
     const loggedIn = computed(() => app.$auth.loggedIn);
     const user = computed(() => app.$auth.user);
     const onLocaleSwitch = (selectedLocale: string) => {
       switchLocaleTo(selectedLocale);
-    };
-    const onThemeChange = async (selectedTheme: string) => {
-      await store.dispatch('app/changeTheme', selectedTheme);
-      document.documentElement.className = selectedTheme;
     };
     const onLoginSubmit = async (formData: any) => {
       loginRequestStatus.value = RequestStatus.PENDING;
@@ -206,10 +209,9 @@ export default defineComponent({
     };
 
     watch(
-      [theme, locale],
+      [locale],
       () => {
         htmlAttrs.value = {
-          class: theme.value,
           lang: locale.value.substr(0, 2),
         };
       },
@@ -222,11 +224,9 @@ export default defineComponent({
       showLoginModal,
       loginRequestStatus,
       locale,
-      theme,
       loggedIn,
       user,
       onLocaleSwitch,
-      onThemeChange,
       onLoginSubmit,
       onLogoutClick,
     };
