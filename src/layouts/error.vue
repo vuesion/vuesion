@@ -29,15 +29,13 @@ export default defineComponent({
     error: { type: Object, required: true },
   },
   setup(props) {
-    const { store } = useContext();
+    const { app } = useContext();
     const { title, htmlAttrs, meta } = useMeta();
-    const locale = computed(() => store.getters['app/locale']);
-    const theme = computed(() => store.getters['app/theme']);
+    const locale = computed(() => app.i18n.locale);
 
     title.value = props.error.statusCode === 404 ? 'vuesion - page not found' : 'vuesion - an error occurred';
 
     htmlAttrs.value = {
-      class: theme.value,
       lang: locale.value.substr(0, 2),
     };
 

@@ -66,7 +66,23 @@ const config: Configuration = {
     },
     transpile: ['vee-validate', '@vue/apollo-composable'],
   },
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/composition-api', '@nuxtjs/eslint-module', '@nuxtjs/robots'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/composition-api',
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/html-validator',
+    '@nuxtjs/color-mode',
+  ],
+  colorMode: {
+    preference: 'system',
+    fallback: 'light',
+    hid: 'nuxt-color-mode-script',
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    classPrefix: '',
+    classSuffix: '',
+    storageKey: 'nuxt-color-mode',
+  },
   css: [],
   head: {
     title: process.env.npm_package_name || '',
@@ -128,7 +144,7 @@ const config: Configuration = {
     '@nuxtjs/auth-next',
     '@nuxtjs/pwa',
     'nuxt-winston-log',
-    '@nuxtjs/html-validator',
+    '@nuxtjs/robots',
   ],
   plugins: [
     { src: '@/plugins/apollo/provide-apollo-client' },
