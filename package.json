@@ -30,7 +30,7 @@
   },
   "scripts": {
     "dev": "nuxt -o",
-    "storybook:dev": "vuesion storybook --dev",
+    "storybook:dev": "vuesion storybook --dev -s ./src/static",
     "test": "vuesion test --coverage",
     "generate": "vuesion generate",
     "type-gen:gql": "graphql-codegen",

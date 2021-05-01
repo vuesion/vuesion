@@ -5,5 +5,5 @@ export default create({
   ...theme,
   brandTitle: 'vuesion Storybook',
   brandUrl: 'https://vuesion.herokuapp.com',
-  brandImage: 'https://vuesion.herokuapp.com/logo.png',
+  brandImage: '/images/vuesion-logo.png',
 });

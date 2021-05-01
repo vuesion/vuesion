@@ -215,7 +215,7 @@ export default {
           content:
             'vuesion - The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices',
         },
-        { name: 'og:image:url', content: 'https://vuesion.herokuapp.com/logo.png' },
+        { name: 'og:image:url', content: '/images/vuesion-logo.png' },
 
         { name: 'twitter:card', content: 'summary' },
         { name: 'twitter:site', content: '@vuesion1' },
@@ -226,7 +226,7 @@ export default {
             'vuesion - The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices',
         },
         { name: 'twitter:url', content: 'https://vuesion.herokuapp.com/' },
-        { name: 'twitter:image', content: 'https://vuesion.herokuapp.com/logo.png' },
+        { name: 'twitter:image', content: '/images/vuesion-logo.png' },
         {
           name: 'twitter:description',
           content:
