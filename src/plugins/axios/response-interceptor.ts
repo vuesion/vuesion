@@ -20,7 +20,7 @@ const isAuthError = (error: AxiosError): boolean => {
   return error.response && error.response.status === 401;
 };
 
-export default function({ $axios, $auth }: Context) {
+export default ({ $axios, $auth }: Context) => {
   const onRejected = (error: AxiosError) => {
     const originalRequest: AxiosRequestConfig = error.config;
 
@@ -63,4 +63,4 @@ export default function({ $axios, $auth }: Context) {
   };
 
   $axios.interceptors.response.use((response: AxiosResponse) => response, onRejected);
-}
+};

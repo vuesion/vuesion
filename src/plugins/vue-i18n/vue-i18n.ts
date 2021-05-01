@@ -27,8 +27,8 @@ export const dateTimeFormats: VueI18n.DateTimeFormats = {
   de: calendarFormats,
 };
 
-export default function(): any {
+export default (): any => {
   return {
     dateTimeFormats,
   };
-}
+};

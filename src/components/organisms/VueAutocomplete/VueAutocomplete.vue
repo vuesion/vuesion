@@ -183,7 +183,7 @@ export default defineComponent({
 
       onFocusItem();
     };
-    const emitRequest = debounce(function() {
+    const emitRequest = debounce(() => {
       emit('search', searchQuery.value);
       isOpen.value = true;
       selectedOptionIndex.value = -1;

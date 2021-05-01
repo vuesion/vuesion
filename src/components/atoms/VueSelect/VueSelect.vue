@@ -1,5 +1,5 @@
 <template>
-  <ValidationProvider v-slot="{ invalid }" ref="validator" :vid="id" :name="name" :rules="validation">
+  <ValidationProvider v-slot="{ invalid }" ref="validator" :vid="id" :name="name" :rules="validation" tag="div">
     <div
       :class="[
         $style.vueSelect,
