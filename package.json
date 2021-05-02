@@ -118,85 +118,11 @@
     "flush-promises": "1.0.2",
     "husky": "5.1.1",
     "identity-obj-proxy": "3.0.0",
+    "mock-apollo-client": "1.1.0",
     "node-sass": "5.0.0"
   },
   "engines": {
     "node": ">= 12.0.0",
     "npm": ">= 6.0.0"
-  },
-  "jest": {
-    "globals": {
-      "window": true,
-      "ts-jest": {
-        "tsconfig": "tsconfig.test.json"
-      },
-      "vue-jest": {
-        "experimentalCSSCompile": false
-      }
-    },
-    "rootDir": ".",
-    "setupFiles": [
-      "<rootDir>/src/test/jestsetup.ts"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/test/jest-dom-importer.ts"
-    ],
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1",
-      "^vue$": "vue/dist/vue.common.js",
-      "@nuxtjs/composition-api": "@nuxtjs/composition-api/lib/entrypoint.js"
-    },
-    "moduleFileExtensions": [
-      "ts",
-      "js",
-      "vue"
-    ],
-    "transform": {
-      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
-      ".(ts|tsx)$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": [
-      "/cypress/"
-    ],
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*",
-      "!src/**/*.stories.ts",
-      "!src/**/*.d.ts"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/api/",
-      "/assets/",
-      "/enums/",
-      "/fixtures/",
-      "/interfaces/",
-      "/layouts/",
-      "/plugins/",
-      "/services/",
-      "/static/",
-      "/test/",
-      "src/store/index.ts",
-      "src/interfaces/graphql",
-      "src/interfaces/swagger"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "statements": 100,
-        "branches": 100,
-        "functions": 100,
-        "lines": 100
-      }
-    },
-    "coverageDirectory": "./coverage",
-    "coverageReporters": [
-      "html",
-      "text",
-      "lcov",
-      "json"
-    ],
-    "preset": "ts-jest",
-    "testMatch": null
   }
 }
