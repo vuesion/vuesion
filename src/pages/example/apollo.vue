@@ -29,7 +29,6 @@
 </template>
 
 <script lang="ts">
-/* istanbul ignore file */
 import { computed, defineComponent, useContext, useMeta } from '@nuxtjs/composition-api';
 import { useQuery, useResult } from '@vue/apollo-composable/dist';
 import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vue';
