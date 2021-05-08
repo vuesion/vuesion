@@ -93,7 +93,7 @@ describe('VueInline.vue', () => {
       revert: [true, true, true],
     });
 
-    expect(html()).toMatch('vueInline space-24 revert revert-tp revert-tl');
+    expect(html()).toMatch('vueInline space-24 revert revert-tp revert-tl revert-sd revert-ld');
   });
 
   test('renders component with nowrap', async () => {
