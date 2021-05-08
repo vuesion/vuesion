@@ -2,6 +2,8 @@ import { storiesOf } from '@storybook/vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueFooter from '@/components/organisms/VueFooter/VueFooter.vue';
+import VueNavBar from '@/components/organisms/VueNavBar/VueNavBar.vue';
 import VueColumn from './VueColumn/VueColumn.vue';
 import VueColumns from './VueColumns.vue';
 
@@ -61,12 +63,12 @@ story.add(
               </vue-stack>
             </vue-column>
             <vue-column>
-              <vue-columns :align="['left', 'right']" :space="[4, 24]" stack-phone>
+              <vue-columns :space="[4, 24]" stack-phone>
                 <vue-column width="content"><vue-text>Price</vue-text></vue-column>
                 <vue-column :width="['content', '150px', '250px']">
                   <vue-text>Dropdown</vue-text>
                 </vue-column>
-                <vue-column :width="['content', '180px']" :align="['left', 'right']">
+                <vue-column :width="['content', '180px']">
                   <vue-text>Summary</vue-text>
                 </vue-column>
               </vue-columns>
@@ -87,12 +89,12 @@ story.add(
               </vue-stack>
             </vue-column>
             <vue-column>
-              <vue-columns :align="['left', 'right']" :space="[4, 24]" stack-phone>
+              <vue-columns :space="[4, 24]" stack-phone>
                 <vue-column width="content"><vue-text>Price</vue-text></vue-column>
                 <vue-column :width="['content', '150px', '250px']">
                   <vue-text>Dropdown</vue-text>
                 </vue-column>
-                <vue-column :width="['content', '180px']" :align="['left', 'right']">
+                <vue-column :width="['content', '180px']">
                   <vue-text>Summary Summary</vue-text>
                 </vue-column>
               </vue-columns>
@@ -160,6 +162,37 @@ story.add(
       </vue-column>
     </vue-columns>
     </vue-box>`,
+  }),
+  {
+    info: {
+      components: { VueColumns },
+    },
+  },
+);
+
+story.add(
+  'Stacked full page layout',
+  () => ({
+    components: { VueBox, VueColumns, VueColumn, VueNavBar, VueFooter },
+    template: `<vue-columns
+      :space="null"
+      full-page
+      stack-phone
+      stack-tablet-portrait
+      stack-tablet-landscape
+      stack-small-desktop
+      stack-large-desktop
+    >
+      <vue-column width="content">
+        <vue-nav-bar />
+      </vue-column>
+      <vue-column align="center" align-y="center">
+        Content
+      </vue-column>
+      <vue-column width="content">
+        <vue-footer />
+      </vue-column>
+    </vue-columns>`,
   }),
   {
     info: {

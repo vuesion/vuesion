@@ -104,6 +104,16 @@ describe('VueColumns.vue', () => {
       revert: [true, true, true],
     });
 
-    expect(html()).toMatch('vueColumns space-24 revert revert-tp revert-tl');
+    expect(html()).toMatch('vueColumns space-24 revert revert-tp revert-tl revert-sd revert-ld');
+  });
+
+  test('renders component using the whole page', async () => {
+    const { html, updateProps } = harness;
+
+    await updateProps({
+      fullPage: true,
+    });
+
+    expect(html()).toMatch('vueColumns space-24 fullPage');
   });
 });
