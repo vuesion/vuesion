@@ -82,7 +82,7 @@ export default defineComponent({
     const responsiveVerticalAlignments = parseResponsivePropValue(this.alignY);
     applyResponsiveClasses(this.$style, cssClasses, responsiveVerticalAlignments, 'alignv');
 
-    const responsiveRevert = parseResponsivePropValue(this.revert);
+    const responsiveRevert = parseResponsivePropValue(this.revert, true);
     applyResponsiveClasses(this.$style, cssClasses, responsiveRevert, 'revert', false);
 
     if (this.stackPhone) {
