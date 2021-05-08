@@ -43,6 +43,7 @@ export default defineComponent({
     stackTabletLandscape: { type: Boolean, default: false },
     stackSmallDesktop: { type: Boolean, default: false },
     stackLargeDesktop: { type: Boolean, default: false },
+    fullPage: { type: Boolean, default: false },
   },
   render(createElement: CreateElement) {
     const items = decorateChildComponents(this.$slots.default, (vNode) => {
@@ -65,7 +66,7 @@ export default defineComponent({
     const responsiveVerticalAlignments = parseResponsivePropValue(this.alignY);
     applyResponsiveClasses(this.$style, cssClasses, responsiveVerticalAlignments, 'alignv');
 
-    const responsiveRevert = parseResponsivePropValue(this.revert);
+    const responsiveRevert = parseResponsivePropValue(this.revert, true);
     applyResponsiveClasses(this.$style, cssClasses, responsiveRevert, 'revert', false);
 
     if (this.stackPhone) {
@@ -88,6 +89,10 @@ export default defineComponent({
       cssClasses[this.$style[`stack-ld`]] = true;
     }
 
+    if (this.fullPage) {
+      cssClasses[this.$style.fullPage] = true;
+    }
+
     return createElement(this.as, { class: cssClasses }, items);
   },
 });
@@ -99,6 +104,11 @@ export default defineComponent({
 .vueColumns {
   display: flex;
   flex-direction: row;
+
+  &.fullPage {
+    width: 100vw;
+    height: 100vh;
+  }
 
   @each $name, $space in $spacings {
     &.space-#{$name} {
