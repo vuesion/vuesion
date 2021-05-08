@@ -36,4 +36,12 @@ describe('VueColumn.vue', () => {
 
     expect(html()).toMatch('alignh-left alignh-tp-center alignh-tl-right');
   });
+
+  test('renders component with responsive vertical alignment', async () => {
+    const { html, updateProps } = harness;
+
+    await updateProps({ alignY: ['top', 'center', 'bottom'] });
+
+    expect(html()).toMatch('alignv-top alignv-tp-center alignv-tl-bottom');
+  });
 });
