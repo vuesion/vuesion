@@ -46,9 +46,9 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 
 - server-side-rendering, single-page-app or statically generated HTML with Nuxt.js
 - 100% customizable Design-system with 35+ components including
-  - typography, button, input, select, checkbox, radio, (range-)slider, toggle
+  - layout, typography, button, input, select, checkbox, radio, (range-)slider, toggle
   - dropdown, modal, tooltip, carousel, notifications
-  - data-table, accordion, auto-complete, calendar, date-(range-)picker, grid, tabs
+  - data-table, accordion, auto-complete, calendar, date-(range-)picker, tabs
   - theming support
 - SEO support
 - i18n support
