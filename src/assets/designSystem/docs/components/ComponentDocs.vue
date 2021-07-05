@@ -1,12 +1,12 @@
 <template>
   <vue-box>
     <vue-stack space="32">
-      <vue-stack space="8">
+      <vue-stack v-if="componentName && usage" space="8">
         <vue-text appearance="large-title" weight="semi-bold">{{ componentName }} Usage</vue-text>
         <vue-text appearance="description">{{ usage }}</vue-text>
       </vue-stack>
 
-      <vue-stack space="8">
+      <vue-stack v-if="story" space="8">
         <vue-text appearance="large-title" weight="semi-bold">Story</vue-text>
         <vue-text appearance="description">{{ story }}</vue-text>
       </vue-stack>
@@ -26,9 +26,9 @@ export default {
   name: 'ComponentDocs',
   components: { VueStack, VueText },
   props: {
-    componentName: { type: String, required: true },
-    usage: { type: String, required: true },
-    story: { type: String, required: true },
+    componentName: { type: String, default: null },
+    usage: { type: String, default: null },
+    story: { type: String, default: null },
   },
 };
 </script>
