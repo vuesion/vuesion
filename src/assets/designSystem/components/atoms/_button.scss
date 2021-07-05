@@ -14,9 +14,10 @@ $button-disabled-opacity: 0.5;
 $button-border-width: 0.2rem;
 $button-icon-size: $space-24;
 
+// TODO: add new button variations
 $button-variations: (
   'primary': (
-    'bg': var(--brand-primary),
+    'bg': var(--brand-primary-enabled),
     'color': var(--button-color),
     'hover-bg': var(--brand-primary-hover),
     'hover-color': var(--button-color),
@@ -24,10 +25,10 @@ $button-variations: (
     'active-color': var(--button-color),
     'focus-bg': var(--brand-primary-focus),
     'focus-color': var(--button-color),
-    'border': $button-border-width solid var(--brand-primary),
+    'border': $button-border-width solid var(--brand-primary-enabled),
   ),
   'neutral': (
-    'bg': var(--brand-neutral),
+    'bg': var(--brand-neutral-enabled),
     'color': var(--button-color),
     'hover-bg': var(--brand-neutral-hover),
     'hover-color': var(--button-color),
@@ -35,10 +36,10 @@ $button-variations: (
     'active-color': var(--button-color),
     'focus-bg': var(--brand-neutral-focus),
     'focus-color': var(--button-color),
-    'border': $button-border-width solid var(--brand-neutral),
+    'border': $button-border-width solid var(--brand-neutral-enabled),
   ),
   'danger': (
-    'bg': var(--brand-danger),
+    'bg': var(--brand-danger-enabled),
     'color': var(--button-color),
     'hover-bg': var(--brand-danger-hover),
     'hover-color': var(--button-color),
@@ -46,10 +47,10 @@ $button-variations: (
     'active-color': var(--button-color),
     'focus-bg': var(--brand-danger-focus),
     'focus-color': var(--button-color),
-    'border': $button-border-width solid var(--brand-danger),
+    'border': $button-border-width solid var(--brand-danger-enabled),
   ),
   'warning': (
-    'bg': var(--brand-warning),
+    'bg': var(--brand-warning-enabled),
     'color': var(--button-color),
     'hover-bg': var(--brand-warning-hover),
     'hover-color': var(--button-color),
@@ -57,10 +58,10 @@ $button-variations: (
     'active-color': var(--button-color),
     'focus-bg': var(--brand-warning-focus),
     'focus-color': var(--button-color),
-    'border': $button-border-width solid var(--brand-warning),
+    'border': $button-border-width solid var(--brand-warning-enabled),
   ),
   'success': (
-    'bg': var(--brand-success),
+    'bg': var(--brand-success-enabled),
     'color': var(--button-color),
     'hover-bg': var(--brand-success-hover),
     'hover-color': var(--button-color),
@@ -68,10 +69,10 @@ $button-variations: (
     'active-color': var(--button-color),
     'focus-bg': var(--brand-success-focus),
     'focus-color': var(--button-color),
-    'border': $button-border-width solid var(--brand-success),
+    'border': $button-border-width solid var(--brand-success-enabled),
   ),
   'info': (
-    'bg': var(--brand-info),
+    'bg': var(--brand-info-enabled),
     'color': var(--button-color),
     'hover-bg': var(--brand-info-hover),
     'hover-color': var(--button-color),
@@ -79,6 +80,6 @@ $button-variations: (
     'active-color': var(--button-color),
     'focus-bg': var(--brand-info-focus),
     'focus-color': var(--button-color),
-    'border': $button-border-width solid var(--brand-info),
+    'border': $button-border-width solid var(--brand-info-enabled),
   ),
 );

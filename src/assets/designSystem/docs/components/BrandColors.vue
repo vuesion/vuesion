@@ -58,7 +58,7 @@ export default {
 .section {
   padding: $space-32 0;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   grid-gap: $space-16;
   grid-auto-rows: 200px;
 
@@ -86,6 +86,36 @@ export default {
   brand_variations-brand-warning: var(--brand-warning);
   brand_variations-brand-success: var(--brand-success);
   brand_variations-brand-info: var(--brand-info);
+
+  interaction_colors_primary-brand-primary-enabled: var(--brand-primary-enabled);
+  interaction_colors_primary-brand-primary-hover: var(--brand-primary-hover);
+  interaction_colors_primary-brand-primary-focus: var(--brand-primary-focus);
+  interaction_colors_primary-brand-primary-active: var(--brand-primary-active);
+
+  interaction_colors_neutral-brand-neutral-enabled: var(--brand-neutral-enabled);
+  interaction_colors_neutral-brand-neutral-hover: var(--brand-neutral-hover);
+  interaction_colors_neutral-brand-neutral-focus: var(--brand-neutral-focus);
+  interaction_colors_neutral-brand-neutral-active: var(--brand-neutral-active);
+
+  interaction_colors_danger-brand-danger-enabled: var(--brand-danger-enabled);
+  interaction_colors_danger-brand-danger-hover: var(--brand-danger-hover);
+  interaction_colors_danger-brand-danger-focus: var(--brand-danger-focus);
+  interaction_colors_danger-brand-danger-active: var(--brand-danger-active);
+
+  interaction_colors_warning-brand-warning-enabled: var(--brand-warning-enabled);
+  interaction_colors_warning-brand-warning-hover: var(--brand-warning-hover);
+  interaction_colors_warning-brand-warning-focus: var(--brand-warning-focus);
+  interaction_colors_warning-brand-warning-active: var(--brand-warning-active);
+
+  interaction_colors_success-brand-success-enabled: var(--brand-success-enabled);
+  interaction_colors_success-brand-success-hover: var(--brand-success-hover);
+  interaction_colors_success-brand-success-focus: var(--brand-success-focus);
+  interaction_colors_success-brand-success-active: var(--brand-success-active);
+
+  interaction_colors_info-brand-info-enabled: var(--brand-info-enabled);
+  interaction_colors_info-brand-info-hover: var(--brand-info-hover);
+  interaction_colors_info-brand-info-focus: var(--brand-info-focus);
+  interaction_colors_info-brand-info-active: var(--brand-info-active);
 
   background_Colors-brand-primary-bg-color: var(--brand-primary-bg-color);
   background_Colors-brand-secondary-bg-color-variant: var(--brand-secondary-bg-color);

@@ -39,9 +39,9 @@ export default defineComponent({
   props: {
     disabled: { type: Boolean, default: false },
     block: { type: Boolean, default: false },
-    color: { type: String, validator: colorVariationValidator, default: 'neutral' },
-    loading: { type: Boolean, default: false },
-    ghost: { type: Boolean, default: false },
+    color: { type: String, validator: colorVariationValidator, default: 'neutral' }, // TODO: add button variations
+    loading: { type: Boolean, default: false }, // TODO: needs fine tuning
+    ghost: { type: Boolean, default: false }, // remove
     as: { type: String, default: 'button' },
     type: { type: String, default: 'button' },
     href: { type: String, default: null },

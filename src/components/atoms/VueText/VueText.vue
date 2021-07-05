@@ -34,7 +34,7 @@ export default defineComponent({
   components: {},
   props: {
     as: { type: String, default: 'span' },
-    appearance: { type: String, default: 'default', validator: textStyleValidator },
+    appearance: { type: String, default: 'default', validator: textStyleValidator }, // TODO: style
     color: { type: String, default: null, validator: textColorVariationValidator },
     weight: { type: String, default: 'regular', validator: fontWeightValidator },
     serifs: { type: Boolean, default: false },
