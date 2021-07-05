@@ -17,7 +17,7 @@
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
-import VueImage from '@/components/atoms/VueImage/VueImage.vue';
+import VueImage from '@/components/data-display/VueImage/VueImage.vue';
 
 export default {
   name: 'HomeSection',

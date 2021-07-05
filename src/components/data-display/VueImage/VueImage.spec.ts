@@ -1,31 +1,27 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { render } from '@testing-library/vue';
 import VueImage from './VueImage.vue';
-
-const localVue = createLocalVue();
 
 describe('VueImage.vue', () => {
   test('renders native image', () => {
-    const wrapper = mount<any>(VueImage, {
-      localVue,
-      propsData: {
+    const { html } = render(VueImage, {
+      props: {
         src: 'foo',
       },
     });
-    const actual = wrapper.html();
+    const actual = html();
     const expected = '<img src="foo">';
 
     expect(actual).toBe(expected);
   });
 
   test('renders image as div', () => {
-    const wrapper = mount<any>(VueImage, {
-      localVue,
-      propsData: {
-        src: 'foo',
+    const { html } = render(VueImage, {
+      props: {
         native: false,
+        src: 'foo',
       },
     });
-    const actual = wrapper.html();
+    const actual = html();
     const expected = '<div style="background-image: url(foo);"></div>';
 
     expect(actual).toBe(expected);
@@ -50,13 +46,12 @@ describe('VueImage.vue', () => {
         disconnected = true;
       }
     };
-    const wrapper = mount<any>(VueImage, {
-      localVue,
-      propsData: {
+    const { html } = render(VueImage, {
+      props: {
         src: 'foo',
       },
     });
-    let actual: any = wrapper.html();
+    let actual: any = html();
     let expected: any = '<img src="foo">';
 
     expect(actual).toBe(expected);
