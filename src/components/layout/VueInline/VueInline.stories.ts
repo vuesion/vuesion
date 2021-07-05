@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import VueBadge from '@/components/atoms/VueBadge/VueBadge.vue';
+import VueBadge from '@/components/data-display/VueBadge/VueBadge.vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueText from '@/components/atoms/VueText/VueText.vue';

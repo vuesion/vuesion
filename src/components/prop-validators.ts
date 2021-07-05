@@ -2,6 +2,7 @@ import isArray from 'lodash/isArray';
 import { BreakPoint } from '@/enums/BreakPoint';
 
 export const brandColorVariations = ['primary', 'neutral', 'danger', 'warning', 'success', 'info'];
+export const badgeStatuses = ['info', 'warning', 'success', 'danger'];
 export const textColorVariations = [
   'primary',
   'neutral',
@@ -58,6 +59,10 @@ export const brandBreakpoints = Object.keys(BreakPoint);
 
 export const colorVariationValidator = (value: string) => {
   return brandColorVariations.includes(value.toLowerCase());
+};
+
+export const badgeStatusesValidator = (value: string) => {
+  return badgeStatuses.includes(value.toLowerCase());
 };
 
 export const textColorVariationValidator = (value: string) => {

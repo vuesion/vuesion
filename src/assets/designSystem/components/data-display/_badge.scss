@@ -1,0 +1,22 @@
+$badge-padding: $space-2 $space-12;
+$badge-height: $space-20;
+$badge-border-radius: $space-20;
+
+$badge-variations: (
+  'info': (
+    'bg': var(--brand-primary-focus),
+    'color': var(--brand-primary-enabled),
+  ),
+  'warning': (
+    'bg': var(--brand-warning-focus),
+    'color': var(--brand-warning-enabled),
+  ),
+  'success': (
+    'bg': var(--brand-success-focus),
+    'color': var(--brand-success-enabled),
+  ),
+  'danger': (
+    'bg': var(--brand-danger-focus),
+    'color': var(--brand-danger-enabled),
+  ),
+);
