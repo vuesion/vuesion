@@ -133,7 +133,5 @@ export default {
   text_Colors-brand-high-emphasis-text-color-inverse: var(--brand-high-emphasis-text-color-inverse);
   text_Colors-brand-medium-emphasis-text-color-inverse: var(--brand-medium-emphasis-text-color-inverse);
   text_Colors-brand-medium-low-text-color-inverse: var(--brand-low-emphasis-text-color-inverse);
-  text_Colors-brand-link-color: var(--brand-link-color);
-  text_Colors-brand-link-hover-color: var(--brand-link-hover-color);
 }
 </style>

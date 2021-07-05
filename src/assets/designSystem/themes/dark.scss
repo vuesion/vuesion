@@ -1,31 +1,39 @@
 :root.dark {
   /* Brand Variations */
   --brand-primary: #{palette-color-level('primary', 6)};
+  --brand-neutral: #{palette-color-level('neutral', 6)};
+  --brand-danger: #{palette-color-level('danger', 6)};
+  --brand-warning: #{palette-color-level('warning', 6)};
+  --brand-success: #{palette-color-level('success', 6)};
+  --brand-info: #{palette-color-level('info', 6)};
+
+  /* Interaction Colors */
+  --brand-primary-enabled: #{palette-color-level('primary', 6)};
   --brand-primary-hover: #{palette-color-level('primary', 7)};
   --brand-primary-focus: #{palette-color-level('primary', 7)};
   --brand-primary-active: #{palette-color-level('primary', 9)};
 
-  --brand-neutral: #{palette-color-level('neutral', 6)};
+  --brand-neutral-enabled: #{palette-color-level('neutral', 6)};
   --brand-neutral-hover: #{palette-color-level('neutral', 7)};
   --brand-neutral-focus: #{palette-color-level('neutral', 7)};
   --brand-neutral-active: #{palette-color-level('neutral', 9)};
 
-  --brand-danger: #{palette-color-level('danger', 6)};
+  --brand-danger-enabled: #{palette-color-level('danger', 6)};
   --brand-danger-hover: #{palette-color-level('danger', 7)};
   --brand-danger-focus: #{palette-color-level('danger', 7)};
   --brand-danger-active: #{palette-color-level('danger', 9)};
 
-  --brand-warning: #{palette-color-level('warning', 6)};
+  --brand-warning-enabled: #{palette-color-level('warning', 6)};
   --brand-warning-hover: #{palette-color-level('warning', 7)};
   --brand-warning-focus: #{palette-color-level('warning', 7)};
   --brand-warning-active: #{palette-color-level('warning', 9)};
 
-  --brand-success: #{palette-color-level('success', 6)};
+  --brand-success-enabled: #{palette-color-level('success', 6)};
   --brand-success-hover: #{palette-color-level('success', 7)};
   --brand-success-focus: #{palette-color-level('success', 7)};
   --brand-success-active: #{palette-color-level('success', 9)};
 
-  --brand-info: #{palette-color-level('info', 6)};
+  --brand-info-enabled: #{palette-color-level('info', 6)};
   --brand-info-hover: #{palette-color-level('info', 7)};
   --brand-info-focus: #{palette-color-level('info', 7)};
   --brand-info-active: #{palette-color-level('info', 9)};
@@ -49,10 +57,6 @@
   --brand-high-emphasis-text-color-inverse: #{palette-color-level('neutral', 10)};
   --brand-medium-emphasis-text-color-inverse: #{palette-color-level('neutral', 7)};
   --brand-low-emphasis-text-color-inverse: #{palette-color-level('neutral', 6)};
-
-  /* Link Color */
-  --brand-link-color: #{palette-color-level('primary', 6)};
-  --brand-link-hover-color: #{palette-color-level('primary', 7)};
 
   /* Borders */
   --brand-primary-border-color: #{palette-color-level('neutral', 3)};
