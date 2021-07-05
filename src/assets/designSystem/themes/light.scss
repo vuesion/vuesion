@@ -1,31 +1,40 @@
 :root.light {
+  // TODO: sync with dark theme
   /* Brand Variations */
   --brand-primary: #{palette-color-level('primary', 7)};
+  --brand-neutral: #{palette-color-level('neutral', 7)};
+  --brand-danger: #{palette-color-level('danger', 7)};
+  --brand-warning: #{palette-color-level('warning', 7)};
+  --brand-success: #{palette-color-level('success', 7)};
+  --brand-info: #{palette-color-level('info', 7)};
+
+  /* Interaction Colors */
+  --brand-primary-enabled: #{palette-color-level('primary', 7)};
   --brand-primary-hover: #{palette-color-level('primary', 6)};
   --brand-primary-focus: #{palette-color-level('primary', 2)};
   --brand-primary-active: #{palette-color-level('primary', 8)};
 
-  --brand-neutral: #{palette-color-level('neutral', 7)};
+  --brand-neutral-enabled: #{palette-color-level('neutral', 7)};
   --brand-neutral-hover: #{palette-color-level('neutral', 6)};
   --brand-neutral-focus: #{palette-color-level('neutral', 2)};
   --brand-neutral-active: #{palette-color-level('neutral', 8)};
 
-  --brand-danger: #{palette-color-level('danger', 7)};
+  --brand-danger-enabled: #{palette-color-level('danger', 7)};
   --brand-danger-hover: #{palette-color-level('danger', 6)};
   --brand-danger-focus: #{palette-color-level('danger', 2)};
   --brand-danger-active: #{palette-color-level('danger', 8)};
 
-  --brand-warning: #{palette-color-level('warning', 7)};
+  --brand-warning-enabled: #{palette-color-level('warning', 7)};
   --brand-warning-hover: #{palette-color-level('warning', 6)};
   --brand-warning-focus: #{palette-color-level('warning', 2)};
   --brand-warning-active: #{palette-color-level('warning', 8)};
 
-  --brand-success: #{palette-color-level('success', 7)};
+  --brand-success-enabled: #{palette-color-level('success', 7)};
   --brand-success-hover: #{palette-color-level('success', 6)};
   --brand-success-focus: #{palette-color-level('success', 2)};
   --brand-success-active: #{palette-color-level('success', 8)};
 
-  --brand-info: #{palette-color-level('info', 7)};
+  --brand-info-enabled: #{palette-color-level('info', 7)};
   --brand-info-hover: #{palette-color-level('info', 6)};
   --brand-info-focus: #{palette-color-level('info', 2)};
   --brand-info-active: #{palette-color-level('info', 8)};
@@ -50,7 +59,7 @@
   --brand-medium-emphasis-text-color-inverse: #{palette-color-level('neutral', 3)};
   --brand-low-emphasis-text-color-inverse: #{palette-color-level('neutral', 6)};
 
-  /* Link Color */
+  /* Link Color */ // TODO: remove
   --brand-link-color: var(--brand-primary);
   --brand-link-hover-color: var(--brand-primary-focus);
 

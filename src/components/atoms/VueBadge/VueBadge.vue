@@ -11,8 +11,8 @@ import { colorVariationValidator } from '@/components/prop-validators';
 export default defineComponent({
   name: 'VueBadge',
   props: {
-    color: { type: String, validator: colorVariationValidator, default: 'neutral' },
-    outlined: { type: Boolean, default: false },
+    color: { type: String, validator: colorVariationValidator, default: 'neutral' }, // TODO: rename to status
+    outlined: { type: Boolean, default: false }, // TODO: remove
   },
 });
 </script>

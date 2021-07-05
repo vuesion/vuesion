@@ -22,7 +22,7 @@ import { defineComponent } from '@vue/composition-api';
 import { ValidationProvider } from 'vee-validate';
 
 export default defineComponent({
-  name: 'VueCheckbox',
+  name: 'VueCheckbox', // TODO: Radio button separate component
   components: { ValidationProvider },
   inheritAttrs: false,
   model: {
@@ -34,8 +34,8 @@ export default defineComponent({
     name: { type: String, required: true },
     label: { type: String, required: true },
     required: { type: Boolean, default: false },
-    validation: { type: [String, Object], default: null },
-    disabled: { type: Boolean, default: false },
+    validation: { type: [String, Object], default: null }, // TODO: needs refine
+    disabled: { type: Boolean, default: false }, // TODO: needs refinement
     checked: { type: Boolean, default: false },
     radio: { type: Boolean, default: false },
   },
