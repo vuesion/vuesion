@@ -156,7 +156,7 @@
 
         <vue-grid-row vertical-space="32" justify-content="flex-end">
           <vue-grid-column>
-            <vue-button color="primary" :disabled="invalid" :loading="isLoading" type="submit"> Save </vue-button>
+            <vue-button look="primary" :disabled="invalid" :loading="isLoading" type="submit"> Save </vue-button>
           </vue-grid-column>
         </vue-grid-row>
       </form>
@@ -171,7 +171,7 @@ import VueSelect from '@/components/atoms/VueSelect/VueSelect.vue';
 import VueCheckbox from '@/components/atoms/VueCheckbox/VueCheckbox.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
-import VueButton from '@/components/atoms/VueButton/VueButton.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import { addNotification } from '@/components/molecules/VueNotificationStack/utils';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';

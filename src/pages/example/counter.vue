@@ -15,9 +15,9 @@
 
       <vue-grid-row>
         <vue-grid-column>
-          <vue-button color="neutral" :loading="incrementPending" @click="increment"> Increment +1 </vue-button>
+          <vue-button :loading="incrementPending" @click="increment"> Increment +1 </vue-button>
 
-          <vue-button color="primary" :loading="decrementPending" @click="decrement"> Decrement -1 </vue-button>
+          <vue-button look="primary" :loading="decrementPending" @click="decrement"> Decrement -1 </vue-button>
         </vue-grid-column>
       </vue-grid-row>
     </vue-grid>
@@ -31,7 +31,7 @@ import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import VueButton from '@/components/atoms/VueButton/VueButton.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 
 export default defineComponent({
   name: 'CounterPage',

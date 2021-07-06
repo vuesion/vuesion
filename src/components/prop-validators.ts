@@ -32,6 +32,8 @@ export const textStyles = [
   'button',
   'support',
 ];
+export const buttonStyles = ['primary', 'basic', 'outline', 'danger'];
+export const buttonSizes = ['sm', 'md', 'lg'];
 export const fontWeights = ['regular', 'semi-bold'];
 export const brandSpacings = [
   '0',
@@ -71,6 +73,14 @@ export const textColorVariationValidator = (value: string) => {
 
 export const textStyleValidator = (value: string) => {
   return textStyles.includes(value.toLowerCase());
+};
+
+export const buttonStyleValidator = (value: string) => {
+  return buttonStyles.includes(value.toLowerCase());
+};
+
+export const buttonSizeValidator = (value: string) => {
+  return buttonSizes.includes(value.toLowerCase());
 };
 
 export const fontWeightValidator = (value: string) => {

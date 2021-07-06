@@ -114,7 +114,7 @@
         {{ $t('common.cancel' /* Cancel */) }}
       </vue-button>
       &nbsp;
-      <vue-button color="primary" @click.stop.prevent="onChange">
+      <vue-button look="primary" @click.stop.prevent="onChange">
         {{ $t('common.ok' /* Ok */) }}
       </vue-button>
     </div>
@@ -125,7 +125,7 @@
 import { computed, defineComponent, ref, onBeforeMount } from '@vue/composition-api';
 import chunk from 'lodash/chunk';
 import { getDomRef } from '@/composables/get-dom-ref';
-import VueButton from '../../atoms/VueButton/VueButton.vue';
+import VueButton from '../../input-and-actions/VueButton/VueButton.vue';
 import VueText from '../../typography/VueText/VueText.vue';
 
 interface IDay {

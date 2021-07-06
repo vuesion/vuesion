@@ -5,9 +5,9 @@
     <vue-nav-bar>
       <template v-if="user" slot="middle"> Hello, {{ user.name }}! </template>
 
-      <vue-button v-if="!loggedIn" slot="right" color="primary" @click="showLoginModal = true"> Login </vue-button>
+      <vue-button v-if="!loggedIn" slot="right" look="primary" @click="showLoginModal = true"> Login </vue-button>
 
-      <vue-button v-if="loggedIn" slot="right" color="primary" @click="onLogoutClick"> Logout </vue-button>
+      <vue-button v-if="loggedIn" slot="right" look="primary" @click="onLogoutClick"> Logout </vue-button>
     </vue-nav-bar>
 
     <nuxt :class="$style.content" />
@@ -141,7 +141,7 @@ import VueIconGithub from '@/components/atoms/icons/VueIconGithub/VueIconGithub.
 import VueIconTwitterSquare from '@/components/atoms/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
 import VueSelect from '@/components/atoms/VueSelect/VueSelect.vue';
 import VueIconPuzzlePiece from '@/components/atoms/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
-import VueButton from '@/components/atoms/VueButton/VueButton.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueModal from '@/components/molecules/VueModal/VueModal.vue';
 import LoginForm from '@/components/organisms/LoginForm/LoginForm.vue';
 import { useLocaleSwitch } from '@/composables/use-locale-switch';
