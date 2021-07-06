@@ -168,7 +168,7 @@
 import { ValidationObserver } from 'vee-validate';
 import VueInput from '@/components/atoms/VueInput/VueInput.vue';
 import VueSelect from '@/components/atoms/VueSelect/VueSelect.vue';
-import VueCheckbox from '@/components/atoms/VueCheckbox/VueCheckbox.vue';
+import VueCheckbox from '@/components/input-and-actions/VueCheckbox/VueCheckbox.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';

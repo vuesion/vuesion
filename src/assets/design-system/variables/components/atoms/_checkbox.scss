@@ -1,9 +1,21 @@
-$checkbox-color: var(--brand-high-emphasis-text-color);
-$checkbox-padding: 0;
-$checkbox-size: $space-20;
-$checkbox-bg: var(--brand-primary-bg-color);
-$checkbox-border: 1px solid var(--brand-secondary);
-$checkbox-transition: background var(--brand-transition-duration) cubic-bezier(0, 0.84, 0.83, 0.67);
-$checkbox-check: 2px solid #fff;
-$checkbox-checked-bg: var(--brand-secondary);
-$checkbox-shadow: -2px 2px 2px rgba(0, 0, 0, 0.24);
+// Checkmark states
+// default
+$checkbox-checkmark-bg: palette-color-level('neutral', 0);
+$checkbox-checkmark-border: 1px solid var(--brand-primary-border-color);
+
+//hover
+$checkbox-checkmark-bg-hover: palette-color-level('neutral', 0);
+$checkbox-checkmark-border-hover: 1px solid var(--brand-primary-border-color);
+
+// checked
+$checkbox-checkmark-bg-checked: var(--brand-primary-enabled);
+$checkbox-checkmark-border-checked: 1px solid var(--brand-primary-enabled);
+
+// Checkmark
+$checkbox-checkmark-size: $space-16;
+$checkbox-checkmark-border-radius: $space-4;
+$checkbox-checkmark-outline: 0 0 0 $space-2 palette-color-level('neutral', 0), 0 0 0 $space-4 var(--brand-primary-focus);
+
+// Checkbox
+$checkbox-label-gap: $space-8;
+$checkbox-disabled-disabled-opacity: 0.3;
