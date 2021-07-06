@@ -2,14 +2,14 @@
   <vue-grid :class="$style.error" text-align="center">
     <vue-grid-row v-if="error.statusCode === 404">
       <vue-grid-column>
-        <vue-text appearance="h1" as="h1"> 404 </vue-text>
-        <vue-text appearance="h3" as="h3"> Page not found! </vue-text>
+        <vue-text look="h1" as="h1"> 404 </vue-text>
+        <vue-text look="h3" as="h3"> Page not found! </vue-text>
       </vue-grid-column>
     </vue-grid-row>
     <vue-grid-row v-else>
       <vue-grid-column>
-        <vue-text appearance="h1" as="h1"> Error </vue-text>
-        <vue-text appearance="h3" as="h3"> Try again later! </vue-text>
+        <vue-text look="h1" as="h1"> Error </vue-text>
+        <vue-text look="h3" as="h3"> Try again later! </vue-text>
       </vue-grid-column>
     </vue-grid-row>
   </vue-grid>
@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, useContext, useMeta } from '@nuxtjs/composition-api';
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';

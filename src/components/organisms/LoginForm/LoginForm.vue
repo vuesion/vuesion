@@ -4,7 +4,7 @@
       <vue-grid>
         <vue-grid-row>
           <vue-grid-column>
-            <vue-text appearance="h3" as="h3">
+            <vue-text look="h3" as="h3">
               {{ $t('auth.LoginForm.title' /* Login Example */) }}
             </vue-text>
           </vue-grid-column>
@@ -57,7 +57,7 @@
 
 <script lang="ts">
 import { ValidationObserver } from 'vee-validate';
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 import VueInput from '@/components/atoms/VueInput/VueInput.vue';
 import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';

@@ -11,7 +11,7 @@
 
       <vue-grid-row>
         <vue-grid-column>
-          <vue-text appearance="h1" as="h1"> vuesion </vue-text>
+          <vue-text look="h1" as="h1"> vuesion </vue-text>
         </vue-grid-column>
       </vue-grid-row>
 
@@ -50,7 +50,7 @@ import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueIconGithub from '@/components/atoms/icons/VueIconGithub/VueIconGithub.vue';
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 
 export default {
   components: { VueText, VueIconGithub, VueGridColumn, VueGridRow, VueGrid },

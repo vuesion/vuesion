@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueStack from './VueStack.vue';
 

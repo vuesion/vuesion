@@ -16,7 +16,7 @@
       click: onClick,
     }"
   >
-    <vue-text v-if="loading === false" :class="$style.text" appearance="button" weight="semi-bold" as="span">
+    <vue-text v-if="loading === false" :class="$style.text" look="button" weight="semi-bold" as="span">
       <slot />
     </vue-text>
     <vue-loader v-else :class="$style.loader" />
@@ -27,7 +27,7 @@
 import { defineComponent, computed } from '@vue/composition-api';
 import { getDomRef } from '@/composables/get-dom-ref';
 import { colorVariationValidator } from '@/components/prop-validators';
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 import VueLoader from '@/components/atoms/VueLoader/VueLoader.vue';
 
 export default defineComponent({

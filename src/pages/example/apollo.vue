@@ -4,7 +4,7 @@
       <vue-stack :space="[16, 16, 24, 32]">
         <vue-breadcrumb :items="breadCrumbItems" />
 
-        <vue-text appearance="h1" as="h1">Apollo Example</vue-text>
+        <vue-text look="h1" as="h1">Apollo Example</vue-text>
 
         <vue-tiles v-if="loading === false" :columns="[1, 2, 3, 4]">
           <vue-box v-for="character in characters" :key="character.id" padding="null" :class="$style.card">
@@ -13,8 +13,8 @@
 
               <vue-box :padding="[8, 8, 8, 16]">
                 <vue-stack space="4">
-                  <vue-text appearance="large-title" color="text-high" serifs>{{ character.name }}</vue-text>
-                  <vue-text appearance="support">
+                  <vue-text look="large-title" color="text-high" serifs>{{ character.name }}</vue-text>
+                  <vue-text look="support">
                     {{ character.species }} | {{ character.gender }} |
                     {{ character.status }}
                   </vue-text>
@@ -32,7 +32,7 @@
 import { computed, defineComponent, useContext, useMeta } from '@nuxtjs/composition-api';
 import { useQuery, useResult } from '@vue/apollo-composable/dist';
 import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vue';
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import { GetExamplePageData } from '@/graphql/ExamplePage';

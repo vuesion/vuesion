@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.sections">
     <div v-for="section in colorSections" :key="section.name">
-      <vue-text appearance="h4" as="h4">
+      <vue-text look="h4" as="h4">
         {{ section.name.toUpperCase() }}
       </vue-text>
       <div :class="$style.palette">
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 
 export default {
   name: 'ColorPalette',

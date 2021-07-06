@@ -7,7 +7,7 @@
     @blur="onBlur"
   >
     <vue-icon-info-circle />
-    <vue-text ref="popOverRef" appearance="default" color="text-medium" as="div">
+    <vue-text ref="popOverRef" look="default" color="text-medium" as="div">
       <slot />
     </vue-text>
   </span>
@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api';
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 import VueIconInfoCircle from '@/components/atoms/icons/VueIconInfoCircle/VueIconInfoCircle.vue';
 
 export default defineComponent({
