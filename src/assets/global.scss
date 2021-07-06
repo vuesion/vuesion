@@ -1,7 +1,7 @@
-@import 'designSystem/mixins';
-@import 'designSystem/variables';
-@import 'designSystem/themes/light';
-@import 'designSystem/themes/dark';
+@import 'design-system/mixins/mixins';
+@import 'design-system/variables/variables';
+@import 'design-system/themes/light';
+@import 'design-system/themes/dark';
 
 body {
   color: var(--brand-high-emphasis-text-color);

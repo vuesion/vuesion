@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import ComponentDocs from '@/assets/designSystem/docs/components/ComponentDocs.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 import VueImage from './VueImage.vue';
 
 const story = storiesOf('Data Display|Image', module) as any;
