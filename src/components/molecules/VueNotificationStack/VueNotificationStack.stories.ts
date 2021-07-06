@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import VueButton from '../../atoms/VueButton/VueButton.vue';
+import VueButton from '../../input-and-actions/VueButton/VueButton.vue';
 import { addNotification } from './utils';
 import VueNotificationStack from './VueNotificationStack.vue';
 
@@ -10,11 +10,11 @@ story.add(
   () => ({
     components: { VueNotificationStack, VueButton },
     template: `
-<div>
-  <vue-notification-stack />
-  <vue-button color="primary" @click="addNotificationClick">add notification</vue-button>
-</div>
-`,
+      <div>
+      <vue-notification-stack/>
+      <vue-button look="primary" @click="addNotificationClick">add notification</vue-button>
+      </div>
+    `,
     methods: {
       addNotificationClick() {
         addNotification({

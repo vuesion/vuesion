@@ -131,10 +131,10 @@ const config: Configuration = {
       syncRouteParams: true,
     },
   },
-  loading: { color: '#cd235b' },
+  loading: { look: '#cd235b' },
   loadingIndicator: {
     name: 'circle',
-    color: '#cd235b',
+    look: '#cd235b',
     background: 'white',
   },
   modules: [

@@ -5,7 +5,7 @@
     :to="isRouterLink && href"
     :href="isRegularLink && href"
     :disabled="isDisabled"
-    :class="[$style.button, $style[color], isDisabled && $style.disabled, ghost && $style.ghost, block && $style.block]"
+    :class="[$style.button, $style[look], $style[size], isDisabled && $style.disabled, block && $style.block]"
     :style="{ width: actualWidth }"
     :event="!isDisabled && isRouterLink ? 'click' : null"
     :tabindex="isDisabled ? -1 : 0"
@@ -26,7 +26,7 @@
 <script lang="ts">
 import { defineComponent, computed } from '@vue/composition-api';
 import { getDomRef } from '@/composables/get-dom-ref';
-import { colorVariationValidator } from '@/components/prop-validators';
+import { buttonSizeValidator, buttonStyleValidator } from '@/components/prop-validators';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueLoader from '@/components/atoms/VueLoader/VueLoader.vue';
 
@@ -39,9 +39,9 @@ export default defineComponent({
   props: {
     disabled: { type: Boolean, default: false },
     block: { type: Boolean, default: false },
-    color: { type: String, validator: colorVariationValidator, default: 'neutral' }, // TODO: add button variations
+    look: { type: String, validator: buttonStyleValidator, default: 'basic' },
+    size: { type: String, validator: buttonSizeValidator, default: 'md' },
     loading: { type: Boolean, default: false }, // TODO: needs fine tuning
-    ghost: { type: Boolean, default: false }, // remove
     as: { type: String, default: 'button' },
     type: { type: String, default: 'button' },
     href: { type: String, default: null },
@@ -83,13 +83,13 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import '~@/assets/_design-system.scss';
 
 .button {
   display: inline-flex;
   align-items: center;
-  padding: $button-padding;
   text-align: center;
+  justify-content: center;
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
@@ -98,58 +98,57 @@ export default defineComponent({
   position: relative;
   overflow: hidden;
   border-radius: $button-border-radius;
-  height: $button-height;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
-  border: $button-border-width solid transparent;
+  border: none;
   outline: none;
   text-decoration: none;
 
-  &.disabled,
-  &[disabled] fieldset[disabled] & {
-    opacity: $button-disabled-opacity;
-    cursor: not-allowed;
+  // Sizes
+  &.sm {
+    padding: $button-sm-padding;
+    height: $button-sm-height;
   }
 
+  &.md {
+    padding: $button-md-padding;
+    height: $button-md-height;
+  }
+
+  &.lg {
+    padding: $button-lg-padding;
+    height: $button-lg-height;
+  }
+
+  // Styles
   @each $variation, $values in $button-variations {
     &.#{$variation} {
       color: map-get($values, 'color');
       background: map-get($values, 'bg');
-      border: map-get($values, 'border');
+
+      @if map-get($values, 'border') {
+        border: map-get($values, 'border');
+      } @else {
+        border: 1px solid transparent;
+      }
 
       &:hover {
         background: map-get($values, 'hover-bg');
         color: map-get($values, 'hover-color');
-        border-color: map-get($values, 'hover-bg');
       }
 
       &:focus {
-        box-shadow: 0 0 0 2px map-get($values, 'focus-bg');
+        box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px map-get($values, 'focus-box-shadow-color');
       }
 
       &:active {
         background: map-get($values, 'active-bg');
         color: map-get($values, 'active-color');
-        border-color: map-get($values, 'active-bg');
       }
 
-      circle {
-        stroke: map-get($values, 'color');
-      }
-
-      &.ghost {
-        color: map-get($values, 'bg');
-
-        &:hover {
-          background: map-get($values, 'hover-bg') !important;
-          color: map-get($values, 'hover-color') !important;
-          border-color: map-get($values, 'hover-bg') !important;
-        }
-
-        &:focus {
-          box-shadow: 0 0 0 2px map-get($values, 'focus-bg');
-          background: map-get($values, 'bg');
-          color: map-get($values, 'color');
+      .loader {
+        circle {
+          stroke: map-get($values, 'color');
         }
       }
 
@@ -158,14 +157,14 @@ export default defineComponent({
       fieldset[disabled] & {
         color: map-get($values, 'color');
         background: map-get($values, 'bg');
-        border: map-get($values, 'border');
       }
     }
   }
 
-  &.ghost {
-    background: transparent;
-    border-color: transparent;
+  &.disabled,
+  &[disabled] fieldset[disabled] & {
+    opacity: $button-disabled-opacity;
+    cursor: not-allowed;
   }
 
   &.block {
@@ -175,21 +174,21 @@ export default defineComponent({
     justify-content: center;
   }
 
-  i {
-    height: $button-icon-size;
-    width: $button-icon-size;
+  .loader {
+    position: initial;
+    width: $text-2;
+    height: $text-2;
   }
 
   .text {
     display: inline-flex;
     align-items: center;
-    height: $button-height;
-  }
-}
+    height: 100%;
 
-.loader {
-  position: initial;
-  width: $text-2;
-  height: $text-2;
+    i {
+      height: $button-icon-size;
+      width: $button-icon-size;
+    }
+  }
 }
 </style>

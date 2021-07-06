@@ -15,7 +15,7 @@ story.add(
     components: { ComponentDocs, VueBadge, VueInline, VueText, VueColumns, VueColumn },
     data(): any {
       return {
-        variations: badgeStatuses,
+        statuses: badgeStatuses,
       };
     },
     template: `
@@ -25,12 +25,12 @@ story.add(
         story="Display all statuses for the Badge component."
       >
       <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
-        <vue-columns v-for="variation in variations" :key="variation">
+        <vue-columns v-for="status in statuses" :key="status">
           <vue-column width="250px">
-            <vue-text look="small-title">{{ variation }}</vue-text>
+            <vue-text look="small-title">{{ status }}</vue-text>
           </vue-column>
           <vue-column width="contain">
-            <vue-badge :status="variation">Label</vue-badge>
+            <vue-badge :status="status">Label</vue-badge>
           </vue-column>
         </vue-columns>
 

@@ -59,8 +59,8 @@
   --brand-low-emphasis-text-color-inverse: #{palette-color-level('neutral', 6)};
 
   /* Borders */
-  --brand-primary-border-color: #{palette-color-level('neutral', 8)};
-  --brand-primary-border-color-inverse: #{palette-color-level('neutral', 3)};
+  --brand-primary-border-color: #{palette-color-level('neutral', 3)};
+  --brand-primary-border-color-inverse: #{palette-color-level('neutral', 6)};
   --brand-border-radius-sm: #{$space-4};
   --brand-border-radius-md: #{$space-8};
   --brand-border-radius-lg: #{$space-16};

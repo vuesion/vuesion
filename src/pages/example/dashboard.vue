@@ -60,7 +60,7 @@ import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import VueButton from '@/components/atoms/VueButton/VueButton.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 
 export default defineComponent({
   name: 'DashboardPage',

@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import VueButton from '../../atoms/VueButton/VueButton.vue';
+import VueButton from '../../input-and-actions/VueButton/VueButton.vue';
 import VueGrid from './VueGrid.vue';
 import VueGridRow from './VueGridRow/VueGridRow.vue';
 import VueGridColumn from './VueGridColumn/VueGridColumn.vue';
@@ -152,84 +152,85 @@ story.add(
   'Complex Grid',
   () => ({
     components: { VueGrid, VueGridRow, VueGridColumn, VueButton },
-    template: `<vue-grid vertical-space="0" fluid>
-    <vue-grid-row>
-      <vue-grid-column width="30%" :can-grow="false">
-        <vue-grid horizontal-space="32" vertical-space="32" fluid>
-          <vue-grid-row>
-            <vue-grid-column>
-              <vue-button block>Item 1</vue-button>
-            </vue-grid-column>
-            <vue-grid-column>
-              <vue-button block>Item 2</vue-button>
-            </vue-grid-column>
-          </vue-grid-row>
-          <vue-grid-row>
-            <vue-grid-column>
-              <vue-button color="primary" block>Item 1</vue-button>
-            </vue-grid-column>
-            <vue-grid-column>
-              <vue-button  color="primary" block>Item 2</vue-button>
-            </vue-grid-column>
-          </vue-grid-row>
-        </vue-grid>
-      </vue-grid-column>
-      <vue-grid-column>
-        <vue-grid fluid>
-          <vue-grid-row>
-            <vue-grid-column>
-              <vue-button color="primary" block>Item 1</vue-button>
-            </vue-grid-column>
-          </vue-grid-row>
-          <vue-grid-row>
-            <vue-grid-column>
-              <vue-button color="neutral" block>Item 1</vue-button>
-            </vue-grid-column>
-          </vue-grid-row>
-          <vue-grid-row>
-            <vue-grid-column>
-              <vue-button color="success" block>Item 1</vue-button>
-            </vue-grid-column>
-          </vue-grid-row>
-          <vue-grid-row>
-            <vue-grid-column>
-              <vue-button color="warning" block>Item 1</vue-button>
-            </vue-grid-column>
-          </vue-grid-row>
-        </vue-grid>
-      </vue-grid-column>
-      <vue-grid-column width="20%" :can-grow="false">
-        <vue-grid horizontal-space="8" vertical-space="8" fluid>
-          <vue-grid-row>
-            <vue-grid-column>
-              <vue-button color="primary" block>Item 1</vue-button>
-            </vue-grid-column>
-            <vue-grid-column>
-              <vue-button color="primary" block>Item 2</vue-button>
-            </vue-grid-column>
-          </vue-grid-row>
-          <vue-grid-row>
-            <vue-grid-column>
-              <vue-button color="neutral" block>item 1</vue-button>
-            </vue-grid-column>
-          </vue-grid-row>
-          <vue-grid-row vertical-space="0">
-            <vue-grid-column>
-              <vue-button color="success" block>Item 1</vue-button>
-            </vue-grid-column>
-          </vue-grid-row>
-        </vue-grid>
-      </vue-grid-column>
-    </vue-grid-row>
-    <vue-grid-row>
-      <vue-grid-column>
-        <vue-button color="primary" block>Item 1</vue-button>
-      </vue-grid-column>
-      <vue-grid-column>
-        <vue-button color="primary" block>Item 1</vue-button>
-      </vue-grid-column>
-    </vue-grid-row>
-    </vue-grid>`,
+    template: `
+      <vue-grid vertical-space="0" fluid>
+      <vue-grid-row>
+        <vue-grid-column width="30%" :can-grow="false">
+          <vue-grid horizontal-space="32" vertical-space="32" fluid>
+            <vue-grid-row>
+              <vue-grid-column>
+                <vue-button block>Item 1</vue-button>
+              </vue-grid-column>
+              <vue-grid-column>
+                <vue-button block>Item 2</vue-button>
+              </vue-grid-column>
+            </vue-grid-row>
+            <vue-grid-row>
+              <vue-grid-column>
+                <vue-button look="primary" block>Item 1</vue-button>
+              </vue-grid-column>
+              <vue-grid-column>
+                <vue-button look="primary" block>Item 2</vue-button>
+              </vue-grid-column>
+            </vue-grid-row>
+          </vue-grid>
+        </vue-grid-column>
+        <vue-grid-column>
+          <vue-grid fluid>
+            <vue-grid-row>
+              <vue-grid-column>
+                <vue-button look="primary" block>Item 1</vue-button>
+              </vue-grid-column>
+            </vue-grid-row>
+            <vue-grid-row>
+              <vue-grid-column>
+                <vue-button look="neutral" block>Item 1</vue-button>
+              </vue-grid-column>
+            </vue-grid-row>
+            <vue-grid-row>
+              <vue-grid-column>
+                <vue-button look="success" block>Item 1</vue-button>
+              </vue-grid-column>
+            </vue-grid-row>
+            <vue-grid-row>
+              <vue-grid-column>
+                <vue-button look="warning" block>Item 1</vue-button>
+              </vue-grid-column>
+            </vue-grid-row>
+          </vue-grid>
+        </vue-grid-column>
+        <vue-grid-column width="20%" :can-grow="false">
+          <vue-grid horizontal-space="8" vertical-space="8" fluid>
+            <vue-grid-row>
+              <vue-grid-column>
+                <vue-button look="primary" block>Item 1</vue-button>
+              </vue-grid-column>
+              <vue-grid-column>
+                <vue-button look="primary" block>Item 2</vue-button>
+              </vue-grid-column>
+            </vue-grid-row>
+            <vue-grid-row>
+              <vue-grid-column>
+                <vue-button look="neutral" block>item 1</vue-button>
+              </vue-grid-column>
+            </vue-grid-row>
+            <vue-grid-row vertical-space="0">
+              <vue-grid-column>
+                <vue-button look="success" block>Item 1</vue-button>
+              </vue-grid-column>
+            </vue-grid-row>
+          </vue-grid>
+        </vue-grid-column>
+      </vue-grid-row>
+      <vue-grid-row>
+        <vue-grid-column>
+          <vue-button look="primary" block>Item 1</vue-button>
+        </vue-grid-column>
+        <vue-grid-column>
+          <vue-button look="primary" block>Item 1</vue-button>
+        </vue-grid-column>
+      </vue-grid-row>
+      </vue-grid>`,
   }),
   {
     info: {
@@ -242,41 +243,42 @@ story.add(
   'Responsive Grid',
   () => ({
     components: { VueGrid, VueGridRow, VueGridColumn, VueButton },
-    template: `<div>
-    <vue-grid>
-      <vue-grid-row>
-        <vue-grid-column width="100%" tablet-portrait="50%" tablet-landscape="33.3333%" large-desktop="100%">
-          <vue-button block>Item 1</vue-button>
-        </vue-grid-column>
-        <vue-grid-column width="100%" tablet-portrait="50%" tablet-landscape="33.3333%" large-desktop="100%">
-          <vue-button block>Item 2</vue-button>
-        </vue-grid-column>
-        <vue-grid-column width="100%" tablet-portrait="50%" tablet-landscape="33.3333%" large-desktop="100%">
-          <vue-button block>Item 3</vue-button>
-        </vue-grid-column>
-        <vue-grid-column width="100%" tablet-portrait="50%" tablet-landscape="33.3333%" large-desktop="100%">
-          <vue-button block>Item 4</vue-button>
-        </vue-grid-column>
-      </vue-grid-row>
-    </vue-grid>
+    template: `
+      <div>
+      <vue-grid>
+        <vue-grid-row>
+          <vue-grid-column width="100%" tablet-portrait="50%" tablet-landscape="33.3333%" large-desktop="100%">
+            <vue-button block>Item 1</vue-button>
+          </vue-grid-column>
+          <vue-grid-column width="100%" tablet-portrait="50%" tablet-landscape="33.3333%" large-desktop="100%">
+            <vue-button block>Item 2</vue-button>
+          </vue-grid-column>
+          <vue-grid-column width="100%" tablet-portrait="50%" tablet-landscape="33.3333%" large-desktop="100%">
+            <vue-button block>Item 3</vue-button>
+          </vue-grid-column>
+          <vue-grid-column width="100%" tablet-portrait="50%" tablet-landscape="33.3333%" large-desktop="100%">
+            <vue-button block>Item 4</vue-button>
+          </vue-grid-column>
+        </vue-grid-row>
+      </vue-grid>
 
-    <vue-grid>
-      <vue-grid-row>
-        <vue-grid-column tablet-portrait="50%" small-desktop="33.3333%" large-desktop="25%">
-          <vue-button block color="primary">Item 1</vue-button>
-        </vue-grid-column>
-        <vue-grid-column tablet-portrait="50%" small-desktop="33.3333%" large-desktop="25%">
-          <vue-button block color="primary">Item 2</vue-button>
-        </vue-grid-column>
-        <vue-grid-column tablet-portrait="50%" small-desktop="33.3333%" large-desktop="25%">
-          <vue-button block color="primary">Item 3</vue-button>
-        </vue-grid-column>
-        <vue-grid-column tablet-portrait="50%" small-desktop="33.3333%" large-desktop="25%">
-          <vue-button block color="primary">Item 4</vue-button>
-        </vue-grid-column>
-      </vue-grid-row>
-    </vue-grid>
-</div>`,
+      <vue-grid>
+        <vue-grid-row>
+          <vue-grid-column tablet-portrait="50%" small-desktop="33.3333%" large-desktop="25%">
+            <vue-button block look="primary">Item 1</vue-button>
+          </vue-grid-column>
+          <vue-grid-column tablet-portrait="50%" small-desktop="33.3333%" large-desktop="25%">
+            <vue-button block look="primary">Item 2</vue-button>
+          </vue-grid-column>
+          <vue-grid-column tablet-portrait="50%" small-desktop="33.3333%" large-desktop="25%">
+            <vue-button block look="primary">Item 3</vue-button>
+          </vue-grid-column>
+          <vue-grid-column tablet-portrait="50%" small-desktop="33.3333%" large-desktop="25%">
+            <vue-button block look="primary">Item 4</vue-button>
+          </vue-grid-column>
+        </vue-grid-row>
+      </vue-grid>
+      </div>`,
   }),
   {
     info: {

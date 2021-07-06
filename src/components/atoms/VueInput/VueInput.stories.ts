@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import VueButton from '../VueButton/VueButton.vue';
+import VueButton from '../../input-and-actions/VueButton/VueButton.vue';
 import VueModal from '../../molecules/VueModal/VueModal.vue';
 import VueInput from './VueInput.vue';
 
@@ -105,13 +105,14 @@ story.add(
         show: false,
       };
     },
-    template: `<div>
-    <vue-button @click="show = !show" color="primary">Login</vue-button>
-    <vue-modal :show="show" @close="show = false">
-      <vue-input autofocus label="Name" name="name" id="name" v-model="model" />
-      <vue-button ghost @click="show = !show">Close</vue-button>
-    </vue-modal>
-    </div>`,
+    template: `
+      <div>
+      <vue-button @click="show = !show" look="primary">Login</vue-button>
+      <vue-modal :show="show" @close="show = false">
+        <vue-input autofocus label="Name" name="name" id="name" v-model="model"/>
+        <vue-button ghost @click="show = !show">Close</vue-button>
+      </vue-modal>
+      </div>`,
   }),
   {
     info: {

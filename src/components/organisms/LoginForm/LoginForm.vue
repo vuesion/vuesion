@@ -45,7 +45,7 @@
 
         <vue-grid-row>
           <vue-grid-column justify-content="flex-end">
-            <vue-button color="primary" tabindex="3" type="submit" :disabled="invalid" :loading="loading">
+            <vue-button look="primary" tabindex="3" type="submit" :disabled="invalid" :loading="loading">
               {{ $t('auth.LoginForm.cta' /* Login */) }}
             </vue-button>
           </vue-grid-column>
@@ -59,7 +59,7 @@
 import { ValidationObserver } from 'vee-validate';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueInput from '@/components/atoms/VueInput/VueInput.vue';
-import VueButton from '@/components/atoms/VueButton/VueButton.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
