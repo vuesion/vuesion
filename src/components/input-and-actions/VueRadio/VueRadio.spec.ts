@@ -1,11 +1,11 @@
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
-import VueCheckbox from './VueCheckbox.vue';
+import VueRadio from './VueRadio.vue';
 
-describe('VueCheckbox.vue', () => {
+describe('VueRadio.vue', () => {
   let harness: RenderResult;
 
   beforeEach(() => {
-    harness = render(VueCheckbox, {
+    harness = render(VueRadio, {
       props: {
         name: 'foo',
         id: 'foo',
@@ -34,12 +34,12 @@ describe('VueCheckbox.vue', () => {
 
     expect(input.checked).toBeFalsy();
 
-    await updateProps({ checked: true });
+    await updateProps({ value: 'foo' });
 
     expect(input.checked).toBeTruthy();
   });
 
-  test('should disable checkbox', async () => {
+  test('should disable radio button', async () => {
     const { getByText, emitted, updateProps } = harness;
 
     await updateProps({ disabled: true });
