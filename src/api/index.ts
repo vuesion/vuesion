@@ -18,8 +18,8 @@ app.use(
 app.use(compression({ threshold: 0 }));
 
 /**
- * TODO: routes to demonstrate the possibilities of vuesion
- * can be removed if you don't need them in your application
+ * routes to demonstrate the possibilities of vuesion
+ * TODO: can be removed if you don't need them in your application
  */
 CounterRoutes(app);
 DemoRoutes(app);

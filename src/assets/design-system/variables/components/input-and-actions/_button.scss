@@ -16,7 +16,6 @@ $button-border-radius: $space-8;
 $button-disabled-opacity: 0.3;
 $button-icon-size: $space-20 + $space-2;
 
-// TODO: add new button variations
 $button-variations: (
   'primary': (
     'bg': var(--brand-primary-enabled),
