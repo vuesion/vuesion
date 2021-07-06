@@ -13,7 +13,7 @@ import VueButton from './VueButton.vue';
 const story = storiesOf('Input & Actions|Button', module) as any;
 
 story.add(
-  'Button Variants',
+  'Styles',
   () => ({
     components: {
       VueButton,
@@ -89,7 +89,7 @@ story.add(
 );
 
 story.add(
-  'Button as Navigation',
+  'As Navigation',
   () => ({
     components: { VueButton, VueStack, VueInline, VueText, ComponentDocs },
     data(): any {

@@ -138,7 +138,8 @@ export default defineComponent({
       }
 
       &:focus {
-        box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px map-get($values, 'focus-box-shadow-color');
+        box-shadow: 0 0 0 $space-2 palette-color-level('neutral', 0),
+          0 0 0 $space-4 map-get($values, 'focus-box-shadow-color');
       }
 
       &:active {
