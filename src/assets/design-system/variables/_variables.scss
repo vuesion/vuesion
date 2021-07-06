@@ -1,9 +1,9 @@
-@import 'mixins';
+@import '../mixins/mixins';
 
 /* Foundation */
 @import 'color-palette';
 @import 'spacings';
-@import 'typo';
+@import 'typography';
 @import 'breakpoints';
 /* Components */
 @import 'components/organisms/accordion';

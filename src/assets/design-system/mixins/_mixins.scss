@@ -1,4 +1,4 @@
-@import 'breakpoints';
+@import '../variables/breakpoints';
 
 @mixin background-gradient($start-color, $end-color, $orientation) {
   background: $start-color;

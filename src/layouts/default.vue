@@ -238,7 +238,7 @@ export default defineComponent({
 <style lang="scss" module>
 @import '~@/assets/design-system';
 @import '~@/assets/reset';
-@import '~@/assets/typo';
+@import '~@/assets/typography';
 
 .app {
   min-height: 100vh;

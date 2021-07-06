@@ -11,7 +11,7 @@ import '@storybook/addon-console';
 import '../../src/assets/_design-system.scss';
 import '../../src/assets/reset.scss';
 import '../../src/assets/global.scss';
-import '../../src/assets/typo.scss';
+import '@/assets/typography.scss';
 import customTheme from './theme';
 import { extend } from 'vee-validate';
 import { required, email, integer, min } from 'vee-validate/dist/rules.umd.js';

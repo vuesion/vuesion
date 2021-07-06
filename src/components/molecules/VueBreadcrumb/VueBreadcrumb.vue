@@ -21,7 +21,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/designSystem/variables';
+@import '~@/assets/design-system';
 
 .vueBreadcrumb {
   padding: $breadcrumb-padding;
