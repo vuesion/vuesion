@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 import VueIconGithub from '../icons/VueIconGithub/VueIconGithub.vue';
 import { brandColorVariations } from '../../prop-validators';
 import VueButton from './VueButton.vue';

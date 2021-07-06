@@ -1,5 +1,5 @@
 <template>
-  <vue-text :class="[$style.vueBadge, $style[status]]" appearance="support" weight="semi-bold">
+  <vue-text :class="[$style.vueBadge, $style[status]]" look="support" weight="semi-bold">
     <slot />
   </vue-text>
 </template>
@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
 import { badgeStatusesValidator } from '@/components/prop-validators';
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 
 export default defineComponent({
   name: 'VueBadge',

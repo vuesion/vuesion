@@ -2,7 +2,7 @@
   <div ref="calendarRef" :class="$style.calendar">
     <div :class="$style.header">
       <vue-text
-        appearance="h4"
+        look="h4"
         as="div"
         role="button"
         tabindex="0"
@@ -13,7 +13,7 @@
         {{ selectedYear }}
       </vue-text>
       <vue-text
-        appearance="h5"
+        look="h5"
         as="div"
         role="button"
         tabindex="0"
@@ -126,7 +126,7 @@ import { computed, defineComponent, ref, onBeforeMount } from '@vue/composition-
 import chunk from 'lodash/chunk';
 import { getDomRef } from '@/composables/get-dom-ref';
 import VueButton from '../../atoms/VueButton/VueButton.vue';
-import VueText from '../../atoms/VueText/VueText.vue';
+import VueText from '../../typography/VueText/VueText.vue';
 
 interface IDay {
   day: number;

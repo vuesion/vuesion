@@ -4,7 +4,7 @@
       <form @submit.prevent="onSubmit">
         <vue-grid-row>
           <vue-grid-column>
-            <vue-text appearance="h2" as="h2">Form example</vue-text>
+            <vue-text look="h2" as="h2">Form example</vue-text>
           </vue-grid-column>
         </vue-grid-row>
 
@@ -173,7 +173,7 @@ import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueButton from '@/components/atoms/VueButton/VueButton.vue';
 import { addNotification } from '@/components/molecules/VueNotificationStack/utils';
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 
 export default {

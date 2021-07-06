@@ -4,7 +4,7 @@
     :class="[
       $style.vueText,
       $style[color],
-      $style[appearance],
+      $style[look],
       $style[weight],
       serifs && $style.serifs,
       underline && $style.underline,
@@ -34,7 +34,7 @@ export default defineComponent({
   components: {},
   props: {
     as: { type: String, default: 'span' },
-    appearance: { type: String, default: 'default', validator: textStyleValidator }, // TODO: style
+    look: { type: String, default: 'default', validator: textStyleValidator },
     color: { type: String, default: null, validator: textColorVariationValidator },
     weight: { type: String, default: 'regular', validator: fontWeightValidator },
     serifs: { type: Boolean, default: false },
@@ -58,7 +58,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import '~@/assets/_design-system';
 
 .vueText {
   // Utils
@@ -74,13 +74,16 @@ export default defineComponent({
     text-transform: uppercase;
   }
 
-  // Weight
+  &.block {
+    display: block;
+  }
+
+  // Weights
   &.semi-bold {
     font-weight: $font-weight-semi-bold;
   }
 
   // Styles
-
   &.h1 {
     font-size: $text-8;
     line-height: $line-height-8;
@@ -153,7 +156,7 @@ export default defineComponent({
     letter-spacing: $letter-spacing-1;
   }
 
-  // colors
+  // Colors
   &.primary {
     color: var(--brand-primary);
   }
@@ -202,11 +205,7 @@ export default defineComponent({
     color: var(--brand-low-emphasis-text-color-inverse);
   }
 
-  // Responsive alignment
-  &.block {
-    display: block;
-  }
-
+  // Responsive Styles
   &.align-left {
     text-align: left;
   }

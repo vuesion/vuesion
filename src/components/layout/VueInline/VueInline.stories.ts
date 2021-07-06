@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import VueBadge from '@/components/data-display/VueBadge/VueBadge.vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueText from '@/components/atoms/VueText/VueText.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 import VueInline from './VueInline.vue';
 
 const story = storiesOf('Foundation|Layout/Inline', module) as any;
