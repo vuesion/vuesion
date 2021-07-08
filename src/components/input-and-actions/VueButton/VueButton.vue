@@ -41,7 +41,7 @@ export default defineComponent({
     block: { type: Boolean, default: false },
     look: { type: String, validator: buttonStyleValidator, default: 'basic' },
     size: { type: String, validator: buttonSizeValidator, default: 'md' },
-    loading: { type: Boolean, default: false }, // TODO: needs fine tuning
+    loading: { type: Boolean, default: false },
     as: { type: String, default: 'button' },
     type: { type: String, default: 'button' },
     href: { type: String, default: null },

@@ -55,7 +55,7 @@ export default defineComponent({
     description: { type: String, default: null },
     required: { type: Boolean, default: false },
     validation: { type: [String, Object], default: null }, // TODO: needs fine tuning
-    disabled: { type: Boolean, default: false }, // TODO: needs fine tuning
+    disabled: { type: Boolean, default: false },
     value: { type: String, default: null },
   },
   setup(props, { emit }) {
