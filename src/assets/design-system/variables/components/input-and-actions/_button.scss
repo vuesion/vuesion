@@ -26,7 +26,7 @@ $button-variations: (
     'active-color': var(--brand-high-emphasis-text-color-inverse),
     'focus-bg': var(--brand-primary-focus),
     'focus-color': var(--brand-high-emphasis-text-color-inverse),
-    'focus-box-shadow-color': var(--brand-primary-focus),
+    'focus-box-shadow-color': palette-color-level('primary', 3),
   ),
   'basic': (
     'bg': palette-color-level('primary', 2),
@@ -37,7 +37,7 @@ $button-variations: (
     'active-color': palette-color-level('primary', 7),
     'focus-bg': palette-color-level('primary', 2),
     'focus-color': palette-color-level('primary', 7),
-    'focus-box-shadow-color': var(--brand-primary-focus),
+    'focus-box-shadow-color': palette-color-level('primary', 3),
   ),
   'outline': (
     'bg': palette-color-level('neutral', 0),
@@ -48,7 +48,7 @@ $button-variations: (
     'active-color': var(--brand-medium-emphasis-text-color),
     'focus-bg': palette-color-level('neutral', 0),
     'focus-color': var(--brand-medium-emphasis-text-color),
-    'focus-box-shadow-color': var(--brand-primary-focus),
+    'focus-box-shadow-color': palette-color-level('primary', 3),
     'border': 1px solid var(--brand-primary-border-color),
   ),
   'danger': (
@@ -60,6 +60,6 @@ $button-variations: (
     'active-color': var(--brand-high-emphasis-text-color-inverse),
     'focus-bg': var(--brand-danger-focus),
     'focus-color': var(--brand-high-emphasis-text-color-inverse),
-    'focus-box-shadow-color': var(--brand-danger-focus),
+    'focus-box-shadow-color': palette-color-level('danger', 3),
   ),
 );

@@ -1,11 +1,11 @@
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
-import VueCheckbox from './VueCheckbox.vue';
+import VueToggle from './VueToggle.vue';
 
-describe('VueCheckbox.vue', () => {
+describe('VueToggle.vue', () => {
   let harness: RenderResult;
 
   beforeEach(() => {
-    harness = render(VueCheckbox, {
+    harness = render(VueToggle, {
       props: {
         name: 'foo',
         id: 'foo',

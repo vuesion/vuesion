@@ -14,7 +14,7 @@ $radio-checkmark-border-checked: 1px solid var(--brand-primary-enabled);
 // Checkmark
 $radio-checkmark-size: $space-16;
 $radio-checkmark-border-radius: 50%;
-$radio-checkmark-outline: 0 0 0 $space-2 palette-color-level('neutral', 0), 0 0 0 $space-4 var(--brand-primary-focus);
+$radio-checkmark-outline: var(--brand-shadow-outline);
 
 // Checkbox
 $radio-label-gap: $space-8;

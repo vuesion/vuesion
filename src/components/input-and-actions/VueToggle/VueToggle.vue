@@ -1,7 +1,7 @@
 <template>
   <ValidationProvider
     ref="validator"
-    :class="[$style.checkbox, disabled && $style.disabled]"
+    :class="[$style.vueToggle, disabled && $style.disabled]"
     :aria-label="label"
     :vid="id"
     :name="name"
@@ -22,13 +22,8 @@
         :value="checked"
         tabindex="-1"
       />
-      <div :class="$style.checkmark">
-        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8">
-          <path
-            d="M9.207.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L3.5 5.086 7.793.793a1 1 0 011.414 0z"
-            fill="currentColor"
-          />
-        </svg>
+      <div :class="$style.toggle" @click.prevent="onClick">
+        <div :class="$style.handle" :aria-checked="checked ? 'true' : 'false'" role="checkbox" />
       </div>
       <vue-text :for="id" as="label" weight="semi-bold" color="text-medium" tabindex="-1" v-html="label" />
     </div>
@@ -44,7 +39,7 @@ import { ValidationProvider } from 'vee-validate';
 import VueText from '@/components/typography/VueText/VueText.vue';
 
 export default defineComponent({
-  name: 'VueCheckbox',
+  name: 'VueToggle',
   components: { VueText, ValidationProvider },
   inheritAttrs: false,
   model: {
@@ -79,7 +74,7 @@ export default defineComponent({
 
 <style lang="scss" module>
 @import '~@/assets/_design-system';
-.checkbox {
+.vueToggle {
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -92,8 +87,26 @@ export default defineComponent({
   }
 
   .description {
-    padding-left: $checkbox-checkmark-size + $checkbox-label-gap;
+    padding-left: $toggle-width + $checkbox-label-gap;
     line-height: $space-20;
+  }
+
+  .toggle {
+    width: $toggle-width;
+    height: $toggle-height;
+    border-radius: $toggle-border-radius;
+    background: $toggle-bg;
+    display: inline-flex;
+    align-items: center;
+
+    .handle {
+      position: relative;
+      width: $toggle-handle-width;
+      height: $toggle-handle-height;
+      border-radius: $toggle-handle-border-radius;
+      background: $toggle-handle-bg;
+      left: $space-2;
+    }
   }
 
   input {
@@ -103,53 +116,39 @@ export default defineComponent({
     height: 0;
     width: 0;
 
-    &:checked ~ .checkmark {
-      background-color: $checkbox-checkmark-bg-checked !important;
-      border: $checkbox-checkmark-border-checked !important;
-    }
+    &:checked ~ .toggle {
+      background-color: $toggle-bg-checked !important;
 
-    &:checked ~ .checkmark > svg {
-      display: block;
-    }
-  }
-
-  .checkmark {
-    height: $checkbox-checkmark-size;
-    width: $checkbox-checkmark-size;
-    background-color: $checkbox-checkmark-bg;
-    color: $checkbox-checkmark-bg;
-    border-radius: $checkbox-checkmark-border-radius;
-    border: $checkbox-checkmark-border;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    > svg {
-      width: $checkbox-checkmark-size - ($space-4 + $space-2);
-      height: $checkbox-checkmark-size - ($space-4 + $space-2);
+      .handle {
+        background: $toggle-handle-bg-checked !important;
+        left: $toggle-width - ($toggle-handle-width + $space-2);
+      }
     }
   }
 
   label {
     cursor: pointer;
-    padding-left: $checkbox-label-gap;
+    padding-left: $toggle-label-gap;
   }
 
   &:hover {
-    input ~ .checkmark {
-      background-color: $checkbox-checkmark-bg-hover;
-      border: $checkbox-checkmark-border-hover;
+    input ~ .toggle {
+      background-color: $toggle-bg-hover;
+
+      .handle {
+        background: $toggle-handle-bg-hover;
+      }
     }
   }
 
   &:focus {
-    .checkmark {
-      box-shadow: $checkbox-checkmark-outline;
+    .toggle {
+      box-shadow: $toggle-outline;
     }
   }
 
   &.disabled {
-    opacity: $checkbox-disabled-disabled-opacity;
+    opacity: $toggle-disabled-opacity;
   }
 }
 </style>
