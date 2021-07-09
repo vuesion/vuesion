@@ -1,27 +1,22 @@
 #
 <template>
-  <div :class="[$style.vueLoader, $style[`s${size}`], $style[color]]">
-    <svg :class="$style.circle" viewBox="25 25 50 50">
-      <circle :class="$style.path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+  <div :class="$style.vueLoader">
+    <svg :class="$style.svg" viewBox="25 25 50 50">
+      <circle :class="$style.circle" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
     </svg>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { spacingValidator, colorVariationValidator } from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueLoader',
-  props: {
-    color: { type: String, validator: colorVariationValidator, default: 'neutral' },
-    size: { type: String, validator: spacingValidator, default: '16' },
-  },
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import '~@/assets/_design-system';
 
 .vueLoader {
   display: inline-block;
@@ -35,22 +30,7 @@ export default defineComponent({
     padding-top: 100%;
   }
 
-  @each $name, $space in $spacings {
-    &.s#{$name} {
-      width: $space;
-      height: $space;
-    }
-  }
-
-  @each $variation, $color in $loader-variations {
-    &.#{$variation} {
-      .path {
-        stroke: $color;
-      }
-    }
-  }
-
-  .circle {
+  .svg {
     animation: rotate 2s linear infinite;
     height: 100%;
     transform-origin: center center;
@@ -72,7 +52,7 @@ export default defineComponent({
     }
   }
 
-  .path {
+  .circle {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
     animation: dash 1.5s ease-in-out infinite;

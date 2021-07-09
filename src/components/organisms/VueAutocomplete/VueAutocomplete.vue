@@ -71,7 +71,7 @@ import { getDomRef } from '@/composables/get-dom-ref';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import { useKeydown } from '@/composables/use-keydown';
 import VueIconSearch from '../../atoms/icons/VueIconSearch/VueIconSearch.vue';
-import VueLoader from '../../atoms/VueLoader/VueLoader.vue';
+import VueLoader from '../../data-display/VueLoader/VueLoader.vue';
 import VueInput from '../../atoms/VueInput/VueInput.vue';
 
 export default defineComponent({

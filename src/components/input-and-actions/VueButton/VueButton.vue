@@ -28,7 +28,7 @@ import { defineComponent, computed } from '@vue/composition-api';
 import { getDomRef } from '@/composables/get-dom-ref';
 import { buttonSizeValidator, buttonStyleValidator } from '@/components/prop-validators';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import VueLoader from '@/components/atoms/VueLoader/VueLoader.vue';
+import VueLoader from '@/components/data-display/VueLoader/VueLoader.vue';
 
 export default defineComponent({
   name: 'VueButton',
