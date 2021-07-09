@@ -1,7 +1,7 @@
 import { createLocalVue, mount, shallowMount } from '@vue/test-utils';
 import { i18n } from '@/test/i18n';
 import { triggerDocument } from '@/test/test-utils';
-import VueLoader from '../../atoms/VueLoader/VueLoader.vue';
+import VueLoader from '../../data-display/VueLoader/VueLoader.vue';
 import VueAutocomplete from './VueAutocomplete.vue';
 import { AutocompleteFixture } from './IAutocompleteFixture';
 

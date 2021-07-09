@@ -1,12 +1,1 @@
-$loader-size: $space-20;
-$loader-medium-size: $space-32;
-$loader-large-size: $space-52;
-
-$loader-variations: (
-  'primary': var(--brand-primary),
-  'neutral': var(--brand-neutral),
-  'danger': var(--brand-danger),
-  'warning': var(--brand-warning),
-  'success': var(--brand-success),
-  'info': var(--brand-info),
-);
+$loader-size: $space-32;
