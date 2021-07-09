@@ -69,7 +69,8 @@
   --brand-elevation-1: 0 -1px 2px rgba(19, 20, 22, 0.08), 0 3px 5px rgba(19, 20, 22, 0.12);
   --brand-elevation-2: 0 -1px 3px rgba(19, 20, 22, 0.1), 0 4px 6px rgba(19, 20, 22, 0.2);
   --brand-elevation-3: 0 -1px 3px rgba(19, 20, 22, 0.1), 0 4px 6px rgba(19, 20, 22, 0.2);
-  --brand-shadow-outline: 0 0 0 #{$space-8} #{rgba(palette-color-level('primary', 6), 0.5)};
+  --brand-shadow-outline: 0 0 0 #{$space-2} #{palette-color-level('neutral', 0)},
+    0 0 0 #{$space-4} #{palette-color-level('primary', 3)};
 
   /* Animation Language */
   --brand-transition-duration: 250ms;

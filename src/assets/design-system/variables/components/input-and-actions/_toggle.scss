@@ -1,0 +1,24 @@
+// toggle states
+// default
+$toggle-bg: var(--brand-tertiary-bg-color);
+$toggle-handle-bg: var(--brand-high-emphasis-text-color);
+
+// hover
+$toggle-bg-hover: var(--brand-tertiary-bg-color);
+$toggle-handle-bg-hover: var(--brand-high-emphasis-text-color);
+
+// checked
+$toggle-bg-checked: var(--brand-primary-focus);
+$toggle-handle-bg-checked: var(--brand-primary-enabled);
+
+$toggle-width: $space-32;
+$toggle-height: $space-16;
+$toggle-border-radius: $space-8;
+
+$toggle-handle-width: $toggle-height - $space-4;
+$toggle-handle-height: $toggle-height - $space-4;
+$toggle-handle-border-radius: 50%;
+
+$toggle-label-gap: $space-8;
+$toggle-outline: var(--brand-shadow-outline);
+$toggle-disabled-opacity: 0.3;
