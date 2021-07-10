@@ -1,7 +1,7 @@
 <template>
   <ValidationProvider v-slot="{ errors }" ref="validator" :vid="id" :name="name" :rules="validation" tag="div">
     <div :class="[$style.vueInput, disabled && $style.disabled, !isValid(errors) && $style.error]">
-      <label :for="id"> {{ label }}<sup v-if="required">*</sup></label>
+      <label :for="id" :class="hideLabel && 'sr-only'"> {{ label }}<sup v-if="required">*</sup></label>
       <input
         v-if="isTextarea === false"
         :id="id"
@@ -46,7 +46,7 @@
           },
         }"
       />
-      <span>{{ messageOrError(errors) }}</span>
+      <span :for="id" :class="hideDescription && 'sr-only'">{{ messageOrError(errors) }}</span>
     </div>
   </ValidationProvider>
 </template>
@@ -65,6 +65,8 @@ export default defineComponent({
     id: { type: String, required: true },
     name: { type: String, required: true },
     label: { type: String, required: true },
+    hideLabel: { type: Boolean, default: false },
+    hideDescription: { type: Boolean, default: false },
     required: { type: Boolean, default: false },
     validation: { type: [String, Object], default: null },
     value: { type: [String, Number], default: null },
