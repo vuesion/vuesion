@@ -86,3 +86,7 @@ export const getAxiosMock = (): AxiosMock => {
 
   return axiosMock;
 };
+
+export const sleep = (ms: number): Promise<unknown> => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};

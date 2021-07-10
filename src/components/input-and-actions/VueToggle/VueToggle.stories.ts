@@ -7,6 +7,7 @@ import VueToggle from './VueToggle.vue';
 
 const story = storiesOf('Input & Actions|Toggle', module) as any;
 
+// TODO: add usage
 story.add(
   'Default',
   () => ({
@@ -18,9 +19,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Toggle"
-      usage="Select lets users choose one option from an options menu.
-      Consider select when you have 4 or more options, to avoid cluttering the interface.
-      Different from dropdown menu because it is used for data entry in forms."
+      usage="TBD"
       story="Show default toggle. Please interact with the toggle to see different states."
     >
     <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
