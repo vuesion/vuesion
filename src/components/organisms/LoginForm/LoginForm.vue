@@ -58,7 +58,7 @@
 <script lang="ts">
 import { ValidationObserver } from 'vee-validate';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import VueInput from '@/components/atoms/VueInput/VueInput.vue';
+import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';

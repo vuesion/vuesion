@@ -91,7 +91,7 @@ import { useEvent } from '@/composables/use-event';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueInput from '@/components/atoms/VueInput/VueInput.vue';
+import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
 import { IAlgorithm, linear } from './algorithms';
 
 const algorithm: IAlgorithm = linear;
