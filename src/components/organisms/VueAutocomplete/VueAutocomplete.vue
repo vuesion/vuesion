@@ -72,7 +72,7 @@ import { useOutsideClick } from '@/composables/use-outside-click';
 import { useKeydown } from '@/composables/use-keydown';
 import VueIconSearch from '../../atoms/icons/VueIconSearch/VueIconSearch.vue';
 import VueLoader from '../../data-display/VueLoader/VueLoader.vue';
-import VueInput from '../../atoms/VueInput/VueInput.vue';
+import VueInput from '../../input-and-actions/VueInput/VueInput.vue';
 
 export default defineComponent({
   name: 'VueAutocomplete',

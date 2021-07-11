@@ -166,7 +166,7 @@
 
 <script lang="ts">
 import { ValidationObserver } from 'vee-validate';
-import VueInput from '@/components/atoms/VueInput/VueInput.vue';
+import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
 import VueSelect from '@/components/atoms/VueSelect/VueSelect.vue';
 import VueCheckbox from '@/components/input-and-actions/VueCheckbox/VueCheckbox.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';

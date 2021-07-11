@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import VueInput from '../../atoms/VueInput/VueInput.vue';
+import VueInput from '../../input-and-actions/VueInput/VueInput.vue';
 import VueModal from '../../molecules/VueModal/VueModal.vue';
 import VueCalendar from '../VueCalendar/VueCalendar.vue';
 
