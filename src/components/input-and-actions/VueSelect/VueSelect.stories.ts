@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import VueSelect from './VueSelect.vue';
 
-const story = storiesOf('Atoms|Select', module) as any;
+const story = storiesOf('Input & Actions|Select', module) as any;
 
 story.add(
   'Default',

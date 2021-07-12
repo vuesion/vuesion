@@ -4,7 +4,7 @@ import VueSlider from './VueSlider.vue';
 
 describe('VueSlider.vue', () => {
   beforeEach(() => {
-    (window as any).HTMLElement.prototype.getBoundingClientRect = function () {
+    (global as any).HTMLElement.prototype.getBoundingClientRect = function () {
       return {
         width: 100,
         height: 64,

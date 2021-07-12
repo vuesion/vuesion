@@ -6,7 +6,6 @@ import VueText from '@/components/typography/VueText/VueText.vue';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueIconGithub from '../../atoms/icons/VueIconGithub/VueIconGithub.vue';
 import { buttonSizes, buttonStyles } from '../../prop-validators';
 import VueButton from './VueButton.vue';
 
@@ -17,7 +16,6 @@ story.add(
   () => ({
     components: {
       VueButton,
-      VueIconGithub,
       VueStack,
       VueInline,
       VueText,

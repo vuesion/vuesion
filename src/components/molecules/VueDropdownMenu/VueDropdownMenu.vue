@@ -32,7 +32,7 @@ import { getDomRef } from '@/composables/get-dom-ref';
 import { IItem } from '@/interfaces/IItem';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import VueCollapse from '../VueCollapse/VueCollapse.vue';
-import VueIconSortDown from '../../atoms/icons/VueIconSortDown/VueIconSortDown.vue';
+import VueIconSortDown from '../../icons/VueIconSortDown/VueIconSortDown.vue';
 
 export default defineComponent({
   name: 'VueDropdownMenu',
