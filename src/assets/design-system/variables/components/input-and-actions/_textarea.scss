@@ -1,0 +1,31 @@
+// label
+$textarea-label-height: $space-16;
+$textarea-label-gap: $space-4;
+
+// input default
+$textarea-border-radius: $space-8;
+$textarea-border: 1px solid var(--brand-primary-border-color);
+$textarea-height: $space-120;
+$textarea-padding: ($space-12 - $space-2) $space-12;
+$textarea-color: var(--brand-high-emphasis-text-color);
+$textarea-placeholder-color: var(--brand-low-emphasis-text-color);
+$textarea-background-color: transparent;
+$textarea-font-family: $font-family;
+$textarea-font-size: $text-1;
+$textarea-font-weight: $font-weight-regular;
+$textarea-line-height: $line-height-1 + $space-2;
+
+// description
+$textarea-description-gap: $space-8;
+$textarea-description-height: $space-16;
+
+// utils
+$textarea-disabled-disabled-opacity: 0.3;
+$textarea-outline: var(--brand-shadow-outline);
+
+// hover
+$textarea-border-hover: 1px solid var(--brand-primary-border-color);
+
+// error
+$textarea-background-error-color: palette-color-level('danger', 1);
+$textarea-border-error: 1px solid var(--brand-danger-enabled);

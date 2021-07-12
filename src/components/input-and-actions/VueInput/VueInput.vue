@@ -32,7 +32,6 @@
           :autocomplete="autocomplete"
           :disabled="disabled"
           :readonly="readonly"
-          :class="[value ? $style.hasValue : '']"
           :autofocus="autofocus"
           v-bind="$attrs"
           v-on="{
@@ -63,7 +62,6 @@ import { useIntersectionObserver } from '@/composables/use-intersection-observer
 import { getDomRef } from '@/composables/get-dom-ref';
 import VueText from '@/components/typography/VueText/VueText.vue';
 
-// TODO: separate text-area component
 export default defineComponent({
   name: 'VueInput',
   components: { VueText, ValidationProvider },
