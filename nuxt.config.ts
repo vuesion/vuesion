@@ -152,6 +152,7 @@ const config: Configuration = {
     { src: '@/plugins/vuex-persist/vuex-persist.client' },
     { src: '@/plugins/vuex-persist/vuex-persist.server' },
     { src: '@/plugins/pwa/update.client' },
+    { src: '@/components/global' },
   ],
   publicRuntimeConfig: {
     axios: {

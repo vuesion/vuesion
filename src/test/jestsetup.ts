@@ -1,3 +1,7 @@
+import path from 'path';
+import camelCase from 'lodash/camelCase';
+import upperFirst from 'lodash/upperFirst';
+import { sync } from 'glob';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueCompositionApi from '@vue/composition-api';
@@ -29,3 +33,20 @@ Vue.prototype.$nuxt = {
     },
   },
 };
+
+// register icons globally
+const iconDirectory = path.join(__dirname, '../components/icons');
+const icons = sync('**/*.vue', { cwd: iconDirectory });
+
+for (const path of icons) {
+  const componentName = upperFirst(
+    camelCase(
+      path
+        .split('/')
+        .pop()
+        .replace(/\.\w+$/, ''),
+    ),
+  );
+  const componentConfig = require(iconDirectory + '/' + path);
+  Vue.component(componentName, componentConfig.default || componentConfig);
+}

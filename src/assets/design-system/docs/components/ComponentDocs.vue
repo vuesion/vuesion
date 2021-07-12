@@ -19,6 +19,7 @@
 </template>
 
 <script lang="ts">
+import '@/components/global';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 

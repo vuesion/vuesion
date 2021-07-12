@@ -1,8 +1,7 @@
 import { storiesOf } from '@storybook/vue';
+import { action } from '@storybook/addon-actions';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueIconTimes from '@/components/atoms/icons/VueIconTimes/VueIconTimes.vue';
-import VueIconHashtag from '@/components/atoms/icons/VueIconHashtag/VueIconHashtag.vue';
 import VueInput from './VueInput.vue';
 
 const story = storiesOf('Input & Actions|Input', module) as any;
@@ -69,11 +68,15 @@ story.add(
 story.add(
   'With icons',
   () => ({
-    components: { VueInput, ComponentDocs, VueStack, VueIconTimes, VueIconHashtag },
+    components: { VueInput, ComponentDocs, VueStack },
     data() {
       return {
         model: '',
       };
+    },
+    methods: {
+      onLeadingIconClick: action('@leading-icon-click'),
+      onTrailingIconClick: action('@trailing-icon-click'),
     },
     template: `<component-docs
     story="Show icons on the left and right side of the input. Please interact with the input to see all states."
@@ -89,9 +92,9 @@ story.add(
         validation="required"
         required
         v-model="model"
-      >
-        <vue-icon-hashtag slot="leading" />
-      </vue-input>
+        leading-icon="hashtag"
+        @leading-icon-click="onLeadingIconClick"
+      />
 
       <vue-input
         name="text-2"
@@ -103,9 +106,9 @@ story.add(
         validation="required"
         required
         v-model="model"
-      >
-        <vue-icon-times slot="trailing" />
-      </vue-input>
+        trailing-icon="times"
+        @trailing-icon-click="onTrailingIconClick"
+      />
 
       <vue-input
         name="text-3"
@@ -117,10 +120,11 @@ story.add(
         validation="required"
         required
         v-model="model"
-      >
-        <vue-icon-hashtag slot="leading" />
-        <vue-icon-times slot="trailing" />
-      </vue-input>
+        leading-icon="hashtag"
+        trailing-icon="times"
+        @leading-icon-click="onLeadingIconClick"
+        @trailing-icon-click="onTrailingIconClick"
+      />
     </vue-stack>
     </component-docs>`,
   }),

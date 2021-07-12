@@ -43,6 +43,7 @@ module.exports = {
     'src/store/index.ts',
     'src/interfaces/graphql',
     'src/interfaces/swagger',
+    'src/components/global.ts',
   ],
   coverageThreshold: {
     global: {

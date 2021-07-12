@@ -16,7 +16,7 @@
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import VueIconInfoCircle from '@/components/atoms/icons/VueIconInfoCircle/VueIconInfoCircle.vue';
+import VueIconInfoCircle from '@/components/icons/VueIconInfoCircle/VueIconInfoCircle.vue';
 
 export default defineComponent({
   name: 'VuePopOver',

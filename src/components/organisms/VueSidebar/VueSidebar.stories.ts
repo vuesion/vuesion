@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import VueIconCode from '../../atoms/icons/VueIconCode/VueIconCode.vue';
+import VueIconCode from '../../icons/VueIconCode/VueIconCode.vue';
 import VueSidebar from './VueSidebar.vue';
 import VueSidebarGroup from './VueSidebarGroup/VueSidebarGroup.vue';
 import VueSidebarGroupItem from './VueSidebarGroupItem/VueSidebarGroupItem.vue';

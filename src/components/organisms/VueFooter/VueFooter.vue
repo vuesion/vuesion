@@ -31,8 +31,8 @@
 import VueGrid from '../VueGrid/VueGrid.vue';
 import VueGridRow from '../VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '../VueGrid/VueGridColumn/VueGridColumn.vue';
-import VueIconGithubAlt from '../../atoms/icons/VueIconGithubAlt/VueIconGithubAlt.vue';
-import VueIconTwitterSquare from '../../atoms/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
+import VueIconGithubAlt from '../../icons/VueIconGithubAlt/VueIconGithubAlt.vue';
+import VueIconTwitterSquare from '../../icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
 
 export default {
   name: 'VueFooter',

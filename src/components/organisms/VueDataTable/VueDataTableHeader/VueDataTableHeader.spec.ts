@@ -1,8 +1,8 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import { IDataTableHeaderItem } from '../IDataTable';
-import VueIconSort from '../../../atoms/icons/VueIconSort/VueIconSort.vue';
-import VueIconSortDown from '../../../atoms/icons/VueIconSortDown/VueIconSortDown.vue';
-import VueIconSortUp from '../../../atoms/icons/VueIconSortUp/VueIconSortUp.vue';
+import VueIconSort from '../../../icons/VueIconSort/VueIconSort.vue';
+import VueIconSortDown from '../../../icons/VueIconSortDown/VueIconSortDown.vue';
+import VueIconSortUp from '../../../icons/VueIconSortUp/VueIconSortUp.vue';
 import VueDataTableHeader from './VueDataTableHeader.vue';
 
 const localVue = createLocalVue();

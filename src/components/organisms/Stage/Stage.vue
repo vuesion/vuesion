@@ -49,7 +49,7 @@ import { CircleAnimation } from '@/components/animations/CircleAnimation';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
-import VueIconGithub from '@/components/atoms/icons/VueIconGithub/VueIconGithub.vue';
+import VueIconGithub from '@/components/icons/VueIconGithub/VueIconGithub.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 
 export default {

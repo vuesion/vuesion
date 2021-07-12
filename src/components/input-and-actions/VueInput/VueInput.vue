@@ -15,11 +15,13 @@
       <div
         :class="[
           $style.inputWrapper,
-          $slots.leading && $style.hasLeadingContent,
-          $slots.trailing && $style.hasTrailingContent,
+          leadingIcon && $style.hasLeadingContent,
+          trailingIcon && $style.hasTrailingContent,
         ]"
       >
-        <div v-if="$slots.leading" :class="$style.leading"><slot name="leading" /></div>
+        <div v-if="leadingIcon" :class="$style.leading" @click="$emit('leading-icon-click')">
+          <component :is="`vue-icon-${leadingIcon}`" />
+        </div>
 
         <input
           :id="id"
@@ -42,7 +44,9 @@
           }"
         />
 
-        <div v-if="$slots.trailing" :class="$style.trailing"><slot name="trailing" /></div>
+        <div v-if="trailingIcon" :class="$style.trailing" @click="$emit('trailing-icon-click')">
+          <component :is="`vue-icon-${trailingIcon}`" />
+        </div>
       </div>
 
       <vue-text
@@ -83,6 +87,8 @@ export default defineComponent({
     description: { type: String, default: '' },
     errorMessage: { type: String, default: '' },
     autocomplete: { type: String, default: 'off' },
+    leadingIcon: { type: String, default: null },
+    trailingIcon: { type: String, default: null },
   },
   setup(props) {
     const input = getDomRef(null);
@@ -120,6 +126,7 @@ export default defineComponent({
         position: absolute;
         left: 0;
         top: 0;
+        bottom: 0;
         height: $input-height;
         width: $input-leading-width;
         color: $input-leading-color;
@@ -143,6 +150,7 @@ export default defineComponent({
         position: absolute;
         right: 0;
         top: 0;
+        bottom: 0;
         height: $input-height;
         width: $input-trailing-width;
         color: $input-trailing-color;
