@@ -60,7 +60,9 @@
 
   /* Borders */
   --brand-primary-border-color: #{palette-color-level('neutral', 3)};
+  --brand-secondary-border-color: #{palette-color-level('neutral', 2)};
   --brand-primary-border-color-inverse: #{palette-color-level('neutral', 6)};
+  --brand-secondary-border-color-inverse: #{palette-color-level('neutral', 5)};
   --brand-border-radius-sm: #{$space-4};
   --brand-border-radius-md: #{$space-8};
   --brand-border-radius-lg: #{$space-16};
@@ -68,7 +70,7 @@
   /* Box Shadows */
   --brand-elevation-1: 0 -1px 2px rgba(19, 20, 22, 0.08), 0 3px 5px rgba(19, 20, 22, 0.12);
   --brand-elevation-2: 0 -1px 3px rgba(19, 20, 22, 0.1), 0 4px 6px rgba(19, 20, 22, 0.2);
-  --brand-elevation-3: 0 -1px 3px rgba(19, 20, 22, 0.1), 0 4px 6px rgba(19, 20, 22, 0.2);
+  --brand-elevation-3: 0px -2px 4px rgba(0, 0, 0, 0.08), 0px 6px 10px rgba(19, 20, 22, 0.15);
   --brand-shadow-outline: 0 0 0 #{$space-2} #{palette-color-level('neutral', 0)},
     0 0 0 #{$space-4} #{palette-color-level('primary', 3)};
 
