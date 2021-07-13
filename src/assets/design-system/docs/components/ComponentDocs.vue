@@ -11,7 +11,7 @@
         <vue-text look="description">{{ story }}</vue-text>
       </vue-stack>
 
-      <vue-box padding="0">
+      <vue-box padding="0" :style="{ position: 'relative' }">
         <slot />
       </vue-box>
     </vue-stack>
