@@ -46,8 +46,9 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const menuRef = getDomRef(null);
-    const selectedItemIndex = ref(-1);
-    const maxItems = computed(() => props.items.length);
+    const selectedItemIndex = ref<number>(-1);
+    const items = computed<Array<IItem>>(() => props.items as Array<IItem>);
+    const maxItems = computed(() => items.value.length);
 
     const onItemClick = (item: IItem) => emit('click', item);
     const checkForPropagation = (e: KeyboardEvent) => {
@@ -68,7 +69,7 @@ export default defineComponent({
     const getNewIndex = (direction: string) => {
       let newIndex: number = direction === 'down' ? selectedItemIndex.value + 1 : selectedItemIndex.value - 1;
 
-      if (props.items[newIndex] && props.items[newIndex].value === 'separator') {
+      if (items.value[newIndex] && items.value[newIndex].value === 'separator') {
         newIndex = direction === 'down' ? newIndex + 1 : newIndex - 1;
       }
 
@@ -78,7 +79,7 @@ export default defineComponent({
       checkForPropagation(e);
 
       if (['Enter', 'Space'].includes(e.code) && selectedItemIndex.value > -1) {
-        onItemClick(props.items[selectedItemIndex.value]);
+        onItemClick(items.value[selectedItemIndex.value]);
       } else if (e.code === 'ArrowDown') {
         handleSelection(getNewIndex('down'));
       } else if (e.code === 'ArrowUp') {
