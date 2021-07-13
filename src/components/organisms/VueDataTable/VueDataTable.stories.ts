@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { i18n } from '@/test/i18n';
-import VueDropdownMenu from '../../molecules/VueDropdownMenu/VueDropdownMenu.vue';
+import VueDropdown from '../../input-and-actions/VueDropdown/VueDropdown.vue';
 import VueDataTable from './VueDataTable.vue';
 import { dataTableDataFixture, dataTableHeaderFixture } from './DataTableFixtures';
 
@@ -82,7 +82,7 @@ story.add(
   'Access Row',
   () => ({
     i18n,
-    components: { VueDataTable, VueDropdownMenu },
+    components: { VueDataTable, VueDropdown },
     data() {
       return {
         header: dataTableHeaderFixture,
@@ -91,7 +91,7 @@ story.add(
     },
     template: `<vue-data-table :header="header" :data="data" placeholder="Search" @click="action">
   <template v-slot:actions="{ row }">
-    <vue-dropdown-menu :items="[{label:'Delete', value:'delete'}]" @click="click(row)">Select</vue-dropdown-menu>
+    <vue-dropdown button-text="Select" :items="[{label:'Delete', value:'delete'}]" @click="click(row)"/>
   </template>
 </vue-data-table>`,
     methods: {
