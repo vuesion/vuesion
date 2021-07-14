@@ -30,12 +30,12 @@ $input-border-hover: 1px solid var(--brand-primary-border-color);
 $input-background-error-color: palette-color-level('danger', 1);
 $input-border-error: 1px solid var(--brand-danger-enabled);
 
-// leading content
+// leading icon
 $input-leading-width: $space-40 - $space-4;
 $input-leading-icon-size: $space-20;
 $input-leading-color: var(--brand-high-emphasis-text-color);
 
-// trailing content
+// trailing icon
 $input-trailing-width: $space-40 - $space-4;
 $input-trailing-icon-size: $space-20;
 $input-trailing-color: var(--brand-high-emphasis-text-color);

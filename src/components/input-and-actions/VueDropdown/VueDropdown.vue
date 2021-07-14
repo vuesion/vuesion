@@ -1,5 +1,5 @@
 <template>
-  <div ref="dropdownMenu" :class="$style.vueDropdown" @keydown="onKeyDown">
+  <div ref="dropdownRef" :class="$style.vueDropdown" @keydown="onKeyDown">
     <vue-button look="outline" :aria-expanded="show.toString()" @click.stop.prevent="onClick">
       {{ buttonText }}
       <vue-icon-chevron-down :class="$style.icon" />
@@ -30,7 +30,7 @@ export default defineComponent({
     duration: { type: Number, default: 250 },
   },
   setup(_, { emit }) {
-    const dropdownMenu = getDomRef(null);
+    const dropdownRef = getDomRef(null);
     const menuRef = getDomRef(null);
     const show = ref(false);
     const close = () => (show.value = false);
@@ -62,10 +62,10 @@ export default defineComponent({
       }
     };
 
-    useOutsideClick(dropdownMenu, () => close());
+    useOutsideClick(dropdownRef, () => close());
 
     return {
-      dropdownMenu,
+      dropdownRef,
       menuRef,
       show,
       onClick,

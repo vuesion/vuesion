@@ -2,7 +2,7 @@ import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import { sleep, triggerDocument } from '@/test/test-utils';
 import VueDropdown from './VueDropdown.vue';
 
-describe('VueDropdownMenu.vue', () => {
+describe('VueDropdown.vue', () => {
   let harness: RenderResult;
 
   beforeEach(() => {
