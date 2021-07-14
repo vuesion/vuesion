@@ -77,7 +77,7 @@ import { computed, defineComponent, ref } from '@vue/composition-api';
 import { ValidationProvider } from 'vee-validate';
 import { IItem } from '@/interfaces/IItem';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import VueCollapse from '@/components/molecules/VueCollapse/VueCollapse.vue';
+import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
 import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import { getDomRef } from '@/composables/get-dom-ref';

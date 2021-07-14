@@ -22,7 +22,7 @@ import { IItem } from '@/interfaces/IItem';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import VueCollapse from '@/components/molecules/VueCollapse/VueCollapse.vue';
+import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
 
 export default defineComponent({
   name: 'VueDropdown',
