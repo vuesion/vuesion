@@ -4,7 +4,7 @@ import { i18n } from '@/test/i18n';
 import VueAutocomplete from './VueAutocomplete.vue';
 import { AutocompleteFixture } from './IAutocompleteFixture';
 
-const story = storiesOf('Organisms|Autocomplete', module) as any;
+const story = storiesOf('Premium Components|Autocomplete', module) as any;
 
 story.add(
   'Default',

@@ -264,7 +264,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import '~@/assets/_design-system';
 
 .vueAutocomplete {
   position: relative;

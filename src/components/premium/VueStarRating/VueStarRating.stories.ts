@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import VueStarRating from './VueStarRating.vue';
 
-const story = storiesOf('Atoms|StarRating', module) as any;
+const story = storiesOf('Premium Components|StarRating', module) as any;
 
 story.add(
   'Default',

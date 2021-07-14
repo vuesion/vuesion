@@ -5,7 +5,7 @@ import VueDropdown from '../../input-and-actions/VueDropdown/VueDropdown.vue';
 import VueDataTable from './VueDataTable.vue';
 import { dataTableDataFixture, dataTableHeaderFixture } from './DataTableFixtures';
 
-const story = storiesOf('Organisms|DataTable', module) as any;
+const story = storiesOf('Premium Components|DataTable', module) as any;
 
 story.add(
   'Default',

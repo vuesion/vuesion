@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import { i18n } from '@/test/i18n';
 import VueBackToTop from './VueBackToTop.vue';
 
 const story = storiesOf('Behavior|BackToTop', module) as any;
@@ -7,6 +8,7 @@ const story = storiesOf('Behavior|BackToTop', module) as any;
 story.add(
   'Default',
   () => ({
+    i18n,
     components: { VueBackToTop, ComponentDocs },
     template: `<component-docs
       component-name="BackToTop"
