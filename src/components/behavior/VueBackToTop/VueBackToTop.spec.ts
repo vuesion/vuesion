@@ -18,7 +18,7 @@ describe('VueBackToTop.vue', () => {
   test('renders component', () => {
     const { html } = harness;
 
-    expect(html()).toMatch('<div data-testid="back-to-top" class="vueBackToTop">');
+    expect(html()).toMatch('<button data-testid="back-to-top" class="vueBackToTop">');
   });
 
   test('it should scroll to top on click', async () => {
@@ -43,7 +43,7 @@ describe('VueBackToTop.vue', () => {
 
     await Vue.nextTick();
 
-    expect(html()).toMatch('<div data-testid="back-to-top" class="vueBackToTop show">');
+    expect(html()).toMatch('<button data-testid="back-to-top" class="vueBackToTop show">');
 
     (window as any).pageYOffset = 0;
 
@@ -51,6 +51,6 @@ describe('VueBackToTop.vue', () => {
 
     await Vue.nextTick();
 
-    expect(html()).toMatch('<div data-testid="back-to-top" class="vueBackToTop">');
+    expect(html()).toMatch('<button data-testid="back-to-top" class="vueBackToTop">');
   });
 });

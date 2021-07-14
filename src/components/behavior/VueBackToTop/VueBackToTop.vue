@@ -1,23 +1,17 @@
 <template>
-  <div :class="[$style.vueBackToTop, show && $style.show]" data-testid="back-to-top" @click="onClick">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <path
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M12 19V5M5 12l7-7 7 7"
-      />
-    </svg>
-  </div>
+  <button :class="[$style.vueBackToTop, show && $style.show]" data-testid="back-to-top" @click="onClick">
+    <vue-icon-arrow-up />
+  </button>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from '@vue/composition-api';
 import { useEvent } from '@/composables/use-event';
+import VueIconArrowUp from '@/components/icons/VueIconArrowUp/VueIconArrowUp.vue';
 
 export default defineComponent({
   name: 'VueBackToTop',
+  components: { VueIconArrowUp },
   setup() {
     const show = ref(false);
     const viewportHeight = ref(0);
@@ -54,7 +48,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import '~@/assets/_design-system';
 
 .vueBackToTop {
   position: fixed;
@@ -64,7 +58,7 @@ export default defineComponent({
   justify-content: center;
   bottom: $back-to-top-bottom-space;
   right: $back-to-top-right-space;
-  border: $back-to-top-border;
+  border: none;
   border-radius: $back-to-top-border-radius;
   background-color: $back-to-top-bg;
   color: $back-to-top-color;
@@ -74,10 +68,27 @@ export default defineComponent({
   opacity: 0;
   z-index: -1;
   transition: var(--brand-fade-animation-transition);
+  outline: none;
 
-  > svg {
+  i {
     width: $back-to-top-icon-size;
     height: $back-to-top-icon-size;
+  }
+
+  &:hover {
+    color: $back-to-top-color-hover;
+    background: $back-to-top-bg-hover;
+  }
+
+  &:focus {
+    color: $back-to-top-color-focus;
+    background: $back-to-top-bg-focus;
+    box-shadow: $back-to-top-outline;
+  }
+
+  &:active {
+    color: $back-to-top-color-active;
+    background: $back-to-top-bg-active;
   }
 
   &.show {
