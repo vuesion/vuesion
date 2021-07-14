@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, ref, onBeforeMount, Ref } from '@vue/composition-api';
-import VueCollapse from '../../../molecules/VueCollapse/VueCollapse.vue';
+import VueCollapse from '../../../behavior/VueCollapse/VueCollapse.vue';
 
 export default defineComponent({
   name: 'VueAccordionItem',
