@@ -3,7 +3,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-column>
-          <vue-breadcrumb :items="[{ label: 'Home', href: '/' }, { label: 'Dashboard' }]" />
+          <vue-breadcrumb :items="[{ label: 'Dashboard' }]" />
         </vue-grid-column>
       </vue-grid-row>
 
@@ -58,7 +58,7 @@ import { defineComponent, ref, useContext } from '@nuxtjs/composition-api';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
-import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vue';
+import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 

@@ -13,6 +13,7 @@
       <div :class="$style.icon"><vue-icon-github />github</div>
       <div :class="$style.icon"><vue-icon-github-alt />github-alt</div>
       <div :class="$style.icon"><vue-icon-hashtag />hashtag</div>
+      <div :class="$style.icon"><vue-icon-home />home</div>
       <div :class="$style.icon"><vue-icon-info-circle />info-circle</div>
       <div :class="$style.icon"><vue-icon-mobile />mobile</div>
       <div :class="$style.icon"><vue-icon-puzzle-piece />puzzle-piece</div>
@@ -54,10 +55,12 @@ import VueIconInfoCircle from '@/components/icons/VueIconInfoCircle/VueIconInfoC
 import VueIconChevronDown from '@/components/icons/VueIconChevronDown/VueIconChevronDown.vue';
 import VueIconCheckmark from '@/components/icons/VueIconCheckmark/VueIconCheckmark.vue';
 import VueIconArrowUp from '@/components/icons/VueIconArrowUp/VueIconArrowUp.vue';
+import VueIconHome from '@/components/icons/VueIconHome/VueIconHome.vue';
 
 export default {
   name: 'IconList',
   components: {
+    VueIconHome,
     VueIconArrowUp,
     VueIconCheckmark,
     VueIconChevronDown,
