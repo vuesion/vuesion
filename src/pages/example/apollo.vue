@@ -31,7 +31,7 @@
 <script lang="ts">
 import { computed, defineComponent, useContext, useMeta } from '@nuxtjs/composition-api';
 import { useQuery, useResult } from '@vue/apollo-composable/dist';
-import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vue';
+import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
@@ -52,8 +52,7 @@ export default defineComponent({
     useMeta({ title: 'vuesion - Apollo Example' });
     const { app } = useContext();
     const breadCrumbItems = computed(() => [
-      { label: app.i18n.t('common.home' /* Home */), href: '/' },
-      { label: app.i18n.t('common.Apollo' /* Apollo Example */), href: '/example/apollo' },
+      { label: app.i18n.t('common.Apollo' /* Apollo Example */), value: '/example/apollo' },
     ]);
     const { result, loading } = useQuery(GetExamplePageData);
     const characters = useResult(result, null, (data) => data.characters.results);

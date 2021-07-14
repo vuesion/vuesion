@@ -15,7 +15,7 @@
 <script lang="ts">
 import { computed, defineComponent, useContext, useMeta } from '@nuxtjs/composition-api';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
-import VueBreadcrumb from '@/components/molecules/VueBreadcrumb/VueBreadcrumb.vue';
+import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridItem from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
@@ -34,8 +34,7 @@ export default defineComponent({
     const { app } = useContext();
 
     const breadCrumbItems = computed(() => [
-      { label: app.i18n.t('common.home' /* Home */), href: '/' },
-      { label: app.i18n.t('common.{{ properCase componentName }}' /* {{ properCase componentName }} */), href: '/{{filePath}}/{{ dashCase componentName }}' },
+      { label: app.i18n.t('common.{{ properCase componentName }}' /* {{ properCase componentName }} */), value: '/{{filePath}}/{{ dashCase componentName }}' },
     ]);
 
     return {
