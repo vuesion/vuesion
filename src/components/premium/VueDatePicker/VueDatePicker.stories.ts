@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { i18n } from '@/test/i18n';
 import VueDatePicker from './VueDatePicker.vue';
 
-const story = storiesOf('Organisms|DatePicker', module) as any;
+const story = storiesOf('Premium Components|DatePicker', module) as any;
 
 story.add(
   'Default',

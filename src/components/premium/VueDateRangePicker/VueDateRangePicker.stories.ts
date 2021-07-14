@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { i18n } from '@/test/i18n';
 import VueDateRangePicker from './VueDateRangePicker.vue';
 
-const story = storiesOf('Organisms|DateRangePicker', module) as any;
+const story = storiesOf('Premium Components|DateRangePicker', module) as any;
 
 story.add(
   'Default',

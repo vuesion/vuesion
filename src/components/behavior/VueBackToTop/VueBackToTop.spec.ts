@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import { triggerWindow } from '@/test/test-utils';
+import { i18n } from '@/test/i18n';
 import VueBackToTop from './VueBackToTop.vue';
 
 describe('VueBackToTop.vue', () => {
@@ -11,6 +12,7 @@ describe('VueBackToTop.vue', () => {
     (window as any).pageYOffset = 400;
 
     harness = render(VueBackToTop, {
+      i18n,
       stubs: ['nuxt-link'],
     });
   });
@@ -18,7 +20,9 @@ describe('VueBackToTop.vue', () => {
   test('renders component', () => {
     const { html } = harness;
 
-    expect(html()).toMatch('<button data-testid="back-to-top" class="vueBackToTop">');
+    expect(html()).toMatch(
+      '<button data-testid="back-to-top" type="button" aria-label="common.Back-to-top" class="vueBackToTop">',
+    );
   });
 
   test('it should scroll to top on click', async () => {
@@ -43,7 +47,9 @@ describe('VueBackToTop.vue', () => {
 
     await Vue.nextTick();
 
-    expect(html()).toMatch('<button data-testid="back-to-top" class="vueBackToTop show">');
+    expect(html()).toMatch(
+      '<button data-testid="back-to-top" type="button" aria-label="common.Back-to-top" class="vueBackToTop show">',
+    );
 
     (window as any).pageYOffset = 0;
 
@@ -51,6 +57,8 @@ describe('VueBackToTop.vue', () => {
 
     await Vue.nextTick();
 
-    expect(html()).toMatch('<button data-testid="back-to-top" class="vueBackToTop">');
+    expect(html()).toMatch(
+      '<button data-testid="back-to-top" type="button" aria-label="common.Back-to-top" class="vueBackToTop">',
+    );
   });
 });

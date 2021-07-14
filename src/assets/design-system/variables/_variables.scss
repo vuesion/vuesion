@@ -7,15 +7,15 @@
 @import 'breakpoints';
 /* Components */
 @import 'components/organisms/accordion';
-@import 'components/organisms/autocomplete';
+@import 'components/premium/autocomplete';
 @import 'components/data-display/badge';
 @import 'components/molecules/breadcrumb';
 @import 'components/input-and-actions/button';
-@import 'components/organisms/calendar';
+@import 'components/premium/calendar';
 @import 'components/molecules/carousel';
 @import 'components/input-and-actions/checkbox';
 @import 'components/input-and-actions/radio';
-@import 'components/organisms/data-table';
+@import 'components/premium/data-table';
 @import 'components/input-and-actions/dropdown';
 @import 'components/organisms/footer';
 @import 'components/input-and-actions/input';
@@ -32,7 +32,7 @@
 @import 'components/organisms/tab-group';
 @import 'components/molecules/tooltip';
 @import 'components/input-and-actions/toggle';
-@import 'components/atoms/star-rating';
+@import 'components/premium/star-rating';
 @import 'components/behavior/back-to-top';
 @import 'components/molecules/pop-over';
 @import 'components/data-display/menu';

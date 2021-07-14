@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { i18n } from '@/test/i18n';
 import VueCalendar from './VueCalendar.vue';
 
-const story = storiesOf('Organisms|Calendar', module) as any;
+const story = storiesOf('Premium Components|Calendar', module) as any;
 
 story.add(
   'Default',

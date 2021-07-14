@@ -5,6 +5,7 @@
   "auth.LoginForm.title": "Login Example",
   "auth.LoginForm.username.error": "The username can not be empty",
   "common.Apollo": "Apollo Example",
+  "common.Back-to-top": "Back to top",
   "common.cancel": "Cancel",
   "common.home": "Home",
   "common.ok": "Ok",

@@ -1,5 +1,11 @@
 <template>
-  <button :class="[$style.vueBackToTop, show && $style.show]" data-testid="back-to-top" @click="onClick">
+  <button
+    :class="[$style.vueBackToTop, show && $style.show]"
+    data-testid="back-to-top"
+    type="button"
+    :aria-label="$t('common.Back-to-top' /* Back to top */)"
+    @click="onClick"
+  >
     <vue-icon-arrow-up />
   </button>
 </template>
