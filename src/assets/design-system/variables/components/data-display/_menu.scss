@@ -1,5 +1,5 @@
 $menu-z-index: 1000;
-$menu-bg: palette-color-level('neutral', 0);
+$menu-bg: palette-color-level('neutral', 0); // TODO: add as theme variable
 $menu-min-width: $space-120 + $space-72;
 $menu-padding: $space-8 0;
 $menu-shadow: var(--brand-elevation-3);

@@ -1,8 +1,12 @@
 <template>
   <div ref="dropdownRef" :class="$style.vueDropdown" @keydown="onKeyDown">
-    <vue-button look="outline" :aria-expanded="show.toString()" @click.stop.prevent="onClick">
+    <vue-button
+      look="outline"
+      :aria-expanded="show.toString()"
+      trailing-icon="chevron-down"
+      @click.stop.prevent="onClick"
+    >
       {{ buttonText }}
-      <vue-icon-chevron-down :class="$style.icon" />
     </vue-button>
 
     <vue-collapse :show="show" :duration="duration">
@@ -18,12 +22,11 @@ import { IItem } from '@/interfaces/IItem';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import VueIconChevronDown from '@/components/icons/VueIconChevronDown/VueIconChevronDown.vue';
 import VueCollapse from '@/components/molecules/VueCollapse/VueCollapse.vue';
 
 export default defineComponent({
   name: 'VueDropdown',
-  components: { VueCollapse, VueIconChevronDown, VueButton, VueMenu },
+  components: { VueCollapse, VueButton, VueMenu },
   props: {
     buttonText: { type: String, required: true },
     items: { type: Array as new () => IItem[], required: true },
@@ -82,11 +85,6 @@ export default defineComponent({
 .vueDropdown {
   display: inline-flex;
   position: relative;
-
-  .icon {
-    width: $dropdown-button-icon-size;
-    height: $dropdown-button-icon-size;
-  }
 
   .menu {
     top: $button-md-height + $dropdown-button-menu-gap;

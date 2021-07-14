@@ -53,13 +53,11 @@ story.add(
       <vue-column v-for="size in sizes" :key="size" width="200px">
         <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
           <vue-button :look="style" :size="size">Button</vue-button>
-          <vue-button :look="style" :size="size">
-            <vue-icon-github />&nbsp;
+          <vue-button :look="style" :size="size" leading-icon="github">
             Button
           </vue-button>
-          <vue-button :look="style" :size="size">
-            Button&nbsp;
-            <vue-icon-github />
+          <vue-button :look="style" :size="size" trailing-icon="github">
+            Button
           </vue-button>
           <vue-button :look="style" :size="size" block>Button</vue-button>
           <vue-button :look="style" :size="size" :loading="loading">Button</vue-button>
