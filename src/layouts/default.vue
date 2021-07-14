@@ -145,7 +145,7 @@ import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueModal from '@/components/molecules/VueModal/VueModal.vue';
 import LoginForm from '@/components/organisms/LoginForm/LoginForm.vue';
 import { useLocaleSwitch } from '@/composables/use-locale-switch';
-import VueBackToTop from '@/components/molecules/VueBackToTop/VueBackToTop.vue';
+import VueBackToTop from '@/components/behavior/VueBackToTop/VueBackToTop.vue';
 import { IItem } from '@/interfaces/IItem';
 
 export default defineComponent({

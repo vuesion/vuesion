@@ -1,0 +1,24 @@
+$back-to-top-size: $space-56;
+$back-to-top-icon-size: $space-24;
+$back-to-top-bottom-space: $space-24;
+$back-to-top-right-space: $space-24;
+$back-to-top-border-radius: 50%;
+$back-to-top-shadow: var(--brand-elevation-2);
+$back-to-top-index: 2000;
+$back-to-top-outline: var(--brand-shadow-outline);
+
+// enabled
+$back-to-top-color: var(--brand-high-emphasis-text-color-inverse);
+$back-to-top-bg: var(--brand-neutral-enabled);
+
+// hover
+$back-to-top-color-hover: var(--brand-high-emphasis-text-color-inverse);
+$back-to-top-bg-hover: var(--brand-neutral-hover);
+
+// focus
+$back-to-top-color-focus: var(--brand-high-emphasis-text-color-inverse);
+$back-to-top-bg-focus: var(--brand-neutral-enabled);
+
+// active
+$back-to-top-color-active: var(--brand-high-emphasis-text-color-inverse);
+$back-to-top-bg-active: var(--brand-neutral-active);

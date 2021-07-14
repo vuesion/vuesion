@@ -1,6 +1,7 @@
 <template>
   <vue-box>
     <vue-inline :class="$style.icons" space="56">
+      <div :class="$style.icon"><vue-icon-arrow-up />arrow-up</div>
       <div :class="$style.icon"><vue-icon-book />book</div>
       <div :class="$style.icon"><vue-icon-bullhorn />bullhorn</div>
       <div :class="$style.icon"><vue-icon-certificate />certificate</div>
@@ -52,10 +53,12 @@ import VueIconVuesion from '@/components/icons/VueIconVuesion/VueIconVuesion.vue
 import VueIconInfoCircle from '@/components/icons/VueIconInfoCircle/VueIconInfoCircle.vue';
 import VueIconChevronDown from '@/components/icons/VueIconChevronDown/VueIconChevronDown.vue';
 import VueIconCheckmark from '@/components/icons/VueIconCheckmark/VueIconCheckmark.vue';
+import VueIconArrowUp from '@/components/icons/VueIconArrowUp/VueIconArrowUp.vue';
 
 export default {
   name: 'IconList',
   components: {
+    VueIconArrowUp,
     VueIconCheckmark,
     VueIconChevronDown,
     VueIconInfoCircle,
