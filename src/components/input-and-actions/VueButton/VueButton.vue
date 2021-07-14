@@ -5,7 +5,15 @@
     :to="isRouterLink && href"
     :href="isRegularLink && href"
     :disabled="isDisabled"
-    :class="[$style.button, $style[look], $style[size], isDisabled && $style.disabled, block && $style.block]"
+    :class="[
+      $style.button,
+      $style[look],
+      $style[size],
+      isDisabled && $style.disabled,
+      block && $style.block,
+      leadingIcon && $style.hasLeadingIcon,
+      trailingIcon && $style.hasTrailingIcon,
+    ]"
     :style="{ width: actualWidth }"
     :event="!isDisabled && isRouterLink ? 'click' : null"
     :tabindex="isDisabled ? -1 : 0"
@@ -16,10 +24,15 @@
       click: onClick,
     }"
   >
+    <component :is="`vue-icon-${leadingIcon}`" v-if="leadingIcon" :class="$style.leadingIcon" />
+
     <vue-text v-if="loading === false" :class="$style.text" look="button" weight="semi-bold" as="span">
       <slot />
     </vue-text>
-    <vue-loader v-else :class="$style.loader" />
+
+    <component :is="`vue-icon-${trailingIcon}`" v-if="trailingIcon" :class="$style.trailingIcon" />
+
+    <vue-loader v-if="loading === true" :class="$style.loader" />
   </component>
 </template>
 
@@ -29,6 +42,8 @@ import { getDomRef } from '@/composables/get-dom-ref';
 import { buttonSizeValidator, buttonStyleValidator } from '@/components/prop-validators';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueLoader from '@/components/data-display/VueLoader/VueLoader.vue';
+
+// TODO: add different spacings for icons
 
 export default defineComponent({
   name: 'VueButton',
@@ -45,6 +60,8 @@ export default defineComponent({
     as: { type: String, default: 'button' },
     type: { type: String, default: 'button' },
     href: { type: String, default: null },
+    leadingIcon: { type: String, default: null },
+    trailingIcon: { type: String, default: null },
   },
   setup(props, { emit }) {
     const buttonRef = getDomRef(null);
@@ -108,16 +125,40 @@ export default defineComponent({
   &.sm {
     padding: $button-sm-padding;
     height: $button-sm-height;
+
+    &.hasLeadingIcon {
+      padding-left: $button-sm-has-icon-space;
+    }
+
+    &.hasTrailingIcon {
+      padding-right: $button-sm-has-icon-space;
+    }
   }
 
   &.md {
     padding: $button-md-padding;
     height: $button-md-height;
+
+    &.hasLeadingIcon {
+      padding-left: $button-md-has-icon-space;
+    }
+
+    &.hasTrailingIcon {
+      padding-right: $button-md-has-icon-space;
+    }
   }
 
   &.lg {
     padding: $button-lg-padding;
     height: $button-lg-height;
+
+    &.hasLeadingIcon {
+      padding-left: $button-lg-has-icon-space;
+    }
+
+    &.hasTrailingIcon {
+      padding-right: $button-lg-has-icon-space;
+    }
   }
 
   // Styles
@@ -185,11 +226,22 @@ export default defineComponent({
     display: inline-flex;
     align-items: center;
     height: 100%;
+  }
 
-    i {
-      height: $button-icon-size;
-      width: $button-icon-size;
-    }
+  // icons
+
+  .leadingIcon,
+  .trailingIcon {
+    height: $button-icon-size;
+    width: $button-icon-size;
+  }
+
+  .leadingIcon {
+    margin-right: $button-icon-gap;
+  }
+
+  .trailingIcon {
+    margin-left: $button-icon-gap;
   }
 }
 </style>
