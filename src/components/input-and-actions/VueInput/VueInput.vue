@@ -167,7 +167,7 @@ export default defineComponent({
     }
 
     input {
-      outline: none !important;
+      outline: none;
       color: $input-color;
       font-size: $input-font-size;
       font-family: $input-font-family;
@@ -181,17 +181,17 @@ export default defineComponent({
       width: 100%;
 
       &:hover {
-        outline: none !important;
+        outline: none;
         border: $input-border-hover;
       }
 
       &:focus {
-        outline: none !important;
+        outline: none;
         box-shadow: $input-outline;
       }
 
       &:active {
-        outline: none !important;
+        outline: none;
       }
     }
 

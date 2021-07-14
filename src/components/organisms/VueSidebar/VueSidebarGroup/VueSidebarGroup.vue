@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.vueSidebarGroup">
-    <strong>{{ title }}</strong>
+    <strong v-if="title">{{ title }}</strong>
     <ul>
       <slot />
     </ul>
@@ -12,7 +12,7 @@ export default {
   name: 'VueSidebarGroup',
   props: {
     title: {
-      required: true,
+      default: null,
       type: String,
     },
   },

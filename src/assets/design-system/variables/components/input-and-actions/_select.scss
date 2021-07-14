@@ -1,0 +1,42 @@
+// label
+$select-label-height: $space-16;
+$select-label-gap: $space-4;
+
+// input default
+$select-border-radius: $space-8;
+$select-border: 1px solid var(--brand-primary-border-color);
+$select-height: $space-40;
+$select-padding: ($space-12 - $space-2) $space-12;
+$select-color: var(--brand-high-emphasis-text-color);
+$select-placeholder-color: var(--brand-low-emphasis-text-color);
+$select-background-color: transparent;
+$select-font-family: $font-family;
+$select-font-size: $text-1;
+$select-font-weight: $font-weight-regular;
+$select-line-height: $line-height-1 + $space-2;
+$select-icon-size: $space-24;
+
+// description
+$select-description-gap: $space-8;
+$select-description-height: $space-16;
+
+// utils
+$select-disabled-disabled-opacity: 0.3;
+$select-outline: var(--brand-shadow-outline);
+
+// hover
+$select-border-hover: 1px solid var(--brand-primary-border-color);
+
+// error
+$select-background-error-color: palette-color-level('danger', 1);
+$select-border-error: 1px solid var(--brand-danger-enabled);
+
+// leading icon
+$select-leading-width: $space-40 - $space-4;
+$select-leading-icon-size: $space-20;
+$select-leading-color: var(--brand-high-emphasis-text-color);
+
+// trailing icon
+$select-trailing-width: $space-40 - $space-4;
+$select-trailing-icon-size: $space-20;
+$select-trailing-color: var(--brand-high-emphasis-text-color);

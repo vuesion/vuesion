@@ -15,7 +15,7 @@
     <vue-footer />
 
     <vue-sidebar>
-      <vue-sidebar-group title="Themes">
+      <vue-sidebar-group>
         <vue-sidebar-group-item>
           <vue-select
             id="theme"
@@ -23,12 +23,12 @@
             name="theme"
             :items="themes"
             :value="$colorMode.value"
-            @input="$colorMode.preference = $event"
+            @input="$colorMode.preference = $event.value"
           />
         </vue-sidebar-group-item>
       </vue-sidebar-group>
 
-      <vue-sidebar-group title="Languages">
+      <vue-sidebar-group>
         <vue-sidebar-group-item>
           <vue-select
             id="lang"
@@ -146,6 +146,7 @@ import VueModal from '@/components/molecules/VueModal/VueModal.vue';
 import LoginForm from '@/components/organisms/LoginForm/LoginForm.vue';
 import { useLocaleSwitch } from '@/composables/use-locale-switch';
 import VueBackToTop from '@/components/molecules/VueBackToTop/VueBackToTop.vue';
+import { IItem } from '@/interfaces/IItem';
 
 export default defineComponent({
   name: 'App',
@@ -186,8 +187,8 @@ export default defineComponent({
     const locale = computed(() => app.i18n.locale);
     const loggedIn = computed(() => app.$auth.loggedIn);
     const user = computed(() => app.$auth.user);
-    const onLocaleSwitch = (selectedLocale: string) => {
-      switchLocaleTo(selectedLocale);
+    const onLocaleSwitch = (selectedLocale: IItem) => {
+      switchLocaleTo(selectedLocale.value);
     };
     const onLoginSubmit = async (formData: any) => {
       loginRequestStatus.value = RequestStatus.PENDING;

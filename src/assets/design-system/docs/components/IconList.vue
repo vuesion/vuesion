@@ -5,6 +5,7 @@
       <div :class="$style.icon"><vue-icon-bullhorn />bullhorn</div>
       <div :class="$style.icon"><vue-icon-certificate />certificate</div>
       <div :class="$style.icon"><vue-icon-chart-line />chart-line</div>
+      <div :class="$style.icon"><vue-icon-checkmark />checkmark</div>
       <div :class="$style.icon"><vue-icon-chevron-down />chevron-down</div>
       <div :class="$style.icon"><vue-icon-code />code</div>
       <div :class="$style.icon"><vue-icon-flag />flag</div>
@@ -50,10 +51,12 @@ import VueIconTimes from '@/components/icons/VueIconTimes/VueIconTimes.vue';
 import VueIconVuesion from '@/components/icons/VueIconVuesion/VueIconVuesion.vue';
 import VueIconInfoCircle from '@/components/icons/VueIconInfoCircle/VueIconInfoCircle.vue';
 import VueIconChevronDown from '@/components/icons/VueIconChevronDown/VueIconChevronDown.vue';
+import VueIconCheckmark from '@/components/icons/VueIconCheckmark/VueIconCheckmark.vue';
 
 export default {
   name: 'IconList',
   components: {
+    VueIconCheckmark,
     VueIconChevronDown,
     VueIconInfoCircle,
     VueIconVuesion,

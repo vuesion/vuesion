@@ -1,45 +1,95 @@
 <template>
-  <ValidationProvider v-slot="{ invalid }" ref="validator" :vid="id" :name="name" :rules="validation" tag="div">
+  <ValidationProvider v-slot="{ errors }" ref="validator" :vid="id" :name="name" :rules="validation" tag="div">
     <div
-      :class="[
-        $style.vueSelect,
-        multiSelect && $style.multiSelect,
-        disabled && $style.disabled,
-        invalid && $style.error,
-      ]"
+      ref="selectRef"
+      :class="[$style.vueSelect, disabled && $style.disabled, errors.length > 0 && $style.error]"
+      @keydown="onKeyDown"
     >
-      <select
-        :id="id"
-        :title="label"
-        :multiple="multiSelect"
-        :required="required"
-        :disabled="disabled"
-        v-bind="$attrs"
-        v-on="{
-          ...$listeners,
-          input: onInput,
-        }"
+      <vue-text
+        :for="id"
+        look="label"
+        :color="errors.length > 0 ? 'danger' : 'text-medium'"
+        :class="[$style.label, hideLabel && 'sr-only']"
+        as="label"
       >
-        <option v-for="(option, idx) in items" :key="idx" :value="option.value" :selected="isSelected(option)">
-          {{ option.label }}
-        </option>
-      </select>
+        {{ label }}
+        <sup v-if="required">*</sup>
+      </vue-text>
 
-      <i v-if="!multiSelect" :class="$style.icon" />
-      <span :class="$style.bar" />
-      <label :for="id">{{ label }}<sup v-if="required">*</sup></label>
+      <div :class="$style.selectWrapper">
+        <select
+          :id="id"
+          :data-testid="'native-' + id"
+          :name="name"
+          :value="inputValue"
+          :title="label"
+          :required="required"
+          :disabled="disabled"
+          :class="[$style.nativeSelect, placeholder && !inputValue && $style.hasPlaceholder]"
+          v-bind="$attrs"
+          v-on="{
+            ...$listeners,
+            input: onInput,
+          }"
+        >
+          <option v-if="placeholder && !inputValue" value="" disabled selected>{{ placeholder }}</option>
+          <option
+            v-for="(option, idx) in options"
+            :key="idx"
+            :value="option.value"
+            :selected="inputValue === option.value"
+          >
+            {{ option.label }}
+          </option>
+        </select>
+
+        <div
+          :data-testid="'custom-' + id"
+          :aria-expanded="show.toString()"
+          :class="$style.customSelect"
+          :tabindex="disabled ? -1 : 0"
+          @click="show = !show"
+        >
+          {{ inputValue ? options.find((option) => option.value === inputValue).label : placeholder }}
+        </div>
+
+        <div :class="$style.icon">
+          <vue-icon-chevron-down />
+        </div>
+      </div>
+
+      <vue-collapse :show="show" :duration="duration">
+        <vue-menu :items="options" :class="$style.menu" @click="onItemClick" />
+      </vue-collapse>
+
+      <vue-text
+        :color="errors.length > 0 ? 'danger' : 'text-medium'"
+        :class="[$style.description, hideDescription && 'sr-only']"
+      >
+        {{ errors.length > 0 ? errorMessage : description }}
+      </vue-text>
     </div>
   </ValidationProvider>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from '@vue/composition-api';
+import { computed, defineComponent, ref } from '@vue/composition-api';
 import { ValidationProvider } from 'vee-validate';
 import { IItem } from '@/interfaces/IItem';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueCollapse from '@/components/molecules/VueCollapse/VueCollapse.vue';
+import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
+import { useOutsideClick } from '@/composables/use-outside-click';
+import { getDomRef } from '@/composables/get-dom-ref';
+import VueIconChevronDown from '@/components/icons/VueIconChevronDown/VueIconChevronDown.vue';
 
 export default defineComponent({
   name: 'VueSelect',
   components: {
+    VueIconChevronDown,
+    VueMenu,
+    VueCollapse,
+    VueText,
     ValidationProvider,
   },
   inheritAttrs: false,
@@ -47,16 +97,35 @@ export default defineComponent({
     id: { type: String, required: true },
     name: { type: String, required: true },
     label: { type: String, required: true },
+    hideLabel: { type: Boolean, default: false },
+    hideDescription: { type: Boolean, default: false },
     required: { type: Boolean, default: false },
     validation: { type: [String, Object], default: null },
-    value: { type: [String, Number, Boolean, Object], default: null },
+    value: { type: [String, Boolean, Object, Object as () => IItem], default: null },
     disabled: { type: Boolean, default: false },
-    items: { type: Array, required: true },
-    multiSelect: { type: Boolean, default: false },
+    items: { type: [Array, Array as () => Array<IItem>], required: true },
+    placeholder: { type: String, default: '' },
+    description: { type: String, default: '' },
+    errorMessage: { type: String, default: '' },
+    duration: { type: Number, default: 250 },
   },
   setup(props, { emit }) {
-    const currentValueAsArray = computed<string[]>(() => props.value?.toString().split('|'));
-    const isSelected = (option: IItem) => currentValueAsArray.value?.includes(option.value);
+    const inputValue = computed(() => {
+      if (props.value && props.value.value) {
+        return props.value.value;
+      }
+
+      return props.value;
+    });
+    const options = computed<Array<IItem>>(() =>
+      props.items.map((item: IItem) => ({
+        ...item,
+        trailingIcon: inputValue.value === item.value ? 'checkmark' : null,
+      })),
+    );
+    const selectRef = getDomRef(null);
+    const show = ref(false);
+    const close = () => (show.value = false);
     const onInput = (e: Event) => {
       const selected: IItem[] = [];
       const target: HTMLSelectElement = e.target as HTMLSelectElement;
@@ -69,12 +138,42 @@ export default defineComponent({
         }
       }
 
-      emit('input', selected.map((option) => option.value).join('|'));
+      emit('input', selected[0]);
+    };
+    const onItemClick = (item: IItem) => {
+      emit('input', item);
+      close();
+    };
+    const checkForPropagation = (e: KeyboardEvent) => {
+      if (['Enter', 'Space', 'ArrowDown', 'ArrowUp', 'Escape'].includes(e.code)) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      checkForPropagation(e);
+
+      if (['Enter', 'Space', 'ArrowDown', 'ArrowUp'].includes(e.code)) {
+        show.value = true;
+
+        setTimeout(() => {
+          selectRef.value.querySelector('ul').firstChild.focus();
+        }, 10);
+      } else if (e.code === 'Escape') {
+        close();
+      }
     };
 
+    useOutsideClick(selectRef, () => close());
+
     return {
-      isSelected,
+      inputValue,
+      selectRef,
+      options,
+      show,
       onInput,
+      onItemClick,
+      onKeyDown,
     };
   },
 });
@@ -83,8 +182,108 @@ export default defineComponent({
 <style lang="scss" module>
 @import '~@/assets/_design-system';
 .vueSelect {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  select::-ms-expand {
+    display: none;
+  }
+
+  .selectWrapper {
+    position: relative;
+
+    .icon {
+      position: absolute;
+      top: 0;
+      right: $space-12;
+      bottom: 0;
+      display: inline-flex;
+      align-items: center;
+
+      i {
+        width: $select-icon-size;
+        height: $select-icon-size;
+      }
+    }
+  }
+
+  .nativeSelect,
+  .customSelect {
+    outline: none;
+    color: $select-color;
+    font-size: $select-font-size;
+    font-family: $select-font-family;
+    font-weight: $select-font-weight;
+    background: $select-background-color;
+    border: $select-border;
+    border-radius: $select-border-radius;
+    padding: $select-padding;
+    line-height: $select-line-height;
+    height: $select-height;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:hover {
+      outline: none;
+      border: $select-border-hover;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: $select-outline;
+    }
+
+    &:active {
+      outline: none;
+    }
+  }
+
+  .hasPlaceholder {
+    color: $select-placeholder-color;
+  }
+
   &.error {
-    color: red;
+    select {
+      background: $select-background-error-color;
+      border: $select-border-error;
+    }
+  }
+
+  &.disabled {
+    opacity: $select-disabled-disabled-opacity;
+  }
+
+  .label {
+    display: flex;
+    height: $select-label-height;
+    margin-bottom: $select-label-gap;
+  }
+
+  .description {
+    display: flex;
+    height: $select-description-height;
+    margin-top: $select-description-gap;
+  }
+
+  .customSelect,
+  .menu {
+    width: 100%;
+    display: none;
+    top: $select-label-height + $select-label-gap + $select-height + $select-description-gap;
+  }
+
+  @media (hover: hover) {
+    .nativeSelect {
+      display: none;
+    }
+
+    .customSelect,
+    .menu {
+      display: flex;
+    }
   }
 }
 </style>

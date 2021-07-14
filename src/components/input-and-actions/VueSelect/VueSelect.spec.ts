@@ -1,126 +1,128 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { fireEvent, render, RenderResult } from '@testing-library/vue';
+import userEvent from '@testing-library/user-event';
+import { sleep, triggerDocument } from '@/test/test-utils';
 import VueSelect from './VueSelect.vue';
 
-const localVue = createLocalVue();
-
 describe('VueSelect.vue', () => {
-  const items = [
-    {
-      label: 'Foo',
-      value: 'foo',
-    },
-    {
-      label: 'Bar',
-      value: 'bar',
-    },
-    {
-      label: 'Baz',
-      value: 'baz',
-    },
-    {
-      label: 'Bla Bla Bla Bla Bla',
-      value: 'bla',
-    },
-    {
-      label: 'Lorem Ipsum la la la',
-      value: 'lorem',
-    },
-  ];
+  let harness: RenderResult;
 
-  test('renders component', () => {
-    const wrapper = mount<any>(VueSelect, {
-      localVue,
-      propsData: {
-        value: 'foo',
-        items,
-        name: 'foo',
-        id: 'foo',
-        label: 'foo',
-      },
-    });
-
-    expect(wrapper.findAll('option')).toHaveLength(5);
-    expect(wrapper.find('select').attributes().multiSelect).toBe(undefined);
-  });
-
-  test('renders multi component', () => {
-    const wrapper = mount<any>(VueSelect, {
-      localVue,
-      propsData: {
-        items,
-        multiSelect: true,
-        name: 'foo',
-        id: 'foo',
-        label: 'foo',
-      },
-    });
-
-    expect(wrapper.findAll('option')).toHaveLength(5);
-    expect(wrapper.find('select').attributes().multiple).toBe('multiple');
-  });
-
-  test('renders disabled component', () => {
-    const wrapper = mount<any>(VueSelect, {
-      localVue,
-      propsData: {
-        items,
-        disabled: true,
-        name: 'foo',
-        id: 'foo',
-        label: 'foo',
-      },
-    });
-
-    expect(wrapper.findAll('option')).toHaveLength(5);
-    expect(wrapper.findAll('.disabled')).toHaveLength(1);
-  });
-
-  it('should return list of items', () => {
-    const wrapper = mount<any>(VueSelect, {
-      localVue,
-      propsData: {
-        items,
-        multiSelect: true,
-        name: 'foo',
-        id: 'foo',
-        label: 'foo',
-      },
-    });
-
-    const event: any = {
-      target: {
-        options: [
-          {
-            selected: true,
-            text: 'foo',
-            value: 'foo2',
-          },
-          {
-            selected: false,
-            text: 'bar',
-            value: 'bar2',
-          },
+  beforeEach(() => {
+    harness = render(VueSelect, {
+      props: {
+        id: 'select',
+        name: 'select',
+        label: 'Select',
+        placeholder: 'Placeholder',
+        items: [
+          { label: 'Value 1', value: 'Value 1', description: 'Description 1' },
+          { label: 'Value 2', value: 'Value 2', description: 'Description 2' },
+          { label: 'Value 3', value: 'Value 3', description: 'Description 3' },
+          { label: 'Value 4', value: 'Value 4', description: 'Description 4' },
         ],
       },
-    };
-
-    wrapper.vm.onInput(event);
-
-    expect(wrapper.emitted().input[0][0]).toBe('foo2');
+    });
   });
 
-  // test('should display error state', () => {
-  //   const wrapper = mount<any>(VueSelect, {
-  //     localVue,
-  //     propsData: {
-  //       items,
-  //       name: 'name',
-  //       id: 'id',
-  //       validation: 'integer',
-  //       value: 'foo',
-  //     },
-  //   });
-  //
-  //   expect(wrapper.findAll(`.error`)).toHaveLength(1);
-  // });
+  test('renders component', () => {
+    const { getByText } = harness;
+
+    getByText('Select');
+  });
+
+  test('should emit input event of the native select', async () => {
+    const { getByTestId, emitted } = harness;
+
+    await userEvent.selectOptions(getByTestId('native-select'), ['Value 2']);
+
+    expect(emitted().input).toEqual([
+      [
+        {
+          label: 'Value 2',
+          value: 'Value 2',
+        },
+      ],
+    ]);
+  });
+
+  test('should emit input event of the custom select', async () => {
+    const { getByTestId, emitted } = harness;
+
+    await fireEvent.click(getByTestId('custom-select'));
+    await fireEvent.click(getByTestId('Value 2-1'));
+
+    expect(emitted().input).toEqual([
+      [
+        {
+          description: 'Description 2',
+          label: 'Value 2',
+          trailingIcon: null,
+          value: 'Value 2',
+        },
+      ],
+    ]);
+  });
+
+  test('should open and close menu via keyboard', async () => {
+    const { getByText, queryAllByText } = harness;
+    const select = getByText('Select').parentElement;
+
+    await fireEvent.keyDown(select, { key: 'ArrowLeft', code: 'ArrowLeft' });
+
+    expect(queryAllByText('Value 1')).toHaveLength(1);
+
+    await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
+
+    await sleep(50);
+
+    expect(queryAllByText('Value 1')).toHaveLength(2);
+
+    await fireEvent.keyDown(select, { key: 'Escape', code: 'Escape' });
+
+    expect(queryAllByText('Value 1')).toHaveLength(1);
+  });
+
+  test('should open menu and close it via outline click', async () => {
+    const { getByText, queryAllByText } = harness;
+    const select = getByText('Select').parentElement;
+
+    await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
+
+    await sleep(50);
+
+    expect(queryAllByText('Value 1')).toHaveLength(2);
+
+    triggerDocument.mousedown({ target: null });
+
+    await sleep(250);
+
+    expect(queryAllByText('Value 1')).toHaveLength(1);
+  });
+
+  test('should support string as input value', async () => {
+    const { getByText, getByTestId, updateProps } = harness;
+
+    await updateProps({ value: 'Value 1' });
+
+    const select = getByText('Select').parentElement;
+
+    await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
+
+    await sleep(50);
+
+    expect(getByTestId('Value 1-0').innerHTML).toMatch('<div class="trailing">');
+  });
+
+  test('should support IItem as input value', async () => {
+    const { getByText, getByTestId, updateProps } = harness;
+
+    await updateProps({ value: { label: 'Value 1', value: 'Value 1' } });
+
+    const select = getByText('Select').parentElement;
+
+    await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
+
+    await sleep(50);
+
+    expect(getByTestId('Value 1-0').innerHTML).toMatch('<div class="trailing">');
+  });
 });
