@@ -38,7 +38,7 @@ story.add(
       <vue-card padding="0" v-for="id in [1, 2, 3, 4]" :key="id">
         <vue-stack space="0">
           <vue-box padding="16 16 12 16">
-            <vue-columns align-y="center">
+            <vue-columns space="12" align-y="center">
               <vue-column width="56px" v-if="id === 1 || id === 3">
                 <vue-image alt="avatar" src="https://via.placeholder.com/56"/>
               </vue-column>

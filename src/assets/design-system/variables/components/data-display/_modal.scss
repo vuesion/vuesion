@@ -1,0 +1,12 @@
+$modal-bg: palette-color-level('neutral', 0); // TODO: add token
+$modal-border-radius: $space-8;
+$modal-border: 1px solid var(--brand-primary-border-color);
+$modal-close-button-gap: $space-8;
+$modal-close-button-size: $space-24;
+$modal-close-button-outline: var(--brand-shadow-outline);
+$modal-close-button-color: var(--brand-low-emphasis-text-color);
+$modal-close-button-color-hover: var(--brand-medium-emphasis-text-color);
+$modal-shadow: var(--brand-elevation-1);
+$modal-index: 2001;
+$modal-max-width: 50%;
+$modal-transition: var(--brand-fade-animation-transition);

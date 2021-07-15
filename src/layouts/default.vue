@@ -142,7 +142,7 @@ import VueIconTwitterSquare from '@/components/icons/VueIconTwitterSquare/VueIco
 import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueIconPuzzlePiece from '@/components/icons/VueIconPuzzlePiece/VueIconPuzzlePiece.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import VueModal from '@/components/molecules/VueModal/VueModal.vue';
+import VueModal from '@/components/data-display/VueModal/VueModal.vue';
 import LoginForm from '@/components/organisms/LoginForm/LoginForm.vue';
 import { useLocaleSwitch } from '@/composables/use-locale-switch';
 import VueBackToTop from '@/components/behavior/VueBackToTop/VueBackToTop.vue';

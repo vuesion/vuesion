@@ -1,43 +1,36 @@
 import Vue from 'vue';
-import { render } from '@testing-library/vue';
+import { render, RenderResult } from '@testing-library/vue';
 import { triggerDocument } from '@/test/test-utils';
 import VueModal from './VueModal.vue';
 
 describe('VueModal.vue', () => {
-  test('opens modal', async () => {
-    const { getByText, updateProps } = render(VueModal, {
+  let harness: RenderResult;
+
+  beforeEach(() => {
+    harness = render(VueModal, {
       slots: {
         default: '<p>TEST</p>',
       },
     });
-
-    await updateProps({ show: true });
-    getByText('TEST');
   });
 
-  test('closes modal', async () => {
-    const { queryByText, updateProps } = render(VueModal, {
-      slots: {
-        default: '<p>TEST</p>',
-      },
-      propsData: {
-        show: true,
-      },
-    });
+  test('opens and closes modal', async () => {
+    const { queryAllByText, updateProps } = harness;
+
+    await updateProps({ show: true });
+
+    expect(queryAllByText('TEST')).toHaveLength(1);
 
     await updateProps({ show: false });
-    expect(queryByText('TEST')).toBe(null);
+
+    expect(queryAllByText('TEST')).toHaveLength(0);
   });
 
   test('should close on outside click', async () => {
-    const { queryByText, emitted } = render(VueModal, {
-      slots: {
-        default: '<p>TEST</p>',
-      },
-      propsData: {
-        show: true,
-      },
-    });
+    const { queryByText, emitted, updateProps } = harness;
+
+    await updateProps({ show: true });
+
     const paragraph = queryByText('TEST');
 
     await Vue.nextTick();
@@ -50,9 +43,9 @@ describe('VueModal.vue', () => {
   });
 
   test('should close on ESC press', async () => {
-    const { emitted, updateProps } = render(VueModal, {
-      propsData: { closeOnEscape: false, backdrop: false },
-    });
+    const { emitted, updateProps } = harness;
+
+    await updateProps({ closeOnEscape: false, backdrop: false });
 
     triggerDocument.keydown({ key: 'Enter' });
     expect(emitted().close).toBeFalsy();
