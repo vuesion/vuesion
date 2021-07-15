@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueHidden from './VueHidden.vue';
 
-const story = storiesOf('Design System|Utils/Hidden', module) as any;
+const story = storiesOf('Foundation|Utils/Hidden', module) as any;
 
 story.add(
   'Hide content on phone and large desktop',

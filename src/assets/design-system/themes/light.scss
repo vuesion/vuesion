@@ -68,7 +68,7 @@
   --brand-border-radius-lg: #{$space-16};
 
   /* Box Shadows */
-  --brand-elevation-1: 0 -1px 2px rgba(19, 20, 22, 0.08), 0 3px 5px rgba(19, 20, 22, 0.12);
+  --brand-elevation-1: 0px 1px 4px rgba(19, 20, 22, 0.08);
   --brand-elevation-2: 0px -1px 2px -1px rgba(0, 0, 0, 0.05), 0px 3px 6px rgba(19, 20, 22, 0.15);
   --brand-elevation-3: 0px -2px 4px rgba(0, 0, 0, 0.08), 0px 6px 10px rgba(19, 20, 22, 0.15);
   --brand-shadow-outline: 0 0 0 #{$space-2} #{palette-color-level('neutral', 0)},
