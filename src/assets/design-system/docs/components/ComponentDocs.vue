@@ -1,5 +1,5 @@
 <template>
-  <vue-box>
+  <vue-box :padding="[16, 24]">
     <vue-stack space="32">
       <vue-stack v-if="componentName && usage" space="8">
         <vue-text look="large-title" weight="semi-bold">{{ componentName }} Usage</vue-text>

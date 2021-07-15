@@ -29,6 +29,12 @@ i {
   }
 }
 
+hr {
+  border: none;
+  border-top: 1px solid var(--brand-secondary-bg-color);
+  margin-top: -1px;
+}
+
 // UTILITIES
 // =========
 
