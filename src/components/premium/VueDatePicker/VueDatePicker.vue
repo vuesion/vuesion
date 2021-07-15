@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import VueInput from '../../input-and-actions/VueInput/VueInput.vue';
-import VueModal from '../../molecules/VueModal/VueModal.vue';
+import VueModal from '../../data-display/VueModal/VueModal.vue';
 import VueCalendar from '../VueCalendar/VueCalendar.vue';
 
 export default {

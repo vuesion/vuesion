@@ -2,9 +2,14 @@ import axios, { AxiosRequestConfig } from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { NuxtAxiosInstance } from '@nuxtjs/axios';
 
-export const TestComponent = (setup: (props?: any, options?: any) => void, template = '<div/>'): any => ({
+export const TestComponent = (
+  setup: (props?: any, options?: any) => void,
+  template = '<div/>',
+  components: any = {},
+): any => ({
   setup,
   template,
+  components,
 });
 
 export const triggerDocument: any = {};

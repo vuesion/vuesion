@@ -1,37 +1,41 @@
 import { onBeforeMount, Ref, watch } from '@vue/composition-api';
 
 interface IBackdropOptions {
-  scrollable: boolean;
+  scrollable: Ref<boolean>;
 }
 
 export const useBackdrop = (show: Ref<boolean>, { scrollable }: IBackdropOptions) => {
-  let overlay: HTMLElement = null;
+  const getBackdrop = () => {
+    let backdrop: HTMLElement = document.getElementById('modal-backdrop-1337');
 
-  onBeforeMount(() => {
-    overlay = document.getElementById('overlay');
-
-    if (overlay === null) {
-      overlay = document.createElement('div');
-      overlay.id = 'overlay';
-      document.body.appendChild(overlay);
+    if (backdrop === null) {
+      backdrop = document.createElement('div');
+      backdrop.id = 'modal-backdrop-1337';
+      document.body.appendChild(backdrop);
     }
 
-    overlay.classList.add('backdrop');
+    return backdrop;
+  };
+
+  onBeforeMount(() => {
+    getBackdrop().classList.add('backdrop');
   });
 
-  watch(
+  return watch(
     show,
     () => {
-      if (show.value === true) {
-        overlay.classList.add('show');
+      const backdrop = getBackdrop();
 
-        if (scrollable === false) {
+      if (show.value === true) {
+        backdrop.classList.add('show');
+
+        if (scrollable.value === false) {
           document.body.style.overflow = 'hidden';
         }
       } else {
-        overlay.classList.remove('show');
+        backdrop.classList.remove('show');
 
-        if (scrollable === false) {
+        if (scrollable.value === false) {
           document.body.style.overflow = 'initial';
         }
       }

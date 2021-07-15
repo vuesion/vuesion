@@ -11,8 +11,9 @@ describe('use-backdrop.ts', () => {
     render(
       TestComponent(() => {
         const show = ref(false);
+        const scrollable = ref(false);
 
-        useBackdrop(show, { scrollable: false });
+        useBackdrop(show, { scrollable });
 
         show.value = true;
       }),
@@ -27,8 +28,9 @@ describe('use-backdrop.ts', () => {
     render(
       TestComponent(() => {
         const show = ref(true);
+        const scrollable = ref(false);
 
-        useBackdrop(show, { scrollable: false });
+        useBackdrop(show, { scrollable });
 
         show.value = false;
       }),
@@ -43,8 +45,9 @@ describe('use-backdrop.ts', () => {
     render(
       TestComponent(() => {
         const show = ref(false);
+        const scrollable = ref(true);
 
-        useBackdrop(show, { scrollable: true });
+        useBackdrop(show, { scrollable });
 
         show.value = true;
       }),
@@ -59,8 +62,9 @@ describe('use-backdrop.ts', () => {
     render(
       TestComponent(() => {
         const show = ref(true);
+        const scrollable = ref(true);
 
-        useBackdrop(show, { scrollable: true });
+        useBackdrop(show, { scrollable });
 
         show.value = false;
       }),
