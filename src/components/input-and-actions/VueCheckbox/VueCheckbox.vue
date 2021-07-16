@@ -8,8 +8,8 @@
     :rules="validation"
     tag="div"
     :tabindex="disabled ? null : 0"
-    @click.native="onClick"
-    @keypress.space.native="onClick"
+    @click.native.stop.prevent="onClick"
+    @keypress.space.native.stop.prevent="onClick"
   >
     <div :class="$style.wrapper">
       <input

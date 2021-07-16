@@ -189,7 +189,13 @@ export default defineComponent({
       document.removeEventListener('touchmove', moving);
       document.removeEventListener('mousemove', moving);
     };
-    const emitChange = () => emit('change', [currentMin.value, currentMax.value]);
+    const emitChange = () => {
+      if (isMultiRange.value) {
+        emit('change', [currentMin.value, currentMax.value]);
+      } else {
+        emit('change', [currentMax.value]);
+      }
+    };
     const isNewInputValueValid = (value: string, sliderIndex: number) => {
       const newValue = parseInt(value);
 
@@ -197,9 +203,9 @@ export default defineComponent({
         return false;
       }
 
-      if (sliderIndex === 0 && newValue >= currentMax.value) {
+      if (sliderIndex === 0 && newValue > currentMax.value) {
         return false;
-      } else if (sliderIndex === 1 && newValue <= currentMin.value) {
+      } else if (sliderIndex === 1 && newValue < currentMin.value) {
         return false;
       }
 
@@ -216,9 +222,9 @@ export default defineComponent({
       }
 
       if (currentSlider.value === 0 && newValue > currentMax.value) {
-        newValue = currentMax.value - 1;
+        newValue = currentMax.value;
       } else if (currentSlider.value === 1 && newValue <= currentMin.value) {
-        newValue = currentMin.value + 1;
+        newValue = currentMin.value;
       }
 
       if (currentSlider.value === 0) {

@@ -1,64 +1,78 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { fireEvent, render, RenderResult } from '@testing-library/vue';
+import { i18n } from '@/test/i18n';
+import { ICarouselImage } from '@/components/molecules/VueCarousel/ICarouselImage';
+import { sleep } from '@/test/test-utils';
 import VueCarousel from './VueCarousel.vue';
 
-const localVue = createLocalVue();
-const images: any[] = [
-  { alt: 'foo', copyright: 'foo', url: 'foo' },
-  { alt: 'foo', copyright: 'foo', url: 'foo' },
-  { alt: 'foo', copyright: 'foo', url: 'foo' },
+const images: ICarouselImage[] = [
+  { alt: 'foo1', copyright: 'foo1', url: 'foo1' },
+  { alt: 'foo2', copyright: 'foo2', url: 'foo1' },
+  { alt: 'foo3', copyright: 'foo3', url: 'foo2' },
 ];
 
 describe('VueCarousel.vue', () => {
+  let harness: RenderResult;
+
+  beforeEach(() => {
+    harness = render(VueCarousel, {
+      i18n,
+    });
+  });
+
   test('renders component', () => {
-    const wrapper = mount<any>(VueCarousel, {
-      localVue,
-    });
+    const { queryAllByTestId } = harness;
 
-    expect(wrapper).toBeTruthy();
-
-    wrapper.destroy();
+    expect(queryAllByTestId('carousel-image')).toHaveLength(0);
   });
 
-  test('renders component with images', (done) => {
-    const wrapper = mount<any>(VueCarousel, {
-      localVue,
-      propsData: {
-        images,
-      },
-    });
+  test('renders component with images', async () => {
+    const { getByTestId, updateProps } = harness;
 
-    setTimeout(() => {
-      expect(wrapper.findAll('.image')).toHaveLength(1);
-      done();
-    }, 100);
+    await updateProps({ images });
+
+    getByTestId('carousel-image');
+
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo1');
   });
 
-  test('should change slide', () => {
-    const wrapper = mount<any>(VueCarousel, {
-      localVue,
-      propsData: {
-        images,
-        intervalDuration: 10,
-      },
-    });
+  test('should slide through all images and returns to image number one', async () => {
+    const { getByTestId, updateProps } = harness;
 
-    expect(wrapper.vm.currentSlide).toBe(0);
+    await updateProps({ images, intervalInSeconds: 0.1 });
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo1');
 
-    wrapper.vm.changeSlide();
-    expect(wrapper.vm.currentSlide).toBe(1);
+    await sleep(100);
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo2');
 
-    wrapper.vm.changeSlide();
-    expect(wrapper.vm.currentSlide).toBe(2);
+    await sleep(100);
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo3');
 
-    wrapper.vm.changeSlide();
-    expect(wrapper.vm.currentSlide).toBe(0);
+    await sleep(100);
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo1');
+  });
 
-    wrapper.vm.pause = true;
-    wrapper.vm.changeSlide();
-    expect(wrapper.vm.currentSlide).toBe(0);
+  test('should not slide through all images when paused by mouseover', async () => {
+    const { getByTestId, updateProps } = harness;
 
-    wrapper.vm.pause = false;
-    wrapper.vm.changeSlide();
-    expect(wrapper.vm.currentSlide).toBe(1);
+    await fireEvent.mouseEnter(getByTestId('carousel'));
+
+    await updateProps({ images, intervalInSeconds: 0.1 });
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo1');
+
+    await sleep(100);
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo1');
+
+    await sleep(100);
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo1');
+
+    await sleep(100);
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo1');
+  });
+
+  test('should react on selectedSlide change', async () => {
+    const { getByTestId, updateProps } = harness;
+
+    await updateProps({ images, intervalInSeconds: 0.1, selectedSlide: 2 });
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo2');
   });
 });

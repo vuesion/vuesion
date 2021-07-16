@@ -1,4 +1,12 @@
 import { storiesOf } from '@storybook/vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueSlider from '@/components/input-and-actions/VueSlider/VueSlider.vue';
+import VueToggle from '@/components/input-and-actions/VueToggle/VueToggle.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import { i18n } from '@/test/i18n';
 import VueCarousel from './VueCarousel.vue';
 
 const story = storiesOf('Molecules|Carousel', module) as any;
@@ -40,53 +48,77 @@ const images: any[] = [
       'https://images.unsplash.com/photo-1492970471430-bc6bd7eb2b13?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9893bc89e46e2b77a5d8c091fbba04e9&auto=format&fit=crop&w=2710&q=80',
   },
 ];
-
+// TODO: add usage
 story.add(
   'Default',
   () => ({
+    i18n,
     data() {
       return {
         images,
+        intervalInSeconds: 5,
+        selectedSlide: 1,
+        minHeight: 500,
+        showIndicator: true,
+        showPagination: false,
       };
     },
-    components: { VueCarousel },
-    template: `<vue-carousel :images="images"/>`,
-  }),
-  {
-    info: {
-      components: { VueCarousel },
-    },
-  },
-);
+    components: { ComponentDocs, VueCarousel, VueStack, VueColumns, VueColumn, VueSlider, VueToggle, VueInline },
+    template: `<component-docs
+      component-name="Carousel"
+      usage="TBD"
+      story="Show Carousel with 6 Images and its properties."
+    >
+      <vue-stack>
+        <vue-columns>
+          <vue-column width="50%">
+            <vue-slider
+              id="interval"
+              label="Interval in seconds"
+              :min="1"
+              :max="20"
+              :range="[intervalInSeconds]"
+              @change="intervalInSeconds = $event[0]" />
+          </vue-column>
+          <vue-column width="50%">
+            <vue-slider
+              id="selectedSlide"
+              label="Selected Slide"
+              :min="1"
+              :max="6"
+              :range="[selectedSlide]"
+              @change="selectedSlide = $event[0]" />
+          </vue-column>
+        </vue-columns>
 
-story.add(
-  'No Indicator',
-  () => ({
-    data() {
-      return {
-        images,
-      };
-    },
-    components: { VueCarousel },
-    template: `<vue-carousel :show-indicator="false" :images="images"/>`,
-  }),
-  {
-    info: {
-      components: { VueCarousel },
-    },
-  },
-);
+        <vue-columns align-y="center">
+          <vue-column width="50%">
+            <vue-slider
+              id="minHeight"
+              label="Minimum height"
+              :min="150"
+              :max="999"
+              :range="[minHeight]"
+              @change="minHeight = $event[0]" />
+          </vue-column>
+          <vue-column width="50%">
+            <vue-inline>
+              <vue-toggle label="Show Indicator" name="showIndicator" id="showIndicator" v-model="showIndicator" />
+              <vue-toggle label="Show Pagination" name="showPagination" id="showPagination" v-model="showPagination" />
+            </vue-inline>
+          </vue-column>
+        </vue-columns>
 
-story.add(
-  'Fast Slider',
-  () => ({
-    data() {
-      return {
-        images,
-      };
-    },
-    components: { VueCarousel },
-    template: `<vue-carousel :interval="1000" :images="images"/>`,
+        <vue-carousel
+          :images="images"
+          :interval-in-seconds="intervalInSeconds"
+          :selected-slide="selectedSlide"
+          :min-height="minHeight"
+          :show-indicator="showIndicator"
+          :show-pagination="showPagination"
+          v-model="selectedSlide" />
+      </vue-stack>
+    </component-docs>`,
   }),
   {
     info: {

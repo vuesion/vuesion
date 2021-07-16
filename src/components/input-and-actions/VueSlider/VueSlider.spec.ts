@@ -41,7 +41,7 @@ describe('VueSlider.vue', () => {
       expect(queryAllByTestId('handle-slider-0')).toHaveLength(0);
     });
 
-    test('should move single handle to 1 and emit change event', async () => {
+    test('should move single handle to 0 and emit change event', async () => {
       const { getByTestId, emitted } = harness;
       const slider = getByTestId('slider');
 
@@ -57,7 +57,7 @@ describe('VueSlider.vue', () => {
       // trigger moving event
       triggerDocument.mouseup({ target: slider, clientX: 0 });
 
-      expect(emitted().change).toEqual([[[0, 1]]]);
+      expect(emitted().change).toEqual([[[0]]]);
     });
 
     test('should move single handle to 100 and emit change event', async () => {
@@ -76,14 +76,14 @@ describe('VueSlider.vue', () => {
       // trigger moving event
       triggerDocument.mouseup({ target: slider, clientX: 200 });
 
-      expect(emitted().change).toEqual([[[0, 100]]]);
+      expect(emitted().change).toEqual([[[100]]]);
     });
 
     test('should not change max on invalid user input and not emit change event', async () => {
       const { getByTestId, emitted } = harness;
       const maxInput = getByTestId('handle-input-slider-1');
 
-      await fireEvent.update(maxInput, '0');
+      await fireEvent.update(maxInput, '-1');
       expect(emitted().change).toBeFalsy();
 
       await fireEvent.update(maxInput, '101');
@@ -95,7 +95,7 @@ describe('VueSlider.vue', () => {
       const maxInput = getByTestId('handle-input-slider-1');
 
       await fireEvent.update(maxInput, '75');
-      expect(emitted().change).toEqual([[[0, 75]]]);
+      expect(emitted().change).toEqual([[[75]]]);
     });
   });
 
@@ -122,7 +122,7 @@ describe('VueSlider.vue', () => {
       getByTestId('handle-slider-1');
     });
 
-    test('should move left handle to 74 and emit change event', async () => {
+    test('should move left handle to 75 and emit change event', async () => {
       const { getByTestId, emitted } = harness;
       const slider = getByTestId('slider');
 
@@ -138,10 +138,10 @@ describe('VueSlider.vue', () => {
       // trigger moving event
       triggerDocument.mouseup({ target: slider, clientX: 80 });
 
-      expect(emitted().change).toEqual([[[74, 75]]]);
+      expect(emitted().change).toEqual([[[75, 75]]]);
     });
 
-    test('should move right handle to 26 and emit change event', async () => {
+    test('should move right handle to 25 and emit change event', async () => {
       const { getByTestId, emitted } = harness;
       const slider = getByTestId('slider');
 
@@ -157,7 +157,7 @@ describe('VueSlider.vue', () => {
       // trigger moving event
       triggerDocument.mouseup({ target: slider, clientX: 1 });
 
-      expect(emitted().change).toEqual([[[25, 26]]]);
+      expect(emitted().change).toEqual([[[25, 25]]]);
     });
 
     test('should move left handle to the right on keyboard input and emit change event', async () => {
@@ -183,7 +183,7 @@ describe('VueSlider.vue', () => {
       // trigger onKeyUp and emit change event
       await fireEvent.keyUp(handle, { key: 'ArrowRight', code: 'ArrowRight' });
 
-      expect(emitted().change).toEqual([[[74, 75]]]);
+      expect(emitted().change).toEqual([[[75, 75]]]);
     });
 
     test('should move left handle to the left on keyboard input and emit change event', async () => {
@@ -251,7 +251,7 @@ describe('VueSlider.vue', () => {
       // trigger onKeyUp and emit change event
       await fireEvent.keyUp(handle, { key: 'ArrowLeft', code: 'ArrowLeft' });
 
-      expect(emitted().change).toEqual([[[25, 26]]]);
+      expect(emitted().change).toEqual([[[25, 25]]]);
     });
 
     test('should not change min on invalid user input and not emit change event', async () => {

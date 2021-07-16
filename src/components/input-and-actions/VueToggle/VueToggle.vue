@@ -8,10 +8,10 @@
     :rules="validation"
     tag="div"
     :tabindex="disabled ? null : 0"
-    @click.native="onClick"
-    @keypress.space.native="onClick"
+    @click.native.stop.prevent="onClick"
+    @keypress.space.native.stop.prevent="onClick"
   >
-    <div :class="$style.wrapper">
+    <div :class="$style.wrapper" @click.stop.prevent="onClick">
       <input
         :id="id"
         type="checkbox"
@@ -22,7 +22,7 @@
         :value="checked"
         tabindex="-1"
       />
-      <div :class="$style.toggle" @click.prevent="onClick">
+      <div :class="$style.toggle" @click.stop.prevent="onClick">
         <div :class="$style.handle" :aria-checked="checked ? 'true' : 'false'" role="checkbox" />
       </div>
       <vue-text :for="id" as="label" weight="semi-bold" color="text-medium" tabindex="-1" v-html="label" />
