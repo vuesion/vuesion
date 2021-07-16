@@ -1,12 +1,21 @@
-$carousel-min-height: 500px;
-$carousel-copyright-color: var(--brand-high-emphasis-text-color-inverse);
-$carousel-copyright-bottom: $space-12;
-$carousel-copyright-left: $space-12;
-$carousel-copyright-shadow: 0 0 3px var(--brand-primary-bg-color-inverse);
-$carousel-copyright-font-size: 75%;
-$carousel-indicator-bottom: 0;
-$carousel-indicator-size: $space-8;
-$carousel-indicator-space: $space-8;
-$carousel-indicator-shadow: none;
-$carousel-indicator-bg: var(--brand-primary-bg-color);
-$carousel-indicator-active-bg: var(--brand-secondary);
+$carousel-border-radius: $space-16;
+
+// indicator
+$carousel-indicator-bottom: $space-32;
+$carousel-indicator-width: $space-8;
+$carousel-indicator-height: $space-4;
+$carousel-indicator-border-radius: $space-2;
+$carousel-indicator-space: $space-4;
+
+// default
+$carousel-indicator-bg: palette-color-level('neutral', 0); // TODO: add token
+$carousel-indicator-opacity: 0.6;
+$carousel-indicator-width-active: $space-16;
+
+// active
+$carousel-indicator-bg-active: palette-color-level('neutral', 0); // TODO: add token
+$carousel-indicator-opacity-active: 1;
+
+// pagination
+$carousel-pagination-bottom: $space-16;
+$carousel-pagination-right: $space-16;
