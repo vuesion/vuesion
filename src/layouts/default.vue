@@ -12,7 +12,7 @@
 
     <nuxt :class="$style.content" />
 
-    <vue-footer />
+    <vue-footer slim />
 
     <vue-sidebar>
       <vue-sidebar-group>
@@ -129,7 +129,7 @@ import { defineComponent, computed, ref, useContext, useMeta, watch } from '@nux
 import { RequestStatus } from '@/enums/RequestStatus';
 import { addNotification } from '@/components/molecules/VueNotificationStack/utils';
 import VueNavBar from '@/components/organisms/VueNavBar/VueNavBar.vue';
-import VueFooter from '@/components/organisms/VueFooter/VueFooter.vue';
+import VueFooter from '@/components/navigation/VueFooter/VueFooter.vue';
 import VueNotificationStack from '@/components/molecules/VueNotificationStack/VueNotificationStack.vue';
 import VueSidebar from '@/components/organisms/VueSidebar/VueSidebar.vue';
 import VueSidebarGroup from '@/components/organisms/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
