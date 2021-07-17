@@ -3,7 +3,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-column>
-          <vue-breadcrumb :items="[{ label: 'VueX Example' }]" />
+          <vue-breadcrumb :items="[{ label: 'VueX Example', value: '/example/counter' }]" />
         </vue-grid-column>
       </vue-grid-row>
 

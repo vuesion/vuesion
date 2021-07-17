@@ -7,7 +7,7 @@
         <vue-text look="h1" as="h1">Apollo Example</vue-text>
 
         <vue-tiles v-if="loading === false" :columns="[1, 2, 3, 4]">
-          <vue-box v-for="character in characters" :key="character.id" padding="null" :class="$style.card">
+          <vue-card v-for="character in characters" :key="character.id" padding="null" :class="$style.card">
             <vue-stack space="4">
               <img :src="character.image" :alt="character.name" />
 
@@ -21,7 +21,7 @@
                 </vue-stack>
               </vue-box>
             </vue-stack>
-          </vue-box>
+          </vue-card>
         </vue-tiles>
       </vue-stack>
     </vue-box>
@@ -37,11 +37,15 @@ import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import { GetExamplePageData } from '@/graphql/ExamplePage';
 import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueCard from '@/components/data-display/VueCard/VueCard.vue';
 
 export default defineComponent({
   name: 'ApolloPage',
   auth: false,
   components: {
+    VueCard,
+    VueBox,
     VueTiles,
     VueStack,
     VueContentBlock,
@@ -74,9 +78,6 @@ export default defineComponent({
   margin-top: $nav-bar-height;
 
   .card {
-    border: 1px solid var(--brand-tertiary-bg-color);
-    border-radius: var(--brand-border-radius-md);
-    background: var(--brand-secondary-bg-color);
     overflow: hidden;
     max-width: 324px;
   }

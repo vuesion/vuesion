@@ -7,7 +7,6 @@ import {
   verticalAlignmentValidator,
 } from '@/components/prop-validators';
 import { CreateElement } from 'vue/types/vue';
-import Vue from 'vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import {
   applyResponsiveClasses,
@@ -18,10 +17,9 @@ import {
 import { VNode } from 'vue/types/vnode';
 import isArray from 'lodash/isArray';
 
-Vue.component('VueBox', VueBox);
-
 export default defineComponent({
   name: 'VueInline',
+  components: { VueBox },
   props: {
     as: {
       type: String,

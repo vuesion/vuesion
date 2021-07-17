@@ -3,7 +3,7 @@
     <vue-grid>
       <vue-grid-row>
         <vue-grid-column>
-          <vue-breadcrumb :items="[{ label: 'Dashboard' }]" />
+          <vue-breadcrumb :items="[{ label: 'Dashboard', value: '/example/dashboard' }]" />
         </vue-grid-column>
       </vue-grid-row>
 

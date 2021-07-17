@@ -14,7 +14,7 @@
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
 import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
-import FormExample from '@/components/organisms/FormExample/FormExample.vue';
+import FormExample from '@/components/premium/FormExample/FormExample.vue';
 
 export default {
   name: 'FormExamplePage',
