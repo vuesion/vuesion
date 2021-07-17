@@ -109,10 +109,24 @@
           <vue-inline space="24" :align="['center', 'center', 'right']">
             <vue-text color="text-low"><vue-icon-facebook /></vue-text>
             <vue-text color="text-low"><vue-icon-instagram /></vue-text>
-            <vue-text color="text-low" as="a" href="https://twitter.com/vuesion1" target="_blank" rel="noopener">
+            <vue-text
+              color="text-low"
+              as="a"
+              aria-label="Twitter"
+              href="https://twitter.com/vuesion1"
+              target="_blank"
+              rel="noopener"
+            >
               <vue-icon-twitter />
             </vue-text>
-            <vue-text color="text-low" as="a" href="https://github.com/vuesion/vuesion" target="_blank" rel="noopener">
+            <vue-text
+              color="text-low"
+              as="a"
+              aria-label="Github"
+              href="https://github.com/vuesion/vuesion"
+              target="_blank"
+              rel="noopener"
+            >
               <vue-icon-github />
             </vue-text>
             <vue-text color="text-low"><vue-icon-dribbble /></vue-text>
