@@ -1,6 +1,6 @@
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import { i18n } from '@/test/i18n';
-import { ICarouselImage } from '@/components/molecules/VueCarousel/ICarouselImage';
+import { ICarouselImage } from '@/components/data-display/VueCarousel/ICarouselImage';
 import { sleep } from '@/test/test-utils';
 import VueCarousel from './VueCarousel.vue';
 
@@ -74,5 +74,30 @@ describe('VueCarousel.vue', () => {
 
     await updateProps({ images, intervalInSeconds: 0.1, selectedSlide: 2 });
     expect(getByTestId('carousel-copyright').textContent).toMatch('foo2');
+  });
+
+  test('should paginate infinitely in both directions', async () => {
+    const { getByTestId, updateProps } = harness;
+
+    await updateProps({ images, intervalInSeconds: 5, showPagination: true });
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo1');
+
+    await fireEvent.click(getByTestId('pagination-next'));
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo2');
+
+    await fireEvent.click(getByTestId('pagination-next'));
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo3');
+
+    await fireEvent.click(getByTestId('pagination-next'));
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo1');
+
+    await fireEvent.click(getByTestId('pagination-prev'));
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo3');
+
+    await fireEvent.click(getByTestId('pagination-prev'));
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo2');
+
+    await fireEvent.click(getByTestId('pagination-prev'));
+    expect(getByTestId('carousel-copyright').textContent).toMatch('foo1');
   });
 });

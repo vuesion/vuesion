@@ -1,0 +1,54 @@
+$pagination-border: 1px solid var(--brand-primary-border-color);
+$pagination-padding-top: $space-8;
+
+// buttons
+$pagination-button-size: $space-48;
+$pagination-button-border: 1px solid var(--brand-secondary-border-color);
+$pagination-button-border-radius: 50%;
+$pagination-button-shadow: var(--brand-elevation-1);
+$pagination-button-disabled-opacity: 0.3;
+$pagination-button-icon-size: $space-20;
+$pagination-button-pages-gap: $space-24;
+$pagination-button-slim-gap: $space-8;
+
+// default
+$pagination-button-bg: palette-color-level('neutral', 0); // TODO: add token
+$pagination-button-color: var(--brand-medium-emphasis-text-color);
+
+// focus
+$pagination-button-outline: var(--brand-shadow-outline);
+$pagination-button-bg-focus: palette-color-level('neutral', 0); // TODO: add token
+$pagination-button-color-focus: var(--brand-medium-emphasis-text-color);
+
+//hover
+$pagination-button-bg-hover: var(--brand-primary-bg-color);
+$pagination-button-color-hover: var(--brand-medium-emphasis-text-color);
+
+//active
+$pagination-button-bg-active: var(--brand-secondary-bg-color);
+$pagination-button-color-active: var(--brand-medium-emphasis-text-color);
+
+// page item
+$pagination-item-padding: $space-24 $space-16 $space-16 $space-16;
+$pagination-item-min-width: $space-64;
+
+// default
+$pagination-item-color: var(--brand-low-emphasis-text-color);
+$pagination-item-bg: transparent;
+$pagination-item-border: 1px solid var(--brand-primary-border-color);
+
+// active
+$pagination-item-color-active: var(--brand-primary);
+$pagination-item-bg-active: transparent;
+$pagination-item-border-active: 2px solid var(--brand-primary);
+
+// focus
+$pagination-item-outline: var(--brand-shadow-outline);
+$pagination-item-color-focus: var(--brand-low-emphasis-text-color);
+$pagination-item-bg-focus: transparent;
+$pagination-item-border-focus: 1px solid var(--brand-primary-border-color);
+
+// hover
+$pagination-item-color-hover: var(--brand-medium-emphasis-text-color);
+$pagination-item-bg-hover: palette-color-level('neutral', 0); // TODO: add token
+$pagination-item-border-hover: 1px solid var(--brand-primary-border-color);

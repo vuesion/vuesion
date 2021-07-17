@@ -8,6 +8,9 @@
       <div :class="$style.icon"><vue-icon-chart-line />chart-line</div>
       <div :class="$style.icon"><vue-icon-checkmark />checkmark</div>
       <div :class="$style.icon"><vue-icon-chevron-down />chevron-down</div>
+      <div :class="$style.icon"><vue-icon-chevron-left />chevron-left</div>
+      <div :class="$style.icon"><vue-icon-chevron-right />chevron-right</div>
+      <div :class="$style.icon"><vue-icon-chevron-up />chevron-up</div>
       <div :class="$style.icon"><vue-icon-code />code</div>
       <div :class="$style.icon"><vue-icon-eye />eye</div>
       <div :class="$style.icon"><vue-icon-flag />flag</div>
@@ -58,10 +61,16 @@ import VueIconCheckmark from '@/components/icons/VueIconCheckmark/VueIconCheckma
 import VueIconArrowUp from '@/components/icons/VueIconArrowUp/VueIconArrowUp.vue';
 import VueIconHome from '@/components/icons/VueIconHome/VueIconHome.vue';
 import VueIconEye from '@/components/icons/VueIconEye/VueIconEye.vue';
+import VueIconChevronLeft from '@/components/icons/VueIconChevronLeft/VueIconChevronLeft.vue';
+import VueIconChevronRight from '@/components/icons/VueIconChevronRight/VueIconChevronRight.vue';
+import VueIconChevronUp from '@/components/icons/VueIconChevronUp/VueIconChevronUp.vue';
 
 export default {
   name: 'IconList',
   components: {
+    VueIconChevronUp,
+    VueIconChevronRight,
+    VueIconChevronLeft,
     VueIconEye,
     VueIconHome,
     VueIconArrowUp,

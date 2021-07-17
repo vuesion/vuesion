@@ -1,6 +1,6 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import { i18n } from '@/test/i18n';
-import VuePagination from '../../molecules/VuePagination/VuePagination.vue';
+import VuePagination from '../../navigation/VuePagination/VuePagination.vue';
 import { IComputedDataRowCell, IDataTableHeader } from './IDataTable';
 import VueDataTable from './VueDataTable.vue';
 import VueDataTableSearch from './VueDataTableSearch/VueDataTableSearch.vue';
