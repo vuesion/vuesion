@@ -22,10 +22,11 @@
 import '@/components/global';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
 
 export default {
   name: 'ComponentDocs',
-  components: { VueStack, VueText },
+  components: { VueBox, VueStack, VueText },
   props: {
     componentName: { type: String, default: null },
     usage: { type: String, default: null },

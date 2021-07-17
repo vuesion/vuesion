@@ -1,5 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
-import HomeSection from '@/components/organisms/HomeSection/HomeSection.vue';
+import HomeSection from '@/components/premium/HomeSection/HomeSection.vue';
 
 const localVue = createLocalVue();
 

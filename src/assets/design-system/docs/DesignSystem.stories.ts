@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueMarkdown from '@/components/organisms/VueMarkdown/VueMarkdown.vue';
+import VueMarkdown from '@/components/data-display/VueMarkdown/VueMarkdown.vue';
 import BrandColors from './components/BrandColors.vue';
 import ColorPalette from './components/ColorPalette.vue';
 

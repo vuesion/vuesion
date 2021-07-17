@@ -1,5 +1,4 @@
 <script lang="ts">
-import Vue from 'vue';
 import { VNode } from 'vue/types/vnode';
 import isArray from 'lodash/isArray';
 import { defineComponent } from '@vue/composition-api';
@@ -13,10 +12,9 @@ import {
   parseResponsivePropValue,
 } from '@/components/utils';
 
-Vue.component('VueBox', VueBox);
-
 export default defineComponent({
   name: 'VueStack',
+  components: { VueBox },
   props: {
     as: {
       type: String,

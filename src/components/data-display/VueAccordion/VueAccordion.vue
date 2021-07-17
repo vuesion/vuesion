@@ -65,6 +65,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
+@import '~@/assets/_design-system';
+
 .vueAccordion {
+  border-bottom: $accordion-item-header-border;
 }
 </style>

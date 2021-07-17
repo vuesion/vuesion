@@ -165,7 +165,7 @@
 <script lang="ts">
 /* istanbul ignore file */
 
-import HomeSection from '@/components/organisms/HomeSection/HomeSection.vue';
+import HomeSection from '@/components/premium/HomeSection/HomeSection.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
 import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';

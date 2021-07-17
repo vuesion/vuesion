@@ -1,23 +1,23 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { i18n } from '@/test/i18n';
-import FormExample from './FormExample.vue';
+import LoginForm from './LoginForm.vue';
 
-const story = storiesOf('Organisms|FormExample', module) as any;
+const story = storiesOf('Premium Components|LoginForm', module) as any;
 
 story.add(
   'Default',
   () => ({
     i18n,
-    components: { FormExample },
+    components: { LoginForm },
+    template: `<login-form @submit="onSubmit" />`,
     methods: {
       onSubmit: action('@submit'),
     },
-    template: `<form-example @submit="onSubmit" />`,
   }),
   {
     info: {
-      components: { FormExample },
+      components: { LoginForm },
     },
   },
 );
