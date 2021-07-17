@@ -1,27 +1,16 @@
 <template>
-  <vue-grid :class="$style.formExample">
+  <vue-card :class="$style.formExample">
     <validation-observer v-slot="{ invalid }">
       <form @submit.prevent="onSubmit">
-        <vue-grid-row>
-          <vue-grid-column>
+        <vue-stack>
+          <vue-stack space="8">
             <vue-text look="h2" as="h2">Form example</vue-text>
-          </vue-grid-column>
-        </vue-grid-row>
-
-        <vue-grid-row vertical-space="0">
-          <vue-grid-column>
-            <small>
+            <vue-text>
               This example uses <a href="https://github.com/baianat/vee-validate">vee-validate</a> for field validation.
-            </small>
-          </vue-grid-column>
-        </vue-grid-row>
+            </vue-text>
+          </vue-stack>
 
-        <vue-grid-row vertical-space="16">
-          <vue-grid-column />
-        </vue-grid-row>
-
-        <vue-grid-row vertical-space="8">
-          <vue-grid-column>
+          <vue-tiles :columns="[1, 2]">
             <vue-input
               id="firstname"
               v-model="model.firstname"
@@ -31,8 +20,7 @@
               placeholder="First name"
               validation="required"
             />
-          </vue-grid-column>
-          <vue-grid-column vertical-space="8">
+
             <vue-input
               id="lastname"
               v-model="model.lastname"
@@ -42,26 +30,20 @@
               placeholder="Last name"
               validation="required"
             />
-          </vue-grid-column>
-        </vue-grid-row>
+          </vue-tiles>
 
-        <vue-grid-row vertical-space="8">
-          <vue-grid-column>
-            <vue-input
-              id="email"
-              v-model="model.email"
-              name="email"
-              required
-              type="email"
-              label="E-mail"
-              placeholder="E-mail"
-              validation="required|email"
-            />
-          </vue-grid-column>
-        </vue-grid-row>
+          <vue-input
+            id="email"
+            v-model="model.email"
+            name="email"
+            required
+            type="email"
+            label="E-mail"
+            placeholder="E-mail"
+            validation="required|email"
+          />
 
-        <vue-grid-row vertical-space="8">
-          <vue-grid-column>
+          <vue-tiles :columns="[1, 2]">
             <vue-input
               id="street"
               v-model="model.street"
@@ -72,8 +54,7 @@
               validation="required"
               :disabled="addressDisabled"
             />
-          </vue-grid-column>
-          <vue-grid-column>
+
             <vue-input
               id="zipCode"
               v-model="model.zipCode"
@@ -85,11 +66,7 @@
               :error-message="$t('components.formExample.zipCode.error' /* Please enter a Number */)"
               :disabled="addressDisabled"
             />
-          </vue-grid-column>
-        </vue-grid-row>
 
-        <vue-grid-row vertical-space="8">
-          <vue-grid-column>
             <vue-input
               id="city"
               v-model="model.city"
@@ -100,8 +77,7 @@
               validation="required"
               :disabled="addressDisabled"
             />
-          </vue-grid-column>
-          <vue-grid-column>
+
             <vue-select
               id="country"
               v-model="model.country"
@@ -112,11 +88,7 @@
               required
               :disabled="addressDisabled"
             />
-          </vue-grid-column>
-        </vue-grid-row>
 
-        <vue-grid-row vertical-space="16">
-          <vue-grid-column>
             <vue-checkbox
               id="acceptTerms"
               v-model="model.acceptTerms"
@@ -125,43 +97,24 @@
               :validation="{ required: { allowFalse: false } }"
               required
             />
-          </vue-grid-column>
-          <vue-grid-column>
-            <vue-grid-row>
-              <vue-grid-column>
-                <vue-checkbox
-                  id="newsletterYes"
-                  name="newsletterYes"
-                  label="I want to subscribe to the newsletter"
-                  :checked="model.newsletter === true"
-                  radio
-                  @click="model.newsletter = !model.newsletter"
-                />
-              </vue-grid-column>
-            </vue-grid-row>
-            <vue-grid-row>
-              <vue-grid-column>
-                <vue-checkbox
-                  id="newsletterNo"
-                  name="newsletterNo"
-                  label="I don't want to subscribe to the newsletter"
-                  :checked="model.newsletter === false"
-                  radio
-                  @click="model.newsletter = !model.newsletter"
-                />
-              </vue-grid-column>
-            </vue-grid-row>
-          </vue-grid-column>
-        </vue-grid-row>
 
-        <vue-grid-row vertical-space="32" justify-content="flex-end">
-          <vue-grid-column>
+            <vue-checkbox
+              id="newsletterYes"
+              name="newsletterYes"
+              label="I want to subscribe to the newsletter"
+              :checked="model.newsletter === true"
+              radio
+              @click="model.newsletter = !model.newsletter"
+            />
+          </vue-tiles>
+
+          <vue-inline align="right">
             <vue-button look="primary" :disabled="invalid" :loading="isLoading" type="submit"> Save </vue-button>
-          </vue-grid-column>
-        </vue-grid-row>
+          </vue-inline>
+        </vue-stack>
       </form>
     </validation-observer>
-  </vue-grid>
+  </vue-card>
 </template>
 
 <script lang="ts">
@@ -169,22 +122,24 @@ import { ValidationObserver } from 'vee-validate';
 import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
 import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueCheckbox from '@/components/input-and-actions/VueCheckbox/VueCheckbox.vue';
-import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import { addNotification } from '@/components/molecules/VueNotificationStack/utils';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueCard from '@/components/data-display/VueCard/VueCard.vue';
 
 export default {
   name: 'FormExample',
   components: {
+    VueCard,
+    VueInline,
+    VueTiles,
+    VueStack,
     ValidationObserver,
     VueText,
     VueButton,
-    VueGridColumn,
-    VueGridRow,
-    VueGrid,
     VueCheckbox,
     VueSelect,
     VueInput,
@@ -244,7 +199,5 @@ export default {
 @import '~@/assets/_design-system';
 
 .formExample {
-  border-radius: var(--brand-border-radius-md);
-  box-shadow: var(--brand-elevation-2);
 }
 </style>

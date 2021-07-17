@@ -9,11 +9,6 @@ describe('FormExample.vue', () => {
     const wrapper = mount<any>(FormExample, {
       localVue,
       i18n,
-      provide: () => ({
-        gridSpace: {},
-        gridTextAlign: {},
-        gridWithVerticalSpace: {},
-      }),
     });
 
     wrapper.setData({

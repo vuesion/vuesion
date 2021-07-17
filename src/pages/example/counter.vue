@@ -1,45 +1,39 @@
 <template>
-  <div :class="$style.counter">
-    <vue-grid>
-      <vue-grid-row>
-        <vue-grid-column>
-          <vue-breadcrumb :items="[{ label: 'VueX Example', value: '/example/counter' }]" />
-        </vue-grid-column>
-      </vue-grid-row>
+  <vue-content-block :class="$style.counter">
+    <vue-box :padding="['24 16', '24 16', 24, 32]">
+      <vue-stack :space="[16, 16, 24, 32]">
+        <vue-breadcrumb :items="[{ label: 'VueX Example', value: '/example/counter' }]" />
 
-      <vue-grid-row>
-        <vue-grid-column>
-          <vue-text look="h1" as="h1"> Counter: {{ count }} </vue-text>
-        </vue-grid-column>
-      </vue-grid-row>
+        <vue-text look="h1" as="h1"> Counter: {{ count }} </vue-text>
 
-      <vue-grid-row>
-        <vue-grid-column>
+        <vue-inline>
           <vue-button :loading="incrementPending" @click="increment"> Increment +1 </vue-button>
 
           <vue-button look="primary" :loading="decrementPending" @click="decrement"> Decrement -1 </vue-button>
-        </vue-grid-column>
-      </vue-grid-row>
-    </vue-grid>
-  </div>
+        </vue-inline>
+      </vue-stack>
+    </vue-box>
+  </vue-content-block>
 </template>
 
 <script lang="ts">
 import { defineComponent, useContext, useFetch, computed, useMeta } from '@nuxtjs/composition-api';
-import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
-import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
 
 export default defineComponent({
   name: 'CounterPage',
   auth: false,
   components: {
-    VueGrid,
-    VueGridRow,
-    VueGridColumn,
+    VueInline,
+    VueStack,
+    VueBox,
+    VueContentBlock,
     VueBreadcrumb,
     VueText,
     VueButton,

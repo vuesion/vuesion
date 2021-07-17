@@ -2,58 +2,40 @@
   <div ref="stage" :class="$style.stage">
     <canvas ref="canvas" :class="$style.canvas" />
 
-    <vue-grid :class="$style.content" text-align="center">
-      <vue-grid-row>
-        <vue-grid-column>
-          <img src="/images/vuesion-logo.png" alt="vuesion" />
-        </vue-grid-column>
-      </vue-grid-row>
+    <vue-stack :class="$style.content" align="center">
+      <img src="/images/vuesion-logo.png" alt="vuesion" />
 
-      <vue-grid-row>
-        <vue-grid-column>
-          <vue-text look="h1" as="h1"> vuesion </vue-text>
-        </vue-grid-column>
-      </vue-grid-row>
+      <vue-text look="h1" as="h1"> vuesion </vue-text>
 
-      <vue-grid-row>
-        <vue-grid-column>
-          <div :class="$style.subTitle">
-            {{
-              $t(
-                'App.core.description' /* The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices */,
-              )
-            }}
-          </div>
-        </vue-grid-column>
-      </vue-grid-row>
+      <div :class="$style.subTitle">
+        {{
+          $t(
+            'App.core.description' /* The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices */,
+          )
+        }}
+      </div>
 
-      <vue-grid-row>
-        <vue-grid-column>
-          <a
-            :class="$style.github"
-            href="https://github.com/vuesion/vuesion"
-            target="_blank"
-            rel="noopener"
-            aria-label="vuesion github repository"
-          >
-            <vue-icon-github />
-          </a>
-        </vue-grid-column>
-      </vue-grid-row>
-    </vue-grid>
+      <a
+        :class="$style.github"
+        href="https://github.com/vuesion/vuesion"
+        target="_blank"
+        rel="noopener"
+        aria-label="vuesion github repository"
+      >
+        <vue-icon-github />
+      </a>
+    </vue-stack>
   </div>
 </template>
 
 <script lang="ts">
 import { CircleAnimation } from '@/components/animations/CircleAnimation';
-import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
-import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueIconGithub from '@/components/icons/VueIconGithub/VueIconGithub.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
 
 export default {
-  components: { VueText, VueIconGithub, VueGridColumn, VueGridRow, VueGrid },
+  components: { VueStack, VueText, VueIconGithub },
   data() {
     return {};
   },
