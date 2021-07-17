@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import VueFooter from '@/components/organisms/VueFooter/VueFooter.vue';
+import VueFooter from '@/components/navigation/VueFooter/VueFooter.vue';
 import VueNavBar from '@/components/organisms/VueNavBar/VueNavBar.vue';
 import VueColumn from './VueColumn/VueColumn.vue';
 import VueColumns from './VueColumns.vue';

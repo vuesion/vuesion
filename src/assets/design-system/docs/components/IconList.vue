@@ -12,13 +12,16 @@
       <div :class="$style.icon"><vue-icon-chevron-right />chevron-right</div>
       <div :class="$style.icon"><vue-icon-chevron-up />chevron-up</div>
       <div :class="$style.icon"><vue-icon-code />code</div>
+      <div :class="$style.icon"><vue-icon-dribbble />dribbble</div>
       <div :class="$style.icon"><vue-icon-eye />eye</div>
+      <div :class="$style.icon"><vue-icon-facebook />facebook</div>
       <div :class="$style.icon"><vue-icon-flag />flag</div>
       <div :class="$style.icon"><vue-icon-github />github</div>
       <div :class="$style.icon"><vue-icon-github-alt />github-alt</div>
       <div :class="$style.icon"><vue-icon-hashtag />hashtag</div>
       <div :class="$style.icon"><vue-icon-home />home</div>
       <div :class="$style.icon"><vue-icon-info-circle />info-circle</div>
+      <div :class="$style.icon"><vue-icon-instagram />instagram</div>
       <div :class="$style.icon"><vue-icon-mobile />mobile</div>
       <div :class="$style.icon"><vue-icon-puzzle-piece />puzzle-piece</div>
       <div :class="$style.icon"><vue-icon-search />search</div>
@@ -28,6 +31,8 @@
       <div :class="$style.icon"><vue-icon-spinner />spinner</div>
       <div :class="$style.icon"><vue-icon-star />star</div>
       <div :class="$style.icon"><vue-icon-times />times</div>
+      <div :class="$style.icon"><vue-icon-twitter />twitter</div>
+      <div :class="$style.icon"><vue-icon-twitter-square />twitter-square</div>
       <div :class="$style.icon"><vue-icon-vuesion />vuesion</div>
     </vue-inline>
   </vue-box>
@@ -64,10 +69,20 @@ import VueIconEye from '@/components/icons/VueIconEye/VueIconEye.vue';
 import VueIconChevronLeft from '@/components/icons/VueIconChevronLeft/VueIconChevronLeft.vue';
 import VueIconChevronRight from '@/components/icons/VueIconChevronRight/VueIconChevronRight.vue';
 import VueIconChevronUp from '@/components/icons/VueIconChevronUp/VueIconChevronUp.vue';
+import VueIconFacebook from '@/components/icons/VueIconFacebook/VueIconFacebook.vue';
+import VueIconInstagram from '@/components/icons/VueIconInstagram/VueIconInstagram.vue';
+import VueIconTwitter from '@/components/icons/VueIconTwitter/VueIconTwitter.vue';
+import VueIconTwitterSquare from '@/components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
+import VueIconDribbble from '@/components/icons/VueIconDribbble/VueIconDribbble.vue';
 
 export default {
   name: 'IconList',
   components: {
+    VueIconDribbble,
+    VueIconTwitterSquare,
+    VueIconTwitter,
+    VueIconInstagram,
+    VueIconFacebook,
     VueIconChevronUp,
     VueIconChevronRight,
     VueIconChevronLeft,
