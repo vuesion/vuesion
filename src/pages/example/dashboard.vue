@@ -1,75 +1,61 @@
 <template>
-  <div :class="$style.dashboard">
-    <vue-grid>
-      <vue-grid-row>
-        <vue-grid-column>
-          <vue-breadcrumb :items="[{ label: 'Dashboard', value: '/example/dashboard' }]" />
-        </vue-grid-column>
-      </vue-grid-row>
+  <vue-content-block :class="$style.dashboard">
+    <vue-box :padding="['24 16', '24 16', 24, 32]">
+      <vue-stack :space="[16, 16, 24, 32]">
+        <vue-breadcrumb :items="[{ label: 'Dashboard', value: '/example/dashboard' }]" />
 
-      <vue-grid-row>
-        <vue-grid-column>
-          <vue-text look="h1" as="h1"> Dashboard </vue-text>
-        </vue-grid-column>
-      </vue-grid-row>
+        <vue-text look="h1" as="h1"> Dashboard </vue-text>
 
-      <vue-grid-row>
-        <vue-grid-column>
+        <vue-stack space="8">
           <p>This demo demonstrates the authentication and re-authentication flow.</p>
           <strong>Make sure to open the console to see the whole flow.</strong>
-        </vue-grid-column>
-      </vue-grid-row>
+        </vue-stack>
 
-      <vue-grid-row>
-        <vue-grid-column>
+        <vue-text>
           Press this <vue-button @click="onClick">button</vue-button> and the following will happen:
-        </vue-grid-column>
-      </vue-grid-row>
+        </vue-text>
 
-      <vue-grid-row>
-        <vue-grid-column>
-          <ul>
-            <li>We will try to fetch data 10 times from our example endpoint <code>/protected</code></li>
-            <li>
-              The endpoint will return error-code 401 for not authenticated (which is the same as sending an expired
-              accessToken)
-            </li>
-            <li>
-              The HttpService will handle the error and try to refresh the accessToken.
-              <ul>
-                <li>if an error occurs (random) during the refresh you will be logged out</li>
-                <li>
-                  if the refresh works your accessToken will change the value to <code>accessToken2</code> and the
-                  request will be repeated.
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </vue-grid-column>
-      </vue-grid-row>
-    </vue-grid>
-  </div>
+        <ul>
+          <li>We will try to fetch data 10 times from our example endpoint <code>/protected</code></li>
+          <li>
+            The endpoint will return error-code 401 for not authenticated (which is the same as sending an expired
+            accessToken)
+          </li>
+          <li>
+            The HttpService will handle the error and try to refresh the accessToken.
+            <ul>
+              <li>if an error occurs (random) during the refresh you will be logged out</li>
+              <li>
+                if the refresh works your accessToken will change the value to <code>accessToken2</code> and the request
+                will be repeated.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </vue-stack>
+    </vue-box>
+  </vue-content-block>
 </template>
 
 <script lang="ts">
 /* istanbul ignore file */
 
 import { defineComponent, ref, useContext } from '@nuxtjs/composition-api';
-import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
-import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
 import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
 
 export default defineComponent({
   name: 'DashboardPage',
   components: {
+    VueStack,
+    VueBox,
+    VueContentBlock,
     VueBreadcrumb,
-    VueGrid,
-    VueGridColumn,
     VueButton,
-    VueGridRow,
     VueText,
   },
   setup() {

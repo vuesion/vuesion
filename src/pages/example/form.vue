@@ -1,33 +1,40 @@
 <template>
-  <vue-grid>
-    <vue-grid-row :class="$style.form" justify-content="center" align-items="top">
-      <vue-grid-column vertical-space="32" width="100%" tablet-landscape="70%" large-desktop="50%" :can-grow="false">
+  <vue-content-block :class="$style.form">
+    <vue-box :padding="['24 16', '24 16', 24, 32]">
+      <vue-stack :space="[16, 16, 24, 32]">
+        <vue-breadcrumb :items="breadCrumbItems" />
+
         <form-example />
-      </vue-grid-column>
-    </vue-grid-row>
-  </vue-grid>
+      </vue-stack>
+    </vue-box>
+  </vue-content-block>
 </template>
 
 <script lang="ts">
 /* istanbul ignore file */
-
-import VueGrid from '@/components/organisms/VueGrid/VueGrid.vue';
-import VueGridRow from '@/components/organisms/VueGrid/VueGridRow/VueGridRow.vue';
-import VueGridColumn from '@/components/organisms/VueGrid/VueGridColumn/VueGridColumn.vue';
+import { computed, useContext, useMeta } from '@nuxtjs/composition-api';
+import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
 import FormExample from '@/components/premium/FormExample/FormExample.vue';
 
 export default {
   name: 'FormExamplePage',
   auth: false,
-  components: {
-    FormExample,
-    VueGridColumn,
-    VueGridRow,
-    VueGrid,
+  components: { FormExample, VueBreadcrumb, VueStack, VueBox, VueContentBlock },
+  setup() {
+    useMeta({ title: 'vuesion - Form Example' });
+    const { app } = useContext();
+    const breadCrumbItems = computed(() => [
+      { label: app.i18n.t('common.Apollo' /* Apollo Example */), value: '/example/apollo' },
+    ]);
+
+    return {
+      breadCrumbItems,
+    };
   },
-  head: {
-    title: 'vuesion - Form Example',
-  },
+  head: {},
 };
 </script>
 
@@ -35,6 +42,6 @@ export default {
 @import '~@/assets/design-system';
 
 .form {
-  padding-top: $nav-bar-height;
+  margin-top: $nav-bar-height;
 }
 </style>
