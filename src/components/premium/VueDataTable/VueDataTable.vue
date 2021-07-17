@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import VuePagination from '../../molecules/VuePagination/VuePagination.vue';
+import VuePagination from '../../navigation/VuePagination/VuePagination.vue';
 import VueDataTableHeader from './VueDataTableHeader/VueDataTableHeader.vue';
 import VueDataTableSearch from './VueDataTableSearch/VueDataTableSearch.vue';
 import { IComputedDataRowCell, IDataTableHeaderItem } from './IDataTable';

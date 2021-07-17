@@ -9,7 +9,7 @@ import VueInline from '@/components/layout/VueInline/VueInline.vue';
 import { i18n } from '@/test/i18n';
 import VueCarousel from './VueCarousel.vue';
 
-const story = storiesOf('Molecules|Carousel', module) as any;
+const story = storiesOf('Data Display|Carousel', module) as any;
 const images: any[] = [
   {
     alt: 'Slide 1',
@@ -60,7 +60,7 @@ story.add(
         selectedSlide: 1,
         minHeight: 500,
         showIndicator: true,
-        showPagination: false,
+        showPagination: true,
       };
     },
     components: { ComponentDocs, VueCarousel, VueStack, VueColumns, VueColumn, VueSlider, VueToggle, VueInline },

@@ -27,19 +27,22 @@
     <!-- TODO: revisit when pagination is done -->
     <vue-pagination
       v-if="showPagination"
+      slim
+      infinite
       :pages="preloadedImages.length"
       :selected-page="currentSlide + 1"
       :class="$style.pagination"
-      @click="currentSlide = $event - 1"
+      @next="changeSlide(currentSlide + 1, true)"
+      @prev="changeSlide(currentSlide - 1, true)"
     />
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, onBeforeUnmount, onMounted, ref, watch } from '@vue/composition-api';
-import { ICarouselImage } from '@/components/molecules/VueCarousel/ICarouselImage';
+import { ICarouselImage } from '@/components/data-display/VueCarousel/ICarouselImage';
 import FadeAnimation from '@/components/animations/FadeAnimation/FadeAnimation.vue';
-import VuePagination from '@/components/molecules/VuePagination/VuePagination.vue';
+import VuePagination from '@/components/navigation/VuePagination/VuePagination.vue';
 
 export default defineComponent({
   name: 'VueCarousel',
@@ -61,19 +64,22 @@ export default defineComponent({
     const interval = computed<number>(() => props.intervalInSeconds * 1000);
     const selectedSlide = computed<number>(() => props.selectedSlide);
     const currentSlide = ref<number>(props.selectedSlide - 1);
-    const maxSlides = computed<number>(() => images.value.length - 1);
+    const maxSlides = computed<number>(() => images.value.length);
     const intervalInstance = ref<any>(null);
     const pause = ref(false);
     const preloadedImages = ref([]);
     const isActiveSlide = (idx: number) => currentSlide.value === idx;
-    const changeSlide = () => {
-      if (pause.value) {
+    const changeSlide = (newSlide: number, fromPagination = false) => {
+      if (fromPagination === false && pause.value) {
         return;
       }
-      if (currentSlide.value === maxSlides.value) {
+
+      if (newSlide === maxSlides.value) {
         currentSlide.value = 0;
+      } else if (newSlide < 0) {
+        currentSlide.value = maxSlides.value - 1;
       } else {
-        currentSlide.value += 1;
+        currentSlide.value = newSlide;
       }
 
       emit('change-slide', currentSlide.value + 1);
@@ -83,7 +89,7 @@ export default defineComponent({
         return;
       }
       clearInterval(intervalInstance.value);
-      intervalInstance.value = setInterval(changeSlide, interval.value);
+      intervalInstance.value = setInterval(() => changeSlide(currentSlide.value + 1), interval.value);
     };
     const preloadImages = () => {
       images.value.forEach((image: ICarouselImage) => {
@@ -121,7 +127,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import '~@/assets/_design-system';
 
 .vueCarousel {
   position: relative;
