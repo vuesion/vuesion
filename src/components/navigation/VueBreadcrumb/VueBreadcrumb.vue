@@ -2,7 +2,7 @@
   <nav aria-label="Breadcrumb" :class="$style.vueBreadcrumb">
     <ol :class="$style.list">
       <li :class="$style.itemWrapper">
-        <nuxt-link :to="localePath('/')" href="/" :class="[$style.item, $style.homeItem]">
+        <nuxt-link :to="localePath('/')" href="/" :class="[$style.item, $style.homeItem]" aria-label="Home">
           <vue-text look="support" color="text-medium" weight="semi-bold">
             <vue-icon-home :class="$style.home" />
           </vue-text>

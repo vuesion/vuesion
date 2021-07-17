@@ -25,6 +25,7 @@
   "components.calendar.wednesday.short": "W",
   "components.dataTable.noResults": "No results found!",
   "components.formExample.zipCode.error": "Please enter a Number",
+  "components.pagination.a11y": "You're on page",
   "components.pagination.next": "Next",
   "components.pagination.previous": "Previous",
   "components.truncate.showLess": "Show less",

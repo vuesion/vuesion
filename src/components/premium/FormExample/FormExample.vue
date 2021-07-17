@@ -1,10 +1,10 @@
 <template>
   <vue-card :class="$style.formExample">
-    <validation-observer v-slot="{ invalid }">
+    <validation-observer v-slot="{ invalid }" tag="div">
       <form @submit.prevent="onSubmit">
         <vue-stack>
           <vue-stack space="8">
-            <vue-text look="h2" as="h2">Form example</vue-text>
+            <vue-text look="h2" as="h1">Form example</vue-text>
             <vue-text>
               This example uses <a href="https://github.com/baianat/vee-validate">vee-validate</a> for field validation.
             </vue-text>
