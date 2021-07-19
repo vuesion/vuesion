@@ -49,7 +49,7 @@
         <vue-column :width="['content', 'content', '20%']">
           <vue-stack space="16">
             <vue-text look="h6" color="text-low" :align="['center', 'center', 'left']">Language & Theme</vue-text>
-            <vue-select id="lang" label="Languages" name="lang" :items="languages" hide-description value="en" />
+            <vue-select id="lang" label="Language" name="lang" :items="languages" hide-description value="en" />
             <vue-select id="theme" label="Theme" name="theme" :items="themes" hide-description value="dark" />
           </vue-stack>
         </vue-column>

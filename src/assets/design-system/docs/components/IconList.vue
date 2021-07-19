@@ -1,6 +1,6 @@
 <template>
   <vue-box>
-    <vue-inline :class="$style.icons" space="56">
+    <vue-tiles :class="$style.icons" :columns="[2, 6, 8]">
       <div :class="$style.icon"><vue-icon-arrow-up />arrow-up</div>
       <div :class="$style.icon"><vue-icon-book />book</div>
       <div :class="$style.icon"><vue-icon-bullhorn />bullhorn</div>
@@ -34,13 +34,12 @@
       <div :class="$style.icon"><vue-icon-twitter />twitter</div>
       <div :class="$style.icon"><vue-icon-twitter-square />twitter-square</div>
       <div :class="$style.icon"><vue-icon-vuesion />vuesion</div>
-    </vue-inline>
+    </vue-tiles>
   </vue-box>
 </template>
 
 <script lang="ts">
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
 import VueIconBook from '@/components/icons/VueIconBook/VueIconBook.vue';
 import VueIconBullhorn from '@/components/icons/VueIconBullhorn/VueIconBullhorn.vue';
 import VueIconCertificate from '@/components/icons/VueIconCertificate/VueIconCertificate.vue';
@@ -74,10 +73,12 @@ import VueIconInstagram from '@/components/icons/VueIconInstagram/VueIconInstagr
 import VueIconTwitter from '@/components/icons/VueIconTwitter/VueIconTwitter.vue';
 import VueIconTwitterSquare from '@/components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
 import VueIconDribbble from '@/components/icons/VueIconDribbble/VueIconDribbble.vue';
+import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
 
 export default {
   name: 'IconList',
   components: {
+    VueTiles,
     VueIconDribbble,
     VueIconTwitterSquare,
     VueIconTwitter,
@@ -111,7 +112,6 @@ export default {
     VueIconCertificate,
     VueIconBullhorn,
     VueIconBook,
-    VueInline,
     VueBox,
   },
 };
@@ -126,7 +126,6 @@ export default {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    min-width: 150px;
 
     i {
       width: $space-32;

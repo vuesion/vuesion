@@ -28,7 +28,7 @@ story.add(
     components: { VueImage, ComponentDocs },
     template: `<component-docs
       story="Display image only when it is in the view port and render it as background image of a div-tag.">
-    <vue-image src="https://via.placeholder.com/512" alt="foo" :native="false" :style="{width:'320px',height:'320px',backgroundSize:'cover'}" />
+    <vue-image src="https://via.placeholder.com/512" alt="foo" :native="false" :style="{width:'280px',height:'280px',backgroundSize:'cover'}" />
     </component-docs>`,
   }),
   {

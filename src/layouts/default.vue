@@ -32,7 +32,7 @@
         <vue-sidebar-group-item>
           <vue-select
             id="lang"
-            label="Languages"
+            label="Language"
             name="lang"
             :items="languages"
             :value="$i18n.locale"

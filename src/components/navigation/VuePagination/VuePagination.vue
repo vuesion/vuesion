@@ -209,5 +209,20 @@ export default defineComponent({
       }
     }
   }
+
+  @include mediaMax(phone) {
+    display: flex;
+    justify-content: space-between;
+
+    .pages {
+      li {
+        display: none;
+
+        &.active {
+          display: inline-flex;
+        }
+      }
+    }
+  }
 }
 </style>

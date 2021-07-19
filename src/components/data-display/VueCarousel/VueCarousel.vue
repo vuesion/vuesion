@@ -150,8 +150,7 @@ export default defineComponent({
     padding: 0;
     margin: 0;
     bottom: $carousel-indicator-bottom;
-    left: 50%;
-    transform: translateX(-50%);
+    left: $carousel-pagination-right;
     height: $carousel-indicator-height;
 
     li {
@@ -175,6 +174,13 @@ export default defineComponent({
     position: absolute;
     bottom: $carousel-pagination-bottom;
     right: $carousel-pagination-right;
+  }
+
+  @include mediaMin(tabletPortrait) {
+    .indicator {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 }
 </style>

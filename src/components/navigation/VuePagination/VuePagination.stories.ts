@@ -31,15 +31,15 @@ story.add(
       story="Show pagination with all its properties"
     >
     <vue-stack space="64">
-      <vue-tiles columns="3">
-        <vue-input label="Pages" name="pages" id="pages" v-model="pages" />
-        <vue-input label="Selected Page" name="selected-page" id="selected-page" v-model="selectedPage" />
-        <vue-input label="Display Pages" name="display-pages" id="display-pages" v-model="displayPages" />
+      <vue-tiles :columns="[1, 3]">
+        <vue-input label="Pages" name="pages" id="pages" hide-description v-model="pages" />
+        <vue-input label="Selected Page" name="selected-page" id="selected-page" hide-description v-model="selectedPage" />
+        <vue-input label="Display Pages" name="display-pages" id="display-pages" hide-description v-model="displayPages" />
         <vue-toggle label="Slim mode" name="slim" id="slim" v-model="slim" />
         <vue-toggle label="Infinite" name="infinite" id="infinite" v-model="infinite" />
       </vue-tiles>
 
-      <vue-inline>
+      <vue-inline stack-phone>
         <vue-pagination
           :pages="pages"
           :selected-page="selectedPage"
