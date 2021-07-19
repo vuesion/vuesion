@@ -7,6 +7,7 @@
   },
   "clean": [
     "./dist",
+    "./logs",
     "./.nuxt",
     "./coverage",
     "./storybook-static",

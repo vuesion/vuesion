@@ -14,7 +14,7 @@ export default defineComponent({
     CollapseAnimation,
   },
   props: {
-    duration: { type: Number, default: 250 },
+    duration: { type: Number, default: 0 },
     show: { type: Boolean, default: true },
   },
 });

@@ -54,8 +54,12 @@ export default {
 
 .sections {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: $space-20;
+  grid-template-columns: 1fr;
+  grid-gap: $space-24;
+
+  @include mediaMin(tabletPortrait) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .palette {

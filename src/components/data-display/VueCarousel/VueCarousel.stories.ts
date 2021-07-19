@@ -70,8 +70,8 @@ story.add(
       story="Show Carousel with 6 Images and its properties."
     >
       <vue-stack>
-        <vue-columns>
-          <vue-column width="50%">
+        <vue-columns stack-phone>
+          <vue-column :width="['content', '50%']">
             <vue-slider
               id="interval"
               label="Interval in seconds"
@@ -80,7 +80,7 @@ story.add(
               :range="[intervalInSeconds]"
               @change="intervalInSeconds = $event[0]" />
           </vue-column>
-          <vue-column width="50%">
+          <vue-column :width="['content', '50%']">
             <vue-slider
               id="selectedSlide"
               label="Selected Slide"
@@ -91,8 +91,8 @@ story.add(
           </vue-column>
         </vue-columns>
 
-        <vue-columns align-y="center">
-          <vue-column width="50%">
+        <vue-columns :align-y="['initial', 'center']" stack-phone>
+          <vue-column :width="['content', '50%']">
             <vue-slider
               id="minHeight"
               label="Minimum height"
@@ -101,7 +101,7 @@ story.add(
               :range="[minHeight]"
               @change="minHeight = $event[0]" />
           </vue-column>
-          <vue-column width="50%">
+          <vue-column :width="['content', '50%']">
             <vue-inline>
               <vue-toggle label="Show Indicator" name="showIndicator" id="showIndicator" v-model="showIndicator" />
               <vue-toggle label="Show Pagination" name="showPagination" id="showPagination" v-model="showPagination" />

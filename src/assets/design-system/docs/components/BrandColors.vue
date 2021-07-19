@@ -58,7 +58,7 @@ export default {
 .section {
   padding: $space-32 0;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: $space-16;
   grid-auto-rows: 200px;
 
@@ -76,6 +76,10 @@ export default {
       color: transparent;
       filter: invert(1) grayscale(1) unquote('contrast(100)');
     }
+  }
+
+  @include mediaMin(tabletPortrait) {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 

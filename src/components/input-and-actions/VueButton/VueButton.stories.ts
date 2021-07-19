@@ -6,6 +6,7 @@ import VueText from '@/components/typography/VueText/VueText.vue';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueHidden from '@/components/utils/VueHidden/VueHidden.vue';
 import { buttonSizes, buttonStyles } from '../../prop-validators';
 import VueButton from './VueButton.vue';
 
@@ -22,6 +23,7 @@ story.add(
       ComponentDocs,
       VueColumns,
       VueColumn,
+      VueHidden,
     },
     data(): any {
       return {
@@ -38,7 +40,9 @@ story.add(
 >
   <vue-stack space="64">
     <vue-columns>
-      <vue-column width="250px"></vue-column>
+      <vue-hidden phone>
+        <vue-column width="250px"></vue-column>
+      </vue-hidden>
 
       <vue-column v-for="size in sizes" :key="size" width="200px">
         <vue-text look="large-title">{{ size }}</vue-text>
@@ -46,9 +50,11 @@ story.add(
     </vue-columns>
 
     <vue-columns v-for="style in styles" :key="style">
-      <vue-column width="250px">
-        <vue-text look="large-title">{{ style }}</vue-text>
-      </vue-column>
+      <vue-hidden phone>
+        <vue-column width="250px">
+          <vue-text look="large-title">{{ style }}</vue-text>
+        </vue-column>
+      </vue-hidden>
 
       <vue-column v-for="size in sizes" :key="size" width="200px">
         <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
