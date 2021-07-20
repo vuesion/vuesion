@@ -1,0 +1,10 @@
+$tooltip-bg: palette-color-level('neutral', 10); // TODO: add token
+$tooltip-color: var(--brand-high-emphasis-text-color-inverse);
+$tooltip-padding: $space-8;
+$tooltip-highlight-color: $tooltip-bg;
+$tooltip-border-radius: $space-8; // TODO: add token
+$tooltip-font-size: $text-1;
+$tooltip-line-height: $line-height-1;
+$tooltip-font-weight: $font-weight-regular;
+$tooltip-elevation: var(--brand-elevation-2);
+$tooltip-transition-duration: var(--brand-transition-duration);
