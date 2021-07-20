@@ -1,4 +1,6 @@
 import { VNode } from 'vue';
+import { EventBus } from '@/services/EventBus';
+import { IToast } from '@/interfaces/IToast';
 import isArray from 'lodash/isArray';
 import { brandBreakpoints } from '@/components/prop-validators';
 import { IBreakpoints } from '@/interfaces/IBreakpoints';
@@ -137,4 +139,8 @@ export const applyResponsiveClasses = (
 
 export const getComponentElementType = (elementType: string, fallback = 'div') => {
   return ['ul', 'ol'].includes(elementType?.toLowerCase()) ? 'li' : fallback || 'div';
+};
+
+export const addToast = (n: IToast): void => {
+  EventBus.$emit('toast.add', n);
 };

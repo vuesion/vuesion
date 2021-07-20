@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="$style.app">
-    <vue-notification-stack />
+    <vue-toast />
 
     <vue-nav-bar>
       <template v-if="user" slot="middle"> Hello, {{ user.name }}! </template>
@@ -127,11 +127,10 @@
 import '@/assets/global.scss';
 import { defineComponent, computed, ref, useContext, useMeta, watch } from '@nuxtjs/composition-api';
 import { RequestStatus } from '@/enums/RequestStatus';
-import { addNotification } from '@/components/molecules/VueNotificationStack/utils';
 import VueNavBar from '@/components/organisms/VueNavBar/VueNavBar.vue';
 import VueFooter from '@/components/navigation/VueFooter/VueFooter.vue';
-import VueNotificationStack from '@/components/molecules/VueNotificationStack/VueNotificationStack.vue';
 import VueSidebar from '@/components/organisms/VueSidebar/VueSidebar.vue';
+import VueToast from '@/components/data-display/VueToast/VueToast.vue';
 import VueSidebarGroup from '@/components/organisms/VueSidebar/VueSidebarGroup/VueSidebarGroup.vue';
 import VueSidebarGroupItem from '@/components/organisms/VueSidebar/VueSidebarGroupItem/VueSidebarGroupItem.vue';
 import VueIconCode from '@/components/icons/VueIconCode/VueIconCode.vue';
@@ -147,6 +146,7 @@ import LoginForm from '@/components/premium/LoginForm/LoginForm.vue';
 import { useLocaleSwitch } from '@/composables/use-locale-switch';
 import VueBackToTop from '@/components/behavior/VueBackToTop/VueBackToTop.vue';
 import { IItem } from '@/interfaces/IItem';
+import { addToast } from '@/components/utils';
 
 export default defineComponent({
   name: 'App',
@@ -167,7 +167,7 @@ export default defineComponent({
     VueSidebar,
     VueNavBar,
     VueFooter,
-    VueNotificationStack,
+    VueToast,
   },
   setup() {
     const { redirect, app } = useContext();
@@ -199,7 +199,7 @@ export default defineComponent({
         loginRequestStatus.value = RequestStatus.IDLE;
       } catch (e) {
         loginRequestStatus.value = RequestStatus.FAILED;
-        addNotification({ title: 'Error during login', text: 'Please try again!' });
+        addToast({ title: 'Error during login', text: 'Please try again!', type: 'danger' });
       }
 
       showLoginModal.value = false;
