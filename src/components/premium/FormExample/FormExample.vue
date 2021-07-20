@@ -123,12 +123,12 @@ import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
 import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueCheckbox from '@/components/input-and-actions/VueCheckbox/VueCheckbox.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import { addNotification } from '@/components/molecules/VueNotificationStack/utils';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
 import VueCard from '@/components/data-display/VueCard/VueCard.vue';
+import { addToast } from '@/components/utils';
 
 export default {
   name: 'FormExample',
@@ -183,7 +183,7 @@ export default {
         /* istanbul ignore next */ () => {
           setTimeout(() => {
             this.isLoading = false;
-            addNotification({
+            addToast({
               title: 'Data has been saved!',
               text: 'Have a look at the console!',
             });

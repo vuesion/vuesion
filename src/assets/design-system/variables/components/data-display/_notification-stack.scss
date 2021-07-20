@@ -1,0 +1,23 @@
+$toast-position-left: unset;
+$toast-position-top: $nav-bar-height;
+$toast-position-right: $space-16;
+$toast-position-bottom: unset;
+$toast-index: 9999;
+$toast-border-radius: $space-8;
+$toast-elevation: var(--brand-elevation-3);
+$toast-gap: $space-24;
+$toast-icons-size: $space-20;
+$toast-max-width: 344px;
+$toast-transition: all 250ms ease-in-out;
+
+// primary
+$toast-primary-bg: palette-color-level('primary', 1);
+$toast-primary-border: 1px solid palette-color-level('primary', 2);
+
+// warning
+$toast-warning-bg: palette-color-level('warning', 1);
+$toast-warning-border: 1px solid palette-color-level('warning', 2);
+
+// danger
+$toast-danger-bg: palette-color-level('danger', 1);
+$toast-danger-border: 1px solid palette-color-level('danger', 2);

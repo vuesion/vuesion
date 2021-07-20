@@ -1,6 +1,6 @@
-# vuesion [![Tweet](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fvuesion1)](https://twitter.com/intent/tweet?text=Vuesion%20an%20enterprise%20ready%20boilerplate%20for%20isomorphic,%20progressive%20web%20apps%20with%20Vue.JS&url=https://github.com/vuesion/vuesion&via=vuesion1&hashtags=Vuesion,VueJS,SEO,Enterprise) <a href="https://discord.gg/59x5cg2" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/square-logo-buttons/512/discord-1-128.png" height="20px" /></a>
-
 <img width="256px" height="256px" src="https://user-images.githubusercontent.com/1667598/55292014-ea98a800-53e5-11e9-82ca-11ba7bb2bbcd.png" alt="vuesion logo" align="center" />
+
+# Vuesion
 
 _**The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices build with Nuxt.js**_
 
@@ -90,7 +90,7 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 
 - [Give a :star:!](https://github.com/vuesion/vuesion/stargazers)
 - [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=flat)](https://twitter.com/intent/tweet?text=Vuesion%20an%20enterprise%20ready%20boilerplate%20for%20isomorphic,%20progressive%20web%20apps%20with%20Vue.JS&url=https://github.com/vuesion/vuesion&via=vuesion1&hashtags=Vuesion,VueJS,SEO,Enterprise) it!
-- Join <a href="https://slack-vuesion.herokuapp.com/" target="_blank"><img src="https://home-assistant.io/images/supported_brands/slack.png" height="20px" /></a> or <a href="https://discord.gg/59x5cg2" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/square-logo-buttons/512/discord-1-128.png" height="20px" /></a>!
+- Join the <a href="https://discord.gg/59x5cg2" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/square-logo-buttons/512/discord-1-128.png" height="20px" /> Discord community</a>!
 - [Contribute!](https://github.com/vuesion/vuesion/blob/master/.github/CONTRIBUTING.md)
 - [Fund an Issue!](https://issuehunt.io/r/vuesion/vuesion)
 
@@ -120,6 +120,7 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 - [nuxt/composition-api](https://composition-api.nuxtjs.org/)
 - [nuxt/pwa](https://pwa.nuxtjs.org/)
 - [nuxt/i18n](https://i18n.nuxtjs.org/)
+- [nuxt/apollo](https://github.com/nuxt-community/apollo-module)
 - [Storybook](https://storybook.js.org/)
 - [jest](https://jestjs.io/)
 - [cypress.io](https://www.cypress.io/)

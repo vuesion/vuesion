@@ -13,13 +13,16 @@
       <div :class="$style.icon"><vue-icon-chevron-up />chevron-up</div>
       <div :class="$style.icon"><vue-icon-code />code</div>
       <div :class="$style.icon"><vue-icon-dribbble />dribbble</div>
+      <div :class="$style.icon"><vue-icon-exclamation />exclamation</div>
       <div :class="$style.icon"><vue-icon-eye />eye</div>
       <div :class="$style.icon"><vue-icon-facebook />facebook</div>
+      <div :class="$style.icon"><vue-icon-fire />fire</div>
       <div :class="$style.icon"><vue-icon-flag />flag</div>
       <div :class="$style.icon"><vue-icon-github />github</div>
       <div :class="$style.icon"><vue-icon-github-alt />github-alt</div>
       <div :class="$style.icon"><vue-icon-hashtag />hashtag</div>
       <div :class="$style.icon"><vue-icon-home />home</div>
+      <div :class="$style.icon"><vue-icon-info />info</div>
       <div :class="$style.icon"><vue-icon-info-circle />info-circle</div>
       <div :class="$style.icon"><vue-icon-instagram />instagram</div>
       <div :class="$style.icon"><vue-icon-mobile />mobile</div>
@@ -74,10 +77,16 @@ import VueIconTwitter from '@/components/icons/VueIconTwitter/VueIconTwitter.vue
 import VueIconTwitterSquare from '@/components/icons/VueIconTwitterSquare/VueIconTwitterSquare.vue';
 import VueIconDribbble from '@/components/icons/VueIconDribbble/VueIconDribbble.vue';
 import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import VueIconInfo from '@/components/icons/VueIconInfo/VueIconInfo.vue';
+import VueIconFire from '@/components/icons/VueIconFire/VueIconFire.vue';
+import VueIconExclamation from '@/components/icons/VueIconExclamation/VueIconExclamation.vue';
 
 export default {
   name: 'IconList',
   components: {
+    VueIconExclamation,
+    VueIconFire,
+    VueIconInfo,
     VueTiles,
     VueIconDribbble,
     VueIconTwitterSquare,
