@@ -48,12 +48,12 @@
           :aria-expanded="show.toString()"
           :class="$style.customSelect"
           :tabindex="disabled ? -1 : 0"
-          @click="show = !show"
+          @click.stop.prevent="show = !show"
         >
           {{ inputValue ? options.find((option) => option.value === inputValue).label : placeholder }}
         </div>
 
-        <div :class="$style.icon">
+        <div :class="$style.icon" @click.stop.prevent="show = !show">
           <vue-icon-chevron-down />
         </div>
       </div>
@@ -185,6 +185,7 @@ export default defineComponent({
   position: relative;
   display: flex;
   flex-direction: column;
+  min-width: $select-min-width;
 
   select::-ms-expand {
     display: none;

@@ -1,27 +1,32 @@
 <template>
-  <div
+  <component
+    :is="as"
     :class="[
       $style.vueTooltip,
       show && $style.show,
+      $style[direction],
       !disabled && $slots.default && $slots.default[0].tag === undefined && $style.highlight,
     ]"
     :data-tip="tip"
-    @mouseenter="onEnter"
-    @mouseleave="onLeave"
-    @touchend="onTouchEnd"
+    @mouseenter.stop.prevent="onEnter"
+    @mouseleave.stop.prevent="onLeave"
+    @touchend.stop.prevent="onTouchEnd"
   >
     <slot />
-  </div>
+  </component>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api';
+import { directionValidator } from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueTooltip',
   props: {
-    disabled: { type: Boolean, default: false },
+    as: { type: String, default: 'span' },
     tip: { type: String, required: true },
+    direction: { type: String, validator: directionValidator, default: 'top' },
+    disabled: { type: Boolean, default: false },
   },
   setup(props) {
     const show = ref(false);
@@ -50,58 +55,57 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import '~@/assets/_design-system';
 
 .vueTooltip {
-  display: inline-block;
+  display: inline-flex;
+  align-items: flex-end;
   position: relative;
   border-bottom: 1px dashed transparent;
-  border-radius: $tooltip-border-radius;
 
-  &:before,
-  &:after {
+  &:before {
     display: block;
     opacity: 0;
     pointer-events: none;
     position: absolute;
-    transform: translate3d(0, 8px, 0);
-    transition-property: opacity, transform;
-    transition-duration: var(--brand-transition-duration);
+    transition-property: opacity;
+    transition-duration: $tooltip-transition-duration;
     transition-timing-function: ease-in-out;
-  }
-
-  &:before {
     background: $tooltip-bg;
     color: $tooltip-color;
+    font-size: $tooltip-font-size;
+    line-height: $tooltip-line-height;
+    font-weight: $tooltip-font-weight;
     content: attr(data-tip);
     padding: $tooltip-padding;
-    top: -$space-32;
+
     white-space: nowrap;
-    box-shadow: $tooltip-shadow;
+    box-shadow: $tooltip-elevation;
     border-radius: $tooltip-border-radius;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
-  &:after {
-    border-right: $space-8 solid transparent;
-    border-top: $space-8 solid $tooltip-bg;
-    border-left: $space-8 solid transparent;
-    content: '';
-    height: 0;
-    top: -$space-8;
-    left: $space-8;
-    width: 0;
+  &.top {
+    &:before {
+      bottom: calc(100% + #{$space-4});
+    }
   }
-}
 
-.show {
-  &:before,
-  &:after {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
+  &.bottom {
+    &:before {
+      top: calc(100% + #{$space-4});
+    }
   }
-}
 
-.highlight {
-  border-bottom: 1px dashed $tooltip-highlight-color;
+  &.show {
+    &:before {
+      opacity: 1;
+    }
+  }
+
+  &.highlight {
+    border-bottom: 1px dashed $tooltip-highlight-color;
+  }
 }
 </style>

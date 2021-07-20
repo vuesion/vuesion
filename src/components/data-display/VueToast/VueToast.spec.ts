@@ -14,7 +14,7 @@ describe('VueToast.vue', () => {
     const { queryAllByText } = harness;
 
     addToast({ title: 'info', text: 'this is a test', displayTimeInMs: 100 });
-    await sleep(50);
+    await sleep(10);
 
     expect(queryAllByText('info')).toHaveLength(1);
     expect(queryAllByText('this is a test')).toHaveLength(1);

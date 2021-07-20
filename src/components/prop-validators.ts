@@ -95,6 +95,10 @@ export const verticalAlignmentValidator = (value: string) => {
   return ['center', 'top', 'bottom', 'inherit', 'initial'].includes(value.toLowerCase());
 };
 
+export const directionValidator = (value: string) => {
+  return ['top', 'bottom'].includes(value.toLowerCase());
+};
+
 export const breakpointValidator = (value: string) => {
   return brandBreakpoints.includes(value);
 };

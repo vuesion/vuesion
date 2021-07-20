@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/vue';
 import VuePopOver from './VuePopOver.vue';
 
-const story = storiesOf('Molecules|PopOver', module) as any;
+const story = storiesOf('Premium Components|PopOver', module) as any;
 
 story.add(
   'Default',

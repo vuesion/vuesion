@@ -8,7 +8,7 @@ $toast-elevation: var(--brand-elevation-3);
 $toast-gap: $space-24;
 $toast-icons-size: $space-20;
 $toast-max-width: 344px;
-$toast-transition: all 250ms ease-in-out;
+$toast-transition: all var(--brand-transition-duration) ease-in-out;
 
 // primary
 $toast-primary-bg: palette-color-level('primary', 1);
