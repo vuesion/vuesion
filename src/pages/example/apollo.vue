@@ -75,7 +75,7 @@ export default defineComponent({
 @import '~@/assets/design-system';
 
 .apollo {
-  margin-top: $nav-bar-height;
+  margin-top: $navbar-height;
 
   .card {
     overflow: hidden;

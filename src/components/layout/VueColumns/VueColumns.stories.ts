@@ -3,7 +3,7 @@ import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueFooter from '@/components/navigation/VueFooter/VueFooter.vue';
-import VueNavBar from '@/components/organisms/VueNavBar/VueNavBar.vue';
+import VueNavbar from '@/components/navigation/VueNavbar/VueNavbar.vue';
 import VueColumn from './VueColumn/VueColumn.vue';
 import VueColumns from './VueColumns.vue';
 
@@ -173,7 +173,7 @@ story.add(
 story.add(
   'Stacked full page layout',
   () => ({
-    components: { VueBox, VueColumns, VueColumn, VueNavBar, VueFooter },
+    components: { VueBox, VueColumns, VueColumn, VueNavbar, VueFooter },
     template: `<vue-columns
       :space="null"
       full-page
@@ -184,7 +184,7 @@ story.add(
       stack-large-desktop
     >
       <vue-column width="content">
-        <vue-nav-bar />
+        <vue-navbar />
       </vue-column>
       <vue-column align="center" align-y="center">
         Content

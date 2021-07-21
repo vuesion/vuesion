@@ -42,6 +42,6 @@ export default {
 @import '~@/assets/design-system';
 
 .form {
-  margin-top: $nav-bar-height;
+  margin-top: $navbar-height;
 }
 </style>

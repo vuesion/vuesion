@@ -39,7 +39,7 @@
 <script lang="ts">
 import { defineComponent, computed } from '@vue/composition-api';
 import { getDomRef } from '@/composables/get-dom-ref';
-import { buttonSizeValidator, buttonStyleValidator } from '@/components/prop-validators';
+import { shirtSizeValidator, buttonStyleValidator } from '@/components/prop-validators';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueLoader from '@/components/data-display/VueLoader/VueLoader.vue';
 
@@ -55,7 +55,7 @@ export default defineComponent({
     disabled: { type: Boolean, default: false },
     block: { type: Boolean, default: false },
     look: { type: String, validator: buttonStyleValidator, default: 'basic' },
-    size: { type: String, validator: buttonSizeValidator, default: 'md' },
+    size: { type: String, validator: shirtSizeValidator, default: 'md' },
     loading: { type: Boolean, default: false },
     as: { type: String, default: 'button' },
     type: { type: String, default: 'button' },

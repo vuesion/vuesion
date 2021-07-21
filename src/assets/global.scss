@@ -58,6 +58,15 @@ img:not([alt]) {
   border: 0;
 }
 
+// cut off text if too long
+//
+// See: https://www.w3schools.com/cssref/css3_pr_text-overflow.asp
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 // MODAL-BACKDROP
 .backdrop {
   position: fixed;
