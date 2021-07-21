@@ -33,7 +33,7 @@ export const textStyles = [
   'support',
 ];
 export const buttonStyles = ['primary', 'basic', 'outline', 'danger'];
-export const buttonSizes = ['sm', 'md', 'lg'];
+export const shirtSizes = ['sm', 'md', 'lg'];
 export const fontWeights = ['regular', 'semi-bold'];
 export const brandSpacings = [
   '0',
@@ -79,8 +79,8 @@ export const buttonStyleValidator = (value: string) => {
   return buttonStyles.includes(value.toLowerCase());
 };
 
-export const buttonSizeValidator = (value: string) => {
-  return buttonSizes.includes(value.toLowerCase());
+export const shirtSizeValidator = (value: string) => {
+  return shirtSizes.includes(value.toLowerCase());
 };
 
 export const fontWeightValidator = (value: string) => {

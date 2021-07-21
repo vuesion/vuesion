@@ -78,7 +78,7 @@ export default {
   overflow: hidden;
   position: relative;
   text-shadow: 0 0 5px rgba(15, 15, 15, 0.4);
-  padding-top: $nav-bar-height;
+  padding-top: $navbar-height;
 
   img {
     max-width: $space-128;

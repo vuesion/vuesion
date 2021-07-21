@@ -25,6 +25,7 @@
       <div :class="$style.icon"><vue-icon-info />info</div>
       <div :class="$style.icon"><vue-icon-info-circle />info-circle</div>
       <div :class="$style.icon"><vue-icon-instagram />instagram</div>
+      <div :class="$style.icon"><vue-icon-menu />menu</div>
       <div :class="$style.icon"><vue-icon-mobile />mobile</div>
       <div :class="$style.icon"><vue-icon-puzzle-piece />puzzle-piece</div>
       <div :class="$style.icon"><vue-icon-search />search</div>
@@ -80,10 +81,12 @@ import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
 import VueIconInfo from '@/components/icons/VueIconInfo/VueIconInfo.vue';
 import VueIconFire from '@/components/icons/VueIconFire/VueIconFire.vue';
 import VueIconExclamation from '@/components/icons/VueIconExclamation/VueIconExclamation.vue';
+import VueIconMenu from '@/components/icons/VueIconMenu/VueIconMenu.vue';
 
 export default {
   name: 'IconList',
   components: {
+    VueIconMenu,
     VueIconExclamation,
     VueIconFire,
     VueIconInfo,

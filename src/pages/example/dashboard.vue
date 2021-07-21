@@ -93,6 +93,6 @@ export default defineComponent({
 @import '~@/assets/design-system';
 
 .dashboard {
-  padding-top: $nav-bar-height;
+  padding-top: $navbar-height;
 }
 </style>

@@ -7,7 +7,7 @@ import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueHidden from '@/components/utils/VueHidden/VueHidden.vue';
-import { buttonSizes, buttonStyles } from '../../prop-validators';
+import { shirtSizes, buttonStyles } from '../../prop-validators';
 import VueButton from './VueButton.vue';
 
 const story = storiesOf('Input & Actions|Button', module) as any;
@@ -28,7 +28,7 @@ story.add(
     data(): any {
       return {
         styles: buttonStyles,
-        sizes: buttonSizes,
+        sizes: shirtSizes,
         loading: false,
       };
     },

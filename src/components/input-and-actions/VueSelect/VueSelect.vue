@@ -50,7 +50,7 @@
           :tabindex="disabled ? -1 : 0"
           @click.stop.prevent="show = !show"
         >
-          {{ inputValue ? options.find((option) => option.value === inputValue).label : placeholder }}
+          {{ inputValue !== undefined ? options.find((option) => option.value === inputValue).label : placeholder }}
         </div>
 
         <div :class="$style.icon" @click.stop.prevent="show = !show">
@@ -101,7 +101,7 @@ export default defineComponent({
     hideDescription: { type: Boolean, default: false },
     required: { type: Boolean, default: false },
     validation: { type: [String, Object], default: null },
-    value: { type: [String, Boolean, Object, Object as () => IItem], default: null },
+    value: { type: [String, Boolean, Object, Object as () => IItem], default: undefined },
     disabled: { type: Boolean, default: false },
     items: { type: [Array, Array as () => Array<IItem>], required: true },
     placeholder: { type: String, default: '' },
@@ -111,11 +111,13 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const inputValue = computed(() => {
-      if (props.value && props.value.value) {
+      if (props.value !== undefined && props.value.value !== undefined) {
         return props.value.value;
+      } else if (props.value !== undefined) {
+        return props.value;
+      } else {
+        return undefined;
       }
-
-      return props.value;
     });
     const options = computed<Array<IItem>>(() =>
       props.items.map((item: IItem) => ({

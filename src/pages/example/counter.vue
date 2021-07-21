@@ -63,6 +63,6 @@ export default defineComponent({
 @import '~@/assets/design-system';
 
 .counter {
-  padding-top: $nav-bar-height;
+  padding-top: $navbar-height;
 }
 </style>

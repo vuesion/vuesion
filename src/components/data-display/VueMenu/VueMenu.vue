@@ -1,5 +1,5 @@
 <template>
-  <ul ref="menuRef" :class="$style.vueMenu" @keydown="onKeyDown">
+  <ul ref="menuRef" data-testid="menu" :class="$style.vueMenu" @keydown="onKeyDown">
     <li
       v-for="(item, idx) in items"
       :key="`${item.value}-${idx}`"

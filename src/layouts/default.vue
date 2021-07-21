@@ -2,13 +2,11 @@
   <div id="app" :class="$style.app">
     <vue-toast />
 
-    <vue-nav-bar>
-      <template v-if="user" slot="middle"> Hello, {{ user.name }}! </template>
+    <vue-navbar :user-name="user && user.name" @menu-item-click="onLogoutClick">
+      <template v-if="user" slot="center"> Hello, {{ user.name }}! </template>
 
-      <vue-button v-if="!loggedIn" slot="right" look="primary" @click="showLoginModal = true"> Login </vue-button>
-
-      <vue-button v-if="loggedIn" slot="right" look="primary" @click="onLogoutClick"> Logout </vue-button>
-    </vue-nav-bar>
+      <vue-button v-if="!loggedIn" slot="right" size="sm" @click="showLoginModal = true"> Login </vue-button>
+    </vue-navbar>
 
     <nuxt :class="$style.content" />
 
@@ -115,7 +113,7 @@
       </vue-sidebar-group>
     </vue-sidebar>
 
-    <vue-modal :show="showLoginModal" @close="showLoginModal = false">
+    <vue-modal disable-page-scroll :show="showLoginModal" @close="showLoginModal = false">
       <login-form :loading="loginRequestStatus === 'PENDING'" @submit="onLoginSubmit" />
     </vue-modal>
 
@@ -127,7 +125,7 @@
 import '@/assets/global.scss';
 import { defineComponent, computed, ref, useContext, useMeta, watch } from '@nuxtjs/composition-api';
 import { RequestStatus } from '@/enums/RequestStatus';
-import VueNavBar from '@/components/organisms/VueNavBar/VueNavBar.vue';
+import VueNavbar from '@/components/navigation/VueNavbar/VueNavbar.vue';
 import VueFooter from '@/components/navigation/VueFooter/VueFooter.vue';
 import VueSidebar from '@/components/organisms/VueSidebar/VueSidebar.vue';
 import VueToast from '@/components/data-display/VueToast/VueToast.vue';
@@ -165,7 +163,7 @@ export default defineComponent({
     VueSidebarGroupItem,
     VueSidebarGroup,
     VueSidebar,
-    VueNavBar,
+    VueNavbar,
     VueFooter,
     VueToast,
   },
@@ -204,9 +202,11 @@ export default defineComponent({
 
       showLoginModal.value = false;
     };
-    const onLogoutClick = async () => {
-      await app.$auth.logout();
-      redirect('/');
+    const onLogoutClick = async (menuItem: IItem) => {
+      if (menuItem.value === 'logout') {
+        await app.$auth.logout();
+        redirect('/');
+      }
     };
 
     watch(
@@ -249,13 +249,5 @@ export default defineComponent({
 
 .content {
   flex: 1;
-}
-
-.logo {
-  position: relative;
-  top: $space-4;
-  width: $space-24;
-  height: $space-24;
-  color: $nav-bar-color;
 }
 </style>

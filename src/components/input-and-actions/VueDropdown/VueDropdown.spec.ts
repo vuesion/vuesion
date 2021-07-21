@@ -20,10 +20,15 @@ describe('VueDropdown.vue', () => {
     });
   });
 
-  test('renders component', () => {
-    const { getByText } = harness;
+  test('renders component', async () => {
+    const { getByText, getByTestId } = harness;
 
     getByText('Dropdown');
+
+    await fireEvent.click(getByText('Dropdown'));
+    const menu = getByTestId('menu');
+
+    expect(menu.classList.contains('left')).toBeTruthy();
   });
 
   test('should emit click event', async () => {
@@ -86,5 +91,18 @@ describe('VueDropdown.vue', () => {
     await sleep(250);
 
     expect(queryAllByText('Value 1')).toHaveLength(0);
+  });
+
+  test('renders component with different menu alignment', async () => {
+    const { getByText, getByTestId, updateProps } = harness;
+
+    await updateProps({ alignMenu: 'right' });
+
+    getByText('Dropdown');
+
+    await fireEvent.click(getByText('Dropdown'));
+    const menu = getByTestId('menu');
+
+    expect(menu.classList.contains('right')).toBeTruthy();
   });
 });

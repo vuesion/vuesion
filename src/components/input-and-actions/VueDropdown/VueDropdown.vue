@@ -1,16 +1,15 @@
 <template>
   <div ref="dropdownRef" :class="$style.vueDropdown" @keydown="onKeyDown">
-    <vue-button
-      look="outline"
-      :aria-expanded="show.toString()"
-      trailing-icon="chevron-down"
-      @click.stop.prevent="onClick"
-    >
-      {{ buttonText }}
-    </vue-button>
+    <div :class="$style.wrapper" @click.stop.prevent="onClick">
+      <slot>
+        <vue-button look="outline" :aria-expanded="show.toString()" trailing-icon="chevron-down">
+          {{ buttonText }}
+        </vue-button>
+      </slot>
+    </div>
 
     <vue-collapse :show="show" :duration="duration">
-      <vue-menu ref="menuRef" :items="items" :class="$style.menu" @click="onItemClick" />
+      <vue-menu ref="menuRef" :items="items" :class="[$style.menu, $style[alignMenu]]" @click="onItemClick" />
     </vue-collapse>
   </div>
 </template>
@@ -23,14 +22,16 @@ import { useOutsideClick } from '@/composables/use-outside-click';
 import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
+import { horizontalAlignmentValidator } from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueDropdown',
   components: { VueCollapse, VueButton, VueMenu },
   props: {
-    buttonText: { type: String, required: true },
+    buttonText: { type: String, default: null },
     items: { type: Array as new () => IItem[], required: true },
     duration: { type: Number, default: 250 },
+    alignMenu: { type: String, validator: horizontalAlignmentValidator, default: 'left' },
   },
   setup(_, { emit }) {
     const dropdownRef = getDomRef(null);
@@ -86,8 +87,25 @@ export default defineComponent({
   display: inline-flex;
   position: relative;
 
+  .wrapper {
+    cursor: pointer;
+  }
+
   .menu {
     top: $button-md-height + $dropdown-button-menu-gap;
+
+    &.left {
+      left: 0;
+    }
+
+    &.center {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &.right {
+      right: 0;
+    }
   }
 }
 </style>
