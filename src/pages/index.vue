@@ -135,7 +135,7 @@
 
 import HomeSection from '@/components/premium/HomeSection/HomeSection.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import Stage from '@/components/organisms/Stage/Stage.vue';
+import Stage from '@/components/premium/Stage/Stage.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 
 export default {
