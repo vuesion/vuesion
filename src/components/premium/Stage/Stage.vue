@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import '~@/assets/_design-system';
 
 .stage {
   min-height: 100vh;
