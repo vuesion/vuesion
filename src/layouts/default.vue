@@ -35,16 +35,20 @@
 
       <vue-sidebar-group name="Navigation">
         <vue-sidebar-group-item name="Home" leading-icon="home" to="/" />
-        <vue-sidebar-group-item name="Vuex Example" leading-icon="hashtag" :to="{ name: 'example-counter' }" />
-        <vue-sidebar-group-item name="Apollo Example" leading-icon="hashtag" :to="{ name: 'example-apollo' }" />
-        <vue-sidebar-group-item name="Form Example" leading-icon="hashtag" :to="{ name: 'example-form' }" />
+        <vue-sidebar-group-item name="Vuex Example" leading-icon="eye" :to="{ name: 'example-counter' }" />
+        <vue-sidebar-group-item name="Apollo Example" leading-icon="eye" :to="{ name: 'example-apollo' }" />
+        <vue-sidebar-group-item name="Form Example" leading-icon="eye" :to="{ name: 'example-form' }" />
       </vue-sidebar-group>
 
       <vue-sidebar-group name="Documentation">
-        <vue-sidebar-group-item name="Documentation" leading-icon="book" href="https://vuesion.github.io/docs/en/" />
+        <vue-sidebar-group-item
+          name="Documentation"
+          leading-icon="document-search"
+          href="https://vuesion.github.io/docs/en/"
+        />
         <vue-sidebar-group-item
           name="Design System"
-          leading-icon="book"
+          leading-icon="star"
           href="/storybook/?path=/story/design-system-design-system--intro"
         />
         <vue-sidebar-group-item
@@ -56,7 +60,7 @@
 
       <vue-sidebar-group name="Community">
         <vue-sidebar-group-item name="Github" leading-icon="github" href="https://github.com/vuesion/vuesion" />
-        <vue-sidebar-group-item name="Discord" leading-icon="home" href="https://discord.gg/59x5cg2" />
+        <vue-sidebar-group-item name="Discord" leading-icon="chat" href="https://discord.gg/59x5cg2" />
         <vue-sidebar-group-item name="Twitter" leading-icon="twitter" href="https://twitter.com/vuesion1" />
       </vue-sidebar-group>
     </vue-sidebar>

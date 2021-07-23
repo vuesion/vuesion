@@ -92,7 +92,7 @@ story.add(
         validation="required"
         required
         v-model="model"
-        leading-icon="hashtag"
+        leading-icon="calendar"
         @leading-icon-click="onLeadingIconClick"
       />
 
@@ -120,7 +120,7 @@ story.add(
         validation="required"
         required
         v-model="model"
-        leading-icon="hashtag"
+        leading-icon="eye"
         trailing-icon="times"
         @leading-icon-click="onLeadingIconClick"
         @trailing-icon-click="onTrailingIconClick"

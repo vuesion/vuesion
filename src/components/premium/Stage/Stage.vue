@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { CircleAnimation } from '@/components/animations/CircleAnimation';
-import VueIconGithub from '@/components/icons/VueIconGithub/VueIconGithub.vue';
+import VueIconGithub from '@/components/icons/VueIconGithub.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 

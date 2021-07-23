@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from '@vue/composition-api';
 import { useEvent } from '@/composables/use-event';
-import VueIconArrowUp from '@/components/icons/VueIconArrowUp/VueIconArrowUp.vue';
+import VueIconArrowUp from '@/components/icons/VueIconArrowUp.vue';
 
 export default defineComponent({
   name: 'VueBackToTop',

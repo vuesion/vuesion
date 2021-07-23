@@ -148,11 +148,11 @@ import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueIconFacebook from '@/components/icons/VueIconFacebook/VueIconFacebook.vue';
-import VueIconInstagram from '@/components/icons/VueIconInstagram/VueIconInstagram.vue';
-import VueIconTwitter from '@/components/icons/VueIconTwitter/VueIconTwitter.vue';
-import VueIconGithub from '@/components/icons/VueIconGithub/VueIconGithub.vue';
-import VueIconDribbble from '@/components/icons/VueIconDribbble/VueIconDribbble.vue';
+import VueIconFacebook from '@/components/icons/VueIconFacebook.vue';
+import VueIconInstagram from '@/components/icons/VueIconInstagram.vue';
+import VueIconTwitter from '@/components/icons/VueIconTwitter.vue';
+import VueIconGithub from '@/components/icons/VueIconGithub.vue';
+import VueIconDribbble from '@/components/icons/VueIconDribbble.vue';
 
 export default defineComponent({
   name: 'VueFooter',

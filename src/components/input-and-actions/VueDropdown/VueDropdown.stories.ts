@@ -17,10 +17,10 @@ story.add(
     data(): { items: Array<IItem>; alignMenu: IItem } {
       return {
         items: [
-          { label: 'Save', value: 'save', leadingIcon: 'code' },
+          { label: 'Save', value: 'save', leadingIcon: 'save' },
           { label: '', value: 'separator' },
-          { label: 'Open', value: 'open', leadingIcon: 'search' },
-          { label: 'Delete', value: 'delete', leadingIcon: 'times' },
+          { label: 'Open', value: 'open', leadingIcon: 'folder-open' },
+          { label: 'Delete', value: 'delete', leadingIcon: 'trash' },
         ],
         alignMenu: { label: 'Left', value: 'left' },
       };

@@ -46,10 +46,10 @@ import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import VueIconInfo from '@/components/icons/VueIconInfo/VueIconInfo.vue';
-import VueIconTimes from '@/components/icons/VueIconTimes/VueIconTimes.vue';
-import VueIconFire from '@/components/icons/VueIconFire/VueIconFire.vue';
-import VueIconExclamation from '@/components/icons/VueIconExclamation/VueIconExclamation.vue';
+import VueIconInfo from '@/components/icons/VueIconInfoCircle.vue';
+import VueIconTimes from '@/components/icons/VueIconTimes.vue';
+import VueIconFire from '@/components/icons/VueIconFire.vue';
+import VueIconExclamation from '@/components/icons/VueIconExclamation.vue';
 
 export default defineComponent({
   name: 'VueToast',

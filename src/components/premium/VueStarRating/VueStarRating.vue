@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api';
-import VueIconStar from '../../icons/VueIconStar/VueIconStar.vue';
+import VueIconStar from '../../icons/VueIconStar.vue';
 
 export default defineComponent({
   name: 'VueStarRating',

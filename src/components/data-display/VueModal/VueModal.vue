@@ -23,7 +23,7 @@ import { useKeydown } from '@/composables/use-keydown';
 import { useBackdrop } from '@/composables/use-backdrop';
 import { getDomRef } from '@/composables/get-dom-ref';
 import { responsivePropValidator, spacingValidator } from '@/components/prop-validators';
-import VueIconTimes from '@/components/icons/VueIconTimes/VueIconTimes.vue';
+import VueIconTimes from '@/components/icons/VueIconTimes.vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 
 export default defineComponent({
