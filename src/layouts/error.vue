@@ -4,11 +4,11 @@
       <vue-stack align="center">
         <template v-if="error.statusCode === 404">
           <vue-text look="h1" as="h1"> 404 </vue-text>
-          <vue-text look="h3" as="h3"> Page not found! </vue-text>
+          <vue-text look="h3" as="h2"> Page not found! </vue-text>
         </template>
         <template v-else>
           <vue-text look="h1" as="h1"> Error </vue-text>
-          <vue-text look="h3" as="h3"> Try again later! </vue-text>
+          <vue-text look="h3" as="h2"> Try again later! </vue-text>
         </template>
       </vue-stack>
     </vue-box>
