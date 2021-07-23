@@ -17,7 +17,7 @@
       </li>
     </ul>
 
-    <vue-box padding="16">
+    <vue-box padding="16 0">
       <slot />
     </vue-box>
   </div>

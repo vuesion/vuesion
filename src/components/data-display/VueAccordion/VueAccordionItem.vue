@@ -26,8 +26,8 @@
 <script lang="ts">
 import { defineComponent, inject, ref, onBeforeMount, Ref } from '@vue/composition-api';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import VueIconChevronRight from '@/components/icons/VueIconChevronRight/VueIconChevronRight.vue';
-import VueIconChevronUp from '@/components/icons/VueIconChevronUp/VueIconChevronUp.vue';
+import VueIconChevronRight from '@/components/icons/VueIconChevronRight.vue';
+import VueIconChevronUp from '@/components/icons/VueIconChevronUp.vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 
 export default defineComponent({

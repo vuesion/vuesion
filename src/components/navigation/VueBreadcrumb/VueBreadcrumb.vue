@@ -29,7 +29,7 @@
 import { defineComponent } from '@vue/composition-api';
 import { IItem } from '@/interfaces/IItem';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import VueIconHome from '@/components/icons/VueIconHome/VueIconHome.vue';
+import VueIconHome from '@/components/icons/VueIconHome.vue';
 
 export default defineComponent({
   name: 'VueBreadcrumb',

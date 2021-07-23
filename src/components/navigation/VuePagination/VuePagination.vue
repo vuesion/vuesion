@@ -39,8 +39,8 @@
 
 <script lang="ts">
 import { computed, defineComponent } from '@vue/composition-api';
-import VueIconChevronLeft from '@/components/icons/VueIconChevronLeft/VueIconChevronLeft.vue';
-import VueIconChevronRight from '@/components/icons/VueIconChevronRight/VueIconChevronRight.vue';
+import VueIconChevronLeft from '@/components/icons/VueIconChevronLeft.vue';
+import VueIconChevronRight from '@/components/icons/VueIconChevronRight.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 
 interface IPaginationItem {

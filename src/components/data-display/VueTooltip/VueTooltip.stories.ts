@@ -3,7 +3,7 @@ import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueToggle from '@/components/input-and-actions/VueToggle/VueToggle.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import VueIconInfo from '@/components/icons/VueIconInfo/VueIconInfo.vue';
+import VueIconInfo from '@/components/icons/VueIconInfoCircle.vue';
 import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';

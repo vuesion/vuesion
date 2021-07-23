@@ -12,10 +12,10 @@
       <vue-column v-if="userName || userImage" width="content" align-y="center">
         <vue-dropdown
           :items="[
-            { label: 'Profile', value: 'profile' },
-            { label: 'Settings', value: 'settings' },
+            { label: 'Profile', value: 'profile', leadingIcon: 'user' },
+            { label: 'Settings', value: 'settings', leadingIcon: 'cog' },
             { label: '', value: 'separator' },
-            { label: 'Logout', value: 'logout' },
+            { label: 'Logout', value: 'logout', leadingIcon: 'logout' },
           ]"
           align-menu="right"
           @item-click="$emit('menu-item-click', $event)"
@@ -35,7 +35,7 @@
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueIconMenu from '@/components/icons/VueIconMenu/VueIconMenu.vue';
+import VueIconMenu from '@/components/icons/VueIconMenu.vue';
 import VueAvatar from '@/components/data-display/VueAvatar/VueAvatar.vue';
 import VueDropdown from '@/components/input-and-actions/VueDropdown/VueDropdown.vue';
 

@@ -28,20 +28,20 @@ story.add(
       </vue-sidebar-group>
 
       <vue-sidebar-group name="Navigation" icon="plus-circle" @click="onGroupClick" @icon-click="onGroupIconClick">
-        <vue-sidebar-group-item leading-icon="home" name="Vuex Example" to="/example/counter" />
-        <vue-sidebar-group-item leading-icon="home" name="Apollo Example" to="/example/apollo" />
-        <vue-sidebar-group-item leading-icon="home" name="Form Example" to="/example/form" />
+        <vue-sidebar-group-item leading-icon="eye" name="Vuex Example" to="/example/counter" />
+        <vue-sidebar-group-item leading-icon="eye" name="Apollo Example" to="/example/apollo" />
+        <vue-sidebar-group-item leading-icon="eye" name="Form Example" to="/example/form" />
       </vue-sidebar-group>
 
       <vue-sidebar-group name="Documentation" @click="onGroupClick" @icon-click="onGroupIconClick">
-        <vue-sidebar-group-item leading-icon="home" name="Documentation" href="https://vuesion.github.io/docs/en/" />
-        <vue-sidebar-group-item leading-icon="home" name="Design System" href="/storybook/?path=/story/design-system-design-system--intro" />
-        <vue-sidebar-group-item leading-icon="home" name="Components" href="/storybook/?path=/story/atoms-badge--badge-variants" />
+        <vue-sidebar-group-item leading-icon="document-search" name="Documentation" href="https://vuesion.github.io/docs/en/" />
+        <vue-sidebar-group-item leading-icon="star" name="Design System" href="/storybook/?path=/story/design-system-design-system--intro" />
+        <vue-sidebar-group-item leading-icon="puzzle-piece" name="Components" href="/storybook/?path=/story/atoms-badge--badge-variants" />
       </vue-sidebar-group>
 
       <vue-sidebar-group name="Community" @click="onGroupClick" @icon-click="onGroupIconClick">
         <vue-sidebar-group-item leading-icon="github" name="Github" href="https://github.com/vuesion/vuesion" />
-        <vue-sidebar-group-item leading-icon="home" name="Discord" href="https://discord.gg/59x5cg2" />
+        <vue-sidebar-group-item leading-icon="chat" name="Discord" href="https://discord.gg/59x5cg2" />
         <vue-sidebar-group-item leading-icon="twitter" name="Twitter" href="https://twitter.com/vuesion1" />
       </vue-sidebar-group>
     </vue-sidebar>

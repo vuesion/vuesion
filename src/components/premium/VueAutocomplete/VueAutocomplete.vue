@@ -70,7 +70,7 @@ import { IItem } from '@/interfaces/IItem';
 import { getDomRef } from '@/composables/get-dom-ref';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import { useKeydown } from '@/composables/use-keydown';
-import VueIconSearch from '../../icons/VueIconSearch/VueIconSearch.vue';
+import VueIconSearch from '../../icons/VueIconSearch.vue';
 import VueLoader from '../../data-display/VueLoader/VueLoader.vue';
 import VueInput from '../../input-and-actions/VueInput/VueInput.vue';
 

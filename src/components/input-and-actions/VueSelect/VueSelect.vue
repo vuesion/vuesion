@@ -50,7 +50,7 @@
           :tabindex="disabled ? -1 : 0"
           @click.stop.prevent="show = !show"
         >
-          {{ inputValue !== undefined ? options.find((option) => option.value === inputValue).label : placeholder }}
+          {{ inputValueOption ? inputValueOption.label : placeholder }}
         </div>
 
         <div :class="$style.icon" @click.stop.prevent="show = !show">
@@ -81,7 +81,7 @@ import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
 import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import { getDomRef } from '@/composables/get-dom-ref';
-import VueIconChevronDown from '@/components/icons/VueIconChevronDown/VueIconChevronDown.vue';
+import VueIconChevronDown from '@/components/icons/VueIconChevronDown.vue';
 
 export default defineComponent({
   name: 'VueSelect',
@@ -110,8 +110,14 @@ export default defineComponent({
     duration: { type: Number, default: 250 },
   },
   setup(props, { emit }) {
+    const options = computed<Array<IItem>>(() =>
+      props.items.map((item: IItem) => ({
+        ...item,
+        trailingIcon: inputValue.value === item.value ? 'checkmark' : null,
+      })),
+    );
     const inputValue = computed(() => {
-      if (props.value !== undefined && props.value.value !== undefined) {
+      if (props.value !== undefined && props.value?.value !== undefined) {
         return props.value.value;
       } else if (props.value !== undefined) {
         return props.value;
@@ -119,12 +125,13 @@ export default defineComponent({
         return undefined;
       }
     });
-    const options = computed<Array<IItem>>(() =>
-      props.items.map((item: IItem) => ({
-        ...item,
-        trailingIcon: inputValue.value === item.value ? 'checkmark' : null,
-      })),
-    );
+    const inputValueOption = computed(() => {
+      if (inputValue.value !== undefined) {
+        return options.value.find((option) => option.value === inputValue.value);
+      } else {
+        return undefined;
+      }
+    });
     const selectRef = getDomRef(null);
     const show = ref(false);
     const close = () => (show.value = false);
@@ -169,9 +176,10 @@ export default defineComponent({
     useOutsideClick(selectRef, () => close());
 
     return {
-      inputValue,
-      selectRef,
       options,
+      inputValue,
+      inputValueOption,
+      selectRef,
       show,
       onInput,
       onItemClick,
