@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { i18n } from '@/test/i18n';
 import FormExample from './FormExample.vue';
 
-const story = storiesOf('Premium Components|FormExample', module) as any;
+const story = storiesOf('Input & Actions|FormExample', module) as any;
 
 story.add(
   'Default',

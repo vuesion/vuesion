@@ -86,7 +86,7 @@ import VueSidebarGroupItem from '@/components/navigation/VueSidebar/VueSidebarGr
 import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueModal from '@/components/data-display/VueModal/VueModal.vue';
-import LoginForm from '@/components/premium/LoginForm/LoginForm.vue';
+import LoginForm from '@/components/input-and-actions/LoginForm/LoginForm.vue';
 import { useLocaleSwitch } from '@/composables/use-locale-switch';
 import VueBackToTop from '@/components/behavior/VueBackToTop/VueBackToTop.vue';
 import { IItem } from '@/interfaces/IItem';

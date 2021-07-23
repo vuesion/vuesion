@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import HomeSection from './HomeSection.vue';
 
-const story = storiesOf('Premium Components|HomeSection', module) as any;
+const story = storiesOf('Data Display|HomeSection', module) as any;
 
 story.add(
   'Default',
