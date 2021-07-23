@@ -51,7 +51,7 @@
     "build:spa": "nuxt generate",
     "start": "nuxt start",
     "e2e:ci": "npx start-server-and-test dev http://localhost:3000 e2e",
-    "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\" \"npm run e2e:ci\"",
+    "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\" && npm run e2e:ci",
     "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\"",
     "postinstall": "husky install"
   },
