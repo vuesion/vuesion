@@ -6,14 +6,14 @@ import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueToast from './VueToast.vue';
 
 const story = storiesOf('Data Display|Toast', module) as any;
-// TODO: add usage
+
 story.add(
   'Default',
   () => ({
     components: { VueToast, VueButton, ComponentDocs, VueInline },
     template: `<component-docs
       component-name="Toast"
-      usage="TBD"
+      usage="Used to communicate messages from the system to the user."
       story="Show toast messages with their different properties."
     >
       <vue-toast />

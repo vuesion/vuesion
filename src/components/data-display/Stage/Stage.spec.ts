@@ -6,7 +6,7 @@ const localVue = createLocalVue();
 
 describe('Stage.vue', () => {
   test('renders component', () => {
-    (window as any).HTMLCanvasElement.prototype.getContext = jest.fn();
+    (global as any).HTMLCanvasElement.prototype.getContext = jest.fn();
 
     const wrapper = mount(Stage, {
       localVue,

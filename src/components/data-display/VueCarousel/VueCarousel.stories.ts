@@ -48,7 +48,7 @@ const images: any[] = [
       'https://images.unsplash.com/photo-1492970471430-bc6bd7eb2b13?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9893bc89e46e2b77a5d8c091fbba04e9&auto=format&fit=crop&w=2710&q=80',
   },
 ];
-// TODO: add usage
+
 story.add(
   'Default',
   () => ({
@@ -66,7 +66,7 @@ story.add(
     components: { ComponentDocs, VueCarousel, VueStack, VueColumns, VueColumn, VueSlider, VueToggle, VueInline },
     template: `<component-docs
       component-name="Carousel"
-      usage="TBD"
+      usage="The carousel is used to display single item from a large collection of content in an allocated space. Often used with images."
       story="Show Carousel with 6 Images and its properties."
     >
       <vue-stack>

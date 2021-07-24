@@ -8,7 +8,7 @@ import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueAvatar from './VueAvatar.vue';
 
 const story = storiesOf('Data Display|Avatar', module) as any;
-// TODO: add usage
+
 story.add(
   'Default',
   () => ({
@@ -22,7 +22,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Avatar"
-      usage="TBD"
+      usage="Used to show a thumbnail of a user or other items (such as a product)."
       story="Show avatar and all its properties."
     >
       <vue-stack>

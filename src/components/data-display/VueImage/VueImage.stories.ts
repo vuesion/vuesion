@@ -10,7 +10,7 @@ story.add(
     components: { VueImage, ComponentDocs },
     template: `<component-docs
       component-name="Image"
-      usage="Use this component instead of the native img-tag to benefit from IntersectionObserver"
+      usage="Use this component instead of the native img-tag to benefit from IntersectionObserver and lazy loading."
       story="Display image only when it is in the view port.">
     <vue-image src="https://via.placeholder.com/512" alt="foo" />
     </component-docs>`,

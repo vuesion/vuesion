@@ -29,7 +29,7 @@ describe('VueImage.vue', () => {
 
   test('renders image via observer', () => {
     let disconnected = false;
-    (window as any).IntersectionObserver = class IntersectionObserver {
+    (global as any).IntersectionObserver = class IntersectionObserver {
       public cb: any;
       public options: any;
 

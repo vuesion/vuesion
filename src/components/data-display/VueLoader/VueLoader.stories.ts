@@ -11,7 +11,7 @@ story.add(
     components: { VueLoader, ComponentDocs, VueStack },
     template: `<component-docs
     component-name="Loader"
-    usage="-"
+    usage="Used to provide visual feedback that data is being loaded."
     story="Display the loader in different contexts. The color is dictated by the text color of the context">
     <vue-stack>
       <div><vue-loader /></div>

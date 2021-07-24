@@ -33,8 +33,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Tooltip"
-      usage="Tooltips display additional information upon click, hover, or focus.
-      The information should be contextual, useful, and nonessential."
+      usage="Tooltips display additional information upon click, hover, or focus. The information should be contextual, useful, and nonessential."
       story="Display tootltip and all its properties."
     >
     <vue-stack>

@@ -4,7 +4,7 @@ import VueTabGroup from './VueTabGroup.vue';
 import VueTabItem from './VueTabItem.vue';
 
 const story = storiesOf('Data Display|TabGroup', module) as any;
-// TODO: add usage
+
 story.add(
   'Default',
   () => ({
@@ -15,7 +15,7 @@ story.add(
     },
     template: `<component-docs
       component-name="TabGroup"
-      usage="TBD"
+      usage="Allows users to navigate between views of similarly grouped content within the same page or context."
       story="Display tabs."
     >
     <vue-tab-group>

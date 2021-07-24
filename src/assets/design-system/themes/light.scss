@@ -63,6 +63,8 @@
   --brand-secondary-border-color: #{palette-color-level('neutral', 2)};
   --brand-primary-border-color-inverse: #{palette-color-level('neutral', 6)};
   --brand-secondary-border-color-inverse: #{palette-color-level('neutral', 5)};
+
+  // TODO: figure out the tokens and values with duylam
   --brand-border-radius-sm: #{$space-4};
   --brand-border-radius-md: #{$space-8};
   --brand-border-radius-lg: #{$space-16};

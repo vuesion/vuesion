@@ -19,8 +19,8 @@ story.add(
     },
     template: `<component-docs
       component-name="Collapse"
-      usage="Used to put long sections of information under a block that users can expand or collapse"
-      story="Display button that triggers the collapse to show or hide text"
+      usage="Used to put long sections of information under a block that users can expand or collapse."
+      story="Display button that triggers the collapse to show or hide text."
     >
     <vue-card>
       <vue-inline space="16" stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>

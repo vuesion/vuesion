@@ -12,7 +12,7 @@ story.add(
     components: { VueBackToTop, ComponentDocs },
     template: `<component-docs
       component-name="BackToTop"
-      usage="A button to return to the top of the page allows the user to quickly return to the top of the page"
+      usage="A button to return to the top of the page allows the user to quickly return to the top of the page."
       story="To see the back-to-top-button please scroll down to the end of the page and start scrolling up again."
     >
     <div :style="{height: '6000px'}"><vue-back-to-top /></div>

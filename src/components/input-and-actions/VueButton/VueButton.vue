@@ -43,8 +43,6 @@ import { shirtSizeValidator, buttonStyleValidator } from '@/components/prop-vali
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueLoader from '@/components/data-display/VueLoader/VueLoader.vue';
 
-// TODO: add different spacings for icons
-
 export default defineComponent({
   name: 'VueButton',
   components: {

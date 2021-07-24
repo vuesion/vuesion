@@ -10,8 +10,8 @@ story.add(
     components: { ComponentDocs, VueMarkdown },
     template: `<component-docs
       component-name="Markdown"
-      usage="Display markdown content as HTML"
-      story="Display markdown content"
+      usage="Display markdown content as HTML."
+      story="Display markdown content."
     >
       <vue-markdown>
 # headline 1

@@ -21,7 +21,7 @@ story.add(
     template: `
       <component-docs
         component-name="Badge"
-        usage="Badges are used to inform users of the status of an object or of an action that’s been taken."
+        usage="Badges are used to inform users of the status of an object or action."
         story="Display all statuses for the Badge component."
       >
       <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>

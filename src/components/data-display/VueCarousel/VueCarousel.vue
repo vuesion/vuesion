@@ -24,7 +24,6 @@
       <li v-for="(_, idx) in preloadedImages" :key="idx" :class="isActiveSlide(idx) && $style.active">&nbsp;</li>
     </ul>
 
-    <!-- TODO: revisit when pagination is done -->
     <vue-pagination
       v-if="showPagination"
       slim

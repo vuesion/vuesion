@@ -8,8 +8,8 @@ describe('VueBackToTop.vue', () => {
   let harness: RenderResult;
 
   beforeEach(() => {
-    (window as any).innerHeight = 100;
-    (window as any).pageYOffset = 400;
+    (global as any).innerHeight = 100;
+    (global as any).pageYOffset = 400;
 
     harness = render(VueBackToTop, {
       i18n,
@@ -41,7 +41,7 @@ describe('VueBackToTop.vue', () => {
 
     triggerWindow.scroll();
 
-    (window as any).pageYOffset = 300;
+    (global as any).pageYOffset = 300;
 
     triggerWindow.scroll();
 
@@ -51,7 +51,7 @@ describe('VueBackToTop.vue', () => {
       '<button data-testid="back-to-top" type="button" aria-label="common.Back-to-top" class="vueBackToTop show">',
     );
 
-    (window as any).pageYOffset = 0;
+    (global as any).pageYOffset = 0;
 
     triggerWindow.scroll();
 

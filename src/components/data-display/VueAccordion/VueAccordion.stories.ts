@@ -7,7 +7,6 @@ import VueAccordionItem from './VueAccordionItem.vue';
 
 const story = storiesOf('Data Display|Accordion', module) as any;
 
-// TODO: ass usage
 story.add(
   'default',
   () => ({
@@ -25,7 +24,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Accordion"
-      usage="TBD"
+      usage="The accordion is used to toggle the visibility of a section of content."
       story="Display accordion with all its properties."
     >
     <vue-stack>
