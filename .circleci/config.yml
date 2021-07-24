@@ -33,6 +33,9 @@ jobs:
           name: Code Climate before build
           command: ./cc-test-reporter before-build
       - run:
+          name: Checkout premium components
+          command: git clone https://github.com/vuesion/vuesion-premium.git ./src/components/vuesion-premium
+      - run:
           name: Building application
           command: npm run ci
       - run:
