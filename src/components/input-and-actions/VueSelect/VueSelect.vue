@@ -3,7 +3,7 @@
     <div
       ref="selectRef"
       :class="[$style.vueSelect, disabled && $style.disabled, errors.length > 0 && $style.error]"
-      @keydown="onKeyDown"
+      @keydown.enter.space.left.right.up.down.esc.stop.prevent="onKeyDown"
     >
       <vue-text
         :for="id"
@@ -59,7 +59,7 @@
       </div>
 
       <vue-collapse :show="show" :duration="duration">
-        <vue-menu :items="options" :class="$style.menu" @click="onItemClick" />
+        <vue-menu :items="options" :class="[$style.menu, hideLabel && $style.hideLabel]" @click="onItemClick" />
       </vue-collapse>
 
       <vue-text
@@ -101,7 +101,7 @@ export default defineComponent({
     hideDescription: { type: Boolean, default: false },
     required: { type: Boolean, default: false },
     validation: { type: [String, Object], default: null },
-    value: { type: [String, Boolean, Object, Object as () => IItem], default: undefined },
+    value: { type: [String, Boolean, Number, Object, Object as () => IItem], default: undefined },
     disabled: { type: Boolean, default: false },
     items: { type: [Array, Array as () => Array<IItem>], required: true },
     placeholder: { type: String, default: '' },
@@ -284,6 +284,10 @@ export default defineComponent({
     width: 100%;
     display: none;
     top: $select-label-height + $select-label-gap + $select-height + $select-description-gap;
+
+    &.hideLabel {
+      top: $select-height + $select-description-gap;
+    }
   }
 
   @media (hover: hover) {
