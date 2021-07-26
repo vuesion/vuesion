@@ -1,15 +1,15 @@
 <template>
   <vue-box padding="12" :class="$style.vueNavBar" as="nav">
-    <vue-columns space="0" :class="$style.layout">
+    <vue-columns space="0" :class="$style.layout" align-y="center">
       <vue-column width="content" align-y="center">
         <vue-icon-menu tabindex="0" :class="$style.menu" @click.native.stop.prevent="$emit('menu-click')" />
       </vue-column>
 
-      <vue-column align="center" align-y="center">
+      <vue-column align="center">
         <slot name="center" />
       </vue-column>
 
-      <vue-column v-if="userName || userImage" width="content" align-y="center">
+      <vue-column v-if="userName || userImage" width="content">
         <vue-dropdown
           :items="[
             { label: 'Profile', value: 'profile', leadingIcon: 'user' },
@@ -24,7 +24,7 @@
         </vue-dropdown>
       </vue-column>
 
-      <vue-column v-else width="content" align-y="center">
+      <vue-column v-else width="content">
         <slot name="right" />
       </vue-column>
     </vue-columns>

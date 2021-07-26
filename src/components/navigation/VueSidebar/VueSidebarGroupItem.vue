@@ -10,7 +10,7 @@
       @keypress.space.enter="!href && !to && $emit('click')"
     >
       <vue-columns space="16" align-y="center">
-        <vue-column v-if="leadingIcon" width="content" align-y="center">
+        <vue-column v-if="leadingIcon" width="content">
           <component :is="`vue-icon-${leadingIcon}`" />
         </vue-column>
 
@@ -18,7 +18,7 @@
           <vue-text weight="semi-bold">{{ name }}</vue-text>
         </vue-column>
 
-        <vue-column v-if="trailingIcon" width="content" align-y="center">
+        <vue-column v-if="trailingIcon" width="content">
           <component :is="`vue-icon-${trailingIcon}`" />
         </vue-column>
       </vue-columns>
