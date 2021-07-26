@@ -1,32 +1,17 @@
 import VueI18n from 'vue-i18n';
 const VuesionConfig = require('../../../.vuesion/config.json');
 
-export const calendarFormats: any = {
-  calendarHeader: {
-    month: 'long',
-    weekday: 'long',
-    day: 'numeric',
-  },
-  calendarNav: {
-    month: 'long',
-    year: 'numeric',
-  },
-  calendarLabel: {
-    year: 'numeric',
-    month: 'long',
-    weekday: 'long',
-    day: 'numeric',
-  },
-  datePicker: {
-    year: 'numeric',
-    month: '2-digit',
+export const dateFormats: any = {
+  dayMonthYearNumeric: {
     day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
   },
 };
 export const decimalFormats: any = {};
 export const dateTimeFormats: VueI18n.DateTimeFormats = {
-  en: calendarFormats,
-  de: calendarFormats,
+  en: dateFormats,
+  de: dateFormats,
 };
 export const numberFormats: VueI18n.NumberFormats = {
   en: decimalFormats,
