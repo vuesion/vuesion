@@ -143,7 +143,7 @@ export default {
 
   table td,
   table th {
-    padding: $data-table-row-column-padding;
+    padding: $space-8 $space-12;
   }
 
   p {
