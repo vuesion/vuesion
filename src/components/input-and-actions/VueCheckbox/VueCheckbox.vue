@@ -30,7 +30,15 @@
           />
         </svg>
       </div>
-      <vue-text :for="id" as="label" weight="semi-bold" color="text-medium" tabindex="-1" v-html="label" />
+      <vue-text
+        :for="id"
+        as="label"
+        weight="semi-bold"
+        color="text-medium"
+        tabindex="-1"
+        :class="hideLabel && 'sr-only'"
+        v-html="label"
+      />
     </div>
     <vue-text v-if="description" :class="$style.description" as="div">
       {{ description }}
@@ -55,6 +63,7 @@ export default defineComponent({
     id: { type: String, required: true },
     name: { type: String, required: true },
     label: { type: String, required: true },
+    hideLabel: { type: Boolean, default: false },
     description: { type: String, default: null },
     required: { type: Boolean, default: false },
     validation: { type: [String, Object], default: null }, // TODO: needs fine tuning
