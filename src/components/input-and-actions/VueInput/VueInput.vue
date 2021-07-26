@@ -120,6 +120,7 @@ export default defineComponent({
 
     &.hasLeadingContent {
       .leading {
+        cursor: pointer;
         display: inline-flex;
         justify-content: center;
         align-items: center;
@@ -144,6 +145,7 @@ export default defineComponent({
 
     &.hasTrailingContent {
       .trailing {
+        cursor: pointer;
         display: inline-flex;
         justify-content: center;
         align-items: center;
