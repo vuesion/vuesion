@@ -14,6 +14,8 @@
       ...applyClasses($style, marginTabletLandscapeValues, 'm', 'tl'),
       ...applyClasses($style, marginSmallDesktopValues, 'm', 'sd'),
       ...applyClasses($style, marginLargeDesktopValues, 'm', 'ld'),
+      ...applyResponsiveClasses($style, {}, responsiveHorizontalAlignments, 'alignh'),
+      ...applyResponsiveClasses($style, {}, responsiveVerticalAlignments, 'alignv'),
     ]"
     :style="[styles]"
   >
@@ -23,8 +25,18 @@
 
 <script lang="ts">
 import { computed, defineComponent } from '@vue/composition-api';
-import { responsivePropValidator, spacingValidator } from '@/components/prop-validators';
-import { isNullOrUndefined, parseCssSpacingProp, parseResponsivePropValue } from '@/components/utils';
+import {
+  horizontalAlignmentValidator,
+  responsivePropValidator,
+  spacingValidator,
+  verticalAlignmentValidator,
+} from '@/components/prop-validators';
+import {
+  applyResponsiveClasses,
+  isNullOrUndefined,
+  parseCssSpacingProp,
+  parseResponsivePropValue,
+} from '@/components/utils';
 
 export default defineComponent({
   name: 'VueBox',
@@ -47,6 +59,16 @@ export default defineComponent({
     styles: {
       type: Object,
       default: () => ({}),
+    },
+    align: {
+      type: [String, Array as () => Array<string>],
+      validator: responsivePropValidator(horizontalAlignmentValidator),
+      default: null,
+    },
+    alignY: {
+      type: [String, Array as () => Array<string>],
+      validator: responsivePropValidator(verticalAlignmentValidator),
+      default: null,
     },
   },
   setup(props) {
@@ -78,6 +100,9 @@ export default defineComponent({
     const marginSmallDesktopValues = computed(() => parseCssSpacingProp(marginSmallDesktop.value));
     const marginLargeDesktopValues = computed(() => parseCssSpacingProp(marginLargeDesktop.value));
 
+    const responsiveHorizontalAlignments = computed(() => parseResponsivePropValue(props.align));
+    const responsiveVerticalAlignments = computed(() => parseResponsivePropValue(props.alignY));
+
     return {
       paddingPhoneValues,
       paddingTabletPortraitValues,
@@ -89,6 +114,8 @@ export default defineComponent({
       marginTabletLandscapeValues,
       marginSmallDesktopValues,
       marginLargeDesktopValues,
+      responsiveHorizontalAlignments,
+      responsiveVerticalAlignments,
       applyClasses: ($style: any, values: any, classNamePrefix: string, breakpointPrefix: string = null) => {
         const result: any = {};
         const map: any = {
@@ -111,6 +138,7 @@ export default defineComponent({
 
         return result;
       },
+      applyResponsiveClasses,
     };
   },
 });
@@ -123,6 +151,7 @@ export default defineComponent({
   display: block;
   height: 100%;
 
+  // paddings
   @each $name, $space in $spacings {
     &.pt-#{$name} {
       padding-top: $space;
@@ -140,7 +169,6 @@ export default defineComponent({
       padding-left: $space;
     }
   }
-
   @include mediaMin(tabletPortrait) {
     @each $name, $space in $spacings {
       &.pt-tp-#{$name} {
@@ -160,7 +188,6 @@ export default defineComponent({
       }
     }
   }
-
   @include mediaMin(tabletLandscape) {
     @each $name, $space in $spacings {
       &.pt-tl-#{$name} {
@@ -180,7 +207,6 @@ export default defineComponent({
       }
     }
   }
-
   @include mediaMin(smallDesktop) {
     @each $name, $space in $spacings {
       &.pt-sd-#{$name} {
@@ -200,7 +226,6 @@ export default defineComponent({
       }
     }
   }
-
   @include mediaMin(largeDesktop) {
     @each $name, $space in $spacings {
       &.pt-ld-#{$name} {
@@ -221,6 +246,7 @@ export default defineComponent({
     }
   }
 
+  // margins
   @each $name, $space in $spacings {
     &.mt-#{$name} {
       margin-top: $space;
@@ -238,7 +264,6 @@ export default defineComponent({
       margin-left: $space;
     }
   }
-
   @include mediaMin(tabletPortrait) {
     @each $name, $space in $spacings {
       &.mt-tp-#{$name} {
@@ -258,7 +283,6 @@ export default defineComponent({
       }
     }
   }
-
   @include mediaMin(tabletLandscape) {
     @each $name, $space in $spacings {
       &.mt-tl-#{$name} {
@@ -278,7 +302,6 @@ export default defineComponent({
       }
     }
   }
-
   @include mediaMin(smallDesktop) {
     @each $name, $space in $spacings {
       &.mt-sd-#{$name} {
@@ -298,7 +321,6 @@ export default defineComponent({
       }
     }
   }
-
   @include mediaMin(largeDesktop) {
     @each $name, $space in $spacings {
       &.mt-ld-#{$name} {
@@ -316,6 +338,160 @@ export default defineComponent({
       &.ml-ld-#{$name} {
         margin-left: $space;
       }
+    }
+  }
+
+  // alignments
+  &.alignv-top {
+    display: flex;
+    align-items: flex-start;
+  }
+  &.alignv-center {
+    display: flex;
+    align-items: center;
+  }
+  &.alignv-bottom {
+    display: flex;
+    align-items: flex-end;
+  }
+  &.alignh-left {
+    display: flex;
+    justify-content: flex-start;
+  }
+  &.alignh-center {
+    display: flex;
+    justify-content: center;
+  }
+  &.alignh-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+  @include mediaMin(tabletPortrait) {
+    &.alignv-tp-top {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    &.alignv-tp-center {
+      display: flex;
+      align-items: center;
+    }
+
+    &.alignv-tp-bottom {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    &.alignh-tp-left {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    &.alignh-tp-center {
+      display: flex;
+      justify-content: center;
+    }
+
+    &.alignh-tp-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  @include mediaMin(tabletLandscape) {
+    &.alignv-tl-top {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    &.alignv-tl-center {
+      display: flex;
+      align-items: center;
+    }
+
+    &.alignv-tl-bottom {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    &.alignh-tl-left {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    &.alignh-tl-center {
+      display: flex;
+      justify-content: center;
+    }
+
+    &.alignh-tl-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  @include mediaMin(smallDesktop) {
+    &.alignv-sd-top {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    &.alignv-sd-center {
+      display: flex;
+      align-items: center;
+    }
+
+    &.alignv-sd-bottom {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    &.alignh-sd-left {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    &.alignh-sd-center {
+      display: flex;
+      justify-content: center;
+    }
+
+    &.alignh-sd-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  @include mediaMin(largeDesktop) {
+    &.fit-ld {
+      flex-basis: var(--large-desktop);
+    }
+
+    &.alignv-ld-top {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    &.alignv-ld-center {
+      display: flex;
+      align-items: center;
+    }
+
+    &.alignv-ld-bottom {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    &.alignh-ld-left {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    &.alignh-ld-center {
+      display: flex;
+      justify-content: center;
+    }
+
+    &.alignh-ld-right {
+      display: flex;
+      justify-content: flex-end;
     }
   }
 }
