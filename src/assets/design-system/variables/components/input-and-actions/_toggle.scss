@@ -1,15 +1,15 @@
 // toggle states
 // default
-$toggle-bg: var(--brand-surface-color-low);
-$toggle-handle-bg: var(--brand-text-color-high);
+$toggle-bg: var(--brand-surface-color-default-low);
+$toggle-handle-bg: var(--brand-text-color-default-high);
 
 // hover
-$toggle-bg-hover: var(--brand-surface-color-low);
-$toggle-handle-bg-hover: var(--brand-text-color-high);
+$toggle-bg-hover: var(--brand-surface-color-default-low);
+$toggle-handle-bg-hover: var(--brand-text-color-default-high);
 
 // checked
 $toggle-bg-checked: var(--brand-surface-color-info);
-$toggle-handle-bg-checked: var(--brand-text-color-info-high);
+$toggle-handle-bg-checked: var(--brand-text-color-info);
 
 $toggle-width: $space-32;
 $toggle-height: $space-16;
@@ -20,5 +20,5 @@ $toggle-handle-height: $toggle-height - $space-4;
 $toggle-handle-border-radius: 50%;
 
 $toggle-label-gap: $space-8;
-$toggle-outline: var(--brand-outline);
+$toggle-outline: var(--brand-focused);
 $toggle-disabled-opacity: 0.3;

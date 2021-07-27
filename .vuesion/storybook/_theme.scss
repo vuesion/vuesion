@@ -2,10 +2,10 @@
 
 :export {
   base: 'dark';
-  colorPrimary: palette-color-level('primary', 6);
+  colorPrimary: palette-color-level('primary', 7);
   colorSecondary: palette-color-level('primary', 5);
   // UI
-  appBg: palette-color-level('neutral', 9);
+  appBg: palette-color-level('neutral', 10);
   appContentBg: palette-color-level('neutral', 1);
   appBorderColor: palette-color-level('neutral', 7);
   appBorderRadius: $space-4;

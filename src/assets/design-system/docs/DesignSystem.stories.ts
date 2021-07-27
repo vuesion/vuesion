@@ -1,7 +1,13 @@
 import { storiesOf } from '@storybook/vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueMarkdown from '@/components/data-display/VueMarkdown/VueMarkdown.vue';
-import BrandColors from './components/BrandColors.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import UtilityTokenSection from '@/assets/design-system/docs/components/UtilityTokenSection.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import TokenItem from '@/assets/design-system/docs/components/TokenItem.vue';
+import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import ColorTokens from './components/ColorTokens.vue';
 import ColorPalette from './components/ColorPalette.vue';
 
 let story = storiesOf('Foundation|Intro', module) as any;
@@ -41,117 +47,105 @@ story = storiesOf('Foundation|General', module) as any;
 story.addParameters({ options: { showAddonPanel: false } });
 
 story.add('Color Palette', () => ({
-  components: { VueMarkdown, ColorPalette, VueBox },
-  template: `<vue-box>
-<vue-markdown :use-router="false">
-### Color Palette
-</vue-markdown>
-<color-palette />
-</vue-box>
+  components: { ColorPalette, ComponentDocs },
+  template: `<component-docs
+    component-name="Color Palette"
+    usage="This palette are the base colors used for the color tokens."
+    suffix=""
+  >
+    <color-palette />
+  </component-docs>
 `,
 }));
 
 story.add('Color Tokens', () => ({
-  components: { VueMarkdown, BrandColors, VueBox },
-  template: `<vue-box>
-<vue-markdown :use-router="false">
-### Brand Colors
-Every brand color is related to a color in the color palette.
-</vue-markdown>
-<brand-colors/>
-</vue-box>
+  components: { ColorTokens, ComponentDocs },
+  template: `<component-docs
+    component-name="Color tokens"
+    usage="The Vuesion color system aims to make user interfaces more usable by helping teams apply
+    colors in a functional and meaningful way. Color tokens are defined by their function in an interface —
+    this allows the designer to focus “how” and “why” rather than “what color should this be?”"
+    suffix=""
+  >
+<color-tokens />
+</component-docs>
 `,
 }));
 
-story.add('Spacings', () => ({
-  components: { VueMarkdown, VueBox },
-  template: `<vue-box><vue-markdown :use-router="false">
-## Spacings
-To keep the spacing consistent we have a couple of variables with the prefix \`$space-\`
-
-Variable   | Space in pixel
------------|---------------
-$space-2   |   2px
-$space-4   |   4px
-$space-8   |   8px
-$space-10  |  10px
-$space-12  |  12px
-$space-16  |  16px
-$space-20  |  20px
-$space-24  |  24px
-$space-32  |  32px
-$space-40  |  40px
-$space-48  |  48px
-$space-52  |  52px
-$space-56  |  56px
-$space-64  |  64px
-$space-72  |  72px
-$space-84  |  84px
-$space-96  |  96px
-$space-120  |  120px
-$space-128  |  128px
-$space-192  |  192px
-</vue-markdown></vue-box>
-`,
-}));
-
-story.add('Break points', () => ({
-  components: { VueMarkdown, VueBox },
-  template: `<vue-box><vue-markdown :use-router="false">
-## Break points
-If you want to use a break points inside one of your components, we provide you width
-mixins to keep everything consistent and to avoid unnecessary media definitions:
-
-\`@include mediaMin(break-point-id)\`
-
-\`@include mediaMax(break-point-id)\`
-
-\`@include mediaMinMax(break-point-id)\`
-
-Break Point Id   | Min-width | Max-width
------------------|----------|----------
-phone            | 0        | 767px
-tabletPortrait   | 768px    | 1023px
-tabletLandscape  | 1024px   | 1279px
-smallDesktop     | 1280px   | 1439px
-largeDesktop     | 1440px   | 4095px
-</vue-markdown></vue-box>
-`,
-}));
-
-story.add('Elevation / Box shadows', () => ({
-  components: { VueMarkdown, VueBox },
-  template: `<vue-box>
-  <vue-markdown :use-router="false">
-    ### Box Shadows
-
-    We have three different kinds of elevations:.
-
-    \`--brand-elevation-1: 0 1px 4px rgba(19, 20, 22, 0.08);\`
-    \`--brand-elevation-2: 0 -1px 2px -1px rgba(0, 0, 0, 0.05), 0 3px 6px rgba(19, 20, 22, 0.15);\`
-    \`--brand-elevation-3: 0 -2px 4px rgba(0, 0, 0, 0.08), 0 6px 10px rgba(19, 20, 22, 0.15);\`
-
-    We have one box-shadow that is used as outline, e.g. for focus states
-    \`--brand-outline: 0 0 0 #{$space-2} #{palette-color-level('neutral', 0)}, 0 0 0 #{$space-4} #{palette-color-level('primary', 3)};\`
-  </vue-markdown>
-  </vue-box>
-  `,
-}));
-
-story.add('Border Radius', () => ({
-  components: { VueMarkdown, VueBox },
-  template: `<vue-box>
-  <vue-markdown :use-router="false">
-
-    ### Border Radius
-
-    We have three different kinds of border radius.
-
-    \`--brand-border-radius-sm: #{$space-2};  //  2px\`
-    \`--brand-border-radius-sm: #{$space-4};  //  4px\`
-    \`--brand-border-radius-md: #{$space-8};  //  8px\`
-    \`--brand-border-radius-lg: #{$space-16}; // 16px\`
-  </vue-markdown>
-  </vue-box>
-  `,
+story.add('Utility Component Tokens', () => ({
+  components: { ComponentDocs, UtilityTokenSection, VueStack, TokenItem, VueTiles, VueText, VueBox },
+  template: `<component-docs
+    component-name="Utility Component Tokens"
+    usage="These are other tokenized design values. Some of these tokens do were not able to be properly translated to Figma so new components will have to manually input these values."
+    suffix=""
+  >
+    <utility-token-section title="Elevation" description="These are the possible elevations, or distances between surfaces.">
+      <vue-stack>
+        <token-item
+          figma="Elevation 1"
+          css="brand-elevation-1"
+          palette="neutral 10"
+          :elevation="1"
+          circle-color="brand-bg-color-default-high"
+          small-circle-color="brand-bg-color-inverse-high"
+        />
+        <token-item
+          figma="Elevation 2"
+          css="brand-elevation-2"
+          palette="neutral 10"
+          :elevation="2"
+          circle-color="brand-bg-color-default-high"
+          small-circle-color="brand-bg-color-inverse-high"
+        />
+        <token-item
+          figma="Elevation 3"
+          css="brand-elevation-3"
+          palette="neutral 10"
+          :elevation="3"
+          circle-color="brand-bg-color-default-high"
+          small-circle-color="brand-bg-color-inverse-high"
+        />
+      </vue-stack>
+    </utility-token-section>
+    <utility-token-section title="Accessibility" description="Tokens used for accessibility such as focus.">
+      <vue-stack>
+        <token-item
+          figma="📀 Interaction - Focused"
+          css="brand-focused"
+          palette="primary 3"
+          circle-color="brand-interaction-primary-enabled"
+          small-circle-color="brand-bg-color-inverse-high"
+          focused
+        />
+      </vue-stack>
+    </utility-token-section>
+    <utility-token-section title="Border Radiuses" description="There are a finite list of possible border radiuses to prevent the creation of shapes that inconsistent and introduce unnecessary tension between elements and spacing.">
+      <vue-tiles :columns="5">
+        <vue-box
+          v-for="radius in [
+            {figma: 'None', css: '---'},
+            {figma: 'Extra Small - 2 pixels', css: 'brand-border-radius-xs'},
+            {figma: 'Small - 4 pixels', css: 'brand-border-radius-sm'},
+            {figma: 'Medium - 8 pixels', css: 'brand-border-radius-md'},
+            {figma: 'Large - 16 pixels', css: 'brand-border-radius-lg'},
+            ]"
+          padding="0"
+        >
+          <vue-stack space="16" align="center">
+            <vue-box
+              :styles="{
+              height: '80px',
+              width:'160px',
+              background: 'var(--brand-surface-color-default-medium)',
+              border: '1px solid var(--brand-border-color-default-high)',
+              borderRadius: 'var(--' + radius.css + ')' }"/>
+            <vue-stack space="0" align="center">
+              <vue-text look="h6" color="text-high">{{ radius.figma }}</vue-text>
+              <vue-text color="text-low">{{ radius.css }}</vue-text>
+            </vue-stack>
+          </vue-stack>
+        </vue-box>
+      </vue-tiles>
+    </utility-token-section>
+  </component-docs>`,
 }));

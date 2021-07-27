@@ -1,19 +1,19 @@
 $menu-z-index: 1000;
-$menu-bg: var(--brand-surface-color-high);
+$menu-bg: var(--brand-surface-color-default-high);
 $menu-min-width: $space-120 + $space-72;
 $menu-max-height: $space-120 * 3;
 $menu-padding: $space-8 0;
 $menu-shadow: var(--brand-elevation-3);
 $menu-border-radius: var(--brand-border-radius-md);
-$menu-border: 1px solid var(--brand-border-color-medium);
+$menu-border: 1px solid var(--brand-border-color-default-medium);
 
 // item
-$menu-item-color: var(--brand-text-color-high);
+$menu-item-color: var(--brand-text-color-default-high);
 $menu-item-padding: $space-10 $space-12;
-$menu-item-bg-active: var(--brand-interaction-color-primary-hovered);
-$menu-item-color-active: var(--brand-text-color-high-inverse);
+$menu-item-bg-active: var(--brand-interaction-primary-hovered);
+$menu-item-color-active: var(--brand-text-color-inverse-high);
 $menu-item-icon-size: $space-20;
 $menu-item-icon-size-gap: $space-8;
 
 // separator
-$menu-separator-border: 1px solid var(--brand-border-color-medium);
+$menu-separator-border: 1px solid var(--brand-border-color-default-medium);

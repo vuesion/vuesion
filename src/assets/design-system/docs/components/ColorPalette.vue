@@ -1,24 +1,23 @@
 <template>
-  <div :class="$style.sections">
-    <div v-for="section in colorSections" :key="section.name">
-      <vue-text look="h4" as="h4">
-        {{ section.name.toUpperCase() }}
-      </vue-text>
-      <div :class="$style.palette">
-        <div v-for="color in section.colors" :key="color.hex" :style="{ background: color.hex }">
-          <span>{{ color.name }} ({{ color.hex }})</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <vue-stack space="0" align="right">
+    <vue-tiles v-for="section in colorSections" :key="section.name" space="0" columns="11">
+      <vue-box v-if="section.name !== 'neutral'" />
+      <vue-box v-for="color in section.colors" :key="color.hex" :style="{ background: color.hex }">
+        <vue-text :class="$style.color">{{ color.name }} ({{ color.hex }})</vue-text>
+      </vue-box>
+    </vue-tiles>
+  </vue-stack>
 </template>
 
 <script lang="ts">
 import VueText from '@/components/typography/VueText/VueText.vue';
+import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
 
 export default {
   name: 'ColorPalette',
-  components: { VueText },
+  components: { VueStack, VueBox, VueTiles, VueText },
   computed: {
     colorSections() {
       const sections: any = {};
@@ -38,7 +37,7 @@ export default {
       });
 
       Object.keys(sections).forEach((key: string) => {
-        if (!['sections', 'palette', 'light', 'dark'].includes(key)) {
+        if (!['color', 'light', 'dark'].includes(key)) {
           arr.push({ name: key, colors: sections[key] });
         }
       });
@@ -52,32 +51,11 @@ export default {
 <style lang="scss" module>
 @import '~@/assets/design-system';
 
-.sections {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: $space-24;
-
-  @include mediaMin(tabletPortrait) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.palette {
-  display: grid;
-  grid-template-rows: 1fr;
-
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    span {
-      background: inherit;
-      background-clip: text;
-      color: transparent;
-      filter: invert(1) grayscale(1) unquote('contrast(100)');
-    }
-  }
+.color {
+  background: inherit;
+  background-clip: text;
+  color: transparent;
+  filter: invert(1) grayscale(1) unquote('contrast(100)');
 }
 
 :export {
@@ -92,6 +70,7 @@ export default {
   primary-primary-9: palette-color-level('primary', 9);
   primary-primary-10: palette-color-level('primary', 10);
 
+  neutral-neutral-0: palette-color-level('neutral', 0);
   neutral-neutral-1: palette-color-level('neutral', 1);
   neutral-neutral-2: palette-color-level('neutral', 2);
   neutral-neutral-3: palette-color-level('neutral', 3);
