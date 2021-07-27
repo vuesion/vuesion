@@ -6,11 +6,11 @@ $select-label-gap: $space-4;
 
 // input default
 $select-border-radius: var(--brand-border-radius-md);
-$select-border: 1px solid var(--brand-border-color-high);
+$select-border: 1px solid var(--brand-border-color-default-high);
 $select-height: $space-40;
 $select-padding: ($space-12 - $space-2) $space-12;
-$select-color: var(--brand-text-color-high);
-$select-placeholder-color: var(--brand-text-color-low);
+$select-color: var(--brand-text-color-default-high);
+$select-placeholder-color: var(--brand-text-color-default-low);
 $select-background-color: transparent;
 $select-font-family: $font-family;
 $select-font-size: $text-1;
@@ -24,21 +24,21 @@ $select-description-height: $space-16;
 
 // utils
 $select-disabled-disabled-opacity: 0.3;
-$select-outline: var(--brand-outline);
+$select-outline: var(--brand-focused);
 
 // hover
-$select-border-hover: 1px solid var(--brand-border-color-high);
+$select-border-hover: 1px solid var(--brand-border-color-default-high);
 
 // error
 $select-background-error-color: palette-color-level('danger', 1);
-$select-border-error: 1px solid var(--brand-interaction-color-danger-enabled);
+$select-border-error: 1px solid var(--brand-interaction-danger-enabled);
 
 // leading icon
 $select-leading-width: $space-40 - $space-4;
 $select-leading-icon-size: $space-20;
-$select-leading-color: var(--brand-text-color-high);
+$select-leading-color: var(--brand-text-color-default-high);
 
 // trailing icon
 $select-trailing-width: $space-40 - $space-4;
 $select-trailing-icon-size: $space-20;
-$select-trailing-color: var(--brand-text-color-high);
+$select-trailing-color: var(--brand-text-color-default-high);

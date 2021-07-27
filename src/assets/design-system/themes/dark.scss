@@ -26,42 +26,42 @@
   --brand-success: #{palette-color-level('success', 7)};
 
   /* Surface Colors */
-  --brand-surface-color-high: #{palette-color-level('neutral', 10)};
-  --brand-surface-color-medium: #{palette-color-level('neutral', 8)};
-  --brand-surface-color-low: #{palette-color-level('neutral', 7)};
-  --brand-surface-color-high-inverse: #{palette-color-level('neutral', 0)};
-  --brand-surface-color-medium-inverse: #{palette-color-level('neutral', 3)};
-  --brand-surface-color-low-inverse: #{palette-color-level('neutral', 4)};
+  --brand-surface-color-default-high: #{palette-color-level('neutral', 10)};
+  --brand-surface-color-default-medium: #{palette-color-level('neutral', 8)};
+  --brand-surface-color-default-low: #{palette-color-level('neutral', 7)};
+  --brand-surface-color-inverse-high: #{palette-color-level('neutral', 0)};
+  --brand-surface-color-inverse-medium: #{palette-color-level('neutral', 3)};
+  --brand-surface-color-inverse-low: #{palette-color-level('neutral', 4)};
   --brand-surface-color-info: #{palette-color-level('primary', 1)};
   --brand-surface-color-danger: #{palette-color-level('danger', 1)};
   --brand-surface-color-warning: #{palette-color-level('warning', 1)};
   --brand-surface-color-success: #{palette-color-level('success', 1)};
 
   /* Background Colors */
-  --brand-bg-color-high: #{palette-color-level('neutral', 8)};
-  --brand-bg-color-medium: #{palette-color-level('neutral', 9)};
-  --brand-bg-color-low: #{palette-color-level('neutral', 10)};
-  --brand-bg-color-high-inverse: #{palette-color-level('neutral', 3)};
-  --brand-bg-color-medium-inverse: #{palette-color-level('neutral', 2)};
-  --brand-bg-color-low-inverse: #{palette-color-level('neutral', 1)};
+  --brand-bg-color-default-high: #{palette-color-level('neutral', 8)};
+  --brand-bg-color-default-medium: #{palette-color-level('neutral', 9)};
+  --brand-bg-color-default-low: #{palette-color-level('neutral', 10)};
+  --brand-bg-color-inverse-high: #{palette-color-level('neutral', 3)};
+  --brand-bg-color-inverse-medium: #{palette-color-level('neutral', 2)};
+  --brand-bg-color-inverse-low: #{palette-color-level('neutral', 1)};
 
   /* Text Colors */
-  --brand-text-color-high: #{palette-color-level('neutral', 0)};
-  --brand-text-color-medium: #{palette-color-level('neutral', 3)};
-  --brand-text-color-low: #{palette-color-level('neutral', 4)};
-  --brand-text-color-high-inverse: #{palette-color-level('neutral', 10)};
-  --brand-text-color-medium-inverse: #{palette-color-level('neutral', 7)};
-  --brand-text-color-low-inverse: #{palette-color-level('neutral', 6)};
-  --brand-text-color-info-high: #{palette-color-level('primary', 7)};
-  --brand-text-color-danger-high: #{palette-color-level('danger', 7)};
-  --brand-text-color-warning-high: #{palette-color-level('warning', 7)};
-  --brand-text-color-success-high: #{palette-color-level('success', 7)};
+  --brand-text-color-default-high: #{palette-color-level('neutral', 0)};
+  --brand-text-color-default-medium: #{palette-color-level('neutral', 3)};
+  --brand-text-color-default-low: #{palette-color-level('neutral', 4)};
+  --brand-text-color-inverse-high: #{palette-color-level('neutral', 10)};
+  --brand-text-color-inverse-medium: #{palette-color-level('neutral', 7)};
+  --brand-text-color-inverse-low: #{palette-color-level('neutral', 6)};
+  --brand-text-color-info: #{palette-color-level('primary', 7)};
+  --brand-text-color-danger: #{palette-color-level('danger', 7)};
+  --brand-text-color-warning: #{palette-color-level('warning', 7)};
+  --brand-text-color-success: #{palette-color-level('success', 7)};
 
   /* Borders */
-  --brand-border-color-high: #{palette-color-level('neutral', 8)};
-  --brand-border-color-medium: #{palette-color-level('neutral', 9)};
-  --brand-border-color-high-inverse: #{palette-color-level('neutral', 4)};
-  --brand-border-color-medium-inverse: #{palette-color-level('neutral', 3)};
+  --brand-border-color-default-high: #{palette-color-level('neutral', 8)};
+  --brand-border-color-default-medium: #{palette-color-level('neutral', 9)};
+  --brand-border-color-inverse-high: #{palette-color-level('neutral', 4)};
+  --brand-border-color-inverse-medium: #{palette-color-level('neutral', 3)};
   --brand-border-color-info-high: #{palette-color-level('primary', 7)};
   --brand-border-color-info-low: #{palette-color-level('primary', 2)};
   --brand-border-color-danger-high: #{palette-color-level('danger', 7)};
@@ -72,25 +72,25 @@
   --brand-border-color-success-low: #{palette-color-level('success', 2)};
 
   /* Interaction Colors */
-  --brand-interaction-color-primary-enabled: #{palette-color-level('primary', 7)};
-  --brand-interaction-color-primary-hovered: #{palette-color-level('primary', 6)};
-  --brand-interaction-color-primary-activated: #{palette-color-level('primary', 8)};
+  --brand-interaction-primary-enabled: #{palette-color-level('primary', 7)};
+  --brand-interaction-primary-hovered: #{palette-color-level('primary', 6)};
+  --brand-interaction-primary-activated: #{palette-color-level('primary', 8)};
 
-  --brand-interaction-color-neutral-enabled: #{palette-color-level('neutral', 0)};
-  --brand-interaction-color-neutral-hovered: #{palette-color-level('neutral', 1)};
-  --brand-interaction-color-neutral-activated: #{palette-color-level('neutral', 3)};
+  --brand-interaction-neutral-enabled: #{palette-color-level('neutral', 0)};
+  --brand-interaction-neutral-hovered: #{palette-color-level('neutral', 1)};
+  --brand-interaction-neutral-activated: #{palette-color-level('neutral', 3)};
 
-  --brand-interaction-color-danger-enabled: #{palette-color-level('danger', 7)};
-  --brand-interaction-color-danger-hovered: #{palette-color-level('danger', 6)};
-  --brand-interaction-color-danger-activated: #{palette-color-level('danger', 8)};
+  --brand-interaction-danger-enabled: #{palette-color-level('danger', 7)};
+  --brand-interaction-danger-hovered: #{palette-color-level('danger', 6)};
+  --brand-interaction-danger-activated: #{palette-color-level('danger', 8)};
 
-  --brand-interaction-color-warning-enabled: #{palette-color-level('warning', 7)};
-  --brand-interaction-color-warning-hovered: #{palette-color-level('warning', 6)};
-  --brand-interaction-color-warning-activated: #{palette-color-level('warning', 8)};
+  --brand-interaction-warning-enabled: #{palette-color-level('warning', 7)};
+  --brand-interaction-warning-hovered: #{palette-color-level('warning', 6)};
+  --brand-interaction-warning-activated: #{palette-color-level('warning', 8)};
 
-  --brand-interaction-color-success-enabled: #{palette-color-level('success', 7)};
-  --brand-interaction-color-success-hovered: #{palette-color-level('success', 6)};
-  --brand-interaction-color-success-activated: #{palette-color-level('success', 8)};
+  --brand-interaction-success-enabled: #{palette-color-level('success', 7)};
+  --brand-interaction-success-hovered: #{palette-color-level('success', 6)};
+  --brand-interaction-success-activated: #{palette-color-level('success', 8)};
 
   // UTILS
   /* Border radius */
@@ -105,7 +105,7 @@
   --brand-elevation-3: 0px -2px 4px rgba(0, 0, 0, 0.08), 0px 6px 10px rgba(19, 20, 22, 0.15);
 
   /* A11y */
-  --brand-outline: 0 0 0 #{$space-2} #{palette-color-level('neutral', 10)},
+  --brand-focused: 0 0 0 #{$space-2} #{palette-color-level('neutral', 10)},
     0 0 0 #{$space-4} #{palette-color-level('primary', 3)};
 
   /* Animation Language */

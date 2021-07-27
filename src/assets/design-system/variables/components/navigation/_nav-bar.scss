@@ -1,9 +1,9 @@
-$navbar-bg: var(--brand-surface-color-high);
+$navbar-bg: var(--brand-surface-color-default-high);
 $navbar-height: $space-56;
 $navbar-index: 100;
 $navbar-elevation: var(--brand-elevation-1);
-$navbar-border: 1px solid var(--brand-border-color-high);
+$navbar-border: 1px solid var(--brand-border-color-default-high);
 
 // menu
 $navbar-menu-icon-size: $space-24;
-$navbar-menu-outline: var(--brand-outline);
+$navbar-menu-outline: var(--brand-focused);

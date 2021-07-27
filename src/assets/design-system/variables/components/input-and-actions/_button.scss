@@ -19,18 +19,18 @@ $button-border-radius: var(--brand-border-radius-md);
 $button-disabled-opacity: 0.3;
 $button-icon-size: $space-24;
 $button-icon-gap: $space-4;
-$button-outline: var(--brand-outline);
+$button-outline: var(--brand-focused);
 
 $button-variations: (
   'primary': (
-    'bg': var(--brand-interaction-color-primary-enabled),
-    'color': var(--brand-text-color-high-inverse),
-    'hover-bg': var(--brand-interaction-color-primary-hovered),
-    'hover-color': var(--brand-text-color-high-inverse),
-    'active-bg': var(--brand-interaction-color-primary-activated),
-    'active-color': var(--brand-text-color-high-inverse),
-    'focus-bg': var(--brand-interaction-color-primary-enabled),
-    'focus-color': var(--brand-text-color-high-inverse),
+    'bg': var(--brand-interaction-primary-enabled),
+    'color': var(--brand-text-color-inverse-high),
+    'hover-bg': var(--brand-interaction-primary-hovered),
+    'hover-color': var(--brand-text-color-inverse-high),
+    'active-bg': var(--brand-interaction-primary-activated),
+    'active-color': var(--brand-text-color-inverse-high),
+    'focus-bg': var(--brand-interaction-primary-enabled),
+    'focus-color': var(--brand-text-color-inverse-high),
     'focus-box-shadow-color': palette-color-level('primary', 3),
   ),
   'basic': (
@@ -45,26 +45,26 @@ $button-variations: (
     'focus-box-shadow-color': palette-color-level('primary', 3),
   ),
   'outline': (
-    'bg': var(--brand-interaction-color-neutral-enabled),
-    'color': var(--brand-text-color-medium),
-    'hover-bg': var(--brand-interaction-color-neutral-hovered),
-    'hover-color': var(--brand-text-color-medium),
-    'active-bg': var(--brand-interaction-color-neutral-activated),
-    'active-color': var(--brand-text-color-medium),
-    'focus-bg': var(--brand-interaction-color-neutral-enabled),
-    'focus-color': var(--brand-text-color-medium),
+    'bg': var(--brand-interaction-neutral-enabled),
+    'color': var(--brand-text-color-default-medium),
+    'hover-bg': var(--brand-interaction-neutral-hovered),
+    'hover-color': var(--brand-text-color-default-medium),
+    'active-bg': var(--brand-interaction-neutral-activated),
+    'active-color': var(--brand-text-color-default-medium),
+    'focus-bg': var(--brand-interaction-neutral-enabled),
+    'focus-color': var(--brand-text-color-default-medium),
     'focus-box-shadow-color': palette-color-level('primary', 3),
-    'border': 1px solid var(--brand-border-color-high),
+    'border': 1px solid var(--brand-border-color-default-high),
   ),
   'danger': (
-    'bg': var(--brand-interaction-color-danger-enabled),
-    'color': var(--brand-text-color-high-inverse),
-    'hover-bg': var(--brand-interaction-color-danger-hovered),
-    'hover-color': var(--brand-text-color-high-inverse),
-    'active-bg': var(--brand-interaction-color-danger-activated),
-    'active-color': var(--brand-text-color-high-inverse),
-    'focus-bg': var(--brand-interaction-color-danger-enabled),
-    'focus-color': var(--brand-text-color-high-inverse),
+    'bg': var(--brand-interaction-danger-enabled),
+    'color': var(--brand-text-color-inverse-high),
+    'hover-bg': var(--brand-interaction-danger-hovered),
+    'hover-color': var(--brand-text-color-inverse-high),
+    'active-bg': var(--brand-interaction-danger-activated),
+    'active-color': var(--brand-text-color-inverse-high),
+    'focus-bg': var(--brand-interaction-danger-enabled),
+    'focus-color': var(--brand-text-color-inverse-high),
     'focus-box-shadow-color': palette-color-level('danger', 3),
   ),
 );

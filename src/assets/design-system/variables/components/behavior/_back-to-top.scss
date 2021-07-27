@@ -5,20 +5,20 @@ $back-to-top-right-space: $space-24;
 $back-to-top-border-radius: 50%;
 $back-to-top-shadow: var(--brand-elevation-2);
 $back-to-top-index: 2000;
-$back-to-top-outline: var(--brand-outline);
+$back-to-top-outline: var(--brand-focused);
 
 // enabled
-$back-to-top-color: var(--brand-text-color-high-inverse);
-$back-to-top-bg: var(--brand-text-color-medium);
+$back-to-top-color: var(--brand-text-color-inverse-high);
+$back-to-top-bg: var(--brand-text-color-default-medium);
 
 // hover
-$back-to-top-color-hover: var(--brand-text-color-high-inverse);
-$back-to-top-bg-hover: var(--brand-text-color-low);
+$back-to-top-color-hover: var(--brand-text-color-inverse-high);
+$back-to-top-bg-hover: var(--brand-text-color-default-low);
 
 // focus
-$back-to-top-color-focus: var(--brand-text-color-high-inverse);
-$back-to-top-bg-focus: var(--brand-text-color-medium);
+$back-to-top-color-focus: var(--brand-text-color-inverse-high);
+$back-to-top-bg-focus: var(--brand-text-color-default-medium);
 
 // active
-$back-to-top-color-active: var(--brand-text-color-high-inverse);
-$back-to-top-bg-active: var(--brand-text-color-high);
+$back-to-top-color-active: var(--brand-text-color-inverse-high);
+$back-to-top-bg-active: var(--brand-text-color-default-high);

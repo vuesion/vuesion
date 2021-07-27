@@ -138,7 +138,7 @@ export default {
   }
 
   table tr {
-    border: 1px solid var(--brand-border-color-high);
+    border: 1px solid var(--brand-border-color-default-high);
   }
 
   table td,

@@ -4,12 +4,11 @@
 @import 'design-system/themes/dark';
 
 body {
-  color: var(--brand-text-color-high);
-  background-color: var(--brand-bg-color-low);
+  background-color: var(--brand-bg-color-default-high);
 }
 
 code {
-  background: var(--brand-bg-color-medium);
+  background: var(--brand-bg-color-default-medium);
   padding: $space-2 $space-4;
 }
 
@@ -18,7 +17,7 @@ i {
   display: inline-flex;
   height: $text-2;
   width: $text-2;
-  fill: var(--brand-text-color-high);
+  fill: var(--brand-text-color-default-high);
   justify-content: center;
   align-items: center;
 
@@ -31,7 +30,7 @@ i {
 
 hr {
   border: none;
-  border-top: 1px solid var(--brand-border-color-medium);
+  border-top: 1px solid var(--brand-border-color-default-medium);
   margin-top: -1px;
 }
 

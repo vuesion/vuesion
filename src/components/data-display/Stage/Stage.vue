@@ -102,7 +102,7 @@ export default {
     .github {
       font-size: $text-8;
       display: inline-block;
-      background: var(--brand-surface-color-high);
+      background: var(--brand-surface-color-default-high);
 
       &:hover {
         box-shadow: var(--brand-elevation-3);

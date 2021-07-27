@@ -178,27 +178,27 @@ export default defineComponent({
   }
 
   &.text-high {
-    color: var(--brand-text-color-high);
+    color: var(--brand-text-color-default-high);
   }
 
   &.text-medium {
-    color: var(--brand-text-color-medium);
+    color: var(--brand-text-color-default-medium);
   }
 
   &.text-low {
-    color: var(--brand-text-color-low);
+    color: var(--brand-text-color-default-low);
   }
 
   &.text-high-inverse {
-    color: var(--brand-text-color-high-inverse);
+    color: var(--brand-text-color-inverse-high);
   }
 
   &.text-medium-inverse {
-    color: var(--brand-text-color-medium-inverse);
+    color: var(--brand-text-color-inverse-medium);
   }
 
   &.text-low-inverse {
-    color: var(--brand-text-color-low-inverse);
+    color: var(--brand-text-color-inverse-low);
   }
 
   // Responsive Styles
