@@ -33,7 +33,7 @@ export default defineComponent({
     padding: {
       type: [Number, String, Array as () => Array<string | number>],
       validator: responsivePropValidator(spacingValidator),
-      default: '40 16 16 16',
+      default: '48 16 16 16',
     },
     show: { type: Boolean, default: false },
     backdrop: { type: Boolean, default: true },

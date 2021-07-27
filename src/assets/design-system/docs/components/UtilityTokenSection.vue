@@ -4,7 +4,7 @@
       <vue-text color="text-high" look="h3" weight="semi-bold">{{ title }}</vue-text>
       <vue-text look="description">{{ description }}</vue-text>
     </vue-stack>
-    <vue-box padding="40 24">
+    <vue-box padding="48 0">
       <slot />
     </vue-box>
   </vue-stack>

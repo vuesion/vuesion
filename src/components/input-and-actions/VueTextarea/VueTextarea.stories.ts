@@ -19,7 +19,7 @@ story.add(
       usage="Allows user to add long, multi-line text whereas text input is meant for brief, single line text."
       story="Show all states of the textarea component. Please interact with the textarea to see all states."
     >
-    <vue-stack space="40">
+    <vue-stack space="48">
       <vue-textarea
         name="text-1"
         id="text-1"

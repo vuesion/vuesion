@@ -113,7 +113,7 @@ export default {
         'dots-horizontal',
         'dots-vertical',
         'download',
-        'dribble',
+        'dribbble',
         'duplicate',
         'emoji-happy',
         'emoji-sad',

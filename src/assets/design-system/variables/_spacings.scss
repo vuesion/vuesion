@@ -18,9 +18,11 @@ $space-56: $space-unit * 7; //  56px
 $space-64: $space-unit * 8; //  64px
 $space-72: $space-unit * 9; //  72px
 $space-84: $space-unit * 10.5; // 84px
+$space-80: $space-unit * 10; // 80px
 $space-96: $space-unit * 2; // 96px
 $space-120: $space-unit * 15; // 120px
 $space-128: $space-unit * 16; // 128px
+$space-144: $space-unit * 18; // 144px
 $space-192: $space-unit * 24; // 192px
 
 $spacings: (
@@ -34,15 +36,10 @@ $spacings: (
   '20': $space-20,
   '24': $space-24,
   '32': $space-32,
-  '40': $space-40,
   '48': $space-48,
-  '52': $space-52,
-  '56': $space-56,
   '64': $space-64,
-  '72': $space-72,
-  '84': $space-84,
+  '80': $space-80,
   '96': $space-96,
-  '120': $space-120,
-  '128': $space-128,
+  '144': $space-144,
   '192': $space-192,
 );

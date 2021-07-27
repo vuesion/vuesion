@@ -79,6 +79,7 @@ story.add('Utility Component Tokens', () => ({
     usage="These are other tokenized design values. Some of these tokens do were not able to be properly translated to Figma so new components will have to manually input these values."
     suffix=""
   >
+  <vue-stack space="64">
     <utility-token-section title="Elevation" description="These are the possible elevations, or distances between surfaces.">
       <vue-stack>
         <token-item
@@ -147,5 +148,6 @@ story.add('Utility Component Tokens', () => ({
         </vue-box>
       </vue-tiles>
     </utility-token-section>
+  </vue-stack>
   </component-docs>`,
 }));

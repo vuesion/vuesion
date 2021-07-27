@@ -20,7 +20,7 @@ story.add(
       usage="Allows users to add data/content - text, numeric, URLs, etc. Each type of input has its own validation and constraints e.g. numeric input will only allow numbers."
       story="Show all states of the input component. Please interact with the input to see all states."
     >
-    <vue-stack space="40">
+    <vue-stack space="48">
       <vue-input
         name="text-1"
         id="text-1"
@@ -80,7 +80,7 @@ story.add(
     template: `<component-docs
     story="Show icons on the left and right side of the input. Please interact with the input to see all states."
     >
-    <vue-stack space="40">
+    <vue-stack space="48">
       <vue-input
         name="text-1"
         id="text-1"

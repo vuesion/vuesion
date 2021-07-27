@@ -34,6 +34,33 @@ hr {
   margin-top: -1px;
 }
 
+table {
+  thead,
+  tbody {
+    tr {
+      border-bottom: 1px solid var(--brand-border-color-default-medium);
+
+      td,
+      th {
+        padding: $space-24;
+        text-align: left;
+      }
+    }
+  }
+
+  thead {
+    background: var(--brand-bg-color-default-medium);
+  }
+
+  tbody {
+    tr {
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
 // UTILITIES
 // =========
 

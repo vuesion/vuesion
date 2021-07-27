@@ -132,6 +132,12 @@ export default defineComponent({
     letter-spacing: $letter-spacing-1;
   }
 
+  &.medium-title {
+    font-size: $text-4;
+    line-height: $line-height-4;
+    letter-spacing: $letter-spacing-1;
+  }
+
   &.small-title {
     font-size: $text-2;
     line-height: $line-height-2;

@@ -55,7 +55,7 @@ story.add(
         :disable-page-scroll="disablePageScroll"
         :close-on-escape="closeOnEscape"
         @close="onClose();show = false">
-        <vue-stack space="16">
+        <vue-stack space="32">
           <vue-stack space="8">
             <vue-text look="h4" color="text-high" align="center">Heading</vue-text>
             <vue-text color="text-low" align="center">

@@ -13,6 +13,6 @@
 
 <script lang="ts">
 export default {
-  name: 'VueIconDocumentDowload',
+  name: 'VueIconDocumentDownload',
 };
 </script>
