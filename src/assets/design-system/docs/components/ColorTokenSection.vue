@@ -6,7 +6,7 @@
     </vue-stack>
 
     <vue-tiles space="32" columns="3">
-      <vue-box v-for="(column, idx) in columns" :key="idx" padding="40 24" :class="column.dark && $style.dark">
+      <vue-box v-for="(column, idx) in columns" :key="idx" padding="48 24" :class="column.dark && $style.dark">
         <vue-stack>
           <token-item
             v-for="(token, tokenidx) in column.tokens"

@@ -1,5 +1,5 @@
 <template>
-  <vue-stack space="56">
+  <vue-stack space="64">
     <color-tokens-section
       title="Brand Variations"
       description="These are the default shades for each color ramp of the palette."

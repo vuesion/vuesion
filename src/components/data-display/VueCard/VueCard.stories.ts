@@ -44,7 +44,7 @@ story.add(
               </vue-column>
               <vue-column>
                 <vue-stack space="0">
-                  <vue-text look="h4" color="text-hight">
+                  <vue-text look="h4" color="text-high">
                     Heading
                   </vue-text>
                   <vue-text look="h6" color="text-medium">
