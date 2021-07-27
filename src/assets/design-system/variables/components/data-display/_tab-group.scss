@@ -4,17 +4,17 @@ $tab-icon-size: $space-20;
 $tab-icon-gap: $space-8;
 
 // default
-$tab-border: 1px solid var(--brand-secondary-border-color);
-$tab-color: var(--brand-low-emphasis-text-color);
+$tab-border: 1px solid var(--brand-border-color-medium);
+$tab-color: var(--brand-text-color-low);
 
 // default hover
-$tab-border-hover: 1px solid var(--brand-primary-border-color);
-$tab-color-hover: var(--brand-medium-emphasis-text-color);
+$tab-border-hover: 1px solid var(--brand-border-color-high);
+$tab-color-hover: var(--brand-text-color-medium);
 
 // active
-$tab-border-active: 2px solid var(--brand-primary-enabled);
-$tab-color-active: var(--brand-primary-enabled);
+$tab-border-active: 2px solid var(--brand-interaction-color-primary-enabled);
+$tab-color-active: var(--brand-interaction-color-primary-enabled);
 
 // active hover
-$tab-border-active-hover: 2px solid var(--brand-primary-hover);
-$tab-color-active-hover: var(--brand-primary-hover);
+$tab-border-active-hover: 2px solid var(--brand-interaction-color-primary-hovered);
+$tab-color-active-hover: var(--brand-interaction-color-primary-hovered);

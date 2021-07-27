@@ -10,8 +10,8 @@ $breadcrumb-item-padding: $space-4 $space-8;
 $breadcrumb-item-height: $space-24;
 $breadcrumb-item-text-decoration: none;
 $breadcrumb-item-border: none;
-$breadcrumb-item-border-radius: $space-4;
-$breadcrumb-item-outline: var(--brand-shadow-outline);
+$breadcrumb-item-border-radius: var(--brand-border-radius-sm);
+$breadcrumb-item-outline: var(--brand-outline);
 
 // hover
 $breadcrumb-item-bg-hover: var(--brand-secondary-bg-color);

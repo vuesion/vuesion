@@ -3,12 +3,12 @@ $input-label-height: $space-16;
 $input-label-gap: $space-4;
 
 // input default
-$input-border-radius: $space-8;
-$input-border: 1px solid var(--brand-primary-border-color);
+$input-border-radius: var(--brand-border-radius-md);
+$input-border: 1px solid var(--brand-border-color-high);
 $input-height: auto;
 $input-padding: ($space-12 - $space-2) $space-12;
-$input-color: var(--brand-high-emphasis-text-color);
-$input-placeholder-color: var(--brand-low-emphasis-text-color);
+$input-color: var(--brand-text-color-high);
+$input-placeholder-color: var(--brand-text-color-low);
 $input-background-color: transparent;
 $input-font-family: $font-family;
 $input-font-size: $text-1;
@@ -21,21 +21,21 @@ $input-description-height: $space-16;
 
 // utils
 $input-disabled-disabled-opacity: 0.3;
-$input-outline: var(--brand-shadow-outline);
+$input-outline: var(--brand-outline);
 
 // hover
-$input-border-hover: 1px solid var(--brand-primary-border-color);
+$input-border-hover: 1px solid var(--brand-border-color-high);
 
 // error
 $input-background-error-color: palette-color-level('danger', 1);
-$input-border-error: 1px solid var(--brand-danger-enabled);
+$input-border-error: 1px solid var(--brand-interaction-color-danger-enabled);
 
 // leading icon
 $input-leading-width: $space-40 - $space-4;
 $input-leading-icon-size: $space-20;
-$input-leading-color: var(--brand-high-emphasis-text-color);
+$input-leading-color: var(--brand-text-color-high);
 
 // trailing icon
 $input-trailing-width: $space-40 - $space-4;
 $input-trailing-icon-size: $space-20;
-$input-trailing-color: var(--brand-high-emphasis-text-color);
+$input-trailing-color: var(--brand-text-color-high);

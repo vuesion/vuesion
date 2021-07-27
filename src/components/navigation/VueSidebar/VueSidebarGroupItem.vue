@@ -9,16 +9,16 @@
       @click="!href && !to && $emit('click')"
       @keypress.space.enter="!href && !to && $emit('click')"
     >
-      <vue-columns space="16" align-y="center">
-        <vue-column v-if="leadingIcon" width="content">
+      <vue-columns space="16">
+        <vue-column v-if="leadingIcon" width="content" align-y="center">
           <component :is="`vue-icon-${leadingIcon}`" />
         </vue-column>
 
-        <vue-column>
+        <vue-column align-y="center">
           <vue-text weight="semi-bold">{{ name }}</vue-text>
         </vue-column>
 
-        <vue-column v-if="trailingIcon" width="content">
+        <vue-column v-if="trailingIcon" width="content" align-y="center">
           <component :is="`vue-icon-${trailingIcon}`" />
         </vue-column>
       </vue-columns>

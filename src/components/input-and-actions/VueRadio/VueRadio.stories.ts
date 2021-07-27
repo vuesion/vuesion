@@ -7,7 +7,6 @@ import VueRadio from './VueRadio.vue';
 
 const story = storiesOf('Input & Actions|Radio button', module) as any;
 
-// TODO: add usage
 story.add(
   'Default',
   () => ({
@@ -19,7 +18,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Radio"
-      usage=")__"
+      usage="Allows users to select exactly one option from a list of 2+, mutually exclusive options."
       story="Show default radio button. Please interact with the radio buttons to see different states."
     >
     <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>

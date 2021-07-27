@@ -109,7 +109,7 @@ export default defineComponent({
     width: $modal-close-button-size;
     height: $modal-close-button-size;
     cursor: pointer;
-    border-radius: $space-4;
+    border-radius: $modal-close-button-border-radius;
     color: $modal-close-button-color;
 
     &:focus {

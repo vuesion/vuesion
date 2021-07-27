@@ -35,7 +35,10 @@ story.add(
     template: `
 <component-docs
   component-name="Button"
-  usage="Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as “view shipping settings”."
+  usage="Buttons are used primarily to take action. Each type has a different best-for context: - primary: key action. use for the most important;
+- basic: used with primary;
+- outline: used for less prominent actions, maybe in actions in a series. used for tasks;
+- danger: used to destruct"
   story="Show all button variations and sized. Please interact with the buttons to see different states."
 >
   <vue-stack space="64">

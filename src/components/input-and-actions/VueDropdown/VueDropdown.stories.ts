@@ -9,7 +9,6 @@ import VueDropdown from './VueDropdown.vue';
 
 const story = storiesOf('Input & Actions|Dropdown', module) as any;
 
-// TODO: add usage
 story.add(
   'Default',
   () => ({
@@ -27,7 +26,7 @@ story.add(
     },
     template: `<component-docs
     component-name="Dropdown"
-    usage="TBD"
+    usage="Used to provide a list of actions that a user can take or change a setting."
     story="Display a dropdown with all menu item variations. Please interact with the dropdown via mouse and keyboard."
     >
     <vue-stack>

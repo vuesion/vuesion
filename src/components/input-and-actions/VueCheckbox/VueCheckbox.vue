@@ -115,6 +115,7 @@ export default defineComponent({
     &:checked ~ .checkmark {
       background-color: $checkbox-checkmark-bg-checked !important;
       border: $checkbox-checkmark-border-checked !important;
+      color: $checkbox-checkmark-color !important;
     }
 
     &:checked ~ .checkmark > svg {

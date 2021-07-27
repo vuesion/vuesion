@@ -1,15 +1,14 @@
 import isArray from 'lodash/isArray';
 import { BreakPoint } from '@/enums/BreakPoint';
 
-export const brandColorVariations = ['primary', 'neutral', 'danger', 'warning', 'success', 'info'];
-export const badgeStatuses = ['info', 'warning', 'success', 'danger'];
+export const brandColorVariations = ['primary', 'neutral', 'danger', 'warning', 'success'];
+export const badgeStatuses = ['info', 'warning', 'success', 'danger', 'neutral'];
 export const textColorVariations = [
   'primary',
   'neutral',
   'danger',
   'warning',
   'success',
-  'info',
   'text-high',
   'text-medium',
   'text-low',

@@ -5,7 +5,7 @@ import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueBreadcrumb from './VueBreadcrumb.vue';
 
 const story = storiesOf('Navigation|Breadcrumb', module);
-// TODO: add usage
+
 story.add(
   'Default',
   () => ({
@@ -26,7 +26,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Breadcrumb"
-      usage="TBD"
+      usage="List of links that show hierarchy and navigational context for a user’s location within an app."
       story="Display breadcrumb. Please switch to the mobile viewport to see the mobile version of this component."
     >
     <vue-stack>

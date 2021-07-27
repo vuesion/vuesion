@@ -1,3 +1,22 @@
+/**
+ Variable Nomenclature:
+ 1. Brand (global namespace)
+ 2. Application (css property or purpose)
+ 3. Brand Variation (optional)
+ 4. Emphasis (optional)
+ 5. State (optional)
+ 6. Alternative (optional)
+ examples:
+ - brand-border-color
+ - brand-border-color-primary
+ - brand-border-color-primary-high
+ - brand-border-color-primary-high-enabled
+ - brand-border-color-primary-high-enabled-inverse
+ - brand-color-high
+ - brand-color-high-inverse
+ - brand-color-primary-focus
+*/
+
 :root.light {
   /* Brand Variations */
   --brand-primary: #{palette-color-level('primary', 7)};
@@ -5,75 +24,88 @@
   --brand-danger: #{palette-color-level('danger', 7)};
   --brand-warning: #{palette-color-level('warning', 7)};
   --brand-success: #{palette-color-level('success', 7)};
-  --brand-info: #{palette-color-level('info', 7)};
 
-  /* Interaction Colors */
-  --brand-primary-enabled: #{palette-color-level('primary', 7)};
-  --brand-primary-hover: #{palette-color-level('primary', 6)};
-  --brand-primary-focus: #{palette-color-level('primary', 2)};
-  --brand-primary-active: #{palette-color-level('primary', 8)};
-
-  --brand-neutral-enabled: #{palette-color-level('neutral', 7)};
-  --brand-neutral-hover: #{palette-color-level('neutral', 6)};
-  --brand-neutral-focus: #{palette-color-level('neutral', 2)};
-  --brand-neutral-active: #{palette-color-level('neutral', 8)};
-
-  --brand-danger-enabled: #{palette-color-level('danger', 7)};
-  --brand-danger-hover: #{palette-color-level('danger', 6)};
-  --brand-danger-focus: #{palette-color-level('danger', 2)};
-  --brand-danger-active: #{palette-color-level('danger', 8)};
-
-  --brand-warning-enabled: #{palette-color-level('warning', 7)};
-  --brand-warning-hover: #{palette-color-level('warning', 6)};
-  --brand-warning-focus: #{palette-color-level('warning', 2)};
-  --brand-warning-active: #{palette-color-level('warning', 8)};
-
-  --brand-success-enabled: #{palette-color-level('success', 7)};
-  --brand-success-hover: #{palette-color-level('success', 6)};
-  --brand-success-focus: #{palette-color-level('success', 2)};
-  --brand-success-active: #{palette-color-level('success', 8)};
-
-  --brand-info-enabled: #{palette-color-level('info', 7)};
-  --brand-info-hover: #{palette-color-level('info', 6)};
-  --brand-info-focus: #{palette-color-level('info', 2)};
-  --brand-info-active: #{palette-color-level('info', 8)};
+  /* Surface Colors */
+  --brand-surface-color-high: #{palette-color-level('neutral', 0)};
+  --brand-surface-color-medium: #{palette-color-level('neutral', 1)};
+  --brand-surface-color-low: #{palette-color-level('neutral', 3)};
+  --brand-surface-color-high-inverse: #{palette-color-level('neutral', 10)};
+  --brand-surface-color-medium-inverse: #{palette-color-level('neutral', 7)};
+  --brand-surface-color-low-inverse: #{palette-color-level('neutral', 6)};
+  --brand-surface-color-info: #{palette-color-level('primary', 1)};
+  --brand-surface-color-danger: #{palette-color-level('danger', 1)};
+  --brand-surface-color-warning: #{palette-color-level('warning', 1)};
+  --brand-surface-color-success: #{palette-color-level('success', 1)};
 
   /* Background Colors */
-  --brand-primary-bg-color: #{palette-color-level('neutral', 1)};
-  --brand-secondary-bg-color: #{palette-color-level('neutral', 2)};
-  --brand-tertiary-bg-color: #{palette-color-level('neutral', 3)};
-
-  /* Background Colors Inverse */
-  --brand-primary-bg-color-inverse: #{palette-color-level('neutral', 10)};
-  --brand-secondary-bg-color-inverse: #{palette-color-level('neutral', 7)};
-  --brand-tertiary-bg-color-inverse: #{palette-color-level('neutral', 6)};
+  --brand-bg-color-high: #{palette-color-level('neutral', 3)};
+  --brand-bg-color-medium: #{palette-color-level('neutral', 2)};
+  --brand-bg-color-low: #{palette-color-level('neutral', 1)};
+  --brand-bg-color-high-inverse: #{palette-color-level('neutral', 6)};
+  --brand-bg-color-medium-inverse: #{palette-color-level('neutral', 7)};
+  --brand-bg-color-low-inverse: #{palette-color-level('neutral', 10)};
 
   /* Text Colors */
-  --brand-high-emphasis-text-color: #{palette-color-level('neutral', 10)};
-  --brand-medium-emphasis-text-color: #{palette-color-level('neutral', 7)};
-  --brand-low-emphasis-text-color: #{palette-color-level('neutral', 6)};
-
-  /* Text Colors Inverse */
-  --brand-high-emphasis-text-color-inverse: #{palette-color-level('neutral', 0)};
-  --brand-medium-emphasis-text-color-inverse: #{palette-color-level('neutral', 3)};
-  --brand-low-emphasis-text-color-inverse: #{palette-color-level('neutral', 5)};
+  --brand-text-color-high: #{palette-color-level('neutral', 10)};
+  --brand-text-color-medium: #{palette-color-level('neutral', 7)};
+  --brand-text-color-low: #{palette-color-level('neutral', 6)};
+  --brand-text-color-high-inverse: #{palette-color-level('neutral', 0)};
+  --brand-text-color-medium-inverse: #{palette-color-level('neutral', 3)};
+  --brand-text-color-low-inverse: #{palette-color-level('neutral', 6)};
+  --brand-text-color-info-high: #{palette-color-level('primary', 7)};
+  --brand-text-color-danger-high: #{palette-color-level('danger', 7)};
+  --brand-text-color-warning-high: #{palette-color-level('warning', 7)};
+  --brand-text-color-success-high: #{palette-color-level('success', 7)};
 
   /* Borders */
-  --brand-primary-border-color: #{palette-color-level('neutral', 3)};
-  --brand-secondary-border-color: #{palette-color-level('neutral', 2)};
-  --brand-primary-border-color-inverse: #{palette-color-level('neutral', 6)};
-  --brand-secondary-border-color-inverse: #{palette-color-level('neutral', 5)};
+  --brand-border-color-high: #{palette-color-level('neutral', 3)};
+  --brand-border-color-medium: #{palette-color-level('neutral', 2)};
+  --brand-border-color-high-inverse: #{palette-color-level('neutral', 6)};
+  --brand-border-color-medium-inverse: #{palette-color-level('neutral', 7)};
+  --brand-border-color-info-high: #{palette-color-level('primary', 7)};
+  --brand-border-color-info-low: #{palette-color-level('primary', 2)};
+  --brand-border-color-danger-high: #{palette-color-level('danger', 7)};
+  --brand-border-color-danger-low: #{palette-color-level('danger', 2)};
+  --brand-border-color-warning-high: #{palette-color-level('warning', 7)};
+  --brand-border-color-warning-low: #{palette-color-level('warning', 2)};
+  --brand-border-color-success-high: #{palette-color-level('success', 7)};
+  --brand-border-color-success-low: #{palette-color-level('success', 2)};
 
-  // TODO: figure out the tokens and values with duylam
+  /* Interaction Colors */
+  --brand-interaction-color-primary-enabled: #{palette-color-level('primary', 7)};
+  --brand-interaction-color-primary-hovered: #{palette-color-level('primary', 6)};
+  --brand-interaction-color-primary-activated: #{palette-color-level('primary', 8)};
+
+  --brand-interaction-color-neutral-enabled: #{palette-color-level('neutral', 0)};
+  --brand-interaction-color-neutral-hovered: #{palette-color-level('neutral', 1)};
+  --brand-interaction-color-neutral-activated: #{palette-color-level('neutral', 3)};
+
+  --brand-interaction-color-danger-enabled: #{palette-color-level('danger', 7)};
+  --brand-interaction-color-danger-hovered: #{palette-color-level('danger', 6)};
+  --brand-interaction-color-danger-activated: #{palette-color-level('danger', 8)};
+
+  --brand-interaction-color-warning-enabled: #{palette-color-level('warning', 7)};
+  --brand-interaction-color-warning-hovered: #{palette-color-level('warning', 6)};
+  --brand-interaction-color-warning-activated: #{palette-color-level('warning', 8)};
+
+  --brand-interaction-color-success-enabled: #{palette-color-level('success', 7)};
+  --brand-interaction-color-success-hovered: #{palette-color-level('success', 6)};
+  --brand-interaction-color-success-activated: #{palette-color-level('success', 8)};
+
+  // UTILS
+  /* Border radius */
+  --brand-border-radius-xs: #{$space-2};
   --brand-border-radius-sm: #{$space-4};
   --brand-border-radius-md: #{$space-8};
   --brand-border-radius-lg: #{$space-16};
 
-  /* Box Shadows */
-  --brand-elevation-1: 0px 1px 4px rgba(19, 20, 22, 0.08);
-  --brand-elevation-2: 0px -1px 2px -1px rgba(0, 0, 0, 0.05), 0px 3px 6px rgba(19, 20, 22, 0.15);
-  --brand-elevation-3: 0px -2px 4px rgba(0, 0, 0, 0.08), 0px 6px 10px rgba(19, 20, 22, 0.15);
-  --brand-shadow-outline: 0 0 0 #{$space-2} #{palette-color-level('neutral', 0)},
+  /* Elevation */
+  --brand-elevation-1: 0 1px 4px rgba(19, 20, 22, 0.08);
+  --brand-elevation-2: 0 -1px 2px -1px rgba(0, 0, 0, 0.05), 0 3px 6px rgba(19, 20, 22, 0.15);
+  --brand-elevation-3: 0 -2px 4px rgba(0, 0, 0, 0.08), 0 6px 10px rgba(19, 20, 22, 0.15);
+
+  /* A11y */
+  --brand-outline: 0 0 0 #{$space-2} #{palette-color-level('neutral', 0)},
     0 0 0 #{$space-4} #{palette-color-level('primary', 3)};
 
   /* Animation Language */

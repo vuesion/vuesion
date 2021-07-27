@@ -6,14 +6,13 @@ import VueSlider from './VueSlider.vue';
 
 const story = storiesOf('Input & Actions|Slider', module) as any;
 
-// TODO: add usage
 story.add(
   'Single',
   () => ({
     components: { VueSlider, ComponentDocs, VueStack },
     template: `<component-docs
     component-name="Slider"
-    usage="TBD"
+    usage="Allows user to visually adjust numeric input by interacting with the slider handle and progress track as visual feedback."
     story="Display single slider enabled and disabled. Please interact with the slider to see all interaction states."
     >
     <vue-stack>

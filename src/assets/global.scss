@@ -4,12 +4,12 @@
 @import 'design-system/themes/dark';
 
 body {
-  color: var(--brand-high-emphasis-text-color);
-  background-color: var(--brand-primary-bg-color);
+  color: var(--brand-text-color-high);
+  background-color: var(--brand-bg-color-low);
 }
 
 code {
-  background: var(--brand-secondary-bg-color);
+  background: var(--brand-bg-color-medium);
   padding: $space-2 $space-4;
 }
 
@@ -18,7 +18,7 @@ i {
   display: inline-flex;
   height: $text-2;
   width: $text-2;
-  fill: var(--brand-high-emphasis-text-color);
+  fill: var(--brand-text-color-high);
   justify-content: center;
   align-items: center;
 
@@ -31,7 +31,7 @@ i {
 
 hr {
   border: none;
-  border-top: 1px solid var(--brand-secondary-bg-color);
+  border-top: 1px solid var(--brand-border-color-medium);
   margin-top: -1px;
 }
 

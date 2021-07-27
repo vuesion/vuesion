@@ -7,7 +7,7 @@ import VueSidebarGroup from './VueSidebarGroup.vue';
 import VueSidebarGroupItem from './VueSidebarGroupItem.vue';
 
 const story = storiesOf('Navigation|Sidebar', module) as any;
-// TODO: add usage
+
 story.add(
   'Default',
   () => ({
@@ -18,7 +18,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Sidebar"
-      usage="TBD"
+      usage="Primary navigation element used to take users to the most critical product areas - can be used with Navbar."
       story="Show sidebar."
     >
     <vue-sidebar>

@@ -7,7 +7,6 @@ import VueCheckbox from './VueCheckbox.vue';
 
 const story = storiesOf('Input & Actions|Checkbox', module) as any;
 
-// TODO: add usage
 story.add(
   'Default',
   () => ({
@@ -19,7 +18,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Checkbox"
-      usage=")__"
+      usage="Allows users to select one or more options from a list of options. Unlike toggle, this selection will need to be submitted first. A single checkbox could be replaced by a toggle."
       story="Show default checkbox. Please interact with the checkbox to see different states."
     >
     <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
