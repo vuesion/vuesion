@@ -4,15 +4,15 @@ $slider-disabled-opacity: 0.3;
 
 // track
 $slider-track-height: $space-4;
-$slider-track-border-radius: $space-2;
-$slider-track-bg: var(--brand-tertiary-bg-color);
+$slider-track-border-radius: var(--brand-border-radius-xs);
+$slider-track-bg: var(--brand-surface-color-low);
 $slider-progress-height: $space-4;
-$slider-progress-border-radius: $space-2;
-$slider-progress-bg: var(--brand-primary-enabled);
+$slider-progress-border-radius: var(--brand-border-radius-xs);
+$slider-progress-bg: var(--brand-interaction-color-primary-enabled);
 
 // handle
 $slider-handle-size: $space-16;
 $slider-handle-size-hover: $space-24;
 $slider-handle-border-radius: 50%;
-$slider-handle-bg: var(--brand-primary-enabled);
-$slider-handle-active-shadow: var(--brand-shadow-outline);
+$slider-handle-bg: var(--brand-interaction-color-primary-enabled);
+$slider-handle-active-shadow: var(--brand-outline);

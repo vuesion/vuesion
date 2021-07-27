@@ -6,7 +6,6 @@ import VueMenu from './VueMenu.vue';
 
 const story = storiesOf('Data Display|Menu', module) as any;
 
-// TODO: add usage
 story.add(
   'Default',
   () => ({
@@ -27,7 +26,7 @@ story.add(
     },
     template: `<component-docs
     component-name="Menu"
-    usage="TBD"
+    usage="Allows users to interact with a list of actions."
     story="Display menu with all interaction states. Please interact with the menu to see all states."
     >
     <vue-menu :items="items" @click="onClick" />

@@ -48,8 +48,6 @@ export default defineComponent({
   render(createElement: CreateElement) {
     const items = decorateChildComponents(this.$slots.default, (vNode) => {
       (vNode.componentOptions.propsData as any).space = this.space;
-      (vNode.componentOptions.propsData as any).align = this.align;
-      (vNode.componentOptions.propsData as any).alignY = this.alignY;
       (vNode.componentOptions.propsData as any).as = getComponentElementType(this.as);
 
       return vNode;

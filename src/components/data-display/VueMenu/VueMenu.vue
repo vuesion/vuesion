@@ -116,11 +116,14 @@ export default defineComponent({
   flex-direction: column;
   background: $menu-bg;
   min-width: $menu-min-width;
+  max-height: $menu-max-height;
   padding: $menu-padding;
   box-shadow: $menu-shadow;
   border-radius: $menu-border-radius;
   border: $menu-border;
   z-index: $menu-z-index;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 
   > li {
     position: relative;

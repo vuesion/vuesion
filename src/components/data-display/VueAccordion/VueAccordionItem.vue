@@ -80,6 +80,10 @@ export default defineComponent({
     border-top: $accordion-item-header-border;
     user-select: none;
 
+    &:hover {
+      background: $accordion-item-header-bg-hover;
+    }
+
     .iconContainer {
       flex: 0 0 $accordion-item-header-icon-container-size;
       display: flex;

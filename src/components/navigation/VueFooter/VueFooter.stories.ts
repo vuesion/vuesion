@@ -5,7 +5,7 @@ import VueToggle from '@/components/input-and-actions/VueToggle/VueToggle.vue';
 import VueFooter from './VueFooter.vue';
 
 const story = storiesOf('Navigation|Footer', module) as any;
-// TODO: add usage
+
 story.add(
   'Default',
   () => ({
@@ -17,7 +17,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Footer"
-      usage="TBD"
+      usage="Secondary navigation element used to surface specific, not-often-accessed content."
       story="Show footer and all its properties."
     >
     <vue-stack space="64">

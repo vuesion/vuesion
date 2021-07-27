@@ -1,9 +1,9 @@
-$navbar-bg: palette-color-level('neutral', 0); // TODO: add token
+$navbar-bg: var(--brand-surface-color-high);
 $navbar-height: $space-56;
 $navbar-index: 100;
 $navbar-elevation: var(--brand-elevation-1);
-$navbar-border: 1px solid var(--brand-primary-border-color);
+$navbar-border: 1px solid var(--brand-border-color-high);
 
 // menu
 $navbar-menu-icon-size: $space-24;
-$navbar-menu-outline: var(--brand-shadow-outline);
+$navbar-menu-outline: var(--brand-outline);

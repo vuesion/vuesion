@@ -1,18 +1,19 @@
 $menu-z-index: 1000;
-$menu-bg: palette-color-level('neutral', 0); // TODO: add as theme variable
+$menu-bg: var(--brand-surface-color-high);
 $menu-min-width: $space-120 + $space-72;
+$menu-max-height: $space-120 * 3;
 $menu-padding: $space-8 0;
 $menu-shadow: var(--brand-elevation-3);
-$menu-border-radius: $space-8;
-$menu-border: 1px solid var(--brand-secondary-border-color);
+$menu-border-radius: var(--brand-border-radius-md);
+$menu-border: 1px solid var(--brand-border-color-medium);
 
 // item
-$menu-item-color: var(--brand-high-emphasis-text-color);
+$menu-item-color: var(--brand-text-color-high);
 $menu-item-padding: $space-10 $space-12;
-$menu-item-bg-active: var(--brand-primary-hover);
-$menu-item-color-active: var(--brand-high-emphasis-text-color-inverse);
+$menu-item-bg-active: var(--brand-interaction-color-primary-hovered);
+$menu-item-color-active: var(--brand-text-color-high-inverse);
 $menu-item-icon-size: $space-20;
 $menu-item-icon-size-gap: $space-8;
 
 // separator
-$menu-separator-border: 1px solid var(--brand-secondary-border-color);
+$menu-separator-border: 1px solid var(--brand-border-color-medium);

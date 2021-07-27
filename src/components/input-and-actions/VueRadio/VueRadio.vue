@@ -25,7 +25,7 @@
       />
       <div :class="$style.checkmark">
         <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 6">
-          <circle cx="3" cy="3" r="3" fill="#fff" />
+          <circle cx="3" cy="3" r="3" fill="currentColor" />
         </svg>
       </div>
       <vue-text :for="id" as="label" weight="semi-bold" color="text-medium" tabindex="-1" v-html="label" />
@@ -103,6 +103,7 @@ export default defineComponent({
     &:checked ~ .checkmark {
       background-color: $radio-checkmark-bg-checked !important;
       border: $radio-checkmark-border-checked !important;
+      color: $radio-checkmark-color !important;
     }
 
     &:checked ~ .checkmark > svg {

@@ -18,9 +18,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Toggle"
-      usage="Select lets users choose one option from an options menu.
-      Consider select when you have 4 or more options, to avoid cluttering the interface.
-      Different from dropdown menu because it is used for data entry in forms."
+      usage="Allows users to choose between two mutually exclusive options. There is always a default value and settings should be saved and take into effect immediately."
       story="Show default toggle. Please interact with the toggle to see different states."
     >
     <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>

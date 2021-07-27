@@ -74,6 +74,7 @@ Variable   | Space in pixel
 $space-2   |   2px
 $space-4   |   4px
 $space-8   |   8px
+$space-10  |  10px
 $space-12  |  12px
 $space-16  |  16px
 $space-20  |  20px
@@ -126,12 +127,12 @@ story.add('Elevation / Box shadows', () => ({
 
     We have three different kinds of elevations:.
 
-    \`--brand-elevation-1: 0 -1px 2px rgba(19, 20, 22, 0.08), 0 3px 5px rgba(19, 20, 22, 0.12);\`
-    \`--brand-elevation-2: 0 -1px 3px rgba(19, 20, 22, 0.1), 0 4px 6px rgba(19, 20, 22, 0.2);\`
-    \`--brand-elevation-3: 0 -1px 3px rgba(19, 20, 22, 0.1), 0 4px 6px rgba(19, 20, 22, 0.2);\`
+    \`--brand-elevation-1: 0 1px 4px rgba(19, 20, 22, 0.08);\`
+    \`--brand-elevation-2: 0 -1px 2px -1px rgba(0, 0, 0, 0.05), 0 3px 6px rgba(19, 20, 22, 0.15);\`
+    \`--brand-elevation-3: 0 -2px 4px rgba(0, 0, 0, 0.08), 0 6px 10px rgba(19, 20, 22, 0.15);\`
 
     We have one box-shadow that is used as outline, e.g. for focus states
-    \`--brand-shadow-outline: 0 0 0 #{$space-8} #{rgba(palette-color-level('primary', 6), 0.5)};\`
+    \`--brand-outline: 0 0 0 #{$space-2} #{palette-color-level('neutral', 0)}, 0 0 0 #{$space-4} #{palette-color-level('primary', 3)};\`
   </vue-markdown>
   </vue-box>
   `,
@@ -146,9 +147,10 @@ story.add('Border Radius', () => ({
 
     We have three different kinds of border radius.
 
-    \`--brand-border-radius-sm: #{$space-4};\`
-    \`--brand-border-radius-md: #{$space-8};\`
-    \`--brand-border-radius-lg: #{$space-16};\`
+    \`--brand-border-radius-sm: #{$space-2};  //  2px\`
+    \`--brand-border-radius-sm: #{$space-4};  //  4px\`
+    \`--brand-border-radius-md: #{$space-8};  //  8px\`
+    \`--brand-border-radius-lg: #{$space-16}; // 16px\`
   </vue-markdown>
   </vue-box>
   `,

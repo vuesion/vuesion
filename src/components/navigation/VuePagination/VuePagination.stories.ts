@@ -10,7 +10,7 @@ import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
 import VuePagination from './VuePagination.vue';
 
 const story = storiesOf('Navigation|Pagination', module) as any;
-// TODO: add usage
+
 story.add(
   'Default',
   () => ({
@@ -27,7 +27,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Pagination"
-      usage="TBD"
+      usage="Used to split a collection of content or data table into multiple pages - allowing the user to navigate to previous or next page."
       story="Show pagination with all its properties"
     >
     <vue-stack space="64">

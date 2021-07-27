@@ -6,7 +6,6 @@ import VueInput from './VueInput.vue';
 
 const story = storiesOf('Input & Actions|Input', module) as any;
 
-// TODO: add usage
 story.add(
   'Default',
   () => ({
@@ -18,7 +17,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Input"
-      usage=")__"
+      usage="Allows users to add data/content - text, numeric, URLs, etc. Each type of input has its own validation and constraints e.g. numeric input will only allow numbers."
       story="Show all states of the input component. Please interact with the input to see all states."
     >
     <vue-stack space="40">

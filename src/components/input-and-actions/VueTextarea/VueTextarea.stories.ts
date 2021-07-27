@@ -5,7 +5,6 @@ import VueTextarea from './VueTextarea.vue';
 
 const story = storiesOf('Input & Actions|Textarea', module) as any;
 
-// TODO: add usage
 story.add(
   'Default',
   () => ({
@@ -17,7 +16,7 @@ story.add(
     },
     template: `<component-docs
       component-name="Textarea"
-      usage=")__"
+      usage="Allows user to add long, multi-line text whereas text input is meant for brief, single line text."
       story="Show all states of the textarea component. Please interact with the textarea to see all states."
     >
     <vue-stack space="40">

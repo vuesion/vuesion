@@ -1,4 +1,4 @@
-$card-bg: palette-color-level('neutral', 0); // TODO: add token
+$card-bg: var(--brand-surface-color-high);
 $card-shadow: var(--brand-elevation-1);
-$card-border: 1px solid var(--brand-secondary-border-color);
-$card-border-radius: $space-8;
+$card-border: 1px solid var(--brand-border-color-medium);
+$card-border-radius: var(--brand-border-radius-md);

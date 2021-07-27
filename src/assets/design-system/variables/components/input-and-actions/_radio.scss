@@ -1,20 +1,21 @@
 // Checkmark states
 // default
-$radio-checkmark-bg: palette-color-level('neutral', 0);
-$radio-checkmark-border: 1px solid var(--brand-primary-border-color);
+$radio-checkmark-bg: transparent;
+$radio-checkmark-color: var(--brand-text-color-high-inverse);
+$radio-checkmark-border: 1px solid var(--brand-border-color-high);
 
 //hover
-$radio-checkmark-bg-hover: palette-color-level('neutral', 0);
-$radio-checkmark-border-hover: 1px solid var(--brand-primary-border-color);
+$radio-checkmark-bg-hover: transparent;
+$radio-checkmark-border-hover: 1px solid var(--brand-border-color-high);
 
 // checked
-$radio-checkmark-bg-checked: var(--brand-primary-enabled);
-$radio-checkmark-border-checked: 1px solid var(--brand-primary-enabled);
+$radio-checkmark-bg-checked: var(--brand-interaction-color-primary-enabled);
+$radio-checkmark-border-checked: 1px solid var(--brand-interaction-color-primary-enabled);
 
 // Checkmark
 $radio-checkmark-size: $space-16;
 $radio-checkmark-border-radius: 50%;
-$radio-checkmark-outline: var(--brand-shadow-outline);
+$radio-checkmark-outline: var(--brand-outline);
 
 // Checkbox
 $radio-label-gap: $space-8;

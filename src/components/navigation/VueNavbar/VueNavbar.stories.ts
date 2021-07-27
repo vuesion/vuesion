@@ -3,14 +3,14 @@ import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.
 import VueNavbar from './VueNavbar.vue';
 
 const story = storiesOf('Navigation|Navbar', module) as any;
-// TODO: add usage
+
 story.add(
   'Default',
   () => ({
     components: { VueNavbar, ComponentDocs },
     template: `<component-docs
       component-name="Navbar"
-      usage="TBD"
+      usage="Primary navigation element used to take users to the most critical product areas - can be used with Sidebar."
       story="Show navbar."
     >
     <vue-navbar
