@@ -209,7 +209,7 @@ export default defineComponent({
   &.error {
     .inputWrapper {
       input {
-        background: $input-background-error-color;
+        background: $input-bg-error;
         border: $input-border-error;
       }
     }
