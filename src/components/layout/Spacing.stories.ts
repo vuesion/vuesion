@@ -4,7 +4,7 @@ import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.
 import UtilityTokenSection from '@/assets/design-system/docs/components/UtilityTokenSection.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 
-const story = storiesOf('Foundation', module) as any;
+const story = storiesOf('Foundation|General', module) as any;
 
 story.add(
   'Spacings',

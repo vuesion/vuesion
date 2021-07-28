@@ -7,7 +7,7 @@ story.add(
   'Limit and center content based on view port',
   () => ({
     components: { VueContentBlock },
-    template: `<vue-content-block>VueContentBlock</vue-content-block>`,
+    template: `<vue-content-block class="border">VueContentBlock</vue-content-block>`,
   }),
   {
     info: {

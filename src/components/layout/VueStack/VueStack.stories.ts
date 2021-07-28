@@ -10,12 +10,12 @@ story.add(
   () => ({
     components: { VueStack, VueText, VueBox },
     template: `<vue-box :padding="[16, '16 24']">
-    <vue-stack :space="[8, 24, 48, 64, 192]">
+    <vue-stack :space="[8, 24, 48, 64, 192]" class="border">
       <vue-text>Test</vue-text>
       <vue-text>Test</vue-text>
       <vue-text>Test</vue-text>
 
-      <vue-stack space="2">
+      <vue-stack space="2" class="border">
         <vue-text>Test</vue-text>
         <vue-text>Test</vue-text>
         <vue-text>Test</vue-text>
@@ -35,20 +35,20 @@ story.add(
   () => ({
     components: { VueStack, VueText, VueBox },
     template: `<vue-box :padding="[16, '16 24']">
-    <vue-stack>
-      <vue-stack>
+    <vue-stack class="border">
+      <vue-stack class="border">
         <vue-text>Test</vue-text>
         <vue-text>Test</vue-text>
         <vue-text>Test</vue-text>
       </vue-stack>
 
-      <vue-stack :align="['left', 'center']">
+      <vue-stack :align="['left', 'center']" class="border">
         <vue-text>Test</vue-text>
         <vue-text>Test</vue-text>
         <vue-text>Test</vue-text>
       </vue-stack>
 
-      <vue-stack :align="['left', 'right']">
+      <vue-stack :align="['left', 'right']" class="border">
         <vue-text>Test</vue-text>
         <vue-text>Test</vue-text>
         <vue-text>Test</vue-text>
@@ -68,12 +68,12 @@ story.add(
   () => ({
     components: { VueStack, VueText, VueBox },
     template: `<vue-box :padding="[16, '16 24']">
-    <vue-stack as="ul" :space="[8, 24, 48, 64, 192]">
+    <vue-stack as="ul" :space="[8, 24, 48, 64, 192]" class="border">
       <vue-text>Test</vue-text>
       <vue-text>Test</vue-text>
       <vue-text>Test</vue-text>
 
-      <vue-stack as="ol" space="2">
+      <vue-stack as="ol" space="2" class="border">
         <vue-text>Test</vue-text>
         <vue-text>Test</vue-text>
         <vue-text>Test</vue-text>
