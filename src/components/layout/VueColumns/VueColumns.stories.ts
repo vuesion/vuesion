@@ -14,13 +14,13 @@ story.add(
   () => ({
     components: { VueBox, VueColumns, VueColumn, VueStack, VueText },
     template: `<vue-box :padding="[8, 16, 24, 32]">
-    <vue-columns :space="[8, 16, 24, 32]" :align-y="['top', 'center']" stack-phone>
-      <vue-column :width="['100%', '250px']">
+    <vue-columns :space="[8, 16, 24, 32]" :align-y="['top', 'center']" stack-phone class="border">
+      <vue-column :width="['100%', '250px']" class="border">
         Sidebar
       </vue-column>
-      <vue-column :width="['content', '100%']">
-        <vue-columns :space="[8, 16, 24, 32]" :align-y="['top', 'bottom']" stack-phone>
-          <vue-column>
+      <vue-column :width="['content', '100%']" class="border">
+        <vue-columns :space="[8, 16, 24, 32]" :align-y="['top', 'bottom']" stack-phone class="border">
+          <vue-column class="border">
             <vue-stack :space="[8, 16, 24, 32]">
               <vue-text>Main Content</vue-text>
               <vue-text>Main Content</vue-text>
@@ -29,7 +29,7 @@ story.add(
               <vue-text>Main Content</vue-text>
             </vue-stack>
           </vue-column>
-          <vue-column :width="[null, 'content']">
+          <vue-column :width="[null, 'content']" class="border">
             Menu
           </vue-column>
         </vue-columns>
@@ -50,25 +50,25 @@ story.add(
     components: { VueBox, VueColumns, VueColumn, VueStack, VueText },
     template: `<vue-box>
     <vue-stack space="32">
-      <vue-columns  :align-y="['top', 'center']">
-        <vue-column width="content">Image</vue-column>
-        <vue-column>
-          <vue-columns stack-phone>
-            <vue-column>
-              <vue-stack space="4">
+      <vue-columns  :align-y="['top', 'center']" class="border">
+        <vue-column width="content" class="border">Image</vue-column>
+        <vue-column class="border">
+          <vue-columns stack-phone class="border">
+            <vue-column class="border">
+              <vue-stack space="4" class="border">
                 <vue-text>Text</vue-text>
                 <vue-text>Text</vue-text>
                 <vue-text>Text</vue-text>
                 <vue-text>Text</vue-text>
               </vue-stack>
             </vue-column>
-            <vue-column>
-              <vue-columns :space="[4, 24]" stack-phone>
-                <vue-column width="content"><vue-text>Price</vue-text></vue-column>
-                <vue-column :width="['content', '150px', '250px']">
+            <vue-column class="border">
+              <vue-columns :space="[4, 24]" stack-phone class="border">
+                <vue-column width="content" class="border"><vue-text>Price</vue-text></vue-column>
+                <vue-column :width="['content', '150px', '250px']" class="border">
                   <vue-text>Dropdown</vue-text>
                 </vue-column>
-                <vue-column :width="['content', '180px']">
+                <vue-column :width="['content', '180px']" class="border">
                   <vue-text>Summary</vue-text>
                 </vue-column>
               </vue-columns>
@@ -76,25 +76,25 @@ story.add(
           </vue-columns>
         </vue-column>
       </vue-columns>
-      <vue-columns  :align-y="['top', 'center']">
-        <vue-column width="content">Image</vue-column>
-        <vue-column>
-          <vue-columns stack-phone>
-            <vue-column>
-              <vue-stack space="4">
+      <vue-columns  :align-y="['top', 'center']" class="border">
+        <vue-column width="content" class="border">Image</vue-column>
+        <vue-column class="border">
+          <vue-columns stack-phone class="border">
+            <vue-column class="border">
+              <vue-stack space="4" class="border">
                 <vue-text>Text</vue-text>
                 <vue-text>Text</vue-text>
                 <vue-text>Text</vue-text>
                 <vue-text>Text</vue-text>
               </vue-stack>
             </vue-column>
-            <vue-column>
-              <vue-columns :space="[4, 24]" stack-phone>
-                <vue-column width="content"><vue-text>Price</vue-text></vue-column>
-                <vue-column :width="['content', '150px', '250px']">
+            <vue-column class="border">
+              <vue-columns :space="[4, 24]" stack-phone class="border">
+                <vue-column width="content" class="border"><vue-text>Price</vue-text></vue-column>
+                <vue-column :width="['content', '150px', '250px']" class="border">
                   <vue-text>Dropdown</vue-text>
                 </vue-column>
-                <vue-column :width="['content', '180px']">
+                <vue-column :width="['content', '180px']" class="border">
                   <vue-text>Summary Summary</vue-text>
                 </vue-column>
               </vue-columns>
@@ -117,13 +117,13 @@ story.add(
   () => ({
     components: { VueBox, VueColumns, VueColumn },
     template: `<vue-box :padding="[8, 16, 24, 32]">
-    <vue-columns as="ul" :space="[8, 16, 24, 32]" :align-y="['top', 'center']" stack-phone>
-      <vue-column :width="['100%', '250px']">
+    <vue-columns as="ul" :space="[8, 16, 24, 32]" :align-y="['top', 'center']" stack-phone class="border">
+      <vue-column :width="['100%', '250px']" class="border">
         Sidebar
       </vue-column>
-      <vue-column>
-        <vue-columns as="ul" :space="[8, 16, 24, 32]" :align-y="['top', 'bottom']" stack-phone>
-          <vue-column>
+      <vue-column class="border">
+        <vue-columns as="ul" :space="[8, 16, 24, 32]" :align-y="['top', 'bottom']" stack-phone class="border">
+          <vue-column class="border">
             Main Content
             <br/>
             Main Content
@@ -135,7 +135,7 @@ story.add(
             Main Content
             <br/>
           </vue-column>
-          <vue-column :width="['100%', 'content']">Menu</vue-column>
+          <vue-column :width="['100%', 'content']" class="border">Menu</vue-column>
         </vue-columns>
       </vue-column>
     </vue-columns>
@@ -153,11 +153,11 @@ story.add(
   () => ({
     components: { VueBox, VueColumns, VueColumn },
     template: `<vue-box :padding="[8, 16, 24, 32]">
-    <vue-columns :revert="[null, null, null, true, true]">
-      <vue-column>
+    <vue-columns :revert="[null, null, null, true, true]" class="border">
+      <vue-column class="border">
         Test 1
       </vue-column>
-      <vue-column>
+      <vue-column class="border">
         Test 2
       </vue-column>
     </vue-columns>
@@ -182,14 +182,15 @@ story.add(
       stack-tablet-landscape
       stack-small-desktop
       stack-large-desktop
+       class="border"
     >
-      <vue-column width="content">
+      <vue-column width="content" class="border">
         <vue-navbar />
       </vue-column>
-      <vue-column align="center" align-y="center">
+      <vue-column align="center" align-y="center" class="border">
         Content
       </vue-column>
-      <vue-column width="content">
+      <vue-column width="content" class="border">
         <vue-footer />
       </vue-column>
     </vue-columns>`,

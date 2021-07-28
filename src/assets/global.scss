@@ -110,3 +110,8 @@ img:not([alt]) {
     z-index: 999;
   }
 }
+
+// storybook
+.border {
+  border: 1px solid var(--brand-border-color-default-medium);
+}
