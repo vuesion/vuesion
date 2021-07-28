@@ -1,12 +1,12 @@
 // Checkmark states
 // default
 $radio-checkmark-bg: transparent;
-$radio-checkmark-color: var(--brand-text-color-inverse-high);
-$radio-checkmark-border: 1px solid var(--brand-border-color-default-high);
+$radio-checkmark-color: var(--brand-text-inverse-high);
+$radio-checkmark-border: 1px solid var(--brand-border-default-high);
 
 //hover
 $radio-checkmark-bg-hover: transparent;
-$radio-checkmark-border-hover: 1px solid var(--brand-border-color-default-high);
+$radio-checkmark-border-hover: 1px solid var(--brand-border-default-high);
 
 // checked
 $radio-checkmark-bg-checked: var(--brand-interaction-primary-enabled);

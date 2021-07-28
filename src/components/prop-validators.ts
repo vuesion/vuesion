@@ -32,7 +32,7 @@ export const textStyles = [
   'button',
   'support',
 ];
-export const buttonStyles = ['primary', 'basic', 'outline', 'danger'];
+export const buttonStyles = ['primary', 'secondary', 'outline', 'danger'];
 export const shirtSizes = ['sm', 'md', 'lg'];
 export const fontWeights = ['regular', 'semi-bold'];
 export const brandSpacings = [

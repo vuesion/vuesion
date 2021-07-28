@@ -52,7 +52,7 @@ export default defineComponent({
   props: {
     disabled: { type: Boolean, default: false },
     block: { type: Boolean, default: false },
-    look: { type: String, validator: buttonStyleValidator, default: 'basic' },
+    look: { type: String, validator: buttonStyleValidator, default: 'secondary' },
     size: { type: String, validator: shirtSizeValidator, default: 'md' },
     loading: { type: Boolean, default: false },
     as: { type: String, default: 'button' },

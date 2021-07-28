@@ -43,23 +43,19 @@ story.add(
 >
   <vue-stack space="64">
     <vue-columns>
-      <vue-hidden phone>
-        <vue-column width="250px"></vue-column>
-      </vue-hidden>
+        <vue-column :width="['content', '150px']"></vue-column>
 
       <vue-column v-for="size in sizes" :key="size" width="200px">
         <vue-text look="large-title">{{ size }}</vue-text>
       </vue-column>
     </vue-columns>
 
-    <vue-columns v-for="style in styles" :key="style">
-      <vue-hidden phone>
-        <vue-column width="250px">
+    <vue-columns v-for="style in styles" :key="style"stack-phone>
+        <vue-column :width="['content', '150px']">
           <vue-text look="large-title">{{ style }}</vue-text>
         </vue-column>
-      </vue-hidden>
 
-      <vue-column v-for="size in sizes" :key="size" width="200px">
+      <vue-column v-for="size in sizes" :key="size":width="['content', '200px']">
         <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
           <vue-button :look="style" :size="size">Button</vue-button>
           <vue-button :look="style" :size="size" leading-icon="github">

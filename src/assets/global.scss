@@ -4,11 +4,11 @@
 @import 'design-system/themes/dark';
 
 body {
-  background-color: var(--brand-bg-color-default-high);
+  background-color: var(--brand-bg-default-high);
 }
 
 code {
-  background: var(--brand-bg-color-default-medium);
+  background: var(--brand-bg-default-medium);
   padding: $space-2 $space-4;
 }
 
@@ -17,7 +17,7 @@ i {
   display: inline-flex;
   height: $text-2;
   width: $text-2;
-  fill: var(--brand-text-color-default-high);
+  fill: var(--brand-text-default-high);
   justify-content: center;
   align-items: center;
 
@@ -30,7 +30,7 @@ i {
 
 hr {
   border: none;
-  border-top: 1px solid var(--brand-border-color-default-medium);
+  border-top: 1px solid var(--brand-border-default-medium);
   margin-top: -1px;
 }
 
@@ -38,7 +38,7 @@ table {
   thead,
   tbody {
     tr {
-      border-bottom: 1px solid var(--brand-border-color-default-medium);
+      border-bottom: 1px solid var(--brand-border-default-medium);
 
       td,
       th {
@@ -49,7 +49,7 @@ table {
   }
 
   thead {
-    background: var(--brand-bg-color-default-medium);
+    background: var(--brand-bg-default-medium);
   }
 
   tbody {
@@ -113,5 +113,5 @@ img:not([alt]) {
 
 // storybook
 .border {
-  border: 1px solid var(--brand-border-color-default-medium);
+  border: 1px solid var(--brand-border-default-medium);
 }

@@ -16,50 +16,50 @@
   --brand-success: #{palette-color-level('success', 7)};
 
   /* Background Colors */
-  --brand-bg-color-default-high: #{palette-color-level('neutral', 9)};
-  --brand-bg-color-default-medium: #{palette-color-level('neutral', 8)};
-  --brand-bg-color-default-low: #{palette-color-level('neutral', 7)};
-  --brand-bg-color-inverse-high: #{palette-color-level('neutral', 1)};
-  --brand-bg-color-inverse-medium: #{palette-color-level('neutral', 2)};
-  --brand-bg-color-inverse-low: #{palette-color-level('neutral', 3)};
+  --brand-bg-default-high: #{palette-color-level('neutral', 9)};
+  --brand-bg-default-medium: #{palette-color-level('neutral', 8)};
+  --brand-bg-default-low: #{palette-color-level('neutral', 7)};
+  --brand-bg-inverse-high: #{palette-color-level('neutral', 1)};
+  --brand-bg-inverse-medium: #{palette-color-level('neutral', 2)};
+  --brand-bg-inverse-low: #{palette-color-level('neutral', 3)};
 
   /* Surface Colors */
-  --brand-surface-color-default-high: #{palette-color-level('neutral', 10)};
-  --brand-surface-color-default-medium: #{palette-color-level('neutral', 9)};
-  --brand-surface-color-default-low: #{palette-color-level('neutral', 8)};
-  --brand-surface-color-inverse-high: #{palette-color-level('neutral', 0)};
-  --brand-surface-color-inverse-medium: #{palette-color-level('neutral', 1)};
-  --brand-surface-color-inverse-low: #{palette-color-level('neutral', 2)};
-  --brand-surface-color-info: #{palette-color-level('primary', 3)};
-  --brand-surface-color-danger: #{palette-color-level('danger', 3)};
-  --brand-surface-color-warning: #{palette-color-level('warning', 3)};
-  --brand-surface-color-success: #{palette-color-level('success', 3)};
+  --brand-surface-default-high: #{palette-color-level('neutral', 10)};
+  --brand-surface-default-medium: #{palette-color-level('neutral', 9)};
+  --brand-surface-default-low: #{palette-color-level('neutral', 8)};
+  --brand-surface-inverse-high: #{palette-color-level('neutral', 0)};
+  --brand-surface-inverse-medium: #{palette-color-level('neutral', 1)};
+  --brand-surface-inverse-low: #{palette-color-level('neutral', 2)};
+  --brand-surface-info: #{palette-color-level('primary', 3)};
+  --brand-surface-danger: #{palette-color-level('danger', 3)};
+  --brand-surface-warning: #{palette-color-level('warning', 3)};
+  --brand-surface-success: #{palette-color-level('success', 3)};
 
   /* Border Colors */
-  --brand-border-color-default-high: #{palette-color-level('neutral', 7)};
-  --brand-border-color-default-medium: #{palette-color-level('neutral', 8)};
-  --brand-border-color-inverse-high: #{palette-color-level('neutral', 9)};
-  --brand-border-color-inverse-medium: #{palette-color-level('neutral', 7)};
-  --brand-border-color-info-high: #{palette-color-level('primary', 7)};
-  --brand-border-color-info-low: #{palette-color-level('primary', 9)};
-  --brand-border-color-danger-high: #{palette-color-level('danger', 7)};
-  --brand-border-color-danger-low: #{palette-color-level('danger', 9)};
-  --brand-border-color-warning-high: #{palette-color-level('warning', 7)};
-  --brand-border-color-warning-low: #{palette-color-level('warning', 9)};
-  --brand-border-color-success-high: #{palette-color-level('success', 7)};
-  --brand-border-color-success-low: #{palette-color-level('success', 9)};
+  --brand-border-default-high: #{palette-color-level('neutral', 7)};
+  --brand-border-default-medium: #{palette-color-level('neutral', 8)};
+  --brand-border-inverse-high: #{palette-color-level('neutral', 9)};
+  --brand-border-inverse-medium: #{palette-color-level('neutral', 7)};
+  --brand-border-info-high: #{palette-color-level('primary', 7)};
+  --brand-border-info-low: #{palette-color-level('primary', 9)};
+  --brand-border-danger-high: #{palette-color-level('danger', 7)};
+  --brand-border-danger-low: #{palette-color-level('danger', 9)};
+  --brand-border-warning-high: #{palette-color-level('warning', 7)};
+  --brand-border-warning-low: #{palette-color-level('warning', 9)};
+  --brand-border-success-high: #{palette-color-level('success', 7)};
+  --brand-border-success-low: #{palette-color-level('success', 9)};
 
   /* Text Colors */
-  --brand-text-color-default-high: #{palette-color-level('neutral', 0)};
-  --brand-text-color-default-medium: #{palette-color-level('neutral', 3)};
-  --brand-text-color-default-low: #{palette-color-level('neutral', 4)};
-  --brand-text-color-inverse-high: #{palette-color-level('neutral', 10)};
-  --brand-text-color-inverse-medium: #{palette-color-level('neutral', 7)};
-  --brand-text-color-inverse-low: #{palette-color-level('neutral', 6)};
-  --brand-text-color-info: #{palette-color-level('primary', 7)};
-  --brand-text-color-danger: #{palette-color-level('danger', 7)};
-  --brand-text-color-warning: #{palette-color-level('warning', 7)};
-  --brand-text-color-success: #{palette-color-level('success', 7)};
+  --brand-text-default-high: #{palette-color-level('neutral', 0)};
+  --brand-text-default-medium: #{palette-color-level('neutral', 3)};
+  --brand-text-default-low: #{palette-color-level('neutral', 4)};
+  --brand-text-inverse-high: #{palette-color-level('neutral', 10)};
+  --brand-text-inverse-medium: #{palette-color-level('neutral', 7)};
+  --brand-text-inverse-low: #{palette-color-level('neutral', 6)};
+  --brand-text-info: #{palette-color-level('primary', 7)};
+  --brand-text-danger: #{palette-color-level('danger', 7)};
+  --brand-text-warning: #{palette-color-level('warning', 7)};
+  --brand-text-success: #{palette-color-level('success', 7)};
 
   /* Interaction Colors */
   --brand-interaction-primary-enabled: #{palette-color-level('primary', 6)};
@@ -81,6 +81,10 @@
   --brand-interaction-success-enabled: #{palette-color-level('success', 6)};
   --brand-interaction-success-hovered: #{palette-color-level('success', 5)};
   --brand-interaction-success-activated: #{palette-color-level('success', 7)};
+
+  --brand-interaction-secondary-enabled: #{palette-color-level('primary', 2)};
+  --brand-interaction-secondary-hovered: #{palette-color-level('primary', 1)};
+  --brand-interaction-secondary-activated: #{palette-color-level('primary', 3)};
 
   // UTILS
   /* Border radius */

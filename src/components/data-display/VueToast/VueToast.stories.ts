@@ -19,7 +19,7 @@ story.add(
       <vue-toast />
 
       <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
-        <vue-button look="basic" @click="onInfoToastClick">add info toast</vue-button>
+        <vue-button look="secondary" @click="onInfoToastClick">add info toast</vue-button>
         <vue-button look="outline" @click="onWarningToastClick">add warning toast</vue-button>
         <vue-button look="danger" @click="onDangerToastClick">add danger toast</vue-button>
       </vue-inline>
