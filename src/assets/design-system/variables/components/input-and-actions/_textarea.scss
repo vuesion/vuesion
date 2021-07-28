@@ -27,5 +27,5 @@ $textarea-outline: var(--brand-focused);
 $textarea-border-hover: 1px solid var(--brand-border-color-default-high);
 
 // error
-$textarea-background-error-color: palette-color-level('danger', 1);
-$textarea-border-error: 1px solid var(--brand-interaction-danger-enabled);
+$textarea-bg-error: var(--brand-surface-color-danger);
+$textarea-border-error: 1px solid var(--brand-border-color-danger-high);

@@ -132,7 +132,7 @@ export default defineComponent({
 
   &.error {
     textarea {
-      background: $textarea-background-error-color;
+      background: $textarea-bg-error;
       border: $textarea-border-error;
     }
   }

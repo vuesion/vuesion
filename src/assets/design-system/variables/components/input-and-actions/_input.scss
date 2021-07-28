@@ -27,8 +27,8 @@ $input-outline: var(--brand-focused);
 $input-border-hover: 1px solid var(--brand-border-color-default-high);
 
 // error
-$input-background-error-color: palette-color-level('danger', 1);
-$input-border-error: 1px solid var(--brand-interaction-danger-enabled);
+$input-bg-error: var(--brand-surface-color-danger);
+$input-border-error: 1px solid var(--brand-border-color-danger-high);
 
 // leading icon
 $input-leading-width: $space-40 - $space-4;

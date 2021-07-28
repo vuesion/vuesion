@@ -30,8 +30,8 @@ $select-outline: var(--brand-focused);
 $select-border-hover: 1px solid var(--brand-border-color-default-high);
 
 // error
-$select-background-error-color: palette-color-level('danger', 1);
-$select-border-error: 1px solid var(--brand-interaction-danger-enabled);
+$select-bg-error: var(--brand-surface-color-danger);
+$select-border-error: 1px solid var(--brand-border-color-danger-high);
 
 // leading icon
 $select-leading-width: $space-40 - $space-4;

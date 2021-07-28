@@ -21,7 +21,7 @@ $pagination-button-bg-focus: var(--brand-interaction-neutral-enabled);
 $pagination-button-color-focus: var(--brand-text-color-default-medium);
 
 //hover
-$pagination-button-bg-hover: var(--brand-interaction-neutral-enabled);
+$pagination-button-bg-hover: var(--brand-interaction-neutral-hovered);
 $pagination-button-color-hover: var(--brand-text-color-default-medium);
 
 //active
@@ -38,9 +38,9 @@ $pagination-item-bg: transparent;
 $pagination-item-border: 1px solid var(--brand-border-color-default-high);
 
 // active
-$pagination-item-color-active: var(--brand-primary);
+$pagination-item-color-active: var(--brand-interaction-primary-enabled);
 $pagination-item-bg-active: transparent;
-$pagination-item-border-active: 2px solid var(--brand-primary);
+$pagination-item-border-active: 2px solid var(--brand-interaction-primary-enabled);
 
 // focus
 $pagination-item-outline: var(--brand-focused);

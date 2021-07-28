@@ -258,7 +258,7 @@ export default defineComponent({
 
   &.error {
     select {
-      background: $select-background-error-color;
+      background: $select-bg-error;
       border: $select-border-error;
     }
   }

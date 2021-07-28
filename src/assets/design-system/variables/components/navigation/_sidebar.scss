@@ -14,7 +14,7 @@ $sidebar-group-item-height: $space-32;
 $sidebar-group-item-icon-size: $space-20;
 $sidebar-group-item-border-radius: var(--brand-border-radius-sm);
 $sidebar-group-item-color: var(--brand-text-color-default-medium);
-$sidebar-group-item-bg: var(--brand-surface-color-default-medium);
+$sidebar-group-item-bg: $sidebar-bg;
 $sidebar-group-item-gap: $space-4;
 
 // hover
