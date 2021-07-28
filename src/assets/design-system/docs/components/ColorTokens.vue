@@ -68,7 +68,7 @@
             },
             {
               figmaVar: '📀 Surface - Default - Medium',
-              cssVar: 'brand-bg-color-default-medium',
+              cssVar: 'brand-surface-color-default-medium',
               paletteColor: 'neutral 1',
             },
             {
@@ -88,7 +88,7 @@
             },
             {
               figmaVar: '📀 Surface - Inverse - Medium',
-              cssVar: 'brand-bg-color-inverse-medium',
+              cssVar: 'brand-surface-color-inverse-medium',
               paletteColor: 'neutral 8',
             },
             {
