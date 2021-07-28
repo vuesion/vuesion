@@ -65,7 +65,7 @@ story.add(
           </vue-stack>
 
           <vue-tiles space="8" :columns="2">
-            <vue-button look="basic" @click="show = false;">Cancel</vue-button>
+            <vue-button look="secondary" @click="show = false;">Cancel</vue-button>
             <vue-button look="primary" @click="show = false;">Submit</vue-button>
           </vue-tiles>
         </vue-stack>

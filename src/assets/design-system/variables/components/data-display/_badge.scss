@@ -4,23 +4,23 @@ $badge-border-radius: $badge-height;
 
 $badge-variations: (
   'info': (
-    'color': var(--brand-text-color-info),
-    'bg': var(--brand-surface-color-info),
+    'color': var(--brand-text-info),
+    'bg': var(--brand-surface-info),
   ),
   'warning': (
-    'color': var(--brand-text-color-warning),
-    'bg': var(--brand-surface-color-warning),
+    'color': var(--brand-text-warning),
+    'bg': var(--brand-surface-warning),
   ),
   'success': (
-    'color': var(--brand-text-color-success),
-    'bg': var(--brand-surface-color-success),
+    'color': var(--brand-text-success),
+    'bg': var(--brand-surface-success),
   ),
   'danger': (
-    'color': var(--brand-text-color-danger),
-    'bg': var(--brand-surface-color-danger),
+    'color': var(--brand-text-danger),
+    'bg': var(--brand-surface-danger),
   ),
   'neutral': (
-    'color': var(--brand-text-color-default-medium),
-    'bg': var(--brand-surface-color-default-medium),
+    'color': var(--brand-text-default-medium),
+    'bg': var(--brand-surface-default-medium),
   ),
 );

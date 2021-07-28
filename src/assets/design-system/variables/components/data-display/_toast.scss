@@ -11,13 +11,13 @@ $toast-max-width: 344px;
 $toast-transition: all var(--brand-transition-duration) ease-in-out;
 
 // primary
-$toast-primary-bg: var(--brand-surface-color-info);
-$toast-primary-border: 1px solid var(--brand-border-color-info-low);
+$toast-primary-bg: var(--brand-surface-info);
+$toast-primary-border: 1px solid var(--brand-border-info-low);
 
 // warning
-$toast-warning-bg: var(--brand-surface-color-warning);
-$toast-warning-border: 1px solid var(--brand-border-color-warning-low);
+$toast-warning-bg: var(--brand-surface-warning);
+$toast-warning-border: 1px solid var(--brand-border-warning-low);
 
 // danger
-$toast-danger-bg: var(--brand-surface-color-danger);
-$toast-danger-border: 1px solid var(--brand-border-color-danger-low);
+$toast-danger-bg: var(--brand-surface-danger);
+$toast-danger-border: 1px solid var(--brand-border-danger-low);

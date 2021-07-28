@@ -73,7 +73,7 @@ export default {
 
   div {
     border-radius: 50%;
-    border: 2px solid var(--brand-surface-color-default-high);
+    border: 2px solid var(--brand-surface-default-high);
     &:first-child {
       position: absolute;
       left: 0;

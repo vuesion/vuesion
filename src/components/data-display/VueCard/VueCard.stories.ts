@@ -71,7 +71,7 @@ story.add(
           <vue-box padding="16">
             <vue-inline space="8" revert>
               <vue-button look="primary">Submit</vue-button>
-              <vue-button look="basic">Cancel</vue-button>
+              <vue-button look="secondary">Cancel</vue-button>
             </vue-inline>
           </vue-box>
         </vue-stack>

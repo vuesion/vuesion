@@ -184,27 +184,27 @@ export default defineComponent({
   }
 
   &.text-high {
-    color: var(--brand-text-color-default-high);
+    color: var(--brand-text-default-high);
   }
 
   &.text-medium {
-    color: var(--brand-text-color-default-medium);
+    color: var(--brand-text-default-medium);
   }
 
   &.text-low {
-    color: var(--brand-text-color-default-low);
+    color: var(--brand-text-default-low);
   }
 
   &.text-high-inverse {
-    color: var(--brand-text-color-inverse-high);
+    color: var(--brand-text-inverse-high);
   }
 
   &.text-medium-inverse {
-    color: var(--brand-text-color-inverse-medium);
+    color: var(--brand-text-inverse-medium);
   }
 
   &.text-low-inverse {
-    color: var(--brand-text-color-inverse-low);
+    color: var(--brand-text-inverse-low);
   }
 
   // Responsive Styles

@@ -25,54 +25,55 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 
 ## Testing
 
-- Cypress.io
-- Jest
-- Testing-library setup
-- 300+ example tests included
+- [Cypress.io E2E testing](https://www.cypress.io/)
+- [Jest Testing framework](https://jestjs.io/)
+- [Testing-library](https://testing-library.com/) to encourage good testing practices
+- 250+ example tests included
 
 ## DX, Code quality and maintenance
 
-- TypeScript
-- Eslint
-- Commit message linting
-- Prettier code formatting
-- Semantic releases
-- Husky pre-commit hooks
-- Dockerfile included
-- .env support
+- [TypeScript](https://www.typescriptlang.org/)
+- [Eslint](https://eslint.org/)
+- [Commit message linting](https://github.com/conventional-changelog/commitlint)
+- [Prettier code formatting](https://prettier.io/)
+- [Semantic releases](./.github/semantic.yml)
+- [Changelog](https://www.npmjs.com/package/generate-changelog)
+- [Husky pre-commit hooks](https://github.com/typicode/husky)
+- [Dockerfile included](./Dockerfile)
+- [.env support](./.env-prod)
 
 ## Core
 
-- server-side-rendering, single-page-app or statically generated HTML with Nuxt.js
-- 100% customizable Design-system with 35+ components including
+- server-side-rendering, single-page-app or statically generated HTML with [Nuxt.js](https://nuxtjs.org/)
+- [100% customizable Design-system with 35+ components including](vuesion.herokuapp.com/storybook)
   - layout, typography, button, input, select, checkbox, radio, (range-)slider, toggle, ...
   - theming/whitelabel support
-- SEO support
-- i18n support
-- Authentication module
-- Axios module
-- Vue-Apollo module
-  - with apollo-composable
+- [Figma UIKit](https://www.figma.com/file/DvP4EE7gAJH3fsc4RFqZYc/Vuesion-Core?node-id=1686%3A4660)
+- [SEO support](https://github.com/nuxt/vue-meta)
+- [i18n support](https://i18n.nuxtjs.org/)
+- [Authentication module](https://auth.nuxtjs.org/)
+- [Axios module](https://axios.nuxtjs.org/)
+- [Vue-Apollo module](https://github.com/nuxt-community/apollo-module)
+  - with [apollo-composable](https://v4.apollo.vuejs.org/)
   - integrated with Authentication- and Axios module
-- PWA module
-- State management with vuex
+- [PWA module](https://pwa.nuxtjs.org/)
+- [State management with vuex](https://vuex.vuejs.org/)
 - Code generators for
   - components
   - pages
   - interfaces and fixtures
   - vuex modules
-- Storybook with the following add-ons
-  - a11y
-  - actions
-  - console
-  - links
-  - options
-  - story-source
-  - viewport
-  - theme-switcher
-- Form validation with vee-validate
-- Composition-api module
-- Anime.js integration
+- [Storybook](https://storybook.js.org/) with the following add-ons
+  - [a11y](https://storybook.js.org/addons/@storybook/addon-a11y/)
+  - [actions](https://storybook.js.org/addons/@storybook/addon-actions/)
+  - [console](https://storybook.js.org/addons/@storybook/addon-console/)
+  - [links](https://storybook.js.org/addons/@storybook/addon-links/)
+  - [story-source](https://storybook.js.org/addons/@storybook/addon-storysource)
+  - [viewport](https://storybook.js.org/addons/@storybook/addon-viewport/)
+  - [theme-switcher](https://github.com/vuesion/packages/tree/master/packages/storybook-theme-switcher)
+- Form validation with [vee-validate](https://vee-validate.logaretm.com/v3)
+- [Composition-api module](https://composition-api.nuxtjs.org/)
+- [Anime.js](https://animejs.com/) integration
 
 # Getting started
 

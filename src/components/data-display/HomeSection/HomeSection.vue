@@ -38,7 +38,7 @@ export default {
 
 .homeSection {
   &.alternative {
-    background: var(--brand-surface-color-default-high);
+    background: var(--brand-surface-default-high);
   }
 
   .image {
