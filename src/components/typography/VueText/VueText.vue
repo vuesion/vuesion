@@ -164,23 +164,23 @@ export default defineComponent({
 
   // Colors
   &.primary {
-    color: var(--brand-primary);
+    color: var(--brand-text-primary);
   }
 
   &.neutral {
-    color: var(--brand-neutral);
+    color: var(--brand-text-neutral);
   }
 
   &.danger {
-    color: var(--brand-danger);
+    color: var(--brand-text-danger);
   }
 
   &.warning {
-    color: var(--brand-warning);
+    color: var(--brand-text-warning);
   }
 
   &.success {
-    color: var(--brand-success);
+    color: var(--brand-text-success);
   }
 
   &.text-high {
@@ -195,15 +195,15 @@ export default defineComponent({
     color: var(--brand-text-default-low);
   }
 
-  &.text-high-inverse {
+  &.text-inverse-high {
     color: var(--brand-text-inverse-high);
   }
 
-  &.text-medium-inverse {
+  &.text-inverse-medium {
     color: var(--brand-text-inverse-medium);
   }
 
-  &.text-low-inverse {
+  &.text-inverse-low {
     color: var(--brand-text-inverse-low);
   }
 

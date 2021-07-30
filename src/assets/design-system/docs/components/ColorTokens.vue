@@ -393,7 +393,7 @@
 
 <script lang="ts">
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import ColorTokensSection from '@/assets/design-system/docs/components/ColorTokenSection.vue';
+import ColorTokensSection from '@/assets/design-system/docs/components/ColorTokensSection.vue';
 
 export default {
   name: 'ColorTokens',

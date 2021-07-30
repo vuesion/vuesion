@@ -2,8 +2,8 @@
   <vue-stack space="0" align="right">
     <vue-tiles v-for="section in colorSections" :key="section.name" space="0" columns="11">
       <vue-box v-if="section.name !== 'neutral'" />
-      <vue-box v-for="color in section.colors" :key="color.hex" :style="{ background: color.hex }">
-        <vue-text :class="$style.color">{{ color.name }} ({{ color.hex }})</vue-text>
+      <vue-box v-for="color in section.colors" :key="color.hex" :style="{ background: color.hex, color: color.color }">
+        <vue-text>{{ color.name }} ({{ color.hex }})</vue-text>
       </vue-box>
     </vue-tiles>
   </vue-stack>
@@ -23,17 +23,19 @@ export default {
       const sections: any = {};
       const arr: any[] = [];
 
-      Object.keys(this.$style).forEach((key: string) => {
+      Object.keys(this.$style).forEach((key) => {
         const split = key.split('-');
         const section = split.shift();
         const name = split.join('-');
+        const idx = parseInt(name.split('-')[1], 10);
         const hex = this.$style[key];
+        const color = idx < 6 ? '#000' : '#fff';
 
         if (!sections[section]) {
           sections[section] = [];
         }
 
-        sections[section].push({ name, hex });
+        sections[section].push({ name, hex, color });
       });
 
       Object.keys(sections).forEach((key: string) => {
@@ -50,13 +52,6 @@ export default {
 
 <style lang="scss" module>
 @import '~@/assets/design-system';
-
-.color {
-  background: inherit;
-  background-clip: text;
-  color: transparent;
-  filter: invert(1) grayscale(1) unquote('contrast(100)');
-}
 
 :export {
   primary-primary-1: palette-color-level('primary', 1);

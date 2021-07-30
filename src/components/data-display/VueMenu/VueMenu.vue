@@ -18,8 +18,8 @@
         </div>
 
         <div :class="$style.value">
-          <vue-text :color="selectedItemIndex === idx ? 'text-high-inverse' : 'text-high'">{{ item.label }}</vue-text>
-          <vue-text v-if="item.description" look="support" color="text-medium-inverse">
+          <vue-text :color="selectedItemIndex === idx ? 'text-inverse-high' : 'text-high'">{{ item.label }}</vue-text>
+          <vue-text v-if="item.description" look="support" color="text-inverse-medium">
             {{ item.description }}
           </vue-text>
         </div>

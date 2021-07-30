@@ -5,13 +5,13 @@
       <div :style="{ background: `var(--${smallCircleColor || css})` }" />
     </div>
     <vue-stack space="0">
-      <vue-text look="h6" :color="inverse ? 'text-high-inverse' : 'text-high'">
+      <vue-text look="h6" :color="inverse ? 'text-inverse-high' : 'text-high'">
         {{ figma }}
       </vue-text>
-      <vue-text :color="inverse ? 'text-high-inverse' : 'text-high'">
+      <vue-text :color="inverse ? 'text-inverse-high' : 'text-high'">
         {{ css }}
       </vue-text>
-      <vue-text :color="inverse ? 'text-low-inverse' : 'text-low'">
+      <vue-text :color="inverse ? 'text-inverse-low' : 'text-low'">
         {{ palette }}
       </vue-text>
     </vue-stack>

@@ -87,24 +87,24 @@ story.add('Utility Component Tokens', () => ({
           css="brand-elevation-1"
           palette="neutral 10"
           :elevation="1"
-          circle-color="brand-bg-color-default-high"
-          small-circle-color="brand-bg-color-inverse-high"
+          circle-color="brand-bg-default-high"
+          small-circle-color="brand-bg-inverse-high"
         />
         <token-item
           figma="Elevation 2"
           css="brand-elevation-2"
           palette="neutral 10"
           :elevation="2"
-          circle-color="brand-bg-color-default-high"
-          small-circle-color="brand-bg-color-inverse-high"
+          circle-color="brand-bg-default-high"
+          small-circle-color="brand-bg-inverse-high"
         />
         <token-item
           figma="Elevation 3"
           css="brand-elevation-3"
           palette="neutral 10"
           :elevation="3"
-          circle-color="brand-bg-color-default-high"
-          small-circle-color="brand-bg-color-inverse-high"
+          circle-color="brand-bg-default-high"
+          small-circle-color="brand-bg-inverse-high"
         />
       </vue-stack>
     </utility-token-section>
@@ -115,13 +115,13 @@ story.add('Utility Component Tokens', () => ({
           css="brand-focused"
           palette="primary 3"
           circle-color="brand-interaction-primary-enabled"
-          small-circle-color="brand-bg-color-inverse-high"
+          small-circle-color="brand-bg-inverse-high"
           focused
         />
       </vue-stack>
     </utility-token-section>
     <utility-token-section title="Border Radiuses" description="There are a finite list of possible border radiuses to prevent the creation of shapes that inconsistent and introduce unnecessary tension between elements and spacing.">
-      <vue-tiles :columns="5">
+      <vue-tiles :columns="[1, 3, 5]">
         <vue-box
           v-for="radius in [
             {figma: 'None', css: '---'},
@@ -137,8 +137,8 @@ story.add('Utility Component Tokens', () => ({
               :styles="{
               height: '80px',
               width:'160px',
-              background: 'var(--brand-surface-color-default-medium)',
-              border: '1px solid var(--brand-border-color-default-high)',
+              background: 'var(--brand-surface-default-medium)',
+              border: '1px solid var(--brand-border-default-high)',
               borderRadius: 'var(--' + radius.css + ')' }"/>
             <vue-stack space="0" align="center">
               <vue-text look="h6" color="text-high">{{ radius.figma }}</vue-text>
