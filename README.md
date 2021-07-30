@@ -45,7 +45,7 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 ## Core
 
 - server-side-rendering, single-page-app or statically generated HTML with [Nuxt.js](https://nuxtjs.org/)
-- [100% customizable Design-system with 35+ components including](vuesion.herokuapp.com/storybook)
+- [100% customizable Design-system with 35+ components including](https://vuesion.herokuapp.com/storybook)
   - layout, typography, button, input, select, checkbox, radio, (range-)slider, toggle, ...
   - theming/whitelabel support
 - [Figma UIKit](https://www.figma.com/file/DvP4EE7gAJH3fsc4RFqZYc/Vuesion-Core?node-id=1686%3A4660)

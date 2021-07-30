@@ -26,8 +26,7 @@ or a link to a ticket system...
 
 - [ ] Run unit tests to ensure all existing tests are still passing
 - [ ] Add new passing unit tests to cover the code introduced by your PR
-- [ ] Change documentation for the code introduced by your PR
-- [ ] Add Story / Design System Page for a new component introduced by your PR
+- [ ] Add Story for a new component introduced by your PR
 
 <!--
 Thanks for contributing!
