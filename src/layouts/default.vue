@@ -5,7 +5,9 @@
     <vue-navbar :user-name="user && user.name" @menu-item-click="onLogoutClick" @menu-click="showSidebar = true">
       <template v-if="user" slot="center"> Hello, {{ user.name }}! </template>
 
-      <vue-button v-if="!loggedIn" slot="right" size="sm" @click="showLoginModal = true"> Login </vue-button>
+      <vue-button v-if="!loggedIn" slot="right" look="outline" size="sm" @click="showLoginModal = true">
+        Login
+      </vue-button>
     </vue-navbar>
 
     <nuxt :class="$style.content" />

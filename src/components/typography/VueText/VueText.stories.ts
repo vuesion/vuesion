@@ -1,11 +1,11 @@
 import { storiesOf } from '@storybook/vue';
 import { textColorVariations } from '@/components/prop-validators';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 import UtilityTokenSection from '@/assets/design-system/docs/components/UtilityTokenSection.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import ColorTokensSection from '@/assets/design-system/docs/components/ColorTokensSection.vue';
 import VueText from './VueText.vue';
 
 const story = storiesOf('Foundation|Typography', module) as any;
@@ -267,44 +267,107 @@ story.add(
 story.add(
   'Text Colors',
   () => ({
-    components: { VueText, VueBox },
+    components: { VueText, ComponentDocs, ColorTokensSection },
     data() {
       return {
         textVariations: textColorVariations,
       };
     },
-    template: `<vue-box>
-    <vue-text v-for="color in textVariations" :key="color" :color="color" as="div">
-      {{ color }}
-    </vue-text>
-    <br/>
-    <br/>
-    <vue-text v-for="color in textVariations" :key="color + '_2'" :color="color" as="div" serifs>
-      {{ color }}
-    </vue-text>
-    </vue-box>`,
-  }),
-  {
-    info: {
-      components: { VueText },
-    },
-  },
-);
-
-story.add(
-  'Responsive alignments',
-  () => ({
-    components: { VueText, VueBox },
-    data() {
-      return {
-        textVariations: textColorVariations,
-      };
-    },
-    template: `<vue-box>
-    <vue-text as="div" :align="['left', 'left', 'center', 'left', 'right']">Foo Bar</vue-text>
-    <vue-text as="div" :align="['center', 'right', 'left', 'right', 'center']">Foo Bar</vue-text>
-    <vue-text as="div" :align="['right', 'center', 'right', 'center', 'left']">Foo Bar</vue-text>
-    </vue-box>`,
+    template: `<component-docs
+      component-name="Text Colors"
+    >
+    <color-tokens-section
+      title="Text Colors"
+      description="These tokens are to be applied to text, content, and icons."
+      :columns="[
+        {
+          dark: false,
+          tokens: [
+            {
+              figmaVar: '📀 Text - Default - High',
+              cssVar: 'text-high',
+              paletteColor: 'neutral 10',
+              circleColor:'brand-text-default-high',
+              smallCircleColor:'brand-text-default-high',
+            },
+            {
+              figmaVar: '📀 Text - Default - Medium',
+              cssVar: 'text-medium',
+              paletteColor: 'neutral 7',
+              circleColor:'brand-text-default-medium',
+              smallCircleColor:'brand-text-default-medium',
+            },
+            {
+              figmaVar: '📀 Text - Default - Low',
+              cssVar: 'text-low',
+              paletteColor: 'neutral 6',
+              circleColor:'brand-text-default-low',
+              smallCircleColor:'brand-text-default-low',
+            },
+          ],
+        },
+        {
+          dark: true,
+          tokens: [
+            {
+              figmaVar: '📀 Text - Inverse - High',
+              cssVar: 'text-inverse-high',
+              paletteColor: 'neutral 0',
+              circleColor:'brand-text-inverse-high',
+              smallCircleColor:'brand-text-inverse-high',
+            },
+            {
+              figmaVar: '📀 Text - Inverse - Medium',
+              cssVar: 'text-inverse-medium',
+              paletteColor: 'neutral 3',
+              circleColor:'brand-text-inverse-medium',
+              smallCircleColor:'brand-text-inverse-medium',
+            },
+            {
+              figmaVar: '📀 Text - Inverse - Low',
+              cssVar: 'text-inverse-low',
+              paletteColor: 'neutral 5',
+              circleColor:'brand-text-inverse-low',
+              smallCircleColor:'brand-text-inverse-low',
+            },
+          ],
+        },
+        {
+          dark: false,
+          tokens: [
+            {
+              figmaVar: '📀 Text - Info',
+              cssVar: 'text-info',
+              paletteColor: 'primary 7',
+              circleColor:'brand-text-info',
+              smallCircleColor:'brand-text-info',
+            },
+            {
+              figmaVar: '📀 Text - Success',
+              cssVar: 'text-success',
+              paletteColor: 'success 7',
+              circleColor:'brand-text-success',
+              smallCircleColor:'brand-text-success',
+            },
+            {
+              figmaVar: '📀 Text - Warning',
+              cssVar: 'text-warning',
+              paletteColor: 'warning 7',
+              circleColor:'brand-text-warning',
+              smallCircleColor:'brand-text-warning',
+            },
+            {
+              figmaVar: '📀 Text - Danger',
+              cssVar: 'text-danger',
+              paletteColor: 'danger 7',
+              circleColor:'brand-text-danger',
+              smallCircleColor:'brand-text-danger',
+            },
+          ],
+        },
+      ]"
+    />
+    </component-docs>`,
   }),
   {
     info: {

@@ -5,14 +5,16 @@
       <vue-text look="description">{{ description }}</vue-text>
     </vue-stack>
 
-    <vue-tiles space="16" columns="3">
-      <vue-box v-for="(column, idx) in columns" :key="idx" padding="48 24" :class="column.dark && $style.dark">
+    <vue-tiles space="16" :columns="[1, 2, 3]">
+      <vue-box v-for="(column, idx) in columns" :key="idx" :padding="[16, '48 24']" :class="column.dark && $style.dark">
         <vue-stack>
           <token-item
             v-for="(token, tokenidx) in column.tokens"
             :key="`${token.cssVar}-${tokenidx}`"
             :figma="token.figmaVar"
             :css="token.cssVar"
+            :circle-color="token.circleColor"
+            :small-circle-color="token.smallCircleColor"
             :palette="token.paletteColor"
             :inverse="column.dark"
           />

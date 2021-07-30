@@ -3,7 +3,7 @@
     <vue-box padding="48 0 10 12">
       <vue-columns :class="$style.header" @click.native.prevent.stop="$emit('click')">
         <vue-column>
-          <vue-text color="text-low-inverse" look="support" weight="semi-bold" uppercase>{{ name }}</vue-text>
+          <vue-text color="text-inverse-low" look="support" weight="semi-bold" uppercase>{{ name }}</vue-text>
         </vue-column>
 
         <vue-column v-if="icon" width="content">

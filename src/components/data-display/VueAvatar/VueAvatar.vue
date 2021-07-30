@@ -6,7 +6,7 @@
   >
     <vue-text
       v-if="src === null"
-      color="text-high-inverse"
+      color="text-inverse-high"
       :look="size === 'sm' ? 'support' : size === 'md' ? 'h6' : 'h4'"
     >
       {{ initials }}

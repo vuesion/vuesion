@@ -12,9 +12,9 @@ export const textColorVariations = [
   'text-high',
   'text-medium',
   'text-low',
-  'text-high-inverse',
-  'text-medium-inverse',
-  'text-low-inverse',
+  'text-inverse-high',
+  'text-inverse-medium',
+  'text-inverse-low',
 ];
 export const textStyles = [
   'h1',
