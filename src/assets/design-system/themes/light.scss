@@ -30,16 +30,24 @@
   --brand-surface-inverse-high: #{palette-color-level('neutral', 9)};
   --brand-surface-inverse-medium: #{palette-color-level('neutral', 8)};
   --brand-surface-inverse-low: #{palette-color-level('neutral', 7)};
-  --brand-surface-info: #{palette-color-level('primary', 1)};
-  --brand-surface-danger: #{palette-color-level('danger', 1)};
-  --brand-surface-warning: #{palette-color-level('warning', 1)};
-  --brand-surface-success: #{palette-color-level('success', 1)};
+  --brand-surface-info-high: #{palette-color-level('primary', 3)};
+  --brand-surface-info-medium: #{palette-color-level('primary', 2)};
+  --brand-surface-info-low: #{palette-color-level('primary', 1)};
+  --brand-surface-danger-high: #{palette-color-level('danger', 3)};
+  --brand-surface-danger-medium: #{palette-color-level('danger', 2)};
+  --brand-surface-danger-low: #{palette-color-level('danger', 1)};
+  --brand-surface-warning-high: #{palette-color-level('warning', 3)};
+  --brand-surface-warning-medium: #{palette-color-level('warning', 2)};
+  --brand-surface-warning-low: #{palette-color-level('warning', 1)};
+  --brand-surface-success-high: #{palette-color-level('success', 3)};
+  --brand-surface-success-medium: #{palette-color-level('success', 2)};
+  --brand-surface-success-low: #{palette-color-level('success', 1)};
 
   /* Border Colors */
-  --brand-border-default-high: #{palette-color-level('neutral', 3)};
-  --brand-border-default-medium: #{palette-color-level('neutral', 2)};
-  --brand-border-inverse-high: #{palette-color-level('neutral', 6)};
-  --brand-border-inverse-medium: #{palette-color-level('neutral', 7)};
+  --brand-border-default-medium: #{palette-color-level('neutral', 3)};
+  --brand-border-default-low: #{palette-color-level('neutral', 2)};
+  --brand-border-inverse-medium: #{palette-color-level('neutral', 6)};
+  --brand-border-inverse-low: #{palette-color-level('neutral', 7)};
   --brand-border-info-high: #{palette-color-level('primary', 7)};
   --brand-border-info-low: #{palette-color-level('primary', 2)};
   --brand-border-danger-high: #{palette-color-level('danger', 7)};
@@ -51,11 +59,11 @@
 
   /* Text Colors */
   --brand-text-default-high: #{palette-color-level('neutral', 10)};
-  --brand-text-default-medium: #{palette-color-level('neutral', 7)};
+  --brand-text-default-medium: #{palette-color-level('neutral', 8)};
   --brand-text-default-low: #{palette-color-level('neutral', 6)};
   --brand-text-inverse-high: #{palette-color-level('neutral', 0)};
-  --brand-text-inverse-medium: #{palette-color-level('neutral', 3)};
-  --brand-text-inverse-low: #{palette-color-level('neutral', 5)};
+  --brand-text-inverse-medium: #{palette-color-level('neutral', 2)};
+  --brand-text-inverse-low: #{palette-color-level('neutral', 4)};
   --brand-text-info: #{palette-color-level('primary', 7)};
   --brand-text-danger: #{palette-color-level('danger', 7)};
   --brand-text-warning: #{palette-color-level('warning', 7)};

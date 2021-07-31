@@ -1,9 +1,9 @@
-$pagination-border: 1px solid var(--brand-border-default-high);
+$pagination-border: 1px solid var(--brand-border-default-medium);
 $pagination-padding-top: $space-8;
 
 // buttons
 $pagination-button-size: $space-48;
-$pagination-button-border: 1px solid var(--brand-border-default-medium);
+$pagination-button-border: 1px solid var(--brand-border-default-low);
 $pagination-button-border-radius: 50%;
 $pagination-button-shadow: var(--brand-elevation-1);
 $pagination-button-disabled-opacity: 0.3;
@@ -35,7 +35,7 @@ $pagination-item-min-width: $space-64;
 // default
 $pagination-item-color: var(--brand-text-default-low);
 $pagination-item-bg: transparent;
-$pagination-item-border: 1px solid var(--brand-border-default-high);
+$pagination-item-border: 1px solid var(--brand-border-default-medium);
 
 // active
 $pagination-item-color-active: var(--brand-interaction-primary-enabled);
@@ -46,9 +46,9 @@ $pagination-item-border-active: 2px solid var(--brand-interaction-primary-enable
 $pagination-item-outline: var(--brand-focused);
 $pagination-item-color-focus: var(--brand-text-default-low);
 $pagination-item-bg-focus: transparent;
-$pagination-item-border-focus: 1px solid var(--brand-border-default-high);
+$pagination-item-border-focus: 1px solid var(--brand-border-default-medium);
 
 // hover
 $pagination-item-color-hover: var(--brand-text-default-medium);
 $pagination-item-bg-hover: var(--brand-interaction-neutral-hovered);
-$pagination-item-border-hover: 1px solid var(--brand-border-default-high);
+$pagination-item-border-hover: 1px solid var(--brand-border-default-medium);

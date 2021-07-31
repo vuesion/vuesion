@@ -4,8 +4,7 @@ import { BreakPoint } from '@/enums/BreakPoint';
 export const brandColorVariations = ['primary', 'neutral', 'danger', 'warning', 'success'];
 export const badgeStatuses = ['info', 'warning', 'success', 'danger', 'neutral'];
 export const textColorVariations = [
-  'primary',
-  'neutral',
+  'info',
   'danger',
   'warning',
   'success',

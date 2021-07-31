@@ -293,7 +293,7 @@ story.add(
             {
               figmaVar: '📀 Text - Default - Medium',
               cssVar: 'text-medium',
-              paletteColor: 'neutral 7',
+              paletteColor: 'neutral 8',
               circleColor:'brand-text-default-medium',
               smallCircleColor:'brand-text-default-medium',
             },
@@ -319,14 +319,14 @@ story.add(
             {
               figmaVar: '📀 Text - Inverse - Medium',
               cssVar: 'text-inverse-medium',
-              paletteColor: 'neutral 3',
+              paletteColor: 'neutral 2',
               circleColor:'brand-text-inverse-medium',
               smallCircleColor:'brand-text-inverse-medium',
             },
             {
               figmaVar: '📀 Text - Inverse - Low',
               cssVar: 'text-inverse-low',
-              paletteColor: 'neutral 5',
+              paletteColor: 'neutral 4',
               circleColor:'brand-text-inverse-low',
               smallCircleColor:'brand-text-inverse-low',
             },
@@ -337,28 +337,28 @@ story.add(
           tokens: [
             {
               figmaVar: '📀 Text - Info',
-              cssVar: 'text-info',
+              cssVar: 'info',
               paletteColor: 'primary 7',
               circleColor:'brand-text-info',
               smallCircleColor:'brand-text-info',
             },
             {
               figmaVar: '📀 Text - Success',
-              cssVar: 'text-success',
+              cssVar: 'success',
               paletteColor: 'success 7',
               circleColor:'brand-text-success',
               smallCircleColor:'brand-text-success',
             },
             {
               figmaVar: '📀 Text - Warning',
-              cssVar: 'text-warning',
+              cssVar: 'warning',
               paletteColor: 'warning 7',
               circleColor:'brand-text-warning',
               smallCircleColor:'brand-text-warning',
             },
             {
               figmaVar: '📀 Text - Danger',
-              cssVar: 'text-danger',
+              cssVar: 'danger',
               paletteColor: 'danger 7',
               circleColor:'brand-text-danger',
               smallCircleColor:'brand-text-danger',

@@ -54,7 +54,7 @@ $button-variations: (
     'focus-bg': var(--brand-interaction-neutral-enabled),
     'focus-color': var(--brand-text-default-medium),
     'focus-box-shadow-color': palette-color-level('primary', 3),
-    'border': 1px solid var(--brand-border-default-high),
+    'border': 1px solid var(--brand-border-default-medium),
   ),
   'danger': (
     'bg': var(--brand-interaction-danger-enabled),

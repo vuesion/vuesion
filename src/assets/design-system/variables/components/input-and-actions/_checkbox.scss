@@ -2,11 +2,11 @@
 // default
 $checkbox-checkmark-bg: transparent;
 $checkbox-checkmark-color: var(--brand-text-inverse-high);
-$checkbox-checkmark-border: 1px solid var(--brand-border-default-high);
+$checkbox-checkmark-border: 1px solid var(--brand-border-default-medium);
 
 // hover
 $checkbox-checkmark-bg-hover: transparent;
-$checkbox-checkmark-border-hover: 1px solid var(--brand-border-default-high);
+$checkbox-checkmark-border-hover: 1px solid var(--brand-border-default-medium);
 
 // checked
 $checkbox-checkmark-bg-checked: var(--brand-interaction-primary-enabled);

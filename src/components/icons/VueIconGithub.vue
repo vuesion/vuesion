@@ -12,6 +12,7 @@
 </template>
 
 <script lang="ts">
+// TODO: update to feather
 export default {
   name: 'VueIconGithub',
 };
