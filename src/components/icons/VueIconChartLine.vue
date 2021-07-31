@@ -1,9 +1,19 @@
 <template>
   <i>
-    <svg viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
       <path
-        fill="currentColor"
-        d="M2048 1536v128h-2048v-1536h128v1408h1920zm-128-1248v435q0 21-19.5 29.5t-35.5-7.5l-121-121-633 633q-10 10-23 10t-23-10l-233-233-416 416-192-192 585-585q10-10 23-10t23 10l233 233 464-464-121-121q-16-16-7.5-35.5t29.5-19.5h435q14 0 23 9t9 23z"
+        d="M19.166 5l-7.916 7.917L7.083 8.75.833 15"
+        stroke="currentColor"
+        stroke-width="1.667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M14.167 5h5v5"
+        stroke="currentColor"
+        stroke-width="1.667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   </i>

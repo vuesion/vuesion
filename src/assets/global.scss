@@ -29,7 +29,7 @@ i {
 
 hr {
   border: none;
-  border-top: 1px solid var(--brand-border-default-medium);
+  border-top: 1px solid var(--brand-border-default-low);
   margin-top: -1px;
 }
 
@@ -37,7 +37,7 @@ table {
   thead,
   tbody {
     tr {
-      border-bottom: 1px solid var(--brand-border-default-medium);
+      border-bottom: 1px solid var(--brand-border-default-low);
 
       td,
       th {
@@ -112,5 +112,5 @@ img:not([alt]) {
 
 // storybook
 .border {
-  border: 1px solid var(--brand-border-default-medium);
+  border: 1px solid var(--brand-border-default-low);
 }

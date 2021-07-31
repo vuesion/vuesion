@@ -96,30 +96,70 @@
               cssVar: 'brand-surface-inverse-low',
               paletteColor: 'neutral 7',
             },
+            {
+              figmaVar: '📀 Surface - Success - High',
+              cssVar: 'brand-surface-success-high',
+              paletteColor: 'success 3',
+            },
+            {
+              figmaVar: '📀 Surface - Success - Medium',
+              cssVar: 'brand-surface-success-medium',
+              paletteColor: 'success 2',
+            },
+            {
+              figmaVar: '📀 Surface - Success - Low',
+              cssVar: 'brand-surface-success-low',
+              paletteColor: 'success 1',
+            },
+            {
+              figmaVar: '📀 Surface - Danger - High',
+              cssVar: 'brand-surface-danger-high',
+              paletteColor: 'danger 3',
+            },
+            {
+              figmaVar: '📀 Surface - Danger - Medium',
+              cssVar: 'brand-surface-danger-medium',
+              paletteColor: 'danger 2',
+            },
+            {
+              figmaVar: '📀 Surface - Danger - Low',
+              cssVar: 'brand-surface-danger-low',
+              paletteColor: 'danger 1',
+            },
           ],
         },
         {
           dark: false,
           tokens: [
             {
-              figmaVar: '📀 Surface - Info',
-              cssVar: 'brand-surface-info',
-              paletteColor: 'primary 1',
+              figmaVar: '📀 Surface - Info - High',
+              cssVar: 'brand-surface-info-high',
+              paletteColor: 'info 3',
             },
             {
-              figmaVar: '📀 Surface - Success',
-              cssVar: 'brand-surface-success',
-              paletteColor: 'success 1',
+              figmaVar: '📀 Surface - Info - Medium',
+              cssVar: 'brand-surface-info-medium',
+              paletteColor: 'info 2',
             },
             {
-              figmaVar: '📀 Surface - Warning',
-              cssVar: 'brand-surface-warning',
+              figmaVar: '📀 Surface - Info - Low',
+              cssVar: 'brand-surface-info-low',
+              paletteColor: 'info 1',
+            },
+            {
+              figmaVar: '📀 Surface - Warning - High',
+              cssVar: 'brand-surface-warning-high',
+              paletteColor: 'warning 3',
+            },
+            {
+              figmaVar: '📀 Surface - Warning - Medium',
+              cssVar: 'brand-surface-warning-medium',
+              paletteColor: 'warning 2',
+            },
+            {
+              figmaVar: '📀 Surface - Warning - Low',
+              cssVar: 'brand-surface-warning-low',
               paletteColor: 'warning 1',
-            },
-            {
-              figmaVar: '📀 Surface - Danger',
-              cssVar: 'brand-surface-danger',
-              paletteColor: 'danger 1',
             },
           ],
         },
@@ -133,13 +173,13 @@
           dark: false,
           tokens: [
             {
-              figmaVar: '📀 Border - Default - High',
-              cssVar: 'brand-border-default-high',
+              figmaVar: '📀 Border - Default - Medium',
+              cssVar: 'brand-border-default-medium',
               paletteColor: 'neutral 3',
             },
             {
-              figmaVar: '📀 Border - Default - Medium',
-              cssVar: 'brand-border-default-medium',
+              figmaVar: '📀 Border - Default - Low',
+              cssVar: 'brand-border-default-low',
               paletteColor: 'neutral 2',
             },
             {
@@ -158,13 +198,13 @@
           dark: false,
           tokens: [
             {
-              figmaVar: '📀 Border - inverse - High',
-              cssVar: 'brand-border-inverse-high',
+              figmaVar: '📀 Border - inverse - Medium',
+              cssVar: 'brand-border-inverse-medium',
               paletteColor: 'neutral 6',
             },
             {
-              figmaVar: '📀 Border - inverse - Medium',
-              cssVar: 'brand-border-inverse-medium',
+              figmaVar: '📀 Border - inverse - Low',
+              cssVar: 'brand-border-inverse-low',
               paletteColor: 'neutral 7',
             },
             {
@@ -221,7 +261,7 @@
             {
               figmaVar: '📀 Text - Default - Medium',
               cssVar: 'brand-text-default-medium',
-              paletteColor: 'neutral 7',
+              paletteColor: 'neutral 8',
             },
             {
               figmaVar: '📀 Text - Default - Low',
@@ -241,12 +281,12 @@
             {
               figmaVar: '📀 Text - Inverse - Medium',
               cssVar: 'brand-text-inverse-medium',
-              paletteColor: 'neutral 3',
+              paletteColor: 'neutral 2',
             },
             {
               figmaVar: '📀 Text - Inverse - Low',
               cssVar: 'brand-text-inverse-low',
-              paletteColor: 'neutral 5',
+              paletteColor: 'neutral 4',
             },
           ],
         },

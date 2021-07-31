@@ -4,7 +4,7 @@ $input-label-gap: $space-4;
 
 // input default
 $input-border-radius: var(--brand-border-radius-md);
-$input-border: 1px solid var(--brand-border-default-high);
+$input-border: 1px solid var(--brand-border-default-medium);
 $input-height: auto;
 $input-padding: ($space-12 - $space-2) $space-12;
 $input-color: var(--brand-text-default-high);
@@ -24,10 +24,10 @@ $input-disabled-disabled-opacity: 0.3;
 $input-outline: var(--brand-focused);
 
 // hover
-$input-border-hover: 1px solid var(--brand-border-default-high);
+$input-border-hover: 1px solid var(--brand-border-default-medium);
 
 // error
-$input-bg-error: var(--brand-surface-danger);
+$input-bg-error: var(--brand-surface-danger-low);
 $input-border-error: 1px solid var(--brand-border-danger-high);
 
 // leading icon

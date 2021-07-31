@@ -4,7 +4,7 @@ import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueImage from '@/components/data-display/VueImage/VueImage.vue';
+import VueAvatar from '@/components/data-display/VueAvatar/VueAvatar.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
@@ -23,7 +23,7 @@ story.add(
       VueStack,
       VueColumns,
       VueColumn,
-      VueImage,
+      VueAvatar,
       VueText,
       VueBox,
       VueInline,
@@ -40,7 +40,7 @@ story.add(
           <vue-box padding="16 16 12 16">
             <vue-columns space="12" align-y="center">
               <vue-column width="56px" v-if="id === 1 || id === 3">
-                <vue-image alt="avatar" src="https://via.placeholder.com/56"/>
+                <vue-avatar name="avatar" size="md" src="https://via.placeholder.com/56"/>
               </vue-column>
               <vue-column>
                 <vue-stack space="0">

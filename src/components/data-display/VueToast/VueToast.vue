@@ -7,7 +7,7 @@
             <vue-text :color="toast.type">
               <vue-icon-info v-if="toast.type === 'primary'" />
               <vue-icon-exclamation v-if="toast.type === 'warning'" />
-              <vue-icon-fire v-if="toast.type === 'danger'" />
+              <vue-icon-times-circle v-if="toast.type === 'danger'" />
             </vue-text>
           </vue-column>
           <vue-column>
@@ -48,14 +48,14 @@ import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueIconInfo from '@/components/icons/VueIconInfoCircle.vue';
 import VueIconTimes from '@/components/icons/VueIconTimes.vue';
-import VueIconFire from '@/components/icons/VueIconFire.vue';
 import VueIconExclamation from '@/components/icons/VueIconExclamation.vue';
+import VueIconTimesCircle from '@/components/icons/VueIconTimesCircle.vue';
 
 export default defineComponent({
   name: 'VueToast',
   components: {
+    VueIconTimesCircle,
     VueIconExclamation,
-    VueIconFire,
     VueIconTimes,
     VueIconInfo,
     VueText,
@@ -72,7 +72,7 @@ export default defineComponent({
     };
     const addToast = (n: IToast) => {
       n.id = getGUID();
-      n.type = n.type || 'primary';
+      n.type = n.type || 'info';
       n.displayTimeInMs = n.displayTimeInMs || 10000;
 
       toasts.value.push(n);
@@ -143,9 +143,9 @@ export default defineComponent({
       height: $toast-icons-size;
     }
 
-    &.primary {
-      background: $toast-primary-bg;
-      border: $toast-primary-border;
+    &.info {
+      background: $toast-info-bg;
+      border: $toast-info-border;
     }
 
     &.warning {

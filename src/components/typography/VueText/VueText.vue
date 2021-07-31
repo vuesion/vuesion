@@ -163,12 +163,8 @@ export default defineComponent({
   }
 
   // Colors
-  &.primary {
-    color: var(--brand-text-primary);
-  }
-
-  &.neutral {
-    color: var(--brand-text-neutral);
+  &.info {
+    color: var(--brand-text-info);
   }
 
   &.danger {

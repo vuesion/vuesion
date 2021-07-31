@@ -4,7 +4,7 @@ $textarea-label-gap: $space-4;
 
 // input default
 $textarea-border-radius: var(--brand-border-radius-md);
-$textarea-border: 1px solid var(--brand-border-default-high);
+$textarea-border: 1px solid var(--brand-border-default-medium);
 $textarea-height: $space-120;
 $textarea-padding: ($space-12 - $space-2) $space-12;
 $textarea-color: var(--brand-text-default-high);
@@ -24,8 +24,8 @@ $textarea-disabled-disabled-opacity: 0.3;
 $textarea-outline: var(--brand-focused);
 
 // hover
-$textarea-border-hover: 1px solid var(--brand-border-default-high);
+$textarea-border-hover: 1px solid var(--brand-border-default-medium);
 
 // error
-$textarea-bg-error: var(--brand-surface-danger);
+$textarea-bg-error: var(--brand-surface-danger-low);
 $textarea-border-error: 1px solid var(--brand-border-danger-high);

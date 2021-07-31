@@ -5,7 +5,7 @@
       <vue-text look="description">{{ description }}</vue-text>
     </vue-stack>
 
-    <vue-tiles space="16" :columns="[1, 2, 3]">
+    <vue-tiles space="0" :columns="[1, 2, 3]">
       <vue-box v-for="(column, idx) in columns" :key="idx" :padding="[16, '48 24']" :class="column.dark && $style.dark">
         <vue-stack>
           <token-item
@@ -49,6 +49,8 @@ export default {
   .dark {
     border-radius: var(--brand-border-radius-lg);
     background: var(--brand-bg-inverse-high);
+    height: max-content;
+    box-shadow: var(--brand-elevation-3);
   }
 }
 </style>

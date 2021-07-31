@@ -6,7 +6,7 @@ $select-label-gap: $space-4;
 
 // input default
 $select-border-radius: var(--brand-border-radius-md);
-$select-border: 1px solid var(--brand-border-default-high);
+$select-border: 1px solid var(--brand-border-default-medium);
 $select-height: $space-40;
 $select-padding: ($space-12 - $space-2) $space-12;
 $select-color: var(--brand-text-default-high);
@@ -27,10 +27,10 @@ $select-disabled-disabled-opacity: 0.3;
 $select-outline: var(--brand-focused);
 
 // hover
-$select-border-hover: 1px solid var(--brand-border-default-high);
+$select-border-hover: 1px solid var(--brand-border-default-medium);
 
 // error
-$select-bg-error: var(--brand-surface-danger);
+$select-bg-error: var(--brand-surface-danger-low);
 $select-border-error: 1px solid var(--brand-border-danger-high);
 
 // leading icon

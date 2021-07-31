@@ -5,7 +5,7 @@ $menu-max-height: $space-120 * 3;
 $menu-padding: $space-8 0;
 $menu-shadow: var(--brand-elevation-3);
 $menu-border-radius: var(--brand-border-radius-md);
-$menu-border: 1px solid var(--brand-border-default-medium);
+$menu-border: 1px solid var(--brand-border-default-low);
 
 // item
 $menu-item-color: var(--brand-text-default-high);
@@ -16,4 +16,4 @@ $menu-item-icon-size: $space-20;
 $menu-item-icon-size-gap: $space-8;
 
 // separator
-$menu-separator-border: 1px solid var(--brand-border-default-medium);
+$menu-separator-border: 1px solid var(--brand-border-default-low);
