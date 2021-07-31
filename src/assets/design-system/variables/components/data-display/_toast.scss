@@ -10,7 +10,7 @@ $toast-icons-size: $space-20;
 $toast-max-width: 344px;
 $toast-transition: all var(--brand-transition-duration) ease-in-out;
 
-// primary
+// info
 $toast-info-bg: var(--brand-surface-info-low);
 $toast-info-border: 1px solid var(--brand-border-info-low);
 
@@ -21,3 +21,7 @@ $toast-warning-border: 1px solid var(--brand-border-warning-low);
 // danger
 $toast-danger-bg: var(--brand-surface-danger-low);
 $toast-danger-border: 1px solid var(--brand-border-danger-low);
+
+// success
+$toast-success-bg: var(--brand-surface-success-low);
+$toast-success-border: 1px solid var(--brand-border-success-low);

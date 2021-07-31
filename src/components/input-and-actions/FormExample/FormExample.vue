@@ -186,6 +186,7 @@ export default {
             addToast({
               title: 'Data has been saved!',
               text: 'Have a look at the console!',
+              type: 'success',
             });
           }, 1000);
         },
