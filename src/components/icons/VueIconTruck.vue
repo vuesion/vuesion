@@ -2,12 +2,11 @@
   <i>
     <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
       <path
-        d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
-        fill="currentColor"
-      />
-      <path
-        d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"
-        fill="currentColor"
+        d="M13.333 2.5H.833v10.833h12.5V2.5zM13.333 6.667h3.333l2.5 2.5v4.166h-5.833V6.667zM4.583 17.5a2.083 2.083 0 100-4.167 2.083 2.083 0 000 4.167zM15.416 17.5a2.083 2.083 0 100-4.167 2.083 2.083 0 000 4.167z"
+        stroke="currentColor"
+        stroke-width="1.667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   </i>

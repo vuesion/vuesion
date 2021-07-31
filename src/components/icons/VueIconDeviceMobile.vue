@@ -2,10 +2,11 @@
   <i>
     <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 14a1 1 0 100-2 1 1 0 000 2z"
-        fill="currentColor"
+        d="M14.167 1.667H5.834c-.92 0-1.667.746-1.667 1.666v13.334c0 .92.746 1.666 1.667 1.666h8.333c.92 0 1.667-.746 1.667-1.666V3.333c0-.92-.746-1.666-1.667-1.666zM10 15h.008"
+        stroke="currentColor"
+        stroke-width="1.667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   </i>

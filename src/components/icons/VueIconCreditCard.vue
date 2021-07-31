@@ -1,12 +1,12 @@
 <template>
   <i>
     <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-      <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" fill="currentColor" />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
-        fill="currentColor"
+        d="M17.5 3.333h-15C1.58 3.333.833 4.08.833 5v10c0 .92.746 1.667 1.667 1.667h15c.92 0 1.666-.747 1.666-1.667V5c0-.92-.746-1.667-1.666-1.667zM.833 8.333h18.333"
+        stroke="currentColor"
+        stroke-width="1.667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   </i>

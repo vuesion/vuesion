@@ -18,7 +18,7 @@ story.add(
         items: [
           { label: 'Save', value: 'save', leadingIcon: 'save' },
           { label: '', value: 'separator' },
-          { label: 'Open', value: 'open', leadingIcon: 'folder-open' },
+          { label: 'Open', value: 'open', leadingIcon: 'folder' },
           { label: 'Delete', value: 'delete', leadingIcon: 'trash' },
         ],
         alignMenu: { label: 'Left', value: 'left' },

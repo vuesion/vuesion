@@ -43,11 +43,7 @@
       </vue-sidebar-group>
 
       <vue-sidebar-group name="Documentation">
-        <vue-sidebar-group-item
-          name="Documentation"
-          leading-icon="document-search"
-          href="https://vuesion.github.io/docs/en/"
-        />
+        <vue-sidebar-group-item name="Documentation" leading-icon="book" href="https://vuesion.github.io/docs/en/" />
         <vue-sidebar-group-item
           name="Design System"
           leading-icon="star"
@@ -55,7 +51,7 @@
         />
         <vue-sidebar-group-item
           name="Components"
-          leading-icon="puzzle-piece"
+          leading-icon="package"
           href="/storybook/?path=/story/atoms-badge--badge-variants"
         />
       </vue-sidebar-group>

@@ -1,12 +1,18 @@
 <template>
   <i>
     <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-        fill="currentColor"
-      />
+      <g
+        clip-path="url(#clip0)"
+        stroke="currentColor"
+        stroke-width="1.667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M10 18.333a8.333 8.333 0 100-16.666 8.333 8.333 0 000 16.666zM10 13.333V10M10 6.667h.008" />
+      </g>
+      <defs>
+        <clipPath id="clip0"><path fill="#fff" d="M0 0h20v20H0z" /></clipPath>
+      </defs>
     </svg>
   </i>
 </template>
