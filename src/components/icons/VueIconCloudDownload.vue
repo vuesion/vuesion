@@ -1,10 +1,19 @@
 <template>
   <i>
     <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-      <path
-        d="M6 13a4 4 0 010-8 4 4 0 118 0 4 4 0 010 8h-3V8a1 1 0 10-2 0v5H6zM9 13h2v2.586l1.293-1.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414L9 15.586V13z"
-        fill="currentColor"
-      />
+      <g
+        clip-path="url(#clip0)"
+        stroke="currentColor"
+        stroke-width="1.667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M6.667 14.167L10 17.5l3.334-3.333M10 10v7.5" />
+        <path d="M17.4 15.075A4.167 4.167 0 0015 7.5h-1.05A6.666 6.666 0 102.5 13.575" />
+      </g>
+      <defs>
+        <clipPath id="clip0"><path fill="#fff" d="M0 0h20v20H0z" /></clipPath>
+      </defs>
     </svg>
   </i>
 </template>

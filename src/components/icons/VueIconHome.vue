@@ -2,8 +2,18 @@
   <i>
     <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
       <path
-        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
-        fill="currentColor"
+        d="M17.5 7.5L10 1.667 2.5 7.5v9.167a1.667 1.667 0 001.667 1.666h11.666a1.666 1.666 0 001.667-1.666V7.5z"
+        stroke="currentColor"
+        stroke-width="1.667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M12.5 18.333V10h-5v8.333"
+        stroke="currentColor"
+        stroke-width="1.667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   </i>

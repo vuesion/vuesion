@@ -1,6 +1,8 @@
 import { Configuration } from '@nuxt/types';
 import { VuesionConfig } from '@vuesion/models';
 
+const themeColor = '#cd235b';
+
 const config: Configuration = {
   apollo: {
     clientConfigs: {
@@ -88,7 +90,9 @@ const config: Configuration = {
     title: process.env.npm_package_name || '',
     link: [
       {
-        rel: 'stylesheet',
+        rel: 'preload',
+        as: 'style',
+        onload: 'this.onload=null;this.rel="stylesheet"',
         href:
           'https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800|Lora:300,400,500,600,700,800&display=swap',
       },
@@ -134,7 +138,7 @@ const config: Configuration = {
   loading: { look: '#cd235b' },
   loadingIndicator: {
     name: 'circle',
-    look: '#cd235b',
+    look: themeColor,
     background: 'white',
   },
   modules: [
@@ -166,6 +170,9 @@ const config: Configuration = {
   pwa: {
     icon: {
       fileName: 'images/vuesion-logo.png',
+    },
+    manifest: {
+      theme_color: themeColor,
     },
   },
   robots: {

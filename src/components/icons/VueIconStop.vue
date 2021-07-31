@@ -2,10 +2,18 @@
   <i>
     <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V8a1 1 0 00-1-1H8z"
-        fill="currentColor"
+        d="M10 18.333a8.333 8.333 0 100-16.666 8.333 8.333 0 000 16.666z"
+        stroke="currentColor"
+        stroke-width="1.667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M12.5 7.5h-5v5h5v-5z"
+        stroke="currentColor"
+        stroke-width="1.667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   </i>

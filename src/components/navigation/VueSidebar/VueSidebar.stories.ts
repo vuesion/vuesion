@@ -34,9 +34,9 @@ story.add(
       </vue-sidebar-group>
 
       <vue-sidebar-group name="Documentation" @click="onGroupClick" @icon-click="onGroupIconClick">
-        <vue-sidebar-group-item leading-icon="document-search" name="Documentation" href="https://vuesion.github.io/docs/en/" />
+        <vue-sidebar-group-item leading-icon="book" name="Documentation" href="https://vuesion.github.io/docs/en/" />
         <vue-sidebar-group-item leading-icon="star" name="Design System" href="/storybook/?path=/story/design-system-design-system--intro" />
-        <vue-sidebar-group-item leading-icon="puzzle-piece" name="Components" href="/storybook/?path=/story/atoms-badge--badge-variants" />
+        <vue-sidebar-group-item leading-icon="package" name="Components" href="/storybook/?path=/story/atoms-badge--badge-variants" />
       </vue-sidebar-group>
 
       <vue-sidebar-group name="Community" @click="onGroupClick" @icon-click="onGroupIconClick">

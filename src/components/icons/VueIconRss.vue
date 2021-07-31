@@ -1,10 +1,12 @@
 <template>
   <i>
     <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-      <path d="M5 3a1 1 0 000 2c5.523 0 10 4.477 10 10a1 1 0 102 0C17 8.373 11.627 3 5 3z" fill="currentColor" />
       <path
-        d="M4 9a1 1 0 011-1 7 7 0 017 7 1 1 0 11-2 0 5 5 0 00-5-5 1 1 0 01-1-1zM3 15a2 2 0 114 0 2 2 0 01-4 0z"
-        fill="currentColor"
+        d="M3.333 9.167a7.5 7.5 0 017.5 7.5M3.333 3.333a13.333 13.333 0 0113.333 13.334M4.166 16.667a.833.833 0 100-1.667.833.833 0 000 1.667z"
+        stroke="currentColor"
+        stroke-width="1.667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   </i>
