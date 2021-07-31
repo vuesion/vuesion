@@ -19,6 +19,7 @@ story.add(
       <vue-toast />
 
       <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
+        <vue-button look="primary" @click="onSuccessToastClick">add success toast</vue-button>
         <vue-button look="secondary" @click="onInfoToastClick">add info toast</vue-button>
         <vue-button look="outline" @click="onWarningToastClick">add warning toast</vue-button>
         <vue-button look="danger" @click="onDangerToastClick">add danger toast</vue-button>
@@ -27,15 +28,22 @@ story.add(
       </component-docs>
     `,
     methods: {
+      onSuccessToastClick() {
+        addToast({
+          title: 'This is a success message!',
+          type: 'success',
+          text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+        });
+      },
       onInfoToastClick() {
         addToast({
-          title: 'This is an information',
+          title: 'This is an information!',
           text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
         });
       },
       onWarningToastClick() {
         addToast({
-          title: 'This is a warning',
+          title: 'This is a warning!',
           text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
           type: 'warning',
           displayTimeInMs: 15000,

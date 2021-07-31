@@ -5,9 +5,8 @@
         <vue-columns space="12" align-y="top">
           <vue-column width="content">
             <vue-text :color="toast.type">
-              <vue-icon-info v-if="toast.type === 'primary'" />
-              <vue-icon-exclamation v-if="toast.type === 'warning'" />
-              <vue-icon-times-circle v-if="toast.type === 'danger'" />
+              <vue-icon-info v-if="['info', 'success'].includes(toast.type)" />
+              <vue-icon-exclamation v-if="['warning', 'danger'].includes(toast.type)" />
             </vue-text>
           </vue-column>
           <vue-column>
@@ -49,12 +48,10 @@ import VueText from '@/components/typography/VueText/VueText.vue';
 import VueIconInfo from '@/components/icons/VueIconInfoCircle.vue';
 import VueIconTimes from '@/components/icons/VueIconTimes.vue';
 import VueIconExclamation from '@/components/icons/VueIconExclamation.vue';
-import VueIconTimesCircle from '@/components/icons/VueIconTimesCircle.vue';
 
 export default defineComponent({
   name: 'VueToast',
   components: {
-    VueIconTimesCircle,
     VueIconExclamation,
     VueIconTimes,
     VueIconInfo,
@@ -156,6 +153,11 @@ export default defineComponent({
     &.danger {
       background: $toast-danger-bg;
       border: $toast-danger-border;
+    }
+
+    &.success {
+      background: $toast-success-bg;
+      border: $toast-success-border;
     }
   }
 }
