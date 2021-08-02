@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueInput from './VueInput.vue';
 
 const story = storiesOf('Input & Actions|Input', module) as any;
@@ -9,10 +10,11 @@ const story = storiesOf('Input & Actions|Input', module) as any;
 story.add(
   'Default',
   () => ({
-    components: { VueInput, ComponentDocs, VueStack },
+    components: { VueInput, ComponentDocs, VueStack, VueSelect },
     data() {
       return {
         model: '',
+        size: { label: 'Medium', value: 'md' },
       };
     },
     template: `<component-docs
@@ -21,6 +23,19 @@ story.add(
       story="Show all states of the input component. Please interact with the input to see all states."
     >
     <vue-stack space="48">
+      <vue-select
+        :items="[
+              { label: 'Small', value: 'sm' },
+              { label: 'Medium', value: 'md' },
+              { label: 'Large', value: 'lg' },
+              ]"
+        label="Size"
+        name="size"
+        id="size"
+        hide-description
+        v-model="size"
+      />
+
       <vue-input
         name="text-1"
         id="text-1"
@@ -30,6 +45,7 @@ story.add(
         error-message="Error message"
         validation="required"
         required
+        :size="size.value"
         v-model="model"
       />
 
@@ -41,6 +57,7 @@ story.add(
         description="Readonly"
         error-message="Error message"
         readonly
+        :size="size.value"
         v-model="model"
       />
 
@@ -52,6 +69,7 @@ story.add(
         description="Disabled"
         error-message="Error message"
         disabled
+        :size="size.value"
         v-model="model"
       />
     </vue-stack>

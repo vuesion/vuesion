@@ -17,6 +17,7 @@
           $style.inputWrapper,
           leadingIcon && $style.hasLeadingContent,
           trailingIcon && $style.hasTrailingContent,
+          $style[size],
         ]"
       >
         <div v-if="leadingIcon" :class="$style.leading" @click="$emit('leading-icon-click')">
@@ -65,6 +66,7 @@ import { defineComponent } from '@vue/composition-api';
 import { useIntersectionObserver } from '@/composables/use-intersection-observer';
 import { getDomRef } from '@/composables/get-dom-ref';
 import VueText from '@/components/typography/VueText/VueText.vue';
+import { shirtSizeValidator } from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueInput',
@@ -89,6 +91,7 @@ export default defineComponent({
     autocomplete: { type: String, default: 'off' },
     leadingIcon: { type: String, default: null },
     trailingIcon: { type: String, default: null },
+    size: { type: String, validator: shirtSizeValidator, default: 'md' },
   },
   setup(props) {
     const input = getDomRef(null);
@@ -179,7 +182,6 @@ export default defineComponent({
       border-radius: $input-border-radius;
       padding: $input-padding;
       line-height: $input-line-height;
-      height: $input-height;
       width: 100%;
 
       &:hover {
@@ -203,6 +205,18 @@ export default defineComponent({
       font-family: $input-font-family;
       font-weight: $input-font-weight;
       opacity: 1;
+    }
+
+    &.sm {
+      height: $button-sm-height;
+    }
+
+    &.md {
+      height: $button-md-height;
+    }
+
+    &.lg {
+      height: $button-lg-height;
     }
   }
 
