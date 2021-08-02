@@ -81,6 +81,19 @@ describe('VueSelect.vue', () => {
     expect(queryAllByText('Value 1')).toHaveLength(1);
   });
 
+  test('should open menu on toggle icon click', async () => {
+    const { getByTestId, queryAllByText } = harness;
+    const toggle = getByTestId('toggle-select');
+
+    expect(queryAllByText('Value 1')).toHaveLength(1);
+
+    await fireEvent.click(toggle);
+
+    await sleep(50);
+
+    expect(queryAllByText('Value 1')).toHaveLength(2);
+  });
+
   test('should open menu and close it via outline click', async () => {
     const { getByText, queryAllByText } = harness;
     const select = getByText('Select').parentElement;
