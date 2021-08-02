@@ -85,10 +85,11 @@ story.add(
 story.add(
   'With icons',
   () => ({
-    components: { VueInput, ComponentDocs, VueStack },
+    components: { VueInput, ComponentDocs, VueStack, VueSelect },
     data() {
       return {
         model: '',
+        size: { label: 'Medium', value: 'md' },
       };
     },
     methods: {
@@ -99,6 +100,19 @@ story.add(
     story="Show icons on the left and right side of the input. Please interact with the input to see all states."
     >
     <vue-stack space="48">
+      <vue-select
+        :items="[
+              { label: 'Small', value: 'sm' },
+              { label: 'Medium', value: 'md' },
+              { label: 'Large', value: 'lg' },
+              ]"
+        label="Size"
+        name="size"
+        id="size"
+        hide-description
+        v-model="size"
+      />
+
       <vue-input
         name="text-1"
         id="text-1"
@@ -108,6 +122,7 @@ story.add(
         error-message="Error message"
         validation="required"
         required
+        :size="size.value"
         v-model="model"
         leading-icon="calendar"
         @leading-icon-click="onLeadingIconClick"
@@ -122,6 +137,7 @@ story.add(
         error-message="Error message"
         validation="required"
         required
+        :size="size.value"
         v-model="model"
         trailing-icon="times"
         @trailing-icon-click="onTrailingIconClick"
@@ -136,6 +152,7 @@ story.add(
         error-message="Error message"
         validation="required"
         required
+        :size="size.value"
         v-model="model"
         leading-icon="eye"
         trailing-icon="times"

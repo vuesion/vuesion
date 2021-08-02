@@ -266,15 +266,15 @@ export default defineComponent({
     }
 
     &.sm {
-      height: $button-sm-height;
+      height: $input-control-sm-height;
     }
 
     &.md {
-      height: $button-md-height;
+      height: $input-control-md-height;
     }
 
     &.lg {
-      height: $button-lg-height;
+      height: $input-control-lg-height;
     }
   }
 
@@ -311,26 +311,26 @@ export default defineComponent({
     display: none;
 
     &.sm {
-      top: $select-label-height + $select-label-gap + $button-sm-height + $select-description-gap;
+      top: $select-label-height + $select-label-gap + $input-control-sm-height + $select-description-gap;
 
       &.hideLabel {
-        top: $button-sm-height + $select-description-gap;
+        top: $input-control-sm-height + $select-description-gap;
       }
     }
 
     &.md {
-      top: $select-label-height + $select-label-gap + $button-md-height + $select-description-gap;
+      top: $select-label-height + $select-label-gap + $input-control-md-height + $select-description-gap;
 
       &.hideLabel {
-        top: $button-md-height + $select-description-gap;
+        top: $input-control-md-height + $select-description-gap;
       }
     }
 
     &.lg {
-      top: $select-label-height + $select-label-gap + $button-lg-height + $select-description-gap;
+      top: $select-label-height + $select-label-gap + $input-control-lg-height + $select-description-gap;
 
       &.hideLabel {
-        top: $button-lg-height + $select-description-gap;
+        top: $input-control-lg-height + $select-description-gap;
       }
     }
   }

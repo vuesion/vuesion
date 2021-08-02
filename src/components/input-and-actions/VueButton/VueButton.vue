@@ -130,7 +130,7 @@ export default defineComponent({
   // Sizes
   &.sm {
     padding: $button-sm-padding;
-    height: $button-sm-height;
+    height: $input-control-sm-height;
 
     &.hasLeadingIcon {
       &.addSpace {
@@ -147,7 +147,7 @@ export default defineComponent({
 
   &.md {
     padding: $button-md-padding;
-    height: $button-md-height;
+    height: $input-control-md-height;
 
     &.hasLeadingIcon {
       &.addSpace {
@@ -164,7 +164,7 @@ export default defineComponent({
 
   &.lg {
     padding: $button-lg-padding;
-    height: $button-lg-height;
+    height: $input-control-lg-height;
 
     &.hasLeadingIcon {
       &.addSpace {
