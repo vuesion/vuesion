@@ -13,7 +13,7 @@ story.add(
   'Default',
   () => ({
     components: { VueDropdown, ComponentDocs, VueStack, VueInline, VueSelect },
-    data(): { items: Array<IItem>; alignMenu: IItem } {
+    data(): { items: Array<IItem>; alignMenu: IItem; size: IItem } {
       return {
         items: [
           { label: 'Save', value: 'save', leadingIcon: 'save' },
@@ -22,6 +22,7 @@ story.add(
           { label: 'Delete', value: 'delete', leadingIcon: 'trash' },
         ],
         alignMenu: { label: 'Left', value: 'left' },
+        size: { label: 'Medium', value: 'md' },
       };
     },
     template: `<component-docs
@@ -43,12 +44,25 @@ story.add(
           hide-description
           v-model="alignMenu"
         />
+        <vue-select
+          :items="[
+              { label: 'Small', value: 'sm' },
+              { label: 'Medium', value: 'md' },
+              { label: 'Large', value: 'lg' },
+              ]"
+          label="Size"
+          name="size"
+          id="size"
+          hide-description
+          v-model="size"
+        />
       </vue-inline>
       <vue-inline>
         <vue-dropdown
           button-text="Dropdown Button"
           :items="items"
           :align-menu="alignMenu.value"
+          :size="size.value"
           @click="onClick"
           @item-click="onItemClick" />
       </vue-inline>

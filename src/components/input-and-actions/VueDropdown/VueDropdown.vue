@@ -2,14 +2,19 @@
   <div ref="dropdownRef" :class="$style.vueDropdown" @keydown="onKeyDown">
     <div :class="$style.wrapper" @click.stop.prevent="onClick">
       <slot>
-        <vue-button look="outline" :aria-expanded="show.toString()" trailing-icon="chevron-down">
+        <vue-button look="outline" :aria-expanded="show.toString()" :size="size" trailing-icon="chevron-down">
           {{ buttonText }}
         </vue-button>
       </slot>
     </div>
 
     <vue-collapse :show="show" :duration="duration">
-      <vue-menu ref="menuRef" :items="items" :class="[$style.menu, $style[alignMenu]]" @click="onItemClick" />
+      <vue-menu
+        ref="menuRef"
+        :items="items"
+        :class="[$style.menu, $style[alignMenu], $style[size]]"
+        @click="onItemClick"
+      />
     </vue-collapse>
   </div>
 </template>
@@ -22,7 +27,7 @@ import { useOutsideClick } from '@/composables/use-outside-click';
 import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
-import { horizontalAlignmentValidator } from '@/components/prop-validators';
+import { horizontalAlignmentValidator, shirtSizeValidator } from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueDropdown',
@@ -32,6 +37,7 @@ export default defineComponent({
     items: { type: Array as new () => IItem[], required: true },
     duration: { type: Number, default: 250 },
     alignMenu: { type: String, validator: horizontalAlignmentValidator, default: 'left' },
+    size: { type: String, validator: shirtSizeValidator, default: 'md' },
   },
   setup(_, { emit }) {
     const dropdownRef = getDomRef(null);
@@ -92,7 +98,17 @@ export default defineComponent({
   }
 
   .menu {
-    top: $button-md-height + $dropdown-button-menu-gap;
+    &.sm {
+      top: $button-sm-height + $dropdown-button-menu-gap;
+    }
+
+    &.md {
+      top: $button-md-height + $dropdown-button-menu-gap;
+    }
+
+    &.lg {
+      top: $button-lg-height + $dropdown-button-menu-gap;
+    }
 
     &.left {
       left: 0;
