@@ -25,7 +25,7 @@
           :title="label"
           :required="required"
           :disabled="disabled"
-          :class="[$style.nativeSelect, placeholder && !inputValue && $style.hasPlaceholder]"
+          :class="[$style.nativeSelect, placeholder && !inputValue && $style.hasPlaceholder, $style[size]]"
           v-bind="$attrs"
           v-on="{
             ...$listeners,
@@ -46,20 +46,24 @@
         <div
           :data-testid="'custom-' + id"
           :aria-expanded="show.toString()"
-          :class="$style.customSelect"
+          :class="[$style.customSelect, $style[size]]"
           :tabindex="disabled ? -1 : 0"
           @click.stop.prevent="show = !show"
         >
           {{ inputValueOption ? inputValueOption.label : placeholder }}
         </div>
 
-        <div :class="$style.icon" @click.stop.prevent="show = !show">
+        <div :class="$style.icon" :data-testid="'toggle-' + id" @click.stop.prevent="toggleMenu">
           <vue-icon-chevron-down />
         </div>
       </div>
 
       <vue-collapse :show="show" :duration="duration">
-        <vue-menu :items="options" :class="[$style.menu, hideLabel && $style.hideLabel]" @click="onItemClick" />
+        <vue-menu
+          :items="options"
+          :class="[$style.menu, hideLabel && $style.hideLabel, $style[size]]"
+          @click="onItemClick"
+        />
       </vue-collapse>
 
       <vue-text
@@ -82,6 +86,7 @@ import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import { getDomRef } from '@/composables/get-dom-ref';
 import VueIconChevronDown from '@/components/icons/VueIconChevronDown.vue';
+import { shirtSizeValidator } from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueSelect',
@@ -108,6 +113,7 @@ export default defineComponent({
     description: { type: String, default: '' },
     errorMessage: { type: String, default: '' },
     duration: { type: Number, default: 250 },
+    size: { type: String, validator: shirtSizeValidator, default: 'md' },
   },
   setup(props, { emit }) {
     const options = computed<Array<IItem>>(() =>
@@ -172,6 +178,13 @@ export default defineComponent({
         close();
       }
     };
+    const toggleMenu = () => {
+      const nativeSelect = document.querySelector(`#${props.id}`);
+
+      nativeSelect.focus();
+
+      show.value = !show.value;
+    };
 
     useOutsideClick(selectRef, () => close());
 
@@ -184,6 +197,7 @@ export default defineComponent({
       onInput,
       onItemClick,
       onKeyDown,
+      toggleMenu,
     };
   },
 });
@@ -221,6 +235,7 @@ export default defineComponent({
 
   .nativeSelect,
   .customSelect {
+    align-items: center;
     outline: none;
     color: $select-color;
     font-size: $select-font-size;
@@ -231,7 +246,6 @@ export default defineComponent({
     border-radius: $select-border-radius;
     padding: $select-padding;
     line-height: $select-line-height;
-    height: $select-height;
     width: 100%;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -249,6 +263,18 @@ export default defineComponent({
 
     &:active {
       outline: none;
+    }
+
+    &.sm {
+      height: $button-sm-height;
+    }
+
+    &.md {
+      height: $button-md-height;
+    }
+
+    &.lg {
+      height: $button-lg-height;
     }
   }
 
@@ -283,10 +309,29 @@ export default defineComponent({
   .menu {
     width: 100%;
     display: none;
-    top: $select-label-height + $select-label-gap + $select-height + $select-description-gap;
 
-    &.hideLabel {
-      top: $select-height + $select-description-gap;
+    &.sm {
+      top: $select-label-height + $select-label-gap + $button-sm-height + $select-description-gap;
+
+      &.hideLabel {
+        top: $button-sm-height + $select-description-gap;
+      }
+    }
+
+    &.md {
+      top: $select-label-height + $select-label-gap + $button-md-height + $select-description-gap;
+
+      &.hideLabel {
+        top: $button-md-height + $select-description-gap;
+      }
+    }
+
+    &.lg {
+      top: $select-label-height + $select-label-gap + $button-lg-height + $select-description-gap;
+
+      &.hideLabel {
+        top: $button-lg-height + $select-description-gap;
+      }
     }
   }
 

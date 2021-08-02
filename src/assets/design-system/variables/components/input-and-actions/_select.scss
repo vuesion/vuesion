@@ -8,7 +8,7 @@ $select-label-gap: $space-4;
 $select-border-radius: var(--brand-border-radius-md);
 $select-border: 1px solid var(--brand-border-default-medium);
 $select-height: $space-40;
-$select-padding: ($space-12 - $space-2) $space-12;
+$select-padding: 0 $space-12;
 $select-color: var(--brand-text-default-high);
 $select-placeholder-color: var(--brand-text-default-low);
 $select-background-color: transparent;
