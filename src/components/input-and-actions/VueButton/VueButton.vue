@@ -24,13 +24,21 @@
       click: onClick,
     }"
   >
-    <component :is="`vue-icon-${leadingIcon}`" v-if="leadingIcon" :class="$style.leadingIcon" />
+    <component
+      :is="`vue-icon-${leadingIcon}`"
+      v-if="leadingIcon"
+      :class="[$style.leadingIcon, $slots.default && $style.addSpace]"
+    />
 
     <vue-text v-if="loading === false" :class="$style.text" look="button" weight="semi-bold" as="span">
       <slot />
     </vue-text>
 
-    <component :is="`vue-icon-${trailingIcon}`" v-if="trailingIcon" :class="$style.trailingIcon" />
+    <component
+      :is="`vue-icon-${trailingIcon}`"
+      v-if="trailingIcon"
+      :class="[$style.trailingIcon, $slots.default && $style.addSpace]"
+    />
 
     <vue-loader v-if="loading === true" :class="$style.loader" />
   </component>
@@ -125,11 +133,15 @@ export default defineComponent({
     height: $button-sm-height;
 
     &.hasLeadingIcon {
-      padding-left: $button-sm-has-icon-space;
+      &.addSpace {
+        padding-left: $button-sm-has-icon-space;
+      }
     }
 
     &.hasTrailingIcon {
-      padding-right: $button-sm-has-icon-space;
+      &.addSpace {
+        padding-right: $button-sm-has-icon-space;
+      }
     }
   }
 
@@ -138,11 +150,15 @@ export default defineComponent({
     height: $button-md-height;
 
     &.hasLeadingIcon {
-      padding-left: $button-md-has-icon-space;
+      &.addSpace {
+        padding-left: $button-md-has-icon-space;
+      }
     }
 
     &.hasTrailingIcon {
-      padding-right: $button-md-has-icon-space;
+      &.addSpace {
+        padding-right: $button-md-has-icon-space;
+      }
     }
   }
 
@@ -151,11 +167,15 @@ export default defineComponent({
     height: $button-lg-height;
 
     &.hasLeadingIcon {
-      padding-left: $button-lg-has-icon-space;
+      &.addSpace {
+        padding-left: $button-lg-has-icon-space;
+      }
     }
 
     &.hasTrailingIcon {
-      padding-right: $button-lg-has-icon-space;
+      &.addSpace {
+        padding-right: $button-lg-has-icon-space;
+      }
     }
   }
 
@@ -234,11 +254,14 @@ export default defineComponent({
   }
 
   .leadingIcon {
-    margin-right: $button-icon-gap;
+    &.addSpace {
+      margin-right: $button-icon-gap;
+    }
   }
-
   .trailingIcon {
-    margin-left: $button-icon-gap;
+    &.addSpace {
+      margin-left: $button-icon-gap;
+    }
   }
 }
 </style>
