@@ -179,7 +179,7 @@ export default defineComponent({
       }
     };
     const toggleMenu = () => {
-      const nativeSelect = document.querySelector(`#${props.id}`);
+      const nativeSelect: HTMLSelectElement = document.querySelector(`#${props.id}`);
 
       nativeSelect.focus();
 
