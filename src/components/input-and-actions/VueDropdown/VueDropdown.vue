@@ -99,15 +99,15 @@ export default defineComponent({
 
   .menu {
     &.sm {
-      top: $button-sm-height + $dropdown-button-menu-gap;
+      top: $input-control-sm-height + $dropdown-button-menu-gap;
     }
 
     &.md {
-      top: $button-md-height + $dropdown-button-menu-gap;
+      top: $input-control-md-height + $dropdown-button-menu-gap;
     }
 
     &.lg {
-      top: $button-lg-height + $dropdown-button-menu-gap;
+      top: $input-control-lg-height + $dropdown-button-menu-gap;
     }
 
     &.left {

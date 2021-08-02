@@ -131,7 +131,7 @@ export default defineComponent({
         left: 0;
         top: 0;
         bottom: 0;
-        height: $input-height;
+        height: auto;
         width: $input-leading-width;
         color: $input-leading-color;
 
@@ -156,7 +156,7 @@ export default defineComponent({
         right: 0;
         top: 0;
         bottom: 0;
-        height: $input-height;
+        height: auto;
         width: $input-trailing-width;
         color: $input-trailing-color;
 
@@ -208,15 +208,15 @@ export default defineComponent({
     }
 
     &.sm {
-      height: $button-sm-height;
+      height: $input-control-sm-height;
     }
 
     &.md {
-      height: $button-md-height;
+      height: $input-control-md-height;
     }
 
     &.lg {
-      height: $button-lg-height;
+      height: $input-control-lg-height;
     }
   }
 
