@@ -12,56 +12,7 @@
 
     <nuxt :class="$style.content" />
 
-    <vue-footer slim />
-
-    <vue-sidebar ref="sidebarRef" :class="[$style.sidebar, showSidebar && $style.show]">
-      <vue-sidebar-group name="Language & Theme" as="div">
-        <vue-select
-          id="theme"
-          label="Theme"
-          name="theme"
-          :items="themes"
-          :value="$colorMode.value"
-          @input="$colorMode.preference = $event.value"
-        />
-        <vue-select
-          id="lang"
-          label="Language"
-          name="lang"
-          hide-description
-          :items="languages"
-          :value="$i18n.locale"
-          @input="onLocaleSwitch"
-        />
-      </vue-sidebar-group>
-
-      <vue-sidebar-group name="Navigation">
-        <vue-sidebar-group-item name="Home" leading-icon="home" to="/" />
-        <vue-sidebar-group-item name="Vuex Example" leading-icon="eye" :to="{ name: 'example-counter' }" />
-        <vue-sidebar-group-item name="Apollo Example" leading-icon="eye" :to="{ name: 'example-apollo' }" />
-        <vue-sidebar-group-item name="Form Example" leading-icon="eye" :to="{ name: 'example-form' }" />
-      </vue-sidebar-group>
-
-      <vue-sidebar-group name="Documentation">
-        <vue-sidebar-group-item name="Documentation" leading-icon="book" href="https://vuesion.github.io/docs/en/" />
-        <vue-sidebar-group-item
-          name="Design System"
-          leading-icon="star"
-          href="/storybook/?path=/story/design-system-design-system--intro"
-        />
-        <vue-sidebar-group-item
-          name="Components"
-          leading-icon="package"
-          href="/storybook/?path=/story/atoms-badge--badge-variants"
-        />
-      </vue-sidebar-group>
-
-      <vue-sidebar-group name="Community">
-        <vue-sidebar-group-item name="Github" leading-icon="github" href="https://github.com/vuesion/vuesion" />
-        <vue-sidebar-group-item name="Discord" leading-icon="chat" href="https://discord.gg/59x5cg2" />
-        <vue-sidebar-group-item name="Twitter" leading-icon="twitter" href="https://twitter.com/vuesion1" />
-      </vue-sidebar-group>
-    </vue-sidebar>
+    <vue-footer />
 
     <vue-modal disable-page-scroll :show="showLoginModal" @close="showLoginModal = false">
       <login-form :loading="loginRequestStatus === 'PENDING'" @submit="onLoginSubmit" />
@@ -77,11 +28,7 @@ import { defineComponent, computed, ref, useContext, useMeta, watch } from '@nux
 import { RequestStatus } from '@/enums/RequestStatus';
 import VueNavbar from '@/components/navigation/VueNavbar/VueNavbar.vue';
 import VueFooter from '@/components/navigation/VueFooter/VueFooter.vue';
-import VueSidebar from '@/components/navigation/VueSidebar/VueSidebar.vue';
 import VueToast from '@/components/data-display/VueToast/VueToast.vue';
-import VueSidebarGroup from '@/components/navigation/VueSidebar/VueSidebarGroup.vue';
-import VueSidebarGroupItem from '@/components/navigation/VueSidebar/VueSidebarGroupItem.vue';
-import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueModal from '@/components/data-display/VueModal/VueModal.vue';
 import LoginForm from '@/components/input-and-actions/LoginForm/LoginForm.vue';
@@ -100,10 +47,6 @@ export default defineComponent({
     LoginForm,
     VueModal,
     VueButton,
-    VueSelect,
-    VueSidebarGroupItem,
-    VueSidebarGroup,
-    VueSidebar,
     VueNavbar,
     VueFooter,
     VueToast,

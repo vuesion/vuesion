@@ -58,8 +58,8 @@ addParameters({
       phone: {
         name: 'Phone',
         styles: {
-          width: '320px',
-          height: '568px',
+          width: '360px',
+          height: '740px',
         },
       },
       tabletPortrait: {
