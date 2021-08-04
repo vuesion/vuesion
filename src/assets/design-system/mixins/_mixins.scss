@@ -58,7 +58,7 @@ $grid-breakpoints-max: (
 }
 
 /**
- USAGE:
+ USAGE (only in SCSS files, not .vue files):
 
  @include add-theme-variable(
   variable-name,
