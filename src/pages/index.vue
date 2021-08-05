@@ -2,6 +2,7 @@
   <div>
     <landing-page-header />
     <testimonials :stargazers-count="stargazersCount" :stargazers="stargazers" />
+    <value-proposition />
   </div>
 </template>
 
@@ -10,11 +11,12 @@
 import LandingPageHeader from '@/components/marketing/LandingPageHeader/LandingPageHeader.vue';
 import Testimonials from '@/components/marketing/Testimonials/Testimonials.vue';
 import { Context } from '@nuxt/types';
+import ValueProposition from '@/components/marketing/ValueProposition/ValueProposition.vue';
 
 export default {
   name: 'HomePage',
   auth: false,
-  components: { Testimonials, LandingPageHeader },
+  components: { ValueProposition, Testimonials, LandingPageHeader },
   async asyncData(ctx: Context): Promise<any> {
     const res = await ctx.$axios.get('/github-info');
 

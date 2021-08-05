@@ -26,19 +26,19 @@ export default defineComponent({
   position: relative;
 
   @include mediaMin(tabletPortrait) {
-    max-width: $screen-tablet-portrait-min;
+    max-width: $screen-tablet-portrait-min - 32px;
   }
 
   @include mediaMin(tabletLandscape) {
-    max-width: $screen-tablet-landscape-min;
+    max-width: $screen-tablet-landscape-min - 32px;
   }
 
   @include mediaMin(smallDesktop) {
-    max-width: $screen-small-desktop-min;
+    max-width: $screen-small-desktop-min - 64px;
   }
 
   @include mediaMin(largeDesktop) {
-    max-width: $screen-large-desktop-min;
+    max-width: $screen-large-desktop-min - 64px;
   }
 }
 </style>
