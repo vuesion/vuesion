@@ -80,7 +80,7 @@ export default defineComponent({
 // general fallback values until the dom is completely rendered
 $tiles-phone-fallback: 2;
 $tiles-tablet-portrait-fallback: 4;
-$tiles-tablet-landscape-fallback: 8;
+$tiles-tablet-landscape-fallback: 4;
 $tiles-small-desktop-fallback: 8;
 $tiles-large-desktop-fallback: 8;
 

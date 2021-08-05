@@ -2,13 +2,13 @@
   <div id="app" :class="$style.app">
     <vue-toast />
 
-    <vue-navbar :user-name="user && user.name" @menu-item-click="onLogoutClick" @menu-click="showSidebar = true">
-      <template v-if="user" slot="center"> Hello, {{ user.name }}! </template>
+    <!--    <vue-navbar :user-name="user && user.name" @menu-item-click="onLogoutClick" @menu-click="showSidebar = true">-->
+    <!--      <template v-if="user" slot="center"> Hello, {{ user.name }}! </template>-->
 
-      <vue-button v-if="!loggedIn" slot="right" look="outline" size="sm" @click="showLoginModal = true">
-        Login
-      </vue-button>
-    </vue-navbar>
+    <!--      <vue-button v-if="!loggedIn" slot="right" look="outline" size="sm" @click="showLoginModal = true">-->
+    <!--        Login-->
+    <!--      </vue-button>-->
+    <!--    </vue-navbar>-->
 
     <nuxt :class="$style.content" />
 
@@ -26,10 +26,8 @@
 import '@/assets/global.scss';
 import { defineComponent, computed, ref, useContext, useMeta, watch } from '@nuxtjs/composition-api';
 import { RequestStatus } from '@/enums/RequestStatus';
-import VueNavbar from '@/components/navigation/VueNavbar/VueNavbar.vue';
 import VueFooter from '@/components/navigation/VueFooter/VueFooter.vue';
 import VueToast from '@/components/data-display/VueToast/VueToast.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueModal from '@/components/data-display/VueModal/VueModal.vue';
 import LoginForm from '@/components/input-and-actions/LoginForm/LoginForm.vue';
 import { useLocaleSwitch } from '@/composables/use-locale-switch';
@@ -46,8 +44,6 @@ export default defineComponent({
     VueBackToTop,
     LoginForm,
     VueModal,
-    VueButton,
-    VueNavbar,
     VueFooter,
     VueToast,
   },

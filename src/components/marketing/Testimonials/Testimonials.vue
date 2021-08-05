@@ -7,7 +7,7 @@
         </vue-text>
 
         <vue-content-block>
-          <vue-tiles :space="[24, 24, 32]" :columns="[2, 3, 8]">
+          <vue-tiles :space="[24, 24, 32]" :columns="[2, 4, 4, 8]">
             <vue-box
               v-for="stargazer in randomStargazers"
               :key="stargazer.login"
@@ -17,7 +17,7 @@
             >
               <vue-stack align="center" space="4">
                 <vue-avatar :src="stargazer.avatar_url" :name="stargazer.login" size="lg" />
-                <vue-text look="small-title" weight="semi-bold" class="ellipsis" :style="{ maxWidth: '120px' }">
+                <vue-text look="small-title" weight="semi-bold" class="ellipsis" :style="{ maxWidth: '100px' }">
                   {{ stargazer.login }}
                 </vue-text>
               </vue-stack>
@@ -112,7 +112,7 @@ export default defineComponent({
     }
   }
 
-  @include mediaMin(tabletPortrait) {
+  @include mediaMin(smallDesktop) {
     height: 850px;
   }
 }

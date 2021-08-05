@@ -1,8 +1,8 @@
 <template>
   <div ref="header" :class="$style.landingPageHeader">
-    <vue-content-block :class="[$style.nav, $style.content]"></vue-content-block>
+    <canvas ref="canvas" :class="$style.canvas" />
 
-    <vue-box :padding="['24 16', '80 null']">
+    <vue-box :padding="['24 16', '144 null 32 null', '144 null 80 null']">
       <vue-stack space="48" align="center">
         <vue-text look="h1" weight="semi-bold" align="center" :class="$style.content">
           Nothing great is <br />
@@ -10,7 +10,7 @@
         </vue-text>
 
         <vue-text look="h4" align="center" :class="[$style.subtitle, $style.content]">
-          Vuesion is a framework that helps product teams build faster than ever with <br />
+          Vuesion is a boilerplate that helps product teams build faster than ever with <br />
           fewer headaches and modern best practices across engineering & design.
         </vue-text>
 
@@ -35,8 +35,8 @@
           </a>
         </vue-inline>
 
-        <vue-hidden tablet-portrait tablet-landscape small-desktop large-desktop :class="$style.content">
-          <vue-text> Vuesion Storybook integration and Figma file are perfectly in sync </vue-text>
+        <vue-hidden tablet-landscape small-desktop large-desktop :class="$style.content">
+          <vue-text align="center"> Vuesion Storybook integration and Figma file are perfectly in sync </vue-text>
         </vue-hidden>
       </vue-stack>
     </vue-box>
@@ -68,8 +68,6 @@
         title="vuesion figma"
       />
     </a>
-
-    <canvas ref="canvas" :class="$style.canvas" />
   </div>
 </template>
 
@@ -80,13 +78,12 @@ import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueHidden from '@/components/utils/VueHidden/VueHidden.vue';
 import { getDomRef } from '@/composables/get-dom-ref';
 
 export default defineComponent({
   name: 'LandingPageHeader',
-  components: { VueHidden, VueContentBlock, VueInline, VueStack, VueText, VueBox },
+  components: { VueHidden, VueInline, VueStack, VueText, VueBox },
   props: {},
   setup() {
     const header = getDomRef(null);
@@ -145,11 +142,6 @@ export default defineComponent({
     right: 0;
   }
 
-  .nav {
-    height: $space-80;
-    border-bottom: 1px solid var(--brand-border-info-high);
-  }
-
   .subtitle {
     color: palette-color-level('primary', 3);
   }
@@ -177,23 +169,53 @@ export default defineComponent({
 
   .leftImage,
   .rightImage {
+    position: relative;
     width: 100%;
-    height: 200px;
-    background-size: 100%;
+    height: 350px;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 50%;
+  }
+
+  .leftImage {
+    background-position: right;
   }
 
   .rightImage {
+    background-position: left;
     margin: $space-16 0;
   }
 
   @include mediaMin(tabletPortrait) {
+    .leftImage,
+    .rightImage {
+      height: 542px;
+      background-size: 100%;
+    }
+
+    .rightImage {
+      margin: $space-24 0;
+    }
+  }
+
+  @include mediaMin(tabletLandscape) {
+    .leftImage,
+    .rightImage {
+      height: 580px;
+      background-size: 88%;
+      background-position: 50% 50%;
+    }
+
+    .rightImage {
+      margin: $space-24 0;
+    }
+  }
+
+  @include mediaMin(smallDesktop) {
     height: 800px;
 
     .leftImage {
       position: absolute;
-      top: 70%;
+      top: 65%;
       left: 0;
       width: 50%;
       height: 650px;
@@ -203,23 +225,13 @@ export default defineComponent({
 
     .rightImage {
       position: absolute;
-      top: 70%;
+      top: 65%;
       right: 0;
       width: 50%;
       height: 650px;
       background-size: cover;
       background-position: left;
       margin: 0;
-    }
-  }
-
-  @include mediaMin(tabletLandscape) {
-    .leftImage {
-      top: 62%;
-    }
-
-    .rightImage {
-      top: 62%;
     }
   }
 }
