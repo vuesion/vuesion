@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as express from 'express';
+import axios from 'axios';
 import { getIntInRange } from '@vuesion/utils/dist/randomGenerator';
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
@@ -66,6 +67,50 @@ export const DemoRoutes = (app: express.Application) => {
       res.status(401).json({ message: 'access token invalid' });
     } else {
       res.status(200).json({ message: 'Hey! it seems that you try out vuesion, I hope you like it. Cheers, Johannes' });
+    }
+  });
+
+  /**
+   * Github api
+   */
+
+  app.get('/github-info', async (_: express.Request, res: express.Response) => {
+    const authorization =
+      'Basic ' + Buffer.from(`${process.env.GITHUB_USER}:${process.env.GITHUB_TOKEN}`, 'binary').toString('base64');
+
+    try {
+      const stargazerCountRes = await axios.get('https://api.github.com/repos/vuesion/vuesion', {
+        headers: {
+          Accept: 'application/vnd.github.v3+json',
+          'User-Agent': 'request',
+          Authorization: authorization,
+        },
+      });
+      const stargazersCount = parseInt(stargazerCountRes.data.stargazers_count, 10);
+      const stargazersRes = await axios.get(
+        `https://api.github.com/repos/vuesion/vuesion/stargazers?per_page=150&page=${getIntInRange(
+          1,
+          Math.floor(stargazersCount / 100),
+        )}`,
+        {
+          headers: {
+            Accept: 'application/vnd.github.v3+json',
+            'User-Agent': 'request',
+            Authorization: authorization,
+          },
+        },
+      );
+
+      res.status(200).json({
+        stargazersCount,
+        stargazers: stargazersRes.data,
+      });
+    } catch (e) {
+      console.log(e); // eslint-disable-line
+      res.status(200).json({
+        stargazersCount: 0,
+        stargazers: [],
+      });
     }
   });
 };

@@ -77,9 +77,16 @@ export default defineComponent({
 <style lang="scss" module>
 @import '~@/assets/_design-system';
 
+// general fallback values until the dom is completely rendered
+$tiles-phone-fallback: 2;
+$tiles-tablet-portrait-fallback: 4;
+$tiles-tablet-landscape-fallback: 8;
+$tiles-small-desktop-fallback: 8;
+$tiles-large-desktop-fallback: 8;
+
 .vueTiles {
   display: grid;
-  grid-template-columns: repeat(var(--phone), minmax(min-content, 1fr));
+  grid-template-columns: repeat(var(--phone, $tiles-phone-fallback), minmax(min-content, 1fr));
 
   @each $name, $space in $spacings {
     &.spacev-#{$name} {
@@ -92,7 +99,7 @@ export default defineComponent({
   }
 
   @include mediaMin(tabletPortrait) {
-    grid-template-columns: repeat(var(--tablet-portrait), minmax(min-content, 1fr));
+    grid-template-columns: repeat(var(--tablet-portrait, $tiles-tablet-portrait-fallback), minmax(min-content, 1fr));
 
     @each $name, $space in $spacings {
       &.spacev-tp-#{$name} {
@@ -106,7 +113,7 @@ export default defineComponent({
   }
 
   @include mediaMin(tabletLandscape) {
-    grid-template-columns: repeat(var(--tablet-landscape), minmax(min-content, 1fr));
+    grid-template-columns: repeat(var(--tablet-landscape, $tiles-tablet-landscape-fallback), minmax(min-content, 1fr));
 
     @each $name, $space in $spacings {
       &.spacev-tl-#{$name} {
@@ -120,7 +127,7 @@ export default defineComponent({
   }
 
   @include mediaMin(smallDesktop) {
-    grid-template-columns: repeat(var(--small-desktop), minmax(min-content, 1fr));
+    grid-template-columns: repeat(var(--small-desktop, $tiles-small-desktop-fallback), minmax(min-content, 1fr));
 
     @each $name, $space in $spacings {
       &.spacev-sd-#{$name} {
@@ -134,7 +141,7 @@ export default defineComponent({
   }
 
   @include mediaMin(largeDesktop) {
-    grid-template-columns: repeat(var(--large-desktop), minmax(min-content, 1fr));
+    grid-template-columns: repeat(var(--large-desktop, $tiles-large-desktop-fallback), minmax(min-content, 1fr));
 
     @each $name, $space in $spacings {
       &.spacev-ld-#{$name} {
