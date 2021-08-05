@@ -1,17 +1,28 @@
 <template>
   <div>
     <landing-page-header />
+    <testimonials :stargazers-count="stargazersCount" :stargazers="stargazers" />
   </div>
 </template>
 
 <script lang="ts">
 /* istanbul ignore file */
-import LandingPageHeader from '@/components/data-display/LandingPageHeader/LandingPageHeader.vue';
+import LandingPageHeader from '@/components/marketing/LandingPageHeader/LandingPageHeader.vue';
+import Testimonials from '@/components/marketing/Testimonials/Testimonials.vue';
+import { Context } from '@nuxt/types';
 
 export default {
   name: 'HomePage',
   auth: false,
-  components: { LandingPageHeader },
+  components: { Testimonials, LandingPageHeader },
+  async asyncData(ctx: Context): Promise<any> {
+    const res = await ctx.$axios.get('/github-info');
+
+    return {
+      stargazersCount: res.data.stargazersCount,
+      stargazers: res.data.stargazers,
+    };
+  },
   head() {
     return {
       title: 'vuesion - flexible, scalable, opinionated, fast',

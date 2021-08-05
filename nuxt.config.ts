@@ -48,7 +48,7 @@ const config: Configuration = {
         autoLogout: true,
       },
     },
-    plugins: ['@/plugins/axios/response-interceptor'],
+    plugins: ['@/plugins/axios/request-interceptor', '@/plugins/axios/response-interceptor'],
   },
   build: {
     extractCSS: true,
@@ -160,10 +160,10 @@ const config: Configuration = {
   ],
   publicRuntimeConfig: {
     axios: {
-      baseURL: process.env.baseURL || 'http://localhost:3000',
+      baseURL: process.env.BASE_URL || 'https://vuesion.herokuapp.com',
     },
     apollo: {
-      baseURL: process.env.graphQlEndpoint || 'https://rickandmortyapi.com/graphql',
+      baseURL: process.env.GRAPHQL_ENDPOINT || 'https://rickandmortyapi.com/graphql',
     },
   },
   privateRuntimeConfig: {},

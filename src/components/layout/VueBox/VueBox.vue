@@ -345,118 +345,220 @@ export default defineComponent({
   &.alignv-top {
     display: flex;
     align-items: flex-start;
+
+    > * {
+      flex: 1;
+    }
   }
+
   &.alignv-center {
     display: flex;
     align-items: center;
+
+    > * {
+      flex: 1;
+    }
   }
+
   &.alignv-bottom {
     display: flex;
     align-items: flex-end;
+
+    > * {
+      flex: 1;
+    }
   }
+
   &.alignh-left {
     display: flex;
     justify-content: flex-start;
+
+    > * {
+      flex: 1;
+    }
   }
+
   &.alignh-center {
     display: flex;
     justify-content: center;
+
+    > * {
+      flex: 1;
+    }
   }
+
   &.alignh-right {
     display: flex;
     justify-content: flex-end;
+
+    > * {
+      flex: 1;
+    }
   }
+
   @include mediaMin(tabletPortrait) {
     &.alignv-tp-top {
       display: flex;
       align-items: flex-start;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignv-tp-center {
       display: flex;
       align-items: center;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignv-tp-bottom {
       display: flex;
       align-items: flex-end;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignh-tp-left {
       display: flex;
       justify-content: flex-start;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignh-tp-center {
       display: flex;
       justify-content: center;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignh-tp-right {
       display: flex;
       justify-content: flex-end;
+
+      > * {
+        flex: 1;
+      }
     }
   }
   @include mediaMin(tabletLandscape) {
     &.alignv-tl-top {
       display: flex;
       align-items: flex-start;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignv-tl-center {
       display: flex;
       align-items: center;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignv-tl-bottom {
       display: flex;
       align-items: flex-end;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignh-tl-left {
       display: flex;
       justify-content: flex-start;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignh-tl-center {
       display: flex;
       justify-content: center;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignh-tl-right {
       display: flex;
       justify-content: flex-end;
+
+      > * {
+        flex: 1;
+      }
     }
   }
   @include mediaMin(smallDesktop) {
     &.alignv-sd-top {
       display: flex;
       align-items: flex-start;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignv-sd-center {
       display: flex;
       align-items: center;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignv-sd-bottom {
       display: flex;
       align-items: flex-end;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignh-sd-left {
       display: flex;
       justify-content: flex-start;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignh-sd-center {
       display: flex;
       justify-content: center;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignh-sd-right {
       display: flex;
       justify-content: flex-end;
+
+      > * {
+        flex: 1;
+      }
     }
   }
   @include mediaMin(largeDesktop) {
@@ -467,31 +569,55 @@ export default defineComponent({
     &.alignv-ld-top {
       display: flex;
       align-items: flex-start;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignv-ld-center {
       display: flex;
       align-items: center;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignv-ld-bottom {
       display: flex;
       align-items: flex-end;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignh-ld-left {
       display: flex;
       justify-content: flex-start;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignh-ld-center {
       display: flex;
       justify-content: center;
+
+      > * {
+        flex: 1;
+      }
     }
 
     &.alignh-ld-right {
       display: flex;
       justify-content: flex-end;
+
+      > * {
+        flex: 1;
+      }
     }
   }
 }
