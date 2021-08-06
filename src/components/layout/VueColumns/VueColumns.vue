@@ -283,6 +283,10 @@ export default defineComponent({
 
     &.stack {
       flex-direction: column;
+
+      &.revert {
+        flex-direction: column-reverse;
+      }
     }
   }
 
@@ -293,6 +297,10 @@ export default defineComponent({
 
     &.stack-tp {
       flex-direction: column;
+
+      &.revert {
+        flex-direction: column-reverse;
+      }
     }
   }
 
@@ -303,6 +311,10 @@ export default defineComponent({
 
     &.stack-tl {
       flex-direction: column;
+
+      &.revert {
+        flex-direction: column-reverse;
+      }
     }
   }
 
@@ -313,6 +325,10 @@ export default defineComponent({
 
     &.stack-sd {
       flex-direction: column;
+
+      &.revert {
+        flex-direction: column-reverse;
+      }
     }
   }
 }

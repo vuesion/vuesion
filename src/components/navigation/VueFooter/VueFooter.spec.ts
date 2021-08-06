@@ -12,7 +12,7 @@ describe('VueFooter.vue', () => {
     const { getByText } = harness;
     const year = new Date().getFullYear();
 
-    getByText('© ' + year + ' Vuesion, Inc. All rights reserved.');
+    getByText('© ' + year + ' Johannes Werner. All rights reserved.');
     getByText('Subscribe to our newsletter');
   });
 
@@ -22,7 +22,7 @@ describe('VueFooter.vue', () => {
 
     await updateProps({ slim: true });
 
-    getByText('© ' + year + ' Vuesion, Inc. All rights reserved.');
+    getByText('© ' + year + ' Johannes Werner. All rights reserved.');
     expect(queryAllByText('Subscribe to our newsletter')).toHaveLength(0);
   });
 });

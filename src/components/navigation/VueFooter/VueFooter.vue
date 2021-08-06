@@ -1,8 +1,8 @@
 <template>
   <vue-box :padding="slim ? ['48 16', '48 16', '48 32'] : ['64 16', '64 16', '64 32']" :class="$style.vueFooter">
     <vue-stack space="32">
-      <vue-columns v-if="slim === false" space="64" stack-phone stack-tablet-portrait>
-        <vue-column :width="['content', 'content', '20%']">
+      <vue-columns space="64" stack-phone stack-tablet-portrait>
+        <vue-column v-if="slim === false" :width="['content', 'content', '20%']">
           <vue-stack space="16" :align="['center', 'center', 'left']">
             <vue-text look="h6" color="text-low">Solutions</vue-text>
             <vue-text color="text-low" weight="semi-bold">Marketing</vue-text>
@@ -13,7 +13,7 @@
           </vue-stack>
         </vue-column>
 
-        <vue-column :width="['content', 'content', '20%']">
+        <vue-column v-if="slim === false" :width="['content', 'content', '20%']">
           <vue-stack space="16" :align="['center', 'center', 'left']">
             <vue-text look="h6" color="text-low">Support</vue-text>
             <vue-text color="text-low" weight="semi-bold">Pricing</vue-text>
@@ -24,7 +24,7 @@
           </vue-stack>
         </vue-column>
 
-        <vue-column :width="['content', 'content', '20%']">
+        <vue-column v-if="slim === false" :width="['content', 'content', '20%']">
           <vue-stack space="16" :align="['center', 'center', 'left']">
             <vue-text look="h6" color="text-low">Company</vue-text>
             <vue-text color="text-low" weight="semi-bold">About</vue-text>
@@ -35,7 +35,7 @@
           </vue-stack>
         </vue-column>
 
-        <vue-column :width="['content', 'content', '20%']">
+        <vue-column v-if="slim === false" :width="['content', 'content', '20%']">
           <vue-stack space="16" :align="['center', 'center', 'left']">
             <vue-text look="h6" color="text-low">Legal</vue-text>
             <vue-text color="text-low" weight="semi-bold">Claim</vue-text>
@@ -49,27 +49,43 @@
         <vue-column :width="['content', 'content', '20%']">
           <vue-stack space="16">
             <vue-text look="h6" color="text-low" :align="['center', 'center', 'left']">Language & Theme</vue-text>
-            <vue-select id="lang" label="Language" name="lang" :items="languages" hide-description value="en" />
-            <vue-select id="theme" label="Theme" name="theme" :items="themes" hide-description value="dark" />
+            <vue-select
+              id="lang"
+              label="Language"
+              name="lang"
+              :items="languages"
+              hide-description
+              :value="selectedLocale"
+              @input="$emit('locale-change', $event)"
+            />
+            <vue-select
+              id="theme"
+              label="Theme"
+              name="theme"
+              :items="themes"
+              hide-description
+              :value="($colorMode && $colorMode.value) || 'light'"
+              @input="$colorMode.preference = $event.value"
+            />
           </vue-stack>
         </vue-column>
       </vue-columns>
 
-      <hr v-if="slim === false" />
+      <hr />
 
       <vue-columns v-if="slim === false" :align-y="['top', 'top', 'center']" stack-phone stack-tablet-portrait>
-        <vue-column>
+        <vue-column :width="['content']">
           <vue-stack space="8">
             <vue-text look="h6" color="text-low" :align="['center', 'center', 'left']">
               Subscribe to our newsletter
             </vue-text>
             <vue-text color="text-low" :align="['center', 'center', 'left']">
-              The latest news, articles, and resources, sent to your inbox weekly.
+              The latest news, articles, and resources, sent to your inbox.
             </vue-text>
           </vue-stack>
         </vue-column>
 
-        <vue-column :align="['left', 'left', 'right']">
+        <vue-column :width="['content']" :align="['left', 'left', 'right']">
           <vue-columns space="12" stack-phone stack-tablet-portrait>
             <vue-column :width="['100%', '100%', '264px']">
               <vue-input
@@ -93,11 +109,11 @@
       <vue-columns align-y="center" stack-phone stack-tablet-portrait>
         <vue-column>
           <vue-text look="h6" color="text-low" :align="['center', 'center', 'left']">
-            © {{ year }} Vuesion, Inc. All rights reserved.
+            © {{ year }} Johannes Werner. All rights reserved.
           </vue-text>
         </vue-column>
 
-        <vue-column v-if="slim === true">
+        <vue-column v-if="slim === false">
           <vue-inline :align="['center']" space="48">
             <vue-text color="text-low" weight="semi-bold">About</vue-text>
             <vue-text color="text-low" weight="semi-bold">About</vue-text>
@@ -107,8 +123,8 @@
 
         <vue-column>
           <vue-inline space="24" :align="['center', 'center', 'right']">
-            <vue-text color="text-low"><vue-icon-facebook /></vue-text>
-            <vue-text color="text-low"><vue-icon-instagram /></vue-text>
+            <!--            <vue-text color="text-low"><vue-icon-facebook /></vue-text>-->
+            <!--            <vue-text color="text-low"><vue-icon-instagram /></vue-text>-->
             <vue-text
               color="text-low"
               as="a"
@@ -129,7 +145,7 @@
             >
               <vue-icon-github />
             </vue-text>
-            <vue-text color="text-low"><vue-icon-dribbble /></vue-text>
+            <!--            <vue-text color="text-low"><vue-icon-dribbble /></vue-text>-->
           </vue-inline>
         </vue-column>
       </vue-columns>
@@ -148,20 +164,15 @@ import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueIconFacebook from '@/components/icons/VueIconFacebook.vue';
-import VueIconInstagram from '@/components/icons/VueIconInstagram.vue';
 import VueIconTwitter from '@/components/icons/VueIconTwitter.vue';
 import VueIconGithub from '@/components/icons/VueIconGithub.vue';
-import VueIconDribbble from '@/components/icons/VueIconDribbble.vue';
+import { IItem } from '@/interfaces/IItem';
 
 export default defineComponent({
   name: 'VueFooter',
   components: {
-    VueIconDribbble,
     VueIconGithub,
     VueIconTwitter,
-    VueIconInstagram,
-    VueIconFacebook,
     VueInline,
     VueButton,
     VueInput,
@@ -174,22 +185,14 @@ export default defineComponent({
   },
   props: {
     slim: { type: Boolean, default: false },
+    languages: { type: [Array, Array as () => Array<IItem>], default: () => [] },
+    themes: { type: [Array, Array as () => Array<IItem>], default: () => [] },
+    selectedLocale: { type: String, default: 'en' },
   },
   setup() {
     const year = computed(() => new Date().getFullYear());
-    const languages = computed(() => [
-      { label: 'English', value: 'en' },
-      { label: 'Deutsch', value: 'de' },
-    ]);
-    const themes = computed(() => [
-      { label: 'System', value: 'system' },
-      { label: 'Light', value: 'light' },
-      { label: 'Dark', value: 'dark' },
-    ]);
 
     return {
-      languages,
-      themes,
       year,
     };
   },

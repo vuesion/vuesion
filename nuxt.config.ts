@@ -1,7 +1,7 @@
 import { Configuration } from '@nuxt/types';
 import { VuesionConfig } from '@vuesion/models';
 
-const themeColor = '#cd235b';
+const themeColor = '#0f3191';
 
 const config: Configuration = {
   apollo: {
@@ -135,11 +135,11 @@ const config: Configuration = {
       syncRouteParams: true,
     },
   },
-  loading: { look: '#cd235b' },
+  loading: { color: themeColor, failedColor: '#75140d' },
   loadingIndicator: {
     name: 'circle',
-    look: themeColor,
-    background: 'white',
+    color: themeColor,
+    background: 'transparent',
   },
   modules: [
     '@nuxtjs/apollo',

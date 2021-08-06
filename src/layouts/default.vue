@@ -2,21 +2,25 @@
   <div id="app" :class="$style.app">
     <vue-toast />
 
-    <!--    <vue-navbar :user-name="user && user.name" @menu-item-click="onLogoutClick" @menu-click="showSidebar = true">-->
-    <!--      <template v-if="user" slot="center"> Hello, {{ user.name }}! </template>-->
-
-    <!--      <vue-button v-if="!loggedIn" slot="right" look="outline" size="sm" @click="showLoginModal = true">-->
-    <!--        Login-->
-    <!--      </vue-button>-->
-    <!--    </vue-navbar>-->
+    <vue-navbar
+      v-if="$route.path !== '/'"
+      :user-name="user && user.name"
+      :show-menu-icon="false"
+      @menu-item-click="onLogoutClick"
+      @menu-click="showSidebar = true"
+    >
+      <template v-if="user" slot="center"> Hello, {{ user.name }}! </template>
+    </vue-navbar>
 
     <nuxt :class="$style.content" />
 
-    <vue-footer />
-
-    <vue-modal disable-page-scroll :show="showLoginModal" @close="showLoginModal = false">
-      <login-form :loading="loginRequestStatus === 'PENDING'" @submit="onLoginSubmit" />
-    </vue-modal>
+    <vue-footer
+      slim
+      :languages="languages"
+      :themes="themes"
+      :selected-locale="locale"
+      @locale-change="onLocaleSwitch"
+    />
 
     <vue-back-to-top />
   </div>
@@ -24,26 +28,19 @@
 
 <script lang="ts">
 import '@/assets/global.scss';
-import { defineComponent, computed, ref, useContext, useMeta, watch } from '@nuxtjs/composition-api';
-import { RequestStatus } from '@/enums/RequestStatus';
+import { defineComponent, computed, useContext, useMeta, watch } from '@nuxtjs/composition-api';
 import VueFooter from '@/components/navigation/VueFooter/VueFooter.vue';
 import VueToast from '@/components/data-display/VueToast/VueToast.vue';
-import VueModal from '@/components/data-display/VueModal/VueModal.vue';
-import LoginForm from '@/components/input-and-actions/LoginForm/LoginForm.vue';
 import { useLocaleSwitch } from '@/composables/use-locale-switch';
 import VueBackToTop from '@/components/behavior/VueBackToTop/VueBackToTop.vue';
 import { IItem } from '@/interfaces/IItem';
-import { addToast } from '@/components/utils';
-import { getDomRef } from '@/composables/get-dom-ref';
-import { useOutsideClick } from '@/composables/use-outside-click';
-import { useKeydown } from '@/composables/use-keydown';
+import VueNavbar from '@/components/navigation/VueNavbar/VueNavbar.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
+    VueNavbar,
     VueBackToTop,
-    LoginForm,
-    VueModal,
     VueFooter,
     VueToast,
   },
@@ -60,37 +57,16 @@ export default defineComponent({
       { label: 'Light', value: 'light' },
       { label: 'Dark', value: 'dark' },
     ]);
-    const showLoginModal = ref(false);
-    const loginRequestStatus = ref(RequestStatus.INIT);
     const locale = computed(() => app.i18n.locale);
     const loggedIn = computed(() => app.$auth.loggedIn);
     const user = computed(() => app.$auth.user);
-    const onLocaleSwitch = (selectedLocale: IItem) => {
-      switchLocaleTo(selectedLocale.value);
-    };
-    const onLoginSubmit = async (formData: any) => {
-      loginRequestStatus.value = RequestStatus.PENDING;
-
-      try {
-        await app.$auth.loginWith('local', { data: formData });
-        redirect('/example/dashboard');
-        loginRequestStatus.value = RequestStatus.IDLE;
-      } catch (e) {
-        loginRequestStatus.value = RequestStatus.FAILED;
-        addToast({ title: 'Error during login', text: 'Please try again!', type: 'danger' });
-      }
-
-      showLoginModal.value = false;
-    };
+    const onLocaleSwitch = (selectedLocale: IItem) => switchLocaleTo(selectedLocale.value);
     const onLogoutClick = async (menuItem: IItem) => {
       if (menuItem.value === 'logout') {
         await app.$auth.logout();
         redirect('/');
       }
     };
-    const sidebarRef = getDomRef(null);
-    const showSidebar = ref(false);
-    const { onKeydown } = useKeydown();
 
     watch(
       [locale],
@@ -102,27 +78,14 @@ export default defineComponent({
       { immediate: true },
     );
 
-    useOutsideClick(sidebarRef, () => (showSidebar.value = false));
-
-    onKeydown((event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        showSidebar.value = false;
-      }
-    });
-
     return {
       languages,
       themes,
-      showLoginModal,
-      loginRequestStatus,
       locale,
       loggedIn,
       user,
       onLocaleSwitch,
-      onLoginSubmit,
       onLogoutClick,
-      sidebarRef,
-      showSidebar,
     };
   },
   head: {},

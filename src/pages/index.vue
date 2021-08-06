@@ -3,6 +3,11 @@
     <landing-page-header />
     <testimonials :stargazers-count="stargazersCount" :stargazers="stargazers" />
     <value-proposition />
+    <learn-more @login-click="showLoginModal = true" />
+
+    <vue-modal disable-page-scroll :show="showLoginModal" @close="showLoginModal = false">
+      <login-form :loading="loginRequestStatus === 'PENDING'" @submit="onLoginSubmit" />
+    </vue-modal>
   </div>
 </template>
 
@@ -12,11 +17,42 @@ import LandingPageHeader from '@/components/marketing/LandingPageHeader/LandingP
 import Testimonials from '@/components/marketing/Testimonials/Testimonials.vue';
 import { Context } from '@nuxt/types';
 import ValueProposition from '@/components/marketing/ValueProposition/ValueProposition.vue';
+import LearnMore from '@/components/marketing/LearnMore/LearnMore.vue';
+import VueModal from '@/components/data-display/VueModal/VueModal.vue';
+import LoginForm from '@/components/input-and-actions/LoginForm/LoginForm.vue';
+import { defineComponent, ref, useContext } from '@nuxtjs/composition-api';
+import { RequestStatus } from '@/enums/RequestStatus';
+import { addToast } from '@/components/utils';
 
-export default {
+export default defineComponent({
   name: 'HomePage',
   auth: false,
-  components: { ValueProposition, Testimonials, LandingPageHeader },
+  components: { LoginForm, VueModal, LearnMore, ValueProposition, Testimonials, LandingPageHeader },
+  setup() {
+    const { redirect, app } = useContext();
+    const showLoginModal = ref(false);
+    const loginRequestStatus = ref(RequestStatus.INIT);
+    const onLoginSubmit = async (formData: any) => {
+      loginRequestStatus.value = RequestStatus.PENDING;
+
+      try {
+        await app.$auth.loginWith('local', { data: formData });
+        redirect('/example/dashboard');
+        loginRequestStatus.value = RequestStatus.IDLE;
+      } catch (e) {
+        loginRequestStatus.value = RequestStatus.FAILED;
+        addToast({ title: 'Error during login', text: 'Please try again!', type: 'danger' });
+      }
+
+      showLoginModal.value = false;
+    };
+
+    return {
+      showLoginModal,
+      loginRequestStatus,
+      onLoginSubmit,
+    };
+  },
   async asyncData(ctx: Context): Promise<any> {
     const res = await ctx.$axios.get('/github-info');
 
@@ -77,5 +113,5 @@ export default {
       ],
     };
   },
-};
+});
 </script>
