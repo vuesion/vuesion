@@ -2,7 +2,12 @@
   <vue-box padding="12" :class="$style.vueNavBar" as="nav">
     <vue-columns space="0" :class="$style.layout" align-y="center">
       <vue-column width="content" align-y="center">
-        <vue-icon-menu tabindex="0" :class="$style.menu" @click.native.stop.prevent="$emit('menu-click')" />
+        <vue-icon-menu
+          v-if="showMenuIcon"
+          tabindex="0"
+          :class="$style.menu"
+          @click.native.stop.prevent="$emit('menu-click')"
+        />
       </vue-column>
 
       <vue-column align="center">
@@ -45,6 +50,7 @@ export default {
   props: {
     userName: { type: String, default: null },
     userImage: { type: String, default: null },
+    showMenuIcon: { type: Boolean, default: true },
   },
 };
 </script>

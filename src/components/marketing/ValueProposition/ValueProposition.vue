@@ -4,36 +4,59 @@
       <vue-columns stack-phone stack-tablet-portrait stack-tablet-landscape>
         <vue-column :width="['content', 'content', 'content', '250px', '400px']">
           <vue-box :padding="[16, 16, 16, '144 null']">
-            <vue-hidden phone tablet-portrait tablet-landscape>
-              <vue-text look="description" color="text-high" weight="semi-bold">
-                Built for modern product teams
-              </vue-text>
-            </vue-hidden>
             <vue-hidden small-desktop large-desktop>
               <vue-text look="h3" color="text-high" weight="semi-bold" :align="['left', 'center', 'center', 'left']">
                 Built for modern product teams
               </vue-text>
             </vue-hidden>
 
-            <ul :class="$style.nav">
-              <li tabindex="0" @keypress.space.enter.stop.prevent="onTabChange(0)" @click.stop.prevent="onTabChange(0)">
-                <vue-text look="description" :color="activeTab === 0 ? 'info' : 'text-low'">Product Manager</vue-text>
-              </li>
-              <li tabindex="0" @keypress.space.enter.stop.prevent="onTabChange(1)" @click.stop.prevent="onTabChange(1)">
-                <vue-text look="description" :color="activeTab === 1 ? 'info' : 'text-low'">
-                  Engineering Manager
+            <vue-stack space="16">
+              <vue-hidden phone tablet-portrait tablet-landscape>
+                <vue-text look="description" color="text-high" weight="semi-bold">
+                  Built for modern product teams
                 </vue-text>
-              </li>
-              <li tabindex="0" @keypress.space.enter.stop.prevent="onTabChange(2)" @click.stop.prevent="onTabChange(2)">
-                <vue-text look="description" :color="activeTab === 2 ? 'info' : 'text-low'">Designer</vue-text>
-              </li>
-              <li tabindex="0" @keypress.space.enter.stop.prevent="onTabChange(3)" @click.stop.prevent="onTabChange(3)">
-                <vue-text look="description" :color="activeTab === 3 ? 'info' : 'text-low'">Engineer</vue-text>
-              </li>
-              <li tabindex="0" @keypress.space.enter.stop.prevent="onTabChange(4)" @click.stop.prevent="onTabChange(4)">
-                <vue-text look="description" :color="activeTab === 4 ? 'info' : 'text-low'">Team</vue-text>
-              </li>
-            </ul>
+              </vue-hidden>
+
+              <ul :class="$style.nav">
+                <li
+                  tabindex="0"
+                  @keypress.space.enter.stop.prevent="onTabChange(0)"
+                  @click.stop.prevent="onTabChange(0)"
+                >
+                  <vue-text look="description" :color="activeTab === 0 ? 'info' : 'text-low'">Product Manager</vue-text>
+                </li>
+                <li
+                  tabindex="0"
+                  @keypress.space.enter.stop.prevent="onTabChange(1)"
+                  @click.stop.prevent="onTabChange(1)"
+                >
+                  <vue-text look="description" :color="activeTab === 1 ? 'info' : 'text-low'">
+                    Engineering Manager
+                  </vue-text>
+                </li>
+                <li
+                  tabindex="0"
+                  @keypress.space.enter.stop.prevent="onTabChange(2)"
+                  @click.stop.prevent="onTabChange(2)"
+                >
+                  <vue-text look="description" :color="activeTab === 2 ? 'info' : 'text-low'">Designer</vue-text>
+                </li>
+                <li
+                  tabindex="0"
+                  @keypress.space.enter.stop.prevent="onTabChange(3)"
+                  @click.stop.prevent="onTabChange(3)"
+                >
+                  <vue-text look="description" :color="activeTab === 3 ? 'info' : 'text-low'">Engineer</vue-text>
+                </li>
+                <li
+                  tabindex="0"
+                  @keypress.space.enter.stop.prevent="onTabChange(4)"
+                  @click.stop.prevent="onTabChange(4)"
+                >
+                  <vue-text look="description" :color="activeTab === 4 ? 'info' : 'text-low'">Team</vue-text>
+                </li>
+              </ul>
+            </vue-stack>
           </vue-box>
         </vue-column>
         <vue-column :width="['content']">
