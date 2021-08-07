@@ -72,12 +72,14 @@
                 <ul :class="$style.list">
                   <li>
                     <vue-text look="description" color="text-medium">
-                      a design system to help increase the overall collaboration process between UX/PM/ENG
+                      the design system increases the collaboration process between design, engineering, and product
+                      management
                     </vue-text>
                   </li>
                   <li>
                     <vue-text look="description" color="text-medium">
-                      more time to focus on product features rather than common features
+                      productive from day one - more time to solve pain points for your users rather than implementing
+                      common features
                     </vue-text>
                   </li>
                 </ul>
@@ -92,22 +94,26 @@
 
                 <ul :class="$style.list">
                   <li>
-                    <vue-text look="description" color="text-medium"> community best practices </vue-text>
-                  </li>
-                  <li>
                     <vue-text look="description" color="text-medium">
-                      set up that forces testing best practices and high test coverage with lots of examples
+                      community best practices support your team to maintain a clean codebase
                     </vue-text>
                   </li>
                   <li>
                     <vue-text look="description" color="text-medium">
-                      100% customizable design system and corresponding Figma file to increase collaboration across
-                      disciplines and deliver perfect brand identity (designers will love it)
+                      set up that forces testing best practices, a high test coverage and lots of example tests support
+                      an agile project management style
                     </vue-text>
                   </li>
                   <li>
                     <vue-text look="description" color="text-medium">
-                      accessible codebase to enable everyone in the team to quickly contribute (even PMs and Designers)
+                      the 100% customizable design system and corresponding Figma file will increase the collaboration
+                      across disciplines and deliver perfect brand identity (designers will love it)
+                    </vue-text>
+                  </li>
+                  <li>
+                    <vue-text look="description" color="text-medium">
+                      the accessible codebase enables everyone in the team to contribute (even PMs and Designers) and
+                      makes on-boarding new team members fun
                     </vue-text>
                   </li>
                 </ul>
@@ -117,17 +123,28 @@
                 <vue-badge status="info" :class="$style.mobileBadge">Designer</vue-badge>
 
                 <vue-text color="text-high" look="h4" weight="semi-bold">
-                  All the best user experience & interface practices built in
+                  All the best user experience & interface practices built-in
                 </vue-text>
 
                 <ul :class="$style.list">
-                  <li><vue-text look="description" color="text-medium">pull from knowledge used in field</vue-text></li>
                   <li>
                     <vue-text look="description" color="text-medium">
-                      Figma file that is 100% in sync with the implemented design system
+                      benefit from practices that worked well across many project types and don't fall into traps that
+                      we already experienced
                     </vue-text>
                   </li>
-                  <li><vue-text look="description" color="text-medium">designed for modularity</vue-text></li>
+                  <li>
+                    <vue-text look="description" color="text-medium">
+                      the Figma file that is 100% in sync with the implemented design system will make the work with
+                      engineering fun and helps the communication and collaboration across disciplines by providing a
+                      common vocabulary
+                    </vue-text>
+                  </li>
+                  <li>
+                    <vue-text look="description" color="text-medium">
+                      designed for modularity and reusability
+                    </vue-text>
+                  </li>
                 </ul>
               </vue-stack>
 
@@ -135,34 +152,38 @@
                 <vue-badge status="info" :class="$style.mobileBadge">Engineer</vue-badge>
 
                 <vue-text color="text-high" look="h4" weight="semi-bold">
-                  Keep your code base clean and focus on your domain logic
+                  Keep your codebase clean and focus on your domain logic
                 </vue-text>
 
                 <ul :class="$style.list">
                   <li>
                     <vue-text look="description" color="text-medium">
-                      most common use-cases, tools, libraries, and technologies already set up
+                      most common use-cases, tools, libraries, and technologies already set up will give you more time
+                      to focus on building a great product
                     </vue-text>
                   </li>
                   <li>
                     <vue-text look="description" color="text-medium">
-                      set up that forces testing best practices and high test coverage with lots of examples
+                      set up that forces testing best practices, high test coverage and lots of examples will help the
+                      team to keep the codebase agile and to welcome changing requirements
                     </vue-text>
                   </li>
                   <li>
                     <vue-text look="description" color="text-medium">
-                      100% customizable design system and corresponding Figma file to increase collaboration across
-                      disciplines and deliver perfect brand identity (designers will love it)
+                      the 100% customizable design system and corresponding Figma file will increase the collaboration
+                      across disciplines and deliver perfect brand identity (designers will love it)
                     </vue-text>
                   </li>
                   <li>
                     <vue-text look="description" color="text-medium">
-                      SSR included but not mandatory (start with a SPA until you need it!)
+                      server-side-rendering set up and ready to use to satisfy the projects SEO needs (not mandatory -
+                      start with an SPA until you need it!)
                     </vue-text>
                   </li>
                   <li>
                     <vue-text look="description" color="text-medium">
-                      speed up your work and keep your code consistent with code generators
+                      speed up your work and keep your code consistent with code generators for components, stories,
+                      tests, pages, vuex-modules, interfaces and fixtures
                     </vue-text>
                   </li>
                 </ul>
@@ -176,16 +197,20 @@
                 <ul :class="$style.list">
                   <li>
                     <vue-text look="description" color="text-medium">
-                      improve communication across disciplines by using the design system documentation
+                      improve communication across disciplines by using the design system documentation - let everyone
+                      in your project know how you call the things!
                     </vue-text>
                   </li>
                   <li>
                     <vue-text look="description" color="text-medium">
-                      focus on solving the important problems and don't waste time on common features
+                      focus on solving pain points for your users to create an awesome product and don't waste time on
+                      common features
                     </vue-text>
                   </li>
                   <li>
-                    <vue-text look="description" color="text-medium"> ship a consistent looking product </vue-text>
+                    <vue-text look="description" color="text-medium">
+                      ship a consistent looking product that your users will love
+                    </vue-text>
                   </li>
                   <li>
                     <vue-text look="description" color="text-medium">

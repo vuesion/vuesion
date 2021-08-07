@@ -20,6 +20,6 @@ describe('ValueProposition.vue', () => {
 
     await sleep(50);
 
-    getByText('All the best user experience & interface practices built in');
+    getByText('All the best user experience & interface practices built-in');
   });
 });

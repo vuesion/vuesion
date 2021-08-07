@@ -10,3 +10,11 @@ $input-control-lg-height: $space-40 + $space-4;
     'dark': var(--brand-text-default-high),
   )
 );
+
+@include add-theme-variable(
+  'a11y-inverse-color',
+  (
+    'light': var(--brand-text-default-high),
+    'dark': var(--brand-text-inverse-high),
+  )
+);

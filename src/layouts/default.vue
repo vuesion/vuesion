@@ -102,18 +102,6 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
 
-  .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    transition: transform var(--brand-transition-duration) var(--brand-easing-curve);
-    transform: translateX(-100%);
-
-    &.show {
-      transform: translateX(0);
-    }
-  }
-
   .content {
     flex: 1;
   }

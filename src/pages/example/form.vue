@@ -24,10 +24,10 @@ export default {
   auth: false,
   components: { FormExample, VueBreadcrumb, VueStack, VueBox, VueContentBlock },
   setup() {
-    useMeta({ title: 'vuesion - Form Example' });
+    useMeta({ title: 'Vuesion - Form Example' });
     const { app } = useContext();
     const breadCrumbItems = computed(() => [
-      { label: app.i18n.t('common.Apollo' /* Apollo Example */), value: '/example/apollo' },
+      { label: app.i18n.t('common.Form-example' /* Form example */), value: '/example/apollo' },
     ]);
 
     return {
@@ -42,6 +42,6 @@ export default {
 @import '~@/assets/design-system';
 
 .form {
-  margin-top: $navbar-height;
+  padding-top: $navbar-height;
 }
 </style>

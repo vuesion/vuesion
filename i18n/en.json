@@ -6,6 +6,7 @@
   "auth.LoginForm.username.error": "The username can not be empty",
   "common.Apollo": "Apollo Example",
   "common.Back-to-top": "Back to top",
+  "common.Form-example": "Form example",
   "common.cancel": "Cancel",
   "common.home": "Home",
   "common.ok": "Ok",

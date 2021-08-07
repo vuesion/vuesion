@@ -75,7 +75,7 @@ export default {
 
 .loginForm {
   @include mediaMin(tabletPortrait) {
-    min-width: 512px;
+    min-width: 480px;
   }
 }
 </style>

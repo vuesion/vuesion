@@ -42,15 +42,15 @@ describe('Counter.vue', () => {
   test('renders component and fetches data', () => {
     const { getByText } = harness;
 
-    getByText('Counter: 0');
+    getByText('Current count: 0');
 
     expect(store.dispatch).toHaveBeenCalledWith(`counter/increment`);
   });
 
   test('should increment and decrement', async () => {
     const { getByText } = harness;
-    const incrementButton = getByText('Increment +1');
-    const decrementButton = getByText('Decrement -1');
+    const incrementButton = getByText('Increment');
+    const decrementButton = getByText('Decrement');
 
     await fireEvent.click(incrementButton);
     await fireEvent.click(decrementButton);
