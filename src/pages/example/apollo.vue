@@ -6,6 +6,15 @@
 
         <vue-text look="h1" as="h1">Apollo Example</vue-text>
 
+        <vue-columns>
+          <vue-column :width="['content', 'content', '50%']">
+            <vue-text look="description">
+              This Example demonstrates the basic usage of vue-apollo in combination with
+              <code>@vue/apollo-composable</code>, composition-api and server-side rendering.
+            </vue-text>
+          </vue-column>
+        </vue-columns>
+
         <vue-tiles v-if="loading === false" :columns="[1, 2, 3, 4]">
           <vue-card v-for="character in characters" :key="character.id" padding="null" :class="$style.card">
             <vue-stack space="4">
@@ -39,11 +48,15 @@ import { GetExamplePageData } from '@/graphql/ExamplePage';
 import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueCard from '@/components/data-display/VueCard/VueCard.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
 export default defineComponent({
   name: 'ApolloPage',
   auth: false,
   components: {
+    VueColumn,
+    VueColumns,
     VueCard,
     VueBox,
     VueTiles,
@@ -53,7 +66,7 @@ export default defineComponent({
     VueText,
   },
   setup() {
-    useMeta({ title: 'vuesion - Apollo Example' });
+    useMeta({ title: 'Vuesion - Apollo Example' });
     const { app } = useContext();
     const breadCrumbItems = computed(() => [
       { label: app.i18n.t('common.Apollo' /* Apollo Example */), value: '/example/apollo' },
@@ -75,11 +88,6 @@ export default defineComponent({
 @import '~@/assets/design-system';
 
 .apollo {
-  margin-top: $navbar-height;
-
-  .card {
-    overflow: hidden;
-    max-width: 324px;
-  }
+  padding-top: $navbar-height;
 }
 </style>

@@ -2,15 +2,32 @@
   <vue-content-block :class="$style.counter">
     <vue-box :padding="['24 16', '24 16', 24, 32]">
       <vue-stack :space="[16, 16, 24, 32]">
-        <vue-breadcrumb :items="[{ label: 'VueX Example', value: '/example/counter' }]" />
+        <vue-breadcrumb :items="[{ label: 'Counter vuex-example', value: '/example/counter' }]" />
 
-        <vue-text look="h1" as="h1"> Counter: {{ count }} </vue-text>
+        <vue-text look="h1" as="h1"> Counter vuex-example </vue-text>
 
-        <vue-inline>
-          <vue-button :loading="incrementPending" @click="increment"> Increment +1 </vue-button>
+        <vue-columns>
+          <vue-column :width="['content', 'content', '50%']">
+            <vue-stack>
+              <vue-text look="description">
+                This Example demonstrates the basic usage of vuex including Getters and Actions in combination with the
+                composition-api and server-side rendering (reload the page to see the counter increase by one).
+              </vue-text>
 
-          <vue-button look="primary" :loading="decrementPending" @click="decrement"> Decrement -1 </vue-button>
-        </vue-inline>
+              <vue-text look="description" weight="semi-bold"> Current count: {{ count }} </vue-text>
+
+              <vue-inline>
+                <vue-button look="primary" :loading="incrementPending" trailing-icon="plus-circle" @click="increment">
+                  Increment
+                </vue-button>
+
+                <vue-button look="outline" :loading="decrementPending" trailing-icon="minus-circle" @click="decrement">
+                  Decrement
+                </vue-button>
+              </vue-inline>
+            </vue-stack>
+          </vue-column>
+        </vue-columns>
       </vue-stack>
     </vue-box>
   </vue-content-block>
@@ -25,11 +42,15 @@ import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
 export default defineComponent({
   name: 'CounterPage',
   auth: false,
   components: {
+    VueColumn,
+    VueColumns,
     VueInline,
     VueStack,
     VueBox,
@@ -39,7 +60,7 @@ export default defineComponent({
     VueButton,
   },
   setup() {
-    useMeta({ title: 'vuesion - Counter Example' });
+    useMeta({ title: 'Vuesion - Counter Example' });
     const { store } = useContext();
     const count = computed(() => store.getters['counter/count']);
     const incrementPending = computed(() => store.getters['counter/incrementPending']);

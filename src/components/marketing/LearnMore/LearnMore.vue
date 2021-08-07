@@ -10,51 +10,65 @@
 
             <vue-columns space="48" stack-phone stack-tablet-portrait stack-tablet-landscape>
               <vue-column :width="['content', 'content', 'content', '50%']">
-                <img src="/images/storybook-small.png" alt="Learn more about Vuesion before starting" />
+                <img src="/images/discord-small.png" alt="Learn more about Vuesion before starting" />
               </vue-column>
 
               <vue-column space="48" :width="['content', 'content', 'content', '50%']">
                 <vue-stack space="48">
-                  <vue-columns stack-phone stack-tablet-portrait>
+                  <vue-columns stack-phone stack-tablet-portrait :space="[48, 48, 48, 24]">
                     <vue-column :width="['content', 'content', '50%']">
                       <vue-stack space="16">
-                        <vue-text look="h4">Hello World. Installing Vuesion.</vue-text>
+                        <vue-text look="h4">Hello Engineer. Installing Vuesion.</vue-text>
                         <vue-text look="description">
-                          A short description about what visitors about how we study how teams use Vuesion and how it
-                          can be used in their team
+                          To use Vuesion, you need to have Node.js installed on your system. Vuesion can be installed by
+                          running <code>npx @vuesion/create my-app</code>. It will create the project folder, downloads
+                          the Vuesion repository, and installs dependencies. After the process has finished,
+                          <code>cd my-app</code> and run <code>npm run dev</code>. Have fun!
                         </vue-text>
                         <a href="https://github.com/vuesion/vuesion#getting-started" target="_blank" rel="noopener">
-                          Read installation <vue-icon-arrow-right />
+                          Read instructions on Github <vue-icon-arrow-right />
                         </a>
                       </vue-stack>
                     </vue-column>
-                    <vue-column :width="['content', 'content', '50%']">
+                    <vue-column :width="['content', 'content', '50%']" :space="[48, 48, 48, 24]">
                       <vue-stack space="16">
-                        <vue-text look="h4">Vuesion being used on other teams</vue-text>
+                        <vue-text look="h4">Hello Designer. Using the Figma file.</vue-text>
                         <vue-text look="description">
-                          A short description about what visitors about how we study how teams use Vuesion and how it
-                          can be used in their team
+                          vuesion makes it simple to get started with design. duplicate the figma file from community
+                          and begin pulling all the components you need for your product.
                         </vue-text>
-                        <a href="https://github.com/vuesion/vuesion#getting-started" target="_blank" rel="noopener">
-                          Read team case studies <vue-icon-arrow-right />
+                        <a
+                          href="https://www.figma.com/file/DvP4EE7gAJH3fsc4RFqZYc/Vuesion-Core?node-id=1686%3A4660"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          Open Design System in Figma <vue-icon-arrow-right />
                         </a>
                       </vue-stack>
                     </vue-column>
                   </vue-columns>
                   <vue-columns>
-                    <vue-column :width="['content', 'content', '50%']">
+                    <vue-column :width="['content', 'content', '50%']" :space="[48, 48, 48, 24]">
                       <vue-stack space="16">
                         <vue-text look="h4">Join in on the conversation.</vue-text>
                         <vue-text look="description">
-                          A short description about what visitors about how we study how teams use Vuesion and how it
-                          can be used in their team
+                          We invite everyone who respects our
+                          <a
+                            href="https://github.com/vuesion/vuesion/blob/master/CODE_OF_CONDUCT.md"
+                            target="_blank"
+                            rel="noopener"
+                          >
+                            Code of Conduct
+                          </a>
+                          to join our Discord server. Be part of an ever-growing community that wants to improve how
+                          teams build great products around the world in all industries.
                         </vue-text>
                         <a href="https://discord.gg/59x5cg2" target="_blank" rel="noopener">
-                          Join our Discord group <vue-icon-arrow-right />
+                          Join our Discord server <vue-icon-arrow-right />
                         </a>
                       </vue-stack>
                     </vue-column>
-                    <vue-column :width="['content', 'content', '50%']"></vue-column>
+                    <vue-column :width="['content', 'content', '50%']" :space="[48, 48, 48, 24]"></vue-column>
                   </vue-columns>
                 </vue-stack>
               </vue-column>
@@ -75,7 +89,7 @@
               stack-tablet-landscape
               :revert="[true, true, true, null]"
             >
-              <vue-column :width="['content', 'content', 'content', '50%']">
+              <vue-column :width="['content', 'content', 'content', '50%']" :space="[48, 48, 48, 24]">
                 <vue-stack space="48">
                   <vue-columns stack-phone stack-tablet-portrait>
                     <vue-column :width="['content', 'content', '50%']">
@@ -83,7 +97,7 @@
                         <vue-text look="h4">Authentication.</vue-text>
                         <vue-text look="description">
                           This example shows how to use the nuxt-auth. You will be redirected to a protected page with
-                          scenarios like re-authentication and error-handling.
+                          scenarios like re-authentication and error handling.
                         </vue-text>
                         <vue-button leading-icon="login" look="primary" @click="$emit('login-click')">Login</vue-button>
                       </vue-stack>
@@ -92,7 +106,7 @@
                       <vue-stack space="16">
                         <vue-text look="h4">State management.</vue-text>
                         <vue-text look="description">
-                          This example shows the basic usage of Vuex including Getters, Actions, SSR pre-fetching and
+                          This example shows the basic usage of Vuex including Getters, Actions, SSR pre-fetching, and
                           composition-api.
                         </vue-text>
                         <nuxt-link to="/example/counter"> Go to Vuex example <vue-icon-arrow-right /> </nuxt-link>
@@ -105,7 +119,7 @@
                         <vue-text look="h4">GraphQL - Apollo</vue-text>
                         <vue-text look="description">
                           This example shows how to use apollo with the composition-api. The data is fetched on the
-                          server side and synced with the client.
+                          server-side and synced with the client.
                         </vue-text>
                         <nuxt-link to="/example/apollo"> Go to Apollo example <vue-icon-arrow-right /> </nuxt-link>
                       </vue-stack>
@@ -124,8 +138,8 @@
                 </vue-stack>
               </vue-column>
 
-              <vue-column :width="['content', 'content', 'content', '50%']">
-                <img src="/images/storybook-small.png" alt="Try out some examples!" />
+              <vue-column :width="['content', 'content', 'content', '50%']" :space="[48, 48, 48, 24]">
+                <img src="/images/example-small.png" alt="Try out some examples!" />
               </vue-column>
             </vue-columns>
           </vue-stack>
@@ -190,6 +204,10 @@ export default defineComponent({
         stroke-width: 2.5;
       }
     }
+  }
+
+  code {
+    color: var(--brand-text-default-high);
   }
 }
 </style>

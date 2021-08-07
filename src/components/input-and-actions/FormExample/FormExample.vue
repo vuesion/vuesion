@@ -1,15 +1,19 @@
 <template>
-  <vue-card :class="$style.formExample">
-    <validation-observer v-slot="{ invalid }" tag="div">
-      <form @submit.prevent="onSubmit">
-        <vue-stack>
-          <vue-stack space="8">
-            <vue-text look="h2" as="h1">Form example</vue-text>
-            <vue-text>
-              This example uses <a href="https://github.com/baianat/vee-validate">vee-validate</a> for field validation.
+  <validation-observer v-slot="{ invalid }" tag="div">
+    <form @submit.prevent="onSubmit">
+      <vue-stack>
+        <vue-stack space="8">
+          <vue-text look="h1" as="h1">Form example</vue-text>
+          <vue-tiles :columns="[1, 2]">
+            <vue-text look="description">
+              This example shows the basic usage of
+              <a href="https://github.com/baianat/vee-validate">vee-validate</a> in combination with the vuesion
+              components.
             </vue-text>
-          </vue-stack>
+          </vue-tiles>
+        </vue-stack>
 
+        <vue-card>
           <vue-tiles :columns="[1, 2]">
             <vue-input
               id="firstname"
@@ -111,10 +115,10 @@
           <vue-inline align="right">
             <vue-button look="primary" :disabled="invalid" :loading="isLoading" type="submit"> Save </vue-button>
           </vue-inline>
-        </vue-stack>
-      </form>
-    </validation-observer>
-  </vue-card>
+        </vue-card>
+      </vue-stack>
+    </form>
+  </validation-observer>
 </template>
 
 <script lang="ts">
@@ -127,8 +131,8 @@ import VueText from '@/components/typography/VueText/VueText.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueCard from '@/components/data-display/VueCard/VueCard.vue';
 import { addToast } from '@/components/utils';
+import VueCard from '@/components/data-display/VueCard/VueCard.vue';
 
 export default {
   name: 'FormExample',
@@ -198,7 +202,4 @@ export default {
 
 <style lang="scss" module>
 @import '~@/assets/_design-system';
-
-.formExample {
-}
 </style>

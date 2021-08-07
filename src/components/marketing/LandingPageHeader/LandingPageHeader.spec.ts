@@ -5,6 +5,8 @@ describe('LandingPageHeader.vue', () => {
   let harness: RenderResult;
 
   beforeEach(() => {
+    (global as any).HTMLCanvasElement.prototype.getContext = jest.fn();
+
     harness = render(LandingPageHeader, {
       stubs: ['nuxt-link'],
     });
@@ -13,7 +15,7 @@ describe('LandingPageHeader.vue', () => {
   test('renders component', () => {
     const { getByText } = harness;
 
-    getByText('Clone from Github');
+    getByText('Create Vuesion project');
     getByText('Preview in Figma');
   });
 });

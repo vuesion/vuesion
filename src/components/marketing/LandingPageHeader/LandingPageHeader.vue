@@ -18,11 +18,11 @@
           <a
             :class="[$style.button, $style.content]"
             tabindex="0"
-            href="https://github.com/vuesion/vuesion"
+            href="https://github.com/vuesion/vuesion#getting-started"
             target="_blank"
             rel="noopener"
           >
-            <vue-text look="button" weight="semi-bold" :class="$style.content">Clone from Github</vue-text>
+            <vue-text look="button" weight="semi-bold" :class="$style.content">Create Vuesion project</vue-text>
           </a>
           <a
             :class="[$style.button, $style.content]"
@@ -171,7 +171,7 @@ export default defineComponent({
   .rightImage {
     position: relative;
     width: 100%;
-    height: 350px;
+    height: 360px;
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -200,8 +200,8 @@ export default defineComponent({
   @include mediaMin(tabletLandscape) {
     .leftImage,
     .rightImage {
-      height: 580px;
-      background-size: 88%;
+      height: 600px;
+      background-size: 85%;
       background-position: 50% 50%;
     }
 

@@ -3,7 +3,7 @@ describe('home', () => {
     it('e2e', () => {
       cy.viewport(320, 480);
       cy.visit('http://localhost:3000');
-      cy.title().should('include', 'vuesion');
+      cy.title().should('include', 'Vuesion');
     });
   });
 
@@ -11,7 +11,7 @@ describe('home', () => {
     it('e2e', () => {
       cy.viewport(768, 1024);
       cy.visit('http://localhost:3000');
-      cy.title().should('include', 'vuesion');
+      cy.title().should('include', 'Vuesion');
     });
   });
 
@@ -19,7 +19,7 @@ describe('home', () => {
     it('e2e', () => {
       cy.viewport(1024, 768);
       cy.visit('http://localhost:3000');
-      cy.title().should('include', 'vuesion');
+      cy.title().should('include', 'Vuesion');
     });
   });
 
@@ -27,7 +27,7 @@ describe('home', () => {
     it('e2e', () => {
       cy.viewport(1200, 1024);
       cy.visit('http://localhost:3000');
-      cy.title().should('include', 'vuesion');
+      cy.title().should('include', 'Vuesion');
     });
   });
 
@@ -35,7 +35,7 @@ describe('home', () => {
     it('e2e', () => {
       cy.viewport(1440, 1200);
       cy.visit('http://localhost:3000');
-      cy.title().should('include', 'vuesion');
+      cy.title().should('include', 'Vuesion');
     });
   });
 });
