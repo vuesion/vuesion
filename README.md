@@ -2,18 +2,16 @@
 
 # Vuesion
 
-_**The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices build with Nuxt.js**_
+_**Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.**_
 
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/vuesion/vuesion/graphs/commit-activity)
-[![CircleCI](https://circleci.com/gh/vuesion/vuesion.svg?style=svg)](https://circleci.com/gh/vuesion/vuesion)
+[![GitHub release](https://img.shields.io/github/release/vuesion/vuesion.svg)](https://GitHub.com/vuesion/vuesion/releases/)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c8e3979ea94da8e9d683/test_coverage)](https://codeclimate.com/github/vuesion/vuesion/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c8e3979ea94da8e9d683/maintainability)](https://codeclimate.com/github/vuesion/vuesion/maintainability)
-[![Dependencies](https://img.shields.io/david/vuesion/vuesion.svg)](https://david-dm.org/vuesion/vuesion)
-[![DevDependencies](https://img.shields.io/david/dev/vuesion/vuesion.svg)](https://david-dm.org/vuesion/vuesion?type=dev)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/vuesion/vuesion/graphs/commit-activity)
+[![CircleCI](https://circleci.com/gh/vuesion/vuesion.svg?style=svg)](https://circleci.com/gh/vuesion/vuesion)
 [![GitHub issues-closed](https://img.shields.io/github/issues-closed/vuesion/vuesion.svg)](https://GitHub.com/vuesion/vuesion/issues?q=is%3Aissue+is%3Aclosed)
-[![GitHub release](https://img.shields.io/github/release/vuesion/vuesion.svg)](https://GitHub.com/vuesion/vuesion/releases/)
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fvuesion%2Fvuesion.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fvuesion%2Fvuesion?ref=badge_shield)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 # Live demo
 
@@ -85,7 +83,11 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 
 # Documentation
 
-**[https://vuesion.github.io/docs/en/](https://vuesion.github.io/docs/en/)**
+We are currently working on the documentation.
+Since Vuesion is a boilerplate that mainly uses existing technologies,
+you can click on the specific links in this README to find some help.
+
+[comment]: <> (**[https://vuesion.github.io/docs/en/]&#40;https://vuesion.github.io/docs/en/&#41;**)
 
 # Support this project
 
@@ -93,7 +95,6 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 - [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=flat)](https://twitter.com/intent/tweet?text=Vuesion%20an%20enterprise%20ready%20boilerplate%20for%20isomorphic,%20progressive%20web%20apps%20with%20Vue.JS&url=https://github.com/vuesion/vuesion&via=vuesion1&hashtags=Vuesion,VueJS,SEO,Enterprise) it!
 - Join the <a href="https://discord.gg/59x5cg2" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/square-logo-buttons/512/discord-1-128.png" height="20px" /> Discord community</a>!
 - [Contribute!](https://github.com/vuesion/vuesion/blob/master/.github/CONTRIBUTING.md)
-- [Fund an Issue!](https://issuehunt.io/r/vuesion/vuesion)
 
 # Contribute
 
