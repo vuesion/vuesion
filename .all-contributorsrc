@@ -227,6 +227,52 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "misikoff",
+      "name": "misikoff",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9086984?v=4",
+      "profile": "https://misikoff.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Akimotorakiyu",
+      "name": "臭哥哥·湫曗",
+      "avatar_url": "https://avatars.githubusercontent.com/u/31165554?v=4",
+      "profile": "http://silver.saigao.fun/saigao/index.html",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "pavog",
+      "name": "Paul Vogel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4786628?v=4",
+      "profile": "https://www.paulvogel.me/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "fuzinato",
+      "name": "Dario Fuzinato",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3132724?v=4",
+      "profile": "https://fuzinato.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "maks232",
+      "name": "Maksim Bock",
+      "avatar_url": "https://avatars.githubusercontent.com/u/166910?v=4",
+      "profile": "https://github.com/maks232",
+      "contributions": [
+        "test"
+      ]
     }
-  ]
+  ],
+  "commitConvention": "none"
 }
