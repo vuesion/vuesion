@@ -50,7 +50,7 @@
     >
       <div
         :class="[$style.leftImage, $style.content]"
-        :style="{ backgroundImage: 'url(/images/storybook-small.png' }"
+        :style="{ backgroundImage: 'url(/images/storybook-small.png)' }"
         title="vuesion storybook"
       />
     </a>

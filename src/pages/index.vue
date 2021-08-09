@@ -68,7 +68,7 @@ export default defineComponent({
       'Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.';
 
     return {
-      title: 'Vuesion - the boilerplate for product teams',
+      title: 'Vuesion - The boilerplate for product teams',
       meta: [
         {
           name: 'description',
