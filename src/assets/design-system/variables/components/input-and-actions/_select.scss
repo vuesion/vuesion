@@ -7,7 +7,6 @@ $select-label-gap: $space-4;
 // input default
 $select-border-radius: var(--brand-border-radius-md);
 $select-border: 1px solid var(--brand-border-default-medium);
-$select-padding: 0 $space-12;
 $select-color: var(--brand-text-default-high);
 $select-placeholder-color: var(--brand-text-default-low);
 $select-background-color: transparent;
@@ -16,6 +15,7 @@ $select-font-size: $text-1;
 $select-font-weight: $font-weight-regular;
 $select-line-height: $line-height-1 + $space-2;
 $select-icon-size: $space-24;
+$select-padding: 0 ($space-12 + $select-icon-size) 0 $space-12;
 
 // description
 $select-description-gap: $space-8;

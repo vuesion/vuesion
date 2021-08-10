@@ -61,7 +61,7 @@
       <vue-collapse :show="show" :duration="duration">
         <vue-menu
           :items="options"
-          :class="[$style.menu, hideLabel && $style.hideLabel, $style[size]]"
+          :class="[$style.menu, hideLabel && $style.hideLabel, $style[alignMenu], $style[alignYMenu], $style[size]]"
           @click="onItemClick"
         />
       </vue-collapse>
@@ -86,7 +86,7 @@ import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import { getDomRef } from '@/composables/get-dom-ref';
 import VueIconChevronDown from '@/components/icons/VueIconChevronDown.vue';
-import { shirtSizeValidator } from '@/components/prop-validators';
+import { horizontalAlignmentValidator, shirtSizeValidator } from '@/components/prop-validators';
 
 export default defineComponent({
   name: 'VueSelect',
@@ -113,6 +113,8 @@ export default defineComponent({
     description: { type: String, default: '' },
     errorMessage: { type: String, default: '' },
     duration: { type: Number, default: 250 },
+    alignMenu: { type: String, validator: horizontalAlignmentValidator, default: 'left' },
+    alignYMenu: { type: String, validator: (value: string) => ['top', 'bottom'].includes(value), default: 'bottom' },
     size: { type: String, validator: shirtSizeValidator, default: 'md' },
   },
   setup(props, { emit }) {
@@ -307,7 +309,6 @@ export default defineComponent({
 
   .customSelect,
   .menu {
-    width: 100%;
     display: none;
 
     &.sm {
@@ -331,6 +332,32 @@ export default defineComponent({
 
       &.hideLabel {
         top: $input-control-lg-height + $select-description-gap;
+      }
+    }
+
+    &.left {
+      left: 0;
+    }
+
+    &.center {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &.right {
+      right: 0;
+    }
+
+    &.top {
+      top: $select-label-height;
+      transform: translateY(-100%);
+
+      &.hideLabel {
+        top: -$select-description-gap;
+      }
+
+      &.center {
+        transform: translate(-50%, -100%);
       }
     }
   }

@@ -12,7 +12,7 @@ story.add(
   'Default',
   () => ({
     components: { VueSelect, ComponentDocs, VueInline, VueText, VueStack },
-    data(): { items: Array<IItem>; model: string; size: IItem } {
+    data(): { items: Array<IItem>; model: string; alignMenu: IItem; alignYMenu: IItem; size: IItem } {
       return {
         items: [
           { label: 'foo', value: 'foo' },
@@ -20,6 +20,8 @@ story.add(
           { label: 'baz', value: 'baz' },
         ],
         model: null,
+        alignMenu: { label: 'Left', value: 'left' },
+        alignYMenu: { label: 'Bottom', value: 'bottom' },
         size: { label: 'Medium', value: 'md' },
       };
     },
@@ -31,49 +33,80 @@ story.add(
     story="Display single select with options. Please interact with the select to see different states."
     >
       <vue-stack>
-        <vue-select
-          :items="[
+        <vue-inline>
+          <vue-select
+            :items="[
+              { label: 'Left', value: 'left' },
+              { label: 'Center', value: 'center' },
+              { label: 'Right', value: 'right' },
+              ]"
+            label="Align menu horizontally"
+            name="alignMenu"
+            id="alignMenu"
+            hide-description
+            v-model="alignMenu"
+          />
+          <vue-select
+            :items="[
+              { label: 'Top', value: 'top' },
+              { label: 'Bottom', value: 'bottom' },
+              ]"
+            label="Align menu vertically"
+            name="alignYMenu"
+            id="alignYMenu"
+            hide-description
+            v-model="alignYMenu"
+          />
+          <vue-select
+            :items="[
               { label: 'Small', value: 'sm' },
               { label: 'Medium', value: 'md' },
               { label: 'Large', value: 'lg' },
               ]"
-          label="Size"
-          name="size"
-          id="size"
-          hide-description
-          v-model="size"
+            label="Size"
+            name="size"
+            id="size"
+            hide-description
+            v-model="size"
+          />
+        </vue-inline>
+
+        <vue-text look="small-title" weight="semi-bold">Model: {{ model }}</vue-text>
+        <vue-inline>
+          <vue-select
+          name="select1"
+          id="select1"
+          label="Select"
+          placeholder="Placeholder"
+          description="Description"
+          error-message="Error message"
+          :items="items"
+          :align-menu="alignMenu.value"
+          :align-y-menu="alignYMenu.value"
+          :size="size.value"
+          v-model="model"
+          validation="required"
+          required
         />
+        </vue-inline>
 
-        <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
-          <vue-text look="small-title" weight="semi-bold">Model: {{ model }}</vue-text>
+        <vue-inline>
           <vue-select
-            name="select1"
-            id="select1"
-            label="Select"
-            placeholder="Placeholder"
-            description="Description"
-            error-message="Error message"
-            :items="items"
-            :size="size.value"
-            v-model="model"
-            validation="required"
-            required
-          />
-
-          <vue-select
-            name="select2"
-            id="select2"
-            label="Select"
-            placeholder="Placeholder"
-            description="Description"
-            error-message="Error message"
-            :items="items"
-            :size="size.value"
-            v-model="model"
-            validation="required"
-            required
-            disabled
-          />
+          name="select2"
+          id="select2"
+          label="Select"
+          placeholder="Placeholder"
+          description="Description"
+          error-message="Error message"
+          :items="items"
+          :align-menu="alignMenu.value"
+          :align-y-menu="alignYMenu.value"
+          :size="size.value"
+          v-model="model"
+          validation="required"
+          required
+          disabled
+        />
         </vue-inline>
       </vue-stack>
     </component-docs>`,
