@@ -32,6 +32,5 @@ export default defineComponent({
   box-shadow: $card-shadow;
   border: $card-border;
   border-radius: $card-border-radius;
-  overflow: hidden;
 }
 </style>
