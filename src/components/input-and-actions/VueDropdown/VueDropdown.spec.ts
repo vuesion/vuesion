@@ -96,7 +96,7 @@ describe('VueDropdown.vue', () => {
   test('renders component with different menu alignment', async () => {
     const { getByText, getByTestId, updateProps } = harness;
 
-    await updateProps({ alignMenu: 'right' });
+    await updateProps({ alignMenu: 'right', alignYMenu: 'top' });
 
     getByText('Dropdown');
 
@@ -104,5 +104,6 @@ describe('VueDropdown.vue', () => {
     const menu = getByTestId('menu');
 
     expect(menu.classList.contains('right')).toBeTruthy();
+    expect(menu.classList.contains('top')).toBeTruthy();
   });
 });
