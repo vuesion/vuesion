@@ -138,4 +138,18 @@ describe('VueSelect.vue', () => {
 
     expect(getByTestId('Value 1-0').innerHTML).toMatch('<div class="trailing">');
   });
+
+  test('renders component with different menu alignment', async () => {
+    const { getByText, getByTestId, updateProps } = harness;
+    const select = getByText('Select').parentElement;
+
+    await updateProps({ alignMenu: 'right', alignYMenu: 'top' });
+    await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
+    await sleep(50);
+
+    const menu = getByTestId('menu');
+
+    expect(menu.classList.contains('right')).toBeTruthy();
+    expect(menu.classList.contains('top')).toBeTruthy();
+  });
 });
