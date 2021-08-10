@@ -12,7 +12,7 @@
       <vue-menu
         ref="menuRef"
         :items="items"
-        :class="[$style.menu, $style[alignMenu], $style[size]]"
+        :class="[$style.menu, $style[alignMenu], $style[alignYMenu], $style[size]]"
         @click="onItemClick"
       />
     </vue-collapse>
@@ -37,6 +37,7 @@ export default defineComponent({
     items: { type: Array as new () => IItem[], required: true },
     duration: { type: Number, default: 250 },
     alignMenu: { type: String, validator: horizontalAlignmentValidator, default: 'left' },
+    alignYMenu: { type: String, validator: (value: string) => ['top', 'bottom'].includes(value), default: 'bottom' },
     size: { type: String, validator: shirtSizeValidator, default: 'md' },
   },
   setup(_, { emit }) {
@@ -121,6 +122,15 @@ export default defineComponent({
 
     &.right {
       right: 0;
+    }
+
+    &.top {
+      top: -$dropdown-button-menu-gap;
+      transform: translateY(-100%);
+
+      &.center {
+        transform: translate(-50%, -100%);
+      }
     }
   }
 }

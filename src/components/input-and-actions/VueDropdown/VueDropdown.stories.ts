@@ -13,7 +13,7 @@ story.add(
   'Default',
   () => ({
     components: { VueDropdown, ComponentDocs, VueStack, VueInline, VueSelect },
-    data(): { items: Array<IItem>; alignMenu: IItem; size: IItem } {
+    data(): { items: Array<IItem>; alignMenu: IItem; alignYMenu: IItem; size: IItem } {
       return {
         items: [
           { label: 'Save', value: 'save', leadingIcon: 'save' },
@@ -22,6 +22,7 @@ story.add(
           { label: 'Delete', value: 'delete', leadingIcon: 'trash' },
         ],
         alignMenu: { label: 'Left', value: 'left' },
+        alignYMenu: { label: 'Bottom', value: 'bottom' },
         size: { label: 'Medium', value: 'md' },
       };
     },
@@ -38,11 +39,22 @@ story.add(
               { label: 'Center', value: 'center' },
               { label: 'Right', value: 'right' },
               ]"
-          label="Align menu"
+          label="Align menu horizontally"
           name="alignMenu"
           id="alignMenu"
           hide-description
           v-model="alignMenu"
+        />
+        <vue-select
+          :items="[
+              { label: 'Top', value: 'top' },
+              { label: 'Bottom', value: 'bottom' },
+              ]"
+          label="Align menu vertically"
+          name="alignYMenu"
+          id="alignYMenu"
+          hide-description
+          v-model="alignYMenu"
         />
         <vue-select
           :items="[
@@ -62,6 +74,7 @@ story.add(
           button-text="Dropdown Button"
           :items="items"
           :align-menu="alignMenu.value"
+          :align-y-menu="alignYMenu.value"
           :size="size.value"
           @click="onClick"
           @item-click="onItemClick" />
