@@ -1,3 +1,18 @@
+### 4.1.0 (2021-08-11)
+
+##### Continuous Integration
+
+- enable vuesion+ components ([62f568c3](https://github.com/vuesion/vuesion/commit/62f568c3994d35c9e947732274807144a7272da7))
+
+##### New Features
+
+- **apollo-example:** add border-radius to image ([0ffebf4a](https://github.com/vuesion/vuesion/commit/0ffebf4a9728605bb419f22256750118d07e7092))
+- **component-docs:** add vuesion+ disclaimer ([c5912447](https://github.com/vuesion/vuesion/commit/c5912447ec680055fc449b6e2523716ab6e75dda))
+- **typo:** links - inherit font-weight ([315cdf8f](https://github.com/vuesion/vuesion/commit/315cdf8f1178bab17a502aabeca885b2fd959c23))
+- **vue-select:** add align(-y)-menu properties ([6f0c8e12](https://github.com/vuesion/vuesion/commit/6f0c8e1218c92a32990baed35ee3bad05ffdeb3b))
+- **vue-dropdown:** add align-y-menu property ([fa9809d5](https://github.com/vuesion/vuesion/commit/fa9809d5868533fc21738318359d51fc4ffbaeb8))
+- **vue-card:** remove overflow hidden ([cb18815f](https://github.com/vuesion/vuesion/commit/cb18815f0a2597b9336a58112fa34458798103b3))
+
 ## 4.0.0 (2021-08-09)
 
 ##### Chores
