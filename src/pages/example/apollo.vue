@@ -89,5 +89,12 @@ export default defineComponent({
 
 .apollo {
   padding-top: $navbar-height;
+
+  .card {
+    img {
+      border-radius: $card-border-radius $card-border-radius 0 0;
+      width: 100%;
+    }
+  }
 }
 </style>
