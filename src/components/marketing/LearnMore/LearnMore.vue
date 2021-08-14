@@ -68,7 +68,16 @@
                         </a>
                       </vue-stack>
                     </vue-column>
-                    <vue-column :width="['content', 'content', '50%']" :space="[48, 48, 48, 24]"></vue-column>
+                    <vue-column :width="['content', 'content', '50%']" :space="[48, 48, 48, 24]">
+                      <vue-stack space="16">
+                        <vue-text look="h4">There is more for you!</vue-text>
+                        <vue-text look="description">
+                          If you use a Jetbrains IDE or Visual Studio Code, we have something special for you. A theme
+                          that is based on the Vuesion color-palette.
+                        </vue-text>
+                        <nuxt-link to="/download"> Go to downloads <vue-icon-arrow-right /> </nuxt-link>
+                      </vue-stack>
+                    </vue-column>
                   </vue-columns>
                 </vue-stack>
               </vue-column>
@@ -89,9 +98,9 @@
               stack-tablet-landscape
               :revert="[true, true, true, null]"
             >
-              <vue-column :width="['content', 'content', 'content', '50%']" :space="[48, 48, 48, 24]">
+              <vue-column :width="['content', 'content', 'content', '50%']">
                 <vue-stack space="48">
-                  <vue-columns stack-phone stack-tablet-portrait>
+                  <vue-columns stack-phone stack-tablet-portrait :space="[48, 48, 48, 24]">
                     <vue-column :width="['content', 'content', '50%']">
                       <vue-stack space="16">
                         <vue-text look="h4">Authentication.</vue-text>
