@@ -1,7 +1,7 @@
 <template>
-  <div :class="$style.vueContentBlock">
+  <component :is="as" :class="$style.vueContentBlock">
     <slot />
-  </div>
+  </component>
 </template>
 
 <script lang="ts">
@@ -10,7 +10,9 @@ import { defineComponent } from '@vue/composition-api';
 export default defineComponent({
   name: 'VueContentBlock',
   components: {},
-  props: {},
+  props: {
+    as: { type: String, default: 'div' },
+  },
   setup() {
     return {};
   },
