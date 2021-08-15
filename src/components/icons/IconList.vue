@@ -168,7 +168,6 @@ export default {
         'users',
         'variable',
         'video-camera',
-        'view-boards',
         'view-grid',
         'view-list',
         'volume-off',
