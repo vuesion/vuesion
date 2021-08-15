@@ -1,11 +1,11 @@
 <template>
-  <vue-box :padding="['64 16 24 16', '64 0 24 0', '64 0 24 0', '0 0 64 0']">
+  <vue-box :padding="['64 0 24 0', '64 0 24 0', '64 0 24 0', '0 0 64 0']">
     <vue-content-block :class="$style.learnMore">
       <vue-stack :space="[32, 32, 32, null]">
         <vue-box :padding="['24 12', 48, 64, 80]">
           <vue-stack space="64">
             <vue-text look="h3" weight="semi-bold" align="center">
-              <span class="deco-underline">Learn more</span> about Vuesion before starting
+              <span class="deco-underline">Learn more</span> about Vuesion
             </vue-text>
 
             <vue-columns space="48" stack-phone stack-tablet-portrait stack-tablet-landscape>
@@ -70,12 +70,14 @@
                     </vue-column>
                     <vue-column :width="['content', 'content', '50%']" :space="[48, 48, 48, 24]">
                       <vue-stack space="16">
-                        <vue-text look="h4">There is more for you!</vue-text>
+                        <vue-text look="h4">Read the docs!</vue-text>
                         <vue-text look="description">
-                          If you use a Jetbrains IDE or Visual Studio Code, we have something special for you. A theme
-                          that is based on the Vuesion color-palette.
+                          Currently, work in progress. We aim to provide carefully written docs to make it easy for you
+                          to use Vuesion and tpo on board new team members as quickly as possible.
                         </vue-text>
-                        <nuxt-link to="/download"> Go to downloads <vue-icon-arrow-right /> </nuxt-link>
+                        <a href="https://vuesion.github.io/docs/en/v3/" target="_blank" rel="noopener">
+                          Jump to the docs <vue-icon-arrow-right />
+                        </a>
                       </vue-stack>
                     </vue-column>
                   </vue-columns>
@@ -186,7 +188,7 @@ export default defineComponent({
   position: relative;
   background: palette-color-level('primary', 9);
   border-radius: $space-32;
-  color: var(--a11y-color);
+  color: var(--a11y-default-color);
   box-shadow: var(--brand-elevation-3);
 
   img {
