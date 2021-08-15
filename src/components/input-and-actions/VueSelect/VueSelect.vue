@@ -48,6 +48,7 @@
           :aria-expanded="show.toString()"
           :class="[$style.customSelect, $style[size]]"
           :tabindex="disabled ? -1 : 0"
+          role="listbox"
           @click.stop.prevent="show = !show"
         >
           {{ inputValueOption ? inputValueOption.label : placeholder }}
