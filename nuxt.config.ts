@@ -174,6 +174,19 @@ const config: Configuration = {
     manifest: {
       theme_color: themeColor,
     },
+    // handled manually with vue-meta in ./src/pages/index.vue
+    meta: {
+      name: null,
+      description: null,
+      lang: null,
+      ogTitle: null,
+      ogDescription: null,
+      ogImage: null,
+      ogUrl: null,
+      twitterCard: null,
+      twitterSite: null,
+      twitterCreator: null,
+    },
   },
   robots: {
     UserAgent: '*',
