@@ -3,6 +3,7 @@
     <landing-page-header />
     <testimonials :stargazers-count="stargazersCount" :stargazers="stargazers" />
     <value-proposition />
+    <feature-list />
     <learn-more @login-click="showLoginModal = true" />
 
     <vue-modal disable-page-scroll :show="showLoginModal" @close="showLoginModal = false">
@@ -23,11 +24,12 @@ import LoginForm from '@/components/input-and-actions/LoginForm/LoginForm.vue';
 import { defineComponent, ref, useContext } from '@nuxtjs/composition-api';
 import { RequestStatus } from '@/enums/RequestStatus';
 import { addToast } from '@/components/utils';
+import FeatureList from '@/components/marketing/FeatureList/FeatureList.vue';
 
 export default defineComponent({
   name: 'HomePage',
   auth: false,
-  components: { LoginForm, VueModal, LearnMore, ValueProposition, Testimonials, LandingPageHeader },
+  components: { FeatureList, LoginForm, VueModal, LearnMore, ValueProposition, Testimonials, LandingPageHeader },
   setup() {
     const { redirect, app } = useContext();
     const showLoginModal = ref(false);
