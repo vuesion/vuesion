@@ -19,8 +19,8 @@
                     <vue-text look="medium-title" weight="semi-bold"> Nuxt.js Boilerplate </vue-text>
                   </vue-inline>
                   <vue-text look="description" color="text-medium">
-                    Nuxt.js already set up with commonly used modules. Benefit from the Nuxt-js ecosystem,
-                    server-side-rendering or statically rendered pages.
+                    Nuxt.js is already set up with commonly used modules. Benefit from the Nuxt.js ecosystem,
+                    server-side-rendering, or statically rendered pages.
                   </vue-text>
                 </vue-stack>
               </vue-column>
@@ -31,7 +31,7 @@
                     <vue-text look="medium-title" weight="semi-bold"> Testing </vue-text>
                   </vue-inline>
                   <vue-text look="description" color="text-medium">
-                    Cypress, Jest, the Testing Library and more than 250 tests with an initial 100% test-coverage will
+                    Cypress, Jest, the Testing Library and more than 250 tests with an initial 100% test coverage will
                     give you confidence in the code you ship.
                   </vue-text>
                 </vue-stack>
@@ -84,7 +84,7 @@
                   </vue-inline>
                   <vue-text look="description" color="text-medium">
                     Full set up of the Nuxt.js auth module makes it easy to integrate with different schemes (Cookie,
-                    Oauth2, PKCE), 3rd party providers (Auth0, Facebook, Github, etc.) or you own solution.
+                    Oauth2, PKCE), 3rd party providers (Auth0, Facebook, Github, etc.), or your own solution.
                   </vue-text>
                 </vue-stack>
               </vue-column>
@@ -97,8 +97,8 @@
                     <vue-text look="medium-title" weight="semi-bold"> DX & Code quality </vue-text>
                   </vue-inline>
                   <vue-text look="description" color="text-medium">
-                    TypeScript, Eslint, Commit message lint, Prettier, Semantic releases, generated Changelog, Husky and
-                    Code generators will help you to keep your code-base clean and consistent.
+                    TypeScript, Eslint, Commit message lint, Prettier, Semantic releases, generated Changelog, Husky,
+                    and Code generators will help you to keep your code-base clean and consistent.
                   </vue-text>
                 </vue-stack>
               </vue-column>
@@ -110,7 +110,7 @@
                   </vue-inline>
                   <vue-text look="description" color="text-medium">
                     The Nuxt.js Apollo module is set up to work together with the Nuxt.js Axios module. Axios is
-                    integrated with the Nuxt-js Auth module and provides re-authentication out of the box.
+                    integrated with the Nuxt.js Auth module and provides re-authentication out of the box.
                   </vue-text>
                 </vue-stack>
               </vue-column>
@@ -122,7 +122,7 @@
                   </vue-inline>
                   <vue-text look="description" color="text-medium">
                     The Nuxt.js PWA module allows you to register a Service Worker and it automatically generates a
-                    manifest.json and app icons. It also integrates with the Free, high volume and reliable push
+                    manifest.json and app icons. It also integrates with the Free, high volume, and reliable push
                     notification service OneSignal.
                   </vue-text>
                 </vue-stack>

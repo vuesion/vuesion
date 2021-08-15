@@ -111,6 +111,7 @@ const config: Configuration = {
         'attribute-boolean-style': 'off',
         'doctype-style': 'off',
         'no-inline-style': 'off',
+        'prefer-native-element': 'off',
       },
     },
   },
