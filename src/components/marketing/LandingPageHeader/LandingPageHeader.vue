@@ -1,8 +1,16 @@
 <template>
   <div ref="header" :class="$style.landingPageHeader">
     <canvas ref="canvas" :class="$style.canvas" />
+    <vue-content-block>
+      <vue-box padding="null" align-y="center" as="nav" :class="$style.nav">
+        <a href="https://vuesion.github.io/docs/en/v3/" target="_blank" rel="noopener">
+          <vue-icon-book /> Documentation
+        </a>
+        <nuxt-link to="/download"> <vue-icon-download /> Downloads </nuxt-link>
+      </vue-box>
+    </vue-content-block>
 
-    <vue-box :padding="['24 16', '144 null 32 null', '144 null 80 null']">
+    <vue-box :padding="['24 16', '96 null 32 null', '96 null 80 null']">
       <vue-stack space="48" align="center">
         <vue-text look="h1" weight="semi-bold" align="center" :class="$style.content">
           Nothing great is <br />
@@ -80,10 +88,22 @@ import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
 import VueHidden from '@/components/utils/VueHidden/VueHidden.vue';
 import { getDomRef } from '@/composables/get-dom-ref';
+import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueIconDownload from '@/components/icons/VueIconDownload.vue';
+import VueIconBook from '@/components/icons/VueIconBook.vue';
 
 export default defineComponent({
   name: 'LandingPageHeader',
-  components: { VueHidden, VueInline, VueStack, VueText, VueBox },
+  components: {
+    VueIconBook,
+    VueIconDownload,
+    VueContentBlock,
+    VueHidden,
+    VueInline,
+    VueStack,
+    VueText,
+    VueBox,
+  },
   props: {},
   setup() {
     const header = getDomRef(null);
@@ -127,7 +147,41 @@ export default defineComponent({
   position: relative;
   background: palette-color-level('primary', 9);
   padding-bottom: $space-24;
-  color: var(--a11y-color);
+  color: var(--a11y-default-color);
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid palette-color-level('primary', 8);
+    height: $navbar-height;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    a {
+      flex: 0 0 auto;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      height: $navbar-height;
+      color: var(--a11y-default-color);
+      padding: $space-16;
+      font-size: $text-2;
+      line-height: $line-height-2;
+      font-weight: $font-weight-semi-bold;
+
+      &:hover {
+        background: var(--brand-interaction-primary-hovered);
+      }
+
+      i {
+        width: $space-20;
+        height: $space-20;
+        margin-right: $space-8;
+      }
+    }
+  }
 
   .content {
     z-index: 1;
@@ -152,7 +206,7 @@ export default defineComponent({
     padding: $space-12 $space-24;
     align-items: center;
     justify-content: center;
-    color: var(--a11y-color);
+    color: var(--a11y-default-color);
     text-decoration: none;
     border: 1px solid var(--brand-interaction-primary-hovered);
     border-radius: $space-24;
