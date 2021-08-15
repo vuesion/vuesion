@@ -1,5 +1,5 @@
 <template>
-  <i title="vuesion" aria-label="vuesion logo">
+  <i title="vuesion">
     <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
       <g fill-rule="nonzero">
         <path
