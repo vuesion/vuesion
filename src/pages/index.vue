@@ -66,11 +66,12 @@ export default defineComponent({
   head() {
     const url = 'https://vuesion.herokuapp.com/';
     const logo = '/images/vuesion-logo.png';
+    const title = 'Vuesion - The boilerplate for product teams';
     const description =
       'Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.';
 
     return {
-      title: 'Vuesion - The boilerplate for product teams',
+      title,
       meta: [
         {
           name: 'description',
@@ -92,7 +93,7 @@ export default defineComponent({
         { name: 'og:locale', content: 'en' },
         {
           name: 'og:title',
-          content: description,
+          content: title,
         },
         {
           name: 'og:description',
@@ -105,7 +106,7 @@ export default defineComponent({
         { name: 'twitter:creator', content: '@vuesion1' },
         {
           name: 'twitter:title',
-          content: description,
+          content: title,
         },
         { name: 'twitter:url', content: url },
         { name: 'twitter:image', content: logo },
