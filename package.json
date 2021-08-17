@@ -1,7 +1,7 @@
 {
   "name": "vuesion",
   "private": true,
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices",
   "repository": {
     "type": "git",
