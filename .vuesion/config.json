@@ -19,6 +19,7 @@
     "extensions": "ts,vue,js,json,scss,sass,css,yaml,yml"
   },
   "i18n": {
+    "defaultLocale": "en",
     "locales": [
       {
         "code": "en",
@@ -28,7 +29,6 @@
         "code": "de",
         "file": "de.json"
       }
-    ],
-    "defaultLocale": "en"
+    ]
   }
 }
