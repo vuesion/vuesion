@@ -1,3 +1,36 @@
+### 4.2.0 (2021-08-17)
+
+##### Chores
+
+- **vuesion-config:** sort i18n properties ([480796a1](https://github.com/vuesion/vuesion/commit/480796a18c4c60714139a7eb7489745b89ddefa7))
+- **i18n:** clean up translations ([a8ce8d7b](https://github.com/vuesion/vuesion/commit/a8ce8d7bcd8d0a2b562c621532dc97d4d2f0b558))
+
+##### New Features
+
+- update link to docs ([0c10effc](https://github.com/vuesion/vuesion/commit/0c10effcc71b8029286c786f1cbab39c225db3ea))
+- add modern build option as default ([ea74a14a](https://github.com/vuesion/vuesion/commit/ea74a14a1e0cc2537ccdc43de9946a1b281ee0e9))
+- add feature-list ([06c13a2d](https://github.com/vuesion/vuesion/commit/06c13a2d390c0f683e72d191772eeae2fc9d2094))
+- add download page ([f0f4630e](https://github.com/vuesion/vuesion/commit/f0f4630e4e78aca863febbed9dfac609e8696a7d))
+- **learn-more:** add link to documentation ([8dda5ba2](https://github.com/vuesion/vuesion/commit/8dda5ba26324a7da267d76adebb97b02d8e4eb6b))
+- **landing-page-header:** add nav ([de560249](https://github.com/vuesion/vuesion/commit/de56024928d7e946c7a7ed68d7cea9980fc85069))
+- **content-block:** add as property ([c1d6599a](https://github.com/vuesion/vuesion/commit/c1d6599af762c88957aea484838c13ae1b238a8f))
+
+##### Bug Fixes
+
+- **generators:**
+  - prettier page.vue.hbs ([6cdeaa23](https://github.com/vuesion/vuesion/commit/6cdeaa23f32d47cce1e1185f15c9dd7673a644ca))
+  - prettier page.vue.hbs ([5459aa0a](https://github.com/vuesion/vuesion/commit/5459aa0a8d2b869e90c1d5c89aaa68c6f75bfa66))
+- **meta:** use title instead of description ([e020a72a](https://github.com/vuesion/vuesion/commit/e020a72a15bb128dffb5ba952d3afde99a1660a5))
+- **feature-list:** fix typos ([aacee1a0](https://github.com/vuesion/vuesion/commit/aacee1a0e4b8bb20eb5b569ca275bbbdcaef5ddf))
+- **pwa-meta:** let vue-meta handle the meta information ([66eea278](https://github.com/vuesion/vuesion/commit/66eea278116cd0b28751b5960ddfa2f9049b3fb8))
+- **vue-select:** add role to custom-select ([73ea1892](https://github.com/vuesion/vuesion/commit/73ea189236360998272f57a0e629f8e9217ae32e))
+- **vue-icon-vuesion:** remove aria attribute ([da473588](https://github.com/vuesion/vuesion/commit/da473588ac34788deb7768932f5a4b8e4d9983ee))
+- **icon-list:** remove view-boards ([f12ed301](https://github.com/vuesion/vuesion/commit/f12ed30128565c96c7844a1d1def313e9ec65352))
+
+##### Refactors
+
+- **tokens:** rename --a11y-color to --a11y-default-color ([bc32d206](https://github.com/vuesion/vuesion/commit/bc32d2064a26d58c032de371d9070caa6d96972d))
+
 ### 4.1.0 (2021-08-11)
 
 ##### Continuous Integration
