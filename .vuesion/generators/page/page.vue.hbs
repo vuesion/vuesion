@@ -31,7 +31,7 @@ export default defineComponent({
     useMeta({ title: '{{ properCase componentName }}' });
     const { app } = useContext();
 
-    const breadCrumbItems = computed(() => [{ label: app.i18n.t('common.{{ properCase componentName }}' /* {{ properCase componentName }} */), value: '/{{filePath}}/{{ dashCase componentName }}' },]);
+    const breadCrumbItems = computed(() => [{ label: app.i18n.t('common.{{ properCase componentName }}' /* {{ properCase componentName }} */), value: '/{{filePath}}/{{ dashCase componentName }}' }]);
 
     return {
       breadCrumbItems,
