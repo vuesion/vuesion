@@ -3,7 +3,7 @@
     <canvas ref="canvas" :class="$style.canvas" />
     <vue-content-block>
       <vue-box padding="null" align-y="center" as="nav" :class="$style.nav">
-        <a href="https://vuesion.github.io/docs/en/v3/" target="_blank" rel="noopener">
+        <a href="https://vuesion.github.io/docs/en/v4/" target="_blank" rel="noopener">
           <vue-icon-book /> Documentation
         </a>
         <nuxt-link to="/download"> <vue-icon-download /> Downloads </nuxt-link>

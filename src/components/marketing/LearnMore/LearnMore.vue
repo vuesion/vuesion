@@ -34,7 +34,7 @@
                       <vue-stack space="16">
                         <vue-text look="h4">Hello Designer. Using the Figma file.</vue-text>
                         <vue-text look="description">
-                          vuesion makes it simple to get started with design. duplicate the figma file from community
+                          Vuesion makes it simple to get started with design. duplicate the figma file from community
                           and begin pulling all the components you need for your product.
                         </vue-text>
                         <a
@@ -47,7 +47,7 @@
                       </vue-stack>
                     </vue-column>
                   </vue-columns>
-                  <vue-columns>
+                  <vue-columns stack-phone stack-tablet-portrait>
                     <vue-column :width="['content', 'content', '50%']" :space="[48, 48, 48, 24]">
                       <vue-stack space="16">
                         <vue-text look="h4">Join in on the conversation.</vue-text>
@@ -75,7 +75,7 @@
                           Currently, work in progress. We aim to provide carefully written docs to make it easy for you
                           to use Vuesion and tpo on board new team members as quickly as possible.
                         </vue-text>
-                        <a href="https://vuesion.github.io/docs/en/v3/" target="_blank" rel="noopener">
+                        <a href="https://vuesion.github.io/docs/en/v4/" target="_blank" rel="noopener">
                           Jump to the docs <vue-icon-arrow-right />
                         </a>
                       </vue-stack>
@@ -139,7 +139,7 @@
                       <vue-stack space="16">
                         <vue-text look="h4">Form validation.</vue-text>
                         <vue-text look="description">
-                          This example shows how to validate forms with the vee-validate library and the vuesion
+                          This example shows how to validate forms with the vee-validate library and the Vuesion
                           components.
                         </vue-text>
                         <nuxt-link to="/example/form"> Go to Form example <vue-icon-arrow-right /> </nuxt-link>
