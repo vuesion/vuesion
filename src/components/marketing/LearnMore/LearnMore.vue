@@ -47,8 +47,8 @@
                       </vue-stack>
                     </vue-column>
                   </vue-columns>
-                  <vue-columns stack-phone stack-tablet-portrait>
-                    <vue-column :width="['content', 'content', '50%']" :space="[48, 48, 48, 24]">
+                  <vue-columns stack-phone stack-tablet-portrait :space="[48, 48, 48, 24]">
+                    <vue-column :width="['content', 'content', '50%']">
                       <vue-stack space="16">
                         <vue-text look="h4">Join in on the conversation.</vue-text>
                         <vue-text look="description">
@@ -73,7 +73,7 @@
                         <vue-text look="h4">Read the docs!</vue-text>
                         <vue-text look="description">
                           Currently, work in progress. We aim to provide carefully written docs to make it easy for you
-                          to use Vuesion and tpo on board new team members as quickly as possible.
+                          to use Vuesion and to on board new team members as quickly as possible.
                         </vue-text>
                         <a href="https://vuesion.github.io/docs/en/v4/" target="_blank" rel="noopener">
                           Jump to the docs <vue-icon-arrow-right />
@@ -124,7 +124,7 @@
                       </vue-stack>
                     </vue-column>
                   </vue-columns>
-                  <vue-columns stack-phone stack-tablet-portrait>
+                  <vue-columns stack-phone stack-tablet-portrait :space="[48, 48, 48, 24]">
                     <vue-column :width="['content', 'content', '50%']">
                       <vue-stack space="16">
                         <vue-text look="h4">GraphQL - Apollo</vue-text>
@@ -149,7 +149,7 @@
                 </vue-stack>
               </vue-column>
 
-              <vue-column :width="['content', 'content', 'content', '50%']" :space="[48, 48, 48, 24]">
+              <vue-column :width="['content', 'content', 'content', '50%']">
                 <img src="/images/example-small.png" alt="Try out some examples!" />
               </vue-column>
             </vue-columns>
