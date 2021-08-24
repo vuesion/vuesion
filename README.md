@@ -83,11 +83,7 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 
 # Documentation
 
-We are currently working on the documentation.
-Since Vuesion is a boilerplate that mainly uses existing technologies,
-you can click on the specific links in this README to find some help.
-
-[comment]: <> (**[https://vuesion.github.io/docs/en/]&#40;https://vuesion.github.io/docs/en/&#41;**)
+**[https://vuesion.github.io/docs/en/v4/](https://vuesion.github.io/docs/en/v4/)**
 
 # Support this project
 
