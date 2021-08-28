@@ -30,18 +30,18 @@
   --brand-surface-inverse-high: #{palette-color-level('neutral', 0)};
   --brand-surface-inverse-medium: #{palette-color-level('neutral', 1)};
   --brand-surface-inverse-low: #{palette-color-level('neutral', 2)};
-  --brand-surface-info-high: #{palette-color-level('primary', 5)};
-  --brand-surface-info-medium: #{palette-color-level('primary', 6)};
-  --brand-surface-info-low: #{palette-color-level('primary', 1)};
-  --brand-surface-danger-high: #{palette-color-level('danger', 3)};
-  --brand-surface-danger-medium: #{palette-color-level('danger', 2)};
-  --brand-surface-danger-low: #{palette-color-level('danger', 1)};
-  --brand-surface-warning-high: #{palette-color-level('warning', 3)};
-  --brand-surface-warning-medium: #{palette-color-level('warning', 2)};
-  --brand-surface-warning-low: #{palette-color-level('warning', 1)};
-  --brand-surface-success-high: #{palette-color-level('success', 3)};
-  --brand-surface-success-medium: #{palette-color-level('success', 2)};
-  --brand-surface-success-low: #{palette-color-level('success', 1)};
+  --brand-surface-info-high: #{palette-color-level('primary', 8)};
+  --brand-surface-info-medium: #{palette-color-level('primary', 9)};
+  --brand-surface-info-low: #{palette-color-level('primary', 10)};
+  --brand-surface-danger-high: #{palette-color-level('danger', 8)};
+  --brand-surface-danger-medium: #{palette-color-level('danger', 9)};
+  --brand-surface-danger-low: #{palette-color-level('danger', 10)};
+  --brand-surface-warning-high: #{palette-color-level('warning', 8)};
+  --brand-surface-warning-medium: #{palette-color-level('warning', 9)};
+  --brand-surface-warning-low: #{palette-color-level('warning', 10)};
+  --brand-surface-success-high: #{palette-color-level('success', 8)};
+  --brand-surface-success-medium: #{palette-color-level('success', 9)};
+  --brand-surface-success-low: #{palette-color-level('success', 10)};
 
   /* Border Colors */
   --brand-border-default-medium: #{palette-color-level('neutral', 7)};
@@ -49,13 +49,13 @@
   --brand-border-inverse-medium: #{palette-color-level('neutral', 9)};
   --brand-border-inverse-low: #{palette-color-level('neutral', 7)};
   --brand-border-info-high: #{palette-color-level('primary', 7)};
-  --brand-border-info-low: #{palette-color-level('primary', 2)};
+  --brand-border-info-low: #{palette-color-level('primary', 9)};
   --brand-border-danger-high: #{palette-color-level('danger', 7)};
-  --brand-border-danger-low: #{palette-color-level('danger', 2)};
+  --brand-border-danger-low: #{palette-color-level('danger', 9)};
   --brand-border-warning-high: #{palette-color-level('warning', 7)};
-  --brand-border-warning-low: #{palette-color-level('warning', 2)};
+  --brand-border-warning-low: #{palette-color-level('warning', 9)};
   --brand-border-success-high: #{palette-color-level('success', 7)};
-  --brand-border-success-low: #{palette-color-level('success', 2)};
+  --brand-border-success-low: #{palette-color-level('success', 9)};
 
   /* Text Colors */
   --brand-text-default-high: #{palette-color-level('neutral', 0)};
