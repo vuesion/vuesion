@@ -31,7 +31,11 @@ export default {
         },
         round: 1,
         easing: 'easeInOutCirc',
-        complete: done,
+        complete: () => {
+          el.style.height = null;
+          el.style.overflow = null;
+          done();
+        },
       });
     },
     beforeLeave(el: HTMLElement) {
