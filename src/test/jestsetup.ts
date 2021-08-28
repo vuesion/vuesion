@@ -50,3 +50,7 @@ for (const path of icons) {
   const componentConfig = require(iconDirectory + '/' + path);
   Vue.component(componentName, componentConfig.default || componentConfig);
 }
+
+Element.prototype.scrollTo = (): any => {
+  return null;
+};
