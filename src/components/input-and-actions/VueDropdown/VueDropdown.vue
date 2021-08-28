@@ -1,5 +1,5 @@
 <template>
-  <div ref="dropdownRef" :class="$style.vueDropdown" @keydown="onKeyDown">
+  <div ref="dropdownRef" :class="$style.vueDropdown" @keydown.enter.space.up.down.esc.stop.prevent="onKeyDown">
     <div :class="$style.wrapper" @click.stop.prevent="onClick">
       <slot>
         <vue-button look="outline" :aria-expanded="show.toString()" :size="size" trailing-icon="chevron-down">
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api';
+import { defineComponent, nextTick, ref } from '@vue/composition-api';
 import { getDomRef } from '@/composables/get-dom-ref';
 import { IItem } from '@/interfaces/IItem';
 import { useOutsideClick } from '@/composables/use-outside-click';
@@ -53,23 +53,15 @@ export default defineComponent({
       emit('item-click', item);
       close();
     };
-    const checkForPropagation = (e: KeyboardEvent) => {
-      if (['Enter', 'Space', 'ArrowDown', 'ArrowUp', 'Escape'].includes(e.code)) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
-    };
-    const onKeyDown = (e: KeyboardEvent) => {
-      checkForPropagation(e);
-
-      if (['Enter', 'Space', 'ArrowDown', 'ArrowUp'].includes(e.code)) {
+    const onKeyDown = async (e: KeyboardEvent) => {
+      if (e.code === 'Escape') {
+        close();
+      } else {
         show.value = true;
 
-        setTimeout(() => {
-          menuRef.value.focus();
-        }, 10);
-      } else if (e.code === 'Escape') {
-        close();
+        await nextTick();
+
+        menuRef.value.focus();
       }
     };
 
