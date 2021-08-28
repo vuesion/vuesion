@@ -19,6 +19,7 @@ describe('VueSelect.vue', () => {
           { label: 'Value 3', value: 'Value 3', description: 'Description 3' },
           { label: 'Value 4', value: 'Value 4', description: 'Description 4' },
         ],
+        duration: 0,
       },
     });
   });
@@ -72,8 +73,6 @@ describe('VueSelect.vue', () => {
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
-    await sleep(50);
-
     expect(queryAllByText('Value 1')).toHaveLength(2);
 
     await fireEvent.keyDown(select, { key: 'Escape', code: 'Escape' });
@@ -89,24 +88,24 @@ describe('VueSelect.vue', () => {
 
     await fireEvent.click(toggle);
 
-    await sleep(50);
-
     expect(queryAllByText('Value 1')).toHaveLength(2);
+
+    await fireEvent.click(toggle);
+
+    expect(queryAllByText('Value 1')).toHaveLength(1);
   });
 
-  test('should open menu and close it via outline click', async () => {
+  test('should open menu and close it via outside click', async () => {
     const { getByText, queryAllByText } = harness;
     const select = getByText('Select').parentElement;
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
-    await sleep(50);
-
     expect(queryAllByText('Value 1')).toHaveLength(2);
 
     triggerDocument.mousedown({ target: null });
 
-    await sleep(250);
+    await sleep(10);
 
     expect(queryAllByText('Value 1')).toHaveLength(1);
   });
@@ -120,8 +119,6 @@ describe('VueSelect.vue', () => {
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
-    await sleep(50);
-
     expect(getByTestId('Value 1-0').innerHTML).toMatch('<div class="trailing">');
   });
 
@@ -134,8 +131,6 @@ describe('VueSelect.vue', () => {
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
-    await sleep(50);
-
     expect(getByTestId('Value 1-0').innerHTML).toMatch('<div class="trailing">');
   });
 
@@ -145,7 +140,6 @@ describe('VueSelect.vue', () => {
 
     await updateProps({ alignMenu: 'right', alignYMenu: 'top' });
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
-    await sleep(50);
 
     const menu = getByTestId('menu');
 

@@ -122,7 +122,7 @@ export default defineComponent({
   border-radius: $menu-border-radius;
   border: $menu-border;
   z-index: $menu-z-index;
-  overflow-y: scroll;
+  overflow-y: scroll !important;
   -webkit-overflow-scrolling: touch;
 
   > li {

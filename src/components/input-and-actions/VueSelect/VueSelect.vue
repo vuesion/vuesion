@@ -3,7 +3,7 @@
     <div
       ref="selectRef"
       :class="[$style.vueSelect, disabled && $style.disabled, errors.length > 0 && $style.error]"
-      @keydown.enter.space.left.right.up.down.esc.stop.prevent="onKeyDown"
+      @keydown.enter.space.up.down.esc.stop.prevent="onKeyDown"
     >
       <vue-text
         :for="id"
@@ -49,7 +49,7 @@
           :class="[$style.customSelect, $style[size]]"
           :tabindex="disabled ? -1 : 0"
           role="listbox"
-          @click.stop.prevent="show = !show"
+          @click.stop.prevent="toggleMenu"
         >
           {{ inputValueOption ? inputValueOption.label : placeholder }}
         </div>
@@ -78,7 +78,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from '@vue/composition-api';
+import { computed, defineComponent, ref, nextTick } from '@vue/composition-api';
 import { ValidationProvider } from 'vee-validate';
 import { IItem } from '@/interfaces/IItem';
 import VueText from '@/components/typography/VueText/VueText.vue';
@@ -119,6 +119,8 @@ export default defineComponent({
     size: { type: String, validator: shirtSizeValidator, default: 'md' },
   },
   setup(props, { emit }) {
+    const selectRef = getDomRef(null);
+    const show = ref(false);
     const options = computed<Array<IItem>>(() =>
       props.items.map((item: IItem) => ({
         ...item,
@@ -141,8 +143,18 @@ export default defineComponent({
         return undefined;
       }
     });
-    const selectRef = getDomRef(null);
-    const show = ref(false);
+    const open = async () => {
+      show.value = true;
+
+      await nextTick();
+
+      const list: HTMLUListElement = selectRef.value.querySelector('ul');
+      const selectedItemIndex = options.value.findIndex((item: IItem) => inputValue.value === item.value);
+      const item = list.querySelectorAll('li').item(selectedItemIndex === -1 ? 0 : selectedItemIndex);
+
+      item.focus();
+      list.scrollTo({ top: item.offsetTop });
+    };
     const close = () => (show.value = false);
     const onInput = (e: Event) => {
       const selected: IItem[] = [];
@@ -162,23 +174,11 @@ export default defineComponent({
       emit('input', item);
       close();
     };
-    const checkForPropagation = (e: KeyboardEvent) => {
-      if (['Enter', 'Space', 'ArrowDown', 'ArrowUp', 'Escape'].includes(e.code)) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
-    };
     const onKeyDown = (e: KeyboardEvent) => {
-      checkForPropagation(e);
-
-      if (['Enter', 'Space', 'ArrowDown', 'ArrowUp'].includes(e.code)) {
-        show.value = true;
-
-        setTimeout(() => {
-          selectRef.value.querySelector('ul').firstChild.focus();
-        }, 10);
-      } else if (e.code === 'Escape') {
+      if (e.code === 'Escape') {
         close();
+      } else {
+        open();
       }
     };
     const toggleMenu = () => {
@@ -186,17 +186,21 @@ export default defineComponent({
 
       nativeSelect.focus();
 
-      show.value = !show.value;
+      if (show.value === true) {
+        close();
+      } else {
+        open();
+      }
     };
 
     useOutsideClick(selectRef, () => close());
 
     return {
+      selectRef,
+      show,
       options,
       inputValue,
       inputValueOption,
-      selectRef,
-      show,
       onInput,
       onItemClick,
       onKeyDown,
