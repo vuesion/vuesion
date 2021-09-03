@@ -36,6 +36,9 @@ jobs:
           name: Checkout Vuesion+ Datatable
           command: git clone https://github.com/vuesion/vuesion-plus-datatable.git ./src/components/a-datatable
       - run:
+          name: Checkout Vuesion+ Calendar and Date picker
+          command: git clone https://github.com/vuesion/vuesion-plus-calander-datepicker.git ./src/components/b-calander-datepicker
+      - run:
           name: Building application
           command: npm run ci
       - run:
