@@ -19,24 +19,16 @@ story.add('Design System', () => ({
   template: `<vue-box><vue-markdown :use-router="false">
 # Design System
 
-Vuesion comes with a Design System that you can 100% customize.
+**_All necessary files are located under \`./src/assets/design-system\`._**
 
-**_The files for customizing the Design System are located in \`./src/assets/shared/designSystem\`._**
+Achieving a unique Brand Identity with a UI toolkit that is already build on top of
+another Design System (e.g. Material Design, Bootstrap, Ant) isn't easy and
+the same applies to consistency, especially by combining multiple UI libraries.
 
-Design Systems are really complex and the key to a good Design System is
-consistency.
+Our component blueprints provide the most common features for you
+to extend and give you the ability to fit their appearance your Corporate Design.
 
-It is hard to achieve a unique Brand Identity with a UI toolkit that is already build on top of another Design System (e.g. Material Design).
-It is also hard to achieve consistency if you have to combine multiple UI libraries without forking
-and customizing them to fit your Brand Identity.
-
-_Over the years we discovered that it's much harder to maintain all of these forks for a project than
-building our own set of components that are **100% customizable** because the code is 100% accessible in your code base._
-
-This Design System is the next step, it is a blueprint that enables you to create your very own Design System that perfectly fits your
-Brand or your clients Corporate Identity.
-
-We are aware that not everyone has to implement their own professional Design System.
+We are aware that not everyone has to implement their own Design System.
 If this is the case for you, you might be interested in [Vuetify](https://github.com/nuxt-community/vuetify-module) or [tailwind](https://tailwindcss.nuxtjs.org/)
 </vue-markdown></vue-box>
 `,
