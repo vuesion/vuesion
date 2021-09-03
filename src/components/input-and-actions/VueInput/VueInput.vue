@@ -20,7 +20,12 @@
           $style[size],
         ]"
       >
-        <div v-if="leadingIcon" :class="$style.leading" @click="$emit('leading-icon-click')">
+        <div
+          v-if="leadingIcon"
+          :data-testid="`${id}-leading-icon`"
+          :class="$style.leading"
+          @click="$emit('leading-icon-click')"
+        >
           <component :is="`vue-icon-${leadingIcon}`" />
         </div>
 
@@ -36,6 +41,7 @@
           :disabled="disabled"
           :readonly="readonly"
           :autofocus="autofocus"
+          :size="sizeAttribute"
           v-bind="$attrs"
           v-on="{
             ...$listeners,
@@ -45,7 +51,12 @@
           }"
         />
 
-        <div v-if="trailingIcon" :class="$style.trailing" @click="$emit('trailing-icon-click')">
+        <div
+          v-if="trailingIcon"
+          :data-testid="`${id}-trailing-icon`"
+          :class="$style.trailing"
+          @click="$emit('trailing-icon-click')"
+        >
           <component :is="`vue-icon-${trailingIcon}`" />
         </div>
       </div>
@@ -92,6 +103,7 @@ export default defineComponent({
     leadingIcon: { type: String, default: null },
     trailingIcon: { type: String, default: null },
     size: { type: String, validator: shirtSizeValidator, default: 'md' },
+    sizeAttribute: { type: Number, default: null },
   },
   setup(props) {
     const input = getDomRef(null);
@@ -237,12 +249,16 @@ export default defineComponent({
     display: flex;
     height: $input-label-height;
     margin-bottom: $input-label-gap;
+    white-space: nowrap;
+    width: 0;
   }
 
   .description {
     display: flex;
     height: $input-description-height;
     margin-top: $input-description-gap;
+    white-space: nowrap;
+    width: 0;
   }
 }
 </style>
