@@ -184,6 +184,7 @@ export default defineComponent({
     }
 
     input {
+      background-clip: padding-box !important; // remove box shadow on iOS
       outline: none;
       color: $input-color;
       font-size: $input-font-size;
