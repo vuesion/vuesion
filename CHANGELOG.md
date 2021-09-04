@@ -1,3 +1,37 @@
+### 4.3.0 (2021-09-04)
+
+##### Continuous Integration
+
+- add Vuesion+ Calendar and Date picker ([cf266202](https://github.com/vuesion/vuesion/commit/cf2662021b0ad8013b7d7ee07d31cb43c38697e9))
+- split vuesion+ components into separate repos ([5a03c042](https://github.com/vuesion/vuesion/commit/5a03c042c20ac14dafdcb20369a581c22978dcd3))
+
+##### Documentation Changes
+
+- **component-docs:** replace disclaimer with CTA ([170cb998](https://github.com/vuesion/vuesion/commit/170cb99852f8683c1c088552d5a7a35e7f743b99))
+- **design-system:** update introduction text ([833055c6](https://github.com/vuesion/vuesion/commit/833055c6f2036e87fb4099059eb58a1d2c49d94b))
+- update README.md ([2e46cdbc](https://github.com/vuesion/vuesion/commit/2e46cdbc7e4eebf278e7e70d18130fadea194e18))
+
+##### New Features
+
+- **vue-input:**
+  - remove shadow on iOS ([8a97e5b3](https://github.com/vuesion/vuesion/commit/8a97e5b346d8ef61bb51fbb483e0b27a2382b2e8))
+  - add size attribute property ([ec85478d](https://github.com/vuesion/vuesion/commit/ec85478d6d161a10adebade72da1555d2872014e))
+- **components:** reduce description-gap for better y-alignment ([5125dc9f](https://github.com/vuesion/vuesion/commit/5125dc9fbba8b00f8539cccbacf8e27ff2bcd40f))
+- **vue-select:** focus/scroll to item of the selected value ([c47a8961](https://github.com/vuesion/vuesion/commit/c47a8961fc3f45591d7684fe5f20a7110c1d516b))
+- **i18n:** add full-icu package and scripts ([5166dad0](https://github.com/vuesion/vuesion/commit/5166dad07057341d962fba02b165488bd4ba5305))
+- **jest-setup:** add stub for Element.scrollTo ([22c9f870](https://github.com/vuesion/vuesion/commit/22c9f870d770456079287c87ede30e541ed248ea))
+- **dark-mode:** optimize surface colors ([69cda30c](https://github.com/vuesion/vuesion/commit/69cda30c1ad37b80e06e46cab3d19dcfae0e3d2d))
+- **collapse-animation:** support dynamic child-height ([99d496c9](https://github.com/vuesion/vuesion/commit/99d496c9ecadcbffec956925b0f36b7376b17efd))
+- **vue-menu:** change max-height to fit better in viewport ([53ae1ff8](https://github.com/vuesion/vuesion/commit/53ae1ff8b9ca878d7629fbb97003c1b4560e6453))
+
+##### Bug Fixes
+
+- **learn-more:** fix typo ([44e63f82](https://github.com/vuesion/vuesion/commit/44e63f8255832a6ac065ed502a09f7809f182db8))
+
+##### Refactors
+
+- **vue-dropdown:** simplify onKeyDown event handler ([a29db17c](https://github.com/vuesion/vuesion/commit/a29db17cb6220552cc18e3d375ec28091ef9da93))
+
 ### 4.2.0 (2021-08-17)
 
 ##### Chores
