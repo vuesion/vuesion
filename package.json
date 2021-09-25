@@ -2,7 +2,7 @@
   "name": "vuesion",
   "private": true,
   "version": "4.3.0",
-  "description": "The most complete boilerplate for production-ready PWAs. With focus on performance, development speed, and best practices",
+  "description": "Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.",
   "repository": {
     "type": "git",
     "url": "https://github.com/vuesion/vuesion.git"
@@ -20,7 +20,10 @@
     "components",
     "design-system",
     "nuxt.js",
-    "nuxt"
+    "nuxt",
+    "apollo",
+    "composition-api",
+    "GraphQL"
   ],
   "author": "Johannes Werner <johannes.werner@hey.com>",
   "license": "MIT",
@@ -118,7 +121,7 @@
     "babel-core": "7.0.0-bridge.0",
     "eslint-plugin-nuxt": ">=2.0.0",
     "flush-promises": "1.0.2",
-    "husky": "5.1.1",
+    "husky": "7.0.2",
     "identity-obj-proxy": "3.0.0",
     "mock-apollo-client": "1.1.0",
     "node-sass": "5.0.0"
