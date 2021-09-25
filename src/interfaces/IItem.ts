@@ -4,4 +4,5 @@ export interface IItem {
   description?: string;
   leadingIcon?: string;
   trailingIcon?: string;
+  disabled?: boolean;
 }

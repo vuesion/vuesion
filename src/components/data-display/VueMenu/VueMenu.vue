@@ -4,13 +4,17 @@
       v-for="(item, idx) in items"
       :key="`${item.value}-${idx}`"
       :data-testid="`${item.value}-${idx}`"
-      :class="[selectedItemIndex === idx ? $style.active : '', item.value === 'separator' ? $style.separator : '']"
+      :class="[
+        selectedItemIndex === idx ? $style.active : '',
+        item.value === 'separator' ? $style.separator : '',
+        item.disabled && $style.disabled,
+      ]"
       :tabindex="item.value === 'separator' ? -1 : 0"
       @mouseenter="selectedItemIndex = idx"
       @mouseleave="selectedItemIndex = -1"
       @focus="selectedItemIndex = idx"
       @blur="selectedItemIndex = -1"
-      @click.stop.prevent="onItemClick(item)"
+      @click.stop.prevent="item.disabled ? null : onItemClick(item)"
     >
       <slot v-if="item.value !== 'separator'" name="option" :option="item">
         <div v-if="item.leadingIcon" :class="$style.leading">
@@ -19,7 +23,7 @@
 
         <div :class="$style.value">
           <vue-text :color="selectedItemIndex === idx ? 'text-inverse-high' : 'text-high'">{{ item.label }}</vue-text>
-          <vue-text v-if="item.description" look="support" color="text-inverse-medium">
+          <vue-text v-if="item.description" look="support" color="text-inverse-low">
             {{ item.description }}
           </vue-text>
         </div>
@@ -78,7 +82,11 @@ export default defineComponent({
     const onKeyDown = (e: KeyboardEvent) => {
       checkForPropagation(e);
 
-      if (['Enter', 'Space'].includes(e.code) && selectedItemIndex.value > -1) {
+      if (
+        ['Enter', 'Space'].includes(e.code) &&
+        selectedItemIndex.value > -1 &&
+        !items.value[selectedItemIndex.value].disabled
+      ) {
         onItemClick(items.value[selectedItemIndex.value]);
       } else if (e.code === 'ArrowDown') {
         handleSelection(getNewIndex('down'));
@@ -167,6 +175,11 @@ export default defineComponent({
       padding: 0;
       height: 0;
       border-top: $menu-separator-border;
+    }
+
+    &.disabled {
+      opacity: $menu-item-disabled-opacity;
+      cursor: not-allowed;
     }
   }
 }
