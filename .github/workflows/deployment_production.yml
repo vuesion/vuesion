@@ -1,0 +1,133 @@
+name: Deploy to Production
+
+env:
+  APP_NAME: vuesion
+  HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
+  HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+    branches: [ master ]
+
+jobs:
+  build_and_test:
+    name: Build and test application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Checkout Vuesion+ Datatable
+        uses: actions/checkout@v2
+        with:
+          repository: vuesion/vuesion-plus-datatable
+          path: ./src/components/a-datatable
+          token: ${{ secrets.VUESION_PAT }}
+
+      - name: Checkout Vuesion+ Calendar and Date picker
+        uses: actions/checkout@v2
+        with:
+          repository: vuesion/vuesion-plus-calander-datepicker
+          path: ./src/components/b-calender-datepicke
+          token: ${{ secrets.VUESION_PAT }}
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+
+      - name: Install dependencies
+        uses: cypress-io/github-action@v2
+        with:
+          runTests: false
+
+      - name: Build and test application
+        run: npm run ci
+
+      - name: Run e2e tests
+        uses: cypress-io/github-action@v2
+        with:
+          install: false
+          start: npm start
+          wait-on: 'http://localhost:3000'
+
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: |
+            .nuxt
+            storybook-static
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report
+          path: coverage
+
+  deploy:
+    needs: [ build_and_test ]
+    name: Deploy to Heroku
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
+
+      - name: Build Docker Image and deploy to Heroku
+        run: |
+          docker build -t $APP_NAME .
+          set -eu -o pipefail
+          echo $HEROKU_API_KEY | docker login --username=$HEROKU_USERNAME --password-stdin registry.heroku.com
+          docker tag $APP_NAME registry.heroku.com/$APP_NAME/web
+          docker push registry.heroku.com/$APP_NAME/web
+          docker inspect registry.heroku.com/$APP_NAME/web --format={{.Id}} > WEB_DOCKER_IMAGE_ID_FILE
+          export WEB_DOCKER_IMAGE_ID=$(cat WEB_DOCKER_IMAGE_ID_FILE)
+          curl -n -X PATCH https://api.heroku.com/apps/$APP_NAME/formation \
+          -d '{ "updates": [ { "type": "web", "docker_image": "'"$WEB_DOCKER_IMAGE_ID"'" }]}' \
+          -H "Content-Type: application/json" \
+          -H "Accept: application/vnd.heroku+json; version=3.docker-releases" \
+          -H "Authorization: Bearer $HEROKU_API_KEY"
+
+  coverage:
+    needs: [ build_and_test ]
+    name: Report code coverage to Code Climate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Checkout Vuesion+ Datatable
+        uses: actions/checkout@v2
+        with:
+          repository: vuesion/vuesion-plus-datatable
+          path: ./src/components/a-datatable
+          token: ${{ secrets.VUESION_PAT }}
+
+      - name: Checkout Vuesion+ Calendar and Date picker
+        uses: actions/checkout@v2
+        with:
+          repository: vuesion/vuesion-plus-calander-datepicker
+          path: ./src/components/b-calender-datepicke
+          token: ${{ secrets.VUESION_PAT }}
+
+      - name: Download code coverage results
+        uses: actions/download-artifact@v2
+        with:
+          name: code-coverage-report
+
+      - name: Send to Code Climate
+        uses: paambaati/codeclimate-action@v2.7.5
+        env:
+          CC_TEST_REPORTER_ID: 458ce0b8f345c194e04dd299b901334c6c4f9457a512d00b75d8d4f36921726c
+        with:
+          debug: true
+          coverageLocations: |
+            ${{github.workspace}}/lcov.info:lcov

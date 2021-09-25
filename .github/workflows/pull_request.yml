@@ -1,0 +1,50 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+    branches:
+      - master
+      - next
+
+jobs:
+  build_and_test:
+    name: Build and test application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Checkout Vuesion+ Datatable
+        uses: actions/checkout@v2
+        with:
+          repository: vuesion/vuesion-plus-datatable
+          path: ./src/components/a-datatable
+          token: ${{ secrets.VUESION_PAT }}
+
+      - name: Checkout Vuesion+ Calendar and Date picker
+        uses: actions/checkout@v2
+        with:
+          repository: vuesion/vuesion-plus-calander-datepicker
+          path: ./src/components/b-calender-datepicke
+          token: ${{ secrets.VUESION_PAT }}
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+
+      - name: Install dependencies
+        uses: cypress-io/github-action@v2
+        with:
+          runTests: false
+
+      - name: Build and test application
+        run: npm run ci
+
+      - name: Run e2e tests
+        uses: cypress-io/github-action@v2
+        with:
+          install: false
+          start: npm start
+          wait-on: 'http://localhost:3000'

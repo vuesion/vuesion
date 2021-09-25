@@ -50,8 +50,7 @@
     "build:analyze": "nuxt build --analyze",
     "build:spa": "nuxt generate --modern",
     "start": "NODE_ICU_DATA=node_modules/full-icu nuxt start",
-    "e2e:ci": "npx start-server-and-test dev http://localhost:3000 e2e",
-    "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\" && npm run e2e:ci",
+    "ci": "vuesion parallel \"npm run lint\" \"npm run test -- --runInBand\"",
     "postci": "vuesion parallel \"npm run build\" \"npm run storybook:build\"",
     "postinstall": "husky install",
     "pre-commit": "vuesion prettier --staged && vuesion parallel \"npm run lint\" \"npm run test\""
