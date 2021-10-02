@@ -1,3 +1,25 @@
+### 4.4.0 (2021-10-02)
+
+##### Chores
+
+- update husky ([9163d2c9](https://github.com/vuesion/vuesion/commit/9163d2c964f7fa08ec8fdea0214869818cf7bcd1))
+- move pre-commit to npm scripts ([bbae635b](https://github.com/vuesion/vuesion/commit/bbae635b6497ea71f78fb9906ce70f40eef6241b))
+- add .env example ([03cd9118](https://github.com/vuesion/vuesion/commit/03cd9118a6c0c99e65d05b62a54290421d9ece04))
+
+##### Continuous Integration
+
+- replace circleCI with Github workflows ([57df1083](https://github.com/vuesion/vuesion/commit/57df1083fbcbe90f551c553029c0bbdc93974ee1))
+
+##### New Features
+
+- **vue-sidebar:** add active-class for nuxt-link ([b649c361](https://github.com/vuesion/vuesion/commit/b649c361f70627f1b1825cffed585a82e23b5119))
+- **vue-menu:** add disabled state for items ([5ddc0fad](https://github.com/vuesion/vuesion/commit/5ddc0faddc4a2bb1a079c9f272ea742a60ead195))
+
+##### Bug Fixes
+
+- **vuex-blueprint:** add default exports ([5389a6d5](https://github.com/vuesion/vuesion/commit/5389a6d54fe3ed05994b3ffa55f2e48211aebb22))
+- **vue-pagination:** add type attribute to buttons ([475cb0b6](https://github.com/vuesion/vuesion/commit/475cb0b61e4630207705c5efb03f81bbcd7caab4))
+
 ### 4.3.0 (2021-09-04)
 
 ##### Continuous Integration
