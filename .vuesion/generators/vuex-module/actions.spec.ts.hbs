@@ -35,11 +35,11 @@ describe('{{ properCase singularName }}Actions', () => {
     fixture = { id: '1' };
   });
 
-  describe('fetch{{ properCase singularName }}s', () => {
+  describe('fetch{{ properCase pluralName }}', () => {
     test('it should call SET_{{ constantCase pluralName }} on success', async () => {
       axiosMock.onGet('/{{ camelCase pluralName }}').reply(200, fixture);
 
-      await store.dispatch('{{ camelCase singularName }}/fetch{{ properCase singularName }}s');
+      await store.dispatch('{{ camelCase singularName }}/fetch{{ properCase pluralName }}');
 
       expect(store.commit).toHaveBeenCalledWith('{{ camelCase singularName }}/SET_{{ constantCase pluralName }}', fixture, undefined);
     });
@@ -48,7 +48,7 @@ describe('{{ properCase singularName }}Actions', () => {
       axiosMock.onGet('/{{ camelCase pluralName }}').reply(500);
 
       try {
-        await store.dispatch('{{ camelCase singularName }}/fetch{{ properCase singularName }}s');
+        await store.dispatch('{{ camelCase singularName }}/fetch{{ properCase pluralName }}');
       } catch (e) {
         expect(e.message).toEqual('Request failed with status code 500');
       }
