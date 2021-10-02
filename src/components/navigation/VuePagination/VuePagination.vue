@@ -4,6 +4,7 @@
       :class="[infinite === false && selectedPage <= 1 && $style.disabled]"
       :aria-label="$t('components.pagination.previous' /* Previous */)"
       :disabled="infinite === false && selectedPage <= 1"
+      type="button"
       data-testid="pagination-prev"
       @click.prevent.stop="$emit('prev', 1)"
     >
@@ -29,6 +30,7 @@
       :class="[infinite === false && selectedPage >= pages && $style.disabled]"
       :aria-label="$t('components.pagination.next' /* Next */)"
       :disabled="infinite === false && selectedPage >= pages"
+      type="button"
       data-testid="pagination-next"
       @click="$emit('next', 1)"
     >
