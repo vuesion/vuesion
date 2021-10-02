@@ -1,6 +1,7 @@
 // Sidebar
 $sidebar-bg: var(--brand-surface-default-high);
 $sidebar-height: 100%;
+$sidebar-group-item-padding: 0 $space-12;
 $sidebar-width: $space-120 * 2;
 $sidebar-index: 1999;
 $sidebar-outline: var(--brand-focused);
@@ -20,3 +21,7 @@ $sidebar-group-item-gap: $space-4;
 // hover
 $sidebar-group-item-color-hover: var(--brand-surface-default-medium);
 $sidebar-group-item-bg-hover: var(--brand-text-default-medium);
+
+// active
+$sidebar-group-item-color-active: var(--brand-text-default-medium);
+$sidebar-group-item-bg-active: var(--brand-interaction-neutral-hovered);

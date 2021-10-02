@@ -18,9 +18,9 @@
       </vue-columns>
     </vue-box>
 
-    <component :is="as">
+    <vue-stack :space="itemSpace" :as="as">
       <slot />
-    </component>
+    </vue-stack>
   </vue-stack>
 </template>
 
@@ -30,6 +30,8 @@ import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
+import { responsivePropValidator, spacingValidator } from '@/components/prop-validators';
+
 export default {
   name: 'VueSidebarGroup',
   components: { VueText, VueColumn, VueColumns, VueStack, VueBox },
@@ -37,6 +39,11 @@ export default {
     as: { type: String, default: 'ol' },
     name: { type: String, required: true },
     icon: { type: String, default: null },
+    itemSpace: {
+      type: [Number, String, Array as () => Array<string | number>],
+      validator: responsivePropValidator(spacingValidator),
+      default: 0,
+    },
   },
 };
 </script>

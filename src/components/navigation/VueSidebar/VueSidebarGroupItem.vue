@@ -1,29 +1,31 @@
 <template>
-  <vue-box padding="0 12" :class="$style.vueSidebarGroupItem" as="li" tabindex="0">
-    <component
-      :is="href ? 'a' : to ? 'nuxt-link' : 'div'"
-      :href="href && href"
-      :target="href && '_blank'"
-      :rel="href && 'noopener'"
-      :to="to && to"
-      @click="!href && !to && $emit('click')"
-      @keypress.space.enter="!href && !to && $emit('click')"
-    >
-      <vue-columns space="16">
-        <vue-column v-if="leadingIcon" width="content" align-y="center">
-          <component :is="`vue-icon-${leadingIcon}`" />
-        </vue-column>
+  <component
+    :is="href ? 'a' : to ? 'nuxt-link' : 'div'"
+    :href="href && href"
+    :target="href && '_blank'"
+    :rel="href && 'noopener'"
+    :to="to && to"
+    :exact="exact"
+    :class="$style.vueSidebarGroupItem"
+    :active-class="$style.active"
+    tabindex="0"
+    @click="!href && !to && $emit('click')"
+    @keypress.space.enter="!href && !to && $emit('click')"
+  >
+    <vue-columns space="16">
+      <vue-column v-if="leadingIcon" width="content" align-y="center">
+        <component :is="`vue-icon-${leadingIcon}`" />
+      </vue-column>
 
-        <vue-column align-y="center">
-          <vue-text weight="semi-bold">{{ name }}</vue-text>
-        </vue-column>
+      <vue-column align-y="center">
+        <vue-text weight="semi-bold">{{ name }}</vue-text>
+      </vue-column>
 
-        <vue-column v-if="trailingIcon" width="content" align-y="center">
-          <component :is="`vue-icon-${trailingIcon}`" />
-        </vue-column>
-      </vue-columns>
-    </component>
-  </vue-box>
+      <vue-column v-if="trailingIcon" width="content" align-y="center">
+        <component :is="`vue-icon-${trailingIcon}`" />
+      </vue-column>
+    </vue-columns>
+  </component>
 </template>
 
 <script lang="ts">
@@ -39,6 +41,7 @@ export default {
     leadingIcon: { type: String, default: null },
     trailingIcon: { type: String, default: null },
     to: { type: [String, Object], default: null },
+    exact: { type: Boolean, default: true },
     href: { type: String, default: null },
   },
 };
@@ -56,14 +59,17 @@ export default {
   background: $sidebar-group-item-bg;
   border-radius: $sidebar-group-item-border-radius;
   outline: none;
+  text-decoration: none;
+  padding: $sidebar-group-item-padding;
+
+  &.active {
+    color: $sidebar-group-item-color-active;
+    background: $sidebar-group-item-bg-active;
+  }
 
   &:hover {
     color: $sidebar-group-item-color-hover;
     background: $sidebar-group-item-bg-hover;
-
-    a {
-      color: $sidebar-group-item-color-hover;
-    }
   }
 
   &:focus {
@@ -73,11 +79,6 @@ export default {
   i {
     width: $sidebar-group-item-icon-size;
     height: $sidebar-group-item-icon-size;
-  }
-
-  a {
-    color: $sidebar-group-item-color;
-    text-decoration: none;
   }
 }
 </style>
