@@ -140,6 +140,10 @@ export default defineComponent({
     justify-content: flex-end;
   }
 
+  &.noWrap {
+    flex-wrap: nowrap;
+  }
+
   @each $name, $space in $spacings {
     &.space-#{$name} {
       margin: calc(-1 * #{$space}) 0 0 calc(-1 * #{$space});
