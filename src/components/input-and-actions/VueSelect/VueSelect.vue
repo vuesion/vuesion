@@ -46,7 +46,7 @@
         <div
           :data-testid="'custom-' + id"
           :aria-expanded="show.toString()"
-          :class="[$style.customSelect, $style[size]]"
+          :class="[$style.customSelect, placeholder && !inputValue && $style.hasPlaceholder, $style[size]]"
           :tabindex="disabled ? -1 : 0"
           role="listbox"
           @click.stop.prevent="toggleMenu"
