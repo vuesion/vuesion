@@ -6,9 +6,9 @@ import { I{{ properCase singularName }}State } from './state';
 export interface I{{ properCase singularName }}Actions {
   fetch{{ properCase pluralName }}(context: ActionContext<I{{ properCase singularName }}State, IState>): Promise<any>;
   fetch{{ properCase singularName }}(context: ActionContext<I{{ properCase singularName }}State, IState>, id: string): Promise<any>;
-  create{{ properCase singularName }}(context: ActionContext<I{{ properCase singularName }}State, IState>, user: I{{ properCase singularName }}): Promise<any>;
-  update{{ properCase singularName }}(context: ActionContext<I{{ properCase singularName }}State, IState>, user: I{{ properCase singularName }}): Promise<any>;
-  delete{{ properCase singularName }}(context: ActionContext<I{{ properCase singularName }}State, IState>, user: I{{ properCase singularName }}): Promise<any>;
+  create{{ properCase singularName }}(context: ActionContext<I{{ properCase singularName }}State, IState>, {{ camelCase singularName }}: I{{ properCase singularName }}): Promise<any>;
+  update{{ properCase singularName }}(context: ActionContext<I{{ properCase singularName }}State, IState>, {{ camelCase singularName }}: I{{ properCase singularName }}): Promise<any>;
+  delete{{ properCase singularName }}(context: ActionContext<I{{ properCase singularName }}State, IState>, {{ camelCase singularName }}: I{{ properCase singularName }}): Promise<any>;
 }
 
 export const {{ properCase singularName }}Actions: I{{ properCase singularName }}Actions = {
@@ -20,17 +20,17 @@ export const {{ properCase singularName }}Actions: I{{ properCase singularName }
     const data = await this.$axios.$get(`/{{ camelCase pluralName }}/${id}`);
     commit('SET_CURRENT_{{ constantCase singularName }}', data);
   },
-  async create{{ properCase singularName }}({ commit }, user) {
-    const data = await this.$axios.$post('/{{ camelCase pluralName }}', user);
+  async create{{ properCase singularName }}({ commit }, {{ camelCase singularName }}) {
+    const data = await this.$axios.$post('/{{ camelCase pluralName }}', {{ camelCase singularName }});
     commit('ADD_{{ constantCase singularName }}', data);
   },
-  async update{{ properCase singularName }}({ commit }, user) {
-    const data = await this.$axios.$put(`/{{ camelCase pluralName }}/${user.id}`, user);
+  async update{{ properCase singularName }}({ commit }, {{ camelCase singularName }}) {
+    const data = await this.$axios.$put('/{{ camelCase pluralName }}/' + {{ camelCase singularName }}.id, {{ camelCase singularName }});
     commit('UPDATE_{{ constantCase singularName }}', data);
   },
-  async delete{{ properCase singularName }}({ commit }, user) {
-    await this.$axios.$delete(`/{{ camelCase pluralName }}/${user.id}`);
-    commit('DELETE_{{ constantCase singularName }}', user);
+  async delete{{ properCase singularName }}({ commit }, {{ camelCase singularName }}) {
+    await this.$axios.$delete('/{{ camelCase pluralName }}/' + {{ camelCase singularName }}.id);
+    commit('DELETE_{{ constantCase singularName }}', {{ camelCase singularName }});
   },
 };
 
