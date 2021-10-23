@@ -61,6 +61,8 @@ export default defineComponent({
 @import '~@/assets/_design-system';
 
 .vueText {
+  font-family: $font-family;
+
   // Utils
   &.serifs {
     font-family: $font-family-serif;
