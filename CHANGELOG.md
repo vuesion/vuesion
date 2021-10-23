@@ -1,3 +1,17 @@
+#### 4.4.1 (2021-10-23)
+
+##### Chores
+
+- update browserslist ([87eeee4f](https://github.com/vuesion/vuesion/commit/87eeee4fc7886d5a654c8974ff6c3f33c7e55a1c))
+
+##### Bug Fixes
+
+- **vue-button:** add aria-hidden to icons ([94ab7953](https://github.com/vuesion/vuesion/commit/94ab7953b978c5d0624700268861d6120c8ee02f))
+- **vue-text:** add default font-family ([3a1f32ab](https://github.com/vuesion/vuesion/commit/3a1f32ab1bc45406dfcec5e5af986657d6338055))
+- **generators:** use correct variable name in vuex actions ([b5eacbcf](https://github.com/vuesion/vuesion/commit/b5eacbcf8326bc1b4a8e38b81addf5980fc05217))
+- **vue-select:** apply placeholder css class to custom-select ([5f5a4d8f](https://github.com/vuesion/vuesion/commit/5f5a4d8f283fe26b4b2fb9c5126686a55dc3c6fe))
+- **vue-inline:** add css class for no-wrap property ([f2a17be4](https://github.com/vuesion/vuesion/commit/f2a17be429a86f358f79ede494deb1d667ce99d0))
+
 ### 4.4.0 (2021-10-02)
 
 ##### Chores
