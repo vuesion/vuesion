@@ -27,6 +27,7 @@
     <component
       :is="`vue-icon-${leadingIcon}`"
       v-if="leadingIcon && loading === false"
+      aria-hidden="true"
       :class="[$style.leadingIcon, $slots.default && $style.addSpace]"
     />
 
@@ -37,6 +38,7 @@
     <component
       :is="`vue-icon-${trailingIcon}`"
       v-if="trailingIcon && loading === false"
+      aria-hidden="true"
       :class="[$style.trailingIcon, $slots.default && $style.addSpace]"
     />
 
