@@ -58,9 +58,13 @@ export default defineComponent({
         margin.push(`${this.space} null null ${this.space}`);
       }
 
-      return createElement('vue-box', { props: { padding: null, margin, as: getComponentElementType(this.as) } }, [
-        vNode,
-      ]);
+      return createElement(
+        'vue-box',
+        {
+          props: { padding: null, margin, as: getComponentElementType(this.as), autoHeight: true, alignY: this.alignY },
+        },
+        [vNode],
+      );
     });
 
     const cssClasses: any = {};

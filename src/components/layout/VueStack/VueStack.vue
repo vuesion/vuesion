@@ -48,9 +48,11 @@ export default defineComponent({
         padding.push(`${space} null null null`);
       }
 
-      return createElement('vue-box', { props: { padding, as: getComponentElementType(this.as) }, class: cssClasses }, [
-        vnode,
-      ]);
+      return createElement(
+        'vue-box',
+        { props: { padding, as: getComponentElementType(this.as), autoHeight: true }, class: cssClasses },
+        [vnode],
+      );
     });
 
     const cssClasses: any = {};

@@ -3,6 +3,7 @@
     :is="as"
     :class="[
       $style.vueBox,
+      autoHeight && $style.autoHeight,
       ...applyClasses($style, paddingPhoneValues, 'p'),
       ...applyClasses($style, paddingTabletPortraitValues, 'p', 'tp'),
       ...applyClasses($style, paddingTabletLandscapeValues, 'p', 'tl'),
@@ -69,6 +70,10 @@ export default defineComponent({
       type: [String, Array as () => Array<string>],
       validator: responsivePropValidator(verticalAlignmentValidator),
       default: null,
+    },
+    autoHeight: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {
@@ -150,6 +155,10 @@ export default defineComponent({
 .vueBox {
   display: block;
   height: 100%;
+
+  &.autoHeight {
+    height: auto;
+  }
 
   // paddings
   @each $name, $space in $spacings {
