@@ -15,7 +15,6 @@ import {
   parseResponsivePropValue,
 } from '@/components/utils';
 import { VNode } from 'vue/types/vnode';
-import isArray from 'lodash/isArray';
 
 export default defineComponent({
   name: 'VueInline',
@@ -50,18 +49,16 @@ export default defineComponent({
   },
   render(createElement: CreateElement) {
     const items = decorateChildComponents(this.$slots.default, (vNode: VNode) => {
-      let margin: string[] = [];
-
-      if (isArray(this.space)) {
-        margin = this.space.map((space: any) => `${space} null null ${space}`);
-      } else {
-        margin.push(`${this.space} null null ${this.space}`);
-      }
-
       return createElement(
         'vue-box',
         {
-          props: { padding: null, margin, as: getComponentElementType(this.as), autoHeight: true, alignY: this.alignY },
+          props: {
+            padding: null,
+            margin: null,
+            as: getComponentElementType(this.as),
+            autoHeight: true,
+            alignY: this.alignY,
+          },
         },
         [vNode],
       );
@@ -150,16 +147,14 @@ export default defineComponent({
 
   @each $name, $space in $spacings {
     &.space-#{$name} {
-      margin: calc(-1 * #{$space}) 0 0 calc(-1 * #{$space});
-      width: calc(100% + #{$space});
+      gap: $space;
     }
   }
 
   @include mediaMin(tabletPortrait) {
     @each $name, $space in $spacings {
       &.space-tp-#{$name} {
-        margin: calc(-1 * #{$space}) 0 0 calc(-1 * #{$space});
-        width: calc(100% + #{$space});
+        gap: $space;
       }
     }
 
@@ -191,8 +186,7 @@ export default defineComponent({
   @include mediaMin(tabletLandscape) {
     @each $name, $space in $spacings {
       &.space-tl-#{$name} {
-        margin: calc(-1 * #{$space}) 0 0 calc(-1 * #{$space});
-        width: calc(100% + #{$space});
+        gap: $space;
       }
     }
 
@@ -224,8 +218,7 @@ export default defineComponent({
   @include mediaMin(smallDesktop) {
     @each $name, $space in $spacings {
       &.space-sd-#{$name} {
-        margin: calc(-1 * #{$space}) 0 0 calc(-1 * #{$space});
-        width: calc(100% + #{$space});
+        gap: $space;
       }
     }
 
@@ -257,8 +250,7 @@ export default defineComponent({
   @include mediaMin(largeDesktop) {
     @each $name, $space in $spacings {
       &.space-ld-#{$name} {
-        margin: calc(-1 * #{$space}) 0 0 calc(-1 * #{$space});
-        width: calc(100% + #{$space});
+        gap: $space;
       }
     }
 
