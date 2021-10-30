@@ -1,11 +1,13 @@
 <template>
   <vue-box
     :as="as"
-    padding="null"
-    :margin="margin"
+    :padding="null"
+    :auto-height="autoHeight"
+    :margin="null"
     :class="[
       $style.vueColumn,
-      fullWidth && $style.fullWidth,
+      canGrow && $style.canGrow,
+      canShrink && $style.canShrink,
       ...applyResponsiveClasses($style, {}, responsiveWidth, 'fit', false),
       ...applyResponsiveClasses($style, {}, responsiveHorizontalAlignments, 'alignh'),
       ...applyResponsiveClasses($style, {}, responsiveVerticalAlignments, 'alignv'),
@@ -18,7 +20,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from '@vue/composition-api';
-import { applyResponsiveClasses, parseResponsivePropValue } from '@/components/utils';
+import { applyResponsiveClasses, isNullOrUndefined, parseResponsivePropValue } from '@/components/utils';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import {
   horizontalAlignmentValidator,
@@ -26,7 +28,6 @@ import {
   spacingValidator,
   verticalAlignmentValidator,
 } from '@/components/prop-validators';
-import isArray from 'lodash/isArray';
 
 export default defineComponent({
   name: 'VueColumn',
@@ -41,7 +42,7 @@ export default defineComponent({
       validator: responsivePropValidator(spacingValidator),
       default: 24,
     },
-    width: { type: [String, Array as () => Array<string>], default: () => null },
+    width: { type: [String, Array as () => Array<string>], default: (): Array<string> => null },
     align: {
       type: [String, Array as () => Array<string>],
       validator: responsivePropValidator(horizontalAlignmentValidator),
@@ -52,60 +53,60 @@ export default defineComponent({
       validator: responsivePropValidator(verticalAlignmentValidator),
       default: null,
     },
+    autoHeight: {
+      type: Boolean,
+      default: false,
+    },
+    canGrow: {
+      type: Boolean,
+      default: false,
+    },
+    canShrink: {
+      type: Boolean,
+      default: true,
+    },
   },
   setup(props) {
-    const margin = computed(() => {
-      let result: string[] = [];
-
-      if (isArray(props.space)) {
-        result = props.space.map((space: any) => `${space} null null ${space}`);
-      } else {
-        result.push(`${props.space} null null ${props.space}`);
-      }
-
-      return result;
-    });
-    const responsiveWidth = computed(() => parseResponsivePropValue(props.width, true));
+    const responsiveWidth = computed(() =>
+      parseResponsivePropValue(props.width, true, (value: any) => {
+        return !isNullOrUndefined(value) && ['auto', 'initial', 'inherit', 'unset'].includes(value) === false
+          ? value
+          : null;
+      }),
+    );
     const responsiveHorizontalAlignments = computed(() => parseResponsivePropValue(props.align));
     const responsiveVerticalAlignments = computed(() => parseResponsivePropValue(props.alignY));
     const styles = computed(() => {
       const result: any = {};
 
       if (responsiveWidth.value.phone) {
-        result['--phone'] = responsiveWidth.value.phone;
+        result['--wp'] = responsiveWidth.value.phone;
       }
 
       if (responsiveWidth.value.tabletPortrait) {
-        result['--tablet-portrait'] = responsiveWidth.value.tabletPortrait;
+        result['--wtp'] = responsiveWidth.value.tabletPortrait;
       }
 
       if (responsiveWidth.value.tabletLandscape) {
-        result['--tablet-landscape'] = responsiveWidth.value.tabletLandscape;
+        result['--wtl'] = responsiveWidth.value.tabletLandscape;
       }
 
       if (responsiveWidth.value.smallDesktop) {
-        result['--small-desktop'] = responsiveWidth.value.smallDesktop;
+        result['--wsd'] = responsiveWidth.value.smallDesktop;
       }
 
       if (responsiveWidth.value.largeDesktop) {
-        result['--large-desktop'] = responsiveWidth.value.largeDesktop;
+        result['--wld'] = responsiveWidth.value.largeDesktop;
       }
 
       return result;
     });
-    const fullWidth = computed(() => {
-      const widthAsArray = isArray(props.width) ? props.width : [props.width];
-
-      return widthAsArray.includes('content') === false;
-    });
 
     return {
-      margin,
       responsiveWidth,
       responsiveHorizontalAlignments,
       responsiveVerticalAlignments,
       styles,
-      fullWidth,
       applyResponsiveClasses,
     };
   },
@@ -116,8 +117,15 @@ export default defineComponent({
 @import '~@/assets/_design-system';
 
 .vueColumn {
-  &.fullWidth {
-    width: 100%;
+  flex: 0 0 auto;
+  width: 100%;
+
+  &.canGrow {
+    flex-grow: 1;
+  }
+
+  &.canShrink {
+    flex-shrink: 1;
   }
 
   &.alignv-top {
@@ -248,7 +256,7 @@ export default defineComponent({
 
   @include mediaMin(largeDesktop) {
     &.fit-ld {
-      flex-basis: var(--large-desktop);
+      flex-basis: var(--wld);
     }
 
     &.alignv-ld-top {
@@ -284,25 +292,25 @@ export default defineComponent({
 
   @include mediaMinMax(phone) {
     &.fit {
-      flex-basis: var(--phone);
+      flex-basis: var(--wp);
     }
   }
 
   @include mediaMinMax(tabletPortrait) {
     &.fit-tp {
-      flex-basis: var(--tablet-portrait);
+      flex-basis: var(--wtp);
     }
   }
 
   @include mediaMinMax(tabletLandscape) {
     &.fit-tl {
-      flex-basis: var(--tablet-landscape);
+      flex-basis: var(--wtl);
     }
   }
 
   @include mediaMinMax(smallDesktop) {
     &.fit-sd {
-      flex-basis: var(--small-desktop);
+      flex-basis: var(--wsd);
     }
   }
 }

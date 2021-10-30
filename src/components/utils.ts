@@ -57,7 +57,13 @@ export const parseCssSpacingProp = (spacingPropValue: string) => {
   return result;
 };
 
-export const parseResponsivePropValue = (propValues: any | any[], interpolate = false): IBreakpoints => {
+export const parseResponsivePropValue = (
+  propValues: any | any[],
+  interpolate = false,
+  filterFunction = (value: any): any => {
+    return !isNullOrUndefined(value) ? value : null;
+  },
+): IBreakpoints => {
   const propAsArray: any[] = isArray(propValues) ? propValues : [propValues];
   const result: IBreakpoints | any = {
     phone: null,
@@ -77,7 +83,7 @@ export const parseResponsivePropValue = (propValues: any | any[], interpolate = 
   }
 
   brandBreakpoints.forEach((name, index) => {
-    result[name] = !isNullOrUndefined(propAsArray[index]) ? propAsArray[index] : null;
+    result[name] = filterFunction(propAsArray[index]);
   });
 
   return result;

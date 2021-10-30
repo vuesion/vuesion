@@ -24,9 +24,7 @@ describe('VueColumn.vue', () => {
 
     await updateProps({ width: ['100%', '25%', '250px'] });
 
-    expect(html()).toMatch(
-      'style="--phone: 100%; --tablet-portrait: 25%; --tablet-landscape: 250px; --small-desktop: 250px; --large-desktop: 250px;"',
-    );
+    expect(html()).toMatch('style="--wp: 100%; --wtp: 25%; --wtl: 250px; --wsd: 250px; --wld: 250px;"');
   });
 
   test('renders component with responsive alignment', async () => {
