@@ -74,6 +74,7 @@ const config: Configuration = {
     '@nuxtjs/eslint-module',
     '@nuxtjs/html-validator',
     '@nuxtjs/color-mode',
+    '@nuxtjs/google-fonts',
   ],
   colorMode: {
     preference: 'system',
@@ -86,17 +87,15 @@ const config: Configuration = {
     storageKey: 'nuxt-color-mode',
   },
   css: [],
+  googleFonts: {
+    display: 'swap',
+    families: {
+      Inter: [300, 400, 500, 600, 700, 800],
+      Lora: [300, 400, 500, 600, 700, 800],
+    },
+  },
   head: {
     title: process.env.npm_package_name || '',
-    link: [
-      {
-        rel: 'preload',
-        as: 'style',
-        onload: 'this.onload=null;this.rel="stylesheet"',
-        href:
-          'https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800|Lora:300,400,500,600,700,800&display=swap',
-      },
-    ],
   },
   htmlValidator: {
     usePrettier: false,
@@ -112,6 +111,7 @@ const config: Configuration = {
         'doctype-style': 'off',
         'no-inline-style': 'off',
         'prefer-native-element': 'off',
+        'attribute-empty-style': 'off',
       },
     },
   },
