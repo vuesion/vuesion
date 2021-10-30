@@ -15,10 +15,10 @@ story.add(
     components: { VueBox, VueColumns, VueColumn, VueStack, VueText },
     template: `<vue-box :padding="[8, 16, 24, 32]">
     <vue-columns :space="[8, 16, 24, 32]" :align-y="['top', 'center']" stack-phone class="border">
-      <vue-column :width="['100%', '250px']" class="border">
+      <vue-column :width="['100%', '250px']" :can-shrink="false" class="border">
         Sidebar
       </vue-column>
-      <vue-column :width="['content', '100%']" class="border">
+      <vue-column class="border">
         <vue-columns :space="[8, 16, 24, 32]" :align-y="['top', 'bottom']" stack-phone class="border">
           <vue-column class="border">
             <vue-stack :space="[8, 16, 24, 32]">
@@ -29,7 +29,7 @@ story.add(
               <vue-text>Main Content</vue-text>
             </vue-stack>
           </vue-column>
-          <vue-column :width="[null, 'content']" class="border">
+          <vue-column :width="['100%', 'content']" class="border">
             Menu
           </vue-column>
         </vue-columns>
@@ -118,7 +118,7 @@ story.add(
     components: { VueBox, VueColumns, VueColumn },
     template: `<vue-box :padding="[8, 16, 24, 32]">
     <vue-columns as="ul" :space="[8, 16, 24, 32]" :align-y="['top', 'center']" stack-phone class="border">
-      <vue-column :width="['100%', '250px']" class="border">
+      <vue-column :width="['100%', '250px']" :can-shrink="false" class="border">
         Sidebar
       </vue-column>
       <vue-column class="border">
@@ -184,7 +184,7 @@ story.add(
       stack-large-desktop
        class="border"
     >
-      <vue-column width="content" class="border">
+      <vue-column width="content" auto-height class="border">
         <vue-navbar />
       </vue-column>
       <vue-column align="center" align-y="center" class="border">

@@ -106,13 +106,13 @@ export default defineComponent({
   flex-direction: row;
 
   &.fullPage {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
   }
 
   @each $name, $space in $spacings {
     &.space-#{$name} {
-      margin: -1 * $space 0 0 -1 * $space;
+      gap: $space;
     }
   }
 
@@ -143,7 +143,7 @@ export default defineComponent({
   @include mediaMin(tabletPortrait) {
     @each $name, $space in $spacings {
       &.space-tp-#{$name} {
-        margin: -1 * $space 0 0 -1 * $space;
+        gap: $space;
       }
     }
 
@@ -175,7 +175,7 @@ export default defineComponent({
   @include mediaMin(tabletLandscape) {
     @each $name, $space in $spacings {
       &.space-tl-#{$name} {
-        margin: -1 * $space 0 0 -1 * $space;
+        gap: $space;
       }
     }
 
@@ -207,7 +207,7 @@ export default defineComponent({
   @include mediaMin(smallDesktop) {
     @each $name, $space in $spacings {
       &.space-sd-#{$name} {
-        margin: -1 * $space 0 0 -1 * $space;
+        gap: $space;
       }
     }
 
@@ -239,7 +239,7 @@ export default defineComponent({
   @include mediaMin(largeDesktop) {
     @each $name, $space in $spacings {
       &.space-ld-#{$name} {
-        margin: -1 * $space 0 0 -1 * $space;
+        gap: $space;
       }
     }
 
