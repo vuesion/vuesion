@@ -34,6 +34,7 @@ module.exports = {
     '/assets/',
     '/enums/',
     '/fixtures/',
+    '/graphql/',
     '/interfaces/',
     '/layouts/',
     '/plugins/',
