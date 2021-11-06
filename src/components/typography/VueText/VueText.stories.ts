@@ -62,6 +62,7 @@ story.add(
           <thead>
           <tr>
             <th>TEXT STYLE</th>
+            <th>LOOK</th>
             <th>DESCRIPTION</th>
             <th>FONT SIZE</th>
             <th>LINE-HEIGHT</th>
@@ -73,6 +74,7 @@ story.add(
           <tbody>
           <tr>
             <td width="300px"><vue-text look="h1">Headline 1</vue-text></td>
+            <td width="30px">h1</td>
             <td width="300px">Used for title of screen & entire feature flow. Naming of title is often after the function of the screen or feature flow.</td>
             <td>48 px</td>
             <td>56 px</td>
@@ -82,6 +84,7 @@ story.add(
           </tr>
           <tr>
             <td width="300px"><vue-text look="h2">Headline 2</vue-text></td>
+            <td width="30px">h2</td>
             <td width="300px">Used for large groups of related components & information that have a lot of functionality. For example, cards should use Section title.</td>
             <td>36 px</td>
             <td>48 px</td>
@@ -91,6 +94,7 @@ story.add(
           </tr>
           <tr>
             <td width="300px"><vue-text look="h3">Headline 3</vue-text></td>
+            <td width="30px">h3</td>
             <td width="300px">Sometimes a section will further divide information into subsections.</td>
             <td>30 px</td>
             <td>40 px</td>
@@ -100,6 +104,7 @@ story.add(
           </tr>
           <tr>
             <td width="300px"><vue-text look="h4">Headline 4</vue-text></td>
+            <td width="30px">h4</td>
             <td width="300px">If necessary use for headers for layouts</td>
             <td>24 px</td>
             <td>32 px</td>
@@ -109,6 +114,7 @@ story.add(
           </tr>
           <tr>
             <td width="300px"><vue-text look="h5">Headline 5</vue-text></td>
+            <td width="30px">h5</td>
             <td width="300px">If necessary use for headers for layouts</td>
             <td>20 px</td>
             <td>24 px</td>
@@ -118,6 +124,7 @@ story.add(
           </tr>
           <tr>
             <td width="300px"><vue-text look="h6">Headline 6</vue-text></td>
+            <td width="30px">h6</td>
             <td width="300px">If necessary use for headers for layouts</td>
             <td>16 px</td>
             <td>24 px</td>
@@ -133,6 +140,7 @@ story.add(
           <thead>
           <tr>
             <th>TEXT STYLE</th>
+            <th>LOOK</th>
             <th>DESCRIPTION</th>
             <th>FONT SIZE</th>
             <th>LINE-HEIGHT</th>
@@ -144,6 +152,7 @@ story.add(
           <tbody>
           <tr>
             <td width="300px"><vue-text look="description" as="div">Description</vue-text></td>
+            <td width="30px">description</td>
             <td width="300px">Text that follows a headline that provides a more context about the following content.</td>
             <td>16 px</td>
             <td>24 px</td>
@@ -159,6 +168,7 @@ story.add(
           <thead>
           <tr>
             <th>TEXT STYLE</th>
+            <th>LOOK</th>
             <th>DESCRIPTION</th>
             <th>FONT SIZE</th>
             <th>LINE-HEIGHT</th>
@@ -170,6 +180,7 @@ story.add(
           <tbody>
           <tr>
             <td width="300px"><vue-text look="large-title" weight="semi-bold" as="div">Large title</vue-text></td>
+            <td width="30px">large-title</td>
             <td width="300px">Use the large title to draw visual attention</td>
             <td>24 px</td>
             <td>32 px</td>
@@ -179,6 +190,7 @@ story.add(
           </tr>
           <tr>
             <td width="300px"><vue-text look="medium-title" weight="semi-bold" as="div">Medium title</vue-text></td>
+            <td width="30px">medium-title</td>
             <td width="300px">Some components have a name or title that needs to be a bit larger</td>
             <td>20 px</td>
             <td>24 px</td>
@@ -188,6 +200,7 @@ story.add(
           </tr>
           <tr>
             <td width="300px"><vue-text look="small-title" weight="semi-bold" as="div">Small title</vue-text></td>
+            <td width="30px">small-title</td>
             <td width="300px">Some components have a name or title that needs to be a bit larger</td>
             <td>14 px</td>
             <td>20 px</td>
@@ -197,6 +210,7 @@ story.add(
           </tr>
           <tr>
             <td width="300px"><vue-text as="div">Default</vue-text></td>
+            <td width="30px">default</td>
             <td width="300px">General use for normal reading e.g. buttons, text input, or written copy</td>
             <td>14 px</td>
             <td>20 px</td>
@@ -206,6 +220,7 @@ story.add(
           </tr>
           <tr>
             <td width="300px"><vue-text look="label" as="div">Label</vue-text></td>
+            <td width="30px">label</td>
             <td width="300px">Text style for labels such as with inputs and text areas</td>
             <td>12 px</td>
             <td>16 px</td>
@@ -215,6 +230,7 @@ story.add(
           </tr>
           <tr>
             <td width="300px"><vue-text look="button" weight="semi-bold" as="div">Button</vue-text></td>
+            <td width="30px">button</td>
             <td width="300px">Text style used with buttons</td>
             <td>14 px</td>
             <td>20 px</td>
@@ -230,6 +246,7 @@ story.add(
           <thead>
           <tr>
             <th>TEXT STYLE</th>
+            <th>LOOK</th>
             <th>DESCRIPTION</th>
             <th>FONT SIZE</th>
             <th>LINE-HEIGHT</th>
@@ -244,6 +261,7 @@ story.add(
               <vue-text look="support" as="div">Support</vue-text>
               <vue-text look="support" weight="semi-bold" as="div">Support (semibold)</vue-text>
             </td>
+            <td width="30px">support</td>
             <td width="300px">For supporting text e.g. hints, list items, errors messages on text input, timestamp, progress indicator</td>
             <td>12 px</td>
             <td>16 px</td>
