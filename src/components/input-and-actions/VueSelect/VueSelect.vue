@@ -1,5 +1,12 @@
 <template>
-  <ValidationProvider v-slot="{ errors }" ref="validator" :vid="id" :name="name" :rules="validation" tag="div">
+  <ValidationProvider
+    v-slot="{ errors, validate }"
+    ref="validator"
+    :vid="id"
+    :name="name"
+    :rules="validation"
+    tag="div"
+  >
     <div
       ref="selectRef"
       :class="[$style.vueSelect, disabled && $style.disabled, errors.length > 0 && $style.error]"
@@ -50,6 +57,7 @@
           :tabindex="disabled ? -1 : 0"
           role="listbox"
           @click.stop.prevent="toggleMenu"
+          @blur="validate"
         >
           {{ inputValueOption ? inputValueOption.label : placeholder }}
         </div>
@@ -295,6 +303,11 @@ export default defineComponent({
 
   &.error {
     select {
+      background: $select-bg-error;
+      border: $select-border-error;
+    }
+    .nativeSelect,
+    .customSelect {
       background: $select-bg-error;
       border: $select-border-error;
     }
