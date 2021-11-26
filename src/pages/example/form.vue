@@ -17,7 +17,7 @@ import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
-import FormExample from '@/components/input-and-actions/FormExample/FormExample.vue';
+import FormExample from '@/components/forms/FormExample/FormExample.vue';
 
 export default {
   name: 'FormExamplePage',

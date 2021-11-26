@@ -4,7 +4,7 @@ import { i18n } from '@/test/i18n';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 import LoginForm from './LoginForm.vue';
 
-const story = storiesOf('Input & Actions|LoginForm', module) as any;
+const story = storiesOf('Forms|LoginForm', module) as any;
 
 story.add(
   'Default',

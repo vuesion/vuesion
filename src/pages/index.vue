@@ -20,7 +20,7 @@ import { Context } from '@nuxt/types';
 import ValueProposition from '@/components/marketing/ValueProposition/ValueProposition.vue';
 import LearnMore from '@/components/marketing/LearnMore/LearnMore.vue';
 import VueModal from '@/components/data-display/VueModal/VueModal.vue';
-import LoginForm from '@/components/input-and-actions/LoginForm/LoginForm.vue';
+import LoginForm from '@/components/forms/LoginForm/LoginForm.vue';
 import { defineComponent, ref, useContext } from '@nuxtjs/composition-api';
 import { RequestStatus } from '@/enums/RequestStatus';
 import { addToast } from '@/components/utils';
