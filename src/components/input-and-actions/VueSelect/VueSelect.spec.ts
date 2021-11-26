@@ -45,6 +45,15 @@ describe('VueSelect.vue', () => {
     ]);
   });
 
+  test('should not emit input event of the native select is disabled', async () => {
+    const { getByTestId, updateProps, emitted } = harness;
+
+    await updateProps({ disabled: true });
+    await userEvent.selectOptions(getByTestId('native-select'), ['Value 2']);
+
+    expect(emitted().input).toBeFalsy();
+  });
+
   test('should emit input event of the custom select', async () => {
     const { getByTestId, emitted } = harness;
 
@@ -61,6 +70,15 @@ describe('VueSelect.vue', () => {
         },
       ],
     ]);
+  });
+
+  test('should not emit input event of the custom select is disabled', async () => {
+    const { getByTestId, queryAllByTestId, updateProps } = harness;
+
+    await updateProps({ disabled: true });
+    await fireEvent.click(getByTestId('custom-select'));
+
+    expect(queryAllByTestId('Value 2-1')).toHaveLength(0);
   });
 
   test('should open and close menu via keyboard', async () => {
