@@ -42,6 +42,7 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, ref } from '@vue/composition-api';
 import { ValidationObserver } from 'vee-validate';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
@@ -49,25 +50,27 @@ import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
 
-export default {
+export default defineComponent({
   name: 'LoginForm',
   components: { VueInline, VueStack, ValidationObserver, VueButton, VueInput, VueText },
   props: {
     loading: { type: Boolean, default: false },
   },
-  data(): any {
+  setup(_, { emit }) {
+    const username = ref('');
+    const password = ref('');
+
+    const onSubmit = () => {
+      emit('submit', { username: username.value, password: password.value });
+    };
+
     return {
-      username: '',
-      password: '',
+      username,
+      password,
+      onSubmit,
     };
   },
-  computed: {},
-  methods: {
-    onSubmit() {
-      this.$emit('submit', this.$data);
-    },
-  },
-};
+});
 </script>
 
 <style lang="scss" module>
