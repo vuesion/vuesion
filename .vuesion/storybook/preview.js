@@ -14,12 +14,13 @@ import '../../src/assets/global.scss';
 import '@/assets/typography.scss';
 import customTheme from './theme';
 import { extend } from 'vee-validate';
-import { required, email, integer, min } from 'vee-validate/dist/rules.umd.js';
+import { required, email, integer, min, regex } from 'vee-validate/dist/rules.umd.js';
 
 extend('required', required);
 extend('email', email);
 extend('integer', integer);
 extend('min', min);
+extend('regex', regex);
 
 Vue.use(Vuex);
 Vue.use(VueI18n);
