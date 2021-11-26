@@ -2,8 +2,15 @@
   <vue-stack space="0" align="right">
     <vue-tiles v-for="section in colorSections" :key="section.name" space="0" columns="11">
       <vue-box v-if="section.name !== 'neutral'" />
-      <vue-box v-for="color in section.colors" :key="color.hex" :style="{ background: color.hex, color: color.color }">
-        <vue-text>{{ color.name }} ({{ color.hex }})</vue-text>
+      <vue-box
+        v-for="color in section.colors"
+        :key="color.hex"
+        padding="null"
+        align-y="center"
+        align="center"
+        :style="{ background: color.hex, color: color.color, width: '80px', height: '80px' }"
+      >
+        <vue-text look="support" align="center">{{ color.name }}<br />({{ color.hex }})</vue-text>
       </vue-box>
     </vue-tiles>
   </vue-stack>
