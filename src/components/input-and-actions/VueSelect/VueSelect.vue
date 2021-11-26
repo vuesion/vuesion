@@ -144,6 +144,10 @@ export default defineComponent({
       }
     });
     const open = async () => {
+      if (props.disabled) {
+        return;
+      }
+
       show.value = true;
 
       await nextTick();
