@@ -1,4 +1,5 @@
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
+import { sleep } from '@/test/test-utils';
 import VueMenu from './VueMenu.vue';
 
 describe('VueMenu.vue', () => {
@@ -34,8 +35,7 @@ describe('VueMenu.vue', () => {
 
   test('should select 1st item and emit click event via keyboard', async () => {
     const { getByTestId, emitted } = harness;
-    const firstItem = getByTestId('Value 1-0');
-    const menu = firstItem.parentElement;
+    const menu = getByTestId('menu');
 
     await fireEvent.keyDown(menu, { key: 'ArrowLeft', code: 'ArrowLeft' });
     await fireEvent.keyDown(menu, { key: 'ArrowDown', code: 'ArrowDown' });
@@ -59,8 +59,7 @@ describe('VueMenu.vue', () => {
 
   test('should select last item and emit click event via keyboard', async () => {
     const { getByTestId, emitted } = harness;
-    const firstItem = getByTestId('Value 1-0');
-    const menu = firstItem.parentElement;
+    const menu = getByTestId('menu');
 
     await fireEvent.keyDown(menu, { key: 'ArrowRight', code: 'ArrowRight' });
     await fireEvent.keyDown(menu, { key: 'ArrowUp', code: 'ArrowUp' });
@@ -84,8 +83,7 @@ describe('VueMenu.vue', () => {
 
   test('disabled item should not emit click event', async () => {
     const { getByTestId, emitted } = harness;
-    const firstItem = getByTestId('Value 1-0');
-    const menu = firstItem.parentElement;
+    const menu = getByTestId('menu');
 
     await fireEvent.keyDown(menu, { key: 'ArrowRight', code: 'ArrowRight' });
     await fireEvent.keyDown(menu, { key: 'ArrowDown', code: 'ArrowDown' });
@@ -94,6 +92,33 @@ describe('VueMenu.vue', () => {
     await fireEvent.keyDown(menu, { key: 'Enter', code: 'Enter' });
 
     await fireEvent.click(getByTestId('Value 3-3'));
+
+    expect(emitted().click).toBeFalsy();
+  });
+
+  test('should search for item and emit event', async () => {
+    const { getByTestId, emitted } = harness;
+    const menu = getByTestId('menu');
+
+    await fireEvent.keyDown(menu, { key: '2', code: 'Digit2' });
+    await sleep(500);
+    await fireEvent.keyDown(menu, { key: 'Enter', code: 'Enter' });
+
+    expect(emitted().click[0][0]).toEqual({
+      description: 'Description 2',
+      label: 'Value 2',
+      trailingIcon: 'hashtag',
+      value: 'Value 2',
+    });
+  });
+
+  test("should search for item and not emit event when it's disabled", async () => {
+    const { getByTestId, emitted } = harness;
+    const menu = getByTestId('menu');
+
+    await fireEvent.keyDown(menu, { key: '3', code: 'Digit3' });
+    await sleep(500);
+    await fireEvent.keyDown(menu, { key: 'Enter', code: 'Enter' });
 
     expect(emitted().click).toBeFalsy();
   });

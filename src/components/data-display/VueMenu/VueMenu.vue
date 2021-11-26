@@ -22,7 +22,7 @@
         </div>
 
         <div :class="$style.value">
-          <vue-text :color="selectedItemIndex === idx ? 'text-inverse-high' : 'text-high'">{{ item.label }}</vue-text>
+          <vue-text>{{ item.label }}</vue-text>
           <vue-text v-if="item.description" look="support" color="text-inverse-low">
             {{ item.description }}
           </vue-text>
@@ -40,27 +40,23 @@
 import { computed, defineComponent, ref } from '@vue/composition-api';
 import { IItem } from '@/interfaces/IItem';
 import { getDomRef } from '@/composables/get-dom-ref';
+import { debounce } from 'lodash';
 import VueText from '@/components/typography/VueText/VueText.vue';
 
 export default defineComponent({
   name: 'VueMenu',
   components: { VueText },
   props: {
-    items: { type: [Array, Array as () => Array<IItem>], required: true },
+    items: { type: Array as () => Array<IItem>, required: true },
   },
   setup(props, { emit }) {
     const menuRef = getDomRef(null);
+    const searchQuery = ref('');
     const selectedItemIndex = ref<number>(-1);
     const items = computed<Array<IItem>>(() => props.items as Array<IItem>);
     const maxItems = computed(() => items.value.length);
 
     const onItemClick = (item: IItem) => emit('click', item);
-    const checkForPropagation = (e: KeyboardEvent) => {
-      if (['Enter', 'Space', 'ArrowDown', 'ArrowUp'].includes(e.code)) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
-    };
     const handleSelection = (newIndex: number) => {
       if (newIndex === maxItems.value) {
         selectedItemIndex.value = 0;
@@ -70,6 +66,14 @@ export default defineComponent({
         selectedItemIndex.value = newIndex;
       }
     };
+    const handleSearch = debounce(() => {
+      selectedItemIndex.value = props.items.findIndex((item) => {
+        const regex = new RegExp(searchQuery.value, 'gi');
+
+        return regex.test(item.label) && !!item.disabled === false;
+      });
+      searchQuery.value = '';
+    }, 300);
     const getNewIndex = (direction: string) => {
       let newIndex: number = direction === 'down' ? selectedItemIndex.value + 1 : selectedItemIndex.value - 1;
 
@@ -80,10 +84,11 @@ export default defineComponent({
       return newIndex;
     };
     const onKeyDown = (e: KeyboardEvent) => {
-      checkForPropagation(e);
+      e.stopPropagation();
+      e.preventDefault();
 
       if (
-        ['Enter', 'Space'].includes(e.code) &&
+        ['Enter', 'Space', 'Tab'].includes(e.code) &&
         selectedItemIndex.value > -1 &&
         !items.value[selectedItemIndex.value].disabled
       ) {
@@ -92,6 +97,9 @@ export default defineComponent({
         handleSelection(getNewIndex('down'));
       } else if (e.code === 'ArrowUp') {
         handleSelection(getNewIndex('up'));
+      } else {
+        searchQuery.value += e.key;
+        handleSearch();
       }
     };
 
