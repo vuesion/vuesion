@@ -1,7 +1,7 @@
 {
   "name": "vuesion",
   "private": true,
-  "version": "4.4.1",
+  "version": "4.5.0",
   "description": "Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.",
   "repository": {
     "type": "git",
