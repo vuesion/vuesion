@@ -176,13 +176,14 @@ export default defineComponent({
       street: '',
       zipCode: '',
       city: '',
-      country: 'de',
+      country: '',
       acceptTerms: false,
       newsletter: false,
     });
 
     // computed
     const countryOptions = computed(() => [
+      { label: '', value: '' },
       { label: 'Germany', value: 'de' },
       { label: 'USA', value: 'us' },
       { label: 'Other', value: 'other' },
