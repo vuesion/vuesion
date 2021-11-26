@@ -1,3 +1,35 @@
+### 4.5.0 (2021-11-26)
+
+##### Chores
+
+- use es6 as test target ([9fcd6358](https://github.com/vuesion/vuesion/commit/9fcd6358c5593e420a58ba05b6a3d43e9f5114de))
+- remove graphql folder from coverage ([7387a289](https://github.com/vuesion/vuesion/commit/7387a2893b426d516cf53261370b66f9c4d742e6))
+
+##### Documentation Changes
+
+- **typo:** add vue-text look property ([57596d9f](https://github.com/vuesion/vuesion/commit/57596d9f87087a14607ba68f3630c4cb296255ba))
+
+##### New Features
+
+- **vee-select:** add search via keyboard ([a3a012fe](https://github.com/vuesion/vuesion/commit/a3a012fe77b6cb1b072db478b0e4705c05d43ff1))
+- **vee-validate:** add regex by default ([1badb64d](https://github.com/vuesion/vuesion/commit/1badb64d5f6c9ddda0fa42e0dabfcd6343ab2a11))
+- **vue-columns:** add auto-height, can-grow, can-shrink props ([42fbb411](https://github.com/vuesion/vuesion/commit/42fbb411918974901b965bb97bfb4cb67794d02a))
+- add google-fonts module ([fc287b8f](https://github.com/vuesion/vuesion/commit/fc287b8f57e9ace3d7d18a60ae62ce2e7d6b3938))
+- **vue-box:** add auto-height prop ([1d471d5a](https://github.com/vuesion/vuesion/commit/1d471d5aa0832dfa5e27abc92f589bfed7544102))
+
+##### Bug Fixes
+
+- **vee-select:**
+  - make validation work and add error state ([0e81e049](https://github.com/vuesion/vuesion/commit/0e81e0495c0e2832ae45bfb98d8f8a0b025d8163))
+  - don't show menu if disabled ([0bea3bd3](https://github.com/vuesion/vuesion/commit/0bea3bd33ffec4d33d3c82764893622f6bfe383d))
+
+##### Refactors
+
+- **forms:** use composition-api ([e0146021](https://github.com/vuesion/vuesion/commit/e014602184dc6702d9f4d073554c779af9102435))
+- **components:** move forms into separate folder ([e7fa4d26](https://github.com/vuesion/vuesion/commit/e7fa4d2634b221ca5a659a29d74de04b74716acc))
+- **vue-columns:** use flex gap ([9ccd1e22](https://github.com/vuesion/vuesion/commit/9ccd1e222c27d3c99b549191b40cdaf9d7aafb68))
+- **vue-inline:** use flex gap ([c33facfa](https://github.com/vuesion/vuesion/commit/c33facfae3b192e0ecfe84528d44b080cdbe654e))
+
 #### 4.4.1 (2021-10-23)
 
 ##### Chores
