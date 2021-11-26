@@ -4,7 +4,7 @@
     "lib": ["es2015", "es2016", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
-    "target": "es5",
+    "target": "es6",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
