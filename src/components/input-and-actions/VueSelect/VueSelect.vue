@@ -10,7 +10,7 @@
     <div
       ref="selectRef"
       :class="[$style.vueSelect, disabled && $style.disabled, errors.length > 0 && $style.error]"
-      @keydown.enter.space.up.down.esc.stop.prevent="onKeyDown"
+      @keydown="onKeyDown"
     >
       <vue-text
         :for="id"
@@ -187,6 +187,13 @@ export default defineComponent({
       close();
     };
     const onKeyDown = (e: KeyboardEvent) => {
+      if (['Tab', 'ShiftLeft', 'ShiftRight'].includes(e.code)) {
+        return;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+
       if (e.code === 'Escape') {
         close();
       } else {

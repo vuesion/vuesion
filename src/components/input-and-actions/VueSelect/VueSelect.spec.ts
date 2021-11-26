@@ -85,7 +85,9 @@ describe('VueSelect.vue', () => {
     const { getByText, queryAllByText } = harness;
     const select = getByText('Select').parentElement;
 
-    await fireEvent.keyDown(select, { key: 'ArrowLeft', code: 'ArrowLeft' });
+    await fireEvent.keyDown(select, { key: 'Tab', code: 'Tab' });
+    await fireEvent.keyDown(select, { key: 'ShiftLeft', code: 'ShiftLeft' });
+    await fireEvent.keyDown(select, { key: 'ShiftRight', code: 'ShiftRight' });
 
     expect(queryAllByText('Value 1')).toHaveLength(1);
 
