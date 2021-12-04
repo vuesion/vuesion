@@ -1,88 +1,90 @@
 <template>
-  <ValidationProvider
-    v-slot="{ errors, validate }"
-    ref="validator"
-    :vid="id"
-    :name="name"
-    :rules="validation"
-    tag="div"
-  >
-    <div
-      ref="selectRef"
-      :class="[$style.vueSelect, disabled && $style.disabled, errors.length > 0 && $style.error]"
-      @keydown="onKeyDown"
+  <div ref="selectRef">
+    <ValidationProvider
+      v-slot="{ errors, validate }"
+      ref="validator"
+      :vid="id"
+      :name="name"
+      :rules="validation"
+      tag="div"
     >
-      <vue-text
-        :for="id"
-        look="label"
-        :color="errors.length > 0 ? 'danger' : 'text-medium'"
-        :class="[$style.label, hideLabel && 'sr-only']"
-        as="label"
+      <div
+        :class="[$style.vueSelect, disabled && $style.disabled, errors.length > 0 && $style.error]"
+        @keydown="onKeyDown"
       >
-        {{ label }}
-        <sup v-if="required">*</sup>
-      </vue-text>
-
-      <div :class="$style.selectWrapper">
-        <select
-          :id="id"
-          :data-testid="'native-' + id"
-          :name="name"
-          :value="inputValue"
-          :title="label"
-          :required="required"
-          :disabled="disabled"
-          :class="[$style.nativeSelect, placeholder && !inputValue && $style.hasPlaceholder, $style[size]]"
-          v-bind="$attrs"
-          v-on="{
-            ...$listeners,
-            input: onInput,
-          }"
+        <vue-text
+          :for="id"
+          look="label"
+          :color="errors.length > 0 ? 'danger' : 'text-medium'"
+          :class="[$style.label, hideLabel && 'sr-only']"
+          as="label"
         >
-          <option v-if="placeholder && !inputValue" value="" disabled selected>{{ placeholder }}</option>
-          <option
-            v-for="(option, idx) in options"
-            :key="idx"
-            :value="option.value"
-            :selected="inputValue === option.value"
+          {{ label }}
+          <sup v-if="required">*</sup>
+        </vue-text>
+
+        <div :class="$style.selectWrapper">
+          <select
+            :id="id"
+            :data-testid="'native-' + id"
+            :name="name"
+            :value="inputValue"
+            :title="label"
+            :required="required"
+            :disabled="disabled"
+            :class="[$style.nativeSelect, placeholder && !inputValue && $style.hasPlaceholder, $style[size]]"
+            v-bind="$attrs"
+            v-on="{
+              ...$listeners,
+              input: onInput,
+            }"
           >
-            {{ option.label }}
-          </option>
-        </select>
+            <option v-if="placeholder && !inputValue" value="" disabled selected>{{ placeholder }}</option>
+            <option
+              v-for="(option, idx) in options"
+              :key="idx"
+              :value="option.value"
+              :selected="inputValue === option.value"
+            >
+              {{ option.label }}
+            </option>
+          </select>
 
-        <div
-          :data-testid="'custom-' + id"
-          :aria-expanded="show.toString()"
-          :class="[$style.customSelect, placeholder && !inputValue && $style.hasPlaceholder, $style[size]]"
-          :tabindex="disabled ? -1 : 0"
-          role="listbox"
-          @click.stop.prevent="toggleMenu"
-          @blur="validate"
+          <div
+            :data-testid="'custom-' + id"
+            :aria-expanded="show.toString()"
+            :class="[$style.customSelect, placeholder && !inputValue && $style.hasPlaceholder, $style[size]]"
+            :tabindex="disabled ? -1 : 0"
+            role="listbox"
+            @click.stop.prevent="toggleMenu"
+            @blur="validate"
+          >
+            {{ inputValueOption ? inputValueOption.label : placeholder }}
+          </div>
+
+          <div :class="$style.icon" :data-testid="'toggle-' + id" @click.stop.prevent="toggleMenu">
+            <vue-icon-chevron-down />
+          </div>
+        </div>
+
+        <vue-text
+          :color="errors.length > 0 ? 'danger' : 'text-medium'"
+          :class="[$style.description, hideDescription && 'sr-only']"
         >
-          {{ inputValueOption ? inputValueOption.label : placeholder }}
-        </div>
-
-        <div :class="$style.icon" :data-testid="'toggle-' + id" @click.stop.prevent="toggleMenu">
-          <vue-icon-chevron-down />
-        </div>
+          {{ errors.length > 0 ? errorMessage : description }}
+        </vue-text>
       </div>
+    </ValidationProvider>
 
-      <vue-collapse :show="show" :duration="duration">
-        <vue-menu
-          :items="options"
-          :class="[$style.menu, hideLabel && $style.hideLabel, $style[alignMenu], $style[alignYMenu], $style[size]]"
-          @click="onItemClick"
-        />
-      </vue-collapse>
-
-      <vue-text
-        :color="errors.length > 0 ? 'danger' : 'text-medium'"
-        :class="[$style.description, hideDescription && 'sr-only']"
-      >
-        {{ errors.length > 0 ? errorMessage : description }}
-      </vue-text>
-    </div>
-  </ValidationProvider>
+    <vue-collapse :show="show" :duration="duration">
+      <vue-menu
+        ref="menuRef"
+        :items="options"
+        :class="[$style.menu, hideLabel && $style.hideLabel, $style[alignMenu], $style[alignYMenu], $style[size]]"
+        @click="onItemClick"
+      />
+    </vue-collapse>
+  </div>
 </template>
 
 <script lang="ts">
@@ -128,6 +130,7 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const selectRef = getDomRef(null);
+    const menuRef = getDomRef(null);
     const show = ref(false);
     const options = computed<Array<IItem>>(() =>
       props.items.map((item: IItem) => ({
@@ -160,12 +163,7 @@ export default defineComponent({
 
       await nextTick();
 
-      const list: HTMLUListElement = selectRef.value.querySelector('ul');
-      const selectedItemIndex = options.value.findIndex((item: IItem) => inputValue.value === item.value);
-      const item = list.querySelectorAll('li').item(selectedItemIndex === -1 ? 0 : selectedItemIndex);
-
-      item.focus();
-      list.scrollTo({ top: item.offsetTop });
+      menuRef.value.focus(inputValueOption.value);
     };
     const close = () => (show.value = false);
     const onInput = (e: Event) => {
@@ -216,6 +214,7 @@ export default defineComponent({
 
     return {
       selectRef,
+      menuRef,
       show,
       options,
       inputValue,
@@ -251,6 +250,7 @@ export default defineComponent({
       bottom: 0;
       display: inline-flex;
       align-items: center;
+      color: $select-color;
 
       i {
         width: $select-icon-size;
@@ -313,6 +313,7 @@ export default defineComponent({
       background: $select-bg-error;
       border: $select-border-error;
     }
+
     .nativeSelect,
     .customSelect {
       background: $select-bg-error;

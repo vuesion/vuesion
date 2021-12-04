@@ -65,14 +65,19 @@ export default defineComponent({
       } else {
         selectedItemIndex.value = newIndex;
       }
+
+      focus();
     };
     const handleSearch = debounce(() => {
       selectedItemIndex.value = props.items.findIndex((item) => {
-        const regex = new RegExp(searchQuery.value, 'gi');
-
+        const regex = new RegExp(searchQuery.value, 'i');
         return regex.test(item.label) && !!item.disabled === false;
       });
       searchQuery.value = '';
+
+      if (selectedItemIndex.value > -1) {
+        focus();
+      }
     }, 300);
     const getNewIndex = (direction: string) => {
       let newIndex: number = direction === 'down' ? selectedItemIndex.value + 1 : selectedItemIndex.value - 1;
@@ -108,8 +113,16 @@ export default defineComponent({
      * doesn't need any testing
      */
     /* istanbul ignore next */
-    const focus = () => {
-      menuRef.value.firstChild.focus();
+    const focus = (selectedItem: IItem = null) => {
+      if (selectedItem) {
+        selectedItemIndex.value = props.items.findIndex((i) => i.value === selectedItem.value);
+      }
+
+      const item = menuRef.value
+        .querySelectorAll('li')
+        .item(selectedItemIndex.value === -1 ? 0 : selectedItemIndex.value);
+      item.focus();
+      menuRef.value.scrollTo({ top: item.offsetTop });
     };
 
     return {
