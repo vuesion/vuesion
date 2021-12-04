@@ -13,9 +13,10 @@ story.add(
   'Default',
   () => ({
     components: { VueAvatar, ComponentDocs, VueStack, VueTiles, VueInput, VueSelect },
-    data(): { name: string; src: IItem; size: IItem } {
+    data(): { name: string; icon: string; src: IItem; size: IItem } {
       return {
         name: 'Isabella-Maria Del Campo',
+        icon: '',
         src: { label: 'No src', value: null },
         size: { label: 'Small', value: 'sm' },
       };
@@ -28,6 +29,7 @@ story.add(
       <vue-stack>
         <vue-tiles :columns="[1, 2]">
           <vue-input label="Name" name="name" id="name" hide-description v-model="name" />
+          <vue-input label="Icon" name="icon" id="icon" hide-description v-model="icon" />
 
           <vue-select
             :items="[
@@ -54,7 +56,7 @@ story.add(
             v-model="size"
           />
         </vue-tiles>
-        <vue-avatar :name="name" :src="src.value" :size="size.value" />
+        <vue-avatar :name="name" :src="src.value" :icon="icon" :size="size.value" />
       </vue-stack>
     </component-docs>`,
   }),
