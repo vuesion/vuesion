@@ -412,17 +412,17 @@
             {
               figmaVar: '📀 Interaction - Secondary - Enabled',
               cssVar: 'brand-interaction-secondary-enabled',
-              paletteColor: 'primary 2',
+              paletteColor: 'info 2',
             },
             {
               figmaVar: '📀 Interaction - Secondary - Hovered',
               cssVar: 'brand-interaction-secondary-hovered',
-              paletteColor: 'primary 1',
+              paletteColor: 'info 1',
             },
             {
               figmaVar: '📀 Interaction - Secondary - Activated',
               cssVar: 'brand-interaction-secondary-activated',
-              paletteColor: 'primary 3',
+              paletteColor: 'info 3',
             },
           ],
         },
