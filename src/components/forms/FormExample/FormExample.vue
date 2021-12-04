@@ -176,7 +176,7 @@ export default defineComponent({
       street: '',
       zipCode: '',
       city: '',
-      country: '',
+      country: 'gl',
       acceptTerms: false,
       newsletter: false,
     });
@@ -184,7 +184,13 @@ export default defineComponent({
     // computed
     const countryOptions = computed(() => [
       { label: '', value: '' },
+      { label: 'Brasil', value: 'br' },
       { label: 'Germany', value: 'de' },
+      { label: 'Great Britain', value: 'uk' },
+      { label: 'Greece', value: 'gr' },
+      { label: 'Greenland', value: 'gl' },
+      { label: 'Japan', value: 'jp' },
+      { label: 'Spain', value: 'es' },
       { label: 'USA', value: 'us' },
       { label: 'Other', value: 'other' },
     ]);
