@@ -11,9 +11,10 @@
   /* Brand Variations */
   --brand-primary: #{palette-color-level('primary', 7)};
   --brand-neutral: #{palette-color-level('neutral', 7)};
-  --brand-danger: #{palette-color-level('danger', 7)};
-  --brand-warning: #{palette-color-level('warning', 7)};
   --brand-success: #{palette-color-level('success', 7)};
+  --brand-info: #{palette-color-level('info', 7)};
+  --brand-warning: #{palette-color-level('warning', 7)};
+  --brand-danger: #{palette-color-level('danger', 7)};
 
   /* Background Colors */
   --brand-bg-default-high: #{palette-color-level('neutral', 10)};
@@ -30,9 +31,9 @@
   --brand-surface-inverse-high: #{palette-color-level('neutral', 0)};
   --brand-surface-inverse-medium: #{palette-color-level('neutral', 1)};
   --brand-surface-inverse-low: #{palette-color-level('neutral', 2)};
-  --brand-surface-info-high: #{palette-color-level('primary', 8)};
-  --brand-surface-info-medium: #{palette-color-level('primary', 9)};
-  --brand-surface-info-low: #{palette-color-level('primary', 10)};
+  --brand-surface-info-high: #{palette-color-level('info', 8)};
+  --brand-surface-info-medium: #{palette-color-level('info', 9)};
+  --brand-surface-info-low: #{palette-color-level('info', 10)};
   --brand-surface-danger-high: #{palette-color-level('danger', 8)};
   --brand-surface-danger-medium: #{palette-color-level('danger', 9)};
   --brand-surface-danger-low: #{palette-color-level('danger', 10)};
@@ -48,8 +49,8 @@
   --brand-border-default-low: #{palette-color-level('neutral', 8)};
   --brand-border-inverse-medium: #{palette-color-level('neutral', 9)};
   --brand-border-inverse-low: #{palette-color-level('neutral', 7)};
-  --brand-border-info-high: #{palette-color-level('primary', 7)};
-  --brand-border-info-low: #{palette-color-level('primary', 9)};
+  --brand-border-info-high: #{palette-color-level('info', 7)};
+  --brand-border-info-low: #{palette-color-level('info', 9)};
   --brand-border-danger-high: #{palette-color-level('danger', 7)};
   --brand-border-danger-low: #{palette-color-level('danger', 9)};
   --brand-border-warning-high: #{palette-color-level('warning', 7)};
@@ -64,7 +65,7 @@
   --brand-text-inverse-high: #{palette-color-level('neutral', 10)};
   --brand-text-inverse-medium: #{palette-color-level('neutral', 7)};
   --brand-text-inverse-low: #{palette-color-level('neutral', 6)};
-  --brand-text-info: #{palette-color-level('primary', 7)};
+  --brand-text-info: #{palette-color-level('info', 7)};
   --brand-text-danger: #{palette-color-level('danger', 7)};
   --brand-text-warning: #{palette-color-level('warning', 7)};
   --brand-text-success: #{palette-color-level('success', 7)};
@@ -90,9 +91,9 @@
   --brand-interaction-success-hovered: #{palette-color-level('success', 5)};
   --brand-interaction-success-activated: #{palette-color-level('success', 7)};
 
-  --brand-interaction-secondary-enabled: #{palette-color-level('primary', 2)};
-  --brand-interaction-secondary-hovered: #{palette-color-level('primary', 1)};
-  --brand-interaction-secondary-activated: #{palette-color-level('primary', 3)};
+  --brand-interaction-secondary-enabled: #{palette-color-level('info', 2)};
+  --brand-interaction-secondary-hovered: #{palette-color-level('info', 1)};
+  --brand-interaction-secondary-activated: #{palette-color-level('info', 3)};
 
   // UTILS
   /* Border radius */
@@ -108,7 +109,7 @@
 
   /* A11y */
   --brand-focused: 0 0 0 #{$space-2} #{palette-color-level('neutral', 10)},
-    0 0 0 #{$space-4} #{palette-color-level('primary', 7)};
+    0 0 0 #{$space-4} #{palette-color-level('info', 7)};
 
   /* Animation Language */
   --brand-transition-duration: 250ms;
