@@ -48,7 +48,7 @@
           v-on="{
             ...$listeners,
             input: (e) => {
-              $emit('input', e.target.value);
+              $emit('input', e.target.value, e);
             },
           }"
         />
