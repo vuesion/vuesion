@@ -42,7 +42,7 @@
             <option v-if="placeholder && !inputValue" value="" disabled selected>{{ placeholder }}</option>
             <option
               v-for="(option, idx) in options"
-              :key="idx"
+              :key="`${option.value}-${idx}`"
               :value="option.value"
               :selected="inputValue === option.value"
             >

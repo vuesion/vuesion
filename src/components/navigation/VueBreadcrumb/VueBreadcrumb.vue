@@ -9,7 +9,7 @@
         </nuxt-link>
       </li>
       <li v-if="items.length > 2" :class="[$style.itemWrapper, $style.ellipsis]">...</li>
-      <li v-for="(item, idx) in items" :key="idx" :class="[$style.itemWrapper, $style.link]">
+      <li v-for="(item, idx) in items" :key="`${item.value}-${idx}`" :class="[$style.itemWrapper, $style.link]">
         <nuxt-link
           :to="localePath(item.value)"
           :href="item.value"
