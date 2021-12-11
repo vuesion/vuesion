@@ -6,7 +6,7 @@
     @mouseenter="pause = true"
     @mouseleave="pause = false"
   >
-    <fade-animation v-for="(image, idx) in preloadedImages" :key="idx">
+    <fade-animation v-for="(image, idx) in preloadedImages" :key="'image-' + idx">
       <div
         v-if="isActiveSlide(idx)"
         :title="image.getAttribute('alt')"
@@ -21,7 +21,9 @@
     </fade-animation>
 
     <ul v-if="showIndicator" :class="$style.indicator" data-testid="carousel-indicator">
-      <li v-for="(_, idx) in preloadedImages" :key="idx" :class="isActiveSlide(idx) && $style.active">&nbsp;</li>
+      <li v-for="(_, idx) in preloadedImages" :key="'indicator-' + idx" :class="isActiveSlide(idx) && $style.active">
+        &nbsp;
+      </li>
     </ul>
 
     <vue-pagination
