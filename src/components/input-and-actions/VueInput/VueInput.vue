@@ -15,18 +15,20 @@
       <div
         :class="[
           $style.inputWrapper,
-          leadingIcon && $style.hasLeadingContent,
-          trailingIcon && $style.hasTrailingContent,
+          (leadingIcon || $slots.leadingIcon) && $style.hasLeadingContent,
+          (trailingIcon || $slots.trailingIcon) && $style.hasTrailingContent,
           $style[size],
         ]"
       >
         <div
-          v-if="leadingIcon"
+          v-if="leadingIcon || $slots.leadingIcon"
           :data-testid="`${id}-leading-icon`"
           :class="$style.leading"
           @click="$emit('leading-icon-click')"
         >
-          <component :is="`vue-icon-${leadingIcon}`" />
+          <slot name="leadingIcon">
+            <component :is="`vue-icon-${leadingIcon}`" />
+          </slot>
         </div>
 
         <input
@@ -52,12 +54,14 @@
         />
 
         <div
-          v-if="trailingIcon"
+          v-if="trailingIcon || $slots.trailingIcon"
           :data-testid="`${id}-trailing-icon`"
           :class="$style.trailing"
           @click="$emit('trailing-icon-click')"
         >
-          <component :is="`vue-icon-${trailingIcon}`" />
+          <slot name="trailingIcon">
+            <component :is="`vue-icon-${trailingIcon}`" />
+          </slot>
         </div>
       </div>
 
