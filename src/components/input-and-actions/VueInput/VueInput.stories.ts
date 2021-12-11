@@ -118,7 +118,7 @@ story.add(
         id="text-1"
         label="Label"
         placeholder="Placeholder"
-        description="Description"
+        description="with leading icon"
         error-message="Error message"
         validation="required"
         required
@@ -133,7 +133,7 @@ story.add(
         id="text-2"
         label="Label"
         placeholder="Placeholder"
-        description="Description"
+        description="with trailing icon"
         error-message="Error message"
         validation="required"
         required
@@ -148,7 +148,7 @@ story.add(
         id="text-3"
         label="Label"
         placeholder="Placeholder"
-        description="Description"
+        description="with leading and trialing icon"
         error-message="Error message"
         validation="required"
         required
@@ -159,6 +159,24 @@ story.add(
         @leading-icon-click="onLeadingIconClick"
         @trailing-icon-click="onTrailingIconClick"
       />
+
+      <vue-input
+        name="text-3"
+        id="text-3"
+        label="Label"
+        placeholder="Placeholder"
+        description="with custom content"
+        error-message="Error message"
+        validation="required"
+        required
+        :size="size.value"
+        v-model="model"
+        @leading-icon-click="onLeadingIconClick"
+        @trailing-icon-click="onTrailingIconClick"
+      >
+        <template slot="leadingIcon">€</template>
+        <template slot="trailingIcon">@</template>
+      </vue-input>
     </vue-stack>
     </component-docs>`,
   }),
