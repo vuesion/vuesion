@@ -125,6 +125,13 @@ jobs:
           path: ./src/components/b-calender-datepicke
           token: ${{ secrets.VUESION_PAT }}
 
+      - name: Checkout Vuesion+ Currency input
+        uses: actions/checkout@v2
+        with:
+          repository: vuesion/vuesion-plus-currency-input
+          path: ./src/components/c-currency-input
+          token: ${{ secrets.VUESION_PAT }}
+
       - name: Download code coverage results
         uses: actions/download-artifact@v2
         with:
