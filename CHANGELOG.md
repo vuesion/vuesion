@@ -1,3 +1,25 @@
+### 4.6.0 (2021-12-22)
+
+##### Build System / Dependencies
+
+- add cross-env ([#579](https://github.com/vuesion/vuesion/pull/579)) ([7d41da18](https://github.com/vuesion/vuesion/commit/7d41da183a26d05283628d3de5cfdaa448e2307d))
+
+##### Chores
+
+- **vuesion+:** add currency input ([c8ee5106](https://github.com/vuesion/vuesion/commit/c8ee510666a0bc0465a6b7a121dd214bf08ec10d))
+
+##### New Features
+
+- **vue-input:** add slots for leading/trailing icon ([ab0b85be](https://github.com/vuesion/vuesion/commit/ab0b85be7e843e569d9fdc381485b9b518fc202c))
+- **avatar:** add support for icons ([dc90d193](https://github.com/vuesion/vuesion/commit/dc90d193b23a257853a1ef44a003daeaf2c177a2))
+- **color-palette:** add info color ([c3028014](https://github.com/vuesion/vuesion/commit/c30280143e7f576b869a30bc0fb0bd5f28f9f997))
+- **vue-menu:** scroll to active item on key press ([5a60ccd7](https://github.com/vuesion/vuesion/commit/5a60ccd7746539948976bc41b7c4c2893eb50fe3))
+
+##### Refactors
+
+- **vue-input:** emit original event-object on input ([b352008a](https://github.com/vuesion/vuesion/commit/b352008abd947b4c3db6f46f6c77de66b88090ac))
+- **v-for:** make sure all keys are unique ([2854dda0](https://github.com/vuesion/vuesion/commit/2854dda043919024dcca33a80eca9caac87cc719))
+
 ### 4.5.0 (2021-11-26)
 
 ##### Chores
