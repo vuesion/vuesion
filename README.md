@@ -90,11 +90,11 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 - [Give a :star:!](https://github.com/vuesion/vuesion/stargazers)
 - [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=flat)](https://twitter.com/intent/tweet?text=Vuesion%20an%20enterprise%20ready%20boilerplate%20for%20isomorphic,%20progressive%20web%20apps%20with%20Vue.JS&url=https://github.com/vuesion/vuesion&via=vuesion1&hashtags=Vuesion,VueJS,SEO,Enterprise) it!
 - Join the <a href="https://discord.gg/59x5cg2" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/square-logo-buttons/512/discord-1-128.png" height="20px" /> Discord community</a>!
-- [Contribute!](https://github.com/vuesion/vuesion/blob/master/.github/CONTRIBUTING.md)
+- [Contribute!](https://github.com/vuesion/vuesion/blob/master/CONTRIBUTING.md)
 
 # Contribute
 
-Contributions are always welcome! Please read the [contribution guidelines](https://github.com/vuesion/vuesion/blob/master/.github/CONTRIBUTING.md) first.
+Contributions are always welcome! Please read the [contribution guidelines](https://github.com/vuesion/vuesion/blob/master/CONTRIBUTING.md) first.
 
 Thanks goes to these wonderful people:
 
