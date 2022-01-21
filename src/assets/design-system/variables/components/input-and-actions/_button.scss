@@ -26,9 +26,6 @@ $button-variations: (
     'hover-color': var(--brand-text-inverse-high),
     'active-bg': var(--brand-interaction-primary-activated),
     'active-color': var(--brand-text-inverse-high),
-    'focus-bg': var(--brand-interaction-primary-enabled),
-    'focus-color': var(--brand-text-inverse-high),
-    'focus-box-shadow-color': palette-color-level('primary', 3),
   ),
   'secondary': (
     'bg': var(--brand-interaction-secondary-enabled),
@@ -37,9 +34,6 @@ $button-variations: (
     'hover-color': var(--brand-text-info),
     'active-bg': var(--brand-interaction-secondary-activated),
     'active-color': var(--brand-text-info),
-    'focus-bg': var(--brand-interaction-secondary-enabled),
-    'focus-color': var(--brand-text-info),
-    'focus-box-shadow-color': palette-color-level('primary', 3),
   ),
   'outline': (
     'bg': var(--brand-interaction-neutral-enabled),
@@ -48,10 +42,15 @@ $button-variations: (
     'hover-color': var(--brand-text-default-medium),
     'active-bg': var(--brand-interaction-neutral-activated),
     'active-color': var(--brand-text-default-medium),
-    'focus-bg': var(--brand-interaction-neutral-enabled),
-    'focus-color': var(--brand-text-default-medium),
-    'focus-box-shadow-color': palette-color-level('primary', 3),
     'border': 1px solid var(--brand-border-default-medium),
+  ),
+  'ghost': (
+    'bg': transparent,
+    'color': var(--brand-text-default-medium),
+    'hover-bg': var(--brand-interaction-neutral-hovered),
+    'hover-color': var(--brand-text-default-medium),
+    'active-bg': var(--brand-interaction-neutral-activated),
+    'active-color': var(--brand-text-default-medium),
   ),
   'danger': (
     'bg': var(--brand-interaction-danger-enabled),
@@ -60,8 +59,5 @@ $button-variations: (
     'hover-color': var(--brand-text-inverse-high),
     'active-bg': var(--brand-interaction-danger-activated),
     'active-color': var(--brand-text-inverse-high),
-    'focus-bg': var(--brand-interaction-danger-enabled),
-    'focus-color': var(--brand-text-inverse-high),
-    'focus-box-shadow-color': palette-color-level('danger', 3),
   ),
 );
