@@ -1,3 +1,20 @@
+### 4.7.0 (2022-01-30)
+
+##### Documentation Changes
+
+- **README.md:** correct CONTRIBUTING.md path ([#580](https://github.com/vuesion/vuesion/pull/580)) ([7b81fd4d](https://github.com/vuesion/vuesion/commit/7b81fd4ded6d2af575b9ab9923b995ba4f435f7c))
+
+##### New Features
+
+- **vue-input:** change leading icon color ([b4b83c41](https://github.com/vuesion/vuesion/commit/b4b83c416406c5cd018208c8a7a06931c6fe1652))
+- **vue-select:** change icon spacing ([57b9a5d4](https://github.com/vuesion/vuesion/commit/57b9a5d414a4fb8c8b8833a71855d429cd9ec9f5))
+- **vue-button:** add ghost variation ([71953260](https://github.com/vuesion/vuesion/commit/719532601e46e4a9fd87a025a6b128635cacbc28))
+
+##### Bug Fixes
+
+- **vue-select:** change css structure for menu positioning ([2c932e4d](https://github.com/vuesion/vuesion/commit/2c932e4db558e6753932064903150c6a9f05d176))
+- add currency input to coverage report ([1894c807](https://github.com/vuesion/vuesion/commit/1894c807b738935b6a08a2ad982ea39d1f5b1f67))
+
 ### 4.6.0 (2021-12-22)
 
 ##### Build System / Dependencies
