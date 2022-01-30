@@ -87,7 +87,7 @@
     "helmet": "4.4.1",
     "lodash": "4.17.21",
     "marked": "2.0.1",
-    "node-fetch": "2.6.1",
+    "node-fetch": "2.6.7",
     "nuxt": "2.15.2",
     "nuxt-i18n": "6.20.3",
     "nuxt-winston-log": "1.2.0",
