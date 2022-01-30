@@ -1,5 +1,5 @@
 <template>
-  <div ref="selectRef">
+  <div ref="selectRef" :class="$style.vueSelect">
     <ValidationProvider
       v-slot="{ errors, validate }"
       ref="validator"
@@ -8,10 +8,7 @@
       :rules="validation"
       tag="div"
     >
-      <div
-        :class="[$style.vueSelect, disabled && $style.disabled, errors.length > 0 && $style.error]"
-        @keydown="onKeyDown"
-      >
+      <div :class="[disabled && $style.disabled, errors.length > 0 && $style.error]" @keydown="onKeyDown">
         <vue-text
           :for="id"
           look="label"
@@ -276,6 +273,7 @@ export default defineComponent({
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    cursor: pointer;
 
     &:hover {
       outline: none;
@@ -308,7 +306,7 @@ export default defineComponent({
     color: $select-placeholder-color;
   }
 
-  &.error {
+  .error {
     select {
       background: $select-bg-error;
       border: $select-border-error;
@@ -321,7 +319,7 @@ export default defineComponent({
     }
   }
 
-  &.disabled {
+  .disabled {
     opacity: $select-disabled-disabled-opacity;
   }
 
