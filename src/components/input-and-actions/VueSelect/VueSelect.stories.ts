@@ -37,7 +37,7 @@ story.add(
         alignMenu: { label: 'Left', value: 'left' },
         alignYMenu: { label: 'Bottom', value: 'bottom' },
         size: { label: 'Medium', value: 'md' },
-        multiSelect: true,
+        multiSelect: false,
         badgeStatus: { label: 'Info', value: 'info' },
         availableBadgeStatus: badgeStatuses.map((status) => ({ label: status, value: status })),
         model: null,

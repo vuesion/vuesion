@@ -443,12 +443,12 @@ export default defineComponent({
 
   @media (hover: hover) {
     .nativeSelect {
-      // display: none;
+      display: none;
     }
 
     .customSelect,
     .menu {
-      // display: flex;
+      display: flex;
     }
   }
 }
