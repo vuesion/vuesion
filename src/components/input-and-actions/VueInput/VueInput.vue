@@ -47,9 +47,7 @@
           v-bind="$attrs"
           v-on="{
             ...$listeners,
-            input: (e) => {
-              $emit('input', e.target.value, e);
-            },
+            input: onInput,
           }"
         />
 
@@ -76,12 +74,13 @@
 </template>
 
 <script lang="ts">
+import debounce from 'lodash/debounce';
 import { ValidationProvider } from 'vee-validate';
 import { defineComponent } from '@vue/composition-api';
 import { useIntersectionObserver } from '@/composables/use-intersection-observer';
 import { getDomRef } from '@/composables/get-dom-ref';
-import VueText from '@/components/typography/VueText/VueText.vue';
 import { shirtSizeValidator } from '@/components/prop-validators';
+import VueText from '@/components/typography/VueText/VueText.vue';
 
 export default defineComponent({
   name: 'VueInput',
@@ -108,9 +107,20 @@ export default defineComponent({
     trailingIcon: { type: String, default: null },
     size: { type: String, validator: shirtSizeValidator, default: 'md' },
     sizeAttribute: { type: Number, default: null },
+    debounce: { type: Number, default: null },
   },
-  setup(props) {
+  setup(props, { emit }) {
     const input = getDomRef(null);
+    const debouncedInput = debounce((value: string) => emit('debounced-input', value), props.debounce || 0);
+    const onInput = (e: InputEvent) => {
+      const value = (e.target as HTMLInputElement).value;
+
+      emit('input', value, e);
+
+      if (props.debounce !== null) {
+        debouncedInput(value);
+      }
+    };
 
     useIntersectionObserver(input, (entries: IntersectionObserverEntry[]) => {
       if (props.autofocus) {
@@ -120,6 +130,7 @@ export default defineComponent({
 
     return {
       input,
+      onInput,
     };
   },
 });

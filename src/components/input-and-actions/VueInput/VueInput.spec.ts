@@ -1,5 +1,6 @@
 import { render, fireEvent } from '@testing-library/vue';
 import flushPromises from 'flush-promises';
+import { sleep } from '@/test/test-utils';
 import VueInput from './VueInput.vue';
 
 describe('VueInput.vue', () => {
@@ -61,6 +62,26 @@ describe('VueInput.vue', () => {
     await fireEvent.update(getByDisplayValue('this is the value'), 'this is the new value');
 
     const actual = emitted().input[0][0];
+    const expected = 'this is the new value';
+
+    expect(actual).toBe(expected);
+  });
+
+  test('should emit debounced-input', async () => {
+    const { getByDisplayValue, emitted } = render(VueInput, {
+      propsData: {
+        label: 'this is the label',
+        value: 'this is the value',
+        name: 'name',
+        id: 'id',
+        debounce: 0,
+      },
+    });
+
+    await fireEvent.update(getByDisplayValue('this is the value'), 'this is the new value');
+    await sleep(10);
+
+    const actual = emitted()['debounced-input'][0][0];
     const expected = 'this is the new value';
 
     expect(actual).toBe(expected);
