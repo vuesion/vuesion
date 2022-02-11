@@ -25,11 +25,16 @@
             :id="id"
             :data-testid="'native-' + id"
             :name="name"
-            :value="inputValue"
             :title="label"
             :required="required"
             :disabled="disabled"
-            :class="[$style.nativeSelect, placeholder && !inputValue && $style.hasPlaceholder, $style[size]]"
+            :multiple="multiSelect"
+            :class="[
+              $style.nativeSelect,
+              placeholder && inputValue.length === 0 && $style.hasPlaceholder,
+              multiSelect && inputValue.length > 1 && $style.hasCount,
+              $style[size],
+            ]"
             v-bind="$attrs"
             v-on="{
               ...$listeners,
@@ -41,7 +46,7 @@
               v-for="(option, idx) in options"
               :key="`${option.value}-${idx}`"
               :value="option.value"
-              :selected="inputValue === option.value"
+              :selected="inputValue.includes(option.value)"
             >
               {{ option.label }}
             </option>
@@ -50,14 +55,23 @@
           <div
             :data-testid="'custom-' + id"
             :aria-expanded="show.toString()"
-            :class="[$style.customSelect, placeholder && !inputValue && $style.hasPlaceholder, $style[size]]"
+            :class="[
+              $style.customSelect,
+              placeholder && inputValue.length === 0 && $style.hasPlaceholder,
+              multiSelect && inputValue.length > 1 && $style.hasCount,
+              $style[size],
+            ]"
             :tabindex="disabled ? -1 : 0"
             role="listbox"
             @click.stop.prevent="toggleMenu"
             @blur="validate"
           >
-            {{ inputValueOption ? inputValueOption.label : placeholder }}
+            {{ displayItem ? displayItem.label : placeholder }}
           </div>
+
+          <vue-badge v-if="multiSelect && inputValue.length > 1" :status="badgeStatus" :class="$style.count">
+            +{{ inputValue.length - 1 }}
+          </vue-badge>
 
           <div :class="$style.icon" :data-testid="'toggle-' + id" @click.stop.prevent="toggleMenu">
             <vue-icon-chevron-down />
@@ -79,6 +93,7 @@
         :items="options"
         :class="[$style.menu, hideLabel && $style.hideLabel, $style[alignMenu], $style[alignYMenu], $style[size]]"
         @click="onItemClick"
+        @close="toggleMenu"
       />
     </vue-collapse>
   </div>
@@ -94,11 +109,13 @@ import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
 import { useOutsideClick } from '@/composables/use-outside-click';
 import { getDomRef } from '@/composables/get-dom-ref';
 import VueIconChevronDown from '@/components/icons/VueIconChevronDown.vue';
-import { horizontalAlignmentValidator, shirtSizeValidator } from '@/components/prop-validators';
+import { badgeStatusesValidator, horizontalAlignmentValidator, shirtSizeValidator } from '@/components/prop-validators';
+import VueBadge from '@/components/data-display/VueBadge/VueBadge.vue';
 
 export default defineComponent({
   name: 'VueSelect',
   components: {
+    VueBadge,
     VueIconChevronDown,
     VueMenu,
     VueCollapse,
@@ -114,9 +131,9 @@ export default defineComponent({
     hideDescription: { type: Boolean, default: false },
     required: { type: Boolean, default: false },
     validation: { type: [String, Object], default: null },
-    value: { type: [String, Boolean, Number, Object, Object as () => IItem], default: undefined },
+    value: { type: [String, Boolean, Number, Object, Object as () => IItem, Array], default: undefined },
     disabled: { type: Boolean, default: false },
-    items: { type: [Array, Array as () => Array<IItem>], required: true },
+    items: { type: [Array as () => Array<IItem>], required: true },
     placeholder: { type: String, default: '' },
     description: { type: String, default: '' },
     errorMessage: { type: String, default: '' },
@@ -124,29 +141,39 @@ export default defineComponent({
     alignMenu: { type: String, validator: horizontalAlignmentValidator, default: 'left' },
     alignYMenu: { type: String, validator: (value: string) => ['top', 'bottom'].includes(value), default: 'bottom' },
     size: { type: String, validator: shirtSizeValidator, default: 'md' },
+    multiSelect: { type: Boolean, default: false },
+    badgeStatus: { type: String, validator: badgeStatusesValidator, default: 'info' },
   },
   setup(props, { emit }) {
     const selectRef = getDomRef(null);
     const menuRef = getDomRef(null);
     const show = ref(false);
-    const options = computed<Array<IItem>>(() =>
-      props.items.map((item: IItem) => ({
-        ...item,
-        trailingIcon: inputValue.value === item.value ? 'checkmark' : null,
-      })),
-    );
-    const inputValue = computed(() => {
-      if (props.value !== undefined && props.value?.value !== undefined) {
-        return props.value.value;
-      } else if (props.value !== undefined) {
-        return props.value;
+    const getValue = (valueOrItem: any | IItem) => {
+      if (valueOrItem !== undefined && valueOrItem?.value !== undefined) {
+        return valueOrItem.value;
+      } else if (valueOrItem !== undefined) {
+        return valueOrItem;
       } else {
         return undefined;
       }
+    };
+    const inputValue = computed<Array<any>>(() => {
+      if (Array.isArray(props.value)) {
+        return props.value.map((v: any | IItem) => getValue(v));
+      } else {
+        const value = getValue(props.value);
+        return value !== undefined ? [value] : [];
+      }
     });
-    const inputValueOption = computed(() => {
-      if (inputValue.value !== undefined) {
-        return options.value.find((option) => option.value === inputValue.value);
+    const options = computed<Array<IItem>>(() =>
+      props.items.map((item: IItem) => ({
+        ...item,
+        trailingIcon: inputValue.value.includes(item.value) ? 'checkmark' : null,
+      })),
+    );
+    const displayItem = computed(() => {
+      if (inputValue.value.length > 0) {
+        return options.value.find((option) => option.value === inputValue.value[0]);
       } else {
         return undefined;
       }
@@ -160,7 +187,7 @@ export default defineComponent({
 
       await nextTick();
 
-      menuRef.value.focus(inputValueOption.value);
+      menuRef.value.focus(displayItem.value);
     };
     const close = () => (show.value = false);
     const onInput = (e: Event) => {
@@ -170,16 +197,28 @@ export default defineComponent({
 
       for (let i = 0; i < length; i++) {
         const option: any = target.options[i];
-        if (option.selected) {
+
+        if (option.selected && option.disabled === false) {
           selected.push({ label: option.text, value: option.value });
         }
       }
 
-      emit('input', selected[0]);
+      emit('input', props.multiSelect ? selected : selected[0]);
     };
     const onItemClick = (item: IItem) => {
-      emit('input', item);
-      close();
+      if (props.multiSelect) {
+        const selectedValues = inputValue.value.includes(item.value)
+          ? inputValue.value.filter((value) => value !== item.value)
+          : [...inputValue.value, item.value];
+
+        emit(
+          'input',
+          props.items.filter((i) => selectedValues.includes(i.value)),
+        );
+      } else {
+        emit('input', item);
+        close();
+      }
     };
     const onKeyDown = (e: KeyboardEvent) => {
       if (['Tab', 'ShiftLeft', 'ShiftRight'].includes(e.code)) {
@@ -215,7 +254,7 @@ export default defineComponent({
       show,
       options,
       inputValue,
-      inputValueOption,
+      displayItem,
       onInput,
       onItemClick,
       onKeyDown,
@@ -239,6 +278,13 @@ export default defineComponent({
 
   .selectWrapper {
     position: relative;
+
+    .count {
+      position: absolute;
+      top: 50%;
+      right: $space-40;
+      transform: translateY(-50%);
+    }
 
     .icon {
       position: absolute;
@@ -300,6 +346,10 @@ export default defineComponent({
     &.lg {
       height: $input-control-lg-height;
     }
+
+    &.hasCount {
+      padding-right: $space-16 + $select-icon-size + $space-52;
+    }
   }
 
   .hasPlaceholder {
@@ -338,6 +388,7 @@ export default defineComponent({
   .customSelect,
   .menu {
     display: none;
+    width: 100%;
 
     &.sm {
       top: $select-label-height + $select-label-gap + $input-control-sm-height + $select-description-gap;
@@ -392,12 +443,12 @@ export default defineComponent({
 
   @media (hover: hover) {
     .nativeSelect {
-      display: none;
+      // display: none;
     }
 
     .customSelect,
     .menu {
-      display: flex;
+      // display: flex;
     }
   }
 }

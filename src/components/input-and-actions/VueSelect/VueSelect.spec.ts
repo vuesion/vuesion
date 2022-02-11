@@ -166,4 +166,58 @@ describe('VueSelect.vue', () => {
     expect(menu.classList.contains('right')).toBeTruthy();
     expect(menu.classList.contains('top')).toBeTruthy();
   });
+
+  test('custom select should support multi-select', async () => {
+    const { getByTestId, updateProps, emitted } = harness;
+
+    await updateProps({
+      multiSelect: true,
+      value: [{ label: 'Value 1', value: 'Value 1', description: 'Description 1' }],
+    });
+    await fireEvent.click(getByTestId('custom-select'));
+    await fireEvent.click(getByTestId('Value 2-1'));
+
+    expect(emitted().input[0][0]).toEqual([
+      {
+        description: 'Description 1',
+        label: 'Value 1',
+        value: 'Value 1',
+      },
+      {
+        description: 'Description 2',
+        label: 'Value 2',
+        value: 'Value 2',
+      },
+    ]);
+
+    await fireEvent.click(getByTestId('Value 1-0'));
+
+    expect(emitted().input[1][0]).toEqual([]);
+  });
+
+  test('native select should support multi-select', async () => {
+    const { getByTestId, emitted, updateProps } = harness;
+
+    await updateProps({
+      multiSelect: true,
+      value: [
+        {
+          label: 'Value 1',
+          value: 'Value 1',
+        },
+      ],
+    });
+    await userEvent.selectOptions(getByTestId('native-select'), ['Value 2']);
+
+    expect(emitted().input[0][0]).toEqual([
+      {
+        label: 'Value 1',
+        value: 'Value 1',
+      },
+      {
+        label: 'Value 2',
+        value: 'Value 2',
+      },
+    ]);
+  });
 });
