@@ -81,6 +81,16 @@ describe('VueMenu.vue', () => {
     ]);
   });
 
+  test('should emit close event when Tab is pressed', async () => {
+    const { getByTestId, emitted } = harness;
+    const menu = getByTestId('menu');
+
+    await fireEvent.keyDown(menu, { key: 'ArrowRight', code: 'ArrowRight' });
+    await fireEvent.keyDown(menu, { key: 'Tab', code: 'Tab' });
+
+    expect(emitted().close).toBeTruthy();
+  });
+
   test('disabled item should not emit click event', async () => {
     const { getByTestId, emitted } = harness;
     const menu = getByTestId('menu');

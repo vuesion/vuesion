@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from '@vue/composition-api';
+import { computed, defineComponent, ref, Ref } from '@vue/composition-api';
 import { IItem } from '@/interfaces/IItem';
 import { getDomRef } from '@/composables/get-dom-ref';
 import { debounce } from 'lodash';
@@ -50,7 +50,7 @@ export default defineComponent({
     items: { type: Array as () => Array<IItem>, required: true },
   },
   setup(props, { emit }) {
-    const menuRef = getDomRef(null);
+    const menuRef: Ref<HTMLElement> = getDomRef(null);
     const searchQuery = ref('');
     const selectedItemIndex = ref<number>(-1);
     const items = computed<Array<IItem>>(() => props.items as Array<IItem>);
@@ -93,11 +93,13 @@ export default defineComponent({
       e.preventDefault();
 
       if (
-        ['Enter', 'Space', 'Tab'].includes(e.code) &&
+        ['Enter', 'Space'].includes(e.code) &&
         selectedItemIndex.value > -1 &&
         !items.value[selectedItemIndex.value].disabled
       ) {
         onItemClick(items.value[selectedItemIndex.value]);
+      } else if (e.code === 'Tab') {
+        emit('close');
       } else if (e.code === 'ArrowDown') {
         handleSelection(getNewIndex('down'));
       } else if (e.code === 'ArrowUp') {
