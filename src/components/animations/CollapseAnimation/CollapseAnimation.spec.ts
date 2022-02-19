@@ -12,7 +12,7 @@ describe('CollapseAnimation.vue', () => {
       },
     });
 
-    const testElement: HTMLElement = wrapper.find('p').element;
+    const testElement = wrapper.find('p').element as HTMLElement;
 
     wrapper.vm.beforeEnter(testElement);
 
@@ -29,7 +29,7 @@ describe('CollapseAnimation.vue', () => {
       },
     });
 
-    const testElement: HTMLElement = wrapper.find('p').element;
+    const testElement = wrapper.find('p').element as HTMLElement;
 
     (testElement as any).getClientRects = () => {
       return {
@@ -51,7 +51,7 @@ describe('CollapseAnimation.vue', () => {
       },
     });
 
-    const testElement: HTMLElement = wrapper.find('p').element;
+    const testElement = wrapper.find('p').element as HTMLElement;
 
     wrapper.vm.beforeLeave(testElement);
 
@@ -68,7 +68,7 @@ describe('CollapseAnimation.vue', () => {
       },
     });
 
-    const testElement: HTMLElement = wrapper.find('p').element;
+    const testElement = wrapper.find('p').element as HTMLElement;
 
     (testElement as any).getClientRects = () => {
       return {
