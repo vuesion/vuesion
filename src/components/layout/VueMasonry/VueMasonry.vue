@@ -38,6 +38,41 @@ export default defineComponent({
 
       actualHeight.value = Math.max(col1Height, col2Height, col3Height);
     };
+    const checkForImages = () => {
+      let loadedImages = 0;
+      const images = wrapper.value.querySelectorAll('img');
+      const imageCount = images.length;
+      const imageLoaded = () => {
+        loadedImages += 1;
+        if (imageCount === loadedImages) {
+          calculateHeight();
+        }
+      };
+
+      images.forEach((image) => {
+        image.style.display = 'none';
+
+        const originalLoadEvent = image.onload;
+        const originalErrorEvent = image.onerror;
+
+        image.onload = function (ev: Event) {
+          image.style.display = 'initial';
+          imageLoaded();
+
+          if (originalLoadEvent) {
+            originalLoadEvent.apply(this, ev);
+          }
+        };
+        image.onerror = function (ev: Event) {
+          image.style.display = 'none';
+          imageLoaded();
+
+          if (originalLoadEvent) {
+            originalErrorEvent.apply(this, ev);
+          }
+        };
+      });
+    };
 
     onMounted(() => {
       calculateHeight();
@@ -46,6 +81,8 @@ export default defineComponent({
 
       observer = new MutationObserver(calculateHeight);
       observer.observe(wrapper.value, { attributes: true, childList: true, characterData: true, subtree: true });
+
+      checkForImages();
     });
     onUpdated(() => calculateHeight);
     onBeforeUnmount(() => {
