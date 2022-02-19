@@ -16,6 +16,7 @@ export default defineComponent({
     height: { type: Number, default: 800 },
   },
   setup(props) {
+    let observer: MutationObserver = null;
     const wrapper: Ref<HTMLElement> = getDomRef(null);
     const actualHeight = ref(props.height);
     const getColumnHeight = (col = 0) => {
@@ -42,10 +43,15 @@ export default defineComponent({
       calculateHeight();
 
       window.addEventListener('resize', calculateHeight);
+
+      observer = new MutationObserver(calculateHeight);
+      observer.observe(wrapper.value, { attributes: true, childList: true, characterData: true, subtree: true });
     });
     onUpdated(() => calculateHeight);
     onBeforeUnmount(() => {
       window.removeEventListener('resize', calculateHeight);
+
+      observer.disconnect();
     });
 
     return {
