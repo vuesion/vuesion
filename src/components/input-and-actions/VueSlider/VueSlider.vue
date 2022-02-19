@@ -351,6 +351,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: $space-8;
 
   &.disabled {
     cursor: not-allowed;
