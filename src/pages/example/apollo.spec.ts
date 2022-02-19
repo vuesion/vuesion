@@ -17,6 +17,7 @@ describe('Apollo.vue', () => {
       jest.fn().mockResolvedValue({
         data: {
           characters: {
+            info: null,
             results: [
               {
                 image: '/image.jpg',
@@ -24,6 +25,13 @@ describe('Apollo.vue', () => {
                 species: 'species',
                 gender: 'gender',
                 status: 'status',
+                info: 'info',
+                id: 'id',
+                type: 'type',
+                origin: null,
+                location: null,
+                episode: null,
+                created: '',
               },
             ],
           },
