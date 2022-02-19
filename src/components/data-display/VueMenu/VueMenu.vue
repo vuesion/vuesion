@@ -98,7 +98,7 @@ export default defineComponent({
         !items.value[selectedItemIndex.value].disabled
       ) {
         onItemClick(items.value[selectedItemIndex.value]);
-      } else if (e.code === 'Tab') {
+      } else if (e.code === 'Tab' || e.code === 'Escape') {
         emit('close');
       } else if (e.code === 'ArrowDown') {
         handleSelection(getNewIndex('down'));
