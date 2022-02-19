@@ -121,6 +121,7 @@ story.add(
           <vue-select
             id="select"
             v-model="model"
+            style="width: 200px"
             name="select"
             :label="label"
             :hide-label="hideLabel"
@@ -133,10 +134,10 @@ story.add(
             :description="description"
             :errorMessage="errorMessage"
             :duration="duration"
-            :alignMenu="alignMenu.value"
-            :alignYMenu="alignYMenu.value"
+            :align-menu="alignMenu.value"
+            :align-y-menu="alignYMenu.value"
             :size="size.value"
-            :multiSelect="multiSelect"
+            :multi-select="multiSelect"
             :badge-status="badgeStatus.value"
           />
         </vue-inline>

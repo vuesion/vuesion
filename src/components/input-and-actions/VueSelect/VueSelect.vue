@@ -53,6 +53,7 @@
           </select>
 
           <div
+            :id="'custom-' + id"
             :data-testid="'custom-' + id"
             :aria-expanded="show.toString()"
             :class="[
@@ -189,7 +190,11 @@ export default defineComponent({
 
       menuRef.value.focus(displayItem.value);
     };
-    const close = () => (show.value = false);
+    const close = () => {
+      selectRef.value.querySelector(`#custom-${props.id}`).focus();
+
+      show.value = false;
+    };
     const onInput = (e: Event) => {
       const selected: IItem[] = [];
       const target: HTMLSelectElement = e.target as HTMLSelectElement;
