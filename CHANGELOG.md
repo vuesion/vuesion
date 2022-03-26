@@ -1,3 +1,33 @@
+### 4.8.0 (2022-03-26)
+
+##### Chores
+
+- update vee-validate ([0a1e01a0](https://github.com/vuesion/vuesion/commit/0a1e01a05b54f1e7bba047530ebf444ae2356061))
+- minor dependency update ([#595](https://github.com/vuesion/vuesion/pull/595)) ([002fb46c](https://github.com/vuesion/vuesion/commit/002fb46cf8aed706aab38e5d7acfb7a1df13bf3e))
+
+##### New Features
+
+- **vue-masonry:**
+  - add proper image handling ([350f3e87](https://github.com/vuesion/vuesion/commit/350f3e8739ac6bafa1e0121dff86c538e32914b2))
+  - recalculate height when content changes ([8eac1d1a](https://github.com/vuesion/vuesion/commit/8eac1d1a2e1c9e9aef304bcad5391f24614ec4ee))
+- **vue-select:**
+  - focus custom select when menu closes ([847450a2](https://github.com/vuesion/vuesion/commit/847450a25321f02349e169c718350eec106b28e0))
+  - support multi-select ([f6c338ea](https://github.com/vuesion/vuesion/commit/f6c338eaae23ef4278b2219a845b02d8355f8a70))
+- **vue-menu:**
+  - emit close event on esc press ([258bdf7e](https://github.com/vuesion/vuesion/commit/258bdf7e4fe2135855423c0c278537cfb8011641))
+  - emit close event on Tab press ([9b1cd674](https://github.com/vuesion/vuesion/commit/9b1cd67407ef2eb0bed6a6ac0a58cf3936326ec2))
+- **components:**
+  - add masonry layout ([b8a4de73](https://github.com/vuesion/vuesion/commit/b8a4de734543b8506318af1a28e2b772d2262ba5))
+  - add toggle-button ([f9cf4dc5](https://github.com/vuesion/vuesion/commit/f9cf4dc50ac7264c5969a541c398e341910e9ebc))
+- **vue-input:** add debounced-input event ([6e204a3f](https://github.com/vuesion/vuesion/commit/6e204a3ffaa795796c08a909deb51bfd999f6fc1))
+
+##### Bug Fixes
+
+- **components:** validation and error states ([c6d9bd0d](https://github.com/vuesion/vuesion/commit/c6d9bd0d479ec76584725f788a1dd2f5f046ea64))
+- **accordion-item:** register when mounted ([b88720e5](https://github.com/vuesion/vuesion/commit/b88720e54b6f36d1c8850449e0e5766b9b061c58))
+- **vue-slider:** increase space below label ([9425b3b2](https://github.com/vuesion/vuesion/commit/9425b3b2a453e5e14ddc97277f41d08342d9eb9a))
+- **vue-select:** add css for native/custom switch ([8240483f](https://github.com/vuesion/vuesion/commit/8240483fae2583f7531f69fba3f0dbf4db4a1e88))
+
 ### 4.7.0 (2022-01-30)
 
 ##### Documentation Changes
