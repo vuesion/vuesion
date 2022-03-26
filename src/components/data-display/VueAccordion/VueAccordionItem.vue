@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, onBeforeMount, Ref } from '@vue/composition-api';
+import { defineComponent, inject, ref, onMounted, Ref } from '@vue/composition-api';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueIconChevronRight from '@/components/icons/VueIconChevronRight.vue';
 import VueIconChevronUp from '@/components/icons/VueIconChevronUp.vue';
@@ -49,7 +49,7 @@ export default defineComponent({
     const open = ref(false);
     const click = () => openItem(idx);
 
-    onBeforeMount(() => register(idx, open, props.initOpen));
+    onMounted(() => register(idx, open, props.initOpen));
 
     return {
       register,
