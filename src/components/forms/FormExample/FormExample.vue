@@ -56,15 +56,13 @@
                       name="acceptTerms"
                       label="I accept the terms"
                       :validation="{ required: { allowFalse: false } }"
-                      required
                     />
-                    <vue-checkbox
+                    <vue-toggle
                       id="newsletterYes"
+                      v-model="model.newsletter"
                       name="newsletterYes"
                       label="I want to subscribe to the newsletter"
-                      :checked="model.newsletter === true"
-                      radio
-                      @click="model.newsletter = !model.newsletter"
+                      :validation="{ required: { allowFalse: false } }"
                     />
                   </vue-stack>
                 </vue-stack>
@@ -123,6 +121,17 @@
               </vue-column>
             </vue-columns>
 
+            <vue-textarea
+              id="notes"
+              v-model="model.notes"
+              name="notes"
+              label="Notes"
+              placeholder="Please leave some notes..."
+              required
+              description="Please add some notes."
+              error-message="This field is required."
+            />
+
             <vue-inline align="right">
               <vue-button look="secondary" type="reset"> Cancel </vue-button>
               <vue-button look="primary" :disabled="invalid" :loading="isLoading" type="submit"> Save </vue-button>
@@ -149,10 +158,14 @@ import { addToast } from '@/components/utils';
 import VueCard from '@/components/data-display/VueCard/VueCard.vue';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueToggle from '@/components/input-and-actions/VueToggle/VueToggle.vue';
+import VueTextarea from '@/components/input-and-actions/VueTextarea/VueTextarea.vue';
 
 export default defineComponent({
   name: 'FormExample',
   components: {
+    VueTextarea,
+    VueToggle,
     VueColumn,
     VueColumns,
     VueCard,
@@ -179,11 +192,12 @@ export default defineComponent({
       country: 'gl',
       acceptTerms: false,
       newsletter: false,
+      notes: '',
     });
 
     // computed
     const countryOptions = computed(() => [
-      { label: '', value: '' },
+      { label: 'None', value: null },
       { label: 'Brasil', value: 'br' },
       { label: 'Germany', value: 'de' },
       { label: 'Great Britain', value: 'uk' },

@@ -11,6 +11,11 @@ $toggle-handle-bg-hover: var(--brand-text-default-high);
 $toggle-bg-checked: var(--brand-border-info-low);
 $toggle-handle-bg-checked: var(--brand-text-info);
 
+// error
+$toggle-error-color: var(--brand-text-danger);
+$toggle-bg-error: var(--brand-border-danger-low);
+$toggle-handle-bg-error: var(--brand-text-danger);
+
 $toggle-width: $space-32;
 $toggle-height: $space-16;
 $toggle-border-radius: var(--brand-border-radius-md);

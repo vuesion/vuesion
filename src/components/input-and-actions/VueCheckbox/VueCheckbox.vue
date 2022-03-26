@@ -1,48 +1,53 @@
 <template>
   <ValidationProvider
     ref="validator"
-    :class="[$style.checkbox, disabled && $style.disabled]"
+    v-slot="{ errors }"
     :aria-label="label"
     :vid="id"
     :name="name"
     :rules="validation"
     tag="div"
-    :tabindex="disabled ? null : 0"
-    @click.native.stop.prevent="onClick"
-    @keypress.space.native.stop.prevent="onClick"
+    slim
   >
-    <div :class="$style.wrapper">
-      <input
-        :id="id"
-        type="checkbox"
-        :checked="checked"
-        :required="required"
-        :disabled="disabled"
-        v-bind="$attrs"
-        :value="checked"
-        tabindex="-1"
-      />
-      <div :class="$style.checkmark">
-        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8">
-          <path
-            d="M9.207.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L3.5 5.086 7.793.793a1 1 0 011.414 0z"
-            fill="currentColor"
-          />
-        </svg>
+    <div
+      :tabindex="disabled ? null : 0"
+      :class="[$style.vueCheckbox, disabled && $style.disabled, errors.length > 0 && $style.error]"
+      @click.stop.prevent="onClick"
+      @keypress.space.stop.prevent="onClick"
+    >
+      <div :class="$style.wrapper">
+        <input
+          :id="id"
+          type="checkbox"
+          :checked="checked"
+          :required="required"
+          :disabled="disabled"
+          v-bind="$attrs"
+          :value="checked"
+          tabindex="-1"
+        />
+        <div :class="$style.checkmark">
+          <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8">
+            <path
+              d="M9.207.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L3.5 5.086 7.793.793a1 1 0 011.414 0z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        <vue-text
+          :for="id"
+          as="label"
+          weight="semi-bold"
+          color="text-medium"
+          tabindex="-1"
+          :class="hideLabel && 'sr-only'"
+          v-html="label"
+        />
       </div>
-      <vue-text
-        :for="id"
-        as="label"
-        weight="semi-bold"
-        color="text-medium"
-        tabindex="-1"
-        :class="hideLabel && 'sr-only'"
-        v-html="label"
-      />
+      <vue-text v-if="description" :class="$style.description" as="div">
+        {{ description }}
+      </vue-text>
     </div>
-    <vue-text v-if="description" :class="$style.description" as="div">
-      {{ description }}
-    </vue-text>
   </ValidationProvider>
 </template>
 
@@ -50,6 +55,7 @@
 import { defineComponent } from '@vue/composition-api';
 import { ValidationProvider } from 'vee-validate';
 import VueText from '@/components/typography/VueText/VueText.vue';
+import { getDomRef } from '@/composables/get-dom-ref';
 
 export default defineComponent({
   name: 'VueCheckbox',
@@ -71,15 +77,19 @@ export default defineComponent({
     checked: { type: Boolean, default: false },
   },
   setup(props, { emit }) {
+    const validator = getDomRef(null);
     const onClick = (e: Event) => {
       e.preventDefault();
 
       if (!props.disabled) {
+        validator.value.reset();
+        validator.value.validate(!props.checked);
         emit('click', !props.checked);
       }
     };
 
     return {
+      validator,
       onClick,
     };
   },
@@ -88,7 +98,7 @@ export default defineComponent({
 
 <style lang="scss" module>
 @import '~@/assets/_design-system';
-.checkbox {
+.vueCheckbox {
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -160,6 +170,21 @@ export default defineComponent({
 
   &.disabled {
     opacity: $checkbox-disabled-disabled-opacity;
+  }
+
+  &.error {
+    .description,
+    label {
+      color: $checkbox-error-color;
+    }
+    .checkmark {
+      border-color: $checkbox-error-color;
+    }
+    &:hover {
+      input ~ .checkmark {
+        border-color: $checkbox-error-color;
+      }
+    }
   }
 }
 </style>

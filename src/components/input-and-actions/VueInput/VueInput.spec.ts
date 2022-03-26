@@ -88,7 +88,7 @@ describe('VueInput.vue', () => {
   });
 
   test('should display error state', async () => {
-    const { getByText, getByDisplayValue } = render(VueInput, {
+    const { getByText, getByLabelText } = render(VueInput, {
       propsData: {
         label: 'this is the label',
         errorMessage: 'this is the error',
@@ -99,7 +99,8 @@ describe('VueInput.vue', () => {
       },
     });
 
-    await fireEvent.update(getByDisplayValue('this is the value'), 'foo bar');
+    await fireEvent.update(getByLabelText('this is the label'), 'foo bar');
+    await fireEvent.blur(getByLabelText('this is the label'));
     await flushPromises();
 
     getByText('this is the label');

@@ -1,35 +1,40 @@
 <template>
   <ValidationProvider
     ref="validator"
-    :class="[$style.vueToggle, disabled && $style.disabled]"
+    v-slot="{ errors }"
     :aria-label="label"
     :vid="id"
     :name="name"
     :rules="validation"
     tag="div"
-    :tabindex="disabled ? null : 0"
-    @click.native.stop.prevent="onClick"
-    @keypress.space.native.stop.prevent="onClick"
+    slim
   >
-    <div :class="$style.wrapper" @click.stop.prevent="onClick">
-      <input
-        :id="id"
-        type="checkbox"
-        :checked="checked"
-        :required="required"
-        :disabled="disabled"
-        v-bind="$attrs"
-        :value="checked"
-        tabindex="-1"
-      />
-      <div :class="$style.toggle" @click.stop.prevent="onClick">
-        <div :class="$style.handle" :aria-checked="checked ? 'true' : 'false'" role="checkbox" />
+    <div
+      :tabindex="disabled ? null : 0"
+      :class="[$style.vueToggle, disabled && $style.disabled, errors.length > 0 && $style.error]"
+      @click.stop.prevent="onClick"
+      @keypress.space.stop.prevent="onClick"
+    >
+      <div :class="$style.wrapper" @click.stop.prevent="onClick">
+        <input
+          :id="id"
+          type="checkbox"
+          :checked="checked"
+          :required="required"
+          :disabled="disabled"
+          v-bind="$attrs"
+          :value="checked"
+          tabindex="-1"
+        />
+        <div :class="$style.toggle" @click.stop.prevent="onClick">
+          <div :class="$style.handle" :aria-checked="checked ? 'true' : 'false'" role="checkbox" />
+        </div>
+        <vue-text :for="id" as="label" weight="semi-bold" color="text-medium" tabindex="-1" v-html="label" />
       </div>
-      <vue-text :for="id" as="label" weight="semi-bold" color="text-medium" tabindex="-1" v-html="label" />
+      <vue-text v-if="description" :class="$style.description" as="div">
+        {{ description }}
+      </vue-text>
     </div>
-    <vue-text v-if="description" :class="$style.description" as="div">
-      {{ description }}
-    </vue-text>
   </ValidationProvider>
 </template>
 
@@ -37,6 +42,7 @@
 import { defineComponent } from '@vue/composition-api';
 import { ValidationProvider } from 'vee-validate';
 import VueText from '@/components/typography/VueText/VueText.vue';
+import { getDomRef } from '@/composables/get-dom-ref';
 
 export default defineComponent({
   name: 'VueToggle',
@@ -57,15 +63,19 @@ export default defineComponent({
     checked: { type: Boolean, default: false },
   },
   setup(props, { emit }) {
+    const validator = getDomRef(null);
     const onClick = (e: Event) => {
       e.preventDefault();
 
       if (!props.disabled) {
+        validator.value.reset();
+        validator.value.validate(!props.checked);
         emit('click', !props.checked);
       }
     };
 
     return {
+      validator,
       onClick,
     };
   },
@@ -149,6 +159,27 @@ export default defineComponent({
 
   &.disabled {
     opacity: $toggle-disabled-opacity;
+  }
+
+  &.error {
+    .description,
+    label {
+      color: $toggle-error-color;
+    }
+    .toggle {
+      background: $toggle-bg-error;
+      .handle {
+        background: $toggle-handle-bg-error;
+      }
+    }
+    &:hover {
+      input ~ .toggle {
+        background: $toggle-bg-error;
+        .handle {
+          background: $toggle-handle-bg-error;
+        }
+      }
+    }
   }
 }
 </style>

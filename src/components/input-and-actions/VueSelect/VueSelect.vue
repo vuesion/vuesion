@@ -1,13 +1,6 @@
 <template>
   <div ref="selectRef" :class="$style.vueSelect">
-    <ValidationProvider
-      v-slot="{ errors, validate }"
-      ref="validator"
-      :vid="id"
-      :name="name"
-      :rules="validation"
-      tag="div"
-    >
+    <ValidationProvider v-slot="{ errors }" ref="validator" :vid="id" :name="name" :rules="validation" tag="div">
       <div :class="[disabled && $style.disabled, errors.length > 0 && $style.error]" @keydown="onKeyDown">
         <vue-text
           :for="id"
@@ -65,7 +58,6 @@
             :tabindex="disabled ? -1 : 0"
             role="listbox"
             @click.stop.prevent="toggleMenu"
-            @blur="validate"
           >
             {{ displayItem ? displayItem.label : placeholder }}
           </div>
@@ -146,6 +138,7 @@ export default defineComponent({
     badgeStatus: { type: String, validator: badgeStatusesValidator, default: 'info' },
   },
   setup(props, { emit }) {
+    const validator = getDomRef(null);
     const selectRef = getDomRef(null);
     const menuRef = getDomRef(null);
     const show = ref(false);
@@ -196,6 +189,8 @@ export default defineComponent({
       show.value = false;
     };
     const onInput = (e: Event) => {
+      validator.value.reset();
+
       const selected: IItem[] = [];
       const target: HTMLSelectElement = e.target as HTMLSelectElement;
       const length: number = target.options.length;
@@ -208,19 +203,25 @@ export default defineComponent({
         }
       }
 
+      validator.value.validate(props.multiSelect ? selected : selected[0]);
+
       emit('input', props.multiSelect ? selected : selected[0]);
     };
     const onItemClick = (item: IItem) => {
+      validator.value.reset();
+
       if (props.multiSelect) {
         const selectedValues = inputValue.value.includes(item.value)
           ? inputValue.value.filter((value) => value !== item.value)
           : [...inputValue.value, item.value];
 
+        validator.value.validate(selectedValues.length === 0 ? null : true);
         emit(
           'input',
           props.items.filter((i) => selectedValues.includes(i.value)),
         );
       } else {
+        validator.value.validate(item.value);
         emit('input', item);
         close();
       }
@@ -254,6 +255,7 @@ export default defineComponent({
     useOutsideClick(selectRef, () => close());
 
     return {
+      validator,
       selectRef,
       menuRef,
       show,

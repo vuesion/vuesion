@@ -1,15 +1,9 @@
 <template>
-  <ValidationProvider
-    ref="validator"
-    :class="[$style.radio, disabled && $style.disabled]"
-    :aria-label="label"
-    :vid="id"
-    :name="name"
-    :rules="validation"
-    tag="div"
+  <div
     :tabindex="disabled ? null : 0"
-    @click.native.stop.prevent="onClick"
-    @keypress.space.native.stop.prevent="onClick"
+    :class="[$style.VueRadio, disabled && $style.disabled]"
+    @click.stop.prevent="onClick"
+    @keypress.space.stop.prevent="onClick"
   >
     <div :class="$style.wrapper">
       <input
@@ -33,17 +27,16 @@
     <vue-text v-if="description" :class="$style.description" as="div">
       {{ description }}
     </vue-text>
-  </ValidationProvider>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { ValidationProvider } from 'vee-validate';
 import VueText from '@/components/typography/VueText/VueText.vue';
 
 export default defineComponent({
   name: 'VueRadio',
-  components: { VueText, ValidationProvider },
+  components: { VueText },
   inheritAttrs: false,
   model: {
     event: 'click',
@@ -76,7 +69,7 @@ export default defineComponent({
 
 <style lang="scss" module>
 @import '~@/assets/_design-system';
-.radio {
+.VueRadio {
   display: inline-block;
   position: relative;
   cursor: pointer;

@@ -1,5 +1,5 @@
 <template>
-  <ValidationProvider v-slot="{ errors }" ref="validator" :vid="id" :name="name" :rules="validation" tag="div">
+  <ValidationProvider v-slot="{ errors }" ref="validator" :vid="id" :name="name" :rules="validation" tag="div" slim>
     <div :class="[$style.vueTextarea, disabled && $style.disabled, errors.length > 0 && $style.error]">
       <vue-text
         :for="id"
