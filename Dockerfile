@@ -6,7 +6,7 @@
 # 2. Run: docker build -t vuesion .
 # 3. Run: docker run -p 3000:3000 vuesion
 
-FROM node:12.11.0-alpine
+FROM node:14-alpine
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 WORKDIR app
