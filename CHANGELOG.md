@@ -1,3 +1,22 @@
+#### 4.8.1 (2022-04-08)
+
+##### Chores
+
+- **node:** upgrade to version 14 ([65566905](https://github.com/vuesion/vuesion/commit/655669052bcbf1d54124715202c4fbd599e8a17e))
+
+##### Continuous Integration
+
+- **pull-request:** only checkout privat repos for org members ([bd21421f](https://github.com/vuesion/vuesion/commit/bd21421f2664d6f10068a121a907ae8d72ef4082))
+
+##### Documentation Changes
+
+- **README.md:** fix grammar typo ([#597](https://github.com/vuesion/vuesion/pull/597)) ([d14ad61b](https://github.com/vuesion/vuesion/commit/d14ad61b6f2eb755e0a05999a46caf320f6b37d5))
+
+##### Bug Fixes
+
+- **landing-page-header:** use dynamic storybook link ([d407a791](https://github.com/vuesion/vuesion/commit/d407a791d5921a76c9e7ab228ed2f0bec08c33c4))
+- **vue-select:** don't focus input after outside click ([76284345](https://github.com/vuesion/vuesion/commit/762843453e8084a6da0463b8d1433f088c2609a5))
+
 ### 4.8.0 (2022-03-26)
 
 ##### Chores
