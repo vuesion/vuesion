@@ -183,8 +183,10 @@ export default defineComponent({
 
       menuRef.value.focus(displayItem.value);
     };
-    const close = () => {
-      selectRef.value.querySelector(`#custom-${props.id}`).focus();
+    const close = (focusInput = true) => {
+      if (focusInput) {
+        selectRef.value.querySelector(`#custom-${props.id}`).focus();
+      }
 
       show.value = false;
     };
@@ -252,7 +254,7 @@ export default defineComponent({
       }
     };
 
-    useOutsideClick(selectRef, () => close());
+    useOutsideClick(selectRef, () => close(false));
 
     return {
       validator,
