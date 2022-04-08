@@ -49,13 +49,7 @@
       </vue-stack>
     </vue-box>
 
-    <a
-      tabindex="0"
-      href="https://vuesion.herokuapp.com/storybook/"
-      target="_blank"
-      rel="noopener"
-      aria-label="vuesion storybook"
-    >
+    <a tabindex="0" href="/storybook" target="_blank" rel="noopener" aria-label="vuesion storybook">
       <div
         :class="[$style.leftImage, $style.content]"
         :style="{ backgroundImage: 'url(/images/storybook-small.png)' }"
