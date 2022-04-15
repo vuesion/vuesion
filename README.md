@@ -19,6 +19,10 @@ Please visit the **[vuesion app on heroku!](https://vuesion.herokuapp.com/)**
 
 Or have a look into the future and visit the **[vuesion-next app on heroku!](https://vuesion-next.herokuapp.com/)**
 
+# [Get started](https://vuesion.github.io/docs/en/v4/guide/install.html)
+
+# [Documentation](https://vuesion.github.io/docs/en/v4/)
+
 # Features
 
 ## Testing
@@ -73,18 +77,6 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 - [Composition-api module](https://composition-api.nuxtjs.org/)
 - [Anime.js](https://animejs.com/) integration
 
-# Getting started
-
-> Important note for **Windows users only**: https://github.com/zkat/npx/issues/146#issuecomment-384016791
-
-1. Run `npx @vuesion/create [project-name]` for example `npx @vuesion/create my-app` _(try the latest version by adding the `--next` flag)_
-2. Change directory `cd my-app`
-3. Run `npm run dev`
-
-# Documentation
-
-**[https://vuesion.github.io/docs/en/v4/](https://vuesion.github.io/docs/en/v4/)**
-
 # Support this project
 
 - [Give a :star:!](https://github.com/vuesion/vuesion/stargazers)
@@ -137,6 +129,11 @@ Thanks goes to these wonderful people:
     <td align="center"><a href="https://www.paulvogel.me/"><img src="https://avatars.githubusercontent.com/u/4786628?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Paul Vogel</b></sub></a><br /><a href="https://github.com/vuesion/vuesion/commits?author=pavog" title="Documentation">📖</a></td>
     <td align="center"><a href="https://fuzinato.com/"><img src="https://avatars.githubusercontent.com/u/3132724?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Dario Fuzinato</b></sub></a><br /><a href="https://github.com/vuesion/vuesion/commits?author=fuzinato" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/maks232"><img src="https://avatars.githubusercontent.com/u/166910?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Maksim Bock</b></sub></a><br /><a href="https://github.com/vuesion/vuesion/commits?author=maks232" title="Tests">⚠️</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://loopios7.xyz/"><img src="https://avatars.githubusercontent.com/u/40054139?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Dan</b></sub></a><br /><a href="https://github.com/vuesion/vuesion/issues?q=author%3ALoopios7" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/manuasir"><img src="https://avatars.githubusercontent.com/u/10210567?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Manuel J. Bernal</b></sub></a><br /><a href="https://github.com/vuesion/vuesion/commits?author=manuasir" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/drsugiaichigo00781vn"><img src="https://avatars.githubusercontent.com/u/23171740?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Nguyen Kim Bang</b></sub></a><br /><a href="https://github.com/vuesion/vuesion/commits?author=drsugiaichigo00781vn" title="Documentation">📖</a></td>
   </tr>
 </table>
 

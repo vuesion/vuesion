@@ -272,6 +272,33 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "Loopios7",
+      "name": "Dan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40054139?v=4",
+      "profile": "https://loopios7.xyz/",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "manuasir",
+      "name": "Manuel J. Bernal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10210567?v=4",
+      "profile": "https://github.com/manuasir",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "drsugiaichigo00781vn",
+      "name": "Nguyen Kim Bang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23171740?v=4",
+      "profile": "https://github.com/drsugiaichigo00781vn",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "commitConvention": "none"
