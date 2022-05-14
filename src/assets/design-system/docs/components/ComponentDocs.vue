@@ -12,6 +12,9 @@
           >
             Get Early Access
           </vue-button>
+          <vue-button v-if="buyLink" look="primary" as="a" target="_blank" rel="noopener" :href="buyLink">
+            Buy
+          </vue-button>
         </vue-inline>
 
         <vue-text color="text-high" look="description">{{ usage }}</vue-text>
@@ -47,6 +50,7 @@ export default {
     story: { type: String, default: null },
     suffix: { type: String, default: 'Usage' },
     showDisclaimer: { type: Boolean, default: false },
+    buyLink: { type: String, default: null },
   },
 };
 </script>
