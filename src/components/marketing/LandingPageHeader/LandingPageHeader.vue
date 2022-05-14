@@ -26,7 +26,7 @@
           <a
             :class="[$style.button, $style.content]"
             tabindex="0"
-            href="https://github.com/vuesion/vuesion#getting-started"
+            href="https://vuesion.github.io/docs/en/v4/guide/install.html"
             target="_blank"
             rel="noopener"
           >

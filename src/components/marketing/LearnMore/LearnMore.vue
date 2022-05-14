@@ -25,8 +25,12 @@
                           the Vuesion repository, and installs dependencies. After the process has finished,
                           <code>cd my-app</code> and run <code>npm run dev</code>. Have fun!
                         </vue-text>
-                        <a href="https://github.com/vuesion/vuesion#getting-started" target="_blank" rel="noopener">
-                          Read instructions on Github <vue-icon-arrow-right />
+                        <a
+                          href="https://vuesion.github.io/docs/en/v4/guide/install.html"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          Read the docs <vue-icon-arrow-right />
                         </a>
                       </vue-stack>
                     </vue-column>
