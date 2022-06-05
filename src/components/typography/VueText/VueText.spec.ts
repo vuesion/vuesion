@@ -1,5 +1,5 @@
-import {describe, test, expect} from 'vitest'
-import {render} from '@testing-library/vue';
+import { describe, test, expect } from 'vitest';
+import { render } from '@testing-library/vue';
 import VueText from './VueText.vue';
 
 const textColorVariations = [
@@ -17,7 +17,7 @@ const textColorVariations = [
 
 describe('VueText.vue', () => {
   test('renders component', () => {
-    const {getByText} = render(VueText, {
+    const { getByText } = render(VueText, {
       slots: {
         default: 'VueText',
       },
@@ -28,7 +28,7 @@ describe('VueText.vue', () => {
 
   test('renders color variations', () => {
     textColorVariations.forEach((variation: string) => {
-      const {html} = render(VueText, {
+      const { html } = render(VueText, {
         props: {
           color: variation,
         },
@@ -39,7 +39,7 @@ describe('VueText.vue', () => {
   });
 
   test('renders responsive alignment', () => {
-    const {html} = render(VueText, {
+    const { html } = render(VueText, {
       slots: {
         default: 'VueText',
       },

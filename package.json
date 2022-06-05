@@ -34,6 +34,7 @@
   "scripts": {
     "dev": "nuxt dev -o",
     "test": "vitest run --coverage",
+    "prettier": "prettier --config .prettierrc --ignore-path .prettierignore --write ./**/*.{ts,vue,md,json,js,yml} --loglevel error",
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview"
@@ -45,6 +46,7 @@
     "c8": "7.11.3",
     "happy-dom": "5.0.0",
     "nuxt": "3.0.0-rc.3",
+    "prettier": "2.6.2",
     "sass": "1.52.2",
     "sass-loader": "13.0.0",
     "vitest": "0.14.0"

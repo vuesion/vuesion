@@ -1,6 +1,6 @@
 import isArray from 'lodash/isArray';
-import {brandBreakpoints} from '@/components/prop-validators';
-import {IBreakpoints} from '@/interfaces/IBreakpoints';
+import { brandBreakpoints } from '@/components/prop-validators';
+import { IBreakpoints } from '@/interfaces/IBreakpoints';
 
 export const isNullOrUndefined = (value: any) =>
   value === null || value === undefined || value === 'null' || value === 'undefined';
@@ -8,9 +8,9 @@ export const isNullOrUndefined = (value: any) =>
 export const parseCssSpacingProp = (spacingPropValue: string) => {
   const values = !isNullOrUndefined(spacingPropValue)
     ? spacingPropValue
-      .toString()
-      .split(' ')
-      .map((value) => value)
+        .toString()
+        .split(' ')
+        .map((value) => value)
     : null;
 
   if (values === null) {
