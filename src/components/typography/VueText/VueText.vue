@@ -1,7 +1,7 @@
 <template>
   <component
-      :is="as"
-      :class="[
+    :is="as"
+    :class="[
       $style.vueText,
       $style[color],
       $style[look],
@@ -13,14 +13,14 @@
       ...alignCssClasses,
     ]"
   >
-    <slot/>
+    <slot />
   </component>
 </template>
 
 <script setup lang="ts">
-import {computed, useCssModule} from 'vue'
-import {getResponsiveCssClasses, parseResponsivePropValue} from "@/components/utils";
-import {FontWeight, HorizontalAlignment, TextColor, TextStyle} from "@/components/prop-types";
+import { computed, useCssModule } from 'vue';
+import { getResponsiveCssClasses, parseResponsivePropValue } from '@/components/utils';
+import { FontWeight, HorizontalAlignment, TextColor, TextStyle } from '@/components/prop-types';
 
 interface TextProps {
   as?: string;
@@ -44,7 +44,7 @@ const props = withDefaults(defineProps<TextProps>(), {
   alignX: null,
 });
 const $style = useCssModule();
-const responsiveAlignments = computed(() => parseResponsivePropValue(props.alignX))
+const responsiveAlignments = computed(() => parseResponsivePropValue(props.alignX));
 const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiveAlignments.value, 'align'));
 </script>
 

@@ -1,8 +1,12 @@
 <template>
   <vue-stack space="16" :class="$style.colorTokensSection">
     <vue-stack space="10">
-      <vue-text color="text-high" look="h3" weight="semi-bold">{{ title }}</vue-text>
-      <vue-text look="description">{{ description }}</vue-text>
+      <vue-text color="text-high" look="h3" weight="semi-bold">
+        {{ title }}
+      </vue-text>
+      <vue-text look="description">
+        {{ description }}
+      </vue-text>
     </vue-stack>
 
     <vue-tiles space="0" :columns="[1, 2, 3]">

@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/vue';
+import VueText from './VueText.vue';
 import { textColorVariations } from '@/components/prop-validators';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 import UtilityTokenSection from '@/assets/design-system/docs/components/UtilityTokenSection.vue';
@@ -6,7 +7,6 @@ import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import ColorTokensSection from '@/assets/design-system/docs/components/ColorTokensSection.vue';
-import VueText from './VueText.vue';
 
 const story = storiesOf('Foundation|Typography', module) as any;
 

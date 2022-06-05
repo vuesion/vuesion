@@ -7,6 +7,13 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
+    coverage: {
+      reporter: ['html', 'lcov', 'text'],
+      branches: 5,
+      functions: 5,
+      statements: 5,
+      lines: 5,
+    },
   },
   resolve: {
     alias: {

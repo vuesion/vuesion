@@ -1,4 +1,6 @@
 import { storiesOf } from '@storybook/vue';
+import ColorTokens from './components/ColorTokens.vue';
+import ColorPalette from './components/ColorPalette.vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueMarkdown from '@/components/data-display/VueMarkdown/VueMarkdown.vue';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
@@ -7,8 +9,6 @@ import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import TokenItem from '@/assets/design-system/docs/components/TokenItem.vue';
 import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
-import ColorTokens from './components/ColorTokens.vue';
-import ColorPalette from './components/ColorPalette.vue';
 
 let story = storiesOf('Foundation|Intro', module) as any;
 

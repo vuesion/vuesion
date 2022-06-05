@@ -1,7 +1,7 @@
 <template>
   <div id="app" :class="$style.app">
     <main :class="$style.content">
-      <slot/>
+      <slot />
     </main>
   </div>
 </template>

@@ -10,7 +10,7 @@
         align="center"
         :style="{ background: color.hex, color: color.color, width: '80px', height: '80px' }"
       >
-        <vue-text look="support" align="center">{{ color.name }}<br />({{ color.hex }})</vue-text>
+        <vue-text look="support" align="center"> {{ color.name }}<br />({{ color.hex }}) </vue-text>
       </vue-box>
     </vue-tiles>
   </vue-stack>

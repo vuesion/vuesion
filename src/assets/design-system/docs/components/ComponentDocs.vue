@@ -3,7 +3,9 @@
     <vue-stack space="32">
       <vue-stack v-if="componentName && usage" space="8">
         <vue-inline align-y="center" :space="[8, 24]">
-          <vue-text color="text-high" look="large-title" weight="semi-bold">{{ componentName }} {{ suffix }}</vue-text>
+          <vue-text color="text-high" look="large-title" weight="semi-bold">
+            {{ componentName }} {{ suffix }}
+          </vue-text>
           <vue-button
             v-if="showDisclaimer"
             look="primary"
@@ -17,12 +19,16 @@
           </vue-button>
         </vue-inline>
 
-        <vue-text color="text-high" look="description">{{ usage }}</vue-text>
+        <vue-text color="text-high" look="description">
+          {{ usage }}
+        </vue-text>
       </vue-stack>
 
       <vue-stack v-if="story" space="8">
-        <vue-text color="text-high" look="large-title" weight="semi-bold">Story</vue-text>
-        <vue-text color="text-high" look="description">{{ story }}</vue-text>
+        <vue-text color="text-high" look="large-title" weight="semi-bold"> Story </vue-text>
+        <vue-text color="text-high" look="description">
+          {{ story }}
+        </vue-text>
       </vue-stack>
 
       <vue-card :style="{ position: 'relative' }">
