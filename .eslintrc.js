@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
   env: {
     browser: true,
@@ -12,6 +10,8 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     '@nuxtjs/eslint-config-typescript',
     'prettier',
+    'plugin:storybook/recommended',
+    'plugin:storybook/recommended',
   ],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -20,7 +20,7 @@ module.exports = {
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {
-    'comma-dangle': ['error', 'always'],
+    'comma-dangle': ['error', 'always-multiline'],
     'array-bracket-spacing': ['error', 'never'],
     '@typescript-eslint/no-explicit-any': 0,
     'vue/multi-word-component-names': 0,
