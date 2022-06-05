@@ -60,6 +60,7 @@
     "@typescript-eslint/eslint-plugin": "5.27.0",
     "@typescript-eslint/parser": "5.27.0",
     "@vitejs/plugin-vue": "2.3.3",
+    "@vuesion/storybook-theme-switcher": "4.0.0-beta.4",
     "babel-loader": "8.2.5",
     "c8": "7.11.3",
     "concurrently": "7.2.1",

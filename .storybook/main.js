@@ -6,7 +6,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    // '@vuesion/storybook-theme-switcher/register',
+    '@vuesion/storybook-theme-switcher',
   ],
   framework: '@storybook/vue3',
   core: {
