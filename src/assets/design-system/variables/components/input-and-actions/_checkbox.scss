@@ -1,0 +1,23 @@
+// Checkmark states
+// default
+$checkbox-checkmark-bg: transparent;
+$checkbox-checkmark-color: var(--brand-text-inverse-high);
+$checkbox-checkmark-border: 1px solid var(--brand-border-default-medium);
+
+// hover
+$checkbox-checkmark-bg-hover: transparent;
+$checkbox-checkmark-border-hover: 1px solid var(--brand-border-default-medium);
+
+// checked
+$checkbox-checkmark-bg-checked: var(--brand-interaction-primary-enabled);
+$checkbox-checkmark-border-checked: 1px solid var(--brand-interaction-primary-enabled);
+
+// Checkmark
+$checkbox-checkmark-size: $space-16;
+$checkbox-checkmark-border-radius: var(--brand-border-radius-sm);
+$checkbox-checkmark-outline: var(--brand-focused);
+
+// Checkbox
+$checkbox-label-gap: $space-8;
+$checkbox-disabled-disabled-opacity: 0.3;
+$checkbox-error-color: var(--brand-text-danger);

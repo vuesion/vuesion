@@ -1,0 +1,27 @@
+// Sidebar
+$sidebar-bg: var(--brand-surface-default-high);
+$sidebar-height: 100%;
+$sidebar-group-item-padding: 0 $space-12;
+$sidebar-width: $space-120 * 2;
+$sidebar-index: 1999;
+$sidebar-outline: var(--brand-focused);
+
+// Group
+$sidebar-group-icon-size: $space-16;
+$sidebar-group-icon-border-radius: var(--brand-border-radius-xs);
+
+// Group item
+$sidebar-group-item-height: $space-32;
+$sidebar-group-item-icon-size: $space-20;
+$sidebar-group-item-border-radius: var(--brand-border-radius-sm);
+$sidebar-group-item-color: var(--brand-text-default-medium);
+$sidebar-group-item-bg: $sidebar-bg;
+$sidebar-group-item-gap: $space-4;
+
+// hover
+$sidebar-group-item-color-hover: var(--brand-surface-default-medium);
+$sidebar-group-item-bg-hover: var(--brand-text-default-medium);
+
+// active
+$sidebar-group-item-color-active: var(--brand-text-default-medium);
+$sidebar-group-item-bg-active: var(--brand-interaction-neutral-hovered);

@@ -1,0 +1,20 @@
+$menu-z-index: 1000;
+$menu-bg: var(--brand-surface-default-high);
+$menu-min-width: $space-120 + $space-72;
+$menu-max-height: $space-120 * 1.5;
+$menu-padding: $space-8 0;
+$menu-shadow: var(--brand-elevation-3);
+$menu-border-radius: var(--brand-border-radius-md);
+$menu-border: 1px solid var(--brand-border-default-low);
+
+// item
+$menu-item-color: var(--brand-text-default-high);
+$menu-item-padding: $space-10 $space-12;
+$menu-item-bg-active: var(--brand-surface-info-low);
+$menu-item-color-active: var(--brand-text-default-high);
+$menu-item-icon-size: $space-20;
+$menu-item-icon-size-gap: $space-8;
+$menu-item-disabled-opacity: 0.6;
+
+// separator
+$menu-separator-border: 1px solid var(--brand-border-default-low);

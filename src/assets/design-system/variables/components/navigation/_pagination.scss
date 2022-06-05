@@ -1,0 +1,54 @@
+$pagination-border: 1px solid var(--brand-border-default-medium);
+$pagination-padding-top: $space-8;
+
+// buttons
+$pagination-button-size: $space-48;
+$pagination-button-border: 1px solid var(--brand-border-default-low);
+$pagination-button-border-radius: 50%;
+$pagination-button-shadow: var(--brand-elevation-1);
+$pagination-button-disabled-opacity: 0.3;
+$pagination-button-icon-size: $space-20;
+$pagination-button-pages-gap: $space-24;
+$pagination-button-slim-gap: $space-8;
+
+// default
+$pagination-button-bg: var(--brand-interaction-neutral-enabled);
+$pagination-button-color: var(--brand-text-default-medium);
+
+// focus
+$pagination-button-outline: var(--brand-focused);
+$pagination-button-bg-focus: var(--brand-interaction-neutral-enabled);
+$pagination-button-color-focus: var(--brand-text-default-medium);
+
+//hover
+$pagination-button-bg-hover: var(--brand-interaction-neutral-hovered);
+$pagination-button-color-hover: var(--brand-text-default-medium);
+
+//active
+$pagination-button-bg-active: var(--brand-interaction-neutral-enabled);
+$pagination-button-color-active: var(--brand-text-default-medium);
+
+// page item
+$pagination-item-padding: $space-24 $space-16 $space-16 $space-16;
+$pagination-item-min-width: $space-64;
+
+// default
+$pagination-item-color: var(--brand-text-default-low);
+$pagination-item-bg: transparent;
+$pagination-item-border: 1px solid var(--brand-border-default-medium);
+
+// active
+$pagination-item-color-active: var(--brand-interaction-primary-enabled);
+$pagination-item-bg-active: transparent;
+$pagination-item-border-active: 2px solid var(--brand-interaction-primary-enabled);
+
+// focus
+$pagination-item-outline: var(--brand-focused);
+$pagination-item-color-focus: var(--brand-text-default-low);
+$pagination-item-bg-focus: transparent;
+$pagination-item-border-focus: 1px solid var(--brand-border-default-medium);
+
+// hover
+$pagination-item-color-hover: var(--brand-text-default-medium);
+$pagination-item-bg-hover: var(--brand-interaction-neutral-hovered);
+$pagination-item-border-hover: 1px solid var(--brand-border-default-medium);

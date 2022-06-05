@@ -1,0 +1,17 @@
+$breadcrumb-separator: '/';
+$breadcrumb-separator-padding: $space-8;
+
+// home
+$breadcrumb-home-icon-size: $space-20;
+$breadcrumb-home-padding: $space-2 $space-8;
+
+// item
+$breadcrumb-item-padding: $space-4 $space-8;
+$breadcrumb-item-height: $space-24;
+$breadcrumb-item-text-decoration: none;
+$breadcrumb-item-border: none;
+$breadcrumb-item-border-radius: var(--brand-border-radius-sm);
+$breadcrumb-item-outline: var(--brand-focused);
+
+// hover
+$breadcrumb-item-bg-hover: var(--brand-interaction-neutral-hovered);

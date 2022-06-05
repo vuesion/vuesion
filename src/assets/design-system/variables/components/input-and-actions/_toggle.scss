@@ -1,0 +1,29 @@
+// toggle states
+// default
+$toggle-bg: var(--brand-surface-default-low);
+$toggle-handle-bg: var(--brand-text-default-high);
+
+// hover
+$toggle-bg-hover: var(--brand-surface-default-low);
+$toggle-handle-bg-hover: var(--brand-text-default-high);
+
+// checked
+$toggle-bg-checked: var(--brand-border-info-low);
+$toggle-handle-bg-checked: var(--brand-text-info);
+
+// error
+$toggle-error-color: var(--brand-text-danger);
+$toggle-bg-error: var(--brand-border-danger-low);
+$toggle-handle-bg-error: var(--brand-text-danger);
+
+$toggle-width: $space-32;
+$toggle-height: $space-16;
+$toggle-border-radius: var(--brand-border-radius-md);
+
+$toggle-handle-width: $toggle-height - $space-4;
+$toggle-handle-height: $toggle-height - $space-4;
+$toggle-handle-border-radius: 50%;
+
+$toggle-label-gap: $space-8;
+$toggle-outline: var(--brand-focused);
+$toggle-disabled-opacity: 0.3;

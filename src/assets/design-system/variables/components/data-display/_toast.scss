@@ -1,0 +1,27 @@
+$toast-position-left: unset;
+$toast-position-top: $navbar-height;
+$toast-position-right: $space-16;
+$toast-position-bottom: unset;
+$toast-index: 9999;
+$toast-border-radius: var(--brand-border-radius-md);
+$toast-elevation: var(--brand-elevation-3);
+$toast-gap: $space-24;
+$toast-icons-size: $space-20;
+$toast-max-width: 344px;
+$toast-transition: all var(--brand-transition-duration) ease-in-out;
+
+// info
+$toast-info-bg: var(--brand-surface-info-low);
+$toast-info-border: 1px solid var(--brand-border-info-low);
+
+// warning
+$toast-warning-bg: var(--brand-surface-warning-low);
+$toast-warning-border: 1px solid var(--brand-border-warning-low);
+
+// danger
+$toast-danger-bg: var(--brand-surface-danger-low);
+$toast-danger-border: 1px solid var(--brand-border-danger-low);
+
+// success
+$toast-success-bg: var(--brand-surface-success-low);
+$toast-success-border: 1px solid var(--brand-border-success-low);

@@ -1,0 +1,118 @@
+/**
+ Variable Nomenclature:
+ 1. Brand (global namespace)
+ 2. Application (css property or purpose)
+ 3. Brand Variation (primary, warning, danger, success, inverse, default)
+ 4. Emphasis (optional)
+ 5. State (optional)
+*/
+
+:root.light {
+  /* Brand Variations */
+  --brand-primary: #{palette-color-level('primary', 7)};
+  --brand-neutral: #{palette-color-level('neutral', 7)};
+  --brand-success: #{palette-color-level('success', 7)};
+  --brand-info: #{palette-color-level('info', 7)};
+  --brand-warning: #{palette-color-level('warning', 7)};
+  --brand-danger: #{palette-color-level('danger', 7)};
+
+  /* Background Colors */
+  --brand-bg-default-high: #{palette-color-level('neutral', 1)};
+  --brand-bg-default-medium: #{palette-color-level('neutral', 2)};
+  --brand-bg-default-low: #{palette-color-level('neutral', 3)};
+  --brand-bg-inverse-high: #{palette-color-level('neutral', 10)};
+  --brand-bg-inverse-medium: #{palette-color-level('neutral', 9)};
+  --brand-bg-inverse-low: #{palette-color-level('neutral', 8)};
+
+  /* Surface Colors */
+  --brand-surface-default-high: #{palette-color-level('neutral', 0)};
+  --brand-surface-default-medium: #{palette-color-level('neutral', 1)};
+  --brand-surface-default-low: #{palette-color-level('neutral', 2)};
+  --brand-surface-inverse-high: #{palette-color-level('neutral', 9)};
+  --brand-surface-inverse-medium: #{palette-color-level('neutral', 8)};
+  --brand-surface-inverse-low: #{palette-color-level('neutral', 7)};
+  --brand-surface-info-high: #{palette-color-level('info', 3)};
+  --brand-surface-info-medium: #{palette-color-level('info', 2)};
+  --brand-surface-info-low: #{palette-color-level('info', 1)};
+  --brand-surface-danger-high: #{palette-color-level('danger', 3)};
+  --brand-surface-danger-medium: #{palette-color-level('danger', 2)};
+  --brand-surface-danger-low: #{palette-color-level('danger', 1)};
+  --brand-surface-warning-high: #{palette-color-level('warning', 3)};
+  --brand-surface-warning-medium: #{palette-color-level('warning', 2)};
+  --brand-surface-warning-low: #{palette-color-level('warning', 1)};
+  --brand-surface-success-high: #{palette-color-level('success', 3)};
+  --brand-surface-success-medium: #{palette-color-level('success', 2)};
+  --brand-surface-success-low: #{palette-color-level('success', 1)};
+
+  /* Border Colors */
+  --brand-border-default-medium: #{palette-color-level('neutral', 3)};
+  --brand-border-default-low: #{palette-color-level('neutral', 2)};
+  --brand-border-inverse-medium: #{palette-color-level('neutral', 6)};
+  --brand-border-inverse-low: #{palette-color-level('neutral', 7)};
+  --brand-border-info-high: #{palette-color-level('info', 7)};
+  --brand-border-info-low: #{palette-color-level('info', 2)};
+  --brand-border-danger-high: #{palette-color-level('danger', 7)};
+  --brand-border-danger-low: #{palette-color-level('danger', 2)};
+  --brand-border-warning-high: #{palette-color-level('warning', 7)};
+  --brand-border-warning-low: #{palette-color-level('warning', 2)};
+  --brand-border-success-high: #{palette-color-level('success', 7)};
+  --brand-border-success-low: #{palette-color-level('success', 2)};
+
+  /* Text Colors */
+  --brand-text-default-high: #{palette-color-level('neutral', 10)};
+  --brand-text-default-medium: #{palette-color-level('neutral', 8)};
+  --brand-text-default-low: #{palette-color-level('neutral', 6)};
+  --brand-text-inverse-high: #{palette-color-level('neutral', 0)};
+  --brand-text-inverse-medium: #{palette-color-level('neutral', 2)};
+  --brand-text-inverse-low: #{palette-color-level('neutral', 4)};
+  --brand-text-info: #{palette-color-level('info', 7)};
+  --brand-text-danger: #{palette-color-level('danger', 7)};
+  --brand-text-warning: #{palette-color-level('warning', 7)};
+  --brand-text-success: #{palette-color-level('success', 7)};
+
+  /* Interaction Colors */
+  --brand-interaction-primary-enabled: #{palette-color-level('primary', 7)};
+  --brand-interaction-primary-hovered: #{palette-color-level('primary', 6)};
+  --brand-interaction-primary-activated: #{palette-color-level('primary', 8)};
+
+  --brand-interaction-neutral-enabled: #{palette-color-level('neutral', 0)};
+  --brand-interaction-neutral-hovered: #{palette-color-level('neutral', 1)};
+  --brand-interaction-neutral-activated: #{palette-color-level('neutral', 3)};
+
+  --brand-interaction-danger-enabled: #{palette-color-level('danger', 7)};
+  --brand-interaction-danger-hovered: #{palette-color-level('danger', 6)};
+  --brand-interaction-danger-activated: #{palette-color-level('danger', 8)};
+
+  --brand-interaction-warning-enabled: #{palette-color-level('warning', 7)};
+  --brand-interaction-warning-hovered: #{palette-color-level('warning', 6)};
+  --brand-interaction-warning-activated: #{palette-color-level('warning', 8)};
+
+  --brand-interaction-success-enabled: #{palette-color-level('success', 7)};
+  --brand-interaction-success-hovered: #{palette-color-level('success', 6)};
+  --brand-interaction-success-activated: #{palette-color-level('success', 8)};
+
+  --brand-interaction-secondary-enabled: #{palette-color-level('info', 2)};
+  --brand-interaction-secondary-hovered: #{palette-color-level('info', 1)};
+  --brand-interaction-secondary-activated: #{palette-color-level('info', 3)};
+
+  // UTILS
+  /* Border radius */
+  --brand-border-radius-xs: #{$space-2};
+  --brand-border-radius-sm: #{$space-4};
+  --brand-border-radius-md: #{$space-8};
+  --brand-border-radius-lg: #{$space-16};
+
+  /* Elevation */
+  --brand-elevation-1: 0 1px 4px rgba(19, 20, 22, 0.08);
+  --brand-elevation-2: 0 -1px 2px -1px rgba(0, 0, 0, 0.05), 0 3px 6px rgba(19, 20, 22, 0.15);
+  --brand-elevation-3: 0 -2px 4px rgba(0, 0, 0, 0.08), 0 6px 10px rgba(19, 20, 22, 0.15);
+
+  /* A11y */
+  --brand-focused: 0 0 0 #{$space-2} #{palette-color-level('neutral', 0)},
+    0 0 0 #{$space-4} #{palette-color-level('info', 3)};
+
+  /* Animation Language */
+  --brand-transition-duration: 250ms;
+  --brand-easing-curve: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  --brand-fade-animation-transition: opacity var(--brand-transition-duration) var(--brand-easing-curve);
+}

@@ -1,0 +1,18 @@
+$slider-height: $space-64;
+$slider-input-width: $space-48;
+$slider-disabled-opacity: 0.3;
+
+// track
+$slider-track-height: $space-4;
+$slider-track-border-radius: var(--brand-border-radius-xs);
+$slider-track-bg: var(--brand-surface-default-low);
+$slider-progress-height: $space-4;
+$slider-progress-border-radius: var(--brand-border-radius-xs);
+$slider-progress-bg: var(--brand-interaction-primary-enabled);
+
+// handle
+$slider-handle-size: $space-16;
+$slider-handle-size-hover: $space-24;
+$slider-handle-border-radius: 50%;
+$slider-handle-bg: var(--brand-interaction-primary-enabled);
+$slider-handle-active-shadow: var(--brand-focused);

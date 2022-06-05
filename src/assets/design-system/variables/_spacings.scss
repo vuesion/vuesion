@@ -1,0 +1,45 @@
+/* General */
+$space-unit: 0.8rem;
+
+/* Spacings */
+$space-2: $space-unit * 0.25; //   2px
+$space-4: $space-unit * 0.5; //    4px
+$space-8: $space-unit; //          8px
+$space-10: $space-unit * 1.25; // 10px
+$space-12: $space-unit * 1.5; //  12px
+$space-16: $space-unit * 2; //    16px
+$space-20: $space-unit * 2.5; //  20px
+$space-24: $space-unit * 3; //    24px
+$space-32: $space-unit * 4; //    32px
+$space-40: $space-unit * 5; //    40px
+$space-48: $space-unit * 6; //    48px
+$space-52: $space-unit * 6.5; //  52px
+$space-56: $space-unit * 7; //  56px
+$space-64: $space-unit * 8; //  64px
+$space-72: $space-unit * 9; //  72px
+$space-84: $space-unit * 10.5; // 84px
+$space-80: $space-unit * 10; // 80px
+$space-96: $space-unit * 12; // 96px
+$space-120: $space-unit * 15; // 120px
+$space-128: $space-unit * 16; // 128px
+$space-144: $space-unit * 18; // 144px
+$space-192: $space-unit * 24; // 192px
+
+$spacings: (
+  '0': 0,
+  '2': $space-2,
+  '4': $space-4,
+  '8': $space-8,
+  '10': $space-10,
+  '12': $space-12,
+  '16': $space-16,
+  '20': $space-20,
+  '24': $space-24,
+  '32': $space-32,
+  '48': $space-48,
+  '64': $space-64,
+  '80': $space-80,
+  '96': $space-96,
+  '144': $space-144,
+  '192': $space-192,
+);

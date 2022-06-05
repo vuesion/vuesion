@@ -1,0 +1,13 @@
+$modal-bg: var(--brand-surface-default-high);
+$modal-border-radius: var(--brand-border-radius-md);
+$modal-border: 1px solid var(--brand-border-default-medium);
+$modal-close-button-gap: $space-8;
+$modal-close-button-size: $space-24;
+$modal-close-button-border-radius: var(--brand-border-radius-sm);
+$modal-close-button-outline: var(--brand-focused);
+$modal-close-button-color: var(--brand-text-default-low);
+$modal-close-button-color-hover: var(--brand-text-default-medium);
+$modal-shadow: var(--brand-elevation-1);
+$modal-index: 2001;
+$modal-max-width: 50%;
+$modal-transition: var(--brand-fade-animation-transition);

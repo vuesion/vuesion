@@ -1,0 +1,41 @@
+// label
+$input-label-height: $space-16;
+$input-label-gap: $space-4;
+
+// input default
+$input-border-radius: var(--brand-border-radius-md);
+$input-border: 1px solid var(--brand-border-default-medium);
+$input-height: auto;
+$input-padding: ($space-12 - $space-2) $space-12;
+$input-color: var(--brand-text-default-high);
+$input-placeholder-color: var(--brand-text-default-low);
+$input-background-color: transparent;
+$input-font-family: $font-family;
+$input-font-size: $text-1;
+$input-font-weight: $font-weight-regular;
+$input-line-height: $line-height-1 + $space-2;
+
+// description
+$input-description-gap: $space-4;
+$input-description-height: $space-16;
+
+// utils
+$input-disabled-disabled-opacity: 0.3;
+$input-outline: var(--brand-focused);
+
+// hover
+$input-border-hover: 1px solid var(--brand-border-default-medium);
+
+// error
+$input-bg-error: var(--brand-surface-danger-low);
+$input-border-error: 1px solid var(--brand-border-danger-high);
+
+// leading icon
+$input-leading-width: $space-40 - $space-4;
+$input-leading-icon-size: $space-20;
+$input-leading-color: var(--brand-text-default-low);
+
+// trailing icon
+$input-trailing-width: $space-40 - $space-4;
+$input-trailing-icon-size: $space-20;
+$input-trailing-color: var(--brand-text-default-low);

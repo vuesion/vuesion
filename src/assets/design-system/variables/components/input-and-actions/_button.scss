@@ -1,0 +1,63 @@
+// small
+$button-sm-padding: $space-4 $space-12;
+$button-sm-has-icon-space: $space-8;
+
+// medium
+$button-md-padding: $space-8 $space-16;
+$button-md-has-icon-space: $space-12;
+
+// large
+$button-lg-padding: $space-12 $space-24;
+$button-lg-has-icon-space: $space-16;
+
+// common
+$button-min-width: $space-32;
+$button-border-radius: var(--brand-border-radius-md);
+$button-disabled-opacity: 0.3;
+$button-icon-size: $space-24;
+$button-icon-gap: $space-4;
+$button-outline: var(--brand-focused);
+
+$button-variations: (
+  'primary': (
+    'bg': var(--brand-interaction-primary-enabled),
+    'color': var(--brand-text-inverse-high),
+    'hover-bg': var(--brand-interaction-primary-hovered),
+    'hover-color': var(--brand-text-inverse-high),
+    'active-bg': var(--brand-interaction-primary-activated),
+    'active-color': var(--brand-text-inverse-high),
+  ),
+  'secondary': (
+    'bg': var(--brand-interaction-secondary-enabled),
+    'color': var(--brand-text-info),
+    'hover-bg': var(--brand-interaction-secondary-hovered),
+    'hover-color': var(--brand-text-info),
+    'active-bg': var(--brand-interaction-secondary-activated),
+    'active-color': var(--brand-text-info),
+  ),
+  'outline': (
+    'bg': var(--brand-interaction-neutral-enabled),
+    'color': var(--brand-text-default-medium),
+    'hover-bg': var(--brand-interaction-neutral-hovered),
+    'hover-color': var(--brand-text-default-medium),
+    'active-bg': var(--brand-interaction-neutral-activated),
+    'active-color': var(--brand-text-default-medium),
+    'border': 1px solid var(--brand-border-default-medium),
+  ),
+  'ghost': (
+    'bg': transparent,
+    'color': var(--brand-text-default-medium),
+    'hover-bg': var(--brand-interaction-neutral-hovered),
+    'hover-color': var(--brand-text-default-medium),
+    'active-bg': var(--brand-interaction-neutral-activated),
+    'active-color': var(--brand-text-default-medium),
+  ),
+  'danger': (
+    'bg': var(--brand-interaction-danger-enabled),
+    'color': var(--brand-text-inverse-high),
+    'hover-bg': var(--brand-interaction-danger-hovered),
+    'hover-color': var(--brand-text-inverse-high),
+    'active-bg': var(--brand-interaction-danger-activated),
+    'active-color': var(--brand-text-inverse-high),
+  ),
+);

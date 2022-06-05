@@ -1,0 +1,24 @@
+$back-to-top-size: $space-56;
+$back-to-top-icon-size: $space-24;
+$back-to-top-bottom-space: $space-24;
+$back-to-top-right-space: $space-24;
+$back-to-top-border-radius: 50%;
+$back-to-top-shadow: var(--brand-elevation-2);
+$back-to-top-index: 2000;
+$back-to-top-outline: var(--brand-focused);
+
+// enabled
+$back-to-top-color: var(--brand-text-inverse-high);
+$back-to-top-bg: var(--brand-text-default-medium);
+
+// hover
+$back-to-top-color-hover: var(--brand-text-inverse-high);
+$back-to-top-bg-hover: var(--brand-text-default-low);
+
+// focus
+$back-to-top-color-focus: var(--brand-text-inverse-high);
+$back-to-top-bg-focus: var(--brand-text-default-medium);
+
+// active
+$back-to-top-color-active: var(--brand-text-inverse-high);
+$back-to-top-bg-active: var(--brand-text-default-high);

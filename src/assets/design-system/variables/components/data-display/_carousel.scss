@@ -1,0 +1,21 @@
+$carousel-border-radius: var(--brand-border-radius-lg);
+
+// indicator
+$carousel-indicator-bottom: $space-32;
+$carousel-indicator-width: $space-8;
+$carousel-indicator-height: $space-4;
+$carousel-indicator-border-radius: var(--brand-border-radius-xs);
+$carousel-indicator-space: $space-4;
+
+// default
+$carousel-indicator-bg: var(--brand-surface-default-high);
+$carousel-indicator-opacity: 0.6;
+$carousel-indicator-width-active: $space-16;
+
+// active
+$carousel-indicator-bg-active: var(--brand-surface-default-high);
+$carousel-indicator-opacity-active: 1;
+
+// pagination
+$carousel-pagination-bottom: $space-16;
+$carousel-pagination-right: $space-16;

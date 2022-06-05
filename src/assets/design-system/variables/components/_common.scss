@@ -1,0 +1,20 @@
+// sizes
+$input-control-sm-height: $space-24 + $space-4;
+$input-control-md-height: $space-40;
+$input-control-lg-height: $space-40 + $space-4;
+
+@include add-theme-variable(
+  'a11y-default-color',
+  (
+    'light': var(--brand-text-inverse-high),
+    'dark': var(--brand-text-default-high),
+  )
+);
+
+@include add-theme-variable(
+  'a11y-inverse-color',
+  (
+    'light': var(--brand-text-default-high),
+    'dark': var(--brand-text-inverse-high),
+  )
+);

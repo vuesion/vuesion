@@ -1,0 +1,31 @@
+@import 'design-system/variables/variables';
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $font-family;
+  font-size: $text-1;
+  font-weight: $font-weight-regular;
+  letter-spacing: $letter-spacing-1;
+  line-height: $line-height-2;
+  font-display: swap;
+  color: var(--brand-text-default-high);
+}
+
+small {
+  font-size: $text-1;
+}
+
+strong {
+  font-weight: $font-weight-semi-bold;
+}
+
+a {
+  color: var(--brand-interaction-primary-enabled);
+
+  &:hover {
+    color: var(--brand-interaction-primary-hovered);
+  }
+}

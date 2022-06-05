@@ -1,0 +1,20 @@
+$tab-height: $space-40;
+$tab-width: $space-120 * 2;
+$tab-icon-size: $space-20;
+$tab-icon-gap: $space-8;
+
+// default
+$tab-border: 1px solid var(--brand-border-default-low);
+$tab-color: var(--brand-text-default-low);
+
+// default hover
+$tab-border-hover: 1px solid var(--brand-border-default-medium);
+$tab-color-hover: var(--brand-text-default-medium);
+
+// active
+$tab-border-active: 2px solid var(--brand-interaction-primary-enabled);
+$tab-color-active: var(--brand-interaction-primary-enabled);
+
+// active hover
+$tab-border-active-hover: 2px solid var(--brand-interaction-primary-hovered);
+$tab-color-active-hover: var(--brand-interaction-primary-hovered);

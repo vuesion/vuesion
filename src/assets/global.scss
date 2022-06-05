@@ -1,0 +1,136 @@
+@import 'design-system/mixins/default';
+@import 'design-system/variables/variables';
+@import 'design-system/themes/light';
+@import 'design-system/themes/dark';
+
+body {
+  background-color: var(--brand-bg-default-high);
+}
+
+code {
+  background: var(--brand-bg-default-medium);
+  padding: $space-2 $space-4;
+}
+
+// vue-icon global style
+i {
+  display: inline-flex;
+  height: $text-2;
+  width: $text-2;
+  fill: var(--brand-text-default-high);
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    height: inherit;
+    width: inherit;
+  }
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--brand-border-default-low);
+  margin-top: -1px;
+}
+
+table {
+  thead,
+  tbody {
+    tr {
+      border-bottom: 1px solid var(--brand-border-default-low);
+
+      td,
+      th {
+        padding: $space-24;
+        text-align: left;
+      }
+    }
+  }
+
+  thead {
+    background: var(--brand-bg-default-medium);
+  }
+
+  tbody {
+    tr {
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+// UTILITIES
+// =========
+
+// always make sure images have an alt attribute
+img:not([alt]) {
+  border: 5px dashed var(--brand-danger);
+}
+
+// Only display content to screen readers
+//
+// See: https://a11yproject.com/posts/how-to-hide-content/
+// See: https://hugogiraudel.com/2016/10/13/css-hide-and-seek/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// cut off text if too long
+//
+// See: https://www.w3schools.com/cssref/css3_pr_text-overflow.asp
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// MODAL-BACKDROP
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: var(--brand-fade-animation-transition);
+  z-index: -1;
+
+  &.show {
+    opacity: 0.5;
+    z-index: 999;
+  }
+}
+
+// nice underline decorator
+.deco-underline {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    top: calc(100% + #{$space-4});
+    left: 0;
+    margin-top: -$space-12;
+    height: $space-24;
+    width: 100%;
+    content: ' ';
+    background-size: 100%;
+    background-position: 0 20%;
+    background-image: url("data:image/svg+xml,%3Csvg width='146' height='32' viewBox='0 0 146 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0)'%3E%3Cpath d='M-11.7809 10.9962C24.2609 4.34103 33.745 4.34405 16.6715 11.0053C-0.40207 17.6665 9.08205 17.6695 45.1238 11.0143C81.1656 4.35915 90.6497 4.36217 73.5762 11.0234C56.5026 17.6846 65.9868 17.6876 102.029 11.0325C138.07 4.37727 147.554 4.38029 130.481 11.0415C113.407 17.7027 122.891 17.7058 158.933 11.0506C194.975 4.39539 204.459 4.39841 187.386 11.0596C170.312 17.7209 179.796 17.7239 215.838 11.0687C251.88 4.41351 261.364 4.41653 244.29 11.0778C227.217 17.739 236.701 17.742 272.743 11.0868C308.784 4.43163 318.269 4.43465 301.195 11.0959C284.121 17.7571 293.606 17.7601 329.647 11.1049C365.689 4.44975 375.173 4.45277 358.1 11.114C341.026 17.7752 350.51 17.7782 386.552 11.1231C422.594 4.46787 432.078 4.47089 415.004 11.1321' stroke='%23CF508D' stroke-width='4'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0'%3E%3Crect width='145.755' height='31.2482' fill='white' transform='translate(0.00976562) rotate(0.0182447)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+}
+
+// storybook
+.border {
+  border: 1px solid var(--brand-border-default-low);
+}
