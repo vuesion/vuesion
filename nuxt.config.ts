@@ -13,5 +13,6 @@ export default defineNuxtConfig({
     storageKey: 'nuxt-color-mode',
   },
   modules: ['@nuxtjs/color-mode'],
+  rootDir: '.',
   srcDir: './src',
 })

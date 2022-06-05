@@ -32,15 +32,21 @@
     "url": "https://github.com/vuesion/vuesion/issues"
   },
   "scripts": {
-    "build": "nuxt build",
     "dev": "nuxt dev -o",
+    "test": "vitest run --coverage",
+    "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview"
   },
   "devDependencies": {
     "@nuxtjs/color-mode": "3.1.3",
+    "@testing-library/vue": "6.4.2",
+    "@vitejs/plugin-vue": "2.3.3",
+    "c8": "7.11.3",
+    "happy-dom": "5.0.0",
     "nuxt": "3.0.0-rc.3",
     "sass": "1.52.2",
-    "sass-loader": "13.0.0"
+    "sass-loader": "13.0.0",
+    "vitest": "0.14.0"
   }
 }

@@ -19,8 +19,8 @@
 
 <script setup lang="ts">
 import {computed, useCssModule} from 'vue'
-import {getResponsiveCssClasses, parseResponsivePropValue} from "~/components/utils";
-import {FontWeight, HorizontalAlignment, TextColor, TextStyle} from "~/components/prop-types";
+import {getResponsiveCssClasses, parseResponsivePropValue} from "@/components/utils";
+import {FontWeight, HorizontalAlignment, TextColor, TextStyle} from "@/components/prop-types";
 
 interface TextProps {
   as?: string;
@@ -49,7 +49,7 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 </script>
 
 <style lang="scss" module>
-@import '../../../assets/_design-system';
+@import 'assets/_design-system';
 
 .vueText {
   font-family: $font-family;

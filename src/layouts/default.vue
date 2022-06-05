@@ -7,13 +7,13 @@
 </template>
 
 <script setup>
-import '~/assets/global.scss';
+import 'assets/global.scss';
 </script>
 
 <style lang="scss" module>
-@import '../assets/design-system';
-@import '../assets/reset';
-@import '../assets/typography';
+@import 'assets/design-system';
+@import 'assets/reset';
+@import 'assets/typography';
 
 .app {
   min-height: 100vh;
