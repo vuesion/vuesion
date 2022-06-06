@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import {
   FontWeightValues,
-  HorizontalAlignmentValues,
+  AlignmentValues,
   SpacingValues,
   TextColorValues,
   TextStyleValues,
@@ -12,7 +12,7 @@ describe('prop-types', () => {
     expect(TextStyleValues).not.toBeUndefined();
     expect(TextColorValues).not.toBeUndefined();
     expect(FontWeightValues).not.toBeUndefined();
-    expect(HorizontalAlignmentValues).not.toBeUndefined();
+    expect(AlignmentValues).not.toBeUndefined();
     expect(SpacingValues).not.toBeUndefined();
   });
 });

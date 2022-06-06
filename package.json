@@ -39,6 +39,7 @@
     "storybook:build": "build-storybook",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "start": "nuxt start",
     "prepare": "husky install",
     "pre-commit": "pretty-quick --staged && concurrently \"npm run lint\" \"npm test\""
   },

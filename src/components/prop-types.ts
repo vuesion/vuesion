@@ -38,9 +38,9 @@ export const FontWeightValues = ['regular', 'semi-bold'] as const;
 
 export type FontWeight = typeof FontWeightValues[number];
 
-export const HorizontalAlignmentValues = ['start', 'center', 'end', 'inherit', 'initial'] as const;
+export const AlignmentValues = ['start', 'center', 'end', 'inherit', 'initial'] as const;
 
-export type HorizontalAlignment = typeof HorizontalAlignmentValues[number];
+export type Alignment = typeof AlignmentValues[number];
 
 export const SpacingValues = [
   '0',
@@ -61,10 +61,12 @@ export const SpacingValues = [
   '192',
 ] as const;
 
-export type Spacing =
+export type SpacingWithDirections =
   | typeof SpacingValues[number]
   | `${typeof SpacingValues[number]} ${typeof SpacingValues[number]}`
   | `${typeof SpacingValues[number]} ${typeof SpacingValues[number]} ${typeof SpacingValues[number]}`
   | `${typeof SpacingValues[number]} ${typeof SpacingValues[number]} ${typeof SpacingValues[number]} ${typeof SpacingValues[number]}`;
+
+export type Spacing = typeof SpacingValues[number];
 
 export const BreakpointValues = Object.keys(BreakPoint);

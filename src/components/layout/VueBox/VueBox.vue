@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed, useCssModule } from 'vue';
-import { HorizontalAlignment, Spacing } from '@/components/prop-types';
+import { Alignment, SpacingWithDirections } from '@/components/prop-types';
 import {
   getCssSpacingClasses,
   getResponsiveCssClasses,
@@ -16,9 +16,9 @@ import {
 
 interface BoxProps {
   as?: string;
-  padding?: Spacing | Array<Spacing>;
-  alignX?: HorizontalAlignment | Array<HorizontalAlignment>;
-  alignY?: HorizontalAlignment | Array<HorizontalAlignment>;
+  padding?: SpacingWithDirections | Array<SpacingWithDirections>;
+  alignX?: Alignment | Array<Alignment>;
+  alignY?: Alignment | Array<Alignment>;
   autoHeight?: boolean;
 }
 
@@ -155,77 +155,48 @@ const cssClasses = computed(() => [
   &.aligny-start {
     display: flex;
     align-items: flex-start;
-
-    > * {
-      flex: 1;
-    }
   }
   &.aligny-center {
     display: flex;
     align-items: center;
-
-    > * {
-      flex: 1;
-    }
   }
   &.aligny-end {
     display: flex;
     align-items: flex-end;
-
-    > * {
-      flex: 1;
-    }
   }
   &.alignx-start {
     display: flex;
     justify-content: flex-start;
-
-    > * {
-      flex: 1;
-    }
   }
   &.alignx-center {
     display: flex;
     justify-content: center;
-
-    > * {
-      flex: 1;
-    }
   }
   &.alignx-end {
     display: flex;
     justify-content: flex-end;
-
-    > * {
-      flex: 1;
-    }
   }
   @include mediaMin(tabletPortrait) {
     &.aligny-tp-start {
       display: flex;
       align-items: flex-start;
     }
-
     &.aligny-tp-center {
       display: flex;
       align-items: center;
     }
-
     &.aligny-tp-end {
       display: flex;
       align-items: flex-end;
     }
-
     &.alignx-tp-start {
       display: flex;
       justify-content: flex-start;
     }
-
     &.alignx-tp-center {
       display: flex;
       justify-content: center;
     }
-
     &.alignx-tp-end {
       display: flex;
       justify-content: flex-end;
@@ -236,27 +207,22 @@ const cssClasses = computed(() => [
       display: flex;
       align-items: flex-start;
     }
-
     &.aligny-tl-center {
       display: flex;
       align-items: center;
     }
-
     &.aligny-tl-end {
       display: flex;
       align-items: flex-end;
     }
-
     &.alignx-tl-start {
       display: flex;
       justify-content: flex-start;
     }
-
     &.alignx-tl-center {
       display: flex;
       justify-content: center;
     }
-
     &.alignx-tl-end {
       display: flex;
       justify-content: flex-end;
@@ -267,62 +233,48 @@ const cssClasses = computed(() => [
       display: flex;
       align-items: flex-start;
     }
-
     &.aligny-sd-center {
       display: flex;
       align-items: center;
     }
-
     &.aligny-sd-end {
       display: flex;
       align-items: flex-end;
     }
-
     &.alignx-sd-start {
       display: flex;
       justify-content: flex-start;
     }
-
     &.alignx-sd-center {
       display: flex;
       justify-content: center;
     }
-
     &.alignx-sd-end {
       display: flex;
       justify-content: flex-end;
     }
   }
   @include mediaMin(largeDesktop) {
-    &.fit-ld {
-      flex-basis: var(--large-desktop);
-    }
-
     &.aligny-ld-start {
       display: flex;
       align-items: flex-start;
     }
-
     &.aligny-ld-center {
       display: flex;
       align-items: center;
     }
-
     &.aligny-ld-end {
       display: flex;
       align-items: flex-end;
     }
-
     &.alignx-ld-start {
       display: flex;
       justify-content: flex-start;
     }
-
     &.alignx-ld-center {
       display: flex;
       justify-content: center;
     }
-
     &.alignx-ld-end {
       display: flex;
       justify-content: flex-end;

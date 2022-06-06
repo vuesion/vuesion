@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { computed, useCssModule } from 'vue';
 import { getResponsiveCssClasses, parseResponsivePropValue } from '@/components/utils';
-import { FontWeight, HorizontalAlignment, TextColor, TextStyle } from '@/components/prop-types';
+import { FontWeight, Alignment, TextColor, TextStyle } from '@/components/prop-types';
 
 interface TextProps {
   as?: string;
@@ -30,7 +30,7 @@ interface TextProps {
   serifs?: boolean;
   underline?: boolean;
   uppercase?: boolean;
-  alignX?: HorizontalAlignment | Array<HorizontalAlignment>;
+  alignX?: Alignment | Array<Alignment>;
 }
 
 const props = withDefaults(defineProps<TextProps>(), {

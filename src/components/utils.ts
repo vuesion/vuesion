@@ -1,4 +1,3 @@
-import isArray from 'lodash/isArray';
 import { IBreakpoints } from '@/interfaces/IBreakpoints';
 import { BreakpointValues } from '@/components/prop-types';
 
@@ -68,7 +67,7 @@ export const parseResponsivePropValue = (
     return !isNullOrUndefined(value) ? value : null;
   },
 ): IBreakpoints => {
-  const propAsArray: any[] = isArray(propValues) ? propValues : [propValues];
+  const propAsArray: any[] = Array.isArray(propValues) ? propValues : [propValues];
   const result: IBreakpoints | any = {
     phone: null,
     tabletPortrait: null,
