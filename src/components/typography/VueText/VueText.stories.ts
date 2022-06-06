@@ -1,4 +1,5 @@
 import VueText from './VueText.vue';
+import { FontWeightValues, TextColorValues, TextStyleValues } from '@/components/prop-types';
 
 export default {
   title: 'Foundation/Typography',
@@ -7,41 +8,15 @@ export default {
   argTypes: {
     look: {
       control: { type: 'select' },
-      options: [
-        'h1',
-        'h2',
-        'h3',
-        'h4',
-        'h5',
-        'h6',
-        'description',
-        'large-title',
-        'medium-title',
-        'small-title',
-        'default',
-        'label',
-        'button',
-        'support',
-      ],
+      options: TextStyleValues,
     },
     color: {
       control: { type: 'select' },
-      options: [
-        'info',
-        'danger',
-        'warning',
-        'success',
-        'text-high',
-        'text-medium',
-        'text-low',
-        'text-inverse-high',
-        'text-inverse-medium',
-        'text-inverse-low',
-      ],
+      options: TextColorValues,
     },
     weight: {
       control: { type: 'select' },
-      options: ['regular', 'semi-bold'],
+      options: FontWeightValues,
     },
   },
 };

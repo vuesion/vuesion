@@ -1,11 +1,18 @@
 import isArray from 'lodash/isArray';
-import { brandBreakpoints } from '@/components/prop-validators';
 import { IBreakpoints } from '@/interfaces/IBreakpoints';
+import { BreakpointValues } from '@/components/prop-types';
+
+export interface CssSpacing {
+  top: string;
+  right: string;
+  bottom: string;
+  left: string;
+}
 
 export const isNullOrUndefined = (value: any) =>
   value === null || value === undefined || value === 'null' || value === 'undefined';
 
-export const parseCssSpacingProp = (spacingPropValue: string) => {
+export const parseCssSpacingProp = (spacingPropValue: string): CssSpacing => {
   const values = !isNullOrUndefined(spacingPropValue)
     ? spacingPropValue
         .toString()
@@ -70,16 +77,16 @@ export const parseResponsivePropValue = (
     largeDesktop: null,
   };
 
-  if (interpolate && propAsArray.length < brandBreakpoints.length) {
+  if (interpolate && propAsArray.length < BreakpointValues.length) {
     const lastValue: any = propAsArray[propAsArray.length - 1];
-    const diff = brandBreakpoints.length - propAsArray.length;
+    const diff = BreakpointValues.length - propAsArray.length;
 
     for (let i = 0; i < diff; i++) {
       propAsArray.push(lastValue);
     }
   }
 
-  brandBreakpoints.forEach((name, index) => {
+  BreakpointValues.forEach((name, index) => {
     result[name] = filterFunction(propAsArray[index]);
   });
 
@@ -120,4 +127,30 @@ export const getResponsiveCssClasses = (
   });
 
   return cssClasses;
+};
+
+export const getCssSpacingClasses = (
+  $style: any,
+  values: CssSpacing,
+  classNamePrefix: string,
+  breakpointPrefix: string = null,
+) => {
+  const classes: Array<string> = [];
+  const map: any = {
+    top: 't',
+    right: 'r',
+    bottom: 'b',
+    left: 'l',
+  };
+
+  Object.keys(map).forEach((key) => {
+    const prefix = map[key];
+    const value = values[key];
+
+    if (isNullOrUndefined(value) === false) {
+      classes.push($style[`${classNamePrefix}${prefix}-${breakpointPrefix ? breakpointPrefix + '-' : ''}${value}`]);
+    }
+  });
+
+  return classes;
 };
