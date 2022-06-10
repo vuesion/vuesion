@@ -25,11 +25,11 @@ describe('VueStack.vue', () => {
 
     await rerender({ space: [8, 16, 24, 32, 64] });
 
-    expect(html()).toMatch('s-8');
-    expect(html()).toMatch('s-tp-16');
-    expect(html()).toMatch('s-tl-24');
-    expect(html()).toMatch('s-sd-32');
-    expect(html()).toMatch('s-ld-64');
+    expect(html()).toMatch('gap-8');
+    expect(html()).toMatch('gap-tp-16');
+    expect(html()).toMatch('gap-tl-24');
+    expect(html()).toMatch('gap-sd-32');
+    expect(html()).toMatch('gap-ld-64');
   });
 
   test('renders component with responsive alignment', async () => {
@@ -37,8 +37,8 @@ describe('VueStack.vue', () => {
 
     await rerender({ alignX: ['start', 'center', 'end'] });
 
-    expect(html()).toMatch('alignx-start');
-    expect(html()).toMatch('alignx-tp-center');
-    expect(html()).toMatch('alignx-tl-end');
+    expect(html()).toMatch('items-start');
+    expect(html()).toMatch('items-tp-center');
+    expect(html()).toMatch('items-tl-end');
   });
 });

@@ -37,7 +37,7 @@
     "prettier": "prettier --config .prettierrc --ignore-path .prettierignore --write ./**/*.{ts,vue,md,json,js,yml} --loglevel error",
     "build": "nuxt build",
     "storybook:build": "build-storybook",
-    "generate": "nuxt generate",
+    "pre-render": "nuxt generate",
     "preview": "nuxt preview",
     "start": "nuxt start",
     "prepare": "husky install",

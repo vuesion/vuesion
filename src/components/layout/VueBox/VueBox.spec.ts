@@ -60,6 +60,14 @@ describe('VueBox.vue', () => {
     expect(html()).toMatch('pl-ld-64');
   });
 
+  test('renders component with responsive alignments', async () => {
+    const { html, rerender } = harness;
+
+    await rerender({ alignX: ['start', 'center', 'end'], alignY: ['start', 'center', 'end'] });
+
+    expect(html()).toMatch('justify-start justify-tp-center justify-tl-end items-start items-tp-center items-tl-end');
+  });
+
   test('renders component with autoHeight', async () => {
     const { html, rerender } = harness;
 

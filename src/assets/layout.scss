@@ -1,0 +1,97 @@
+@import 'design-system/mixins/default';
+// Display
+.block {
+  display: flex;
+}
+.inline-block {
+  display: inline-block;
+}
+.inline {
+  display: inline;
+}
+.flex {
+  display: flex;
+}
+.inline-flex {
+  display: inline-flex;
+}
+
+// Helpers
+.wrap {
+  flex-wrap: wrap;
+}
+.no-wrap {
+  flex-wrap: nowrap;
+}
+
+// flex direction
+@include mediaMinMax(phone) {
+  .flex-row {
+    flex-direction: row;
+  }
+  .flex-row-reverse {
+    flex-direction: row-reverse;
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-col-reverse {
+    flex-direction: column-reverse;
+  }
+}
+@include mediaMinMax(tabletPortrait) {
+  .flex-row-tp {
+    flex-direction: row;
+  }
+  .flex-row-reverse-tp {
+    flex-direction: row-reverse;
+  }
+  .flex-col-tp {
+    flex-direction: column;
+  }
+  .flex-col-reverse-tp {
+    flex-direction: column-reverse;
+  }
+}
+@include mediaMinMax(tabletLandscape) {
+  .flex-row-tl {
+    flex-direction: row;
+  }
+  .flex-row-reverse-tl {
+    flex-direction: row-reverse;
+  }
+  .flex-col-tl {
+    flex-direction: column;
+  }
+  .flex-col-reverse-tl {
+    flex-direction: column-reverse;
+  }
+}
+@include mediaMinMax(smallDesktop) {
+  .flex-row-sd {
+    flex-direction: row;
+  }
+  .flex-row-reverse-sd {
+    flex-direction: row-reverse;
+  }
+  .flex-col-sd {
+    flex-direction: column;
+  }
+  .flex-col-reverse-sd {
+    flex-direction: column-reverse;
+  }
+}
+@include mediaMin(largeDesktop) {
+  .flex-row-ld {
+    flex-direction: row;
+  }
+  .flex-row-reverse-ld {
+    flex-direction: row-reverse;
+  }
+  .flex-col-ld {
+    flex-direction: column;
+  }
+  .flex-col-reverse-ld {
+    flex-direction: column-reverse;
+  }
+}

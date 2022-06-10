@@ -1,0 +1,202 @@
+@import 'design-system/mixins/default';
+@import 'design-system/variables/spacings';
+
+// padding
+@each $name, $space in $spacings {
+  .pt-#{$name} {
+    padding-top: $space;
+  }
+
+  .pr-#{$name} {
+    padding-right: $space;
+  }
+
+  .pb-#{$name} {
+    padding-bottom: $space;
+  }
+
+  .pl-#{$name} {
+    padding-left: $space;
+  }
+}
+@include mediaMin(tabletPortrait) {
+  @each $name, $space in $spacings {
+    .pt-tp-#{$name} {
+      padding-top: $space;
+    }
+
+    .pr-tp-#{$name} {
+      padding-right: $space;
+    }
+
+    .pb-tp-#{$name} {
+      padding-bottom: $space;
+    }
+
+    .pl-tp-#{$name} {
+      padding-left: $space;
+    }
+  }
+}
+@include mediaMin(tabletLandscape) {
+  @each $name, $space in $spacings {
+    .pt-tl-#{$name} {
+      padding-top: $space;
+    }
+
+    .pr-tl-#{$name} {
+      padding-right: $space;
+    }
+
+    .pb-tl-#{$name} {
+      padding-bottom: $space;
+    }
+
+    .pl-tl-#{$name} {
+      padding-left: $space;
+    }
+  }
+}
+@include mediaMin(smallDesktop) {
+  @each $name, $space in $spacings {
+    .pt-sd-#{$name} {
+      padding-top: $space;
+    }
+
+    .pr-sd-#{$name} {
+      padding-right: $space;
+    }
+
+    .pb-sd-#{$name} {
+      padding-bottom: $space;
+    }
+
+    .pl-sd-#{$name} {
+      padding-left: $space;
+    }
+  }
+}
+@include mediaMin(largeDesktop) {
+  @each $name, $space in $spacings {
+    .pt-ld-#{$name} {
+      padding-top: $space;
+    }
+
+    .pr-ld-#{$name} {
+      padding-right: $space;
+    }
+
+    .pb-ld-#{$name} {
+      padding-bottom: $space;
+    }
+
+    .pl-ld-#{$name} {
+      padding-left: $space;
+    }
+  }
+}
+
+// gap
+@each $name, $space in $spacings {
+  .gap-#{$name} {
+    gap: $space;
+  }
+}
+@include mediaMin(tabletPortrait) {
+  @each $name, $space in $spacings {
+    .gap-tp-#{$name} {
+      gap: $space;
+    }
+  }
+}
+@include mediaMin(tabletLandscape) {
+  @each $name, $space in $spacings {
+    .gap-tl-#{$name} {
+      gap: $space;
+    }
+  }
+}
+@include mediaMin(smallDesktop) {
+  @each $name, $space in $spacings {
+    .gap-sd-#{$name} {
+      gap: $space;
+    }
+  }
+}
+@include mediaMin(largeDesktop) {
+  @each $name, $space in $spacings {
+    .gap-ld-#{$name} {
+      gap: $space;
+    }
+  }
+}
+
+// row-gap
+@each $name, $space in $spacings {
+  .gap-x-#{$name} {
+    row-gap: $space;
+  }
+}
+@include mediaMin(tabletPortrait) {
+  @each $name, $space in $spacings {
+    .gap-x-tp-#{$name} {
+      row-gap: $space;
+    }
+  }
+}
+@include mediaMin(tabletLandscape) {
+  @each $name, $space in $spacings {
+    .gap-x-tl-#{$name} {
+      row-gap: $space;
+    }
+  }
+}
+@include mediaMin(smallDesktop) {
+  @each $name, $space in $spacings {
+    .gap-x-sd-#{$name} {
+      row-gap: $space;
+    }
+  }
+}
+@include mediaMin(largeDesktop) {
+  @each $name, $space in $spacings {
+    .gap-x-ld-#{$name} {
+      row-gap: $space;
+    }
+  }
+}
+
+// column-gap
+@each $name, $space in $spacings {
+  .gap-y-#{$name} {
+    column-gap: $space;
+  }
+}
+@include mediaMin(tabletPortrait) {
+  @each $name, $space in $spacings {
+    .gap-y-tp-#{$name} {
+      column-gap: $space;
+    }
+  }
+}
+@include mediaMin(tabletLandscape) {
+  @each $name, $space in $spacings {
+    .gap-y-tl-#{$name} {
+      column-gap: $space;
+    }
+  }
+}
+@include mediaMin(smallDesktop) {
+  @each $name, $space in $spacings {
+    .gap-y-sd-#{$name} {
+      column-gap: $space;
+    }
+  }
+}
+@include mediaMin(largeDesktop) {
+  @each $name, $space in $spacings {
+    .gap-y-ld-#{$name} {
+      column-gap: $space;
+    }
+  }
+}

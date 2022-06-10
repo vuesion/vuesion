@@ -107,7 +107,7 @@ export const getResponsiveCssClasses = (
   };
   const cssClasses: Array<string> = [];
 
-  if (!$style || !breakPointValues || !classPrefix) {
+  if (!breakPointValues || !classPrefix) {
     return [];
   }
 
@@ -119,7 +119,7 @@ export const getResponsiveCssClasses = (
       const className = applyValueToClassName
         ? `${classPrefix}${breakPointPrefix}-${breakPointValue}`
         : `${classPrefix}${breakPointPrefix}`;
-      const cssClassName = $style[className];
+      const cssClassName = $style ? $style[className] : className;
 
       cssClasses.push(cssClassName);
     }
@@ -145,11 +145,30 @@ export const getCssSpacingClasses = (
   Object.keys(map).forEach((key) => {
     const prefix = map[key];
     const value = values[key];
+    const className = `${classNamePrefix}${prefix}-${breakpointPrefix ? breakpointPrefix + '-' : ''}${value}`;
 
     if (isNullOrUndefined(value) === false) {
-      classes.push($style[`${classNamePrefix}${prefix}-${breakpointPrefix ? breakpointPrefix + '-' : ''}${value}`]);
+      classes.push($style ? $style[className] : className);
     }
   });
 
   return classes;
+};
+
+export const getFlexDirectionForBreakpoint = (reverse: boolean, stacked: boolean, breakpoint?: string) => {
+  if (reverse === null && stacked === false) {
+    return null;
+  }
+
+  let direction = 'flex-row';
+
+  if (reverse === true && stacked === false) {
+    direction = 'flex-row-reverse';
+  } else if (reverse === true && stacked === true) {
+    direction = 'flex-col-reverse';
+  } else if (stacked === true) {
+    direction = 'flex-col';
+  }
+
+  return breakpoint ? `${direction}-${breakpoint}` : direction;
 };
