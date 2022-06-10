@@ -77,4 +77,27 @@ export type SpacingWithDirections =
   | `${Spacing} ${Spacing} ${Spacing}`
   | `${Spacing} ${Spacing} ${Spacing} ${Spacing}`;
 
+export const WidthValues = [
+  '1/12',
+  '2/12',
+  '3/12',
+  '4/12',
+  '5/12',
+  '6/12',
+  '7/12',
+  '8/12',
+  '9/12',
+  '10/12',
+  '11/12',
+  '12/12',
+  'auto',
+  'full',
+  'screen',
+  'min',
+  'max',
+  'fit',
+] as const;
+
+export type Width = typeof WidthValues[number];
+
 export const BreakpointValues = Object.keys(BreakPoint);

@@ -23,6 +23,18 @@
 .no-wrap {
   flex-wrap: nowrap;
 }
+.shrink {
+  flex-shrink: 1;
+}
+.shrink-0 {
+  flex-shrink: 0;
+}
+.grow {
+  flex-grow: 1;
+}
+.grow-0 {
+  flex-grow: 0;
+}
 
 // flex direction
 @include mediaMinMax(phone) {
@@ -93,5 +105,133 @@
   }
   .flex-col-reverse-ld {
     flex-direction: column-reverse;
+  }
+}
+
+// Width
+$columns: 12;
+
+.w-auto {
+  width: auto;
+}
+.w-full {
+  width: 100%;
+}
+.w-screen {
+  width: 100vh;
+}
+.w-min {
+  width: min-content;
+}
+.w-max {
+  width: max-content;
+}
+.w-fit {
+  width: fit-content;
+}
+@for $i from 1 through $columns {
+  .w-#{$i}\/#{$columns} {
+    width: #{calc(100 * $i / 12) + '%'};
+  }
+}
+
+@include mediaMin(tabletPortrait) {
+  .w-tp-auto {
+    width: auto;
+  }
+  .w-tp-full {
+    width: 100%;
+  }
+  .w-tp-screen {
+    width: 100vh;
+  }
+  .w-tp-min {
+    width: min-content;
+  }
+  .w-tp-max {
+    width: max-content;
+  }
+  .w-tp-fit {
+    width: fit-content;
+  }
+  @for $i from 1 through $columns {
+    .w-tp-#{$i}\/#{$columns} {
+      width: #{calc(100 * $i / 12) + '%'};
+    }
+  }
+}
+@include mediaMin(tabletLandscape) {
+  .w-tl-auto {
+    width: auto;
+  }
+  .w-tl-full {
+    width: 100%;
+  }
+  .w-tl-screen {
+    width: 100vh;
+  }
+  .w-tl-min {
+    width: min-content;
+  }
+  .w-tl-max {
+    width: max-content;
+  }
+  .w-tl-fit {
+    width: fit-content;
+  }
+  @for $i from 1 through $columns {
+    .w-tl-#{$i}\/#{$columns} {
+      width: #{calc(100 * $i / 12) + '%'};
+    }
+  }
+}
+@include mediaMin(smallDesktop) {
+  .w-sd-auto {
+    width: auto;
+  }
+  .w-sd-full {
+    width: 100%;
+  }
+  .w-sd-screen {
+    width: 100vh;
+  }
+  .w-sd-min {
+    width: min-content;
+  }
+  .w-sd-max {
+    width: max-content;
+  }
+  .w-sd-fit {
+    width: fit-content;
+  }
+  @for $i from 1 through $columns {
+    .w-sd-#{$i}\/#{$columns} {
+      width: #{calc(100 * $i / 12) + '%'};
+    }
+  }
+}
+@include mediaMin(largeDesktop) {
+  .w-ld-auto {
+    width: auto;
+  }
+  .w-ld-full {
+    width: 100%;
+  }
+  .w-ld-screen {
+    width: 100vh;
+  }
+  .w-ld-min {
+    width: min-content;
+  }
+  .w-ld-max {
+    width: max-content;
+  }
+  .w-ld-fit {
+    width: fit-content;
+  }
+  @for $i from 1 through $columns {
+    .w-ld-#{$i}\/#{$columns} {
+      width: #{calc(100 * $i / 12) + '%'};
+    }
   }
 }

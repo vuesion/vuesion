@@ -7,6 +7,7 @@ import {
   SpacingValues,
   TextColorValues,
   TextStyleValues,
+  WidthValues,
 } from '@/components/prop-types';
 
 describe('prop-types', () => {
@@ -18,5 +19,6 @@ describe('prop-types', () => {
     expect(HorizontalAlignmentValues).not.toBeUndefined();
     expect(VerticalAlignmentValues).not.toBeUndefined();
     expect(SpacingValues).not.toBeUndefined();
+    expect(WidthValues).not.toBeUndefined();
   });
 });
