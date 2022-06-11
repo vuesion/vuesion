@@ -1,12 +1,12 @@
 import VueLoader from './VueLoader.vue';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
 
 export default {
   title: 'Data Display/Loader',
   component: VueLoader,
   // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
   argTypes: {},
+  parameters: { controls: { disabled: true } },
 };
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
@@ -15,7 +15,6 @@ const Template = (args) => ({
   components: {
     VueLoader,
     ComponentDocs,
-    VueStack,
   },
   // The story's `args` need to be mapped into the template through the `setup()` method
   setup() {
@@ -26,12 +25,7 @@ const Template = (args) => ({
       component-name="Loader"
       usage="Used to provide visual feedback that data is being loaded."
       story="Display the loader in different contexts. The color is dictated by the text color of the context">
-  <vue-stack>
-    <div><vue-loader /></div>
-    <div :style="{ color: 'var(--brand-warning)' }"><vue-loader /></div>
-    <div :style="{ color: 'var(--brand-success)' }"><vue-loader /></div>
-    <div :style="{ color: 'var(--brand-danger)' }"><vue-loader /></div>
-  </vue-stack>
+    <vue-loader v-bind="args" />
   </component-docs>`,
 });
 

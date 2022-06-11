@@ -252,7 +252,7 @@ $grid-columns: 12;
 }
 @for $i from 1 through $columns {
   .grid-cols-#{$i} {
-    grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+    grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
   }
 }
 @include mediaMin(tabletPortrait) {
@@ -261,7 +261,7 @@ $grid-columns: 12;
   }
   @for $i from 1 through $columns {
     .grid-cols-tp-#{$i} {
-      grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+      grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
     }
   }
 }
@@ -271,7 +271,7 @@ $grid-columns: 12;
   }
   @for $i from 1 through $columns {
     .grid-cols-tl-#{$i} {
-      grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+      grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
     }
   }
 }
@@ -281,7 +281,7 @@ $grid-columns: 12;
   }
   @for $i from 1 through $columns {
     .grid-cols-sd-#{$i} {
-      grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+      grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
     }
   }
 }
@@ -291,7 +291,7 @@ $grid-columns: 12;
   }
   @for $i from 1 through $columns {
     .grid-cols-ld-#{$i} {
-      grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+      grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
     }
   }
 }

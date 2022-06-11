@@ -3,6 +3,7 @@ import eslintPlugin from 'vite-plugin-eslint';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  components: true,
   colorMode: {
     preference: 'system',
     fallback: 'light',

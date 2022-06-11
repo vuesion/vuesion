@@ -1,5 +1,5 @@
 <template>
-  <vue-stack space="0" align-x="right">
+  <vue-stack space="0" align-x="start">
     <vue-tiles v-for="section in colorSections" :key="section.name" space="0" columns="11">
       <vue-box v-if="section.name !== 'neutral'" />
       <vue-box

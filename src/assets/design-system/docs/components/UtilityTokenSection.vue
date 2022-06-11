@@ -1,5 +1,5 @@
 <template>
-  <vue-stack space="16" :class="$style.utilityTokenSection">
+  <vue-stack space="16">
     <vue-stack space="10">
       <vue-text color="text-high" look="h3" weight="semi-bold">
         {{ title }}

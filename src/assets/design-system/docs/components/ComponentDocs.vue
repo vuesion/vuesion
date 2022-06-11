@@ -20,8 +20,8 @@
         </vue-inline>
 
         <vue-columns>
-          <vue-column width="6/12" :can-grow="false">
-            <vue-text color="text-medium" look="description">
+          <vue-column :can-grow="false">
+            <vue-text color="text-medium" look="description" style="white-space: pre-wrap">
               {{ usage }}
             </vue-text>
           </vue-column>
@@ -36,7 +36,6 @@
       </vue-stack>
 
       <vue-stack space="16">
-        <vue-text look="small-title" weight="semi-bold" color="text-medium"> Component: </vue-text>
         <div style="width: 100%">
           <slot />
         </div>

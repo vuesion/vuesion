@@ -2,6 +2,26 @@ import 'assets/_design-system.scss';
 import 'assets/reset.scss';
 import 'assets/global.scss';
 import 'assets/typography.scss';
+import { app } from '@storybook/vue3';
+import camelCase from 'lodash/camelCase';
+import upperFirst from 'lodash/upperFirst';
+
+const icons = import.meta.glob('../src/components/icons/**/*.vue');
+
+for (const path in icons) {
+  icons[path]().then((componentConfig) => {
+    const componentName = upperFirst(
+      camelCase(
+        path
+          .split('/')
+          .pop()
+          .replace(/\.\w+$/, ''),
+      ),
+    );
+
+    app.component(componentName, componentConfig.default || componentConfig);
+  });
+}
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

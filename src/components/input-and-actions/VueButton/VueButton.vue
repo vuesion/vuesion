@@ -2,8 +2,8 @@
   <component
     :is="as"
     ref="buttonRef"
-    :to="isRouterLink && href"
-    :href="isRegularLink && href"
+    :to="isRouterLink && to"
+    :href="isRegularLink && to"
     :disabled="isDisabled"
     :class="[
       $style.button,
@@ -56,7 +56,7 @@ interface CardProps {
   as?: string;
   block?: boolean;
   disabled?: boolean;
-  href?: string;
+  to?: string;
   leadingIcon?: string;
   loading?: boolean;
   look?: ButtonStyle;
@@ -69,7 +69,7 @@ const props = withDefaults(defineProps<CardProps>(), {
   as: 'button',
   block: false,
   disabled: false,
-  href: null,
+  to: null,
   leadingIcon: null,
   loading: false,
   look: 'secondary',
