@@ -10,7 +10,12 @@
     </vue-stack>
 
     <vue-tiles space="0" :columns="[1, 2, 3]">
-      <vue-box v-for="(column, idx) in columns" :key="idx" :padding="[16, '48 24']" :class="column.dark && $style.dark">
+      <vue-box
+        v-for="(column, idx) in columns"
+        :key="idx"
+        :padding="['16', '48 24']"
+        :class="column.dark && $style.dark"
+      >
         <vue-stack>
           <token-item
             v-for="(token, tokenidx) in column.tokens"

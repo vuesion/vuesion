@@ -1,5 +1,5 @@
 <template>
-  <vue-stack space="0" align="right">
+  <vue-stack space="0" align-x="right">
     <vue-tiles v-for="section in colorSections" :key="section.name" space="0" columns="11">
       <vue-box v-if="section.name !== 'neutral'" />
       <vue-box
@@ -7,10 +7,10 @@
         :key="color.hex"
         padding="null"
         align-y="center"
-        align="center"
+        align-x="center"
         :style="{ background: color.hex, color: color.color, width: '80px', height: '80px' }"
       >
-        <vue-text look="support" align="center"> {{ color.name }}<br />({{ color.hex }}) </vue-text>
+        <vue-text look="support" align-x="center"> {{ color.name }}<br />({{ color.hex }}) </vue-text>
       </vue-box>
     </vue-tiles>
   </vue-stack>
@@ -58,7 +58,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import 'assets/design-system';
 
 :export {
   primary-primary-1: palette-color-level('primary', 1);

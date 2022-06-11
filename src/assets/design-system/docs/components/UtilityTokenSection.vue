@@ -28,10 +28,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" module>
-@import '~@/assets/design-system';
-
-.utilityTokenSection {
-}
-</style>

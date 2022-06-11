@@ -8,6 +8,8 @@ import {
   TextColorValues,
   TextStyleValues,
   WidthValues,
+  ButtonStyleValues,
+  ShirtSizeValues,
 } from '@/components/prop-types';
 
 describe('prop-types', () => {
@@ -20,5 +22,7 @@ describe('prop-types', () => {
     expect(VerticalAlignmentValues).not.toBeUndefined();
     expect(SpacingValues).not.toBeUndefined();
     expect(WidthValues).not.toBeUndefined();
+    expect(ButtonStyleValues).not.toBeUndefined();
+    expect(ShirtSizeValues).not.toBeUndefined();
   });
 });

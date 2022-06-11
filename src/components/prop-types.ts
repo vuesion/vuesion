@@ -1,5 +1,9 @@
 import { BreakPoint } from '~/enums/BreakPoint';
 
+export const ButtonStyleValues = ['primary', 'secondary', 'outline', 'ghost', 'danger'] as const;
+
+export type ButtonStyle = typeof ButtonStyleValues[number];
+
 export const TextStyleValues = [
   'h1',
   'h2',
@@ -101,3 +105,7 @@ export const WidthValues = [
 export type Width = typeof WidthValues[number];
 
 export const BreakpointValues = Object.keys(BreakPoint);
+
+export const ShirtSizeValues = ['sm', 'md', 'lg'] as const;
+
+export type ShirtSize = typeof ShirtSizeValues[number];

@@ -1,4 +1,5 @@
 import VueTiles from './VueTiles.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Foundation/Layout',
@@ -6,11 +7,16 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { VueTiles },
+  components: { VueTiles, ComponentDocs },
   setup() {
     return { args };
   },
-  template: `<vue-tiles v-bind="args" style="border: 1px solid var(--brand-border-default-medium);">
+  template: `<component-docs
+      component-name="Tiles"
+      usage="The Tiles component allows you to render a grid of elements. You can change the vertical space, 
+      horizontal space and amount of columns oer viewport."
+  >
+  <vue-tiles v-bind="args" style="border: 1px solid var(--brand-border-default-medium);">
     <span>Lorem Ipsum</span>
     <span>Lorem Ipsum</span>
     <span>Lorem Ipsum</span>
@@ -21,7 +27,8 @@ const Template = (args) => ({
     <span>Lorem Ipsum</span>
     <span>Lorem Ipsum</span>
     <span>Lorem Ipsum</span>
-  </vue-tiles>`,
+  </vue-tiles>
+  </component-docs>`,
 });
 
 export const Tiles = Template.bind({});

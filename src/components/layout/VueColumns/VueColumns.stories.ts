@@ -1,5 +1,6 @@
 import VueColumns from './VueColumns.vue';
 import VueColumn from './VueColumn/VueColumn.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Foundation/Layout',
@@ -7,11 +8,16 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { VueColumns, VueColumn },
+  components: { VueColumns, VueColumn, ComponentDocs },
   setup() {
     return { args };
   },
-  template: `<vue-columns v-bind="args" style="border: 1px solid var(--brand-border-default-medium);">
+  template: `<component-docs
+      component-name="Columns"
+      usage="The Columns are used to lay out content horizontally.
+      They can be used together with the Stack to implement a very flexible Grid system and also allow to stack them based on the viewport."
+  >
+  <vue-columns v-bind="args" style="border: 1px solid var(--brand-border-default-medium);">
     <vue-column :width="['full', '4/12', '4/12', 'fit']" style="border: 1px solid var(--brand-border-danger-low);">
       Column 1
     </vue-column>
@@ -21,7 +27,8 @@ const Template = (args) => ({
     <vue-column :width="['full', '4/12', '4/12', '2/12']" style="border: 1px solid var(--brand-border-danger-low);">
       Column 3
     </vue-column>
-  </vue-columns>`,
+  </vue-columns>
+  </component-docs>`,
 });
 
 export const Columns = Template.bind({});
@@ -32,7 +39,6 @@ Columns.args = {
   alignX: ['start', 'center', 'end'],
   alignY: ['start', 'center', 'end'],
   reverse: [true, false, true, false, false],
-  noWrap: false,
   stackPhone: true,
   stackTabletPortrait: false,
   stackTabletLandscape: true,

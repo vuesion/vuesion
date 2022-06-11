@@ -440,7 +440,3 @@ export default {
   components: { ColorTokensSection, VueStack },
 };
 </script>
-
-<style lang="scss" module>
-@import '~@/assets/design-system';
-</style>
