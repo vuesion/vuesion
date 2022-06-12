@@ -5,7 +5,6 @@ import { ButtonStyleValues, ShirtSizeValues } from '~/components/prop-types';
 export default {
   title: 'Input & Actions/Button',
   component: VueButton,
-  // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
   argTypes: {
     as: {
       control: { type: 'select' },
@@ -22,18 +21,14 @@ export default {
   },
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-  // Components used in your story `template` are defined in the `components` object
   components: {
     VueButton,
     ComponentDocs,
   },
-  // The story's `args` need to be mapped into the template through the `setup()` method
   setup() {
     return { args };
   },
-  // And then the `args` are bound to your component with `v-bind="args"`
   template: `<component-docs
       component-name="Button"
       usage="Buttons are used primarily to take action.

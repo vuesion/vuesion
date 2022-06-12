@@ -13,6 +13,7 @@ export default defineConfig({
       functions: 100,
       statements: 100,
       lines: 100,
+      exclude: ['**/test-utils.ts', '**/CollapseAnimation.vue'],
     },
   },
   resolve: {

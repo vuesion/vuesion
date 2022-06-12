@@ -1,6 +1,9 @@
 import { describe, test, expect } from 'vitest';
 import {
   getCssSpacingClasses,
+  getFloatInRange,
+  getGUID,
+  getIntInRange,
   getResponsiveCssClasses,
   isNullOrUndefined,
   parseCssSpacingProp,
@@ -196,5 +199,19 @@ describe('component utils', () => {
         ),
       ).toEqual(['pt-sd-8', 'pr-sd-8', 'pb-sd-8', 'pl-sd-8']);
     });
+  });
+
+  test('createGUID', () => {
+    expect(getGUID()).toHaveLength(32);
+  });
+
+  test('getFloatInRange', () => {
+    expect(getFloatInRange(5, 7)).toBeGreaterThanOrEqual(5);
+    expect(getFloatInRange(5, 7)).toBeLessThanOrEqual(8);
+  });
+
+  test('getIntInRange', () => {
+    expect(getIntInRange(5, 7)).toBeGreaterThanOrEqual(5);
+    expect(getIntInRange(5, 7)).toBeLessThanOrEqual(7);
   });
 });

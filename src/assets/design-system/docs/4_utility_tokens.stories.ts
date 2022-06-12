@@ -9,14 +9,11 @@ import VueBox from '@/components/layout/VueBox/VueBox.vue';
 export default {
   title: 'Foundation/General',
   component: null,
-  // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
   argTypes: {},
   parameters: { controls: { disabled: true } },
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-  // Components used in your story `template` are defined in the `components` object
   components: {
     ComponentDocs,
     UtilityTokenSection,
@@ -26,11 +23,9 @@ const Template = (args) => ({
     VueText,
     VueBox,
   },
-  // The story's `args` need to be mapped into the template through the `setup()` method
   setup() {
     return { args };
   },
-  // And then the `args` are bound to your component with `v-bind="args"`
   template: `<component-docs
       component-name="Utility Component Tokens"
       usage="These are other tokenized design values. Some of these tokens do were not able to be properly translated to Figma so new components will have to manually input these values."

@@ -5,30 +5,24 @@ import VueText from '@/components/typography/VueText/VueText.vue';
 export default {
   title: 'Foundation/General',
   component: null,
-  // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
   argTypes: {},
   parameters: { controls: { disabled: true } },
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-  // Components used in your story `template` are defined in the `components` object
   components: {
     VueText,
     ComponentDocs,
     UtilityTokenSection,
   },
-  // The story's `args` need to be mapped into the template through the `setup()` method
   setup() {
     return { args };
   },
-  // And then the `args` are bound to your component with `v-bind="args"`
   template: `<component-docs
       component-name="Spacing"
       usage="White space is the most often cited but poorly used tool in design — digital or not. Vuesion provides a few simple rules to help design hierarchical and functional layouts"
       suffix=""
   >
-
   <vue-stack space="64">
     <utility-token-section title="Spacing" description="This scale is meant for individual components. Larger sizes are meant for layouts. Use smaller sizes for detailed components.">
       <table width="100%">

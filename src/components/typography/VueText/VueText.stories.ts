@@ -9,26 +9,20 @@ import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 export default {
   title: 'Foundation/Typography',
   component: null,
-  // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
   argTypes: {},
   parameters: { controls: { disabled: true } },
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const TextStylesTemplate = (args) => ({
-  // Components used in your story `template` are defined in the `components` object
   components: { VueText, ComponentDocs, UtilityTokenSection, VueStack, VueColumns, VueColumn },
-  // The story's `args` need to be mapped into the template through the `setup()` method
   setup() {
     return { args };
   },
-  // And then the `args` are bound to your component with `v-bind="args"`
   template: `<component-docs
       component-name="Typography"
       usage="Typography can help create clear hierarchies, organize information, and guide users through a product or experience."
       suffix=""
   >
-
   <vue-stack space="64">
     <utility-token-section title="Atomic Typography Styles" description="This is the basic scale and weights used for our typography styles.">
       <vue-columns>
@@ -282,15 +276,11 @@ const TextStylesTemplate = (args) => ({
 
 export const TextStyles = TextStylesTemplate.bind({});
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const TextColorsTemplate = (args) => ({
-  // Components used in your story `template` are defined in the `components` object
   components: { VueText, ComponentDocs, ColorTokensSection },
-  // The story's `args` need to be mapped into the template through the `setup()` method
   setup() {
     return { args };
   },
-  // And then the `args` are bound to your component with `v-bind="args"`
   template: `<component-docs
       component-name="Text Colors"
   >
