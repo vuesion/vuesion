@@ -17,10 +17,10 @@
 </template>
 
 <script lang="ts">
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueTiles from '~/components/layout/VueTiles/VueTiles.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
 
 export default {
   name: 'ColorPalette',

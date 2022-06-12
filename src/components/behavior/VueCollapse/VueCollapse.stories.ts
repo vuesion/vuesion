@@ -1,16 +1,18 @@
 import { ref } from 'vue';
 import VueCollapse from './VueCollapse.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueCard from '@/components/data-display/VueCard/VueCard.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueCard from '~/components/data-display/VueCard/VueCard.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
 
 export default {
   title: 'Behavior/Collapse',
   component: VueCollapse,
-  argTypes: {},
-  parameters: { controls: { disabled: true } },
+  argTypes: {
+    show: { table: { disable: true } },
+    default: { table: { disable: true } },
+  },
 };
 
 const Template = (args) => ({
@@ -33,7 +35,7 @@ const Template = (args) => ({
   >
   <vue-card>
     <vue-button @click="show = !show" look="outline" leading-icon="eye">Show content</vue-button>
-    <vue-collapse :show="show" :duration="250">
+    <vue-collapse :show="show" v-bind="args">
       <vue-box padding="16 0 0 0">
         <vue-text color="text-high">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
@@ -50,3 +52,6 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
+Default.args = {
+  duration: 250,
+};

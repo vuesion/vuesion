@@ -1,5 +1,5 @@
-import { IBreakpoints } from '@/interfaces/IBreakpoints';
-import { BreakpointValues } from '@/components/prop-types';
+import { IBreakpoints } from '~/interfaces/IBreakpoints';
+import { BreakpointValues } from '~/components/prop-types';
 
 export interface CssSpacing {
   top: string;

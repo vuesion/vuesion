@@ -6,17 +6,17 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Spacing } from '@/components/prop-types';
+import { Spacing } from '~/components/prop-types';
 import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
 
 type ColumnRange = 'none' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
 interface TilesProps {
   as?: string | Array<Spacing>;
-  space?: Spacing | Array<Spacing>;
-  verticalSpace?: Spacing | Array<Spacing>;
-  horizontalSpace?: Spacing | Array<Spacing>;
-  columns?: ColumnRange | Array<ColumnRange>;
+  space?: string | Spacing | Array<Spacing>;
+  verticalSpace?: string | Spacing | Array<Spacing>;
+  horizontalSpace?: string | Spacing | Array<Spacing>;
+  columns?: string | ColumnRange | Array<ColumnRange>;
 }
 
 const props = withDefaults(defineProps<TilesProps>(), {

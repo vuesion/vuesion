@@ -11,8 +11,8 @@
 
 <script setup lang="ts">
 /* istanbul ignore file */
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueTiles from '~/components/layout/VueTiles/VueTiles.vue';
 
 const icons = [
   'activity',

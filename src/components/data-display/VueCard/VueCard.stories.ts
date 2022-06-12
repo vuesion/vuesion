@@ -1,20 +1,21 @@
 import VueCard from './VueCard.vue';
 import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
-import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueAvatar from '@/components/data-display/VueAvatar/VueAvatar.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import VueTiles from '~/components/layout/VueTiles/VueTiles.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueAvatar from '~/components/data-display/VueAvatar/VueAvatar.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 
 export default {
   title: 'Data Display/Card',
   component: VueCard,
-
-  argTypes: {},
+  argTypes: {
+    default: { table: { disable: true } },
+  },
 };
 
 const Template = (args) => ({
@@ -31,11 +32,9 @@ const Template = (args) => ({
     VueInline,
     VueButton,
   },
-
   setup() {
     return { args };
   },
-
   template: `<component-docs
       component-name="Card"
       usage="Cards are used to group similar concepts and tasks together."
@@ -88,7 +87,6 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-
 Default.args = {
   padding: '0',
 };

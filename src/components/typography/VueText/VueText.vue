@@ -19,8 +19,8 @@
 
 <script setup lang="ts">
 import { computed, useCssModule } from 'vue';
-import { getResponsiveCssClasses, parseResponsivePropValue } from '@/components/utils';
-import { FontWeight, Alignment, TextColor, TextStyle } from '@/components/prop-types';
+import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
+import { FontWeight, Alignment, TextColor, TextStyle } from '~/components/prop-types';
 
 interface TextProps {
   as?: string;

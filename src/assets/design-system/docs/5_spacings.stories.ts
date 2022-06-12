@@ -1,6 +1,6 @@
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
-import UtilityTokenSection from '@/assets/design-system/docs/components/UtilityTokenSection.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import UtilityTokenSection from '~/assets/design-system/docs/components/UtilityTokenSection.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
 
 export default {
   title: 'Foundation/General',

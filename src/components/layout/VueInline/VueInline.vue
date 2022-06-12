@@ -6,14 +6,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { HorizontalAlignment, Spacing, VerticalAlignment } from '@/components/prop-types';
+import { HorizontalAlignment, Spacing, VerticalAlignment } from '~/components/prop-types';
 import { getFlexDirectionForBreakpoint, getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
 
 interface InlineProps {
   as?: string;
-  space?: Spacing | Array<Spacing>;
-  alignX?: HorizontalAlignment | Array<HorizontalAlignment>;
-  alignY?: VerticalAlignment | Array<VerticalAlignment>;
+  space?: string | Spacing | Array<Spacing>;
+  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment>;
+  alignY?: string | VerticalAlignment | Array<VerticalAlignment>;
   reverse?: boolean | Array<boolean>;
   noWrap?: boolean;
   stackPhone?: boolean;

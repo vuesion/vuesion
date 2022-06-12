@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import CollapseAnimation from '@/components/animations/CollapseAnimation/CollapseAnimation.vue';
+import CollapseAnimation from '~/components/animations/CollapseAnimation/CollapseAnimation.vue';
 
 defineProps({
   duration: { type: Number, default: 0 },

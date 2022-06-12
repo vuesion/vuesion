@@ -1,10 +1,10 @@
 import VueText from './VueText.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
-import UtilityTokenSection from '@/assets/design-system/docs/components/UtilityTokenSection.vue';
-import ColorTokensSection from '@/assets/design-system/docs/components/ColorTokensSection.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import UtilityTokenSection from '~/assets/design-system/docs/components/UtilityTokenSection.vue';
+import ColorTokensSection from '~/assets/design-system/docs/components/ColorTokensSection.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
 export default {
   title: 'Foundation/Typography',

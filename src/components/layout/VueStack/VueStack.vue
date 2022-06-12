@@ -6,13 +6,13 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { HorizontalAlignment, Spacing } from '@/components/prop-types';
+import { HorizontalAlignment, Spacing } from '~/components/prop-types';
 import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
 
 interface StackProps {
   as?: string;
-  space?: Spacing | Array<Spacing>;
-  alignX?: HorizontalAlignment | Array<HorizontalAlignment>;
+  space?: string | Spacing | Array<Spacing>;
+  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment>;
 }
 
 const props = withDefaults(defineProps<StackProps>(), {

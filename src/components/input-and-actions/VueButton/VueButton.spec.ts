@@ -1,7 +1,7 @@
 import { describe, beforeEach, test, expect, vi } from 'vitest';
 import { render, fireEvent, RenderResult } from '@testing-library/vue';
 import VueButton from './VueButton.vue';
-import { ButtonStyleValues } from '@/components/prop-types';
+import { ButtonStyleValues } from '~/components/prop-types';
 
 describe('VueButton.vue', () => {
   describe('Button', () => {

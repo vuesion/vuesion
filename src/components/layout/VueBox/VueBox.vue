@@ -6,19 +6,19 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SpacingWithDirections, HorizontalAlignment, VerticalAlignment } from '@/components/prop-types';
+import { SpacingWithDirections, HorizontalAlignment, VerticalAlignment } from '~/components/prop-types';
 import {
   getCssSpacingClasses,
   getResponsiveCssClasses,
   parseCssSpacingProp,
   parseResponsivePropValue,
-} from '@/components/utils';
+} from '~/components/utils';
 
 interface BoxProps {
   as?: string;
-  padding?: SpacingWithDirections | Array<SpacingWithDirections>;
-  alignX?: HorizontalAlignment | Array<HorizontalAlignment>;
-  alignY?: VerticalAlignment | Array<VerticalAlignment>;
+  padding?: string | SpacingWithDirections | Array<SpacingWithDirections>;
+  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment>;
+  alignY?: string | VerticalAlignment | Array<VerticalAlignment>;
   autoHeight?: boolean;
 }
 

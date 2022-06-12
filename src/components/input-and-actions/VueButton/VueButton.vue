@@ -47,10 +47,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, ComponentPublicInstance } from 'vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueLoader from '@/components/data-display/VueLoader/VueLoader.vue';
+import { computed } from 'vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueLoader from '~/components/data-display/VueLoader/VueLoader.vue';
 import { ButtonStyle, ShirtSize } from '~/components/prop-types';
+import { getDomRef } from '~/composables/get-dom-ref';
 
 interface CardProps {
   as?: string;
@@ -80,7 +81,7 @@ const props = withDefaults(defineProps<CardProps>(), {
 const emit = defineEmits<{
   (name: 'click', event: Event): void;
 }>();
-const buttonRef = ref<HTMLElement & ComponentPublicInstance>(null);
+const buttonRef = getDomRef(null);
 const actualWidth = computed(() => {
   if (buttonRef.value === null) {
     return null;

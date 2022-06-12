@@ -8,7 +8,7 @@ import {
   isNullOrUndefined,
   parseCssSpacingProp,
   parseResponsivePropValue,
-} from '@/components/utils';
+} from '~/components/utils';
 
 describe('component utils', () => {
   describe('isNullOrUndefined', () => {

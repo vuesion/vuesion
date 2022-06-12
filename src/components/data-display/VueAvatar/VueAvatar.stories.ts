@@ -1,5 +1,5 @@
 import VueAvatar from './VueAvatar.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { ShirtSizeValues } from '~/components/prop-types';
 
 export default {

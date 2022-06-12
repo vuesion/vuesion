@@ -10,7 +10,7 @@ import {
   WidthValues,
   ButtonStyleValues,
   ShirtSizeValues,
-} from '@/components/prop-types';
+} from '~/components/prop-types';
 
 describe('prop-types', () => {
   test('All type values should be present', () => {

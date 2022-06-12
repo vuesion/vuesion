@@ -5,7 +5,18 @@ import 'assets/typography.scss';
 import { app } from '@storybook/vue3';
 import camelCase from 'lodash/camelCase';
 import upperFirst from 'lodash/upperFirst';
+import { defineRule } from 'vee-validate';
+import { required, email, integer, min, min_value as minValue, regex } from '@vee-validate/rules';
 
+// define global vee-validate rules
+defineRule('required', required);
+defineRule('email', email);
+defineRule('integer', integer);
+defineRule('min', min);
+defineRule('min_value', minValue);
+defineRule('regex', regex);
+
+// import icons globally
 const icons = import.meta.glob('../src/components/icons/**/*.vue');
 
 for (const path in icons) {

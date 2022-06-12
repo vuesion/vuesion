@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import { Spacing } from '~/components/prop-types';
 
 interface CardProps {

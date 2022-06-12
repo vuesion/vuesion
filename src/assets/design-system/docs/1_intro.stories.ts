@@ -1,6 +1,6 @@
-import VueCard from '@/components/data-display/VueCard/VueCard.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
+import VueCard from '~/components/data-display/VueCard/VueCard.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
 
 export default {
   title: 'Foundation/Intro',

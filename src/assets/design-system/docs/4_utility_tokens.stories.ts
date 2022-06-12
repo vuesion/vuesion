@@ -1,10 +1,10 @@
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
-import UtilityTokenSection from '@/assets/design-system/docs/components/UtilityTokenSection.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import TokenItem from '@/assets/design-system/docs/components/TokenItem.vue';
-import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import UtilityTokenSection from '~/assets/design-system/docs/components/UtilityTokenSection.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import TokenItem from '~/assets/design-system/docs/components/TokenItem.vue';
+import VueTiles from '~/components/layout/VueTiles/VueTiles.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
 
 export default {
   title: 'Foundation/General',

@@ -1,5 +1,5 @@
 import VueLoader from './VueLoader.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Data Display/Loader',

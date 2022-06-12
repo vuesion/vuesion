@@ -1,5 +1,5 @@
 import VueButton from './VueButton.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { ButtonStyleValues, ShirtSizeValues } from '~/components/prop-types';
 
 export default {
@@ -18,6 +18,7 @@ export default {
       control: { type: 'select' },
       options: ShirtSizeValues,
     },
+    default: { table: { disable: true } },
   },
 };
 
@@ -39,7 +40,9 @@ Each type has a different best-for context:
 - danger: used to destruct"
       story="Show all button variations and sized. Please interact with the buttons to see different states."
   >
-<vue-button v-bind="args">Button text</vue-button>
+    <vue-button v-bind="args">
+      Button text
+    </vue-button>
   </component-docs>`,
 });
 

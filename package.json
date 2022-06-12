@@ -31,7 +31,7 @@
   },
   "scripts": {
     "dev": "nuxt dev -o",
-    "storybook:dev": "start-storybook -p 6006",
+    "storybook:dev": "rm -rf node_modules/.cache/storybook && start-storybook -p 6006",
     "test": "vitest run --coverage",
     "lint": "eslint . --ext ts,vue --fix --cache",
     "prettier": "prettier --config .prettierrc --ignore-path .prettierignore --write ./**/*.{ts,vue,md,json,js,yml} --loglevel error",
@@ -44,8 +44,12 @@
     "pre-commit": "pretty-quick --staged && concurrently \"npm run lint\" \"npm test\""
   },
   "dependencies": {
+    "@vee-validate/rules": "4.5.11",
     "@vueuse/core": "8.6.0",
-    "animejs": "3.2.1"
+    "animejs": "3.2.1",
+    "install": "0.13.0",
+    "npm": "8.12.1",
+    "vee-validate": "4.5.11"
   },
   "devDependencies": {
     "@babel/core": "7.18.2",

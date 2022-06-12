@@ -15,9 +15,9 @@
 </template>
 
 <script lang="ts">
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
 
 export default {
   name: 'UtilityTokenSection',

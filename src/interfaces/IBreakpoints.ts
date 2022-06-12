@@ -1,4 +1,4 @@
-import { BreakPoint } from '@/enums/BreakPoint';
+import { BreakPoint } from '~/enums/BreakPoint';
 
 export type IBreakpoints = {
   // eslint-disable-next-line no-unused-vars

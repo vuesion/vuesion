@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     storageKey: 'nuxt-color-mode',
   },
   modules: ['@nuxtjs/color-mode'],
+  plugins: [{ src: '@/plugins/vee-validate/vee-validate' }],
   rootDir: '.',
   srcDir: './src',
   vite: {

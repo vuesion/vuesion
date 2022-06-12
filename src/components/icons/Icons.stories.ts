@@ -1,4 +1,4 @@
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import IconList from '~/components/icons/IconList.vue';
 
 export default {
