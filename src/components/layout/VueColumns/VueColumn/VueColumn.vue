@@ -6,14 +6,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { HorizontalAlignment, VerticalAlignment, Width } from '@/components/prop-types';
-import { getResponsiveCssClasses, parseResponsivePropValue } from '@/components/utils';
+import { HorizontalAlignment, VerticalAlignment, Width } from '~/components/prop-types';
+import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
 
 interface ColumnProps {
   as?: string;
-  alignX?: HorizontalAlignment | Array<HorizontalAlignment>;
-  alignY?: VerticalAlignment | Array<VerticalAlignment>;
-  width?: Width | Array<Width>;
+  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment>;
+  alignY?: string | VerticalAlignment | Array<VerticalAlignment>;
+  width?: string | Width | Array<Width>;
   canGrow?: boolean;
   canShrink?: boolean;
 }
