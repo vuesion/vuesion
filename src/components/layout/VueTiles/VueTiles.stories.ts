@@ -13,8 +13,9 @@ const Template = (args) => ({
   },
   template: `<component-docs
       component-name="Tiles"
-      usage="The Tiles component allows you to render a grid of elements. You can change the vertical space, 
-      horizontal space and amount of columns oer viewport."
+      usage="The Tiles component allows you to render a grid of elements.
+You can change the vertical space, 
+horizontal space and amount of columns oer viewport."
   >
   <vue-tiles v-bind="args" style="border: 1px solid var(--brand-border-default-medium);">
     <span>Lorem Ipsum</span>

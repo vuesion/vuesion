@@ -15,7 +15,8 @@ const Template = (args) => ({
   template: `<component-docs
       component-name="Columns"
       usage="The Columns are used to lay out content horizontally.
-      They can be used together with the Stack to implement a very flexible Grid system and also allow to stack them based on the viewport."
+They can be used together with the Stack to implement a very flexible 
+Grid system and also allow to stack them based on the viewport."
   >
   <vue-columns v-bind="args" style="border: 1px solid var(--brand-border-default-medium);">
     <vue-column :width="['full', '4/12', '4/12', 'fit']" style="border: 1px solid var(--brand-border-danger-low);">

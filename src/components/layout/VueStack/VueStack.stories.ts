@@ -13,8 +13,9 @@ const Template = (args) => ({
   },
   template: `<component-docs
       component-name="Stack"
-      usage="The Stack component covers the most common use case - stacking elements and provide whitespace
-between them. You can nest multiple stacks to achieve full flexibility."
+      usage="The Stack component covers the most common use case - stacking elements
+and provide whitespace between them.
+You can nest multiple stacks to achieve full flexibility."
   ><vue-stack v-bind="args" style="border: 1px solid var(--brand-border-default-medium);">
     <span>Lorem Ipsum</span>
     <span>Lorem Ipsum</span>

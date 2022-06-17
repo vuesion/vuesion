@@ -5,8 +5,6 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
   plugins: [vue()],
   test: {
-    globals: true,
-    environment: 'happy-dom',
     coverage: {
       reporter: ['html', 'lcov', 'text'],
       branches: 100,
@@ -15,6 +13,9 @@ export default defineConfig({
       lines: 100,
       exclude: ['**/test-utils.ts', '**/CollapseAnimation.vue'],
     },
+    environment: 'happy-dom',
+    globals: true,
+    setupFiles: ['./src/test/setup.ts'],
   },
   resolve: {
     alias: {

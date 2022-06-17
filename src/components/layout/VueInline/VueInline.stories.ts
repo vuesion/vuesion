@@ -14,8 +14,8 @@ const Template = (args) => ({
   template: `<component-docs
         component-name="Inline"
         usage="The Inline component allows you to render a set of elements in a row 
-        with equal spacing around them, wrapping onto multiple lines when necessary.
-        The elements can be stacked per viewport."
+with equal spacing around them, wrapping onto multiple lines when necessary.
+The elements can be stacked per viewport."
     >
     <vue-inline v-bind="args" style="border: 1px solid var(--brand-border-default-medium);">
       <span>Item 1</span>

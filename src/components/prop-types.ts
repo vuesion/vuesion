@@ -109,3 +109,7 @@ export const BreakpointValues = Object.keys(BreakPoint);
 export const ShirtSizeValues = ['sm', 'md', 'lg'] as const;
 
 export type ShirtSize = typeof ShirtSizeValues[number];
+
+export const BadgeStatusValues = ['info', 'warning', 'success', 'danger', 'neutral'];
+
+export type BadgeStatus = typeof BadgeStatusValues[number];
