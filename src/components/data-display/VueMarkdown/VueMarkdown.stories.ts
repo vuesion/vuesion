@@ -4,9 +4,7 @@ import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.
 export default {
   title: 'Data Display/Markdown',
   component: VueMarkdown,
-
   argTypes: {},
-  parameters: { controls: { disabled: true } },
 };
 
 const Template = (args) => ({
@@ -24,10 +22,13 @@ const Template = (args) => ({
       usage="Display markdown content as HTML."
       story="Display markdown content."
   >
-    <vue-markdown markdown="# headline 1\n ## headline 2\n - test\n - test\n - test\n [test](/test)" />
+    <vue-markdown v-bind="args" />
   </component-docs>`,
 });
 
 export const Default = Template.bind({});
 
-Default.args = {};
+Default.args = {
+  useRouter: true,
+  markdown: '# headline 1\n## headline 2\n- test\n- test\n- test\n[test](/test)',
+};

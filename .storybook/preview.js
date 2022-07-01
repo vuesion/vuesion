@@ -17,7 +17,7 @@ defineRule('min_value', minValue);
 defineRule('regex', regex);
 
 // import icons globally
-const icons = import.meta.glob('../src/components/icons/**/*.vue');
+const icons = import.meta.glob('../src/components/icons/*.vue');
 
 for (const path in icons) {
   icons[path]().then((componentConfig) => {
