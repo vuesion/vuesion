@@ -113,3 +113,11 @@ export type ShirtSize = typeof ShirtSizeValues[number];
 export const BadgeStatusValues = ['info', 'warning', 'success', 'danger', 'neutral'];
 
 export type BadgeStatus = typeof BadgeStatusValues[number];
+
+export const VerticalDirectionValues = ['top', 'bottom'];
+
+export type VerticalDirection = typeof VerticalDirectionValues[number];
+
+export const HorizontalDirectionValues = ['left', 'right'];
+
+export type HorizontalDirection = typeof HorizontalDirectionValues[number];

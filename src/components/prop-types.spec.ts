@@ -10,6 +10,8 @@ import {
   WidthValues,
   ButtonStyleValues,
   ShirtSizeValues,
+  VerticalDirectionValues,
+  HorizontalDirectionValues,
 } from '~/components/prop-types';
 
 describe('prop-types', () => {
@@ -24,5 +26,7 @@ describe('prop-types', () => {
     expect(WidthValues).not.toBeUndefined();
     expect(ButtonStyleValues).not.toBeUndefined();
     expect(ShirtSizeValues).not.toBeUndefined();
+    expect(VerticalDirectionValues).not.toBeUndefined();
+    expect(HorizontalDirectionValues).not.toBeUndefined();
   });
 });
