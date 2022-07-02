@@ -48,6 +48,7 @@
     "@vueuse/core": "8.6.0",
     "animejs": "3.2.1",
     "marked": "4.0.17",
+    "mitt": "3.0.0",
     "vee-validate": "4.5.11"
   },
   "devDependencies": {

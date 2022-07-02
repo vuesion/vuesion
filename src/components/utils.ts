@@ -1,5 +1,7 @@
 import { IBreakpoints } from '~/interfaces/IBreakpoints';
 import { BreakpointValues } from '~/components/prop-types';
+import { EventBus } from '~/services/EventBus';
+import { IToast } from '~/interfaces/IToast';
 
 export interface CssSpacing {
   top: string;
@@ -189,4 +191,8 @@ export const getIntInRange = (min: number, max: number): number => {
 
 export const getFloatInRange = (min: number, max: number): number => {
   return Math.random() * (max - min) + min;
+};
+
+export const addToast = (n: IToast): void => {
+  EventBus.emit('toast.add', n);
 };
