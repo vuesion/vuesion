@@ -47,9 +47,7 @@
     "@vee-validate/rules": "4.5.11",
     "@vueuse/core": "8.6.0",
     "animejs": "3.2.1",
-    "install": "0.13.0",
     "marked": "4.0.17",
-    "npm": "8.12.1",
     "vee-validate": "4.5.11"
   },
   "devDependencies": {

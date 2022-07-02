@@ -107,7 +107,7 @@ img:not([alt]) {
   transition: var(--brand-fade-animation-transition);
   z-index: -1;
 
-  .show {
+  &.show {
     opacity: 0.5;
     z-index: 999;
   }
