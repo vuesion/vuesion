@@ -1,8 +1,8 @@
 <template>
   <vue-box
     v-if="show"
-    data-testid="modal"
     ref="modal"
+    data-testid="modal"
     :padding="padding"
     :class="[$style.vueModal, show && $style.show]"
     :aria-modal="show"
@@ -27,7 +27,7 @@ import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import { SpacingWithDirections } from '~/components/prop-types';
 
 interface ModalProps {
-  padding?: SpacingWithDirections | Array<SpacingWithDirections>;
+  padding?: string | SpacingWithDirections | Array<SpacingWithDirections>;
   show?: boolean;
   backdrop?: boolean;
   disablePageScroll?: boolean;

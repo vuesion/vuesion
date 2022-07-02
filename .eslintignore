@@ -9,3 +9,4 @@
 **/static/**
 **/interfaces/graphql/**
 **/interfaces/swagger.ts
+src/components/data-display/VueMarkdown/VueMarkdown.vue
