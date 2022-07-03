@@ -3,6 +3,7 @@ import 'assets/reset.scss';
 import 'assets/global.scss';
 import 'assets/typography.scss';
 import { app } from '@storybook/vue3';
+import { action } from '@storybook/addon-actions';
 import camelCase from 'lodash/camelCase';
 import upperFirst from 'lodash/upperFirst';
 import { defineRule } from 'vee-validate';
@@ -15,6 +16,31 @@ defineRule('integer', integer);
 defineRule('min', min);
 defineRule('min_value', minValue);
 defineRule('regex', regex);
+
+// Mocks
+// NuxtLink
+app.component('nuxt-link', {
+  props: ['to'],
+  methods: {
+    log() {
+      action('link target')(this.to);
+    },
+  },
+  template: '<a href="#" @click.prevent="log()"><slot>NuxtLink</slot></a>',
+});
+app.mixin({
+  created() {
+    this.localePath = (path) => path;
+  },
+});
+app.mixin({
+  created() {
+    this.$colorMode = {
+      value: 'light',
+      preference: 'light',
+    };
+  },
+});
 
 // import icons globally
 const icons = import.meta.glob('../src/components/icons/*.vue');

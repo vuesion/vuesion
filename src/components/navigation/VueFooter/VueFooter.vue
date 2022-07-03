@@ -55,7 +55,7 @@
               name="lang"
               :items="languages"
               hide-description
-              :value="selectedLocale"
+              :model-value="selectedLocale"
               @update:modelValue="$emit('locale-change', $event)"
             />
             <vue-select
@@ -64,7 +64,7 @@
               name="theme"
               :items="themes"
               hide-description
-              :value="$colorMode && $colorMode.value"
+              :model-value="$colorMode && $colorMode.value"
               @update:modelValue="$colorMode.preference = $event.value"
             />
           </vue-stack>

@@ -28,13 +28,14 @@ export const Default = Template.bind({});
 
 Default.args = {
   slim: false,
-  languages: () => [
+  languages: [
     { label: 'English', value: 'en' },
     { label: 'Deutsch', value: 'de' },
   ],
-  themes: () => [
+  themes: [
     { label: 'Dark', value: 'dark' },
     { label: 'Light', value: 'light' },
   ],
   selectedLocale: 'en',
+  selectDuration: 250,
 };
