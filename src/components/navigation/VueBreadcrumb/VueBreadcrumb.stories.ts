@@ -5,11 +5,7 @@ import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.
 export default {
   title: 'Navigation/Breadcrumb',
   component: VueBreadcrumb,
-  argTypes: {
-    pages: { control: { type: 'number', min: 5 } },
-    selectedPage: { control: { type: 'number', min: 1 } },
-    displayPages: { control: { type: 'number' }, min: 0 },
-  },
+  argTypes: {},
 };
 
 const Template = (args) => ({

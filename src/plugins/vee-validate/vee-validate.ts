@@ -7,3 +7,5 @@ defineRule('integer', integer);
 defineRule('min', min);
 defineRule('min_value', minValue);
 defineRule('regex', regex);
+
+export default null;
