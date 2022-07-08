@@ -34,7 +34,7 @@ const Template = (args) => ({
       story="Show default radio button. Please interact with the radio buttons to see different states."
   >
   <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
-    <vue-text weight="semi-bold">Model: {{ model }}</vue-text>
+    <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
     <vue-radio
         v-for="n in 3"
         :key="n"

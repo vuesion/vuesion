@@ -42,7 +42,7 @@ const Template = (args) => ({
       story="Show all states of the input component. Please interact with the input to see all states."
   >
   <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
-    <vue-text look="small-title" weight="semi-bold">Model: {{ model }}</vue-text>
+    <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
     <vue-input
         v-bind="args" 
         v-model="model"

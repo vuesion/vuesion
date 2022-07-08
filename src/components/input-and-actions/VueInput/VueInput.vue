@@ -42,7 +42,7 @@
         :disabled="disabled"
         :readonly="readonly"
         :autofocus="autofocus"
-        :size="sizeAttribute || 1"
+        :size="sizeAttribute"
         v-bind="$attrs"
         @input="onInput"
         @blur="onBlur"

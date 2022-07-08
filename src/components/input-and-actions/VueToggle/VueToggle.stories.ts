@@ -33,7 +33,7 @@ const Template = (args) => ({
       story="Show default toggle. Please interact with the toggle to see different states."
   >
   <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
-    <vue-text look="small-title" weight="semi-bold">Model: {{ model }}</vue-text>
+    <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
     <vue-toggle
         :id="args.id"
         v-model="model"

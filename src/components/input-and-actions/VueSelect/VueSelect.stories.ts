@@ -64,7 +64,7 @@ const Template = (args) => ({
       story="Display select component with all properties. Please interact with the select to see different states."
   >
   <vue-stack>
-    <vue-text look="small-title" weight="semi-bold">Model: {{ model }}</vue-text>
+    <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
     
     <vue-inline>
       <vue-select

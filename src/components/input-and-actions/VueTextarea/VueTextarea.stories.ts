@@ -34,7 +34,7 @@ const Template = (args) => ({
       story="Show all states of the textarea component. Please interact with the textarea to see all states."
   >
   <vue-stack>
-    <vue-text weight="semi-bold">Model: {{ model }}</vue-text>
+    <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
     <vue-textarea
         v-bind="args" 
         v-model="model"
