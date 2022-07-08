@@ -16,7 +16,7 @@ interface TilesProps {
   space?: string | Spacing | Array<Spacing>;
   verticalSpace?: string | Spacing | Array<Spacing>;
   horizontalSpace?: string | Spacing | Array<Spacing>;
-  columns?: string | ColumnRange | Array<ColumnRange>;
+  columns?: string | number | ColumnRange | Array<ColumnRange>;
 }
 
 const props = withDefaults(defineProps<TilesProps>(), {
