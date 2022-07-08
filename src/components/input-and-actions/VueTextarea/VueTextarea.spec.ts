@@ -1,18 +1,18 @@
 /* eslint n/no-callback-literal: 0 */
 import { describe, test, expect, vi } from 'vitest';
 import { render, fireEvent } from '@testing-library/vue';
-import { defineRule } from 'vee-validate';
-import { required, email } from '@vee-validate/rules';
 import flushPromises from 'flush-promises';
-import VueInput from './VueInput.vue';
-import { sleep } from '@/test/test-utils';
+import { defineRule } from 'vee-validate';
+import { required, integer } from '@vee-validate/rules';
+import VueTextarea from './VueTextarea.vue';
+import { sleep } from '~/test/test-utils';
 
 defineRule('required', required);
-defineRule('email', email);
+defineRule('integer', integer);
 
-describe('VueInput.vue', () => {
+describe('VueTextarea.vue', () => {
   test('should render label and description', () => {
-    const { getByText } = render(VueInput, {
+    const { getByText } = render(VueTextarea, {
       props: {
         label: 'this is the label',
         description: 'this is the description',
@@ -26,7 +26,7 @@ describe('VueInput.vue', () => {
   });
 
   test('renders disabled component', () => {
-    const { getByDisplayValue } = render(VueInput, {
+    const { getByDisplayValue } = render(VueTextarea, {
       props: {
         label: 'this is the label',
         modelValue: 'this is the text box value',
@@ -40,7 +40,7 @@ describe('VueInput.vue', () => {
   });
 
   test('renders readonly component', () => {
-    const { getByDisplayValue } = render(VueInput, {
+    const { getByDisplayValue } = render(VueTextarea, {
       props: {
         label: 'this is the label',
         modelValue: 'this is the text box value',
@@ -54,7 +54,7 @@ describe('VueInput.vue', () => {
   });
 
   test('should emit update:modelValue', async () => {
-    const { getByDisplayValue, emitted } = render(VueInput, {
+    const { getByDisplayValue, emitted } = render(VueTextarea, {
       props: {
         label: 'this is the label',
         modelValue: 'this is the value',
@@ -72,7 +72,7 @@ describe('VueInput.vue', () => {
   });
 
   test('should emit debounced-input', async () => {
-    const { getByDisplayValue, emitted } = render(VueInput, {
+    const { getByDisplayValue, emitted } = render(VueTextarea, {
       props: {
         label: 'this is the label',
         modelValue: 'this is the value',
@@ -92,27 +92,30 @@ describe('VueInput.vue', () => {
   });
 
   test('should display error state', async () => {
-    const { getByText, getByLabelText } = render(VueInput, {
+    const { getByText, getByLabelText } = render(VueTextarea, {
       props: {
         label: 'this is the label',
-        errorMessage: 'this is the error',
         description: 'this is the description',
+        errorMessage: 'this is the error',
         name: 'test',
         id: 'test',
-        validation: 'email',
+        validation: 'required|integer',
         modelValue: 'this is the value',
+        required: true,
+        hideLabel: true,
+        hideDescription: true,
       },
     });
 
     getByText('this is the description');
 
-    await fireEvent.update(getByLabelText('this is the label'), 'foo bar');
-    await fireEvent.blur(getByLabelText('this is the label'));
+    await fireEvent.update(getByLabelText('this is the label *'), 'foo bar');
+    await fireEvent.blur(getByLabelText('this is the label *'));
     await flushPromises();
 
     getByText('this is the error');
 
-    await fireEvent.update(getByLabelText('this is the label'), 'example@example.com');
+    await fireEvent.update(getByLabelText('this is the label *'), '123');
   });
 
   test('should autofocus input element', () => {
@@ -132,7 +135,7 @@ describe('VueInput.vue', () => {
       }
     };
 
-    render(VueInput, {
+    render(VueTextarea, {
       props: {
         label: 'this is the label',
         name: 'test',
@@ -162,7 +165,7 @@ describe('VueInput.vue', () => {
       }
     };
 
-    render(VueInput, {
+    render(VueTextarea, {
       props: {
         label: 'this is the label',
         name: 'test',
@@ -176,7 +179,7 @@ describe('VueInput.vue', () => {
   });
 
   test('should handle new modelValue', async () => {
-    const { rerender, getByDisplayValue } = render(VueInput, {
+    const { rerender, getByDisplayValue } = render(VueTextarea, {
       props: {
         label: 'this is the label',
         name: 'test',
@@ -190,39 +193,5 @@ describe('VueInput.vue', () => {
     await rerender({ modelValue: 'new value' });
 
     getByDisplayValue('new value');
-  });
-
-  test('should emit leading-icon-click event', async () => {
-    const { getByTestId, emitted } = render(VueInput, {
-      props: {
-        label: 'this is the label',
-        description: 'this is the description',
-        name: 'name',
-        id: 'id',
-        required: true,
-        leadingIcon: 'email',
-      },
-    });
-
-    await fireEvent.click(getByTestId('id-leading-icon'));
-
-    expect(emitted()['leading-icon-click']).toBeTruthy();
-  });
-
-  test('should emit trailing-icon-click event', async () => {
-    const { getByTestId, emitted } = render(VueInput, {
-      props: {
-        label: 'this is the label',
-        description: 'this is the description',
-        name: 'name',
-        id: 'id',
-        required: true,
-        trailingIcon: 'email',
-      },
-    });
-
-    await fireEvent.click(getByTestId('id-trailing-icon'));
-
-    expect(emitted()['trailing-icon-click']).toBeTruthy();
   });
 });
