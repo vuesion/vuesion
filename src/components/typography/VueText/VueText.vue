@@ -30,7 +30,7 @@ interface TextProps {
   serifs?: boolean;
   underline?: boolean;
   uppercase?: boolean;
-  alignX?: Alignment | Array<Alignment>;
+  alignX?: Alignment | Array<Alignment> | string;
 }
 
 const props = withDefaults(defineProps<TextProps>(), {
