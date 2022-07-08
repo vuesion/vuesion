@@ -1,7 +1,7 @@
 <template>
   <div
     :tabindex="disabled ? null : 0"
-    :class="[$style.vueCheckbox, disabled && $style.disabled, errors.length > 0 && $style.error]"
+    :class="[$style.vueCheckbox, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]"
     @click.stop.prevent="onClick"
     @keypress.space.stop.prevent="onClick"
   >
@@ -69,6 +69,12 @@ const onClick = async () => {
     emit('update:modelValue', value);
     emit('click', value);
   }
+};
+</script>
+
+<script lang="ts">
+export default {
+  inheritAttrs: false,
 };
 </script>
 

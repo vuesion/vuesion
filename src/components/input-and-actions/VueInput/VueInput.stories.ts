@@ -26,11 +26,6 @@ const Template = (args) => ({
     VueInline,
     VueText,
   },
-  data(): any {
-    return {
-      model: true,
-    };
-  },
   setup() {
     const model = ref(null);
     return {

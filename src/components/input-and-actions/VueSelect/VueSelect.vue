@@ -1,5 +1,5 @@
 <template>
-  <div ref="selectRef" :class="$style.vueSelect">
+  <div ref="selectRef" :class="[$style.vueSelect, $attrs.class]">
     <div :class="[disabled && $style.disabled, errors.length > 0 && $style.error]" @keydown="onKeyDown">
       <vue-text
         :for="id"
@@ -272,6 +272,12 @@ const toggleMenu = () => {
 };
 
 onClickOutside(selectRef, () => close(false));
+</script>
+
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+};
 </script>
 
 <style lang="scss" module>

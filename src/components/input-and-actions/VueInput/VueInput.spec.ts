@@ -53,7 +53,7 @@ describe('VueInput.vue', () => {
     expect(getByDisplayValue('this is the text box value')).toHaveAttribute('readonly');
   });
 
-  test('should emit update:ModelValue', async () => {
+  test('should emit update:modelValue', async () => {
     const { getByDisplayValue, emitted } = render(VueInput, {
       props: {
         label: 'this is the label',
@@ -65,7 +65,7 @@ describe('VueInput.vue', () => {
 
     await fireEvent.update(getByDisplayValue('this is the value'), 'this is the new value');
 
-    const actual = emitted()['update:ModelValue'][0][0];
+    const actual = emitted()['update:modelValue'][0][0];
     const expected = 'this is the new value';
 
     expect(actual).toBe(expected);

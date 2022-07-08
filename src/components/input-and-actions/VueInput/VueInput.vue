@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.vueInput, disabled && $style.disabled, errors.length > 0 && $style.error]">
+  <div :class="[$style.vueInput, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]">
     <vue-text
       :for="id"
       look="label"
@@ -42,7 +42,7 @@
         :disabled="disabled"
         :readonly="readonly"
         :autofocus="autofocus"
-        :size="sizeAttribute"
+        :size="sizeAttribute || 1"
         v-bind="$attrs"
         @input="onInput"
         @blur="onBlur"
@@ -70,6 +70,7 @@
 </template>
 
 <script setup lang="ts">
+import { watch } from 'vue';
 import debounce from 'lodash/debounce';
 import { useField } from 'vee-validate';
 import { useIntersectionObserver } from '@/composables/use-intersection-observer';
@@ -121,7 +122,7 @@ const props = withDefaults(defineProps<InputProps>(), {
   sizeAttribute: null,
   debounce: null,
 });
-const emit = defineEmits(['debounced-input', 'update:ModelValue', 'leading-icon-click', 'trailing-icon-click']);
+const emit = defineEmits(['debounced-input', 'update:modelValue', 'leading-icon-click', 'trailing-icon-click', 'blur']);
 const input = getDomRef(null);
 const debouncedInput = debounce((value: string) => emit('debounced-input', value), props.debounce || 0);
 const { errors, value, handleChange } = useField<string | number | null>(props.id, props.validation, {
@@ -136,24 +137,38 @@ const onInput = (e: InputEvent) => {
     handleChange(value);
   }
 
-  emit('update:ModelValue', value, e);
+  emit('update:modelValue', value, e);
 
   if (props.debounce !== null) {
     debouncedInput(value);
   }
 };
-
 const onBlur = (e: InputEvent) => {
   const value = (e.target as HTMLInputElement).value;
 
   handleChange(value);
+
+  emit('blur', e);
 };
+
+watch(
+  () => props.modelValue,
+  (newModelValue) => {
+    value.value = newModelValue;
+  },
+);
 
 useIntersectionObserver(input, (entries: IntersectionObserverEntry[]) => {
   if (props.autofocus) {
     entries.forEach((entry) => (entry.target as HTMLInputElement).focus());
   }
 });
+</script>
+
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+};
 </script>
 
 <style lang="scss" module>
