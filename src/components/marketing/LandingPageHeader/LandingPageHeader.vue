@@ -75,16 +75,16 @@
 
 <script setup lang="ts">
 import { onBeforeMount, onMounted, onBeforeUnmount } from 'vue';
-import { CircleAnimation } from '@/components/animations/CircleAnimation';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueHidden from '@/components/utils/VueHidden/VueHidden.vue';
-import { getDomRef } from '@/composables/get-dom-ref';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueIconDownload from '@/components/icons/VueIconDownload.vue';
-import VueIconBook from '@/components/icons/VueIconBook.vue';
+import { CircleAnimation } from '~/components/animations/CircleAnimation';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueHidden from '~/components/utils/VueHidden/VueHidden.vue';
+import { getDomRef } from '~/composables/get-dom-ref';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueIconDownload from '~/components/icons/VueIconDownload.vue';
+import VueIconBook from '~/components/icons/VueIconBook.vue';
 const header = getDomRef(null);
 const canvas = getDomRef(null);
 const handleResize = () => {

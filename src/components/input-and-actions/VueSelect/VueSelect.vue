@@ -95,14 +95,14 @@
 import { computed, ref, nextTick } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { useField } from 'vee-validate';
-import { IItem } from '@/interfaces/IItem';
-import { getDomRef } from '@/composables/get-dom-ref';
+import { IItem } from '~/interfaces/IItem';
+import { getDomRef } from '~/composables/get-dom-ref';
 import { BadgeStatus, HorizontalDirection, ShirtSize, VerticalDirection } from '~/components/prop-types';
-import VueIconChevronDown from '@/components/icons/VueIconChevronDown.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
-import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
-import VueBadge from '@/components/data-display/VueBadge/VueBadge.vue';
+import VueIconChevronDown from '~/components/icons/VueIconChevronDown.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
+import VueMenu from '~/components/data-display/VueMenu/VueMenu.vue';
+import VueBadge from '~/components/data-display/VueBadge/VueBadge.vue';
 
 interface SelectProps {
   id: string;

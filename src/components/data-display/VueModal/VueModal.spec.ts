@@ -2,7 +2,7 @@ import { describe, beforeEach, test, expect } from 'vitest';
 import { nextTick } from 'vue';
 import { render, RenderResult } from '@testing-library/vue';
 import VueModal from './VueModal.vue';
-import { triggerWindow } from '@/test/test-utils';
+import { triggerWindow } from '~/test/test-utils';
 
 describe('VueModal.vue', () => {
   let harness: RenderResult;

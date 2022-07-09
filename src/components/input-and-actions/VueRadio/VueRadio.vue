@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import VueText from '@/components/typography/VueText/VueText.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
 
 const props = defineProps({
   id: { type: String, required: true },

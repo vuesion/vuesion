@@ -1,5 +1,5 @@
 import VueCarousel from './VueCarousel.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 const images: any[] = [
   {
     alt: 'Slide 1',

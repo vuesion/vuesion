@@ -34,12 +34,12 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueAvatar from '@/components/data-display/VueAvatar/VueAvatar.vue';
-import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueAvatar from '~/components/data-display/VueAvatar/VueAvatar.vue';
+import VueTiles from '~/components/layout/VueTiles/VueTiles.vue';
 import { getIntInRange } from '~/components/utils';
 
 const props = defineProps({

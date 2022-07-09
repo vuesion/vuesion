@@ -43,7 +43,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useField } from 'vee-validate';
-import VueText from '@/components/typography/VueText/VueText.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
 
 const props = defineProps({
   id: { type: String, required: true },

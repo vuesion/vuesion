@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { defineRule } from 'vee-validate';
 import { required } from '@vee-validate/rules';
 import VueSelect from './VueSelect.vue';
-import { sleep, triggerWindow } from '@/test/test-utils';
+import { sleep, triggerWindow } from '~/test/test-utils';
 
 defineRule('required', required);
 

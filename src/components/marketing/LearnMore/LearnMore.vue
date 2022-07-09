@@ -169,14 +169,14 @@
 </template>
 
 <script setup lang="ts">
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueIconArrowRight from '@/components/icons/VueIconArrowRight.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueIconArrowRight from '~/components/icons/VueIconArrowRight.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 
 defineEmits(['login-click']);
 </script>

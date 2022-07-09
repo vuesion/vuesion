@@ -25,8 +25,8 @@
 
 <script setup lang="ts">
 import { ref, provide, onBeforeUnmount, ComponentPublicInstance } from 'vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
 
 const tabs = ref<Array<ComponentPublicInstance>>([]);
 const currentTab = ref(0);

@@ -7,8 +7,8 @@
 </template>
 
 <script setup lang="ts">
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
 </script>
 
 <style lang="scss" module>

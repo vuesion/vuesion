@@ -21,9 +21,9 @@
 </template>
 
 <script setup lang="ts">
-import { IItem } from '@/interfaces/IItem';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueIconHome from '@/components/icons/VueIconHome.vue';
+import { IItem } from '~/interfaces/IItem';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueIconHome from '~/components/icons/VueIconHome.vue';
 
 defineProps<{ items: Array<IItem> }>();
 </script>

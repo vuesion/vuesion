@@ -40,11 +40,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useForm } from 'vee-validate';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueInput from '~/components/input-and-actions/VueInput/VueInput.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
 
 defineProps({
   loading: { type: Boolean, default: false },
@@ -54,7 +54,6 @@ const username = ref('');
 const password = ref('');
 const { meta } = useForm();
 const onSubmit = () => {
-  console.log('test');
   emit('submit', { username: username.value, password: password.value });
 };
 </script>

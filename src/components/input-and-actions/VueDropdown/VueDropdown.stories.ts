@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import VueDropdown from './VueDropdown.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { HorizontalDirectionValues, ShirtSizeValues, VerticalDirectionValues } from '~/components/prop-types';
 
 export default {

@@ -39,12 +39,12 @@
 </template>
 
 <script setup lang="ts">
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueIconMenu from '@/components/icons/VueIconMenu.vue';
-import VueAvatar from '@/components/data-display/VueAvatar/VueAvatar.vue';
-import VueDropdown from '@/components/input-and-actions/VueDropdown/VueDropdown.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueIconMenu from '~/components/icons/VueIconMenu.vue';
+import VueAvatar from '~/components/data-display/VueAvatar/VueAvatar.vue';
+import VueDropdown from '~/components/input-and-actions/VueDropdown/VueDropdown.vue';
 
 defineProps({
   userName: { type: String, default: null },

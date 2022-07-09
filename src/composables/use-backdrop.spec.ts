@@ -2,7 +2,7 @@ import { describe, beforeEach, test, expect } from 'vitest';
 import { ref, nextTick } from 'vue';
 import { render } from '@testing-library/vue';
 import { useBackdrop } from './use-backdrop';
-import { TestComponent } from '@/test/test-utils';
+import { TestComponent } from '~/test/test-utils';
 
 describe('use-backdrop.ts', () => {
   beforeEach(() => {

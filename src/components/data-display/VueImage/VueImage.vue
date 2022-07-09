@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { getDomRef } from '@/composables/get-dom-ref';
+import { getDomRef } from '~/composables/get-dom-ref';
 import { useIntersectionObserver } from '~/composables/use-intersection-observer';
 
 interface ImageProps {

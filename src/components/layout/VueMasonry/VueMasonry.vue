@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, onUpdated, ref, Ref } from 'vue';
-import { getDomRef } from '@/composables/get-dom-ref';
+import { getDomRef } from '~/composables/get-dom-ref';
 
 const props = defineProps({
   height: { type: Number, default: 800 },

@@ -1,9 +1,9 @@
 import { ref } from 'vue';
 import { action } from '@storybook/addon-actions';
 import VueTextarea from './VueTextarea.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Input & Actions/Textarea',

@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import VueRadio from './VueRadio.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Input & Actions/Radio button',

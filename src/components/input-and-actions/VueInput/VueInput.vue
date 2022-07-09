@@ -42,7 +42,7 @@
         :disabled="disabled"
         :readonly="readonly"
         :autofocus="autofocus"
-        :size="sizeAttribute"
+        :size="sizeAttribute || 150"
         v-bind="$attrs"
         @input="onInput"
         @blur="onBlur"
@@ -73,9 +73,9 @@
 import { watch } from 'vue';
 import debounce from 'lodash/debounce';
 import { useField } from 'vee-validate';
-import { useIntersectionObserver } from '@/composables/use-intersection-observer';
-import { getDomRef } from '@/composables/get-dom-ref';
-import VueText from '@/components/typography/VueText/VueText.vue';
+import { useIntersectionObserver } from '~/composables/use-intersection-observer';
+import { getDomRef } from '~/composables/get-dom-ref';
+import VueText from '~/components/typography/VueText/VueText.vue';
 import { ShirtSize } from '~/components/prop-types';
 
 interface InputProps {

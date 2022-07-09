@@ -1,6 +1,5 @@
 <template>
   <div
-    :aria-label="label"
     :tabindex="disabled ? null : 0"
     :class="[$style.vueToggle, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]"
     @click.stop.prevent="onClick"

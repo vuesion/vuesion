@@ -155,18 +155,18 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
-import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueIconTwitter from '@/components/icons/VueIconTwitter.vue';
-import VueIconGithub from '@/components/icons/VueIconGithub.vue';
-import { IItem } from '@/interfaces/IItem';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueSelect from '~/components/input-and-actions/VueSelect/VueSelect.vue';
+import VueInput from '~/components/input-and-actions/VueInput/VueInput.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueIconTwitter from '~/components/icons/VueIconTwitter.vue';
+import VueIconGithub from '~/components/icons/VueIconGithub.vue';
+import { IItem } from '~/interfaces/IItem';
 
 interface FooterProps {
   slim?: boolean;

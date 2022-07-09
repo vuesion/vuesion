@@ -1,7 +1,7 @@
 import { describe, beforeEach, test } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import ValueProposition from './ValueProposition.vue';
-import { sleep } from '@/test/test-utils';
+import { sleep } from '~/test/test-utils';
 
 describe('ValueProposition.vue', () => {
   let harness: RenderResult;

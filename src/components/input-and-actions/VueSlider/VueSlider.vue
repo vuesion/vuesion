@@ -92,11 +92,11 @@
 import { computed, onMounted, ref, watch } from 'vue';
 import { useEventListener } from '@vueuse/core';
 import { IAlgorithm, linear } from './algorithms';
-import { getDomRef } from '@/composables/get-dom-ref';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
+import { getDomRef } from '~/composables/get-dom-ref';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueInput from '~/components/input-and-actions/VueInput/VueInput.vue';
 
 const algorithm: IAlgorithm = linear;
 const props = defineProps({

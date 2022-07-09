@@ -41,9 +41,9 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import VueIconChevronLeft from '@/components/icons/VueIconChevronLeft.vue';
-import VueIconChevronRight from '@/components/icons/VueIconChevronRight.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
+import VueIconChevronLeft from '~/components/icons/VueIconChevronLeft.vue';
+import VueIconChevronRight from '~/components/icons/VueIconChevronRight.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
 
 interface IPaginationItem {
   label: string;

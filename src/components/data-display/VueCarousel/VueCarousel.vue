@@ -41,9 +41,9 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
-import { ICarouselImage } from '@/components/data-display/VueCarousel/ICarouselImage';
-import FadeAnimation from '@/components/animations/FadeAnimation/FadeAnimation.vue';
-import VuePagination from '@/components/navigation/VuePagination/VuePagination.vue';
+import { ICarouselImage } from '~/components/data-display/VueCarousel/ICarouselImage';
+import FadeAnimation from '~/components/animations/FadeAnimation/FadeAnimation.vue';
+import VuePagination from '~/components/navigation/VuePagination/VuePagination.vue';
 
 interface CarouselProps {
   images?: Array<ICarouselImage>;

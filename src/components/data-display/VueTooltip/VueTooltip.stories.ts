@@ -1,9 +1,9 @@
 import VueTooltip from './VueTooltip.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueIconInfo from '@/components/icons/VueIconInfoCircle.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueIconInfo from '~/components/icons/VueIconInfoCircle.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { VerticalDirectionValues } from '~/components/prop-types';
 
 export default {

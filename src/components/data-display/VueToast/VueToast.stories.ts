@@ -1,7 +1,7 @@
 import VueToast from './VueToast.vue';
-import { addToast } from '@/components/utils';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import { addToast } from '~/components/utils';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {

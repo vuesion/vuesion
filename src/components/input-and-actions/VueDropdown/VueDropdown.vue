@@ -22,12 +22,12 @@
 <script setup lang="ts">
 import { nextTick, ref } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import { getDomRef } from '@/composables/get-dom-ref';
-import { IItem } from '@/interfaces/IItem';
+import { getDomRef } from '~/composables/get-dom-ref';
+import { IItem } from '~/interfaces/IItem';
 import { HorizontalDirection, ShirtSize, VerticalDirection } from '~/components/prop-types';
-import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
+import VueMenu from '~/components/data-display/VueMenu/VueMenu.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
 
 interface DropdownProps {
   items: Array<IItem>;

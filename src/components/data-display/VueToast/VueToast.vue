@@ -38,15 +38,15 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { EventBus } from '~/services/EventBus';
-import { IToast } from '@/interfaces/IToast';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueIconInfo from '@/components/icons/VueIconInfoCircle.vue';
-import VueIconTimes from '@/components/icons/VueIconTimes.vue';
-import VueIconExclamation from '@/components/icons/VueIconExclamation.vue';
+import { IToast } from '~/interfaces/IToast';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueIconInfo from '~/components/icons/VueIconInfoCircle.vue';
+import VueIconTimes from '~/components/icons/VueIconTimes.vue';
+import VueIconExclamation from '~/components/icons/VueIconExclamation.vue';
 import { getGUID } from '~/components/utils';
 
 const toasts = ref<IToast[]>([]);

@@ -1,8 +1,8 @@
 import { ref } from 'vue';
 import VueMasonry from './VueMasonry.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueSlider from '@/components/input-and-actions/VueSlider/VueSlider.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueSlider from '~/components/input-and-actions/VueSlider/VueSlider.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { getIntInRange } from '~/components/utils';
 
 export default {

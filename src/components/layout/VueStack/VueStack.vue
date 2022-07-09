@@ -1,5 +1,5 @@
 <template>
-  <component :is="as" :class="[$style.vueStack, ...cssClasses]">
+  <component :is="as" :class="[$style.vueStack, ...cssClasses, 'w-full']">
     <slot></slot>
   </component>
 </template>

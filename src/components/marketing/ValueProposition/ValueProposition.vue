@@ -265,14 +265,14 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueHidden from '@/components/utils/VueHidden/VueHidden.vue';
-import VueBadge from '@/components/data-display/VueBadge/VueBadge.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueHidden from '~/components/utils/VueHidden/VueHidden.vue';
+import VueBadge from '~/components/data-display/VueBadge/VueBadge.vue';
 
 const activeTab = ref(0);
 const onTabChange = (tab: number) => {

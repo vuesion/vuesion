@@ -2,8 +2,8 @@ import { action } from '@storybook/addon-actions';
 import VueSidebar from './VueSidebar.vue';
 import VueSidebarGroup from './VueSidebarGroup.vue';
 import VueSidebarGroupItem from './VueSidebarGroupItem.vue';
-import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import VueSelect from '~/components/input-and-actions/VueSelect/VueSelect.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Navigation/Sidebar',

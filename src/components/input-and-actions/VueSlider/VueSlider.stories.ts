@@ -1,6 +1,6 @@
 import VueSlider from './VueSlider.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 
 export default {

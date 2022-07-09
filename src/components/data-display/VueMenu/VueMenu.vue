@@ -39,9 +39,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import debounce from 'lodash/debounce';
-import { IItem } from '@/interfaces/IItem';
-import { getDomRef } from '@/composables/get-dom-ref';
-import VueText from '@/components/typography/VueText/VueText.vue';
+import { IItem } from '~/interfaces/IItem';
+import { getDomRef } from '~/composables/get-dom-ref';
+import VueText from '~/components/typography/VueText/VueText.vue';
 
 const props = defineProps({
   items: { type: Array as () => Array<IItem>, required: true },

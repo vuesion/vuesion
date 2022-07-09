@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions';
 import VueModal from './VueModal.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueTiles from '~/components/layout/VueTiles/VueTiles.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {

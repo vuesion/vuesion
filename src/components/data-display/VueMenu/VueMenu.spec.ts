@@ -1,7 +1,7 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import VueMenu from './VueMenu.vue';
-import { sleep } from '@/test/test-utils';
+import { sleep } from '~/test/test-utils';
 
 describe('VueMenu.vue', () => {
   let harness: RenderResult;

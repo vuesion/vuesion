@@ -1,8 +1,8 @@
 import { ref } from 'vue';
 import VueToggleButton from './VueToggleButton.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { ShirtSizeValues } from '~/components/prop-types';
 
 export default {

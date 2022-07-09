@@ -1,7 +1,7 @@
 import { describe, beforeEach, test, expect, vi } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import VueSlider from './VueSlider.vue';
-import { sleep, triggerDocument } from '@/test/test-utils';
+import { sleep, triggerDocument } from '~/test/test-utils';
 
 describe('VueSlider.vue', () => {
   beforeEach(() => {

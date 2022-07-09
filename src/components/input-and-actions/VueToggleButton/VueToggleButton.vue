@@ -17,8 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import { IItem } from '@/interfaces/IItem';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import { IItem } from '~/interfaces/IItem';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 import { ShirtSize } from '~/components/prop-types';
 
 interface ToggleButtonProps {

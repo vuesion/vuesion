@@ -1,6 +1,6 @@
 import VueBreadcrumb from './VueBreadcrumb.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Navigation/Breadcrumb',
