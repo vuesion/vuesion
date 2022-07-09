@@ -136,21 +136,21 @@
 </template>
 
 <script setup lang="ts">
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueIconLightningBolt from '@/components/icons/VueIconLightningBolt.vue';
-import VueIconTool from '@/components/icons/VueIconTool.vue';
-import VueIconVuesion from '@/components/icons/VueIconVuesion.vue';
-import VueIconBook from '@/components/icons/VueIconBook.vue';
-import VueIconUsers from '@/components/icons/VueIconUsers.vue';
-import VueIconFingerPrint from '@/components/icons/VueIconFingerPrint.vue';
-import VueIconTerminal from '@/components/icons/VueIconTerminal.vue';
-import VueIconStar from '@/components/icons/VueIconStar.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueIconLightningBolt from '~/components/icons/VueIconLightningBolt.vue';
+import VueIconTool from '~/components/icons/VueIconTool.vue';
+import VueIconVuesion from '~/components/icons/VueIconVuesion.vue';
+import VueIconBook from '~/components/icons/VueIconBook.vue';
+import VueIconUsers from '~/components/icons/VueIconUsers.vue';
+import VueIconFingerPrint from '~/components/icons/VueIconFingerPrint.vue';
+import VueIconTerminal from '~/components/icons/VueIconTerminal.vue';
+import VueIconStar from '~/components/icons/VueIconStar.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
 </script>
 
 <style lang="scss" module>
