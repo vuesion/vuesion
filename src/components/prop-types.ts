@@ -82,6 +82,16 @@ export type SpacingWithDirections =
   | `${Spacing} ${Spacing} ${Spacing} ${Spacing}`;
 
 export const WidthValues = [
+  '1/10',
+  '2/10',
+  '3/10',
+  '4/10',
+  '5/10',
+  '6/10',
+  '7/10',
+  '8/10',
+  '9/10',
+  '10/10',
   '1/12',
   '2/12',
   '3/12',

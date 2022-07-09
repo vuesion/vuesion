@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.valueProposition">
+  <section :class="$style.valueProposition">
     <vue-content-block>
       <vue-columns stack-phone stack-tablet-portrait stack-tablet-landscape>
         <vue-column :width="['content', 'content', 'content', '3/12', '4/12']" :can-grow="false">
@@ -260,7 +260,7 @@
       :class="[$style.image, activeTab === 4 ? $style.in : $style.out]"
       :style="{ backgroundImage: 'url(/images/team-small.png)' }"
     />
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">

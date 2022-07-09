@@ -1,4 +1,4 @@
-import { onBeforeMount, Ref, watch } from 'vue';
+import { onMounted, Ref, watch } from 'vue';
 
 interface IBackdropOptions {
   scrollable: Ref<boolean>;
@@ -17,7 +17,7 @@ export const useBackdrop = (show: Ref<boolean>, { scrollable }: IBackdropOptions
     return backdrop;
   };
 
-  onBeforeMount(() => {
+  onMounted(() => {
     getBackdrop().classList.add('backdrop');
   });
 
@@ -40,6 +40,6 @@ export const useBackdrop = (show: Ref<boolean>, { scrollable }: IBackdropOptions
         }
       }
     },
-    { immediate: true },
+    { immediate: false },
   );
 };

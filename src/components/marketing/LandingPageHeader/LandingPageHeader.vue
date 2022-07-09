@@ -1,5 +1,5 @@
 <template>
-  <div ref="header" :class="$style.landingPageHeader">
+  <section ref="header" :class="$style.landingPageHeader">
     <canvas ref="canvas" :class="$style.canvas" />
     <vue-content-block>
       <vue-box padding="null" align-y="center" as="nav" :class="$style.nav">
@@ -70,7 +70,7 @@
         title="vuesion figma"
       />
     </a>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">

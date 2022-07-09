@@ -1,5 +1,5 @@
 <template>
-  <vue-box :padding="['64 0 24 0', '64 0 24 0', '64 0 24 0', '0 0 64 0']">
+  <vue-box as="section" :padding="['64 0 24 0', '64 0 24 0', '64 0 24 0', '0 0 64 0']">
     <vue-content-block :class="$style.learnMore">
       <vue-stack :space="['32', '32', '32', '0']">
         <vue-box :padding="['24 12', '48', '64', '80']">

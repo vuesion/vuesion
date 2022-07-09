@@ -1,8 +1,8 @@
 <template>
-  <vue-box align-y="bottom" padding="24 16" :class="$style.testimonials">
+  <vue-box as="section" align-y="end" padding="24 16" :class="$style.testimonials">
     <vue-stack space="64">
       <vue-stack space="48">
-        <vue-text look="h5" color="text-high" weight="semi-bold" align="center">
+        <vue-text look="h5" color="text-high" weight="semi-bold" align-x="center">
           <!--          TODO: add i18n number formatting-->
           <span class="deco-underline">Enjoyed</span> by {{ stargazersCount }} stargazers 🎉
         </vue-text>

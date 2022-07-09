@@ -115,7 +115,6 @@
 }
 
 // Width
-$columns: 12;
 
 .w-auto {
   width: auto;
@@ -135,8 +134,13 @@ $columns: 12;
 .w-fit {
   width: fit-content;
 }
-@for $i from 1 through $columns {
-  .w-#{$i}\/#{$columns} {
+@for $i from 1 through 10 {
+  .w-#{$i}\/#{10} {
+    width: #{calc(100 * $i / 10) + '%'};
+  }
+}
+@for $i from 1 through 12 {
+  .w-#{$i}\/#{12} {
     width: #{calc(100 * $i / 12) + '%'};
   }
 }
@@ -160,8 +164,13 @@ $columns: 12;
   .w-tp-fit {
     width: fit-content;
   }
-  @for $i from 1 through $columns {
-    .w-tp-#{$i}\/#{$columns} {
+  @for $i from 1 through 10 {
+    .w-tp-#{$i}\/#{10} {
+      width: #{calc(100 * $i / 10) + '%'};
+    }
+  }
+  @for $i from 1 through 12 {
+    .w-tp-#{$i}\/#{12} {
       width: #{calc(100 * $i / 12) + '%'};
     }
   }
@@ -185,8 +194,13 @@ $columns: 12;
   .w-tl-fit {
     width: fit-content;
   }
-  @for $i from 1 through $columns {
-    .w-tl-#{$i}\/#{$columns} {
+  @for $i from 1 through 10 {
+    .w-tl-#{$i}\/#{10} {
+      width: #{calc(100 * $i / 10) + '%'};
+    }
+  }
+  @for $i from 1 through 12 {
+    .w-tl-#{$i}\/#{12} {
       width: #{calc(100 * $i / 12) + '%'};
     }
   }
@@ -210,8 +224,13 @@ $columns: 12;
   .w-sd-fit {
     width: fit-content;
   }
-  @for $i from 1 through $columns {
-    .w-sd-#{$i}\/#{$columns} {
+  @for $i from 1 through 10 {
+    .w-sd-#{$i}\/#{10} {
+      width: #{calc(100 * $i / 10) + '%'};
+    }
+  }
+  @for $i from 1 through 12 {
+    .w-sd-#{$i}\/#{12} {
       width: #{calc(100 * $i / 12) + '%'};
     }
   }
@@ -235,31 +254,33 @@ $columns: 12;
   .w-ld-fit {
     width: fit-content;
   }
-  @for $i from 1 through $columns {
-    .w-ld-#{$i}\/#{$columns} {
+  @for $i from 1 through 10 {
+    .w-ld-#{$i}\/#{10} {
+      width: #{calc(100 * $i / 10) + '%'};
+    }
+  }
+  @for $i from 1 through 12 {
+    .w-ld-#{$i}\/#{12} {
       width: #{calc(100 * $i / 12) + '%'};
     }
   }
 }
 
 // grid columns
-
-// Width
-$grid-columns: 12;
-
 .grid-cols-none {
   width: fit-content;
 }
-@for $i from 1 through $columns {
+@for $i from 1 through 12 {
   .grid-cols-#{$i} {
     grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
   }
 }
+
 @include mediaMin(tabletPortrait) {
   .grid-cols-tp-none {
     width: fit-content;
   }
-  @for $i from 1 through $columns {
+  @for $i from 1 through 12 {
     .grid-cols-tp-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
     }
@@ -269,7 +290,7 @@ $grid-columns: 12;
   .grid-cols-tl-none {
     width: fit-content;
   }
-  @for $i from 1 through $columns {
+  @for $i from 1 through 12 {
     .grid-cols-tl-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
     }
@@ -279,7 +300,7 @@ $grid-columns: 12;
   .grid-cols-sd-none {
     width: fit-content;
   }
-  @for $i from 1 through $columns {
+  @for $i from 1 through 12 {
     .grid-cols-sd-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
     }
@@ -289,7 +310,7 @@ $grid-columns: 12;
   .grid-cols-ld-none {
     width: fit-content;
   }
-  @for $i from 1 through $columns {
+  @for $i from 1 through 12 {
     .grid-cols-ld-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
     }
