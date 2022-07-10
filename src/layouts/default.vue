@@ -14,18 +14,29 @@
 
     <slot />
 
-    <vue-footer slim :languages="[]" :themes="[]" :selected-locale="'en'" @locale-change="null" />
+    <vue-footer slim :languages="languages" :themes="themes" :selected-locale="'en'" @locale-change="null" />
 
     <vue-back-to-top />
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import 'assets/global.scss';
 import VueToast from '../components/data-display/VueToast/VueToast';
 import VueNavbar from '../components/navigation/VueNavbar/VueNavbar';
 import VueFooter from '../components/navigation/VueFooter/VueFooter';
 import VueBackToTop from '../components/behavior/VueBackToTop/VueBackToTop';
+
+const languages = computed(() => [
+  { label: 'English', value: 'en' },
+  { label: 'Deutsch', value: 'de' },
+]);
+const themes = computed(() => [
+  { label: 'System', value: 'system' },
+  { label: 'Light', value: 'light' },
+  { label: 'Dark', value: 'dark' },
+]);
 </script>
 
 <style lang="scss" module>
