@@ -64,12 +64,11 @@
             />
             <vue-select
               id="theme"
+              v-model="$colorMode.preference"
               label="Theme"
               name="theme"
               :items="themes"
               hide-description
-              :model-value="$colorMode && $colorMode.value"
-              @update:modelValue="$colorMode.preference = $event.value"
             />
           </vue-stack>
         </vue-column>

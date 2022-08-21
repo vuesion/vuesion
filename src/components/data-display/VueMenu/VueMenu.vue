@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import debounce from 'lodash/debounce';
+import debounce from 'lodash-es/debounce.js';
 import { IItem } from '~/interfaces/IItem';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';

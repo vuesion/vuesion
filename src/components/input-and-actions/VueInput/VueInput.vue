@@ -71,8 +71,8 @@
 
 <script setup lang="ts">
 import { watch } from 'vue';
-import debounce from 'lodash/debounce';
 import { useField } from 'vee-validate';
+import debounce from 'lodash-es/debounce.js';
 import { useIntersectionObserver } from '~/composables/use-intersection-observer';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
