@@ -53,7 +53,7 @@ import VueLoader from '~/components/data-display/VueLoader/VueLoader.vue';
 import { ButtonStyle, ShirtSize } from '~/components/prop-types';
 import { getDomRef } from '~/composables/get-dom-ref';
 
-interface CardProps {
+interface ButtonProps {
   as?: string;
   block?: boolean;
   disabled?: boolean;
@@ -66,7 +66,7 @@ interface CardProps {
   type?: string;
 }
 
-const props = withDefaults(defineProps<CardProps>(), {
+const props = withDefaults(defineProps<ButtonProps>(), {
   as: 'button',
   block: false,
   disabled: false,
