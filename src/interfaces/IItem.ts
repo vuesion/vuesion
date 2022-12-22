@@ -1,8 +1,8 @@
 export interface IItem {
   label: string;
   value: any;
-  description?: string;
-  leadingIcon?: string;
-  trailingIcon?: string;
-  disabled?: boolean;
+  description?: string | null;
+  leadingIcon?: string | null;
+  trailingIcon?: string | null;
+  disabled?: boolean | null;
 }

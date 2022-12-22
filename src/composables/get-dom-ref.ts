@@ -1,3 +1,3 @@
-import { ComponentPublicInstance, ref } from 'vue';
+import { ref } from 'vue';
 
-export const getDomRef = <T extends HTMLElement | Element | ComponentPublicInstance>(element: T) => ref<T>(element);
+export const getDomRef = <T>(element: unknown) => ref<T>(element as T);

@@ -25,7 +25,7 @@ describe('VueImage.vue', () => {
       },
     });
     const actual = html();
-    const expected = '<div style="background-image: url(foo);"></div>';
+    const expected = '<div style="background-image: url(&quot;foo&quot;);"></div>';
 
     expect(actual).toBe(expected);
   });

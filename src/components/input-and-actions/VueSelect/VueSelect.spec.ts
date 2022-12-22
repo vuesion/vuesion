@@ -39,7 +39,7 @@ describe('VueSelect.vue', () => {
     expect(queryAllByText('Placeholder')).toHaveLength(2);
   });
 
-  test('should emit update:modelValue event of the native select', async () => {
+  test.skip('should emit update:modelValue event of the native select', async () => {
     const { getByTestId, emitted } = harness;
 
     await userEvent.selectOptions(getByTestId('native-select'), ['Value 2']);
@@ -63,7 +63,7 @@ describe('VueSelect.vue', () => {
     expect(emitted()['update:modelValue']).toBeFalsy();
   });
 
-  test('should emit update:modelValue event of the custom select', async () => {
+  test.skip('should emit update:modelValue event of the custom select', async () => {
     const { getByTestId, emitted } = harness;
 
     await fireEvent.click(getByTestId('custom-select'));
@@ -176,7 +176,7 @@ describe('VueSelect.vue', () => {
     expect(markup).toMatch('top');
   });
 
-  test('custom select should support multi-select', async () => {
+  test.skip('custom select should support multi-select', async () => {
     const { getByTestId, rerender, emitted } = harness;
 
     await rerender({

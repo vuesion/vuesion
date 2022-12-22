@@ -1,7 +1,7 @@
 <template>
   <vue-stack space="4" :class="$style.vueSidebarGroup">
     <vue-box padding="48 0 10 12">
-      <vue-columns :class="$style.header" @click.native.prevent.stop="$emit('click')">
+      <vue-columns :class="$style.header" @click.prevent.stop="$emit('click')">
         <vue-column>
           <vue-text color="text-inverse-low" look="support" weight="semi-bold" uppercase>{{ name }}</vue-text>
         </vue-column>
@@ -9,8 +9,8 @@
         <vue-column v-if="icon" width="content">
           <vue-text
             color="text-low"
-            @click.native.prevent.stop="$emit('icon-click')"
-            @keypress.space.enter.native.prevent.stop="$emit('icon-click')"
+            @click.prevent.stop="$emit('icon-click')"
+            @keypress.space.enter.prevent.stop="$emit('icon-click')"
           >
             <component :is="`vue-icon-${icon}`" tabindex="0" />
           </vue-text>
@@ -35,7 +35,7 @@ import { Spacing } from '~/components/prop-types';
 interface SidebarGroupProps {
   name: string;
   as?: string;
-  icon?: string;
+  icon?: string | null;
   itemSpace?: Spacing;
 }
 
@@ -44,6 +44,8 @@ withDefaults(defineProps<SidebarGroupProps>(), {
   icon: null,
   itemSpace: '0',
 });
+
+defineEmits(['click', 'icon-click', 'icon-click']);
 </script>
 
 <style lang="scss" module>

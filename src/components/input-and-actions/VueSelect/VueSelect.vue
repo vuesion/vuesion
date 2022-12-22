@@ -62,7 +62,7 @@
           v-if="multiSelect && inputValue.length > 1"
           :status="badgeStatus"
           :class="$style.count"
-          @click.native="toggleMenu"
+          @click="toggleMenu"
         >
           +{{ inputValue.length - 1 }}
         </vue-badge>
@@ -113,7 +113,7 @@ interface SelectProps {
   hideDescription?: boolean;
   required?: boolean;
   validation?: string | any;
-  modelValue?: string | boolean | number | IItem | Array<string | boolean | number | IItem> | object;
+  modelValue?: string | boolean | number | IItem | Array<string | boolean | number | IItem> | object | unknown;
   disabled?: boolean;
   placeholder?: string;
   description?: string;
@@ -131,7 +131,7 @@ const props = withDefaults(defineProps<SelectProps>(), {
   hideDescription: false,
   required: false,
   validation: null,
-  modelValue: () => undefined,
+  modelValue: () => undefined as unknown,
   disabled: false,
   placeholder: '',
   description: '',
@@ -149,8 +149,8 @@ const { errors, resetField, handleChange } = useField(props.id, props.validation
   validateOnValueUpdate: false,
   type: 'select',
 });
-const selectRef = getDomRef(null);
-const menuRef = getDomRef(null);
+const selectRef = getDomRef<HTMLElement>(null);
+const menuRef = getDomRef<{ focus: (selectedItem: IItem) => void }>(null);
 const show = ref(false);
 const getValue = (valueOrItem: any | IItem) => {
   if (valueOrItem !== undefined && valueOrItem?.value !== undefined) {
@@ -194,11 +194,14 @@ const open = async () => {
 
   await nextTick();
 
-  menuRef.value.focus && menuRef.value.focus(displayItem.value);
+  if (displayItem.value !== undefined && typeof menuRef.value.focus !== 'undefined') {
+    menuRef.value?.focus(displayItem.value);
+  }
 };
 const close = async (focusInput = true) => {
   if (focusInput) {
-    selectRef.value.querySelector(`#custom-${props.id}`).focus();
+    const customSelect: HTMLElement | null = selectRef.value?.querySelector(`#custom-${props.id}`);
+    customSelect?.focus();
   }
 
   show.value = false;
@@ -211,7 +214,7 @@ const onInput = (e: Event) => {
   resetField();
 
   const selected: IItem[] = [];
-  const target: HTMLSelectElement = e.target as HTMLSelectElement;
+  const target = e.target as HTMLSelectElement;
   const length: number = target.options.length;
 
   for (let i = 0; i < length; i++) {
@@ -260,9 +263,9 @@ const onKeyDown = (e: KeyboardEvent) => {
   }
 };
 const toggleMenu = () => {
-  const nativeSelect: HTMLSelectElement = document.querySelector(`#${props.id}`);
+  const nativeSelect: HTMLSelectElement | null = document.querySelector(`#${props.id}`);
 
-  nativeSelect.focus();
+  nativeSelect?.focus();
 
   if (show.value === true) {
     close();
@@ -281,7 +284,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 .vueSelect {
   position: relative;
   display: flex;

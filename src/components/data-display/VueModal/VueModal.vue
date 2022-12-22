@@ -10,8 +10,8 @@
     <vue-icon-times
       tabindex="0"
       :class="$style.closeButton"
-      @click.native="onClose"
-      @keypress.native.space.enter.stop.prevent="onClose"
+      @click="onClose"
+      @keypress.space.enter.stop.prevent="onClose"
     />
     <slot />
   </vue-box>
@@ -47,7 +47,7 @@ const show = computed(() => props.show);
 const backdrop = computed(() => props.backdrop);
 const disablePageScroll = computed(() => !props.disablePageScroll);
 const onClose = () => emit('close');
-let backDropWatcher: WatchStopHandle = null;
+let backDropWatcher: WatchStopHandle;
 
 onKeyDown('Escape', () => {
   if (props.show === true && props.closeOnEscape === true) {

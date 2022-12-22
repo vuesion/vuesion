@@ -1,5 +1,5 @@
 <template>
-  <transition :css="false" @beforeEnter="beforeEnter" @enter="enter" @beforeLeave="beforeLeave" @leave="leave">
+  <transition :css="false" @before-enter="beforeEnter" @enter="enter" @before-leave="beforeLeave" @leave="leave">
     <slot />
   </transition>
 </template>
@@ -32,8 +32,8 @@ const enter = (el: HTMLElement, done: any) => {
     round: 1,
     easing: 'easeInOutCirc',
     complete: () => {
-      el.style.height = null;
-      el.style.overflow = null;
+      el.style.height = '';
+      el.style.overflow = '';
       done();
     },
   });

@@ -29,18 +29,18 @@
 </template>
 
 <script setup lang="ts">
-import { withDefaults } from '@vue/runtime-core';
+import { withDefaults } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
 interface SidebarGroupItemProps {
   name: string;
-  leadingIcon?: string;
-  trailingIcon?: string;
-  to?: string | object;
+  leadingIcon?: string | null;
+  trailingIcon?: string | null;
+  to?: string | object | null;
   exact?: boolean;
-  href?: string;
+  href?: string | null;
 }
 
 withDefaults(defineProps<SidebarGroupItemProps>(), {
@@ -50,6 +50,8 @@ withDefaults(defineProps<SidebarGroupItemProps>(), {
   exact: true,
   href: null,
 });
+
+defineEmits(['click']);
 </script>
 
 <style lang="scss" module>

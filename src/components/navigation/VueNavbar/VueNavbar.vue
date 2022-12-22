@@ -7,7 +7,7 @@
           tabindex="0"
           :class="$style.menu"
           data-testid="menu"
-          @click.native.stop.prevent="$emit('menu-click')"
+          @click.stop.prevent="$emit('menu-click')"
         />
       </vue-column>
 
@@ -52,6 +52,8 @@ defineProps({
   showMenuIcon: { type: Boolean, default: true },
   dropdownDuration: { type: Number, default: 250 },
 });
+
+defineEmits(['menu-click', 'menu-item-click']);
 </script>
 
 <style lang="scss" module>

@@ -22,8 +22,8 @@ describe('VuePagination.vue', () => {
 
     expect(queryAllByTestId('pagination-active-page')).toHaveLength(1);
     expect(queryAllByTestId('pagination-page')).toHaveLength(4);
-    expect(getByTestId('pagination-prev').getAttribute('disabled')).toBe('true');
-    expect(getByTestId('pagination-next').getAttribute('disabled')).toBe('false');
+    expect(getByTestId('pagination-prev')).toHaveAttribute('disabled');
+    expect(getByTestId('pagination-next')).not.toHaveAttribute('disabled');
   });
 
   test('should render slim version of component', async () => {
@@ -33,8 +33,8 @@ describe('VuePagination.vue', () => {
 
     expect(queryAllByTestId('pagination-active-page')).toHaveLength(0);
     expect(queryAllByTestId('pagination-page')).toHaveLength(0);
-    expect(getByTestId('pagination-prev').getAttribute('disabled')).toBe('true');
-    expect(getByTestId('pagination-next').getAttribute('disabled')).toBe('false');
+    expect(getByTestId('pagination-prev')).toHaveAttribute('disabled');
+    expect(getByTestId('pagination-next')).not.toHaveAttribute('disabled');
   });
 
   test('should have disabled next button when last page is reached', async () => {
@@ -42,13 +42,13 @@ describe('VuePagination.vue', () => {
 
     await rerender({ selectedPage: 5 });
 
-    expect(getByTestId('pagination-prev').getAttribute('disabled')).toBe('false');
-    expect(getByTestId('pagination-next').getAttribute('disabled')).toBe('false');
+    expect(getByTestId('pagination-prev')).not.toHaveAttribute('disabled');
+    expect(getByTestId('pagination-next')).not.toHaveAttribute('disabled');
 
     await rerender({ selectedPage: 10 });
 
-    expect(getByTestId('pagination-prev').getAttribute('disabled')).toBe('false');
-    expect(getByTestId('pagination-next').getAttribute('disabled')).toBe('true');
+    expect(getByTestId('pagination-prev')).not.toHaveAttribute('disabled');
+    expect(getByTestId('pagination-next')).toHaveAttribute('disabled');
   });
 
   test('should not disable buttons when infinite property is set', async () => {
@@ -56,12 +56,12 @@ describe('VuePagination.vue', () => {
 
     await rerender({ infinite: true });
 
-    expect(getByTestId('pagination-prev').getAttribute('disabled')).toBe('false');
-    expect(getByTestId('pagination-next').getAttribute('disabled')).toBe('false');
+    expect(getByTestId('pagination-prev')).not.toHaveAttribute('disabled');
+    expect(getByTestId('pagination-next')).not.toHaveAttribute('disabled');
 
     await rerender({ selectedPage: 10 });
 
-    expect(getByTestId('pagination-prev').getAttribute('disabled')).toBe('false');
-    expect(getByTestId('pagination-next').getAttribute('disabled')).toBe('false');
+    expect(getByTestId('pagination-prev')).not.toHaveAttribute('disabled');
+    expect(getByTestId('pagination-next')).not.toHaveAttribute('disabled');
   });
 });

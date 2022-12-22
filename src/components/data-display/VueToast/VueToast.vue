@@ -24,7 +24,7 @@
               data-testid="toast-close-button"
               as="a"
               href="#"
-              @click.native.stop.prevent="removeToast(toast)"
+              @click.stop.prevent="removeToast(toast)"
             >
               <vue-icon-times />
             </vue-text>

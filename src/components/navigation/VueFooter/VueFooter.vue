@@ -60,7 +60,7 @@
               :items="languages"
               hide-description
               :model-value="selectedLocale"
-              @update:modelValue="$emit('locale-change', $event)"
+              @update:model-value="$emit('locale-change', $event)"
             />
             <vue-select
               id="theme"

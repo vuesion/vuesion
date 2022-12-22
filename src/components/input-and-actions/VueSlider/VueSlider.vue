@@ -21,17 +21,11 @@
           hide-label
           hide-description
           :class="$style.valueInput"
-          @update:modelValue="changeCurrentMin"
+          @update:model-value="changeCurrentMin"
         />
       </vue-column>
 
-      <vue-column
-        align-y="center"
-        width="10/12"
-        :data-testid="id"
-        @mousedown.native="moveStart"
-        @touchstart.native="moveStart"
-      >
+      <vue-column align-y="center" width="10/12" :data-testid="id" @mousedown="moveStart" @touchstart="moveStart">
         <div ref="slider" :class="$style.track">
           <div :class="$style.progress" :style="{ width: progressWidth, marginLeft: progressLeft }" />
 
@@ -81,7 +75,7 @@
           hide-label
           hide-description
           :class="$style.valueInput"
-          @update:modelValue="changeCurrentMax"
+          @update:model-value="changeCurrentMax"
         />
       </vue-column>
     </vue-columns>

@@ -9,7 +9,7 @@
       @menu-item-click="null"
       @menu-click="null"
     >
-      <template v-if="null" slot="center"> Hello, {{ user.name }}! </template>
+      <template v-if="null" #center> Hello, {{ user.name }}! </template>
     </vue-navbar>
 
     <slot />
@@ -40,9 +40,9 @@ const themes = computed(() => [
 </script>
 
 <style lang="scss" module>
-@import 'assets/design-system';
-@import 'assets/reset';
-@import 'assets/typography';
+@import 'assets/_design-system.scss';
+@import 'assets/reset.scss';
+@import 'assets/typography.scss';
 
 .app {
   min-height: 100vh;
