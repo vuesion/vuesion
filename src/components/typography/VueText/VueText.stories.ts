@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueText from './VueText.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import UtilityTokenSection from '~/assets/design-system/docs/components/UtilityTokenSection.vue';
@@ -13,7 +14,7 @@ export default {
   parameters: { controls: { disabled: true } },
 };
 
-const TextStylesTemplate = (args) => ({
+const TextStylesTemplate: Story = (args) => ({
   components: { VueText, ComponentDocs, UtilityTokenSection, VueStack, VueColumns, VueColumn },
   setup() {
     return { args };
@@ -276,7 +277,7 @@ const TextStylesTemplate = (args) => ({
 
 export const TextStyles = TextStylesTemplate.bind({});
 
-const TextColorsTemplate = (args) => ({
+const TextColorsTemplate: Story = (args) => ({
   components: { VueText, ComponentDocs, ColorTokensSection },
   setup() {
     return { args };

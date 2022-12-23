@@ -22,6 +22,7 @@ describe('VueBackToTop.vue', () => {
 
   test('it should scroll to top on click', async () => {
     const { getByTestId } = harness;
+    // @ts-ignore
     window.scrollTo = vi.fn();
 
     expect(window.scrollTo).not.toHaveBeenCalled();

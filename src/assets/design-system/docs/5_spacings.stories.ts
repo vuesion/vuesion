@@ -9,14 +9,11 @@ export default {
   parameters: { controls: { disabled: true } },
 };
 
-const Template = (args) => ({
+const Template = () => ({
   components: {
     VueText,
     ComponentDocs,
     UtilityTokenSection,
-  },
-  setup() {
-    return { args };
   },
   template: `<component-docs
       component-name="Spacing"

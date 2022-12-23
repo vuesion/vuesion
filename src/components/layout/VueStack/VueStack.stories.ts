@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueStack from './VueStack.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -6,7 +7,7 @@ export default {
   component: VueStack,
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: { VueStack, ComponentDocs },
   setup() {
     return { args };

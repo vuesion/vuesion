@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueAccordion from './VueAccordion.vue';
 import VueAccordionItem from './VueAccordionItem.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -13,7 +14,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     ComponentDocs,
     VueStack,

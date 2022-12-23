@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueColumns from './VueColumns.vue';
 import VueColumn from './VueColumn/VueColumn.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -7,7 +8,7 @@ export default {
   component: VueColumns,
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: { VueColumns, VueColumn, ComponentDocs },
   setup() {
     return { args };

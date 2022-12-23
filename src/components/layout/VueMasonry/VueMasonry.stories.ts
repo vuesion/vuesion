@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import { ref } from 'vue';
 import VueMasonry from './VueMasonry.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -10,7 +11,7 @@ export default {
   component: VueMasonry,
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: { ComponentDocs, VueMasonry, VueStack, VueSlider },
   setup() {
     const numberOfImages = ref([12]);

@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import { ref } from 'vue';
 import { action } from '@storybook/addon-actions';
 import VueInput from './VueInput.vue';
@@ -19,7 +20,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueInput,
     ComponentDocs,

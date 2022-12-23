@@ -1,5 +1,7 @@
 {
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
-  "types": ["vitest/globals", "animejs", "marked", "flush-promises"]
+  "compilerOptions": {
+    "types": ["vitest/globals", "animejs", "marked", "flush-promises"]
+  }
 }

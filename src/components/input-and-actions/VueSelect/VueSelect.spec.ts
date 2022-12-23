@@ -6,6 +6,7 @@ import { defineRule } from 'vee-validate';
 import { required } from '@vee-validate/rules';
 import VueSelect from './VueSelect.vue';
 import { sleep, triggerWindow } from '~/test/test-utils';
+import { IItem } from '~/interfaces/IItem';
 
 defineRule('required', required);
 
@@ -92,7 +93,7 @@ describe('VueSelect.vue', () => {
 
   test('should open and close menu via keyboard', async () => {
     const { getByText, queryAllByText } = harness;
-    const select = getByText('Select').parentElement;
+    const select = getByText('Select').parentElement as HTMLElement;
 
     await fireEvent.keyDown(select, { key: 'Tab', code: 'Tab' });
     await fireEvent.keyDown(select, { key: 'ShiftLeft', code: 'ShiftLeft' });
@@ -126,7 +127,7 @@ describe('VueSelect.vue', () => {
 
   test('should open menu and close it via outside click', async () => {
     const { getByText, queryAllByText } = harness;
-    const select = getByText('Select').parentElement;
+    const select = getByText('Select').parentElement as HTMLElement;
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
@@ -144,7 +145,7 @@ describe('VueSelect.vue', () => {
 
     await rerender({ value: 'Value 1' });
 
-    const select = getByText('Select').parentElement;
+    const select = getByText('Select').parentElement as HTMLElement;
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
@@ -156,7 +157,7 @@ describe('VueSelect.vue', () => {
 
     await rerender({ value: { label: 'Value 1', value: 'value-1' } });
 
-    const select = getByText('Select').parentElement;
+    const select = getByText('Select').parentElement as HTMLElement;
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
@@ -165,7 +166,7 @@ describe('VueSelect.vue', () => {
 
   test('renders component with different menu alignment', async () => {
     const { getByText, rerender, html } = harness;
-    const select = getByText('Select').parentElement;
+    const select = getByText('Select').parentElement as HTMLElement;
 
     await rerender({ alignMenu: 'right', alignYMenu: 'top' });
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
@@ -186,7 +187,7 @@ describe('VueSelect.vue', () => {
     await fireEvent.click(getByTestId('custom-select'));
     await fireEvent.click(getByTestId('Value 2-1'));
 
-    expect(emitted()['update:modelValue'][0][0]).toEqual([
+    expect(emitted<Array<IItem>>()['update:modelValue'][0][0]).toEqual([
       {
         description: 'Description 1',
         label: 'Value 1',
@@ -201,7 +202,7 @@ describe('VueSelect.vue', () => {
 
     await fireEvent.click(getByTestId('Value 1-0'));
 
-    expect(emitted()['update:modelValue'][1][0]).toEqual([]);
+    expect(emitted<Array<IItem>>()['update:modelValue'][1][0]).toEqual([]);
   });
 
   test('should show validation error', async () => {

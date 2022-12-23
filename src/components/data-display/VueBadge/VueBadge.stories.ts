@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueBadge from './VueBadge.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { BadgeStatusValues } from '~/components/prop-types';
@@ -13,7 +14,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueBadge,
     ComponentDocs,

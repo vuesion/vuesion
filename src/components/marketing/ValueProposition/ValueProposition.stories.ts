@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import ValueProposition from './ValueProposition.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -6,7 +7,7 @@ export default {
   component: ValueProposition,
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: { ValueProposition, ComponentDocs },
   setup() {
     return { args };

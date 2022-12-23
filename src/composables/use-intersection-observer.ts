@@ -2,9 +2,9 @@ import { onMounted, onBeforeUnmount, Ref, ref } from 'vue';
 
 export const useIntersectionObserver = (
   elementRef: Ref<HTMLElement>,
-  callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => void,
+  callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver | null) => void,
 ) => {
-  const observer = ref<IntersectionObserver>(null);
+  const observer = ref<IntersectionObserver | null>(null);
 
   onMounted(() => {
     if ((window as any).IntersectionObserver) {

@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueToggle from './VueToggle.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
@@ -12,7 +13,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueToggle,
     ComponentDocs,

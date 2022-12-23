@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import Testimonials from './Testimonials.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -6,7 +7,7 @@ export default {
   component: Testimonials,
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: { Testimonials, ComponentDocs },
   setup() {
     return { args };

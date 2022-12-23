@@ -1,6 +1,7 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import VueToggleButton from './VueToggleButton.vue';
+import { IItem } from '~/interfaces/IItem';
 
 describe('VueToggleButton.vue', () => {
   let harness: RenderResult;
@@ -34,7 +35,7 @@ describe('VueToggleButton.vue', () => {
 
     await fireEvent.click(getByTestId('toggle-button-list-view'));
 
-    expect(emitted()['update:modelValue'][0][0]).toEqual({
+    expect(emitted<Array<IItem>>()['update:modelValue'][0][0]).toEqual({
       label: 'List view',
       leadingIcon: 'view-list',
       value: 'list-view',

@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import FeatureList from './FeatureList.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -6,7 +7,7 @@ export default {
   component: FeatureList,
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: { FeatureList, ComponentDocs },
   setup() {
     return { args };

@@ -13,7 +13,7 @@ export default {
   parameters: { controls: { disabled: true } },
 };
 
-const Template = (args) => ({
+const Template = () => ({
   components: {
     ComponentDocs,
     UtilityTokenSection,
@@ -22,9 +22,6 @@ const Template = (args) => ({
     VueTiles,
     VueText,
     VueBox,
-  },
-  setup() {
-    return { args };
   },
   template: `<component-docs
       component-name="Utility Component Tokens"

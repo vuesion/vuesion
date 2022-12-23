@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import LearnMore from './LearnMore.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -6,7 +7,7 @@ export default {
   component: LearnMore,
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: { LearnMore, ComponentDocs },
   setup() {
     return { args };

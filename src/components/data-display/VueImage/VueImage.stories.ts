@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueImage from './VueImage.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -8,7 +9,7 @@ export default {
   parameters: { controls: { disabled: true } },
 };
 
-const NativeTemplate = (args) => ({
+const NativeTemplate: Story = (args) => ({
   components: {
     VueImage,
     ComponentDocs,
@@ -26,7 +27,7 @@ const NativeTemplate = (args) => ({
 
 export const Native = NativeTemplate.bind({});
 
-const DivAsImageTemplate = (args) => ({
+const DivAsImageTemplate: Story = (args) => ({
   components: {
     VueImage,
     ComponentDocs,

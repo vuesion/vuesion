@@ -9,14 +9,11 @@ export default {
   parameters: { controls: { disabled: true } },
 };
 
-const Template = (args) => ({
+const Template = () => ({
   components: {
     VueCard,
     VueStack,
     VueText,
-  },
-  setup() {
-    return { args };
   },
   template: `<vue-card>
   <vue-stack space="16">

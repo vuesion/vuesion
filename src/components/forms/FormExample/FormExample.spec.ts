@@ -29,7 +29,7 @@ describe('FormExample.vue', () => {
 
     await fireEvent.submit(getByTestId('form-example'));
 
-    expect(emitted().submit[0][0]).toEqual({
+    expect(emitted<Array<any>>().submit[0][0]).toEqual({
       firstname: 'Max',
       lastname: 'Mustermann',
       email: 'max.mustermann@example.com',

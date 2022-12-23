@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueAvatar from './VueAvatar.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { ShirtSizeValues } from '~/components/prop-types';
@@ -20,7 +21,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueAvatar,
     ComponentDocs,

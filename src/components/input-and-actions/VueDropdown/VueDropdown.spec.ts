@@ -59,7 +59,7 @@ describe('VueDropdown.vue', () => {
 
   test('should open and close menu via keyboard', async () => {
     const { getByText, queryAllByText } = harness;
-    const dropdown = getByText('Dropdown').parentElement;
+    const dropdown = getByText('Dropdown').parentElement as HTMLElement;
 
     await fireEvent.keyDown(dropdown, { key: 'ArrowLeft', code: 'ArrowLeft' });
 
@@ -78,7 +78,7 @@ describe('VueDropdown.vue', () => {
 
   test('should open menu and close it via outline click', async () => {
     const { getByText, queryAllByText } = harness;
-    const dropdown = getByText('Dropdown').parentElement;
+    const dropdown = getByText('Dropdown').parentElement as HTMLElement;
 
     await fireEvent.keyDown(dropdown, { key: 'Enter', code: 'Enter' });
 

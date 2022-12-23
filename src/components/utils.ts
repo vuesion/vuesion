@@ -4,24 +4,25 @@ import { EventBus } from '~/services/EventBus';
 import { IToast } from '~/interfaces/IToast';
 
 export interface CssSpacing {
-  top: string;
-  right: string;
-  bottom: string;
-  left: string;
+  top: string | null;
+  right: string | null;
+  bottom: string | null;
+  left: string | null;
+  [key: string]: string | null;
 }
 
 export const isNullOrUndefined = (value: any) =>
   value === null || value === undefined || value === 'null' || value === 'undefined';
 
-export const parseCssSpacingProp = (spacingPropValue: string): CssSpacing => {
+export const parseCssSpacingProp = (spacingPropValue: string | null): CssSpacing => {
   const values = !isNullOrUndefined(spacingPropValue)
     ? spacingPropValue
-        .toString()
+        ?.toString()
         .split(' ')
         .map((value) => value)
     : null;
 
-  if (values === null) {
+  if (values === null || values === undefined) {
     return {
       top: null,
       right: null,
@@ -97,7 +98,7 @@ export const parseResponsivePropValue = (
 export const getResponsiveCssClasses = (
   $style: any,
   breakPointValues: IBreakpoints | any,
-  classPrefix: string,
+  classPrefix: string | null,
   applyValueToClassName = true,
 ): Array<string> => {
   const map: IBreakpoints | any = {
@@ -134,7 +135,7 @@ export const getCssSpacingClasses = (
   $style: any,
   values: CssSpacing,
   classNamePrefix: string,
-  breakpointPrefix: string = null,
+  breakpointPrefix: string | null = null,
 ) => {
   const classes: Array<string> = [];
   const map: any = {

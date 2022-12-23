@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueCard from './VueCard.vue';
 import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 import VueTiles from '~/components/layout/VueTiles/VueTiles.vue';
@@ -18,7 +19,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueCard,
     ComponentDocs,

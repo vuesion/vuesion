@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VueRadio from './VueRadio.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
@@ -13,7 +14,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueRadio,
     ComponentDocs,

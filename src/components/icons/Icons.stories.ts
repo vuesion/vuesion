@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import IconList from '~/components/icons/IconList.vue';
 
@@ -8,7 +9,7 @@ export default {
   parameters: { controls: { disabled: true } },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     IconList,
     ComponentDocs,

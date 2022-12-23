@@ -1,5 +1,7 @@
+import { Story } from '@storybook/vue3';
 import VueCarousel from './VueCarousel.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+
 const images: any[] = [
   {
     alt: 'Slide 1',
@@ -39,7 +41,7 @@ export default {
   argTypes: {},
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     ComponentDocs,
     VueCarousel,

@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueSlider from './VueSlider.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -9,7 +10,7 @@ export default {
   argTypes: {},
 };
 
-const SingleTemplate = (args) => ({
+const SingleTemplate: Story = (args) => ({
   components: { VueSlider, ComponentDocs, VueStack, VueText },
   data(): any {
     return {
@@ -46,7 +47,7 @@ Single.args = {
   disabled: false,
 };
 
-const RangeTemplate = (args) => ({
+const RangeTemplate: Story = (args) => ({
   components: { VueSlider, ComponentDocs, VueStack, VueText },
   data(): any {
     return {

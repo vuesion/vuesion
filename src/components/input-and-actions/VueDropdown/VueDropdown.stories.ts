@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VueDropdown from './VueDropdown.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -24,7 +25,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueDropdown,
     ComponentDocs,

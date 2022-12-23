@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VueModal from './VueModal.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -12,7 +13,7 @@ export default {
   argTypes: {},
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueModal,
     VueStack,

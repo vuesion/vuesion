@@ -6,7 +6,7 @@ interface IBackdropOptions {
 
 export const useBackdrop = (show: Ref<boolean>, { scrollable }: IBackdropOptions) => {
   const getBackdrop = () => {
-    let backdrop: HTMLElement = document.getElementById('modal-backdrop-1337');
+    let backdrop: HTMLElement | null = document.getElementById('modal-backdrop-1337');
 
     if (backdrop === null) {
       backdrop = document.createElement('div');

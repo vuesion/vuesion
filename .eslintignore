@@ -7,6 +7,5 @@
 **/node_modules/**
 **/.nuxt/**
 **/static/**
-**/interfaces/graphql/**
 **/interfaces/swagger.ts
 src/components/data-display/VueMarkdown/VueMarkdown.vue

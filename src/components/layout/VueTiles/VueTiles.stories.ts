@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueTiles from './VueTiles.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -6,7 +7,7 @@ export default {
   component: VueTiles,
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: { VueTiles, ComponentDocs },
   setup() {
     return { args };

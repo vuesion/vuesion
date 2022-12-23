@@ -2,6 +2,7 @@ import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import VueMenu from './VueMenu.vue';
 import { sleep } from '~/test/test-utils';
+import { IItem } from '~/interfaces/IItem';
 
 describe('VueMenu.vue', () => {
   let harness: RenderResult;
@@ -118,7 +119,7 @@ describe('VueMenu.vue', () => {
     await sleep(500);
     await fireEvent.keyDown(menu, { key: 'Enter', code: 'Enter' });
 
-    expect(emitted().click[0][0]).toEqual({
+    expect(emitted<Array<IItem>>().click[0][0]).toEqual({
       description: 'Description 2',
       label: 'Value 2',
       trailingIcon: 'hashtag',

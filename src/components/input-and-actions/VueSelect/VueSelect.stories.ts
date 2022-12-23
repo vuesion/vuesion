@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import { ref } from 'vue';
 import VueSelect from './VueSelect.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
@@ -36,7 +37,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueSelect,
     ComponentDocs,

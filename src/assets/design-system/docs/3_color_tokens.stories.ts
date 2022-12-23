@@ -8,13 +8,10 @@ export default {
   parameters: { controls: { disabled: true } },
 };
 
-const Template = (args) => ({
+const Template = () => ({
   components: {
     ComponentDocs,
     CTokens,
-  },
-  setup() {
-    return { args };
   },
   template: `<component-docs
       component-name="Color tokens"

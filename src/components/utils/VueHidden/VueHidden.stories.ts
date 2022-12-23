@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueHidden from './VueHidden.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -6,7 +7,7 @@ export default {
   component: VueHidden,
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: { VueHidden, ComponentDocs },
   setup() {
     return { args };

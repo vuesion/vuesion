@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueMarkdown from './VueMarkdown.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -7,7 +8,7 @@ export default {
   argTypes: {},
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueMarkdown,
     ComponentDocs,

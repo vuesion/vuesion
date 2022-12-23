@@ -7,7 +7,7 @@ import { TestComponent } from '~/test/test-utils';
 
 describe('use-intersection-observer.ts', () => {
   test('should create an observer and call the call back function', async () => {
-    let testObserver: Ref<IntersectionObserver>;
+    let testObserver: Ref<IntersectionObserver> = null as any;
 
     (global as any).IntersectionObserver = vi.fn().mockImplementation(() => {
       return { observe: vi.fn() };
@@ -15,8 +15,8 @@ describe('use-intersection-observer.ts', () => {
 
     const { unmount } = render(
       TestComponent(() => {
-        const ref = getDomRef(null);
-        const { observer } = useIntersectionObserver(ref, null);
+        const ref = getDomRef<HTMLElement>(null);
+        const { observer } = useIntersectionObserver(ref, () => null);
 
         testObserver = observer as Ref<IntersectionObserver>;
 
@@ -41,12 +41,12 @@ describe('use-intersection-observer.ts', () => {
   });
 
   test('should not create an observer and call the call back function', async () => {
-    let testObserver: Ref<IntersectionObserver>;
+    let testObserver: Ref<IntersectionObserver> = null as any;
     const callback = vi.fn();
 
     render(
       TestComponent(() => {
-        const ref = getDomRef(null);
+        const ref = getDomRef<HTMLElement>(null);
         const { observer } = useIntersectionObserver(ref, callback);
 
         testObserver = observer as Ref<IntersectionObserver>;

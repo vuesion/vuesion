@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VuePagination from './VuePagination.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -12,7 +13,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     ComponentDocs,
     VuePagination,

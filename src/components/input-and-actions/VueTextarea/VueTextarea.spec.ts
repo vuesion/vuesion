@@ -65,7 +65,7 @@ describe('VueTextarea.vue', () => {
 
     await fireEvent.update(getByDisplayValue('this is the value'), 'this is the new value');
 
-    const actual = emitted()['update:modelValue'][0][0];
+    const actual = emitted<Array<any>>()['update:modelValue'][0][0];
     const expected = 'this is the new value';
 
     expect(actual).toBe(expected);
@@ -85,7 +85,7 @@ describe('VueTextarea.vue', () => {
     await fireEvent.update(getByDisplayValue('this is the value'), 'this is the new value');
     await sleep(10);
 
-    const actual = emitted()['debounced-input'][0][0];
+    const actual = emitted<Array<any>>()['debounced-input'][0][0];
     const expected = 'this is the new value';
 
     expect(actual).toBe(expected);

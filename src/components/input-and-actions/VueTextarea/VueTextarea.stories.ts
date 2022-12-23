@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import { ref } from 'vue';
 import { action } from '@storybook/addon-actions';
 import VueTextarea from './VueTextarea.vue';
@@ -11,7 +12,7 @@ export default {
   argTypes: {},
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueTextarea,
     ComponentDocs,

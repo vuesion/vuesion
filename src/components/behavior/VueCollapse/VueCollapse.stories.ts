@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import { ref } from 'vue';
 import VueCollapse from './VueCollapse.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -15,7 +16,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueCollapse,
     ComponentDocs,

@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import FormExample from './FormExample.vue';
 import VueToast from '~/components/data-display/VueToast/VueToast.vue';
@@ -8,7 +9,7 @@ export default {
   component: FormExample,
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: { FormExample, VueToast, ComponentDocs },
   setup() {
     return { args, onSubmit: action('@submit') };

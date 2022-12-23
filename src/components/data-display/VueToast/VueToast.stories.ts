@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueToast from './VueToast.vue';
 import { addToast } from '~/components/utils';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
@@ -10,7 +11,7 @@ export default {
   argTypes: {},
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueToast,
     VueButton,

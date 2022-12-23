@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import { ref } from 'vue';
 import VueToggleButton from './VueToggleButton.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -18,7 +19,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueToggleButton,
     ComponentDocs,

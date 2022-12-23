@@ -24,7 +24,7 @@ describe('VueButton.vue', () => {
     test('should emit onClick event', async () => {
       const { getByText, emitted } = harness;
 
-      await fireEvent(getByText('VueButton').parentElement, new MouseEvent('click'));
+      await fireEvent(getByText('VueButton').parentElement as HTMLElement, new MouseEvent('click'));
 
       const actual = emitted().click;
 
@@ -154,7 +154,7 @@ describe('VueButton.vue', () => {
       e.preventDefault = vi.fn();
       e.stopPropagation = vi.fn();
 
-      await fireEvent(getByText('foo').parentElement, e);
+      await fireEvent(getByText('foo').parentElement as HTMLElement, e);
 
       expect(e.preventDefault).toHaveBeenCalled();
       expect(e.stopPropagation).toHaveBeenCalled();

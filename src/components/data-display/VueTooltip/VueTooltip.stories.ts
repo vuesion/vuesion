@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import VueTooltip from './VueTooltip.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
@@ -17,7 +18,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: {
     VueTooltip,
     VueStack,

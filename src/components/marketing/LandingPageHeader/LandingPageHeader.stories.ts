@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import LandingPageHeader from './LandingPageHeader.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -6,7 +7,7 @@ export default {
   component: LandingPageHeader,
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: { LandingPageHeader, ComponentDocs },
   setup() {
     return { args };

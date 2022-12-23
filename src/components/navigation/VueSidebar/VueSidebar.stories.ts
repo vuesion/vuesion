@@ -1,3 +1,4 @@
+import { Story } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VueSidebar from './VueSidebar.vue';
 import VueSidebarGroup from './VueSidebarGroup.vue';
@@ -15,7 +16,7 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template: Story = (args) => ({
   components: { VueSidebar, VueSidebarGroup, VueSidebarGroupItem, ComponentDocs, VueSelect },
   setup() {
     return {
