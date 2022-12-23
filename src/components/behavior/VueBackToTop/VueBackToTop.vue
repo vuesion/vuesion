@@ -51,7 +51,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueBackToTop {
   position: fixed;

@@ -11,8 +11,8 @@ import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/
 
 interface ColumnProps {
   as?: string;
-  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment>;
-  alignY?: string | VerticalAlignment | Array<VerticalAlignment>;
+  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment> | null;
+  alignY?: string | VerticalAlignment | Array<VerticalAlignment> | null;
   width?: string | Width | Array<Width>;
   canGrow?: boolean;
   canShrink?: boolean;

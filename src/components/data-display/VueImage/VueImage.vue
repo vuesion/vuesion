@@ -15,7 +15,7 @@ interface ImageProps {
 const props = withDefaults(defineProps<ImageProps>(), {
   native: true,
 });
-const image = getDomRef(null);
+const image = getDomRef<HTMLImageElement>(null);
 const component = computed(() => (props.native ? 'img' : 'div'));
 const setImage = () => {
   if (props.native) {
@@ -29,7 +29,7 @@ useIntersectionObserver(image, (entries, observer) => {
   entries.forEach((entry) => {
     if (entry.intersectionRatio > 0) {
       setImage();
-      observer.disconnect();
+      observer?.disconnect();
     }
   });
 

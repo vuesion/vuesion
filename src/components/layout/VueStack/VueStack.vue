@@ -12,7 +12,7 @@ import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/
 interface StackProps {
   as?: string;
   space?: string | Spacing | Array<Spacing>;
-  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment>;
+  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment> | null;
 }
 
 const props = withDefaults(defineProps<StackProps>(), {
@@ -29,7 +29,7 @@ const cssClasses = computed(() => [
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueStack {
   display: flex;

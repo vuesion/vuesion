@@ -111,7 +111,7 @@ const pageItems = computed<Array<IPaginationItem>>(() => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vuePagination {
   display: inline-flex;

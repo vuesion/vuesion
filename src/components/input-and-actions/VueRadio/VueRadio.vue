@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 .VueRadio {
   display: inline-block;
   position: relative;

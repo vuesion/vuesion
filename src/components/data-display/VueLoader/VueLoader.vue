@@ -10,7 +10,7 @@
 <script setup lang="ts"></script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueLoader {
   display: inline-block;

@@ -26,12 +26,12 @@
       </vue-column>
 
       <vue-column align-y="center" width="10/12" :data-testid="id" @mousedown="moveStart" @touchstart="moveStart">
-        <div ref="slider" :class="$style.track">
+        <div ref="sliderRef" :class="$style.track">
           <div :class="$style.progress" :style="{ width: progressWidth, marginLeft: progressLeft }" />
 
           <button
             v-if="isMultiRange"
-            ref="leftHandle"
+            ref="leftHandleRef"
             :data-testid="`handle-${id}-0`"
             :class="$style.handle"
             :style="{ left: handleLeftPosition }"
@@ -47,7 +47,7 @@
           />
 
           <button
-            ref="rightHandle"
+            ref="rightHandleRef"
             :data-testid="`handle-${id}-1`"
             :class="$style.handle"
             :style="{ left: handleRightPosition }"
@@ -110,9 +110,9 @@ const props = defineProps({
 });
 const emit = defineEmits(['update:modelValue']);
 // DOM refs
-const slider = getDomRef(null);
-const leftHandle = getDomRef(null);
-const rightHandle = getDomRef(null);
+const sliderRef = getDomRef<HTMLDivElement>(null);
+const leftHandleRef = getDomRef<HTMLButtonElement>(null);
+const rightHandleRef = getDomRef<HTMLButtonElement>(null);
 
 // computed
 const range = computed<number[]>(() => props.modelValue as number[]);
@@ -135,8 +135,18 @@ const progressWidth = computed(() => {
 });
 // refs
 const handleSize = ref(0);
-const sliderBox = ref<DOMRect>(null);
-const currentSlider = ref<number>(null);
+const sliderBox = ref<DOMRect>({
+  bottom: 0,
+  left: 0,
+  top: 0,
+  height: 0,
+  right: 0,
+  x: 0,
+  y: 0,
+  width: 0,
+  toJSON: () => null,
+});
+const currentSlider = ref<number>(-1);
 const currentMin = ref(0);
 const currentMax = ref(0);
 const currentMinModel = ref('0');
@@ -200,7 +210,7 @@ const isNewInputValueValid = (value: string, sliderIndex: number) => {
 
   return true;
 };
-const refresh = () => (sliderBox.value = slider.value.getBoundingClientRect());
+const refresh = () => (sliderBox.value = sliderRef.value.getBoundingClientRect());
 const updateRangeIfValid = (newValue: number) => {
   if (newValue < props.min) {
     currentMin.value = props.min;
@@ -303,14 +313,14 @@ watch(currentMin, () => (currentMinModel.value = currentMin.value.toString()), {
 watch(currentMax, () => (currentMaxModel.value = currentMax.value.toString()), { immediate: true });
 
 onMounted(() => {
-  handleSize.value = rightHandle.value.clientWidth;
+  handleSize.value = rightHandleRef.value.clientWidth;
   useEventListener(window, 'resize', refresh);
   refresh();
 });
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueSlider {
   user-select: none;

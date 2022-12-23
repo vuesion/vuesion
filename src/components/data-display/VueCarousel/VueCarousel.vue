@@ -70,7 +70,7 @@ const currentSlide = ref<number>(props.selectedSlide - 1);
 const maxSlides = computed<number>(() => images.value.length);
 const intervalInstance = ref<any>(null);
 const pause = ref(false);
-const preloadedImages = ref([]);
+const preloadedImages = ref<Array<HTMLImageElement>>([]);
 const isActiveSlide = (idx: number) => currentSlide.value === idx;
 const changeSlide = (newSlide: number, fromPagination = false) => {
   if (fromPagination === false && pause.value) {
@@ -99,8 +99,8 @@ const preloadImages = () => {
     const imageInstance: HTMLImageElement = new Image();
 
     imageInstance.src = image.url;
-    imageInstance.alt = image.alt;
-    imageInstance.title = image.copyright;
+    imageInstance.alt = image.alt || '';
+    imageInstance.title = image.copyright || '';
 
     preloadedImages.value.push(imageInstance);
   });
@@ -120,7 +120,7 @@ watch(selectedSlide, () => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueCarousel {
   position: relative;

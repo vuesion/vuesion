@@ -182,7 +182,7 @@ defineEmits(['login-click']);
 </script>
 
 <style lang="scss" module>
-@import 'assets/design-system';
+@import 'assets/_design-system.scss';
 
 .learnMore {
   position: relative;

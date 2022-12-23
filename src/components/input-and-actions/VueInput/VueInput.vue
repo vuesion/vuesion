@@ -32,7 +32,7 @@
 
       <input
         :id="id"
-        ref="input"
+        ref="inputRef"
         :name="name"
         :value="value"
         :placeholder="placeholder"
@@ -107,25 +107,25 @@ const props = withDefaults(defineProps<InputProps>(), {
   hideDescription: false,
   required: false,
   validation: null,
-  modelValue: null,
+  modelValue: undefined,
   disabled: false,
-  placeholder: null,
+  placeholder: undefined,
   autofocus: false,
   type: 'text',
   readonly: false,
   description: '',
   errorMessage: '',
   autocomplete: 'off',
-  leadingIcon: null,
-  trailingIcon: null,
+  leadingIcon: undefined,
+  trailingIcon: undefined,
   size: 'md',
-  sizeAttribute: null,
-  debounce: null,
+  sizeAttribute: undefined,
+  debounce: undefined,
 });
 const emit = defineEmits(['debounced-input', 'update:modelValue', 'leading-icon-click', 'trailing-icon-click', 'blur']);
-const input = getDomRef(null);
+const inputRef = getDomRef<HTMLInputElement>(null);
 const debouncedInput = debounce((value: string) => emit('debounced-input', value), props.debounce || 0);
-const { errors, value, handleChange } = useField<string | number | null>(props.id, props.validation, {
+const { errors, value, handleChange } = useField<string | number | null | undefined>(props.id, props.validation, {
   initialValue: props.modelValue,
   validateOnValueUpdate: false,
   type: props.type,
@@ -159,7 +159,7 @@ watch(
   },
 );
 
-useIntersectionObserver(input, (entries: IntersectionObserverEntry[]) => {
+useIntersectionObserver(inputRef, (entries: IntersectionObserverEntry[]) => {
   if (props.autofocus) {
     entries.forEach((entry) => (entry.target as HTMLInputElement).focus());
   }
@@ -173,7 +173,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueInput {
   display: flex;

@@ -14,8 +14,8 @@ type ColumnRange = 'none' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 interface TilesProps {
   as?: string;
   space?: string | Spacing | Array<Spacing>;
-  verticalSpace?: string | Spacing | Array<Spacing>;
-  horizontalSpace?: string | Spacing | Array<Spacing>;
+  verticalSpace?: string | Spacing | Array<Spacing> | null;
+  horizontalSpace?: string | Spacing | Array<Spacing> | null;
   columns?: string | number | ColumnRange | Array<ColumnRange>;
 }
 

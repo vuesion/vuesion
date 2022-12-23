@@ -13,7 +13,7 @@
 
     <textarea
       :id="id"
-      ref="input"
+      ref="inputRef"
       :name="name"
       :value="value"
       :placeholder="placeholder"
@@ -66,19 +66,19 @@ const props = withDefaults(defineProps<InputProps>(), {
   hideDescription: false,
   required: false,
   validation: null,
-  modelValue: null,
+  modelValue: undefined,
   disabled: false,
-  placeholder: null,
+  placeholder: undefined,
   autofocus: false,
   readonly: false,
   description: '',
   errorMessage: '',
-  debounce: null,
+  debounce: undefined,
 });
 const emit = defineEmits(['debounced-input', 'update:modelValue', 'blur']);
-const input = getDomRef(null);
+const inputRef = getDomRef<HTMLElement>(null);
 const debouncedInput = debounce((value: string) => emit('debounced-input', value), props.debounce || 0);
-const { errors, value, handleChange } = useField<string | number | null>(props.id, props.validation, {
+const { errors, value, handleChange } = useField<string | number | null | undefined>(props.id, props.validation, {
   initialValue: props.modelValue,
   validateOnValueUpdate: false,
   syncVModel: false,
@@ -92,7 +92,7 @@ const onInput = (e: InputEvent) => {
 
   emit('update:modelValue', value, e);
 
-  if (props.debounce !== null) {
+  if (props.debounce !== undefined) {
     debouncedInput(value);
   }
 };
@@ -111,7 +111,7 @@ watch(
   },
 );
 
-useIntersectionObserver(input, (entries: IntersectionObserverEntry[]) => {
+useIntersectionObserver(inputRef, (entries: IntersectionObserverEntry[]) => {
   if (props.autofocus) {
     entries.forEach((entry) => (entry.target as HTMLInputElement).focus());
   }
@@ -119,7 +119,7 @@ useIntersectionObserver(input, (entries: IntersectionObserverEntry[]) => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueTextarea {
   display: flex;

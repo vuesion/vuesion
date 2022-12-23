@@ -2,7 +2,7 @@ import { onMounted, onBeforeUnmount, Ref, ref } from 'vue';
 
 export const useIntersectionObserver = (
   elementRef: Ref<HTMLElement>,
-  callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver | null) => void,
+  callback: (entries: IntersectionObserverEntry[], observer?: IntersectionObserver) => void,
 ) => {
   const observer = ref<IntersectionObserver | null>(null);
 
@@ -15,7 +15,7 @@ export const useIntersectionObserver = (
       observer.value.observe(elementRef.value);
     } else {
       // eslint-disable-next-line n/no-callback-literal
-      callback([], null);
+      callback([]);
     }
   });
 

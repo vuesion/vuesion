@@ -12,9 +12,9 @@ import { getFlexDirectionForBreakpoint, getResponsiveCssClasses, parseResponsive
 interface ColumnsProps {
   as?: string;
   space?: string | Spacing | Array<Spacing>;
-  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment>;
-  alignY?: string | VerticalAlignment | Array<VerticalAlignment>;
-  reverse?: boolean | Array<boolean>;
+  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment> | null;
+  alignY?: string | VerticalAlignment | Array<VerticalAlignment> | null;
+  reverse?: boolean | Array<boolean> | null;
   stackPhone?: boolean;
   stackTabletPortrait?: boolean;
   stackTabletLandscape?: boolean;

@@ -36,12 +36,12 @@ interface TextProps {
 const props = withDefaults(defineProps<TextProps>(), {
   as: 'span',
   look: 'default',
-  color: null,
+  color: undefined,
   weight: 'regular',
   serifs: false,
   underline: false,
   uppercase: false,
-  alignX: null,
+  alignX: undefined,
 });
 const $style = useCssModule();
 const responsiveAlignments = computed(() => parseResponsivePropValue(props.alignX));
@@ -49,7 +49,7 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueText {
   font-family: $font-family;

@@ -50,7 +50,7 @@ const props = defineProps({
   modelValue: { type: Boolean, default: false },
 });
 const emit = defineEmits(['click', 'update:modelValue']);
-const rules = computed(() => (props.required ? 'required' : null));
+const rules = computed(() => (props.required ? 'required' : undefined));
 const { errors, value, validate } = useField<boolean>(props.id, rules, {
   initialValue: props.modelValue,
   type: 'checkbox',
@@ -75,7 +75,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 .vueToggle {
   display: inline-block;
   position: relative;

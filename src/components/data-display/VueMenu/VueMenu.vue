@@ -118,7 +118,7 @@ const onKeyDown = (e: KeyboardEvent) => {
  * doesn't need any testing
  */
 /* c8 ignore start */
-const focus = (selectedItem: IItem = null) => {
+const focus = (selectedItem: IItem | null = null) => {
   if (selectedItem) {
     selectedItemIndex.value = props.items.findIndex((i) => i.value === selectedItem.value);
   }
@@ -131,7 +131,7 @@ const focus = (selectedItem: IItem = null) => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/design-system';
+@import 'assets/_design-system.scss';
 
 .vueMenu {
   position: absolute;

@@ -36,15 +36,23 @@ const props = defineProps({
 });
 const register = inject<(idx: Ref<number>, open: Ref<boolean>, initOpen: boolean) => void>('register');
 const openItem = inject<(idx: Ref<number>) => void>('openItem');
-const idx = ref<number>(null);
+const idx = ref<number>(-1);
 const open = ref(false);
-const click = () => openItem(idx);
+const click = () => {
+  if (openItem) {
+    openItem(idx);
+  }
+};
 
-onMounted(() => register(idx, open, props.initOpen));
+onMounted(() => {
+  if (register) {
+    register(idx, open, props.initOpen);
+  }
+});
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueAccordionItem {
   display: flex;

@@ -281,7 +281,7 @@ const onTabChange = (tab: number) => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/design-system';
+@import 'assets/_design-system.scss';
 
 .valueProposition {
   position: relative;

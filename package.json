@@ -75,6 +75,7 @@
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/vue": "6.6.1",
     "@types/animejs": "3.1.6",
+    "@types/lodash-es": "4.17.6",
     "@types/marked": "4.0.8",
     "@typescript-eslint/eslint-plugin": "5.47.0",
     "@typescript-eslint/parser": "5.47.0",

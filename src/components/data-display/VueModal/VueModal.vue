@@ -1,7 +1,7 @@
 <template>
   <vue-box
     v-if="show"
-    ref="modal"
+    ref="modalRef"
     data-testid="modal"
     :padding="padding"
     :class="[$style.vueModal, show && $style.show]"
@@ -42,7 +42,7 @@ const props = withDefaults(defineProps<ModalProps>(), {
   closeOnEscape: true,
 });
 const emit = defineEmits(['close']);
-const modal = getDomRef(null);
+const modalRef = getDomRef<HTMLElement>(null);
 const show = computed(() => props.show);
 const backdrop = computed(() => props.backdrop);
 const disablePageScroll = computed(() => !props.disablePageScroll);
@@ -54,7 +54,7 @@ onKeyDown('Escape', () => {
     onClose();
   }
 });
-onClickOutside(modal, () => onClose());
+onClickOutside(modalRef, () => onClose());
 
 watch(
   backdrop,
@@ -70,7 +70,7 @@ watch(
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueModal {
   position: fixed;

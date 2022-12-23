@@ -42,6 +42,6 @@ export const Default = Template.bind({});
 Default.args = {
   name: 'Isabella-Maria Del Campo',
   icon: '',
-  src: null,
+  src: undefined,
   size: 'sm',
 };

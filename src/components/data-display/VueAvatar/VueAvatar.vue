@@ -5,14 +5,14 @@
     :style="{ backgroundImage: src && `url(${src})` }"
   >
     <vue-text
-      v-if="src === null && icon.length === 0"
+      v-if="!src && icon.length === 0"
       color="text-inverse-high"
       :look="size === 'sm' ? 'support' : size === 'md' ? 'h6' : 'h4'"
     >
       {{ initials }}
     </vue-text>
 
-    <component :is="`vue-icon-${icon}`" v-if="src === null && icon && icon.length > 0" />
+    <component :is="`vue-icon-${icon}`" v-if="!src && icon && icon.length > 0" />
   </div>
 </template>
 
@@ -23,13 +23,13 @@ import { ShirtSize } from '~/components/prop-types';
 
 interface AvatarProps {
   name: string;
-  src?: string;
+  src: string;
   icon?: string;
   size?: ShirtSize;
 }
 
 const props = withDefaults(defineProps<AvatarProps>(), {
-  src: null,
+  src: undefined,
   icon: '',
   size: 'sm',
 });
@@ -43,7 +43,7 @@ const initials = computed(() => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/design-system';
+@import 'assets/_design-system.scss';
 
 .vueAvatar {
   display: flex;

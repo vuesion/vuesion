@@ -38,15 +38,15 @@ interface DropdownProps {
   size?: ShirtSize;
 }
 withDefaults(defineProps<DropdownProps>(), {
-  buttonText: null,
+  buttonText: '',
   duration: 250,
   alignXMenu: 'left',
   alignYMenu: 'bottom',
   size: 'md',
 });
 const emit = defineEmits(['click', 'item-click']);
-const dropdownRef = getDomRef(null);
-const menuRef = getDomRef(null);
+const dropdownRef = getDomRef<HTMLDivElement>(null);
+const menuRef = getDomRef<{ focus: () => void }>(null);
 const show = ref(false);
 const close = () => (show.value = false);
 const onClick = () => {
@@ -75,7 +75,7 @@ onClickOutside(dropdownRef, () => close());
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueDropdown {
   display: inline-flex;

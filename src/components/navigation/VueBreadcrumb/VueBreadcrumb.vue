@@ -29,7 +29,7 @@ defineProps<{ items: Array<IItem> }>();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueBreadcrumb {
   .list {

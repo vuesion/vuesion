@@ -17,8 +17,8 @@ import {
 interface BoxProps {
   as?: string;
   padding?: string | SpacingWithDirections | Array<SpacingWithDirections>;
-  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment>;
-  alignY?: string | VerticalAlignment | Array<VerticalAlignment>;
+  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment> | null;
+  alignY?: string | VerticalAlignment | Array<VerticalAlignment> | null;
   autoHeight?: boolean;
 }
 
@@ -47,7 +47,7 @@ const cssClasses = computed(() => [
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueBox {
   height: 100%;

@@ -70,26 +70,24 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   as: 'button',
   block: false,
   disabled: false,
-  to: null,
-  leadingIcon: null,
+  to: undefined,
+  leadingIcon: undefined,
   loading: false,
   look: 'secondary',
   size: 'md',
-  trailingIcon: null,
+  trailingIcon: undefined,
   type: 'button',
 });
 const emit = defineEmits<{
   (name: 'click', event: Event): void;
 }>();
-const buttonRef = getDomRef(null);
+const buttonRef = getDomRef<HTMLButtonElement | HTMLAnchorElement | null>(null);
 const actualWidth = computed(() => {
   if (buttonRef.value === null) {
     return null;
   }
 
-  const $el = buttonRef.value.getBoundingClientRect ? buttonRef.value : buttonRef.value.$el;
-
-  return props.loading ? `${$el.getBoundingClientRect().width}px` : null;
+  return props.loading ? `${buttonRef.value.getBoundingClientRect().width}px` : null;
 });
 const isDisabled = computed(() => props.disabled || props.loading);
 const isRouterLink = computed(() => props.as === 'nuxt-link');

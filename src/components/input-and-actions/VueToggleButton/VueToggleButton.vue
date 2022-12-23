@@ -44,7 +44,7 @@ const isChecked = (item: IItem) => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/design-system';
+@import 'assets/_design-system.scss';
 
 .vueToggleButton {
   display: inline-flex;

@@ -12,7 +12,7 @@ import VueStack from '~/components/layout/VueStack/VueStack.vue';
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueSidebar {
   z-index: $sidebar-index;

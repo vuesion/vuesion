@@ -11,7 +11,7 @@ import { getDomRef } from '~/composables/get-dom-ref';
 const props = defineProps({
   height: { type: Number, default: 800 },
 });
-let observer: MutationObserver = null;
+let observer: MutationObserver | null = null;
 const wrapper: Ref<HTMLElement> = getDomRef(null);
 const actualHeight = ref(props.height);
 const getColumnHeight = (col = 0) => {
@@ -21,7 +21,7 @@ const getColumnHeight = (col = 0) => {
 
   for (let i = col; i < max; i += 3) {
     const child = children.item(i);
-    height += child.scrollHeight + 24;
+    height += (child && child.scrollHeight + 24) || 24;
   }
 
   return height;
@@ -51,23 +51,23 @@ const checkForImages = () => {
     const originalLoadEvent = image.onload;
     const originalErrorEvent = image.onerror;
 
-    image.onload = function (ev: Event) {
+    image.onload = function (ev) {
       image.style.display = 'initial';
       imageLoaded();
 
       /* c8 ignore start */
       if (originalLoadEvent) {
-        originalLoadEvent.apply(this, ev);
+        originalLoadEvent.apply(this, ev as any);
       }
       /* c8 ignore end */
     };
-    image.onerror = function (ev: Event) {
+    image.onerror = function (ev) {
       image.style.display = 'none';
       imageLoaded();
 
       /* c8 ignore start */
-      if (originalLoadEvent) {
-        originalErrorEvent.apply(this, ev);
+      if (originalErrorEvent) {
+        originalErrorEvent.apply(this, ev as any);
       }
       /* c8 ignore end */
     };
@@ -88,12 +88,12 @@ onUpdated(() => calculateHeight);
 onBeforeUnmount(() => {
   window.removeEventListener('resize', calculateHeight);
 
-  observer.disconnect();
+  observer?.disconnect();
 });
 </script>
 
 <style lang="scss" module>
-@import 'assets/design-system';
+@import 'assets/_design-system.scss';
 
 .vueMasonry {
   display: flex;

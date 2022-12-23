@@ -11,7 +11,7 @@ withDefaults(defineProps<{ as?: string }>(), {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueContentBlock {
   width: 100%;

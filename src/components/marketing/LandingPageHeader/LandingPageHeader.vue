@@ -85,15 +85,15 @@ import { getDomRef } from '~/composables/get-dom-ref';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueIconDownload from '~/components/icons/VueIconDownload.vue';
 import VueIconBook from '~/components/icons/VueIconBook.vue';
-const header = getDomRef(null);
-const canvas = getDomRef(null);
+const header = getDomRef<HTMLElement>(null);
+const canvas = getDomRef<HTMLCanvasElement>(null);
 const handleResize = () => {
   const canvasElement: HTMLCanvasElement = canvas.value;
   const headerElement: HTMLElement = header.value;
   /* c8 ignore start */
   const stageRect: DOMRect =
     headerElement.getClientRects().length > 0
-      ? headerElement.getClientRects().item(0)
+      ? (headerElement.getClientRects().item(0) as DOMRect)
       : ({
           width: 0,
           height: 0,
@@ -114,7 +114,7 @@ onBeforeUnmount(() => window.removeEventListener('resize', handleResize));
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .landingPageHeader {
   position: relative;
