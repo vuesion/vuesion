@@ -9,3 +9,5 @@ dist
 .idea
 coverage
 .eslintcache
+cypress/screenshots/**
+cypress/videos/**

@@ -1,4 +1,4 @@
-import { describe, beforeEach, test } from 'vitest';
+import { describe, beforeEach, test, expect } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import Testimonials from './Testimonials.vue';
 

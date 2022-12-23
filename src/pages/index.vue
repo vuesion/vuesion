@@ -1,7 +1,7 @@
 <template>
   <main>
     <landing-page-header />
-    <testimonials :stargazers-count="data.stargazersCount" :stargazers="data.stargazers || []" />
+    <testimonials :stargazers-count="data.stargazersCount" :stargazers="data.stargazers" />
     <value-proposition />
     <feature-list />
     <learn-more @login-click="showLoginModal = true" />
@@ -41,7 +41,7 @@ const onLoginSubmit = async (formData: any) => {
     await app.$auth.loginWith('local', { data: formData });
     redirect('/example/dashboard');
     loginRequestStatus.value = RequestStatus.IDLE;
-  } catch (e) {
+  } catch (e: any) {
     loginRequestStatus.value = RequestStatus.FAILED;
     addToast({ title: 'Error during login', text: e.toString(), type: 'danger' });
   }

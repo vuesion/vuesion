@@ -1,3 +1,4 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import VueNavbar from './VueNavbar.vue';
 
