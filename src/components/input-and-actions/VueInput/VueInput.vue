@@ -129,6 +129,7 @@ const { errors, value, handleChange } = useField<string | number | null>(props.i
   initialValue: props.modelValue,
   validateOnValueUpdate: false,
   type: props.type,
+  syncVModel: false,
 });
 const onInput = (e: InputEvent) => {
   const value = (e.target as HTMLInputElement).value;

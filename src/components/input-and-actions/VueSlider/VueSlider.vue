@@ -15,13 +15,13 @@
           :data-testid="`handle-input-${id}-0`"
           :name="`handle-input-${id}-0`"
           label="minimum value"
-          :model-value="formatValue(currentMinModel)"
+          :modelValue="formatValue(currentMinModel)"
           :readonly="isMultiRange === false"
           :disabled="disabled"
           hide-label
           hide-description
           :class="$style.valueInput"
-          @update:model-value="changeCurrentMin"
+          @update:modelValue="changeCurrentMin"
         />
       </vue-column>
 
@@ -70,12 +70,12 @@
           :data-testid="`handle-input-${id}-1`"
           :name="`handle-input-${id}-1`"
           label="maximum value"
-          :model-value="formatValue(currentMaxModel)"
+          :modelValue="formatValue(currentMaxModel)"
           :disabled="disabled"
           hide-label
           hide-description
           :class="$style.valueInput"
-          @update:model-value="changeCurrentMax"
+          @update:modelValue="changeCurrentMax"
         />
       </vue-column>
     </vue-columns>

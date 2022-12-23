@@ -1,7 +1,7 @@
 <template>
   <main>
     <landing-page-header />
-    <testimonials :stargazers-count="data.stargazersCount" :stargazers="data.stargazers" />
+    <testimonials :stargazers-count="data.stargazersCount" :stargazers="data.stargazers || []" />
     <value-proposition />
     <feature-list />
     <learn-more @login-click="showLoginModal = true" />

@@ -54,6 +54,7 @@ const rules = computed(() => (props.required ? 'required' : null));
 const { errors, value, validate } = useField<boolean>(props.id, rules, {
   initialValue: props.modelValue,
   type: 'checkbox',
+  syncVModel: false,
 });
 const onClick = async () => {
   if (!props.disabled) {

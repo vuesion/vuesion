@@ -59,16 +59,17 @@
               name="lang"
               :items="languages"
               hide-description
-              :model-value="selectedLocale"
-              @update:model-value="$emit('locale-change', $event)"
+              :modelValue="selectedLocale"
+              @update:modelValue="$emit('locale-change', $event)"
             />
             <vue-select
               id="theme"
-              v-model="$colorMode.preference"
               label="Theme"
               name="theme"
               :items="themes"
               hide-description
+              :modelValue="$colorMode.preference"
+              @update:modelValue="$colorMode.preference = $event.value"
             />
           </vue-stack>
         </vue-column>
@@ -193,7 +194,7 @@ const year = computed(() => new Date().getFullYear());
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueFooter {
   background: $footer-bg;

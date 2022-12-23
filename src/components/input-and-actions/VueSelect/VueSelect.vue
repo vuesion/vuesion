@@ -148,6 +148,7 @@ const { errors, resetField, handleChange } = useField(props.id, props.validation
   initialValue: props.modelValue,
   validateOnValueUpdate: false,
   type: 'select',
+  syncVModel: false,
 });
 const selectRef = getDomRef<HTMLElement>(null);
 const menuRef = getDomRef<{ focus: (selectedItem: IItem) => void }>(null);
@@ -274,7 +275,11 @@ const toggleMenu = () => {
   }
 };
 
-onClickOutside(selectRef, () => close(false));
+onClickOutside(selectRef, async () => {
+  show.value = false;
+
+  await nextTick();
+});
 </script>
 
 <script lang="ts">

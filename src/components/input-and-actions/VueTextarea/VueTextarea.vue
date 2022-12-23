@@ -81,6 +81,7 @@ const debouncedInput = debounce((value: string) => emit('debounced-input', value
 const { errors, value, handleChange } = useField<string | number | null>(props.id, props.validation, {
   initialValue: props.modelValue,
   validateOnValueUpdate: false,
+  syncVModel: false,
 });
 const onInput = (e: InputEvent) => {
   const value = (e.target as HTMLInputElement).value;

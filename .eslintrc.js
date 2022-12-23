@@ -24,5 +24,20 @@ module.exports = {
     'array-bracket-spacing': ['error', 'never'],
     '@typescript-eslint/no-explicit-any': 0,
     'vue/multi-word-component-names': 0,
+    'vue/attribute-hyphenation': [
+      'error',
+      'always',
+      {
+        ignore: ['modelValue'],
+      },
+    ],
+    'vue/v-on-event-hyphenation': [
+      'error',
+      'always',
+      {
+        autofix: false,
+        ignore: ['modelValue'],
+      },
+    ],
   },
 };
