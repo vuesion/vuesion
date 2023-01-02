@@ -2,6 +2,14 @@
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "types": ["vitest/globals", "animejs", "marked", "flush-promises", "lodash-es"]
+    "types": [
+      "vitest/globals",
+      "animejs",
+      "marked",
+      "flush-promises",
+      "lodash-es",
+      "@nuxtjs/color-mode",
+      "@nuxtjs/i18n"
+    ]
   }
 }

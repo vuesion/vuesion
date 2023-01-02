@@ -28,6 +28,7 @@ import LoginForm from '~/components/forms/LoginForm/LoginForm.vue';
 
 // Deps
 const { redirect, app } = useNuxtApp();
+const { t } = useI18n();
 
 // Refs
 const showLoginModal = ref(false);
@@ -55,7 +56,7 @@ const { data } = useFetch('/api/github-info');
 // Head
 const url = 'https://vuesion.herokuapp.com/';
 const logo = '/images/vuesion-logo.png';
-const title = 'Vuesion - The boilerplate for product teams';
+const title = t('pages.index.title');
 const description =
   'Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.';
 

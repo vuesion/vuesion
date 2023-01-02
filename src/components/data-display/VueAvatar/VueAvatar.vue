@@ -23,7 +23,7 @@ import { ShirtSize } from '~/components/prop-types';
 
 interface AvatarProps {
   name: string;
-  src: string;
+  src: string | null;
   icon?: string;
   size?: ShirtSize;
 }
