@@ -6,7 +6,7 @@
         <a href="https://vuesion.github.io/docs/en/v4/" target="_blank" rel="noopener">
           <vue-icon-book /> Documentation
         </a>
-        <nuxt-link to="/download"> <vue-icon-download /> Downloads </nuxt-link>
+        <nuxt-link :to="localePath('/download')"> <vue-icon-download /> Downloads </nuxt-link>
       </vue-box>
     </vue-content-block>
 

@@ -19,6 +19,8 @@ describe('LandingPageHeader.vue', () => {
     harness = render(LandingPageHeader, {
       global: {
         stubs: ['nuxt-link'],
+        // TODO: find a way to mock it globally
+        mocks: { localePath: (p: string) => p },
       },
     });
   });

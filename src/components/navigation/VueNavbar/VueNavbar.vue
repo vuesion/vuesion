@@ -1,7 +1,7 @@
 <template>
   <vue-box padding="12" :class="$style.vueNavBar" as="nav">
     <vue-columns space="0" :class="$style.layout" align-y="center">
-      <vue-column width="content" align-y="center">
+      <vue-column width="content" align-y="center" :can-grow="false">
         <vue-icon-menu
           v-if="showMenuIcon"
           tabindex="0"

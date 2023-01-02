@@ -2,6 +2,18 @@ import eslintPlugin from 'vite-plugin-eslint';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  auth: {
+    // The module is enabled. Change this to disable the module
+    isEnabled: true,
+    // The origin is set to the development origin. Change this when deploying to production
+    origin: process.env.BASE_URL || 'http://localhost:3000',
+    // Whether to periodically refresh the session. Change this to `true` for a refresh every seconds or set this to a number like `5000` for a refresh every 5000 milliseconds (aka: 5 seconds)
+    enableSessionRefreshPeriodically: false,
+    // Whether to refresh the session whenever a window focus event happens, i.e, when your user refocuses the window. Set this to `false` to turn this off
+    enableSessionRefreshOnWindowFocus: true,
+    // Whether to add a global authentication middleware that will protect all pages without exclusion
+    enableGlobalAppMiddleware: false,
+  },
   components: true,
   colorMode: {
     preference: 'system',
@@ -32,7 +44,7 @@ export default defineNuxtConfig({
       fallbackLocale: 'en',
     },
   },
-  modules: ['@nuxtjs/color-mode', '@nuxtjs/i18n'],
+  modules: ['@nuxtjs/color-mode', '@nuxtjs/i18n', '@sidebase/nuxt-auth'],
   plugins: [{ src: '~/plugins/vee-validate/vee-validate' }],
   rootDir: '.',
   srcDir: './src',

@@ -142,8 +142,7 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 # References
 
 - [nuxt](https://nuxtjs.org/)
-- [nuxt/auth](https://auth.nuxtjs.org/guide/setup/)
-- [nuxt/axios](https://axios.nuxtjs.org/)
+- [@sidebase/nuxt-auth](https://sidebase.io/nuxt-auth/getting-started)
 - [nuxt/pwa](https://pwa.nuxtjs.org/)
 - [nuxt/i18n](https://i18n.nuxtjs.org/)
 - [Storybook](https://storybook.js.org/)

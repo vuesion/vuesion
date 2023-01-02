@@ -9,7 +9,8 @@
       "flush-promises",
       "lodash-es",
       "@nuxtjs/color-mode",
-      "@nuxtjs/i18n"
+      "@nuxtjs/i18n",
+      "@sidebase/nuxt-auth"
     ]
   }
 }

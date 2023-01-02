@@ -1,7 +1,7 @@
 <template>
   <main>
     <landing-page-header />
-    <testimonials :stargazers-count="data.stargazersCount" :stargazers="data.stargazers" />
+    <testimonials :stargazers-count="data?.stargazersCount || 0" :stargazers="data?.stargazers || []" />
     <value-proposition />
     <feature-list />
     <learn-more @login-click="showLoginModal = true" />
@@ -15,7 +15,7 @@
 <script setup lang="ts">
 // TODO: add auth and redirect to dashboard
 import { ref } from 'vue';
-import { useFetch, useHead, useNuxtApp } from '#app';
+import { useFetch, useHead } from '#app';
 import { RequestStatus } from '~/enums/RequestStatus';
 import { addToast } from '~/components/utils';
 import LandingPageHeader from '~/components/marketing/LandingPageHeader/LandingPageHeader.vue';
@@ -26,28 +26,33 @@ import LearnMore from '~/components/marketing/LearnMore/LearnMore.vue';
 import VueModal from '~/components/data-display/VueModal/VueModal.vue';
 import LoginForm from '~/components/forms/LoginForm/LoginForm.vue';
 
+// Config
+definePageMeta({ auth: false });
+
 // Deps
-const { redirect, app } = useNuxtApp();
 const { t } = useI18n();
+const localePath = useLocalePath();
+const { signIn } = useSession();
+const { push } = useRouter();
 
 // Refs
 const showLoginModal = ref(false);
 const loginRequestStatus = ref(RequestStatus.INIT);
 
 // Event Handler
-const onLoginSubmit = async (formData: any) => {
+const onLoginSubmit = async (formData: { username: string; password: string }) => {
   loginRequestStatus.value = RequestStatus.PENDING;
 
   try {
-    await app.$auth.loginWith('local', { data: formData });
-    redirect('/example/dashboard');
+    await signIn('credentials', { ...formData, redirect: false });
     loginRequestStatus.value = RequestStatus.IDLE;
+    showLoginModal.value = false;
+    await push(localePath('/example/dashboard'));
   } catch (e: any) {
     loginRequestStatus.value = RequestStatus.FAILED;
     addToast({ title: 'Error during login', text: e.toString(), type: 'danger' });
+    showLoginModal.value = false;
   }
-
-  showLoginModal.value = false;
 };
 
 // Data Fetching

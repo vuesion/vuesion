@@ -3,13 +3,13 @@
     <vue-toast />
 
     <vue-navbar
-      v-if="$route.path !== '/'"
-      :user-name="null"
+      v-if="$route.path.length !== 3"
+      :user-name="user?.name"
+      :user-image="user?.image"
       :show-menu-icon="false"
-      @menu-item-click="null"
-      @menu-click="null"
+      @menu-item-click="onLogoutClick"
     >
-      <template v-if="null" #center> Hello, {{ user.name }}! </template>
+      <template v-if="user" #center> Hello, {{ user?.name }}! </template>
     </vue-navbar>
 
     <slot />
@@ -35,6 +35,15 @@ import VueFooter from '../components/navigation/VueFooter/VueFooter';
 import VueBackToTop from '../components/behavior/VueBackToTop/VueBackToTop';
 import { IItem } from '@/interfaces/IItem';
 
+// Deps
+const { locale, setLocale } = useI18n();
+const { push } = useRouter();
+const i18nHead = useLocaleHead({ addSeoAttributes: { canonicalQueries: ['foo'] } });
+const { data, signOut } = useSession();
+const switchLocalePath = useSwitchLocalePath();
+const localePath = useLocalePath();
+
+// Computed
 const languages = computed(() => [
   { label: 'English', value: 'en' },
   { label: 'Deutsch', value: 'de' },
@@ -44,14 +53,18 @@ const themes = computed(() => [
   { label: 'Light', value: 'light' },
   { label: 'Dark', value: 'dark' },
 ]);
-const { locale, setLocale } = useI18n();
-const { push } = useRouter();
-const i18nHead = useLocaleHead({ addSeoAttributes: { canonicalQueries: ['foo'] } });
+const user = computed(() => data.value?.user || null);
 
-const switchLocalePath = useSwitchLocalePath();
+// Event Handler
 const onLocaleChange = async (newLocale: IItem) => {
   await setLocale(newLocale.value);
   await push(switchLocalePath(newLocale.value));
+};
+const onLogoutClick = async (menuItem: IItem) => {
+  if (menuItem.value === 'logout') {
+    await signOut({ redirect: false });
+    await push(localePath('/'));
+  }
 };
 
 useHead({
