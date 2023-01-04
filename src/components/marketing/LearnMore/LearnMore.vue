@@ -123,32 +123,26 @@
                       <vue-stack space="16">
                         <vue-text look="h4">State management.</vue-text>
                         <vue-text look="description">
-                          This example shows the basic usage of Vuex including Getters, Actions, SSR pre-fetching, and
+                          This example shows the basic usage of Pinia including Getters, Actions, SSR pre-fetching, and
                           composition-api.
                         </vue-text>
-                        <nuxt-link to="/example/counter"> Go to Vuex example <vue-icon-arrow-right /> </nuxt-link>
+                        <nuxt-link :to="localePath('/example/counter')">
+                          Go to Pinia example <vue-icon-arrow-right />
+                        </nuxt-link>
                       </vue-stack>
                     </vue-column>
                   </vue-columns>
                   <vue-columns stack-phone stack-tablet-portrait :space="['48', '48', '48', '24']">
-                    <vue-column :width="['fit', 'fit', '6/12']">
-                      <vue-stack space="16">
-                        <vue-text look="h4">GraphQL - Apollo</vue-text>
-                        <vue-text look="description">
-                          This example shows how to use apollo with the composition-api. The data is fetched on the
-                          server-side and synced with the client.
-                        </vue-text>
-                        <nuxt-link to="/example/apollo"> Go to Apollo example <vue-icon-arrow-right /> </nuxt-link>
-                      </vue-stack>
-                    </vue-column>
-                    <vue-column :width="['fit', 'fit', '6/12']">
+                    <vue-column :width="['fit', 'fit', '6/12']" :can-grow="false">
                       <vue-stack space="16">
                         <vue-text look="h4">Form validation.</vue-text>
                         <vue-text look="description">
                           This example shows how to validate forms with the vee-validate library and the Vuesion
                           components.
                         </vue-text>
-                        <nuxt-link to="/example/form"> Go to Form example <vue-icon-arrow-right /> </nuxt-link>
+                        <nuxt-link :to="localePath('/example/form')">
+                          Go to Form example <vue-icon-arrow-right />
+                        </nuxt-link>
                       </vue-stack>
                     </vue-column>
                   </vue-columns>

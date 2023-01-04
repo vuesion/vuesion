@@ -13,7 +13,6 @@
 </template>
 
 <script setup lang="ts">
-// TODO: add auth and redirect to dashboard
 import { ref } from 'vue';
 import { useFetch, useHead } from '#app';
 import { RequestStatus } from '~/enums/RequestStatus';
@@ -35,7 +34,7 @@ const localePath = useLocalePath();
 const { signIn } = useSession();
 const { push } = useRouter();
 
-// Refs
+// Data
 const showLoginModal = ref(false);
 const loginRequestStatus = ref(RequestStatus.INIT);
 

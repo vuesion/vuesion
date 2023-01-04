@@ -1,6 +1,7 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import VueBreadcrumb from './VueBreadcrumb.vue';
+import { GlobalMocks } from '~/test/mocks';
 
 describe('VueBreadcrumb.vue', () => {
   let harness: RenderResult;
@@ -15,6 +16,7 @@ describe('VueBreadcrumb.vue', () => {
       },
       global: {
         stubs: ['nuxt-link'],
+        mocks: GlobalMocks,
       },
     });
   });

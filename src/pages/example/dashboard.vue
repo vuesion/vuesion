@@ -62,6 +62,7 @@ import VueCard from '@/components/data-display/VueCard/VueCard.vue';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
+// Config
 useHead({ title: 'Vuesion - Authentication Example' });
 </script>
 

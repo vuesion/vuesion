@@ -1,6 +1,7 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import LearnMore from './LearnMore.vue';
+import { GlobalMocks } from '~/test/mocks';
 
 describe('LearnMore.vue', () => {
   let harness: RenderResult;
@@ -9,6 +10,7 @@ describe('LearnMore.vue', () => {
     harness = render(LearnMore, {
       global: {
         stubs: ['nuxt-link'],
+        mocks: GlobalMocks,
       },
     });
   });

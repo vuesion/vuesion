@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     // Whether to add a global authentication middleware that will protect all pages without exclusion
     enableGlobalAppMiddleware: false,
   },
-  components: true,
+  components: false,
   colorMode: {
     preference: 'system',
     fallback: 'light',
@@ -44,8 +44,21 @@ export default defineNuxtConfig({
       fallbackLocale: 'en',
     },
   },
-  modules: ['@nuxtjs/color-mode', '@nuxtjs/i18n', '@sidebase/nuxt-auth'],
-  plugins: [{ src: '~/plugins/vee-validate/vee-validate' }],
+  imports: {
+    dirs: ['store'],
+  },
+  modules: [
+    '@nuxtjs/color-mode',
+    '@nuxtjs/i18n',
+    '@sidebase/nuxt-auth',
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: ['defineStore', 'acceptHMRUpdate'],
+      },
+    ],
+  ],
+  plugins: [{ src: '~/plugins/vee-validate/vee-validate' }, { src: '~/components/global' }],
   rootDir: '.',
   srcDir: './src',
   vite: {

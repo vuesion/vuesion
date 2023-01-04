@@ -43,7 +43,14 @@ const { data, signOut } = useSession();
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
 
-// Computed
+// Config
+useHead({
+  htmlAttrs: { lang: i18nHead.value.htmlAttrs!.lang },
+  link: [...(i18nHead.value.link || [])],
+  meta: [...(i18nHead.value.meta || [])],
+});
+
+// Data
 const languages = computed(() => [
   { label: 'English', value: 'en' },
   { label: 'Deutsch', value: 'de' },
@@ -66,12 +73,6 @@ const onLogoutClick = async (menuItem: IItem) => {
     await push(localePath('/'));
   }
 };
-
-useHead({
-  htmlAttrs: { lang: i18nHead.value.htmlAttrs!.lang },
-  link: [...(i18nHead.value.link || [])],
-  meta: [...(i18nHead.value.meta || [])],
-});
 </script>
 
 <style lang="scss" module>

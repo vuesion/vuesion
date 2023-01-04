@@ -91,7 +91,7 @@
                   hide-description
                   placeholder="Zip code"
                   validation="required|integer"
-                  error-message="Please enter a Number"
+                  :error-message="$t('components.formExample.zipCode.error' /* Please enter a Number */)"
                   :disabled="addressDisabled"
                 />
 
@@ -179,7 +179,7 @@ interface FormExampleModel {
 
 const emit = defineEmits(['submit']);
 
-// refs
+// Data
 const isLoading = ref(false);
 const model = ref<FormExampleModel>({
   firstname: '',
@@ -193,8 +193,6 @@ const model = ref<FormExampleModel>({
   newsletter: false,
   notes: '',
 });
-
-// computed
 const countryOptions = computed(() => [
   { label: 'None', value: null },
   { label: 'Brasil', value: 'br' },
@@ -212,7 +210,7 @@ const addressDisabled = computed(
 );
 const { meta } = useForm();
 
-// event handler
+// Event handler
 const onSubmit = () => {
   isLoading.value = true;
   const submitValue = { ...model.value, country: model.value.country.value };

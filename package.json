@@ -50,6 +50,7 @@
     "pre-commit": "pretty-quick --staged && concurrently \"npm run lint\" \"npm test\""
   },
   "dependencies": {
+    "@pinia/nuxt": "0.4.6",
     "@vee-validate/rules": "4.7.3",
     "@vueuse/core": "9.9.0",
     "animejs": "3.2.1",
@@ -58,6 +59,7 @@
     "lodash-es": "4.17.21",
     "marked": "4.2.5",
     "mitt": "3.0.0",
+    "pinia": "2.0.28",
     "vee-validate": "4.7.3"
   },
   "devDependencies": {

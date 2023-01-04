@@ -1,4 +1,3 @@
-import { defineEventHandler } from 'h3';
 import { getIntInRange } from '~/components/utils';
 
 export default defineEventHandler(async () => {
