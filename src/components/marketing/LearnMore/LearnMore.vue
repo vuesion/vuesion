@@ -113,8 +113,8 @@
                       <vue-stack space="16">
                         <vue-text look="h4">Authentication.</vue-text>
                         <vue-text look="description">
-                          This example shows how to use the nuxt-auth. You will be redirected to a protected page with
-                          scenarios like re-authentication and error handling.
+                          This example shows how to use the nuxt-auth module. You will be redirected to a protected page
+                          with scenarios like re-authentication and error handling.
                         </vue-text>
                         <vue-button leading-icon="login" look="primary" @click="$emit('login-click')">Login</vue-button>
                       </vue-stack>
