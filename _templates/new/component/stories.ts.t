@@ -23,7 +23,7 @@ const Template: Story = (args) => ({
       component-name="<%= name %>"
       usage="TBD"
   >
-      <<%= h.inflection.dasherize(name) %> v-bind="args" />
+      <<%= h.inflection.dasherize(h.inflection.underscore(name)) %> v-bind="args" />
   </component-docs>`,
 });
 
