@@ -1,6 +1,6 @@
 {
-  "components.formExample.zipCode.error": "Please enter a Number",
   "common.Downloads": "Downloads",
   "common.Form-example": "Form example",
+  "components.formExample.zipCode.error": "Please enter a Number",
   "pages.index.title": "Vuesion - The boilerplate for product teams"
 }

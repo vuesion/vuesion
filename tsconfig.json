@@ -13,5 +13,10 @@
       "@sidebase/nuxt-auth",
       "@pinia/nuxt"
     ]
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }

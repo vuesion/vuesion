@@ -6,8 +6,6 @@
     <feature-list />
     <learn-more @login-click="showLoginModal = true" />
 
-    <nuxt-link :to="localePath('/product')">Products Page</nuxt-link>
-
     <vue-modal disable-page-scroll :show="showLoginModal" @close="showLoginModal = false">
       <login-form :loading="loginRequestStatus === 'PENDING'" @submit="onLoginSubmit" />
     </vue-modal>

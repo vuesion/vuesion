@@ -29,6 +29,7 @@ export default defineNuxtConfig({
     // baseUrl: 'https://vuesion.herokuapp.com',
     strategy: 'prefix',
     vueI18n: 'src/plugins/vue-i18n/vue-i18n',
+    // Don't forget to update the extract-i18n-script
     locales: [
       { code: 'en', iso: 'en-US', file: 'en.json' },
       { code: 'de', iso: 'de-DE', file: 'de.json' },

@@ -11,3 +11,4 @@ coverage
 .eslintcache
 cypress/screenshots/**
 cypress/videos/**
+storybook-static
