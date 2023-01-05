@@ -60,7 +60,7 @@ const { data } = useFetch('/api/github-info');
 // Head
 const url = 'https://vuesion.herokuapp.com/';
 const logo = '/images/vuesion-logo.png';
-const title = t('pages.index.title');
+const title = t('pages.index.title' /* Vuesion - The boilerplate for product teams */);
 const description =
   'Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.';
 

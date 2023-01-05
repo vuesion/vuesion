@@ -1,0 +1,13 @@
+{
+  "generators": {
+    "blueprintDirectory": "./.vuesion/generators",
+    "outputDirectory": "./src"
+  },
+  "i18n": {
+    "defaultLocale": "en",
+    "locales": [
+      { "code": "en", "iso": "en-US", "file": "en.json" },
+      { "code": "de", "iso": "de-DE", "file": "de.json" }
+    ]
+  }
+}
