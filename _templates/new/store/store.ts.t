@@ -31,7 +31,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
   actions: {
     async fetch<%= h.inflection.camelize(name) %>s() {
       try {
-        this.<%= h.inflection.pluralize(name) %> = await $fetch<Array<I<%= h.inflection.camelize(name) %>>>('/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>', {
+        this.<%= h.inflection.pluralize(name) %> = await $fetch<Array<I<%= h.inflection.camelize(name) %>>>('/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>', {
           method: 'GET',
         });
       } catch (e) {
@@ -40,7 +40,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
     },
     async fetch<%= h.inflection.camelize(name) %>(id: string) {
       try {
-        this.current<%= h.inflection.camelize(name) %> = await $fetch<I<%= h.inflection.camelize(name) %>>(`/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${id}`, {
+        this.current<%= h.inflection.camelize(name) %> = await $fetch<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${id}`, {
           method: 'GET',
         });
       } catch (e) {
@@ -49,7 +49,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
     },
     async create<%= h.inflection.camelize(name) %>(<%= name %>: I<%= h.inflection.camelize(name) %>) {
       try {
-        const new<%= h.inflection.camelize(name) %> = await $fetch<I<%= h.inflection.camelize(name) %>>(`/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>`, {
+        const new<%= h.inflection.camelize(name) %> = await $fetch<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>`, {
           method: 'POST',
           body: JSON.stringify(<%= name %>),
         });
@@ -62,7 +62,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
     },
     async update<%= h.inflection.camelize(name) %>(<%= name %>: Partial<I<%= h.inflection.camelize(name) %>>) {
       try {
-        const updated<%= h.inflection.camelize(name) %> = await $fetch<I<%= h.inflection.camelize(name) %>>(`/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${<%= name %>.id}`, {
+        const updated<%= h.inflection.camelize(name) %> = await $fetch<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${<%= name %>.id}`, {
           method: 'PUT',
           body: JSON.stringify(<%= name %>),
         });
@@ -75,7 +75,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
     },
     async delete<%= h.inflection.camelize(name) %>(<%= name %>: Partial<I<%= h.inflection.camelize(name) %>>) {
       try {
-        await $fetch<I<%= h.inflection.camelize(name) %>>(`/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${<%= name %>.id}`, {
+        await $fetch<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${<%= name %>.id}`, {
           method: 'DELETE',
         });
         const idx = this.<%= h.inflection.pluralize(name) %>.findIndex((item) => item.id === <%= name%>.id);

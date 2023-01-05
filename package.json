@@ -32,6 +32,7 @@
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest run --coverage",
     "new:component": "hygen new component",
     "new:store": "hygen new store",
+    "new:page": "hygen new page",
     "type-gen:swagger": "openapi-typescript https://petstore.swagger.io/v2/swagger.json --output src/interfaces/swagger.ts",
     "extract-i18n-messages": "vuesion em -s -u -t",
     "test:watch": "cross-env NODE_ICU_DATA=node_modules/full-icu vuesion test --coverage --watch",
