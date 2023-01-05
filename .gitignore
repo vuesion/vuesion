@@ -12,3 +12,4 @@ coverage
 cypress/screenshots/**
 cypress/videos/**
 storybook-static
+.DS_Store

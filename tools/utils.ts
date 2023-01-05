@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { spawn, SpawnOptions } from 'child_process';
 
 export const getTranslationsFromString = (content: string): RegExpMatchArray => {
   const result: any = [];
@@ -59,6 +60,49 @@ export const ensureDirectoryExists = (filePath: string) => {
 
   ensureDirectoryExists(dirname);
   fs.mkdirSync(dirname);
+};
+
+export interface IProcessOptions {
+  cwd?: string;
+  silent?: boolean;
+  debug?: boolean;
+}
+
+export interface IProcessError {
+  code: number;
+  trace: string;
+}
+
+export const runProcess = (name: string, args: string[] = [], options?: IProcessOptions): Promise<any> => {
+  return new Promise((resolve: any, reject: any) => {
+    options = Object.assign({ cwd: process.cwd(), silent: false, debug: false }, options);
+
+    const localOptions: SpawnOptions = Object.assign(
+      {
+        detached: false,
+        cwd: options.cwd,
+        env: process.env,
+      },
+      options.silent === false || options.debug === true ? { stdio: 'inherit' as const } : {},
+    );
+    const childProcess: any = spawn(name, args, localOptions);
+
+    childProcess.on('exit', (code: number) => {
+      childProcess.kill();
+
+      if (code === 0) {
+        resolve(undefined);
+      } else {
+        const err: IProcessError = { code, trace: '' };
+        reject(err);
+      }
+    });
+
+    childProcess.on('error', (e: Error) => {
+      childProcess.kill();
+      reject(e);
+    });
+  });
 };
 
 /* c8 ignore end */
