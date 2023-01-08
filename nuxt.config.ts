@@ -25,8 +25,8 @@ export default defineNuxtConfig({
     classSuffix: '',
     storageKey: 'nuxt-color-mode',
   },
+  extends: ['@sidebase/nuxt-prisma'],
   i18n: {
-    // baseUrl: 'https://vuesion.herokuapp.com',
     strategy: 'prefix',
     vueI18n: 'src/plugins/vue-i18n/vue-i18n',
     // Don't forget to update the extract-i18n-script
@@ -49,6 +49,7 @@ export default defineNuxtConfig({
     dirs: ['store'],
   },
   modules: [
+    // TODO: add PWA module when ready
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
     '@sidebase/nuxt-auth',

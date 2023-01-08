@@ -13,8 +13,8 @@ describe('FeatureList.vue', () => {
   test('should emit submit event', async () => {
     const { getByLabelText, getByTestId, emitted } = harness;
 
-    await fireEvent.update(getByLabelText('Username *'), 'master.mind');
-    await fireEvent.update(getByLabelText('Password *'), 'master.mind1337');
+    await fireEvent.update(getByLabelText('Email (Demo: account@example.com) *'), 'master.mind');
+    await fireEvent.update(getByLabelText('Password (Demo: password) *'), 'master.mind1337');
 
     await flushPromises();
 

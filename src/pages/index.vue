@@ -39,7 +39,7 @@ const showLoginModal = ref(false);
 const loginRequestStatus = ref(RequestStatus.INIT);
 
 // Event Handler
-const onLoginSubmit = async (formData: { username: string; password: string }) => {
+const onLoginSubmit = async (formData: { email: string; password: string }) => {
   loginRequestStatus.value = RequestStatus.PENDING;
 
   try {

@@ -11,7 +11,8 @@
       "@nuxtjs/color-mode",
       "@nuxtjs/i18n",
       "@sidebase/nuxt-auth",
-      "@pinia/nuxt"
+      "@pinia/nuxt",
+      "@types/bcrypt"
     ]
   },
   "ts-node": {

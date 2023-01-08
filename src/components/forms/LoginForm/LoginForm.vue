@@ -4,16 +4,16 @@
     <vue-stack>
       <vue-text look="h3" as="h3"> Login Example </vue-text>
       <vue-input
-        id="username"
-        v-model="username"
-        name="username"
-        type="text"
+        id="email"
+        v-model="email"
+        name="email"
+        type="email"
         autofocus
         required
-        label="Username"
-        placeholder="Enter any username"
+        label="Email (Demo: account@example.com)"
+        placeholder="Enter an email address"
         validation="required"
-        error-message="The username can not be empty)"
+        error-message="The email can not be empty)"
       />
 
       <vue-input
@@ -22,7 +22,7 @@
         name="password"
         type="password"
         required
-        label="Password"
+        label="Password (Demo: password)"
         placeholder="Enter any password"
         validation="required|min:6"
         error-message="The password has to have at least 6 characters"
@@ -50,11 +50,11 @@ defineProps({
   loading: { type: Boolean, default: false },
 });
 const emit = defineEmits(['submit']);
-const username = ref('');
+const email = ref('');
 const password = ref('');
 const { meta } = useForm();
 const onSubmit = () => {
-  emit('submit', { username: username.value, password: password.value });
+  emit('submit', { email: email.value, password: password.value });
 };
 </script>
 
