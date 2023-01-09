@@ -14,15 +14,4 @@ model Account {
   id       String    @id @default(dbgenerated("gen_random_uuid()"))
   email    String    @unique
   password String
-  profiles Profile[]
-}
-
-model Profile {
-  id      String  @id @default(dbgenerated("gen_random_uuid()"))
-  ownerId String
-  owner   Account @relation(fields: [ownerId], references: [id])
-  name    String
-  type    String
-
-  @@unique([name, type])
 }

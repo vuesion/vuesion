@@ -8,6 +8,7 @@
     :aria-modal="show"
   >
     <vue-icon-times
+      v-if="hideCloseButton === false"
       tabindex="0"
       :class="$style.closeButton"
       @click="onClose"
@@ -32,6 +33,7 @@ interface ModalProps {
   backdrop?: boolean;
   disablePageScroll?: boolean;
   closeOnEscape?: boolean;
+  hideCloseButton?: boolean;
 }
 
 const props = withDefaults(defineProps<ModalProps>(), {
@@ -40,6 +42,7 @@ const props = withDefaults(defineProps<ModalProps>(), {
   backdrop: true,
   disablePageScroll: false,
   closeOnEscape: true,
+  hideCloseButton: false,
 });
 const emit = defineEmits(['close']);
 const modalRef = getDomRef<HTMLElement>(null);
