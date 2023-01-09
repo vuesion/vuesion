@@ -33,6 +33,7 @@
     "new:component": "hygen new component",
     "new:store": "hygen new store",
     "new:page": "hygen new page",
+    "db:seed": "ts-node ./prisma/seed.ts",
     "type-gen:swagger": "openapi-typescript https://petstore.swagger.io/v2/swagger.json --output src/interfaces/swagger.ts",
     "extract-i18n-messages": "ts-node ./tools/extract-i18n-messages.ts",
     "test:watch": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest",

@@ -2,6 +2,7 @@
 to: "src/store/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>.ts"
 ---
 import { I<%= h.inflection.camelize(name) %> } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
+import { $fetchWithCookies } from '~/utils/fetchWithCookies';
 
 export interface I<%= h.inflection.camelize(name) %>State {
   <%= h.inflection.pluralize(name) %>: Array<I<%= h.inflection.camelize(name) %>>;
@@ -31,28 +32,21 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
   actions: {
     async fetch<%= h.inflection.camelize(name) %>s() {
       try {
-        this.<%= h.inflection.pluralize(name) %> = await $fetch<Array<I<%= h.inflection.camelize(name) %>>>('/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>', {
-          method: 'GET',
-        });
+        this.<%= h.inflection.pluralize(name) %> = await $fetchWithCookies<Array<I<%= h.inflection.camelize(name) %>>>('/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>');
       } catch (e) {
         this.error = e;
       }
     },
     async fetch<%= h.inflection.camelize(name) %>(id: string) {
       try {
-        this.current<%= h.inflection.camelize(name) %> = await $fetch<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${id}`, {
-          method: 'GET',
-        });
+        this.current<%= h.inflection.camelize(name) %> = await $fetchWithCookies<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${id}`);
       } catch (e) {
         this.error = e;
       }
     },
-    async create<%= h.inflection.camelize(name) %>(<%= name %>: I<%= h.inflection.camelize(name) %>) {
+    async create<%= h.inflection.camelize(name) %>(<%= name %>: <Partial<I<%= h.inflection.camelize(name) %>>) {
       try {
-        const new<%= h.inflection.camelize(name) %> = await $fetch<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>`, {
-          method: 'POST',
-          body: JSON.stringify(<%= name %>),
-        });
+        const new<%= h.inflection.camelize(name) %> = await $fetchWithCookies<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>`, 'POST', JSON.stringify(<%= name %>));
 
         this.<%= h.inflection.pluralize(name) %>.push(new<%= h.inflection.camelize(name) %>);
         this.current<%= h.inflection.camelize(name) %> = new<%= h.inflection.camelize(name) %>;
@@ -62,10 +56,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
     },
     async update<%= h.inflection.camelize(name) %>(<%= name %>: Partial<I<%= h.inflection.camelize(name) %>>) {
       try {
-        const updated<%= h.inflection.camelize(name) %> = await $fetch<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${<%= name %>.id}`, {
-          method: 'PUT',
-          body: JSON.stringify(<%= name %>),
-        });
+        const updated<%= h.inflection.camelize(name) %> = await $fetchWithCookies<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${<%= name %>.id}`, 'PUT', JSON.stringify(<%= name %>));
         const idx = this.<%= h.inflection.pluralize(name) %>.findIndex((item) => item.id === updated<%= h.inflection.camelize(name) %>.id);
         this.<%= h.inflection.pluralize(name) %>.splice(idx, 1, updated<%= h.inflection.camelize(name) %>);
         this.current<%= h.inflection.camelize(name) %> = updated<%= h.inflection.camelize(name) %>;
@@ -73,12 +64,10 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
         this.error = e;
       }
     },
-    async delete<%= h.inflection.camelize(name) %>(<%= name %>: Partial<I<%= h.inflection.camelize(name) %>>) {
+    async delete<%= h.inflection.camelize(name) %>(<%= name %>Id: string) {
       try {
-        await $fetch<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${<%= name %>.id}`, {
-          method: 'DELETE',
-        });
-        const idx = this.<%= h.inflection.pluralize(name) %>.findIndex((item) => item.id === <%= name%>.id);
+        await $fetchWithCookies<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${<%= name %>Id}`, 'DELETE');
+        const idx = this.<%= h.inflection.pluralize(name) %>.findIndex((item) => item.id === <%= name%>Id);
         this.<%= h.inflection.pluralize(name) %>.splice(idx, 1);
       } catch (e) {
         this.error = e;

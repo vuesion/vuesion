@@ -35,7 +35,7 @@ const <%= h.inflection.pluralize(h.inflection.camelize(store, true)) %> = comput
 
 // Data fetching
 <% if (store !== 'None') { -%>
-usePrefillStoreAction(store.fetch<%= h.inflection.camelize(h.inflection.pluralize(store)) %>);
+usePrefillStoreAction(store.fetch<%= h.inflection.camelize(h.inflection.pluralize(store)) %>, store.get<%= h.inflection.camelize(h.inflection.pluralize(store)) %>);
 <% } -%>
 </script>
 

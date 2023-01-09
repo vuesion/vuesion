@@ -4,12 +4,12 @@
 
     <vue-navbar
       v-if="$route.path.length !== 3"
-      :user-name="user?.name"
+      :user-name="user?.email"
       :user-image="user?.image"
       :show-menu-icon="false"
       @menu-item-click="onLogoutClick"
     >
-      <template v-if="user" #center> Hello, {{ user?.name }}! </template>
+      <template v-if="user" #center> Hello, {{ user?.email }}! </template>
     </vue-navbar>
 
     <slot />

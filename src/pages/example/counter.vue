@@ -65,7 +65,7 @@ const decrement = async () => {
 };
 
 // Data fetching
-usePrefillStoreAction(store.increment);
+usePrefillStoreAction(store.increment, store.getCount);
 </script>
 
 <style lang="scss" module>

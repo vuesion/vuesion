@@ -28,6 +28,22 @@ export default NuxtAuthHandler({
     maxAge: 30 * 24 * 60 * 60, // 30 days
     updateAge: 24 * 60 * 60, // 24 hours
   },
+  callbacks: {
+    jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+
+      return token;
+    },
+    session({ session, token }) {
+      if (token && session.user) {
+        session.user.id = token.id as string;
+      }
+
+      return session;
+    },
+  },
   providers: [
     // @ts-ignore Import is exported on .default during SSR, so we need to call it this way. May be fixed via Vite at some point
     CredentialsProvider.default({
