@@ -6,7 +6,7 @@ module.exports = [
   {
     type: 'input',
     name: 'name',
-    message: 'Store name:',
+    message: 'Entity name:',
     result(value) {
       value = inflection.singularize(value);
 
@@ -14,9 +14,15 @@ module.exports = [
     },
     validate(value) {
       if (!value.length) {
-        return 'Store must have a name.';
+        return 'Entity must have a name.';
       }
       return true;
     },
+  },
+  {
+    type: 'confirm',
+    name: 'auth',
+    message: 'Is the entity protected by Authentication?',
+    initial: true,
   },
 ];

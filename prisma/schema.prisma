@@ -11,7 +11,11 @@ datasource db {
 }
 
 model Account {
-  id       String    @id @default(dbgenerated("gen_random_uuid()"))
-  email    String    @unique
+  id       String @id @default(dbgenerated("gen_random_uuid()"))
+  email    String @unique
   password String
+
+  // generated model relations
 }
+
+// generated models
