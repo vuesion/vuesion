@@ -45,7 +45,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
         this.error = e;
       }
     },
-    async create<%= h.inflection.camelize(name) %>(<%= name %>: Partial<I<%= h.inflection.camelize(name) %>) {
+    async create<%= h.inflection.camelize(name) %>(<%= name %>: Partial<I<%= h.inflection.camelize(name) %>>) {
       try {
         const new<%= h.inflection.camelize(name) %> = await $fetchWithCookies<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>`, 'POST', JSON.stringify(<%= name %>));
 
