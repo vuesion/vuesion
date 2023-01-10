@@ -31,6 +31,10 @@ app.component('nuxt-link', {
 app.mixin({
   created() {
     this.localePath = (path) => path;
+    this.$t = (key) => key;
+    this.$n = (key) => key;
+    this.t = (key) => key;
+    this.n = (key) => key;
   },
 });
 app.mixin({
