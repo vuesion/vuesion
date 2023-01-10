@@ -33,7 +33,7 @@ import VueToast from '../components/data-display/VueToast/VueToast';
 import VueNavbar from '../components/navigation/VueNavbar/VueNavbar';
 import VueFooter from '../components/navigation/VueFooter/VueFooter';
 import VueBackToTop from '../components/behavior/VueBackToTop/VueBackToTop';
-import { IItem } from '@/interfaces/IItem';
+import { IItem } from '~/interfaces/IItem';
 
 // Deps
 const { locale, setLocale } = useI18n();

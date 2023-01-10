@@ -12,11 +12,11 @@
 
 <script setup lang="ts">
 /* istanbul ignore file */
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
-import FormExample from '@/components/forms/FormExample/FormExample.vue';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueBreadcrumb from '~/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
+import FormExample from '~/components/forms/FormExample/FormExample.vue';
 import { IItem } from '~/interfaces/IItem';
 
 // Deps

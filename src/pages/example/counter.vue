@@ -35,15 +35,15 @@
 
 <script setup lang="ts">
 import { usePrefillStoreAction } from '~/composables/use-prefill-store-action';
-import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueBreadcrumb from '~/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
 // Deps
 const store = useCounterStore();

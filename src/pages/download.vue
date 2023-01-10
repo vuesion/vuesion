@@ -51,11 +51,11 @@
 </template>
 
 <script setup lang="ts">
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueBreadcrumb from '~/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
 import { IItem } from '~/interfaces/IItem';
 
 // Deps

@@ -29,7 +29,7 @@ unless_exists: true
 
 <script setup lang="ts">
 import { use<%= h.inflection.camelize(name) %>Store } from '~/store/<%= h.inflection.camelize(name, true) %>';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueInput from '~/components/input-and-actions/VueInput/VueInput.vue';

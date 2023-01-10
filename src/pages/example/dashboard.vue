@@ -52,15 +52,15 @@
 </template>
 
 <script setup lang="ts">
-import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueCard from '@/components/data-display/VueCard/VueCard.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueBreadcrumb from '~/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueCard from '~/components/data-display/VueCard/VueCard.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
 // Config
 useHead({ title: 'Vuesion - Authentication Example' });

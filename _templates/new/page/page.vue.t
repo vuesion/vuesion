@@ -16,7 +16,7 @@ to: "src/pages/<%= path %>.vue"
 import { usePrefillStoreAction } from '~/composables/use-prefill-store-action';
 import { use<%= store %>Store } from '~/store/<%= store.toLowerCase() %>';
 <% } -%>
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 
 // Deps
 <% if (store !== 'None') { -%>
