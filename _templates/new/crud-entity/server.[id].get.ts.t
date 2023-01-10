@@ -6,7 +6,6 @@ import { usePrisma } from '@sidebase/nuxt-prisma';
 
 export default eventHandler(async (event) => {
   const <%= h.inflection.camelize(name, true) %>Id = event.context.params.id;
-
   const prisma = await usePrisma(event);
 
   return prisma.<%= h.inflection.camelize(name, true) %>.findFirst({ where: { id: <%= h.inflection.camelize(name, true) %>Id } });

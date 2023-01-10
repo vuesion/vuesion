@@ -3,14 +3,17 @@ to: "src/server/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>
 unless_exists: true
 ---
 import { usePrisma } from '@sidebase/nuxt-prisma';
+<% if(auth === true) { -%>
 import { getServerSession } from '#auth';
 import { checkUserSession, checkUserAuthorization } from '~/utils/accessControl';
-
+<% } %>
 export default eventHandler(async (event) => {
+<% if(auth === true) { -%>
   const session = await getServerSession(event);
-  <% if(auth === true) { %>
+
   checkUserSession(session);
-  <% } %>
+
+<% } -%>
   const <%= h.inflection.camelize(name, true) %>Id = event.context.params.id;
   const prisma = await usePrisma(event);
   <% if(auth === true) { -%>
