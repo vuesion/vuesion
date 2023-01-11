@@ -13,7 +13,7 @@ export default defineConfig({
       lines: 99,
       exclude: ['**/test-utils.ts', '**/CollapseAnimation.vue', '**/*.spec.ts'],
     },
-    environment: 'happy-dom',
+    environment: 'jsdom',
     globals: true,
     setupFiles: ['./src/test/setup.ts'],
   },

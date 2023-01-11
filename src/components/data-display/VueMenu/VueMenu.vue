@@ -125,7 +125,7 @@ const focus = (selectedItem: IItem | null = null) => {
 
   const item = menuRef.value.querySelectorAll('li').item(selectedItemIndex.value === -1 ? 0 : selectedItemIndex.value);
   item.focus();
-  menuRef.value.scrollTo({ top: item.offsetTop });
+  menuRef.value?.scrollTo({ top: item.offsetTop });
 };
 /* c8 ignore end */
 </script>

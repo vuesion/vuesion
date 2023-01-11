@@ -1,5 +1,5 @@
 <template>
-  <form data-testid="login-form" :class="$style.loginForm" @submit.stop.prevent="onSubmit">
+  <form :class="$style.loginForm" @submit.stop.prevent="onSubmit">
     <!--TODO: add i18n-->
     <vue-stack>
       <vue-text look="h3" as="h3"> Login Example </vue-text>
@@ -29,11 +29,21 @@
       />
 
       <vue-inline align-x="right">
-        <vue-button look="primary" tabindex="3" type="submit" :disabled="meta.valid === false" :loading="loading">
+        <vue-button
+          data-testid="login-button"
+          look="primary"
+          tabindex="3"
+          type="submit"
+          :disabled="meta.valid === false"
+          :loading="loading"
+        >
           Login
         </vue-button>
       </vue-inline>
     </vue-stack>
+    {{ email }}
+    {{ password }}
+    {{ meta.valid }}
   </form>
 </template>
 
