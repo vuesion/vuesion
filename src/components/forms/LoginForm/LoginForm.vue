@@ -41,9 +41,6 @@
         </vue-button>
       </vue-inline>
     </vue-stack>
-    {{ email }}
-    {{ password }}
-    {{ meta.valid }}
   </form>
 </template>
 

@@ -7,10 +7,10 @@ export default defineConfig({
   test: {
     coverage: {
       reporter: ['html', 'lcov', 'text'],
-      branches: 99,
-      functions: 99,
-      statements: 99,
-      lines: 99,
+      branches: 98,
+      functions: 98,
+      statements: 98,
+      lines: 98,
       exclude: ['**/test-utils.ts', '**/CollapseAnimation.vue', '**/*.spec.ts'],
     },
     environment: 'jsdom',

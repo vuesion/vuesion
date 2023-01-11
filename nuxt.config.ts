@@ -13,6 +13,10 @@ export default defineNuxtConfig({
     enableSessionRefreshOnWindowFocus: true,
     // Whether to add a global authentication middleware that will protect all pages without exclusion
     enableGlobalAppMiddleware: true,
+    globalMiddlewareOptions: {
+      // Whether to allow access to 404 pages without authentication. Set this to `false` to force users to sign-in before seeing `404` pages. Setting this to false may lead to vue-router problems (as the target page does not exist)
+      allow404WithoutAuth: true,
+    },
   },
   components: false,
   colorMode: {
