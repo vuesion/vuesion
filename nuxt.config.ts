@@ -2,6 +2,16 @@ import eslintPlugin from 'vite-plugin-eslint';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.bunny.net/css?family=Inter:400,600|Lora:400,600&display=swap',
+        },
+      ],
+    },
+  },
   auth: {
     // The module is enabled. Change this to disable the module
     isEnabled: true,
