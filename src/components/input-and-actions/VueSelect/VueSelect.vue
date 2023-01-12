@@ -83,7 +83,7 @@
       <vue-menu
         ref="menuRef"
         :items="options"
-        :class="[$style.menu, $style[alignXMenu], $style[alignYMenu], $style[size]]"
+        :class="[$style.menu, $style[alignXMenu], $style[alignYMenu], $style[size], hideLabel && $style.hideLabel]"
         @click="onItemClick"
         @close="toggleMenu"
       />
