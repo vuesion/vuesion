@@ -124,6 +124,7 @@ useIntersectionObserver(inputRef, (entries: IntersectionObserverEntry[]) => {
 .vueTextarea {
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   textarea {
     outline: none !important;
