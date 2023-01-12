@@ -11,6 +11,6 @@ export const $fetchWithCookies = async <T>(
   return await $fetch<T>(url, {
     method,
     headers,
-    body,
+    body: body && JSON.stringify(body),
   });
 };
