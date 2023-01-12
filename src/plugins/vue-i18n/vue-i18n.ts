@@ -15,7 +15,7 @@ export const decimalFormats = {
     maximumSignificantDigits: 2,
   },
 };
-export const dateTimeFormats = {
+export const datetimeFormats = {
   en: dateFormats,
   de: dateFormats,
 };
@@ -26,7 +26,7 @@ export const numberFormats = {
 
 export default () => {
   return {
-    dateTimeFormats,
+    datetimeFormats,
     numberFormats,
     fallbackLocale: 'en',
     formatFallbackMessages: true,

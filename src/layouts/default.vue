@@ -38,7 +38,7 @@ import { IItem } from '~/interfaces/IItem';
 // Deps
 const { locale, setLocale } = useI18n();
 const { push } = useRouter();
-const i18nHead = useLocaleHead({ addSeoAttributes: { canonicalQueries: ['foo'] } });
+const i18nHead = useLocaleHead({ addSeoAttributes: { canonicalQueries: [] } });
 const { data, signOut } = useSession();
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
