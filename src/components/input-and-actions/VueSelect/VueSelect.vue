@@ -157,6 +157,8 @@ const getValue = (valueOrItem: any | IItem) => {
   if (valueOrItem !== undefined && valueOrItem?.value !== undefined) {
     return valueOrItem.value;
     /* c8 ignore start */
+  } else if (typeof valueOrItem === 'string' && valueOrItem.length === 0) {
+    return undefined;
   } else if (valueOrItem !== undefined) {
     return valueOrItem;
   } else {

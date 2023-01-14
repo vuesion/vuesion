@@ -53,6 +53,7 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 
 .vueText {
   font-family: $font-family;
+  text-decoration: none;
 
   // Utils
   &.serifs {
