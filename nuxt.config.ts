@@ -60,6 +60,7 @@ export default defineNuxtConfig({
     },
   },
   imports: {
+    autoImport: false,
     dirs: ['store'],
   },
   modules: [

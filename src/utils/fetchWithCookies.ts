@@ -1,3 +1,5 @@
+import { useRequestHeaders } from '#app';
+
 export const $fetchWithCookies = async <T>(
   url: string,
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',

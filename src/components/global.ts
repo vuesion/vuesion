@@ -4,6 +4,7 @@
  *
  * INFO: if you add new components please also change the code in ./.storybook/preview.js
  */
+import { defineNuxtPlugin } from '#app';
 import upperFirst from 'lodash/upperFirst';
 import camelCase from 'lodash/camelCase';
 

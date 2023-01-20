@@ -2,6 +2,7 @@
 to: "src/store/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>.ts"
 unless_exists: true
 ---
+import { defineStore } from "pinia";
 import { I<%= h.inflection.camelize(name) %> } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 import { $fetchWithCookies } from '~/utils/fetchWithCookies';
 

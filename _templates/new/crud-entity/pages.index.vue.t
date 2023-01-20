@@ -70,6 +70,7 @@ unless_exists: true
 </template>
 
 <script setup lang="ts">
+import { computed, ref, useHead } from '#imports';
 import { use<%= h.inflection.camelize(name) %>Store } from '~/store/<%= h.inflection.camelize(name, true) %>';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';

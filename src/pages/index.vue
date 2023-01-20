@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useFetch, useHead } from '#app';
+import { definePageMeta, useFetch, useHead, useI18n, useLocalePath, useRouter, useSession } from '#imports';
 import { RequestStatus } from '~/enums/RequestStatus';
 import { addToast } from '~/components/utils';
 import LandingPageHeader from '~/components/marketing/LandingPageHeader/LandingPageHeader.vue';

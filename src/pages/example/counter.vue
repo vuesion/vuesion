@@ -34,7 +34,9 @@
 </template>
 
 <script setup lang="ts">
+import { computed, useHead } from '#imports';
 import { usePrefillStoreAction } from '~/composables/use-prefill-store-action';
+import { useCounterStore } from '~/store/counter';
 import VueBreadcrumb from '~/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';

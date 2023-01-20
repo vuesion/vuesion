@@ -52,6 +52,7 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '#imports';
 import VueBreadcrumb from '~/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';

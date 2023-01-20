@@ -51,6 +51,7 @@
 </template>
 
 <script setup lang="ts">
+import { useHead, useI18n } from '#imports';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';

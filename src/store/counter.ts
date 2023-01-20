@@ -1,3 +1,5 @@
+import { acceptHMRUpdate, defineStore } from 'pinia';
+
 export interface ICounterState {
   incrementPending: boolean;
   decrementPending: boolean;

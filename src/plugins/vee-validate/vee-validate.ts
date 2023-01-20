@@ -1,3 +1,4 @@
+import { defineNuxtPlugin } from '#app';
 import { defineRule } from 'vee-validate';
 import { required, email, integer, min, min_value as minValue, regex } from '@vee-validate/rules';
 

@@ -1,10 +1,8 @@
-**/coverage/**
-**/cypress/**
-**/dist/**
-**/i18n/**
-**/logs/**
-**/node_modules/**
-**/.nuxt/**
-**/static/**
-**/interfaces/swagger.ts
+coverage
+cypress
+i18n
+node_modules
+.nuxt
+storybook-static
+src/interfaces/swagger.ts
 src/components/data-display/VueMarkdown/VueMarkdown.vue

@@ -1,6 +1,7 @@
 ---
 to: "src/store/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>.ts"
 ---
+import { acceptHMRUpdate, defineStore } from 'pinia';
 import { I<%= h.inflection.camelize(name) %> } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 import { $fetchWithCookies } from '~/utils/fetchWithCookies';
 
@@ -46,7 +47,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
         this.error = e;
       }
     },
-    async create<%= h.inflection.camelize(name) %>(<%= name %>: <Partial<I<%= h.inflection.camelize(name) %>>) {
+    async create<%= h.inflection.camelize(name) %>(<%= name %>: Partial<I<%= h.inflection.camelize(name) %>>) {
       try {
         this.error = null;
         const new<%= h.inflection.camelize(name) %> = await $fetchWithCookies<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>`, 'POST', <%= name %>);
