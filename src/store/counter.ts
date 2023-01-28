@@ -35,9 +35,9 @@ export const useCounterStore = defineStore('counter', {
       this.incrementPending = true;
 
       try {
-        const res = await $fetch('/api/counter/increment', {
+        const res = await $fetch<{ count: number }>('/api/counter/increment', {
           method: 'PUT',
-          body: JSON.stringify({ count: this.count }),
+          body: { count: this.count },
         });
 
         this.count = res.count;
@@ -51,9 +51,9 @@ export const useCounterStore = defineStore('counter', {
       this.decrementPending = true;
 
       try {
-        const res = await $fetch('/api/counter/decrement', {
+        const res = await $fetch<{ count: number }>('/api/counter/decrement', {
           method: 'PUT',
-          body: JSON.stringify({ count: this.count }),
+          body: { count: this.count },
         });
 
         this.count = res.count;
