@@ -29,6 +29,7 @@ describe('Testimonials.vue', () => {
             avatar_url: 'https://avatars.githubusercontent.com/u/22420?v=4',
           },
         ],
+        interval: 0,
       },
     });
   });

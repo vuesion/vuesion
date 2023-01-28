@@ -36,20 +36,16 @@ describe('VueNavbar.vue', () => {
     expect(queryAllByTestId('dropdown')).toHaveLength(0);
   });
 
-  test('emit menu-click event', async () => {
-    const { getByTestId, emitted } = harness;
-
-    await fireEvent.click(getByTestId('menu'));
-
-    expect(emitted()['menu-click']).toBeTruthy();
-  });
-
-  test('emit menu-item-click event', async () => {
+  test('emit menu-click and menu-item-click event', async () => {
     const { getByTestId, emitted } = harness;
 
     await fireEvent.click(getByTestId('dropdown'));
     await fireEvent.click(getByTestId('profile-0'));
 
     expect(emitted()['menu-item-click']).toBeTruthy();
+
+    await fireEvent.click(getByTestId('menu'));
+
+    expect(emitted()['menu-click']).toBeTruthy();
   });
 });

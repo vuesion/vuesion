@@ -18,7 +18,7 @@ describe('VueSelect.vue', () => {
       props: {
         id: 'select',
         name: 'select',
-        label: 'Select',
+        label: 'Select-Label',
         placeholder: 'Placeholder',
         items: [
           { label: 'Value 1', value: 'Value 1', description: 'Description 1' },
@@ -36,11 +36,11 @@ describe('VueSelect.vue', () => {
   test('renders component', () => {
     const { getByText, queryAllByText } = harness;
 
-    getByText('Select');
+    getByText('Select-Label');
     expect(queryAllByText('Placeholder')).toHaveLength(2);
   });
 
-  test.skip('should emit update:modelValue event of the native select', async () => {
+  test('should emit update:modelValue event of the native select', async () => {
     const { getByTestId, emitted } = harness;
 
     await userEvent.selectOptions(getByTestId('native-select'), ['Value 2']);
@@ -64,7 +64,7 @@ describe('VueSelect.vue', () => {
     expect(emitted()['update:modelValue']).toBeFalsy();
   });
 
-  test.skip('should emit update:modelValue event of the custom select', async () => {
+  test('should emit update:modelValue event of the custom select', async () => {
     const { getByTestId, emitted } = harness;
 
     await fireEvent.click(getByTestId('custom-select'));
@@ -93,7 +93,7 @@ describe('VueSelect.vue', () => {
 
   test('should open and close menu via keyboard', async () => {
     const { getByText, queryAllByText } = harness;
-    const select = getByText('Select').parentElement as HTMLElement;
+    const select = getByText('Select-Label').parentElement as HTMLElement;
 
     await fireEvent.keyDown(select, { key: 'Tab', code: 'Tab' });
     await fireEvent.keyDown(select, { key: 'ShiftLeft', code: 'ShiftLeft' });
@@ -127,7 +127,7 @@ describe('VueSelect.vue', () => {
 
   test('should open menu and close it via outside click', async () => {
     const { getByText, queryAllByText } = harness;
-    const select = getByText('Select').parentElement as HTMLElement;
+    const select = getByText('Select-Label').parentElement as HTMLElement;
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
@@ -145,7 +145,7 @@ describe('VueSelect.vue', () => {
 
     await rerender({ value: 'Value 1' });
 
-    const select = getByText('Select').parentElement as HTMLElement;
+    const select = getByText('Select-Label').parentElement as HTMLElement;
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
@@ -157,7 +157,7 @@ describe('VueSelect.vue', () => {
 
     await rerender({ value: { label: 'Value 1', value: 'value-1' } });
 
-    const select = getByText('Select').parentElement as HTMLElement;
+    const select = getByText('Select-Label').parentElement as HTMLElement;
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
@@ -166,7 +166,7 @@ describe('VueSelect.vue', () => {
 
   test('renders component with different menu alignment', async () => {
     const { getByText, rerender, html } = harness;
-    const select = getByText('Select').parentElement as HTMLElement;
+    const select = getByText('Select-Label').parentElement as HTMLElement;
 
     await rerender({ alignMenu: 'right', alignYMenu: 'top' });
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
@@ -177,7 +177,7 @@ describe('VueSelect.vue', () => {
     expect(markup).toMatch('top');
   });
 
-  test.skip('custom select should support multi-select', async () => {
+  test('custom select should support multi-select', async () => {
     const { getByTestId, rerender, emitted } = harness;
 
     await rerender({

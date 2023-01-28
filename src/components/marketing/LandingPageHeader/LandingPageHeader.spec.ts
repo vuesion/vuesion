@@ -1,7 +1,6 @@
 import { describe, beforeEach, test, vi } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import LandingPageHeader from './LandingPageHeader.vue';
-import { GlobalMocks } from '~/test/mocks';
 
 describe('LandingPageHeader.vue', () => {
   let harness: RenderResult;
@@ -17,12 +16,7 @@ describe('LandingPageHeader.vue', () => {
       };
     };
 
-    harness = render(LandingPageHeader, {
-      global: {
-        stubs: ['nuxt-link'],
-        mocks: GlobalMocks,
-      },
-    });
+    harness = render(LandingPageHeader);
   });
 
   test('renders component', () => {

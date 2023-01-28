@@ -1,6 +1,5 @@
 <template>
   <form :class="$style.loginForm" @submit.stop.prevent="onSubmit">
-    <!--TODO: add i18n-->
     <vue-stack>
       <vue-text look="h3" as="h3"> Login Example </vue-text>
       <vue-input

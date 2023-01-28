@@ -1,5 +1,4 @@
 <template>
-  <!--  TODO: add i18n-->
   <form data-testid="form-example" @submit.prevent="onSubmit">
     <vue-stack>
       <vue-stack space="8">

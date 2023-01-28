@@ -20,10 +20,10 @@ export default defineConfig({
   test: {
     coverage: {
       reporter: ['html', 'lcov', 'text'],
-      branches: 98,
-      functions: 98,
-      statements: 98,
-      lines: 98,
+      branches: 100,
+      functions: 100,
+      statements: 100,
+      lines: 100,
       exclude: ['**/test-utils.ts', '**/CollapseAnimation.vue', '**/*.spec.ts'],
     },
     environment: 'jsdom',
@@ -38,6 +38,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
       assets: path.resolve(__dirname, './src/assets'),
       public: path.resolve(__dirname, './src/public'),
+      '@vue/test-utils': '/node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js',
     },
   },
 });

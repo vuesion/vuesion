@@ -1,7 +1,6 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import VueBreadcrumb from './VueBreadcrumb.vue';
-import { GlobalMocks } from '~/test/mocks';
 
 describe('VueBreadcrumb.vue', () => {
   let harness: RenderResult;
@@ -13,10 +12,6 @@ describe('VueBreadcrumb.vue', () => {
           { label: 'Level 1', value: '/level-1' },
           { label: 'Level 2', value: '/level-2' },
         ],
-      },
-      global: {
-        stubs: ['nuxt-link'],
-        mocks: GlobalMocks,
       },
     });
   });
@@ -36,10 +31,10 @@ describe('VueBreadcrumb.vue', () => {
 
     const markup = html();
 
-    expect(markup).toMatch('/level-1');
-    expect(markup).toMatch('/level-2');
-    expect(markup).toMatch('/level-3');
-    expect(markup).toMatch('/level-4');
-    expect(markup).toMatch('/level-5');
+    expect(markup).toMatch('Level 1');
+    expect(markup).toMatch('Level 2');
+    expect(markup).toMatch('Level 3');
+    expect(markup).toMatch('Level 4');
+    expect(markup).toMatch('Level 5');
   });
 });

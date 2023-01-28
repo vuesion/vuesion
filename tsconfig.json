@@ -3,7 +3,6 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "types": [
-      "vitest/globals",
       "animejs",
       "marked",
       "flush-promises",

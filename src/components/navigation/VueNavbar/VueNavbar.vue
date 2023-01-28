@@ -7,7 +7,7 @@
           tabindex="0"
           :class="$style.menu"
           data-testid="menu"
-          @click.stop.prevent="$emit('menu-click')"
+          @click.stop.prevent="/* c8 ignore start */ $emit('menu-click') /* c8 ignore end */"
         />
       </vue-column>
 

@@ -34,7 +34,7 @@ const handleClick = (event: MouseEvent) => {
 
   const target = event.target as HTMLAnchorElement;
 
-  router.push(target.href || '/');
+  router.push(target.href);
 };
 
 onMounted(() => {

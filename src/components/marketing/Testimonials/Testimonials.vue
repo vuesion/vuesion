@@ -3,8 +3,7 @@
     <vue-stack space="64">
       <vue-stack space="48">
         <vue-text look="h5" color="text-high" weight="semi-bold" align-x="center">
-          <!--          TODO: add i18n number formatting-->
-          <span class="deco-underline">Enjoyed</span> by {{ stargazersCount }} stargazers 🎉
+          <span class="deco-underline">Enjoyed</span> by {{ $n(stargazersCount, 'integer') }} stargazers 🎉
         </vue-text>
 
         <vue-content-block>
@@ -45,6 +44,7 @@ import { getIntInRange } from '~/components/utils';
 const props = defineProps({
   stargazersCount: { type: [Number, String], required: true },
   stargazers: { type: Array, required: true },
+  interval: { type: Number, default: 2000 },
 });
 const lastIndex = ref(0);
 const getRandomStargazers = (max = 16): Array<any> =>
@@ -62,7 +62,7 @@ onMounted(() => {
       randomStargazers.value.splice(idx, 1, { ...newGazer, new: true });
       lastIndex.value = idx;
     }
-  }, 2000);
+  }, props.interval);
 });
 /* c8 ignore end */
 

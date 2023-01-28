@@ -6,6 +6,13 @@ export const dateFormats = {
   },
 };
 export const decimalFormats = {
+  integer: {
+    style: 'decimal',
+    useGrouping: true,
+    minimumIntegerDigits: 2,
+    maximumFractionDigits: 0,
+    minimumFractionDigits: 0,
+  },
   decimal: {
     style: 'decimal',
     useGrouping: true,

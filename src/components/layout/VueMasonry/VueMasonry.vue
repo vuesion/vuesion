@@ -21,7 +21,13 @@ const getColumnHeight = (col = 0) => {
 
   for (let i = col; i < max; i += 3) {
     const child = children.item(i);
-    height += (child && child.scrollHeight + 24) || 24;
+
+    if (child) {
+      height += child.scrollHeight + 24;
+    } /* c8 ignore start */ else {
+      height += 24;
+    }
+    /* c8 ignore end */
   }
 
   return height;

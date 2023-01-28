@@ -135,7 +135,7 @@ const progressWidth = computed(() => {
 });
 // refs
 const handleSize = ref(0);
-const sliderBox = ref<DOMRect>({
+const sliderBox = ref<Partial<DOMRect>>({
   bottom: 0,
   left: 0,
   top: 0,
@@ -144,7 +144,6 @@ const sliderBox = ref<DOMRect>({
   x: 0,
   y: 0,
   width: 0,
-  toJSON: () => null,
 });
 const currentSlider = ref<number>(-1);
 const currentMin = ref(0);
