@@ -1,10 +1,12 @@
 import eslintPlugin from 'vite-plugin-eslint';
 
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   app: {
     head: {
       link: [
+        { rel: 'dns-prefetch', href: 'https://fonts.bunny.net/' },
+        { rel: 'preconnect', href: 'https://fonts.bunny.net/' },
+        { rel: 'preconnect', href: 'https://fonts.bunny.net/', crossorigin: '' },
         {
           rel: 'stylesheet',
           href: 'https://fonts.bunny.net/css?family=Inter:400,600|Lora:400,600&display=swap',
