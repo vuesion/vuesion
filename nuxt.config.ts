@@ -19,14 +19,19 @@ export default defineNuxtConfig({
     isEnabled: true,
     // The origin is set to the development origin. Change this when deploying to production
     origin: process.env.BASE_URL || 'http://localhost:3000',
-    // Whether to periodically refresh the session. Change this to `true` for a refresh every seconds or set this to a number like `5000` for a refresh every 5000 milliseconds (aka: 5 seconds)
+    // Whether to periodically refresh the session.
+    // Change this to `true` for a refresh every seconds or set this to a number like `5000`
+    // for a refresh every 5000 milliseconds (aka: 5 seconds)
     enableSessionRefreshPeriodically: false,
-    // Whether to refresh the session whenever a window focus event happens, i.e, when your user refocuses the window. Set this to `false` to turn this off
+    // Whether to refresh the session whenever a window focus event happens,
+    // i.e, when your user refocuses the window. Set this to `false` to turn this off
     enableSessionRefreshOnWindowFocus: true,
     // Whether to add a global authentication middleware that will protect all pages without exclusion
     enableGlobalAppMiddleware: true,
     globalMiddlewareOptions: {
-      // Whether to allow access to 404 pages without authentication. Set this to `false` to force users to sign-in before seeing `404` pages. Setting this to false may lead to vue-router problems (as the target page does not exist)
+      // Whether to allow access to 404 pages without authentication.
+      // Set this to `false` to force users to sign-in before seeing `404` pages.
+      // Setting this to false may lead to vue-router problems (as the target page does not exist)
       allow404WithoutAuth: true,
     },
   },
