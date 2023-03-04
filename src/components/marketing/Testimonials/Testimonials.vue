@@ -48,7 +48,7 @@ const props = defineProps({
 });
 const lastIndex = ref(0);
 const getRandomStargazers = (max = 16): Array<any> =>
-  [...props.stargazers].sort(() => 0.5 - Math.random()).slice(0, Math.min(props.stargazers.length - 1, max));
+  [...props.stargazers].sort(() => 0.5 - Math.random()).slice(0, Math.min(props.stargazers.length, max));
 const randomStargazers = ref(props.stargazers?.slice(0, 16));
 
 /* c8 ignore start */

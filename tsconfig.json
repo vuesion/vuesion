@@ -10,6 +10,7 @@
       "@nuxtjs/color-mode",
       "@nuxtjs/i18n",
       "@sidebase/nuxt-auth",
+      "next-auth",
       "@pinia/nuxt",
       "@types/bcrypt"
     ]

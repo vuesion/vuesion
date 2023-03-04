@@ -77,10 +77,11 @@ const draw = (canvas: HTMLCanvasElement | any, context: CanvasRenderingContext2D
     circle.update();
   });
 
-  /* istanbul ignore next */
+  /* c8 ignore start */
   (window as any).requestAnimationFrame(() => {
     draw(canvas, context, circles);
   });
+  /* c8 ignore end */
 };
 
 export const CircleAnimation = (canvas: HTMLCanvasElement | any): any => {

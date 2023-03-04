@@ -37,13 +37,13 @@ const Template: Story = (args) => ({
     </vue-sidebar-group>
 
     <vue-sidebar-group name="Navigation" icon="plus-circle" @click="onGroupClick" @icon-click="onGroupIconClick">
-      <vue-sidebar-group-item leading-icon="eye" name="Vuex Example" to="/example/counter" />
-      <vue-sidebar-group-item leading-icon="eye" name="Apollo Example" to="/example/apollo" />
+      <vue-sidebar-group-item leading-icon="eye" name="Pinia Example" to="/example/counter" />
       <vue-sidebar-group-item leading-icon="eye" name="Form Example" to="/example/form" />
+      <vue-sidebar-group-item leading-icon="download" name="Downloads" to="/download" />
     </vue-sidebar-group>
 
     <vue-sidebar-group name="Documentation" @click="onGroupClick" @icon-click="onGroupIconClick">
-      <vue-sidebar-group-item leading-icon="book" name="Documentation" href="https://vuesion.github.io/docs/en/" />
+      <vue-sidebar-group-item leading-icon="book" name="Documentation" href="https://vuesion.github.io/docs/en/v4/" />
       <vue-sidebar-group-item leading-icon="star" name="Design System" href="/storybook/?path=/story/design-system-design-system--intro" />
       <vue-sidebar-group-item leading-icon="package" name="Components" href="/storybook/?path=/story/atoms-badge--badge-variants" />
     </vue-sidebar-group>
