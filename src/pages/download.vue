@@ -1,15 +1,15 @@
 <template>
   <vue-content-block :class="$style.download">
-    <vue-box :padding="['24 16', '24 16', 24, 32]">
-      <vue-stack :space="32">
+    <vue-box :padding="['24 16', '24 16', '24', '32']">
+      <vue-stack :space="'32'">
         <vue-breadcrumb :items="breadCrumbItems" />
 
         <vue-text look="h1" as="h1">Downloads</vue-text>
 
         <vue-text look="h2" as="h2" weight="semi-bold">IDEs</vue-text>
 
-        <vue-stack :space="80">
-          <vue-stack :space="16">
+        <vue-stack :space="'80'">
+          <vue-stack :space="'16'">
             <vue-text look="h3" as="h3">Jetbrains</vue-text>
             <iframe
               :class="$style.widget"
@@ -25,7 +25,7 @@
             ></iframe>
           </vue-stack>
 
-          <vue-stack :space="16">
+          <vue-stack :space="'16'">
             <vue-text look="h3" as="h3">Visual Studio Code</vue-text>
 
             <img
@@ -50,43 +50,30 @@
   </vue-content-block>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, useContext, useMeta } from '@nuxtjs/composition-api';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
+<script setup lang="ts">
+import { definePageMeta, useHead, useI18n } from '#imports';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueBreadcrumb from '~/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import { IItem } from '~/interfaces/IItem';
 
-export default defineComponent({
-  name: 'DownloadPage',
-  auth: false,
-  components: {
-    VueContentBlock,
-    VueBox,
-    VueStack,
-    VueBreadcrumb,
-    VueText,
-  },
-  setup() {
-    useMeta({
-      title: 'Download',
-    });
-    const { app } = useContext();
-    const breadCrumbItems = computed(() => [
-      { label: app.i18n.t('common.Downloads' /* Downloads */), value: '/download' },
-    ]);
+// Deps
+const { t } = useI18n();
 
-    return {
-      breadCrumbItems,
-    };
-  },
-  head: {},
+// Config
+definePageMeta({ auth: false });
+useHead({
+  title: 'Download',
 });
+
+// Data
+const breadCrumbItems: Array<IItem> = [{ label: t('common.Downloads' /* Downloads */), value: '/download' }];
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import 'assets/_design-system.scss';
 
 .download {
   padding-top: $navbar-height;

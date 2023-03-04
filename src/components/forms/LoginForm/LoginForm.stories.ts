@@ -1,30 +1,26 @@
-import { storiesOf } from '@storybook/vue';
+import { Story } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
-import { i18n } from '@/test/i18n';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 import LoginForm from './LoginForm.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
-const story = storiesOf('Forms|LoginForm', module) as any;
+export default {
+  title: 'Forms/LoginForm',
+  component: LoginForm,
+};
 
-story.add(
-  'Default',
-  () => ({
-    i18n,
-    components: { ComponentDocs, LoginForm },
-    template: `<component-docs
+const Template: Story = (args) => ({
+  components: { LoginForm, ComponentDocs },
+  setup() {
+    return { args, onSubmit: action('@submit') };
+  },
+  template: `<component-docs
       component-name="LoginForm"
       usage="Used to demonstrate a simple login flow."
       story="Display LoginForm."
-    >
-    <login-form @submit="onSubmit" />
-    </component-docs>`,
-    methods: {
-      onSubmit: action('@submit'),
-    },
-  }),
-  {
-    info: {
-      components: { LoginForm },
-    },
-  },
-);
+  >
+  <login-form v-bind="args" @submit="onSubmit" />
+  </component-docs>`,
+});
+
+export const Default = Template.bind({});
+Default.args = {};

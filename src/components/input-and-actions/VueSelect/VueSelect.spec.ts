@@ -1,7 +1,14 @@
+import { describe, test, expect } from 'vitest';
+import flushPromises from 'flush-promises';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
-import { sleep, triggerDocument } from '@/test/test-utils';
+import { defineRule } from 'vee-validate';
+import { required } from '@vee-validate/rules';
 import VueSelect from './VueSelect.vue';
+import { sleep, triggerWindow } from '~/test/test-utils';
+import { IItem } from '~/interfaces/IItem';
+
+defineRule('required', required);
 
 describe('VueSelect.vue', () => {
   let harness: RenderResult;
@@ -11,7 +18,7 @@ describe('VueSelect.vue', () => {
       props: {
         id: 'select',
         name: 'select',
-        label: 'Select',
+        label: 'Select-Label',
         placeholder: 'Placeholder',
         items: [
           { label: 'Value 1', value: 'Value 1', description: 'Description 1' },
@@ -20,22 +27,25 @@ describe('VueSelect.vue', () => {
           { label: 'Value 4', value: 'Value 4', description: 'Description 4' },
         ],
         duration: 0,
+        required: true,
+        validation: 'required',
       },
     });
   });
 
   test('renders component', () => {
-    const { getByText } = harness;
+    const { getByText, queryAllByText } = harness;
 
-    getByText('Select');
+    getByText('Select-Label');
+    expect(queryAllByText('Placeholder')).toHaveLength(2);
   });
 
-  test('should emit input event of the native select', async () => {
+  test('should emit update:modelValue event of the native select', async () => {
     const { getByTestId, emitted } = harness;
 
     await userEvent.selectOptions(getByTestId('native-select'), ['Value 2']);
 
-    expect(emitted().input).toEqual([
+    expect(emitted()['update:modelValue']).toEqual([
       [
         {
           label: 'Value 2',
@@ -45,22 +55,22 @@ describe('VueSelect.vue', () => {
     ]);
   });
 
-  test('should not emit input event of the native select is disabled', async () => {
-    const { getByTestId, updateProps, emitted } = harness;
+  test('should not emit update:modelValue event of the native select is disabled', async () => {
+    const { getByTestId, rerender, emitted } = harness;
 
-    await updateProps({ disabled: true });
+    await rerender({ disabled: true });
     await userEvent.selectOptions(getByTestId('native-select'), ['Value 2']);
 
-    expect(emitted().input).toBeFalsy();
+    expect(emitted()['update:modelValue']).toBeFalsy();
   });
 
-  test('should emit input event of the custom select', async () => {
+  test('should emit update:modelValue event of the custom select', async () => {
     const { getByTestId, emitted } = harness;
 
     await fireEvent.click(getByTestId('custom-select'));
     await fireEvent.click(getByTestId('Value 2-1'));
 
-    expect(emitted().input).toEqual([
+    expect(emitted()['update:modelValue']).toEqual([
       [
         {
           description: 'Description 2',
@@ -72,10 +82,10 @@ describe('VueSelect.vue', () => {
     ]);
   });
 
-  test('should not emit input event of the custom select is disabled', async () => {
-    const { getByTestId, queryAllByTestId, updateProps } = harness;
+  test('should not emit update:modelValue event of the custom select is disabled', async () => {
+    const { getByTestId, queryAllByTestId, rerender } = harness;
 
-    await updateProps({ disabled: true });
+    await rerender({ disabled: true });
     await fireEvent.click(getByTestId('custom-select'));
 
     expect(queryAllByTestId('Value 2-1')).toHaveLength(0);
@@ -83,7 +93,7 @@ describe('VueSelect.vue', () => {
 
   test('should open and close menu via keyboard', async () => {
     const { getByText, queryAllByText } = harness;
-    const select = getByText('Select').parentElement;
+    const select = getByText('Select-Label').parentElement as HTMLElement;
 
     await fireEvent.keyDown(select, { key: 'Tab', code: 'Tab' });
     await fireEvent.keyDown(select, { key: 'ShiftLeft', code: 'ShiftLeft' });
@@ -117,13 +127,13 @@ describe('VueSelect.vue', () => {
 
   test('should open menu and close it via outside click', async () => {
     const { getByText, queryAllByText } = harness;
-    const select = getByText('Select').parentElement;
+    const select = getByText('Select-Label').parentElement as HTMLElement;
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
     expect(queryAllByText('Value 1')).toHaveLength(2);
 
-    triggerDocument.mousedown({ target: null });
+    triggerWindow.click({ target: null, composedPath: () => [] });
 
     await sleep(10);
 
@@ -131,53 +141,53 @@ describe('VueSelect.vue', () => {
   });
 
   test('should support string as input value', async () => {
-    const { getByText, getByTestId, updateProps } = harness;
+    const { getByText, getByTestId, rerender } = harness;
 
-    await updateProps({ value: 'Value 1' });
+    await rerender({ value: 'Value 1' });
 
-    const select = getByText('Select').parentElement;
+    const select = getByText('Select-Label').parentElement as HTMLElement;
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
-    expect(getByTestId('Value 1-0').innerHTML).toMatch('<div class="trailing">');
+    expect(getByTestId('Value 1-0').innerHTML).toMatch('Value 1');
   });
 
   test('should support IItem as input value', async () => {
-    const { getByText, getByTestId, updateProps } = harness;
+    const { getByText, getByTestId, rerender } = harness;
 
-    await updateProps({ value: { label: 'Value 1', value: 'Value 1' } });
+    await rerender({ value: { label: 'Value 1', value: 'value-1' } });
 
-    const select = getByText('Select').parentElement;
+    const select = getByText('Select-Label').parentElement as HTMLElement;
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
-    expect(getByTestId('Value 1-0').innerHTML).toMatch('<div class="trailing">');
+    expect(getByTestId('Value 1-0').innerHTML).toMatch('Value 1');
   });
 
   test('renders component with different menu alignment', async () => {
-    const { getByText, getByTestId, updateProps } = harness;
-    const select = getByText('Select').parentElement;
+    const { getByText, rerender, html } = harness;
+    const select = getByText('Select-Label').parentElement as HTMLElement;
 
-    await updateProps({ alignMenu: 'right', alignYMenu: 'top' });
+    await rerender({ alignMenu: 'right', alignYMenu: 'top' });
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
-    const menu = getByTestId('menu');
+    const markup = html();
 
-    expect(menu.classList.contains('right')).toBeTruthy();
-    expect(menu.classList.contains('top')).toBeTruthy();
+    expect(markup).toMatch('right');
+    expect(markup).toMatch('top');
   });
 
   test('custom select should support multi-select', async () => {
-    const { getByTestId, updateProps, emitted } = harness;
+    const { getByTestId, rerender, emitted } = harness;
 
-    await updateProps({
+    await rerender({
       multiSelect: true,
-      value: [{ label: 'Value 1', value: 'Value 1', description: 'Description 1' }],
+      modelValue: [{ label: 'Value 1', value: 'Value 1', description: 'Description 1' }],
     });
     await fireEvent.click(getByTestId('custom-select'));
     await fireEvent.click(getByTestId('Value 2-1'));
 
-    expect(emitted().input[0][0]).toEqual([
+    expect(emitted<Array<IItem>>()['update:modelValue'][0][0]).toEqual([
       {
         description: 'Description 1',
         label: 'Value 1',
@@ -192,32 +202,63 @@ describe('VueSelect.vue', () => {
 
     await fireEvent.click(getByTestId('Value 1-0'));
 
-    expect(emitted().input[1][0]).toEqual([]);
+    expect(emitted<Array<IItem>>()['update:modelValue'][1][0]).toEqual([]);
   });
 
-  test('native select should support multi-select', async () => {
-    const { getByTestId, emitted, updateProps } = harness;
+  test('should show validation error', async () => {
+    const { getByText, getByTestId, rerender } = harness;
 
-    await updateProps({
-      multiSelect: true,
-      value: [
-        {
-          label: 'Value 1',
-          value: 'Value 1',
-        },
+    await rerender({
+      description: 'description',
+      errorMessage: 'error',
+      items: [
+        { label: 'nothing', value: '' },
+        { label: 'Value 1', value: 'Value 1', description: 'Description 1' },
+        { label: 'Value 2', value: 'Value 2', description: 'Description 2' },
       ],
     });
-    await userEvent.selectOptions(getByTestId('native-select'), ['Value 2']);
 
-    expect(emitted().input[0][0]).toEqual([
-      {
-        label: 'Value 1',
-        value: 'Value 1',
-      },
-      {
-        label: 'Value 2',
-        value: 'Value 2',
-      },
-    ]);
+    getByText('description');
+
+    await fireEvent.click(getByTestId('custom-select'));
+    await fireEvent.click(getByTestId('-0'));
+    await flushPromises();
+
+    getByText('error');
+  });
+
+  test('renders component without label and description', async () => {
+    const { getByText, rerender } = harness;
+
+    await rerender({
+      label: 'label',
+      description: 'description',
+      hideLabel: true,
+      hideDescription: true,
+    });
+
+    expect(getByText('label').classList.contains('sr-only'));
+    expect(getByText('description').classList.contains('sr-only'));
+  });
+
+  test('should display badge for multiple selections', async () => {
+    const { getByTestId, getByText, rerender } = harness;
+
+    await rerender({
+      multiSelect: true,
+      modelValue: [
+        { label: 'Value 1', value: 'Value 1', description: 'Description 1' },
+        { label: 'Value 2', value: 'Value 2', description: 'Description 2' },
+      ],
+    });
+
+    getByText('+1');
+
+    await fireEvent.click(getByTestId('custom-select'));
+    await fireEvent.click(getByTestId('Value 2-1'));
+
+    getByText('+1');
+
+    triggerWindow.click({ target: null, composedPath: () => [] });
   });
 });

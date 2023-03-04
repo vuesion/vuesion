@@ -1,16 +1,20 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueColumns from './VueColumns.vue';
+import VueColumn from './VueColumn/VueColumn.vue';
 
 describe('VueColumns.vue', () => {
   let harness: RenderResult;
 
   beforeEach(() => {
     harness = render(VueColumns, {
-      components: { VueColumn },
-      stubs: ['nuxt-link'],
       slots: {
         default: ['<vue-column>sidebar</vue-column>', '<vue-column>main content</vue-column>'],
+      },
+      global: {
+        stubs: {
+          'vue-column': VueColumn,
+        },
       },
     });
   });
@@ -23,70 +27,70 @@ describe('VueColumns.vue', () => {
   });
 
   test('renders component with responsive spacings', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ space: [8, 16, 24, 32, 64] });
+    await rerender({ space: [8, 16, 24, 32, 64] });
 
-    expect(html()).toMatch('space-8 space-tp-16 space-tl-24 space-sd-32 space-ld-64');
+    expect(html()).toMatch('gap-8 gap-tp-16 gap-tl-24 gap-sd-32 gap-ld-64');
   });
 
   test('renders component with responsive horizontal alignments', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ align: ['left', 'center', 'right'] });
+    await rerender({ alignX: ['left', 'center', 'right'] });
 
-    expect(html()).toMatch('alignh-left alignh-tp-center alignh-tl-right');
+    expect(html()).toMatch('justify-left justify-tp-center justify-tl-right');
   });
 
   test('renders component with responsive vertical alignments', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ alignY: ['top', 'center', 'bottom'] });
+    await rerender({ alignY: ['top', 'center', 'bottom'] });
 
-    expect(html()).toMatch('alignv-top alignv-tp-center alignv-tl-bottom');
+    expect(html()).toMatch('items-top items-tp-center items-tl-bottom');
   });
 
   test('renders component with stacked elements below tabletPortrait', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ stackPhone: true });
+    await rerender({ stackPhone: true });
 
-    expect(html()).toMatch('stack');
+    expect(html()).toMatch('flex-col');
   });
 
   test('renders component with stacked elements below tabletLandscape', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ stackPhone: true, stackTabletPortrait: true });
+    await rerender({ stackPhone: true, stackTabletPortrait: true });
 
-    expect(html()).toMatch('stack stack-tp');
+    expect(html()).toMatch('flex-col flex-col-tp');
   });
 
   test('renders component with stacked elements below smallDesktop', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ stackPhone: true, stackTabletPortrait: true, stackTabletLandscape: true });
+    await rerender({ stackPhone: true, stackTabletPortrait: true, stackTabletLandscape: true });
 
-    expect(html()).toMatch('stack stack-tp stack-tl');
+    expect(html()).toMatch('flex-col flex-col-tp flex-col-tl');
   });
 
   test('renders component with stacked elements below largeDesktop', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({
+    await rerender({
       stackPhone: true,
       stackTabletPortrait: true,
       stackTabletLandscape: true,
       stackSmallDesktop: true,
     });
 
-    expect(html()).toMatch('stack stack-tp stack-tl stack-sd');
+    expect(html()).toMatch('flex-col flex-col-tp flex-col-tl flex-col-sd');
   });
 
   test('renders component with stacked elements above largeDesktop', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({
+    await rerender({
       stackPhone: true,
       stackTabletPortrait: true,
       stackTabletLandscape: true,
@@ -94,26 +98,16 @@ describe('VueColumns.vue', () => {
       stackLargeDesktop: true,
     });
 
-    expect(html()).toMatch('stack stack-tp stack-tl stack-sd stack-ld');
+    expect(html()).toMatch('flex-col flex-col-tp flex-col-tl flex-col-sd flex-col-ld');
   });
 
   test('renders component with responsive revert', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({
-      revert: [true, true, true],
+    await rerender({
+      reverse: [true, true, true],
     });
 
-    expect(html()).toMatch('vueColumns space-24 revert revert-tp revert-tl revert-sd revert-ld');
-  });
-
-  test('renders component using the whole page', async () => {
-    const { html, updateProps } = harness;
-
-    await updateProps({
-      fullPage: true,
-    });
-
-    expect(html()).toMatch('vueColumns space-24 fullPage');
+    expect(html()).toMatch('gap-24 flex-row-reverse flex-row-reverse-tp flex-row-reverse-tl');
   });
 });

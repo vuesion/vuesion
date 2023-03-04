@@ -1,7 +1,8 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
-import { addToast } from '@/components/utils';
-import { sleep } from '@/test/test-utils';
 import VueToast from './VueToast.vue';
+import { addToast } from '~/components/utils';
+import { sleep } from '~/test/test-utils';
 
 describe('VueToast.vue', () => {
   let harness: RenderResult;
@@ -28,10 +29,10 @@ describe('VueToast.vue', () => {
   test('displays toast for until user clicks close icon', async () => {
     const { queryAllByText, getByTestId } = harness;
 
-    addToast({ title: 'info', text: 'this is a test' });
+    addToast({ title: 'warning', text: 'this is a test', type: 'warning' });
     await sleep(50);
 
-    expect(queryAllByText('info')).toHaveLength(1);
+    expect(queryAllByText('warning')).toHaveLength(1);
     expect(queryAllByText('this is a test')).toHaveLength(1);
 
     await fireEvent.click(getByTestId('toast-close-button'));

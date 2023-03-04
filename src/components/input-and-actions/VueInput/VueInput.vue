@@ -1,143 +1,179 @@
 <template>
-  <ValidationProvider v-slot="{ errors }" :vid="id" :name="name" :rules="validation" tag="div" mode="eager" slim>
-    <div :class="[$style.vueInput, disabled && $style.disabled, errors.length > 0 && $style.error]">
-      <vue-text
-        :for="id"
-        look="label"
-        :color="errors.length > 0 ? 'danger' : 'text-medium'"
-        :class="[$style.label, hideLabel && 'sr-only']"
-        as="label"
-      >
-        {{ label }}
-        <sup v-if="required">*</sup>
-      </vue-text>
+  <div :class="[$style.vueInput, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]">
+    <vue-text
+      :for="id"
+      look="label"
+      :color="errors.length > 0 ? 'danger' : 'text-medium'"
+      :class="[$style.label, hideLabel && 'sr-only']"
+      as="label"
+    >
+      {{ label }}
+      <sup v-if="required">*</sup>
+    </vue-text>
 
+    <div
+      :class="[
+        $style.inputWrapper,
+        (leadingIcon || $slots.leadingIcon) && $style.hasLeadingContent,
+        (trailingIcon || $slots.trailingIcon) && $style.hasTrailingContent,
+        $style[size],
+      ]"
+    >
       <div
-        :class="[
-          $style.inputWrapper,
-          (leadingIcon || $slots.leadingIcon) && $style.hasLeadingContent,
-          (trailingIcon || $slots.trailingIcon) && $style.hasTrailingContent,
-          $style[size],
-        ]"
+        v-if="leadingIcon || $slots.leadingIcon"
+        :data-testid="`${id}-leading-icon`"
+        :class="$style.leading"
+        @click="$emit('leading-icon-click')"
       >
-        <div
-          v-if="leadingIcon || $slots.leadingIcon"
-          :data-testid="`${id}-leading-icon`"
-          :class="$style.leading"
-          @click="$emit('leading-icon-click')"
-        >
-          <slot name="leadingIcon">
-            <component :is="`vue-icon-${leadingIcon}`" />
-          </slot>
-        </div>
-
-        <input
-          :id="id"
-          ref="input"
-          :name="name"
-          :placeholder="placeholder"
-          :required="required"
-          :value="value"
-          :type="type"
-          :autocomplete="autocomplete"
-          :disabled="disabled"
-          :readonly="readonly"
-          :autofocus="autofocus"
-          :size="sizeAttribute"
-          v-bind="$attrs"
-          v-on="{
-            ...$listeners,
-            input: onInput,
-          }"
-        />
-
-        <div
-          v-if="trailingIcon || $slots.trailingIcon"
-          :data-testid="`${id}-trailing-icon`"
-          :class="$style.trailing"
-          @click="$emit('trailing-icon-click')"
-        >
-          <slot name="trailingIcon">
-            <component :is="`vue-icon-${trailingIcon}`" />
-          </slot>
-        </div>
+        <slot name="leadingIcon">
+          <component :is="`vue-icon-${leadingIcon}`" />
+        </slot>
       </div>
 
-      <vue-text
-        :color="errors.length > 0 ? 'danger' : 'text-medium'"
-        :class="[$style.description, hideDescription && 'sr-only']"
+      <input
+        :id="id"
+        ref="inputRef"
+        :name="name"
+        :value="value"
+        :placeholder="placeholder"
+        :required="required"
+        :type="type"
+        :autocomplete="autocomplete"
+        :disabled="disabled"
+        :readonly="readonly"
+        :autofocus="autofocus"
+        :size="sizeAttribute || 150"
+        v-bind="$attrs"
+        @input="onInput"
+        @blur="onBlur"
+      />
+
+      <div
+        v-if="trailingIcon || $slots.trailingIcon"
+        :data-testid="`${id}-trailing-icon`"
+        :class="$style.trailing"
+        @click="$emit('trailing-icon-click')"
       >
-        {{ errors.length > 0 ? errorMessage : description }}
-      </vue-text>
+        <slot name="trailingIcon">
+          <component :is="`vue-icon-${trailingIcon}`" />
+        </slot>
+      </div>
     </div>
-  </ValidationProvider>
+
+    <vue-text
+      :color="errors.length > 0 ? 'danger' : 'text-medium'"
+      :class="[$style.description, hideDescription && 'sr-only']"
+    >
+      {{ errors.length > 0 ? errorMessage : description }}
+    </vue-text>
+  </div>
 </template>
 
-<script lang="ts">
-import debounce from 'lodash/debounce';
-import { ValidationProvider } from 'vee-validate';
-import { defineComponent } from '@vue/composition-api';
-import { useIntersectionObserver } from '@/composables/use-intersection-observer';
-import { getDomRef } from '@/composables/get-dom-ref';
-import { shirtSizeValidator } from '@/components/prop-validators';
-import VueText from '@/components/typography/VueText/VueText.vue';
+<script setup lang="ts">
+import { watch } from 'vue';
+import { useField } from 'vee-validate';
+import debounce from 'lodash-es/debounce.js';
+import { useIntersectionObserver } from '~/composables/use-intersection-observer';
+import { getDomRef } from '~/composables/get-dom-ref';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import { ShirtSize } from '~/components/prop-types';
 
-export default defineComponent({
-  name: 'VueInput',
-  components: { VueText, ValidationProvider },
-  inheritAttrs: false,
-  props: {
-    id: { type: String, required: true },
-    name: { type: String, required: true },
-    label: { type: String, required: true },
-    hideLabel: { type: Boolean, default: false },
-    hideDescription: { type: Boolean, default: false },
-    required: { type: Boolean, default: false },
-    validation: { type: [String, Object], default: null },
-    value: { type: [String, Number], default: null },
-    disabled: { type: Boolean, default: false },
-    placeholder: { type: String, default: null },
-    autofocus: { type: Boolean, default: false },
-    type: { type: String, default: 'text' },
-    readonly: { type: Boolean, default: false },
-    description: { type: String, default: '' },
-    errorMessage: { type: String, default: '' },
-    autocomplete: { type: String, default: 'off' },
-    leadingIcon: { type: String, default: null },
-    trailingIcon: { type: String, default: null },
-    size: { type: String, validator: shirtSizeValidator, default: 'md' },
-    sizeAttribute: { type: Number, default: null },
-    debounce: { type: Number, default: null },
+interface InputProps {
+  id: string;
+  name: string;
+  label: string;
+  hideLabel?: boolean;
+  hideDescription?: boolean;
+  required?: boolean;
+  validation?: string | any;
+  modelValue?: string | number;
+  disabled?: boolean;
+  placeholder?: string;
+  autofocus?: boolean;
+  type?: string;
+  readonly?: boolean;
+  description?: string;
+  errorMessage?: string;
+  autocomplete?: string;
+  leadingIcon?: string;
+  trailingIcon?: string;
+  size?: ShirtSize;
+  sizeAttribute?: number;
+  debounce?: number;
+}
+
+const props = withDefaults(defineProps<InputProps>(), {
+  hideLabel: false,
+  hideDescription: false,
+  required: false,
+  validation: null,
+  modelValue: undefined,
+  disabled: false,
+  placeholder: undefined,
+  autofocus: false,
+  type: 'text',
+  readonly: false,
+  description: '',
+  errorMessage: '',
+  autocomplete: 'off',
+  leadingIcon: undefined,
+  trailingIcon: undefined,
+  size: 'md',
+  sizeAttribute: undefined,
+  debounce: undefined,
+});
+const emit = defineEmits(['debounced-input', 'update:modelValue', 'leading-icon-click', 'trailing-icon-click', 'blur']);
+const inputRef = getDomRef<HTMLInputElement>(null);
+const debouncedInput = debounce((value: string) => emit('debounced-input', value), props.debounce || 0);
+const { errors, value, handleChange } = useField<string | number | null | undefined>(props.id, props.validation, {
+  initialValue: props.modelValue,
+  validateOnValueUpdate: false,
+  type: props.type,
+  syncVModel: false,
+});
+const onInput = (e: InputEvent) => {
+  const value = (e.target as HTMLInputElement).value;
+
+  if (errors.value.length > 0) {
+    handleChange(value);
+  }
+
+  emit('update:modelValue', value, e);
+
+  if (props.debounce !== null) {
+    debouncedInput(value);
+  }
+};
+const onBlur = (e: InputEvent) => {
+  const value = (e.target as HTMLInputElement).value;
+
+  handleChange(value);
+
+  emit('blur', e);
+};
+
+watch(
+  () => props.modelValue,
+  (newModelValue) => {
+    value.value = newModelValue;
   },
-  setup(props, { emit }) {
-    const input = getDomRef(null);
-    const debouncedInput = debounce((value: string) => emit('debounced-input', value), props.debounce || 0);
-    const onInput = (e: InputEvent) => {
-      const value = (e.target as HTMLInputElement).value;
+);
 
-      emit('input', value, e);
-
-      if (props.debounce !== null) {
-        debouncedInput(value);
-      }
-    };
-
-    useIntersectionObserver(input, (entries: IntersectionObserverEntry[]) => {
-      if (props.autofocus) {
-        entries.forEach((entry) => (entry.target as HTMLInputElement).focus());
-      }
-    });
-
-    return {
-      input,
-      onInput,
-    };
-  },
+useIntersectionObserver(inputRef, (entries: IntersectionObserverEntry[]) => {
+  if (props.autofocus) {
+    entries.forEach((entry) => (entry.target as HTMLInputElement).focus());
+  }
 });
 </script>
 
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+};
+</script>
+
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueInput {
   display: flex;

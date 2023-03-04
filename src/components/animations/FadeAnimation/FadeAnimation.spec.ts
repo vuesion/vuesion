@@ -1,17 +1,15 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { describe, test } from 'vitest';
+import { render } from '@testing-library/vue';
 import FadeAnimation from './FadeAnimation.vue';
-
-const localVue = createLocalVue();
 
 describe('FadeAnimation.vue', () => {
   test('renders component', () => {
-    const wrapper = mount(FadeAnimation, {
-      localVue,
+    const { getByText } = render(FadeAnimation, {
       slots: {
         default: '<div>foo</div>',
       },
     });
 
-    expect(wrapper.text()).toBe('foo');
+    getByText('foo');
   });
 });

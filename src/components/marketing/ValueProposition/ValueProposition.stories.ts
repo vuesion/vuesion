@@ -1,24 +1,25 @@
-import { storiesOf } from '@storybook/vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import { Story } from '@storybook/vue3';
 import ValueProposition from './ValueProposition.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
-const story = storiesOf('Marketing|ValueProposition', module) as any;
+export default {
+  title: 'Marketing/ValueProposition',
+  component: ValueProposition,
+};
 
-story.add(
-  'Default',
-  () => ({
-    components: { ComponentDocs, ValueProposition },
-    template: `<component-docs
+const Template: Story = (args) => ({
+  components: { ValueProposition, ComponentDocs },
+  setup() {
+    return { args };
+  },
+  template: `<component-docs
       component-name="ValueProposition"
       usage="Used to convey the benefits of the product for different target audiences."
       story="Display value propositions for PMs, Engineering Managers, Engineers, Designers and teams."
-    >
-      <value-proposition />
-    </component-docs>`,
-  }),
-  {
-    info: {
-      components: { ValueProposition },
-    },
-  },
-);
+  >
+  <value-proposition />
+  </component-docs>`,
+});
+
+export const Default = Template.bind({});
+Default.args = {};

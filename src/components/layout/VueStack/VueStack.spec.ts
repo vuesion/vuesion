@@ -1,3 +1,4 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import VueStack from './VueStack.vue';
 
@@ -6,7 +7,6 @@ describe('VueStack.vue', () => {
 
   beforeEach(() => {
     harness = render(VueStack, {
-      stubs: ['nuxt-link'],
       slots: {
         default: ['<div>slot 1</div>', '<div>slot 2</div>'],
       },
@@ -21,18 +21,24 @@ describe('VueStack.vue', () => {
   });
 
   test('renders component with responsive spacings', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ space: [8, 16, 24, 32, 64] });
+    await rerender({ space: [8, 16, 24, 32, 64] });
 
-    expect(html()).toMatch('pt-8 pt-tp-16 pt-tl-24 pt-sd-32 pt-ld-64');
+    expect(html()).toMatch('gap-8');
+    expect(html()).toMatch('gap-tp-16');
+    expect(html()).toMatch('gap-tl-24');
+    expect(html()).toMatch('gap-sd-32');
+    expect(html()).toMatch('gap-ld-64');
   });
 
   test('renders component with responsive alignment', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ align: ['left', 'center', 'right'] });
+    await rerender({ alignX: ['start', 'center', 'end'] });
 
-    expect(html()).toMatch('align-left align-tp-center align-tl-right');
+    expect(html()).toMatch('items-start');
+    expect(html()).toMatch('items-tp-center');
+    expect(html()).toMatch('items-tl-end');
   });
 });

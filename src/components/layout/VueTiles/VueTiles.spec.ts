@@ -1,3 +1,4 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import VueTiles from './VueTiles.vue';
 
@@ -6,7 +7,6 @@ describe('VueTiles.vue', () => {
 
   beforeEach(() => {
     harness = render(VueTiles, {
-      stubs: ['nuxt-link'],
       slots: {
         default: 'content',
       },
@@ -20,22 +20,20 @@ describe('VueTiles.vue', () => {
   });
 
   test('renders component with responsive spacings', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ space: [8, 16, 24, 32, 64] });
+    await rerender({ space: [8, 16, 24, 32, 64] });
 
     expect(html()).toMatch(
-      'spacev-8 spacev-tp-16 spacev-tl-24 spacev-sd-32 spacev-ld-64 spaceh-8 spaceh-tp-16 spaceh-tl-24 spaceh-sd-32 spaceh-ld-64',
+      'gap-y-8 gap-y-tp-16 gap-y-tl-24 gap-y-sd-32 gap-y-ld-64 gap-x-8 gap-x-tp-16 gap-x-tl-24 gap-x-sd-32 gap-x-ld-64',
     );
   });
 
   test('renders component with responsive columns', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ columns: [1, 2, 4] });
+    await rerender({ columns: [1, 2, 4] });
 
-    expect(html()).toMatch(
-      'style="--phone: 1; --tablet-portrait: 2; --tablet-landscape: 4; --small-desktop: 4; --large-desktop: 4;"',
-    );
+    expect(html()).toMatch('grid-cols-1 grid-cols-tp-2 grid-cols-tl-4');
   });
 });

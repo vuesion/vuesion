@@ -1,3 +1,4 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import VueBreadcrumb from './VueBreadcrumb.vue';
 
@@ -10,22 +11,30 @@ describe('VueBreadcrumb.vue', () => {
         items: [
           { label: 'Level 1', value: '/level-1' },
           { label: 'Level 2', value: '/level-2' },
-          { label: 'Level 3', value: '/level-3' },
-          { label: 'Level 4', value: '/level-4' },
-          { label: 'Level 5', value: '/level-5' },
         ],
       },
-      stubs: ['nuxt-link'],
     });
   });
 
-  test('renders component', () => {
-    const { getByText } = harness;
+  test('renders component', async () => {
+    const { html, rerender } = harness;
 
-    getByText('Level 1');
-    getByText('Level 2');
-    getByText('Level 3');
-    getByText('Level 4');
-    getByText('Level 5');
+    await rerender({
+      items: [
+        { label: 'Level 1', value: '/level-1' },
+        { label: 'Level 2', value: '/level-2' },
+        { label: 'Level 3', value: '/level-3' },
+        { label: 'Level 4', value: '/level-4' },
+        { label: 'Level 5', value: '/level-5' },
+      ],
+    });
+
+    const markup = html();
+
+    expect(markup).toMatch('Level 1');
+    expect(markup).toMatch('Level 2');
+    expect(markup).toMatch('Level 3');
+    expect(markup).toMatch('Level 4');
+    expect(markup).toMatch('Level 5');
   });
 });

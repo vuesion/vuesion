@@ -11,14 +11,10 @@
   </transition>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'FadeAnimation',
-};
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import 'assets/design-system';
 
 .enterActive,
 .leaveActive {

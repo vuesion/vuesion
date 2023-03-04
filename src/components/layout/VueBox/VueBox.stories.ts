@@ -1,43 +1,35 @@
-import { storiesOf } from '@storybook/vue';
+import { Story } from '@storybook/vue3';
 import VueBox from './VueBox.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
-const story = storiesOf('Foundation|Layout/Box', module) as any;
+export default {
+  title: 'Foundation/Layout',
+  component: VueBox,
+};
 
-story.add(
-  'With equal padding',
-  () => ({
-    components: { VueBox },
-    template: `<vue-box class="border">VueBox</vue-box>`,
-  }),
-  {
-    info: {
-      components: { VueBox },
-    },
+const Template: Story = (args) => ({
+  components: { VueBox, ComponentDocs },
+  setup() {
+    return { args };
   },
-);
+  template: `<component-docs
+      component-name="Box"
+      usage="The Box is the most low-level layout component.
+Its job is to render an individual element on the screen.
+In terms of page layout, Box most notably provides a set of 
+padding options which can be used to create container elements with internal spacing."
+  >
+  <vue-box v-bind="args" style="border: 1px solid var(--brand-border-default-medium); height: 300px;">
+    Lorem Ipsum
+  </vue-box>
+  </component-docs>`,
+});
 
-story.add(
-  'With different padding',
-  () => ({
-    components: { VueBox },
-    template: `<vue-box padding="8 32" class="border">VueBox</vue-box>`,
-  }),
-  {
-    info: {
-      components: { VueBox },
-    },
-  },
-);
+export const Box = Template.bind({});
 
-story.add(
-  'With responsive padding',
-  () => ({
-    components: { VueBox },
-    template: `<vue-box :padding="['4 16', 24, '24 48', 64, 0]" class="border">VueBox</vue-box>`,
-  }),
-  {
-    info: {
-      components: { VueBox },
-    },
-  },
-);
+Box.args = {
+  as: 'div',
+  padding: ['8', '8 16', '12 24 64 10', '80', '144'],
+  alignX: ['start', 'center', 'end'],
+  alignY: ['start', 'center', 'end'],
+};

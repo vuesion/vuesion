@@ -1,22 +1,24 @@
 <template>
-  <vue-box :padding="['64 0 24 0', '64 0 24 0', '64 0 24 0', '0 0 64 0']">
+  <vue-box as="section" :padding="['64 0 24 0', '64 0 24 0', '64 0 24 0', '0 0 64 0']">
     <vue-content-block :class="$style.learnMore">
-      <vue-stack :space="[32, 32, 32, null]">
-        <vue-box :padding="['24 12', 48, 64, 80]">
+      <vue-stack :space="['32', '32', '32', '0']">
+        <vue-box :padding="['24 12', '48', '64', '80']">
           <vue-stack space="64">
-            <vue-text look="h3" weight="semi-bold" align="center">
+            <vue-text look="h3" weight="semi-bold" align-x="center">
               <span class="deco-underline">Learn more</span> about Vuesion
             </vue-text>
 
             <vue-columns space="48" stack-phone stack-tablet-portrait stack-tablet-landscape>
-              <vue-column :width="['content', 'content', 'content', '50%']">
-                <img src="/images/discord-small.png" alt="Learn more about Vuesion before starting" />
+              <vue-column :width="['fit', 'fit', 'fit', '6/12']">
+                <div>
+                  <img src="/images/discord-small.png" alt="Learn more about Vuesion before starting" />
+                </div>
               </vue-column>
 
-              <vue-column space="48" :width="['content', 'content', 'content', '50%']">
+              <vue-column space="48" :width="['fit', 'fit', 'fit', '6/12']">
                 <vue-stack space="48">
-                  <vue-columns stack-phone stack-tablet-portrait :space="[48, 48, 48, 24]">
-                    <vue-column :width="['content', 'content', '50%']">
+                  <vue-columns stack-phone stack-tablet-portrait :space="['48', '48', '48', '24']">
+                    <vue-column :width="['fit', 'fit', '6/12']">
                       <vue-stack space="16">
                         <vue-text look="h4">Hello Engineer. Installing Vuesion.</vue-text>
                         <vue-text look="description">
@@ -34,7 +36,7 @@
                         </a>
                       </vue-stack>
                     </vue-column>
-                    <vue-column :width="['content', 'content', '50%']" :space="[48, 48, 48, 24]">
+                    <vue-column :width="['fit', 'fit', '6/12']" :space="['48', '48', '48', '24']">
                       <vue-stack space="16">
                         <vue-text look="h4">Hello Designer. Using the Figma file.</vue-text>
                         <vue-text look="description">
@@ -51,8 +53,8 @@
                       </vue-stack>
                     </vue-column>
                   </vue-columns>
-                  <vue-columns stack-phone stack-tablet-portrait :space="[48, 48, 48, 24]">
-                    <vue-column :width="['content', 'content', '50%']">
+                  <vue-columns stack-phone stack-tablet-portrait :space="['48', '48', '48', '24']">
+                    <vue-column :width="['fit', 'fit', '6/12']">
                       <vue-stack space="16">
                         <vue-text look="h4">Join in on the conversation.</vue-text>
                         <vue-text look="description">
@@ -72,7 +74,7 @@
                         </a>
                       </vue-stack>
                     </vue-column>
-                    <vue-column :width="['content', 'content', '50%']" :space="[48, 48, 48, 24]">
+                    <vue-column :width="['fit', 'fit', '6/12']" :space="['48', '48', '48', '24']">
                       <vue-stack space="16">
                         <vue-text look="h4">Read the docs!</vue-text>
                         <vue-text look="description">
@@ -91,9 +93,9 @@
           </vue-stack>
         </vue-box>
 
-        <vue-box :padding="['24 12', 48, 64, 80]">
+        <vue-box :padding="['24 12', '48', '64', '80']">
           <vue-stack space="64">
-            <vue-text look="h3" weight="semi-bold" align="center">
+            <vue-text look="h3" weight="semi-bold" align-x="center">
               Try out some <span class="deco-underline">examples!</span>
             </vue-text>
 
@@ -104,57 +106,53 @@
               stack-tablet-landscape
               :revert="[true, true, true, null]"
             >
-              <vue-column :width="['content', 'content', 'content', '50%']">
+              <vue-column :width="['fit', 'fit', 'fit', '6/12']">
                 <vue-stack space="48">
-                  <vue-columns stack-phone stack-tablet-portrait :space="[48, 48, 48, 24]">
-                    <vue-column :width="['content', 'content', '50%']">
+                  <vue-columns stack-phone stack-tablet-portrait :space="['48', '48', '48', '24']">
+                    <vue-column :width="['fit', 'fit', '6/12']">
                       <vue-stack space="16">
                         <vue-text look="h4">Authentication.</vue-text>
                         <vue-text look="description">
-                          This example shows how to use the nuxt-auth. You will be redirected to a protected page with
-                          scenarios like re-authentication and error handling.
+                          This example shows how to use the nuxt-auth module. You will be redirected to a protected page
+                          with scenarios like re-authentication and error handling.
                         </vue-text>
                         <vue-button leading-icon="login" look="primary" @click="$emit('login-click')">Login</vue-button>
                       </vue-stack>
                     </vue-column>
-                    <vue-column :width="['content', 'content', '50%']">
+                    <vue-column :width="['fit', 'fit', '6/12']">
                       <vue-stack space="16">
                         <vue-text look="h4">State management.</vue-text>
                         <vue-text look="description">
-                          This example shows the basic usage of Vuex including Getters, Actions, SSR pre-fetching, and
+                          This example shows the basic usage of Pinia including Getters, Actions, SSR pre-fetching, and
                           composition-api.
                         </vue-text>
-                        <nuxt-link to="/example/counter"> Go to Vuex example <vue-icon-arrow-right /> </nuxt-link>
+                        <nuxt-link :to="localePath('/example/counter')">
+                          Go to Pinia example <vue-icon-arrow-right />
+                        </nuxt-link>
                       </vue-stack>
                     </vue-column>
                   </vue-columns>
-                  <vue-columns stack-phone stack-tablet-portrait :space="[48, 48, 48, 24]">
-                    <vue-column :width="['content', 'content', '50%']">
-                      <vue-stack space="16">
-                        <vue-text look="h4">GraphQL - Apollo</vue-text>
-                        <vue-text look="description">
-                          This example shows how to use apollo with the composition-api. The data is fetched on the
-                          server-side and synced with the client.
-                        </vue-text>
-                        <nuxt-link to="/example/apollo"> Go to Apollo example <vue-icon-arrow-right /> </nuxt-link>
-                      </vue-stack>
-                    </vue-column>
-                    <vue-column :width="['content', 'content', '50%']">
+                  <vue-columns stack-phone stack-tablet-portrait :space="['48', '48', '48', '24']">
+                    <vue-column :width="['fit', 'fit', '6/12']" :can-grow="false">
                       <vue-stack space="16">
                         <vue-text look="h4">Form validation.</vue-text>
                         <vue-text look="description">
                           This example shows how to validate forms with the vee-validate library and the Vuesion
                           components.
                         </vue-text>
-                        <nuxt-link to="/example/form"> Go to Form example <vue-icon-arrow-right /> </nuxt-link>
+                        <nuxt-link :to="localePath('/example/form')">
+                          Go to Form example <vue-icon-arrow-right />
+                        </nuxt-link>
                       </vue-stack>
                     </vue-column>
                   </vue-columns>
                 </vue-stack>
               </vue-column>
 
-              <vue-column :width="['content', 'content', 'content', '50%']">
-                <img src="/images/example-small.png" alt="Try out some examples!" />
+              <vue-column :width="['fit', 'fit', 'fit', '6/12']">
+                <div>
+                  <img src="/images/example-small.png" alt="Try out some examples!" />
+                </div>
               </vue-column>
             </vue-columns>
           </vue-stack>
@@ -164,29 +162,21 @@
   </vue-box>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueIconArrowRight from '@/components/icons/VueIconArrowRight.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+<script setup lang="ts">
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueIconArrowRight from '~/components/icons/VueIconArrowRight.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 
-export default defineComponent({
-  name: 'LearnMore',
-  components: { VueButton, VueIconArrowRight, VueColumn, VueColumns, VueStack, VueText, VueBox, VueContentBlock },
-  props: {},
-  setup() {
-    return {};
-  },
-});
+defineEmits(['login-click']);
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import 'assets/_design-system.scss';
 
 .learnMore {
   position: relative;

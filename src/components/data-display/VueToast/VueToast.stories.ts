@@ -1,33 +1,27 @@
-import { storiesOf } from '@storybook/vue';
-import { addToast } from '@/components/utils';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import { Story } from '@storybook/vue3';
 import VueToast from './VueToast.vue';
+import { addToast } from '~/components/utils';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
-const story = storiesOf('Data Display|Toast', module) as any;
+export default {
+  title: 'Data Display/Toast',
+  component: VueToast,
+  argTypes: {},
+};
 
-story.add(
-  'Default',
-  () => ({
-    components: { VueToast, VueButton, ComponentDocs, VueInline },
-    template: `<component-docs
-      component-name="Toast"
-      usage="Used to communicate messages from the system to the user."
-      story="Show toast messages with their different properties."
-    >
-      <vue-toast />
+const Template: Story = (args) => ({
+  components: {
+    VueToast,
+    VueButton,
+    ComponentDocs,
+    VueInline,
+  },
 
-      <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
-        <vue-button look="primary" @click="onSuccessToastClick">add success toast</vue-button>
-        <vue-button look="secondary" @click="onInfoToastClick">add info toast</vue-button>
-        <vue-button look="outline" @click="onWarningToastClick">add warning toast</vue-button>
-        <vue-button look="danger" @click="onDangerToastClick">add danger toast</vue-button>
-      </vue-inline>
-
-      </component-docs>
-    `,
-    methods: {
+  setup() {
+    return {
+      args,
       onSuccessToastClick() {
         addToast({
           title: 'This is a success message!',
@@ -57,11 +51,26 @@ story.add(
           displayTimeInMs: 30000,
         });
       },
-    },
-  }),
-  {
-    info: {
-      components: { VueToast },
-    },
+    };
   },
-);
+
+  template: `<component-docs
+      component-name="Toast"
+      usage="Used to communicate messages from the system to the user."
+      story="Show toast messages with their different properties."
+  >
+  <vue-toast />
+
+  <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
+    <vue-button look="primary" @click="onSuccessToastClick">add success toast</vue-button>
+    <vue-button look="secondary" @click="onInfoToastClick">add info toast</vue-button>
+    <vue-button look="outline" @click="onWarningToastClick">add warning toast</vue-button>
+    <vue-button look="danger" @click="onDangerToastClick">add danger toast</vue-button>
+  </vue-inline>
+
+  </component-docs>`,
+});
+
+export const Default = Template.bind({});
+
+Default.args = {};

@@ -3,58 +3,55 @@
     :class="[$style.vueBackToTop, show && $style.show]"
     data-testid="back-to-top"
     type="button"
-    :aria-label="$t('common.Back-to-top' /* Back to top */)"
+    :aria-label="ariaLabel"
     @click="onClick"
   >
     <vue-icon-arrow-up />
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from '@vue/composition-api';
-import { useEvent } from '@/composables/use-event';
-import VueIconArrowUp from '@/components/icons/VueIconArrowUp.vue';
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import { useEventListener } from '@vueuse/core';
+import VueIconArrowUp from '~/components/icons/VueIconArrowUp.vue';
 
-export default defineComponent({
-  name: 'VueBackToTop',
-  components: { VueIconArrowUp },
-  setup() {
-    const show = ref(false);
-    const viewportHeight = ref(0);
-    const updateViewPortHeight = () => {
-      viewportHeight.value = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-    };
-    const lastScrollPosition = ref(0);
-    const onScroll = () => {
-      const scrollPosition = window.pageYOffset;
-      show.value = scrollPosition > viewportHeight.value * 2 && scrollPosition < lastScrollPosition.value;
-      if (scrollPosition === 0) {
-        show.value = false;
-      }
-      lastScrollPosition.value = scrollPosition;
-    };
-
-    onMounted(() => {
-      const windowRef = ref(window);
-
-      useEvent('resize', updateViewPortHeight, windowRef);
-      useEvent('scroll', onScroll, windowRef);
-
-      updateViewPortHeight();
-    });
-
-    return {
-      show,
-      onClick: () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      },
-    };
+defineProps({
+  ariaLabel: {
+    type: String,
+    default: 'Back to to',
   },
+});
+
+const show = ref(false);
+const viewportHeight = ref(0);
+const updateViewPortHeight = () => {
+  viewportHeight.value = Math.max(window.innerHeight, 0);
+};
+const lastScrollPosition = ref(0);
+const onScroll = () => {
+  const scrollPosition = window.pageYOffset;
+  show.value = scrollPosition > viewportHeight.value * 2 && scrollPosition < lastScrollPosition.value;
+  if (scrollPosition === 0) {
+    show.value = false;
+  }
+  lastScrollPosition.value = scrollPosition;
+};
+const onClick = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+onMounted(() => {
+  const windowRef = ref(window);
+
+  useEventListener(windowRef, 'resize', updateViewPortHeight);
+  useEventListener(windowRef, 'scroll', onScroll);
+
+  updateViewPortHeight();
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueBackToTop {
   position: fixed;

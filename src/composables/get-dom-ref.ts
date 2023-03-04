@@ -1,4 +1,3 @@
-import Vue from 'vue';
-import { ref } from '@vue/composition-api';
+import { ref } from 'vue';
 
-export const getDomRef = (element: HTMLElement) => ref<HTMLElement | Element | Vue | any>(element);
+export const getDomRef = <T>(element: unknown) => ref<T>(element as T);

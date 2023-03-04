@@ -4,68 +4,60 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onBeforeUnmount, provide, Ref, ref } from '@vue/composition-api';
+<script setup lang="ts">
+import { onBeforeUnmount, provide, shallowRef, ref, Ref } from 'vue';
 
-export default defineComponent({
-  name: 'VueAccordion',
-  props: {
-    multiple: { type: Boolean, default: false },
-  },
-  setup(props) {
-    const items = ref<any[]>([]);
-    const openItems = ref<number[]>([]);
-    const handleItems = () => {
-      items.value.forEach((item: { idx: Ref<number>; open: Ref<boolean> }) => {
-        item.open.value = openItems.value.includes(item.idx.value);
-      });
-    };
-    const openItem = (idx: Ref<number>) => {
-      if (props.multiple && openItems.value.includes(idx.value)) {
-        openItems.value = openItems.value.filter((item: number) => item !== idx.value);
-      } else if (props.multiple) {
-        openItems.value.push(idx.value);
-      } else if (openItems.value.includes(idx.value)) {
-        openItems.value = [];
-      } else {
-        openItems.value = [idx.value];
-      }
+interface AccordionItem {
+  idx: Ref<number>;
+  open: Ref<boolean>;
+}
 
-      handleItems();
-    };
-    const register = (idx: Ref<number>, open: Ref<boolean>, initOpen: boolean) => {
-      idx.value = items.value.length;
+const props = defineProps({
+  multiple: { type: Boolean, default: false },
+});
+const items = shallowRef<Array<AccordionItem>>([]);
+const openItems = ref<Array<number>>([]);
+const handleItems = () => {
+  items.value.forEach((item) => {
+    item.open.value = openItems.value.includes(item.idx.value);
+  });
+};
+const openItem = (idx: Ref<number>) => {
+  if (props.multiple && openItems.value.includes(idx.value)) {
+    openItems.value = openItems.value.filter((item: number) => item !== idx.value);
+  } else if (props.multiple) {
+    openItems.value.push(idx.value);
+  } else if (openItems.value.includes(idx.value)) {
+    openItems.value = [];
+  } else {
+    openItems.value = [idx.value];
+  }
 
-      items.value.push({ idx, open });
+  handleItems();
+};
+const register = (idx: Ref<number>, open: Ref<boolean>, initOpen: boolean) => {
+  idx.value = items.value.length;
 
-      if (initOpen) {
-        openItems.value.push(idx.value);
-      }
+  items.value.push({ idx, open });
 
-      handleItems();
-    };
+  if (initOpen) {
+    openItems.value.push(idx.value);
+  }
 
-    provide('register', register);
-    provide('openItem', openItem);
+  handleItems();
+};
 
-    onBeforeUnmount(() => {
-      items.value = [];
-      openItems.value = [];
-    });
+provide('register', register);
+provide('openItem', openItem);
 
-    return {
-      items,
-      openItems,
-      handleItems,
-      openItem,
-      register,
-    };
-  },
+onBeforeUnmount(() => {
+  items.value = [];
+  openItems.value = [];
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueAccordion {
   border-bottom: $accordion-item-header-border;

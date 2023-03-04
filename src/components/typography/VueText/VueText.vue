@@ -9,59 +9,51 @@
       serifs && $style.serifs,
       underline && $style.underline,
       uppercase && $style.uppercase,
-      align && $style.block,
-      ...applyResponsiveClasses($style, {}, responsiveAlignments, 'align'),
+      alignX && $style.block,
+      ...alignCssClasses,
     ]"
-    v-on="$listeners"
   >
     <slot />
   </component>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import {
-  fontWeightValidator,
-  horizontalAlignmentValidator,
-  responsivePropValidator,
-  textColorVariationValidator,
-  textStyleValidator,
-} from '@/components/prop-validators';
-import { applyResponsiveClasses, parseResponsivePropValue } from '@/components/utils';
+<script setup lang="ts">
+import { computed, useCssModule } from 'vue';
+import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
+import { FontWeight, Alignment, TextColor, TextStyle } from '~/components/prop-types';
 
-export default defineComponent({
-  name: 'VueText',
-  components: {},
-  props: {
-    as: { type: String, default: 'span' },
-    look: { type: String, default: 'default', validator: textStyleValidator },
-    color: { type: String, default: null, validator: textColorVariationValidator },
-    weight: { type: String, default: 'regular', validator: fontWeightValidator },
-    serifs: { type: Boolean, default: false },
-    underline: { type: Boolean, default: false },
-    uppercase: { type: Boolean, default: false },
-    align: {
-      type: [String, Array as () => Array<string>],
-      validator: responsivePropValidator(horizontalAlignmentValidator),
-      default: null,
-    },
-  },
-  setup(props) {
-    const responsiveAlignments = parseResponsivePropValue(props.align);
+interface TextProps {
+  as?: string;
+  look?: TextStyle;
+  color?: TextColor;
+  weight?: FontWeight;
+  serifs?: boolean;
+  underline?: boolean;
+  uppercase?: boolean;
+  alignX?: Alignment | Array<Alignment> | string;
+}
 
-    return {
-      responsiveAlignments,
-      applyResponsiveClasses,
-    };
-  },
+const props = withDefaults(defineProps<TextProps>(), {
+  as: 'span',
+  look: 'default',
+  color: undefined,
+  weight: 'regular',
+  serifs: false,
+  underline: false,
+  uppercase: false,
+  alignX: undefined,
 });
+const $style = useCssModule();
+const responsiveAlignments = computed(() => parseResponsivePropValue(props.alignX));
+const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiveAlignments.value, 'align'));
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueText {
   font-family: $font-family;
+  text-decoration: none;
 
   // Utils
   &.serifs {
@@ -206,7 +198,7 @@ export default defineComponent({
   }
 
   // Responsive Styles
-  &.align-left {
+  &.align-start {
     text-align: left;
   }
 
@@ -214,12 +206,12 @@ export default defineComponent({
     text-align: center;
   }
 
-  &.align-right {
+  &.align-end {
     text-align: right;
   }
 
   @include mediaMin(tabletPortrait) {
-    &.align-tp-left {
+    &.align-tp-start {
       text-align: left;
     }
 
@@ -227,13 +219,13 @@ export default defineComponent({
       text-align: center;
     }
 
-    &.align-tp-right {
+    &.align-tp-end {
       text-align: right;
     }
   }
 
   @include mediaMin(tabletLandscape) {
-    &.align-tl-left {
+    &.align-tl-start {
       text-align: left;
     }
 
@@ -241,13 +233,13 @@ export default defineComponent({
       text-align: center;
     }
 
-    &.align-tl-right {
+    &.align-tl-end {
       text-align: right;
     }
   }
 
   @include mediaMin(smallDesktop) {
-    &.align-sd-left {
+    &.align-sd-start {
       text-align: left;
     }
 
@@ -255,13 +247,13 @@ export default defineComponent({
       text-align: center;
     }
 
-    &.align-sd-right {
+    &.align-sd-end {
       text-align: right;
     }
   }
 
   @include mediaMin(largeDesktop) {
-    &.align-ld-left {
+    &.align-ld-start {
       text-align: left;
     }
 
@@ -269,7 +261,7 @@ export default defineComponent({
       text-align: center;
     }
 
-    &.align-ld-right {
+    &.align-ld-end {
       text-align: right;
     }
   }

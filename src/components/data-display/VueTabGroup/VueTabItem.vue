@@ -5,6 +5,7 @@
 </template>
 
 <script lang="ts">
+// TODO: change to composition api
 export default {
   name: 'VueTabItem',
   inject: ['register'],
@@ -28,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueTab {
 }

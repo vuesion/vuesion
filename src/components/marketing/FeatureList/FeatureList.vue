@@ -1,19 +1,19 @@
 <template>
-  <vue-box :padding="['64 0 24 0', '64 0 24 0', '64 0 24 0', '0 0 96 0']">
+  <vue-box as="section" :padding="['64 0 24 0', '64 0 24 0', '64 0 24 0', '0 0 96 0']">
     <vue-content-block :class="$style.featureList">
-      <vue-box :padding="[16, 16, 24, 32, 48]">
-        <vue-stack :space="[48, 64]">
+      <vue-box :padding="['16', '16', '24', '32', '48']">
+        <vue-stack :space="['48', '64']">
           <vue-stack space="4">
-            <vue-text look="h3" weight="semi-bold" align="center"> Features </vue-text>
-            <vue-text look="description" color="text-low" weight="semi-bold" align="center">
+            <vue-text look="h3" weight="semi-bold" align-x="center"> Features </vue-text>
+            <vue-text look="description" color="text-low" weight="semi-bold" align-x="center">
               Save months of work by not writing these <span class="deco-underline">100,000+</span> lines of code
             </vue-text>
           </vue-stack>
 
-          <vue-stack :space="[48, 32]">
-            <vue-columns stack-phone :space="[48, 16, 32]">
-              <vue-column :width="['content', '33.3333%']">
-                <vue-stack :space="[8, 24]">
+          <vue-stack :space="['48', '32']">
+            <vue-columns stack-phone :space="['48', '16', '32']">
+              <vue-column :width="['fit', '4/12']">
+                <vue-stack :space="['8', '24']">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-lightning-bolt />
                     <vue-text look="medium-title" weight="semi-bold"> Nuxt.js Boilerplate </vue-text>
@@ -24,8 +24,8 @@
                   </vue-text>
                 </vue-stack>
               </vue-column>
-              <vue-column :width="['content', '33.3333%']">
-                <vue-stack :space="[8, 24]">
+              <vue-column :width="['fit', '4/12']">
+                <vue-stack :space="['8', '24']">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-tool />
                     <vue-text look="medium-title" weight="semi-bold"> Testing </vue-text>
@@ -36,8 +36,8 @@
                   </vue-text>
                 </vue-stack>
               </vue-column>
-              <vue-column :width="['content', '33.3333%']">
-                <vue-stack :space="[8, 24]">
+              <vue-column :width="['fit', '4/12']">
+                <vue-stack :space="['8', '24']">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-vuesion />
                     <vue-text look="medium-title" weight="semi-bold"> Design System </vue-text>
@@ -49,9 +49,9 @@
                 </vue-stack>
               </vue-column>
             </vue-columns>
-            <vue-columns stack-phone :space="[48, 16, 32]">
-              <vue-column :width="['content', '33.3333%']">
-                <vue-stack :space="[8, 24]">
+            <vue-columns stack-phone :space="['48', '16', '32']">
+              <vue-column :width="['fit', '4/12']">
+                <vue-stack :space="['8', '24']">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-book />
                     <vue-text look="medium-title" weight="semi-bold"> Storybook & Figma </vue-text>
@@ -63,8 +63,8 @@
                   </vue-text>
                 </vue-stack>
               </vue-column>
-              <vue-column :width="['content', '33.3333%']">
-                <vue-stack :space="[8, 24]">
+              <vue-column :width="['fit', '4/12']">
+                <vue-stack :space="['8', '24']">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-users />
                     <vue-text look="medium-title" weight="semi-bold"> Marketing & i18n </vue-text>
@@ -76,8 +76,8 @@
                   </vue-text>
                 </vue-stack>
               </vue-column>
-              <vue-column :width="['content', '33.3333%']">
-                <vue-stack :space="[8, 24]">
+              <vue-column :width="['fit', '4/12']">
+                <vue-stack :space="['8', '24']">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-finger-print />
                     <vue-text look="medium-title" weight="semi-bold"> Authentication </vue-text>
@@ -89,9 +89,9 @@
                 </vue-stack>
               </vue-column>
             </vue-columns>
-            <vue-columns stack-phone :space="[48, 16, 32]">
-              <vue-column :width="['content', '33.3333%']">
-                <vue-stack :space="[8, 24]">
+            <vue-columns stack-phone :space="['48', '16', '32']">
+              <vue-column :width="['fit', '4/12']">
+                <vue-stack :space="['8', '24']">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-terminal />
                     <vue-text look="medium-title" weight="semi-bold"> DX & Code quality </vue-text>
@@ -102,8 +102,8 @@
                   </vue-text>
                 </vue-stack>
               </vue-column>
-              <vue-column :width="['content', '33.3333%']">
-                <vue-stack :space="[8, 24]">
+              <vue-column :width="['fit', '4/12']">
+                <vue-stack :space="['8', '24']">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-lightning-bolt />
                     <vue-text look="medium-title" weight="semi-bold"> Axios & GraphQL </vue-text>
@@ -114,8 +114,8 @@
                   </vue-text>
                 </vue-stack>
               </vue-column>
-              <vue-column :width="['content', '33.3333%']">
-                <vue-stack :space="[8, 24]">
+              <vue-column :width="['fit', '4/12']">
+                <vue-stack :space="['8', '24']">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-star />
                     <vue-text look="medium-title" weight="semi-bold"> Progressive Web App </vue-text>
@@ -135,52 +135,26 @@
   </vue-box>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueIconLightningBolt from '@/components/icons/VueIconLightningBolt.vue';
-import VueIconTool from '@/components/icons/VueIconTool.vue';
-import VueIconVuesion from '@/components/icons/VueIconVuesion.vue';
-import VueIconBook from '@/components/icons/VueIconBook.vue';
-import VueIconUsers from '@/components/icons/VueIconUsers.vue';
-import VueIconFingerPrint from '@/components/icons/VueIconFingerPrint.vue';
-import VueIconTerminal from '@/components/icons/VueIconTerminal.vue';
-import VueIconStar from '@/components/icons/VueIconStar.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
-
-export default defineComponent({
-  name: 'FeatureList',
-  components: {
-    VueInline,
-    VueIconStar,
-    VueIconTerminal,
-    VueIconFingerPrint,
-    VueIconUsers,
-    VueIconBook,
-    VueIconVuesion,
-    VueIconTool,
-    VueIconLightningBolt,
-    VueColumn,
-    VueColumns,
-    VueStack,
-    VueText,
-    VueBox,
-    VueContentBlock,
-  },
-  props: {},
-  setup() {
-    return {};
-  },
-});
+<script setup lang="ts">
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueIconLightningBolt from '~/components/icons/VueIconLightningBolt.vue';
+import VueIconTool from '~/components/icons/VueIconTool.vue';
+import VueIconVuesion from '~/components/icons/VueIconVuesion.vue';
+import VueIconBook from '~/components/icons/VueIconBook.vue';
+import VueIconUsers from '~/components/icons/VueIconUsers.vue';
+import VueIconFingerPrint from '~/components/icons/VueIconFingerPrint.vue';
+import VueIconTerminal from '~/components/icons/VueIconTerminal.vue';
+import VueIconStar from '~/components/icons/VueIconStar.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import 'assets/_design-system.scss';
 
 .featureList {
   i {

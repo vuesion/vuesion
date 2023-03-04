@@ -1,36 +1,38 @@
-import { createLocalVue, mount } from '@vue/test-utils';
-import { i18n } from '@/test/i18n';
+import { describe, beforeEach, test, expect } from 'vitest';
+import { fireEvent, render, RenderResult } from '@testing-library/vue';
+import flushPromises from 'flush-promises';
 import LoginForm from './LoginForm.vue';
 
-const localVue = createLocalVue();
-
 describe('LoginForm.vue', () => {
-  test('renders component', () => {
-    const wrapper = mount<any>(LoginForm, {
-      i18n,
-      localVue,
-    });
+  let harness: RenderResult;
 
-    expect(wrapper.vm).toBeDefined();
+  beforeEach(() => {
+    harness = render(LoginForm);
   });
 
-  test('should submit form values', async () => {
-    const wrapper = mount<any>(LoginForm, {
-      i18n,
-      localVue,
-    });
+  test('should not emit submit event', async () => {
+    const { getByLabelText, getByTestId, emitted } = harness;
 
-    wrapper.setData({
-      username: 'foo',
-      password: '123456',
-    });
+    await fireEvent.update(getByLabelText('Email (Demo: account@example.com) *'), 'master.mind');
+    await fireEvent.update(getByLabelText('Password (Demo: password) *'), 'mas');
 
-    wrapper.find('form').trigger('submit');
-    await wrapper.vm.$nextTick();
+    await flushPromises();
 
-    const actual = wrapper.emitted('submit');
-    const expected = [[{ password: '123456', username: 'foo' }]];
+    await fireEvent.click(getByTestId('login-button'));
 
-    expect(actual).toEqual(expected);
+    expect(emitted().submit).toBeFalsy();
+  });
+
+  test('should emit submit event', async () => {
+    const { getByLabelText, getByTestId, emitted } = harness;
+
+    await fireEvent.update(getByLabelText('Email (Demo: account@example.com) *'), 'master.mind@example.com');
+    await fireEvent.update(getByLabelText('Password (Demo: password) *'), 'master.mind1337');
+
+    await flushPromises();
+
+    await fireEvent.click(getByTestId('login-button'));
+
+    expect(emitted().submit).toBeTruthy();
   });
 });

@@ -1,80 +1,71 @@
 <template>
-  <validation-observer v-slot="{ invalid }">
-    <form :class="$style.loginForm" @submit.stop.prevent="onSubmit">
-      <vue-stack>
-        <vue-text look="h3" as="h3">
-          {{ $t('auth.LoginForm.title' /* Login Example */) }}
-        </vue-text>
+  <form :class="$style.loginForm" @submit.stop.prevent="onSubmit">
+    <vue-stack>
+      <vue-text look="h3" as="h3"> Login Example </vue-text>
+      <vue-input
+        id="email"
+        v-model="email"
+        name="email"
+        type="email"
+        autofocus
+        required
+        label="Email (Demo: account@example.com)"
+        placeholder="Enter an email address"
+        validation="required"
+        error-message="The email can not be empty)"
+      />
 
-        <vue-input
-          id="username"
-          v-model="username"
-          name="username"
-          type="text"
-          autofocus
-          required
-          :label="$t('common.username' /* Username */)"
-          :placeholder="$t('common.username.placeholder' /* Enter any username */)"
-          validation="required"
-          :error-message="$t('auth.LoginForm.username.error' /* The username can not be empty */)"
-        />
+      <vue-input
+        id="password"
+        v-model="password"
+        name="password"
+        type="password"
+        required
+        label="Password (Demo: password)"
+        placeholder="Enter any password"
+        validation="required|min:6"
+        error-message="The password has to have at least 6 characters"
+      />
 
-        <vue-input
-          id="password"
-          v-model="password"
-          name="password"
-          type="password"
-          required
-          :label="$t('common.password' /* Password */)"
-          :placeholder="$t('common.password.placeholder' /* Enter any password */)"
-          validation="required|min:6"
-          :error-message="$t('auth.LoginForm.password.error' /* The password has to have at least 6 characters */)"
-        />
-
-        <vue-inline align="right">
-          <vue-button look="primary" tabindex="3" type="submit" :disabled="invalid" :loading="loading">
-            {{ $t('auth.LoginForm.cta' /* Login */) }}
-          </vue-button>
-        </vue-inline>
-      </vue-stack>
-    </form>
-  </validation-observer>
+      <vue-inline align-x="right">
+        <vue-button
+          data-testid="login-button"
+          look="primary"
+          tabindex="3"
+          type="submit"
+          :disabled="meta.valid === false"
+          :loading="loading"
+        >
+          Login
+        </vue-button>
+      </vue-inline>
+    </vue-stack>
+  </form>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api';
-import { ValidationObserver } from 'vee-validate';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useForm } from 'vee-validate';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueInput from '~/components/input-and-actions/VueInput/VueInput.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
 
-export default defineComponent({
-  name: 'LoginForm',
-  components: { VueInline, VueStack, ValidationObserver, VueButton, VueInput, VueText },
-  props: {
-    loading: { type: Boolean, default: false },
-  },
-  setup(_, { emit }) {
-    const username = ref('');
-    const password = ref('');
-
-    const onSubmit = () => {
-      emit('submit', { username: username.value, password: password.value });
-    };
-
-    return {
-      username,
-      password,
-      onSubmit,
-    };
-  },
+defineProps({
+  loading: { type: Boolean, default: false },
 });
+const emit = defineEmits(['submit']);
+const email = ref('');
+const password = ref('');
+const { meta } = useForm();
+const onSubmit = () => {
+  emit('submit', { email: email.value, password: password.value });
+};
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .loginForm {
   @include mediaMin(tabletPortrait) {

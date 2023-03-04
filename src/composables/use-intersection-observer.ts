@@ -1,10 +1,10 @@
-import { onMounted, onBeforeUnmount, Ref, ref } from '@vue/composition-api';
+import { onMounted, onBeforeUnmount, Ref, ref } from 'vue';
 
 export const useIntersectionObserver = (
   elementRef: Ref<HTMLElement>,
-  callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => void,
+  callback: (entries: IntersectionObserverEntry[], observer?: IntersectionObserver) => void,
 ) => {
-  const observer = ref<IntersectionObserver>(null);
+  const observer = ref<IntersectionObserver | null>(null);
 
   onMounted(() => {
     if ((window as any).IntersectionObserver) {
@@ -14,7 +14,8 @@ export const useIntersectionObserver = (
       });
       observer.value.observe(elementRef.value);
     } else {
-      callback([], null);
+      // eslint-disable-next-line n/no-callback-literal
+      callback([]);
     }
   });
 

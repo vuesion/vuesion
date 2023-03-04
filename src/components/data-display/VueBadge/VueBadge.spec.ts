@@ -1,6 +1,7 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
-import { badgeStatuses } from '@/components/prop-validators';
 import VueBadge from './VueBadge.vue';
+import { BadgeStatusValues } from '~/components/prop-types';
 
 describe('VueBadge.vue', () => {
   let harness: RenderResult;
@@ -20,16 +21,14 @@ describe('VueBadge.vue', () => {
   });
 
   test('renders badge statuses', async () => {
-    for (let i = 0; i < badgeStatuses.length; i++) {
-      const status = badgeStatuses[i];
+    for (let i = 0; i < BadgeStatusValues.length; i++) {
+      const status = BadgeStatusValues[i];
 
-      const { getByText, updateProps } = harness;
+      const { html, rerender } = harness;
 
-      await updateProps({ status });
+      await rerender({ status });
 
-      const el = getByText('VueBadge');
-
-      expect(el.classList.contains(status)).toBeTruthy();
+      expect(html()).toMatch(status);
     }
   });
 });

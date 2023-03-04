@@ -2,46 +2,39 @@
   <component :is="component" ref="image" />
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from '@vue/composition-api';
-import { getDomRef } from '@/composables/get-dom-ref';
-import { useIntersectionObserver } from '@/composables/use-intersection-observer';
+<script setup lang="ts">
+import { computed } from 'vue';
+import { getDomRef } from '~/composables/get-dom-ref';
+import { useIntersectionObserver } from '~/composables/use-intersection-observer';
 
-export default defineComponent({
-  name: 'VueImage',
-  components: {},
-  props: {
-    native: { type: Boolean, default: true },
-    src: { type: String, required: true },
-  },
-  setup(props) {
-    const image = getDomRef(null);
-    const component = computed(() => (props.native ? 'img' : 'div'));
-    const setImage = () => {
-      if (props.native) {
-        image.value.src = props.src;
-      } else {
-        image.value.style.backgroundImage = `url(${props.src})`;
-      }
-    };
+interface ImageProps {
+  native?: boolean;
+  src: string;
+}
 
-    useIntersectionObserver(image, (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.intersectionRatio > 0) {
-          setImage();
-          observer.disconnect();
-        }
-      });
+const props = withDefaults(defineProps<ImageProps>(), {
+  native: true,
+});
+const image = getDomRef<HTMLImageElement>(null);
+const component = computed(() => (props.native ? 'img' : 'div'));
+const setImage = () => {
+  if (props.native) {
+    image.value.src = props.src;
+  } else {
+    image.value.style.backgroundImage = `url(${props.src})`;
+  }
+};
 
-      if (!observer) {
-        setImage();
-      }
-    });
+useIntersectionObserver(image, (entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.intersectionRatio > 0) {
+      setImage();
+      observer?.disconnect();
+    }
+  });
 
-    return {
-      image,
-      component,
-    };
-  },
+  if (!observer) {
+    setImage();
+  }
 });
 </script>

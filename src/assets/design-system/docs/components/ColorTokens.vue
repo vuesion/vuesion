@@ -432,15 +432,11 @@
 </template>
 
 <script lang="ts">
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import ColorTokensSection from '@/assets/design-system/docs/components/ColorTokensSection.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import ColorTokensSection from '~/assets/design-system/docs/components/ColorTokensSection.vue';
 
 export default {
   name: 'ColorTokens',
   components: { ColorTokensSection, VueStack },
 };
 </script>
-
-<style lang="scss" module>
-@import '~@/assets/design-system';
-</style>

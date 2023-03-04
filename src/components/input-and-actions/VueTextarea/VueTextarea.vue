@@ -1,97 +1,130 @@
 <template>
-  <ValidationProvider v-slot="{ errors }" ref="validator" :vid="id" :name="name" :rules="validation" tag="div" slim>
-    <div :class="[$style.vueTextarea, disabled && $style.disabled, errors.length > 0 && $style.error]">
-      <vue-text
-        :for="id"
-        look="label"
-        :color="errors.length > 0 ? 'danger' : 'text-medium'"
-        :class="[$style.label, hideLabel && 'sr-only']"
-        as="label"
-      >
-        {{ label }}
-        <sup v-if="required">*</sup>
-      </vue-text>
+  <div :class="[$style.vueTextarea, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]">
+    <vue-text
+      :for="id"
+      look="label"
+      :color="errors.length > 0 ? 'danger' : 'text-medium'"
+      :class="[$style.label, hideLabel && 'sr-only']"
+      as="label"
+    >
+      {{ label }}
+      <sup v-if="required">*</sup>
+    </vue-text>
 
-      <textarea
-        :id="id"
-        ref="input"
-        :name="name"
-        :placeholder="placeholder"
-        :required="required"
-        :value="value"
-        :autocomplete="autocomplete"
-        :disabled="disabled"
-        :readonly="readonly"
-        :autofocus="autofocus"
-        v-bind="$attrs"
-        v-on="{
-          ...$listeners,
-          input: (e) => {
-            $emit('input', e.target.value);
-          },
-        }"
-      />
+    <textarea
+      :id="id"
+      ref="inputRef"
+      :name="name"
+      :value="value"
+      :placeholder="placeholder"
+      :required="required"
+      :disabled="disabled"
+      :readonly="readonly"
+      :autofocus="autofocus"
+      v-bind="$attrs"
+      @input="onInput"
+      @blur="onBlur"
+    />
 
-      <vue-text
-        :color="errors.length > 0 ? 'danger' : 'text-medium'"
-        :class="[$style.description, hideDescription && 'sr-only']"
-      >
-        {{ errors.length > 0 ? errorMessage : description }}
-      </vue-text>
-    </div>
-  </ValidationProvider>
+    <vue-text
+      :color="errors.length > 0 ? 'danger' : 'text-medium'"
+      :class="[$style.description, hideDescription && 'sr-only']"
+    >
+      {{ errors.length > 0 ? errorMessage : description }}
+    </vue-text>
+  </div>
 </template>
 
-<script lang="ts">
-import { ValidationProvider } from 'vee-validate';
-import { defineComponent } from '@vue/composition-api';
-import { useIntersectionObserver } from '@/composables/use-intersection-observer';
-import { getDomRef } from '@/composables/get-dom-ref';
-import VueText from '@/components/typography/VueText/VueText.vue';
+<script setup lang="ts">
+import { watch } from 'vue';
+import { useField } from 'vee-validate';
+import debounce from 'lodash-es/debounce.js';
+import { useIntersectionObserver } from '~/composables/use-intersection-observer';
+import { getDomRef } from '~/composables/get-dom-ref';
+import VueText from '~/components/typography/VueText/VueText.vue';
 
-export default defineComponent({
-  name: 'VueTextarea',
-  components: { VueText, ValidationProvider },
-  inheritAttrs: false,
-  props: {
-    id: { type: String, required: true },
-    name: { type: String, required: true },
-    label: { type: String, required: true },
-    hideLabel: { type: Boolean, default: false },
-    hideDescription: { type: Boolean, default: false },
-    required: { type: Boolean, default: false },
-    validation: { type: [String, Object], default: null },
-    value: { type: [String, Number], default: null },
-    disabled: { type: Boolean, default: false },
-    placeholder: { type: String, default: null },
-    autofocus: { type: Boolean, default: false },
-    readonly: { type: Boolean, default: false },
-    description: { type: String, default: '' },
-    errorMessage: { type: String, default: '' },
-    autocomplete: { type: String, default: 'off' },
+interface InputProps {
+  id: string;
+  name: string;
+  label: string;
+  hideLabel?: boolean;
+  hideDescription?: boolean;
+  required?: boolean;
+  validation?: string | any;
+  modelValue?: string | number;
+  disabled?: boolean;
+  placeholder?: string;
+  autofocus?: boolean;
+  readonly?: boolean;
+  description?: string;
+  errorMessage?: string;
+  debounce?: number;
+}
+
+const props = withDefaults(defineProps<InputProps>(), {
+  hideLabel: false,
+  hideDescription: false,
+  required: false,
+  validation: null,
+  modelValue: undefined,
+  disabled: false,
+  placeholder: undefined,
+  autofocus: false,
+  readonly: false,
+  description: '',
+  errorMessage: '',
+  debounce: undefined,
+});
+const emit = defineEmits(['debounced-input', 'update:modelValue', 'blur']);
+const inputRef = getDomRef<HTMLElement>(null);
+const debouncedInput = debounce((value: string) => emit('debounced-input', value), props.debounce || 0);
+const { errors, value, handleChange } = useField<string | number | null | undefined>(props.id, props.validation, {
+  initialValue: props.modelValue,
+  validateOnValueUpdate: false,
+  syncVModel: false,
+});
+const onInput = (e: InputEvent) => {
+  const value = (e.target as HTMLInputElement).value;
+
+  if (errors.value.length > 0) {
+    handleChange(value);
+  }
+
+  emit('update:modelValue', value, e);
+
+  if (props.debounce !== undefined) {
+    debouncedInput(value);
+  }
+};
+const onBlur = (e: InputEvent) => {
+  const value = (e.target as HTMLInputElement).value;
+
+  handleChange(value);
+
+  emit('blur', e);
+};
+
+watch(
+  () => props.modelValue,
+  (newModelValue) => {
+    value.value = newModelValue;
   },
-  setup(props) {
-    const input = getDomRef(null);
+);
 
-    useIntersectionObserver(input, (entries: IntersectionObserverEntry[]) => {
-      if (props.autofocus) {
-        entries.forEach((entry) => (entry.target as HTMLInputElement).focus());
-      }
-    });
-
-    return {
-      input,
-    };
-  },
+useIntersectionObserver(inputRef, (entries: IntersectionObserverEntry[]) => {
+  if (props.autofocus) {
+    entries.forEach((entry) => (entry.target as HTMLInputElement).focus());
+  }
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueTextarea {
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   textarea {
     outline: none !important;

@@ -3,6 +3,7 @@ node_modules
 storybook-static
 coverage
 .nuxt
+.output
 dist
 src/interfaces/graphql
 src/interfaces/swagger.ts

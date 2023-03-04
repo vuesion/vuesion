@@ -1,3 +1,4 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import VueTooltip from './VueTooltip.vue';
 
@@ -16,41 +17,37 @@ describe('VueTooltip.vue', () => {
   });
 
   test('renders tooltip on the top', () => {
-    const { getByText } = harness;
+    const { getByText, html } = harness;
     const tooltip = getByText('test');
 
     expect(tooltip.textContent).toBe('test');
-    expect(tooltip.classList.contains('vueTooltip')).toBeTruthy();
-    expect(tooltip.classList.contains('highlight')).toBeTruthy();
-    expect(tooltip.classList.contains('top')).toBeTruthy();
+    expect(html()).toMatch('top');
   });
 
   test('renders component on the bottom', async () => {
-    const { getByText, updateProps } = harness;
+    const { getByText, rerender, html } = harness;
 
-    await updateProps({ direction: 'bottom' });
+    await rerender({ direction: 'bottom' });
 
     const tooltip = getByText('test');
 
     expect(tooltip.textContent).toBe('test');
-    expect(tooltip.classList.contains('vueTooltip')).toBeTruthy();
-    expect(tooltip.classList.contains('highlight')).toBeTruthy();
-    expect(tooltip.classList.contains('bottom')).toBeTruthy();
+    expect(html()).toMatch('bottom');
   });
 
   test('should show and hide tooltip', async () => {
-    const { getByText } = harness;
+    const { getByText, html } = harness;
     const tooltip = getByText('test');
 
-    expect(tooltip.classList.contains('show')).toBeFalsy();
+    expect(html()).not.toMatch('show');
 
     await fireEvent.mouseEnter(tooltip);
 
-    expect(tooltip.classList.contains('show')).toBeTruthy();
+    expect(html()).toMatch('show');
 
     await fireEvent.mouseLeave(tooltip);
 
-    expect(tooltip.classList.contains('show')).toBeFalsy();
+    expect(html()).not.toMatch('show');
 
     /**
      * touch
@@ -58,31 +55,31 @@ describe('VueTooltip.vue', () => {
 
     await fireEvent.touchEnd(tooltip);
 
-    expect(tooltip.classList.contains('show')).toBeTruthy();
+    expect(html()).toMatch('show');
 
     await fireEvent.touchEnd(tooltip);
 
-    expect(tooltip.classList.contains('show')).toBeFalsy();
+    expect(html()).not.toMatch('show');
   });
 
   test('should not show the tooltip', async () => {
-    const { getByText, updateProps } = harness;
+    const { getByText, rerender, html } = harness;
 
-    await updateProps({ disabled: true });
+    await rerender({ disabled: true });
 
     const tooltip = getByText('test');
 
-    expect(tooltip.classList.contains('show')).toBeFalsy();
+    expect(html()).not.toMatch('show');
 
     await fireEvent.mouseEnter(tooltip);
 
-    expect(tooltip.classList.contains('show')).toBeFalsy();
+    expect(html()).not.toMatch('show');
 
     /**
      * touch
      */
 
     await fireEvent.touchEnd(tooltip);
-    expect(tooltip.classList.contains('show')).toBeFalsy();
+    expect(html()).not.toMatch('show');
   });
 });

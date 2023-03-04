@@ -3,7 +3,7 @@
     <transition-group name="list" tag="div">
       <vue-box v-for="toast in orderedToasts" :key="toast.id" padding="16" :class="[$style.toast, $style[toast.type]]">
         <vue-columns space="12" align-y="top">
-          <vue-column width="content">
+          <vue-column width="fit" :can-grow="false">
             <vue-text :color="toast.type">
               <vue-icon-info v-if="['info', 'success'].includes(toast.type)" />
               <vue-icon-exclamation v-if="['warning', 'danger'].includes(toast.type)" />
@@ -16,7 +16,7 @@
             </vue-stack>
           </vue-column>
 
-          <vue-column width="content">
+          <vue-column width="fit" :can-grow="false">
             <vue-text
               tabindex="0"
               aria-label="close"
@@ -24,7 +24,7 @@
               data-testid="toast-close-button"
               as="a"
               href="#"
-              @click.native.stop.prevent="removeToast(toast)"
+              @click.stop.prevent="removeToast(toast)"
             >
               <vue-icon-times />
             </vue-text>
@@ -35,62 +35,42 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, onMounted, ref } from '@vue/composition-api';
-import { getGUID } from '@vuesion/utils/dist/randomGenerator';
-import { EventBus } from '@/services/EventBus';
-import { IToast } from '@/interfaces/IToast';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueIconInfo from '@/components/icons/VueIconInfoCircle.vue';
-import VueIconTimes from '@/components/icons/VueIconTimes.vue';
-import VueIconExclamation from '@/components/icons/VueIconExclamation.vue';
+<script setup lang="ts">
+import { computed, onMounted, ref } from 'vue';
+import { EventBus } from '~/services/EventBus';
+import { IToast } from '~/interfaces/IToast';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueIconInfo from '~/components/icons/VueIconInfoCircle.vue';
+import VueIconTimes from '~/components/icons/VueIconTimes.vue';
+import VueIconExclamation from '~/components/icons/VueIconExclamation.vue';
+import { getGUID } from '~/components/utils';
 
-export default defineComponent({
-  name: 'VueToast',
-  components: {
-    VueIconExclamation,
-    VueIconTimes,
-    VueIconInfo,
-    VueText,
-    VueStack,
-    VueColumn,
-    VueColumns,
-    VueBox,
-  },
-  setup() {
-    const toasts = ref<IToast[]>([]);
-    const orderedToasts = computed<IToast[]>(() => toasts.value.slice(0).reverse());
-    const removeToast = (n: IToast) => {
-      toasts.value = toasts.value.filter((toast) => toast.id !== n.id);
-    };
-    const addToast = (n: IToast) => {
-      n.id = getGUID();
-      n.type = n.type || 'info';
-      n.displayTimeInMs = n.displayTimeInMs || 10000;
+const toasts = ref<IToast[]>([]);
+const orderedToasts = computed<IToast[]>(() => toasts.value.slice(0).reverse());
+const removeToast = (n: IToast) => {
+  toasts.value = toasts.value.filter((toast) => toast.id !== n.id);
+};
+const addToast = (n: IToast) => {
+  n.id = getGUID();
+  n.type = n.type || 'info';
+  n.displayTimeInMs = n.displayTimeInMs || 10000;
 
-      toasts.value.push(n);
+  toasts.value.push(n);
 
-      setTimeout(() => removeToast(n), n.displayTimeInMs);
-    };
+  setTimeout(() => removeToast(n), n.displayTimeInMs);
+};
 
-    onMounted(() => {
-      EventBus.$on('toast.add', addToast);
-    });
-
-    return {
-      orderedToasts,
-      removeToast,
-    };
-  },
+onMounted(() => {
+  EventBus.on('toast.add', addToast);
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueToast {
   position: fixed;

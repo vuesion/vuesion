@@ -1,3 +1,4 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import VueInline from './VueInline.vue';
 
@@ -6,7 +7,6 @@ describe('VueInline.vue', () => {
 
   beforeEach(() => {
     harness = render(VueInline, {
-      stubs: ['nuxt-link'],
       slots: {
         default: '<div>content</div>',
       },
@@ -20,62 +20,62 @@ describe('VueInline.vue', () => {
   });
 
   test('renders component with responsive spacings', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ space: [8, 16, 24, 32, 64] });
+    await rerender({ space: [8, 16, 24, 32, 64] });
 
-    expect(html()).toMatch('space-8 space-tp-16 space-tl-24 space-sd-32 space-ld-64');
+    expect(html()).toMatch('gap-8 gap-tp-16 gap-tl-24 gap-sd-32 gap-ld-64');
   });
 
   test('renders component with responsive alignments', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ align: ['left', 'center', 'right'] });
+    await rerender({ alignX: ['left', 'center', 'right'] });
 
-    expect(html()).toMatch('align-left align-tp-center align-tl-right');
+    expect(html()).toMatch('justify-left justify-tp-center justify-tl-right');
   });
 
   test('renders component with stacked elements below tabletPortrait', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ stackPhone: true });
+    await rerender({ stackPhone: true });
 
-    expect(html()).toMatch('stack');
+    expect(html()).toMatch('flex-col');
   });
 
   test('renders component with stacked elements below tabletLandscape', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ stackPhone: true, stackTabletPortrait: true });
+    await rerender({ stackPhone: true, stackTabletPortrait: true });
 
-    expect(html()).toMatch('stack stack-tp');
+    expect(html()).toMatch('flex-col flex-col-tp');
   });
 
   test('renders component with stacked elements below smallDesktop', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ stackPhone: true, stackTabletPortrait: true, stackTabletLandscape: true });
+    await rerender({ stackPhone: true, stackTabletPortrait: true, stackTabletLandscape: true });
 
-    expect(html()).toMatch('stack stack-tp stack-tl');
+    expect(html()).toMatch('flex-col flex-col-tp flex-col-tl');
   });
 
   test('renders component with stacked elements below largeDesktop', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({
+    await rerender({
       stackPhone: true,
       stackTabletPortrait: true,
       stackTabletLandscape: true,
       stackSmallDesktop: true,
     });
 
-    expect(html()).toMatch('stack stack-tp stack-tl stack-sd');
+    expect(html()).toMatch('flex-col flex-col-tp flex-col-tl flex-col-sd');
   });
 
   test('renders component with stacked elements above largeDesktop', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({
+    await rerender({
       stackPhone: true,
       stackTabletPortrait: true,
       stackTabletLandscape: true,
@@ -83,26 +83,27 @@ describe('VueInline.vue', () => {
       stackLargeDesktop: true,
     });
 
-    expect(html()).toMatch('stack stack-tp stack-tl stack-sd stack-ld');
+    expect(html()).toMatch('flex-col flex-col-tp flex-col-tl flex-col-sd flex-col-ld');
   });
 
-  test('renders component with responsive revert', async () => {
-    const { html, updateProps } = harness;
+  test('renders component with responsive reverse', async () => {
+    const { html, rerender } = harness;
 
-    await updateProps({
-      revert: [true, true, true],
+    await rerender({
+      reverse: [true, true, true],
+      stackPhone: true,
     });
 
-    expect(html()).toMatch('vueInline space-24 revert revert-tp revert-tl revert-sd revert-ld');
+    expect(html()).toMatch('flex-col-reverse flex-row-reverse-tp flex-row-reverse-tl');
   });
 
   test('renders component with nowrap', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({
+    await rerender({
       noWrap: true,
     });
 
-    expect(html()).toMatch('vueInline noWrap');
+    expect(html()).toMatch('inline-flex no-wrap');
   });
 });

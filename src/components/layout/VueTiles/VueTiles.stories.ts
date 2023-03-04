@@ -1,90 +1,43 @@
-import { storiesOf } from '@storybook/vue';
-import VueBadge from '@/components/data-display/VueBadge/VueBadge.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import { Story } from '@storybook/vue3';
 import VueTiles from './VueTiles.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
-const story = storiesOf('Foundation|Layout/Tiles', module) as any;
+export default {
+  title: 'Foundation/Layout',
+  component: VueTiles,
+};
 
-story.add(
-  'With responsive columns and spacings',
-  () => ({
-    components: { VueTiles, VueBox, VueBadge },
-    template: `<vue-box :padding="[8, 16, 32, 48, 64]">
-    <vue-tiles :columns="[1, 2, 3, 4, 6]" :space="[8, 16, 32, 48, 64]" class="border">
-      <vue-badge>Test</vue-badge>
-      <vue-badge>Test</vue-badge>
-      <vue-badge>Test</vue-badge>
-      <vue-badge>Test</vue-badge>
-      <vue-badge>Test</vue-badge>
-      <vue-badge>Test</vue-badge>
-      <vue-badge>Test</vue-badge>
-      <vue-badge>Test</vue-badge>
-      <vue-badge>Test</vue-badge>
-      <vue-badge>Test</vue-badge>
-      <vue-badge>Test</vue-badge>
-      <vue-badge>Test</vue-badge>
-    </vue-tiles>
-    </vue-box>`,
-  }),
-  {
-    info: {
-      components: { VueTiles },
-    },
+const Template: Story = (args) => ({
+  components: { VueTiles, ComponentDocs },
+  setup() {
+    return { args };
   },
-);
-
-story.add(
-  'With responsive vertical and horizontal spacings',
-  () => ({
-    components: { VueTiles, VueBox, VueBadge },
-    template: `<vue-box :padding="[8, 16, 32, 48, 64]">
-  <vue-tiles columns="2" :vertical-space="[8, 24]" :horizontal-space="[4, 24]" class="border">
-    <vue-badge>Test</vue-badge>
-    <vue-badge>Test</vue-badge>
-    <vue-badge>Test</vue-badge>
-    <vue-badge>Test</vue-badge>
-    <vue-badge>Test</vue-badge>
-    <vue-badge>Test</vue-badge>
-    <vue-badge>Test</vue-badge>
-    <vue-badge>Test</vue-badge>
-    <vue-badge>Test</vue-badge>
-    <vue-badge>Test</vue-badge>
-    <vue-badge>Test</vue-badge>
-    <vue-badge>Test</vue-badge>
+  template: `<component-docs
+      component-name="Tiles"
+      usage="The Tiles component allows you to render a grid of elements.
+You can change the vertical space, 
+horizontal space and amount of columns oer viewport."
+  >
+  <vue-tiles v-bind="args" style="border: 1px solid var(--brand-border-default-medium);">
+    <span>Lorem Ipsum</span>
+    <span>Lorem Ipsum</span>
+    <span>Lorem Ipsum</span>
+    <span>Lorem Ipsum</span>
+    <span>Lorem Ipsum</span>
+    <span>Lorem Ipsum</span>
+    <span>Lorem Ipsum</span>
+    <span>Lorem Ipsum</span>
+    <span>Lorem Ipsum</span>
+    <span>Lorem Ipsum</span>
   </vue-tiles>
-</vue-box>`,
-  }),
-  {
-    info: {
-      components: { VueTiles },
-    },
-  },
-);
+  </component-docs>`,
+});
 
-story.add(
-  'As list element',
-  () => ({
-    components: { VueTiles, VueBox, VueBadge },
-    template: `<vue-box :padding="[8, 16, 32, 48, 64]">
-    <vue-tiles as="ul" :columns="[1, 2, 3, 4, 6]" :space="[8, 16, 32, 48, 64]" class="border">
-      <li>Test</li>
-      <li>Test</li>
-      <li>Test</li>
-      <li>Test</li>
-      <li>Test</li>
-      <li>Test</li>
-      <li>Test</li>
-      <li>Test</li>
-      <li>Test</li>
-      <li>Test</li>
-      <li>Test</li>
-      <li>Test</li>
-    </vue-tiles>
-    </vue-box>`,
-  }),
-  {
-    info: {
-      components: { VueTiles },
-    },
-  },
-);
+export const Tiles = Template.bind({});
+
+Tiles.args = {
+  as: 'div',
+  verticalSpace: ['8', '16', '24', '48'],
+  horizontalSpace: ['16', '16', '48', '8'],
+  columns: [1, 2, 3, 5],
+};

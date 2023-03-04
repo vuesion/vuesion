@@ -55,11 +55,7 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 - [i18n support](https://i18n.nuxtjs.org/)
 - [Authentication module](https://auth.nuxtjs.org/)
 - [Axios module](https://axios.nuxtjs.org/)
-- [Vue-Apollo module](https://github.com/nuxt-community/apollo-module)
-  - with [apollo-composable](https://v4.apollo.vuejs.org/)
-  - integrated with Authentication- and Axios module
 - [PWA module](https://pwa.nuxtjs.org/)
-- [State management with vuex](https://vuex.vuejs.org/)
 - Code generators for
   - components
   - pages
@@ -74,7 +70,6 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
   - [viewport](https://storybook.js.org/addons/@storybook/addon-viewport/)
   - [theme-switcher](https://github.com/vuesion/packages/tree/master/packages/storybook-theme-switcher)
 - Form validation with [vee-validate](https://vee-validate.logaretm.com/v3)
-- [Composition-api module](https://composition-api.nuxtjs.org/)
 - [Anime.js](https://animejs.com/) integration
 
 # Support this project
@@ -147,14 +142,11 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 # References
 
 - [nuxt](https://nuxtjs.org/)
-- [nuxt/auth](https://auth.nuxtjs.org/guide/setup/)
-- [nuxt/axios](https://axios.nuxtjs.org/)
-- [nuxt/composition-api](https://composition-api.nuxtjs.org/)
+- [@sidebase/nuxt-auth](https://sidebase.io/nuxt-auth/getting-started)
 - [nuxt/pwa](https://pwa.nuxtjs.org/)
 - [nuxt/i18n](https://i18n.nuxtjs.org/)
-- [nuxt/apollo](https://github.com/nuxt-community/apollo-module)
 - [Storybook](https://storybook.js.org/)
-- [jest](https://jestjs.io/)
+- [vitest](https://vitest.dev/)
 - [cypress.io](https://www.cypress.io/)
 - [testing-library](https://testing-library.com/docs/vue-testing-library/intro/)
 - [vee-validate](https://vee-validate.logaretm.com/v3)

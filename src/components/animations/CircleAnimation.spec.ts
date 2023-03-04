@@ -1,13 +1,14 @@
+import { describe, test, vi, expect } from 'vitest';
 import { CircleAnimation } from './CircleAnimation';
 
 describe('CircleAnimation', () => {
   test('should animate', () => {
     const context: any = {
-      clearRect: jest.fn(),
-      beginPath: jest.fn(),
-      arc: jest.fn(),
-      fill: jest.fn(),
-      closePath: jest.fn(),
+      clearRect: vi.fn(),
+      beginPath: vi.fn(),
+      arc: vi.fn(),
+      fill: vi.fn(),
+      closePath: vi.fn(),
     };
     const canvas: any = {
       width: 300,
@@ -39,7 +40,7 @@ describe('CircleAnimation', () => {
     const canvas: any = {
       width: 300,
       height: 300,
-      getContext: jest.fn().mockReturnValue(null),
+      getContext: vi.fn().mockReturnValue(null),
     };
 
     CircleAnimation(canvas);

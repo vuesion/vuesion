@@ -23,64 +23,51 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue } from 'vue/types/vue';
-import { defineComponent, ref, provide, onBeforeUnmount } from '@vue/composition-api';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
+<script setup lang="ts">
+import { ref, provide, onBeforeUnmount, ComponentPublicInstance } from 'vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
 
-export default defineComponent({
-  name: 'VueTabGroup',
-  components: { VueBox, VueText },
-  setup() {
-    const tabs = ref<Array<Vue>>([]);
-    const currentTab = ref(0);
-    const tabHeader = ref<Array<{ idx: number; name: string; icon: string }>>([]);
-    const changeTab = (idx: number) => {
-      currentTab.value = idx;
-      handleTabs();
-    };
-    const handleTabs = () => {
-      tabs.value.forEach((tab: any) => {
-        tab.$data.active = tab.$data.idx === currentTab.value;
-      });
-    };
-    const register = (tab: any) => {
-      tab.$data.idx = tabs.value.length;
+const tabs = ref<Array<ComponentPublicInstance>>([]);
+const currentTab = ref(0);
+const tabHeader = ref<Array<{ idx: number; name: string; icon: string }>>([]);
+const changeTab = (idx: number) => {
+  currentTab.value = idx;
+  handleTabs();
+};
+const handleTabs = () => {
+  tabs.value.forEach((tab: any) => {
+    tab.$data.active = tab.$data.idx === currentTab.value;
+  });
+};
+const register = (tab: any) => {
+  tab.$data.idx = tabs.value.length;
 
-      if (tab.$data.active) {
-        currentTab.value = tab.$data.idx;
-      }
+  if (tab.$data.active) {
+    currentTab.value = tab.$data.idx;
+  }
 
-      tabs.value.push(tab);
-      tabHeader.value.push({
-        idx: tab.$data.idx,
-        name: tab.$props.name,
-        icon: tab.$props.icon,
-      });
+  tabs.value.push(tab);
+  tabHeader.value.push({
+    idx: tab.$data.idx,
+    name: tab.$props.name,
+    icon: tab.$props.icon,
+  });
 
-      handleTabs();
-    };
+  handleTabs();
+};
 
-    provide('register', register);
+provide('register', register);
 
-    onBeforeUnmount(() => {
-      tabs.value = [];
-      tabHeader.value = [];
-      currentTab.value = 0;
-    });
-
-    return {
-      currentTab,
-      tabHeader,
-      changeTab,
-    };
-  },
+onBeforeUnmount(() => {
+  tabs.value = [];
+  tabHeader.value = [];
+  currentTab.value = 0;
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueTabGroup {
   .tabs {

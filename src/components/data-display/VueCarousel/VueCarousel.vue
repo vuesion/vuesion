@@ -39,96 +39,88 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, onBeforeUnmount, onMounted, ref, watch } from '@vue/composition-api';
-import { ICarouselImage } from '@/components/data-display/VueCarousel/ICarouselImage';
-import FadeAnimation from '@/components/animations/FadeAnimation/FadeAnimation.vue';
-import VuePagination from '@/components/navigation/VuePagination/VuePagination.vue';
+<script setup lang="ts">
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { ICarouselImage } from '~/components/data-display/VueCarousel/ICarouselImage';
+import FadeAnimation from '~/components/animations/FadeAnimation/FadeAnimation.vue';
+import VuePagination from '~/components/navigation/VuePagination/VuePagination.vue';
 
-export default defineComponent({
-  name: 'VueCarousel',
-  components: { VuePagination, FadeAnimation },
-  model: {
-    prop: 'selectedSlide',
-    event: 'change-slide',
-  },
-  props: {
-    images: { type: [Array, Array as () => Array<ICarouselImage>], default: (): Array<ICarouselImage> => [] },
-    intervalInSeconds: { type: Number, default: 5 },
-    selectedSlide: { type: Number, default: 1 },
-    minHeight: { type: Number, default: 500 },
-    showIndicator: { type: Boolean, default: true },
-    showPagination: { type: Boolean, default: false },
-  },
-  setup(props, { emit }) {
-    const images = computed<Array<ICarouselImage>>(() => props.images as Array<ICarouselImage>);
-    const interval = computed<number>(() => props.intervalInSeconds * 1000);
-    const selectedSlide = computed<number>(() => props.selectedSlide);
-    const currentSlide = ref<number>(props.selectedSlide - 1);
-    const maxSlides = computed<number>(() => images.value.length);
-    const intervalInstance = ref<any>(null);
-    const pause = ref(false);
-    const preloadedImages = ref([]);
-    const isActiveSlide = (idx: number) => currentSlide.value === idx;
-    const changeSlide = (newSlide: number, fromPagination = false) => {
-      if (fromPagination === false && pause.value) {
-        return;
-      }
+interface CarouselProps {
+  images?: Array<ICarouselImage>;
+  intervalInSeconds?: number;
+  selectedSlide?: number;
+  minHeight?: number;
+  showIndicator?: boolean;
+  showPagination?: boolean;
+}
 
-      if (newSlide === maxSlides.value) {
-        currentSlide.value = 0;
-      } else if (newSlide < 0) {
-        currentSlide.value = maxSlides.value - 1;
-      } else {
-        currentSlide.value = newSlide;
-      }
+const props = withDefaults(defineProps<CarouselProps>(), {
+  images: () => [],
+  intervalInSeconds: 5,
+  selectedSlide: 1,
+  minHeight: 500,
+  showIndicator: true,
+  showPagination: false,
+});
+const emit = defineEmits(['update:selectedSlide']);
+const images = computed<Array<ICarouselImage>>(() => props.images as Array<ICarouselImage>);
+const interval = computed<number>(() => props.intervalInSeconds * 1000);
+const selectedSlide = computed<number>(() => props.selectedSlide);
+const currentSlide = ref<number>(props.selectedSlide - 1);
+const maxSlides = computed<number>(() => images.value.length);
+const intervalInstance = ref<any>(null);
+const pause = ref(false);
+const preloadedImages = ref<Array<HTMLImageElement>>([]);
+const isActiveSlide = (idx: number) => currentSlide.value === idx;
+const changeSlide = (newSlide: number, fromPagination = false) => {
+  if (fromPagination === false && pause.value) {
+    return;
+  }
 
-      emit('change-slide', currentSlide.value + 1);
-    };
-    const createIntervalInstance = () => {
-      if (images.value.length <= 1) {
-        return;
-      }
-      clearInterval(intervalInstance.value);
-      intervalInstance.value = setInterval(() => changeSlide(currentSlide.value + 1), interval.value);
-    };
-    const preloadImages = () => {
-      images.value.forEach((image: ICarouselImage) => {
-        const imageInstance: HTMLImageElement = new Image();
+  if (newSlide === maxSlides.value) {
+    currentSlide.value = 0;
+  } else if (newSlide < 0) {
+    currentSlide.value = maxSlides.value - 1;
+  } else {
+    currentSlide.value = newSlide;
+  }
 
-        imageInstance.src = image.url;
-        imageInstance.alt = image.alt;
-        imageInstance.title = image.copyright;
+  emit('update:selectedSlide', currentSlide.value + 1);
+};
+const createIntervalInstance = () => {
+  if (images.value.length <= 1) {
+    return;
+  }
+  clearInterval(intervalInstance.value);
+  intervalInstance.value = setInterval(() => changeSlide(currentSlide.value + 1), interval.value);
+};
+const preloadImages = () => {
+  images.value.forEach((image: ICarouselImage) => {
+    const imageInstance: HTMLImageElement = new Image();
 
-        preloadedImages.value.push(imageInstance);
-      });
-      createIntervalInstance();
-    };
+    imageInstance.src = image.url;
+    imageInstance.alt = image.alt || '';
+    imageInstance.title = image.copyright || '';
 
-    onMounted(() => preloadImages());
-    onBeforeUnmount(() => clearInterval(intervalInstance.value));
+    preloadedImages.value.push(imageInstance);
+  });
+  createIntervalInstance();
+};
 
-    watch(images, () => preloadImages());
-    watch(interval, () => createIntervalInstance());
-    watch(selectedSlide, () => {
-      clearInterval(intervalInstance.value);
-      currentSlide.value = selectedSlide.value - 1;
-      createIntervalInstance();
-    });
+onMounted(() => preloadImages());
+onBeforeUnmount(() => clearInterval(intervalInstance.value));
 
-    return {
-      currentSlide,
-      pause,
-      preloadedImages,
-      isActiveSlide,
-      changeSlide,
-    };
-  },
+watch(images, () => preloadImages());
+watch(interval, () => createIntervalInstance());
+watch(selectedSlide, () => {
+  clearInterval(intervalInstance.value);
+  currentSlide.value = selectedSlide.value - 1;
+  createIntervalInstance();
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueCarousel {
   position: relative;

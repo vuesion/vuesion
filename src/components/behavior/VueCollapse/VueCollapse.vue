@@ -4,18 +4,11 @@
   </collapse-animation>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import CollapseAnimation from '@/components/animations/CollapseAnimation/CollapseAnimation.vue';
+<script setup lang="ts">
+import CollapseAnimation from '~/components/animations/CollapseAnimation/CollapseAnimation.vue';
 
-export default defineComponent({
-  name: 'VueCollapse',
-  components: {
-    CollapseAnimation,
-  },
-  props: {
-    duration: { type: Number, default: 0 },
-    show: { type: Boolean, default: true },
-  },
+defineProps({
+  duration: { type: Number, default: 0 },
+  show: { type: Boolean, default: true },
 });
 </script>

@@ -1,30 +1,28 @@
-import { storiesOf } from '@storybook/vue';
+import { Story } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
-import { i18n } from '@/test/i18n';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 import FormExample from './FormExample.vue';
+import VueToast from '~/components/data-display/VueToast/VueToast.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
-const story = storiesOf('Forms|FormExample', module) as any;
+export default {
+  title: 'Forms/FormExample',
+  component: FormExample,
+};
 
-story.add(
-  'Default',
-  () => ({
-    i18n,
-    components: { ComponentDocs, FormExample },
-    methods: {
-      onSubmit: action('@submit'),
-    },
-    template: `<component-docs
+const Template: Story = (args) => ({
+  components: { FormExample, VueToast, ComponentDocs },
+  setup() {
+    return { args, onSubmit: action('@submit') };
+  },
+  template: `<component-docs
       component-name="FormExample"
       usage="Used as an example for different form validation scenarios."
       story="Display FormExample."
-    >
-      <form-example @submit="onSubmit" />
-    </component-docs>`,
-  }),
-  {
-    info: {
-      components: { FormExample },
-    },
-  },
-);
+  >
+  <vue-toast />
+  <form-example @submit="onSubmit" />
+  </component-docs>`,
+});
+
+export const Default = Template.bind({});
+Default.args = {};

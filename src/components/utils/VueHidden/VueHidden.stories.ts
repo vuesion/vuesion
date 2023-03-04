@@ -1,43 +1,35 @@
-import { storiesOf } from '@storybook/vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import { Story } from '@storybook/vue3';
 import VueHidden from './VueHidden.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
-const story = storiesOf('Foundation|Utils/Hidden', module) as any;
+export default {
+  title: 'Foundation/Utils',
+  component: VueHidden,
+};
 
-story.add(
-  'Hide content on phone and large desktop',
-  () => ({
-    components: { VueHidden, ComponentDocs },
-    template: `<component-docs
+const Template: Story = (args) => ({
+  components: { VueHidden, ComponentDocs },
+  setup() {
+    return { args };
+  },
+  template: `<component-docs
       component-name="Hidden"
       usage="Use to hide content in different viewports."
-      story="Hide content on phone and large desktop."
-    >
-    <vue-hidden phone large-desktop>
-    Only visible on tabletPortrait, tabletLandscape and smallDesktop
-    </vue-hidden>
-    </component-docs>`,
-  }),
-  {
-    info: {
-      components: { VueHidden },
-    },
-  },
-);
+  >
+  <vue-hidden v-bind="args">
+    Text content, HTML elements or components go here.
+  </vue-hidden>
+  </component-docs>`,
+});
 
-story.add(
-  'Show content only for screen readers',
-  () => ({
-    components: { VueHidden, ComponentDocs },
-    template: `<component-docs
-      story="Show content only for screen readers. Open the inspector to see this content."
-    >
-      <vue-hidden on-screen>Only visible for screen readers</vue-hidden>
-    </component-docs>`,
-  }),
-  {
-    info: {
-      components: { VueHidden },
-    },
-  },
-);
+export const Hidden = Template.bind({});
+
+Hidden.args = {
+  as: 'div',
+  phone: false,
+  tabletPortrait: false,
+  tabletLandscape: false,
+  smallDesktop: false,
+  largeDesktop: false,
+  onScreen: false,
+};

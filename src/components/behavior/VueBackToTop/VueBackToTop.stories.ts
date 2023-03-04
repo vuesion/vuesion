@@ -1,26 +1,32 @@
-import { storiesOf } from '@storybook/vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
-import { i18n } from '@/test/i18n';
+import { Story } from '@storybook/vue3';
 import VueBackToTop from './VueBackToTop.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
-const story = storiesOf('Behavior|BackToTop', module) as any;
+export default {
+  title: 'Behavior/BackToTop',
+  component: VueBackToTop,
+  argTypes: {},
+};
 
-story.add(
-  'Default',
-  () => ({
-    i18n,
-    components: { VueBackToTop, ComponentDocs },
-    template: `<component-docs
+const Template: Story = (args) => ({
+  components: {
+    VueBackToTop,
+    ComponentDocs,
+  },
+  setup() {
+    return { args };
+  },
+  template: `<component-docs
       component-name="BackToTop"
       usage="A button to return to the top of the page allows the user to quickly return to the top of the page."
       story="To see the back-to-top-button please scroll down to the end of the page and start scrolling up again."
-    >
-    <div :style="{height: '6000px'}"><vue-back-to-top /></div>
-    </component-docs>`,
-  }),
-  {
-    info: {
-      components: { VueBackToTop },
-    },
-  },
-);
+  >
+  <div :style="{height: '6000px'}"><vue-back-to-top v-bind="args" /></div>
+  </component-docs>`,
+});
+
+export const Default = Template.bind({});
+
+Default.args = {
+  ariaLabel: 'Back to top',
+};

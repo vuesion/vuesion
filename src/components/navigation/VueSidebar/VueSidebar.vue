@@ -6,19 +6,13 @@
   </vue-box>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-
-export default defineComponent({
-  name: 'VueSidebar',
-  components: { VueStack, VueBox },
-});
+<script setup lang="ts">
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueSidebar {
   z-index: $sidebar-index;

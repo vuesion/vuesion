@@ -1,31 +1,35 @@
-import { storiesOf } from '@storybook/vue';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import { Story } from '@storybook/vue3';
 import VueMarkdown from './VueMarkdown.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
-const story = storiesOf('Data display|Markdown', module) as any;
+export default {
+  title: 'Data Display/Markdown',
+  component: VueMarkdown,
+  argTypes: {},
+};
 
-story.add(
-  'Default',
-  () => ({
-    components: { ComponentDocs, VueMarkdown },
-    template: `<component-docs
+const Template: Story = (args) => ({
+  components: {
+    VueMarkdown,
+    ComponentDocs,
+  },
+
+  setup() {
+    return { args };
+  },
+
+  template: `<component-docs
       component-name="Markdown"
       usage="Display markdown content as HTML."
       story="Display markdown content."
-    >
-      <vue-markdown>
-# headline 1
-## headline 2
+  >
+    <vue-markdown v-bind="args" />
+  </component-docs>`,
+});
 
-- test
-- test
-- test
-      </vue-markdown>
-    </component-docs>`,
-  }),
-  {
-    info: {
-      components: { VueMarkdown },
-    },
-  },
-);
+export const Default = Template.bind({});
+
+Default.args = {
+  useRouter: true,
+  markdown: '# headline 1\n## headline 2\n- test\n- test\n- test\n[test](/test)',
+};

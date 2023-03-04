@@ -1,3 +1,4 @@
+import { describe, beforeEach, test } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import VueCard from './VueCard.vue';
 

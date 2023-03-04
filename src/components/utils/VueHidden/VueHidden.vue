@@ -15,29 +15,31 @@
   </component>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-
-export default defineComponent({
-  name: 'VueHidden',
-  components: {},
-  props: {
-    as: { type: String, default: 'div' },
-    phone: { type: Boolean, default: false },
-    tabletPortrait: { type: Boolean, default: false },
-    tabletLandscape: { type: Boolean, default: false },
-    smallDesktop: { type: Boolean, default: false },
-    largeDesktop: { type: Boolean, default: false },
-    onScreen: { type: Boolean, default: false },
+<script setup lang="ts">
+withDefaults(
+  defineProps<{
+    as?: string;
+    phone?: boolean;
+    tabletPortrait?: boolean;
+    tabletLandscape?: boolean;
+    smallDesktop?: boolean;
+    largeDesktop?: boolean;
+    onScreen?: boolean;
+  }>(),
+  {
+    as: 'div',
+    phone: false,
+    tabletPortrait: false,
+    tabletLandscape: false,
+    smallDesktop: false,
+    largeDesktop: false,
+    onScreen: false,
   },
-  setup() {
-    return {};
-  },
-});
+);
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import 'assets/_design-system.scss';
 
 .vueHidden {
   &.onScreen {

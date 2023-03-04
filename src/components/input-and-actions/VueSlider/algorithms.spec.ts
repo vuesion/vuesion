@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { geometric, linear, log } from './algorithms';
 
 describe('VueSlider Algorithms', () => {

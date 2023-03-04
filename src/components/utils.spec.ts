@@ -1,13 +1,28 @@
+import { describe, test, expect } from 'vitest';
 import {
-  applyResponsiveClasses,
-  decorateChildComponents,
-  getComponentElementType,
+  getCssSpacingClasses,
+  getFloatInRange,
+  getGUID,
+  getIntInRange,
+  getResponsiveCssClasses,
+  isNullOrUndefined,
   parseCssSpacingProp,
   parseResponsivePropValue,
-} from '@/components/utils';
-import { IBreakpoints } from '@/interfaces/IBreakpoints';
+} from '~/components/utils';
 
 describe('component utils', () => {
+  describe('isNullOrUndefined', () => {
+    test('should return true if null or undefined', () => {
+      expect(isNullOrUndefined(null)).toBeTruthy();
+      expect(isNullOrUndefined(undefined)).toBeTruthy();
+    });
+
+    test('should return true if "null" or "undefined"', () => {
+      expect(isNullOrUndefined('null')).toBeTruthy();
+      expect(isNullOrUndefined('undefined')).toBeTruthy();
+    });
+  });
+
   describe('parseCssSpacingProp', () => {
     test('should handle null value', () => {
       expect(parseCssSpacingProp(null)).toEqual({ top: null, right: null, bottom: null, left: null });
@@ -92,220 +107,111 @@ describe('component utils', () => {
     });
   });
 
-  describe('decorateChildComponents', () => {
-    test('should handle null as child value', () => {
-      expect(
-        decorateChildComponents(null, (node) => {
-          node.tag = 'p';
-          return node;
-        }),
-      ).toEqual(null);
+  describe('getResponsiveCssClasses', () => {
+    test('should return empty array if $style argument is not defined', () => {
+      expect(getResponsiveCssClasses(null, {}, 'align')).toEqual([]);
     });
 
-    test('should handle null as callback value', () => {
-      const nodes: any[] = [
-        { id: 1, tag: 'div' },
-        { id: 2, tag: 'div' },
-      ];
-      expect(decorateChildComponents(nodes, null)).toEqual(nodes);
+    test('should return empty array if breakPointValues argument is not defined', () => {
+      expect(getResponsiveCssClasses({}, null, 'align')).toEqual([]);
     });
 
-    test('should change each child based on a callback', () => {
-      const nodes: any[] = [
-        { id: 1, tag: 'div' },
-        { id: 2, tag: 'div' },
-      ];
+    test('should return empty array if classPrefix argument is not defined', () => {
+      expect(getResponsiveCssClasses({}, {}, null)).toEqual([]);
+    });
+
+    test('should return css classes for breakpoint values that are not null', () => {
       expect(
-        decorateChildComponents(nodes, (node) => {
-          node.tag = 'p';
-          return node;
-        }),
-      ).toEqual([
-        { id: 1, tag: 'p' },
-        { id: 2, tag: 'p' },
-      ]);
+        getResponsiveCssClasses(
+          {
+            'alignx-start': 'alignx-start',
+            'alignx-tp-center': 'alignx-tp-center',
+            'alignx-tl-end': 'alignx-tl-end',
+          },
+          {
+            phone: 'start',
+            tabletPortrait: 'center',
+            tabletLandscape: 'end',
+            smallDesktop: null,
+            largeDesktop: null,
+          },
+          'alignx',
+        ),
+      ).toEqual(['alignx-start', 'alignx-tp-center', 'alignx-tl-end']);
+    });
+
+    test('should return css classes for breakpoint values that are not null without attaching the breakpoint value', () => {
+      expect(
+        getResponsiveCssClasses(
+          { fit: 'fit', 'fit-tp': 'fit-tp', 'fit-tl': 'fit-tl', 'fit-sd': 'fit-sd', 'fit-ld': 'fit-ld' },
+          {
+            phone: true,
+            tabletPortrait: true,
+            tabletLandscape: true,
+            smallDesktop: true,
+            largeDesktop: null,
+          },
+          'fit',
+          false,
+        ),
+      ).toEqual(['fit', 'fit-tp', 'fit-tl', 'fit-sd']);
     });
   });
 
-  describe('applyResponsiveClasses', () => {
-    test('should handle null as $style', () => {
-      const $style: any = null;
-      const breakPointValues: IBreakpoints = {
-        phone: 8,
-        tabletPortrait: 8,
-        tabletLandscape: 8,
-        smallDesktop: 8,
-        largeDesktop: 8,
-      };
-
-      expect(applyResponsiveClasses($style, {}, breakPointValues, 'space')).toEqual({});
+  describe('getCssSpacingClasses', () => {
+    test('should return spacing classes for all directions that are not null without breakpoint prefix', () => {
+      expect(
+        getCssSpacingClasses(
+          {
+            'pt-8': 'pt-8',
+            'pr-8': 'pr-8',
+            'pb-8': 'pb-8',
+            'pl-8': 'pl-8',
+          },
+          {
+            top: '8',
+            right: '8',
+            bottom: '8',
+            left: 'null',
+          },
+          'p',
+        ),
+      ).toEqual(['pt-8', 'pr-8', 'pb-8']);
     });
 
-    test('should handle null as classesObject', () => {
-      const $style: any = {
-        'space-8': 'space-8',
-        'space-tp-8': 'space-tp-8',
-        'space-tl-8': 'space-tl-8',
-        'space-sd-8': 'space-sd-8',
-        'space-ld-8': 'space-ld-8',
-        fit: 'fit',
-        'fit-tp': 'fit-tp',
-        'fit-tl': 'fit-tl',
-        'fit-sd': 'fit-sd',
-        'fit-ld': 'fit-ld',
-      };
-      const breakPointValues: IBreakpoints = {
-        phone: 8,
-        tabletPortrait: 8,
-        tabletLandscape: 8,
-        smallDesktop: 8,
-        largeDesktop: 8,
-      };
-
-      expect(applyResponsiveClasses($style, null, breakPointValues, 'space')).toEqual({
-        'space-8': true,
-        'space-ld-8': true,
-        'space-sd-8': true,
-        'space-tl-8': true,
-        'space-tp-8': true,
-      });
-    });
-
-    test('should handle null as breakPointValues', () => {
-      const $style: any = {
-        'space-8': 'space-8',
-        'space-tp-8': 'space-tp-8',
-        'space-tl-8': 'space-tl-8',
-        'space-sd-8': 'space-sd-8',
-        'space-ld-8': 'space-ld-8',
-        fit: 'fit',
-        'fit-tp': 'fit-tp',
-        'fit-tl': 'fit-tl',
-        'fit-sd': 'fit-sd',
-        'fit-ld': 'fit-ld',
-      };
-
-      expect(applyResponsiveClasses($style, {}, null, 'space')).toEqual({});
-    });
-
-    test('should handle null as classPrefix', () => {
-      const $style: any = {
-        'space-8': 'space-8',
-        'space-tp-8': 'space-tp-8',
-        'space-tl-8': 'space-tl-8',
-        'space-sd-8': 'space-sd-8',
-        'space-ld-8': 'space-ld-8',
-        fit: 'fit',
-        'fit-tp': 'fit-tp',
-        'fit-tl': 'fit-tl',
-        'fit-sd': 'fit-sd',
-        'fit-ld': 'fit-ld',
-      };
-      const breakPointValues: IBreakpoints = {
-        phone: 8,
-        tabletPortrait: 8,
-        tabletLandscape: 8,
-        smallDesktop: 8,
-        largeDesktop: 8,
-      };
-
-      expect(applyResponsiveClasses($style, {}, breakPointValues, null)).toEqual({});
-    });
-
-    test('should apply responsive classes', () => {
-      const $style: any = {
-        'space-8': 'space-8',
-        'space-tp-8': 'space-tp-8',
-        'space-tl-8': 'space-tl-8',
-        'space-sd-8': 'space-sd-8',
-        'space-ld-8': 'space-ld-8',
-        fit: 'fit',
-        'fit-tp': 'fit-tp',
-        'fit-tl': 'fit-tl',
-        'fit-sd': 'fit-sd',
-        'fit-ld': 'fit-ld',
-      };
-      const breakPointValues: IBreakpoints = {
-        phone: 8,
-        tabletPortrait: 8,
-        tabletLandscape: 8,
-        smallDesktop: 8,
-        largeDesktop: 8,
-      };
-
-      expect(applyResponsiveClasses($style, {}, breakPointValues, 'space')).toEqual({
-        'space-8': true,
-        'space-ld-8': true,
-        'space-sd-8': true,
-        'space-tl-8': true,
-        'space-tp-8': true,
-      });
-
-      expect(applyResponsiveClasses($style, {}, breakPointValues, 'fit', false)).toEqual({
-        fit: true,
-        'fit-ld': true,
-        'fit-sd': true,
-        'fit-tl': true,
-        'fit-tp': true,
-      });
-    });
-
-    test('should apply responsive classes with null values', () => {
-      const $style: any = {
-        'space-8': 'space-8',
-        'space-tp-8': 'space-tp-8',
-        'space-tl-8': 'space-tl-8',
-        'space-sd-8': 'space-sd-8',
-        'space-ld-8': 'space-ld-8',
-        fit: 'fit',
-        'fit-tp': 'fit-tp',
-        'fit-tl': 'fit-tl',
-        'fit-sd': 'fit-sd',
-        'fit-ld': 'fit-ld',
-      };
-      const breakPointValues: IBreakpoints = {
-        phone: 8,
-        tabletPortrait: 8,
-        tabletLandscape: 8,
-        smallDesktop: 8,
-        largeDesktop: null,
-      };
-
-      expect(applyResponsiveClasses($style, {}, breakPointValues, 'space')).toEqual({
-        'space-8': true,
-        'space-tp-8': true,
-        'space-tl-8': true,
-        'space-sd-8': true,
-      });
-
-      expect(applyResponsiveClasses($style, {}, breakPointValues, 'fit', false)).toEqual({
-        fit: true,
-        'fit-tp': true,
-        'fit-tl': true,
-        'fit-sd': true,
-      });
+    test('should return spacing classes for all directions that are not null with breakpoint prefix', () => {
+      expect(
+        getCssSpacingClasses(
+          {
+            'pt-sd-8': 'pt-sd-8',
+            'pr-sd-8': 'pr-sd-8',
+            'pb-sd-8': 'pb-sd-8',
+            'pl-sd-8': 'pl-sd-8',
+          },
+          {
+            top: '8',
+            right: '8',
+            bottom: '8',
+            left: '8',
+          },
+          'p',
+          'sd',
+        ),
+      ).toEqual(['pt-sd-8', 'pr-sd-8', 'pb-sd-8', 'pl-sd-8']);
     });
   });
 
-  describe('getComponentElementType', () => {
-    test('should handle null as elementType', () => {
-      expect(getComponentElementType(null)).toBe('div');
-    });
+  test('createGUID', () => {
+    expect(getGUID()).toHaveLength(32);
+  });
 
-    test('should handle null as elementType and fallback', () => {
-      expect(getComponentElementType(null, null)).toBe('div');
-    });
+  test('getFloatInRange', () => {
+    expect(getFloatInRange(5, 7)).toBeGreaterThanOrEqual(5);
+    expect(getFloatInRange(5, 7)).toBeLessThanOrEqual(8);
+  });
 
-    test('should return fallback for non-list element types', () => {
-      expect(getComponentElementType('div', 'p')).toBe('p');
-
-      expect(getComponentElementType('p')).toBe('div');
-    });
-
-    test('should return li for list element types', () => {
-      expect(getComponentElementType('ul')).toBe('li');
-
-      expect(getComponentElementType('ol')).toBe('li');
-    });
+  test('getIntInRange', () => {
+    expect(getIntInRange(5, 7)).toBeGreaterThanOrEqual(5);
+    expect(getIntInRange(5, 7)).toBeLessThanOrEqual(7);
   });
 });

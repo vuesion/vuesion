@@ -1,9 +1,13 @@
 <template>
-  <vue-box :padding="slim ? ['48 16', '48 16', '48 32'] : ['64 16', '64 16', '64 32']" :class="$style.vueFooter">
+  <vue-box
+    as="footer"
+    :padding="slim ? ['48 16', '48 16', '48 32'] : ['64 16', '64 16', '64 32']"
+    :class="$style.vueFooter"
+  >
     <vue-stack space="32">
       <vue-columns space="64" stack-phone stack-tablet-portrait>
-        <vue-column v-if="slim === false" :width="['content', 'content', '20%']">
-          <vue-stack space="16" :align="['center', 'center', 'left']">
+        <vue-column v-if="slim === false" :width="['content', 'content', '2/10']">
+          <vue-stack space="16" :align-x="['center', 'center', 'left']">
             <vue-text look="h6" color="text-low">Solutions</vue-text>
             <vue-text color="text-low" weight="semi-bold">Marketing</vue-text>
             <vue-text color="text-low" weight="semi-bold">Analytics</vue-text>
@@ -13,8 +17,8 @@
           </vue-stack>
         </vue-column>
 
-        <vue-column v-if="slim === false" :width="['content', 'content', '20%']">
-          <vue-stack space="16" :align="['center', 'center', 'left']">
+        <vue-column v-if="slim === false" :width="['content', 'content', '2/10']">
+          <vue-stack space="16" :align-x="['center', 'center', 'left']">
             <vue-text look="h6" color="text-low">Support</vue-text>
             <vue-text color="text-low" weight="semi-bold">Pricing</vue-text>
             <vue-text color="text-low" weight="semi-bold">Documentation</vue-text>
@@ -24,8 +28,8 @@
           </vue-stack>
         </vue-column>
 
-        <vue-column v-if="slim === false" :width="['content', 'content', '20%']">
-          <vue-stack space="16" :align="['center', 'center', 'left']">
+        <vue-column v-if="slim === false" :width="['content', 'content', '2/10']">
+          <vue-stack space="16" :align-x="['center', 'center', 'left']">
             <vue-text look="h6" color="text-low">Company</vue-text>
             <vue-text color="text-low" weight="semi-bold">About</vue-text>
             <vue-text color="text-low" weight="semi-bold">Blog</vue-text>
@@ -35,8 +39,8 @@
           </vue-stack>
         </vue-column>
 
-        <vue-column v-if="slim === false" :width="['content', 'content', '20%']">
-          <vue-stack space="16" :align="['center', 'center', 'left']">
+        <vue-column v-if="slim === false" :width="['content', 'content', '2/10']">
+          <vue-stack space="16" :align-x="['center', 'center', 'left']">
             <vue-text look="h6" color="text-low">Legal</vue-text>
             <vue-text color="text-low" weight="semi-bold">Claim</vue-text>
             <vue-text color="text-low" weight="semi-bold">Privacy</vue-text>
@@ -46,17 +50,17 @@
           </vue-stack>
         </vue-column>
 
-        <vue-column :width="['content', 'content', '20%']">
+        <vue-column :width="['content', 'content', '2/10']" :can-grow="false">
           <vue-stack space="16">
-            <vue-text look="h6" color="text-low" :align="['center', 'center', 'left']">Language & Theme</vue-text>
+            <vue-text look="h6" color="text-low" :align-x="['center', 'center', 'start']">Language & Theme</vue-text>
             <vue-select
               id="lang"
               label="Language"
               name="lang"
               :items="languages"
               hide-description
-              :value="selectedLocale"
-              @input="$emit('locale-change', $event)"
+              :modelValue="selectedLocale"
+              @update:modelValue="$emit('locale-change', $event)"
             />
             <vue-select
               id="theme"
@@ -64,8 +68,8 @@
               name="theme"
               :items="themes"
               hide-description
-              :value="($colorMode && $colorMode.value) || 'light'"
-              @input="$colorMode.preference = $event.value"
+              :modelValue="$colorMode.preference"
+              @update:modelValue="$colorMode.preference = $event.value"
             />
           </vue-stack>
         </vue-column>
@@ -74,20 +78,20 @@
       <hr />
 
       <vue-columns v-if="slim === false" :align-y="['top', 'top', 'center']" stack-phone stack-tablet-portrait>
-        <vue-column :width="['content']">
+        <vue-column :width="['fit']">
           <vue-stack space="8">
-            <vue-text look="h6" color="text-low" :align="['center', 'center', 'left']">
+            <vue-text look="h6" color="text-low" :align-x="['center', 'center', 'start']">
               Subscribe to our newsletter
             </vue-text>
-            <vue-text color="text-low" :align="['center', 'center', 'left']">
+            <vue-text color="text-low" :align-x="['center', 'center', 'start']">
               The latest news, articles, and resources, sent to your inbox.
             </vue-text>
           </vue-stack>
         </vue-column>
 
-        <vue-column :width="['content']" :align="['left', 'left', 'right']">
+        <vue-column :width="['fit']" :align-x="['start', 'start', 'end']">
           <vue-columns space="12" stack-phone stack-tablet-portrait>
-            <vue-column :width="['100%', '100%', '264px']">
+            <vue-column :width="['full', 'full', '4/10']">
               <vue-input
                 id="newsletter"
                 name="newsletter"
@@ -97,7 +101,7 @@
                 hide-description
               />
             </vue-column>
-            <vue-column :width="['100%', '100%', 'content']">
+            <vue-column :width="['full', 'full', 'content']">
               <vue-button look="primary">Submit</vue-button>
             </vue-column>
           </vue-columns>
@@ -108,21 +112,21 @@
 
       <vue-columns align-y="center" stack-phone stack-tablet-portrait>
         <vue-column>
-          <vue-text look="h6" color="text-low" :align="['center', 'center', 'left']">
+          <vue-text look="h6" color="text-low" :align-x="['center', 'center', 'left']">
             © {{ year }} Johannes Werner. All rights reserved.
           </vue-text>
         </vue-column>
 
         <vue-column v-if="slim === false">
-          <vue-inline :align="['center']" space="48">
+          <vue-inline :align-x="['center']" space="48">
             <vue-text color="text-low" weight="semi-bold">About</vue-text>
             <vue-text color="text-low" weight="semi-bold">About</vue-text>
             <vue-text color="text-low" weight="semi-bold">About</vue-text>
           </vue-inline>
         </vue-column>
 
-        <vue-column>
-          <vue-inline space="24" :align="['center', 'center', 'right']">
+        <vue-column :align-x="['center', 'center', 'end']">
+          <vue-inline space="24">
             <!--            <vue-text color="text-low"><vue-icon-facebook /></vue-text>-->
             <!--            <vue-text color="text-low"><vue-icon-instagram /></vue-text>-->
             <vue-text
@@ -153,54 +157,44 @@
   </vue-box>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from '@vue/composition-api';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
-import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueIconTwitter from '@/components/icons/VueIconTwitter.vue';
-import VueIconGithub from '@/components/icons/VueIconGithub.vue';
-import { IItem } from '@/interfaces/IItem';
+<script setup lang="ts">
+import { computed } from 'vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueSelect from '~/components/input-and-actions/VueSelect/VueSelect.vue';
+import VueInput from '~/components/input-and-actions/VueInput/VueInput.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueIconTwitter from '~/components/icons/VueIconTwitter.vue';
+import VueIconGithub from '~/components/icons/VueIconGithub.vue';
+import { IItem } from '~/interfaces/IItem';
 
-export default defineComponent({
-  name: 'VueFooter',
-  components: {
-    VueIconGithub,
-    VueIconTwitter,
-    VueInline,
-    VueButton,
-    VueInput,
-    VueSelect,
-    VueColumn,
-    VueColumns,
-    VueText,
-    VueStack,
-    VueBox,
-  },
-  props: {
-    slim: { type: Boolean, default: false },
-    languages: { type: [Array, Array as () => Array<IItem>], default: () => [] },
-    themes: { type: [Array, Array as () => Array<IItem>], default: () => [] },
-    selectedLocale: { type: String, default: 'en' },
-  },
-  setup() {
-    const year = computed(() => new Date().getFullYear());
+interface FooterProps {
+  slim?: boolean;
+  languages?: Array<IItem>;
+  themes?: Array<IItem>;
+  selectedLocale?: string;
+  selectDuration?: number;
+}
 
-    return {
-      year,
-    };
-  },
+withDefaults(defineProps<FooterProps>(), {
+  slim: false,
+  languages: () => [],
+  themes: () => [],
+  selectedLocale: 'en',
+  selectDuration: 250,
 });
+
+defineEmits(['locale-change']);
+
+const year = computed(() => new Date().getFullYear());
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueFooter {
   background: $footer-bg;

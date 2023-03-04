@@ -1,4 +1,4 @@
-import { onBeforeMount, Ref, watch } from '@vue/composition-api';
+import { onMounted, Ref, watch } from 'vue';
 
 interface IBackdropOptions {
   scrollable: Ref<boolean>;
@@ -6,7 +6,7 @@ interface IBackdropOptions {
 
 export const useBackdrop = (show: Ref<boolean>, { scrollable }: IBackdropOptions) => {
   const getBackdrop = () => {
-    let backdrop: HTMLElement = document.getElementById('modal-backdrop-1337');
+    let backdrop: HTMLElement | null = document.getElementById('modal-backdrop-1337');
 
     if (backdrop === null) {
       backdrop = document.createElement('div');
@@ -17,7 +17,7 @@ export const useBackdrop = (show: Ref<boolean>, { scrollable }: IBackdropOptions
     return backdrop;
   };
 
-  onBeforeMount(() => {
+  onMounted(() => {
     getBackdrop().classList.add('backdrop');
   });
 

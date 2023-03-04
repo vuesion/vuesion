@@ -1,12 +1,13 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import VueToggleButton from './VueToggleButton.vue';
+import { IItem } from '~/interfaces/IItem';
 
 describe('VueToggleButton.vue', () => {
   let harness: RenderResult;
 
   beforeEach(() => {
     harness = render(VueToggleButton, {
-      stubs: ['nuxt-link'],
       props: {
         items: [
           {
@@ -29,35 +30,39 @@ describe('VueToggleButton.vue', () => {
     });
   });
 
-  test('should emit input event', async () => {
+  test('should emit update:modelValue event', async () => {
     const { getByTestId, emitted } = harness;
 
     await fireEvent.click(getByTestId('toggle-button-list-view'));
 
-    expect(emitted().input[0][0]).toEqual({ label: 'List view', leadingIcon: 'view-list', value: 'list-view' });
+    expect(emitted<Array<IItem>>()['update:modelValue'][0][0]).toEqual({
+      label: 'List view',
+      leadingIcon: 'view-list',
+      value: 'list-view',
+    });
   });
 
   test('should handle IItem as value', async () => {
-    const { updateProps, getByTestId } = harness;
+    const { rerender, getByTestId } = harness;
 
-    await updateProps({
-      value: {
+    await rerender({
+      modelValue: {
         leadingIcon: 'Folder',
         label: 'Folder view',
         value: 'folder-view',
       },
     });
 
-    expect(getByTestId('toggle-button-folder-view').classList.contains('primary')).toBeTruthy();
+    expect(getByTestId('toggle-button-folder-view').classList.toString()).toMatch('primary');
   });
 
   test('should handle String as value', async () => {
-    const { updateProps, getByTestId } = harness;
+    const { rerender, getByTestId } = harness;
 
-    await updateProps({
-      value: 'folder-view',
+    await rerender({
+      modelValue: 'folder-view',
     });
 
-    expect(getByTestId('toggle-button-folder-view').classList.contains('primary')).toBeTruthy();
+    expect(getByTestId('toggle-button-folder-view').classList.toString()).toMatch('primary');
   });
 });

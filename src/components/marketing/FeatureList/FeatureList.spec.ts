@@ -1,3 +1,4 @@
+import { describe, beforeEach, test } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import FeatureList from './FeatureList.vue';
 
@@ -5,9 +6,7 @@ describe('FeatureList.vue', () => {
   let harness: RenderResult;
 
   beforeEach(() => {
-    harness = render(FeatureList, {
-      stubs: ['nuxt-link'],
-    });
+    harness = render(FeatureList);
   });
 
   test('renders component', () => {

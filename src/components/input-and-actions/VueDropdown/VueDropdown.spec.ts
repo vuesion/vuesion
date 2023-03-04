@@ -1,6 +1,7 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
-import { sleep, triggerDocument } from '@/test/test-utils';
 import VueDropdown from './VueDropdown.vue';
+import { sleep, triggerWindow } from '~/test/test-utils';
 
 describe('VueDropdown.vue', () => {
   let harness: RenderResult;
@@ -21,14 +22,13 @@ describe('VueDropdown.vue', () => {
   });
 
   test('renders component', async () => {
-    const { getByText, getByTestId } = harness;
+    const { getByText, html } = harness;
 
     getByText('Dropdown');
 
     await fireEvent.click(getByText('Dropdown'));
-    const menu = getByTestId('menu');
 
-    expect(menu.classList.contains('left')).toBeTruthy();
+    expect(html()).toMatch('left');
   });
 
   test('should emit click event', async () => {
@@ -59,7 +59,7 @@ describe('VueDropdown.vue', () => {
 
   test('should open and close menu via keyboard', async () => {
     const { getByText, queryAllByText } = harness;
-    const dropdown = getByText('Dropdown').parentElement;
+    const dropdown = getByText('Dropdown').parentElement as HTMLElement;
 
     await fireEvent.keyDown(dropdown, { key: 'ArrowLeft', code: 'ArrowLeft' });
 
@@ -78,7 +78,7 @@ describe('VueDropdown.vue', () => {
 
   test('should open menu and close it via outline click', async () => {
     const { getByText, queryAllByText } = harness;
-    const dropdown = getByText('Dropdown').parentElement;
+    const dropdown = getByText('Dropdown').parentElement as HTMLElement;
 
     await fireEvent.keyDown(dropdown, { key: 'Enter', code: 'Enter' });
 
@@ -86,7 +86,7 @@ describe('VueDropdown.vue', () => {
 
     expect(queryAllByText('Value 1')).toHaveLength(1);
 
-    triggerDocument.mousedown({ target: null });
+    triggerWindow.click({ target: null, composedPath: () => [] });
 
     await sleep(250);
 
@@ -94,16 +94,16 @@ describe('VueDropdown.vue', () => {
   });
 
   test('renders component with different menu alignment', async () => {
-    const { getByText, getByTestId, updateProps } = harness;
+    const { getByText, html, rerender } = harness;
 
-    await updateProps({ alignMenu: 'right', alignYMenu: 'top' });
+    await rerender({ alignMenu: 'right', alignYMenu: 'top' });
 
     getByText('Dropdown');
 
     await fireEvent.click(getByText('Dropdown'));
-    const menu = getByTestId('menu');
+    const markup = html();
 
-    expect(menu.classList.contains('right')).toBeTruthy();
-    expect(menu.classList.contains('top')).toBeTruthy();
+    expect(markup).toMatch('right');
+    expect(markup).toMatch('top');
   });
 });

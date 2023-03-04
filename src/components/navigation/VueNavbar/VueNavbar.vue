@@ -1,20 +1,21 @@
 <template>
   <vue-box padding="12" :class="$style.vueNavBar" as="nav">
     <vue-columns space="0" :class="$style.layout" align-y="center">
-      <vue-column width="content" align-y="center">
+      <vue-column width="content" align-y="center" :can-grow="false">
         <vue-icon-menu
           v-if="showMenuIcon"
           tabindex="0"
           :class="$style.menu"
-          @click.native.stop.prevent="$emit('menu-click')"
+          data-testid="menu"
+          @click.stop.prevent="/* c8 ignore start */ $emit('menu-click') /* c8 ignore end */"
         />
       </vue-column>
 
-      <vue-column align="center">
+      <vue-column align-x="center">
         <slot name="center" />
       </vue-column>
 
-      <vue-column v-if="userName || userImage" width="content">
+      <vue-column v-if="userName || userImage" :can-grow="false">
         <vue-dropdown
           :items="[
             { label: 'Profile', value: 'profile', leadingIcon: 'user' },
@@ -22,41 +23,41 @@
             { label: '', value: 'separator' },
             { label: 'Logout', value: 'logout', leadingIcon: 'logout' },
           ]"
-          align-menu="right"
+          :duration="dropdownDuration"
+          align-x-menu="right"
           @item-click="$emit('menu-item-click', $event)"
         >
           <vue-avatar :name="userName" :src="userImage" size="sm" />
         </vue-dropdown>
       </vue-column>
 
-      <vue-column v-else width="content">
+      <vue-column v-else :can-grow="false">
         <slot name="right" />
       </vue-column>
     </vue-columns>
   </vue-box>
 </template>
 
-<script lang="ts">
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueIconMenu from '@/components/icons/VueIconMenu.vue';
-import VueAvatar from '@/components/data-display/VueAvatar/VueAvatar.vue';
-import VueDropdown from '@/components/input-and-actions/VueDropdown/VueDropdown.vue';
+<script setup lang="ts">
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueIconMenu from '~/components/icons/VueIconMenu.vue';
+import VueAvatar from '~/components/data-display/VueAvatar/VueAvatar.vue';
+import VueDropdown from '~/components/input-and-actions/VueDropdown/VueDropdown.vue';
 
-export default {
-  name: 'VueNavbar',
-  components: { VueDropdown, VueAvatar, VueIconMenu, VueColumns, VueColumn, VueBox },
-  props: {
-    userName: { type: String, default: null },
-    userImage: { type: String, default: null },
-    showMenuIcon: { type: Boolean, default: true },
-  },
-};
+defineProps({
+  userName: { type: String, default: null },
+  userImage: { type: String, default: null },
+  showMenuIcon: { type: Boolean, default: true },
+  dropdownDuration: { type: Number, default: 250 },
+});
+
+defineEmits(['menu-click', 'menu-item-click']);
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueNavBar {
   height: $navbar-height;

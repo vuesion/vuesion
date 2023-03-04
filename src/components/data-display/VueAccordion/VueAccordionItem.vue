@@ -23,47 +23,36 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, inject, ref, onMounted, Ref } from '@vue/composition-api';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueIconChevronRight from '@/components/icons/VueIconChevronRight.vue';
-import VueIconChevronUp from '@/components/icons/VueIconChevronUp.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
+<script setup lang="ts">
+import { inject, ref, onMounted, Ref } from 'vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueIconChevronRight from '~/components/icons/VueIconChevronRight.vue';
+import VueIconChevronUp from '~/components/icons/VueIconChevronUp.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
 
-export default defineComponent({
-  name: 'VueAccordionItem',
-  components: {
-    VueIconChevronUp,
-    VueIconChevronRight,
-    VueText,
-    VueBox,
-  },
-  props: {
-    title: { type: String, required: true },
-    initOpen: { type: Boolean, default: false },
-  },
-  setup(props) {
-    const register = inject<(idx: Ref<number>, open: Ref<boolean>, initOpen: boolean) => void>('register');
-    const openItem = inject<(idx: Ref<number>) => void>('openItem');
-    const idx = ref<number>(null);
-    const open = ref(false);
-    const click = () => openItem(idx);
+const props = defineProps({
+  title: { type: String, required: true },
+  initOpen: { type: Boolean, default: false },
+});
+const register = inject<(idx: Ref<number>, open: Ref<boolean>, initOpen: boolean) => void>('register');
+const openItem = inject<(idx: Ref<number>) => void>('openItem');
+const idx = ref<number>(-1);
+const open = ref(false);
+const click = () => {
+  if (openItem) {
+    openItem(idx);
+  }
+};
 
-    onMounted(() => register(idx, open, props.initOpen));
-
-    return {
-      register,
-      openItem,
-      idx,
-      open,
-      click,
-    };
-  },
+onMounted(() => {
+  if (register) {
+    register(idx, open, props.initOpen);
+  }
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueAccordionItem {
   display: flex;

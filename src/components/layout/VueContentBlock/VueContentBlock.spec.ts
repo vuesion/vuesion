@@ -1,3 +1,4 @@
+import { describe, beforeEach, test } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import VueContentBlock from './VueContentBlock.vue';
 
@@ -6,7 +7,6 @@ describe('VueContentBlock.vue', () => {
 
   beforeEach(() => {
     harness = render(VueContentBlock, {
-      stubs: ['nuxt-link'],
       slots: {
         default: 'slot',
       },

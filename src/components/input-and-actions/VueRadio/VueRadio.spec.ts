@@ -1,3 +1,4 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import VueRadio from './VueRadio.vue';
 
@@ -29,20 +30,20 @@ describe('VueRadio.vue', () => {
   });
 
   test('should set checked attribute', async () => {
-    const { updateProps, getByText } = harness;
-    const input: any = getByText('Test').parentElement.querySelector('#foo');
+    const { rerender, getByText } = harness;
+    const input: any = getByText('Test').parentElement?.querySelector('#foo');
 
     expect(input.checked).toBeFalsy();
 
-    await updateProps({ value: 'foo' });
+    await rerender({ modelValue: 'foo' });
 
     expect(input.checked).toBeTruthy();
   });
 
   test('should disable radio button', async () => {
-    const { getByText, emitted, updateProps } = harness;
+    const { getByText, emitted, rerender } = harness;
 
-    await updateProps({ disabled: true });
+    await rerender({ disabled: true });
 
     await fireEvent.click(getByText('Test'));
 

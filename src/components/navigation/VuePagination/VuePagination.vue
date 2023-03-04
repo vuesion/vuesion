@@ -2,11 +2,11 @@
   <div :class="[$style.vuePagination, slim && $style.slim]">
     <button
       :class="[infinite === false && selectedPage <= 1 && $style.disabled]"
-      :aria-label="$t('components.pagination.previous' /* Previous */)"
+      :aria-label="previousButtonLabel"
       :disabled="infinite === false && selectedPage <= 1"
       type="button"
       data-testid="pagination-prev"
-      @click.prevent.stop="$emit('prev', 1)"
+      @click.prevent.stop="emit('prev', 1)"
     >
       <vue-icon-chevron-left />
     </button>
@@ -18,32 +18,32 @@
         :tabindex="item.active ? -1 : 0"
         :class="item.active && $style.active"
         :data-testid="item.active ? 'pagination-active-page' : 'pagination-page'"
-        @click.prevent.stop="item.event && $emit(item.event, item.amount)"
-        @keypress.prevent.stop="item.event && $emit(item.event, item.amount)"
+        @click.prevent.stop="item.event && emit(item.event, item.amount)"
+        @keypress.prevent.stop="item.event && emit(item.event, item.amount)"
       >
-        <vue-text class="sr-only">{{ $t('components.pagination.a11y' /* You're on page */) }}</vue-text>
+        <vue-text class="sr-only">{{ selectedPageLabel }}</vue-text>
         <vue-text>{{ item.label }}</vue-text>
       </li>
     </ul>
 
     <button
       :class="[infinite === false && selectedPage >= pages && $style.disabled]"
-      :aria-label="$t('components.pagination.next' /* Next */)"
+      :aria-label="nextButtonLabel"
       :disabled="infinite === false && selectedPage >= pages"
       type="button"
       data-testid="pagination-next"
-      @click="$emit('next', 1)"
+      @click="emit('next', 1)"
     >
       <vue-icon-chevron-right />
     </button>
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from '@vue/composition-api';
-import VueIconChevronLeft from '@/components/icons/VueIconChevronLeft.vue';
-import VueIconChevronRight from '@/components/icons/VueIconChevronRight.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
+<script setup lang="ts">
+import { computed } from 'vue';
+import VueIconChevronLeft from '~/components/icons/VueIconChevronLeft.vue';
+import VueIconChevronRight from '~/components/icons/VueIconChevronRight.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
 
 interface IPaginationItem {
   label: string;
@@ -52,63 +52,66 @@ interface IPaginationItem {
   amount?: number;
 }
 
-// TODO: find better UX for more than 20 pages
-export default defineComponent({
-  name: 'VuePagination',
-  components: { VueText, VueIconChevronRight, VueIconChevronLeft },
-  props: {
-    pages: { type: [String, Number], required: true },
-    selectedPage: { type: [String, Number], required: true },
-    displayPages: { type: [String, Number], default: 5 },
-    slim: { type: Boolean, default: false },
-    infinite: { type: Boolean, default: false },
-  },
-  setup(props) {
-    const displayPages = computed(() => {
-      const dp = parseInt(props.displayPages.toString(), 10);
+interface PaginationProps {
+  pages: string | number;
+  selectedPage: string | number;
+  displayPages?: string | number;
+  slim?: boolean;
+  infinite?: boolean;
+  previousButtonLabel?: string;
+  nextButtonLabel?: string;
+  selectedPageLabel?: string;
+}
 
-      if (isNaN(dp)) {
-        return 5;
-      }
+const props = withDefaults(defineProps<PaginationProps>(), {
+  displayPages: 5,
+  slim: false,
+  infinite: false,
+  previousButtonLabel: 'Previous',
+  nextButtonLabel: 'Next',
+  selectedPageLabel: "You're on page",
+});
+const emit = defineEmits(['prev', 'next']);
+const displayPages = computed(() => {
+  const dp = parseInt(props.displayPages.toString(), 10);
 
-      return dp;
-    });
-    const pages = computed(() => parseInt(props.pages.toString(), 10));
-    const selectedPage = computed(() => parseInt(props.selectedPage.toString(), 10));
-    const pageItems = computed<Array<IPaginationItem>>(() => {
-      const half = (displayPages.value - 1) / 2;
-      const smallerHalf = Math.floor(half);
-      const largerHalf = Math.ceil(half);
-      const pageCount = Math.min(displayPages.value, pages.value);
+  if (isNaN(dp)) {
+    return 5;
+  }
 
-      let minPage = selectedPage.value - smallerHalf;
+  return dp;
+});
+const pages = computed(() => parseInt(props.pages.toString(), 10));
+const selectedPage = computed(() => parseInt(props.selectedPage.toString(), 10));
+const pageItems = computed<Array<IPaginationItem>>(() => {
+  const half = (displayPages.value - 1) / 2;
+  const smallerHalf = Math.floor(half);
+  const largerHalf = Math.ceil(half);
+  const pageCount = Math.min(displayPages.value, pages.value);
 
-      if (selectedPage.value - smallerHalf <= 1) {
-        minPage = 1;
-      } else if (selectedPage.value + largerHalf >= pages.value) {
-        minPage = Math.max(1, pages.value - displayPages.value + 1);
-      }
+  let minPage = selectedPage.value - smallerHalf;
 
-      return Array.from(Array(pageCount).keys()).map((p) => {
-        const newPage = p + minPage;
+  if (selectedPage.value - smallerHalf <= 1) {
+    minPage = 1;
+  } else if (selectedPage.value + largerHalf >= pages.value) {
+    minPage = Math.max(1, pages.value - displayPages.value + 1);
+  }
 
-        return {
-          label: newPage.toString(),
-          active: newPage === selectedPage.value,
-          event: selectedPage.value < newPage ? 'next' : 'prev',
-          amount: selectedPage.value < newPage ? newPage - selectedPage.value : selectedPage.value - newPage,
-        };
-      });
-    });
+  return Array.from(Array(pageCount).keys()).map((p) => {
+    const newPage = p + minPage;
+
     return {
-      pageItems,
+      label: newPage.toString(),
+      active: newPage === selectedPage.value,
+      event: selectedPage.value < newPage ? 'next' : 'prev',
+      amount: selectedPage.value < newPage ? newPage - selectedPage.value : selectedPage.value - newPage,
     };
-  },
+  });
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vuePagination {
   display: inline-flex;

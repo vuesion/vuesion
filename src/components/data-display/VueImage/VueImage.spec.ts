@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { render } from '@testing-library/vue';
 import VueImage from './VueImage.vue';
 
@@ -15,6 +16,8 @@ describe('VueImage.vue', () => {
   });
 
   test('renders image as div', () => {
+    (global as any).IntersectionObserver = null;
+
     const { html } = render(VueImage, {
       props: {
         native: false,

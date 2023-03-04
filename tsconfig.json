@@ -1,43 +1,23 @@
 {
+  // https://v3.nuxtjs.org/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "target": "es2018",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "lib": ["esnext", "esnext.asynciterable", "dom"],
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
-    "rootDirs": ["src"],
     "types": [
-      "@nuxt/types",
-      "@nuxtjs/apollo",
-      "@nuxtjs/auth-next",
-      "@nuxtjs/axios",
-      "@nuxtjs/composition-api",
-      "@nuxtjs/pwa",
-      "@nuxtjs/color-mode",
       "animejs",
-      "cookie-parser",
-      "compression",
-      "cypress",
-      "express",
-      "jest",
-      "helmet",
-      "lodash",
-      "node",
-      "nuxt-i18n",
-      "nuxt-winston-log",
-      "testing-library__jest-dom"
+      "marked",
+      "flush-promises",
+      "lodash-es",
+      "@nuxtjs/color-mode",
+      "@nuxtjs/i18n",
+      "@sidebase/nuxt-auth",
+      "next-auth",
+      "@pinia/nuxt",
+      "@types/bcrypt"
     ]
   },
-  "include": ["./src/**/*", "./src/**/*.vue"],
-  "exclude": ["node_modules", ".nuxt", "src/interfaces/graphql/types.ts", "src/interfaces/swagger.ts"],
-  "files": ["src/vue-shim.d.ts", "src/custom-typings.d.ts", "src/vue.plugins.d.ts"]
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }

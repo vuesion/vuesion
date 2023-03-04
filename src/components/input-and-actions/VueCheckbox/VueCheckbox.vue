@@ -1,103 +1,86 @@
 <template>
-  <ValidationProvider
-    ref="validator"
-    v-slot="{ errors }"
-    :aria-label="label"
-    :vid="id"
-    :name="name"
-    :rules="validation"
-    tag="div"
-    slim
+  <div
+    :tabindex="disabled ? null : 0"
+    :class="[$style.vueCheckbox, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]"
+    @click.stop.prevent="onClick"
+    @keypress.space.stop.prevent="onClick"
   >
-    <div
-      :tabindex="disabled ? null : 0"
-      :class="[$style.vueCheckbox, disabled && $style.disabled, errors.length > 0 && $style.error]"
-      @click.stop.prevent="onClick"
-      @keypress.space.stop.prevent="onClick"
-    >
-      <div :class="$style.wrapper">
-        <input
-          :id="id"
-          type="checkbox"
-          :checked="checked"
-          :required="required"
-          :disabled="disabled"
-          v-bind="$attrs"
-          :value="checked"
-          tabindex="-1"
-        />
-        <div :class="$style.checkmark">
-          <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8">
-            <path
-              d="M9.207.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L3.5 5.086 7.793.793a1 1 0 011.414 0z"
-              fill="currentColor"
-            />
-          </svg>
-        </div>
-        <vue-text
-          :for="id"
-          as="label"
-          weight="semi-bold"
-          color="text-medium"
-          tabindex="-1"
-          :class="hideLabel && 'sr-only'"
-          v-html="label"
-        />
+    <div :class="$style.wrapper">
+      <input
+        :id="id"
+        :name="name"
+        :value="value"
+        :checked="value"
+        type="checkbox"
+        :required="required"
+        :disabled="disabled"
+        v-bind="$attrs"
+        tabindex="-1"
+        data-testid="checkbox-input"
+      />
+      <div :class="$style.checkmark">
+        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8">
+          <path
+            d="M9.207.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L3.5 5.086 7.793.793a1 1 0 011.414 0z"
+            fill="currentColor"
+          />
+        </svg>
       </div>
-      <vue-text v-if="description" :class="$style.description" as="div">
-        {{ description }}
+      <vue-text :for="id" as="label" weight="semi-bold" color="text-medium" tabindex="-1">
+        <slot name="label">
+          {{ label }}
+        </slot>
       </vue-text>
     </div>
-  </ValidationProvider>
+    <vue-text v-if="description" :class="$style.description" as="div">
+      <slot name="description">
+        {{ description }}
+      </slot>
+    </vue-text>
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import { ValidationProvider } from 'vee-validate';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import { getDomRef } from '@/composables/get-dom-ref';
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useField } from 'vee-validate';
+import VueText from '~/components/typography/VueText/VueText.vue';
 
-export default defineComponent({
-  name: 'VueCheckbox',
-  components: { VueText, ValidationProvider },
-  inheritAttrs: false,
-  model: {
-    prop: 'checked',
-    event: 'click',
-  },
-  props: {
-    id: { type: String, required: true },
-    name: { type: String, required: true },
-    label: { type: String, required: true },
-    hideLabel: { type: Boolean, default: false },
-    description: { type: String, default: null },
-    required: { type: Boolean, default: false },
-    validation: { type: [String, Object], default: null }, // TODO: needs fine tuning
-    disabled: { type: Boolean, default: false },
-    checked: { type: Boolean, default: false },
-  },
-  setup(props, { emit }) {
-    const validator = getDomRef(null);
-    const onClick = (e: Event) => {
-      e.preventDefault();
-
-      if (!props.disabled) {
-        validator.value.reset();
-        validator.value.validate(!props.checked);
-        emit('click', !props.checked);
-      }
-    };
-
-    return {
-      validator,
-      onClick,
-    };
-  },
+const props = defineProps({
+  id: { type: String, required: true },
+  name: { type: String, required: true },
+  label: { type: String, required: true },
+  description: { type: String, default: null },
+  required: { type: Boolean, default: false },
+  disabled: { type: Boolean, default: false },
+  modelValue: { type: Boolean, default: false },
 });
+const emit = defineEmits(['click', 'update:modelValue']);
+const rules = computed(() => (props.required ? 'required' : undefined));
+const { errors, value, validate } = useField<boolean>(props.id, rules, {
+  initialValue: props.modelValue,
+  type: 'checkbox',
+  syncVModel: false,
+});
+const onClick = async () => {
+  if (!props.disabled) {
+    value.value = !value.value;
+
+    await validate({ mode: 'force' });
+
+    emit('update:modelValue', value);
+    emit('click', value);
+  }
+};
+</script>
+
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+};
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 .vueCheckbox {
   display: inline-block;
   position: relative;

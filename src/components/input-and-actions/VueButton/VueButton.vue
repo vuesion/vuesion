@@ -2,8 +2,8 @@
   <component
     :is="as"
     ref="buttonRef"
-    :to="isRouterLink && href"
-    :href="isRegularLink && href"
+    :to="isRouterLink && to"
+    :href="isRegularLink && to"
     :disabled="isDisabled"
     :class="[
       $style.button,
@@ -20,7 +20,7 @@
     :aria-hidden="isDisabled"
     :type="type"
     v-on="{
-      ...$listeners,
+      ...$attrs,
       click: onClick,
     }"
   >
@@ -46,69 +46,65 @@
   </component>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from '@vue/composition-api';
-import { getDomRef } from '@/composables/get-dom-ref';
-import { shirtSizeValidator, buttonStyleValidator } from '@/components/prop-validators';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueLoader from '@/components/data-display/VueLoader/VueLoader.vue';
+<script setup lang="ts">
+import { computed } from 'vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueLoader from '~/components/data-display/VueLoader/VueLoader.vue';
+import { ButtonStyle, ShirtSize } from '~/components/prop-types';
+import { getDomRef } from '~/composables/get-dom-ref';
 
-export default defineComponent({
-  name: 'VueButton',
-  components: {
-    VueLoader,
-    VueText,
-  },
-  props: {
-    disabled: { type: Boolean, default: false },
-    block: { type: Boolean, default: false },
-    look: { type: String, validator: buttonStyleValidator, default: 'secondary' },
-    size: { type: String, validator: shirtSizeValidator, default: 'md' },
-    loading: { type: Boolean, default: false },
-    as: { type: String, default: 'button' },
-    type: { type: String, default: 'button' },
-    href: { type: String, default: null },
-    leadingIcon: { type: String, default: null },
-    trailingIcon: { type: String, default: null },
-  },
-  setup(props, { emit }) {
-    const buttonRef = getDomRef(null);
-    const actualWidth = computed(() => {
-      if (buttonRef.value === null) {
-        return null;
-      }
+interface ButtonProps {
+  as?: string;
+  block?: boolean;
+  disabled?: boolean;
+  to?: string;
+  leadingIcon?: string;
+  loading?: boolean;
+  look?: ButtonStyle;
+  size?: ShirtSize;
+  trailingIcon?: string;
+  type?: string;
+}
 
-      const $el = buttonRef.value.getBoundingClientRect ? buttonRef.value : buttonRef.value.$el;
-
-      return props.loading ? `${$el.getBoundingClientRect().width}px` : null;
-    });
-    const isDisabled = computed(() => props.disabled || props.loading);
-    const isRouterLink = computed(() => props.as === 'nuxt-link');
-    const isRegularLink = computed(() => props.as === 'a');
-    const onClick = (e: Event) => {
-      if (isRegularLink.value && isDisabled.value) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      if (isDisabled.value === false) {
-        emit('click', e);
-      }
-    };
-
-    return {
-      actualWidth,
-      isDisabled,
-      isRouterLink,
-      isRegularLink,
-      onClick,
-      buttonRef,
-    };
-  },
+const props = withDefaults(defineProps<ButtonProps>(), {
+  as: 'button',
+  block: false,
+  disabled: false,
+  to: undefined,
+  leadingIcon: undefined,
+  loading: false,
+  look: 'secondary',
+  size: 'md',
+  trailingIcon: undefined,
+  type: 'button',
 });
+const emit = defineEmits<{
+  (name: 'click', event: Event): void;
+}>();
+const buttonRef = getDomRef<HTMLButtonElement | HTMLAnchorElement | null>(null);
+const actualWidth = computed(() => {
+  if (buttonRef.value === null) {
+    return null;
+  }
+
+  return props.loading ? `${buttonRef.value.getBoundingClientRect().width}px` : null;
+});
+const isDisabled = computed(() => props.disabled || props.loading);
+const isRouterLink = computed(() => props.as === 'nuxt-link');
+const isRegularLink = computed(() => props.as === 'a');
+const onClick = (e: Event) => {
+  if (isRegularLink.value && isDisabled.value) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  if (isDisabled.value === false) {
+    emit('click', e);
+  }
+};
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system.scss';
+@import 'assets/_design-system.scss';
 
 .button {
   display: inline-flex;

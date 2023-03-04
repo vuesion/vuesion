@@ -4,28 +4,21 @@
   </vue-box>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import { responsivePropValidator, spacingValidator } from '@/components/prop-validators';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
+<script setup lang="ts">
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import { Spacing } from '~/components/prop-types';
 
-export default defineComponent({
-  name: 'VueCard',
-  components: {
-    VueBox,
-  },
-  props: {
-    padding: {
-      type: [Number, String, Array as () => Array<string | number>],
-      validator: responsivePropValidator(spacingValidator),
-      default: 16,
-    },
-  },
+interface CardProps {
+  padding?: Spacing | Array<Spacing>;
+}
+
+withDefaults(defineProps<CardProps>(), {
+  padding: () => ['16'],
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueCard {
   background-color: $card-bg;

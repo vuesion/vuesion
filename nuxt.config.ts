@@ -1,81 +1,41 @@
-import { Configuration } from '@nuxt/types';
-import { VuesionConfig } from '@vuesion/models';
+import eslintPlugin from 'vite-plugin-eslint';
 
-const themeColor = '#0f3191';
-
-const config: Configuration = {
-  apollo: {
-    clientConfigs: {
-      default: '@/plugins/apollo/apollo-client-config.ts',
+export default defineNuxtConfig({
+  app: {
+    head: {
+      link: [
+        { rel: 'dns-prefetch', href: 'https://fonts.bunny.net/' },
+        { rel: 'preconnect', href: 'https://fonts.bunny.net/' },
+        { rel: 'preconnect', href: 'https://fonts.bunny.net/', crossorigin: '' },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.bunny.net/css?family=Inter:400,600|Lora:400,600&display=swap',
+        },
+      ],
     },
   },
   auth: {
-    cookie: {
-      options: {
-        expires: 365,
-        secure: true,
-      },
+    // The module is enabled. Change this to disable the module
+    isEnabled: true,
+    // The origin is set to the development origin. Change this when deploying to production
+    origin: process.env.BASE_URL || 'http://localhost:3000',
+    // Whether to periodically refresh the session.
+    // Change this to `true` for a refresh every seconds or set this to a number like `5000`
+    // for a refresh every 5000 milliseconds (aka: 5 seconds)
+    enableSessionRefreshPeriodically: false,
+    // Whether to refresh the session whenever a window focus event happens,
+    // i.e, when your user refocuses the window. Set this to `false` to turn this off
+    enableSessionRefreshOnWindowFocus: true,
+    // Whether to add a global authentication middleware that will protect all pages without exclusion
+    enableGlobalAppMiddleware: true,
+    globalMiddlewareOptions: {
+      // Whether to allow access to 404 pages without authentication.
+      // Set this to `false` to force users to sign-in before seeing `404` pages.
+      // Setting this to false may lead to vue-router problems (as the target page does not exist)
+      allow404WithoutAuth: true,
     },
-    localStorage: null,
-    redirect: {
-      login: '/',
-      logout: '/',
-      callback: '/',
-      home: '/example/dashboard',
-    },
-    strategies: {
-      local: {
-        scheme: 'refresh',
-        token: {
-          property: 'access_token',
-          maxAge: 1800,
-        },
-        refreshToken: {
-          property: 'refresh_token',
-          data: 'refresh_token',
-          maxAge: 60 * 60 * 24 * 30,
-        },
-        user: {
-          property: 'user',
-          autoFetch: true,
-        },
-        endpoints: {
-          login: { url: '/auth/token', method: 'post' },
-          refresh: { url: '/auth/refresh', method: 'post' },
-          user: { url: '/auth/user', method: 'get' },
-          logout: { url: '/auth/logout', method: 'post' },
-        },
-        autoLogout: true,
-      },
-    },
-    plugins: ['@/plugins/axios/request-interceptor', '@/plugins/axios/response-interceptor'],
   },
-  build: {
-    extractCSS: true,
-    loaders: {
-      cssModules: {
-        modules: {
-          localIdentName: process.env.NODE_ENV !== 'production' ? '[local]_[hash:base64:4]' : '[hash:base64:4]',
-        },
-      },
-    },
-    postcss: {
-      preset: {
-        features: {
-          customProperties: false,
-        },
-      },
-    },
-    transpile: ['vee-validate', '@vue/apollo-composable'],
-  },
-  buildModules: [
-    '@nuxt/typescript-build',
-    '@nuxtjs/composition-api',
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/html-validator',
-    '@nuxtjs/color-mode',
-    '@nuxtjs/google-fonts',
-  ],
+  components: false,
   colorMode: {
     preference: 'system',
     fallback: 'light',
@@ -86,40 +46,16 @@ const config: Configuration = {
     classSuffix: '',
     storageKey: 'nuxt-color-mode',
   },
-  css: [],
-  googleFonts: {
-    display: 'swap',
-    families: {
-      Inter: [300, 400, 500, 600, 700, 800],
-      Lora: [300, 400, 500, 600, 700, 800],
-    },
-  },
-  head: {
-    title: process.env.npm_package_name || '',
-  },
-  htmlValidator: {
-    usePrettier: false,
-    options: {
-      extends: ['html-validate:document', 'html-validate:recommended', 'html-validate:standard'],
-      rules: {
-        'svg-focusable': 'off',
-        'no-unknown-elements': 'error',
-        'void-style': 'off',
-        'no-trailing-whitespace': 'off',
-        'require-sri': 'off',
-        'attribute-boolean-style': 'off',
-        'doctype-style': 'off',
-        'no-inline-style': 'off',
-        'prefer-native-element': 'off',
-        'attribute-empty-style': 'off',
-      },
-    },
-  },
+  extends: ['@sidebase/nuxt-prisma'],
   i18n: {
-    strategy: 'no_prefix',
-    vueI18n: '@/plugins/vue-i18n/vue-i18n',
-    locales: VuesionConfig.i18n.locales,
-    defaultLocale: VuesionConfig.i18n.defaultLocale,
+    strategy: 'prefix',
+    vueI18n: 'src/plugins/vue-i18n/vue-i18n',
+    // Don't forget to update the extract-i18n-script
+    locales: [
+      { code: 'en', iso: 'en-US', file: 'en.json' },
+      { code: 'de', iso: 'de-DE', file: 'de.json' },
+    ],
+    defaultLocale: 'en',
     lazy: true,
     langDir: '../i18n/',
     detectBrowserLanguage: {
@@ -127,87 +63,29 @@ const config: Configuration = {
       cookieDomain: null,
       cookieKey: 'i18n_redirected',
       alwaysRedirect: true,
-      fallbackLocale: VuesionConfig.i18n.defaultLocale,
-    },
-    vuex: {
-      moduleName: 'i18n',
-      syncLocale: true,
-      syncMessages: false,
-      syncRouteParams: true,
+      fallbackLocale: 'en',
     },
   },
-  loading: { color: themeColor, failedColor: '#75140d' },
-  loadingIndicator: {
-    name: 'circle',
-    color: themeColor,
-    background: 'transparent',
+  imports: {
+    autoImport: false,
+    dirs: ['store'],
   },
   modules: [
-    '@nuxtjs/apollo',
-    'nuxt-i18n',
-    '@nuxtjs/axios',
-    '@nuxtjs/auth-next',
-    '@nuxtjs/pwa',
-    'nuxt-winston-log',
-    '@nuxtjs/robots',
+    // TODO: add PWA module when ready
+    '@nuxtjs/color-mode',
+    '@nuxtjs/i18n',
+    '@sidebase/nuxt-auth',
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: ['defineStore', 'acceptHMRUpdate'],
+      },
+    ],
   ],
-  plugins: [
-    { src: '@/plugins/apollo/provide-apollo-client' },
-    { src: '@/plugins/vee-validate/vee-validate' },
-    { src: '@/plugins/vuex-persist/vuex-persist.client' },
-    { src: '@/plugins/vuex-persist/vuex-persist.server' },
-    { src: '@/plugins/pwa/update.client' },
-    { src: '@/components/global' },
-  ],
-  publicRuntimeConfig: {
-    axios: {
-      baseURL: process.env.BASE_URL || 'https://vuesion.herokuapp.com',
-    },
-    apollo: {
-      baseURL: process.env.GRAPHQL_ENDPOINT || 'https://rickandmortyapi.com/graphql',
-    },
+  plugins: [{ src: '~/plugins/vee-validate/vee-validate' }, { src: '~/components/global' }],
+  rootDir: '.',
+  srcDir: './src',
+  vite: {
+    plugins: [eslintPlugin()],
   },
-  privateRuntimeConfig: {},
-  pwa: {
-    icon: {
-      fileName: 'images/vuesion-logo.png',
-    },
-    manifest: {
-      theme_color: themeColor,
-    },
-    // handled manually with vue-meta in ./src/pages/index.vue
-    meta: {
-      name: null,
-      description: null,
-      lang: null,
-      ogTitle: null,
-      ogDescription: null,
-      ogImage: null,
-      ogUrl: null,
-      twitterCard: null,
-      twitterSite: null,
-      twitterCreator: null,
-    },
-  },
-  robots: {
-    UserAgent: '*',
-    Disallow: '/*?*',
-    Allow: '/',
-  },
-  router: {
-    middleware: ['auth'],
-  },
-  srcDir: 'src',
-  serverMiddleware: ['@/api/index.ts'],
-  telemetry: false,
-  winstonLog: {
-    logPath: './logs',
-    logName: `${process.env.NODE_ENV}.log`,
-    autoCreateLogPath: true,
-    useDefaultLogger: true,
-    skipRequestMiddlewareHandler: false,
-    skipErrorMiddlewareHandler: false,
-  },
-};
-
-export default config;
+});

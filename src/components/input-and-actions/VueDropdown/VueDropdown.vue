@@ -1,6 +1,6 @@
 <template>
   <div ref="dropdownRef" :class="$style.vueDropdown" @keydown.enter.space.up.down.esc.stop.prevent="onKeyDown">
-    <div :class="$style.wrapper" @click.stop.prevent="onClick">
+    <div :class="$style.wrapper" data-testid="dropdown" @click.stop.prevent="onClick">
       <slot>
         <vue-button look="outline" :aria-expanded="show.toString()" :size="size" trailing-icon="chevron-down">
           {{ buttonText }}
@@ -12,75 +12,70 @@
       <vue-menu
         ref="menuRef"
         :items="items"
-        :class="[$style.menu, $style[alignMenu], $style[alignYMenu], $style[size]]"
+        :class="[$style.menu, $style[alignXMenu], $style[alignYMenu], $style[size]]"
         @click="onItemClick"
       />
     </vue-collapse>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, nextTick, ref } from '@vue/composition-api';
-import { getDomRef } from '@/composables/get-dom-ref';
-import { IItem } from '@/interfaces/IItem';
-import { useOutsideClick } from '@/composables/use-outside-click';
-import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
-import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
-import { horizontalAlignmentValidator, shirtSizeValidator } from '@/components/prop-validators';
+<script setup lang="ts">
+import { nextTick, ref } from 'vue';
+import { onClickOutside } from '@vueuse/core';
+import { getDomRef } from '~/composables/get-dom-ref';
+import { IItem } from '~/interfaces/IItem';
+import { HorizontalDirection, ShirtSize, VerticalDirection } from '~/components/prop-types';
+import VueMenu from '~/components/data-display/VueMenu/VueMenu.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
 
-export default defineComponent({
-  name: 'VueDropdown',
-  components: { VueCollapse, VueButton, VueMenu },
-  props: {
-    buttonText: { type: String, default: null },
-    items: { type: Array as new () => IItem[], required: true },
-    duration: { type: Number, default: 250 },
-    alignMenu: { type: String, validator: horizontalAlignmentValidator, default: 'left' },
-    alignYMenu: { type: String, validator: (value: string) => ['top', 'bottom'].includes(value), default: 'bottom' },
-    size: { type: String, validator: shirtSizeValidator, default: 'md' },
-  },
-  setup(_, { emit }) {
-    const dropdownRef = getDomRef(null);
-    const menuRef = getDomRef(null);
-    const show = ref(false);
-    const close = () => (show.value = false);
-    const onClick = () => {
-      show.value = !show.value;
-      emit('click');
-    };
-    const onItemClick = (item: IItem) => {
-      emit('item-click', item);
-      close();
-    };
-    const onKeyDown = async (e: KeyboardEvent) => {
-      if (e.code === 'Escape') {
-        close();
-      } else {
-        show.value = true;
-
-        await nextTick();
-
-        menuRef.value.focus();
-      }
-    };
-
-    useOutsideClick(dropdownRef, () => close());
-
-    return {
-      dropdownRef,
-      menuRef,
-      show,
-      onClick,
-      onItemClick,
-      onKeyDown,
-    };
-  },
+interface DropdownProps {
+  items: Array<IItem>;
+  buttonText?: string;
+  duration?: number;
+  alignXMenu?: HorizontalDirection;
+  alignYMenu?: VerticalDirection;
+  size?: ShirtSize;
+}
+withDefaults(defineProps<DropdownProps>(), {
+  buttonText: '',
+  duration: 250,
+  alignXMenu: 'left',
+  alignYMenu: 'bottom',
+  size: 'md',
 });
+const emit = defineEmits(['click', 'item-click']);
+const dropdownRef = getDomRef<HTMLDivElement>(null);
+const menuRef = getDomRef<{ focus: () => void }>(null);
+const show = ref(false);
+const close = () => (show.value = false);
+const onClick = () => {
+  show.value = !show.value;
+  emit('click');
+};
+const onItemClick = (item: IItem) => {
+  emit('item-click', item);
+  close();
+};
+const onKeyDown = async (e: KeyboardEvent) => {
+  if (e.code === 'Escape') {
+    close();
+  } else {
+    show.value = true;
+
+    await nextTick();
+
+    /* c8 ignore start */
+    menuRef.value.focus && menuRef.value.focus();
+    /* c8 ignore end */
+  }
+};
+
+onClickOutside(dropdownRef, () => close());
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueDropdown {
   display: inline-flex;

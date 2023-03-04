@@ -1,12 +1,12 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import VueColumn from './VueColumn.vue';
 
-describe('VueColumn.vue', () => {
+describe('VueColumns.vue', () => {
   let harness: RenderResult;
 
   beforeEach(() => {
     harness = render(VueColumn, {
-      stubs: ['nuxt-link'],
       slots: {
         default: 'content',
       },
@@ -20,26 +20,34 @@ describe('VueColumn.vue', () => {
   });
 
   test('renders component with responsive width', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ width: ['100%', '25%', '250px'] });
+    await rerender({ width: ['full', '3/12', 'fit'] });
 
-    expect(html()).toMatch('style="--wp: 100%; --wtp: 25%; --wtl: 250px; --wsd: 250px; --wld: 250px;"');
+    expect(html()).toMatch('w-full w-tp-3/12 w-tl-fit');
   });
 
   test('renders component with responsive alignment', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ align: ['left', 'center', 'right'] });
+    await rerender({ alignX: ['left', 'center', 'right'] });
 
-    expect(html()).toMatch('alignh-left alignh-tp-center alignh-tl-right');
+    expect(html()).toMatch('justify-left justify-tp-center justify-tl-right');
   });
 
   test('renders component with responsive vertical alignment', async () => {
-    const { html, updateProps } = harness;
+    const { html, rerender } = harness;
 
-    await updateProps({ alignY: ['top', 'center', 'bottom'] });
+    await rerender({ alignY: ['top', 'center', 'bottom'] });
 
-    expect(html()).toMatch('alignv-top alignv-tp-center alignv-tl-bottom');
+    expect(html()).toMatch('items-top items-tp-center items-tl-bottom');
+  });
+
+  test('renders component with flex-grow/shrink 0', async () => {
+    const { html, rerender } = harness;
+
+    await rerender({ canGrow: false, canShrink: false });
+
+    expect(html()).toMatch('grow-0 shrink-0');
   });
 });

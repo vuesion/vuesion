@@ -5,47 +5,45 @@
     :style="{ backgroundImage: src && `url(${src})` }"
   >
     <vue-text
-      v-if="src === null && icon.length === 0"
+      v-if="!src && icon.length === 0"
       color="text-inverse-high"
       :look="size === 'sm' ? 'support' : size === 'md' ? 'h6' : 'h4'"
     >
       {{ initials }}
     </vue-text>
 
-    <component :is="`vue-icon-${icon}`" v-if="src === null && icon && icon.length > 0" />
+    <component :is="`vue-icon-${icon}`" v-if="!src && icon && icon.length > 0" />
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from '@vue/composition-api';
-import { shirtSizeValidator } from '@/components/prop-validators';
-import VueText from '@/components/typography/VueText/VueText.vue';
+<script setup lang="ts">
+import { computed } from 'vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import { ShirtSize } from '~/components/prop-types';
 
-export default defineComponent({
-  name: 'VueAvatar',
-  components: { VueText },
-  props: {
-    name: { type: String, required: true },
-    src: { type: String, default: null },
-    icon: { type: String, default: '' },
-    size: { type: String, value: shirtSizeValidator, default: 'sm' },
-  },
-  setup(props) {
-    return {
-      initials: computed(() => {
-        return props.name
-          .split(/[, -]/)
-          .map((w) => w.substr(0, 1))
-          .join('')
-          .substr(0, 3);
-      }),
-    };
-  },
+interface AvatarProps {
+  name: string;
+  src: string | null;
+  icon?: string;
+  size?: ShirtSize;
+}
+
+const props = withDefaults(defineProps<AvatarProps>(), {
+  src: undefined,
+  icon: '',
+  size: 'sm',
+});
+const initials = computed(() => {
+  return props.name
+    .split(/[, -]/)
+    .map((w) => w.substr(0, 1))
+    .join('')
+    .substr(0, 3);
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import 'assets/_design-system.scss';
 
 .vueAvatar {
   display: flex;

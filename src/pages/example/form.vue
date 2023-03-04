@@ -1,7 +1,7 @@
 <template>
   <vue-content-block :class="$style.form">
-    <vue-box :padding="['24 16', '24 16', 24, 32]">
-      <vue-stack :space="[16, 16, 24, 32]">
+    <vue-box :padding="['24 16', '24 16', '24', '32']">
+      <vue-stack :space="['16', '16', '24', '32']">
         <vue-breadcrumb :items="breadCrumbItems" />
 
         <form-example />
@@ -10,36 +10,29 @@
   </vue-content-block>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 /* istanbul ignore file */
-import { computed, useContext, useMeta } from '@nuxtjs/composition-api';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueBreadcrumb from '@/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
-import FormExample from '@/components/forms/FormExample/FormExample.vue';
+import { definePageMeta, useHead, useI18n } from '#imports';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueBreadcrumb from '~/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
+import FormExample from '~/components/forms/FormExample/FormExample.vue';
+import { IItem } from '~/interfaces/IItem';
 
-export default {
-  name: 'FormExamplePage',
-  auth: false,
-  components: { FormExample, VueBreadcrumb, VueStack, VueBox, VueContentBlock },
-  setup() {
-    useMeta({ title: 'Vuesion - Form Example' });
-    const { app } = useContext();
-    const breadCrumbItems = computed(() => [
-      { label: app.i18n.t('common.Form-example' /* Form example */), value: '/example/apollo' },
-    ]);
+// Deps
+const { t } = useI18n();
 
-    return {
-      breadCrumbItems,
-    };
-  },
-  head: {},
-};
+// Config
+definePageMeta({ auth: false });
+useHead({ title: 'Vuesion - Form Example' });
+
+// Data
+const breadCrumbItems: Array<IItem> = [{ label: t('common.Form-example' /* Form example */), value: '/example/form' }];
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import 'assets/_design-system.scss';
 
 .form {
   padding-top: $navbar-height;

@@ -1,8 +1,8 @@
-import Vue from 'vue';
+import { nextTick } from 'vue';
+import { describe, beforeEach, test, expect, vi } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
-import { triggerWindow } from '@/test/test-utils';
-import { i18n } from '@/test/i18n';
 import VueBackToTop from './VueBackToTop.vue';
+import { triggerWindow } from '~/test/test-utils';
 
 describe('VueBackToTop.vue', () => {
   let harness: RenderResult;
@@ -11,23 +11,19 @@ describe('VueBackToTop.vue', () => {
     (global as any).innerHeight = 100;
     (global as any).pageYOffset = 400;
 
-    harness = render(VueBackToTop, {
-      i18n,
-      stubs: ['nuxt-link'],
-    });
+    harness = render(VueBackToTop, {});
   });
 
   test('renders component', () => {
-    const { html } = harness;
+    const { getByTestId } = harness;
 
-    expect(html()).toMatch(
-      '<button data-testid="back-to-top" type="button" aria-label="common.Back-to-top" class="vueBackToTop">',
-    );
+    getByTestId('back-to-top');
   });
 
   test('it should scroll to top on click', async () => {
     const { getByTestId } = harness;
-    window.scrollTo = jest.fn();
+    // @ts-ignore
+    window.scrollTo = vi.fn();
 
     expect(window.scrollTo).not.toHaveBeenCalled();
 
@@ -45,20 +41,16 @@ describe('VueBackToTop.vue', () => {
 
     triggerWindow.scroll();
 
-    await Vue.nextTick();
+    await nextTick();
 
-    expect(html()).toMatch(
-      '<button data-testid="back-to-top" type="button" aria-label="common.Back-to-top" class="vueBackToTop show">',
-    );
+    expect(html()).toMatch('show');
 
     (global as any).pageYOffset = 0;
 
     triggerWindow.scroll();
 
-    await Vue.nextTick();
+    await nextTick();
 
-    expect(html()).toMatch(
-      '<button data-testid="back-to-top" type="button" aria-label="common.Back-to-top" class="vueBackToTop">',
-    );
+    expect(html()).not.toMatch('show');
   });
 });

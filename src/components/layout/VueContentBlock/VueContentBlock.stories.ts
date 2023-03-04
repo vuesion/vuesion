@@ -1,17 +1,33 @@
-import { storiesOf } from '@storybook/vue';
+import { Story } from '@storybook/vue3';
 import VueContentBlock from './VueContentBlock.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
-const story = storiesOf('Foundation|Layout/ContentBlock', module) as any;
+export default {
+  title: 'Foundation/Layout',
+  component: VueContentBlock,
+};
 
-story.add(
-  'Limit and center content based on view port',
-  () => ({
-    components: { VueContentBlock },
-    template: `<vue-content-block class="border">VueContentBlock</vue-content-block>`,
-  }),
-  {
-    info: {
-      components: { VueContentBlock },
-    },
+const Template: Story = (args) => ({
+  components: { VueContentBlock, ComponentDocs },
+  setup() {
+    return { args };
   },
-);
+  template: `<component-docs
+      component-name="Content block"
+      usage="By default, all layout components will render full width. 
+However, most applications will want to limit the width of content on the screen. 
+The ContentBlock component sets a maximum width and centres content horizontally."
+  >
+  <div style="border: 1px solid var(--brand-border-default-medium);">
+    <vue-content-block style="border: 1px solid var(--brand-border-default-medium);">
+      VueContentBlock
+    </vue-content-block>
+  </div>
+  </component-docs>`,
+});
+
+export const ContentBlock = Template.bind({});
+
+ContentBlock.args = {
+  as: 'div',
+};

@@ -1,3 +1,3 @@
-import Vue from 'vue';
+import mitt from 'mitt';
 
-export const EventBus: Vue = new Vue();
+export const EventBus = mitt<{ [key: string]: any }>();

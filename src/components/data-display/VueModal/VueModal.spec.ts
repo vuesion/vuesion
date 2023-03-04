@@ -1,7 +1,8 @@
-import Vue from 'vue';
+import { describe, beforeEach, test, expect } from 'vitest';
+import { nextTick } from 'vue';
 import { render, RenderResult } from '@testing-library/vue';
-import { triggerDocument } from '@/test/test-utils';
 import VueModal from './VueModal.vue';
+import { triggerWindow } from '~/test/test-utils';
 
 describe('VueModal.vue', () => {
   let harness: RenderResult;
@@ -15,50 +16,51 @@ describe('VueModal.vue', () => {
   });
 
   test('opens and closes modal', async () => {
-    const { queryAllByText, updateProps } = harness;
+    const { queryAllByText, rerender } = harness;
 
-    await updateProps({ show: true });
+    await rerender({ show: true });
 
     expect(queryAllByText('TEST')).toHaveLength(1);
 
-    await updateProps({ show: false });
+    await rerender({ show: false });
 
     expect(queryAllByText('TEST')).toHaveLength(0);
   });
 
   test('should close on outside click', async () => {
-    const { queryByText, emitted, updateProps } = harness;
+    const { queryByText, getByTestId, emitted, rerender } = harness;
 
-    await updateProps({ show: true });
+    await rerender({ show: true });
 
+    const modal = getByTestId('modal');
     const paragraph = queryByText('TEST');
 
-    await Vue.nextTick();
+    await nextTick();
 
-    triggerDocument.mousedown({ target: paragraph });
+    triggerWindow.click({ target: paragraph, composedPath: () => [modal] });
     expect(emitted().close).toBeFalsy();
 
-    triggerDocument.mousedown({ target: null });
+    triggerWindow.click({ target: null, composedPath: () => [] });
     expect(emitted().close).toBeTruthy();
   });
 
   test('should close on ESC press', async () => {
-    const { emitted, updateProps } = harness;
+    const { emitted, rerender } = harness;
 
-    await updateProps({ closeOnEscape: false, backdrop: false });
+    await rerender({ closeOnEscape: false, backdrop: false });
 
-    triggerDocument.keydown({ key: 'Enter' });
+    triggerWindow.keydown({ key: 'Enter' });
     expect(emitted().close).toBeFalsy();
 
-    triggerDocument.keydown({ key: 'Escape' });
+    triggerWindow.keydown({ key: 'Escape' });
     expect(emitted().close).toBeFalsy();
 
-    await updateProps({ show: true });
-    triggerDocument.keydown({ key: 'Escape' });
+    await rerender({ show: true });
+    triggerWindow.keydown({ key: 'Escape' });
     expect(emitted().close).toBeFalsy();
 
-    await updateProps({ show: true, closeOnEscape: true });
-    triggerDocument.keydown({ key: 'Escape' });
+    await rerender({ show: true, closeOnEscape: true });
+    triggerWindow.keydown({ key: 'Escape' });
     expect(emitted().close).toBeTruthy();
   });
 });

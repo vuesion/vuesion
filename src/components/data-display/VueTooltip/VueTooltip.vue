@@ -5,7 +5,7 @@
       $style.vueTooltip,
       show && $style.show,
       $style[direction],
-      !disabled && $slots.default && $slots.default[0].tag === undefined && $style.highlight,
+      !disabled && $slots.default && $slots.default()[0].el !== null && $style.highlight,
     ]"
     :data-tip="tip"
     @mouseenter.stop.prevent="onEnter"
@@ -16,46 +16,41 @@
   </component>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api';
-import { directionValidator } from '@/components/prop-validators';
+<script setup lang="ts">
+import { ref } from 'vue';
+import { VerticalDirection } from '~/components/prop-types';
 
-export default defineComponent({
-  name: 'VueTooltip',
-  props: {
-    as: { type: String, default: 'span' },
-    tip: { type: String, required: true },
-    direction: { type: String, validator: directionValidator, default: 'top' },
-    disabled: { type: Boolean, default: false },
-  },
-  setup(props) {
-    const show = ref(false);
-    const onEnter = () => {
-      if (props.disabled === false) {
-        show.value = true;
-      }
-    };
-    const onLeave = () => {
-      show.value = false;
-    };
-    const onTouchEnd = () => {
-      if (props.disabled === false) {
-        show.value = !show.value;
-      }
-    };
+interface TooltipProps {
+  as?: string;
+  tip: string;
+  direction?: VerticalDirection;
+  disabled?: boolean;
+}
 
-    return {
-      show,
-      onEnter,
-      onLeave,
-      onTouchEnd,
-    };
-  },
+const props = withDefaults(defineProps<TooltipProps>(), {
+  as: 'span',
+  direction: 'top',
+  disabled: false,
 });
+
+const show = ref(false);
+const onEnter = () => {
+  if (props.disabled === false) {
+    show.value = true;
+  }
+};
+const onLeave = () => {
+  show.value = false;
+};
+const onTouchEnd = () => {
+  if (props.disabled === false) {
+    show.value = !show.value;
+  }
+};
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueTooltip {
   display: inline-flex;

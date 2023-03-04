@@ -19,9 +19,9 @@
 </template>
 
 <script lang="ts">
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
 
 export default {
   name: 'TokenItem',
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import 'assets/design-system';
 
 .color {
   position: relative;

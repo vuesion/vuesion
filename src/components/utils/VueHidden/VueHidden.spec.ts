@@ -1,3 +1,4 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import VueHidden from './VueHidden.vue';
 
@@ -6,7 +7,6 @@ describe('VueHidden.vue', () => {
 
   beforeEach(() => {
     harness = render(VueHidden, {
-      stubs: ['nuxt-link'],
       slots: {
         default: 'content',
       },
@@ -24,8 +24,11 @@ describe('VueHidden.vue', () => {
   test('renders component', () => {
     const { html } = harness;
 
-    expect(html()).toMatch(
-      'hidePhone hideTabletPortrait hideTabletLandscape hideSmallDesktop hideLargeDesktop onScreen',
-    );
+    expect(html()).toMatch('hidePhone');
+    expect(html()).toMatch('hideTabletPortrait');
+    expect(html()).toMatch('hideTabletLandscape');
+    expect(html()).toMatch('hideSmallDesktop');
+    expect(html()).toMatch('hideLargeDesktop');
+    expect(html()).toMatch('onScreen');
   });
 });

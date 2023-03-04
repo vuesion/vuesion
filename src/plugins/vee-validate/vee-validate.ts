@@ -1,9 +1,12 @@
-import { extend } from 'vee-validate';
-import { required, email, integer, min, min_value as minValue, regex } from 'vee-validate/dist/rules.umd.js';
+import { defineNuxtPlugin } from '#app';
+import { defineRule } from 'vee-validate';
+import { required, email, integer, min, min_value as minValue, regex } from '@vee-validate/rules';
 
-extend('required', required);
-extend('email', email);
-extend('integer', integer);
-extend('min', min);
-extend('min_value', minValue);
-extend('regex', regex);
+export default defineNuxtPlugin(() => {
+  defineRule('required', required);
+  defineRule('email', email);
+  defineRule('integer', integer);
+  defineRule('min', min);
+  defineRule('min_value', minValue);
+  defineRule('regex', regex);
+});

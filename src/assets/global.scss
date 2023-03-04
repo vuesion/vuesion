@@ -1,5 +1,8 @@
-@import 'design-system/mixins/mixins';
+@import 'design-system/mixins/default';
 @import 'design-system/variables/variables';
+@import 'alignment';
+@import 'layout';
+@import 'spacing';
 @import 'design-system/themes/light';
 @import 'design-system/themes/dark';
 
@@ -128,9 +131,4 @@ img:not([alt]) {
     background-repeat: no-repeat;
     z-index: 1;
   }
-}
-
-// storybook
-.border {
-  border: 1px solid var(--brand-border-default-low);
 }

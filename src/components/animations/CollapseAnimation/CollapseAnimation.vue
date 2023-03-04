@@ -1,78 +1,76 @@
 <template>
-  <transition :css="false" @beforeEnter="beforeEnter" @enter="enter" @beforeLeave="beforeLeave" @leave="leave">
+  <transition :css="false" @before-enter="beforeEnter" @enter="enter" @before-leave="beforeLeave" @leave="leave">
     <slot />
   </transition>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import anime from 'animejs';
 
-export default {
-  name: 'CollapseAnimation',
-  props: {
-    duration: { type: Number, default: 250 },
+const props = defineProps({
+  duration: {
+    type: Number,
+    default: 250,
   },
-  methods: {
-    beforeEnter(el: HTMLElement) {
-      el.style.height = '0';
-      el.style.opacity = '0';
-      el.style.overflow = 'hidden';
+});
+const beforeEnter = (el: HTMLElement) => {
+  el.style.height = '0';
+  el.style.opacity = '0';
+  el.style.overflow = 'hidden';
+};
+const enter = (el: HTMLElement, done: any) => {
+  anime({
+    targets: el,
+    height: {
+      value: `${el.scrollHeight}px`,
+      duration: props.duration,
     },
-    enter(el: HTMLElement, done: any) {
-      anime({
-        targets: el,
-        height: {
-          value: `${el.scrollHeight}px`,
-          duration: this.duration,
-        },
-        opacity: {
-          value: 1,
-          duration: this.duration,
-        },
-        round: 1,
-        easing: 'easeInOutCirc',
-        complete: () => {
-          el.style.height = null;
-          el.style.overflow = null;
-          done();
-        },
-      });
+    opacity: {
+      value: 1,
+      duration: props.duration,
     },
-    beforeLeave(el: HTMLElement) {
-      el.style.overflow = 'hidden';
+    round: 1,
+    easing: 'easeInOutCirc',
+    complete: () => {
+      el.style.height = '';
+      el.style.overflow = '';
+      done();
     },
-    leave(el: HTMLElement, done: any) {
-      anime({
-        targets: el,
-        height: {
-          value: `0`,
-          duration: this.duration,
-        },
-        opacity: {
-          value: 0,
-          duration: this.duration,
-        },
-        paddingTop: {
-          value: 0,
-          duration: this.duration,
-        },
-        paddingBottom: {
-          value: 0,
-          duration: this.duration,
-        },
-        marginTop: {
-          value: 0,
-          duration: this.duration,
-        },
-        marginBottom: {
-          value: 0,
-          duration: this.duration,
-        },
-        round: 1,
-        easing: 'easeInOutCirc',
-        complete: done,
-      });
+  });
+};
+const beforeLeave = (el: HTMLElement) => {
+  el.style.overflow = 'hidden';
+};
+const leave = (el: HTMLElement, done: any) => {
+  anime({
+    targets: el,
+    height: {
+      value: `0`,
+      duration: props.duration,
     },
-  },
+    opacity: {
+      value: 0,
+      duration: props.duration,
+    },
+    paddingTop: {
+      value: 0,
+      duration: props.duration,
+    },
+    paddingBottom: {
+      value: 0,
+      duration: props.duration,
+    },
+    marginTop: {
+      value: 0,
+      duration: props.duration,
+    },
+    marginBottom: {
+      value: 0,
+      duration: props.duration,
+    },
+    round: 1,
+    easing: 'easeInOutCirc',
+    complete: done,
+  });
 };
 </script>

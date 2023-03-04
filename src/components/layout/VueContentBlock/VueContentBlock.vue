@@ -4,23 +4,14 @@
   </component>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-
-export default defineComponent({
-  name: 'VueContentBlock',
-  components: {},
-  props: {
-    as: { type: String, default: 'div' },
-  },
-  setup() {
-    return {};
-  },
+<script setup lang="ts">
+withDefaults(defineProps<{ as?: string }>(), {
+  as: 'div',
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueContentBlock {
   width: 100%;

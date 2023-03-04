@@ -9,47 +9,42 @@
       :size="size"
       :class="$style.button"
       :look="isChecked(item) ? 'primary' : 'outline'"
-      @click="$emit('input', item)"
+      @click="$emit('update:modelValue', item)"
     >
       <component :is="`vue-icon-${item.leadingIcon}`" />
     </vue-button>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import { IItem } from '@/interfaces/IItem';
-import { shirtSizeValidator } from '@/components/prop-validators';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+<script setup lang="ts">
+import { IItem } from '~/interfaces/IItem';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import { ShirtSize } from '~/components/prop-types';
 
-export default defineComponent({
-  name: 'VueToggleButton',
-  components: { VueButton },
-  props: {
-    value: { type: [String, Boolean, Number, Object, Object as () => IItem], default: undefined },
-    items: { type: Array as () => Array<IItem>, required: true },
-    size: { type: String, validator: shirtSizeValidator, default: 'md' },
-  },
-  setup(props) {
-    const isChecked = (item: IItem) => {
-      if (props.value !== undefined && props.value?.value !== undefined) {
-        return props.value.value === item.value;
-      } else if (props.value !== undefined) {
-        return props.value === item.value;
-      } else {
-        return false;
-      }
-    };
+interface ToggleButtonProps {
+  items: Array<IItem>;
+  modelValue?: string | boolean | number | IItem | object | any;
+  size?: ShirtSize;
+}
 
-    return {
-      isChecked,
-    };
-  },
+const props = withDefaults(defineProps<ToggleButtonProps>(), {
+  modelValue: undefined,
+  size: 'md',
 });
+defineEmits(['update:modelValue']);
+const isChecked = (item: IItem) => {
+  if (props.modelValue !== undefined && props.modelValue?.value !== undefined) {
+    return props.modelValue.value === item.value;
+  } else if (props.modelValue !== undefined) {
+    return props.modelValue === item.value;
+  } else {
+    return false;
+  }
+};
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import 'assets/_design-system.scss';
 
 .vueToggleButton {
   display: inline-flex;

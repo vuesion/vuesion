@@ -4,103 +4,102 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onBeforeUnmount, onMounted, onUpdated, ref, Ref } from '@vue/composition-api';
-import { getDomRef } from '@/composables/get-dom-ref';
+<script setup lang="ts">
+import { onBeforeUnmount, onMounted, onUpdated, ref, Ref } from 'vue';
+import { getDomRef } from '~/composables/get-dom-ref';
 
-export default defineComponent({
-  name: 'VueMasonry',
-  components: {},
-  inheritAttrs: false,
-  props: {
-    height: { type: Number, default: 800 },
-  },
-  setup(props) {
-    let observer: MutationObserver = null;
-    const wrapper: Ref<HTMLElement> = getDomRef(null);
-    const actualHeight = ref(props.height);
-    const getColumnHeight = (col = 0) => {
-      let height = 0;
-      const children = wrapper.value.children;
-      const max = children.length;
+const props = defineProps({
+  height: { type: Number, default: 800 },
+});
+let observer: MutationObserver | null = null;
+const wrapper: Ref<HTMLElement> = getDomRef(null);
+const actualHeight = ref(props.height);
+const getColumnHeight = (col = 0) => {
+  let height = 0;
+  const children = wrapper.value.children;
+  const max = children.length;
 
-      for (let i = col; i < max; i += 3) {
-        const child = children.item(i);
-        height += child.scrollHeight + 24;
-      }
+  for (let i = col; i < max; i += 3) {
+    const child = children.item(i);
 
-      return height;
-    };
-    const calculateHeight = () => {
-      const col1Height = getColumnHeight() - 23;
-      const col2Height = getColumnHeight(1) - 23;
-      const col3Height = getColumnHeight(2) - 23;
+    if (child) {
+      height += child.scrollHeight + 24;
+    } /* c8 ignore start */ else {
+      height += 24;
+    }
+    /* c8 ignore end */
+  }
 
-      actualHeight.value = Math.max(col1Height, col2Height, col3Height);
-    };
-    const checkForImages = () => {
-      let loadedImages = 0;
-      const images = wrapper.value.querySelectorAll('img');
-      const imageCount = images.length;
-      const imageLoaded = () => {
-        loadedImages += 1;
-        if (imageCount === loadedImages) {
-          calculateHeight();
-        }
-      };
+  return height;
+};
+const calculateHeight = () => {
+  const col1Height = getColumnHeight() - 23;
+  const col2Height = getColumnHeight(1) - 23;
+  const col3Height = getColumnHeight(2) - 23;
 
-      images.forEach((image) => {
-        image.style.display = 'none';
+  actualHeight.value = Math.max(col1Height, col2Height, col3Height);
+};
+const checkForImages = () => {
+  let loadedImages = 0;
+  const images = wrapper.value.querySelectorAll('img');
+  const imageCount = images.length;
+  const imageLoaded = () => {
+    loadedImages += 1;
 
-        const originalLoadEvent = image.onload;
-        const originalErrorEvent = image.onerror;
-
-        image.onload = function (ev: Event) {
-          image.style.display = 'initial';
-          imageLoaded();
-
-          if (originalLoadEvent) {
-            originalLoadEvent.apply(this, ev);
-          }
-        };
-        image.onerror = function (ev: Event) {
-          image.style.display = 'none';
-          imageLoaded();
-
-          if (originalLoadEvent) {
-            originalErrorEvent.apply(this, ev);
-          }
-        };
-      });
-    };
-
-    onMounted(() => {
+    if (imageCount === loadedImages) {
       calculateHeight();
+    }
+  };
 
-      window.addEventListener('resize', calculateHeight);
+  images.forEach((image) => {
+    image.style.display = 'none';
 
-      observer = new MutationObserver(calculateHeight);
-      observer.observe(wrapper.value, { attributes: true, childList: true, characterData: true, subtree: true });
+    const originalLoadEvent = image.onload;
+    const originalErrorEvent = image.onerror;
 
-      checkForImages();
-    });
-    onUpdated(() => calculateHeight);
-    onBeforeUnmount(() => {
-      window.removeEventListener('resize', calculateHeight);
+    image.onload = function (ev) {
+      image.style.display = 'initial';
+      imageLoaded();
 
-      observer.disconnect();
-    });
-
-    return {
-      wrapper,
-      actualHeight,
+      /* c8 ignore start */
+      if (originalLoadEvent) {
+        originalLoadEvent.apply(this, ev as any);
+      }
+      /* c8 ignore end */
     };
-  },
+    image.onerror = function (ev) {
+      image.style.display = 'none';
+      imageLoaded();
+
+      /* c8 ignore start */
+      if (originalErrorEvent) {
+        originalErrorEvent.apply(this, ev as any);
+      }
+      /* c8 ignore end */
+    };
+  });
+};
+
+onMounted(() => {
+  calculateHeight();
+
+  window.addEventListener('resize', calculateHeight);
+
+  observer = new MutationObserver(calculateHeight);
+  observer.observe(wrapper.value, { attributes: true, childList: true, characterData: true, subtree: true });
+
+  checkForImages();
+});
+onUpdated(() => calculateHeight);
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', calculateHeight);
+
+  observer?.disconnect();
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import 'assets/_design-system.scss';
 
 .vueMasonry {
   display: flex;

@@ -1,12 +1,21 @@
 <template>
   <vue-stack space="16" :class="$style.colorTokensSection">
     <vue-stack space="10">
-      <vue-text color="text-high" look="h3" weight="semi-bold">{{ title }}</vue-text>
-      <vue-text look="description">{{ description }}</vue-text>
+      <vue-text color="text-high" look="h3" weight="semi-bold">
+        {{ title }}
+      </vue-text>
+      <vue-text look="description">
+        {{ description }}
+      </vue-text>
     </vue-stack>
 
     <vue-tiles space="0" :columns="[1, 2, 3]">
-      <vue-box v-for="(column, idx) in columns" :key="idx" :padding="[16, '48 24']" :class="column.dark && $style.dark">
+      <vue-box
+        v-for="(column, idx) in columns"
+        :key="idx"
+        :padding="['16', '48 24']"
+        :class="column.dark && $style.dark"
+      >
         <vue-stack>
           <token-item
             v-for="(token, tokenidx) in column.tokens"
@@ -25,11 +34,11 @@
 </template>
 
 <script lang="ts">
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import TokenItem from '@/assets/design-system/docs/components/TokenItem.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueTiles from '~/components/layout/VueTiles/VueTiles.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import TokenItem from '~/assets/design-system/docs/components/TokenItem.vue';
 
 export default {
   name: 'ColorTokensSection',
@@ -43,7 +52,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/design-system';
+@import 'assets/design-system';
 
 .colorTokensSection {
   .dark {

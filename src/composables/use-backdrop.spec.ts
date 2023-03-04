@@ -1,11 +1,13 @@
-import Vue from 'vue';
+import { describe, beforeEach, test, expect } from 'vitest';
+import { ref, nextTick } from 'vue';
 import { render } from '@testing-library/vue';
-import { ref } from '@vue/composition-api';
-import { TestComponent } from '@/test/test-utils';
 import { useBackdrop } from './use-backdrop';
+import { TestComponent } from '~/test/test-utils';
 
 describe('use-backdrop.ts', () => {
-  beforeEach(() => (document.body.style.overflow = ''));
+  beforeEach(() => {
+    document.body.style.overflow = '';
+  });
 
   test('set body to overflow hidden', async () => {
     render(
@@ -19,7 +21,7 @@ describe('use-backdrop.ts', () => {
       }),
     );
 
-    await Vue.nextTick();
+    await nextTick();
 
     expect(document.body.style.overflow).toBe('hidden');
   });
@@ -36,7 +38,7 @@ describe('use-backdrop.ts', () => {
       }),
     );
 
-    await Vue.nextTick();
+    await nextTick();
 
     expect(document.body.style.overflow).toBe('initial');
   });
@@ -53,7 +55,7 @@ describe('use-backdrop.ts', () => {
       }),
     );
 
-    await Vue.nextTick();
+    await nextTick();
 
     expect(document.body.style.overflow).toBe('');
   });
@@ -70,7 +72,7 @@ describe('use-backdrop.ts', () => {
       }),
     );
 
-    await Vue.nextTick();
+    await nextTick();
 
     expect(document.body.style.overflow).toBe('');
   });

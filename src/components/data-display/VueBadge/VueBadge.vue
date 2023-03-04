@@ -4,22 +4,21 @@
   </vue-text>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import { badgeStatusesValidator } from '@/components/prop-validators';
-import VueText from '@/components/typography/VueText/VueText.vue';
+<script setup lang="ts">
+import VueText from '~/components/typography/VueText/VueText.vue';
+import { BadgeStatus } from '~/components/prop-types';
 
-export default defineComponent({
-  name: 'VueBadge',
-  components: { VueText },
-  props: {
-    status: { type: String, validator: badgeStatusesValidator, default: 'info' },
-  },
+interface BadgeProps {
+  status?: BadgeStatus;
+}
+
+withDefaults(defineProps<BadgeProps>(), {
+  status: 'info',
 });
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueBadge {
   display: inline-flex;

@@ -28,27 +28,34 @@
   </component>
 </template>
 
-<script lang="ts">
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-export default {
-  name: 'VueSidebarGroupItem',
-  components: { VueColumn, VueColumns, VueText, VueBox },
-  props: {
-    name: { type: String, required: true },
-    leadingIcon: { type: String, default: null },
-    trailingIcon: { type: String, default: null },
-    to: { type: [String, Object], default: null },
-    exact: { type: Boolean, default: true },
-    href: { type: String, default: null },
-  },
-};
+<script setup lang="ts">
+import { withDefaults } from 'vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+
+interface SidebarGroupItemProps {
+  name: string;
+  leadingIcon?: string | null;
+  trailingIcon?: string | null;
+  to?: string | object | null;
+  exact?: boolean;
+  href?: string | null;
+}
+
+withDefaults(defineProps<SidebarGroupItemProps>(), {
+  leadingIcon: null,
+  trailingIcon: null,
+  to: null,
+  exact: true,
+  href: null,
+});
+
+defineEmits(['click']);
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueSidebarGroupItem {
   display: flex;

@@ -1,4 +1,4 @@
-import { getFloatInRange, getIntInRange } from '@vuesion/utils/dist/randomGenerator';
+import { getFloatInRange, getIntInRange } from '~/components/utils';
 
 class Circle {
   private opacity: number = getFloatInRange(0.05, 0.9);
@@ -77,10 +77,11 @@ const draw = (canvas: HTMLCanvasElement | any, context: CanvasRenderingContext2D
     circle.update();
   });
 
-  /* istanbul ignore next */
+  /* c8 ignore start */
   (window as any).requestAnimationFrame(() => {
     draw(canvas, context, circles);
   });
+  /* c8 ignore end */
 };
 
 export const CircleAnimation = (canvas: HTMLCanvasElement | any): any => {

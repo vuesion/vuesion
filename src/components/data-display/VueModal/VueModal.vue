@@ -1,84 +1,79 @@
 <template>
   <vue-box
     v-if="show"
-    ref="modal"
+    ref="modalRef"
+    data-testid="modal"
     :padding="padding"
-    :class="[$style.vueModal, show ? $style.show : '']"
+    :class="[$style.vueModal, show && $style.show]"
     :aria-modal="show"
   >
     <vue-icon-times
+      v-if="hideCloseButton === false"
       tabindex="0"
       :class="$style.closeButton"
-      @click.native="onClose"
-      @keypress.native.space.enter.stop.prevent="onClose"
+      @click="onClose"
+      @keypress.space.enter.stop.prevent="onClose"
     />
     <slot />
   </vue-box>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, watch, WatchStopHandle } from '@vue/composition-api';
-import { useOutsideClick } from '@/composables/use-outside-click';
-import { useKeydown } from '@/composables/use-keydown';
-import { useBackdrop } from '@/composables/use-backdrop';
-import { getDomRef } from '@/composables/get-dom-ref';
-import { responsivePropValidator, spacingValidator } from '@/components/prop-validators';
-import VueIconTimes from '@/components/icons/VueIconTimes.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
+<script setup lang="ts">
+import { computed, watch, WatchStopHandle } from 'vue';
+import { onClickOutside, onKeyDown } from '@vueuse/core';
+import { useBackdrop } from '~/composables/use-backdrop';
+import { getDomRef } from '~/composables/get-dom-ref';
+import VueIconTimes from '~/components/icons/VueIconTimes.vue';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import { SpacingWithDirections } from '~/components/prop-types';
 
-export default defineComponent({
-  name: 'VueModal',
-  components: { VueIconTimes, VueBox },
-  props: {
-    padding: {
-      type: [Number, String, Array as () => Array<string | number>],
-      validator: responsivePropValidator(spacingValidator),
-      default: '48 16 16 16',
-    },
-    show: { type: Boolean, default: false },
-    backdrop: { type: Boolean, default: true },
-    disablePageScroll: { type: Boolean, default: false },
-    closeOnEscape: { type: Boolean, default: true },
-  },
-  setup(props, { emit }) {
-    const modal = getDomRef(null);
-    const show = computed(() => props.show);
-    const backdrop = computed(() => props.backdrop);
-    const disablePageScroll = computed(() => !props.disablePageScroll);
-    const { onKeydown } = useKeydown();
-    const onClose = () => emit('close');
-    let backDropWatcher: WatchStopHandle = null;
+interface ModalProps {
+  padding?: string | SpacingWithDirections | Array<SpacingWithDirections>;
+  show?: boolean;
+  backdrop?: boolean;
+  disablePageScroll?: boolean;
+  closeOnEscape?: boolean;
+  hideCloseButton?: boolean;
+}
 
-    onKeydown((event: KeyboardEvent) => {
-      if (event.key === 'Escape' && props.show === true && props.closeOnEscape === true) {
-        onClose();
-      }
-    });
-
-    useOutsideClick(modal, () => onClose());
-
-    watch(
-      backdrop,
-      () => {
-        if (backdrop.value === true) {
-          backDropWatcher = useBackdrop(show, { scrollable: disablePageScroll });
-        } else {
-          backDropWatcher();
-        }
-      },
-      { immediate: true },
-    );
-
-    return {
-      modal,
-      onClose,
-    };
-  },
+const props = withDefaults(defineProps<ModalProps>(), {
+  padding: () => ['48 16 16 16'],
+  show: false,
+  backdrop: true,
+  disablePageScroll: false,
+  closeOnEscape: true,
+  hideCloseButton: false,
 });
+const emit = defineEmits(['close']);
+const modalRef = getDomRef<HTMLElement>(null);
+const show = computed(() => props.show);
+const backdrop = computed(() => props.backdrop);
+const disablePageScroll = computed(() => !props.disablePageScroll);
+const onClose = () => emit('close');
+let backDropWatcher: WatchStopHandle;
+
+onKeyDown('Escape', () => {
+  if (props.show === true && props.closeOnEscape === true) {
+    onClose();
+  }
+});
+onClickOutside(modalRef, () => onClose());
+
+watch(
+  backdrop,
+  () => {
+    if (backdrop.value === true) {
+      backDropWatcher = useBackdrop(show, { scrollable: disablePageScroll });
+    } else if (backDropWatcher) {
+      backDropWatcher();
+    }
+  },
+  { immediate: true },
+);
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueModal {
   position: fixed;

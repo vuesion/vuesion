@@ -1,55 +1,83 @@
-import { storiesOf } from '@storybook/vue';
-import { action } from '@storybook/addon-actions';
-import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import { Story } from '@storybook/vue3';
 import VueSlider from './VueSlider.vue';
+import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
 
-const story = storiesOf('Input & Actions|Slider', module) as any;
+export default {
+  title: 'Input & Actions/Slider',
+  component: VueSlider,
+  argTypes: {},
+};
 
-story.add(
-  'Single',
-  () => ({
-    components: { VueSlider, ComponentDocs, VueStack },
-    template: `<component-docs
-    component-name="Slider"
-    usage="Allows user to visually adjust numeric input by interacting with the slider handle and progress track as visual feedback."
-    story="Display single slider enabled and disabled. Please interact with the slider to see all interaction states."
-    >
-    <vue-stack>
-      <vue-slider id="slider1" label="Slider enabled" :min="0" :max="200" :range="[100]" @change="action" />
-      <vue-slider id="slider2" label="Slider disabled" :min="0" :max="200" :range="[100]" disabled @change="action" />
-    </vue-stack>
+const SingleTemplate: Story = (args) => ({
+  components: { VueSlider, ComponentDocs, VueStack, VueText },
+  data(): any {
+    return {
+      model: [100],
+    };
+  },
+  setup() {
+    return {
+      args,
+    };
+  },
+  template: `<component-docs
+      component-name="Slider"
+      usage="Allows user to visually adjust numeric input by interacting with the slider handle and progress track as visual feedback."
+      story="Display single slider enabled and disabled. Please interact with the slider to see all interaction states."
+  >
+  <vue-stack>
+    <vue-text weight="semi-bold">v-model: {{model}}</vue-text>
+    <vue-slider v-bind="args" v-model="model" />
+  </vue-stack>
   </component-docs>`,
-    methods: {
-      action: action('@change'),
-    },
-  }),
-  {
-    info: {
-      components: { VueSlider },
-    },
-  },
-);
+});
 
-story.add(
-  'Range',
-  () => ({
-    components: { VueSlider, ComponentDocs, VueStack },
-    template: `<component-docs
-      story="Display range slider enabled and disabled. Please interact with the slider to see all interaction states."
-    >
-    <vue-stack>
-      <vue-slider id="slider1" label="Range-slider enabled" :min="0" :max="200" :range="[40, 120]" @change="action" />
-      <vue-slider id="slider2" label="Range-slider disabled" :min="0" :max="200" :range="[40, 120]" disabled @change="action" />
-    </vue-stack>
-    </component-docs>`,
-    methods: {
-      action: action('@change'),
-    },
-  }),
-  {
-    info: {
-      components: { VueSlider },
-    },
+export const Single = SingleTemplate.bind({});
+Single.args = {
+  id: 'slider',
+  label: 'Slider',
+  min: 0,
+  max: 200,
+  formatValue: (value: number) => {
+    return value;
   },
-);
+  keyboardStepInterval: 5,
+  disabled: false,
+};
+
+const RangeTemplate: Story = (args) => ({
+  components: { VueSlider, ComponentDocs, VueStack, VueText },
+  data(): any {
+    return {
+      model: [40, 120],
+    };
+  },
+  setup() {
+    return {
+      args,
+    };
+  },
+  template: `<component-docs
+      story="Display range slider enabled and disabled. Please interact with the slider to see all interaction states."
+  >
+  <vue-stack>
+    <vue-text weight="semi-bold">v-model: {{model}}</vue-text>
+    <vue-slider v-bind="args" v-model="model" />
+  </vue-stack>
+  </component-docs>`,
+});
+
+export const Range = RangeTemplate.bind({});
+Range.args = {
+  id: 'slider',
+  label: 'Slider',
+  min: 0,
+  max: 200,
+  formatValue: (value: number) => {
+    return value;
+  },
+  keyboardStepInterval: 5,
+  disabled: false,
+};

@@ -1,9 +1,7 @@
-import Vue from 'vue';
+import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import VueAccordion from './VueAccordion.vue';
 import VueAccordionItem from './VueAccordionItem.vue';
-
-Vue.component('VueAccordionItem', VueAccordionItem);
 
 describe('VueAccordion.vue', () => {
   let harness: RenderResult;
@@ -17,6 +15,11 @@ describe('VueAccordion.vue', () => {
           '<vue-accordion-item title="Item 3">Content 3</vue-accordion-item>',
         ],
       },
+      global: {
+        stubs: {
+          'vue-accordion-item': VueAccordionItem,
+        },
+      },
     });
   });
 
@@ -28,6 +31,11 @@ describe('VueAccordion.vue', () => {
           '<vue-accordion-item title="Item 2">Content 2</vue-accordion-item>',
           '<vue-accordion-item title="Item 3">Content 3</vue-accordion-item>',
         ],
+      },
+      global: {
+        stubs: {
+          'vue-accordion-item': VueAccordionItem,
+        },
       },
     });
 
@@ -75,9 +83,9 @@ describe('VueAccordion.vue', () => {
   });
 
   test('should open all items and close one', async () => {
-    const { getByText, queryAllByText, updateProps } = harness;
+    const { getByText, queryAllByText, rerender } = harness;
 
-    await updateProps({ multiple: true });
+    await rerender({ multiple: true });
 
     expect(queryAllByText('Content 1')).toHaveLength(1);
     expect(queryAllByText('Content 2')).toHaveLength(0);

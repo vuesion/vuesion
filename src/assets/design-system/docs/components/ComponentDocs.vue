@@ -1,9 +1,11 @@
 <template>
-  <vue-box padding="16">
+  <vue-card>
     <vue-stack space="32">
-      <vue-stack v-if="componentName && usage" space="8">
-        <vue-inline align-y="center" :space="[8, 24]">
-          <vue-text color="text-high" look="large-title" weight="semi-bold">{{ componentName }} {{ suffix }}</vue-text>
+      <vue-stack v-if="componentName && usage" space="10">
+        <vue-inline align-y="center" :space="['8', '24']">
+          <vue-text color="text-high" look="large-title" weight="semi-bold">
+            {{ componentName }} {{ suffix }}
+          </vue-text>
           <vue-button
             v-if="showDisclaimer"
             look="primary"
@@ -17,44 +19,55 @@
           </vue-button>
         </vue-inline>
 
-        <vue-text color="text-high" look="description">{{ usage }}</vue-text>
+        <vue-columns>
+          <vue-column :can-grow="false">
+            <vue-text color="text-medium" look="description" style="white-space: pre-wrap">
+              {{ usage }}
+            </vue-text>
+          </vue-column>
+        </vue-columns>
       </vue-stack>
 
       <vue-stack v-if="story" space="8">
-        <vue-text color="text-high" look="large-title" weight="semi-bold">Story</vue-text>
-        <vue-text color="text-high" look="description">{{ story }}</vue-text>
+        <vue-text color="text-high" look="large-title" weight="semi-bold"> Story </vue-text>
+        <vue-text color="text-high" look="description">
+          {{ story }}
+        </vue-text>
       </vue-stack>
 
-      <vue-card :style="{ position: 'relative' }">
-        <slot />
-      </vue-card>
+      <vue-stack space="16">
+        <div style="width: 100%">
+          <slot />
+        </div>
+      </vue-stack>
     </vue-stack>
-  </vue-box>
+  </vue-card>
 </template>
 
-<script lang="ts">
-import '@/components/global';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueCard from '@/components/data-display/VueCard/VueCard.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+<script setup lang="ts">
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueCard from '~/components/data-display/VueCard/VueCard.vue';
 
-export default {
-  name: 'ComponentDocs',
-  components: { VueButton, VueInline, VueCard, VueBox, VueStack, VueText },
-  props: {
-    componentName: { type: String, default: null },
-    usage: { type: String, default: null },
-    story: { type: String, default: null },
-    suffix: { type: String, default: 'Usage' },
-    showDisclaimer: { type: Boolean, default: false },
-    buyLink: { type: String, default: null },
-  },
-};
+interface ComponentDocsProps {
+  componentName?: string;
+  usage?: string;
+  story?: string;
+  suffix?: string;
+  showDisclaimer?: boolean;
+  buyLink?: string;
+}
+
+withDefaults(defineProps<ComponentDocsProps>(), {
+  componentName: null,
+  usage: null,
+  story: null,
+  suffix: 'Usage',
+  showDisclaimer: false,
+  buyLink: null,
+});
 </script>
-
-<style lang="scss" module>
-@import '~@/assets/_design-system';
-</style>

@@ -1,90 +1,95 @@
 <template>
-  <div ref="selectRef" :class="$style.vueSelect">
-    <ValidationProvider v-slot="{ errors }" ref="validator" :vid="id" :name="name" :rules="validation" tag="div">
-      <div :class="[disabled && $style.disabled, errors.length > 0 && $style.error]" @keydown="onKeyDown">
-        <vue-text
-          :for="id"
-          look="label"
-          :color="errors.length > 0 ? 'danger' : 'text-medium'"
-          :class="[$style.label, hideLabel && 'sr-only']"
-          as="label"
+  <div ref="selectRef" :class="[$style.vueSelect, $attrs.class]">
+    <div :class="[disabled && $style.disabled, errors.length > 0 && $style.error]" @keydown="onKeyDown">
+      <vue-text
+        :for="id"
+        look="label"
+        :color="errors.length > 0 ? 'danger' : 'text-medium'"
+        :class="[$style.label, hideLabel && 'sr-only']"
+        as="label"
+      >
+        {{ label }}
+        <sup v-if="required">*</sup>
+      </vue-text>
+
+      <div :class="$style.selectWrapper">
+        <select
+          :id="id"
+          :data-testid="'native-' + id"
+          :name="name"
+          :title="label"
+          :required="required"
+          :disabled="disabled"
+          :multiple="multiSelect"
+          :class="[
+            $style.nativeSelect,
+            placeholder && inputValue.length === 0 && $style.hasPlaceholder,
+            multiSelect && inputValue.length > 1 && $style.hasCount,
+            $style[size],
+          ]"
+          v-bind="$attrs"
+          @input="onInput"
         >
-          {{ label }}
-          <sup v-if="required">*</sup>
-        </vue-text>
-
-        <div :class="$style.selectWrapper">
-          <select
-            :id="id"
-            :data-testid="'native-' + id"
-            :name="name"
-            :title="label"
-            :required="required"
-            :disabled="disabled"
-            :multiple="multiSelect"
-            :class="[
-              $style.nativeSelect,
-              placeholder && inputValue.length === 0 && $style.hasPlaceholder,
-              multiSelect && inputValue.length > 1 && $style.hasCount,
-              $style[size],
-            ]"
-            v-bind="$attrs"
-            v-on="{
-              ...$listeners,
-              input: onInput,
-            }"
+          <option v-if="placeholder && inputValue.length === 0" value="" disabled selected>{{ placeholder }}</option>
+          <option
+            v-for="(option, idx) in options"
+            :key="`${option.value}-${idx}`"
+            :value="option.value"
+            :selected="inputValue.includes(option.value)"
           >
-            <option v-if="placeholder && !inputValue" value="" disabled selected>{{ placeholder }}</option>
-            <option
-              v-for="(option, idx) in options"
-              :key="`${option.value}-${idx}`"
-              :value="option.value"
-              :selected="inputValue.includes(option.value)"
-            >
-              {{ option.label }}
-            </option>
-          </select>
+            {{ option.label }}
+          </option>
+        </select>
 
-          <div
-            :id="'custom-' + id"
-            :data-testid="'custom-' + id"
-            :aria-expanded="show.toString()"
-            :class="[
-              $style.customSelect,
-              placeholder && inputValue.length === 0 && $style.hasPlaceholder,
-              multiSelect && inputValue.length > 1 && $style.hasCount,
-              $style[size],
-            ]"
-            :tabindex="disabled ? -1 : 0"
-            role="listbox"
-            @click.stop.prevent="toggleMenu"
-          >
-            {{ displayItem ? displayItem.label : placeholder }}
-          </div>
-
-          <vue-badge v-if="multiSelect && inputValue.length > 1" :status="badgeStatus" :class="$style.count">
-            +{{ inputValue.length - 1 }}
-          </vue-badge>
-
-          <div :class="$style.icon" :data-testid="'toggle-' + id" @click.stop.prevent="toggleMenu">
-            <vue-icon-chevron-down />
-          </div>
+        <div
+          :id="'custom-' + id"
+          :data-testid="'custom-' + id"
+          :aria-expanded="show.toString()"
+          :class="[
+            $style.customSelect,
+            placeholder && inputValue.length === 0 && $style.hasPlaceholder,
+            multiSelect && inputValue.length > 1 && $style.hasCount,
+            $style[size],
+          ]"
+          :tabindex="disabled ? -1 : 0"
+          role="listbox"
+          @click.stop.prevent="toggleMenu"
+        >
+          {{ displayItem ? displayItem.label : placeholder }}
         </div>
 
-        <vue-text
-          :color="errors.length > 0 ? 'danger' : 'text-medium'"
-          :class="[$style.description, hideDescription && 'sr-only']"
+        <vue-badge
+          v-if="multiSelect && inputValue.length > 1"
+          :status="badgeStatus"
+          :class="$style.count"
+          @click="toggleMenu"
         >
-          {{ errors.length > 0 ? errorMessage : description }}
-        </vue-text>
-      </div>
-    </ValidationProvider>
+          +{{ inputValue.length - 1 }}
+        </vue-badge>
 
+        <div :class="$style.icon" :data-testid="'toggle-' + id" @click.stop.prevent="toggleMenu">
+          <vue-icon-chevron-down />
+        </div>
+      </div>
+
+      <vue-text
+        :color="errors.length > 0 ? 'danger' : 'text-medium'"
+        :class="[$style.description, hideDescription && 'sr-only']"
+      >
+        {{ errors.length > 0 ? errorMessage : description }}
+      </vue-text>
+    </div>
     <vue-collapse :show="show" :duration="duration">
       <vue-menu
         ref="menuRef"
         :items="options"
-        :class="[$style.menu, hideLabel && $style.hideLabel, $style[alignMenu], $style[alignYMenu], $style[size]]"
+        :class="[
+          $style.menu,
+          $style[alignXMenu],
+          $style[alignYMenu],
+          $style[size],
+          /* c8 ignore start */ hideLabel && $style.hideLabel /* c8 ignore end */,
+        ]"
         @click="onItemClick"
         @close="toggleMenu"
       />
@@ -92,189 +97,207 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, ref, nextTick } from '@vue/composition-api';
-import { ValidationProvider } from 'vee-validate';
-import { IItem } from '@/interfaces/IItem';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
-import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
-import { useOutsideClick } from '@/composables/use-outside-click';
-import { getDomRef } from '@/composables/get-dom-ref';
-import VueIconChevronDown from '@/components/icons/VueIconChevronDown.vue';
-import { badgeStatusesValidator, horizontalAlignmentValidator, shirtSizeValidator } from '@/components/prop-validators';
-import VueBadge from '@/components/data-display/VueBadge/VueBadge.vue';
+<script setup lang="ts">
+import { computed, ref, nextTick } from 'vue';
+import { onClickOutside } from '@vueuse/core';
+import { useField } from 'vee-validate';
+import { IItem } from '~/interfaces/IItem';
+import { getDomRef } from '~/composables/get-dom-ref';
+import { BadgeStatus, HorizontalDirection, ShirtSize, VerticalDirection } from '~/components/prop-types';
+import VueIconChevronDown from '~/components/icons/VueIconChevronDown.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
+import VueMenu from '~/components/data-display/VueMenu/VueMenu.vue';
+import VueBadge from '~/components/data-display/VueBadge/VueBadge.vue';
 
-export default defineComponent({
-  name: 'VueSelect',
-  components: {
-    VueBadge,
-    VueIconChevronDown,
-    VueMenu,
-    VueCollapse,
-    VueText,
-    ValidationProvider,
-  },
-  inheritAttrs: false,
-  props: {
-    id: { type: String, required: true },
-    name: { type: String, required: true },
-    label: { type: String, required: true },
-    hideLabel: { type: Boolean, default: false },
-    hideDescription: { type: Boolean, default: false },
-    required: { type: Boolean, default: false },
-    validation: { type: [String, Object], default: null },
-    value: { type: [String, Boolean, Number, Object, Object as () => IItem, Array], default: undefined },
-    disabled: { type: Boolean, default: false },
-    items: { type: [Array as () => Array<IItem>], required: true },
-    placeholder: { type: String, default: '' },
-    description: { type: String, default: '' },
-    errorMessage: { type: String, default: '' },
-    duration: { type: Number, default: 250 },
-    alignMenu: { type: String, validator: horizontalAlignmentValidator, default: 'left' },
-    alignYMenu: { type: String, validator: (value: string) => ['top', 'bottom'].includes(value), default: 'bottom' },
-    size: { type: String, validator: shirtSizeValidator, default: 'md' },
-    multiSelect: { type: Boolean, default: false },
-    badgeStatus: { type: String, validator: badgeStatusesValidator, default: 'info' },
-  },
-  setup(props, { emit }) {
-    const validator = getDomRef(null);
-    const selectRef = getDomRef(null);
-    const menuRef = getDomRef(null);
-    const show = ref(false);
-    const getValue = (valueOrItem: any | IItem) => {
-      if (valueOrItem !== undefined && valueOrItem?.value !== undefined) {
-        return valueOrItem.value;
-      } else if (valueOrItem !== undefined) {
-        return valueOrItem;
-      } else {
-        return undefined;
-      }
-    };
-    const inputValue = computed<Array<any>>(() => {
-      if (Array.isArray(props.value)) {
-        return props.value.map((v: any | IItem) => getValue(v));
-      } else {
-        const value = getValue(props.value);
-        return value !== undefined ? [value] : [];
-      }
-    });
-    const options = computed<Array<IItem>>(() =>
-      props.items.map((item: IItem) => ({
-        ...item,
-        trailingIcon: inputValue.value.includes(item.value) ? 'checkmark' : null,
-      })),
+interface SelectProps {
+  id: string;
+  name: string;
+  label: string;
+  items: Array<IItem>;
+  hideLabel?: boolean;
+  hideDescription?: boolean;
+  required?: boolean;
+  validation?: string | any;
+  modelValue?: string | boolean | number | IItem | Array<string | boolean | number | IItem> | object | unknown;
+  disabled?: boolean;
+  placeholder?: string;
+  description?: string;
+  errorMessage?: string;
+  duration?: number;
+  alignXMenu?: HorizontalDirection;
+  alignYMenu?: VerticalDirection;
+  size?: ShirtSize;
+  multiSelect?: boolean;
+  badgeStatus?: BadgeStatus;
+}
+
+const props = withDefaults(defineProps<SelectProps>(), {
+  hideLabel: false,
+  hideDescription: false,
+  required: false,
+  validation: null,
+  modelValue: () => undefined as unknown,
+  disabled: false,
+  placeholder: '',
+  description: '',
+  errorMessage: '',
+  duration: 250,
+  alignXMenu: 'left',
+  alignYMenu: 'bottom',
+  size: 'md',
+  multiSelect: false,
+  badgeStatus: 'info',
+});
+const emit = defineEmits(['update:modelValue']);
+const { errors, resetField, handleChange } = useField(props.id, props.validation, {
+  initialValue: props.modelValue,
+  validateOnValueUpdate: false,
+  type: 'select',
+  syncVModel: false,
+});
+const selectRef = getDomRef<HTMLElement>(null);
+const menuRef = getDomRef<{ focus: (selectedItem: IItem) => void }>(null);
+const show = ref(false);
+const getValue = (valueOrItem: any | IItem) => {
+  if (valueOrItem !== undefined && valueOrItem?.value !== undefined) {
+    return valueOrItem.value;
+    /* c8 ignore start */
+  } else if (typeof valueOrItem === 'string' && valueOrItem.length === 0) {
+    return undefined;
+  } else if (valueOrItem !== undefined) {
+    return valueOrItem;
+  } else {
+    return undefined;
+  }
+  /* c8 ignore end */
+};
+const inputValue = computed<Array<any>>(() => {
+  if (Array.isArray(props.modelValue)) {
+    return props.modelValue.map((v: any | IItem) => getValue(v));
+  } else {
+    const value = getValue(props.modelValue);
+
+    return /* c8 ignore start */ value !== undefined ? [value] : /* c8 ignore end */ [];
+  }
+});
+const options = computed<Array<IItem>>(() =>
+  props.items.map((item: IItem) => ({
+    ...item,
+    trailingIcon: inputValue.value.includes(item.value) ? 'checkmark' : null,
+  })),
+);
+const displayItem = computed(() => {
+  if (inputValue.value.length > 0) {
+    return options.value.find((option) => option.value === inputValue.value[0]);
+  } else {
+    return undefined;
+  }
+});
+const open = async () => {
+  if (props.disabled) {
+    return;
+  }
+
+  show.value = true;
+
+  await nextTick();
+
+  if (displayItem.value !== undefined && typeof menuRef.value.focus !== 'undefined') {
+    menuRef.value?.focus(displayItem.value);
+  }
+};
+const close = async (focusInput = true) => {
+  if (focusInput) {
+    const customSelect: HTMLElement | null = selectRef.value?.querySelector(`#custom-${props.id}`);
+    customSelect?.focus();
+  }
+
+  show.value = false;
+
+  await nextTick();
+
+  handleChange(props.multiSelect ? inputValue.value.join('') : inputValue.value);
+};
+const onInput = (e: Event) => {
+  resetField();
+
+  const selected: IItem[] = [];
+  const target = e.target as HTMLSelectElement;
+  const length: number = target.options.length;
+
+  for (let i = 0; i < length; i++) {
+    const option: any = target.options[i];
+
+    if (option.selected && option.disabled === false) {
+      selected.push({ label: option.text, value: option.value });
+    }
+  }
+
+  handleChange(props.multiSelect ? selected : selected[0]);
+
+  emit('update:modelValue', props.multiSelect ? selected : selected[0]);
+};
+const onItemClick = (item: IItem) => {
+  resetField();
+
+  if (props.multiSelect) {
+    const selectedValues = inputValue.value.includes(item.value)
+      ? inputValue.value.filter((value) => value !== item.value)
+      : [...inputValue.value, item.value];
+
+    handleChange(selectedValues.length === 0 ? null : selectedValues.join(''));
+    emit(
+      'update:modelValue',
+      props.items.filter((i) => selectedValues.includes(i.value)),
     );
-    const displayItem = computed(() => {
-      if (inputValue.value.length > 0) {
-        return options.value.find((option) => option.value === inputValue.value[0]);
-      } else {
-        return undefined;
-      }
-    });
-    const open = async () => {
-      if (props.disabled) {
-        return;
-      }
+  } else {
+    handleChange(item.value);
+    emit('update:modelValue', item);
+    close();
+  }
+};
+const onKeyDown = (e: KeyboardEvent) => {
+  if (['Tab', 'ShiftLeft', 'ShiftRight'].includes(e.code)) {
+    return;
+  }
 
-      show.value = true;
+  e.preventDefault();
+  e.stopPropagation();
 
-      await nextTick();
+  if (e.code === 'Escape') {
+    close();
+  } else {
+    open();
+  }
+};
+const toggleMenu = () => {
+  const nativeSelect: HTMLSelectElement | null = document.querySelector(`#${props.id}`);
 
-      menuRef.value.focus(displayItem.value);
-    };
-    const close = (focusInput = true) => {
-      if (focusInput) {
-        selectRef.value.querySelector(`#custom-${props.id}`).focus();
-      }
+  nativeSelect?.focus();
 
-      show.value = false;
-    };
-    const onInput = (e: Event) => {
-      validator.value.reset();
+  if (show.value === true) {
+    close();
+  } else {
+    open();
+  }
+};
 
-      const selected: IItem[] = [];
-      const target: HTMLSelectElement = e.target as HTMLSelectElement;
-      const length: number = target.options.length;
+onClickOutside(selectRef, async () => {
+  show.value = false;
 
-      for (let i = 0; i < length; i++) {
-        const option: any = target.options[i];
-
-        if (option.selected && option.disabled === false) {
-          selected.push({ label: option.text, value: option.value });
-        }
-      }
-
-      validator.value.validate(props.multiSelect ? selected : selected[0]);
-
-      emit('input', props.multiSelect ? selected : selected[0]);
-    };
-    const onItemClick = (item: IItem) => {
-      validator.value.reset();
-
-      if (props.multiSelect) {
-        const selectedValues = inputValue.value.includes(item.value)
-          ? inputValue.value.filter((value) => value !== item.value)
-          : [...inputValue.value, item.value];
-
-        validator.value.validate(selectedValues.length === 0 ? null : true);
-        emit(
-          'input',
-          props.items.filter((i) => selectedValues.includes(i.value)),
-        );
-      } else {
-        validator.value.validate(item.value);
-        emit('input', item);
-        close();
-      }
-    };
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (['Tab', 'ShiftLeft', 'ShiftRight'].includes(e.code)) {
-        return;
-      }
-
-      e.preventDefault();
-      e.stopPropagation();
-
-      if (e.code === 'Escape') {
-        close();
-      } else {
-        open();
-      }
-    };
-    const toggleMenu = () => {
-      const nativeSelect: HTMLSelectElement = document.querySelector(`#${props.id}`);
-
-      nativeSelect.focus();
-
-      if (show.value === true) {
-        close();
-      } else {
-        open();
-      }
-    };
-
-    useOutsideClick(selectRef, () => close(false));
-
-    return {
-      validator,
-      selectRef,
-      menuRef,
-      show,
-      options,
-      inputValue,
-      displayItem,
-      onInput,
-      onItemClick,
-      onKeyDown,
-      toggleMenu,
-    };
-  },
+  await nextTick();
 });
 </script>
 
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+};
+</script>
+
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 .vueSelect {
   position: relative;
   display: flex;
@@ -289,6 +312,7 @@ export default defineComponent({
     position: relative;
 
     .count {
+      cursor: pointer;
       position: absolute;
       top: 50%;
       right: $space-40;
@@ -296,6 +320,7 @@ export default defineComponent({
     }
 
     .icon {
+      cursor: pointer;
       position: absolute;
       top: 0;
       right: $space-12;

@@ -1,28 +1,28 @@
 <template>
-  <div ref="header" :class="$style.landingPageHeader">
+  <section ref="header" :class="$style.landingPageHeader">
     <canvas ref="canvas" :class="$style.canvas" />
     <vue-content-block>
       <vue-box padding="null" align-y="center" as="nav" :class="$style.nav">
         <a href="https://vuesion.github.io/docs/en/v4/" target="_blank" rel="noopener">
           <vue-icon-book /> Documentation
         </a>
-        <nuxt-link to="/download"> <vue-icon-download /> Downloads </nuxt-link>
+        <nuxt-link :to="localePath('/download')"> <vue-icon-download /> Downloads </nuxt-link>
       </vue-box>
     </vue-content-block>
 
-    <vue-box :padding="['24 16', '96 null 32 null', '96 null 80 null']">
-      <vue-stack space="48" align="center">
-        <vue-text look="h1" weight="semi-bold" align="center" :class="$style.content">
+    <vue-box :padding="['24 16', '96 0 32 0', '96 0 80 0']">
+      <vue-stack space="48" align-x="center">
+        <vue-text look="h1" weight="semi-bold" align-x="center" :class="$style.content">
           Nothing great is <br />
           <span class="deco-underline">made</span> alone
         </vue-text>
 
-        <vue-text look="h4" align="center" :class="[$style.subtitle, $style.content]">
+        <vue-text look="h4" align-x="center" :class="[$style.subtitle, $style.content]">
           Vuesion is a boilerplate that helps product teams build faster than ever with <br />
           fewer headaches and modern best practices across engineering & design.
         </vue-text>
 
-        <vue-inline align="center">
+        <vue-inline align-x="center">
           <a
             :class="[$style.button, $style.content]"
             tabindex="0"
@@ -44,7 +44,7 @@
         </vue-inline>
 
         <vue-hidden tablet-landscape small-desktop large-desktop :class="$style.content">
-          <vue-text align="center"> Vuesion Storybook integration and Figma file are perfectly in sync </vue-text>
+          <vue-text align-x="center"> Vuesion Storybook integration and Figma file are perfectly in sync </vue-text>
         </vue-hidden>
       </vue-stack>
     </vue-box>
@@ -59,7 +59,7 @@
 
     <a
       tabindex="0"
-      href="https://www.figma.com/file/DvP4EE7gAJH3fsc4RFqZYc/Vuesion-Core?node-id=1686%3A4660"
+      href="https://www.figma.com/community/file/1080868611324978249"
       target="_blank"
       rel="noopener"
       aria-label="vuesion figma"
@@ -70,72 +70,51 @@
         title="vuesion figma"
       />
     </a>
-  </div>
+  </section>
 </template>
 
-<script lang="ts">
-import { CircleAnimation } from '@/components/animations/CircleAnimation';
-import { defineComponent, onBeforeMount, onMounted, onBeforeUnmount } from '@vue/composition-api';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueHidden from '@/components/utils/VueHidden/VueHidden.vue';
-import { getDomRef } from '@/composables/get-dom-ref';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueIconDownload from '@/components/icons/VueIconDownload.vue';
-import VueIconBook from '@/components/icons/VueIconBook.vue';
+<script setup lang="ts">
+import { onBeforeMount, onMounted, onBeforeUnmount } from 'vue';
+import { CircleAnimation } from '~/components/animations/CircleAnimation';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueHidden from '~/components/utils/VueHidden/VueHidden.vue';
+import { getDomRef } from '~/composables/get-dom-ref';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueIconDownload from '~/components/icons/VueIconDownload.vue';
+import VueIconBook from '~/components/icons/VueIconBook.vue';
+const header = getDomRef<HTMLElement>(null);
+const canvas = getDomRef<HTMLCanvasElement>(null);
+const handleResize = () => {
+  const canvasElement: HTMLCanvasElement = canvas.value;
+  const headerElement: HTMLElement = header.value;
+  /* c8 ignore start */
+  const stageRect: DOMRect =
+    headerElement.getClientRects().length > 0
+      ? (headerElement.getClientRects().item(0) as DOMRect)
+      : ({
+          width: 0,
+          height: 0,
+        } as DOMRect);
+  /* c8 ignore end */
+  canvasElement.width = stageRect.width;
+  canvasElement.height = stageRect.height;
+};
 
-export default defineComponent({
-  name: 'LandingPageHeader',
-  components: {
-    VueIconBook,
-    VueIconDownload,
-    VueContentBlock,
-    VueHidden,
-    VueInline,
-    VueStack,
-    VueText,
-    VueBox,
-  },
-  props: {},
-  setup() {
-    const header = getDomRef(null);
-    const canvas = getDomRef(null);
-    const handleResize = () => {
-      const canvasElement: HTMLCanvasElement = canvas.value;
-      const headerElement: HTMLElement = header.value;
-      /* istanbul ignore next */
-      const stageRect: DOMRect =
-        headerElement.getClientRects().length > 0
-          ? headerElement.getClientRects().item(0)
-          : ({
-              width: 0,
-              height: 0,
-            } as DOMRect);
-      canvasElement.width = stageRect.width;
-      canvasElement.height = stageRect.height;
-    };
+onBeforeMount(() => window.addEventListener('resize', handleResize));
 
-    onBeforeMount(() => window.addEventListener('resize', handleResize));
-
-    onMounted(() => {
-      handleResize();
-      CircleAnimation(canvas.value);
-    });
-
-    onBeforeUnmount(() => window.removeEventListener('resize', handleResize));
-
-    return {
-      header,
-      canvas,
-    };
-  },
+onMounted(() => {
+  handleResize();
+  CircleAnimation(canvas.value);
 });
+
+onBeforeUnmount(() => window.removeEventListener('resize', handleResize));
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .landingPageHeader {
   position: relative;

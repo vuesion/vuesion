@@ -1,0 +1,20 @@
+/**
+ USAGE (only in SCSS files, not .vue files):
+
+ @include add-theme-variable(
+  variable-name,
+  (
+    'theme-name-1': value,
+    'theme-name-2': value,
+  )
+);
+
+ */
+
+@mixin add-theme-variable($variable-name, $value-map) {
+  @each $theme, $value in $value-map {
+    :root.#{$theme} {
+      --#{$variable-name}: #{$value};
+    }
+  }
+}

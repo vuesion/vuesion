@@ -2,14 +2,15 @@
   <div ref="content" :class="$style.vueMarkdown" v-html="html"></div>
 </template>
 
-<script lang="ts">
-import marked from 'marked';
-import { VNode } from 'vue';
+<script setup lang="ts">
+import { marked } from 'marked';
+import { computed, onBeforeUnmount, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { getDomRef } from '~/composables/get-dom-ref';
 
 marked.setOptions({
   renderer: new marked.Renderer(),
   gfm: true,
-  tables: true,
   breaks: true,
   pedantic: false,
   sanitize: false,
@@ -18,66 +19,39 @@ marked.setOptions({
   xhtml: false,
 });
 
-export default {
-  name: 'VueMarkdown',
-  props: {
-    useRouter: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  data(): any {
-    return {
-      html: '',
-    };
-  },
-  created() {
-    this.createHTML();
-  },
-  beforeMount() {
-    this.createHTML();
-  },
-  mounted() {
-    this.$refs.content.addEventListener('click', this.handleClick);
-  },
-  /* istanbul ignore next */
-  updated() {
-    this.createHTML();
-  },
-  beforeDestroy() {
-    this.$refs.content.removeEventListener('click', this.handleClick);
-  },
-  methods: {
-    createHTML() {
-      let text = '';
+const props = withDefaults(defineProps<{ useRouter?: boolean; markdown: string }>(), {
+  useRouter: true,
+});
+const router = useRouter();
+const content = getDomRef<HTMLElement>(null);
+const html = computed(() => (marked as any)(props.markdown));
+const handleClick = (event: MouseEvent) => {
+  if (props.useRouter === false) {
+    return true;
+  }
 
-      this.$slots.default.forEach((slot: VNode) => {
-        if (slot.text) {
-          slot.text = slot.text.trim().replace(/\n /g, '\n');
-          text += `${slot.text}\n`;
-        }
-      });
+  event.preventDefault();
 
-      this.html = (marked as any)(text);
-    },
-    handleClick(event: any) {
-      if (this.useRouter === false) {
-        return true;
-      }
+  const target = event.target as HTMLAnchorElement;
 
-      const { target } = event;
-      const url = new URL(target.href);
-      const to = url.pathname;
-
-      event.preventDefault();
-      this.$router.push(to);
-    },
-  },
+  router.push(target.href);
 };
+
+onMounted(() => {
+  content.value.querySelectorAll('a').forEach((anchor) => {
+    anchor.addEventListener('click', handleClick);
+  });
+});
+
+onBeforeUnmount(() => {
+  content.value.querySelectorAll('a').forEach((anchor) => {
+    anchor.addEventListener('click', handleClick);
+  });
+});
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueMarkdown {
   h1,

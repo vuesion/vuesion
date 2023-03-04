@@ -1,22 +1,28 @@
-import { VNode } from 'vue';
-import { EventBus } from '@/services/EventBus';
-import { IToast } from '@/interfaces/IToast';
-import isArray from 'lodash/isArray';
-import { brandBreakpoints } from '@/components/prop-validators';
-import { IBreakpoints } from '@/interfaces/IBreakpoints';
+import { IBreakpoints } from '~/interfaces/IBreakpoints';
+import { BreakpointValues } from '~/components/prop-types';
+import { EventBus } from '~/services/EventBus';
+import { IToast } from '~/interfaces/IToast';
+
+export interface CssSpacing {
+  top: string | null;
+  right: string | null;
+  bottom: string | null;
+  left: string | null;
+  [key: string]: string | null;
+}
 
 export const isNullOrUndefined = (value: any) =>
   value === null || value === undefined || value === 'null' || value === 'undefined';
 
-export const parseCssSpacingProp = (spacingPropValue: string) => {
+export const parseCssSpacingProp = (spacingPropValue: string | null): CssSpacing => {
   const values = !isNullOrUndefined(spacingPropValue)
     ? spacingPropValue
-        .toString()
+        ?.toString()
         .split(' ')
         .map((value) => value)
     : null;
 
-  if (values === null) {
+  if (values === null || values === undefined) {
     return {
       top: null,
       right: null,
@@ -64,7 +70,7 @@ export const parseResponsivePropValue = (
     return !isNullOrUndefined(value) ? value : null;
   },
 ): IBreakpoints => {
-  const propAsArray: any[] = isArray(propValues) ? propValues : [propValues];
+  const propAsArray: any[] = Array.isArray(propValues) ? propValues : [propValues];
   const result: IBreakpoints | any = {
     phone: null,
     tabletPortrait: null,
@@ -73,43 +79,28 @@ export const parseResponsivePropValue = (
     largeDesktop: null,
   };
 
-  if (interpolate && propAsArray.length < brandBreakpoints.length) {
+  if (interpolate && propAsArray.length < BreakpointValues.length) {
     const lastValue: any = propAsArray[propAsArray.length - 1];
-    const diff = brandBreakpoints.length - propAsArray.length;
+    const diff = BreakpointValues.length - propAsArray.length;
 
     for (let i = 0; i < diff; i++) {
       propAsArray.push(lastValue);
     }
   }
 
-  brandBreakpoints.forEach((name, index) => {
+  BreakpointValues.forEach((name, index) => {
     result[name] = filterFunction(propAsArray[index]);
   });
 
   return result;
 };
 
-export const decorateChildComponents = (children: VNode[], callback: (vNode: VNode, index: number) => VNode) => {
-  if (!children) {
-    return null;
-  }
-
-  if (!callback) {
-    return children;
-  }
-
-  return children
-    .filter((vNode: VNode) => vNode.tag !== undefined)
-    .map((vNode: VNode, index) => callback(vNode, index));
-};
-
-export const applyResponsiveClasses = (
+export const getResponsiveCssClasses = (
   $style: any,
-  classesObject: Record<any, any>,
   breakPointValues: IBreakpoints | any,
-  classPrefix: string,
+  classPrefix: string | null,
   applyValueToClassName = true,
-): Record<any, any> => {
+): Array<string> => {
   const map: IBreakpoints | any = {
     phone: '',
     tabletPortrait: '-tp',
@@ -117,13 +108,10 @@ export const applyResponsiveClasses = (
     smallDesktop: '-sd',
     largeDesktop: '-ld',
   };
+  const cssClasses: Array<string> = [];
 
-  if (!$style || !breakPointValues || !classPrefix) {
-    return classesObject;
-  }
-
-  if (!classesObject) {
-    classesObject = {};
+  if (!breakPointValues || !classPrefix) {
+    return [];
   }
 
   Object.keys(breakPointValues).forEach((key) => {
@@ -134,19 +122,78 @@ export const applyResponsiveClasses = (
       const className = applyValueToClassName
         ? `${classPrefix}${breakPointPrefix}-${breakPointValue}`
         : `${classPrefix}${breakPointPrefix}`;
-      const cssClassName = $style[className];
+      const cssClassName = $style ? $style[className] : className;
 
-      classesObject[cssClassName] = true;
+      cssClasses.push(cssClassName);
     }
   });
 
-  return classesObject;
+  return cssClasses;
 };
 
-export const getComponentElementType = (elementType: string, fallback = 'div') => {
-  return ['ul', 'ol'].includes(elementType?.toLowerCase()) ? 'li' : fallback || 'div';
+export const getCssSpacingClasses = (
+  $style: any,
+  values: CssSpacing,
+  classNamePrefix: string,
+  breakpointPrefix: string | null = null,
+) => {
+  const classes: Array<string> = [];
+  const map: any = {
+    top: 't',
+    right: 'r',
+    bottom: 'b',
+    left: 'l',
+  };
+
+  Object.keys(map).forEach((key) => {
+    const prefix = map[key];
+    const value = values[key];
+    const className = `${classNamePrefix}${prefix}-${breakpointPrefix ? breakpointPrefix + '-' : ''}${value}`;
+
+    if (isNullOrUndefined(value) === false) {
+      classes.push($style ? $style[className] : className);
+    }
+  });
+
+  return classes;
+};
+
+export const getFlexDirectionForBreakpoint = (reverse: boolean, stacked: boolean, breakpoint?: string) => {
+  if (reverse === null && stacked === false) {
+    return null;
+  }
+
+  let direction = 'flex-row';
+
+  if (reverse === true && stacked === false) {
+    direction = 'flex-row-reverse';
+  } else if (reverse === true && stacked === true) {
+    direction = 'flex-col-reverse';
+  } else if (stacked === true) {
+    direction = 'flex-col';
+  }
+
+  return breakpoint ? `${direction}-${breakpoint}` : direction;
+};
+
+export const getGUID = (): string => {
+  const s4 = () => {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  };
+
+  return `${s4()}${s4()}${s4()}${s4()}${s4()}${s4()}${s4()}${s4()}`;
+};
+
+export const getIntInRange = (min: number, max: number): number => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+export const getFloatInRange = (min: number, max: number): number => {
+  return Math.random() * (max - min) + min;
 };
 
 export const addToast = (n: IToast): void => {
-  EventBus.$emit('toast.add', n);
+  EventBus.emit('toast.add', n);
 };

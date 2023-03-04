@@ -1,3 +1,4 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { render, RenderResult } from '@testing-library/vue';
 import VueCollapse from './VueCollapse.vue';
 
@@ -13,11 +14,11 @@ describe('VueCollapse.vue', () => {
   });
 
   test('renders component', async () => {
-    const { queryAllByText, updateProps } = harness;
+    const { queryAllByText, rerender } = harness;
 
     expect(queryAllByText('content')).toHaveLength(1);
 
-    await updateProps({ show: false });
+    await rerender({ show: false });
 
     expect(queryAllByText('content')).toHaveLength(0);
   });

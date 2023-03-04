@@ -2,7 +2,7 @@
   <nav aria-label="Breadcrumb" :class="$style.vueBreadcrumb">
     <ol :class="$style.list">
       <li :class="$style.itemWrapper">
-        <nuxt-link :to="localePath('/')" href="/" :class="[$style.item, $style.homeItem]" aria-label="Home">
+        <nuxt-link :to="localePath('/')" :class="[$style.item, $style.homeItem]" aria-label="Home">
           <vue-text look="support" color="text-medium" weight="semi-bold">
             <vue-icon-home :class="$style.home" />
           </vue-text>
@@ -10,12 +10,7 @@
       </li>
       <li v-if="items.length > 2" :class="[$style.itemWrapper, $style.ellipsis]">...</li>
       <li v-for="(item, idx) in items" :key="`${item.value}-${idx}`" :class="[$style.itemWrapper, $style.link]">
-        <nuxt-link
-          :to="localePath(item.value)"
-          :href="item.value"
-          :aria-current="idx === items.length - 1 && 'page'"
-          :class="$style.item"
-        >
+        <nuxt-link :to="localePath(item.value)" :aria-current="idx === items.length - 1 && 'page'" :class="$style.item">
           <vue-text look="support" color="text-medium" weight="semi-bold">
             {{ item.label }}
           </vue-text>
@@ -25,23 +20,16 @@
   </nav>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@vue/composition-api';
-import { IItem } from '@/interfaces/IItem';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueIconHome from '@/components/icons/VueIconHome.vue';
+<script setup lang="ts">
+import { IItem } from '~/interfaces/IItem';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueIconHome from '~/components/icons/VueIconHome.vue';
 
-export default defineComponent({
-  name: 'VueBreadcrumb',
-  components: { VueIconHome, VueText },
-  props: {
-    items: { type: [Array, Array as () => Array<IItem>], required: true },
-  },
-});
+defineProps<{ items: Array<IItem> }>();
 </script>
 
 <style lang="scss" module>
-@import '~@/assets/_design-system';
+@import 'assets/_design-system.scss';
 
 .vueBreadcrumb {
   .list {
@@ -89,6 +77,7 @@ export default defineComponent({
         text-decoration: $breadcrumb-item-text-decoration;
         border: $breadcrumb-item-border;
         border-radius: $breadcrumb-item-border-radius;
+        cursor: pointer;
 
         &:focus {
           box-shadow: $breadcrumb-item-outline;

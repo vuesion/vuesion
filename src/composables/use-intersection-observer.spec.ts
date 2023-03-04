@@ -1,24 +1,24 @@
-import Vue from 'vue';
-import { Ref } from '@vue/composition-api';
+import { describe, test, expect, vi } from 'vitest';
+import { Ref, nextTick } from 'vue';
 import { render } from '@testing-library/vue';
-import { TestComponent } from '@/test/test-utils';
 import { getDomRef } from './get-dom-ref';
 import { useIntersectionObserver } from './use-intersection-observer';
+import { TestComponent } from '~/test/test-utils';
 
 describe('use-intersection-observer.ts', () => {
   test('should create an observer and call the call back function', async () => {
-    let testObserver: Ref<IntersectionObserver>;
+    let testObserver: Ref<IntersectionObserver> = null as any;
 
-    (global as any).IntersectionObserver = jest.fn().mockImplementation(() => {
-      return { observe: jest.fn() };
+    (global as any).IntersectionObserver = vi.fn().mockImplementation(() => {
+      return { observe: vi.fn() };
     });
 
     const { unmount } = render(
       TestComponent(() => {
-        const ref = getDomRef(null);
-        const { observer } = useIntersectionObserver(ref, null);
+        const ref = getDomRef<HTMLElement>(null);
+        const { observer } = useIntersectionObserver(ref, () => null);
 
-        testObserver = observer;
+        testObserver = observer as Ref<IntersectionObserver>;
 
         return {
           ref,
@@ -26,14 +26,14 @@ describe('use-intersection-observer.ts', () => {
       }, '<div ref="ref"><p>TEST</p></div>'),
     );
 
-    await Vue.nextTick();
+    await nextTick();
 
     expect(testObserver.value.observe).toHaveBeenCalled();
     expect(testObserver.value).not.toBeNull();
 
     unmount();
 
-    await Vue.nextTick();
+    await nextTick();
 
     expect(testObserver.value).toBeNull();
 
@@ -41,15 +41,15 @@ describe('use-intersection-observer.ts', () => {
   });
 
   test('should not create an observer and call the call back function', async () => {
-    let testObserver: Ref<IntersectionObserver>;
-    const callback = jest.fn();
+    let testObserver: Ref<IntersectionObserver> = null as any;
+    const callback = vi.fn();
 
     render(
       TestComponent(() => {
-        const ref = getDomRef(null);
+        const ref = getDomRef<HTMLElement>(null);
         const { observer } = useIntersectionObserver(ref, callback);
 
-        testObserver = observer;
+        testObserver = observer as Ref<IntersectionObserver>;
 
         return {
           ref,
@@ -57,7 +57,7 @@ describe('use-intersection-observer.ts', () => {
       }, '<div ref="ref"><p>TEST</p></div>'),
     );
 
-    await Vue.nextTick();
+    await nextTick();
 
     expect(testObserver.value).toBeNull();
     expect(callback).toHaveBeenCalled();

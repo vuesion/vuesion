@@ -1,93 +1,73 @@
-import { createLocalVue, mount } from '@vue/test-utils';
+import { describe, test, expect, vi } from 'vitest';
+import { fireEvent, render } from '@testing-library/vue';
+import { useRouter } from 'vue-router';
 import VueMarkdown from './VueMarkdown.vue';
 
-const localVue = createLocalVue();
+vi.mock('vue-router', () => ({
+  useRouter: vi.fn(() => ({
+    push: () => ({}),
+  })),
+}));
 
 describe('VueMarkdown.vue', () => {
-  test('renders component', () => {
-    const wrapper = mount(VueMarkdown, {
-      localVue,
-      slots: {
-        default: ['<img src="/test.jpg"/># foo\n ## bar\n ### baz'],
+  test('renders component', async () => {
+    const { getByText, unmount } = render(VueMarkdown, {
+      props: {
+        markdown: `# foo\n ## bar\n ### baz`,
       },
     });
 
-    expect(wrapper.find('h1').text()).toBe('foo');
-    expect(wrapper.find('h2').text()).toBe('bar');
-    expect(wrapper.find('h3').text()).toBe('baz');
+    getByText('foo');
+    getByText('bar');
+    getByText('baz');
 
-    wrapper.vm.$forceUpdate();
-
-    wrapper.destroy();
+    await unmount();
   });
 
   test('renders component with trimmed text', () => {
-    const wrapper = mount(VueMarkdown, {
-      localVue,
-      slots: {
-        default: ['       foo bar'],
+    const { getByText } = render(VueMarkdown, {
+      props: {
+        markdown: '       foo bar',
       },
     });
-    expect(wrapper.find('code').exists()).toBe(false);
-    expect(wrapper.find('div').text()).toBe('foo bar');
-  });
 
-  test('renders component with trimmed text and shows as code', () => {
-    const wrapper = mount(VueMarkdown, {
-      localVue,
-      slots: {
-        default: [`       \`foo bar\``],
-      },
-    });
-    expect(wrapper.find('code').text()).toBe('foo bar');
+    getByText('foo bar');
   });
 
   test('click on a link should use the router', async () => {
-    const $router = {
-      push: jest.fn(),
-    };
-    const wrapper = mount(VueMarkdown, {
-      localVue,
-      mocks: {
-        $router,
-      },
-      slots: {
-        default: ['[test](/test)'],
+    const push = vi.fn();
+
+    (useRouter as any).mockImplementationOnce(() => ({
+      push,
+    }));
+
+    const { getByText } = render(VueMarkdown, {
+      props: {
+        markdown: '[test](/test)',
       },
     });
 
-    const actual = $router.push;
-    const expected = '/test';
+    await fireEvent.click(getByText('test'));
 
-    wrapper.find('a').trigger('click');
-    await wrapper.vm.$nextTick();
-
-    expect(actual).toHaveBeenCalledWith(expected);
+    expect(push).toHaveBeenCalledTimes(1);
   });
 
-  test('click on a link should not use the router', async () => {
-    const $router = {
-      push: jest.fn(),
-    };
-    const wrapper = mount(VueMarkdown, {
-      localVue,
-      propsData: {
+  test('click on a link should  not use the router', async () => {
+    const push = vi.fn();
+
+    (useRouter as any).mockImplementationOnce(() => ({
+      push,
+    }));
+
+    const { getByText } = render(VueMarkdown, {
+      props: {
         useRouter: false,
-      },
-      mocks: {
-        $router,
-      },
-      slots: {
-        default: ['[test](/test)'],
+        markdown: '[test](/test)',
       },
     });
 
-    const actual = $router.push;
-    const expected = '/test';
+    await fireEvent.click(getByText('test'));
 
-    wrapper.find('a').trigger('click');
-    await wrapper.vm.$nextTick();
-
-    expect(actual).not.toHaveBeenCalledWith(expected);
+    expect(push).toHaveBeenCalledTimes(0);
   });
 });

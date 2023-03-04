@@ -1,6 +1,8 @@
+import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
-import { sleep } from '@/test/test-utils';
 import VueMenu from './VueMenu.vue';
+import { sleep } from '~/test/test-utils';
+import { IItem } from '~/interfaces/IItem';
 
 describe('VueMenu.vue', () => {
   let harness: RenderResult;
@@ -17,10 +19,12 @@ describe('VueMenu.vue', () => {
         ],
       },
     });
+
+    Element.prototype.scrollTo = () => {};
   });
 
-  test('renders component', () => {
-    const { getByText } = harness;
+  test('renders component', async () => {
+    const { getByText, getByTestId } = harness;
 
     getByText('Value 1');
     getByText('Value 2');
@@ -31,6 +35,9 @@ describe('VueMenu.vue', () => {
     getByText('Description 2');
     getByText('Description 3');
     getByText('Description 4');
+
+    await fireEvent.mouseEnter(getByTestId('Value 1-0'));
+    await fireEvent.mouseLeave(getByTestId('Value 1-0'));
   });
 
   test('should select 1st item and emit click event via keyboard', async () => {
@@ -114,7 +121,7 @@ describe('VueMenu.vue', () => {
     await sleep(500);
     await fireEvent.keyDown(menu, { key: 'Enter', code: 'Enter' });
 
-    expect(emitted().click[0][0]).toEqual({
+    expect(emitted<Array<IItem>>().click[0][0]).toEqual({
       description: 'Description 2',
       label: 'Value 2',
       trailingIcon: 'hashtag',
