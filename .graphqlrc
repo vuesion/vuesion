@@ -1,2 +1,0 @@
-schema: 'src/interfaces/graphql/schema.json'
-documents: 'src/graphql/**/*.ts'
