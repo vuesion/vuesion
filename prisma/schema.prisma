@@ -16,13 +16,6 @@ model Account {
   password String
 
   // generated model relations
-  posts Post[]
 }
 
 // generated models
-model Post {
-  id      String  @id @default(dbgenerated("gen_random_uuid()"))
-  ownerId String
-  owner   Account @relation(fields: [ownerId], references: [id])
-  name    String
-}

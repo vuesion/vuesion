@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useHead } from '#imports';
+import { computed, definePageMeta, useHead } from '#imports';
 import { usePrefillStoreAction } from '~/composables/use-prefill-store-action';
 import { useCounterStore } from '~/store/counter';
 import VueBreadcrumb from '~/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
@@ -51,6 +51,7 @@ import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 const store = useCounterStore();
 
 // Config
+definePageMeta({ auth: false });
 useHead({ title: 'Vuesion - Counter Example' });
 
 // Data

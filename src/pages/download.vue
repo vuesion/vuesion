@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import { useHead, useI18n } from '#imports';
+import { definePageMeta, useHead, useI18n } from '#imports';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -63,6 +63,7 @@ import { IItem } from '~/interfaces/IItem';
 const { t } = useI18n();
 
 // Config
+definePageMeta({ auth: false });
 useHead({
   title: 'Download',
 });
