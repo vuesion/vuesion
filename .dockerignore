@@ -1,7 +1,10 @@
-node_modules
-.circleci
+.idea
+.git
+.DS_Store
 .github
+.nuxt
+.output
 coverage
-cypress
-cypress.json
-tsconfig.test.json
+node_modules
+.env
+Dockerfile

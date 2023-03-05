@@ -1,23 +1,32 @@
-# build happens in the CI pipeline
-# no build inside this container because it would be redundant
-
 # HOWTO build and test docker file
-# 1. Run: npm run ci
-# 2. Run: docker build -t vuesion .
-# 3. Run: docker run -p 3000:3000 vuesion
+# 1. Run: docker build -t vuesion:latest .
+# 2. Run: docker run -p 3000:3000 vuesion:latest
 
-FROM node:14-alpine
-ENV NODE_ENV=production
-ENV HOST=0.0.0.0
+# Build step
+FROM node:16-alpine as build
+WORKDIR build
+
+COPY . .
+
+# Build storybook before creating the docker image and copy it to the public folder so nuxt can pick it up during the build
+COPY ./storybook-static ./src/public/storybook
+COPY ./storybook-static/stories.json ./src/public/stories.json
+
+RUN npm install --legacy-peer-deps && ./node_modules/.bin/prisma generate && npm run build
+
+FROM node:16-alpine as app
+ENV NODE_ENV='production'
+ENV HOST='0.0.0.0'
+ENV PORT='3000'
 WORKDIR app
-COPY ./.vuesion ./.vuesion
-COPY ./.nuxt ./.nuxt
-COPY ./i18n ./i18n
-COPY ./src ./src
-COPY ./storybook-static ./storybook-static
-COPY ./nuxt.config.ts ./
-COPY ./package*.json ./
-COPY ./tsconfig.json ./
-RUN npm install --silent --force --only=production
+
+COPY --from=build ./build/.nuxt ./.nuxt
+COPY --from=build ./build/.output ./.output
+COPY --from=build ./build/package*.json ./
+
+RUN npm pkg delete scripts.prepare && npm install --legacy-peer-deps --omit=dev
+
 EXPOSE 3000
+CMD npm run db:push
+CMD npm run db:seed
 CMD npm start
