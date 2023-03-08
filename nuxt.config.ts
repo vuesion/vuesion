@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     // The module is enabled. Change this to disable the module
     isEnabled: true,
     // The origin is set to the development origin. Change this when deploying to production
-    origin: process.env.BASE_URL || 'http://localhost:3000',
+    origin: process.env.BASE_URL,
     // Whether to periodically refresh the session.
     // Change this to `true` for a refresh every seconds or set this to a number like `5000`
     // for a refresh every 5000 milliseconds (aka: 5 seconds)

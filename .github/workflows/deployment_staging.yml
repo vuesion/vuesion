@@ -4,6 +4,9 @@ env:
   APP_NAME: vuesion-next
   HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
   HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+  BASE_URL: https://vuesion-next.herokuapp.com/
+  NUXT_AUTH_SECRET: ${{secrets.NUXT_AUTH_SECRET}}
+  DATABASE_URL: ${{secrets.DATABASE_URL}}
 
 on:
   push:
@@ -20,39 +23,40 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Checkout Vuesion+ Datatable
-        uses: actions/checkout@v2
-        with:
-          repository: vuesion/vuesion-plus-datatable
-          path: ./src/components/a-datatable
-          token: ${{ secrets.VUESION_PAT }}
-
-      - name: Checkout Vuesion+ Calendar and Date picker
-        uses: actions/checkout@v2
-        with:
-          repository: vuesion/vuesion-plus-calander-datepicker
-          path: ./src/components/b-calender-datepicke
-          token: ${{ secrets.VUESION_PAT }}
-
-      - name: Checkout Vuesion+ Currency input
-        uses: actions/checkout@v2
-        with:
-          repository: vuesion/vuesion-plus-currency-input
-          path: ./src/components/c-currency-input
-          token: ${{ secrets.VUESION_PAT }}
+#      - name: Checkout Vuesion+ Datatable
+#        uses: actions/checkout@v2
+#        with:
+#          repository: vuesion/vuesion-plus-datatable
+#          path: ./src/components/a-datatable
+#          token: ${{ secrets.VUESION_PAT }}
+#
+#      - name: Checkout Vuesion+ Calendar and Date picker
+#        uses: actions/checkout@v2
+#        with:
+#          repository: vuesion/vuesion-plus-calander-datepicker
+#          path: ./src/components/b-calender-datepicke
+#          token: ${{ secrets.VUESION_PAT }}
+#
+#      - name: Checkout Vuesion+ Currency input
+#        uses: actions/checkout@v2
+#        with:
+#          repository: vuesion/vuesion-plus-currency-input
+#          path: ./src/components/c-currency-input
+#          token: ${{ secrets.VUESION_PAT }}
 
       - name: Setup node
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Install dependencies
-        uses: cypress-io/github-action@v2
-        with:
-          runTests: false
+        run: npm install --legacy-peer-deps
 
       - name: Build and test application
-        run: npm run ci
+        run: |
+          npm run build
+          npm run test
+          npm run lint
 
       - name: Run e2e tests
         uses: cypress-io/github-action@v2
@@ -61,14 +65,6 @@ jobs:
           start: npm start
           wait-on: 'http://localhost:3000'
 
-      - name: Archive build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-artifacts
-          path: |
-            .nuxt
-            storybook-static
-
   deploy:
     needs: [ build_and_test ]
     name: Deploy to Heroku
@@ -76,11 +72,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: build-artifacts
 
       - name: Build Docker Image and deploy to Heroku
         run: |
