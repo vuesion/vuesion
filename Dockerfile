@@ -1,9 +1,14 @@
 # HOWTO build and test docker file
 # 1. Run: docker build -t vuesion .
-# 2. Run: docker run -p 3000:3000 -e DATABASE_URL='postgresql://postgres:postgres@host.docker.internal:5432/vuesion?schema=public' vuesion
+# 2. Run: docker run -p 3000:3000 -e DATABASE_URL='postgresql://postgres:postgres@host.docker.internal:5432/vuesion?schema=public' -e NUXT_AUTH_SECRET='f7c99101-b819-4e98-8477-9d345e0930f3' vuesion
+
+# Args
+ARG A_BASE_URL=http://localhost:3000
 
 # Build step
 FROM node:16-alpine as build
+ARG A_BASE_URL
+ENV BASE_URL=$A_BASE_URL
 WORKDIR build
 
 COPY . .

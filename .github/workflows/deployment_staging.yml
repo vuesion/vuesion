@@ -1,13 +1,4 @@
 name: Deploy to Staging
-
-env:
-  APP_NAME: vuesion-next
-  HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
-  HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-  BASE_URL: https://vuesion-next.herokuapp.com/
-  NUXT_AUTH_SECRET: ${{secrets.NUXT_AUTH_SECRET}}
-  DATABASE_URL: ${{secrets.DATABASE_URL}}
-
 on:
   push:
     branches: [ next ]
@@ -18,64 +9,101 @@ jobs:
   build_and_test:
     name: Build and test application
     runs-on: ubuntu-latest
-
+    env:
+      BASE_URL: http://localhost:3000
+      NUXT_AUTH_SECRET: ${{secrets.NUXT_AUTH_SECRET}}
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
 #      - name: Checkout Vuesion+ Datatable
-#        uses: actions/checkout@v2
+#        uses: actions/checkout@v3
 #        with:
 #          repository: vuesion/vuesion-plus-datatable
 #          path: ./src/components/a-datatable
 #          token: ${{ secrets.VUESION_PAT }}
 #
 #      - name: Checkout Vuesion+ Calendar and Date picker
-#        uses: actions/checkout@v2
+#        uses: actions/checkout@v3
 #        with:
 #          repository: vuesion/vuesion-plus-calander-datepicker
 #          path: ./src/components/b-calender-datepicke
 #          token: ${{ secrets.VUESION_PAT }}
 #
 #      - name: Checkout Vuesion+ Currency input
-#        uses: actions/checkout@v2
+#        uses: actions/checkout@v3
 #        with:
 #          repository: vuesion/vuesion-plus-currency-input
 #          path: ./src/components/c-currency-input
 #          token: ${{ secrets.VUESION_PAT }}
 
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Build and test application
-        run: |
-          npm run build
-          npm run test
-          npm run lint
+      - name: Build application
+        run: npm run build
 
-      - name: Run e2e tests
-        uses: cypress-io/github-action@v2
+      - name: Build Storybook
+        run: npm run storybook:build
+
+      - name: Unit test application
+        run: npm run test
+
+      - name: Lint the code base
+        run: npm run lint
+
+      - name: Update Database
+        run: npm run db:push
+
+      - name: Seed Database
+        run: npm run db:seed
+
+      - name: E2e test application
+        uses: cypress-io/github-action@v5
         with:
           install: false
           start: npm start
           wait-on: 'http://localhost:3000'
 
+      - name: Archive Storybook artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: storybook-artifacts
+          if-no-files-found: error
+          path: |
+            storybook-static
+
   deploy:
     needs: [ build_and_test ]
     name: Deploy to Heroku
     runs-on: ubuntu-latest
+    env:
+      APP_NAME: vuesion-next
+      HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
+      HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+      BASE_URL: https://vuesion-next.herokuapp.com
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Download Storybook artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: storybook-artifacts
+          path: storybook-static
+
+      - name: Display directory structure
+        run: ls -la
 
       - name: Build Docker Image and deploy to Heroku
         run: |
-          docker build -t $APP_NAME .
+          docker build -t $APP_NAME . --build-arg A_BASE_URL=$BASE_URL
           set -eu -o pipefail
           echo $HEROKU_API_KEY | docker login --username=$HEROKU_USERNAME --password-stdin registry.heroku.com
           docker tag $APP_NAME registry.heroku.com/$APP_NAME/web

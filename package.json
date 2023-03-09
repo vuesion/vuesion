@@ -36,7 +36,7 @@
     "new:crud-entity": "hygen new crud-entity && npm run db:migrate",
     "db:migrate": "prisma migrate dev",
     "db:push": "prisma db push",
-    "db:seed": "node ./prisma/seed.js",
+    "db:seed": "ts-node ./prisma/seed.ts",
     "type-gen:swagger": "openapi-typescript https://petstore.swagger.io/v2/swagger.json --output src/interfaces/swagger.ts",
     "extract-i18n-messages": "ts-node ./tools/extract-i18n-messages.ts",
     "test:watch": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest",
@@ -49,7 +49,7 @@
     "build": "nuxt build",
     "build:analyze": "nuxt build --analyze",
     "build:spa": "nuxt generate",
-    "start": "npm run db:push && npm run db:seed && cross-env NODE_ICU_DATA=node_modules/full-icu node .output/server/index.mjs",
+    "start": "cross-env NODE_ICU_DATA=node_modules/full-icu node .output/server/index.mjs",
     "prepare": "husky install",
     "pre-commit": "pretty-quick --staged && concurrently \"npm run lint\" \"npm test\""
   },
