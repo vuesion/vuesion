@@ -76,6 +76,7 @@
     "@nuxtjs/color-mode": "3.2.0",
     "@nuxtjs/eslint-config-typescript": "12.0.0",
     "@nuxtjs/i18n": "8.0.0-beta.10",
+    "@nuxtjs/robots": "3.0.0",
     "@sidebase/nuxt-auth": "0.4.2",
     "@storybook/addon-actions": "6.5.16",
     "@storybook/addon-essentials": "6.5.16",

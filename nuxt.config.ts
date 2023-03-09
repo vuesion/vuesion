@@ -81,8 +81,16 @@ export default defineNuxtConfig({
         autoImports: ['defineStore', 'acceptHMRUpdate'],
       },
     ],
+    '@nuxtjs/robots',
   ],
   plugins: [{ src: '~/plugins/vee-validate/vee-validate' }, { src: '~/components/global' }],
+  robots: {
+    rules: {
+      UserAgent: '*',
+      Disallow: '/*?*',
+      Allow: '/',
+    },
+  },
   rootDir: '.',
   srcDir: './src',
   vite: {
