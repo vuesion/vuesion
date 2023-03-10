@@ -238,63 +238,63 @@
           </vue-box>
         </vue-column>
       </vue-columns>
-    </vue-content-block>
 
-    <nuxt-img
-      src="/images/team-small.png"
-      format="webp"
-      width="924px"
-      height="680px"
-      alt="productive team"
-      fit="fill"
-      quality="50"
-      loading="lazy"
-      :class="[$style.image, activeTab === 0 ? $style.in : $style.out]"
-    />
-    <nuxt-img
-      src="/images/coverage-small.png"
-      format="webp"
-      width="924px"
-      height="680px"
-      alt="agile development"
-      fit="fill"
-      quality="50"
-      loading="lazy"
-      :class="[$style.image, activeTab === 1 ? $style.in : $style.out]"
-    />
-    <nuxt-img
-      src="/images/figma-small.png"
-      format="webp"
-      width="924px"
-      height="680px"
-      alt="includes figma file"
-      fit="fill"
-      quality="50"
-      loading="lazy"
-      :class="[$style.image, activeTab === 2 ? $style.in : $style.out]"
-    />
-    <nuxt-img
-      src="/images/cli-small.png"
-      format="webp"
-      width="924px"
-      height="680px"
-      alt="generator CLI to automate tasks"
-      fit="fill"
-      quality="50"
-      loading="lazy"
-      :class="[$style.image, activeTab === 3 ? $style.in : $style.out]"
-    />
-    <nuxt-img
-      src="/images/team-small.png"
-      format="webp"
-      width="924px"
-      height="680px"
-      alt="happy team"
-      fit="fill"
-      quality="50"
-      loading="lazy"
-      :class="[$style.image, activeTab === 4 ? $style.in : $style.out]"
-    />
+      <nuxt-img
+        src="/images/team-small.png"
+        format="webp"
+        width="924px"
+        height="680px"
+        alt="productive team"
+        fit="fill"
+        quality="50"
+        loading="lazy"
+        :class="[$style.image, activeTab === 0 ? $style.in : $style.out]"
+      />
+      <nuxt-img
+        src="/images/coverage-small.png"
+        format="webp"
+        width="924px"
+        height="680px"
+        alt="agile development"
+        fit="fill"
+        quality="50"
+        loading="lazy"
+        :class="[$style.image, activeTab === 1 ? $style.in : $style.out]"
+      />
+      <nuxt-img
+        src="/images/figma-small.png"
+        format="webp"
+        width="924px"
+        height="680px"
+        alt="includes figma file"
+        fit="fill"
+        quality="50"
+        loading="lazy"
+        :class="[$style.image, activeTab === 2 ? $style.in : $style.out]"
+      />
+      <nuxt-img
+        src="/images/cli-small.png"
+        format="webp"
+        width="924px"
+        height="680px"
+        alt="generator CLI to automate tasks"
+        fit="fill"
+        quality="50"
+        loading="lazy"
+        :class="[$style.image, activeTab === 3 ? $style.in : $style.out]"
+      />
+      <nuxt-img
+        src="/images/team-small.png"
+        format="webp"
+        width="924px"
+        height="680px"
+        alt="happy team"
+        fit="fill"
+        quality="50"
+        loading="lazy"
+        :class="[$style.image, activeTab === 4 ? $style.in : $style.out]"
+      />
+    </vue-content-block>
   </section>
 </template>
 

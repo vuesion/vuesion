@@ -8,84 +8,84 @@
         </a>
         <nuxt-link :to="localePath('/download')"> <vue-icon-download /> Downloads </nuxt-link>
       </vue-box>
+
+      <vue-box :padding="['24 16', '96 0 32 0', '96 0 80 0']">
+        <vue-stack space="48" align-x="center">
+          <vue-text look="h1" weight="semi-bold" align-x="center" :class="$style.content">
+            Nothing great is <br />
+            <span class="deco-underline">made</span> alone
+          </vue-text>
+
+          <vue-text look="h4" align-x="center" :class="[$style.subtitle, $style.content]">
+            Vuesion is a boilerplate that helps product teams build faster than ever with <br />
+            fewer headaches and modern best practices across engineering & design.
+          </vue-text>
+
+          <vue-inline align-x="center">
+            <a
+              :class="[$style.button, $style.content]"
+              tabindex="0"
+              href="https://vuesion.github.io/docs/en/v4/guide/install.html"
+              target="_blank"
+              rel="noopener"
+            >
+              <vue-text look="button" weight="semi-bold" :class="$style.content">Create Vuesion project</vue-text>
+            </a>
+            <a
+              :class="[$style.button, $style.content]"
+              tabindex="0"
+              href="https://www.figma.com/file/DvP4EE7gAJH3fsc4RFqZYc/Vuesion-Core?node-id=1686%3A4660"
+              target="_blank"
+              rel="noopener"
+            >
+              <vue-text look="button" weight="semi-bold" :class="$style.content">Preview in Figma</vue-text>
+            </a>
+          </vue-inline>
+
+          <vue-hidden tablet-landscape small-desktop large-desktop :class="$style.content">
+            <vue-text align-x="center"> Vuesion Storybook integration and Figma file are perfectly in sync </vue-text>
+          </vue-hidden>
+        </vue-stack>
+      </vue-box>
+
+      <vue-columns :space="[0, 24]" stack-phone :class="$style.gallery">
+        <vue-column>
+          <a tabindex="0" href="/storybook" target="_blank" rel="noopener" aria-label="vuesion storybook">
+            <nuxt-img
+              src="/images/storybook-small.png"
+              alt="vuesion storybook"
+              format="webp"
+              width="785px"
+              height="530px"
+              quality="50"
+              fit="contain"
+              loading="lazy"
+            />
+          </a>
+        </vue-column>
+
+        <vue-column>
+          <a
+            tabindex="0"
+            href="https://www.figma.com/community/file/1080868611324978249"
+            target="_blank"
+            rel="noopener"
+            aria-label="vuesion figma"
+          >
+            <nuxt-img
+              src="/images/figma-small.png"
+              alt="vuesion figma"
+              format="webp"
+              width="785px"
+              height="530px"
+              quality="50"
+              fit="contain"
+              loading="lazy"
+            />
+          </a>
+        </vue-column>
+      </vue-columns>
     </vue-content-block>
-
-    <vue-box :padding="['24 16', '96 0 32 0', '96 0 80 0']">
-      <vue-stack space="48" align-x="center">
-        <vue-text look="h1" weight="semi-bold" align-x="center" :class="$style.content">
-          Nothing great is <br />
-          <span class="deco-underline">made</span> alone
-        </vue-text>
-
-        <vue-text look="h4" align-x="center" :class="[$style.subtitle, $style.content]">
-          Vuesion is a boilerplate that helps product teams build faster than ever with <br />
-          fewer headaches and modern best practices across engineering & design.
-        </vue-text>
-
-        <vue-inline align-x="center">
-          <a
-            :class="[$style.button, $style.content]"
-            tabindex="0"
-            href="https://vuesion.github.io/docs/en/v4/guide/install.html"
-            target="_blank"
-            rel="noopener"
-          >
-            <vue-text look="button" weight="semi-bold" :class="$style.content">Create Vuesion project</vue-text>
-          </a>
-          <a
-            :class="[$style.button, $style.content]"
-            tabindex="0"
-            href="https://www.figma.com/file/DvP4EE7gAJH3fsc4RFqZYc/Vuesion-Core?node-id=1686%3A4660"
-            target="_blank"
-            rel="noopener"
-          >
-            <vue-text look="button" weight="semi-bold" :class="$style.content">Preview in Figma</vue-text>
-          </a>
-        </vue-inline>
-
-        <vue-hidden tablet-landscape small-desktop large-desktop :class="$style.content">
-          <vue-text align-x="center"> Vuesion Storybook integration and Figma file are perfectly in sync </vue-text>
-        </vue-hidden>
-      </vue-stack>
-    </vue-box>
-
-    <vue-columns :space="[0, 24]" stack-phone :class="$style.gallery">
-      <vue-column>
-        <a tabindex="0" href="/storybook" target="_blank" rel="noopener" aria-label="vuesion storybook">
-          <nuxt-img
-            src="/images/storybook-small.png"
-            alt="vuesion storybook"
-            format="webp"
-            width="785px"
-            height="530px"
-            quality="50"
-            fit="contain"
-            loading="lazy"
-          />
-        </a>
-      </vue-column>
-
-      <vue-column>
-        <a
-          tabindex="0"
-          href="https://www.figma.com/community/file/1080868611324978249"
-          target="_blank"
-          rel="noopener"
-          aria-label="vuesion figma"
-        >
-          <nuxt-img
-            src="/images/figma-small.png"
-            alt="vuesion figma"
-            format="webp"
-            width="785px"
-            height="530px"
-            quality="50"
-            fit="contain"
-            loading="lazy"
-          />
-        </a>
-      </vue-column>
-    </vue-columns>
   </section>
 </template>
 
