@@ -94,6 +94,12 @@ export default defineNuxtConfig({
         },
       },
     ],
+    [
+      'nuxt-delay-hydration',
+      {
+        mode: 'mount',
+      },
+    ],
   ],
   plugins: [{ src: '~/plugins/vee-validate/vee-validate' }, { src: '~/components/global' }],
   robots: {

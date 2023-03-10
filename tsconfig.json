@@ -12,7 +12,8 @@
       "@sidebase/nuxt-auth",
       "next-auth",
       "@pinia/nuxt",
-      "@types/bcrypt"
+      "@types/bcrypt",
+      "nuxt-delay-hydration"
     ]
   },
   "ts-node": {

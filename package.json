@@ -113,6 +113,7 @@
     "hygen": "6.2.11",
     "jsdom": "21.1.0",
     "nuxt": "3.2.3",
+    "nuxt-delay-hydration": "1.1.4",
     "openapi-typescript": "5.4.1",
     "postcss": "8.4.21",
     "prettier": "2.8.4",
