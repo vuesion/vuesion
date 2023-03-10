@@ -76,6 +76,7 @@
     "@nuxt/image-edge": "1.0.0-27968280.9739e4d",
     "@nuxtjs/color-mode": "3.2.0",
     "@nuxtjs/eslint-config-typescript": "12.0.0",
+    "@nuxtjs/html-validator": "1.2.4",
     "@nuxtjs/i18n": "8.0.0-beta.10",
     "@nuxtjs/robots": "3.0.0",
     "@sidebase/nuxt-auth": "0.4.2",

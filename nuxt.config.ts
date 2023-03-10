@@ -83,6 +83,17 @@ export default defineNuxtConfig({
     ],
     '@nuxtjs/robots',
     '@nuxt/image-edge',
+    [
+      '@nuxtjs/html-validator',
+      {
+        options: {
+          rules: {
+            'prefer-native-element': 'off',
+            'attribute-empty-style': 'off',
+          },
+        },
+      },
+    ],
   ],
   plugins: [{ src: '~/plugins/vee-validate/vee-validate' }, { src: '~/components/global' }],
   robots: {
