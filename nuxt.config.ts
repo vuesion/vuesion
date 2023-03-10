@@ -100,6 +100,7 @@ export default defineNuxtConfig({
         mode: 'mount',
       },
     ],
+    'nuxt-security',
   ],
   plugins: [{ src: '~/plugins/vee-validate/vee-validate' }, { src: '~/components/global' }],
   robots: {
@@ -110,6 +111,29 @@ export default defineNuxtConfig({
     },
   },
   rootDir: '.',
+  security: {
+    headers: {
+      crossOriginResourcePolicy: {
+        value: 'cross-origin',
+        route: '/**',
+      },
+      crossOriginEmbedderPolicy: { value: 'unsafe-none', route: '/**' },
+      contentSecurityPolicy: {
+        value: {
+          'base-uri': ["'self'"],
+          'font-src': ["'self'", 'https:', 'data:', 'fonts.bunny.net'],
+          'form-action': ["'self'"],
+          'frame-ancestors': ["'self'"],
+          'img-src': ["'self'", 'data:', 'avatars-githubusercontent.webp.se'],
+          'object-src': ["'none'"],
+          'script-src-attr': ["'none'"],
+          'style-src': ["'self'", 'https:', "'unsafe-inline'", 'fonts.bunny.net'],
+          'upgrade-insecure-requests': true,
+        },
+        route: '/**',
+      },
+    },
+  },
   srcDir: './src',
   vite: {
     plugins: [eslintPlugin()],
