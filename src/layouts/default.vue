@@ -30,7 +30,6 @@
 import { useI18n, useLocaleHead, useLocalePath, useSwitchLocalePath } from '#i18n';
 import { useRouter } from 'vue-router';
 import { computed } from 'vue';
-import 'assets/global.scss';
 import VueToast from '../components/data-display/VueToast/VueToast.vue';
 import VueNavbar from '../components/navigation/VueNavbar/VueNavbar.vue';
 import VueFooter from '../components/navigation/VueFooter/VueFooter.vue';

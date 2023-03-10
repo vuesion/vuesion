@@ -51,6 +51,7 @@ export default defineNuxtConfig({
     classSuffix: '',
     storageKey: 'nuxt-color-mode',
   },
+  css: ['@/assets/global.scss'],
   extends: ['@sidebase/nuxt-prisma'],
   i18n: {
     baseUrl: process.env.BASE_URL,
@@ -131,7 +132,8 @@ export default defineNuxtConfig({
       prefer_related_applications: true,
     },
     workbox: {
-      navigateFallback: '/',
+      cleanupOutdatedCaches: true,
+      navigateFallback: '/en-US',
       globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
     },
     client: {
