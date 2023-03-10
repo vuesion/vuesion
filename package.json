@@ -95,6 +95,7 @@
     "@types/marked": "4.0.8",
     "@typescript-eslint/eslint-plugin": "5.54.0",
     "@typescript-eslint/parser": "5.54.0",
+    "@vite-pwa/nuxt": "0.0.7",
     "@vitejs/plugin-vue": "4.0.0",
     "@vitest/coverage-c8": "0.29.2",
     "@vuesion/storybook-theme-switcher": "5.0.0-beta.0",

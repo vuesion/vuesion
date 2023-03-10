@@ -13,7 +13,8 @@
       "next-auth",
       "@pinia/nuxt",
       "@types/bcrypt",
-      "nuxt-delay-hydration"
+      "nuxt-delay-hydration",
+      "@vite-pwa/nuxt"
     ]
   },
   "ts-node": {

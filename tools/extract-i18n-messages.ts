@@ -9,10 +9,10 @@ const run = (sort = true, update = true, defaultTranslation = true): void => {
   glob('./src/**/*.*', (_: any, files: string[]) => {
     const basePath: string = path.resolve(process.cwd());
     const locales: Array<any> = [
-      { code: 'en', iso: 'en-US', file: 'en.json' },
-      { code: 'de', iso: 'de-DE', file: 'de.json' },
+      { code: 'en-US', iso: 'en-US', file: 'en.json' },
+      { code: 'de-DE', iso: 'de-DE', file: 'de.json' },
     ];
-    const defaultLocale = 'en';
+    const defaultLocale = 'en-US';
     let translations: any = {};
 
     console.log('Scanning files in: ./src/**/*.*');

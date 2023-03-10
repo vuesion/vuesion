@@ -1,5 +1,7 @@
 import eslintPlugin from 'vite-plugin-eslint';
 
+const themeColor = '#0f3191';
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -11,7 +13,9 @@ export default defineNuxtConfig({
           rel: 'stylesheet',
           href: 'https://fonts.bunny.net/css?family=Inter:400,600|Lora:400,600&display=swap',
         },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       ],
+      meta: [{ name: 'theme-color', content: themeColor }],
     },
   },
   auth: {
@@ -48,14 +52,15 @@ export default defineNuxtConfig({
   },
   extends: ['@sidebase/nuxt-prisma'],
   i18n: {
+    baseUrl: process.env.BASE_URL,
     strategy: 'prefix',
     vueI18n: 'src/plugins/vue-i18n/vue-i18n',
     // Don't forget to update the extract-i18n-script
     locales: [
-      { code: 'en', iso: 'en-US', file: 'en.json' },
-      { code: 'de', iso: 'de-DE', file: 'de.json' },
+      { code: 'en-US', iso: 'en-US', file: 'en.json' },
+      { code: 'de-DE', iso: 'de-DE', file: 'de.json' },
     ],
-    defaultLocale: 'en',
+    defaultLocale: 'en-US',
     lazy: true,
     langDir: '../i18n/',
     detectBrowserLanguage: {
@@ -63,7 +68,7 @@ export default defineNuxtConfig({
       cookieDomain: null,
       cookieKey: 'i18n_redirected',
       alwaysRedirect: true,
-      fallbackLocale: 'en',
+      fallbackLocale: 'en-US',
     },
   },
   imports: {
@@ -71,7 +76,6 @@ export default defineNuxtConfig({
     dirs: ['store'],
   },
   modules: [
-    // TODO: add PWA module when ready
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
     '@sidebase/nuxt-auth',
@@ -101,8 +105,36 @@ export default defineNuxtConfig({
       },
     ],
     'nuxt-security',
+    '@vite-pwa/nuxt',
   ],
-  plugins: [{ src: '~/plugins/vee-validate/vee-validate' }, { src: '~/components/global' }],
+  pwa: {
+    registerType: 'autoUpdate',
+    manifest: {
+      name: 'Vuesion',
+      short_name: 'VuesionPWA',
+      theme_color: themeColor,
+      background_color: '#ffffff',
+      icons: [
+        { src: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+        { src: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
+      ],
+      start_url: '/',
+      display: 'standalone',
+      prefer_related_applications: true,
+    },
+    workbox: {
+      navigateFallback: '/',
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+    },
+    client: {
+      installPrompt: true,
+      periodicSyncForUpdates: 3600,
+    },
+    devOptions: {
+      enabled: false,
+      type: 'module',
+    },
+  },
   robots: {
     rules: {
       UserAgent: '*',

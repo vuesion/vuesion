@@ -23,19 +23,19 @@ export const decimalFormats = {
   },
 };
 export const datetimeFormats = {
-  en: dateFormats,
-  de: dateFormats,
+  'en-US': dateFormats,
+  'de-DE': dateFormats,
 };
 export const numberFormats = {
-  en: decimalFormats,
-  de: decimalFormats,
+  'en-US': decimalFormats,
+  'de-DE': decimalFormats,
 };
 
 export default () => {
   return {
     datetimeFormats,
     numberFormats,
-    fallbackLocale: 'en',
+    fallbackLocale: 'en-US',
     formatFallbackMessages: true,
   };
 };

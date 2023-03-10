@@ -55,8 +55,8 @@ useHead({
 
 // Data
 const languages = computed(() => [
-  { label: 'English', value: 'en' },
-  { label: 'Deutsch', value: 'de' },
+  { label: 'English', value: 'en-US' },
+  { label: 'Deutsch', value: 'de-DE' },
 ]);
 const themes = computed(() => [
   { label: 'System', value: 'system' },
