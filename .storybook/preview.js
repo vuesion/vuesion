@@ -28,6 +28,12 @@ app.component('nuxt-link', {
   },
   template: '<a href="#" @click.prevent="log()"><slot>NuxtLink</slot></a>',
 });
+app.component('nuxt-img', {
+  inheritAttrs: false,
+  props: ['src', 'alt'],
+  methods: {},
+  template: '<img :src="src" :alt="alt" :class="$attrs.class" />',
+});
 app.mixin({
   created() {
     this.localePath = (path) => path;

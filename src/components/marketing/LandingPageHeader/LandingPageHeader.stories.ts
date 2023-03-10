@@ -9,6 +9,11 @@ export default {
 
 const Template: Story = (args) => ({
   components: { LandingPageHeader, ComponentDocs },
+  data() {
+    return {
+      server: process.server,
+    };
+  },
   setup() {
     return { args };
   },

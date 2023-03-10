@@ -28,7 +28,7 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ICU_DATA=node_modules/full-icu nuxt dev",
-    "storybook:dev": "rm -rf node_modules/.cache/storybook && start-storybook -p 6006",
+    "storybook:dev": "rm -rf node_modules/.cache/storybook && start-storybook -p 6006 --disable-telemetry",
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest run --coverage",
     "new:component": "hygen new component",
     "new:store": "hygen new store",
@@ -73,6 +73,7 @@
   "devDependencies": {
     "@babel/core": "7.21.0",
     "@commitlint/config-conventional": "17.4.4",
+    "@nuxt/image-edge": "1.0.0-27968280.9739e4d",
     "@nuxtjs/color-mode": "3.2.0",
     "@nuxtjs/eslint-config-typescript": "12.0.0",
     "@nuxtjs/i18n": "8.0.0-beta.10",

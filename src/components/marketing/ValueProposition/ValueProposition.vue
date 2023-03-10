@@ -1,8 +1,8 @@
 <template>
   <section :class="$style.valueProposition">
     <vue-content-block>
-      <vue-columns stack-phone stack-tablet-portrait stack-tablet-landscape>
-        <vue-column :width="['content', 'content', 'content', '3/12', '4/12']" :can-grow="false">
+      <vue-columns :space="[24, 24, 24, 48]" stack-phone stack-tablet-portrait stack-tablet-landscape>
+        <vue-column :width="['content', 'content', 'content', 'content']" :can-grow="false">
           <vue-box :padding="['16', '16', '16', '144 0']">
             <vue-hidden small-desktop large-desktop>
               <vue-text look="h3" color="text-high" weight="semi-bold" :align="['left', 'center', 'center', 'left']">
@@ -59,7 +59,7 @@
             </vue-stack>
           </vue-box>
         </vue-column>
-        <vue-column :width="['content']">
+        <vue-column :width="['content']" :can-grow="false">
           <vue-box :padding="['16', '16', '16', '0']">
             <vue-stack :space="['64', '64', '64', '0']" :align-x="['start', 'center', 'center', 'start']">
               <vue-stack
@@ -240,25 +240,60 @@
       </vue-columns>
     </vue-content-block>
 
-    <div
+    <nuxt-img
+      src="/images/team-small.png"
+      format="webp"
+      width="924px"
+      height="680px"
+      alt="productive team"
+      fit="fill"
+      quality="50"
+      loading="lazy"
       :class="[$style.image, activeTab === 0 ? $style.in : $style.out]"
-      :style="{ backgroundImage: 'url(/images/team-small.png)' }"
     />
-    <div
+    <nuxt-img
+      src="/images/coverage-small.png"
+      format="webp"
+      width="924px"
+      height="680px"
+      alt="agile development"
+      fit="fill"
+      quality="50"
+      loading="lazy"
       :class="[$style.image, activeTab === 1 ? $style.in : $style.out]"
-      :style="{ backgroundImage: 'url(/images/coverage-small.png)' }"
     />
-    <div
+    <nuxt-img
+      src="/images/figma-small.png"
+      format="webp"
+      width="924px"
+      height="680px"
+      alt="includes figma file"
+      fit="fill"
+      quality="50"
+      loading="lazy"
       :class="[$style.image, activeTab === 2 ? $style.in : $style.out]"
-      :style="{ backgroundImage: 'url(/images/figma-small.png)' }"
     />
-    <div
+    <nuxt-img
+      src="/images/cli-small.png"
+      format="webp"
+      width="924px"
+      height="680px"
+      alt="generator CLI to automate tasks"
+      fit="fill"
+      quality="50"
+      loading="lazy"
       :class="[$style.image, activeTab === 3 ? $style.in : $style.out]"
-      :style="{ backgroundImage: 'url(/images/cli-small.png)' }"
     />
-    <div
+    <nuxt-img
+      src="/images/team-small.png"
+      format="webp"
+      width="924px"
+      height="680px"
+      alt="happy team"
+      fit="fill"
+      quality="50"
+      loading="lazy"
       :class="[$style.image, activeTab === 4 ? $style.in : $style.out]"
-      :style="{ backgroundImage: 'url(/images/team-small.png)' }"
     />
   </section>
 </template>
@@ -364,12 +399,17 @@ const onTabChange = (tab: number) => {
       position: absolute;
       top: 50px;
       right: 0;
-      width: 35%;
-      height: 650px;
+      transform: translateX(50%);
       transition: all var(--brand-transition-duration) var(--brand-easing-curve);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: left;
+    }
+
+    @include mediaMin(largeDesktop) {
+      .image {
+        transform: translateX(30%);
+      }
     }
   }
 }

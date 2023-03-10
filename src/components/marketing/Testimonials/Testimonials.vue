@@ -16,7 +16,14 @@
               :title="stargazer.login"
             >
               <vue-stack align-x="center" space="4">
-                <vue-avatar :src="stargazer.avatar_url + '&size=84'" :name="stargazer.login" size="lg" />
+                <vue-avatar
+                  :src="
+                    stargazer.avatar_url.replace('avatars.githubusercontent.com', 'avatars-githubusercontent.webp.se') +
+                    '&size=84'
+                  "
+                  :name="stargazer.login"
+                  size="lg"
+                />
                 <vue-text look="small-title" weight="semi-bold" class="ellipsis" :style="{ maxWidth: '100px' }">
                   {{ stargazer.login }}
                 </vue-text>

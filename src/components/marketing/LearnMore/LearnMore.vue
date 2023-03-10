@@ -11,7 +11,16 @@
             <vue-columns space="48" stack-phone stack-tablet-portrait stack-tablet-landscape>
               <vue-column :width="['fit', 'fit', 'fit', '6/12']">
                 <div>
-                  <img src="/images/discord-small.png" alt="Learn more about Vuesion before starting" />
+                  <nuxt-img
+                    src="/images/discord-small.png"
+                    alt="Learn more about Vuesion before starting"
+                    format="webp"
+                    width="584px"
+                    height="603px"
+                    fit="contain"
+                    quality="50"
+                    loading="lazy"
+                  />
                 </div>
               </vue-column>
 
@@ -151,7 +160,15 @@
 
               <vue-column :width="['fit', 'fit', 'fit', '6/12']">
                 <div>
-                  <img src="/images/example-small.png" alt="Try out some examples!" />
+                  <nuxt-img
+                    src="/images/example-small.png"
+                    alt="Try out some examples!"
+                    format="webp"
+                    width="584px"
+                    height="603px"
+                    quality="50"
+                    fit="contain"
+                  />
                 </div>
               </vue-column>
             </vue-columns>

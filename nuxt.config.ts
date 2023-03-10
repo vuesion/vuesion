@@ -82,6 +82,7 @@ export default defineNuxtConfig({
       },
     ],
     '@nuxtjs/robots',
+    '@nuxt/image-edge',
   ],
   plugins: [{ src: '~/plugins/vee-validate/vee-validate' }, { src: '~/components/global' }],
   robots: {

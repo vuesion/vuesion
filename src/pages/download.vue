@@ -28,11 +28,14 @@
           <vue-stack :space="'16'">
             <vue-text look="h3" as="h3">Visual Studio Code</vue-text>
 
-            <img
+            <nuxt-img
               :class="$style.vscode"
               src="https://user-images.githubusercontent.com/1667598/129297863-c10e6313-656d-4451-9082-b92849d519da.png"
               alt="Visual Studio Code theme based on vuesion color scheme"
               width="384px"
+              format="webp"
+              quality="80"
+              loading="lazy"
             />
             <vue-text
               as="a"

@@ -49,27 +49,43 @@
       </vue-stack>
     </vue-box>
 
-    <a tabindex="0" href="/storybook" target="_blank" rel="noopener" aria-label="vuesion storybook">
-      <div
-        :class="[$style.leftImage, $style.content]"
-        :style="{ backgroundImage: 'url(/images/storybook-small.png)' }"
-        title="vuesion storybook"
-      />
-    </a>
+    <vue-columns :space="[0, 24]" stack-phone :class="$style.gallery">
+      <vue-column>
+        <a tabindex="0" href="/storybook" target="_blank" rel="noopener" aria-label="vuesion storybook">
+          <nuxt-img
+            src="/images/storybook-small.png"
+            alt="vuesion storybook"
+            format="webp"
+            width="785px"
+            height="530px"
+            quality="50"
+            fit="contain"
+            loading="lazy"
+          />
+        </a>
+      </vue-column>
 
-    <a
-      tabindex="0"
-      href="https://www.figma.com/community/file/1080868611324978249"
-      target="_blank"
-      rel="noopener"
-      aria-label="vuesion figma"
-    >
-      <div
-        :class="[$style.rightImage, $style.content]"
-        :style="{ backgroundImage: 'url(/images/figma-small.png)' }"
-        title="vuesion figma"
-      />
-    </a>
+      <vue-column>
+        <a
+          tabindex="0"
+          href="https://www.figma.com/community/file/1080868611324978249"
+          target="_blank"
+          rel="noopener"
+          aria-label="vuesion figma"
+        >
+          <nuxt-img
+            src="/images/figma-small.png"
+            alt="vuesion figma"
+            format="webp"
+            width="785px"
+            height="530px"
+            quality="50"
+            fit="contain"
+            loading="lazy"
+          />
+        </a>
+      </vue-column>
+    </vue-columns>
   </section>
 </template>
 
@@ -85,6 +101,8 @@ import { getDomRef } from '~/composables/get-dom-ref';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueIconDownload from '~/components/icons/VueIconDownload.vue';
 import VueIconBook from '~/components/icons/VueIconBook.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 const header = getDomRef<HTMLElement>(null);
 const canvas = getDomRef<HTMLCanvasElement>(null);
 const handleResize = () => {
@@ -194,71 +212,10 @@ onBeforeUnmount(() => window.removeEventListener('resize', handleResize));
     }
   }
 
-  .leftImage,
-  .rightImage {
-    position: relative;
-    width: 100%;
-    height: 360px;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  .leftImage {
-    background-position: right;
-  }
-
-  .rightImage {
-    background-position: left;
-    margin: $space-16 0;
-  }
-
-  @include mediaMin(tabletPortrait) {
-    .leftImage,
-    .rightImage {
-      height: 542px;
-      background-size: 100%;
-    }
-
-    .rightImage {
-      margin: $space-24 0;
-    }
-  }
-
-  @include mediaMin(tabletLandscape) {
-    .leftImage,
-    .rightImage {
-      height: 600px;
-      background-size: 85%;
-      background-position: 50% 50%;
-    }
-
-    .rightImage {
-      margin: $space-24 0;
-    }
-  }
-
   @include mediaMin(smallDesktop) {
-    height: 800px;
-
-    .leftImage {
-      position: absolute;
-      top: 65%;
-      left: 0;
-      width: 50%;
-      height: 650px;
-      background-size: cover;
-      background-position: right;
-    }
-
-    .rightImage {
-      position: absolute;
-      top: 65%;
-      right: 0;
-      width: 50%;
-      height: 650px;
-      background-size: cover;
-      background-position: left;
-      margin: 0;
+    .gallery {
+      position: relative;
+      margin-bottom: -20%;
     }
   }
 }
