@@ -1,6 +1,7 @@
 import eslintPlugin from 'vite-plugin-eslint';
 
 const themeColor = '#0f3191';
+const cacheControl = 'public, max-age=31536000, immutable';
 
 export default defineNuxtConfig({
   app: {
@@ -107,6 +108,13 @@ export default defineNuxtConfig({
     'nuxt-security',
     '@vite-pwa/nuxt',
   ],
+  nitro: {
+    compressPublicAssets: true,
+    routeRules: {
+      '/_nuxt/**': { headers: { 'Cache-Control': cacheControl } },
+      '/_ipx/**': { headers: { 'Cache-Control': cacheControl } },
+    },
+  },
   pwa: {
     registerType: 'autoUpdate',
     manifest: {

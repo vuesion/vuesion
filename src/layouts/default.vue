@@ -3,7 +3,7 @@
     <vue-toast />
 
     <vue-navbar
-      v-if="$route.path.length !== 3"
+      v-if="!$route.path.match(/[a-z]{2}-[A-Z]{2}/gi)"
       :user-name="user?.email"
       :user-image="user?.image"
       :show-menu-icon="false"
