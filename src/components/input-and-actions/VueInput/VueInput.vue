@@ -99,7 +99,7 @@ interface InputProps {
   trailingIcon?: string;
   size?: ShirtSize;
   sizeAttribute?: number;
-  debounce?: number;
+  debounce?: number | null;
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -124,7 +124,7 @@ const props = withDefaults(defineProps<InputProps>(), {
 });
 const emit = defineEmits(['debounced-input', 'update:modelValue', 'leading-icon-click', 'trailing-icon-click', 'blur']);
 const inputRef = getDomRef<HTMLInputElement>(null);
-const debouncedInput = debounce((value: string) => emit('debounced-input', value), props.debounce || 0);
+const debouncedInput = debounce((value: string, e: Event) => emit('debounced-input', value, e), props.debounce || 0);
 const { errors, value, handleChange } = useField<string | number | null | undefined>(props.id, props.validation, {
   initialValue: props.modelValue,
   validateOnValueUpdate: false,
@@ -141,7 +141,7 @@ const onInput = (e: InputEvent) => {
   emit('update:modelValue', value, e);
 
   if (props.debounce !== null) {
-    debouncedInput(value);
+    debouncedInput(value, e);
   }
 };
 const onBlur = (e: InputEvent) => {
@@ -163,6 +163,10 @@ useIntersectionObserver(inputRef, (entries: IntersectionObserverEntry[]) => {
   if (props.autofocus) {
     entries.forEach((entry) => (entry.target as HTMLInputElement).focus());
   }
+});
+
+defineExpose({
+  handleChange,
 });
 </script>
 
