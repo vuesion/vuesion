@@ -23,14 +23,14 @@ jobs:
 #          repository: vuesion/vuesion-plus-datatable
 #          path: ./src/components/a-datatable
 #          token: ${{ secrets.VUESION_PAT }}
-#
-#      - name: Checkout Vuesion+ Calendar and Date picker
-#        uses: actions/checkout@v3
-#        with:
-#          repository: vuesion/vuesion-plus-calander-datepicker
-#          path: ./src/components/b-calender-datepicke
-#          token: ${{ secrets.VUESION_PAT }}
-#
+
+      - name: Checkout Vuesion+ Calendar and Date picker
+        uses: actions/checkout@v3
+        with:
+          repository: vuesion/vuesion-plus-calander-datepicker
+          path: ./src/components/b-calender-datepicke
+          token: ${{ secrets.VUESION_PAT }}
+
       - name: Checkout Vuesion+ Currency input
         uses: actions/checkout@v3
         with:
