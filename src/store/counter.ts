@@ -41,10 +41,10 @@ export const useCounterStore = defineStore('counter', {
         });
 
         this.count = res.count;
-        this.incrementPending = false;
       } catch (e) {
-        this.incrementPending = false;
         this.error = e;
+      } finally {
+        this.incrementPending = false;
       }
     },
     async decrement() {
@@ -57,10 +57,10 @@ export const useCounterStore = defineStore('counter', {
         });
 
         this.count = res.count;
-        this.decrementPending = false;
       } catch (e) {
-        this.decrementPending = false;
         this.error = e;
+      } finally {
+        this.incrementPending = false;
       }
     },
   },

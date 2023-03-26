@@ -14,7 +14,8 @@
       "@pinia/nuxt",
       "@types/bcrypt",
       "nuxt-delay-hydration",
-      "@vite-pwa/nuxt"
+      "@vite-pwa/nuxt",
+      "nuxt-security"
     ]
   },
   "ts-node": {

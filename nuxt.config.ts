@@ -1,7 +1,7 @@
 import eslintPlugin from 'vite-plugin-eslint';
 
 const themeColor = '#0f3191';
-const cacheControl = 'public, max-age=31536000, immutable';
+const isProd = process.env.NODE_ENV === 'production';
 
 export default defineNuxtConfig({
   app: {
@@ -112,10 +112,15 @@ export default defineNuxtConfig({
   ],
   nitro: {
     compressPublicAssets: true,
-    routeRules: {
-      '/_nuxt/**': { headers: { 'Cache-Control': cacheControl } },
-      '/_ipx/**': { headers: { 'Cache-Control': cacheControl } },
-    },
+    publicAssets: isProd
+      ? [
+          {
+            baseURL: '/_nuxt',
+            maxAge: 31536000,
+            dir: '~/.nuxt/dist/client/_nuxt',
+          },
+        ]
+      : [],
   },
   pwa: {
     registerType: 'autoUpdate',
@@ -156,24 +161,18 @@ export default defineNuxtConfig({
   rootDir: '.',
   security: {
     headers: {
-      crossOriginResourcePolicy: {
-        value: 'cross-origin',
-        route: '/**',
-      },
-      crossOriginEmbedderPolicy: { value: 'unsafe-none', route: '/**' },
+      crossOriginResourcePolicy: 'cross-origin',
+      crossOriginEmbedderPolicy: 'unsafe-none',
       contentSecurityPolicy: {
-        value: {
-          'base-uri': ["'self'"],
-          'font-src': ["'self'", 'https:', 'data:', 'fonts.bunny.net'],
-          'form-action': ["'self'"],
-          'frame-ancestors': ["'self'"],
-          'img-src': ["'self'", 'data:', 'avatars-githubusercontent.webp.se'],
-          'object-src': ["'none'"],
-          'script-src-attr': ["'none'"],
-          'style-src': ["'self'", 'https:', "'unsafe-inline'", 'fonts.bunny.net'],
-          'upgrade-insecure-requests': true,
-        },
-        route: '/**',
+        'base-uri': ["'self'"],
+        'font-src': ["'self'", 'https:', 'data:', 'fonts.bunny.net'],
+        'form-action': ["'self'"],
+        'frame-ancestors': ["'self'"],
+        'img-src': ["'self'", 'data:', 'avatars-githubusercontent.webp.se'],
+        'object-src': ["'none'"],
+        'script-src-attr': ["'none'"],
+        'style-src': ["'self'", 'https:', "'unsafe-inline'", 'fonts.bunny.net'],
+        'upgrade-insecure-requests': true,
       },
     },
   },
