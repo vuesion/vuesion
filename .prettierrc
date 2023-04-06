@@ -6,5 +6,6 @@
   "tabWidth": 2,
   "printWidth": 120,
   "endOfLine": "lf",
-  "vueIndentScriptAndStyle": false
+  "vueIndentScriptAndStyle": false,
+  "plugins": ["prettier-plugin-prisma"]
 }
