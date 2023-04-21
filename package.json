@@ -1,7 +1,7 @@
 {
   "name": "vuesion",
   "private": true,
-  "version": "5.0.0",
+  "version": "4.8.1",
   "description": "Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ICU_DATA=node_modules/full-icu nuxt dev",
-    "storybook:dev": "storybook dev -p 6006 --disable-telemetry",
+    "storybook:dev": "storybook dev -p 6006",
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest run --coverage",
     "new:component": "hygen new component",
     "new:store": "hygen new store",
@@ -42,7 +42,7 @@
     "test:watch": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest",
     "e2e": "cypress run --headless",
     "lint": "eslint . --ext ts,vue --fix --cache && tsc --project ./tsconfig.json --noEmit",
-    "storybook:build": "STORYBOOK_BASE_PATH=/storybook/ storybook build --disable-telemetry",
+    "storybook:build": "storybook build",
     "release:major": "ts-node ./tools/release.ts --major",
     "release:minor": "ts-node ./tools/release.ts --minor",
     "release:patch": "ts-node ./tools/release.ts --patch",
@@ -73,6 +73,7 @@
   "devDependencies": {
     "@babel/core": "7.21.4",
     "@commitlint/config-conventional": "17.6.1",
+    "@nuxt/devtools": "0.4.1",
     "@nuxt/image-edge": "1.0.0-28020728.5df24eb",
     "@nuxtjs/color-mode": "3.2.0",
     "@nuxtjs/eslint-config-typescript": "12.0.0",

@@ -41,16 +41,13 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
       - name: Build application
         run: npm run build
-
-      - name: Build Storybook
-        run: npm run storybook:build
 
       - name: Unit test application
         run: npm run test
@@ -71,14 +68,6 @@ jobs:
           start: npm start
           wait-on: 'http://localhost:3000'
 
-      - name: Archive Storybook artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: storybook-artifacts
-          if-no-files-found: error
-          path: |
-            storybook-static
-
   deploy:
     needs: [ build_and_test ]
     name: Deploy to Heroku
@@ -88,22 +77,14 @@ jobs:
       HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
       HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
       BASE_URL: https://vuesion-next.herokuapp.com
+      NEXTAUTH_URL: https://vuesion-next.herokuapp.com/api/auth
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Download Storybook artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: storybook-artifacts
-          path: storybook-static
-
-      - name: Display directory structure
-        run: ls -la
-
       - name: Build Docker Image and deploy to Heroku
         run: |
-          docker build -t $APP_NAME . --build-arg A_BASE_URL=$BASE_URL
+          docker build -t $APP_NAME . --build-arg A_BASE_URL=$BASE_URL --build-arg A_NEXTAUTH_URL=$NEXTAUTH_URL
           set -eu -o pipefail
           echo $HEROKU_API_KEY | docker login --username=$HEROKU_USERNAME --password-stdin registry.heroku.com
           docker tag $APP_NAME registry.heroku.com/$APP_NAME/web

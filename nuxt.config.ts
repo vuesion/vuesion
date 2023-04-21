@@ -109,6 +109,7 @@ export default defineNuxtConfig({
     ],
     'nuxt-security', // TODO: comment in when https://github.com/sidebase/nuxt-auth/issues/324 is resolved
     '@vite-pwa/nuxt',
+    '@nuxt/devtools',
   ],
   nitro: {
     compressPublicAssets: true,
