@@ -1,7 +1,6 @@
 const { mergeConfig } = require('vite');
 const path = require('path');
 const vue = require('@vitejs/plugin-vue');
-
 module.exports = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   staticDirs: ['../src/public'],
@@ -10,10 +9,11 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@vuesion/storybook-theme-switcher',
+    '@storybook/addon-mdx-gfm',
   ],
-  framework: '@storybook/vue3',
-  core: {
-    builder: '@storybook/builder-vite',
+  framework: {
+    name: '@storybook/vue3-vite',
+    options: {},
   },
   features: {
     storyStoreV7: true,
@@ -57,5 +57,8 @@ module.exports = {
         },
       },
     });
+  },
+  docs: {
+    autodocs: false,
   },
 };

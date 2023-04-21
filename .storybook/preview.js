@@ -2,7 +2,7 @@ import 'assets/_design-system.scss';
 import 'assets/reset.scss';
 import 'assets/global.scss';
 import 'assets/typography.scss';
-import { app } from '@storybook/vue3';
+import { setup } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import camelCase from 'lodash/camelCase';
 import upperFirst from 'lodash/upperFirst';
@@ -17,58 +17,60 @@ defineRule('min', min);
 defineRule('min_value', minValue);
 defineRule('regex', regex);
 
-// Mocks
-// NuxtLink
-app.component('nuxt-link', {
-  props: ['to'],
-  methods: {
-    log() {
-      action('link target')(this.to);
+setup((app) => {
+  // Mocks
+  // NuxtLink
+  app.component('nuxt-link', {
+    props: ['to'],
+    methods: {
+      log() {
+        action('link target')(this.to);
+      },
     },
-  },
-  template: '<a href="#" @click.prevent="log()"><slot>NuxtLink</slot></a>',
-});
-app.component('nuxt-img', {
-  inheritAttrs: false,
-  props: ['src', 'alt'],
-  methods: {},
-  template: '<img :src="src" :alt="alt" :class="$attrs.class" />',
-});
-app.mixin({
-  created() {
-    this.localePath = (path) => path;
-    this.$t = (key) => key;
-    this.$n = (key) => key;
-    this.t = (key) => key;
-    this.n = (key) => key;
-  },
-});
-app.mixin({
-  created() {
-    this.$colorMode = {
-      value: 'light',
-      preference: 'light',
-    };
-  },
-});
-
-// import icons globally
-const icons = import.meta.glob('../src/components/icons/*.vue');
-
-for (const path in icons) {
-  icons[path]().then((componentConfig) => {
-    const componentName = upperFirst(
-      camelCase(
-        path
-          .split('/')
-          .pop()
-          .replace(/\.\w+$/, ''),
-      ),
-    );
-
-    app.component(componentName, componentConfig.default || componentConfig);
+    template: '<a href="#" @click.prevent="log()"><slot>NuxtLink</slot></a>',
   });
-}
+  app.component('nuxt-img', {
+    inheritAttrs: false,
+    props: ['src', 'alt'],
+    methods: {},
+    template: '<img :src="src" :alt="alt" :class="$attrs.class" />',
+  });
+  app.mixin({
+    created() {
+      this.localePath = (path) => path;
+      this.$t = (key) => key;
+      this.$n = (key) => key;
+      this.t = (key) => key;
+      this.n = (key) => key;
+    },
+  });
+  app.mixin({
+    created() {
+      this.$colorMode = {
+        value: 'light',
+        preference: 'light',
+      };
+    },
+  });
+
+  // import icons globally
+  const icons = import.meta.glob('../src/components/icons/Vue*.vue');
+
+  for (const path in icons) {
+    icons[path]().then((componentConfig) => {
+      const componentName = upperFirst(
+        camelCase(
+          path
+            .split('/')
+            .pop()
+            .replace(/\.\w+$/, ''),
+        ),
+      );
+
+      app.component(componentName, componentConfig.default || componentConfig);
+    });
+  }
+});
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
