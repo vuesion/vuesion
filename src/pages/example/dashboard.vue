@@ -7,7 +7,7 @@
         <vue-text look="h1" as="h1"> Dashboard </vue-text>
         <vue-text> You're logged in as {{ user?.email }} </vue-text>
         <vue-inline>
-          <vue-button look="primary" @click="signOut">Log out</vue-button>
+          <vue-button look="primary" @click="() => signOut()">Log out</vue-button>
         </vue-inline>
       </vue-stack>
     </vue-box>
@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useHead, useSession } from '#imports';
+import { useHead, useAuth } from '#imports';
 import VueBreadcrumb from '~/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
@@ -29,7 +29,7 @@ import VueInline from '~/components/layout/VueInline/VueInline.vue';
 useHead({ title: 'Vuesion - Authentication Example' });
 
 // Deps
-const { data, signOut } = useSession();
+const { data, signOut } = useAuth();
 
 // Data
 const user = computed(() => data.value?.user || null);

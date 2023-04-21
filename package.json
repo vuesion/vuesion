@@ -65,7 +65,7 @@
     "lodash-es": "4.17.21",
     "marked": "4.3.0",
     "mitt": "3.0.0",
-    "next-auth": "4.20.1",
+    "next-auth": "4.22.1",
     "pinia": "2.0.35",
     "prisma": "4.13.0",
     "vee-validate": "4.8.6"
@@ -79,7 +79,7 @@
     "@nuxtjs/html-validator": "1.2.5",
     "@nuxtjs/i18n": "8.0.0-beta.10",
     "@nuxtjs/robots": "3.0.0",
-    "@sidebase/nuxt-auth": "0.4.4",
+    "@sidebase/nuxt-auth": "0.5.0",
     "@storybook/addon-actions": "7.0.6",
     "@storybook/addon-essentials": "7.0.6",
     "@storybook/addon-interactions": "7.0.6",

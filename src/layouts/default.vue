@@ -34,14 +34,14 @@ import VueToast from '../components/data-display/VueToast/VueToast.vue';
 import VueNavbar from '../components/navigation/VueNavbar/VueNavbar.vue';
 import VueFooter from '../components/navigation/VueFooter/VueFooter.vue';
 import VueBackToTop from '../components/behavior/VueBackToTop/VueBackToTop.vue';
-import { useHead, useSession } from '#imports';
+import { useHead, useAuth } from '#imports';
 import { IItem } from '~/interfaces/IItem';
 
 // Deps
 const { locale, setLocale } = useI18n();
 const { push } = useRouter();
 const i18nHead = useLocaleHead({ addSeoAttributes: { canonicalQueries: [] } });
-const { data, signOut } = useSession();
+const { data, signOut } = useAuth();
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
 

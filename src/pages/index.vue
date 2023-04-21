@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { definePageMeta, useFetch, useHead, useI18n, useLocalePath, useRouter, useSession } from '#imports';
+import { definePageMeta, useFetch, useHead, useI18n, useLocalePath, useRouter, useAuth } from '#imports';
 import { RequestStatus } from '~/enums/RequestStatus';
 import { addToast } from '~/components/utils';
 import LandingPageHeader from '~/components/marketing/LandingPageHeader/LandingPageHeader.vue';
@@ -31,7 +31,7 @@ definePageMeta({ auth: false });
 // Deps
 const { t } = useI18n();
 const localePath = useLocalePath();
-const { signIn } = useSession();
+const { signIn } = useAuth();
 const { push } = useRouter();
 
 // Data
