@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueBreadcrumb from './VueBreadcrumb.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -9,12 +9,13 @@ export default {
   argTypes: {},
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueBreadcrumb,
     ComponentDocs,
     VueStack,
   },
+  inheritAttrs: false,
   setup() {
     return {
       args,
@@ -38,12 +39,14 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
 
-Default.args = {
-  items: [
-    { label: 'Level 1', value: '/level-1' },
-    { label: 'Level 2', value: '/level-2' },
-    { label: 'Level 3', value: '/level-3' },
-  ],
+  args: {
+    items: [
+      { label: 'Level 1', value: '/level-1' },
+      { label: 'Level 2', value: '/level-2' },
+      { label: 'Level 3', value: '/level-3' },
+    ],
+  },
 };

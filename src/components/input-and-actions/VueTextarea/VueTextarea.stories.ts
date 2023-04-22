@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { ref } from 'vue';
 import { action } from '@storybook/addon-actions';
 import VueTextarea from './VueTextarea.vue';
@@ -12,13 +12,14 @@ export default {
   argTypes: {},
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueTextarea,
     ComponentDocs,
     VueStack,
     VueText,
   },
+  inheritAttrs: false,
   setup() {
     const model = ref(null);
     return {
@@ -37,7 +38,7 @@ const Template: Story = (args) => ({
   <vue-stack>
     <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
     <vue-textarea
-        v-bind="args" 
+        v-bind="args"
         v-model="model"
         @leading-icon-click="onLeadingIconClick"
         @trailing-icon-click="onTrailingIconClick"
@@ -47,20 +48,23 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  id: 'notes',
-  name: 'notes',
-  label: 'Notes',
-  hideLabel: false,
-  hideDescription: false,
-  required: true,
-  validation: 'required',
-  disabled: false,
-  placeholder: 'Enter your notes',
-  autofocus: false,
-  readonly: false,
-  description: 'Enter your notes',
-  errorMessage: 'This field is required',
-  debounce: 250,
+export const Default = {
+  render: Template,
+
+  args: {
+    id: 'notes',
+    name: 'notes',
+    label: 'Notes',
+    hideLabel: false,
+    hideDescription: false,
+    required: true,
+    validation: 'required',
+    disabled: false,
+    placeholder: 'Enter your notes',
+    autofocus: false,
+    readonly: false,
+    description: 'Enter your notes',
+    errorMessage: 'This field is required',
+    debounce: 250,
+  },
 };

@@ -101,4 +101,6 @@ const Template = () => ({
   </component-docs>`,
 });
 
-export const UtilityTokens = Template.bind({});
+export const UtilityTokens = {
+  render: Template,
+};

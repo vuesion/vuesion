@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import FormExample from './FormExample.vue';
 import VueToast from '~/components/data-display/VueToast/VueToast.vue';
@@ -9,8 +9,9 @@ export default {
   component: FormExample,
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { FormExample, VueToast, ComponentDocs },
+  inheritAttrs: false,
   setup() {
     return { args, onSubmit: action('@submit') };
   },
@@ -24,5 +25,7 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Default = {
+  render: Template,
+  args: {},
+};

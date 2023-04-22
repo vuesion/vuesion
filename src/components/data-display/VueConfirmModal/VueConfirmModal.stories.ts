@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VueConfirmModal from './VueConfirmModal.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -9,11 +9,12 @@ export default {
   argTypes: {},
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueConfirmModal,
     ComponentDocs,
   },
+  inheritAttrs: false,
   setup() {
     return { args, onClose: action('close'), onConfirm: action('confirm'), onAbort: action('abort') };
   },
@@ -26,14 +27,16 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
 
-Default.args = {
-  padding: '16',
-  show: true,
-  backdrop: true,
-  disablePageScroll: false,
-  text: 'Are you sure you want to delete this item?',
-  confirmText: 'Yes',
-  abortText: 'No',
+  args: {
+    padding: '16',
+    show: true,
+    backdrop: true,
+    disablePageScroll: false,
+    text: 'Are you sure you want to delete this item?',
+    confirmText: 'Yes',
+    abortText: 'No',
+  },
 };

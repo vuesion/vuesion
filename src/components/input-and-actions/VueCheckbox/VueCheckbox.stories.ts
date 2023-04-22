@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueCheckbox from './VueCheckbox.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
@@ -13,7 +13,7 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueCheckbox,
     ComponentDocs,
@@ -25,6 +25,7 @@ const Template: Story = (args) => ({
       model: true,
     };
   },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -48,12 +49,15 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  id: 'checkbox',
-  name: 'checkbox',
-  label: 'Check me',
-  description: 'Get notified when someone comments on your posting.',
-  required: true,
-  disabled: false,
+export const Default = {
+  render: Template,
+
+  args: {
+    id: 'checkbox',
+    name: 'checkbox',
+    label: 'Check me',
+    description: 'Get notified when someone comments on your posting.',
+    required: true,
+    disabled: false,
+  },
 };

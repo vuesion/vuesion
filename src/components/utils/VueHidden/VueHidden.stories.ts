@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueHidden from './VueHidden.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -7,8 +7,9 @@ export default {
   component: VueHidden,
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { VueHidden, ComponentDocs },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -22,14 +23,16 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Hidden = Template.bind({});
+export const Hidden = {
+  render: Template,
 
-Hidden.args = {
-  as: 'div',
-  phone: false,
-  tabletPortrait: false,
-  tabletLandscape: false,
-  smallDesktop: false,
-  largeDesktop: false,
-  onScreen: false,
+  args: {
+    as: 'div',
+    phone: false,
+    tabletPortrait: false,
+    tabletLandscape: false,
+    smallDesktop: false,
+    largeDesktop: false,
+    onScreen: false,
+  },
 };

@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueFooter from './VueFooter.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -8,11 +8,12 @@ export default {
   argTypes: {},
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueFooter,
     ComponentDocs,
   },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -25,18 +26,20 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
 
-Default.args = {
-  slim: false,
-  languages: [
-    { label: 'English', value: 'en' },
-    { label: 'Deutsch', value: 'de' },
-  ],
-  themes: [
-    { label: 'Dark', value: 'dark' },
-    { label: 'Light', value: 'light' },
-  ],
-  selectedLocale: 'en',
-  selectDuration: 250,
+  args: {
+    slim: false,
+    languages: [
+      { label: 'English', value: 'en' },
+      { label: 'Deutsch', value: 'de' },
+    ],
+    themes: [
+      { label: 'Dark', value: 'dark' },
+      { label: 'Light', value: 'light' },
+    ],
+    selectedLocale: 'en',
+    selectDuration: 250,
+  },
 };

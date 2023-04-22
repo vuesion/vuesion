@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueInline from './VueInline.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -7,14 +7,15 @@ export default {
   component: VueInline,
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { VueInline, ComponentDocs },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
   template: `<component-docs
         component-name="Inline"
-        usage="The Inline component allows you to render a set of elements in a row 
+        usage="The Inline component allows you to render a set of elements in a row
 with equal spacing around them, wrapping onto multiple lines when necessary.
 The elements can be stacked per viewport."
     >
@@ -29,18 +30,20 @@ The elements can be stacked per viewport."
     </component-docs>`,
 });
 
-export const Inline = Template.bind({});
+export const Inline = {
+  render: Template,
 
-Inline.args = {
-  as: 'div',
-  space: ['8', '16', '24', '48', '192'],
-  alignX: ['start', 'center', 'end'],
-  alignY: ['start', 'center', 'end'],
-  reverse: [true, false, true, false, false],
-  noWrap: false,
-  stackPhone: true,
-  stackTabletPortrait: false,
-  stackTabletLandscape: true,
-  stackSmallDesktop: false,
-  stackLargeDesktop: false,
+  args: {
+    as: 'div',
+    space: ['8', '16', '24', '48', '192'],
+    alignX: ['start', 'center', 'end'],
+    alignY: ['start', 'center', 'end'],
+    reverse: [true, false, true, false, false],
+    noWrap: false,
+    stackPhone: true,
+    stackTabletPortrait: false,
+    stackTabletLandscape: true,
+    stackSmallDesktop: false,
+    stackLargeDesktop: false,
+  },
 };

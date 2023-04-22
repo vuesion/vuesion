@@ -36,4 +36,6 @@ const Template = () => ({
   </vue-card>`,
 });
 
-export const DesignSystem = Template.bind({});
+export const DesignSystem = {
+  render: Template,
+};

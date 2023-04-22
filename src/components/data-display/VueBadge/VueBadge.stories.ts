@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueBadge from './VueBadge.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { BadgeStatusValues } from '~/components/prop-types';
@@ -14,11 +14,12 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueBadge,
     ComponentDocs,
   },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -30,8 +31,10 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
 
-Default.args = {
-  status: 'info',
+  args: {
+    status: 'info',
+  },
 };

@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { ref } from 'vue';
 import { action } from '@storybook/addon-actions';
 import VueInput from './VueInput.vue';
@@ -20,13 +20,14 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueInput,
     ComponentDocs,
     VueInline,
     VueText,
   },
+  inheritAttrs: false,
   setup() {
     const model = ref(null);
     return {
@@ -45,7 +46,7 @@ const Template: Story = (args) => ({
   <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
     <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
     <vue-input
-        v-bind="args" 
+        v-bind="args"
         v-model="model"
         @leading-icon-click="onLeadingIconClick"
         @trailing-icon-click="onTrailingIconClick"
@@ -55,26 +56,29 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  id: 'email',
-  name: 'email',
-  label: 'E-mail',
-  hideLabel: false,
-  hideDescription: false,
-  required: true,
-  validation: 'required|email',
-  disabled: false,
-  placeholder: 'Enter email address',
-  autofocus: false,
-  type: 'email',
-  readonly: false,
-  description: 'Enter email address',
-  errorMessage: 'Please enter a valid email address',
-  autocomplete: 'off',
-  leadingIcon: 'mail',
-  trailingIcon: 'times',
-  size: 'md',
-  sizeAttribute: null,
-  debounce: 250,
+export const Default = {
+  render: Template,
+
+  args: {
+    id: 'email',
+    name: 'email',
+    label: 'E-mail',
+    hideLabel: false,
+    hideDescription: false,
+    required: true,
+    validation: 'required|email',
+    disabled: false,
+    placeholder: 'Enter email address',
+    autofocus: false,
+    type: 'email',
+    readonly: false,
+    description: 'Enter email address',
+    errorMessage: 'Please enter a valid email address',
+    autocomplete: 'off',
+    leadingIcon: 'mail',
+    trailingIcon: 'times',
+    size: 'md',
+    sizeAttribute: null,
+    debounce: 250,
+  },
 };

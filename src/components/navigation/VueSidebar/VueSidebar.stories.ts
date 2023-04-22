@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VueSidebar from './VueSidebar.vue';
 import VueSidebarGroup from './VueSidebarGroup.vue';
@@ -16,8 +16,9 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { VueSidebar, VueSidebarGroup, VueSidebarGroupItem, ComponentDocs, VueSelect },
+  inheritAttrs: false,
   setup() {
     return {
       args,
@@ -57,6 +58,7 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-
-Default.args = {};
+export const Default = {
+  render: Template,
+  args: {},
+};

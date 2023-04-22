@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import LoginForm from './LoginForm.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -8,8 +8,9 @@ export default {
   component: LoginForm,
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { LoginForm, ComponentDocs },
+  inheritAttrs: false,
   setup() {
     return { args, onSubmit: action('@submit') };
   },
@@ -22,5 +23,7 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Default = {
+  render: Template,
+  args: {},
+};

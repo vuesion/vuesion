@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueCarousel from './VueCarousel.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -41,11 +41,12 @@ export default {
   argTypes: {},
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     ComponentDocs,
     VueCarousel,
   },
+  inheritAttrs: false,
   setup() {
     return {
       args,
@@ -59,13 +60,15 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
 
-Default.args = {
-  images,
-  intervalInSeconds: 5,
-  selectedSlide: 1,
-  minHeight: 500,
-  showIndicator: true,
-  showPagination: false,
+  args: {
+    images,
+    intervalInSeconds: 5,
+    selectedSlide: 1,
+    minHeight: 500,
+    showIndicator: true,
+    showPagination: false,
+  },
 };

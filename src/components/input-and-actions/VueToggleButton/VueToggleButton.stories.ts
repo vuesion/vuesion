@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { ref } from 'vue';
 import VueToggleButton from './VueToggleButton.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -19,7 +19,7 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueToggleButton,
     ComponentDocs,
@@ -31,6 +31,7 @@ const Template: Story = (args) => ({
       model: null,
     };
   },
+  inheritAttrs: false,
   setup() {
     const model = ref(null);
     return {
@@ -50,29 +51,32 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  items: [
-    {
-      leadingIcon: 'view-grid',
-      label: 'Grid view',
-      value: 'grid-view',
-    },
-    {
-      leadingIcon: 'view-list',
-      label: 'List view',
-      value: 'list-view',
-    },
-    {
-      leadingIcon: 'Folder',
-      label: 'Folder view',
-      value: 'folder-view',
-    },
-    {
-      leadingIcon: 'Code',
-      label: 'Code view',
-      value: 'code',
-    },
-  ],
-  size: 'md',
+export const Default = {
+  render: Template,
+
+  args: {
+    items: [
+      {
+        leadingIcon: 'view-grid',
+        label: 'Grid view',
+        value: 'grid-view',
+      },
+      {
+        leadingIcon: 'view-list',
+        label: 'List view',
+        value: 'list-view',
+      },
+      {
+        leadingIcon: 'Folder',
+        label: 'Folder view',
+        value: 'folder-view',
+      },
+      {
+        leadingIcon: 'Code',
+        label: 'Code view',
+        value: 'code',
+      },
+    ],
+    size: 'md',
+  },
 };

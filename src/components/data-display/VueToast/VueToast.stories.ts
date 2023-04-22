@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueToast from './VueToast.vue';
 import { addToast } from '~/components/utils';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
@@ -11,7 +11,7 @@ export default {
   argTypes: {},
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueToast,
     VueButton,
@@ -19,6 +19,7 @@ const Template: Story = (args) => ({
     VueInline,
   },
 
+  inheritAttrs: false,
   setup() {
     return {
       args,
@@ -71,6 +72,7 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-
-Default.args = {};
+export const Default = {
+  render: Template,
+  args: {},
+};

@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueMarkdown from './VueMarkdown.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -8,12 +8,13 @@ export default {
   argTypes: {},
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueMarkdown,
     ComponentDocs,
   },
 
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -27,9 +28,11 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
 
-Default.args = {
-  useRouter: true,
-  markdown: '# headline 1\n## headline 2\n- test\n- test\n- test\n[test](/test)',
+  args: {
+    useRouter: true,
+    markdown: '# headline 1\n## headline 2\n- test\n- test\n- test\n[test](/test)',
+  },
 };

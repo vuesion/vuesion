@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import IconList from '~/components/icons/IconList.vue';
 
@@ -9,11 +9,12 @@ export default {
   parameters: { controls: { disabled: true } },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     IconList,
     ComponentDocs,
   },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -26,4 +27,6 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Iconography = Template.bind({});
+export const Iconography = {
+  render: Template,
+};

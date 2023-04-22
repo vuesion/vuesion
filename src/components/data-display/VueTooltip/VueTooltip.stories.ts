@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueTooltip from './VueTooltip.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
@@ -18,7 +18,7 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueTooltip,
     VueStack,
@@ -28,6 +28,7 @@ const Template: Story = (args) => ({
     ComponentDocs,
   },
 
+  inheritAttrs: false,
   setup() {
     return {
       args,
@@ -51,11 +52,13 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
 
-Default.args = {
-  as: 'span',
-  tip: 'this is a longer tooltip!',
-  direction: 'top',
-  disabled: false,
+  args: {
+    as: 'span',
+    tip: 'this is a longer tooltip!',
+    direction: 'top',
+    disabled: false,
+  },
 };

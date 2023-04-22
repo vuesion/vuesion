@@ -135,4 +135,6 @@ const Template = () => ({
   </component-docs>`,
 });
 
-export const Spacings = Template.bind({});
+export const Spacings = {
+  render: Template,
+};

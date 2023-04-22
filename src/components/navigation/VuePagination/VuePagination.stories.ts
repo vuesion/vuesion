@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VuePagination from './VuePagination.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -13,11 +13,12 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     ComponentDocs,
     VuePagination,
   },
+  inheritAttrs: false,
   setup() {
     return {
       args,
@@ -39,15 +40,17 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
 
-Default.args = {
-  pages: 10,
-  selectedPage: 1,
-  displayPages: 5,
-  slim: false,
-  infinite: false,
-  previousButtonLabel: 'Previous',
-  nextButtonLabel: 'Next',
-  selectedPageLabel: "You're on page",
+  args: {
+    pages: 10,
+    selectedPage: 1,
+    displayPages: 5,
+    slim: false,
+    infinite: false,
+    previousButtonLabel: 'Previous',
+    nextButtonLabel: 'Next',
+    selectedPageLabel: "You're on page",
+  },
 };

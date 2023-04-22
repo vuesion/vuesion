@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VueModal from './VueModal.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -13,7 +13,7 @@ export default {
   argTypes: {},
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueModal,
     VueStack,
@@ -23,6 +23,7 @@ const Template: Story = (args) => ({
     ComponentDocs,
   },
 
+  inheritAttrs: false,
   setup() {
     return { args, onClose: action('close') };
   },
@@ -54,12 +55,14 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
 
-Default.args = {
-  padding: '48 16 16 16',
-  show: true,
-  backdrop: true,
-  disablePageScroll: false,
-  closeOnEscape: true,
+  args: {
+    padding: '48 16 16 16',
+    show: true,
+    backdrop: true,
+    disablePageScroll: false,
+    closeOnEscape: true,
+  },
 };

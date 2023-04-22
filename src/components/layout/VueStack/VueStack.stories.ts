@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueStack from './VueStack.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -7,8 +7,9 @@ export default {
   component: VueStack,
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { VueStack, ComponentDocs },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -27,10 +28,12 @@ You can nest multiple stacks to achieve full flexibility."
   </component-docs>`,
 });
 
-export const Stack = Template.bind({});
+export const Stack = {
+  render: Template,
 
-Stack.args = {
-  as: 'div',
-  space: ['8', '16', '24', '48', '192'],
-  alignX: ['start', 'center', 'end'],
+  args: {
+    as: 'div',
+    space: ['8', '16', '24', '48', '192'],
+    alignX: ['start', 'center', 'end'],
+  },
 };

@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueTabGroup from './VueTabGroup.vue';
 import VueTabItem from './VueTabItem.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -9,13 +9,14 @@ export default {
   argTypes: {},
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueTabGroup,
     VueTabItem,
     ComponentDocs,
   },
 
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -49,6 +50,7 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-
-Default.args = {};
+export const Default = {
+  render: Template,
+  args: {},
+};

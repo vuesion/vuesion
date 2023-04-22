@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VueDropdown from './VueDropdown.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -25,11 +25,12 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueDropdown,
     ComponentDocs,
   },
+  inheritAttrs: false,
   setup() {
     return {
       args,
@@ -46,17 +47,20 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  items: [
-    { label: 'Save', value: 'save', leadingIcon: 'save' },
-    { label: '', value: 'separator' },
-    { label: 'Open', value: 'open', leadingIcon: 'folder' },
-    { label: 'Delete', value: 'delete', leadingIcon: 'trash' },
-  ],
-  buttonText: 'Dropdown Button',
-  duration: 250,
-  alignXMenu: 'left',
-  alignYMenu: 'bottom',
-  size: 'md',
+export const Default = {
+  render: Template,
+
+  args: {
+    items: [
+      { label: 'Save', value: 'save', leadingIcon: 'save' },
+      { label: '', value: 'separator' },
+      { label: 'Open', value: 'open', leadingIcon: 'folder' },
+      { label: 'Delete', value: 'delete', leadingIcon: 'trash' },
+    ],
+    buttonText: 'Dropdown Button',
+    duration: 250,
+    alignXMenu: 'left',
+    alignYMenu: 'bottom',
+    size: 'md',
+  },
 };

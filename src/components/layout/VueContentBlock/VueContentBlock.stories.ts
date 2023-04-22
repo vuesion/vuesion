@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueContentBlock from './VueContentBlock.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -7,15 +7,16 @@ export default {
   component: VueContentBlock,
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { VueContentBlock, ComponentDocs },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
   template: `<component-docs
       component-name="Content block"
-      usage="By default, all layout components will render full width. 
-However, most applications will want to limit the width of content on the screen. 
+      usage="By default, all layout components will render full width.
+However, most applications will want to limit the width of content on the screen.
 The ContentBlock component sets a maximum width and centres content horizontally."
   >
   <div style="border: 1px solid var(--brand-border-default-medium);">
@@ -26,8 +27,10 @@ The ContentBlock component sets a maximum width and centres content horizontally
   </component-docs>`,
 });
 
-export const ContentBlock = Template.bind({});
+export const ContentBlock = {
+  render: Template,
 
-ContentBlock.args = {
-  as: 'div',
+  args: {
+    as: 'div',
+  },
 };

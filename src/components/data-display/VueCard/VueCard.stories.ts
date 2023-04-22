@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueCard from './VueCard.vue';
 import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 import VueTiles from '~/components/layout/VueTiles/VueTiles.vue';
@@ -19,7 +19,7 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueCard,
     ComponentDocs,
@@ -33,6 +33,7 @@ const Template: Story = (args) => ({
     VueInline,
     VueButton,
   },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -87,7 +88,10 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  padding: '0',
+export const Default = {
+  render: Template,
+
+  args: {
+    padding: '0',
+  },
 };

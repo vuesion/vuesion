@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import LearnMore from './LearnMore.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -7,8 +7,9 @@ export default {
   component: LearnMore,
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { LearnMore, ComponentDocs },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -21,5 +22,7 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Default = {
+  render: Template,
+  args: {},
+};

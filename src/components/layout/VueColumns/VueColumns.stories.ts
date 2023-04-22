@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueColumns from './VueColumns.vue';
 import VueColumn from './VueColumn/VueColumn.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -8,15 +8,16 @@ export default {
   component: VueColumns,
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { VueColumns, VueColumn, ComponentDocs },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
   template: `<component-docs
       component-name="Columns"
       usage="The Columns are used to lay out content horizontally.
-They can be used together with the Stack to implement a very flexible 
+They can be used together with the Stack to implement a very flexible
 Grid system and also allow to stack them based on the viewport."
   >
   <vue-columns v-bind="args" style="border: 1px solid var(--brand-border-default-medium);">
@@ -33,17 +34,19 @@ Grid system and also allow to stack them based on the viewport."
   </component-docs>`,
 });
 
-export const Columns = Template.bind({});
+export const Columns = {
+  render: Template,
 
-Columns.args = {
-  as: 'div',
-  space: ['8', '16', '24', '48', '192'],
-  alignX: ['start', 'center', 'end'],
-  alignY: ['start', 'center', 'end'],
-  reverse: [true, false, true, false, false],
-  stackPhone: true,
-  stackTabletPortrait: false,
-  stackTabletLandscape: true,
-  stackSmallDesktop: false,
-  stackLargeDesktop: false,
+  args: {
+    as: 'div',
+    space: ['8', '16', '24', '48', '192'],
+    alignX: ['start', 'center', 'end'],
+    alignY: ['start', 'center', 'end'],
+    reverse: [true, false, true, false, false],
+    stackPhone: true,
+    stackTabletPortrait: false,
+    stackTabletLandscape: true,
+    stackSmallDesktop: false,
+    stackLargeDesktop: false,
+  },
 };

@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VueRadio from './VueRadio.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
@@ -14,7 +14,7 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueRadio,
     ComponentDocs,
@@ -26,6 +26,7 @@ const Template: Story = (args) => ({
       model: null,
     };
   },
+  inheritAttrs: false,
   setup() {
     return { args, action: action('@click') };
   },
@@ -49,5 +50,7 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Default = {
+  render: Template,
+  args: {},
+};

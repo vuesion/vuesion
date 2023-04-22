@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { ref } from 'vue';
 import VueMasonry from './VueMasonry.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -11,8 +11,9 @@ export default {
   component: VueMasonry,
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { ComponentDocs, VueMasonry, VueStack, VueSlider },
+  inheritAttrs: false,
   setup() {
     const numberOfImages = ref([12]);
     return {
@@ -51,8 +52,10 @@ const Template: Story = (args) => ({
     </component-docs>`,
 });
 
-export const Masonry = Template.bind({});
+export const Masonry = {
+  render: Template,
 
-Masonry.args = {
-  height: 800,
+  args: {
+    height: 800,
+  },
 };

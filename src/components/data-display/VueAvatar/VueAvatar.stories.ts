@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueAvatar from './VueAvatar.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { ShirtSizeValues } from '~/components/prop-types';
@@ -21,11 +21,12 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueAvatar,
     ComponentDocs,
   },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -37,11 +38,13 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
 
-Default.args = {
-  name: 'Isabella-Maria Del Campo',
-  icon: '',
-  src: undefined,
-  size: 'sm',
+  args: {
+    name: 'Isabella-Maria Del Campo',
+    icon: '',
+    src: undefined,
+    size: 'sm',
+  },
 };

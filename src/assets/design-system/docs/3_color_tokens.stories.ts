@@ -24,4 +24,6 @@ This allows the designer to focus “how” and “why” rather than “what co
   </component-docs>`,
 });
 
-export const ColorTokens = Template.bind({});
+export const ColorTokens = {
+  render: Template,
+};

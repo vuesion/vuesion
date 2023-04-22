@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { ref } from 'vue';
 import VueCollapse from './VueCollapse.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -16,7 +16,7 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueCollapse,
     ComponentDocs,
@@ -25,6 +25,7 @@ const Template: Story = (args) => ({
     VueCard,
     VueBox,
   },
+  inheritAttrs: false,
   setup() {
     const show = ref(false);
     return { args, show };
@@ -52,7 +53,10 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  duration: 250,
+export const Default = {
+  render: Template,
+
+  args: {
+    duration: 250,
+  },
 };

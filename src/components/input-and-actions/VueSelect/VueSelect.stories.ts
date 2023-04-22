@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import { ref } from 'vue';
 import VueSelect from './VueSelect.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
@@ -37,7 +37,7 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueSelect,
     ComponentDocs,
@@ -50,6 +50,7 @@ const Template: Story = (args) => ({
       model: true,
     };
   },
+  inheritAttrs: false,
   setup() {
     const model = ref(null);
     return {
@@ -66,7 +67,7 @@ const Template: Story = (args) => ({
   >
   <vue-stack>
     <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
-    
+
     <vue-inline>
       <vue-select
           v-bind="args"
@@ -77,29 +78,32 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  id: 'select',
-  name: 'select',
-  label: 'Label',
-  hideLabel: false,
-  hideDescription: false,
-  required: true,
-  validation: 'required',
-  disabled: false,
-  items: [
-    { label: 'Trigger validation', value: '' },
-    { label: 'Option 1', value: 1 },
-    { label: 'Option 2', value: 2 },
-    { label: 'Option 3', value: 3 },
-  ],
-  placeholder: 'Please select an option',
-  description: 'Description',
-  errorMessage: 'Error message',
-  duration: 250,
-  alignXMenu: 'left',
-  alignYMenu: 'bottom',
-  size: 'md',
-  multiSelect: false,
-  badgeStatus: 'info',
+export const Default = {
+  render: Template,
+
+  args: {
+    id: 'select',
+    name: 'select',
+    label: 'Label',
+    hideLabel: false,
+    hideDescription: false,
+    required: true,
+    validation: 'required',
+    disabled: false,
+    items: [
+      { label: 'Trigger validation', value: '' },
+      { label: 'Option 1', value: 1 },
+      { label: 'Option 2', value: 2 },
+      { label: 'Option 3', value: 3 },
+    ],
+    placeholder: 'Please select an option',
+    description: 'Description',
+    errorMessage: 'Error message',
+    duration: 250,
+    alignXMenu: 'left',
+    alignYMenu: 'bottom',
+    size: 'md',
+    multiSelect: false,
+    badgeStatus: 'info',
+  },
 };

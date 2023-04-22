@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueButton from './VueButton.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { ButtonStyleValues, ShirtSizeValues } from '~/components/prop-types';
@@ -23,11 +23,12 @@ export default {
   },
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     VueButton,
     ComponentDocs,
   },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -47,16 +48,18 @@ Each type has a different best-for context:
   </component-docs>`,
 });
 
-export const Styles = Template.bind({});
+export const Styles = {
+  render: Template,
 
-Styles.args = {
-  as: 'button',
-  block: false,
-  disabled: false,
-  loading: false,
-  look: 'primary',
-  size: 'md',
-  type: 'button',
-  leadingIcon: '',
-  trailingIcon: 'arrowRight',
+  args: {
+    as: 'button',
+    block: false,
+    disabled: false,
+    loading: false,
+    look: 'primary',
+    size: 'md',
+    type: 'button',
+    leadingIcon: '',
+    trailingIcon: 'arrowRight',
+  },
 };

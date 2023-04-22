@@ -22,4 +22,6 @@ const Template = () => ({
   </component-docs>`,
 });
 
-export const ColorPalette = Template.bind({});
+export const ColorPalette = {
+  render: Template,
+};

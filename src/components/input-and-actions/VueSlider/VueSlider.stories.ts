@@ -1,4 +1,4 @@
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import VueSlider from './VueSlider.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -10,13 +10,14 @@ export default {
   argTypes: {},
 };
 
-const SingleTemplate: Story = (args) => ({
+const SingleTemplate: StoryFn = (args) => ({
   components: { VueSlider, ComponentDocs, VueStack, VueText },
   data(): any {
     return {
       model: [100],
     };
   },
+  inheritAttrs: false,
   setup() {
     return {
       args,
@@ -34,26 +35,30 @@ const SingleTemplate: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Single = SingleTemplate.bind({});
-Single.args = {
-  id: 'slider',
-  label: 'Slider',
-  min: 0,
-  max: 200,
-  formatValue: (value: number) => {
-    return value;
+export const Single = {
+  render: SingleTemplate,
+
+  args: {
+    id: 'slider',
+    label: 'Slider',
+    min: 0,
+    max: 200,
+    formatValue: (value: number) => {
+      return value;
+    },
+    keyboardStepInterval: 5,
+    disabled: false,
   },
-  keyboardStepInterval: 5,
-  disabled: false,
 };
 
-const RangeTemplate: Story = (args) => ({
+const RangeTemplate: StoryFn = (args) => ({
   components: { VueSlider, ComponentDocs, VueStack, VueText },
   data(): any {
     return {
       model: [40, 120],
     };
   },
+  inheritAttrs: false,
   setup() {
     return {
       args,
@@ -69,15 +74,18 @@ const RangeTemplate: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Range = RangeTemplate.bind({});
-Range.args = {
-  id: 'slider',
-  label: 'Slider',
-  min: 0,
-  max: 200,
-  formatValue: (value: number) => {
-    return value;
+export const Range = {
+  render: RangeTemplate,
+
+  args: {
+    id: 'slider',
+    label: 'Slider',
+    min: 0,
+    max: 200,
+    formatValue: (value: number) => {
+      return value;
+    },
+    keyboardStepInterval: 5,
+    disabled: false,
   },
-  keyboardStepInterval: 5,
-  disabled: false,
 };

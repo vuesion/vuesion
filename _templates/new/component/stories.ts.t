@@ -1,7 +1,7 @@
 ---
 to: "src/components/<%= folder %>/<%= name %>/<%= name %>.stories.ts"
 ---
-import { Story } from '@storybook/vue3';
+import { StoryFn } from '@storybook/vue3';
 import <%= name %> from './<%= name %>.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
@@ -11,11 +11,12 @@ export default {
   argTypes: {},
 };
 
-const Template: Story = (args) => ({
+const Template: StoryFn = (args) => ({
   components: {
     <%= name %>,
     ComponentDocs,
   },
+  inheritAttrs: false,
   setup() {
     return { args };
   },
@@ -27,7 +28,11 @@ const Template: Story = (args) => ({
   </component-docs>`,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
 
-Default.args = {};
+  args: {
+    duration: 250,
+  },
+};
 
