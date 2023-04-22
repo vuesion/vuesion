@@ -15,11 +15,12 @@ WORKDIR build
 
 COPY . .
 
+# Build storybook before creating the docker image and copy it to the public folder so nuxt can pick it up during the build
+COPY ./storybook-static ./src/public/storybook
+
+
 RUN npm install
 RUN ./node_modules/.bin/prisma generate
-RUN npm run build
-RUN npm run storybook:build
-RUN cp -r ./storybook-static ./src/public/storybook
 RUN npm run build
 
 FROM node:18-alpine as app
