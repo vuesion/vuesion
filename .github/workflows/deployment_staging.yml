@@ -17,12 +17,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-#      - name: Checkout Vuesion+ Datatable
-#        uses: actions/checkout@v3
-#        with:
-#          repository: vuesion/vuesion-plus-datatable
-#          path: ./src/components/a-datatable
-#          token: ${{ secrets.VUESION_PAT }}
+      - name: Checkout Vuesion+ Datatable
+        uses: actions/checkout@v3
+        with:
+          repository: vuesion/vuesion-plus-datatable
+          path: ./src/components/a-datatable
+          token: ${{ secrets.VUESION_PAT }}
 
       - name: Checkout Vuesion+ Calendar and Date picker
         uses: actions/checkout@v3
