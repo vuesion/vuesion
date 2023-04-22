@@ -3,7 +3,7 @@ to: "src/pages/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/[id]
 unless_exists: true
 ---
 <template>
-  <vue-content-block :class="$style.page">
+  <vue-content-block :class="$style.<%= h.inflection.camelize(name, true) %>DetailsPage">
     <vue-stack space="64">
       <vue-columns>
         <vue-column width="4/12" :can-grow="false">
@@ -35,7 +35,7 @@ import VueText from '~/components/typography/VueText/VueText.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueInput from '~/components/input-and-actions/VueInput/VueInput.vue';
 import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
-import { I<%= h.inflection.camelize(name) %> } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
+import { I<%= h.inflection.camelize(name) %>Update } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 import { usePrefillStoreAction } from '~/composables/use-prefill-store-action';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
@@ -51,7 +51,7 @@ definePageMeta({ auth: false });
 <% } %>
 // Data
 const current<%= h.inflection.camelize(name) %> = computed(() => store.getCurrent<%= h.inflection.camelize(name) %>);
-const update<%= h.inflection.camelize(name) %>Model = ref<Partial<I<%= h.inflection.camelize(name) %>> | undefined>({
+const update<%= h.inflection.camelize(name) %>Model = ref<I<%= h.inflection.camelize(name) %>Update>({
   name: '',
   ownerId: '',
   id: '',
@@ -75,7 +75,7 @@ onMounted(() => {
 <style lang="scss" module>
 @import 'assets/_design-system.scss';
 
-.page {
+.<%= h.inflection.camelize(name, true) %>DetailsPage {
   padding-top: $navbar-height;
 }
 </style>

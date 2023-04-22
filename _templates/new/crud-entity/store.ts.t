@@ -3,7 +3,7 @@ to: "src/store/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>.ts"
 unless_exists: true
 ---
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { I<%= h.inflection.camelize(name) %> } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
+import { I<%= h.inflection.camelize(name) %>, I<%= h.inflection.camelize(name) %>Create, I<%= h.inflection.camelize(name) %>Update } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 import { $fetchWithCookies } from '~/utils/fetchWithCookies';
 
 export interface I<%= h.inflection.camelize(name) %>State {
@@ -48,7 +48,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
         this.error = e;
       }
     },
-    async create<%= h.inflection.camelize(name) %>(<%= name %>: Partial<I<%= h.inflection.camelize(name) %>>) {
+    async create<%= h.inflection.camelize(name) %>(<%= name %>: I<%= h.inflection.camelize(name) %>Create) {
       try {
         this.error = null;
         const new<%= h.inflection.camelize(name) %> = await $fetchWithCookies<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>`, 'POST', <%= name %>);
@@ -59,7 +59,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
         this.error = e;
       }
     },
-    async update<%= h.inflection.camelize(name) %>(<%= name %>: Partial<I<%= h.inflection.camelize(name) %>>) {
+    async update<%= h.inflection.camelize(name) %>(<%= name %>: I<%= h.inflection.camelize(name) %>Update) {
       try {
         this.error = null;
         const updated<%= h.inflection.camelize(name) %> = await $fetchWithCookies<I<%= h.inflection.camelize(name) %>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${<%= name %>.id}`, 'PUT', <%= name %>);

@@ -37,6 +37,7 @@
     "db:migrate": "prisma migrate dev",
     "db:push": "prisma db push",
     "db:seed": "ts-node ./prisma/seed.ts",
+    "db:generate-client": "prisma generate",
     "type-gen:swagger": "openapi-typescript https://petstore.swagger.io/v2/swagger.json --output src/interfaces/swagger.ts",
     "extract-i18n-messages": "ts-node ./tools/extract-i18n-messages.ts",
     "test:watch": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest",

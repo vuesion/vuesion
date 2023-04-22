@@ -14,7 +14,7 @@ export default eventHandler(async (event) => {
   checkUserSession(session);
 
 <% } -%>
-  const <%= h.inflection.camelize(name, true) %>Id = event.context.params.id;
+  const <%= h.inflection.camelize(name, true) %>Id = event.context.params?.id;
   const prisma = await usePrisma(event);
   <% if(auth === true) { -%>
 const current<%= h.inflection.camelize(name) %> = await prisma.<%= h.inflection.camelize(name, true) %>.findFirst({ where: { id: <%= h.inflection.camelize(name, true) %>Id } });

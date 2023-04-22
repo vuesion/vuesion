@@ -6,7 +6,7 @@ import { usePrisma } from '@sidebase/nuxt-prisma';
 <% if(auth === true) { -%>
 import { getServerSession } from '#auth';
 <% } -%>
-import { I<%= h.inflection.camelize(name) %> } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
+import { I<%= h.inflection.camelize(name) %>Create } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 <% if(auth === true) { -%>
 import { checkUserSession } from '~/utils/accessControl';
 <% } -%>
@@ -19,7 +19,7 @@ export default eventHandler(async (event) => {
 
 <% } -%>
   const prisma = await usePrisma(event);
-  const <%= h.inflection.camelize(name, true) %>Data = await readBody<I<%= h.inflection.camelize(name) %>>(event);
+  const <%= h.inflection.camelize(name, true) %>Data = await readBody<I<%= h.inflection.camelize(name) %>Create>(event);
 
   <%= h.inflection.camelize(name, true) %>Data.ownerId = session?.user?.id || '';
 

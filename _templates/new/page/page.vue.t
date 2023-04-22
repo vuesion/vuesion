@@ -2,7 +2,7 @@
 to: "src/pages/<%= path %>.vue"
 ---
 <template>
-  <vue-content-block :class="$style.page">
+  <vue-content-block :class="$style.<%= h.inflection.camelize(name, true) %>Page">
     <%= path %>
 <% if (store !== 'None') { -%>
 
@@ -43,7 +43,7 @@ usePrefillStoreAction(store.fetch<%= h.inflection.camelize(h.inflection.pluraliz
 <style lang="scss" module>
 @import 'assets/_design-system.scss';
 
-.page {
+.<%= h.inflection.camelize(name, true) %>Page {
   padding-top: $navbar-height;
 }
 </style>

@@ -3,7 +3,7 @@ to: "src/pages/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/inde
 unless_exists: true
 ---
 <template>
-  <vue-content-block :class="$style.page">
+  <vue-content-block :class="$style.<%= h.inflection.camelize(name, true) %>Page">
     <vue-stack space="64">
       <vue-columns>
         <vue-column width="4/12" :can-grow="false">
@@ -77,7 +77,7 @@ import VueText from '~/components/typography/VueText/VueText.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueInput from '~/components/input-and-actions/VueInput/VueInput.vue';
 import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
-import { I<%= h.inflection.camelize(name) %> } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
+import { I<%= h.inflection.camelize(name) %>Create } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 import { usePrefillStoreAction } from '~/composables/use-prefill-store-action';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
@@ -94,8 +94,9 @@ definePageMeta({ auth: false });
 <% } %>
 // Data
 const <%= h.inflection.pluralize(h.inflection.camelize(name, true)) %> = computed(() => store.get<%= h.inflection.pluralize(h.inflection.camelize(name)) %>);
-const create<%= h.inflection.camelize(name) %>Model = ref<Partial<I<%= h.inflection.camelize(name) %>>>({
+const create<%= h.inflection.camelize(name) %>Model = ref<I<%= h.inflection.camelize(name) %>Create>({
   name: '',
+  ownerId: '',
 });
 const selected<%= h.inflection.camelize(name) %>Id = ref('');
 const showDialog = ref(false);
@@ -122,7 +123,7 @@ await usePrefillStoreAction(store.fetch<%= h.inflection.pluralize(h.inflection.c
 <style lang="scss" module>
 @import 'assets/_design-system.scss';
 
-.page {
+.<%= h.inflection.camelize(name, true) %>Page {
   padding-top: $navbar-height;
 
   .button {
