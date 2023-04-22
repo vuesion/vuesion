@@ -21,13 +21,20 @@
       <div :class="$style.toggle" @click.stop.prevent="onClick">
         <div :class="$style.handle" :aria-checked="value ? 'true' : 'false'" role="checkbox" />
       </div>
-      <vue-text :for="id" as="label" weight="semi-bold" color="text-medium" tabindex="-1">
+      <vue-text
+        :for="id"
+        as="label"
+        weight="semi-bold"
+        color="text-medium"
+        tabindex="-1"
+        :class="[hideLabel && 'sr-only']"
+      >
         <slot name="label">
           {{ label }}
         </slot>
       </vue-text>
     </div>
-    <vue-text v-if="description" :class="$style.description" as="div">
+    <vue-text v-if="description" :class="[$style.description, hideLabel && 'sr-only']" as="div">
       <slot name="description">
         {{ description }}
       </slot>
@@ -48,6 +55,7 @@ const props = defineProps({
   required: { type: Boolean, default: false },
   disabled: { type: Boolean, default: false },
   modelValue: { type: Boolean, default: false },
+  hideLabel: { type: Boolean, default: false },
 });
 const emit = defineEmits(['click', 'update:modelValue']);
 const rules = computed(() => (props.required ? 'required' : undefined));

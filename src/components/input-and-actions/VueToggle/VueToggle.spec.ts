@@ -71,4 +71,13 @@ describe('VueToggle.vue', () => {
 
     expect(html()).toMatch('error');
   });
+
+  test('should hide label and description', async () => {
+    const { getByText, rerender } = harness;
+
+    await rerender({ hideLabel: true });
+
+    expect(getByText('Test').classList.contains('sr-only')).toBeTruthy();
+    expect(getByText('Description').classList.contains('sr-only')).toBeTruthy();
+  });
 });
