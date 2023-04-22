@@ -48,9 +48,9 @@
         </vue-stack>
       </vue-box>
 
-      <vue-columns :space="[0, 24]" stack-phone :class="$style.gallery">
+      <vue-columns :space="['0', '24']" stack-phone :class="$style.gallery">
         <vue-column>
-          <a tabindex="0" href="/storybook" target="_blank" rel="noopener" aria-label="vuesion storybook">
+          <a tabindex="0" href="/storybook/" target="_blank" rel="noopener" aria-label="vuesion storybook">
             <nuxt-img
               src="/images/storybook-small.png"
               alt="vuesion storybook"

@@ -169,7 +169,7 @@ export default defineNuxtConfig({
         'font-src': ["'self'", 'https:', 'data:', 'fonts.bunny.net'],
         'form-action': ["'self'"],
         'frame-ancestors': ["'self'"],
-        'img-src': ["'self'", 'data:', 'avatars-githubusercontent.webp.se'],
+        'img-src': ["'self'", 'data:', 'avatars-githubusercontent.webp.se', 'images.unsplash.com'],
         'object-src': ["'none'"],
         'script-src-attr': ["'none'"],
         'style-src': ["'self'", 'https:', "'unsafe-inline'", 'fonts.bunny.net'],

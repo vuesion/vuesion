@@ -15,7 +15,7 @@ WORKDIR build
 
 COPY . .
 
-RUN npm install --legacy-peer-deps
+RUN npm install
 RUN ./node_modules/.bin/prisma generate
 RUN npm run build
 RUN npm run storybook:build
@@ -33,7 +33,7 @@ COPY --from=build ./build/.nuxt ./.nuxt
 COPY --from=build ./build/.output ./.output
 COPY --from=build ./build/package*.json ./
 
-RUN npm pkg delete scripts.prepare && npm install --legacy-peer-deps --omit=dev
+RUN npm pkg delete scripts.prepare && npm install --omit=dev
 
 EXPOSE 3000
 CMD npm start
