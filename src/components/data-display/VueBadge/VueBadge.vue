@@ -1,20 +1,33 @@
 <template>
-  <vue-text :class="[$style.vueBadge, $style[status]]" look="support" weight="semi-bold">
-    <slot />
+  <vue-text
+    :class="[$style.vueBadge, $style[status], icon && $style.hasIcon]"
+    look="support"
+    weight="semi-bold"
+    @click="$emit('click')"
+  >
+    <vue-inline space="4" align-y="center" no-wrap>
+      <slot />
+      <component :is="`vue-icon-${icon}`" v-if="icon" />
+    </vue-inline>
   </vue-text>
 </template>
 
 <script setup lang="ts">
 import VueText from '~/components/typography/VueText/VueText.vue';
 import { BadgeStatus } from '~/components/prop-types';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
 
 interface BadgeProps {
   status?: BadgeStatus;
+  icon?: string;
 }
 
 withDefaults(defineProps<BadgeProps>(), {
   status: 'info',
+  icon: undefined,
 });
+
+defineEmits(['click']);
 </script>
 
 <style lang="scss" module>
@@ -33,6 +46,16 @@ withDefaults(defineProps<BadgeProps>(), {
       color: map-get($values, 'color');
       background: map-get($values, 'bg');
     }
+  }
+
+  &.hasIcon {
+    padding: $badge-with-icon-padding;
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none !important;
+    box-shadow: var(--brand-focused);
   }
 }
 </style>
