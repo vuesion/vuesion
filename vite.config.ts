@@ -24,7 +24,7 @@ export default defineConfig({
       functions: 100,
       statements: 100,
       lines: 100,
-      exclude: ['**/test-utils.ts', '**/CollapseAnimation.vue', '**/*.spec.ts'],
+      exclude: ['**/test-utils.ts', '**/CollapseAnimation.vue', '**/*.spec.ts', '**/*.stories.ts'],
     },
     environment: 'jsdom',
     globals: true,
