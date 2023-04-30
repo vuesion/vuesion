@@ -1,5 +1,5 @@
 <template>
-  <ul ref="menuRef" data-testid="menu" :class="$style.vueMenu" @keydown="onKeyDown">
+  <ul ref="menuRef" data-testid="menu" :class="$style.vueMenu" @keydown="onKeyDown" @focus="focus">
     <li
       v-for="(item, idx) in items"
       :key="`${item.value}-${idx}`"
@@ -43,16 +43,25 @@ import { IItem } from '~/interfaces/IItem';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
 
-const props = defineProps({
-  items: { type: Array as () => Array<IItem>, required: true },
+interface MenuProps {
+  items: Array<IItem>;
+  disableSearch?: boolean;
+}
+
+// Interface
+const props = withDefaults(defineProps<MenuProps>(), {
+  disableSearch: false,
 });
 const emit = defineEmits(['click', 'close']);
+
+// Data
 const menuRef = getDomRef<HTMLElement>(null);
 const searchQuery = ref('');
 const selectedItemIndex = ref<number>(-1);
 const items = computed<Array<IItem>>(() => props.items as Array<IItem>);
 const maxItems = computed(() => items.value.length);
 
+// Event Handler & Methods
 const onItemClick = (item: IItem) => {
   if (item.disabled === true) {
     return;
@@ -107,7 +116,7 @@ const onKeyDown = (e: KeyboardEvent) => {
     handleSelection(getNewIndex('down'));
   } else if (e.code === 'ArrowUp') {
     handleSelection(getNewIndex('up'));
-  } else {
+  } else if (props.disableSearch === false) {
     searchQuery.value += e.key;
     handleSearch();
   }
@@ -115,7 +124,7 @@ const onKeyDown = (e: KeyboardEvent) => {
 
 /**
  * Only exposed for usage in parent components (e.g. dropdown)
- * doesn't need any testing
+ * doesn't need testing
  */
 /* c8 ignore start */
 const focus = (selectedItem: IItem | null = null) => {
@@ -123,10 +132,14 @@ const focus = (selectedItem: IItem | null = null) => {
     selectedItemIndex.value = props.items.findIndex((i) => i.value === selectedItem.value);
   }
 
-  const item = menuRef.value.querySelectorAll('li').item(selectedItemIndex.value === -1 ? 0 : selectedItemIndex.value);
-  item.focus();
-  menuRef.value?.scrollTo({ top: item.offsetTop });
+  const item = menuRef.value
+    .querySelectorAll('li')
+    .item(selectedItemIndex.value === -1 ? 0 : selectedItemIndex.value) as HTMLUListElement;
+  item?.focus();
+  menuRef.value?.scrollTo({ top: item?.offsetTop });
 };
+
+defineExpose({ focus });
 /* c8 ignore end */
 </script>
 

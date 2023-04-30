@@ -19,8 +19,6 @@ describe('VueMenu.vue', () => {
         ],
       },
     });
-
-    Element.prototype.scrollTo = () => {};
   });
 
   test('renders component', async () => {
