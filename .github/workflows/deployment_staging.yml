@@ -38,6 +38,13 @@ jobs:
           path: ./src/components/c-currency-input
           token: ${{ secrets.VUESION_PAT }}
 
+      - name: Checkout Vuesion+ Autocomplete
+        uses: actions/checkout@v3
+        with:
+          repository: vuesion/vuesion-plus-autocomplete
+          path: ./src/components/d-autocomplete
+          token: ${{ secrets.VUESION_PAT }}
+
       - name: Setup node
         uses: actions/setup-node@v3
         with:
