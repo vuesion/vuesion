@@ -2,12 +2,13 @@ import { StoryFn } from '@storybook/vue3';
 import { ref } from 'vue';
 import { action } from '@storybook/addon-actions';
 import VueInput from './VueInput.vue';
-import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { ShirtSizeValues } from '~/components/prop-types';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
 
 export default {
+  components: { VueStack },
   title: 'Input & Actions/Input',
   component: VueInput,
   argTypes: {
@@ -24,7 +25,7 @@ const Template: StoryFn = (args) => ({
   components: {
     VueInput,
     ComponentDocs,
-    VueInline,
+    VueStack,
     VueText,
   },
   inheritAttrs: false,
@@ -43,7 +44,7 @@ const Template: StoryFn = (args) => ({
       usage="Allows users to add data/content - text, numeric, URLs, etc. Each type of input has its own validation and constraints e.g. numeric input will only allow numbers."
       story="Show all states of the input component. Please interact with the input to see all states."
   >
-  <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
+  <vue-stack>
     <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
     <vue-input
         v-bind="args"
@@ -80,5 +81,6 @@ export const Default = {
     size: 'md',
     sizeAttribute: null,
     debounce: 250,
+    hasError: false,
   },
 };

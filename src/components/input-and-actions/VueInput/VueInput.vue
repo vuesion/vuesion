@@ -1,9 +1,17 @@
 <template>
-  <div :class="[$style.vueInput, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]">
+  <div
+    :class="[
+      $style.vueInput,
+      disabled && $style.disabled,
+      (errors.length > 0 || hasError) && $style.error,
+      $attrs.class,
+    ]"
+  >
     <vue-text
       :for="id"
       look="label"
-      :color="errors.length > 0 ? 'danger' : 'text-medium'"
+      weight="semi-bold"
+      :color="errors.length > 0 || hasError ? 'danger' : 'text-medium'"
       :class="[$style.label, hideLabel && 'sr-only']"
       as="label"
     >
@@ -30,23 +38,27 @@
         </slot>
       </div>
 
-      <input
-        :id="id"
-        ref="inputRef"
-        :name="name"
-        :value="value"
-        :placeholder="placeholder"
-        :required="required"
-        :type="type"
-        :autocomplete="autocomplete"
-        :disabled="disabled"
-        :readonly="readonly"
-        :autofocus="autofocus"
-        :size="sizeAttribute || 150"
-        v-bind="$attrs"
-        @input="onInput"
-        @blur="onBlur"
-      />
+      <div :class="$style.input">
+        <slot name="selection" />
+
+        <input
+          :id="id"
+          ref="inputRef"
+          :name="name"
+          :value="value"
+          :placeholder="placeholder"
+          :required="required"
+          :type="type"
+          :autocomplete="autocomplete"
+          :disabled="disabled"
+          :readonly="readonly"
+          :autofocus="autofocus"
+          :size="sizeAttribute || 150"
+          v-bind="$attrs"
+          @input="onInput"
+          @blur="onBlur"
+        />
+      </div>
 
       <div
         v-if="trailingIcon || $slots.trailingIcon"
@@ -61,16 +73,16 @@
     </div>
 
     <vue-text
-      :color="errors.length > 0 ? 'danger' : 'text-medium'"
+      :color="errors.length > 0 || hasError ? 'danger' : 'text-low'"
       :class="[$style.description, hideDescription && 'sr-only']"
     >
-      {{ errors.length > 0 ? errorMessage : description }}
+      {{ errors.length > 0 || hasError ? errorMessage : description }}
     </vue-text>
   </div>
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue';
+import { computed, watch } from 'vue';
 import { useField } from 'vee-validate';
 import debounce from 'lodash-es/debounce.js';
 import { useIntersectionObserver } from '~/composables/use-intersection-observer';
@@ -100,6 +112,7 @@ interface InputProps {
   size?: ShirtSize;
   sizeAttribute?: number;
   debounce?: number | null;
+  hasError?: boolean;
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -121,11 +134,13 @@ const props = withDefaults(defineProps<InputProps>(), {
   size: 'md',
   sizeAttribute: undefined,
   debounce: undefined,
+  hasError: false,
 });
 const emit = defineEmits(['debounced-input', 'update:modelValue', 'leading-icon-click', 'trailing-icon-click', 'blur']);
 const inputRef = getDomRef<HTMLInputElement>(null);
 const debouncedInput = debounce((value: string, e: Event) => emit('debounced-input', value, e), props.debounce || 0);
-const { errors, value, handleChange } = useField<string | number | null | undefined>(props.id, props.validation, {
+const localValidation = computed(() => props.validation);
+const { errors, value, handleChange } = useField<string | number | null | undefined>(props.id, localValidation, {
   initialValue: props.modelValue,
   validateOnValueUpdate: false,
   type: props.type,
@@ -180,12 +195,14 @@ export default {
 @import 'assets/_design-system.scss';
 
 .vueInput {
+  position: relative;
   display: flex;
   flex-direction: column;
 
   .inputWrapper {
     position: relative;
     display: flex;
+    align-items: flex-start;
     width: 100%;
 
     &.hasLeadingContent {
@@ -238,26 +255,21 @@ export default {
       }
     }
 
-    input {
-      background-clip: padding-box !important; // remove box shadow on iOS
-      outline: none;
-      color: $input-color;
-      font-size: $input-font-size;
-      font-family: $input-font-family;
-      font-weight: $input-font-weight;
+    .input {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      width: 100%;
       background: $input-background-color;
       border: $input-border;
       border-radius: $input-border-radius;
-      padding: $input-padding;
-      line-height: $input-line-height;
-      width: 100%;
 
       &:hover {
         outline: none;
         border: $input-border-hover;
       }
 
-      &:focus {
+      &:focus-within {
         outline: none;
         box-shadow: $input-outline;
       }
@@ -265,6 +277,20 @@ export default {
       &:active {
         outline: none;
       }
+    }
+
+    input {
+      background-clip: padding-box !important; // remove box shadow on iOS
+      outline: none;
+      color: $input-color;
+      font-size: $input-font-size;
+      font-family: $input-font-family;
+      font-weight: $input-font-weight;
+      border: none;
+      background: transparent;
+      padding: $input-padding;
+      line-height: $input-line-height;
+      width: 100%;
     }
 
     input::placeholder {
@@ -277,20 +303,35 @@ export default {
 
     &.sm {
       height: $input-control-sm-height;
+
+      .leading,
+      .trailing {
+        height: $input-control-sm-height;
+      }
     }
 
     &.md {
       height: $input-control-md-height;
+
+      .leading,
+      .trailing {
+        height: $input-control-md-height;
+      }
     }
 
     &.lg {
       height: $input-control-lg-height;
+
+      .leading,
+      .trailing {
+        height: $input-control-lg-height;
+      }
     }
   }
 
   &.error {
     .inputWrapper {
-      input {
+      .input {
         background: $input-bg-error;
         border: $input-border-error;
       }
@@ -306,7 +347,6 @@ export default {
     height: $input-label-height;
     margin-bottom: $input-label-gap;
     white-space: nowrap;
-    width: 0;
   }
 
   .description {
@@ -314,7 +354,6 @@ export default {
     height: $input-description-height;
     margin-top: $input-description-gap;
     white-space: nowrap;
-    width: 0;
   }
 }
 </style>
