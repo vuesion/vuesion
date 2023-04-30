@@ -5,7 +5,7 @@
     weight="semi-bold"
     @click="$emit('click')"
   >
-    <vue-inline space="4" align-y="center" no-wrap>
+    <vue-inline as="span" space="4" align-y="center" no-wrap>
       <slot />
       <component :is="`vue-icon-${icon}`" v-if="icon" />
     </vue-inline>
