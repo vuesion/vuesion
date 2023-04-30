@@ -3,8 +3,8 @@ $menu-bg: var(--brand-surface-default-high);
 $menu-min-width: $space-120 + $space-72;
 $menu-max-height: $space-120 * 1.65;
 $menu-padding: $space-8 0;
-$menu-shadow: var(--brand-elevation-3);
-$menu-border-radius: var(--brand-border-radius-md);
+$menu-shadow: var(--brand-elevation-2);
+$menu-border-radius: var(--brand-border-radius-xs);
 $menu-border: 1px solid var(--brand-border-default-low);
 
 // item
@@ -18,3 +18,6 @@ $menu-item-disabled-opacity: 0.6;
 
 // separator
 $menu-separator-border: 1px solid var(--brand-border-default-low);
+
+// Used by other components
+$menu-control-gap: $space-4;
