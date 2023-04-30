@@ -4,6 +4,7 @@
       <vue-text
         :for="id"
         look="label"
+        weight="semi-bold"
         :color="errors.length > 0 ? 'danger' : 'text-medium'"
         :class="[$style.label, hideLabel && 'sr-only']"
         as="label"
@@ -73,7 +74,7 @@
       </div>
 
       <vue-text
-        :color="errors.length > 0 ? 'danger' : 'text-medium'"
+        :color="errors.length > 0 ? 'danger' : 'text-low'"
         :class="[$style.description, hideDescription && 'sr-only']"
       >
         {{ errors.length > 0 ? errorMessage : description }}
@@ -157,7 +158,7 @@ const { errors, resetField, handleChange } = useField(props.id, props.validation
   syncVModel: false,
 });
 const selectRef = getDomRef<HTMLElement>(null);
-const menuRef = getDomRef<{ focus: (selectedItem: IItem) => void }>(null);
+const menuRef = getDomRef<{ focus: (selectedItem?: IItem) => void }>(null);
 const show = ref(false);
 const getValue = (valueOrItem: any | IItem) => {
   if (valueOrItem !== undefined && valueOrItem?.value !== undefined) {
@@ -209,7 +210,7 @@ const open = async () => {
 };
 const close = async (focusInput = true) => {
   if (focusInput) {
-    const customSelect: HTMLElement | null = selectRef.value?.querySelector(`#custom-${props.id}`);
+    const customSelect = selectRef.value?.querySelector(`#custom-${props.id}`) as HTMLElement;
     customSelect?.focus();
   }
 
@@ -272,7 +273,7 @@ const onKeyDown = (e: KeyboardEvent) => {
   }
 };
 const toggleMenu = () => {
-  const nativeSelect: HTMLSelectElement | null = document.querySelector(`#${props.id}`);
+  const nativeSelect = document.querySelector(`#${props.id}`) as HTMLSelectElement;
 
   nativeSelect?.focus();
 
@@ -310,6 +311,8 @@ export default {
 
   .selectWrapper {
     position: relative;
+    display: flex;
+    flex-direction: column;
 
     .count {
       cursor: pointer;
