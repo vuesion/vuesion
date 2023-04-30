@@ -17,3 +17,4 @@ config.global.mocks.$n = (number: number) => number;
 config.global.mocks.localePath = (path: string) => path;
 config.global.stubs['nuxt-link'] = RouterLinkStub;
 config.global.stubs['nuxt-img'] = true;
+Element.prototype.scrollTo = () => {};
