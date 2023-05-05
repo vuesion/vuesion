@@ -15,11 +15,13 @@
       <vue-text color="text-high" as="div">{{ title }}</vue-text>
     </div>
 
-    <vue-box v-if="open" padding="16 0 16 16 0" :class="$style.body" :aria-expanded="open" as="section">
-      <vue-text color="text-high" as="div">
-        <slot />
-      </vue-text>
-    </vue-box>
+    <vue-collapse :show="open" :duration="duration">
+      <vue-box padding="16 0 16 16 0" :class="$style.body" :aria-expanded="open" as="section">
+        <vue-text color="text-high" as="div">
+          <slot />
+        </vue-text>
+      </vue-box>
+    </vue-collapse>
   </div>
 </template>
 
@@ -29,10 +31,12 @@ import VueText from '~/components/typography/VueText/VueText.vue';
 import VueIconChevronRight from '~/components/icons/VueIconChevronRight.vue';
 import VueIconChevronUp from '~/components/icons/VueIconChevronUp.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
 
 const props = defineProps({
   title: { type: String, required: true },
   initOpen: { type: Boolean, default: false },
+  duration: { type: Number, default: 250 },
 });
 const register = inject<(idx: Ref<number>, open: Ref<boolean>, initOpen: boolean) => void>('register');
 const openItem = inject<(idx: Ref<number>) => void>('openItem');
@@ -46,7 +50,7 @@ const click = () => {
 
 onMounted(() => {
   if (register) {
-    register(idx, open, props.initOpen);
+    register(idx, open, props.initOpen || false);
   }
 });
 </script>
