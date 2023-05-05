@@ -1,7 +1,6 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import VueConfirmModal from './VueConfirmModal.vue';
-import { triggerWindow } from '~/test/test-utils';
 
 describe('VueConfirmModal.vue', () => {
   let harness: RenderResult;
@@ -38,10 +37,10 @@ describe('VueConfirmModal.vue', () => {
     expect(emitted().abort).toBeTruthy();
   });
 
-  test('Emits close event', () => {
-    const { emitted } = harness;
+  test('Emits close event', async () => {
+    const { getByTestId, emitted } = harness;
 
-    triggerWindow.click({ target: null, composedPath: () => [] });
+    await fireEvent.click(getByTestId('modal'));
 
     expect(emitted().close).toBeTruthy();
   });

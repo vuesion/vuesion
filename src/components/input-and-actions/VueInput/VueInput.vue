@@ -85,7 +85,6 @@
 import { computed, watch } from 'vue';
 import { useField } from 'vee-validate';
 import debounce from 'lodash-es/debounce.js';
-import { useIntersectionObserver } from '~/composables/use-intersection-observer';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import { ShirtSize } from '~/components/prop-types';
@@ -173,12 +172,6 @@ watch(
     value.value = newModelValue;
   },
 );
-
-useIntersectionObserver(inputRef, (entries: IntersectionObserverEntry[]) => {
-  if (props.autofocus) {
-    entries.forEach((entry) => (entry.target as HTMLInputElement).focus());
-  }
-});
 
 defineExpose({
   handleChange,

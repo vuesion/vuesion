@@ -115,36 +115,6 @@ describe('VueInput.vue', () => {
     await fireEvent.update(getByLabelText('this is the label'), 'example@example.com');
   });
 
-  test('should autofocus input element', () => {
-    const entry = {
-      target: {
-        focus: vi.fn(),
-      },
-    };
-
-    (global as any).IntersectionObserver = class {
-      constructor(callback: any) {
-        callback([entry]);
-      }
-
-      observe() {
-        return false;
-      }
-    };
-
-    render(VueInput, {
-      props: {
-        label: 'this is the label',
-        name: 'test',
-        id: 'test',
-        modelValue: 'this is the value',
-        autofocus: true,
-      },
-    });
-
-    expect(entry.target.focus).toHaveBeenCalled();
-  });
-
   test('should not autofocus input element', () => {
     const entry = {
       target: {

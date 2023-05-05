@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import { StoryFn } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VueModal from './VueModal.vue';
@@ -25,7 +26,8 @@ const Template: StoryFn = (args) => ({
 
   inheritAttrs: false,
   setup() {
-    return { args, onClose: action('close') };
+    const show = ref(false);
+    return { args, show, onClose: action('close') };
   },
 
   template: `<component-docs
@@ -34,21 +36,23 @@ const Template: StoryFn = (args) => ({
       story="Show modal and its properties."
       :style="{ height: '3000px' }"
   >
+  <vue-button @click="show=true">Show Dialog</vue-button>
   <vue-modal
       v-bind="args"
+      :show="show"
       @close="onClose();show = false">
     <vue-stack space="32">
       <vue-stack space="8">
-        <vue-text look="h4" color="text-high" align="center">Heading</vue-text>
-        <vue-text color="text-low" align="center">
+        <vue-text look="h4" color="text-high" align-x="center">Heading</vue-text>
+        <vue-text color="text-low" align-x="center">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
           sed diam nonumy eirmod.
         </vue-text>
       </vue-stack>
 
       <vue-tiles space="8" :columns="2">
-        <vue-button look="secondary">Cancel</vue-button>
-        <vue-button look="primary">Submit</vue-button>
+        <vue-button look="secondary" @click="show=false">Cancel</vue-button>
+        <vue-button look="primary" @click="show=false">Submit</vue-button>
       </vue-tiles>
     </vue-stack>
   </vue-modal>
@@ -60,9 +64,9 @@ export const Default = {
 
   args: {
     padding: '48 16 16 16',
-    show: true,
     backdrop: true,
-    disablePageScroll: false,
-    closeOnEscape: true,
+    disablePageScroll: true,
+    closeOnOutsideClick: true,
+    hideCloseButton: false,
   },
 };

@@ -1,8 +1,8 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { nextTick } from 'vue';
-import { render, RenderResult } from '@testing-library/vue';
+import { fireEvent, render, RenderResult } from '@testing-library/vue';
 import VueModal from './VueModal.vue';
-import { triggerWindow } from '~/test/test-utils';
+import { sleep } from '~/test/test-utils';
 
 describe('VueModal.vue', () => {
   let harness: RenderResult;
@@ -28,39 +28,28 @@ describe('VueModal.vue', () => {
   });
 
   test('should close on outside click', async () => {
-    const { queryByText, getByTestId, emitted, rerender } = harness;
+    const { getByText, getByTestId, emitted, rerender } = harness;
 
     await rerender({ show: true });
 
     const modal = getByTestId('modal');
-    const paragraph = queryByText('TEST');
+    const paragraph = getByText('TEST');
 
     await nextTick();
 
-    triggerWindow.click({ target: paragraph, composedPath: () => [modal] });
+    await fireEvent.click(paragraph);
     expect(emitted().close).toBeFalsy();
 
-    triggerWindow.click({ target: null, composedPath: () => [] });
+    await fireEvent.click(modal);
     expect(emitted().close).toBeTruthy();
   });
 
-  test('should close on ESC press', async () => {
-    const { emitted, rerender } = harness;
+  test('should prevent the body from scrolling', async () => {
+    const { rerender } = harness;
 
-    await rerender({ closeOnEscape: false, backdrop: false });
+    await rerender({ show: true, disablePageScroll: true });
+    await sleep(1);
 
-    triggerWindow.keydown({ key: 'Enter' });
-    expect(emitted().close).toBeFalsy();
-
-    triggerWindow.keydown({ key: 'Escape' });
-    expect(emitted().close).toBeFalsy();
-
-    await rerender({ show: true });
-    triggerWindow.keydown({ key: 'Escape' });
-    expect(emitted().close).toBeFalsy();
-
-    await rerender({ show: true, closeOnEscape: true });
-    triggerWindow.keydown({ key: 'Escape' });
-    expect(emitted().close).toBeTruthy();
+    expect(document.body.style.overflow).toBe('hidden');
   });
 });

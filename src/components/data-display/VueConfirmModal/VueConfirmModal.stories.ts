@@ -32,7 +32,7 @@ export const Default = {
 
   args: {
     padding: '16',
-    show: true,
+    show: false,
     backdrop: true,
     disablePageScroll: false,
     text: 'Are you sure you want to delete this item?',
