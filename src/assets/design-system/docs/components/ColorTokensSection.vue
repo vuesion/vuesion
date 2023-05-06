@@ -60,7 +60,7 @@ export default {
     border-radius: var(--brand-border-radius-lg);
     background: var(--brand-bg-inverse-high);
     height: max-content;
-    box-shadow: var(--brand-elevation-3);
+    box-shadow: var(--brand-elevation-4);
   }
 }
 </style>

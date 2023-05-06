@@ -200,7 +200,7 @@ defineEmits(['login-click']);
   background: palette-color-level('primary', 9);
   border-radius: $space-32;
   color: var(--a11y-default-color);
-  box-shadow: var(--brand-elevation-3);
+  box-shadow: var(--brand-elevation-4);
 
   img {
     width: 100%;

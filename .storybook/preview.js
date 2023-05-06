@@ -92,35 +92,35 @@ export const parameters = {
       phone: {
         name: 'Phone',
         styles: {
-          width: '360px',
+          width: '374px',
           height: '740px',
         },
       },
       tabletPortrait: {
         name: 'Tablet Portrait',
         styles: {
-          width: '768px',
+          width: '822px',
           height: '1024px',
         },
       },
       tabletLandscape: {
         name: 'Tablet Landscape',
         styles: {
-          width: '1024px',
+          width: '1078px',
           height: '768px',
         },
       },
       smallDesktop: {
         name: 'Small Desktop',
         styles: {
-          width: '1280px',
+          width: '1334px',
           height: '800px',
         },
       },
       largeDesktop: {
         name: 'Large Desktop',
         styles: {
-          width: '1440px',
+          width: '1494px',
           height: '900px',
         },
       },

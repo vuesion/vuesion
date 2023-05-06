@@ -1,40 +1,42 @@
 <template>
-  <vue-box padding="12" :class="$style.vueNavBar" as="nav">
-    <vue-columns space="0" :class="$style.layout" align-y="center">
-      <vue-column width="content" align-y="center" :can-grow="false">
-        <vue-icon-menu
-          v-if="showMenuIcon"
-          tabindex="0"
-          :class="$style.menu"
-          data-testid="menu"
-          @click.stop.prevent="/* c8 ignore start */ $emit('menu-click') /* c8 ignore end */"
-        />
-      </vue-column>
+  <vue-box padding="0" align-y="center" :class="$style.vueNavBar" as="nav">
+    <vue-content-block>
+      <vue-columns space="0" :class="$style.layout" align-y="center">
+        <vue-column width="content" align-y="center" :can-grow="false">
+          <vue-icon-menu
+            v-if="showMenuIcon"
+            tabindex="0"
+            :class="$style.menu"
+            data-testid="menu"
+            @click.stop.prevent="/* c8 ignore start */ $emit('menu-click') /* c8 ignore end */"
+          />
+        </vue-column>
 
-      <vue-column align-x="center">
-        <slot name="center" />
-      </vue-column>
+        <vue-column align-x="center">
+          <slot name="center" />
+        </vue-column>
 
-      <vue-column v-if="userName || userImage" :can-grow="false">
-        <vue-dropdown
-          :items="[
-            { label: 'Profile', value: 'profile', leadingIcon: 'user' },
-            { label: 'Settings', value: 'settings', leadingIcon: 'cog' },
-            { label: '', value: 'separator' },
-            { label: 'Logout', value: 'logout', leadingIcon: 'logout' },
-          ]"
-          :duration="dropdownDuration"
-          align-x-menu="right"
-          @item-click="$emit('menu-item-click', $event)"
-        >
-          <vue-avatar :name="userName" :src="userImage" size="sm" />
-        </vue-dropdown>
-      </vue-column>
+        <vue-column v-if="userName || userImage" :can-grow="false">
+          <vue-dropdown
+            :items="[
+              { label: 'Profile', value: 'profile', leadingIcon: 'user' },
+              { label: 'Settings', value: 'settings', leadingIcon: 'cog' },
+              { label: '', value: 'separator' },
+              { label: 'Logout', value: 'logout', leadingIcon: 'logout' },
+            ]"
+            :duration="dropdownDuration"
+            align-x-menu="right"
+            @item-click="$emit('menu-item-click', $event)"
+          >
+            <vue-avatar :name="userName" :src="userImage" size="sm" />
+          </vue-dropdown>
+        </vue-column>
 
-      <vue-column v-else :can-grow="false">
-        <slot name="right" />
-      </vue-column>
-    </vue-columns>
+        <vue-column v-else :can-grow="false">
+          <slot name="right" />
+        </vue-column>
+      </vue-columns>
+    </vue-content-block>
   </vue-box>
 </template>
 
@@ -45,6 +47,7 @@ import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueIconMenu from '~/components/icons/VueIconMenu.vue';
 import VueAvatar from '~/components/data-display/VueAvatar/VueAvatar.vue';
 import VueDropdown from '~/components/input-and-actions/VueDropdown/VueDropdown.vue';
+import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 
 defineProps({
   userName: { type: String, default: null },
