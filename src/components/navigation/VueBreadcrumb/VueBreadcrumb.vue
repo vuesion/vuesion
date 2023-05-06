@@ -3,7 +3,7 @@
     <ol :class="$style.list">
       <li :class="$style.itemWrapper">
         <nuxt-link :to="localePath('/')" :class="[$style.item, $style.homeItem]" aria-label="Home">
-          <vue-text look="support" color="text-medium" weight="semi-bold">
+          <vue-text look="label" color="text-medium" weight="semi-bold">
             <vue-icon-home :class="$style.home" />
           </vue-text>
         </nuxt-link>
@@ -11,7 +11,7 @@
       <li v-if="items.length > 2" :class="[$style.itemWrapper, $style.ellipsis]">...</li>
       <li v-for="(item, idx) in items" :key="`${item.value}-${idx}`" :class="[$style.itemWrapper, $style.link]">
         <nuxt-link :to="localePath(item.value)" :aria-current="idx === items.length - 1 && 'page'" :class="$style.item">
-          <vue-text look="support" color="text-medium" weight="semi-bold">
+          <vue-text look="label" color="text-medium" weight="semi-bold">
             {{ item.label }}
           </vue-text>
         </nuxt-link>
