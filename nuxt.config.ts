@@ -12,7 +12,7 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.bunny.net/', crossorigin: '' },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.bunny.net/css?family=Inter:400,600|Lora:400,600&display=swap',
+          href: 'https://fonts.bunny.net/css?family=Inter:400,600,900|Lora:400,600&display=swap',
         },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       ],

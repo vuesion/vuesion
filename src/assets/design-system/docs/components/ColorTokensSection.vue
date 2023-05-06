@@ -26,6 +26,7 @@
             :small-circle-color="token.smallCircleColor"
             :palette="token.paletteColor"
             :inverse="column.dark"
+            :elevation="1"
           />
         </vue-stack>
       </vue-box>

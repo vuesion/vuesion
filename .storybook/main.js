@@ -10,6 +10,7 @@ module.exports = {
     '@storybook/addon-interactions',
     '@vuesion/storybook-theme-switcher',
     '@storybook/addon-mdx-gfm',
+    '@storybook/addon-a11y',
   ],
   framework: {
     name: '@storybook/vue3-vite',

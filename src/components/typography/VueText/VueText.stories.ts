@@ -32,32 +32,34 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <vue-stack space="4">
             <vue-text look="large-title" color="text-high" weight="semi-bold">Scale</vue-text>
             <vue-text look="support" uppercase weight="semi-bold">FONT SIZE (PX) / LINE HEIGHT (PX)</vue-text>
-            <vue-text>12/16</vue-text>
-            <vue-text>14/20</vue-text>
-            <vue-text>16/24</vue-text>
-            <vue-text>20/28</vue-text>
-            <vue-text>24/32</vue-text>
-            <vue-text>30/36</vue-text>
-            <vue-text>36/44</vue-text>
-            <vue-text>48/56</vue-text>
+            <vue-text weight="semi-bold">12/16</vue-text>
+            <vue-text weight="semi-bold">14/20</vue-text>
+            <vue-text weight="semi-bold">16/24</vue-text>
+            <vue-text weight="semi-bold">18/28</vue-text>
+            <vue-text weight="semi-bold">20/28</vue-text>
+            <vue-text weight="semi-bold">24/32</vue-text>
+            <vue-text weight="semi-bold">30/36</vue-text>
+            <vue-text weight="semi-bold">36/40</vue-text>
+            <vue-text weight="semi-bold">48/56</vue-text>
           </vue-stack>
         </vue-column>
         <vue-column>
           <vue-stack space="4">
             <vue-text look="large-title" color="text-high" weight="semi-bold">Font Weights</vue-text>
-            <vue-text>Regular - 400</vue-text>
-            <vue-text>Semibold - 600</vue-text>
+            <vue-text weight="semi-bold">Regular - 400</vue-text>
+            <vue-text weight="semi-bold">Semibold - 600</vue-text>
+            <vue-text weight="semi-bold">Black - 900</vue-text>
           </vue-stack>
         </vue-column>
         <vue-column>
           <vue-stack space="4">
             <vue-text look="large-title" color="text-high" weight="semi-bold">Font Families</vue-text>
-            <vue-text>Inter - Sans Serif</vue-text>
+            <vue-text weight="semi-bold">Inter - Sans Serif</vue-text>
           </vue-stack>
         </vue-column>
       </vue-columns>
     </utility-token-section>
-    <utility-token-section title="Headlines" description="These text styles are reserved for important text that leads or describe the following content.">
+    <utility-token-section title="Headlines" description="Text styles that are reserved for important text that leads or describe the following content.">
       <table width="100%">
         <thead>
         <tr>
@@ -66,12 +68,22 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <th>DESCRIPTION</th>
           <th>FONT SIZE</th>
           <th>LINE-HEIGHT</th>
-          <th>CHARACTER</th>
+          <th>SPACING</th>
           <th>WEIGHT</th>
           <th>TYPEFACE</th>
         </tr>
         </thead>
         <tbody>
+        <tr>
+          <td width="300px"><vue-text look="h1" weight="black">Hero</vue-text></td>
+          <td width="30px">h1</td>
+          <td width="300px">Used in Hero Sections to really make a message stand out.</td>
+          <td>48 px</td>
+          <td>56 px</td>
+          <td>0</td>
+          <td>black</td>
+          <td>inter</td>
+        </tr>
         <tr>
           <td width="300px"><vue-text look="h1">Headline 1</vue-text></td>
           <td width="30px">h1</td>
@@ -87,7 +99,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td width="30px">h2</td>
           <td width="300px">Used for large groups of related components & information that have a lot of functionality. For example, cards should use Section title.</td>
           <td>36 px</td>
-          <td>48 px</td>
+          <td>40 px</td>
           <td>0</td>
           <td>regular</td>
           <td>inter</td>
@@ -97,7 +109,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td width="30px">h3</td>
           <td width="300px">Sometimes a section will further divide information into subsections.</td>
           <td>30 px</td>
-          <td>40 px</td>
+          <td>36 px</td>
           <td>0</td>
           <td>regular</td>
           <td>inter</td>
@@ -117,7 +129,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td width="30px">h5</td>
           <td width="300px">If necessary use for headers for layouts</td>
           <td>20 px</td>
-          <td>24 px</td>
+          <td>28 px</td>
           <td>0</td>
           <td>regular</td>
           <td>inter</td>
@@ -126,8 +138,8 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td width="300px"><vue-text look="h6">Headline 6</vue-text></td>
           <td width="30px">h6</td>
           <td width="300px">If necessary use for headers for layouts</td>
-          <td>16 px</td>
-          <td>24 px</td>
+          <td>18 px</td>
+          <td>28 px</td>
           <td>0</td>
           <td>regular</td>
           <td>inter</td>
@@ -144,18 +156,28 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <th>DESCRIPTION</th>
           <th>FONT SIZE</th>
           <th>LINE-HEIGHT</th>
-          <th>CHARACTER</th>
+          <th>SPACING</th>
           <th>WEIGHT</th>
           <th>TYPEFACE</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td width="300px"><vue-text look="description" as="div">Description</vue-text></td>
+          <td width="300px"><vue-text look="description" as="div">Description (regular, semibold)</vue-text></td>
           <td width="30px">description</td>
           <td width="300px">Text that follows a headline that provides a more context about the following content.</td>
-          <td>16 px</td>
+          <td>18 px</td>
+          <td>28 px</td>
+          <td>0</td>
+          <td>regular</td>
+          <td>inter</td>
+        </tr>
+        <tr>
+          <td width="300px"><vue-text look="large-description" as="div">Large Description</vue-text></td>
+          <td width="30px">large-description</td>
+          <td width="300px">Text that follows a headline that provides a more context about the following content.</td>
           <td>24 px</td>
+          <td>32 px</td>
           <td>0</td>
           <td>regular</td>
           <td>inter</td>
@@ -172,7 +194,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <th>DESCRIPTION</th>
           <th>FONT SIZE</th>
           <th>LINE-HEIGHT</th>
-          <th>CHARACTER</th>
+          <th>SPACING</th>
           <th>WEIGHT</th>
           <th>TYPEFACE</th>
         </tr>
@@ -193,7 +215,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td width="30px">medium-title</td>
           <td width="300px">Some components have a name or title that needs to be a bit larger</td>
           <td>20 px</td>
-          <td>24 px</td>
+          <td>28 px</td>
           <td>0</td>
           <td>semibold</td>
           <td>inter</td>
@@ -202,8 +224,8 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td width="300px"><vue-text look="small-title" weight="semi-bold" as="div">Small title</vue-text></td>
           <td width="30px">small-title</td>
           <td width="300px">Some components have a name or title that needs to be a bit larger</td>
-          <td>14 px</td>
-          <td>20 px</td>
+          <td>18 px</td>
+          <td>28 px</td>
           <td>0</td>
           <td>semibold</td>
           <td>inter</td>
@@ -212,18 +234,18 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td width="300px"><vue-text as="div">Default</vue-text></td>
           <td width="30px">default</td>
           <td width="300px">General use for normal reading e.g. buttons, text input, or written copy</td>
-          <td>14 px</td>
-          <td>20 px</td>
+          <td>16 px</td>
+          <td>24 px</td>
           <td>0</td>
           <td>regular</td>
           <td>inter</td>
         </tr>
         <tr>
-          <td width="300px"><vue-text look="label" as="div">Label</vue-text></td>
+          <td width="300px"><vue-text look="label" weight="semi-bold" as="div">Label</vue-text></td>
           <td width="30px">label</td>
           <td width="300px">Text style for labels such as with inputs and text areas</td>
-          <td>12 px</td>
-          <td>16 px</td>
+          <td>14 px</td>
+          <td>20 px</td>
           <td>0</td>
           <td>regular</td>
           <td>inter</td>
@@ -241,7 +263,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
         </tbody>
       </table>
     </utility-token-section>
-    <utility-token-section title="Support" description="For supporting text e.g. hints, list items, errors messages on text input, timestamp, progress indicator.">
+    <utility-token-section title="Support" description="For supporting text e.g. hints, list items, errors messages on text input, timestamp, progress indicator">
       <table width="100%">
         <thead>
         <tr>
@@ -250,7 +272,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <th>DESCRIPTION</th>
           <th>FONT SIZE</th>
           <th>LINE-HEIGHT</th>
-          <th>CHARACTER</th>
+          <th>SPACING</th>
           <th>WEIGHT</th>
           <th>TYPEFACE</th>
         </tr>
@@ -258,8 +280,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
         <tbody>
         <tr>
           <td width="300px">
-            <vue-text look="support" as="div">Support</vue-text>
-            <vue-text look="support" weight="semi-bold" as="div">Support (semibold)</vue-text>
+            <vue-text look="support" as="div">Support (regular, semibold)</vue-text>
           </td>
           <td width="30px">support</td>
           <td width="300px">For supporting text e.g. hints, list items, errors messages on text input, timestamp, progress indicator</td>
@@ -297,21 +318,21 @@ const TextColorsTemplate: StoryFn = (args) => ({
           dark: false,
           tokens: [
             {
-              figmaVar: '📀 Text - Default - High',
+              figmaVar: 'Text - Default - High',
               cssVar: 'text-high',
               paletteColor: 'neutral 10',
               circleColor:'brand-text-default-high',
               smallCircleColor:'brand-text-default-high',
             },
             {
-              figmaVar: '📀 Text - Default - Medium',
+              figmaVar: 'Text - Default - Medium',
               cssVar: 'text-medium',
               paletteColor: 'neutral 8',
               circleColor:'brand-text-default-medium',
               smallCircleColor:'brand-text-default-medium',
             },
             {
-              figmaVar: '📀 Text - Default - Low',
+              figmaVar: 'Text - Default - Low',
               cssVar: 'text-low',
               paletteColor: 'neutral 6',
               circleColor:'brand-text-default-low',
@@ -323,21 +344,21 @@ const TextColorsTemplate: StoryFn = (args) => ({
           dark: true,
           tokens: [
             {
-              figmaVar: '📀 Text - Inverse - High',
+              figmaVar: 'Text - Inverse - High',
               cssVar: 'text-inverse-high',
               paletteColor: 'neutral 0',
               circleColor:'brand-text-inverse-high',
               smallCircleColor:'brand-text-inverse-high',
             },
             {
-              figmaVar: '📀 Text - Inverse - Medium',
+              figmaVar: 'Text - Inverse - Medium',
               cssVar: 'text-inverse-medium',
               paletteColor: 'neutral 2',
               circleColor:'brand-text-inverse-medium',
               smallCircleColor:'brand-text-inverse-medium',
             },
             {
-              figmaVar: '📀 Text - Inverse - Low',
+              figmaVar: 'Text - Inverse - Low',
               cssVar: 'text-inverse-low',
               paletteColor: 'neutral 4',
               circleColor:'brand-text-inverse-low',
@@ -349,32 +370,39 @@ const TextColorsTemplate: StoryFn = (args) => ({
           dark: false,
           tokens: [
             {
-              figmaVar: '📀 Text - Info',
+              figmaVar: 'Text - Info',
               cssVar: 'info',
               paletteColor: 'primary 7',
               circleColor:'brand-text-info',
               smallCircleColor:'brand-text-info',
             },
             {
-              figmaVar: '📀 Text - Success',
+              figmaVar: 'Text - Success',
               cssVar: 'success',
               paletteColor: 'success 7',
               circleColor:'brand-text-success',
               smallCircleColor:'brand-text-success',
             },
             {
-              figmaVar: '📀 Text - Warning',
+              figmaVar: 'Text - Warning',
               cssVar: 'warning',
               paletteColor: 'warning 7',
               circleColor:'brand-text-warning',
               smallCircleColor:'brand-text-warning',
             },
             {
-              figmaVar: '📀 Text - Danger',
+              figmaVar: 'Text - Danger',
               cssVar: 'danger',
               paletteColor: 'danger 7',
               circleColor:'brand-text-danger',
               smallCircleColor:'brand-text-danger',
+            },
+                        {
+              figmaVar: 'Text - Link',
+              cssVar: 'link',
+              paletteColor: 'info 4',
+              circleColor:'brand-text-link',
+              smallCircleColor:'brand-text-link',
             },
           ],
         },

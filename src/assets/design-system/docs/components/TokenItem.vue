@@ -2,7 +2,7 @@
   <vue-inline space="12">
     <div :class="[$style.color, $style[`elevation${elevation}`], focused && $style.focused]">
       <div :style="{ background: `var(--${circleColor || css})` }" />
-      <div :style="{ background: `var(--${smallCircleColor || css})` }" />
+      <div :style="{ background: `var(--${smallCircleColor || css})`, opacity: smallCircleColor ? 1 : 0 }" />
     </div>
     <vue-stack space="0">
       <vue-text look="h6" :color="inverse ? 'text-inverse-high' : 'text-high'">
@@ -73,7 +73,7 @@ export default {
 
   div {
     border-radius: 50%;
-    border: 2px solid var(--brand-surface-default-high);
+
     &:first-child {
       position: absolute;
       left: 0;

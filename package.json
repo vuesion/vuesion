@@ -82,6 +82,7 @@
     "@nuxtjs/i18n": "8.0.0-beta.10",
     "@nuxtjs/robots": "3.0.0",
     "@sidebase/nuxt-auth": "0.5.0",
+    "@storybook/addon-a11y": "7.0.9",
     "@storybook/addon-actions": "7.0.9",
     "@storybook/addon-essentials": "7.0.9",
     "@storybook/addon-interactions": "7.0.9",

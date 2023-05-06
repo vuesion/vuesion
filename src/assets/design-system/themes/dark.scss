@@ -69,6 +69,7 @@
   --brand-text-danger: #{palette-color-level('danger', 7)};
   --brand-text-warning: #{palette-color-level('warning', 7)};
   --brand-text-success: #{palette-color-level('success', 7)};
+  --brand-text-link: #{palette-color-level('info', 4)};
 
   /* Interaction Colors */
   --brand-interaction-primary-enabled: #{palette-color-level('primary', 6)};

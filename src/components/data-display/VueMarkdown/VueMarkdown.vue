@@ -64,31 +64,31 @@ onBeforeUnmount(() => {
   }
 
   h1 {
-    font-size: $text-8;
+    font-size: $text-9;
     font-weight: $font-weight-semi-bold;
     letter-spacing: $letter-spacing-1;
-    line-height: $line-height-8;
+    line-height: $line-height-9;
   }
 
   h2 {
+    font-size: $text-7;
+    font-weight: $font-weight-semi-bold;
+    letter-spacing: $letter-spacing-1;
+    line-height: $line-height-7;
+  }
+
+  h3 {
     font-size: $text-6;
     font-weight: $font-weight-semi-bold;
     letter-spacing: $letter-spacing-1;
     line-height: $line-height-6;
   }
 
-  h3 {
+  h4 {
     font-size: $text-5;
     font-weight: $font-weight-semi-bold;
     letter-spacing: $letter-spacing-1;
     line-height: $line-height-5;
-  }
-
-  h4 {
-    font-size: $text-4;
-    font-weight: $font-weight-semi-bold;
-    letter-spacing: $letter-spacing-1;
-    line-height: $line-height-4;
   }
 
   h5 {

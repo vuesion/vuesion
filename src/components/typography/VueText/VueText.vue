@@ -76,71 +76,80 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
   &.semi-bold {
     font-weight: $font-weight-semi-bold;
   }
+  &.black {
+    font-weight: $font-weight-black;
+  }
 
   // Styles
   &.h1 {
+    font-size: $text-9;
+    line-height: $line-height-9;
+    letter-spacing: $letter-spacing-1;
+  }
+
+  &.h2 {
     font-size: $text-8;
     line-height: $line-height-8;
     letter-spacing: $letter-spacing-1;
   }
 
-  &.h2 {
+  &.h3 {
     font-size: $text-7;
     line-height: $line-height-7;
     letter-spacing: $letter-spacing-1;
   }
 
-  &.h3 {
+  &.h4 {
     font-size: $text-6;
     line-height: $line-height-6;
     letter-spacing: $letter-spacing-1;
   }
 
-  &.h4 {
+  &.h5 {
     font-size: $text-5;
     line-height: $line-height-5;
-    letter-spacing: $letter-spacing-1;
-  }
-
-  &.h5 {
-    font-size: $text-4;
-    line-height: $line-height-4;
     letter-spacing: $letter-spacing-1;
   }
 
   &.h6 {
-    font-size: $text-3;
-    line-height: $line-height-3;
-    letter-spacing: $letter-spacing-1;
-  }
-
-  &.description {
-    font-size: $text-3;
-    line-height: $line-height-3;
-    letter-spacing: $letter-spacing-1;
-  }
-
-  &.large-title {
-    font-size: $text-5;
-    line-height: $line-height-5;
-    letter-spacing: $letter-spacing-1;
-  }
-
-  &.medium-title {
     font-size: $text-4;
     line-height: $line-height-4;
     letter-spacing: $letter-spacing-1;
   }
 
+  &.description {
+    font-size: $text-4;
+    line-height: $line-height-4;
+    letter-spacing: $letter-spacing-1;
+  }
+
+  &.large-description {
+    font-size: $text-6;
+    line-height: $line-height-6;
+    letter-spacing: $letter-spacing-1;
+  }
+
+  &.large-title {
+    font-size: $text-6;
+    line-height: $line-height-6;
+    letter-spacing: $letter-spacing-1;
+  }
+
+  &.medium-title {
+    font-size: $text-5;
+    line-height: $line-height-5;
+    letter-spacing: $letter-spacing-1;
+  }
+
   &.small-title {
-    font-size: $text-2;
-    line-height: $line-height-2;
+    font-size: $text-4;
+    line-height: $line-height-4;
     letter-spacing: $letter-spacing-1;
   }
 
   &.label {
-    font-size: $text-1;
-    line-height: $line-height-1;
+    font-size: $text-2;
+    line-height: $line-height-2;
     letter-spacing: $letter-spacing-1;
   }
 
@@ -171,6 +180,10 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 
   &.success {
     color: var(--brand-text-success);
+  }
+
+  &.link {
+    color: var(--brand-text-link);
   }
 
   &.text-high {

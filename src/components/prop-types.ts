@@ -2,7 +2,7 @@ import { BreakPoint } from '~/enums/BreakPoint';
 
 export const ButtonStyleValues = ['primary', 'secondary', 'outline', 'ghost', 'danger'] as const;
 
-export type ButtonStyle = typeof ButtonStyleValues[number];
+export type ButtonStyle = (typeof ButtonStyleValues)[number];
 
 export const TextStyleValues = [
   'h1',
@@ -12,6 +12,7 @@ export const TextStyleValues = [
   'h5',
   'h6',
   'description',
+  'large-description',
   'large-title',
   'medium-title',
   'small-title',
@@ -21,13 +22,14 @@ export const TextStyleValues = [
   'support',
 ] as const;
 
-export type TextStyle = typeof TextStyleValues[number];
+export type TextStyle = (typeof TextStyleValues)[number];
 
 export const TextColorValues = [
   'info',
   'danger',
   'warning',
   'success',
+  'link',
   'text-high',
   'text-medium',
   'text-low',
@@ -36,23 +38,23 @@ export const TextColorValues = [
   'text-inverse-low',
 ] as const;
 
-export type TextColor = typeof TextColorValues[number];
+export type TextColor = (typeof TextColorValues)[number];
 
-export const FontWeightValues = ['regular', 'semi-bold'] as const;
+export const FontWeightValues = ['regular', 'semi-bold', 'black'] as const;
 
-export type FontWeight = typeof FontWeightValues[number];
+export type FontWeight = (typeof FontWeightValues)[number];
 
 export const AlignmentValues = ['start', 'center', 'end', 'inherit', 'initial'] as const;
 
-export type Alignment = typeof AlignmentValues[number];
+export type Alignment = (typeof AlignmentValues)[number];
 
 export const HorizontalAlignmentValues = ['start', 'end', 'center', 'between', 'around', 'evenly'] as const;
 
-export type HorizontalAlignment = typeof HorizontalAlignmentValues[number];
+export type HorizontalAlignment = (typeof HorizontalAlignmentValues)[number];
 
 export const VerticalAlignmentValues = ['start', 'end', 'center', 'baseline', 'stretch'] as const;
 
-export type VerticalAlignment = typeof VerticalAlignmentValues[number];
+export type VerticalAlignment = (typeof VerticalAlignmentValues)[number];
 
 export const SpacingValues = [
   '0',
@@ -73,7 +75,7 @@ export const SpacingValues = [
   '192',
 ] as const;
 
-export type Spacing = typeof SpacingValues[number];
+export type Spacing = (typeof SpacingValues)[number];
 
 export type SpacingWithDirections =
   | Spacing
@@ -112,22 +114,22 @@ export const WidthValues = [
   'fit',
 ] as const;
 
-export type Width = typeof WidthValues[number];
+export type Width = (typeof WidthValues)[number];
 
 export const BreakpointValues = Object.keys(BreakPoint);
 
 export const ShirtSizeValues = ['sm', 'md', 'lg'] as const;
 
-export type ShirtSize = typeof ShirtSizeValues[number];
+export type ShirtSize = (typeof ShirtSizeValues)[number];
 
 export const BadgeStatusValues = ['info', 'warning', 'success', 'danger', 'neutral'];
 
-export type BadgeStatus = typeof BadgeStatusValues[number];
+export type BadgeStatus = (typeof BadgeStatusValues)[number];
 
 export const VerticalDirectionValues = ['top', 'bottom'];
 
-export type VerticalDirection = typeof VerticalDirectionValues[number];
+export type VerticalDirection = (typeof VerticalDirectionValues)[number];
 
 export const HorizontalDirectionValues = ['left', 'right'];
 
-export type HorizontalDirection = typeof HorizontalDirectionValues[number];
+export type HorizontalDirection = (typeof HorizontalDirectionValues)[number];
