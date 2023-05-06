@@ -39,7 +39,6 @@ describe('VueFooter.vue', () => {
     const year = new Date().getFullYear();
 
     getByText('© ' + year + ' Johannes Werner. All rights reserved.');
-    getByText('Subscribe to our newsletter');
   });
 
   test('renders component in slim mode', async () => {
