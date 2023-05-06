@@ -4,14 +4,14 @@
       <path
         d="M10 18.333a8.333 8.333 0 100-16.666 8.333 8.333 0 000 16.666z"
         stroke="currentColor"
-        stroke-width="1.667"
+        stroke-width="1"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M10 5v5l3.333 1.667"
         stroke="currentColor"
-        stroke-width="1.667"
+        stroke-width="1"
         stroke-linecap="round"
         stroke-linejoin="round"
       />

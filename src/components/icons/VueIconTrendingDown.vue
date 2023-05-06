@@ -4,17 +4,11 @@
       <path
         d="M19.166 15L11.25 7.083 7.083 11.25.833 5"
         stroke="currentColor"
-        stroke-width="1.667"
+        stroke-width="1"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
-      <path
-        d="M14.167 15h5v-5"
-        stroke="currentColor"
-        stroke-width="1.667"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
+      <path d="M14.167 15h5v-5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </i>
 </template>

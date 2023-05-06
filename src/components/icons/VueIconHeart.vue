@@ -5,7 +5,7 @@
         <path
           d="M17.367 3.842a4.583 4.583 0 00-6.483 0L10 4.725l-.883-.883a4.584 4.584 0 10-6.483 6.483l.883.883L10 17.692l6.484-6.484.883-.883a4.584 4.584 0 000-6.483v0z"
           stroke="currentColor"
-          stroke-width="1.667"
+          stroke-width="1"
           stroke-linecap="round"
           stroke-linejoin="round"
         />

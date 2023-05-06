@@ -6,7 +6,6 @@ export default {
   title: 'Foundation/General',
   component: IconList,
   argTypes: {},
-  parameters: { controls: { disabled: true } },
 };
 
 const Template: StoryFn = (args) => ({
@@ -23,10 +22,13 @@ const Template: StoryFn = (args) => ({
       usage="Filled ( 20 x 20 )"
       suffix=""
   >
-  <icon-list/>
+      <icon-list v-bind="args"/>
   </component-docs>`,
 });
 
 export const Iconography = {
   render: Template,
+  args: {
+    showIcons: false,
+  },
 };
