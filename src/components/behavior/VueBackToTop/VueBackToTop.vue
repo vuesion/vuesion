@@ -15,19 +15,23 @@ import { ref, onMounted } from 'vue';
 import { useEventListener } from '@vueuse/core';
 import VueIconArrowUp from '~/components/icons/VueIconArrowUp.vue';
 
+// Interface
 defineProps({
   ariaLabel: {
     type: String,
-    default: 'Back to to',
+    default: 'Back to top',
   },
 });
 
+// Data
 const show = ref(false);
 const viewportHeight = ref(0);
+const lastScrollPosition = ref(0);
+
+// Methods & Event Handlers
 const updateViewPortHeight = () => {
   viewportHeight.value = Math.max(window.innerHeight, 0);
 };
-const lastScrollPosition = ref(0);
 const onScroll = () => {
   const scrollPosition = window.pageYOffset;
   show.value = scrollPosition > viewportHeight.value * 2 && scrollPosition < lastScrollPosition.value;
@@ -40,6 +44,7 @@ const onClick = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
+// Lifecycle
 onMounted(() => {
   const windowRef = ref(window);
 
