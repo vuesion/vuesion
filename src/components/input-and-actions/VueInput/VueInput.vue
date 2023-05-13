@@ -73,6 +73,7 @@
     </div>
 
     <vue-text
+      look="support"
       :color="errors.length > 0 || hasError ? 'danger' : 'text-low'"
       :class="[$style.description, hideDescription && 'sr-only']"
     >
@@ -142,7 +143,7 @@ const localValidation = computed(() => props.validation);
 const { errors, value, handleChange } = useField<string | number | null | undefined>(props.id, localValidation, {
   initialValue: props.modelValue,
   validateOnValueUpdate: false,
-  type: props.type,
+  type: 'default',
   syncVModel: false,
 });
 const onInput = (e: InputEvent) => {
@@ -213,6 +214,7 @@ export default {
         color: $input-leading-color;
 
         i {
+          padding-top: $space-2;
           width: $input-leading-icon-size;
           height: $input-leading-icon-size;
         }
@@ -238,6 +240,7 @@ export default {
         color: $input-trailing-color;
 
         i {
+          padding-top: $space-2;
           width: $input-trailing-icon-size;
           height: $input-trailing-icon-size;
         }
@@ -298,7 +301,8 @@ export default {
       height: $input-control-sm-height;
 
       .leading,
-      .trailing {
+      .trailing,
+      input {
         height: $input-control-sm-height;
       }
     }
@@ -307,7 +311,8 @@ export default {
       height: $input-control-md-height;
 
       .leading,
-      .trailing {
+      .trailing,
+      input {
         height: $input-control-md-height;
       }
     }
@@ -316,7 +321,8 @@ export default {
       height: $input-control-lg-height;
 
       .leading,
-      .trailing {
+      .trailing,
+      input {
         height: $input-control-lg-height;
       }
     }
