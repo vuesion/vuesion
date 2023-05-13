@@ -37,12 +37,19 @@ module.exports = {
       }),
     );
     return mergeConfig(config, {
+      optimizeDeps: {
+        include: [
+          '@storybook/addon-links',
+          '@storybook/addon-interactions',
+          '@storybook/addon-actions',
+          '@storybook/addon-backgrounds',
+          '@storybook/addon-a11s',
+        ],
+      },
       resolve: {
         alias: {
           '~~': path.resolve(path.dirname(__dirname)),
-          '@@': path.resolve(path.dirname(__dirname)),
           '~': path.resolve(path.dirname(__dirname), 'src'),
-          '@': path.resolve(path.dirname(__dirname), 'src'),
           assets: path.resolve(path.dirname(__dirname), 'src/assets'),
           public: path.resolve(path.dirname(__dirname), 'src/public'),
         },
