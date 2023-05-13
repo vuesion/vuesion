@@ -19,12 +19,7 @@
         data-testid="checkbox-input"
       />
       <div :class="$style.checkmark">
-        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8">
-          <path
-            d="M9.207.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L3.5 5.086 7.793.793a1 1 0 011.414 0z"
-            fill="currentColor"
-          />
-        </svg>
+        <vue-icon-checkmark />
       </div>
       <vue-text
         :for="id"
@@ -39,7 +34,13 @@
         </slot>
       </vue-text>
     </div>
-    <vue-text v-if="description" :class="[$style.description, hideLabel && 'sr-only']" as="div">
+    <vue-text
+      v-if="description"
+      look="support"
+      color="text-low"
+      :class="[$style.description, hideLabel && 'sr-only']"
+      as="div"
+    >
       <slot name="description">
         {{ description }}
       </slot>
@@ -48,37 +49,56 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { useField } from 'vee-validate';
 import VueText from '~/components/typography/VueText/VueText.vue';
+import VueIconCheckmark from '~/components/icons/VueIconCheckmark.vue';
 
-const props = defineProps({
-  id: { type: String, required: true },
-  name: { type: String, required: true },
-  label: { type: String, required: true },
-  description: { type: String, default: null },
-  required: { type: Boolean, default: false },
-  disabled: { type: Boolean, default: false },
-  modelValue: { type: Boolean, default: false },
-  hideLabel: { type: Boolean, default: false },
+// Interface
+interface CheckboxProps {
+  id: string;
+  name: string;
+  label: string;
+  description: string | null;
+  required?: boolean;
+  disabled?: boolean;
+  hideLabel?: boolean;
+  modelValue?: boolean;
+}
+
+const props = withDefaults(defineProps<CheckboxProps>(), {
+  required: false,
+  disabled: false,
+  hideLabel: false,
+  modelValue: false,
 });
 const emit = defineEmits(['click', 'update:modelValue']);
+
+// Data
 const rules = computed(() => (props.required ? 'required' : undefined));
 const { errors, value, validate } = useField<boolean>(props.id, rules, {
   initialValue: props.modelValue,
   type: 'checkbox',
   syncVModel: false,
 });
-const onClick = async () => {
+
+// Event Handler
+const onClick = () => {
   if (!props.disabled) {
-    value.value = !value.value;
-
-    await validate({ mode: 'force' });
-
-    emit('update:modelValue', value);
+    emit('update:modelValue', !value.value);
     emit('click', value);
   }
 };
+
+// Watcher
+watch(
+  () => props.modelValue,
+  async () => {
+    value.value = props.modelValue;
+
+    await validate({ mode: 'force' });
+  },
+);
 </script>
 
 <script lang="ts">
@@ -99,6 +119,50 @@ export default {
   .wrapper {
     display: inline-flex;
     align-items: center;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+      &:checked ~ .checkmark {
+        background-color: $checkbox-checkmark-bg-checked !important;
+        border: $checkbox-checkmark-border-checked !important;
+        color: $checkbox-checkmark-color !important;
+      }
+
+      &:checked ~ .checkmark > svg {
+        display: block;
+      }
+    }
+
+    .checkmark {
+      height: $checkbox-checkmark-size;
+      width: $checkbox-checkmark-size;
+      background-color: $checkbox-checkmark-bg;
+      color: $checkbox-checkmark-bg;
+      border-radius: $checkbox-checkmark-border-radius;
+      border: $checkbox-checkmark-border;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      > i {
+        width: $checkbox-checkmark-size;
+        height: $checkbox-checkmark-size;
+
+        path {
+          stroke-width: 2;
+        }
+      }
+    }
+
+    label {
+      cursor: pointer;
+      padding-left: $checkbox-label-gap;
+    }
   }
 
   .description {
@@ -106,50 +170,19 @@ export default {
     line-height: $space-20;
   }
 
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-
-    &:checked ~ .checkmark {
-      background-color: $checkbox-checkmark-bg-checked !important;
-      border: $checkbox-checkmark-border-checked !important;
-      color: $checkbox-checkmark-color !important;
-    }
-
-    &:checked ~ .checkmark > svg {
-      display: block;
-    }
-  }
-
-  .checkmark {
-    height: $checkbox-checkmark-size;
-    width: $checkbox-checkmark-size;
-    background-color: $checkbox-checkmark-bg;
-    color: $checkbox-checkmark-bg;
-    border-radius: $checkbox-checkmark-border-radius;
-    border: $checkbox-checkmark-border;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    > svg {
-      width: $checkbox-checkmark-size - ($space-4 + $space-2);
-      height: $checkbox-checkmark-size - ($space-4 + $space-2);
-    }
-  }
-
-  label {
-    cursor: pointer;
-    padding-left: $checkbox-label-gap;
-  }
-
   &:hover {
     input ~ .checkmark {
+      color: $checkbox-checkmark-color-hover;
       background-color: $checkbox-checkmark-bg-hover;
       border: $checkbox-checkmark-border-hover;
+    }
+
+    input {
+      &:checked ~ .checkmark {
+        background-color: $checkbox-checkmark-bg-checked-hover !important;
+        border: $checkbox-checkmark-border-checked-hover !important;
+        color: $checkbox-checkmark-color !important;
+      }
     }
   }
 

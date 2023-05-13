@@ -160,8 +160,8 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
   }
 
   &.support {
-    font-size: $text-1;
-    line-height: $line-height-1;
+    font-size: $text-2;
+    line-height: $line-height-2;
     letter-spacing: $letter-spacing-1;
   }
 

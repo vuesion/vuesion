@@ -22,7 +22,7 @@ const Template: StoryFn = (args) => ({
   },
   data(): any {
     return {
-      model: true,
+      model: false,
     };
   },
   inheritAttrs: false,
@@ -44,6 +44,7 @@ const Template: StoryFn = (args) => ({
         :description="args.description"
         :required="args.required"
         :disabled="args.disabled"
+        :hide-label="args.hideLabel"
     />
   </vue-inline>
   </component-docs>`,
@@ -59,5 +60,6 @@ export const Default = {
     description: 'Get notified when someone comments on your posting.',
     required: true,
     disabled: false,
+    hideLabel: false,
   },
 };
