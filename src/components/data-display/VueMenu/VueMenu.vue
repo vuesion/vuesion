@@ -23,7 +23,7 @@
 
         <div :class="$style.value">
           <vue-text>{{ item.label }}</vue-text>
-          <vue-text v-if="item.description" look="support" color="text-inverse-low">
+          <vue-text v-if="item.description" look="support" color="text-medium">
             {{ item.description }}
           </vue-text>
         </div>
@@ -164,7 +164,7 @@ defineExpose({ focus });
   > li {
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: $menu-item-padding;
     color: $menu-item-color;
     cursor: pointer;
@@ -172,6 +172,7 @@ defineExpose({ focus });
 
     .leading,
     .trailing {
+      padding-top: $space-2;
       height: $menu-item-icon-size;
 
       i {

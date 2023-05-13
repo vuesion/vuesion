@@ -25,7 +25,7 @@ const Template: StoryFn = (args) => ({
       usage="Allows users to interact with a list of actions."
       story="Display menu with all interaction states. Please interact with the menu to see all states."
   >
-  <vue-menu :items="args.items" @click="onClick" @close="onClose" />
+  <vue-menu :items="args.items" @click="onClick" @close="onClose" style="width: 250px" />
   </component-docs>`,
 });
 
