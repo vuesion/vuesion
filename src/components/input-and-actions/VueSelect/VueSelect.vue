@@ -41,7 +41,6 @@
             {{ option.label }}
           </option>
         </select>
-
         <div
           :id="'custom-' + id"
           :data-testid="'custom-' + id"
@@ -74,6 +73,7 @@
       </div>
 
       <vue-text
+        look="support"
         :color="errors.length > 0 ? 'danger' : 'text-low'"
         :class="[$style.description, hideDescription && 'sr-only']"
       >
@@ -111,6 +111,7 @@ import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
 import VueMenu from '~/components/data-display/VueMenu/VueMenu.vue';
 import VueBadge from '~/components/data-display/VueBadge/VueBadge.vue';
 
+// Interface
 interface SelectProps {
   id: string;
   name: string;
@@ -132,7 +133,6 @@ interface SelectProps {
   multiSelect?: boolean;
   badgeStatus?: BadgeStatus;
 }
-
 const props = withDefaults(defineProps<SelectProps>(), {
   hideLabel: false,
   hideDescription: false,
@@ -151,28 +151,19 @@ const props = withDefaults(defineProps<SelectProps>(), {
   badgeStatus: 'info',
 });
 const emit = defineEmits(['update:modelValue']);
+
+// Deps
 const { errors, resetField, handleChange } = useField(props.id, props.validation, {
   initialValue: props.modelValue,
   validateOnValueUpdate: false,
-  type: 'select',
+  type: 'default',
   syncVModel: false,
 });
+
+// Data
 const selectRef = getDomRef<HTMLElement>(null);
 const menuRef = getDomRef<{ focus: (selectedItem?: IItem) => void }>(null);
 const show = ref(false);
-const getValue = (valueOrItem: any | IItem) => {
-  if (valueOrItem !== undefined && valueOrItem?.value !== undefined) {
-    return valueOrItem.value;
-    /* c8 ignore start */
-  } else if (typeof valueOrItem === 'string' && valueOrItem.length === 0) {
-    return undefined;
-  } else if (valueOrItem !== undefined) {
-    return valueOrItem;
-  } else {
-    return undefined;
-  }
-  /* c8 ignore end */
-};
 const inputValue = computed<Array<any>>(() => {
   if (Array.isArray(props.modelValue)) {
     return props.modelValue.map((v: any | IItem) => getValue(v));
@@ -195,6 +186,21 @@ const displayItem = computed(() => {
     return undefined;
   }
 });
+
+// Methods
+const getValue = (valueOrItem: any | IItem) => {
+  if (valueOrItem !== undefined && valueOrItem?.value !== undefined) {
+    return valueOrItem.value;
+    /* c8 ignore start */
+  } else if (typeof valueOrItem === 'string' && valueOrItem.length === 0) {
+    return undefined;
+  } else if (valueOrItem !== undefined && valueOrItem !== null) {
+    return valueOrItem;
+  } else {
+    return undefined;
+  }
+  /* c8 ignore end */
+};
 const open = async () => {
   if (props.disabled) {
     return;
@@ -204,7 +210,7 @@ const open = async () => {
 
   await nextTick();
 
-  if (displayItem.value !== undefined && typeof menuRef.value.focus !== 'undefined') {
+  if (typeof menuRef.value.focus !== 'undefined') {
     menuRef.value?.focus(displayItem.value);
   }
 };
@@ -220,6 +226,19 @@ const close = async (focusInput = true) => {
 
   handleChange(props.multiSelect ? inputValue.value.join('') : inputValue.value);
 };
+const toggleMenu = () => {
+  const nativeSelect = document.querySelector(`#${props.id}`) as HTMLSelectElement;
+
+  nativeSelect?.focus();
+
+  if (show.value === true) {
+    close();
+  } else {
+    open();
+  }
+};
+
+// Event Handler
 const onInput = (e: Event) => {
   resetField();
 
@@ -267,17 +286,6 @@ const onKeyDown = (e: KeyboardEvent) => {
   e.stopPropagation();
 
   if (e.code === 'Escape') {
-    close();
-  } else {
-    open();
-  }
-};
-const toggleMenu = () => {
-  const nativeSelect = document.querySelector(`#${props.id}`) as HTMLSelectElement;
-
-  nativeSelect?.focus();
-
-  if (show.value === true) {
     close();
   } else {
     open();

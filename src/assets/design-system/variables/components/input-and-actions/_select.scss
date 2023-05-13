@@ -1,25 +1,25 @@
-$select-min-width: $space-96;
+$select-min-width:$space-120;
 
 // label
-$select-label-height: $space-16;
+$select-label-height: $space-20;
 $select-label-gap: $space-4;
 
 // input default
-$select-border-radius: var(--brand-border-radius-xs);
+$select-border-radius: 6px;
 $select-border: 1px solid var(--brand-border-default-medium);
 $select-color: var(--brand-text-default-high);
 $select-placeholder-color: var(--brand-text-default-low);
 $select-background-color: transparent;
 $select-font-family: $font-family;
-$select-font-size: $text-1;
+$select-font-size: $text-3;
 $select-font-weight: $font-weight-regular;
-$select-line-height: $line-height-1 + $space-2;
+$select-line-height: $line-height-3 + $space-2;
 $select-icon-size: $space-24;
 $select-padding: 0 ($space-16 + $select-icon-size) 0 $space-12;
 
 // description
 $select-description-gap: $space-4;
-$select-description-height: $space-16;
+$select-description-height: $space-20;
 
 // utils
 $select-disabled-disabled-opacity: 0.3;

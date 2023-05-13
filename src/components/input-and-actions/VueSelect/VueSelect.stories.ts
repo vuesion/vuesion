@@ -1,7 +1,6 @@
 import { StoryFn } from '@storybook/vue3';
 import { ref } from 'vue';
 import VueSelect from './VueSelect.vue';
-import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
@@ -42,7 +41,6 @@ const Template: StoryFn = (args) => ({
     VueSelect,
     ComponentDocs,
     VueStack,
-    VueInline,
     VueText,
   },
   data(): any {
@@ -67,13 +65,7 @@ const Template: StoryFn = (args) => ({
   >
   <vue-stack>
     <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
-
-    <vue-inline>
-      <vue-select
-          v-bind="args"
-          v-model="model"
-      />
-    </vue-inline>
+    <vue-select v-bind="args" v-model="model" />
   </vue-stack>
   </component-docs>`,
 });
@@ -111,6 +103,6 @@ export const Default = {
     alignYMenu: 'bottom',
     size: 'md',
     multiSelect: false,
-    badgeStatus: 'info',
+    badgeStatus: 'neutral',
   },
 };
