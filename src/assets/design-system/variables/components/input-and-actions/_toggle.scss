@@ -1,15 +1,22 @@
 // toggle states
-// default
+
+// UNCHECKED
+// ENABLED
 $toggle-bg: var(--brand-surface-default-low);
-$toggle-handle-bg: var(--brand-text-default-high);
+$toggle-handle-bg: var(--brand-surface-inverse-high);
 
-// hover
+// HOVERED
 $toggle-bg-hover: var(--brand-surface-default-low);
-$toggle-handle-bg-hover: var(--brand-text-default-high);
+$toggle-handle-bg-hover: var(--brand-surface-inverse-low);
 
-// checked
-$toggle-bg-checked: var(--brand-border-info-low);
-$toggle-handle-bg-checked: var(--brand-text-info);
+// CHECKED
+// ENABLED
+$toggle-bg-checked: var(--brand-surface-info-low);
+$toggle-handle-bg-checked: var(--brand-interaction-primary-enabled);
+
+// HOVERED
+$toggle-bg-checked-hover: var(--brand-surface-info-low);
+$toggle-handle-bg-checked-hover: var(--brand-interaction-primary-hovered);
 
 // error
 $toggle-error-color: var(--brand-text-danger);

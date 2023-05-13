@@ -59,14 +59,12 @@ describe('VueToggle.vue', () => {
   });
 
   test('should show error', async () => {
-    const { getByTestId, html, rerender } = harness;
+    const { html, rerender } = harness;
 
     await rerender({ required: true });
 
-    const input = getByTestId<HTMLInputElement>('toggle-input');
-
-    await fireEvent.click(input);
-    await fireEvent.click(input);
+    await rerender({ modelValue: true });
+    await rerender({ modelValue: false });
     await sleep(1);
 
     expect(html()).toMatch('error');

@@ -24,6 +24,7 @@
       <vue-text
         :for="id"
         as="label"
+        look="label"
         weight="semi-bold"
         color="text-medium"
         tabindex="-1"

@@ -24,6 +24,7 @@
       <vue-text
         :for="id"
         as="label"
+        look="label"
         weight="semi-bold"
         color="text-medium"
         tabindex="-1"
@@ -34,7 +35,13 @@
         </slot>
       </vue-text>
     </div>
-    <vue-text v-if="description" :class="[$style.description, hideLabel && 'sr-only']" as="div">
+    <vue-text
+      v-if="description"
+      look="support"
+      color="text-low"
+      :class="[$style.description, hideLabel && 'sr-only']"
+      as="div"
+    >
       <slot name="description">
         {{ description }}
       </slot>
@@ -43,37 +50,55 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { useField } from 'vee-validate';
 import VueText from '~/components/typography/VueText/VueText.vue';
 
-const props = defineProps({
-  id: { type: String, required: true },
-  name: { type: String, required: true },
-  label: { type: String, required: true },
-  description: { type: String, default: null },
-  required: { type: Boolean, default: false },
-  disabled: { type: Boolean, default: false },
-  modelValue: { type: Boolean, default: false },
-  hideLabel: { type: Boolean, default: false },
+// Interface
+interface ToggleProps {
+  id: string;
+  name: string;
+  label: string;
+  description: string | null;
+  required?: boolean;
+  disabled?: boolean;
+  hideLabel?: boolean;
+  modelValue?: boolean;
+}
+
+const props = withDefaults(defineProps<ToggleProps>(), {
+  required: false,
+  disabled: false,
+  hideLabel: false,
+  modelValue: false,
 });
 const emit = defineEmits(['click', 'update:modelValue']);
+
+// Data
 const rules = computed(() => (props.required ? 'required' : undefined));
 const { errors, value, validate } = useField<boolean>(props.id, rules, {
   initialValue: props.modelValue,
   type: 'checkbox',
   syncVModel: false,
 });
-const onClick = async () => {
+
+// Event Handler
+const onClick = () => {
   if (!props.disabled) {
-    value.value = !value.value;
-
-    await validate({ mode: 'force' });
-
-    emit('update:modelValue', value);
+    emit('update:modelValue', !value.value);
     emit('click', value);
   }
 };
+
+// Watcher
+watch(
+  () => props.modelValue,
+  async () => {
+    value.value = props.modelValue;
+
+    await validate({ mode: 'force' });
+  },
+);
 </script>
 
 <script lang="ts">
@@ -94,51 +119,51 @@ export default {
   .wrapper {
     display: inline-flex;
     align-items: center;
+
+    .toggle {
+      width: $toggle-width;
+      height: $toggle-height;
+      border-radius: $toggle-border-radius;
+      background: $toggle-bg;
+      display: inline-flex;
+      align-items: center;
+
+      .handle {
+        position: relative;
+        width: $toggle-handle-width;
+        height: $toggle-handle-height;
+        border-radius: $toggle-handle-border-radius;
+        background: $toggle-handle-bg;
+        left: $space-2;
+      }
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+      &:checked ~ .toggle {
+        background-color: $toggle-bg-checked !important;
+
+        .handle {
+          background: $toggle-handle-bg-checked !important;
+          left: $toggle-width - ($toggle-handle-width + $space-2);
+        }
+      }
+    }
+
+    label {
+      cursor: pointer;
+      padding-left: $toggle-label-gap;
+    }
   }
 
   .description {
     padding-left: $toggle-width + $checkbox-label-gap;
     line-height: $space-20;
-  }
-
-  .toggle {
-    width: $toggle-width;
-    height: $toggle-height;
-    border-radius: $toggle-border-radius;
-    background: $toggle-bg;
-    display: inline-flex;
-    align-items: center;
-
-    .handle {
-      position: relative;
-      width: $toggle-handle-width;
-      height: $toggle-handle-height;
-      border-radius: $toggle-handle-border-radius;
-      background: $toggle-handle-bg;
-      left: $space-2;
-    }
-  }
-
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-
-    &:checked ~ .toggle {
-      background-color: $toggle-bg-checked !important;
-
-      .handle {
-        background: $toggle-handle-bg-checked !important;
-        left: $toggle-width - ($toggle-handle-width + $space-2);
-      }
-    }
-  }
-
-  label {
-    cursor: pointer;
-    padding-left: $toggle-label-gap;
   }
 
   &:hover {
@@ -147,6 +172,17 @@ export default {
 
       .handle {
         background: $toggle-handle-bg-hover;
+      }
+    }
+
+    input {
+      &:checked ~ .toggle {
+        background-color: $toggle-bg-checked-hover !important;
+
+        .handle {
+          background: $toggle-handle-bg-checked-hover !important;
+          left: $toggle-width - ($toggle-handle-width + $space-2);
+        }
       }
     }
   }
