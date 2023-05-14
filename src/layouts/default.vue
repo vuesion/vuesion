@@ -4,8 +4,8 @@
 
     <vue-navbar
       v-if="!$route.path.match(/[a-z]{2}-[A-Z]{2}/gi)"
-      :user-name="user?.email"
-      :user-image="user?.image"
+      :user-name="user?.email || ''"
+      :user-image="user?.image || ''"
       :show-menu-icon="false"
       @menu-item-click="onLogoutClick"
     >
@@ -14,13 +14,7 @@
 
     <slot />
 
-    <vue-footer
-      slim
-      :languages="languages"
-      :themes="themes"
-      :selected-locale="locale"
-      @locale-change="onLocaleChange"
-    />
+    <vue-footer :languages="languages" :themes="themes" :selected-locale="locale" @locale-change="onLocaleChange" />
 
     <vue-back-to-top />
   </div>
@@ -40,7 +34,7 @@ import { IItem } from '~/interfaces/IItem';
 // Deps
 const { locale, setLocale } = useI18n();
 const { push } = useRouter();
-const i18nHead = useLocaleHead({ addSeoAttributes: { canonicalQueries: [] } });
+const i18nHead = useLocaleHead();
 const { data, signOut } = useAuth();
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();

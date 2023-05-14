@@ -321,6 +321,11 @@ const onTabChange = (tab: number) => {
 .valueProposition {
   position: relative;
 
+  > div {
+    height: 100%;
+    overflow-x: clip;
+  }
+
   .nav,
   .image {
     display: none;
@@ -408,7 +413,7 @@ const onTabChange = (tab: number) => {
 
     @include mediaMin(largeDesktop) {
       .image {
-        transform: translateX(30%);
+        transform: translateX(40%);
       }
     }
   }
