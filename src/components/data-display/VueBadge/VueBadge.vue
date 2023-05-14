@@ -45,6 +45,7 @@ defineEmits(['click']);
     &.#{$variation} {
       color: map-get($values, 'color');
       background: map-get($values, 'bg');
+      border: map-get($values, 'border');
     }
   }
 
