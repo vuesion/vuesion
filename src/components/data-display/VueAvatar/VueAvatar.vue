@@ -74,6 +74,7 @@ const initials = computed(() => {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
   &.hasIcon {
