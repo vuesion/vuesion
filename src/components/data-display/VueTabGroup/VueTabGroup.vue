@@ -74,7 +74,7 @@ onBeforeUnmount(() => {
     padding: 0;
     margin: 0;
     list-style: none;
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
 
     i {
@@ -89,7 +89,7 @@ onBeforeUnmount(() => {
       height: $tab-height;
       justify-content: center;
       align-items: flex-start;
-      padding-top: $space-4;
+      padding: $tab-padding;
       border-bottom: $tab-border;
       color: $tab-color;
       cursor: pointer;
