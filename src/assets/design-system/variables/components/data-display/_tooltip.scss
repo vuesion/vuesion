@@ -2,7 +2,7 @@ $tooltip-bg: var(--brand-surface-inverse-high);
 $tooltip-color: var(--brand-text-inverse-high);
 $tooltip-padding: $space-8;
 $tooltip-highlight-color: $tooltip-bg;
-$tooltip-border-radius: var(--brand-border-radius-sm);
+$tooltip-border-radius: 4px;
 $tooltip-font-size: $text-1;
 $tooltip-line-height: $line-height-1;
 $tooltip-font-weight: $font-weight-regular;
