@@ -6,7 +6,7 @@ import { usePrisma } from '@sidebase/nuxt-prisma';
 <% if(auth === true) { -%>
 import { getServerSession } from '#auth';
 <% } -%>
-import { I<%= h.inflection.camelize(name) %>Create } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
+import { <%= h.inflection.camelize(name) %>Include, I<%= h.inflection.camelize(name) %>Create } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 <% if(auth === true) { -%>
 import { checkUserSession } from '~/utils/accessControl';
 <% } -%>
@@ -23,5 +23,10 @@ export default eventHandler(async (event) => {
 
   <%= h.inflection.camelize(name, true) %>Data.ownerId = session?.user?.id || '';
 
-  return prisma.<%= h.inflection.camelize(name, true) %>.create({ data: <%= h.inflection.camelize(name, true) %>Data });
+  return prisma.<%= h.inflection.camelize(name, true) %>.create({
+    include: {
+      ...<%= h.inflection.camelize(name) %>Include,
+    },
+    data: fooData,
+  });
 });

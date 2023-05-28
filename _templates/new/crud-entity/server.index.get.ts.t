@@ -7,6 +7,7 @@ import { usePrisma } from '@sidebase/nuxt-prisma';
 import { getServerSession } from '#auth';
 import { checkUserSession } from '~/utils/accessControl';
 <% } -%>
+import { <%= h.inflection.camelize(name) %>Include } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 
 export default eventHandler(async (event) => {
 <% if(auth === true) { -%>
@@ -17,5 +18,10 @@ export default eventHandler(async (event) => {
 <% } -%>
   const prisma = await usePrisma(event);
 
-  return prisma.<%= h.inflection.camelize(name, true) %>.findMany({ where: { ownerId: session?.user?.id || '' } });
+  return prisma.<%= h.inflection.camelize(name, true) %>.findMany({
+    include: {
+      ...<%= h.inflection.camelize(name) %>Include,
+    },
+    where: { ownerId: session?.user?.id || '' },
+  });
 });

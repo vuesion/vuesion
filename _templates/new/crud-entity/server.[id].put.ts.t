@@ -7,7 +7,7 @@ import { usePrisma } from '@sidebase/nuxt-prisma';
 import { getServerSession } from '#auth';
 import { checkUserSession, checkUserAuthorization } from '~/utils/accessControl';
 <% } -%>
-import { I<%= h.inflection.camelize(name) %>Update } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
+import { <%= h.inflection.camelize(name) %>Include, I<%= h.inflection.camelize(name) %>Update } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 
 export default eventHandler(async (event) => {
 <% if(auth === true) { -%>
@@ -24,5 +24,11 @@ const current<%= h.inflection.camelize(name) %> = await prisma.<%= h.inflection.
 
   checkUserAuthorization(session?.user?.id, current<%= h.inflection.camelize(name) %>?.ownerId);
   <% } %>
-  return prisma.<%= h.inflection.camelize(name, true) %>.update({ where: { id: <%= h.inflection.camelize(name, true) %>Id }, data: new<%= h.inflection.camelize(name) %> });
+  return prisma.<%= h.inflection.camelize(name, true) %>.update({
+    include: {
+      ...<%= h.inflection.camelize(name) %>Include,
+    },
+    where: { id: fooId },
+    data: newFoo,
+  });
 });
