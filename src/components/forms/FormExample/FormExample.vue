@@ -163,6 +163,7 @@ import VueToggle from '~/components/input-and-actions/VueToggle/VueToggle.vue';
 import VueTextarea from '~/components/input-and-actions/VueTextarea/VueTextarea.vue';
 import { IItem } from '~/interfaces/IItem';
 
+// Interface
 interface FormExampleModel {
   firstname: string;
   lastname: string;
@@ -175,8 +176,13 @@ interface FormExampleModel {
   newsletter: boolean;
   notes: string;
 }
+interface FormExampleEmits {
+  (e: 'submit', model: FormExampleModel): void;
+}
+const emit = defineEmits<FormExampleEmits>();
 
-const emit = defineEmits(['submit']);
+// Deps
+const { meta } = useForm();
 
 // Data
 const isLoading = ref(false);
@@ -207,7 +213,6 @@ const countryOptions = computed(() => [
 const addressDisabled = computed(
   () => model.value.firstname === '' || model.value.lastname === '' || model.value.email === '',
 );
-const { meta } = useForm();
 
 // Event handler
 const onSubmit = () => {

@@ -9,6 +9,7 @@ import { computed } from 'vue';
 import { HorizontalAlignment, Spacing, VerticalAlignment } from '~/components/prop-types';
 import { getFlexDirectionForBreakpoint, getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
 
+// Interface
 interface InlineProps {
   as?: string;
   space?: string | Spacing | Array<Spacing>;
@@ -22,10 +23,9 @@ interface InlineProps {
   stackSmallDesktop?: boolean;
   stackLargeDesktop?: boolean;
 }
-
 const props = withDefaults(defineProps<InlineProps>(), {
   as: 'div',
-  space: () => ['24'],
+  space: () => [24],
   alignX: null,
   alignY: null,
   reverse: null,
@@ -36,6 +36,8 @@ const props = withDefaults(defineProps<InlineProps>(), {
   stackSmallDesktop: false,
   stackLargeDesktop: false,
 });
+
+// Data
 const responsiveSpace = computed(() => parseResponsivePropValue(props.space));
 const responsiveAlignX = computed(() => parseResponsivePropValue(props.alignX));
 const responsiveAlignY = computed(() => parseResponsivePropValue(props.alignY));

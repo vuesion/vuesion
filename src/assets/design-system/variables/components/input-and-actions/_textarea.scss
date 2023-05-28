@@ -3,7 +3,7 @@ $textarea-label-height: $space-16;
 $textarea-label-gap: $space-4;
 
 // input default
-$textarea-border-radius: var(--brand-border-radius-xs);
+$textarea-border-radius: 6px;
 $textarea-border: 1px solid var(--brand-border-default-medium);
 $textarea-height: $space-120;
 $textarea-padding: ($space-12 - $space-2) $space-12;
@@ -11,9 +11,9 @@ $textarea-color: var(--brand-text-default-high);
 $textarea-placeholder-color: var(--brand-text-default-low);
 $textarea-background-color: transparent;
 $textarea-font-family: $font-family;
-$textarea-font-size: $text-1;
+$textarea-font-size: $text-3;
 $textarea-font-weight: $font-weight-regular;
-$textarea-line-height: $line-height-1 + $space-2;
+$textarea-line-height: $line-height-3;
 
 // description
 $textarea-description-gap: $space-4;

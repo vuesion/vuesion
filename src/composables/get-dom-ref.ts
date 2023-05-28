@@ -1,3 +1,5 @@
-import { ref } from 'vue';
+import { shallowRef } from 'vue';
 
-export const getDomRef = <T>(element: unknown) => ref<T>(element as T);
+export const getDomRef = <T>(element: unknown) => {
+  return shallowRef(element as T);
+};

@@ -13,17 +13,17 @@ type ColumnRange = 'none' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
 interface TilesProps {
   as?: string;
-  space?: string | Spacing | Array<Spacing>;
-  verticalSpace?: string | Spacing | Array<Spacing> | null;
-  horizontalSpace?: string | Spacing | Array<Spacing> | null;
-  columns?: string | number | ColumnRange | Array<ColumnRange>;
+  space?: Spacing | Array<Spacing>;
+  verticalSpace?: Spacing | Array<Spacing> | null;
+  horizontalSpace?: Spacing | Array<Spacing> | null;
+  columns?: ColumnRange | Array<ColumnRange>;
 }
 
 const props = withDefaults(defineProps<TilesProps>(), {
   as: 'div',
-  space: () => ['24'],
-  verticalSpace: () => null,
-  horizontalSpace: () => null,
+  space: () => [24],
+  verticalSpace: null,
+  horizontalSpace: null,
   columns: () => [1, 2, 3, 4],
 });
 const responsiveVerticalSpace = computed(() => parseResponsivePropValue(props.verticalSpace || props.space));

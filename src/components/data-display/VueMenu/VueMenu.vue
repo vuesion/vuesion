@@ -37,22 +37,28 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, useCssModule } from 'vue';
 import debounce from 'lodash-es/debounce.js';
 import { IItem } from '~/interfaces/IItem';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
 
+// Interface
 interface MenuProps {
   items: Array<IItem>;
   disableSearch?: boolean;
 }
-
-// Interface
+interface MenuEmits {
+  (e: 'click', item: IItem): void;
+  (e: 'close'): void;
+}
 const props = withDefaults(defineProps<MenuProps>(), {
   disableSearch: false,
 });
-const emit = defineEmits(['click', 'close']);
+const emit = defineEmits<MenuEmits>();
+
+// Deps
+const $style = useCssModule();
 
 // Data
 const menuRef = getDomRef<HTMLElement>(null);

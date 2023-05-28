@@ -24,7 +24,7 @@
               data-testid="toast-close-button"
               as="a"
               href="#"
-              @click.stop.prevent="removeToast(toast)"
+              @click.stop.prevent="onRemoveToast(toast)"
             >
               <vue-icon-times />
             </vue-text>
@@ -36,9 +36,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, useCssModule } from 'vue';
 import { EventBus } from '~/services/EventBus';
 import { IToast } from '~/interfaces/IToast';
+import { getGUID } from '~/components/utils';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
@@ -47,23 +48,31 @@ import VueText from '~/components/typography/VueText/VueText.vue';
 import VueIconInfo from '~/components/icons/VueIconInfoCircle.vue';
 import VueIconTimes from '~/components/icons/VueIconTimes.vue';
 import VueIconExclamation from '~/components/icons/VueIconExclamation.vue';
-import { getGUID } from '~/components/utils';
 
-const toasts = ref<IToast[]>([]);
-const orderedToasts = computed<IToast[]>(() => toasts.value.slice(0).reverse());
-const removeToast = (n: IToast) => {
+// Deps
+const $style = useCssModule();
+
+// Data
+const toasts = ref<Array<WithRequiredProperty<IToast, 'type'>>>([]);
+const orderedToasts = computed<Array<WithRequiredProperty<IToast, 'type'>>>(() => toasts.value.slice(0).reverse());
+
+// Event Handlers
+const onRemoveToast = (n: IToast) => {
   toasts.value = toasts.value.filter((toast) => toast.id !== n.id);
 };
+
+// Methods
 const addToast = (n: IToast) => {
   n.id = getGUID();
   n.type = n.type || 'info';
   n.displayTimeInMs = n.displayTimeInMs || 10000;
 
-  toasts.value.push(n);
+  toasts.value.push(n as WithRequiredProperty<IToast, 'type'>);
 
-  setTimeout(() => removeToast(n), n.displayTimeInMs);
+  setTimeout(() => onRemoveToast(n), n.displayTimeInMs);
 };
 
+// Lifecycle
 onMounted(() => {
   EventBus.on('toast.add', addToast);
 });

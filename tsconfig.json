@@ -3,6 +3,7 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "types": [
+      "vite/client",
       "animejs",
       "marked",
       "flush-promises",

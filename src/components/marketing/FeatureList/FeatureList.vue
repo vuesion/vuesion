@@ -1,8 +1,8 @@
 <template>
   <vue-box as="section" :padding="['64 0 24 0', '64 0 24 0', '64 0 24 0', '0 0 96 0']">
     <vue-content-block :class="$style.featureList">
-      <vue-box :padding="['16', '16', '24', '32', '48']">
-        <vue-stack :space="['48', '64']">
+      <vue-box :padding="[16, 16, 24, 32, 48]">
+        <vue-stack :space="[48, 64]">
           <vue-stack space="4">
             <vue-text look="h3" weight="semi-bold" align-x="center"> Features </vue-text>
             <vue-text look="description" color="text-low" weight="semi-bold" align-x="center">
@@ -10,10 +10,10 @@
             </vue-text>
           </vue-stack>
 
-          <vue-stack :space="['48', '32']">
-            <vue-columns stack-phone :space="['48', '16', '32']">
+          <vue-stack :space="[48, 32]">
+            <vue-columns stack-phone :space="[48, 16, 32]">
               <vue-column :width="['fit', '4/12']">
-                <vue-stack :space="['8', '24']">
+                <vue-stack :space="[8, 24]">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-lightning-bolt />
                     <vue-text look="medium-title" weight="semi-bold"> Nuxt.js Boilerplate </vue-text>
@@ -25,7 +25,7 @@
                 </vue-stack>
               </vue-column>
               <vue-column :width="['fit', '4/12']">
-                <vue-stack :space="['8', '24']">
+                <vue-stack :space="[8, 24]">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-tool />
                     <vue-text look="medium-title" weight="semi-bold"> Testing </vue-text>
@@ -37,7 +37,7 @@
                 </vue-stack>
               </vue-column>
               <vue-column :width="['fit', '4/12']">
-                <vue-stack :space="['8', '24']">
+                <vue-stack :space="[8, 24]">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-vuesion />
                     <vue-text look="medium-title" weight="semi-bold"> Design System </vue-text>
@@ -49,9 +49,9 @@
                 </vue-stack>
               </vue-column>
             </vue-columns>
-            <vue-columns stack-phone :space="['48', '16', '32']">
+            <vue-columns stack-phone :space="[48, 16, 32]">
               <vue-column :width="['fit', '4/12']">
-                <vue-stack :space="['8', '24']">
+                <vue-stack :space="[8, 24]">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-book />
                     <vue-text look="medium-title" weight="semi-bold"> Storybook & Figma </vue-text>
@@ -64,7 +64,7 @@
                 </vue-stack>
               </vue-column>
               <vue-column :width="['fit', '4/12']">
-                <vue-stack :space="['8', '24']">
+                <vue-stack :space="[8, 24]">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-users />
                     <vue-text look="medium-title" weight="semi-bold"> Marketing & i18n </vue-text>
@@ -77,7 +77,7 @@
                 </vue-stack>
               </vue-column>
               <vue-column :width="['fit', '4/12']">
-                <vue-stack :space="['8', '24']">
+                <vue-stack :space="[8, 24]">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-finger-print />
                     <vue-text look="medium-title" weight="semi-bold"> Authentication </vue-text>
@@ -89,9 +89,9 @@
                 </vue-stack>
               </vue-column>
             </vue-columns>
-            <vue-columns stack-phone :space="['48', '16', '32']">
+            <vue-columns stack-phone :space="[48, 16, 32]">
               <vue-column :width="['fit', '4/12']">
-                <vue-stack :space="['8', '24']">
+                <vue-stack :space="[8, 24]">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-terminal />
                     <vue-text look="medium-title" weight="semi-bold"> DX & Code quality </vue-text>
@@ -103,7 +103,7 @@
                 </vue-stack>
               </vue-column>
               <vue-column :width="['fit', '4/12']">
-                <vue-stack :space="['8', '24']">
+                <vue-stack :space="[8, 24]">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-lightning-bolt />
                     <vue-text look="medium-title" weight="semi-bold"> Axios & GraphQL </vue-text>
@@ -115,7 +115,7 @@
                 </vue-stack>
               </vue-column>
               <vue-column :width="['fit', '4/12']">
-                <vue-stack :space="['8', '24']">
+                <vue-stack :space="[8, 24]">
                   <vue-inline space="8" align-y="center">
                     <vue-icon-star />
                     <vue-text look="medium-title" weight="semi-bold"> Progressive Web App </vue-text>

@@ -39,7 +39,7 @@ export const Columns = {
 
   args: {
     as: 'div',
-    space: ['8', '16', '24', '48', '192'],
+    space: [8, 16, 24, 48, 192],
     alignX: ['start', 'center', 'end'],
     alignY: ['start', 'center', 'end'],
     reverse: [true, false, true, false, false],

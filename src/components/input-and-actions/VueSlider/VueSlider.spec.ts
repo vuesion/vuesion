@@ -22,7 +22,6 @@ describe('VueSlider.vue', () => {
       harness = render(VueSlider, {
         props: {
           id: 'slider',
-          label: 'Slider label',
           min: 0,
           max: 100,
           modelValue: [50],
@@ -31,13 +30,9 @@ describe('VueSlider.vue', () => {
     });
 
     test('should render single slider', () => {
-      const { getByText, getByTestId, queryAllByTestId } = harness;
-
-      getByText('Slider label');
+      const { getByTestId, queryAllByTestId } = harness;
 
       getByTestId('handle-slider-1');
-
-      expect(getByTestId('handle-input-slider-0')).toHaveAttribute('readonly');
 
       expect(queryAllByTestId('handle-slider-0')).toHaveLength(0);
     });
@@ -79,25 +74,6 @@ describe('VueSlider.vue', () => {
 
       expect(emitted()['update:modelValue']).toEqual([[[100]]]);
     });
-
-    test('should not change max on invalid user input and not emit update:modelValue event', async () => {
-      const { getByTestId, emitted } = harness;
-      const maxInput = getByTestId('handle-input-slider-1');
-
-      await fireEvent.update(maxInput, '-1');
-      expect(emitted()['update:modelValue']).toBeFalsy();
-
-      await fireEvent.update(maxInput, '101');
-      expect(emitted()['update:modelValue']).toBeFalsy();
-    });
-
-    test('should change max on valid user input and emit update:modelValue event', async () => {
-      const { getByTestId, emitted } = harness;
-      const maxInput = getByTestId('handle-input-slider-1');
-
-      await fireEvent.update(maxInput, '75');
-      expect(emitted()['update:modelValue']).toEqual([[[75]]]);
-    });
   });
 
   describe('range slider', () => {
@@ -116,9 +92,8 @@ describe('VueSlider.vue', () => {
     });
 
     test('should render range slider', () => {
-      const { getByText, getByTestId } = harness;
+      const { getByTestId } = harness;
 
-      getByText('Slider label');
       getByTestId('handle-slider-0');
       getByTestId('handle-slider-1');
     });
@@ -254,42 +229,6 @@ describe('VueSlider.vue', () => {
 
       expect(emitted()['update:modelValue']).toEqual([[[25, 25]]]);
     });
-
-    test('should not change min on invalid user input and not emit update:modelValue event', async () => {
-      const { getByTestId, emitted } = harness;
-      const maxInput = getByTestId('handle-input-slider-0');
-
-      await fireEvent.update(maxInput, '-1');
-      expect(emitted()['update:modelValue']).toBeFalsy();
-
-      await fireEvent.update(maxInput, '');
-      expect(emitted()['update:modelValue']).toBeFalsy();
-
-      await fireEvent.update(maxInput, '76');
-      expect(emitted()['update:modelValue']).toBeFalsy();
-    });
-
-    test('should change min on valid user input and emit update:modelValue event', async () => {
-      const { getByTestId, emitted } = harness;
-      const maxInput = getByTestId('handle-input-slider-0');
-
-      await fireEvent.update(maxInput, '24');
-      expect(emitted()['update:modelValue']).toEqual([[[24, 75]]]);
-    });
-
-    test('should not change max on invalid user input and not emit update:modelValue event', async () => {
-      const { getByTestId, emitted } = harness;
-      const maxInput = getByTestId('handle-input-slider-1');
-
-      await fireEvent.update(maxInput, '0');
-      expect(emitted()['update:modelValue']).toBeFalsy();
-
-      await fireEvent.update(maxInput, '');
-      expect(emitted()['update:modelValue']).toBeFalsy();
-
-      await fireEvent.update(maxInput, '101');
-      expect(emitted()['update:modelValue']).toBeFalsy();
-    });
   });
 
   describe('disabled slider', () => {
@@ -306,17 +245,6 @@ describe('VueSlider.vue', () => {
           modelValue: [25, 75],
         },
       });
-    });
-
-    test('should disable slider', async () => {
-      const { getByTestId, rerender } = harness;
-
-      await rerender({ disabled: true, modelValue: [25, 75] });
-
-      expect(getByTestId('handle-input-slider-0')).toHaveAttribute('disabled');
-      expect(getByTestId('handle-input-slider-1')).toHaveAttribute('disabled');
-      expect(getByTestId('handle-slider-0')).toHaveAttribute('disabled');
-      expect(getByTestId('handle-slider-1')).toHaveAttribute('disabled');
     });
 
     test('should not be able to move handles and emit update:modelValue event', async () => {

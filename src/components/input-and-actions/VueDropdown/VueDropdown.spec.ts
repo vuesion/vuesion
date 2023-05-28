@@ -36,7 +36,7 @@ describe('VueDropdown.vue', () => {
 
     await fireEvent.click(getByText('Dropdown'));
 
-    expect(emitted().click).toEqual([[]]);
+    expect(emitted().click).toBeTruthy();
   });
 
   test('should emit item-click event', async () => {

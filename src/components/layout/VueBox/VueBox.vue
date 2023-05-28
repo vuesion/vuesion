@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useCssModule } from 'vue';
 import { SpacingWithDirections, HorizontalAlignment, VerticalAlignment } from '~/components/prop-types';
 import {
   getCssSpacingClasses,
@@ -14,26 +14,30 @@ import {
   parseResponsivePropValue,
 } from '~/components/utils';
 
+// Interface
 interface BoxProps {
   as?: string;
-  padding?: string | SpacingWithDirections | Array<SpacingWithDirections>;
-  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment> | null;
-  alignY?: string | VerticalAlignment | Array<VerticalAlignment> | null;
+  padding?: SpacingWithDirections | Array<SpacingWithDirections>;
+  alignX?: HorizontalAlignment | Array<HorizontalAlignment> | null;
+  alignY?: VerticalAlignment | Array<VerticalAlignment> | null;
   autoHeight?: boolean;
 }
-
 const props = withDefaults(defineProps<BoxProps>(), {
   as: 'div',
-  padding: () => ['24'],
+  padding: () => [24],
   alignX: null,
   alignY: null,
   autoHeight: false,
 });
+
+// Deps
+const $style = useCssModule();
+
+// Data
 const responsivePaddings = computed(() => parseResponsivePropValue(props.padding));
 const responsiveAlignX = computed(() => parseResponsivePropValue(props.alignX));
 const responsiveAlignY = computed(() => parseResponsivePropValue(props.alignY));
 const hasAlignment = computed(() => props.alignX || props.alignY);
-
 const cssClasses = computed(() => [
   hasAlignment.value ? 'flex' : 'block',
   ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.phone), 'p'),

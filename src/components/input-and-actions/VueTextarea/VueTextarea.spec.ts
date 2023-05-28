@@ -1,5 +1,4 @@
-/* eslint n/no-callback-literal: 0 */
-import { describe, test, expect, vi } from 'vitest';
+import { describe, test, expect } from 'vitest';
 import { render, fireEvent } from '@testing-library/vue';
 import flushPromises from 'flush-promises';
 import { defineRule } from 'vee-validate';
@@ -116,66 +115,6 @@ describe('VueTextarea.vue', () => {
     getByText('this is the error');
 
     await fireEvent.update(getByLabelText('this is the label *'), '123');
-  });
-
-  test('should autofocus input element', () => {
-    const entry = {
-      target: {
-        focus: vi.fn(),
-      },
-    };
-
-    (global as any).IntersectionObserver = class {
-      constructor(callback: any) {
-        callback([entry]);
-      }
-
-      observe() {
-        return false;
-      }
-    };
-
-    render(VueTextarea, {
-      props: {
-        label: 'this is the label',
-        name: 'test',
-        id: 'test',
-        modelValue: 'this is the value',
-        autofocus: true,
-      },
-    });
-
-    expect(entry.target.focus).toHaveBeenCalled();
-  });
-
-  test('should not autofocus input element', () => {
-    const entry = {
-      target: {
-        focus: vi.fn(),
-      },
-    };
-
-    (global as any).IntersectionObserver = class {
-      constructor(callback: any) {
-        callback([entry]);
-      }
-
-      observe() {
-        return false;
-      }
-    };
-
-    render(VueTextarea, {
-      props: {
-        label: 'this is the label',
-        name: 'test',
-        id: 'test',
-        modelValue: 'this is the value',
-        autofocus: false,
-      },
-    });
-
-    expect(entry.target.focus).not.toHaveBeenCalled();
   });
 
   test('should handle new modelValue', async () => {

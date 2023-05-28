@@ -10,21 +10,23 @@ import { getDomRef } from '~/composables/get-dom-ref';
 
 marked.setOptions({
   renderer: new marked.Renderer(),
-  gfm: true,
-  breaks: true,
-  pedantic: false,
-  sanitize: false,
-  smartLists: true,
-  smartypants: false,
-  xhtml: false,
+  mangle: false,
+  headerIds: false,
 });
 
+// Interface
 const props = withDefaults(defineProps<{ useRouter?: boolean; markdown: string }>(), {
   useRouter: true,
 });
+
+// Deps
 const router = useRouter();
+
+// Data
 const content = getDomRef<HTMLElement>(null);
 const html = computed(() => (marked as any)(props.markdown));
+
+// Event Handlers
 const handleClick = (event: MouseEvent) => {
   if (props.useRouter === false) {
     return true;
@@ -37,12 +39,12 @@ const handleClick = (event: MouseEvent) => {
   router.push(target.href);
 };
 
+// Lifecycle
 onMounted(() => {
   content.value.querySelectorAll('a').forEach((anchor) => {
     anchor.addEventListener('click', handleClick);
   });
 });
-
 onBeforeUnmount(() => {
   content.value.querySelectorAll('a').forEach((anchor) => {
     anchor.addEventListener('click', handleClick);

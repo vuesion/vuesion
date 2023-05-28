@@ -6,23 +6,9 @@
     :aria-valuenow="currentMin"
     :class="[$style.vueSlider, disabled && $style.disabled]"
   >
-    <vue-text weight="semi-bold" color="text-medium" as="label">{{ label }}</vue-text>
-
-    <vue-columns space="16" :class="$style.slider">
+    <vue-columns space="0" :class="$style.slider">
       <vue-column align-y="center" :can-grow="false">
-        <vue-input
-          :id="`handle-input-${id}-0`"
-          :data-testid="`handle-input-${id}-0`"
-          :name="`handle-input-${id}-0`"
-          label="minimum value"
-          :modelValue="formatValue(currentMinModel)"
-          :readonly="isMultiRange === false"
-          :disabled="disabled"
-          hide-label
-          hide-description
-          :class="$style.valueInput"
-          @update:modelValue="changeCurrentMin"
-        />
+        <vue-text :class="[$style.label, $style.min]">{{ formatValue(currentMin) }}</vue-text>
       </vue-column>
 
       <vue-column align-y="center" width="10/12" :data-testid="id" @mousedown="moveStart" @touchstart="moveStart">
@@ -65,50 +51,47 @@
       </vue-column>
 
       <vue-column align-y="center" :can-grow="false">
-        <vue-input
-          :id="`handle-input-${id}-1`"
-          :data-testid="`handle-input-${id}-1`"
-          :name="`handle-input-${id}-1`"
-          label="maximum value"
-          :modelValue="formatValue(currentMaxModel)"
-          :disabled="disabled"
-          hide-label
-          hide-description
-          :class="$style.valueInput"
-          @update:modelValue="changeCurrentMax"
-        />
+        <vue-text :class="[$style.label, $style.max]">{{ formatValue(currentMax) }}</vue-text>
       </vue-column>
     </vue-columns>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, onMounted, ref, useCssModule, watch } from 'vue';
 import { useEventListener } from '@vueuse/core';
 import { IAlgorithm, linear } from './algorithms';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueInput from '~/components/input-and-actions/VueInput/VueInput.vue';
 
 const algorithm: IAlgorithm = linear;
-const props = defineProps({
-  id: { type: String, required: true },
-  label: { type: String, required: true },
-  min: { type: Number, required: true },
-  max: { type: Number, required: true },
-  modelValue: { type: Array, required: true },
-  formatValue: {
-    type: Function,
-    default: (value: number) => {
-      return value;
-    },
+
+// Interface
+interface SliderProps {
+  id: string;
+  min: number;
+  max: number;
+  modelValue: [number, number?];
+  formatValue?: (value: number) => number;
+  keyboardStepInterval?: number;
+  disabled?: boolean;
+}
+interface SliderEmits {
+  (e: 'update:modelValue', value: [number, number?]): void;
+}
+const props = withDefaults(defineProps<SliderProps>(), {
+  formatValue: (value: number) => {
+    return value;
   },
-  keyboardStepInterval: { type: Number, default: 5 },
-  disabled: { type: Boolean, default: false },
+  keyboardStepInterval: 5,
 });
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<SliderEmits>();
+
+// Deps
+const $style = useCssModule();
+
 // DOM refs
 const sliderRef = getDomRef<HTMLDivElement>(null);
 const leftHandleRef = getDomRef<HTMLButtonElement>(null);
@@ -148,8 +131,6 @@ const sliderBox = ref<Partial<DOMRect>>({
 const currentSlider = ref<number>(-1);
 const currentMin = ref(0);
 const currentMax = ref(0);
-const currentMinModel = ref('0');
-const currentMaxModel = ref('0');
 
 // private functions
 const getClosestHandle = (percentageDiff: number) => {
@@ -193,21 +174,6 @@ const emitChange = () => {
   } else {
     emit('update:modelValue', [currentMax.value]);
   }
-};
-const isNewInputValueValid = (value: string, sliderIndex: number) => {
-  const newValue = parseInt(value);
-
-  if (isNaN(newValue) || newValue < props.min || newValue > props.max) {
-    return false;
-  }
-
-  if (sliderIndex === 0 && newValue > currentMax.value) {
-    return false;
-  } else if (sliderIndex === 1 && newValue < currentMin.value) {
-    return false;
-  }
-
-  return true;
 };
 const refresh = () => (sliderBox.value = sliderRef.value.getBoundingClientRect());
 const updateRangeIfValid = (newValue: number) => {
@@ -274,30 +240,6 @@ const onKeyDown = (e: any) => {
 const onKeyUp = () => {
   emitChange();
 };
-const changeCurrentMin = (value: string) => {
-  currentMinModel.value = value;
-
-  if (value.length === 0) {
-    return;
-  }
-
-  if (isNewInputValueValid(value, 0)) {
-    currentMin.value = parseInt(value);
-    emitChange();
-  }
-};
-const changeCurrentMax = (value: string) => {
-  currentMaxModel.value = value;
-
-  if (value.length === 0) {
-    return;
-  }
-
-  if (isNewInputValueValid(value, 1)) {
-    currentMax.value = parseInt(value);
-    emitChange();
-  }
-};
 
 // watcher
 watch(
@@ -308,8 +250,6 @@ watch(
   },
   { immediate: true },
 );
-watch(currentMin, () => (currentMinModel.value = currentMin.value.toString()), { immediate: true });
-watch(currentMax, () => (currentMaxModel.value = currentMax.value.toString()), { immediate: true });
 
 onMounted(() => {
   handleSize.value = rightHandleRef.value.clientWidth;
@@ -326,15 +266,11 @@ onMounted(() => {
   height: $slider-height;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   gap: $space-8;
 
   &.disabled {
     cursor: not-allowed;
-
-    label {
-      opacity: $slider-disabled-opacity;
-    }
 
     .slider {
       .track {
@@ -353,11 +289,17 @@ onMounted(() => {
 
   .slider {
     position: relative;
-    top: -$space-8;
 
-    .valueInput input {
-      text-align: center;
-      width: $slider-input-width;
+    .label {
+      width: $slider-label-width;
+
+      &.min {
+        text-align: left;
+      }
+
+      &.max {
+        text-align: right;
+      }
     }
 
     .track {

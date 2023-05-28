@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 /* istanbul ignore file */
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref, useCssModule, watch } from 'vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueTiles from '~/components/layout/VueTiles/VueTiles.vue';
 
@@ -19,8 +19,8 @@ const props = defineProps({
   showIcons: { type: Boolean, default: true },
 });
 
+const $style = useCssModule();
 const icons = ref([]);
-
 const loadIcons = () => {
   icons.value = [
     'activity',

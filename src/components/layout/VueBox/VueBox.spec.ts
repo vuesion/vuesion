@@ -16,7 +16,7 @@ describe('VueBox.vue', () => {
   test('renders component with single padding', async () => {
     const { html, rerender } = harness;
 
-    await rerender({ padding: ['8'] });
+    await rerender({ padding: '8' });
 
     expect(html()).toMatch('pt-8');
     expect(html()).toMatch('pr-8');
@@ -27,7 +27,7 @@ describe('VueBox.vue', () => {
   test('renders component with responsive paddings', async () => {
     const { html, rerender } = harness;
 
-    await rerender({ padding: ['8 12', '16', '24', '32', '64'] });
+    await rerender({ padding: ['8 12', 16, 24, 32, 64] });
 
     // phone
     expect(html()).toMatch('pt-8');

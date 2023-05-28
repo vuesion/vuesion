@@ -22,6 +22,7 @@ import { computed, useCssModule } from 'vue';
 import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
 import { FontWeight, Alignment, TextColor, TextStyle } from '~/components/prop-types';
 
+// Interface
 interface TextProps {
   as?: string;
   look?: TextStyle;
@@ -32,7 +33,6 @@ interface TextProps {
   uppercase?: boolean;
   alignX?: Alignment | Array<Alignment> | string;
 }
-
 const props = withDefaults(defineProps<TextProps>(), {
   as: 'span',
   look: 'default',
@@ -43,7 +43,11 @@ const props = withDefaults(defineProps<TextProps>(), {
   uppercase: false,
   alignX: undefined,
 });
+
+// Deps
 const $style = useCssModule();
+
+// Data
 const responsiveAlignments = computed(() => parseResponsivePropValue(props.alignX));
 const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiveAlignments.value, 'align'));
 </script>

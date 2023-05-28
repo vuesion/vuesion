@@ -8,7 +8,7 @@
             tabindex="0"
             :class="$style.menu"
             data-testid="menu"
-            @click.stop.prevent="/* c8 ignore start */ $emit('menu-click') /* c8 ignore end */"
+            @click.stop.prevent="/* c8 ignore start */ $emit('menu-click', $event) /* c8 ignore end */"
           />
         </vue-column>
 
@@ -41,6 +41,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCssModule } from 'vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
@@ -48,6 +49,9 @@ import VueIconMenu from '~/components/icons/VueIconMenu.vue';
 import VueAvatar from '~/components/data-display/VueAvatar/VueAvatar.vue';
 import VueDropdown from '~/components/input-and-actions/VueDropdown/VueDropdown.vue';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import { IItem } from '~/interfaces/IItem';
+
+// Interface
 
 defineProps({
   userName: { type: String, default: null },
@@ -55,8 +59,12 @@ defineProps({
   showMenuIcon: { type: Boolean, default: true },
   dropdownDuration: { type: Number, default: 250 },
 });
+defineEmits<{
+  (event: 'menu-click', e: MouseEvent): void;
+  (event: 'menu-item-click', item: IItem): void;
+}>();
 
-defineEmits(['menu-click', 'menu-item-click']);
+const $style = useCssModule();
 </script>
 
 <style lang="scss" module>

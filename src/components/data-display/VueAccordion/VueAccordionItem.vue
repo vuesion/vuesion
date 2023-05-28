@@ -5,8 +5,8 @@
       tabindex="0"
       role="button"
       :aria-label="title"
-      @click.prevent.stop="click"
-      @keypress.enter.space.prevent.stop="click"
+      @click.prevent.stop="onClick"
+      @keypress.enter.space.prevent.stop="onClick"
     >
       <div :class="$style.iconContainer">
         <vue-icon-chevron-up v-if="open" />
@@ -26,28 +26,39 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref, onMounted, Ref } from 'vue';
+import { inject, ref, onMounted, Ref, useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueIconChevronRight from '~/components/icons/VueIconChevronRight.vue';
 import VueIconChevronUp from '~/components/icons/VueIconChevronUp.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
 
+// Interface
 const props = defineProps({
   title: { type: String, required: true },
   initOpen: { type: Boolean, default: false },
   duration: { type: Number, default: 250 },
 });
+
+// DI
 const register = inject<(idx: Ref<number>, open: Ref<boolean>, initOpen: boolean) => void>('register');
 const openItem = inject<(idx: Ref<number>) => void>('openItem');
+
+// Deps
+const $style = useCssModule();
+
+// Data
 const idx = ref<number>(-1);
 const open = ref(false);
-const click = () => {
+
+// Event Handlers
+const onClick = () => {
   if (openItem) {
     openItem(idx);
   }
 };
 
+// Lifecycle
 onMounted(() => {
   if (register) {
     register(idx, open, props.initOpen || false);

@@ -59,7 +59,7 @@ export default defineNuxtConfig({
     vueI18n: 'src/plugins/vue-i18n/vue-i18n',
     // Don't forget to update the extract-i18n-script
     locales: [
-      { code: 'en-US', iso: 'en-US', file: 'en.json' },
+      { code: 'en-US', iso: 'en-US', file: 'en.json', isCatchallLocale: true },
       { code: 'de-DE', iso: 'de-DE', file: 'de.json' },
     ],
     defaultLocale: 'en-US',

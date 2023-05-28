@@ -39,8 +39,8 @@ export const Tiles = {
 
   args: {
     as: 'div',
-    verticalSpace: ['8', '16', '24', '48'],
-    horizontalSpace: ['16', '16', '48', '8'],
+    verticalSpace: [8, 16, 24, 48],
+    horizontalSpace: [16, 16, 48, 8],
     columns: [1, 2, 3, 5],
   },
 };

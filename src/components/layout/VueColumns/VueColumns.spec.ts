@@ -26,6 +26,14 @@ describe('VueColumns.vue', () => {
     getByText('main content');
   });
 
+  test('renders component with single spacing', async () => {
+    const { html, rerender } = harness;
+
+    await rerender({ space: 8 });
+
+    expect(html()).toMatch('gap-8');
+  });
+
   test('renders component with responsive spacings', async () => {
     const { html, rerender } = harness;
 

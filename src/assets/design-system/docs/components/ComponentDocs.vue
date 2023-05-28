@@ -3,7 +3,7 @@
     <vue-stack space="80">
       <vue-stack space="16">
         <vue-stack v-if="componentName && usage" space="0">
-          <vue-inline align-y="center" :space="['8', '24']">
+          <vue-inline align-y="center" :space="[8, 24]">
             <vue-text color="text-high" look="large-title" weight="semi-bold">
               {{ componentName }} {{ suffix }}
             </vue-text>

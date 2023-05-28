@@ -5,7 +5,12 @@ to: "src/components/<%= folder %>/<%= name %>/<%= name %>.vue"
   <div :class="$style.<%= name %>"><%= name %></div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useCssModule } from 'vue';
+
+// Deps
+const $style = useCssModule();
+</script>
 
 <style lang="scss" module>
 @import 'assets/_design-system.scss';

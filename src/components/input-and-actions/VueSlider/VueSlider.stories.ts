@@ -40,7 +40,6 @@ export const Single = {
 
   args: {
     id: 'slider',
-    label: 'Slider',
     min: 0,
     max: 200,
     formatValue: (value: number) => {
@@ -79,7 +78,6 @@ export const Range = {
 
   args: {
     id: 'slider',
-    label: 'Slider',
     min: 0,
     max: 200,
     formatValue: (value: number) => {

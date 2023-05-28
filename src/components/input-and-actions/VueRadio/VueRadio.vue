@@ -22,13 +22,20 @@
           <circle cx="3" cy="3" r="3" fill="currentColor" />
         </svg>
       </div>
-      <vue-text :for="id" as="label" weight="semi-bold" color="text-medium" tabindex="-1">
+      <vue-text
+        :for="id"
+        as="label"
+        weight="semi-bold"
+        color="text-medium"
+        tabindex="-1"
+        :class="[hideLabel && 'sr-only']"
+      >
         <slot name="label">
           {{ label }}
         </slot>
       </vue-text>
     </div>
-    <vue-text v-if="description" :class="$style.description" as="div">
+    <vue-text :class="[$style.description, hideLabel && 'sr-only']" as="div">
       <slot name="description">
         {{ description }}
       </slot>
@@ -37,24 +44,40 @@
 </template>
 
 <script setup lang="ts">
+import { useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 
-const props = defineProps({
-  id: { type: String, required: true },
-  name: { type: String, required: true },
-  label: { type: String, required: true },
-  description: { type: String, default: null },
-  required: { type: Boolean, default: false },
-  disabled: { type: Boolean, default: false },
-  modelValue: { type: String, default: null },
+// Interface
+interface RadioProps {
+  id: string;
+  name: string;
+  label: string;
+  description?: string | null;
+  required?: boolean;
+  disabled?: boolean;
+  hideLabel?: boolean;
+  modelValue?: string | null;
+}
+interface RadioEmits {
+  (event: 'click', id: string): void;
+  (event: 'update:modelValue', id: string): void;
+}
+const props = withDefaults(defineProps<RadioProps>(), {
+  description: null,
+  modelValue: null,
 });
-const emit = defineEmits(['click', 'update:modelValue']);
+const emit = defineEmits<RadioEmits>();
+
+// Deps
+const $style = useCssModule();
+
+// Event Handlers
 const onClick = (e: Event) => {
   e.preventDefault();
 
   if (!props.disabled) {
-    emit('update:modelValue', props.id);
     emit('click', props.id);
+    emit('update:modelValue', props.id);
   }
 };
 </script>

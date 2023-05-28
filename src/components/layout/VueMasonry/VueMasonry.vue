@@ -5,15 +5,20 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, onUpdated, ref, Ref } from 'vue';
+import { onBeforeUnmount, onMounted, onUpdated, ref } from 'vue';
 import { getDomRef } from '~/composables/get-dom-ref';
 
+// Interface
 const props = defineProps({
   height: { type: Number, default: 800 },
 });
+
+// Data
 let observer: MutationObserver | null = null;
-const wrapper: Ref<HTMLElement> = getDomRef(null);
+const wrapper = getDomRef<HTMLElement>(null);
 const actualHeight = ref(props.height);
+
+// Methods
 const getColumnHeight = (col = 0) => {
   let height = 0;
   const children = wrapper.value.children;
@@ -80,6 +85,7 @@ const checkForImages = () => {
   });
 };
 
+// Lifecycle
 onMounted(() => {
   calculateHeight();
 

@@ -9,6 +9,7 @@ import { computed } from 'vue';
 import { HorizontalAlignment, VerticalAlignment, Width } from '~/components/prop-types';
 import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
 
+// Interface
 interface ColumnProps {
   as?: string;
   alignX?: string | HorizontalAlignment | Array<HorizontalAlignment> | null;
@@ -17,7 +18,6 @@ interface ColumnProps {
   canGrow?: boolean;
   canShrink?: boolean;
 }
-
 const props = withDefaults(defineProps<ColumnProps>(), {
   as: 'div',
   alignX: null,
@@ -26,10 +26,11 @@ const props = withDefaults(defineProps<ColumnProps>(), {
   canGrow: true,
   canShrink: true,
 });
+
+// Data
 const responsiveAlignX = computed(() => parseResponsivePropValue(props.alignX));
 const responsiveAlignY = computed(() => parseResponsivePropValue(props.alignY));
 const responsiveWidth = computed(() => parseResponsivePropValue(props.width));
-
 const cssClasses = computed(() => [
   'flex',
   'no-wrap',

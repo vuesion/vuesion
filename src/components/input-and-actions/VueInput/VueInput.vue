@@ -31,7 +31,7 @@
         v-if="leadingIcon || $slots.leadingIcon"
         :data-testid="`${id}-leading-icon`"
         :class="$style.leading"
-        @click="$emit('leading-icon-click')"
+        @click="$emit('leading-icon-click', $event)"
       >
         <slot name="leadingIcon">
           <component :is="`vue-icon-${leadingIcon}`" />
@@ -64,7 +64,7 @@
         v-if="trailingIcon || $slots.trailingIcon"
         :data-testid="`${id}-trailing-icon`"
         :class="$style.trailing"
-        @click="$emit('trailing-icon-click')"
+        @click="$emit('trailing-icon-click', $event)"
       >
         <slot name="trailingIcon">
           <component :is="`vue-icon-${trailingIcon}`" />
@@ -83,13 +83,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed, useCssModule, watch } from 'vue';
 import { useField } from 'vee-validate';
-import debounce from 'lodash-es/debounce.js';
+import _debounce from 'lodash-es/debounce.js';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import { ShirtSize } from '~/components/prop-types';
 
+// Interface
 interface InputProps {
   id: string;
   name: string;
@@ -97,7 +98,7 @@ interface InputProps {
   hideLabel?: boolean;
   hideDescription?: boolean;
   required?: boolean;
-  validation?: string | any;
+  validation?: string | object;
   modelValue?: string | number;
   disabled?: boolean;
   placeholder?: string;
@@ -114,18 +115,18 @@ interface InputProps {
   debounce?: number | null;
   hasError?: boolean;
 }
-
+interface InputEmits {
+  (event: 'debounced-input', value: string, e: InputEvent): void;
+  (event: 'update:modelValue', value: string, e: InputEvent): void;
+  (event: 'leading-icon-click', e: MouseEvent): void;
+  (event: 'trailing-icon-click', e: MouseEvent): void;
+  (event: 'blur', e: FocusEvent): void;
+}
 const props = withDefaults(defineProps<InputProps>(), {
-  hideLabel: false,
-  hideDescription: false,
-  required: false,
   validation: null,
   modelValue: undefined,
-  disabled: false,
   placeholder: undefined,
-  autofocus: false,
   type: 'text',
-  readonly: false,
   description: '',
   errorMessage: '',
   autocomplete: 'off',
@@ -134,11 +135,18 @@ const props = withDefaults(defineProps<InputProps>(), {
   size: 'md',
   sizeAttribute: undefined,
   debounce: undefined,
-  hasError: false,
 });
-const emit = defineEmits(['debounced-input', 'update:modelValue', 'leading-icon-click', 'trailing-icon-click', 'blur']);
+const emit = defineEmits<InputEmits>();
+
+// Deps
+const $style = useCssModule();
+
+// Data
 const inputRef = getDomRef<HTMLInputElement>(null);
-const debouncedInput = debounce((value: string, e: Event) => emit('debounced-input', value, e), props.debounce || 0);
+const debouncedInput = _debounce(
+  (value: string, e: InputEvent) => emit('debounced-input', value, e),
+  props.debounce || 0,
+);
 const localValidation = computed(() => props.validation);
 const { errors, value, handleChange } = useField<string | number | null | undefined>(props.id, localValidation, {
   initialValue: props.modelValue,
@@ -146,6 +154,8 @@ const { errors, value, handleChange } = useField<string | number | null | undefi
   type: 'default',
   syncVModel: false,
 });
+
+// Event Handlers
 const onInput = (e: InputEvent) => {
   const value = (e.target as HTMLInputElement).value;
 
@@ -159,7 +169,7 @@ const onInput = (e: InputEvent) => {
     debouncedInput(value, e);
   }
 };
-const onBlur = (e: InputEvent) => {
+const onBlur = (e: FocusEvent) => {
   const value = (e.target as HTMLInputElement).value;
 
   handleChange(value);
@@ -167,6 +177,7 @@ const onBlur = (e: InputEvent) => {
   emit('blur', e);
 };
 
+// Watchers
 watch(
   () => props.modelValue,
   (newModelValue) => {
@@ -174,6 +185,7 @@ watch(
   },
 );
 
+// Exports
 defineExpose({
   handleChange,
 });

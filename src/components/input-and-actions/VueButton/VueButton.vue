@@ -47,12 +47,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueLoader from '~/components/data-display/VueLoader/VueLoader.vue';
 import { ButtonStyle, ShirtSize } from '~/components/prop-types';
 import { getDomRef } from '~/composables/get-dom-ref';
 
+// Interface
 interface ButtonProps {
   as?: string;
   block?: boolean;
@@ -65,7 +66,9 @@ interface ButtonProps {
   trailingIcon?: string;
   type?: string;
 }
-
+interface ButtonEmits {
+  (event: 'click', e: Event): void;
+}
 const props = withDefaults(defineProps<ButtonProps>(), {
   as: 'button',
   block: false,
@@ -78,9 +81,12 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   trailingIcon: undefined,
   type: 'button',
 });
-const emit = defineEmits<{
-  (name: 'click', event: Event): void;
-}>();
+const emit = defineEmits<ButtonEmits>();
+
+// Deps
+const $style = useCssModule();
+
+// Data
 const buttonRef = getDomRef<HTMLButtonElement | HTMLAnchorElement | null>(null);
 const actualWidth = computed(() => {
   if (buttonRef.value === null) {
@@ -92,6 +98,8 @@ const actualWidth = computed(() => {
 const isDisabled = computed(() => props.disabled || props.loading);
 const isRouterLink = computed(() => props.as === 'nuxt-link');
 const isRegularLink = computed(() => props.as === 'a');
+
+// Event Handlers
 const onClick = (e: Event) => {
   if (isRegularLink.value && isDisabled.value) {
     e.preventDefault();

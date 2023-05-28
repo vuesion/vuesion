@@ -3,7 +3,7 @@
     <vue-content-block>
       <vue-columns :space="[24, 24, 24, 48]" stack-phone stack-tablet-portrait stack-tablet-landscape>
         <vue-column :width="['content', 'content', 'content', 'content']" :can-grow="false">
-          <vue-box :padding="['16', '16', '16', '144 0']">
+          <vue-box :padding="[16, 16, 16, '144 0']">
             <vue-hidden small-desktop large-desktop>
               <vue-text look="h3" color="text-high" weight="semi-bold" :align="['left', 'center', 'center', 'left']">
                 Built for modern product teams
@@ -60,12 +60,9 @@
           </vue-box>
         </vue-column>
         <vue-column :width="['content']" :can-grow="false">
-          <vue-box :padding="['16', '16', '16', '0']">
-            <vue-stack :space="['64', '64', '64', '0']" :align-x="['start', 'center', 'center', 'start']">
-              <vue-stack
-                :space="['8', '8', '8', '24']"
-                :class="[$style.valueProp, activeTab === 0 ? $style.in : $style.out]"
-              >
+          <vue-box :padding="[16, 16, 16, 0]">
+            <vue-stack :space="[64, 64, 64, 0]" :align-x="['start', 'center', 'center', 'start']">
+              <vue-stack :space="[8, 8, 8, 24]" :class="[$style.valueProp, activeTab === 0 ? $style.in : $style.out]">
                 <vue-badge status="info" :class="$style.mobileBadge">Product Manager</vue-badge>
 
                 <vue-text color="text-high" look="h4" weight="semi-bold">
@@ -88,10 +85,7 @@
                 </ul>
               </vue-stack>
 
-              <vue-stack
-                :space="['8', '8', '8', '24']"
-                :class="[$style.valueProp, activeTab === 1 ? $style.in : $style.out]"
-              >
+              <vue-stack :space="[8, 8, 8, 24]" :class="[$style.valueProp, activeTab === 1 ? $style.in : $style.out]">
                 <vue-badge status="info" :class="$style.mobileBadge">Engineering Manager</vue-badge>
 
                 <vue-text color="text-high" look="h4" weight="semi-bold">
@@ -125,10 +119,7 @@
                 </ul>
               </vue-stack>
 
-              <vue-stack
-                :space="['8', '8', '8', '24']"
-                :class="[$style.valueProp, activeTab === 2 ? $style.in : $style.out]"
-              >
+              <vue-stack :space="[8, 8, 8, 24]" :class="[$style.valueProp, activeTab === 2 ? $style.in : $style.out]">
                 <vue-badge status="info" :class="$style.mobileBadge">Designer</vue-badge>
 
                 <vue-text color="text-high" look="h4" weight="semi-bold">
@@ -157,10 +148,7 @@
                 </ul>
               </vue-stack>
 
-              <vue-stack
-                :space="['8', '8', '8', '24']"
-                :class="[$style.valueProp, activeTab === 3 ? $style.in : $style.out]"
-              >
+              <vue-stack :space="[8, 8, 8, 24]" :class="[$style.valueProp, activeTab === 3 ? $style.in : $style.out]">
                 <vue-badge status="info" :class="$style.mobileBadge">Engineer</vue-badge>
 
                 <vue-text color="text-high" look="h4" weight="semi-bold">
@@ -201,10 +189,7 @@
                 </ul>
               </vue-stack>
 
-              <vue-stack
-                :space="['8', '8', '8', '24']"
-                :class="[$style.valueProp, activeTab === 4 ? $style.in : $style.out]"
-              >
+              <vue-stack :space="[8, 8, 8, 24]" :class="[$style.valueProp, activeTab === 4 ? $style.in : $style.out]">
                 <vue-badge status="info" :class="$style.mobileBadge">Team</vue-badge>
 
                 <vue-text color="text-high" look="h4" weight="semi-bold"> Happy, Happy, Happy 😊 </vue-text>
@@ -299,7 +284,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, useCssModule } from 'vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
@@ -309,6 +294,10 @@ import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock
 import VueHidden from '~/components/utils/VueHidden/VueHidden.vue';
 import VueBadge from '~/components/data-display/VueBadge/VueBadge.vue';
 
+// Deps
+const $style = useCssModule();
+
+// Data
 const activeTab = ref(0);
 const onTabChange = (tab: number) => {
   activeTab.value = tab;

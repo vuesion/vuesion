@@ -99,7 +99,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, nextTick } from 'vue';
+import { computed, ref, nextTick, useCssModule } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { useField } from 'vee-validate';
 import { IItem } from '~/interfaces/IItem';
@@ -120,7 +120,7 @@ interface SelectProps {
   hideLabel?: boolean;
   hideDescription?: boolean;
   required?: boolean;
-  validation?: string | any;
+  validation?: string | null;
   modelValue?: string | boolean | number | IItem | Array<string | boolean | number | IItem> | object | unknown;
   disabled?: boolean;
   placeholder?: string;
@@ -133,13 +133,12 @@ interface SelectProps {
   multiSelect?: boolean;
   badgeStatus?: BadgeStatus;
 }
+interface SelectEmits {
+  (event: 'update:modelValue', selected: Array<IItem> | IItem): void;
+}
 const props = withDefaults(defineProps<SelectProps>(), {
-  hideLabel: false,
-  hideDescription: false,
-  required: false,
   validation: null,
-  modelValue: () => undefined as unknown,
-  disabled: false,
+  modelValue: () => undefined as Array<string | boolean | number | IItem>,
   placeholder: '',
   description: '',
   errorMessage: '',
@@ -147,12 +146,12 @@ const props = withDefaults(defineProps<SelectProps>(), {
   alignXMenu: 'left',
   alignYMenu: 'bottom',
   size: 'md',
-  multiSelect: false,
   badgeStatus: 'info',
 });
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<SelectEmits>();
 
 // Deps
+const $style = useCssModule();
 const { errors, resetField, handleChange } = useField(props.id, props.validation, {
   initialValue: props.modelValue,
   validateOnValueUpdate: false,
@@ -242,7 +241,7 @@ const toggleMenu = () => {
 const onInput = (e: Event) => {
   resetField();
 
-  const selected: IItem[] = [];
+  const selected: Array<IItem> = [];
   const target = e.target as HTMLSelectElement;
   const length: number = target.options.length;
 

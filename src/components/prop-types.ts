@@ -56,24 +56,7 @@ export const VerticalAlignmentValues = ['start', 'end', 'center', 'baseline', 's
 
 export type VerticalAlignment = (typeof VerticalAlignmentValues)[number];
 
-export const SpacingValues = [
-  '0',
-  '2',
-  '4',
-  '8',
-  '10',
-  '12',
-  '16',
-  '20',
-  '24',
-  '32',
-  '48',
-  '64',
-  '80',
-  '96',
-  '144',
-  '192',
-] as const;
+export const SpacingValues = [0, 2, 4, 8, 10, 12, 16, 20, 24, 32, 48, 64, 80, 96, 144, 192] as const;
 
 export type Spacing = (typeof SpacingValues)[number];
 

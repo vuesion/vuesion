@@ -4,28 +4,44 @@
   </section>
 </template>
 
-<script lang="ts">
-// TODO: change to composition api
-export default {
-  name: 'VueTabItem',
-  inject: ['register'],
-  props: {
-    name: { type: String, required: true },
-    icon: { type: String, default: null },
-    isActive: { type: Boolean, default: false },
-  },
-  data(): any {
-    return {
-      idx: null,
-      active: false,
-    };
-  },
-  created() {
-    this.active = this.isActive;
+<script lang="ts" setup>
+// Interface
+import { onMounted, ref, useCssModule, watch, inject, Ref } from 'vue';
 
-    this.register(this);
-  },
-};
+interface TabItemProps {
+  name: string;
+  icon?: string | null;
+  isActive?: boolean;
+}
+const props = withDefaults(defineProps<TabItemProps>(), {
+  icon: null,
+  isActive: false,
+});
+
+// Deps
+const $style = useCssModule();
+
+// DI
+const register =
+  inject<(idx: Ref<number>, active: Ref<boolean>, name: string, icon: string | null) => void>('register');
+
+// Data
+const idx = ref<number>(-1);
+const active = ref<boolean>(false);
+
+// Watcher
+watch(
+  () => props.isActive,
+  () => (active.value = props.isActive),
+  { immediate: true },
+);
+
+// Lifecycle
+onMounted(() => {
+  if (register) {
+    register(idx, active, props.name, props.icon);
+  }
+});
 </script>
 
 <style lang="scss" module>

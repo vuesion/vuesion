@@ -40,11 +40,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, useCssModule, watch } from 'vue';
 import { ICarouselImage } from '~/components/data-display/VueCarousel/ICarouselImage';
 import FadeAnimation from '~/components/animations/FadeAnimation/FadeAnimation.vue';
 import VuePagination from '~/components/navigation/VuePagination/VuePagination.vue';
 
+// Interface
 interface CarouselProps {
   images?: Array<ICarouselImage>;
   intervalInSeconds?: number;
@@ -53,7 +54,9 @@ interface CarouselProps {
   showIndicator?: boolean;
   showPagination?: boolean;
 }
-
+interface CarouselEmits {
+  (e: 'update:selectedSlide', id: number): void;
+}
 const props = withDefaults(defineProps<CarouselProps>(), {
   images: () => [],
   intervalInSeconds: 5,
@@ -62,7 +65,12 @@ const props = withDefaults(defineProps<CarouselProps>(), {
   showIndicator: true,
   showPagination: false,
 });
-const emit = defineEmits(['update:selectedSlide']);
+const emit = defineEmits<CarouselEmits>();
+
+// Deps
+const $style = useCssModule();
+
+// Data
 const images = computed<Array<ICarouselImage>>(() => props.images as Array<ICarouselImage>);
 const interval = computed<number>(() => props.intervalInSeconds * 1000);
 const selectedSlide = computed<number>(() => props.selectedSlide);
@@ -71,6 +79,8 @@ const maxSlides = computed<number>(() => images.value.length);
 const intervalInstance = ref<any>(null);
 const pause = ref(false);
 const preloadedImages = ref<Array<HTMLImageElement>>([]);
+
+// Methods
 const isActiveSlide = (idx: number) => currentSlide.value === idx;
 const changeSlide = (newSlide: number, fromPagination = false) => {
   if (fromPagination === false && pause.value) {
@@ -107,9 +117,7 @@ const preloadImages = () => {
   createIntervalInstance();
 };
 
-onMounted(() => preloadImages());
-onBeforeUnmount(() => clearInterval(intervalInstance.value));
-
+// Watchers
 watch(images, () => preloadImages());
 watch(interval, () => createIntervalInstance());
 watch(selectedSlide, () => {
@@ -117,6 +125,10 @@ watch(selectedSlide, () => {
   currentSlide.value = selectedSlide.value - 1;
   createIntervalInstance();
 });
+
+// Lifecycle
+onMounted(() => preloadImages());
+onBeforeUnmount(() => clearInterval(intervalInstance.value));
 </script>
 
 <style lang="scss" module>

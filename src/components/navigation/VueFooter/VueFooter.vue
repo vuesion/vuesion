@@ -7,9 +7,9 @@
     <vue-content-block>
       <vue-stack space="32">
         <vue-stack v-if="slim === false" space="48">
-          <vue-columns :space="['24', '24', '64']" stack-phone stack-tablet-portrait>
+          <vue-columns :space="[24, 24, 64]" stack-phone stack-tablet-portrait>
             <vue-column>
-              <vue-stack :space="['4', '8', '16']">
+              <vue-stack :space="[4, 8, 16]">
                 <vue-text look="h6" color="text-low" weight="semi-bold">Solutions</vue-text>
                 <vue-text color="text-low">Marketing</vue-text>
                 <vue-text color="text-low">Analytics</vue-text>
@@ -19,7 +19,7 @@
             </vue-column>
 
             <vue-column>
-              <vue-stack :space="['4', '8', '16']">
+              <vue-stack :space="[4, 8, 16]">
                 <vue-text look="h6" color="text-low" weight="semi-bold">Support</vue-text>
                 <vue-text color="text-low">Pricing</vue-text>
                 <vue-text color="text-low">Documentation</vue-text>
@@ -29,7 +29,7 @@
             </vue-column>
 
             <vue-column>
-              <vue-stack :space="['4', '8', '16']">
+              <vue-stack :space="[4, 8, 16]">
                 <vue-text look="h6" color="text-low" weight="semi-bold">Company</vue-text>
                 <vue-text color="text-low">About</vue-text>
                 <vue-text color="text-low">Blog</vue-text>
@@ -39,7 +39,7 @@
             </vue-column>
 
             <vue-column>
-              <vue-stack :space="['4', '8', '16']">
+              <vue-stack :space="[4, 8, 16]">
                 <vue-text look="h6" color="text-low" weight="semi-bold">Legal</vue-text>
                 <vue-text color="text-low">Claim</vue-text>
                 <vue-text color="text-low">Privacy</vue-text>
@@ -85,7 +85,7 @@
             </vue-text>
           </vue-column>
 
-          <vue-columns :space="['24', '24', '64']" align-y="center" stack-phone stack-tablet-portrait>
+          <vue-columns :space="[24, 24, 64]" align-y="center" stack-phone stack-tablet-portrait>
             <vue-column>
               <vue-inline :align-x="['center']" space="48">
                 <vue-text color="text-low" weight="semi-bold">About</vue-text>
@@ -125,7 +125,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useCssModule } from 'vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
@@ -138,6 +138,7 @@ import VueIconGithub from '~/components/icons/VueIconGithub.vue';
 import { IItem } from '~/interfaces/IItem';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 
+// Interface
 interface FooterProps {
   slim?: boolean;
   languages?: Array<IItem>;
@@ -145,7 +146,9 @@ interface FooterProps {
   selectedLocale?: string;
   selectDuration?: number;
 }
-
+interface FooterEmits {
+  (e: 'locale-change', value: IItem): void;
+}
 withDefaults(defineProps<FooterProps>(), {
   slim: false,
   languages: () => [],
@@ -153,9 +156,12 @@ withDefaults(defineProps<FooterProps>(), {
   selectedLocale: 'en',
   selectDuration: 250,
 });
+defineEmits<FooterEmits>();
 
-defineEmits(['locale-change']);
+// Deps
+const $style = useCssModule();
 
+// Data
 const year = computed(() => new Date().getFullYear());
 </script>
 

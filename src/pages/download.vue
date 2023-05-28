@@ -1,6 +1,6 @@
 <template>
   <vue-content-block :class="$style.download">
-    <vue-box :padding="['24 16', '24 16', '24', '32']">
+    <vue-box :padding="['24 16', '24 16', 24, 32]">
       <vue-stack :space="'32'">
         <vue-breadcrumb :items="breadCrumbItems" />
 
@@ -54,6 +54,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCssModule } from 'vue';
 import { definePageMeta, useHead, useI18n } from '#imports';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
@@ -64,6 +65,7 @@ import { IItem } from '~/interfaces/IItem';
 
 // Deps
 const { t } = useI18n();
+const $style = useCssModule();
 
 // Config
 definePageMeta({ auth: false });

@@ -7,8 +7,8 @@
         tabindex="0"
         :class="currentTab === tab.idx ? $style.active : ''"
         role="tab"
-        @click="changeTab(tab.idx)"
-        @keypress.space.enter.stop.prevent="changeTab(tab.idx)"
+        @click="onTabChange(tab.idx)"
+        @keypress.space.enter.stop.prevent="onTabChange(tab.idx)"
       >
         <component :is="`vue-icon-${tab.icon}`" v-if="tab.icon" />
         <vue-text weight="semi-bold">
@@ -24,41 +24,60 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide, onBeforeUnmount, ComponentPublicInstance } from 'vue';
+import { ref, provide, onBeforeUnmount, Ref, shallowRef, useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 
-const tabs = ref<Array<ComponentPublicInstance>>([]);
+// Interface
+interface TabItem {
+  idx: Ref<number>;
+  active: Ref<boolean>;
+  name: string;
+  icon: string | null;
+}
+
+// Deps
+const $style = useCssModule();
+
+// Data
+const tabs = shallowRef<Array<TabItem>>([]);
 const currentTab = ref(0);
-const tabHeader = ref<Array<{ idx: number; name: string; icon: string }>>([]);
-const changeTab = (idx: number) => {
+const tabHeader = ref<Array<{ idx: number; name: string; icon: string | null }>>([]);
+
+// Event Handlers
+const onTabChange = (idx: number) => {
   currentTab.value = idx;
   handleTabs();
 };
+
+// Methods
 const handleTabs = () => {
-  tabs.value.forEach((tab: any) => {
-    tab.$data.active = tab.$data.idx === currentTab.value;
+  tabs.value.forEach((tab) => {
+    tab.active.value = tab.idx.value === currentTab.value;
   });
 };
-const register = (tab: any) => {
-  tab.$data.idx = tabs.value.length;
+const register = (idx: Ref<number>, active: Ref<boolean>, name: string, icon: string | null) => {
+  idx.value = tabs.value.length;
 
-  if (tab.$data.active) {
-    currentTab.value = tab.$data.idx;
+  if (active.value) {
+    currentTab.value = idx.value;
   }
 
-  tabs.value.push(tab);
+  tabs.value.push({ idx, active, name, icon });
+
   tabHeader.value.push({
-    idx: tab.$data.idx,
-    name: tab.$props.name,
-    icon: tab.$props.icon,
+    idx: idx.value,
+    name,
+    icon,
   });
 
   handleTabs();
 };
 
+// DI
 provide('register', register);
 
+// Lifecycle
 onBeforeUnmount(() => {
   tabs.value = [];
   tabHeader.value = [];

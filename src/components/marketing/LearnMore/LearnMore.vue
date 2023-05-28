@@ -1,8 +1,8 @@
 <template>
   <vue-box as="section" :padding="['64 0 24 0', '64 0 24 0', '64 0 24 0', '0 0 64 0']">
     <vue-content-block :class="$style.learnMore">
-      <vue-stack :space="['32', '32', '32', '0']">
-        <vue-box :padding="['24 12', '48', '64', '80']">
+      <vue-stack :space="[32, 32, 32, 0]">
+        <vue-box :padding="['24 12', 48, 64, 80]">
           <vue-stack space="64">
             <vue-text look="h3" weight="semi-bold" align-x="center">
               <span class="deco-underline">Learn more</span> about Vuesion
@@ -26,7 +26,7 @@
 
               <vue-column space="48" :width="['fit', 'fit', 'fit', '6/12']">
                 <vue-stack space="48">
-                  <vue-columns stack-phone stack-tablet-portrait :space="['48', '48', '48', '24']">
+                  <vue-columns stack-phone stack-tablet-portrait :space="[48, 48, 48, 24]">
                     <vue-column :width="['fit', 'fit', '6/12']">
                       <vue-stack space="16">
                         <vue-text look="h4">Hello Engineer. Installing Vuesion.</vue-text>
@@ -45,7 +45,7 @@
                         </a>
                       </vue-stack>
                     </vue-column>
-                    <vue-column :width="['fit', 'fit', '6/12']" :space="['48', '48', '48', '24']">
+                    <vue-column :width="['fit', 'fit', '6/12']" :space="[48, 48, 48, 24]">
                       <vue-stack space="16">
                         <vue-text look="h4">Hello Designer. Using the Figma file.</vue-text>
                         <vue-text look="description">
@@ -62,7 +62,7 @@
                       </vue-stack>
                     </vue-column>
                   </vue-columns>
-                  <vue-columns stack-phone stack-tablet-portrait :space="['48', '48', '48', '24']">
+                  <vue-columns stack-phone stack-tablet-portrait :space="[48, 48, 48, 24]">
                     <vue-column :width="['fit', 'fit', '6/12']">
                       <vue-stack space="16">
                         <vue-text look="h4">Join in on the conversation.</vue-text>
@@ -83,7 +83,7 @@
                         </a>
                       </vue-stack>
                     </vue-column>
-                    <vue-column :width="['fit', 'fit', '6/12']" :space="['48', '48', '48', '24']">
+                    <vue-column :width="['fit', 'fit', '6/12']" :space="[48, 48, 48, 24]">
                       <vue-stack space="16">
                         <vue-text look="h4">Read the docs!</vue-text>
                         <vue-text look="description">
@@ -102,7 +102,7 @@
           </vue-stack>
         </vue-box>
 
-        <vue-box :padding="['24 12', '48', '64', '80']">
+        <vue-box :padding="['24 12', 48, 64, 80]">
           <vue-stack space="64">
             <vue-text look="h3" weight="semi-bold" align-x="center">
               Try out some <span class="deco-underline">examples!</span>
@@ -117,7 +117,7 @@
             >
               <vue-column :width="['fit', 'fit', 'fit', '6/12']">
                 <vue-stack space="48">
-                  <vue-columns stack-phone stack-tablet-portrait :space="['48', '48', '48', '24']">
+                  <vue-columns stack-phone stack-tablet-portrait :space="[48, 48, 48, 24]">
                     <vue-column :width="['fit', 'fit', '6/12']">
                       <vue-stack space="16">
                         <vue-text look="h4">Authentication.</vue-text>
@@ -141,7 +141,7 @@
                       </vue-stack>
                     </vue-column>
                   </vue-columns>
-                  <vue-columns stack-phone stack-tablet-portrait :space="['48', '48', '48', '24']">
+                  <vue-columns stack-phone stack-tablet-portrait :space="[48, 48, 48, 24]">
                     <vue-column :width="['fit', 'fit', '6/12']" :can-grow="false">
                       <vue-stack space="16">
                         <vue-text look="h4">Form validation.</vue-text>

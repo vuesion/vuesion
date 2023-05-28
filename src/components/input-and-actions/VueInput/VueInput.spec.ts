@@ -1,5 +1,4 @@
-/* eslint n/no-callback-literal: 0 */
-import { describe, test, expect, vi } from 'vitest';
+import { describe, test, expect } from 'vitest';
 import { render, fireEvent } from '@testing-library/vue';
 import { defineRule } from 'vee-validate';
 import { required, email } from '@vee-validate/rules';
@@ -23,6 +22,22 @@ describe('VueInput.vue', () => {
 
     getByText('this is the label');
     getByText('this is the description');
+  });
+
+  test('should hide label and description', () => {
+    const { getByText } = render(VueInput, {
+      props: {
+        label: 'this is the label',
+        description: 'this is the description',
+        name: 'name',
+        id: 'id',
+        hideLabel: true,
+        hideDescription: true,
+      },
+    });
+
+    expect(getByText('this is the label').classList.contains('sr-only')).toBeTruthy();
+    expect(getByText('this is the description').classList.contains('sr-only')).toBeTruthy();
   });
 
   test('renders disabled component', () => {
@@ -113,36 +128,6 @@ describe('VueInput.vue', () => {
     getByText('this is the error');
 
     await fireEvent.update(getByLabelText('this is the label'), 'example@example.com');
-  });
-
-  test('should not autofocus input element', () => {
-    const entry = {
-      target: {
-        focus: vi.fn(),
-      },
-    };
-
-    (global as any).IntersectionObserver = class {
-      constructor(callback: any) {
-        callback([entry]);
-      }
-
-      observe() {
-        return false;
-      }
-    };
-
-    render(VueInput, {
-      props: {
-        label: 'this is the label',
-        name: 'test',
-        id: 'test',
-        modelValue: 'this is the value',
-        autofocus: false,
-      },
-    });
-
-    expect(entry.target.focus).not.toHaveBeenCalled();
   });
 
   test('should handle new modelValue', async () => {

@@ -11,6 +11,7 @@ describe('VueRadio.vue', () => {
         name: 'foo',
         id: 'foo',
         label: 'Test',
+        description: 'Description',
       },
     });
   });
@@ -19,6 +20,7 @@ describe('VueRadio.vue', () => {
     const { getByText } = harness;
 
     getByText('Test');
+    getByText('Description');
   });
 
   test('should emit click event', async () => {
@@ -48,5 +50,14 @@ describe('VueRadio.vue', () => {
     await fireEvent.click(getByText('Test'));
 
     expect(emitted().click).toBeFalsy();
+  });
+
+  test('should hide label and description', async () => {
+    const { getByText, rerender } = harness;
+
+    await rerender({ hideLabel: true });
+
+    expect(getByText('Test').classList.contains('sr-only')).toBeTruthy();
+    expect(getByText('Description').classList.contains('sr-only')).toBeTruthy();
   });
 });

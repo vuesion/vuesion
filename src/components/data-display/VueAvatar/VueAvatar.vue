@@ -1,38 +1,43 @@
 <template>
   <div
     :title="name"
-    :class="[$style.vueAvatar, $style[size], src && $style.hasSource, !src && icon.length > 0 && $style.hasIcon]"
+    :class="[$style.vueAvatar, $style[size], src && $style.hasSource, !src && icon?.length > 0 && $style.hasIcon]"
     :style="{ backgroundImage: src && `url(${src})` }"
   >
     <vue-text
-      v-if="!src && icon.length === 0"
+      v-if="!src && icon?.length === 0"
       color="text-inverse-high"
       :look="size === 'sm' ? 'support' : size === 'md' ? 'h6' : 'h4'"
     >
       {{ initials }}
     </vue-text>
 
-    <component :is="`vue-icon-${icon}`" v-if="!src && icon && icon.length > 0" />
+    <component :is="`vue-icon-${icon}`" v-if="!src && icon?.length > 0" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import { ShirtSize } from '~/components/prop-types';
 
+// Interface
 interface AvatarProps {
   name: string;
-  src: string | null;
+  src?: string | null;
   icon?: string;
   size?: ShirtSize;
 }
-
 const props = withDefaults(defineProps<AvatarProps>(), {
   src: undefined,
   icon: '',
   size: 'sm',
 });
+
+// Deps
+const $style = useCssModule();
+
+// Data
 const initials = computed(() => {
   return props.name
     .split(/[, -]/)

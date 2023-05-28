@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, watch } from 'vue';
+import { computed, nextTick, useCssModule, watch } from 'vue';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueIconTimes from '~/components/icons/VueIconTimes.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
@@ -37,7 +37,9 @@ interface ModalProps {
   closeOnOutsideClick?: boolean;
   hideCloseButton?: boolean;
 }
-
+interface ModalEmits {
+  (e: 'close'): void;
+}
 const props = withDefaults(defineProps<ModalProps>(), {
   padding: () => ['48 16 16 16'],
   show: false,
@@ -46,7 +48,10 @@ const props = withDefaults(defineProps<ModalProps>(), {
   closeOnOutsideClick: true,
   hideCloseButton: false,
 });
-const emit = defineEmits(['close']);
+const emit = defineEmits<ModalEmits>();
+
+// Deps
+const $style = useCssModule();
 
 // Data
 const modalRef = getDomRef<any>(null);

@@ -7,6 +7,9 @@ describe('VueCard.vue', () => {
 
   beforeEach(() => {
     harness = render(VueCard, {
+      props: {
+        padding: '4',
+      },
       slots: {
         default: 'VueCard',
       },

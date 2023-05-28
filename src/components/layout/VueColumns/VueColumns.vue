@@ -9,11 +9,12 @@ import { computed } from 'vue';
 import { HorizontalAlignment, Spacing, VerticalAlignment } from '~/components/prop-types';
 import { getFlexDirectionForBreakpoint, getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
 
+// Interface
 interface ColumnsProps {
   as?: string;
-  space?: string | Spacing | Array<Spacing>;
-  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment> | null;
-  alignY?: string | VerticalAlignment | Array<VerticalAlignment> | null;
+  space?: Spacing | Array<Spacing>;
+  alignX?: HorizontalAlignment | Array<HorizontalAlignment> | null;
+  alignY?: VerticalAlignment | Array<VerticalAlignment> | null;
   reverse?: boolean | Array<boolean> | null;
   stackPhone?: boolean;
   stackTabletPortrait?: boolean;
@@ -21,10 +22,9 @@ interface ColumnsProps {
   stackSmallDesktop?: boolean;
   stackLargeDesktop?: boolean;
 }
-
 const props = withDefaults(defineProps<ColumnsProps>(), {
   as: 'div',
-  space: () => ['24'],
+  space: () => [24],
   alignX: null,
   alignY: null,
   reverse: null,
@@ -34,6 +34,8 @@ const props = withDefaults(defineProps<ColumnsProps>(), {
   stackSmallDesktop: false,
   stackLargeDesktop: false,
 });
+
+// Data
 const responsiveSpace = computed(() => parseResponsivePropValue(props.space));
 const responsiveAlignX = computed(() => parseResponsivePropValue(props.alignX));
 const responsiveAlignY = computed(() => parseResponsivePropValue(props.alignY));

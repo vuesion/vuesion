@@ -8,10 +8,10 @@
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import { Spacing } from '~/components/prop-types';
 
+// Interface
 interface CardProps {
   padding?: Spacing | Array<Spacing>;
 }
-
 withDefaults(defineProps<CardProps>(), {
   padding: () => ['16'],
 });

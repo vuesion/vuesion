@@ -9,17 +9,19 @@ import { computed } from 'vue';
 import { HorizontalAlignment, Spacing } from '~/components/prop-types';
 import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
 
+// Interface
 interface StackProps {
   as?: string;
   space?: string | Spacing | Array<Spacing>;
   alignX?: string | HorizontalAlignment | Array<HorizontalAlignment> | null;
 }
-
 const props = withDefaults(defineProps<StackProps>(), {
   as: 'div',
-  space: () => ['24'],
+  space: () => [24],
   alignX: null,
 });
+
+// Data
 const responsiveSpace = computed(() => parseResponsivePropValue(props.space));
 const responsiveAlignX = computed(() => parseResponsivePropValue(props.alignX));
 const cssClasses = computed(() => [

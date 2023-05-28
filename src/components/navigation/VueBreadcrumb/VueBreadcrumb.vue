@@ -21,11 +21,16 @@
 </template>
 
 <script setup lang="ts">
+import { useCssModule } from 'vue';
 import { IItem } from '~/interfaces/IItem';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueIconHome from '~/components/icons/VueIconHome.vue';
 
+// Interface
 defineProps<{ items: Array<IItem> }>();
+
+// Deps
+const $style = useCssModule();
 </script>
 
 <style lang="scss" module>

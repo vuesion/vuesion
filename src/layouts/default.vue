@@ -41,7 +41,7 @@ const localePath = useLocalePath();
 
 // Config
 useHead({
-  htmlAttrs: { lang: i18nHead.value.htmlAttrs!.lang },
+  htmlAttrs: { lang: locale.value },
   link: [...(i18nHead.value.link || [])],
   meta: [...(i18nHead.value.meta || [])],
 });

@@ -1,13 +1,13 @@
-$slider-height: $space-64;
-$slider-input-width: $space-48;
+$slider-height: $space-40;
+$slider-label-width: $space-48;
 $slider-disabled-opacity: 0.3;
 
 // track
 $slider-track-height: $space-4;
-$slider-track-border-radius: var(--brand-border-radius-xs);
+$slider-track-border-radius: 0;
 $slider-track-bg: var(--brand-surface-default-low);
 $slider-progress-height: $space-4;
-$slider-progress-border-radius: var(--brand-border-radius-xs);
+$slider-progress-border-radius: 0;
 $slider-progress-bg: var(--brand-interaction-primary-enabled);
 
 // handle

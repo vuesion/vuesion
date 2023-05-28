@@ -1,7 +1,7 @@
 <template>
   <vue-content-block :class="$style.form">
-    <vue-box :padding="['24 16', '24 16', '24', '32']">
-      <vue-stack :space="['16', '16', '24', '32']">
+    <vue-box :padding="['24 16', '24 16', 24, 32]">
+      <vue-stack :space="[16, 16, 24, 32]">
         <vue-breadcrumb :items="breadCrumbItems" />
 
         <form-example />

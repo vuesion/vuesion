@@ -17,23 +17,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, useCssModule } from 'vue';
 import { VerticalDirection } from '~/components/prop-types';
 
+// Interface
 interface TooltipProps {
   as?: string;
   tip: string;
   direction?: VerticalDirection;
   disabled?: boolean;
 }
-
 const props = withDefaults(defineProps<TooltipProps>(), {
   as: 'span',
   direction: 'top',
   disabled: false,
 });
 
+// Deps
+const $style = useCssModule();
+
+// Data
 const show = ref(false);
+
+// Event Handlers
 const onEnter = () => {
   if (props.disabled === false) {
     show.value = true;

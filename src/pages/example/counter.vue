@@ -1,7 +1,7 @@
 <template>
   <vue-content-block :class="$style.counter">
-    <vue-box :padding="['24 16', '24 16', '24', '32']">
-      <vue-stack :space="['16', '16', '24', '32']">
+    <vue-box :padding="['24 16', '24 16', 24, 32]">
+      <vue-stack :space="[16, 16, 24, 32]">
         <vue-breadcrumb :items="[{ label: 'Counter Pinia-example', value: '/example/counter' }]" />
 
         <vue-text look="h1" as="h1"> Counter Pinia-example </vue-text>

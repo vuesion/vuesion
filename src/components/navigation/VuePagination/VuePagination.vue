@@ -44,7 +44,7 @@ import { computed } from 'vue';
 import VueIconChevronLeft from '~/components/icons/VueIconChevronLeft.vue';
 import VueIconChevronRight from '~/components/icons/VueIconChevronRight.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
-
+// TODO: re-design
 interface IPaginationItem {
   label: string;
   active: boolean;

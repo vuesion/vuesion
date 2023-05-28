@@ -38,6 +38,25 @@ describe('VueMenu.vue', () => {
     await fireEvent.mouseLeave(getByTestId('Value 1-0'));
   });
 
+  test('should use focus function on focus', async () => {
+    const { getByTestId, emitted } = harness;
+    const menu = getByTestId('menu');
+
+    await fireEvent.focus(menu);
+    await fireEvent.keyDown(menu, { key: 'Enter', code: 'Enter' });
+
+    expect(emitted().click).toEqual([
+      [
+        {
+          description: 'Description 1',
+          label: 'Value 1',
+          leadingIcon: 'hashtag',
+          value: 'Value 1',
+        },
+      ],
+    ]);
+  });
+
   test('should select 1st item and emit click event via keyboard', async () => {
     const { getByTestId, emitted } = harness;
     const menu = getByTestId('menu');

@@ -48,7 +48,7 @@
         </vue-stack>
       </vue-box>
 
-      <vue-columns :space="['0', '24']" stack-phone :class="$style.gallery">
+      <vue-columns :space="[0, 24]" stack-phone :class="$style.gallery">
         <vue-column>
           <a tabindex="0" href="/storybook/" target="_blank" rel="noopener" aria-label="vuesion storybook">
             <nuxt-img
@@ -90,7 +90,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, onMounted, onBeforeUnmount } from 'vue';
+import { onBeforeMount, onMounted, onBeforeUnmount, useCssModule } from 'vue';
 import { CircleAnimation } from '~/components/animations/CircleAnimation';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
@@ -103,8 +103,15 @@ import VueIconDownload from '~/components/icons/VueIconDownload.vue';
 import VueIconBook from '~/components/icons/VueIconBook.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+
+// Deps
+const $style = useCssModule();
+
+// Data
 const header = getDomRef<HTMLElement>(null);
 const canvas = getDomRef<HTMLCanvasElement>(null);
+
+// Methods
 const handleResize = () => {
   const canvasElement: HTMLCanvasElement = canvas.value;
   const headerElement: HTMLElement = header.value;

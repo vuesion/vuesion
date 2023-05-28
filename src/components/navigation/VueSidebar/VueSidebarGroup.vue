@@ -1,7 +1,7 @@
 <template>
   <vue-stack space="4" :class="$style.vueSidebarGroup">
     <vue-box padding="48 0 10 12">
-      <vue-columns :class="$style.header" @click.prevent.stop="$emit('click')">
+      <vue-columns :class="$style.header" @click.prevent.stop="$emit('click', $event)">
         <vue-column>
           <vue-text color="text-inverse-low" look="support" weight="semi-bold" uppercase>{{ name }}</vue-text>
         </vue-column>
@@ -9,8 +9,8 @@
         <vue-column v-if="icon" width="content">
           <vue-text
             color="text-low"
-            @click.prevent.stop="$emit('icon-click')"
-            @keypress.space.enter.prevent.stop="$emit('icon-click')"
+            @click.prevent.stop="$emit('icon-click', $event)"
+            @keypress.space.enter.prevent.stop="$emit('icon-click', $event)"
           >
             <component :is="`vue-icon-${icon}`" tabindex="0" />
           </vue-text>
@@ -25,6 +25,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCssModule } from 'vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
@@ -32,20 +33,26 @@ import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import { Spacing } from '~/components/prop-types';
 
+// Interface
 interface SidebarGroupProps {
   name: string;
   as?: string;
   icon?: string | null;
   itemSpace?: Spacing;
 }
-
+interface SidebarGroupEmits {
+  (event: 'click', e: MouseEvent): void;
+  (event: 'icon-click', e: MouseEvent): void;
+}
 withDefaults(defineProps<SidebarGroupProps>(), {
   as: 'ol',
   icon: null,
-  itemSpace: '0',
+  itemSpace: 0,
 });
+defineEmits<SidebarGroupEmits>();
 
-defineEmits(['click', 'icon-click', 'icon-click']);
+// Deps
+const $style = useCssModule();
 </script>
 
 <style lang="scss" module>

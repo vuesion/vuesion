@@ -19,13 +19,15 @@
 </template>
 
 <script setup lang="ts">
+import { useCssModule } from 'vue';
+import { SpacingWithDirections } from '~/components/prop-types';
 import VueModal from '~/components/data-display/VueModal/VueModal.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
-import { SpacingWithDirections } from '~/components/prop-types';
 
+// Interface
 interface ConfirmModalProps {
   padding?: string | SpacingWithDirections | Array<SpacingWithDirections>;
   show?: boolean;
@@ -35,7 +37,11 @@ interface ConfirmModalProps {
   confirmText?: string;
   abortText?: string;
 }
-
+interface ConfirmModalEmits {
+  (e: 'confirm'): void;
+  (e: 'abort'): void;
+  (e: 'close'): void;
+}
 withDefaults(defineProps<ConfirmModalProps>(), {
   padding: () => ['16'],
   show: false,
@@ -45,7 +51,10 @@ withDefaults(defineProps<ConfirmModalProps>(), {
   confirmText: 'Yes',
   abortText: 'No',
 });
-defineEmits(['confirm', 'abort', 'close']);
+defineEmits<ConfirmModalEmits>();
+
+// Deps
+const $style = useCssModule();
 </script>
 
 <style lang="scss" module>

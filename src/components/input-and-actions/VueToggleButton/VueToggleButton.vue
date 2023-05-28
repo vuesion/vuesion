@@ -17,21 +17,30 @@
 </template>
 
 <script setup lang="ts">
+import { useCssModule } from 'vue';
 import { IItem } from '~/interfaces/IItem';
 import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 import { ShirtSize } from '~/components/prop-types';
 
+// Interface
 interface ToggleButtonProps {
   items: Array<IItem>;
   modelValue?: string | boolean | number | IItem | object | any;
   size?: ShirtSize;
 }
-
+interface ToggleButtonEmits {
+  (e: 'update:modelValue', value: IItem): void;
+}
 const props = withDefaults(defineProps<ToggleButtonProps>(), {
   modelValue: undefined,
   size: 'md',
 });
-defineEmits(['update:modelValue']);
+defineEmits<ToggleButtonEmits>();
+
+// Deps
+const $style = useCssModule();
+
+// Methods
 const isChecked = (item: IItem) => {
   if (props.modelValue !== undefined && props.modelValue?.value !== undefined) {
     return props.modelValue.value === item.value;

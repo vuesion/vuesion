@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, useCssModule } from 'vue';
 import { useEventListener } from '@vueuse/core';
 import VueIconArrowUp from '~/components/icons/VueIconArrowUp.vue';
 
@@ -22,6 +22,9 @@ defineProps({
     default: 'Back to top',
   },
 });
+
+// Deps
+const $style = useCssModule();
 
 // Data
 const show = ref(false);

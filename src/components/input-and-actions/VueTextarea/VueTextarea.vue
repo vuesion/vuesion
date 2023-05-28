@@ -3,6 +3,7 @@
     <vue-text
       :for="id"
       look="label"
+      weight="semi-bold"
       :color="errors.length > 0 ? 'danger' : 'text-medium'"
       :class="[$style.label, hideLabel && 'sr-only']"
       as="label"
@@ -27,7 +28,8 @@
     />
 
     <vue-text
-      :color="errors.length > 0 ? 'danger' : 'text-medium'"
+      look="support"
+      :color="errors.length > 0 ? 'danger' : 'text-low'"
       :class="[$style.description, hideDescription && 'sr-only']"
     >
       {{ errors.length > 0 ? errorMessage : description }}
@@ -36,14 +38,14 @@
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue';
+import { useCssModule, watch } from 'vue';
 import { useField } from 'vee-validate';
-import debounce from 'lodash-es/debounce.js';
-import { useIntersectionObserver } from '~/composables/use-intersection-observer';
+import _debounce from 'lodash-es/debounce.js';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
 
-interface InputProps {
+// Interface
+interface TextareaProps {
   id: string;
   name: string;
   label: string;
@@ -60,8 +62,12 @@ interface InputProps {
   errorMessage?: string;
   debounce?: number;
 }
-
-const props = withDefaults(defineProps<InputProps>(), {
+interface TextareaEmits {
+  (event: 'debounced-input', value: string, e: InputEvent): void;
+  (event: 'update:modelValue', value: string, e: InputEvent): void;
+  (event: 'blur', e: FocusEvent): void;
+}
+const props = withDefaults(defineProps<TextareaProps>(), {
   hideLabel: false,
   hideDescription: false,
   required: false,
@@ -75,14 +81,24 @@ const props = withDefaults(defineProps<InputProps>(), {
   errorMessage: '',
   debounce: undefined,
 });
-const emit = defineEmits(['debounced-input', 'update:modelValue', 'blur']);
-const inputRef = getDomRef<HTMLElement>(null);
-const debouncedInput = debounce((value: string) => emit('debounced-input', value), props.debounce || 0);
+const emit = defineEmits<TextareaEmits>();
+
+// Deps
+const $style = useCssModule();
 const { errors, value, handleChange } = useField<string | number | null | undefined>(props.id, props.validation, {
   initialValue: props.modelValue,
   validateOnValueUpdate: false,
   syncVModel: false,
 });
+
+// Data
+const inputRef = getDomRef<HTMLElement>(null);
+const debouncedInput = _debounce(
+  (value: string, e: InputEvent) => emit('debounced-input', value, e),
+  props.debounce || 0,
+);
+
+// Event Handlers
 const onInput = (e: InputEvent) => {
   const value = (e.target as HTMLInputElement).value;
 
@@ -96,7 +112,7 @@ const onInput = (e: InputEvent) => {
     debouncedInput(value);
   }
 };
-const onBlur = (e: InputEvent) => {
+const onBlur = (e: FocusEvent) => {
   const value = (e.target as HTMLInputElement).value;
 
   handleChange(value);
@@ -104,18 +120,13 @@ const onBlur = (e: InputEvent) => {
   emit('blur', e);
 };
 
+// Watchers
 watch(
   () => props.modelValue,
   (newModelValue) => {
     value.value = newModelValue;
   },
 );
-
-useIntersectionObserver(inputRef, (entries: IntersectionObserverEntry[]) => {
-  if (props.autofocus) {
-    entries.forEach((entry) => (entry.target as HTMLInputElement).focus());
-  }
-});
 </script>
 
 <style lang="scss" module>
@@ -176,14 +187,16 @@ useIntersectionObserver(inputRef, (entries: IntersectionObserverEntry[]) => {
 
   .label {
     display: flex;
-    height: $textarea-label-height;
-    margin-bottom: $textarea-label-gap;
+    height: $input-label-height;
+    margin-bottom: $input-label-gap;
+    white-space: nowrap;
   }
 
   .description {
     display: flex;
-    height: $textarea-description-height;
-    margin-top: $textarea-description-gap;
+    height: $input-description-height;
+    margin-top: $input-description-gap;
+    white-space: nowrap;
   }
 }
 </style>

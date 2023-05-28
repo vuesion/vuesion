@@ -3,7 +3,7 @@
     :class="[$style.vueBadge, $style[status], icon && $style.hasIcon]"
     look="support"
     weight="semi-bold"
-    @click="$emit('click')"
+    @click="$emit('click', $event)"
   >
     <vue-inline as="span" space="4" align-y="center" no-wrap>
       <slot />
@@ -13,21 +13,27 @@
 </template>
 
 <script setup lang="ts">
-import VueText from '~/components/typography/VueText/VueText.vue';
+import { useCssModule } from 'vue';
 import { BadgeStatus } from '~/components/prop-types';
+import VueText from '~/components/typography/VueText/VueText.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 
+// Interface
 interface BadgeProps {
   status?: BadgeStatus;
   icon?: string;
 }
-
+interface BadgeEmits {
+  (event: 'click', e: MouseEvent): void;
+}
 withDefaults(defineProps<BadgeProps>(), {
   status: 'info',
   icon: undefined,
 });
+defineEmits<BadgeEmits>();
 
-defineEmits(['click']);
+// Deps
+const $style = useCssModule();
 </script>
 
 <style lang="scss" module>

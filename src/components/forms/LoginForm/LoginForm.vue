@@ -11,7 +11,7 @@
         required
         label="Email (Demo: account@example.com)"
         placeholder="Enter an email address"
-        validation="required"
+        validation="required|email"
         error-message="The email can not be empty)"
       />
 
@@ -52,13 +52,22 @@ import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 
+// Interface
 defineProps({
   loading: { type: Boolean, default: false },
 });
-const emit = defineEmits(['submit']);
+const emit = defineEmits<{
+  (e: 'submit', model: { email: string; password: string }): void;
+}>();
+
+// Deps
+const { meta } = useForm();
+
+// Data
 const email = ref('');
 const password = ref('');
-const { meta } = useForm();
+
+// Event Handlers
 const onSubmit = () => {
   emit('submit', { email: email.value, password: password.value });
 };

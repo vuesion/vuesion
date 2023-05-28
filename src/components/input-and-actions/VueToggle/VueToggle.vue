@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed, useCssModule, watch } from 'vue';
 import { useField } from 'vee-validate';
 import VueText from '~/components/typography/VueText/VueText.vue';
 
@@ -59,34 +59,36 @@ interface ToggleProps {
   id: string;
   name: string;
   label: string;
-  description: string | null;
+  description?: string | null;
   required?: boolean;
   disabled?: boolean;
   hideLabel?: boolean;
   modelValue?: boolean;
 }
-
+interface ToggleEmits {
+  (event: 'click', value: boolean, e: MouseEvent): void;
+  (event: 'update:modelValue', value: boolean): void;
+}
 const props = withDefaults(defineProps<ToggleProps>(), {
-  required: false,
-  disabled: false,
-  hideLabel: false,
-  modelValue: false,
+  description: null,
 });
-const emit = defineEmits(['click', 'update:modelValue']);
+const emit = defineEmits<ToggleEmits>();
 
-// Data
+// Deps
+const $style = useCssModule();
 const rules = computed(() => (props.required ? 'required' : undefined));
 const { errors, value, validate } = useField<boolean>(props.id, rules, {
   initialValue: props.modelValue,
   type: 'checkbox',
   syncVModel: false,
+  validateOnMount: props.required,
 });
 
 // Event Handler
-const onClick = () => {
+const onClick = (e: MouseEvent) => {
   if (!props.disabled) {
     emit('update:modelValue', !value.value);
-    emit('click', value);
+    emit('click', value.value, e);
   }
 };
 

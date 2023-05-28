@@ -7,16 +7,20 @@
 <script setup lang="ts">
 import { onBeforeUnmount, provide, shallowRef, ref, Ref } from 'vue';
 
+// Interface
 interface AccordionItem {
   idx: Ref<number>;
   open: Ref<boolean>;
 }
-
 const props = defineProps({
   multiple: { type: Boolean, default: false },
 });
+
+// Data
 const items = shallowRef<Array<AccordionItem>>([]);
 const openItems = ref<Array<number>>([]);
+
+// Methods
 const handleItems = () => {
   items.value.forEach((item) => {
     item.open.value = openItems.value.includes(item.idx.value);
@@ -47,9 +51,11 @@ const register = (idx: Ref<number>, open: Ref<boolean>, initOpen: boolean) => {
   handleItems();
 };
 
+// DI
 provide('register', register);
 provide('openItem', openItem);
 
+// Lifecycle
 onBeforeUnmount(() => {
   items.value = [];
   openItems.value = [];

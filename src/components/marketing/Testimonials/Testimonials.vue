@@ -7,7 +7,7 @@
         </vue-text>
 
         <vue-content-block>
-          <vue-tiles :space="['24', '24', '32']" :columns="[2, 4, 4, 8]">
+          <vue-tiles :space="[24, 24, 32]" :columns="[2, 4, 4, 8]">
             <vue-box
               v-for="stargazer in randomStargazers"
               :key="stargazer.login"
@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref, useCssModule, watch } from 'vue';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
@@ -48,15 +48,23 @@ import VueAvatar from '~/components/data-display/VueAvatar/VueAvatar.vue';
 import VueTiles from '~/components/layout/VueTiles/VueTiles.vue';
 import { getIntInRange } from '~/components/utils';
 
+// Interface
 const props = defineProps({
   stargazersCount: { type: [Number, String], required: true },
   stargazers: { type: Array, required: true },
   interval: { type: Number, default: 2000 },
 });
-const lastIndex = ref(0);
+
+// Deps
+const $style = useCssModule();
+
+// Methods
 const getRandomStargazers = (max = 16): Array<any> =>
   [...props.stargazers].sort(() => 0.5 - Math.random()).slice(0, Math.min(props.stargazers.length, max));
-const randomStargazers = ref(props.stargazers?.slice(0, 16));
+
+// Data
+const lastIndex = ref(0);
+const randomStargazers = ref<Array<any>>(props.stargazers?.slice(0, 16));
 
 /* c8 ignore start */
 onMounted(() => {

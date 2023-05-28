@@ -9,8 +9,8 @@
     :class="$style.vueSidebarGroupItem"
     :active-class="$style.active"
     tabindex="0"
-    @click="!href && !to && $emit('click')"
-    @keypress.space.enter="!href && !to && $emit('click')"
+    @click="!href && !to && $emit('click', $event)"
+    @keypress.space.enter="!href && !to && $emit('click', $event)"
   >
     <vue-columns space="16">
       <vue-column v-if="leadingIcon" width="content" align-y="center">
@@ -29,11 +29,12 @@
 </template>
 
 <script setup lang="ts">
-import { withDefaults } from 'vue';
+import { useCssModule, withDefaults } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
+// Interface
 interface SidebarGroupItemProps {
   name: string;
   leadingIcon?: string | null;
@@ -42,7 +43,9 @@ interface SidebarGroupItemProps {
   exact?: boolean;
   href?: string | null;
 }
-
+interface SidebarGroupItemEmit {
+  (event: 'click', e: MouseEvent): void;
+}
 withDefaults(defineProps<SidebarGroupItemProps>(), {
   leadingIcon: null,
   trailingIcon: null,
@@ -50,8 +53,10 @@ withDefaults(defineProps<SidebarGroupItemProps>(), {
   exact: true,
   href: null,
 });
+defineEmits<SidebarGroupItemEmit>();
 
-defineEmits(['click']);
+// Deps
+const $style = useCssModule();
 </script>
 
 <style lang="scss" module>

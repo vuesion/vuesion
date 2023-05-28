@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref } from 'vue';
+import { nextTick, ref, useCssModule } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { getDomRef } from '~/composables/get-dom-ref';
 import { IItem } from '~/interfaces/IItem';
@@ -29,6 +29,7 @@ import VueMenu from '~/components/data-display/VueMenu/VueMenu.vue';
 import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
 
+// Interface
 interface DropdownProps {
   items: Array<IItem>;
   buttonText?: string;
@@ -37,6 +38,10 @@ interface DropdownProps {
   alignYMenu?: VerticalDirection;
   size?: ShirtSize;
 }
+interface DropdownEmits {
+  (event: 'click', e: MouseEvent): void;
+  (event: 'item-click', item: IItem): void;
+}
 withDefaults(defineProps<DropdownProps>(), {
   buttonText: '',
   duration: 250,
@@ -44,14 +49,23 @@ withDefaults(defineProps<DropdownProps>(), {
   alignYMenu: 'bottom',
   size: 'md',
 });
-const emit = defineEmits(['click', 'item-click']);
+const emit = defineEmits<DropdownEmits>();
+
+// Deps
+const $style = useCssModule();
+
+// Data
 const dropdownRef = getDomRef<HTMLDivElement>(null);
 const menuRef = getDomRef<{ focus: () => void }>(null);
 const show = ref(false);
+
+// Methods
 const close = () => (show.value = false);
-const onClick = () => {
+
+// Event Handlers
+const onClick = (e: MouseEvent) => {
   show.value = !show.value;
-  emit('click');
+  emit('click', e);
 };
 const onItemClick = (item: IItem) => {
   emit('item-click', item);
