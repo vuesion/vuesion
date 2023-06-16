@@ -41,7 +41,7 @@ const props = withDefaults(defineProps<InlineProps>(), {
 const responsiveSpace = computed(() => parseResponsivePropValue(props.space));
 const responsiveAlignX = computed(() => parseResponsivePropValue(props.alignX));
 const responsiveAlignY = computed(() => parseResponsivePropValue(props.alignY));
-const responsiveReverse = computed(() => parseResponsivePropValue(props.reverse));
+const responsiveReverse = computed(() => parseResponsivePropValue(props.reverse, true));
 const cssClasses = computed(() => [
   'inline-flex',
   props.noWrap ? 'no-wrap' : 'wrap',

@@ -10,9 +10,9 @@
   >
     <vue-stack>
       <vue-text>{{ text }}</vue-text>
-      <vue-inline space="8" align-x="end">
+      <vue-inline space="8" align-x="start" reverse>
         <vue-button size="sm" look="primary" @click="$emit('confirm')">{{ confirmText }}</vue-button>
-        <vue-button size="sm" look="secondary" @click="$emit('abort')">{{ abortText }}</vue-button>
+        <vue-button size="sm" look="ghost" @click="$emit('abort')">{{ abortText }}</vue-button>
       </vue-inline>
     </vue-stack>
   </vue-modal>
@@ -43,7 +43,7 @@ interface ConfirmModalEmits {
   (e: 'close'): void;
 }
 withDefaults(defineProps<ConfirmModalProps>(), {
-  padding: () => ['16'],
+  padding: () => [16],
   show: false,
   backdrop: true,
   disablePageScroll: false,

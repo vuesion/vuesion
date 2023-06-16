@@ -38,7 +38,7 @@ export const Inline = {
     space: [8, 16, 24, 48, 192],
     alignX: ['start', 'center', 'end'],
     alignY: ['start', 'center', 'end'],
-    reverse: [true, false, true, false, false],
+    reverse: [true, false, true, false, true],
     noWrap: false,
     stackPhone: true,
     stackTabletPortrait: false,

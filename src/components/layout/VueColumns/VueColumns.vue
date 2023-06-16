@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<ColumnsProps>(), {
 const responsiveSpace = computed(() => parseResponsivePropValue(props.space));
 const responsiveAlignX = computed(() => parseResponsivePropValue(props.alignX));
 const responsiveAlignY = computed(() => parseResponsivePropValue(props.alignY));
-const responsiveReverse = computed(() => parseResponsivePropValue(props.reverse));
+const responsiveReverse = computed(() => parseResponsivePropValue(props.reverse, true));
 const cssClasses = computed(() => [
   'flex',
   ...getResponsiveCssClasses(null, responsiveSpace.value, 'gap'),

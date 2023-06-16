@@ -42,7 +42,7 @@ export const Columns = {
     space: [8, 16, 24, 48, 192],
     alignX: ['start', 'center', 'end'],
     alignY: ['start', 'center', 'end'],
-    reverse: [true, false, true, false, false],
+    reverse: [true, false, true, false, true],
     stackPhone: true,
     stackTabletPortrait: false,
     stackTabletLandscape: true,
