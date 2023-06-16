@@ -68,7 +68,11 @@ const onUpdate<%= h.inflection.camelize(name) %> = async () => {
 await usePrefillStoreAction(async () => await store.fetch<%= h.inflection.camelize(name) %>(route.params.id.toString()), store.getCurrent<%= h.inflection.camelize(name) %>);
 
 onMounted(() => {
-  update<%= h.inflection.camelize(name) %>Model.value = { ...current<%= h.inflection.camelize(name) %>.value };
+  update<%= h.inflection.camelize(name) %>Model.value = {
+    name: current<%= h.inflection.camelize(name) %>.value.name,
+    ownerId: current<%= h.inflection.camelize(name) %>.value.ownerId,
+    id: current<%= h.inflection.camelize(name) %>.value.id,
+  };
 });
 </script>
 

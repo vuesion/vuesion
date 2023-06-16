@@ -21,13 +21,17 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
     };
   },
   getters: {
-    get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>(state) {
+    get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>(state: I<%= h.inflection.camelize(name) %>State) {
       return state.<%= h.inflection.pluralize(name) %>;
     },
-    getCurrent<%= h.inflection.camelize(name) %>(state) {
+    getCurrent<%= h.inflection.camelize(name) %>(state: I<%= h.inflection.camelize(name) %>State) {
+      if (!state.current<%= h.inflection.camelize(name) %>) {
+        throw new Error('you need to fetch, create or update first');
+      }
+
       return state.current<%= h.inflection.camelize(name) %>;
     },
-    getError(state) {
+    getError(state: I<%= h.inflection.camelize(name) %>State) {
       return state.error;
     },
   },
