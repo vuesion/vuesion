@@ -53,12 +53,12 @@ import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueCard from '~/components/data-display/VueCard/VueCard.vue';
 
 interface ComponentDocsProps {
-  componentName?: string;
-  usage?: string;
-  story?: string;
-  suffix?: string;
+  componentName?: string | null;
+  usage?: string | null;
+  story?: string | null;
+  suffix?: string | null;
   showDisclaimer?: boolean;
-  buyLink?: string;
+  buyLink?: string | null;
 }
 
 withDefaults(defineProps<ComponentDocsProps>(), {

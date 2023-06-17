@@ -5,7 +5,7 @@ unless_exists: true
 import { usePrisma } from '@sidebase/nuxt-prisma';
 <% if(auth === true) { -%>
 import { getServerSession } from '#auth';
-import { checkUserSession, checkUserAuthorization } from '~/utils/accessControl';
+import { checkUserSession, checkUserAuthorization } from '~/server/utils/accessControl';
 <% } -%>
 import { <%= h.inflection.camelize(name) %>Include, I<%= h.inflection.camelize(name) %>Update } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 

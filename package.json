@@ -27,7 +27,7 @@
     "url": "https://github.com/vuesion/vuesion/issues"
   },
   "scripts": {
-    "dev": "cross-env NODE_ICU_DATA=node_modules/full-icu nuxt dev",
+    "dev": "cross-env NODE_ICU_DATA=node_modules/full-icu nuxi dev",
     "storybook:dev": "rm -rf ./node_modules/.cache && storybook dev -p 6006",
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest run --coverage",
     "new:component": "hygen new component",
@@ -47,9 +47,9 @@
     "release:major": "ts-node ./tools/release.ts --major",
     "release:minor": "ts-node ./tools/release.ts --minor",
     "release:patch": "ts-node ./tools/release.ts --patch",
-    "build": "nuxt build",
-    "build:analyze": "nuxt build --analyze",
-    "build:spa": "nuxt generate",
+    "build": "nuxi build",
+    "build:analyze": "nuxi analyze",
+    "build:spa": "nuxi generate",
     "start": "cross-env NODE_ICU_DATA=node_modules/full-icu node .output/server/index.mjs",
     "prepare": "husky install",
     "pre-commit": "pretty-quick --staged && concurrently \"npm run lint\" \"npm test\""
@@ -75,7 +75,7 @@
     "@babel/core": "7.22.5",
     "@commitlint/config-conventional": "17.6.5",
     "@nuxt/devtools": "0.6.1",
-    "@nuxt/image-edge": "1.0.0-rc.1-28115526.1a8c782",
+    "@nuxt/image": "1.0.0-rc.1",
     "@nuxtjs/color-mode": "3.2.0",
     "@nuxtjs/eslint-config-typescript": "12.0.0",
     "@nuxtjs/html-validator": "1.4.0",

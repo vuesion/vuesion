@@ -74,6 +74,18 @@ export default defineNuxtConfig({
       cookieSecure: true,
     },
   },
+  image: {
+    densities: [1, 2, 3],
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1440,
+      '2xl': 1440,
+    },
+  },
   imports: {
     autoImport: false,
     dirs: ['store'],
@@ -89,7 +101,7 @@ export default defineNuxtConfig({
       },
     ],
     '@nuxtjs/robots',
-    '@nuxt/image-edge',
+    '@nuxt/image',
     [
       '@nuxtjs/html-validator',
       {

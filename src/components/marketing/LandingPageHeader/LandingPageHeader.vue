@@ -60,6 +60,7 @@
               quality="50"
               fit="contain"
               loading="lazy"
+              sizes="xs:288px md:348px lg:476px xl:596px xxl:785px"
             />
           </a>
         </vue-column>
@@ -81,6 +82,7 @@
               quality="50"
               fit="contain"
               loading="lazy"
+              sizes="xs:288px md:348px lg:476px xl:596px xxl:785px"
             />
           </a>
         </vue-column>

@@ -20,6 +20,7 @@
                     fit="contain"
                     quality="50"
                     loading="lazy"
+                    sizes="xs:319px md:358px lg:584px xl:504px xxl:584px"
                   />
                 </div>
               </vue-column>
@@ -168,6 +169,7 @@
                     height="603px"
                     quality="50"
                     fit="contain"
+                    sizes="xs:319px md:358px lg:584px xl:504px xxl:584px"
                   />
                 </div>
               </vue-column>

@@ -44,7 +44,9 @@
         <div
           :id="'custom-' + id"
           :data-testid="'custom-' + id"
-          :aria-expanded="show.toString()"
+          role="combobox"
+          :aria-expanded="show"
+          :aria-label="label"
           :class="[
             $style.customSelect,
             placeholder && inputValue.length === 0 && $style.hasPlaceholder,
@@ -52,7 +54,7 @@
             $style[size],
           ]"
           :tabindex="disabled ? -1 : 0"
-          role="listbox"
+          aria-haspopup="listbox"
           @click.stop.prevent="toggleMenu"
         >
           {{ displayItem ? displayItem.label : placeholder }}

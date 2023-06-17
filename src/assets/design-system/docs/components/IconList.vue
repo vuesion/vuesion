@@ -20,7 +20,7 @@ const props = defineProps({
 });
 
 const $style = useCssModule();
-const icons = ref([]);
+const icons = ref<Array<string>>([]);
 const loadIcons = () => {
   icons.value = [
     'activity',
@@ -182,7 +182,7 @@ const loadIcons = () => {
 onMounted(() => {
   setTimeout(() => {
     loadIcons();
-  }, 100);
+  }, 500);
 });
 
 watch(
@@ -192,7 +192,7 @@ watch(
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@import 'assets/design-system';
 
 .icons {
   .icon {

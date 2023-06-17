@@ -8,7 +8,7 @@ import { getServerSession } from '#auth';
 <% } -%>
 import { <%= h.inflection.camelize(name) %>Include, I<%= h.inflection.camelize(name) %>Create } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 <% if(auth === true) { -%>
-import { checkUserSession } from '~/utils/accessControl';
+import { checkUserSession } from '~/server/utils/accessControl';
 <% } -%>
 
 export default eventHandler(async (event) => {
