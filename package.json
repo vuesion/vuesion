@@ -88,7 +88,7 @@
     "lodash": "4.17.21",
     "marked": "2.0.1",
     "node-fetch": "2.6.1",
-    "nuxt": "2.15.8",
+    "nuxt": "3.4.3",
     "nuxt-i18n": "6.20.3",
     "nuxt-winston-log": "1.2.0",
     "openapi-typescript": "3.2.3",
