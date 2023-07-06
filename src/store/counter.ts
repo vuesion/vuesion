@@ -60,7 +60,7 @@ export const useCounterStore = defineStore('counter', {
       } catch (e) {
         this.error = e;
       } finally {
-        this.incrementPending = false;
+        this.decrementPending = false;
       }
     },
   },
