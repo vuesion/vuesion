@@ -8,7 +8,6 @@ _**Vuesion is a boilerplate that helps product teams build faster than ever with
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c8e3979ea94da8e9d683/test_coverage)](https://codeclimate.com/github/vuesion/vuesion/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c8e3979ea94da8e9d683/maintainability)](https://codeclimate.com/github/vuesion/vuesion/maintainability)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/vuesion/vuesion/graphs/commit-activity)
-[![CircleCI](https://circleci.com/gh/vuesion/vuesion.svg?style=svg)](https://circleci.com/gh/vuesion/vuesion)
 [![GitHub issues-closed](https://img.shields.io/github/issues-closed/vuesion/vuesion.svg)](https://GitHub.com/vuesion/vuesion/issues?q=is%3Aissue+is%3Aclosed)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fvuesion%2Fvuesion.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fvuesion%2Fvuesion?ref=badge_shield)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
@@ -19,7 +18,7 @@ Please visit the **[vuesion app on heroku!](https://vuesion.herokuapp.com/)**
 
 Or have a look into the future and visit the **[vuesion-next app on heroku!](https://vuesion-next.herokuapp.com/)**
 
-# [Get started](https://vuesion.github.io/docs/en/v4/guide/install.html)
+# [Get started](https://vuesion.github.io/docs/en/v5/guide/install.html)
 
 # [Documentation](https://vuesion.github.io/docs/en/v4/)
 
@@ -28,7 +27,7 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 ## Testing
 
 - [Cypress.io E2E testing](https://www.cypress.io/)
-- [Jest Testing framework](https://jestjs.io/)
+- [Vitest Testing framework](https://vitest.dev/)
 - [Testing-library](https://testing-library.com/) to encourage good testing practices
 - 250+ example tests included
 
@@ -53,7 +52,7 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 - [Figma UIKit](https://www.figma.com/file/DvP4EE7gAJH3fsc4RFqZYc/Vuesion-Core?node-id=1686%3A4660)
 - [SEO support](https://github.com/nuxt/vue-meta)
 - [i18n support](https://i18n.nuxtjs.org/)
-- [Authentication module](https://auth.nuxtjs.org/)
+- [Authentication module](https://sidebase.io/nuxt-auth/getting-started)
 - [Axios module](https://axios.nuxtjs.org/)
 - [PWA module](https://pwa.nuxtjs.org/)
 - Code generators for
