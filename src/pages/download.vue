@@ -55,7 +55,7 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { definePageMeta, useHead, useI18n } from '#imports';
+import { useHead, useI18n } from '#imports';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -68,7 +68,6 @@ const { t } = useI18n();
 const $style = useCssModule();
 
 // Config
-definePageMeta({ auth: false });
 useHead({
   title: 'Download',
 });

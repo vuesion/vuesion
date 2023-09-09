@@ -2,7 +2,7 @@
 to: "src/pages/<%= path %>.vue"
 ---
 <template>
-  <vue-content-block :class="$style.<%= h.inflection.camelize(name, true) %>Page">
+  <vue-content-block :class="$style.page">
     <%= path %>
 <% if (store !== 'None') { -%>
 
@@ -12,7 +12,7 @@ to: "src/pages/<%= path %>.vue"
 </template>
 
 <script setup lang="ts">
-import { computed, useHead } from '#imports';
+import { <% if (store !== 'None') { -%>computed, <% } -%><% if (auth === true) { -%>definePageMeta, <% } %>useHead } from '#imports';
 <% if (store !== 'None') { -%>
 import { usePrefillStoreAction } from '~/composables/use-prefill-store-action';
 import { use<%= store %>Store } from '~/store/<%= store.toLowerCase() %>';
@@ -25,8 +25,8 @@ const store = use<%= store %>Store();
 <% } %>
 // Config
 useHead({ title: 'Page Title' });
-<% if (auth === false) { -%>
-definePageMeta({ auth: false });
+<% if (auth === true) { -%>
+definePageMeta({ middleware: 'auth' });
 <% } %>
 // Data
 <% if (store !== 'None') { -%>
@@ -43,7 +43,7 @@ usePrefillStoreAction(store.fetch<%= h.inflection.camelize(h.inflection.pluraliz
 <style lang="scss" module>
 @import 'assets/_design-system.scss';
 
-.<%= h.inflection.camelize(name, true) %>Page {
+.page {
   padding-top: $navbar-height;
 }
 </style>

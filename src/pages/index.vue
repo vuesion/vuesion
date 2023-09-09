@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { definePageMeta, useFetch, useHead, useI18n, useLocalePath, useRouter, useAuth } from '#imports';
+import { useFetch, useHead, useI18n, useLocalePath, useRouter, useAuth } from '#imports';
 import { RequestStatus } from '~/enums/RequestStatus';
 import { addToast } from '~/components/utils';
 import LandingPageHeader from '~/components/marketing/LandingPageHeader/LandingPageHeader.vue';
@@ -24,9 +24,6 @@ import FeatureList from '~/components/marketing/FeatureList/FeatureList.vue';
 import LearnMore from '~/components/marketing/LearnMore/LearnMore.vue';
 import VueModal from '~/components/data-display/VueModal/VueModal.vue';
 import LoginForm from '~/components/forms/LoginForm/LoginForm.vue';
-
-// Config
-definePageMeta({ auth: false });
 
 // Deps
 const { t } = useI18n();

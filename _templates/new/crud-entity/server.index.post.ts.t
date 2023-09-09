@@ -2,7 +2,8 @@
 to: "src/server/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/index.post.ts"
 unless_exists: true
 ---
-import { usePrisma } from '@sidebase/nuxt-prisma';
+import { defineEventHandler } from 'h3';
+import { PrismaClient } from '@prisma/client';
 <% if(auth === true) { -%>
 import { getServerSession } from '#auth';
 <% } -%>
@@ -11,14 +12,14 @@ import { <%= h.inflection.camelize(name) %>Include, I<%= h.inflection.camelize(n
 import { checkUserSession } from '~/server/utils/accessControl';
 <% } -%>
 
-export default eventHandler(async (event) => {
+export default defineEventHandler(async (event) => {
 <% if(auth === true) { -%>
   const session = await getServerSession(event);
 
   checkUserSession(session);
 
 <% } -%>
-  const prisma = await usePrisma(event);
+  const prisma = new PrismaClient();
   const <%= h.inflection.camelize(name, true) %>Data = await readBody<I<%= h.inflection.camelize(name) %>Create>(event);
 
   <%= h.inflection.camelize(name, true) %>Data.ownerId = session?.user?.id || '';
@@ -27,6 +28,6 @@ export default eventHandler(async (event) => {
     include: {
       ...<%= h.inflection.camelize(name) %>Include,
     },
-    data: fooData,
+    data: <%= h.inflection.camelize(name, true) %>Data,
   });
 });

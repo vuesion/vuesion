@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useHead, useAuth } from '#imports';
+import { definePageMeta, useHead, useAuth } from '#imports';
 import VueBreadcrumb from '~/components/navigation/VueBreadcrumb/VueBreadcrumb.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
@@ -26,6 +26,7 @@ import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 
 // Config
+definePageMeta({ middleware: 'auth' });
 useHead({ title: 'Vuesion - Authentication Example' });
 
 // Deps

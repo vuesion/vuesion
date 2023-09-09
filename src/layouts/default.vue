@@ -21,13 +21,13 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n, useLocaleHead, useLocalePath, useSwitchLocalePath } from '#i18n';
 import { useRouter } from 'vue-router';
 import { computed } from 'vue';
 import VueToast from '../components/data-display/VueToast/VueToast.vue';
 import VueNavbar from '../components/navigation/VueNavbar/VueNavbar.vue';
 import VueFooter from '../components/navigation/VueFooter/VueFooter.vue';
 import VueBackToTop from '../components/behavior/VueBackToTop/VueBackToTop.vue';
+import { useI18n, useLocaleHead, useLocalePath, useSwitchLocalePath } from '#i18n';
 import { useHead, useAuth } from '#imports';
 import { IItem } from '~/interfaces/IItem';
 

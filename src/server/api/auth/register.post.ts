@@ -1,6 +1,5 @@
+import { PrismaClient } from '@prisma/client';
 import { genSalt, hash } from 'bcrypt';
-import { usePrisma } from '@sidebase/nuxt-prisma';
-import { readBody } from 'h3';
 
 export const hashPassword = (password: string): Promise<string> => {
   return new Promise((resolve, reject) => {
@@ -20,8 +19,8 @@ export const hashPassword = (password: string): Promise<string> => {
   });
 };
 
-export default eventHandler(async (event) => {
-  const prisma = usePrisma(event);
+export default defineEventHandler(async (event) => {
+  const prisma = new PrismaClient();
   const body = await readBody(event);
   const hashedPassword = await hashPassword(body.password);
 

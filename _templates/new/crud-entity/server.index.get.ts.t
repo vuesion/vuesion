@@ -2,21 +2,22 @@
 to: "src/server/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/index.get.ts"
 unless_exists: true
 ---
-import { usePrisma } from '@sidebase/nuxt-prisma';
+import { defineEventHandler } from 'h3';
+import { PrismaClient } from '@prisma/client';
 <% if(auth === true) { -%>
 import { getServerSession } from '#auth';
 import { checkUserSession } from '~/server/utils/accessControl';
 <% } -%>
 import { <%= h.inflection.camelize(name) %>Include } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 
-export default eventHandler(async (event) => {
+export default defineEventHandler(async (event) => {
 <% if(auth === true) { -%>
   const session = await getServerSession(event);
 
   checkUserSession(session);
 
 <% } -%>
-  const prisma = await usePrisma(event);
+  const prisma = new PrismaClient();
 
   return prisma.<%= h.inflection.camelize(name, true) %>.findMany({
     include: {

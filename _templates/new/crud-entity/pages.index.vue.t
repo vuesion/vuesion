@@ -70,7 +70,7 @@ unless_exists: true
 </template>
 
 <script setup lang="ts">
-import { computed, ref, useHead } from '#imports';
+import { computed, <% if (auth === true) { -%>definePageMeta, <% } %>ref, useHead } from '#imports';
 import { use<%= h.inflection.camelize(name) %>Store } from '~/store/<%= h.inflection.camelize(name, true) %>';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
@@ -89,8 +89,8 @@ const store = use<%= h.inflection.camelize(name) %>Store();
 
 // Config
 useHead({ title: 'All <%= h.inflection.pluralize(h.inflection.camelize(name)) %>' });
-<% if (auth === false) { -%>
-definePageMeta({ auth: false });
+<% if (auth === true) { -%>
+definePageMeta({ middleware: 'auth' });
 <% } %>
 // Data
 const <%= h.inflection.pluralize(h.inflection.camelize(name, true)) %> = computed(() => store.get<%= h.inflection.pluralize(h.inflection.camelize(name)) %>);

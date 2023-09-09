@@ -4,9 +4,9 @@
  *
  * INFO: if you add new components please also change the code in ./.storybook/preview.js
  */
-import { defineNuxtPlugin } from '#app';
 import upperFirst from 'lodash/upperFirst';
 import camelCase from 'lodash/camelCase';
+import { defineNuxtPlugin } from '#app';
 
 export default defineNuxtPlugin(({ vueApp }) => {
   const icons = import.meta.glob('../components/icons/Vue*.vue');

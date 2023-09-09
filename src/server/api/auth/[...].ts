@@ -1,9 +1,9 @@
 import { compare } from 'bcrypt';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import * as Prisma from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { NuxtAuthHandler } from '#auth';
 
-const prisma = new Prisma.PrismaClient();
+const prisma = new PrismaClient();
 
 export const comparePasswords = (plainPassword: string, hashedPassword: string): Promise<boolean> => {
   return new Promise((resolve, reject) => {

@@ -40,5 +40,6 @@ module.exports = {
         ignore: ['modelValue'],
       },
     ],
+    'import/no-named-as-default': 0,
   },
 };

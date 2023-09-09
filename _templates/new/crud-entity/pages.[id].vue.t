@@ -28,7 +28,7 @@ unless_exists: true
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, useHead, useRoute } from '#imports';
+import { computed, <% if (auth === true) { -%>definePageMeta, <% } %>onMounted, ref, useHead, useRoute } from '#imports';
 import { use<%= h.inflection.camelize(name) %>Store } from '~/store/<%= h.inflection.camelize(name, true) %>';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
@@ -46,8 +46,8 @@ const route = useRoute();
 
 // Config
 useHead({ title: '<%= h.inflection.camelize(name) %> Details Page' });
-<% if (auth === false) { -%>
-definePageMeta({ auth: false });
+<% if (auth === true) { -%>
+definePageMeta({ middleware: 'auth' });
 <% } %>
 // Data
 const current<%= h.inflection.camelize(name) %> = computed(() => store.getCurrent<%= h.inflection.camelize(name) %>);
