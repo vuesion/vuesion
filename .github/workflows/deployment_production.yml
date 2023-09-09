@@ -1,10 +1,4 @@
 name: Deploy to Production
-
-env:
-  APP_NAME: vuesion
-  HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
-  HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-
 on:
   push:
     branches: [ main ]
@@ -15,82 +9,114 @@ jobs:
   build_and_test:
     name: Build and test application
     runs-on: ubuntu-latest
-
+    env:
+      BASE_URL: http://localhost:3000
+      NUXT_AUTH_SECRET: ${{secrets.NUXT_AUTH_SECRET}}
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Checkout Vuesion+ Datatable
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: vuesion/vuesion-plus-datatable
           path: ./src/components/a-datatable
           token: ${{ secrets.VUESION_PAT }}
 
       - name: Checkout Vuesion+ Calendar and Date picker
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: vuesion/vuesion-plus-calander-datepicker
-          path: ./src/components/b-calender-datepicker
+          path: ./src/components/b-calender-datepicke
           token: ${{ secrets.VUESION_PAT }}
 
       - name: Checkout Vuesion+ Currency input
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: vuesion/vuesion-plus-currency-input
           path: ./src/components/c-currency-input
           token: ${{ secrets.VUESION_PAT }}
 
+      - name: Checkout Vuesion+ Autocomplete
+        uses: actions/checkout@v3
+        with:
+          repository: vuesion/vuesion-plus-autocomplete
+          path: ./src/components/d-autocomplete
+          token: ${{ secrets.VUESION_PAT }}
+
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 18
 
       - name: Install dependencies
-        uses: cypress-io/github-action@v2
-        with:
-          runTests: false
+        run: npm install
 
-      - name: Build and test application
-        run: npm run ci
+      - name: Build application
+        run: npm run build
 
-      - name: Run e2e tests
-        uses: cypress-io/github-action@v2
+      - name: Build Storybook
+        run: npm run storybook:build
+
+      - name: Unit test application
+        run: npm run test
+
+      - name: Lint the code base
+        run: npm run lint
+
+      - name: Update Database
+        run: npm run db:push
+
+      - name: Seed Database
+        run: npm run db:seed
+
+      - name: E2e test application
+        uses: cypress-io/github-action@v5
         with:
           install: false
           start: npm start
           wait-on: 'http://localhost:3000'
 
-      - name: Archive build artifacts
-        uses: actions/upload-artifact@v2
+      - name: Archive Storybook artifacts
+        uses: actions/upload-artifact@v3
         with:
-          name: build-artifacts
+          name: storybook-artifacts
+          if-no-files-found: error
           path: |
-            .nuxt
             storybook-static
 
       - name: Archive code coverage results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
-          path: coverage
+          if-no-files-found: error
+          path: |
+            coverage
 
   deploy:
     needs: [ build_and_test ]
     name: Deploy to Heroku
     runs-on: ubuntu-latest
+    env:
+      APP_NAME: vuesion
+      HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
+      HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+      BASE_URL: https://vuesion.herokuapp.com
+      NEXTAUTH_URL: https://vuesion.herokuapp.com/api/auth
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Download build artifacts
-        uses: actions/download-artifact@v2
+      - name: Download Storybook artifacts
+        uses: actions/download-artifact@v3
         with:
-          name: build-artifacts
+          name: storybook-artifacts
+          path: storybook-static
 
       - name: Build Docker Image and deploy to Heroku
         run: |
-          docker build -t $APP_NAME .
+          docker build -t $APP_NAME . --build-arg A_BASE_URL=$BASE_URL --build-arg A_NEXTAUTH_URL=$NEXTAUTH_URL
           set -eu -o pipefail
           echo $HEROKU_API_KEY | docker login --username=$HEROKU_USERNAME --password-stdin registry.heroku.com
           docker tag $APP_NAME registry.heroku.com/$APP_NAME/web
@@ -102,43 +128,42 @@ jobs:
           -H "Content-Type: application/json" \
           -H "Accept: application/vnd.heroku+json; version=3.docker-releases" \
           -H "Authorization: Bearer $HEROKU_API_KEY"
-
   coverage:
     needs: [ build_and_test ]
     name: Report code coverage to Code Climate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Checkout Vuesion+ Datatable
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: vuesion/vuesion-plus-datatable
           path: ./src/components/a-datatable
           token: ${{ secrets.VUESION_PAT }}
 
       - name: Checkout Vuesion+ Calendar and Date picker
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: vuesion/vuesion-plus-calander-datepicker
           path: ./src/components/b-calender-datepicker
           token: ${{ secrets.VUESION_PAT }}
 
       - name: Checkout Vuesion+ Currency input
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: vuesion/vuesion-plus-currency-input
           path: ./src/components/c-currency-input
           token: ${{ secrets.VUESION_PAT }}
 
       - name: Download code coverage results
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: code-coverage-report
 
       - name: Send to Code Climate
-        uses: paambaati/codeclimate-action@v2.7.5
+        uses: paambaati/codeclimate-action@v5.0.0
         env:
           CC_TEST_REPORTER_ID: 458ce0b8f345c194e04dd299b901334c6c4f9457a512d00b75d8d4f36921726c
         with:
