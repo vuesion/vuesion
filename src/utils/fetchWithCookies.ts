@@ -1,4 +1,4 @@
-import { useRequestHeaders } from '#app';
+import { useRequestHeaders } from '#imports';
 
 export const $fetchWithCookies = async <T>(
   url: string,

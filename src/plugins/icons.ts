@@ -6,7 +6,7 @@
  */
 import upperFirst from 'lodash/upperFirst';
 import camelCase from 'lodash/camelCase';
-import { defineNuxtPlugin } from '#app';
+import { defineNuxtPlugin } from '#imports';
 
 export default defineNuxtPlugin(({ vueApp }) => {
   const icons = import.meta.glob('../components/icons/Vue*.vue');
