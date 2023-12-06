@@ -132,7 +132,7 @@
     "storybook": "7.4.0",
     "ts-node": "10.9.1",
     "typescript": "5.2.2",
-    "vite": "4.4.9",
+    "vite": "4.4.12",
     "vite-plugin-eslint": "1.8.1",
     "vitest": "0.34.4",
     "vue-loader": "17.2.2"
