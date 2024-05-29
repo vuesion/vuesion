@@ -6,5 +6,4 @@
 .output
 coverage
 node_modules
-.env
 Dockerfile
