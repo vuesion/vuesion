@@ -20,7 +20,6 @@
     :aria-hidden="isDisabled"
     :type="type"
     v-on="{
-      ...$attrs,
       click: onClick,
     }"
   >
