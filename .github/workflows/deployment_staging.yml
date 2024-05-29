@@ -12,43 +12,44 @@ jobs:
     env:
       BASE_URL: http://localhost:3000
       NUXT_AUTH_SECRET: ${{secrets.NUXT_AUTH_SECRET}}
-      DATABASE_URL: ${{secrets.DATABASE_URL}}
+      NEXTAUTH_URL: http://localhost:3000/api/auth
+      AUTH_ORIGIN: http://localhost:3000
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Checkout Vuesion+ Datatable
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: vuesion/vuesion-plus-datatable
           path: ./src/components/a-datatable
           token: ${{ secrets.VUESION_PAT }}
 
       - name: Checkout Vuesion+ Calendar and Date picker
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: vuesion/vuesion-plus-calander-datepicker
           path: ./src/components/b-calender-datepicker
           token: ${{ secrets.VUESION_PAT }}
 
       - name: Checkout Vuesion+ Currency input
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: vuesion/vuesion-plus-currency-input
           path: ./src/components/c-currency-input
           token: ${{ secrets.VUESION_PAT }}
 
       - name: Checkout Vuesion+ Autocomplete
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: vuesion/vuesion-plus-autocomplete
           path: ./src/components/d-autocomplete
           token: ${{ secrets.VUESION_PAT }}
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
@@ -65,14 +66,8 @@ jobs:
       - name: Lint the code base
         run: npm run lint
 
-      - name: Update Database
-        run: npm run db:push
-
-      - name: Seed Database
-        run: npm run db:seed
-
       - name: E2e test application
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           install: false
           start: npm start
@@ -95,20 +90,33 @@ jobs:
       HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
       HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
       BASE_URL: https://vuesion-next.herokuapp.com
+      NUXT_AUTH_SECRET: ${{secrets.NUXT_AUTH_SECRET}}
       NEXTAUTH_URL: https://vuesion-next.herokuapp.com/api/auth
+      AUTH_ORIGIN: https://vuesion-next.herokuapp.com
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download Storybook artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: storybook-artifacts
           path: storybook-static
 
+      - name: Make .env file
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_BASE_URL: ${{env.BASE_URL}}
+          envkey_NUXT_AUTH_SECRET: ${{env.NUXT_AUTH_SECRET}}
+          envkey_NEXTAUTH_URL: ${{env.NEXTAUTH_URL}}
+          envkey_AUTH_ORIGIN: ${{env.AUTH_ORIGIN}}
+          file_name: .env
+          fail_on_empty: false
+          sort_keys: false
+
       - name: Build Docker Image and deploy to Heroku
         run: |
-          docker build -t $APP_NAME . --build-arg A_BASE_URL=$BASE_URL --build-arg A_NEXTAUTH_URL=$NEXTAUTH_URL
+          docker build -t $APP_NAME .
           set -eu -o pipefail
           echo $HEROKU_API_KEY | docker login --username=$HEROKU_USERNAME --password-stdin registry.heroku.com
           docker tag $APP_NAME registry.heroku.com/$APP_NAME/web
