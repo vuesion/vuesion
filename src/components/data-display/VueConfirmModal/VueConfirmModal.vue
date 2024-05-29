@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { SpacingWithDirections } from '~/components/prop-types';
+import type { SpacingWithDirections } from '~/components/prop-types';
 import VueModal from '~/components/data-display/VueModal/VueModal.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';

@@ -1,6 +1,6 @@
 import { nextTick } from 'vue';
 import { describe, beforeEach, test, expect, vi } from 'vitest';
-import { fireEvent, render, RenderResult } from '@testing-library/vue';
+import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueBackToTop from './VueBackToTop.vue';
 import { triggerWindow } from '~/test/test-utils';
 

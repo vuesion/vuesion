@@ -1,5 +1,5 @@
 import { beforeEach, test } from 'vitest';
-import { fireEvent, render, RenderResult } from '@testing-library/vue';
+import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueTabGroup from './VueTabGroup.vue';
 import VueTabItem from './VueTabItem.vue';
 
@@ -32,10 +32,21 @@ describe('VueTabGroup.vue', () => {
     getByText('Tab Content 2');
   });
 
-  test('should change tab', async () => {
+  test('should change tab with clicking', async () => {
     const { getByText } = harness;
 
     await fireEvent.click(getByText('Tab 1'));
+
+    getByText('Tab 1');
+    getByText('Tab 2');
+    getByText('Tab 3');
+    getByText('Tab Content 1');
+  });
+
+  test('should change tab with keyboard', async () => {
+    const { getByText } = harness;
+
+    await fireEvent.keyPress(getByText('Tab 1'), { key: 'Enter', code: 'Enter', charCode: 13 });
 
     getByText('Tab 1');
     getByText('Tab 2');

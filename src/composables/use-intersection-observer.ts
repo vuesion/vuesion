@@ -1,4 +1,4 @@
-import { onMounted, onBeforeUnmount, Ref, ref } from 'vue';
+import { onMounted, onBeforeUnmount, type Ref, ref } from 'vue';
 
 export const useIntersectionObserver = (
   elementRef: Ref<HTMLElement>,

@@ -26,7 +26,8 @@
 </template>
 
 <script setup lang="ts">
-import { inject, ref, onMounted, Ref, useCssModule } from 'vue';
+import type { Ref } from 'vue';
+import { inject, ref, onMounted, useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueIconChevronRight from '~/components/icons/VueIconChevronRight.vue';
 import VueIconChevronUp from '~/components/icons/VueIconChevronUp.vue';

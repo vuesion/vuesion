@@ -19,11 +19,15 @@ export default defineConfig({
   ],
   test: {
     coverage: {
+      all: false,
       reporter: ['html', 'lcov', 'text'],
-      branches: 100,
-      functions: 100,
-      statements: 100,
-      lines: 100,
+      thresholds: {
+        autoUpdate: true,
+        statements: 100,
+        branches: 100,
+        functions: 100,
+        lines: 100,
+      },
       exclude: ['**/test-utils.ts', '**/CollapseAnimation.vue', '**/*.spec.ts', '**/*.stories.ts'],
     },
     environment: 'jsdom',

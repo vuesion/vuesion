@@ -1,5 +1,5 @@
 import { describe, test, expect, vi } from 'vitest';
-import { Ref, nextTick } from 'vue';
+import { type Ref, nextTick } from 'vue';
 import { render } from '@testing-library/vue';
 import { getDomRef } from './get-dom-ref';
 import { useIntersectionObserver } from './use-intersection-observer';

@@ -1,5 +1,5 @@
 import { describe, beforeEach, test } from 'vitest';
-import { render, RenderResult } from '@testing-library/vue';
+import { render, type RenderResult } from '@testing-library/vue';
 import VueCard from './VueCard.vue';
 
 describe('VueCard.vue', () => {

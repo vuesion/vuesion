@@ -88,7 +88,7 @@ import { useField } from 'vee-validate';
 import _debounce from 'lodash-es/debounce.js';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
-import { ShirtSize } from '~/components/prop-types';
+import type { ShirtSize } from '~/components/prop-types';
 
 // Interface
 interface InputProps {

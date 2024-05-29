@@ -6,7 +6,8 @@
 
 <script lang="ts" setup>
 // Interface
-import { onMounted, ref, useCssModule, watch, inject, Ref } from 'vue';
+import type { Ref } from 'vue';
+import { onMounted, ref, useCssModule, watch, inject } from 'vue';
 
 interface TabItemProps {
   name: string;

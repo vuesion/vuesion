@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { computed, useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
-import { ShirtSize } from '~/components/prop-types';
+import type { ShirtSize } from '~/components/prop-types';
 
 // Interface
 interface AvatarProps {

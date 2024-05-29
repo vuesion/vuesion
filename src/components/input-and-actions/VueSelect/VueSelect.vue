@@ -104,9 +104,9 @@
 import { computed, ref, nextTick, useCssModule } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { useField } from 'vee-validate';
-import { IItem } from '~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 import { getDomRef } from '~/composables/get-dom-ref';
-import { BadgeStatus, HorizontalDirection, ShirtSize, VerticalDirection } from '~/components/prop-types';
+import type { BadgeStatus, HorizontalDirection, ShirtSize, VerticalDirection } from '~/components/prop-types';
 import VueIconChevronDown from '~/components/icons/VueIconChevronDown.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';

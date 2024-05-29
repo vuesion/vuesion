@@ -29,7 +29,7 @@ import VueFooter from '../components/navigation/VueFooter/VueFooter.vue';
 import VueBackToTop from '../components/behavior/VueBackToTop/VueBackToTop.vue';
 import { useI18n, useLocaleHead, useLocalePath, useSwitchLocalePath } from '#i18n';
 import { useHead, useAuth } from '#imports';
-import { IItem } from '~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 
 // Deps
 const { locale, setLocale } = useI18n();

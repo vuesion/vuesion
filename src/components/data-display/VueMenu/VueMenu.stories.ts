@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VueMenu from './VueMenu.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';

@@ -18,9 +18,9 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { IItem } from '~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
-import { ShirtSize } from '~/components/prop-types';
+import type { ShirtSize } from '~/components/prop-types';
 
 // Interface
 interface ToggleButtonProps {

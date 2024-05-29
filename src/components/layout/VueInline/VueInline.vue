@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { HorizontalAlignment, Spacing, VerticalAlignment } from '~/components/prop-types';
+import type { HorizontalAlignment, Spacing, VerticalAlignment } from '~/components/prop-types';
 import { getFlexDirectionForBreakpoint, getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
 
 // Interface

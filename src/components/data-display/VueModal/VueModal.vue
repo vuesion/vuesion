@@ -26,7 +26,7 @@ import { computed, nextTick, useCssModule, watch } from 'vue';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueIconTimes from '~/components/icons/VueIconTimes.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
-import { SpacingWithDirections } from '~/components/prop-types';
+import type { SpacingWithDirections } from '~/components/prop-types';
 
 // Interface
 interface ModalProps {

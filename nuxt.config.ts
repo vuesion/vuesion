@@ -1,5 +1,3 @@
-import eslintPlugin from 'vite-plugin-eslint';
-
 const themeColor = '#0f3191';
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -20,10 +18,10 @@ export default defineNuxtConfig({
     },
   },
   auth: {
-    baseURL: process.env.BASE_URL,
     isEnabled: true,
     provider: {
       type: 'authjs',
+      trustHost: false,
     },
   },
   components: {
@@ -43,12 +41,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   i18n: {
     baseUrl: process.env.BASE_URL,
-    strategy: 'prefix',
+    strategy: 'no_prefix',
     vueI18n: 'src/plugins/vue-i18n/vue-i18n',
     // Don't forget to update the extract-i18n-script
     locales: [
-      { code: 'en-US', iso: 'en-US', file: 'en.json', isCatchallLocale: true },
-      { code: 'de-DE', iso: 'de-DE', file: 'de.json' },
+      { code: 'en-US', iso: 'en-US', file: 'en-US.json', isCatchallLocale: true },
+      { code: 'de-DE', iso: 'de-DE', file: 'de-DE.json' },
     ],
     defaultLocale: 'en-US',
     lazy: true,
@@ -106,9 +104,10 @@ export default defineNuxtConfig({
         mode: 'mount',
       },
     ],
-    'nuxt-security', // TODO: comment in when https://github.com/sidebase/nuxt-auth/issues/324 is resolved
+    'nuxt-security',
     '@vite-pwa/nuxt',
     '@nuxt/devtools',
+    '@nuxtjs/eslint-module',
   ],
   nitro: {
     compressPublicAssets: true,
@@ -161,6 +160,19 @@ export default defineNuxtConfig({
       Allow: '/',
     },
   },
+  routeRules: {
+    // Homepage pre-rendered at build time
+    // '/en-US': { prerender: true },
+    // '/de-DE': { prerender: true },
+    // Product page generated on-demand, revalidates in background
+    // '/products/**': { swr: 3600 },
+    // Blog post generated on-demand once until next deploy
+    // '/blog/*': { isr: true },
+    // Admin dashboard renders only on client-side
+    // '/admin/**': { ssr: false },
+    // Add cors headers on API routes
+    // '/api/**': { cors: true },
+  },
   rootDir: '.',
   security: {
     headers: {
@@ -171,11 +183,21 @@ export default defineNuxtConfig({
         'font-src': ["'self'", 'https:', 'data:', 'fonts.bunny.net'],
         'form-action': ["'self'"],
         'frame-ancestors': ["'self'"],
-        'img-src': ["'self'", 'data:', 'avatars-githubusercontent.webp.se', 'images.unsplash.com'],
+        'img-src': ['*', "'self'", 'data:', 'https://d21tg1j9k9a9uf.cloudfront.net'],
         'object-src': ["'none'"],
         'script-src-attr': ["'none'"],
         'style-src': ["'self'", 'https:', "'unsafe-inline'", 'fonts.bunny.net'],
         'upgrade-insecure-requests': true,
+        'script-src': [
+          "'self'",
+          "'unsafe-inline'",
+          "'unsafe-eval'",
+          "'wasm-unsafe-eval'",
+          'data:',
+          'blob:',
+          'https://storage.googleapis.com',
+          'https://cdn.jsdelivr.net',
+        ],
       },
       originAgentCluster: '?1',
       referrerPolicy: 'no-referrer',
@@ -190,29 +212,32 @@ export default defineNuxtConfig({
       xPermittedCrossDomainPolicies: 'none',
       xXSSProtection: '0',
       permissionsPolicy: {
-        camera: ['()'],
-        'display-capture': ['()'],
-        fullscreen: ['()'],
-        geolocation: ['()'],
-        microphone: ['()'],
+        camera: [],
+        'display-capture': [],
+        fullscreen: [],
+        geolocation: [],
+        microphone: [],
       },
     },
-    requestSizeLimiter: { maxRequestSizeInBytes: 2000000, maxUploadFileRequestInBytes: 8000000 },
-    rateLimiter: { tokensPerInterval: 150, interval: 'hour', fireImmediately: true },
+    requestSizeLimiter: {
+      maxRequestSizeInBytes: 500 * 1024 * 1024, // 500mb
+      maxUploadFileRequestInBytes: 500 * 1024 * 1024, // 500mb
+    },
+    rateLimiter: { tokensPerInterval: 500, interval: 500000, throwError: true },
     xssValidator: false,
     corsHandler: {
       origin: '*',
       methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
       preflight: { statusCode: 204 },
     },
-    allowedMethodsRestricter: '*',
+    allowedMethodsRestricter: { methods: '*' },
     hidePoweredBy: true,
     basicAuth: false,
     enabled: true,
     csrf: false,
   },
   srcDir: './src',
-  vite: {
-    plugins: [eslintPlugin()],
+  typescript: {
+    shim: true,
   },
 });

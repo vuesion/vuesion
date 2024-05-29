@@ -1,7 +1,7 @@
-import { IBreakpoints } from '~/interfaces/IBreakpoints';
+import type { IBreakpoints } from '~/interfaces/IBreakpoints';
 import { BreakpointValues } from '~/components/prop-types';
 import { EventBus } from '~/services/EventBus';
-import { IToast } from '~/interfaces/IToast';
+import type { IToast } from '~/interfaces/IToast';
 
 export interface CssSpacing {
   top: string | null;

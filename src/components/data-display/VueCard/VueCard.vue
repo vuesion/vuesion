@@ -6,14 +6,14 @@
 
 <script setup lang="ts">
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
-import { Spacing } from '~/components/prop-types';
+import type { Spacing } from '~/components/prop-types';
 
 // Interface
 interface CardProps {
   padding?: Spacing | Array<Spacing>;
 }
 withDefaults(defineProps<CardProps>(), {
-  padding: () => ['16'],
+  padding: () => [16],
 });
 </script>
 

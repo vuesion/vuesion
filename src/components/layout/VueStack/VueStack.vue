@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { HorizontalAlignment, Spacing } from '~/components/prop-types';
+import type { HorizontalAlignment, Spacing } from '~/components/prop-types';
 import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
 
 // Interface

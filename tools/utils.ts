@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { spawn, SpawnOptions } from 'child_process';
+import type { SpawnOptions } from 'child_process';
+import { spawn } from 'child_process';
 
 export const getTranslationsFromString = (content: string): RegExpMatchArray => {
   const result: any = [];

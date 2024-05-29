@@ -1,5 +1,5 @@
 import { describe, beforeEach, test, expect, vi } from 'vitest';
-import { fireEvent, render, RenderResult } from '@testing-library/vue';
+import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueSlider from './VueSlider.vue';
 import { sleep, triggerDocument } from '~/test/test-utils';
 
@@ -22,6 +22,7 @@ describe('VueSlider.vue', () => {
       harness = render(VueSlider, {
         props: {
           id: 'slider',
+          label: 'Slider label',
           min: 0,
           max: 100,
           modelValue: [50],
@@ -158,6 +159,7 @@ describe('VueSlider.vue', () => {
 
       // trigger onKeyUp and emit update:modelValue event
       await fireEvent.keyUp(handle, { key: 'ArrowRight', code: 'ArrowRight' });
+      await fireEvent.focusOut(handle);
 
       expect(emitted()['update:modelValue']).toEqual([[[75, 75]]]);
     });
@@ -179,6 +181,7 @@ describe('VueSlider.vue', () => {
 
       // trigger onKeyUp and emit update:modelValue event
       await fireEvent.keyUp(handle, { key: 'ArrowLeft', code: 'ArrowLeft' });
+      await fireEvent.focusOut(handle);
 
       expect(emitted()['update:modelValue']).toEqual([[[0, 75]]]);
     });
@@ -200,6 +203,7 @@ describe('VueSlider.vue', () => {
 
       // trigger onKeyUp and emit update:modelValue event
       await fireEvent.keyUp(handle, { key: 'ArrowRight', code: 'ArrowRight' });
+      await fireEvent.focusOut(handle);
 
       expect(emitted()['update:modelValue']).toEqual([[[25, 100]]]);
     });
@@ -226,6 +230,7 @@ describe('VueSlider.vue', () => {
 
       // trigger onKeyUp and emit update:modelValue event
       await fireEvent.keyUp(handle, { key: 'ArrowLeft', code: 'ArrowLeft' });
+      await fireEvent.focusOut(handle);
 
       expect(emitted()['update:modelValue']).toEqual([[[25, 25]]]);
     });

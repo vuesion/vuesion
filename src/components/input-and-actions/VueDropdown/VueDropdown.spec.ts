@@ -1,5 +1,5 @@
 import { describe, beforeEach, test, expect } from 'vitest';
-import { fireEvent, render, RenderResult } from '@testing-library/vue';
+import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueDropdown from './VueDropdown.vue';
 import { sleep, triggerWindow } from '~/test/test-utils';
 

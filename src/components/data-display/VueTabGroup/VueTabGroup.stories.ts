@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3';
 import VueTabGroup from './VueTabGroup.vue';
 import VueTabItem from './VueTabItem.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';

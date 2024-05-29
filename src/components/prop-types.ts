@@ -5,6 +5,7 @@ export const ButtonStyleValues = ['primary', 'secondary', 'outline', 'ghost', 'd
 export type ButtonStyle = (typeof ButtonStyleValues)[number];
 
 export const TextStyleValues = [
+  'hero',
   'h1',
   'h2',
   'h3',
@@ -64,7 +65,7 @@ export type SpacingWithDirections =
   | Spacing
   | `${Spacing} ${Spacing}`
   | `${Spacing} ${Spacing} ${Spacing}`
-  | `${Spacing} ${Spacing} ${Spacing} ${Spacing}`;
+  | `${Spacing} ${Spacing} ${Spacing} ${number}`;
 
 export const WidthValues = [
   '1/10',

@@ -1,5 +1,5 @@
 import { describe, beforeEach, test } from 'vitest';
-import { render, RenderResult } from '@testing-library/vue';
+import { render, type RenderResult } from '@testing-library/vue';
 import VueContentBlock from './VueContentBlock.vue';
 
 describe('VueContentBlock.vue', () => {

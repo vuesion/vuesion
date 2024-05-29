@@ -49,7 +49,7 @@ import VueIconMenu from '~/components/icons/VueIconMenu.vue';
 import VueAvatar from '~/components/data-display/VueAvatar/VueAvatar.vue';
 import VueDropdown from '~/components/input-and-actions/VueDropdown/VueDropdown.vue';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
-import { IItem } from '~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 
 // Interface
 

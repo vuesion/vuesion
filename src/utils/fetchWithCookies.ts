@@ -1,16 +1,23 @@
-import { useRequestHeaders } from '#imports';
+declare global {
+  // eslint-disable-next-line no-var
+  var serverCookies: string | null | undefined;
+}
 
-export const $fetchWithCookies = async <T>(
+export const setServerCookies = (cookies: string | null | undefined) => {
+  globalThis.serverCookies = cookies;
+};
+
+export const $fetchWithCookies = <T>(
   url: string,
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
   body: any = null,
   headers: Record<string, string> = {},
 ) => {
-  const cookies = useRequestHeaders(['cookie']);
+  if (globalThis.serverCookies) {
+    headers.cookie = globalThis.serverCookies;
+  }
 
-  headers.cookie = cookies.cookie as string;
-
-  return await $fetch<T>(url, {
+  return $fetch<T>(url, {
     method,
     headers,
     body: body && JSON.stringify(body),

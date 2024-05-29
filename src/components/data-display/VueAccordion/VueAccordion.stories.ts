@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3';
 import VueAccordion from './VueAccordion.vue';
 import VueAccordionItem from './VueAccordionItem.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';

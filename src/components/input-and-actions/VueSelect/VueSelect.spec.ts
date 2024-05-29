@@ -1,12 +1,12 @@
 import { describe, test, expect } from 'vitest';
 import flushPromises from 'flush-promises';
-import { fireEvent, render, RenderResult } from '@testing-library/vue';
+import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { defineRule } from 'vee-validate';
 import { required } from '@vee-validate/rules';
 import VueSelect from './VueSelect.vue';
 import { sleep, triggerWindow } from '~/test/test-utils';
-import { IItem } from '~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 
 defineRule('required', required);
 

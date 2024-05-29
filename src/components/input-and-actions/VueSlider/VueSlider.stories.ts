@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3';
 import VueSlider from './VueSlider.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -40,6 +40,7 @@ export const Single = {
 
   args: {
     id: 'slider',
+    label: 'Slider label',
     min: 0,
     max: 200,
     formatValue: (value: number) => {
@@ -78,6 +79,7 @@ export const Range = {
 
   args: {
     id: 'slider',
+    label: 'Slider label',
     min: 0,
     max: 200,
     formatValue: (value: number) => {

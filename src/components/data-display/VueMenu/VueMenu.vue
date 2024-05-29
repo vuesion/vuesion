@@ -39,7 +39,7 @@
 <script setup lang="ts">
 import { computed, ref, useCssModule } from 'vue';
 import debounce from 'lodash-es/debounce.js';
-import { IItem } from '~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
 

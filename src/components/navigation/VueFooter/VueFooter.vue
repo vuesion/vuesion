@@ -135,7 +135,7 @@ import VueSelect from '~/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueIconTwitter from '~/components/icons/VueIconTwitter.vue';
 import VueIconGithub from '~/components/icons/VueIconGithub.vue';
-import { IItem } from '~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
 
 // Interface

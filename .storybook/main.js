@@ -43,7 +43,7 @@ module.exports = {
           '@storybook/addon-interactions',
           '@storybook/addon-actions',
           '@storybook/addon-backgrounds',
-          '@storybook/addon-a11s',
+          '@storybook/addon-a11y',
         ],
       },
       resolve: {

@@ -2,7 +2,8 @@ describe('home', () => {
   context('mobile', () => {
     it('e2e', () => {
       cy.viewport(320, 480);
-      cy.visit('http://localhost:3000');
+      cy.visit('htt p://localhost:3000');
+      console.log('TITLE', cy.title());
       cy.title().should('include', 'Vuesion');
     });
   });

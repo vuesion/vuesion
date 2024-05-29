@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Spacing } from '~/components/prop-types';
+import type { Spacing } from '~/components/prop-types';
 import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
 
 type ColumnRange = 'none' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;

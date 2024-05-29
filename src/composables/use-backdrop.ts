@@ -1,4 +1,4 @@
-import { onMounted, Ref, watch } from 'vue';
+import { onMounted, type Ref, watch } from 'vue';
 
 interface IBackdropOptions {
   scrollable: Ref<boolean>;

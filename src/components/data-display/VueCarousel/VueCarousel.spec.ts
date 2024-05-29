@@ -1,7 +1,7 @@
 import { describe, beforeEach, expect } from 'vitest';
-import { fireEvent, render, RenderResult } from '@testing-library/vue';
+import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueCarousel from './VueCarousel.vue';
-import { ICarouselImage } from '~/components/data-display/VueCarousel/ICarouselImage';
+import type { ICarouselImage } from '~/components/data-display/VueCarousel/ICarouselImage';
 import { sleep } from '~/test/test-utils';
 
 const images: ICarouselImage[] = [
@@ -73,7 +73,7 @@ describe('VueCarousel.vue', () => {
   test('should paginate infinitely in both directions', async () => {
     const { getByTestId, rerender } = harness;
 
-    await rerender({ images, intervalInSeconds: 5, showPagination: true });
+    await rerender({ images, intervalInSeconds: 5, showPagination: true, showIndicator: false });
     expect(getByTestId('carousel-copyright').textContent).toMatch('foo1');
 
     await fireEvent.click(getByTestId('pagination-next'));

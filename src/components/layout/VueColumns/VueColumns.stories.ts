@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3';
 import VueColumns from './VueColumns.vue';
 import VueColumn from './VueColumn/VueColumn.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';

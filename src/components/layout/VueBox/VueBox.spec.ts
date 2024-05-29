@@ -1,5 +1,5 @@
 import { describe, beforeEach, test, expect } from 'vitest';
-import { render, RenderResult } from '@testing-library/vue';
+import { render, type RenderResult } from '@testing-library/vue';
 import VueBox from './VueBox.vue';
 
 describe('VueBox.vue', () => {

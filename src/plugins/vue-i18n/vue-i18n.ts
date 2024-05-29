@@ -1,4 +1,6 @@
-export const dateFormats = {
+import type { DateTimeFormatOptions } from '@intlify/core-base';
+
+export const dateFormats: Record<string, DateTimeFormatOptions> = {
   dayMonthYearNumeric: {
     day: '2-digit',
     month: '2-digit',
@@ -31,11 +33,11 @@ export const numberFormats = {
   'de-DE': decimalFormats,
 };
 
-export default () => {
+export default defineI18nConfig(() => {
   return {
     datetimeFormats,
     numberFormats,
     fallbackLocale: 'en-US',
     formatFallbackMessages: true,
   };
-};
+});

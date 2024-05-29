@@ -48,8 +48,8 @@ import VueText from '~/components/typography/VueText/VueText.vue';
 interface IPaginationItem {
   label: string;
   active: boolean;
-  event?: string;
-  amount?: number;
+  event: 'prev' | 'next';
+  amount: number;
 }
 
 interface PaginationProps {

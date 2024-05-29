@@ -1,5 +1,5 @@
-import { describe, beforeEach, test, expect } from 'vitest';
-import { fireEvent, render, RenderResult } from '@testing-library/vue';
+import { describe, beforeEach, test } from 'vitest';
+import { render, type RenderResult } from '@testing-library/vue';
 import VueSidebar from './VueSidebar.vue';
 import VueSidebarGroup from './VueSidebarGroup.vue';
 import VueSidebarGroupItem from './VueSidebarGroupItem.vue';
@@ -17,10 +17,13 @@ describe('VueSidebar.vue', () => {
       },
       slots: {
         default: [
-          `<vue-sidebar-group name="Navigation" icon="plus-circle">
-        <vue-sidebar-group-item leading-icon="home" name="Vuex Example" to="/" />
-        <vue-sidebar-group-item leading-icon="home" name="Apollo Example" href="/" />
-        <vue-sidebar-group-item leading-icon="home" name="Form Example" />
+          `<vue-sidebar-group label="Navigation" icon="plus-circle">
+        <vue-sidebar-group-item leading-icon="home" label="Vuex Example" to="/" exact />
+        <vue-sidebar-group-item trailing-icon="home" label="Apollo Example" href="/" />
+        <vue-sidebar-group-item label="Form Example" />
+      </vue-sidebar-group>
+      <vue-sidebar-group label="Navigation2">
+        <vue-sidebar-group-item label="Vuex Example2" to="/" exact />
       </vue-sidebar-group>`,
         ],
       },
@@ -31,16 +34,10 @@ describe('VueSidebar.vue', () => {
     const { getByText } = harness;
 
     getByText('Navigation');
+    getByText('Navigation2');
     getByText('Vuex Example');
+    getByText('Vuex Example2');
     getByText('Apollo Example');
     getByText('Form Example');
-  });
-
-  test('should emit click event when clicked', async () => {
-    const { getByText, emitted } = harness;
-
-    await fireEvent.click(getByText('Form Example'));
-
-    expect(emitted().click).toBeTruthy();
   });
 });

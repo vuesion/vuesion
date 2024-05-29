@@ -50,7 +50,7 @@
 import { computed, useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueLoader from '~/components/data-display/VueLoader/VueLoader.vue';
-import { ButtonStyle, ShirtSize } from '~/components/prop-types';
+import type { ButtonStyle, ShirtSize } from '~/components/prop-types';
 import { getDomRef } from '~/composables/get-dom-ref';
 
 // Interface

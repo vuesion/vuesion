@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3';
 import VueToggle from './VueToggle.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';

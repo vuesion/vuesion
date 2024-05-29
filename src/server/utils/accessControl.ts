@@ -1,4 +1,4 @@
-import { Session } from 'next-auth';
+import { type Session } from 'next-auth';
 
 export const checkUserSession = (session: Session | null) => {
   if (!session || !session.user || !session.user.id) {

@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import { BadgeStatus } from '~/components/prop-types';
+import type { BadgeStatus } from '~/components/prop-types';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 

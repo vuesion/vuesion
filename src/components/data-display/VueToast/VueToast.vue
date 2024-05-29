@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, useCssModule } from 'vue';
 import { EventBus } from '~/services/EventBus';
-import { IToast } from '~/interfaces/IToast';
+import type { IToast } from '~/interfaces/IToast';
 import { getGUID } from '~/components/utils';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';

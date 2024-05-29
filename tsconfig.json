@@ -1,27 +1,11 @@
 {
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
-  "compilerOptions": {
-    "types": [
-      "vite/client",
-      "animejs",
-      "marked",
-      "flush-promises",
-      "lodash-es",
-      "@nuxtjs/color-mode",
-      "@nuxtjs/i18n",
-      "@sidebase/nuxt-auth",
-      "next-auth",
-      "@pinia/nuxt",
-      "@types/bcrypt",
-      "nuxt-delay-hydration",
-      "@vite-pwa/nuxt",
-      "nuxt-security"
-    ]
-  },
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
+      "module": "CommonJS",
+      "moduleResolution": "Node"
     }
-  }
+  },
+  "exclude": ["./coverage"]
 }

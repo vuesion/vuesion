@@ -4,9 +4,10 @@
     :aria-valuemax="max"
     :aria-valuemin="min"
     :aria-valuenow="currentMin"
+    :aria-label="label"
     :class="[$style.vueSlider, disabled && $style.disabled]"
   >
-    <vue-columns space="0" :class="$style.slider">
+    <vue-columns :space="0" :class="$style.slider">
       <vue-column align-y="center" :can-grow="false">
         <vue-text :class="[$style.label, $style.min]">{{ formatValue(currentMin) }}</vue-text>
       </vue-column>
@@ -60,7 +61,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, useCssModule, watch } from 'vue';
 import { useEventListener } from '@vueuse/core';
-import { IAlgorithm, linear } from './algorithms';
+import type { IAlgorithm } from './algorithms';
+import { linear } from './algorithms';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
@@ -71,6 +73,7 @@ const algorithm: IAlgorithm = linear;
 // Interface
 interface SliderProps {
   id: string;
+  label: string;
   min: number;
   max: number;
   modelValue: [number, number?];
@@ -128,7 +131,7 @@ const sliderBox = ref<Partial<DOMRect>>({
   y: 0,
   width: 0,
 });
-const currentSlider = ref<number>(-1);
+const currentSlider = ref<number | null>(-1);
 const currentMin = ref(0);
 const currentMax = ref(0);
 
@@ -151,8 +154,11 @@ const calculatePercentageDiff = (e: any) => {
   /* c8 ignore start */
   const positionX: number =
     e.changedTouches && e.changedTouches.length > 0 ? e.changedTouches[e.changedTouches.length - 1].clientX : e.clientX;
+
+  if (sliderBox.value?.left !== undefined && sliderBox.value?.width !== undefined) {
+    return ((positionX - sliderBox.value.left) / sliderBox.value.width) * 100;
+  }
   /* c8 ignore end */
-  return ((positionX - sliderBox.value.left) / sliderBox.value.width) * 100;
 };
 const bindEvents = () => {
   document.addEventListener('touchend', moveEnd, { passive: false });

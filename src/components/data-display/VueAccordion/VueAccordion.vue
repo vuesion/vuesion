@@ -5,7 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, provide, shallowRef, ref, Ref } from 'vue';
+import type { Ref } from 'vue';
+import { onBeforeUnmount, provide, shallowRef, ref } from 'vue';
 
 // Interface
 interface AccordionItem {

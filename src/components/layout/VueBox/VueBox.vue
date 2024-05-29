@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed, useCssModule } from 'vue';
-import { SpacingWithDirections, HorizontalAlignment, VerticalAlignment } from '~/components/prop-types';
+import type { SpacingWithDirections, HorizontalAlignment, VerticalAlignment } from '~/components/prop-types';
 import {
   getCssSpacingClasses,
   getResponsiveCssClasses,

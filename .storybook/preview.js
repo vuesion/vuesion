@@ -7,7 +7,8 @@ import { action } from '@storybook/addon-actions';
 import camelCase from 'lodash/camelCase';
 import upperFirst from 'lodash/upperFirst';
 import { defineRule } from 'vee-validate';
-import { required, email, integer, min, min_value as minValue, regex } from '@vee-validate/rules';
+import { email, integer, min, min_value as minValue, regex, required } from '@vee-validate/rules';
+import messages from '../i18n/en-US.json';
 
 // define global vee-validate rules
 defineRule('required', required);
@@ -17,7 +18,7 @@ defineRule('min', min);
 defineRule('min_value', minValue);
 defineRule('regex', regex);
 
-setup((app) => {
+setup(async (app) => {
   // Mocks
   // NuxtLink
   app.component('nuxt-link', {
@@ -38,10 +39,12 @@ setup((app) => {
   app.mixin({
     created() {
       this.localePath = (path) => path;
-      this.$t = (key) => key;
+      this.$t = (key) => messages[key] || key;
       this.$n = (key) => key;
-      this.t = (key) => key;
+      this.$d = (key) => key.toISOString();
+      this.t = (key) => messages[key] || key;
       this.n = (key) => key;
+      this.d = (key) => key.toISOString();
     },
   });
   app.mixin({
@@ -57,23 +60,21 @@ setup((app) => {
   const icons = import.meta.glob('../src/components/icons/Vue*.vue');
 
   for (const path in icons) {
-    icons[path]().then((componentConfig) => {
-      const componentName = upperFirst(
-        camelCase(
-          path
-            .split('/')
-            .pop()
-            .replace(/\.\w+$/, ''),
-        ),
-      );
+    const componentConfig = await icons[path]();
+    const componentName = upperFirst(
+      camelCase(
+        path
+          .split('/')
+          .pop()
+          .replace(/\.\w+$/, ''),
+      ),
+    );
 
-      app.component(componentName, componentConfig.default || componentConfig);
-    });
+    app.component(componentName, componentConfig.default || componentConfig);
   }
 });
 
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
   backgrounds: { disable: true },
   controls: {
     matchers: {

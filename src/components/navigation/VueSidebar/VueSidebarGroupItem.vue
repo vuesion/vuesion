@@ -1,31 +1,56 @@
 <template>
-  <component
-    :is="href ? 'a' : to ? 'nuxt-link' : 'div'"
-    :href="href && href"
-    :target="href && '_blank'"
-    :rel="href && 'noopener'"
-    :to="to && to"
-    :exact="exact"
-    :class="$style.vueSidebarGroupItem"
-    :active-class="$style.active"
-    tabindex="0"
-    @click="!href && !to && $emit('click', $event)"
-    @keypress.space.enter="!href && !to && $emit('click', $event)"
-  >
-    <vue-columns space="16">
-      <vue-column v-if="leadingIcon" width="content" align-y="center">
-        <component :is="`vue-icon-${leadingIcon}`" />
-      </vue-column>
+  <li>
+    <nuxt-link
+      v-if="to"
+      :to="to"
+      :exact="exact"
+      :active-class="$style.active"
+      :exact-active-class="$style.active"
+      :class="[$style.vueSidebarGroupItem]"
+      tabindex="0"
+      @keydown.space.enter="$emit('click', $event)"
+      @click="$emit('click', $event)"
+    >
+      <vue-columns :space="16">
+        <vue-column v-if="leadingIcon" width="content" align-y="center">
+          <component :is="`vue-icon-${leadingIcon}`" />
+        </vue-column>
 
-      <vue-column align-y="center">
-        <vue-text weight="semi-bold">{{ name }}</vue-text>
-      </vue-column>
+        <vue-column align-y="center">
+          <vue-text weight="semi-bold">{{ label }}</vue-text>
+        </vue-column>
 
-      <vue-column v-if="trailingIcon" width="content" align-y="center">
-        <component :is="`vue-icon-${trailingIcon}`" />
-      </vue-column>
-    </vue-columns>
-  </component>
+        <vue-column v-if="trailingIcon" width="content" align-y="center">
+          <component :is="`vue-icon-${trailingIcon}`" />
+        </vue-column>
+      </vue-columns>
+    </nuxt-link>
+    <component
+      :is="href ? 'a' : 'div'"
+      v-else
+      :href="href && href"
+      :target="href && '_blank'"
+      :rel="href && 'noopener'"
+      :class="$style.vueSidebarGroupItem"
+      tabindex="0"
+      @click="!href && $emit('click', $event)"
+      @keydown.space.enter="!href && $emit('click', $event)"
+    >
+      <vue-columns :space="16">
+        <vue-column v-if="leadingIcon" width="content" align-y="center">
+          <component :is="`vue-icon-${leadingIcon}`" />
+        </vue-column>
+
+        <vue-column align-y="center">
+          <vue-text weight="semi-bold">{{ label }}</vue-text>
+        </vue-column>
+
+        <vue-column v-if="trailingIcon" width="content" align-y="center">
+          <component :is="`vue-icon-${trailingIcon}`" />
+        </vue-column>
+      </vue-columns>
+    </component>
+  </li>
 </template>
 
 <script setup lang="ts">
@@ -36,14 +61,14 @@ import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
 // Interface
 interface SidebarGroupItemProps {
-  name: string;
+  label: string;
   leadingIcon?: string | null;
   trailingIcon?: string | null;
   to?: string | object | null;
   exact?: boolean;
   href?: string | null;
 }
-interface SidebarGroupItemEmit {
+interface SidebarGroupItemEmits {
   (event: 'click', e: MouseEvent): void;
 }
 withDefaults(defineProps<SidebarGroupItemProps>(), {
@@ -53,7 +78,7 @@ withDefaults(defineProps<SidebarGroupItemProps>(), {
   exact: true,
   href: null,
 });
-defineEmits<SidebarGroupItemEmit>();
+defineEmits<SidebarGroupItemEmits>();
 
 // Deps
 const $style = useCssModule();

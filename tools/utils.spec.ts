@@ -3,28 +3,28 @@ import { getTranslationObject, getTranslationsFromString, sanitizeMessage } from
 
 const testContent = `<div>
       {{ $t('test' /* this is a test */) }}
-      
+
       {{ $t('test.test') }}
-      
+
       {{ foo === 1 ? $t('foo' /* Foo */) : $t('bar' /* bar */) }}
-      
+
       {{ $t('test.foo' /* test (test) [test] test */) }}
-      
+
       {{ $t('test.foo2' /* test (test) [test] test */) }}
-      
+
       {{ $t("test.bar" /* test (test) [test] test */) }}
-      
+
       <small>{{ $t('App.nav.counter' /* Counter */) }}</small>
-      
+
       text:  this.$t('components.register.submit.notification.text', model /* We've sent an email to: {email}! */),
-      
+
       $t('components.markdown' /*
       # Markdown support\\n
       - build on top of marked\\n
       - server side rendering!!!\\n
       - \`github style\` markdown
       */)
-      
+
            <vue-input
               id="password"
               v-model="password"
@@ -36,19 +36,19 @@ const testContent = `<div>
               validation="required|min:6"
               :error-message="$t('auth.LoginForm.password.error' /* The password has to have at least 6 characters */)"
             />
-      
+
 	    {{
         $t(
           'key',
           { key: value } /* key:
       {key}? */,
         )
-      }}    
-      
+      }}
+
       return this.$t(
           'console.blocks.components.blockCard.notValid' /* Block failed to be uploaded. Please verify your manifest and try again */,
         );
-      } /* istanbul ignore else */ else if (this.disabled) { 
+      } /* istanbul ignore else */ else if (this.disabled) {
 
       this.t('key.from.normal.t.function' /* translation */);
 
@@ -57,8 +57,8 @@ const testContent = `<div>
       return this.t(
           't.function.test' /* Block failed to be uploaded. Please verify your manifest and try again */,
         );
-      } /* istanbul ignore else */ else if (this.disabled) { 
-      
+      } /* istanbul ignore else */ else if (this.disabled) {
+
           else if (foo === 'foo') {
         return vm.$t(
           'fii.faa.question.fuu' /* fii.faa.question.fuu? */,
@@ -84,7 +84,7 @@ const testContent = `<div>
         return vm.$t('cloud.tifa.barrett.aerith.sephiroth' /* cloud.tifa.barrett.aerith.sephiroth */);
       }
     });
-    
+
     myFunction() {
       return this.myCondition
         ? this.$t(
@@ -95,7 +95,7 @@ const testContent = `<div>
           )
         : null;
     },
-    
+
     myFunction() {
       return this.myCondition
         ? this.$t(
@@ -106,7 +106,7 @@ const testContent = `<div>
           )
         : null;
     },
-    
+
     myFunction() {
       return this.myCondition
         ? this.$t(
@@ -117,7 +117,7 @@ const testContent = `<div>
           )
         : null;
     },
-    
+
     myFunction() {
       return this.myCondition
         ? this.$t(
@@ -129,7 +129,7 @@ const testContent = `<div>
         : null;
     },
     </div>
-    
+
 const title = t('pages.index.title' /* Vuesion - The boilerplate for product teams */);`;
 
 describe('Utils', () => {

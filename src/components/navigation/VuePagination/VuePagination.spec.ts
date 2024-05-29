@@ -1,5 +1,5 @@
 import { describe, beforeEach, test, expect } from 'vitest';
-import { render, RenderResult } from '@testing-library/vue';
+import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VuePagination from './VuePagination.vue';
 
 describe('VuePagination.vue', () => {
@@ -63,5 +63,23 @@ describe('VuePagination.vue', () => {
 
     expect(getByTestId('pagination-prev')).not.toHaveAttribute('disabled');
     expect(getByTestId('pagination-next')).not.toHaveAttribute('disabled');
+  });
+
+  test('should emit prev/next event', async () => {
+    const { getByTestId, queryAllByTestId, rerender, emitted } = harness;
+
+    await rerender({ selectedPage: 5 });
+
+    await fireEvent.click(getByTestId('pagination-prev'));
+    expect(emitted<any>().prev[0][0]).toEqual(1);
+
+    await fireEvent.click(getByTestId('pagination-next'));
+    expect(emitted<any>().next[0][0]).toEqual(1);
+
+    await fireEvent.click(queryAllByTestId('pagination-page')[0]);
+    expect(emitted<any>().prev[1][0]).toEqual(2);
+
+    await fireEvent.keyPress(queryAllByTestId('pagination-page')[1]);
+    expect(emitted<any>().prev[2][0]).toEqual(1);
   });
 });

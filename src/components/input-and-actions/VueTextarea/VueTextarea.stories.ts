@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3';
 import { ref } from 'vue';
 import { action } from '@storybook/addon-actions';
 import VueTextarea from './VueTextarea.vue';

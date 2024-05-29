@@ -24,7 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide, onBeforeUnmount, Ref, shallowRef, useCssModule } from 'vue';
+import type { Ref } from 'vue';
+import { ref, provide, onBeforeUnmount, shallowRef, useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 

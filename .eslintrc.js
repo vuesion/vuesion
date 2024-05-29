@@ -41,5 +41,9 @@ module.exports = {
       },
     ],
     'import/no-named-as-default': 0,
+    'vue/no-v-text-v-html-on-component': 0,
+    'vue/no-v-html': 0,
+    'import/no-duplicates': 0,
+    '@typescript-eslint/consistent-type-imports': 'error',
   },
 };

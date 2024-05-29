@@ -1,6 +1,6 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { nextTick } from 'vue';
-import { fireEvent, render, RenderResult } from '@testing-library/vue';
+import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueModal from './VueModal.vue';
 import { sleep } from '~/test/test-utils';
 

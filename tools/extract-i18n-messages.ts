@@ -10,8 +10,8 @@ const run = (sort = true, update = true, defaultTranslation = true): void => {
 
   const basePath: string = path.resolve(process.cwd());
   const locales: Array<any> = [
-    { code: 'en-US', iso: 'en-US', file: 'en.json' },
-    { code: 'de-DE', iso: 'de-DE', file: 'de.json' },
+    { code: 'en-US', iso: 'en-US', file: 'en-US.json' },
+    { code: 'de-DE', iso: 'de-DE', file: 'de-DE.json' },
   ];
   const defaultLocale = 'en-US';
   let translations: any = {};
