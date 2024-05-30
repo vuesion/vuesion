@@ -8,7 +8,7 @@
     :class="[$style.vueSlider, disabled && $style.disabled]"
   >
     <vue-columns :space="0" :class="$style.slider">
-      <vue-column align-y="center" :can-grow="false">
+      <vue-column align-y="center" no-grow>
         <vue-text :class="[$style.label, $style.min]">{{ formatValue(currentMin) }}</vue-text>
       </vue-column>
 
@@ -51,7 +51,7 @@
         </div>
       </vue-column>
 
-      <vue-column align-y="center" :can-grow="false">
+      <vue-column align-y="center" no-grow>
         <vue-text :class="[$style.label, $style.max]">{{ formatValue(currentMax) }}</vue-text>
       </vue-column>
     </vue-columns>

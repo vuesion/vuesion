@@ -2,7 +2,7 @@
   <vue-box padding="0" align-y="center" :class="$style.vueNavBar" as="nav">
     <vue-content-block>
       <vue-columns space="0" :class="$style.layout" align-y="center">
-        <vue-column width="content" align-y="center" :can-grow="false">
+        <vue-column width="content" align-y="center" no-grow>
           <vue-icon-menu
             v-if="showMenuIcon"
             tabindex="0"
@@ -16,7 +16,7 @@
           <slot name="center" />
         </vue-column>
 
-        <vue-column v-if="userName || userImage" :can-grow="false">
+        <vue-column v-if="userName || userImage" no-grow>
           <vue-dropdown
             :items="[
               { label: 'Profile', value: 'profile', leadingIcon: 'user' },
@@ -32,7 +32,7 @@
           </vue-dropdown>
         </vue-column>
 
-        <vue-column v-else :can-grow="false">
+        <vue-column v-else no-grow>
           <slot name="right" />
         </vue-column>
       </vue-columns>

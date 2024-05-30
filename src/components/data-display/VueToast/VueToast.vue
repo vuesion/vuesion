@@ -3,7 +3,7 @@
     <transition-group name="list" tag="div">
       <vue-box v-for="toast in orderedToasts" :key="toast.id" padding="16" :class="[$style.toast, $style[toast.type]]">
         <vue-columns space="12" align-y="top">
-          <vue-column width="fit" :can-grow="false">
+          <vue-column width="fit" no-grow>
             <vue-text :color="toast.type">
               <vue-icon-info v-if="['info', 'success'].includes(toast.type)" />
               <vue-icon-exclamation v-if="['warning', 'danger'].includes(toast.type)" />
@@ -16,7 +16,7 @@
             </vue-stack>
           </vue-column>
 
-          <vue-column width="fit" :can-grow="false">
+          <vue-column width="fit" no-grow>
             <vue-text
               tabindex="0"
               aria-label="close"

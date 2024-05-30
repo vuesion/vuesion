@@ -44,7 +44,7 @@
               </vue-stack>
             </vue-column>
 
-            <vue-column :width="['min', 'min', '2/10']" :can-grow="false">
+            <vue-column :width="['min', 'min', '2/10']" no-grow>
               <vue-stack space="16">
                 <vue-text look="h6" color="text-medium" weight="semi-bold"> Language & Theme </vue-text>
                 <vue-select
@@ -100,7 +100,7 @@
                 </vue-text>
               </vue-inline>
             </vue-column>
-            <vue-column :align-x="['center', 'center', 'end']" :can-grow="false">
+            <vue-column :align-x="['center', 'center', 'end']" no-grow>
               <vue-inline space="24">
                 <vue-text
                   color="text-medium"

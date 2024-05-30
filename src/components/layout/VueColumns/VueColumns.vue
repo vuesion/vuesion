@@ -1,17 +1,19 @@
 <template>
-  <component :is="as" :class="cssClasses">
+  <vue-box :as="as" :padding="padding" :align-x="alignX" :align-y="alignY" :class="cssClasses">
     <slot></slot>
-  </component>
+  </vue-box>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { HorizontalAlignment, Spacing, VerticalAlignment } from '~/components/prop-types';
+import type { HorizontalAlignment, Spacing, SpacingWithDirections, VerticalAlignment } from '~/components/prop-types';
 import { getFlexDirectionForBreakpoint, getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
 
 // Interface
 interface ColumnsProps {
   as?: string;
+  padding?: SpacingWithDirections | Array<SpacingWithDirections>;
   space?: Spacing | Array<Spacing>;
   alignX?: HorizontalAlignment | Array<HorizontalAlignment> | null;
   alignY?: VerticalAlignment | Array<VerticalAlignment> | null;
@@ -24,6 +26,7 @@ interface ColumnsProps {
 }
 const props = withDefaults(defineProps<ColumnsProps>(), {
   as: 'div',
+  padding: () => [0],
   space: () => [24],
   alignX: null,
   alignY: null,
@@ -37,14 +40,10 @@ const props = withDefaults(defineProps<ColumnsProps>(), {
 
 // Data
 const responsiveSpace = computed(() => parseResponsivePropValue(props.space));
-const responsiveAlignX = computed(() => parseResponsivePropValue(props.alignX));
-const responsiveAlignY = computed(() => parseResponsivePropValue(props.alignY));
 const responsiveReverse = computed(() => parseResponsivePropValue(props.reverse, true));
 const cssClasses = computed(() => [
   'flex',
   ...getResponsiveCssClasses(null, responsiveSpace.value, 'gap'),
-  ...getResponsiveCssClasses(null, responsiveAlignX.value, 'justify'),
-  ...getResponsiveCssClasses(null, responsiveAlignY.value, 'items'),
   getFlexDirectionForBreakpoint(responsiveReverse.value.phone, props.stackPhone),
   getFlexDirectionForBreakpoint(responsiveReverse.value.tabletPortrait, props.stackTabletPortrait, 'tp'),
   getFlexDirectionForBreakpoint(responsiveReverse.value.tabletLandscape, props.stackTabletLandscape, 'tl'),

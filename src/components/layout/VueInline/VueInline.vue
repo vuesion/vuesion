@@ -1,19 +1,14 @@
 <template>
-  <component :is="as" :class="cssClasses">
+  <vue-box :as="as" :padding="padding" :align-x="alignX" :align-y="alignY" :class="cssClasses">
     <slot></slot>
-  </component>
+  </vue-box>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { HorizontalAlignment, Spacing, SpacingWithDirections, VerticalAlignment } from '~/components/prop-types';
-import {
-  getCssSpacingClasses,
-  getFlexDirectionForBreakpoint,
-  getResponsiveCssClasses,
-  parseCssSpacingProp,
-  parseResponsivePropValue,
-} from '~/components/utils';
+import { getFlexDirectionForBreakpoint, getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
 
 // Interface
 interface InlineProps {
@@ -46,22 +41,12 @@ const props = withDefaults(defineProps<InlineProps>(), {
 });
 
 // Data
-const responsivePaddings = computed(() => parseResponsivePropValue(props.padding));
 const responsiveSpace = computed(() => parseResponsivePropValue(props.space));
-const responsiveAlignX = computed(() => parseResponsivePropValue(props.alignX));
-const responsiveAlignY = computed(() => parseResponsivePropValue(props.alignY));
 const responsiveReverse = computed(() => parseResponsivePropValue(props.reverse, true));
 const cssClasses = computed(() => [
   'inline-flex',
   props.noWrap ? 'no-wrap' : 'wrap',
-  ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.phone), 'p'),
-  ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.tabletPortrait), 'p', 'tp'),
-  ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.tabletLandscape), 'p', 'tl'),
-  ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.smallDesktop), 'p', 'sd'),
-  ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.largeDesktop), 'p', 'ld'),
   ...getResponsiveCssClasses(null, responsiveSpace.value, 'gap'),
-  ...getResponsiveCssClasses(null, responsiveAlignX.value, 'justify'),
-  ...getResponsiveCssClasses(null, responsiveAlignY.value, 'items'),
   getFlexDirectionForBreakpoint(responsiveReverse.value.phone, props.stackPhone),
   getFlexDirectionForBreakpoint(responsiveReverse.value.tabletPortrait, props.stackTabletPortrait, 'tp'),
   getFlexDirectionForBreakpoint(responsiveReverse.value.tabletLandscape, props.stackTabletLandscape, 'tl'),

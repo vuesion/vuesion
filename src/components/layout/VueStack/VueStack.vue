@@ -1,18 +1,20 @@
 <template>
-  <component :is="as" :class="[$style.vueStack, ...cssClasses, 'w-full']">
+  <vue-box
+    :as="as"
+    :padding="padding"
+    :align-x="alignY"
+    :align-y="alignX"
+    :class="[$style.vueStack, ...cssClasses, 'w-full']"
+  >
     <slot></slot>
-  </component>
+  </vue-box>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { HorizontalAlignment, Spacing, SpacingWithDirections, VerticalAlignment } from '~/components/prop-types';
-import {
-  getCssSpacingClasses,
-  getResponsiveCssClasses,
-  parseCssSpacingProp,
-  parseResponsivePropValue,
-} from '~/components/utils';
+import { getResponsiveCssClasses, parseResponsivePropValue } from '~/components/utils';
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
 
 // Interface
 interface StackProps {
@@ -31,20 +33,8 @@ const props = withDefaults(defineProps<StackProps>(), {
 });
 
 // Data
-const responsivePaddings = computed(() => parseResponsivePropValue(props.padding));
 const responsiveSpace = computed(() => parseResponsivePropValue(props.space));
-const responsiveAlignX = computed(() => parseResponsivePropValue(props.alignX));
-const responsiveAlignY = computed(() => parseResponsivePropValue(props.alignY));
-const cssClasses = computed(() => [
-  ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.phone), 'p'),
-  ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.tabletPortrait), 'p', 'tp'),
-  ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.tabletLandscape), 'p', 'tl'),
-  ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.smallDesktop), 'p', 'sd'),
-  ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.largeDesktop), 'p', 'ld'),
-  ...getResponsiveCssClasses(null, responsiveSpace.value, 'gap'),
-  ...getResponsiveCssClasses(null, responsiveAlignX.value, 'items'),
-  ...getResponsiveCssClasses(null, responsiveAlignY.value, 'justify'),
-]);
+const cssClasses = computed(() => [...getResponsiveCssClasses(null, responsiveSpace.value, 'gap')]);
 </script>
 
 <style lang="scss" module>

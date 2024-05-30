@@ -47,7 +47,7 @@ const Template: StoryFn = (args) => ({
       <vue-stack space="0">
         <vue-box padding="16 16 12 16">
           <vue-columns space="12" align-y="center">
-            <vue-column width="56px" :can-grow="false" v-if="id === 1 || id === 3">
+            <vue-column width="56px" no-grow v-if="id === 1 || id === 3">
               <vue-avatar name="avatar" size="md" src="https://via.placeholder.com/56"/>
             </vue-column>
             <vue-column>

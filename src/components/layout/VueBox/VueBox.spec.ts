@@ -67,12 +67,4 @@ describe('VueBox.vue', () => {
 
     expect(html()).toMatch('justify-start justify-tp-center justify-tl-end items-start items-tp-center items-tl-end');
   });
-
-  test('renders component with autoHeight', async () => {
-    const { html, rerender } = harness;
-
-    await rerender({ autoHeight: true });
-
-    expect(html()).toMatch('autoHeight');
-  });
 });

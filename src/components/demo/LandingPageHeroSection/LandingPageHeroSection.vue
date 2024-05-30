@@ -1,7 +1,7 @@
 <template>
   <vue-content-block :class="$style.LandingPageHeroSection">
     <vue-columns class="h-full">
-      <vue-column :width="['5/10']" :can-grow="false" :can-shrink="false">
+      <vue-column :width="['5/10']" no-grow no-shrink>
         <vue-stack :padding="['64 32']" align-y="between" :class="$style.leftCol">
           <vue-stack space="32" padding="0 32 0 0">
             <vue-text look="hero" weight="black" gradient>
@@ -48,7 +48,7 @@
           <div :class="$style.deco"></div>
         </vue-stack>
       </vue-column>
-      <vue-column :width="['5/10']" :can-grow="false" :can-shrink="false" align-y="center" align-x="center">
+      <vue-column :width="['5/10']" no-grow no-shrink align-y="center" align-x="center">
         <svg
           width="463"
           height="419"

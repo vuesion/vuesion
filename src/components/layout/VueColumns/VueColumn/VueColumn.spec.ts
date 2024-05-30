@@ -46,7 +46,7 @@ describe('VueColumns.vue', () => {
   test('renders component with flex-grow/shrink 0', async () => {
     const { html, rerender } = harness;
 
-    await rerender({ canGrow: false, canShrink: false });
+    await rerender({ noGrow: true, noShrink: true });
 
     expect(html()).toMatch('grow-0 shrink-0');
   });

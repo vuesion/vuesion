@@ -21,7 +21,7 @@
           </vue-inline>
 
           <vue-columns>
-            <vue-column :can-grow="false">
+            <vue-column no-grow>
               <vue-text color="text-medium" look="description" style="white-space: pre-wrap">
                 {{ usage }}
               </vue-text>

@@ -1,12 +1,16 @@
 <template>
-  <component :is="as" :class="$style.vueContentBlock">
+  <vue-box :as="as" :padding="padding" :class="$style.vueContentBlock">
     <slot />
-  </component>
+  </vue-box>
 </template>
 
 <script setup lang="ts">
-withDefaults(defineProps<{ as?: string }>(), {
+import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import type { SpacingWithDirections } from '~/components/prop-types';
+
+withDefaults(defineProps<{ as?: string; padding?: SpacingWithDirections | Array<SpacingWithDirections> }>(), {
   as: 'div',
+  padding: () => [0],
 });
 </script>
 
