@@ -62,7 +62,7 @@ const $style = useCssModule();
 
   &:focus {
     outline: none !important;
-    box-shadow: var(--brand-focused);
+    box-shadow: var(--focused);
   }
 }
 </style>

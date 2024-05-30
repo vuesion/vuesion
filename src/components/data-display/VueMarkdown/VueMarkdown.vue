@@ -114,7 +114,7 @@ onBeforeUnmount(() => {
   }
 
   table tr {
-    border: 1px solid var(--brand-border-default-medium);
+    border: 1px solid var(--border-default-medium);
   }
 
   table td,

@@ -8,15 +8,15 @@ $input-control-lg-height: $space-48;
 @include add-theme-variable(
   'a11y-default-color',
   (
-    'light': var(--brand-text-inverse-high),
-    'dark': var(--brand-text-default-high),
+    'light': var(--text-inverse-high),
+    'dark': var(--text-default-high),
   )
 );
 
 @include add-theme-variable(
   'a11y-inverse-color',
   (
-    'light': var(--brand-text-default-high),
-    'dark': var(--brand-text-inverse-high),
+    'light': var(--text-default-high),
+    'dark': var(--text-inverse-high),
   )
 );

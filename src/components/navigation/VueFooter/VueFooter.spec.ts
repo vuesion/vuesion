@@ -38,7 +38,7 @@ describe('VueFooter.vue', () => {
     const { getByText } = harness;
     const year = new Date().getFullYear();
 
-    getByText('© ' + year + ' Johannes Werner. All rights reserved.');
+    getByText('© ' + year + ' Werner-Most Ideen GmbH. All rights reserved.');
   });
 
   test('renders component in slim mode', async () => {
@@ -47,7 +47,7 @@ describe('VueFooter.vue', () => {
 
     await rerender({ slim: true });
 
-    getByText('© ' + year + ' Johannes Werner. All rights reserved.');
+    getByText('© ' + year + ' Werner-Most Ideen GmbH. All rights reserved.');
     expect(queryAllByText('Subscribe to our newsletter')).toHaveLength(0);
   });
 

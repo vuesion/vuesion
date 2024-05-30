@@ -9,7 +9,7 @@
             <vue-text as="pre" align-x="center" :class="$style.stack">{{ error.stack }}</vue-text>
           </DevOnly>
         </vue-stack>
-        <vue-button leading-icon="arrow-left" @click="$router.go(-1)">{{ $t('common.Back') }}</vue-button>
+        <vue-button leading-icon="arrow-left" @click="$router.go(-1)">{{ $t('common.Back' /* Back */) }}</vue-button>
       </vue-stack>
     </vue-stack>
   </vue-content-block>

@@ -39,7 +39,7 @@
     "db:push": "prisma db push",
     "db:seed": "ts-node ./prisma/seed.ts",
     "db:generate-client": "prisma generate",
-    "extract-i18n-messages": "ts-node ./tools/extract-i18n-messages.ts",
+    "extract-i18n-messages": "ts-node --transpile-only ./tools/extract-i18n-messages.ts",
     "test:watch": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest",
     "e2e": "cypress run --headless",
     "storybook:build": "storybook build",

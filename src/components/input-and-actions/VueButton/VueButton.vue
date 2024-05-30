@@ -51,6 +51,7 @@ import VueText from '~/components/typography/VueText/VueText.vue';
 import VueLoader from '~/components/data-display/VueLoader/VueLoader.vue';
 import type { ButtonStyle, ShirtSize } from '~/components/prop-types';
 import { getDomRef } from '~/composables/get-dom-ref';
+import type { Icon } from '~/components/icon-options';
 
 // Interface
 interface ButtonProps {
@@ -58,11 +59,11 @@ interface ButtonProps {
   block?: boolean;
   disabled?: boolean;
   to?: string;
-  leadingIcon?: string;
+  leadingIcon?: Icon;
   loading?: boolean;
   look?: ButtonStyle;
   size?: ShirtSize;
-  trailingIcon?: string;
+  trailingIcon?: Icon;
   type?: string;
 }
 interface ButtonEmits {

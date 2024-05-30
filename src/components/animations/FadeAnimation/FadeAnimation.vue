@@ -18,7 +18,7 @@
 
 .enterActive,
 .leaveActive {
-  transition: var(--brand-fade-animation-transition);
+  transition: var(--fade-animation-transition);
 }
 
 .enterTo,

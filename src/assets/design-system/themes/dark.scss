@@ -9,112 +9,112 @@
 
 :root.dark {
   /* Brand Variations */
-  --brand-primary: #{palette-color-level('primary', 7)};
-  --brand-neutral: #{palette-color-level('neutral', 7)};
-  --brand-success: #{palette-color-level('success', 7)};
-  --brand-info: #{palette-color-level('info', 7)};
-  --brand-warning: #{palette-color-level('warning', 7)};
-  --brand-danger: #{palette-color-level('danger', 7)};
+  --primary: #{palette-color-level('primary', 7)};
+  --neutral: #{palette-color-level('neutral', 7)};
+  --success: #{palette-color-level('success', 7)};
+  --info: #{palette-color-level('info', 7)};
+  --warning: #{palette-color-level('warning', 7)};
+  --danger: #{palette-color-level('danger', 7)};
 
   /* Background Colors */
-  --brand-bg-default-high: #{palette-color-level('neutral', 10)};
-  --brand-bg-default-medium: #{palette-color-level('neutral', 9)};
-  --brand-bg-default-low: #{palette-color-level('neutral', 8)};
-  --brand-bg-inverse-high: #{palette-color-level('neutral', 1)};
-  --brand-bg-inverse-medium: #{palette-color-level('neutral', 2)};
-  --brand-bg-inverse-low: #{palette-color-level('neutral', 3)};
+  --bg-default-high: #{palette-color-level('neutral', 10)};
+  --bg-default-medium: #{palette-color-level('neutral', 9)};
+  --bg-default-low: #{palette-color-level('neutral', 8)};
+  --bg-inverse-high: #{palette-color-level('neutral', 1)};
+  --bg-inverse-medium: #{palette-color-level('neutral', 2)};
+  --bg-inverse-low: #{palette-color-level('neutral', 3)};
 
   /* Surface Colors */
-  --brand-surface-default-high: #{palette-color-level('neutral', 9)};
-  --brand-surface-default-medium: #{palette-color-level('neutral', 8)};
-  --brand-surface-default-low: #{palette-color-level('neutral', 7)};
-  --brand-surface-inverse-high: #{palette-color-level('neutral', 0)};
-  --brand-surface-inverse-medium: #{palette-color-level('neutral', 1)};
-  --brand-surface-inverse-low: #{palette-color-level('neutral', 2)};
-  --brand-surface-info-high: #{palette-color-level('info', 8)};
-  --brand-surface-info-medium: #{palette-color-level('info', 9)};
-  --brand-surface-info-low: #{palette-color-level('info', 10)};
-  --brand-surface-danger-high: #{palette-color-level('danger', 8)};
-  --brand-surface-danger-medium: #{palette-color-level('danger', 9)};
-  --brand-surface-danger-low: #{palette-color-level('danger', 10)};
-  --brand-surface-warning-high: #{palette-color-level('warning', 8)};
-  --brand-surface-warning-medium: #{palette-color-level('warning', 9)};
-  --brand-surface-warning-low: #{palette-color-level('warning', 10)};
-  --brand-surface-success-high: #{palette-color-level('success', 8)};
-  --brand-surface-success-medium: #{palette-color-level('success', 9)};
-  --brand-surface-success-low: #{palette-color-level('success', 10)};
+  --surface-default-high: #{palette-color-level('neutral', 9)};
+  --surface-default-medium: #{palette-color-level('neutral', 8)};
+  --surface-default-low: #{palette-color-level('neutral', 7)};
+  --surface-inverse-high: #{palette-color-level('neutral', 0)};
+  --surface-inverse-medium: #{palette-color-level('neutral', 1)};
+  --surface-inverse-low: #{palette-color-level('neutral', 2)};
+  --surface-info-high: #{palette-color-level('info', 8)};
+  --surface-info-medium: #{palette-color-level('info', 9)};
+  --surface-info-low: #{palette-color-level('info', 10)};
+  --surface-danger-high: #{palette-color-level('danger', 8)};
+  --surface-danger-medium: #{palette-color-level('danger', 9)};
+  --surface-danger-low: #{palette-color-level('danger', 10)};
+  --surface-warning-high: #{palette-color-level('warning', 8)};
+  --surface-warning-medium: #{palette-color-level('warning', 9)};
+  --surface-warning-low: #{palette-color-level('warning', 10)};
+  --surface-success-high: #{palette-color-level('success', 8)};
+  --surface-success-medium: #{palette-color-level('success', 9)};
+  --surface-success-low: #{palette-color-level('success', 10)};
 
   /* Border Colors */
-  --brand-border-default-medium: #{palette-color-level('neutral', 7)};
-  --brand-border-default-low: #{palette-color-level('neutral', 8)};
-  --brand-border-inverse-medium: #{palette-color-level('neutral', 9)};
-  --brand-border-inverse-low: #{palette-color-level('neutral', 7)};
-  --brand-border-info-high: #{palette-color-level('info', 7)};
-  --brand-border-info-low: #{palette-color-level('info', 9)};
-  --brand-border-danger-high: #{palette-color-level('danger', 7)};
-  --brand-border-danger-low: #{palette-color-level('danger', 9)};
-  --brand-border-warning-high: #{palette-color-level('warning', 7)};
-  --brand-border-warning-low: #{palette-color-level('warning', 9)};
-  --brand-border-success-high: #{palette-color-level('success', 7)};
-  --brand-border-success-low: #{palette-color-level('success', 9)};
+  --border-default-medium: #{palette-color-level('neutral', 7)};
+  --border-default-low: #{palette-color-level('neutral', 8)};
+  --border-inverse-medium: #{palette-color-level('neutral', 9)};
+  --border-inverse-low: #{palette-color-level('neutral', 7)};
+  --border-info-high: #{palette-color-level('info', 7)};
+  --border-info-low: #{palette-color-level('info', 9)};
+  --border-danger-high: #{palette-color-level('danger', 7)};
+  --border-danger-low: #{palette-color-level('danger', 9)};
+  --border-warning-high: #{palette-color-level('warning', 7)};
+  --border-warning-low: #{palette-color-level('warning', 9)};
+  --border-success-high: #{palette-color-level('success', 7)};
+  --border-success-low: #{palette-color-level('success', 9)};
 
   /* Text Colors */
-  --brand-text-default-high: #{palette-color-level('neutral', 0)};
-  --brand-text-default-medium: #{palette-color-level('neutral', 2)};
-  --brand-text-default-low: #{palette-color-level('neutral', 4)};
-  --brand-text-inverse-high: #{palette-color-level('neutral', 10)};
-  --brand-text-inverse-medium: #{palette-color-level('neutral', 7)};
-  --brand-text-inverse-low: #{palette-color-level('neutral', 6)};
-  --brand-text-info: #{palette-color-level('info', 7)};
-  --brand-text-danger: #{palette-color-level('danger', 7)};
-  --brand-text-warning: #{palette-color-level('warning', 7)};
-  --brand-text-success: #{palette-color-level('success', 7)};
-  --brand-text-link: #{palette-color-level('info', 4)};
+  --text-default-high: #{palette-color-level('neutral', 0)};
+  --text-default-medium: #{palette-color-level('neutral', 2)};
+  --text-default-low: #{palette-color-level('neutral', 4)};
+  --text-inverse-high: #{palette-color-level('neutral', 10)};
+  --text-inverse-medium: #{palette-color-level('neutral', 7)};
+  --text-inverse-low: #{palette-color-level('neutral', 6)};
+  --text-info: #{palette-color-level('info', 7)};
+  --text-danger: #{palette-color-level('danger', 7)};
+  --text-warning: #{palette-color-level('warning', 7)};
+  --text-success: #{palette-color-level('success', 7)};
+  --text-link: #{palette-color-level('info', 4)};
 
   /* Interaction Colors */
-  --brand-interaction-primary-enabled: #{palette-color-level('primary', 6)};
-  --brand-interaction-primary-hovered: #{palette-color-level('primary', 5)};
-  --brand-interaction-primary-activated: #{palette-color-level('primary', 7)};
+  --interaction-primary-enabled: #{palette-color-level('primary', 6)};
+  --interaction-primary-hovered: #{palette-color-level('primary', 5)};
+  --interaction-primary-activated: #{palette-color-level('primary', 7)};
 
-  --brand-interaction-neutral-enabled: #{palette-color-level('neutral', 9)};
-  --brand-interaction-neutral-hovered: #{palette-color-level('neutral', 8)};
-  --brand-interaction-neutral-activated: #{palette-color-level('neutral', 10)};
+  --interaction-neutral-enabled: #{palette-color-level('neutral', 9)};
+  --interaction-neutral-hovered: #{palette-color-level('neutral', 8)};
+  --interaction-neutral-activated: #{palette-color-level('neutral', 10)};
 
-  --brand-interaction-danger-enabled: #{palette-color-level('danger', 6)};
-  --brand-interaction-danger-hovered: #{palette-color-level('danger', 5)};
-  --brand-interaction-danger-activated: #{palette-color-level('danger', 7)};
+  --interaction-danger-enabled: #{palette-color-level('danger', 6)};
+  --interaction-danger-hovered: #{palette-color-level('danger', 5)};
+  --interaction-danger-activated: #{palette-color-level('danger', 7)};
 
-  --brand-interaction-warning-enabled: #{palette-color-level('warning', 6)};
-  --brand-interaction-warning-hovered: #{palette-color-level('warning', 5)};
-  --brand-interaction-warning-activated: #{palette-color-level('warning', 7)};
+  --interaction-warning-enabled: #{palette-color-level('warning', 6)};
+  --interaction-warning-hovered: #{palette-color-level('warning', 5)};
+  --interaction-warning-activated: #{palette-color-level('warning', 7)};
 
-  --brand-interaction-success-enabled: #{palette-color-level('success', 6)};
-  --brand-interaction-success-hovered: #{palette-color-level('success', 5)};
-  --brand-interaction-success-activated: #{palette-color-level('success', 7)};
+  --interaction-success-enabled: #{palette-color-level('success', 6)};
+  --interaction-success-hovered: #{palette-color-level('success', 5)};
+  --interaction-success-activated: #{palette-color-level('success', 7)};
 
-  --brand-interaction-secondary-enabled: #{palette-color-level('info', 2)};
-  --brand-interaction-secondary-hovered: #{palette-color-level('info', 1)};
-  --brand-interaction-secondary-activated: #{palette-color-level('info', 3)};
+  --interaction-secondary-enabled: #{palette-color-level('info', 2)};
+  --interaction-secondary-hovered: #{palette-color-level('info', 1)};
+  --interaction-secondary-activated: #{palette-color-level('info', 3)};
 
   // UTILS
   /* Border radius */
-  --brand-border-radius-xs: #{$space-2};
-  --brand-border-radius-sm: #{$space-4};
-  --brand-border-radius-md: #{$space-8};
-  --brand-border-radius-lg: #{$space-16};
+  --border-radius-xs: #{$space-2};
+  --border-radius-sm: #{$space-4};
+  --border-radius-md: #{$space-8};
+  --border-radius-lg: #{$space-16};
 
   /* Elevation */
-  --brand-elevation-1: 0px 1px 2px -1px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.1);
-  --brand-elevation-2: 0px 2px 4px -2px rgba(0, 0, 0, 0.1), 0px 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --brand-elevation-3: 0px 4px 6px -4px rgba(0, 0, 0, 0.1), 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --brand-elevation-4: 0px 8px 10px -6px rgba(0, 0, 0, 0.1), 0px 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --elevation-1: 0px 1px 2px -1px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.1);
+  --elevation-2: 0px 2px 4px -2px rgba(0, 0, 0, 0.1), 0px 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --elevation-3: 0px 4px 6px -4px rgba(0, 0, 0, 0.1), 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --elevation-4: 0px 8px 10px -6px rgba(0, 0, 0, 0.1), 0px 20px 25px -5px rgba(0, 0, 0, 0.1);
 
   /* A11y */
-  --brand-focused: 0 0 0 #{$space-2} #{palette-color-level('neutral', 10)},
+  --focused: 0 0 0 #{$space-2} #{palette-color-level('neutral', 10)},
     0 0 0 #{$space-4} #{palette-color-level('info', 7)};
 
   /* Animation Language */
-  --brand-transition-duration: 250ms;
-  --brand-easing-curve: cubic-bezier(0.17, 0.67, 0.83, 0.67);
-  --brand-fade-animation-transition: opacity var(--brand-transition-duration) var(--brand-easing-curve);
+  --transition-duration: 250ms;
+  --easing-curve: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  --fade-animation-transition: opacity var(--transition-duration) var(--easing-curve);
 }

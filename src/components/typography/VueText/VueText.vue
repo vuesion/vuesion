@@ -9,6 +9,7 @@
       serifs && $style.serifs,
       underline && $style.underline,
       uppercase && $style.uppercase,
+      gradient && $style.gradient,
       alignX && $style.block,
       ...alignCssClasses,
     ]"
@@ -31,6 +32,7 @@ interface TextProps {
   serifs?: boolean;
   underline?: boolean;
   uppercase?: boolean;
+  gradient?: boolean;
   alignX?: Alignment | Array<Alignment> | string;
 }
 const props = withDefaults(defineProps<TextProps>(), {
@@ -72,6 +74,18 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     text-transform: uppercase;
   }
 
+  &.gradient {
+    background: linear-gradient(
+      286deg,
+      palette-color-level('primary', 4) 22.03%,
+      palette-color-level('success', 4) 40.14%,
+      palette-color-level('info', 4) 79.02%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   &.block {
     display: block;
   }
@@ -85,6 +99,12 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
   }
 
   // Styles
+  &.hero {
+    font-size: $text-9;
+    line-height: $line-height-9;
+    letter-spacing: $letter-spacing-1;
+  }
+
   &.h1 {
     font-size: $text-9;
     line-height: $line-height-9;
@@ -171,47 +191,47 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 
   // Colors
   &.info {
-    color: var(--brand-text-info);
+    color: var(--text-info);
   }
 
   &.danger {
-    color: var(--brand-text-danger);
+    color: var(--text-danger);
   }
 
   &.warning {
-    color: var(--brand-text-warning);
+    color: var(--text-warning);
   }
 
   &.success {
-    color: var(--brand-text-success);
+    color: var(--text-success);
   }
 
   &.link {
-    color: var(--brand-text-link);
+    color: var(--text-link);
   }
 
   &.text-high {
-    color: var(--brand-text-default-high);
+    color: var(--text-default-high);
   }
 
   &.text-medium {
-    color: var(--brand-text-default-medium);
+    color: var(--text-default-medium);
   }
 
   &.text-low {
-    color: var(--brand-text-default-low);
+    color: var(--text-default-low);
   }
 
   &.text-inverse-high {
-    color: var(--brand-text-inverse-high);
+    color: var(--text-inverse-high);
   }
 
   &.text-inverse-medium {
-    color: var(--brand-text-inverse-medium);
+    color: var(--text-inverse-medium);
   }
 
   &.text-inverse-low {
-    color: var(--brand-text-inverse-low);
+    color: var(--text-inverse-low);
   }
 
   // Responsive Styles

@@ -1,19 +1,16 @@
----
-to: "src/components/<%= folder %>/<%= name %>/<%= name %>.stories.ts"
----
 import type { StoryFn } from '@storybook/vue3';
-import <%= name %> from './<%= name %>.vue';
+import LandingPageHeroSection from './LandingPageHeroSection.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
-  title: '<%= h.inflection.humanize(folder) %>/<%= name %>',
-  component: <%= name %>,
+  title: 'Demo/LandingPageHeroSection',
+  component: LandingPageHeroSection,
   argTypes: {},
 };
 
 const Template: StoryFn = (args) => ({
   components: {
-    <%= name %>,
+    LandingPageHeroSection,
     ComponentDocs,
   },
   inheritAttrs: false,
@@ -21,10 +18,10 @@ const Template: StoryFn = (args) => ({
     return { args };
   },
   template: `<component-docs
-      component-name="<%= name %>"
+      component-name="LandingPageHeroSection"
       usage="TBD"
   >
-      <<%= h.inflection.dasherize(h.inflection.underscore(name)) %> v-bind="args" />
+      <landing-page-hero-section v-bind="args" />
   </component-docs>`,
 });
 
@@ -33,4 +30,3 @@ export const Default = {
 
   args: {},
 };
-

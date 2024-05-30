@@ -1,9 +1,13 @@
 <template>
-  <main>Test</main>
+  <vue-stack space="0" as="main">
+    <landing-page-hero-section />
+  </vue-stack>
 </template>
 
 <script setup lang="ts">
 import { useHead, useI18n } from '#imports';
+import LandingPageHeroSection from '~/components/demo/LandingPageHeroSection/LandingPageHeroSection.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
 
 // Deps
 const { t } = useI18n();
@@ -17,9 +21,10 @@ const { t } = useI18n();
 // Head
 const url = 'https://vuesion.herokuapp.com/';
 const logo = '/images/vuesion-logo.png';
-const title = t('pages.index.title');
-const description =
-  'Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.';
+const title = t('pages.index.title' /* Vuesion: Your Ultimate Boilerplate for Efficient Product Development */);
+const description = t(
+  'pages.index.description' /* Enhance your product team's efficiency with Vuesion. Our boilerplate incorporates the best practices in engineering and design for rapid development. */,
+);
 
 useHead({
   title,

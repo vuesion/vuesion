@@ -1,6 +1,11 @@
 {
-  "common.Downloads": "Downloads",
-  "common.Form-example": "Form example",
-  "components.formExample.zipCode.error": "Please enter a Number",
-  "pages.index.title": "Vuesion - Das boilerplate für Produktteams"
+  "LandingPageHeroSection.cta.Figma": "Vorschau in Figma",
+  "LandingPageHeroSection.cta.GetStarted": "Los geht's",
+  "LandingPageHeroSection.cta.VuesionServices": "Vuesion-Services entdecken",
+  "LandingPageHeroSection.headline": "Build Faster, Collaborate Better with Vuesion.",
+  "LandingPageHeroSection.subheadline": "Gib deinem Produktteam einen Boost mit unserem ultimativen Boilerplate für eine reibungslose Zusammenarbeit und unschlagbare Effizienz.",
+  "common.Back": "Zurück",
+  "components.formExample.zipCode.error": "Bitte gib eine Nummer ein",
+  "pages.index.description": "Verbessere die Effizienz deines Produktteams mit Vuesion. Unser Boilerplate vereint bewährte Verfahren aus Engineering und Design für schnelle Entwicklung.",
+  "pages.index.title": "Vuesion: Dein ultimatives Boilerplate für effiziente Produktentwicklung"
 }

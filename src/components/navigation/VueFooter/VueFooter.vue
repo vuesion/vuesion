@@ -1,16 +1,12 @@
 <template>
-  <vue-box
-    as="footer"
-    :padding="slim ? ['48 16', '48 16', '48 32'] : ['24 16', '24 16', '64 32']"
-    :class="$style.vueFooter"
-  >
-    <vue-content-block>
-      <vue-stack space="32">
+  <vue-content-block :class="$style.vueFooter">
+    <vue-box as="footer" :padding="slim ? ['48 0', '48 0', '48 0'] : ['24 0', '24 0', '64 0']">
+      <vue-stack space="32" padding="0 32">
         <vue-stack v-if="slim === false" space="48">
           <vue-columns :space="[24, 24, 64]" stack-phone stack-tablet-portrait>
             <vue-column>
               <vue-stack :space="[4, 8, 16]">
-                <vue-text look="h6" color="text-low" weight="semi-bold">Solutions</vue-text>
+                <vue-text look="h6" color="text-medium" weight="semi-bold">Solutions</vue-text>
                 <vue-text color="text-low">Marketing</vue-text>
                 <vue-text color="text-low">Analytics</vue-text>
                 <vue-text color="text-low">Commerce</vue-text>
@@ -20,7 +16,7 @@
 
             <vue-column>
               <vue-stack :space="[4, 8, 16]">
-                <vue-text look="h6" color="text-low" weight="semi-bold">Support</vue-text>
+                <vue-text look="h6" color="text-medium" weight="semi-bold">Support</vue-text>
                 <vue-text color="text-low">Pricing</vue-text>
                 <vue-text color="text-low">Documentation</vue-text>
                 <vue-text color="text-low">Guides</vue-text>
@@ -30,7 +26,7 @@
 
             <vue-column>
               <vue-stack :space="[4, 8, 16]">
-                <vue-text look="h6" color="text-low" weight="semi-bold">Company</vue-text>
+                <vue-text look="h6" color="text-medium" weight="semi-bold">Company</vue-text>
                 <vue-text color="text-low">About</vue-text>
                 <vue-text color="text-low">Blog</vue-text>
                 <vue-text color="text-low">Jobs</vue-text>
@@ -40,7 +36,7 @@
 
             <vue-column>
               <vue-stack :space="[4, 8, 16]">
-                <vue-text look="h6" color="text-low" weight="semi-bold">Legal</vue-text>
+                <vue-text look="h6" color="text-medium" weight="semi-bold">Legal</vue-text>
                 <vue-text color="text-low">Claim</vue-text>
                 <vue-text color="text-low">Privacy</vue-text>
                 <vue-text color="text-low">Terms</vue-text>
@@ -48,9 +44,9 @@
               </vue-stack>
             </vue-column>
 
-            <vue-column :width="['content', 'content', '2/10']" :can-grow="false">
+            <vue-column :width="['min', 'min', '2/10']" :can-grow="false">
               <vue-stack space="16">
-                <vue-text look="h6" color="text-low" weight="semi-bold"> Language & Theme </vue-text>
+                <vue-text look="h6" color="text-medium" weight="semi-bold"> Language & Theme </vue-text>
                 <vue-select
                   id="lang"
                   label="Language"
@@ -58,7 +54,7 @@
                   :items="languages"
                   hide-label
                   hide-description
-                  :modelValue="selectedLocale"
+                  :model-value="selectedLocale"
                   @update:modelValue="$emit('locale-change', $event)"
                 />
                 <vue-select
@@ -68,8 +64,8 @@
                   :items="themes"
                   hide-label
                   hide-description
-                  :modelValue="$colorMode.preference"
-                  @update:modelValue="$colorMode.preference = $event.value"
+                  :model-value="$colorMode.preference"
+                  @update:model-value="$colorMode.preference = $event.value"
                 />
               </vue-stack>
             </vue-column>
@@ -80,23 +76,34 @@
 
         <vue-columns align-y="center" stack-phone stack-tablet-portrait>
           <vue-column>
-            <vue-text look="h6" color="text-low" :align-x="['center', 'center', 'left']">
-              © {{ year }} Johannes Werner. All rights reserved.
-            </vue-text>
+            <vue-inline space="8" align-y="center">
+              <vue-icon-vuesion :class="$style.logo" />
+
+              <vue-text look="h6" color="text-medium" :align-x="['center', 'center', 'end']">
+                © {{ year }} Werner-Most Ideen GmbH. All rights reserved.
+              </vue-text>
+            </vue-inline>
           </vue-column>
 
           <vue-columns :space="[24, 24, 64]" align-y="center" stack-phone stack-tablet-portrait>
             <vue-column>
               <vue-inline :align-x="['center']" space="48">
-                <vue-text color="text-low" weight="semi-bold">About</vue-text>
-                <vue-text color="text-low" weight="semi-bold">About</vue-text>
-                <vue-text color="text-low" weight="semi-bold">About</vue-text>
+                <vue-text color="text-medium" weight="semi-bold" as="nuxt-link" to="/services"> Services </vue-text>
+                <vue-text
+                  color="text-medium"
+                  weight="semi-bold"
+                  as="a"
+                  href="https://vuesion.github.io/docs/en/v5/"
+                  target="_blank"
+                >
+                  Documentation
+                </vue-text>
               </vue-inline>
             </vue-column>
             <vue-column :align-x="['center', 'center', 'end']" :can-grow="false">
               <vue-inline space="24">
                 <vue-text
-                  color="text-low"
+                  color="text-medium"
                   as="a"
                   aria-label="Twitter"
                   href="https://twitter.com/vuesion1"
@@ -106,7 +113,7 @@
                   <vue-icon-twitter />
                 </vue-text>
                 <vue-text
-                  color="text-low"
+                  color="text-medium"
                   as="a"
                   aria-label="Github"
                   href="https://github.com/vuesion/vuesion"
@@ -120,8 +127,8 @@
           </vue-columns>
         </vue-columns>
       </vue-stack>
-    </vue-content-block>
-  </vue-box>
+    </vue-box>
+  </vue-content-block>
 </template>
 
 <script setup lang="ts">
@@ -137,6 +144,7 @@ import VueIconTwitter from '~/components/icons/VueIconTwitter.vue';
 import VueIconGithub from '~/components/icons/VueIconGithub.vue';
 import type { IItem } from '~/interfaces/IItem';
 import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueIconVuesion from '~/components/icons/VueIconVuesion.vue';
 
 // Interface
 interface FooterProps {
@@ -174,6 +182,11 @@ const year = computed(() => new Date().getFullYear());
   i {
     width: $footer-icon-size;
     height: $footer-icon-size;
+  }
+
+  .logo {
+    width: $space-32;
+    height: $space-32;
   }
 }
 </style>

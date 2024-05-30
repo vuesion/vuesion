@@ -49,25 +49,25 @@ export default {
 
   &.elevation1 {
     div {
-      box-shadow: var(--brand-elevation-2);
+      box-shadow: var(--elevation-2);
     }
   }
 
   &.elevation2 {
     div {
-      box-shadow: var(--brand-elevation-3);
+      box-shadow: var(--elevation-3);
     }
   }
 
   &.elevation3 {
     div {
-      box-shadow: var(--brand-elevation-4);
+      box-shadow: var(--elevation-4);
     }
   }
 
   &.focused {
     div {
-      box-shadow: var(--brand-focused);
+      box-shadow: var(--focused);
     }
   }
 

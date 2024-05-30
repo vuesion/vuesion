@@ -84,7 +84,7 @@ const initials = computed(() => {
 
   &.hasIcon {
     border: $avatar-border;
-    background: var(--brand-surface-default-medium);
+    background: var(--surface-default-medium);
 
     &.sm i {
       height: $space-16;

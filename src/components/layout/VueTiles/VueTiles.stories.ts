@@ -19,7 +19,7 @@ const Template: StoryFn = (args) => ({
 You can change the vertical space,
 horizontal space and amount of columns oer viewport."
   >
-  <vue-tiles v-bind="args" style="border: 1px solid var(--brand-border-default-medium);">
+  <vue-tiles v-bind="args" style="border: 1px solid var(--border-default-medium);">
     <span>Lorem Ipsum</span>
     <span>Lorem Ipsum</span>
     <span>Lorem Ipsum</span>

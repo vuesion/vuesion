@@ -2,35 +2,35 @@
 
 // UNCHECKED
 // ENABLED
-$toggle-bg: var(--brand-surface-default-low);
-$toggle-handle-bg: var(--brand-surface-inverse-high);
+$toggle-bg: var(--surface-default-low);
+$toggle-handle-bg: var(--surface-inverse-high);
 
 // HOVERED
-$toggle-bg-hover: var(--brand-surface-default-low);
-$toggle-handle-bg-hover: var(--brand-surface-inverse-low);
+$toggle-bg-hover: var(--surface-default-low);
+$toggle-handle-bg-hover: var(--surface-inverse-low);
 
 // CHECKED
 // ENABLED
-$toggle-bg-checked: var(--brand-surface-info-low);
-$toggle-handle-bg-checked: var(--brand-interaction-primary-enabled);
+$toggle-bg-checked: var(--surface-info-low);
+$toggle-handle-bg-checked: var(--interaction-primary-enabled);
 
 // HOVERED
-$toggle-bg-checked-hover: var(--brand-surface-info-low);
-$toggle-handle-bg-checked-hover: var(--brand-interaction-primary-hovered);
+$toggle-bg-checked-hover: var(--surface-info-low);
+$toggle-handle-bg-checked-hover: var(--interaction-primary-hovered);
 
 // error
-$toggle-error-color: var(--brand-text-danger);
-$toggle-bg-error: var(--brand-border-danger-low);
-$toggle-handle-bg-error: var(--brand-text-danger);
+$toggle-error-color: var(--text-danger);
+$toggle-bg-error: var(--border-danger-low);
+$toggle-handle-bg-error: var(--text-danger);
 
 $toggle-width: $space-32;
 $toggle-height: $space-16;
-$toggle-border-radius: var(--brand-border-radius-md);
+$toggle-border-radius: var(--border-radius-md);
 
 $toggle-handle-width: $toggle-height - $space-4;
 $toggle-handle-height: $toggle-height - $space-4;
 $toggle-handle-border-radius: 50%;
 
 $toggle-label-gap: $space-8;
-$toggle-outline: var(--brand-focused);
+$toggle-outline: var(--focused);
 $toggle-disabled-opacity: 0.3;

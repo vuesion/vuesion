@@ -78,7 +78,7 @@ onMounted(() => {
   display: flex;
   opacity: 0;
   z-index: -1;
-  transition: var(--brand-fade-animation-transition);
+  transition: var(--fade-animation-transition);
   outline: none;
 
   i {

@@ -19,7 +19,7 @@ const Template: StoryFn = (args) => ({
 with equal spacing around them, wrapping onto multiple lines when necessary.
 The elements can be stacked per viewport."
     >
-    <vue-inline v-bind="args" style="border: 1px solid var(--brand-border-default-medium);">
+    <vue-inline v-bind="args" style="border: 1px solid var(--border-default-medium);">
       <span>Item 1</span>
       <span>Item 2</span>
       <span>Item 3</span>

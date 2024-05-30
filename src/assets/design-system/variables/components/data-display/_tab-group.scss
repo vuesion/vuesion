@@ -5,17 +5,17 @@ $tab-icon-gap: $space-8;
 $tab-padding: $space-8 $space-16 $space-12 $space-16;
 
 // default
-$tab-border: 1px solid var(--brand-border-default-low);
-$tab-color: var(--brand-text-default-low);
+$tab-border: 1px solid var(--border-default-low);
+$tab-color: var(--text-default-low);
 
 // default hover
-$tab-border-hover: 1px solid var(--brand-border-default-medium);
-$tab-color-hover: var(--brand-text-default-medium);
+$tab-border-hover: 1px solid var(--border-default-medium);
+$tab-color-hover: var(--text-default-medium);
 
 // active
-$tab-border-active: 2px solid var(--brand-interaction-primary-enabled);
-$tab-color-active: var(--brand-interaction-primary-enabled);
+$tab-border-active: 2px solid var(--interaction-primary-enabled);
+$tab-color-active: var(--interaction-primary-enabled);
 
 // active hover
-$tab-border-active-hover: 2px solid var(--brand-interaction-primary-hovered);
-$tab-color-active-hover: var(--brand-interaction-primary-hovered);
+$tab-border-active-hover: 2px solid var(--interaction-primary-hovered);
+$tab-color-active-hover: var(--interaction-primary-hovered);

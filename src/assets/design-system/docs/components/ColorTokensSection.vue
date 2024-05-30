@@ -57,10 +57,10 @@ export default {
 
 .colorTokensSection {
   .dark {
-    border-radius: var(--brand-border-radius-lg);
-    background: var(--brand-bg-inverse-high);
+    border-radius: var(--border-radius-lg);
+    background: var(--bg-inverse-high);
     height: max-content;
-    box-shadow: var(--brand-elevation-4);
+    box-shadow: var(--elevation-4);
   }
 }
 </style>

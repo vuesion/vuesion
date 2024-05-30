@@ -4,24 +4,24 @@ $toast-position-right: $space-16;
 $toast-position-bottom: unset;
 $toast-index: 9999;
 $toast-border-radius: 8px;
-$toast-elevation: var(--brand-elevation-4);
+$toast-elevation: var(--elevation-4);
 $toast-gap: $space-24;
 $toast-icons-size: $space-20;
 $toast-max-width: 344px;
-$toast-transition: all var(--brand-transition-duration) ease-in-out;
+$toast-transition: all var(--transition-duration) ease-in-out;
 
 // info
-$toast-info-bg: var(--brand-surface-info-low);
-$toast-info-border: 1px solid var(--brand-border-info-low);
+$toast-info-bg: var(--surface-info-low);
+$toast-info-border: 1px solid var(--border-info-low);
 
 // warning
-$toast-warning-bg: var(--brand-surface-warning-low);
-$toast-warning-border: 1px solid var(--brand-border-warning-low);
+$toast-warning-bg: var(--surface-warning-low);
+$toast-warning-border: 1px solid var(--border-warning-low);
 
 // danger
-$toast-danger-bg: var(--brand-surface-danger-low);
-$toast-danger-border: 1px solid var(--brand-border-danger-low);
+$toast-danger-bg: var(--surface-danger-low);
+$toast-danger-border: 1px solid var(--border-danger-low);
 
 // success
-$toast-success-bg: var(--brand-surface-success-low);
-$toast-success-border: 1px solid var(--brand-border-success-low);
+$toast-success-bg: var(--surface-success-low);
+$toast-success-border: 1px solid var(--border-success-low);

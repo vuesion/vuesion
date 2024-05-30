@@ -5,14 +5,14 @@ $slider-disabled-opacity: 0.3;
 // track
 $slider-track-height: $space-4;
 $slider-track-border-radius: 0;
-$slider-track-bg: var(--brand-surface-default-low);
+$slider-track-bg: var(--surface-default-low);
 $slider-progress-height: $space-4;
 $slider-progress-border-radius: 0;
-$slider-progress-bg: var(--brand-interaction-primary-enabled);
+$slider-progress-bg: var(--interaction-primary-enabled);
 
 // handle
 $slider-handle-size: $space-16;
 $slider-handle-size-hover: $space-24;
 $slider-handle-border-radius: 50%;
-$slider-handle-bg: var(--brand-interaction-primary-enabled);
-$slider-handle-active-shadow: var(--brand-focused);
+$slider-handle-bg: var(--interaction-primary-enabled);
+$slider-handle-active-shadow: var(--focused);

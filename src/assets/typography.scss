@@ -11,7 +11,7 @@ body {
   letter-spacing: $letter-spacing-1;
   line-height: $line-height-3;
   font-display: swap;
-  color: var(--brand-text-default-high);
+  color: var(--text-default-high);
 }
 
 small {
@@ -23,9 +23,9 @@ strong {
 }
 
 a {
-  color: var(--brand-interaction-primary-enabled);
+  color: var(--interaction-primary-enabled);
 
   &:hover {
-    color: var(--brand-interaction-primary-hovered);
+    color: var(--interaction-primary-hovered);
   }
 }

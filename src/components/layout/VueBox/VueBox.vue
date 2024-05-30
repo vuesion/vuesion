@@ -24,7 +24,7 @@ interface BoxProps {
 }
 const props = withDefaults(defineProps<BoxProps>(), {
   as: 'div',
-  padding: () => [24],
+  padding: () => [16],
   alignX: null,
   alignY: null,
   autoHeight: false,

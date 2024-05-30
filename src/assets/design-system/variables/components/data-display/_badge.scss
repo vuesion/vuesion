@@ -5,28 +5,28 @@ $badge-border-radius: 6px;
 
 $badge-variations: (
   'info': (
-    'color': var(--brand-text-info),
-    'bg': var(--brand-surface-info-low),
-    'border': 1px solid var(--brand-border-info-low),
+    'color': var(--text-info),
+    'bg': var(--surface-info-low),
+    'border': 1px solid var(--border-info-low),
   ),
   'warning': (
-    'color': var(--brand-text-warning),
-    'bg': var(--brand-surface-warning-low),
-    'border': 1px solid var(--brand-border-warning-low),
+    'color': var(--text-warning),
+    'bg': var(--surface-warning-low),
+    'border': 1px solid var(--border-warning-low),
   ),
   'success': (
-    'color': var(--brand-text-success),
-    'bg': var(--brand-surface-success-low),
-    'border': 1px solid var(--brand-border-success-low),
+    'color': var(--text-success),
+    'bg': var(--surface-success-low),
+    'border': 1px solid var(--border-success-low),
   ),
   'danger': (
-    'color': var(--brand-text-danger),
-    'bg': var(--brand-surface-danger-low),
-    'border': 1px solid var(--brand-border-danger-low),
+    'color': var(--text-danger),
+    'bg': var(--surface-danger-low),
+    'border': 1px solid var(--border-danger-low),
   ),
   'neutral': (
-    'color': var(--brand-text-default-medium),
-    'bg': var(--brand-surface-default-medium),
-    'border': 1px solid var(--brand-border-default-medium),
+    'color': var(--text-default-medium),
+    'bg': var(--surface-default-medium),
+    'border': 1px solid var(--border-default-medium),
   ),
 );

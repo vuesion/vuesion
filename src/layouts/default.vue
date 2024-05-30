@@ -1,21 +1,14 @@
 <template>
   <div id="app" :class="$style.app">
-    <vue-toast />
-
-    <vue-navbar
-      v-if="!$route.path.match(/[a-z]{2}-[A-Z]{2}/gi)"
-      :user-name="user?.email || ''"
-      :user-image="user?.image || ''"
-      :show-menu-icon="false"
-      @menu-item-click="onLogoutClick"
-    >
-      <template v-if="user" #center> Hello, {{ user?.email }}! </template>
-    </vue-navbar>
-
     <slot />
 
-    <vue-footer :languages="languages" :themes="themes" :selected-locale="locale" @locale-change="onLocaleChange" />
-
+    <vue-footer
+      :languages="languages"
+      :themes="themes"
+      :selected-locale="locale"
+      slim
+      @locale-change="onLocaleChange"
+    />
     <vue-back-to-top />
   </div>
 </template>
@@ -23,21 +16,17 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { computed } from 'vue';
-import VueToast from '../components/data-display/VueToast/VueToast.vue';
-import VueNavbar from '../components/navigation/VueNavbar/VueNavbar.vue';
-import VueFooter from '../components/navigation/VueFooter/VueFooter.vue';
 import VueBackToTop from '../components/behavior/VueBackToTop/VueBackToTop.vue';
-import { useI18n, useLocaleHead, useLocalePath, useSwitchLocalePath } from '#i18n';
-import { useHead, useAuth } from '#imports';
+import VueFooter from '../components/navigation/VueFooter/VueFooter.vue';
+import { useHead } from '#imports';
+import { useI18n, useLocaleHead, useSwitchLocalePath } from '#i18n';
 import type { IItem } from '~/interfaces/IItem';
 
 // Deps
 const { locale, setLocale } = useI18n();
 const { push } = useRouter();
 const i18nHead = useLocaleHead();
-const { data, signOut } = useAuth();
 const switchLocalePath = useSwitchLocalePath();
-const localePath = useLocalePath();
 
 // Config
 useHead({
@@ -56,18 +45,11 @@ const themes = computed(() => [
   { label: 'Light', value: 'light' },
   { label: 'Dark', value: 'dark' },
 ]);
-const user = computed(() => data.value?.user || null);
 
 // Event Handler
 const onLocaleChange = async (newLocale: IItem) => {
   await setLocale(newLocale.value);
   await push(switchLocalePath(newLocale.value));
-};
-const onLogoutClick = async (menuItem: IItem) => {
-  if (menuItem.value === 'logout') {
-    await signOut({ redirect: false });
-    await push(localePath('/'));
-  }
 };
 </script>
 

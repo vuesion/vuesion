@@ -4,11 +4,11 @@ $textarea-label-gap: $space-4;
 
 // input default
 $textarea-border-radius: 6px;
-$textarea-border: 1px solid var(--brand-border-default-medium);
+$textarea-border: 1px solid var(--border-default-medium);
 $textarea-height: $space-120;
 $textarea-padding: ($space-12 - $space-2) $space-12;
-$textarea-color: var(--brand-text-default-high);
-$textarea-placeholder-color: var(--brand-text-default-low);
+$textarea-color: var(--text-default-high);
+$textarea-placeholder-color: var(--text-default-low);
 $textarea-background-color: transparent;
 $textarea-font-family: $font-family;
 $textarea-font-size: $text-3;
@@ -21,11 +21,11 @@ $textarea-description-height: $space-16;
 
 // utils
 $textarea-disabled-disabled-opacity: 0.3;
-$textarea-outline: var(--brand-focused);
+$textarea-outline: var(--focused);
 
 // hover
-$textarea-border-hover: 1px solid var(--brand-border-default-medium);
+$textarea-border-hover: 1px solid var(--border-default-medium);
 
 // error
-$textarea-bg-error: var(--brand-surface-danger-low);
-$textarea-border-error: 1px solid var(--brand-border-danger-high);
+$textarea-bg-error: var(--surface-danger-low);
+$textarea-border-error: 1px solid var(--border-danger-high);
