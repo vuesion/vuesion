@@ -1,5 +1,5 @@
 <template>
-  <vue-content-block :class="$style.LandingPageHeroSection">
+  <vue-content-block as="section" :class="$style.LandingPageHeroSection">
     <vue-columns class="h-full">
       <vue-column :width="['5/10']" no-grow no-shrink>
         <vue-stack :padding="['64 32']" align-y="between" :class="$style.leftCol">
@@ -38,8 +38,8 @@
             </vue-inline>
             <nuxt-link to="/services">
               <vue-inline space="4" align-y="center">
-                <vue-text color="link">
-                  {{ $t('LandingPageHeroSection.cta.VuesionServices' /* Explore Vuesion Services*/) }}
+                <vue-text weight="semi-bold" color="link">
+                  {{ $t('LandingPageHeroSection.cta.VuesionServices' /* Explore Vuesion Services */) }}
                 </vue-text>
                 <vue-icon-arrow-right :class="$style.linkIcon" />
               </vue-inline>

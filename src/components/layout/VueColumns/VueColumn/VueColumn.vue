@@ -14,8 +14,8 @@ import VueBox from '~/components/layout/VueBox/VueBox.vue';
 interface ColumnProps {
   as?: string;
   padding?: SpacingWithDirections | Array<SpacingWithDirections>;
-  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment> | null;
-  alignY?: string | VerticalAlignment | Array<VerticalAlignment> | null;
+  alignX?: HorizontalAlignment | Array<HorizontalAlignment> | null;
+  alignY?: VerticalAlignment | Array<VerticalAlignment> | null;
   width?: string | Width | Array<Width>;
   noGrow?: boolean;
   noShrink?: boolean;

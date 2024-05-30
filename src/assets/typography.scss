@@ -24,6 +24,7 @@ strong {
 
 a {
   color: var(--interaction-primary-enabled);
+  text-decoration: none;
 
   &:hover {
     color: var(--interaction-primary-hovered);

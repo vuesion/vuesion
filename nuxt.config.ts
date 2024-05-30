@@ -1,4 +1,4 @@
-const themeColor = '#0f3191';
+const themeColor = '#A38AE0';
 const isProd = process.env.NODE_ENV === 'production';
 
 export default defineNuxtConfig({

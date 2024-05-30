@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useCssModule } from 'vue';
+import { computed, useCssModule, useAttrs } from 'vue';
 import type { SpacingWithDirections, HorizontalAlignment, VerticalAlignment } from '~/components/prop-types';
 import {
   getCssSpacingClasses,
@@ -30,6 +30,7 @@ const props = withDefaults(defineProps<BoxProps>(), {
 
 // Deps
 const $style = useCssModule();
+const attrs = useAttrs();
 
 // Data
 const responsivePaddings = computed(() => parseResponsivePropValue(props.padding));
@@ -45,9 +46,16 @@ const cssClasses = computed(() => {
     ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.largeDesktop), 'p', 'ld'),
   ];
   if (hasAlignment.value === true) {
+    if (attrs.class) {
+      if ((attrs.class as string).includes('flex') === false) {
+        classes.push('flex');
+      }
+    } else {
+      classes.push('flex');
+    }
+
     classes = [
       ...classes,
-      'flex',
       ...getResponsiveCssClasses(null, responsiveAlignX.value, 'justify'),
       ...getResponsiveCssClasses(null, responsiveAlignY.value, 'items'),
     ];

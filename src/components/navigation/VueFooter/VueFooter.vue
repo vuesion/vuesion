@@ -88,7 +88,9 @@
           <vue-columns :space="[24, 24, 64]" align-y="center" stack-phone stack-tablet-portrait>
             <vue-column>
               <vue-inline :align-x="['center']" space="48">
-                <vue-text color="text-medium" weight="semi-bold" as="nuxt-link" to="/services"> Services </vue-text>
+                <nuxt-link to="/services">
+                  <vue-text color="text-medium" weight="semi-bold"> Services </vue-text>
+                </nuxt-link>
                 <vue-text
                   color="text-medium"
                   weight="semi-bold"

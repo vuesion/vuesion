@@ -21,8 +21,8 @@ interface StackProps {
   as?: string;
   padding?: SpacingWithDirections | Array<SpacingWithDirections>;
   space?: Spacing | Array<Spacing>;
-  alignX?: VerticalAlignment | Array<VerticalAlignment>;
-  alignY?: HorizontalAlignment | Array<HorizontalAlignment>;
+  alignX?: VerticalAlignment | Array<VerticalAlignment> | null;
+  alignY?: HorizontalAlignment | Array<HorizontalAlignment> | null;
 }
 const props = withDefaults(defineProps<StackProps>(), {
   as: 'div',

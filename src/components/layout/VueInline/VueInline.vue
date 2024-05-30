@@ -14,9 +14,9 @@ import VueBox from '~/components/layout/VueBox/VueBox.vue';
 interface InlineProps {
   as?: string;
   padding?: SpacingWithDirections | Array<SpacingWithDirections>;
-  space?: string | Spacing | Array<Spacing>;
-  alignX?: string | HorizontalAlignment | Array<HorizontalAlignment> | null;
-  alignY?: string | VerticalAlignment | Array<VerticalAlignment> | null;
+  space?: Spacing | Array<Spacing>;
+  alignX?: HorizontalAlignment | Array<HorizontalAlignment> | null;
+  alignY?: VerticalAlignment | Array<VerticalAlignment> | null;
   reverse?: boolean | Array<boolean> | null;
   noWrap?: boolean;
   stackPhone?: boolean;
