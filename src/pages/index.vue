@@ -2,6 +2,7 @@
   <vue-stack space="0" as="main">
     <landing-page-hero-section />
     <key-features-section />
+    <benefits-section />
   </vue-stack>
 </template>
 
@@ -10,6 +11,7 @@ import { useHead, useI18n } from '#imports';
 import LandingPageHeroSection from '~/components/demo/LandingPageHeroSection/LandingPageHeroSection.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import KeyFeaturesSection from '~/components/demo/KeyFeaturesSection/KeyFeaturesSection.vue';
+import BenefitsSection from '~/components/demo/BenefitsSection/BenefitsSection.vue';
 
 // Deps
 const { t } = useI18n();

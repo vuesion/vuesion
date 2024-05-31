@@ -1,5 +1,5 @@
 <template>
-  <vue-content-block :padding="['64 32 32 32']" :class="$style.KeyFeaturesSection">
+  <vue-content-block as="section" :padding="['64 32 32 32']" :class="$style.KeyFeaturesSection">
     <vue-stack space="32">
       <vue-text look="h3" weight="black">
         {{ $t('KeyFeaturesSection.title' /* Key Features */) }}
@@ -63,10 +63,10 @@
               <vue-box padding="8" :class="[$style.feature, $style.dark]">
                 <nuxt-img :alt="$t('KeyFeaturesSection.Feature4.title')" src="/images/coverage-small.png" />
                 <vue-stack padding="8 8 16 8" space="8">
-                  <vue-text weight="semi-bold">
+                  <vue-text weight="semi-bold" color="text-inverse-high">
                     {{ $t('KeyFeaturesSection.Feature4.title' /* Robust Testing Setup */) }}
                   </vue-text>
-                  <vue-text>
+                  <vue-text color="text-inverse-medium">
                     {{
                       $t(
                         'KeyFeaturesSection.Feature4.description' /* E2E testing with Cypress, Vitest, and Testing-library with 250+ example tests. */,
@@ -115,10 +115,10 @@
               <vue-box padding="8" :class="[$style.feature, $style.dark]">
                 <nuxt-img :alt="$t('KeyFeaturesSection.Feature5.title')" src="/images/i18n-small.png" />
                 <vue-stack padding="8 8 16 8" space="8">
-                  <vue-text weight="semi-bold">
+                  <vue-text weight="semi-bold" color="text-inverse-high">
                     {{ $t('KeyFeaturesSection.Feature5.title' /* Internationalization (i18n) */) }}
                   </vue-text>
-                  <vue-text>
+                  <vue-text color="text-inverse-medium">
                     {{
                       $t(
                         'KeyFeaturesSection.Feature5.description' /* Scripts included to simplify translation management, making it easier to build multilingual applications. */,
@@ -232,7 +232,6 @@ const $style = useCssModule();
 
     &.dark {
       background-color: var(--surface-inverse-high);
-      color: palette-color-level('neutral', 0);
     }
 
     img {
@@ -244,7 +243,10 @@ const $style = useCssModule();
 
   .services {
     img {
+      width: 100%;
       height: 350px;
+      object-fit: cover;
+      border-radius: $card-border-radius;
     }
 
     .linkIcon {
