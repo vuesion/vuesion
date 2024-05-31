@@ -4,6 +4,7 @@
     <key-features-section />
     <benefits-section />
     <testimonials-section />
+    <support-section />
   </vue-stack>
 </template>
 
@@ -14,6 +15,7 @@ import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import KeyFeaturesSection from '~/components/demo/KeyFeaturesSection/KeyFeaturesSection.vue';
 import BenefitsSection from '~/components/demo/BenefitsSection/BenefitsSection.vue';
 import TestimonialsSection from '~/components/demo/TestimonialsSection/TestimonialsSection.vue';
+import SupportSection from '~/components/demo/SupportSection/SupportSection.vue';
 
 // Deps
 const { t } = useI18n();
