@@ -31,7 +31,7 @@ setup(async (app) => {
     template: '<a href="#" @click.prevent="log()"><slot>NuxtLink</slot></a>',
   });
   app.component('nuxt-img', {
-    inheritAttrs: false,
+    inheritAttrs: true,
     props: ['src', 'alt'],
     methods: {},
     template: '<img :src="src" :alt="alt" :class="$attrs.class" />',
