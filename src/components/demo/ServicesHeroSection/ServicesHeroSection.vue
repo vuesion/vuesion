@@ -198,7 +198,7 @@
         {{ $t('ServicesHeroSection.description' /* Expert Consulting, Prototyping, PoCs, and MVP Development. */) }}
       </vue-text>
 
-      <vue-button as="a" href="mailto:johannes.werner@hey.com" look="primary" trailing-icon="mail">
+      <vue-button as="a" href="#contact" look="primary" trailing-icon="mail">
         {{ $t('ServicesHeroSection.cta' /* Get Started Today */) }}
       </vue-button>
     </vue-stack>
