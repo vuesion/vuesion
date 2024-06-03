@@ -9,7 +9,14 @@
         <vue-columns space="16">
           <vue-column width="5/10" no-grow>
             <vue-box padding="8" :class="$style.feature">
-              <nuxt-img :alt="$t('KeyFeaturesSection.Feature1.title')" src="/demo/figma.png" />
+              <nuxt-img
+                :alt="$t('KeyFeaturesSection.Feature1.title')"
+                src="/demo/figma.png"
+                preload
+                format="webp"
+                quality="80"
+                loading="lazy"
+              />
               <vue-stack padding="8 8 16 8" space="8">
                 <vue-text weight="semi-bold">
                   {{ $t('KeyFeaturesSection.Feature1.title' /* Comprehensive Design System */) }}
@@ -61,7 +68,14 @@
                 </vue-column>
               </vue-columns>
               <vue-box padding="8" :class="[$style.feature, $style.dark]">
-                <nuxt-img :alt="$t('KeyFeaturesSection.Feature4.title')" src="/demo/coverage.png" />
+                <nuxt-img
+                  :alt="$t('KeyFeaturesSection.Feature4.title')"
+                  src="/demo/coverage.png"
+                  preload
+                  format="webp"
+                  quality="80"
+                  loading="lazy"
+                />
                 <vue-stack padding="8 8 16 8" space="8">
                   <vue-text weight="semi-bold" color="text-inverse-high">
                     {{ $t('KeyFeaturesSection.Feature4.title' /* Robust Testing Setup */) }}
@@ -81,7 +95,14 @@
 
         <vue-columns space="16" padding="32 0" align-y="center" :class="$style.services">
           <vue-column width="5/10" no-grow>
-            <nuxt-img :alt="$t('KeyFeaturesSection.services.title')" src="/demo/services.png" />
+            <nuxt-img
+              :alt="$t('KeyFeaturesSection.services.title')"
+              src="/demo/services.png"
+              preload
+              format="webp"
+              quality="80"
+              loading="lazy"
+            />
           </vue-column>
           <vue-column width="5/10" no-grow>
             <vue-stack padding="16">
@@ -113,7 +134,14 @@
           <vue-column width="5/10" no-grow>
             <vue-stack space="16">
               <vue-box padding="8" :class="[$style.feature, $style.dark]">
-                <nuxt-img :alt="$t('KeyFeaturesSection.Feature5.title')" src="/demo/i18n.png" />
+                <nuxt-img
+                  :alt="$t('KeyFeaturesSection.Feature5.title')"
+                  src="/demo/i18n.png"
+                  preload
+                  format="webp"
+                  quality="80"
+                  loading="lazy"
+                />
                 <vue-stack padding="8 8 16 8" space="8">
                   <vue-text weight="semi-bold" color="text-inverse-high">
                     {{ $t('KeyFeaturesSection.Feature5.title' /* Internationalization (i18n) */) }}
@@ -165,7 +193,14 @@
           </vue-column>
           <vue-column width="5/10" no-grow>
             <vue-box padding="8" :class="$style.feature">
-              <nuxt-img :alt="$t('KeyFeaturesSection.Feature8.title')" src="/demo/modules.png" />
+              <nuxt-img
+                :alt="$t('KeyFeaturesSection.Feature8.title')"
+                src="/demo/modules.png"
+                preload
+                format="webp"
+                quality="80"
+                loading="lazy"
+              />
               <vue-stack padding="8 8 16 8" space="8">
                 <vue-text weight="semi-bold">
                   {{ $t('KeyFeaturesSection.Feature8.title' /* Fully Set Up and Ready-to-Go */) }}

@@ -69,7 +69,7 @@
   --text-danger: #{palette-color-level('danger', 7)};
   --text-warning: #{palette-color-level('warning', 7)};
   --text-success: #{palette-color-level('success', 7)};
-  --text-link: #{palette-color-level('info', 4)};
+  --text-link: #{palette-color-level('info', 6)};
 
   /* Interaction Colors */
   --interaction-primary-enabled: #{palette-color-level('primary', 7)};
@@ -92,8 +92,8 @@
   --interaction-success-hovered: #{palette-color-level('success', 6)};
   --interaction-success-activated: #{palette-color-level('success', 8)};
 
-  --interaction-secondary-enabled: #{palette-color-level('info', 2)};
-  --interaction-secondary-hovered: #{palette-color-level('info', 1)};
+  --interaction-secondary-enabled: #{palette-color-level('info', 1)};
+  --interaction-secondary-hovered: #{palette-color-level('info', 2)};
   --interaction-secondary-activated: #{palette-color-level('info', 3)};
 
   // UTILS

@@ -2,7 +2,14 @@
   <vue-content-block as="section" padding="64 32" :class="$style.ExpertiseSection">
     <vue-columns space="64">
       <vue-column width="5/10" no-grow>
-        <nuxt-img src="/demo/tech-list.png" :alt="$t('ExpertiseSection.title')" />
+        <nuxt-img
+          src="/demo/tech-list.png"
+          :alt="$t('ExpertiseSection.title')"
+          preload
+          format="webp"
+          quality="80"
+          loading="lazy"
+        />
       </vue-column>
       <vue-column width="5/10" no-grow>
         <vue-stack align-y="between">

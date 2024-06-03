@@ -38,7 +38,7 @@
             </vue-inline>
             <nuxt-link to="/services">
               <vue-inline space="4" align-y="center">
-                <vue-text weight="semi-bold" color="link">
+                <vue-text weight="semi-bold">
                   {{ $t('LandingPageHeroSection.cta.VuesionServices' /* Explore Vuesion Services */) }}
                 </vue-text>
                 <vue-icon-arrow-right :class="$style.linkIcon" />
@@ -296,13 +296,17 @@ const $style = useCssModule();
   }
 
   .linkIcon {
-    color: var(--text-link);
+    color: var(--landing-hero-link-color);
     width: $space-20;
     height: $space-20;
   }
 
   .logo {
     z-index: 1;
+  }
+
+  a {
+    color: var(--landing-hero-link-color);
   }
 }
 </style>

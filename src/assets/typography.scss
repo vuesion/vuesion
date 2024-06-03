@@ -23,10 +23,6 @@ strong {
 }
 
 a {
-  color: var(--interaction-primary-enabled);
+  color: var(--text-link);
   text-decoration: none;
-
-  &:hover {
-    color: var(--interaction-primary-hovered);
-  }
 }

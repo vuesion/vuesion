@@ -23,7 +23,14 @@
         </vue-stack>
       </vue-column>
       <vue-column width="5/10" no-grow align-y="center">
-        <nuxt-img src="/demo/services.png" :alt="$t('WhySection.title')" />
+        <nuxt-img
+          src="/demo/services.png"
+          :alt="$t('WhySection.title')"
+          preload
+          format="webp"
+          quality="80"
+          loading="lazy"
+        />
       </vue-column>
     </vue-columns>
   </vue-content-block>

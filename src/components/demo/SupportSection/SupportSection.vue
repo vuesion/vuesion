@@ -10,7 +10,7 @@
           <vue-stack space="16">
             <vue-columns space="0" align-y="center" :class="$style.item">
               <vue-column no-grow no-shrink>
-                <nuxt-img alt="Discord" src="/demo/discord.png" />
+                <nuxt-img alt="Discord" src="/demo/discord.png" preload format="webp" quality="80" loading="lazy" />
               </vue-column>
               <vue-column padding="16 16 16 24">
                 <vue-text>
@@ -32,7 +32,7 @@
             </vue-columns>
             <vue-columns space="0" align-y="center" :class="$style.item">
               <vue-column no-grow no-shrink>
-                <nuxt-img alt="Github" src="/demo/github.png" />
+                <nuxt-img alt="Github" src="/demo/github.png" preload format="webp" quality="80" loading="lazy" />
               </vue-column>
               <vue-column padding="16 16 16 24">
                 <vue-text>
@@ -54,7 +54,7 @@
             </vue-columns>
             <vue-columns space="0" align-y="center" :class="$style.item">
               <vue-column no-grow no-shrink>
-                <nuxt-img alt="WRLD" src="/demo/wrld.png" />
+                <nuxt-img alt="WRLD" src="/demo/wrld.png" preload format="webp" quality="80" loading="lazy" />
               </vue-column>
               <vue-column padding="16 16 16 24">
                 <vue-text>
@@ -76,7 +76,14 @@
             </vue-columns>
             <vue-columns space="0" align-y="center" :class="$style.item">
               <vue-column no-grow no-shrink>
-                <nuxt-img alt="vuesion docus" src="/demo/vuesion.png" />
+                <nuxt-img
+                  alt="vuesion docus"
+                  src="/demo/vuesion.png"
+                  preload
+                  format="webp"
+                  quality="80"
+                  loading="lazy"
+                />
               </vue-column>
               <vue-column padding="16 16 16 24">
                 <vue-text>
@@ -99,7 +106,7 @@
           </vue-stack>
         </vue-column>
         <vue-column width="5/10" no-grow>
-          <nuxt-img alt="vuesion support" src="/demo/support.png" />
+          <nuxt-img alt="vuesion support" src="/demo/support.png" preload format="webp" quality="80" loading="lazy" />
         </vue-column>
       </vue-columns>
     </vue-stack>
