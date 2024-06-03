@@ -1,8 +1,8 @@
-<img width="256px" height="256px" src="https://user-images.githubusercontent.com/1667598/55292014-ea98a800-53e5-11e9-82ca-11ba7bb2bbcd.png" alt="vuesion logo" align="center" />
+<img width="256px" height="256px" src="./src/public/logo.png" alt="vuesion logo" style="border-radius: 16px;"/>
 
 # Vuesion
 
-_**Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.**_
+> Vuesion is a boilerplate that empowers product teams to build faster with modern best practices across engineering and design. It features a full-stack framework, comprehensive design system, robust testing, and seamless internationalization.
 
 [![GitHub release](https://img.shields.io/github/release/vuesion/vuesion.svg)](https://GitHub.com/vuesion/vuesion/releases/)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c8e3979ea94da8e9d683/test_coverage)](https://codeclimate.com/github/vuesion/vuesion/test_coverage)

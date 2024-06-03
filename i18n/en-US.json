@@ -52,5 +52,7 @@
   "common.LearnMore": "Learn more",
   "components.formExample.zipCode.error": "Please enter a Number",
   "pages.index.description": "Enhance your product team's efficiency with Vuesion. Our boilerplate incorporates the best practices in engineering and design for rapid development.",
-  "pages.index.title": "Vuesion: Your Ultimate Boilerplate for Efficient Product Development"
+  "pages.index.title": "Vuesion: Your Ultimate Boilerplate for Efficient Product Development",
+  "pages.services.index.description": "Unlock your project's potential with Vuesion Services. We offer expert consulting, rapid prototyping, PoCs, and MVP development to accelerate your success.",
+  "pages.services.index.title": "Vuesion Services: Expert Consulting, Prototyping, and MVP Development"
 }

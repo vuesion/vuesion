@@ -8,7 +8,7 @@
               {{ $t('BenefitsSection.title' /* Designed for Teams and Solopreneurs */) }}
             </vue-text>
 
-            <nuxt-img :alt="$t('BenefitsSection.title')" src="/images/team-small.png" />
+            <nuxt-img :alt="$t('BenefitsSection.title')" src="/demo/team.png" />
           </vue-stack>
         </vue-column>
         <vue-column width="5/10" no-grow>

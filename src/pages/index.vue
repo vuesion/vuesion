@@ -28,7 +28,7 @@ const { t } = useI18n();
 
 // Head
 const url = 'https://vuesion.herokuapp.com/';
-const logo = '/images/vuesion-logo.png';
+const logo = '/logo.png';
 const title = t('pages.index.title' /* Vuesion: Your Ultimate Boilerplate for Efficient Product Development */);
 const description = t(
   'pages.index.description' /* Enhance your product team's efficiency with Vuesion. Our boilerplate incorporates the best practices in engineering and design for rapid development. */,

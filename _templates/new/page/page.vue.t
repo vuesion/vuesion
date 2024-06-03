@@ -2,29 +2,29 @@
 to: "src/pages/<%= path %>.vue"
 ---
 <template>
-  <vue-content-block :class="$style.page">
+  <vue-stack space="0" as="main" :class="$style.page">
     <%= path %>
 <% if (store !== 'None') { -%>
 
     {{ <%= h.inflection.pluralize(h.inflection.camelize(store, true)) %> }}
 <% } -%>
-  </vue-content-block>
+  </vue-stack>
 </template>
 
 <script setup lang="ts">
-import { <% if (store !== 'None') { -%>computed, <% } -%><% if (auth === true) { -%>definePageMeta, <% } %>useHead } from '#imports';
+import { <% if (store !== 'None') { -%>computed, <% } -%><% if (auth === true) { -%>definePageMeta, <% } %>useHead, useI18n } from '#imports';
 <% if (store !== 'None') { -%>
 import { usePrefillStoreAction } from '~/composables/use-prefill-store-action';
 import { use<%= store %>Store } from '~/store/<%= store.toLowerCase() %>';
 <% } -%>
-import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
 
 // Deps
+const { t } = useI18n();
 <% if (store !== 'None') { -%>
 const store = use<%= store %>Store();
 <% } %>
 // Config
-useHead({ title: 'Page Title' });
 <% if (auth === true) { -%>
 definePageMeta({ middleware: 'auth' });
 <% } %>
@@ -38,13 +38,36 @@ const <%= h.inflection.pluralize(h.inflection.camelize(store, true)) %> = comput
 <% if (store !== 'None') { -%>
 usePrefillStoreAction(store.fetch<%= h.inflection.camelize(h.inflection.pluralize(store)) %>, store.get<%= h.inflection.camelize(h.inflection.pluralize(store)) %>);
 <% } -%>
+
+// Head
+const url = 'https://vuesion.herokuapp.com/';
+const logo = '/logo.png';
+const title = t('pages.<%= h.pathToKey(path) %>.title' /* Title */);
+const description = t(
+  'pages.<%= h.pathToKey(path) %>.description' /* Description */,
+);
+
+useHead({
+  title,
+  meta: [
+    { name: 'description', content: description },
+    { name: 'robots', content: 'INDEX,FOLLOW' },
+    { name: 'og:url', content: url },
+    { name: 'og:site_name', content: 'vuesion' },
+    { name: 'og:type', content: 'website' },
+    { name: 'og:locale', content: 'en' },
+    { name: 'og:title', content: title },
+    { name: 'og:description', content: description },
+    { name: 'og:image:url', content: logo },
+  ],
+});
 </script>
 
 <style lang="scss" module>
 @import 'assets/_design-system.scss';
 
 .page {
-  padding-top: $navbar-height;
+  // this class is only applied if you add css properties
 }
 </style>
 

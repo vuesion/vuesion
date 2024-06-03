@@ -12,7 +12,7 @@ addons.setConfig({
     base: 'dark',
     brandTitle: 'Vuesion',
     brandUrl: 'https://vuesion.herokuapp.com',
-    brandImage: '/images/vuesion-logo.png',
+    brandImage: '/logo.png',
     brandTarget: '_blank',
   }),
   selectedPanel: undefined,

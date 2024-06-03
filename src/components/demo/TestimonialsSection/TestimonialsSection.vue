@@ -8,7 +8,7 @@
       <vue-columns space="16">
         <vue-column width="4/12" no-grow>
           <vue-stack space="96" padding="16 16 48 16" :class="$style.testimonial">
-            <nuxt-img alt="Björn Schmidt - CTO" src="/images/testimonial1.png" />
+            <nuxt-img alt="Björn Schmidt - CTO" src="/demo/testimonial1.png" />
             <vue-stack :space="0">
               <vue-text look="label" weight="semi-bold">Björn Schmidt</vue-text>
               <vue-text look="support" color="text-low">CTO</vue-text>
@@ -25,7 +25,7 @@
         </vue-column>
         <vue-column width="4/12" no-grow>
           <vue-stack space="96" padding="16 16 48 16" :class="$style.testimonial">
-            <nuxt-img alt="Abby Graham - Software Engineer" src="/images/testimonial2.png" />
+            <nuxt-img alt="Abby Graham - Software Engineer" src="/demo/testimonial2.png" />
             <vue-stack :space="0">
               <vue-text look="label" weight="semi-bold">Abby Graham</vue-text>
               <vue-text look="support" color="text-low">Software Engineer</vue-text>
@@ -42,7 +42,7 @@
         </vue-column>
         <vue-column width="4/12" no-grow>
           <vue-stack space="96" padding="16 16 48 16" :class="[$style.testimonial, $style.primary]">
-            <nuxt-img alt="Emily Chen - UX Designer" src="/images/testimonial3.png" />
+            <nuxt-img alt="Emily Chen - UX Designer" src="/demo/testimonial3.png" />
             <vue-stack :space="0">
               <vue-text look="label" weight="semi-bold">Emily Chen</vue-text>
               <vue-text look="support">UX Designer</vue-text>
@@ -59,7 +59,7 @@
         </vue-column>
         <vue-column width="4/12" no-grow>
           <vue-stack space="96" padding="16 16 48 16" :class="$style.testimonial">
-            <nuxt-img alt="Carlos Garcia - UX Designer" src="/images/testimonial4.png" />
+            <nuxt-img alt="Carlos Garcia - UX Designer" src="/demo/testimonial4.png" />
             <vue-stack :space="0">
               <vue-text look="label" weight="semi-bold">Carlos Garcia</vue-text>
               <vue-text look="support" color="text-low">UX Designer</vue-text>

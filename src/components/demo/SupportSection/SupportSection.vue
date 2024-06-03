@@ -10,7 +10,7 @@
           <vue-stack space="16">
             <vue-columns space="0" align-y="center" :class="$style.item">
               <vue-column no-grow no-shrink>
-                <nuxt-img alt="Discord" src="/images/discord.png" />
+                <nuxt-img alt="Discord" src="/demo/discord.png" />
               </vue-column>
               <vue-column padding="16 16 16 24">
                 <vue-text>
@@ -32,7 +32,7 @@
             </vue-columns>
             <vue-columns space="0" align-y="center" :class="$style.item">
               <vue-column no-grow no-shrink>
-                <nuxt-img alt="Github" src="/images/github.png" />
+                <nuxt-img alt="Github" src="/demo/github.png" />
               </vue-column>
               <vue-column padding="16 16 16 24">
                 <vue-text>
@@ -54,7 +54,7 @@
             </vue-columns>
             <vue-columns space="0" align-y="center" :class="$style.item">
               <vue-column no-grow no-shrink>
-                <nuxt-img alt="WRLD" src="/images/wrld.png" />
+                <nuxt-img alt="WRLD" src="/demo/wrld.png" />
               </vue-column>
               <vue-column padding="16 16 16 24">
                 <vue-text>
@@ -76,7 +76,7 @@
             </vue-columns>
             <vue-columns space="0" align-y="center" :class="$style.item">
               <vue-column no-grow no-shrink>
-                <nuxt-img alt="vuesion docus" src="/images/vuesion.png" />
+                <nuxt-img alt="vuesion docus" src="/demo/vuesion.png" />
               </vue-column>
               <vue-column padding="16 16 16 24">
                 <vue-text>
@@ -99,7 +99,7 @@
           </vue-stack>
         </vue-column>
         <vue-column width="5/10" no-grow>
-          <nuxt-img alt="vuesion support" src="/images/support-small.png" />
+          <nuxt-img alt="vuesion support" src="/demo/support.png" />
         </vue-column>
       </vue-columns>
     </vue-stack>
