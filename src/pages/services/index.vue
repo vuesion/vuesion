@@ -3,6 +3,7 @@
     <services-hero-section />
     <why-section />
     <services-section />
+    <expertise-section />
   </vue-stack>
 </template>
 
@@ -12,6 +13,7 @@ import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import ServicesHeroSection from '~/components/demo/ServicesHeroSection/ServicesHeroSection.vue';
 import WhySection from '~/components/demo/WhySection/WhySection.vue';
 import ServicesSection from '~/components/demo/ServicesSection/ServicesSection.vue';
+import ExpertiseSection from '~/components/demo/ExpertiseSection/ExpertiseSection.vue';
 
 // Deps
 const { t } = useI18n();
