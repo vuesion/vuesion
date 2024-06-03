@@ -46,5 +46,9 @@ const $style = useCssModule();
 
 .WhySection {
   background-color: var(--surface-default-high);
+
+  img {
+    border-radius: $card-border-radius;
+  }
 }
 </style>

@@ -247,6 +247,10 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     text-align: right;
   }
 
+  &.align-justify {
+    text-align: justify;
+  }
+
   @include mediaMin(tabletPortrait) {
     &.align-tp-start {
       text-align: left;
@@ -258,6 +262,10 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 
     &.align-tp-end {
       text-align: right;
+    }
+
+    &.align-tp-justify {
+      text-align: justify;
     }
   }
 
@@ -273,6 +281,10 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     &.align-tl-end {
       text-align: right;
     }
+
+    &.align-tl-justify {
+      text-align: justify;
+    }
   }
 
   @include mediaMin(smallDesktop) {
@@ -287,6 +299,10 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     &.align-sd-end {
       text-align: right;
     }
+
+    &.align-sd-justify {
+      text-align: justify;
+    }
   }
 
   @include mediaMin(largeDesktop) {
@@ -300,6 +316,10 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 
     &.align-ld-end {
       text-align: right;
+    }
+
+    &.align-ld-justify {
+      text-align: justify;
     }
   }
 }

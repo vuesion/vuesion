@@ -45,7 +45,7 @@ export const FontWeightValues = ['regular', 'semi-bold', 'black'] as const;
 
 export type FontWeight = (typeof FontWeightValues)[number];
 
-export const AlignmentValues = ['start', 'center', 'end', 'inherit', 'initial'] as const;
+export const AlignmentValues = ['start', 'center', 'end', 'inherit', 'initial', 'justify'] as const;
 
 export type Alignment = (typeof AlignmentValues)[number];
 
