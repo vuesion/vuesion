@@ -1,10 +1,13 @@
 <template>
-  <vue-stack space="0" as="main" :class="$style.page">/services/index </vue-stack>
+  <vue-stack space="0" as="main" :class="$style.page">
+    <services-hero-section />
+  </vue-stack>
 </template>
 
 <script setup lang="ts">
 import { useHead, useI18n } from '#imports';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import ServicesHeroSection from '~/components/demo/ServicesHeroSection/ServicesHeroSection.vue';
 
 // Deps
 const { t } = useI18n();
