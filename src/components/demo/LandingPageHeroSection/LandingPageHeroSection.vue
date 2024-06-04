@@ -1,8 +1,8 @@
 <template>
   <vue-content-block as="section" :class="$style.LandingPageHeroSection">
-    <vue-columns class="h-full">
-      <vue-column :width="['5/10']" no-grow no-shrink>
-        <vue-stack :padding="['64 32']" align-y="between" :class="$style.leftCol">
+    <vue-columns stack-phone stack-tablet-portrait class="h-full">
+      <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink>
+        <vue-stack :padding="['32 16', '32 16', '64 32']" align-y="between" :class="$style.leftCol">
           <vue-stack space="32" padding="0 32 0 0">
             <vue-text look="hero" weight="black" gradient>
               {{ $t('LandingPageHeroSection.headline' /* Build Faster, Collaborate Better with Vuesion. */) }}
@@ -48,7 +48,14 @@
           <div :class="$style.deco"></div>
         </vue-stack>
       </vue-column>
-      <vue-column :width="['5/10']" no-grow no-shrink align-y="center" align-x="center">
+      <vue-column
+        :width="['full', 'full', '5/10']"
+        no-grow
+        no-shrink
+        align-y="center"
+        align-x="center"
+        class="hidden-p hidden-tp"
+      >
         <svg
           width="463"
           height="419"
@@ -266,13 +273,11 @@ const $style = useCssModule();
 @import 'assets/_design-system.scss';
 
 .LandingPageHeroSection {
-  height: 600px;
   background-color: var(--surface-default-high);
 
   .leftCol {
     position: relative;
     background-color: var(--surface-inverse-high);
-    border-radius: 0 0 $space-128 0;
 
     .deco {
       position: absolute;
@@ -307,6 +312,14 @@ const $style = useCssModule();
 
   a {
     color: var(--landing-hero-link-color);
+  }
+
+  @include mediaMin(tabletLandscape) {
+    height: 600px;
+
+    .leftCol {
+      border-radius: 0 0 $space-128 0;
+    }
   }
 }
 </style>

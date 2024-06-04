@@ -1,7 +1,7 @@
 <template>
-  <vue-content-block as="section" padding="64 32" :class="$style.WhySection">
-    <vue-columns space="64">
-      <vue-column width="5/10" no-grow>
+  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.WhySection">
+    <vue-columns stack-phone stack-tablet-portrait :space="[32, 32, 64]">
+      <vue-column :width="['full', 'full', '5/10']" no-grow>
         <vue-stack space="32">
           <vue-text look="h3" weight="black">
             {{ $t('WhySection.title' /* Why Choose Vuesion Services? */) }}
@@ -22,7 +22,7 @@
           </vue-text>
         </vue-stack>
       </vue-column>
-      <vue-column width="5/10" no-grow align-y="center">
+      <vue-column :width="['full', 'full', '5/10']" no-grow align-y="center">
         <nuxt-img
           src="/demo/services.png"
           :alt="$t('WhySection.title')"

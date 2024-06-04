@@ -1,7 +1,7 @@
 <template>
-  <vue-content-block as="section" padding="64 32" :class="$style.ExpertiseSection">
-    <vue-columns space="64">
-      <vue-column width="5/10" no-grow>
+  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.ExpertiseSection">
+    <vue-columns stack-phone stack-tablet-portrait :reverse="[true, true, false]" space="64">
+      <vue-column :width="['full', 'full', '5/10']" no-grow>
         <nuxt-img
           src="/demo/tech-list.png"
           :alt="$t('ExpertiseSection.title')"
@@ -11,7 +11,7 @@
           loading="lazy"
         />
       </vue-column>
-      <vue-column width="5/10" no-grow>
+      <vue-column :width="['full', 'full', '5/10']" no-grow>
         <vue-stack align-y="between">
           <vue-text look="h3" weight="black" color="text-inverse-high">
             {{ $t('ExpertiseSection.title' /* Technology Agnostic Expertise */) }}

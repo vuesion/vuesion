@@ -19,7 +19,7 @@ withDefaults(defineProps<{ as?: string; padding?: SpacingWithDirections | Array<
 
 .vueContentBlock {
   width: 100%;
-  max-width: calc(100% - $space-32);
+  max-width: 100%;
   margin: 0 auto;
   position: relative;
 

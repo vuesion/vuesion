@@ -1,5 +1,5 @@
 <template>
-  <vue-content-block id="contact" as="section" padding="64 32 32 32" :class="$style.ContactSection">
+  <vue-content-block id="contact" as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.ContactSection">
     <vue-stack space="32">
       <vue-stack space="8">
         <vue-text look="hero" weight="black" gradient>

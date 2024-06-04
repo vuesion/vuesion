@@ -1,14 +1,14 @@
 <template>
-  <vue-content-block as="section" padding="64 32" :class="$style.ServicesSection">
+  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.ServicesSection">
     <vue-stack space="64">
       <vue-text look="h3" weight="black">
         {{ $t('ServicesSection.title' /* Vuesion Services for every Stage of your Business */) }}
       </vue-text>
 
       <vue-stack space="32">
-        <vue-columns space="0" :class="$style.benefit">
-          <vue-column width="5/10" no-grow no-shrink align-x="center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="442" height="300" fill="none">
+        <vue-columns :space="[16, 16, 0]" stack-phone stack-tablet-portrait :class="$style.benefit">
+          <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-x="center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="442" height="300" viewBox="0 0 442 300" fill="none">
               <g clip-path="url(#a)">
                 <path
                   fill="#E6E6E6"
@@ -106,12 +106,12 @@
               </defs>
             </svg>
           </vue-column>
-          <vue-column width="5/10" no-grow no-shrink align-y="center">
-            <vue-stack space="4" padding="0 0 0 24">
-              <vue-text look="h4" weight="black" align-x="justify">
+          <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-y="center">
+            <vue-stack space="4" :padding="[0, 0, '0 0 0 24']">
+              <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
                 {{ $t('ServicesSection.Benefit1.title' /* Tailored strategies to generate and screen ideas. */) }}
               </vue-text>
-              <vue-text look="description" color="text-medium" align-x="justify">
+              <vue-text look="description" color="text-medium" :align-x="['start', 'start', 'justify']">
                 {{
                   $t(
                     'ServicesSection.Benefit1.description' /* We help identify innovative ideas and evaluate their feasibility and alignment with business goals, ensuring a solid foundation for product development. */,
@@ -121,13 +121,19 @@
             </vue-stack>
           </vue-column>
         </vue-columns>
-        <vue-columns space="0" :class="$style.benefit">
-          <vue-column width="5/10" no-grow no-shrink align-y="center">
+        <vue-columns
+          :space="[16, 16, 0]"
+          stack-phone
+          stack-tablet-portrait
+          :reverse="[true, true, false]"
+          :class="$style.benefit"
+        >
+          <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-y="center">
             <vue-stack space="4" padding="0 24 0 0">
-              <vue-text look="h4" weight="black" align-x="justify">
+              <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
                 {{ $t('ServicesSection.Benefit2.title' /* User research and feasibility studies. */) }}
               </vue-text>
-              <vue-text look="description" color="text-medium" align-x="justify">
+              <vue-text look="description" color="text-medium" :align-x="['start', 'start', 'justify']">
                 {{
                   $t(
                     'ServicesSection.Benefit2.description' /* We conduct thorough user research to understand customer needs and preferences, providing a comprehensive feasibility study for your product concept. */,
@@ -136,8 +142,8 @@
               </vue-text>
             </vue-stack>
           </vue-column>
-          <vue-column width="5/10" no-grow no-shrink align-x="center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="474" height="242" fill="none">
+          <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-x="center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="474" height="242" viewBox="0 0 474 242" fill="none">
               <g clip-path="url(#a)">
                 <path
                   fill="#F2F2F2"
@@ -264,9 +270,9 @@
             </svg>
           </vue-column>
         </vue-columns>
-        <vue-columns space="0" :class="$style.benefit">
-          <vue-column width="5/10" no-grow no-shrink align-x="center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="408" height="300" fill="none">
+        <vue-columns :space="[16, 16, 0]" stack-phone stack-tablet-portrait :class="$style.benefit">
+          <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-x="center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="408" height="300" viewBox="0 0 408 300" fill="none">
               <g clip-path="url(#a)">
                 <path fill="#FFB6B6" d="m190.857 237.484 6.445-2.886-8.072-26.858-9.514 4.259 11.141 25.485Z" />
                 <path
@@ -393,12 +399,12 @@
               </defs>
             </svg>
           </vue-column>
-          <vue-column width="5/10" no-grow no-shrink align-y="center">
-            <vue-stack space="4" padding="0 0 0 24">
-              <vue-text look="h4" weight="black" align-x="justify">
+          <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-y="center">
+            <vue-stack space="4" :padding="[0, 0, '0 0 0 24']">
+              <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
                 {{ $t('ServicesSection.Benefit3.title' /* Fully functional concept validation. */) }}
               </vue-text>
-              <vue-text look="description" color="text-medium" align-x="justify">
+              <vue-text look="description" color="text-medium" :align-x="['start', 'start', 'justify']">
                 {{
                   $t(
                     'ServicesSection.Benefit3.description' /* We create fully functional prototypes to validate concepts and ensure they meet user needs and technical requirements. */,
@@ -408,13 +414,19 @@
             </vue-stack>
           </vue-column>
         </vue-columns>
-        <vue-columns space="0" :class="$style.benefit">
-          <vue-column width="5/10" no-grow no-shrink align-y="center">
+        <vue-columns
+          :space="[16, 16, 0]"
+          stack-phone
+          stack-tablet-portrait
+          :reverse="[true, true, false]"
+          :class="$style.benefit"
+        >
+          <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-y="center">
             <vue-stack space="4" padding="0 24 0 0">
-              <vue-text look="h4" weight="black" align-x="justify">
+              <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
                 {{ $t('ServicesSection.Benefit4.title' /* Risk assessment. */) }}
               </vue-text>
-              <vue-text look="description" color="text-medium" align-x="justify">
+              <vue-text look="description" color="text-medium" :align-x="['start', 'start', 'justify']">
                 {{
                   $t(
                     'ServicesSection.Benefit4.description' /* We perform detailed risk assessments to identify potential challenges and develop mitigation strategies, ensuring a smoother product development journey. */,
@@ -423,8 +435,8 @@
               </vue-text>
             </vue-stack>
           </vue-column>
-          <vue-column width="5/10" no-grow no-shrink align-x="center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="248" height="300" fill="none">
+          <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-x="center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="248" height="300" viewBox="0 0 248 300" fill="none">
               <g clip-path="url(#a)">
                 <path
                   fill="#F2F2F2"
@@ -513,9 +525,9 @@
             </svg>
           </vue-column>
         </vue-columns>
-        <vue-columns space="0" :class="$style.benefit">
-          <vue-column width="5/10" no-grow no-shrink align-x="center" align-y="center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="388" height="258" fill="none">
+        <vue-columns :space="[16, 16, 0]" stack-phone stack-tablet-portrait :class="$style.benefit">
+          <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-x="center" align-y="center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="388" height="258" viewBox="0 0 388 258" fill="none">
               <g clip-path="url(#a)">
                 <path
                   fill="#E6E7E8"
@@ -631,13 +643,13 @@
               </defs>
             </svg>
           </vue-column>
-          <vue-column width="5/10" no-grow no-shrink align-y="center">
-            <vue-stack space="32" padding="16 0 16 24">
+          <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-y="center">
+            <vue-stack space="32" :padding="[0, 0, '16 0 16 24']">
               <vue-stack space="4">
-                <vue-text look="h4" weight="black" align-x="justify">
+                <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
                   {{ $t('ServicesSection.Benefit5.title' /* Minimum viable products. */) }}
                 </vue-text>
-                <vue-text look="description" color="text-medium" align-x="justify">
+                <vue-text look="description" color="text-medium" :align-x="['start', 'start', 'justify']">
                   {{
                     $t(
                       'ServicesSection.Benefit5.description' /* We develop MVPs to test the market with a functional product that includes only the core features, allowing for faster feedback and iteration. */,
@@ -646,10 +658,10 @@
                 </vue-text>
               </vue-stack>
               <vue-stack space="4">
-                <vue-text look="h4" weight="black" align-x="justify">
+                <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
                   {{ $t('ServicesSection.Benefit6.title' /* Enhancing productivity through process optimization. */) }}
                 </vue-text>
-                <vue-text look="description" color="text-medium" align-x="justify">
+                <vue-text look="description" color="text-medium" :align-x="['start', 'start', 'justify']">
                   {{
                     $t(
                       'ServicesSection.Benefit6.description' /* We facilitate effective communication and collaboration across different teams, optimizing workflows and enhancing productivity. */,
@@ -660,17 +672,23 @@
             </vue-stack>
           </vue-column>
         </vue-columns>
-        <vue-columns space="0" :class="$style.benefit">
-          <vue-column width="5/10" no-grow no-shrink align-y="center">
+        <vue-columns
+          :space="[16, 16, 0]"
+          stack-phone
+          stack-tablet-portrait
+          :reverse="[true, true, false]"
+          :class="$style.benefit"
+        >
+          <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-y="center">
             <vue-stack space="4" padding="0 24 0 0">
-              <vue-text look="h4" weight="black" align-x="justify">
+              <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
                 {{
                   $t(
                     'ServicesSection.Benefit7.title' /* Technical SEO, performance optimization, and security best practices. */,
                   )
                 }}
               </vue-text>
-              <vue-text look="description" color="text-medium" align-x="justify">
+              <vue-text look="description" color="text-medium" :align-x="['start', 'start', 'justify']">
                 {{
                   $t(
                     'ServicesSection.Benefit7.description' /* We ensure your product is ready for market launch with optimized performance, robust security measures, and enhanced visibility through technical SEO. */,
@@ -679,8 +697,8 @@
               </vue-text>
             </vue-stack>
           </vue-column>
-          <vue-column width="5/10" no-grow no-shrink align-x="center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="388" height="300" fill="none">
+          <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-x="center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="388" height="300" viewBox="0 0 388 300" fill="none">
               <g clip-path="url(#a)">
                 <path
                   fill="#F0F0F0"
@@ -824,6 +842,11 @@ const $style = useCssModule();
   background-color: var(--surface-default-high);
 
   .benefit {
+    @include mediaMax(phone) {
+      svg {
+        transform: scale(0.8);
+      }
+    }
   }
 }
 </style>

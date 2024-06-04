@@ -1,12 +1,12 @@
 <template>
-  <vue-content-block as="section" padding="64 32" :class="$style.TestimonialsSection">
+  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.TestimonialsSection">
     <vue-stack space="32">
       <vue-text look="h3" weight="black">
         {{ $t('TestimonialsSection.title' /* What Our Users Say */) }}
       </vue-text>
 
-      <vue-columns space="16">
-        <vue-column width="4/12" no-grow>
+      <vue-columns stack-phone stack-tablet-portrait :space="[24, 24, 16]">
+        <vue-column :width="['full', 'full', '4/12']" no-grow>
           <vue-stack space="96" padding="16 16 48 16" :class="$style.testimonial">
             <nuxt-img
               alt="Björn Schmidt - CTO"
@@ -30,7 +30,7 @@
             </vue-text>
           </vue-stack>
         </vue-column>
-        <vue-column width="4/12" no-grow>
+        <vue-column :width="['full', 'full', '4/12']" no-grow>
           <vue-stack space="96" padding="16 16 48 16" :class="$style.testimonial">
             <nuxt-img
               alt="Abby Graham - Software Engineer"
@@ -54,7 +54,7 @@
             </vue-text>
           </vue-stack>
         </vue-column>
-        <vue-column width="4/12" no-grow>
+        <vue-column :width="['full', 'full', '4/12']" no-grow>
           <vue-stack space="96" padding="16 16 48 16" :class="[$style.testimonial, $style.primary]">
             <nuxt-img
               alt="Emily Chen - UX Designer"
@@ -78,7 +78,7 @@
             </vue-text>
           </vue-stack>
         </vue-column>
-        <vue-column width="4/12" no-grow>
+        <vue-column :width="['full', 'full', '4/12']" no-grow>
           <vue-stack space="96" padding="16 16 48 16" :class="$style.testimonial">
             <nuxt-img
               alt="Carlos Garcia - UX Designer"

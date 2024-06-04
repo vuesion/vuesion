@@ -76,10 +76,10 @@
 
         <vue-columns align-y="center" stack-phone stack-tablet-portrait>
           <vue-column>
-            <vue-inline space="8" align-y="center">
+            <vue-inline space="8" align-y="center" no-wrap>
               <vue-icon-vuesion :class="$style.logo" />
 
-              <vue-text look="h6" color="text-medium" :align-x="['center', 'center', 'end']">
+              <vue-text color="text-medium" :align-x="['center', 'center', 'end']">
                 © {{ year }} Werner-Most Ideen GmbH. All rights reserved.
               </vue-text>
             </vue-inline>

@@ -1,8 +1,12 @@
 <template>
-  <vue-content-block as="section" padding="64 32 32 32" :class="$style.BenefitsSection">
+  <vue-content-block
+    as="section"
+    :padding="['32 16 16 16', '32 16 16 16', '64 32 32 32']"
+    :class="$style.BenefitsSection"
+  >
     <vue-stack space="32">
-      <vue-columns space="80">
-        <vue-column width="5/10" no-grow>
+      <vue-columns stack-phone stack-tablet-portrait :space="[32, 32, 80]">
+        <vue-column :width="['full', 'full', '5/10']" no-grow>
           <vue-stack space="64">
             <vue-text look="hero" weight="black" gradient>
               {{ $t('BenefitsSection.title' /* Designed for Teams and Solopreneurs */) }}
@@ -15,10 +19,11 @@
               format="webp"
               quality="80"
               loading="lazy"
+              class="hidden-p hidden-tp"
             />
           </vue-stack>
         </vue-column>
-        <vue-column width="5/10" no-grow>
+        <vue-column :width="['full', 'full', '5/10']" no-grow>
           <vue-stack padding="0 16 0 0" align-y="between">
             <vue-stack space="10">
               <vue-text color="text-inverse-high" weight="semi-bold" look="large-title">

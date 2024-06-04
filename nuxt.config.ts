@@ -94,6 +94,7 @@ export default defineNuxtConfig({
           rules: {
             'prefer-native-element': 'off',
             'attribute-empty-style': 'off',
+            'unrecognized-char-ref': 'off',
           },
         },
       },

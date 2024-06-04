@@ -320,3 +320,45 @@
     }
   }
 }
+
+// Utils
+.hidden-screen {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@include mediaMax(phone) {
+  .hidden-p {
+    display: none;
+  }
+}
+
+@include mediaMinMax(tabletPortrait) {
+  .hidden-tp {
+    display: none;
+  }
+}
+
+@include mediaMinMax(tabletLandscape) {
+  .hidden-tl {
+    display: none;
+  }
+}
+
+@include mediaMinMax(smallDesktop) {
+  .hidden-sd {
+    display: none;
+  }
+}
+
+@include mediaMin(largeDesktop) {
+  .hidden-ld {
+    display: none;
+  }
+}

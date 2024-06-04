@@ -1,19 +1,19 @@
 <template>
-  <vue-content-block as="section" padding="64 32" :class="$style.SupportSection">
+  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.SupportSection">
     <vue-stack space="64">
       <vue-text look="h3" weight="black">
         {{ $t('SupportSection.title' /* Join Our Community */) }}
       </vue-text>
 
-      <vue-columns space="64">
-        <vue-column width="5/10" no-grow>
+      <vue-columns stack-phone stack-tablet-portrait space="64">
+        <vue-column :width="['full', 'full', '5/10']" no-grow>
           <vue-stack space="16">
-            <vue-columns space="0" align-y="center" :class="$style.item">
-              <vue-column no-grow no-shrink>
+            <vue-columns space="0" align-y="center" stack-phone stack-tablet-portrait :class="$style.item">
+              <vue-column no-grow no-shrink :padding="[16, 16, 0]">
                 <nuxt-img alt="Discord" src="/demo/discord.png" preload format="webp" quality="80" loading="lazy" />
               </vue-column>
               <vue-column padding="16 16 16 24">
-                <vue-text>
+                <vue-text :align-x="['center', 'center', 'start']">
                   {{ $t('SupportSection.chanel1.description' /* Engage with other users on our Discord server. */) }}
                 </vue-text>
               </vue-column>
@@ -30,12 +30,12 @@
                 </vue-button>
               </vue-column>
             </vue-columns>
-            <vue-columns space="0" align-y="center" :class="$style.item">
-              <vue-column no-grow no-shrink>
+            <vue-columns space="0" align-y="center" stack-phone stack-tablet-portrait :class="$style.item">
+              <vue-column no-grow no-shrink :padding="[16, 16, 0]">
                 <nuxt-img alt="Github" src="/demo/github.png" preload format="webp" quality="80" loading="lazy" />
               </vue-column>
               <vue-column padding="16 16 16 24">
-                <vue-text>
+                <vue-text :align-x="['center', 'center', 'start']">
                   {{ $t('SupportSection.chanel2.description' /* Contribute to the project on GitHub. */) }}
                 </vue-text>
               </vue-column>
@@ -52,12 +52,12 @@
                 </vue-button>
               </vue-column>
             </vue-columns>
-            <vue-columns space="0" align-y="center" :class="$style.item">
-              <vue-column no-grow no-shrink>
+            <vue-columns space="0" align-y="center" stack-phone stack-tablet-portrait :class="$style.item">
+              <vue-column no-grow no-shrink :padding="[16, 16, 0]">
                 <nuxt-img alt="WRLD" src="/demo/wrld.png" preload format="webp" quality="80" loading="lazy" />
               </vue-column>
               <vue-column padding="16 16 16 24">
-                <vue-text>
+                <vue-text :align-x="['center', 'center', 'start']">
                   {{ $t('SupportSection.chanel3.description' /* Engage with other users in our WRLD. */) }}
                 </vue-text>
               </vue-column>
@@ -74,8 +74,8 @@
                 </vue-button>
               </vue-column>
             </vue-columns>
-            <vue-columns space="0" align-y="center" :class="$style.item">
-              <vue-column no-grow no-shrink>
+            <vue-columns space="0" align-y="center" stack-phone stack-tablet-portrait :class="$style.item">
+              <vue-column no-grow no-shrink :padding="[16, 16, 0]">
                 <nuxt-img
                   alt="vuesion docus"
                   src="/demo/vuesion.png"
@@ -86,7 +86,7 @@
                 />
               </vue-column>
               <vue-column padding="16 16 16 24">
-                <vue-text>
+                <vue-text :align-x="['center', 'center', 'start']">
                   {{ $t('SupportSection.chanel4.description' /* Access detailed Documentation and Tutorials. */) }}
                 </vue-text>
               </vue-column>
@@ -105,7 +105,7 @@
             </vue-columns>
           </vue-stack>
         </vue-column>
-        <vue-column width="5/10" no-grow>
+        <vue-column :width="['full', 'full', '5/10']" no-grow class="hidden-p hidden-tp">
           <nuxt-img alt="vuesion support" src="/demo/support.png" preload format="webp" quality="80" loading="lazy" />
         </vue-column>
       </vue-columns>

@@ -1,13 +1,17 @@
 <template>
-  <vue-content-block as="section" :padding="['64 32 32 32']" :class="$style.KeyFeaturesSection">
+  <vue-content-block
+    as="section"
+    :padding="['32 16 16 16', '32 16 16 16', '64 32 32 32']"
+    :class="$style.KeyFeaturesSection"
+  >
     <vue-stack space="32">
       <vue-text look="h3" weight="black">
         {{ $t('KeyFeaturesSection.title' /* Key Features */) }}
       </vue-text>
 
       <vue-stack space="16">
-        <vue-columns space="16">
-          <vue-column width="5/10" no-grow>
+        <vue-columns stack-phone stack-tablet-portrait space="16">
+          <vue-column :width="['full', 'full', '5/10']" no-grow>
             <vue-box padding="8" :class="$style.feature">
               <nuxt-img
                 :alt="$t('KeyFeaturesSection.Feature1.title')"
@@ -31,10 +35,10 @@
               </vue-stack>
             </vue-box>
           </vue-column>
-          <vue-column width="5/10" no-grow>
+          <vue-column :width="['full', 'full', '5/10']" no-grow>
             <vue-stack space="16">
-              <vue-columns space="16">
-                <vue-column width="5/10" no-grow>
+              <vue-columns stack-phone stack-tablet-portrait space="16">
+                <vue-column :width="['full', 'full', '5/10']" no-grow>
                   <vue-box padding="8" :class="$style.feature">
                     <vue-stack padding="8 8 16 8" space="8">
                       <vue-text weight="semi-bold">
@@ -50,7 +54,7 @@
                     </vue-stack>
                   </vue-box>
                 </vue-column>
-                <vue-column width="5/10" no-grow>
+                <vue-column :width="['full', 'full', '5/10']" no-grow>
                   <vue-box padding="8" :class="[$style.feature, $style.primary]">
                     <vue-stack padding="8 8 16 8" space="8">
                       <vue-text weight="semi-bold">
@@ -93,8 +97,15 @@
           </vue-column>
         </vue-columns>
 
-        <vue-columns space="16" padding="32 0" align-y="center" :class="$style.services">
-          <vue-column width="5/10" no-grow>
+        <vue-columns
+          stack-phone
+          stack-tablet-portrait
+          space="16"
+          padding="32 0"
+          align-y="center"
+          :class="$style.services"
+        >
+          <vue-column :width="['full', 'full', '5/10']" no-grow>
             <nuxt-img
               :alt="$t('KeyFeaturesSection.services.title')"
               src="/demo/services.png"
@@ -104,7 +115,7 @@
               loading="lazy"
             />
           </vue-column>
-          <vue-column width="5/10" no-grow>
+          <vue-column :width="['full', 'full', '5/10']" no-grow>
             <vue-stack padding="16">
               <vue-stack space="8">
                 <vue-text weight="semi-bold">
@@ -130,8 +141,8 @@
           </vue-column>
         </vue-columns>
 
-        <vue-columns space="16">
-          <vue-column width="5/10" no-grow>
+        <vue-columns stack-phone stack-tablet-portrait space="16">
+          <vue-column :width="['full', 'full', '5/10']" no-grow>
             <vue-stack space="16">
               <vue-box padding="8" :class="[$style.feature, $style.dark]">
                 <nuxt-img
@@ -155,8 +166,8 @@
                   </vue-text>
                 </vue-stack>
               </vue-box>
-              <vue-columns space="16">
-                <vue-column width="5/10" no-grow>
+              <vue-columns stack-phone stack-tablet-portrait space="16">
+                <vue-column :width="['full', 'full', '5/10']" no-grow>
                   <vue-box padding="8" :class="[$style.feature, $style.primary]">
                     <vue-stack padding="8 8 16 8" space="8">
                       <vue-text weight="semi-bold">
@@ -172,7 +183,7 @@
                     </vue-stack>
                   </vue-box>
                 </vue-column>
-                <vue-column width="5/10" no-grow>
+                <vue-column :width="['full', 'full', '5/10']" no-grow>
                   <vue-box padding="8" :class="[$style.feature]">
                     <vue-stack padding="8 8 16 8" space="8">
                       <vue-text weight="semi-bold">
@@ -191,7 +202,7 @@
               </vue-columns>
             </vue-stack>
           </vue-column>
-          <vue-column width="5/10" no-grow>
+          <vue-column :width="['full', 'full', '5/10']" no-grow>
             <vue-box padding="8" :class="$style.feature">
               <nuxt-img
                 :alt="$t('KeyFeaturesSection.Feature8.title')"

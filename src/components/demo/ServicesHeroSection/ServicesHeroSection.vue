@@ -1,6 +1,12 @@
 <template>
   <vue-content-block as="section" :class="$style.ServicesHeroSection">
-    <svg xmlns="http://www.w3.org/2000/svg" width="1112" height="600" fill="none" :class="$style.bg">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1112"
+      height="600"
+      fill="none"
+      :class="[$style.bg, 'hidden-p', 'hidden-top']"
+    >
       <g clip-rule="evenodd" filter="url(#a)">
         <path
           fill="url(#b)"
@@ -114,11 +120,16 @@
         </linearGradient>
       </defs>
     </svg>
-    <vue-stack space="64" padding="64 32" align-x="end" :class="$style.text">
-      <vue-text look="hero" weight="black" gradient align-x="end">
+    <vue-stack
+      :space="[32, 32, 64]"
+      :padding="['32 16', '32 16', '64 32']"
+      :align-x="['start', 'start', 'end']"
+      :class="$style.text"
+    >
+      <vue-text look="hero" weight="black" gradient :align-x="['start', 'start', 'end']">
         {{ $t('ServicesHeroSection.title' /* Transform Your Ideas into Reality with Vuesion Services. */) }}
       </vue-text>
-      <vue-text look="large-description" color="text-inverse-high" align-x="end">
+      <vue-text look="large-description" color="text-inverse-high" :align-x="['start', 'start', 'end']">
         {{ $t('ServicesHeroSection.description' /* Expert Consulting, Prototyping, PoCs, and MVP Development. */) }}
       </vue-text>
 
@@ -146,7 +157,6 @@ const $style = useCssModule();
 .ServicesHeroSection {
   position: relative;
   background-color: var(--surface-inverse-high);
-  height: 600px;
   display: flex;
   justify-content: end;
 
@@ -158,6 +168,10 @@ const $style = useCssModule();
 
   .text {
     max-width: 585px;
+  }
+
+  @include mediaMin(tabletLandscape) {
+    height: 600px;
   }
 }
 </style>
