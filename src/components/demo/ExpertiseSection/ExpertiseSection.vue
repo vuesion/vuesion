@@ -13,7 +13,7 @@
       </vue-column>
       <vue-column :width="['full', 'full', '5/10']" no-grow>
         <vue-stack align-y="between">
-          <vue-text look="h3" weight="black" color="text-inverse-high">
+          <vue-text look="h3" weight="black" color="text-inverse-high" :class="$style.title">
             {{ $t('ExpertiseSection.title' /* Technology Agnostic Expertise */) }}
           </vue-text>
           <vue-text look="description" color="text-inverse-medium">
@@ -46,5 +46,10 @@ const $style = useCssModule();
 
 .ExpertiseSection {
   background-color: var(--surface-inverse-high);
+
+  .title {
+    word-break: break-word;
+    white-space: break-spaces;
+  }
 }
 </style>
