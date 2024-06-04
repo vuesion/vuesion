@@ -19,21 +19,21 @@
             <vue-inline space="16">
               <vue-button
                 as="a"
-                href="https://vuesion.github.io/docs/en/v5/"
+                href="https://vuesion.github.io/docs/en/v5/guide/install.html"
                 target="_blank"
                 look="primary"
-                trailing-icon="arrow-right"
+                trailing-icon="code"
               >
-                {{ $t('LandingPageHeroSection.cta.GetStarted' /* Get Started */) }}
+                {{ $t('LandingPageHeroSection.cta.GetStarted' /* Start building */) }}
               </vue-button>
               <vue-button
                 as="a"
-                href="https://www.figma.com/design/DvP4EE7gAJH3fsc4RFqZYc/Vuesion-Design-System-Template"
+                href="https://www.figma.com/community/file/1080868611324978249"
                 target="_blank"
                 look="secondary"
-                trailing-icon="eye"
+                trailing-icon="pencil"
               >
-                {{ $t('LandingPageHeroSection.cta.Figma' /* Preview in Figma */) }}
+                {{ $t('LandingPageHeroSection.cta.Figma' /* Start designing */) }}
               </vue-button>
             </vue-inline>
             <nuxt-link to="/services">
@@ -45,7 +45,7 @@
               </vue-inline>
             </nuxt-link>
           </vue-stack>
-          <div :class="$style.deco"></div>
+          <div :class="[$style.deco, 'hidden-p', 'hidden-tp']"></div>
         </vue-stack>
       </vue-column>
       <vue-column

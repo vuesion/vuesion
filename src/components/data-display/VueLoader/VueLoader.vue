@@ -1,6 +1,6 @@
 #
 <template>
-  <div :class="$style.vueLoader">
+  <div :class="$style.vueLoader" data-testid="loader">
     <svg :class="$style.svg" viewBox="25 25 50 50">
       <circle :class="$style.circle" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
     </svg>

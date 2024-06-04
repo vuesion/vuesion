@@ -133,9 +133,12 @@
         {{ $t('ServicesHeroSection.description' /* Expert Consulting, Prototyping, PoCs, and MVP Development. */) }}
       </vue-text>
 
-      <vue-button as="a" href="#contact" look="primary" trailing-icon="mail">
-        {{ $t('ServicesHeroSection.cta' /* Get Started Today */) }}
-      </vue-button>
+      <vue-inline space="8">
+        <vue-button as="a" href="#contact" look="primary" trailing-icon="mail">
+          {{ $t('ServicesHeroSection.cta' /* Get Started Today */) }}
+        </vue-button>
+        <vue-button as="nuxt-link" to="/" look="secondary" trailing-icon="vuesion"> Vuesion </vue-button>
+      </vue-inline>
     </vue-stack>
   </vue-content-block>
 </template>
@@ -146,6 +149,7 @@ import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
 
 // Deps
 const $style = useCssModule();
@@ -168,6 +172,16 @@ const $style = useCssModule();
 
   .text {
     max-width: 585px;
+  }
+
+  .logo {
+    position: absolute;
+    left: $space-12;
+    top: $space-16;
+    width: $space-24;
+    height: $space-24;
+    z-index: 2;
+    color: palette-color-level('neutral', 0);
   }
 
   @include mediaMin(tabletLandscape) {

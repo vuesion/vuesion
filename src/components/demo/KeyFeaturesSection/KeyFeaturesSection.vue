@@ -32,6 +32,18 @@
                     )
                   }}
                 </vue-text>
+                <vue-inline>
+                  <vue-button
+                    as="a"
+                    href="/storybook/"
+                    target="_blank"
+                    size="sm"
+                    look="primary"
+                    trailing-icon="external-link"
+                  >
+                    Storybook
+                  </vue-button>
+                </vue-inline>
               </vue-stack>
             </vue-box>
           </vue-column>

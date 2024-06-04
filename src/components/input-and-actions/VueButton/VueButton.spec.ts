@@ -95,9 +95,7 @@ describe('VueButton.vue', () => {
         props: {
           as: 'nuxt-link',
           to: '/foo',
-        },
-        global: {
-          stubs: ['nuxt-link'],
+          trailingIcon: 'pencil',
         },
       });
     });
@@ -105,7 +103,7 @@ describe('VueButton.vue', () => {
     test('renders nuxt-link', () => {
       const { html } = harness;
       const actual = html();
-      const expected = 'nuxt-link-stub';
+      const expected = '<a';
 
       expect(actual).toMatch(expected);
     });
@@ -119,6 +117,14 @@ describe('VueButton.vue', () => {
       const expected = 'disabled';
 
       expect(actual).toMatch(expected);
+    });
+
+    test('should show loader and not emit onClick event', async () => {
+      const { getByTestId, rerender } = harness;
+
+      await rerender({ loading: true });
+
+      getByTestId('loader');
     });
   });
 

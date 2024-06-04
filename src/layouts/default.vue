@@ -2,13 +2,7 @@
   <div id="app" :class="$style.app">
     <slot />
 
-    <vue-footer
-      :languages="languages"
-      :themes="themes"
-      :selected-locale="locale"
-      slim
-      @locale-change="onLocaleChange"
-    />
+    <vue-footer :languages="languages" :themes="themes" :selected-locale="locale" @locale-change="onLocaleChange" />
     <vue-back-to-top />
   </div>
 </template>

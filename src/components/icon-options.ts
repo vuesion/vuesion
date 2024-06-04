@@ -1,4 +1,4 @@
-export const iconOptions: Array<string> = [
+export const iconOptions = [
   'activity',
   'add-user',
   'adjustments',
@@ -37,7 +37,6 @@ export const iconOptions: Array<string> = [
   'cloud-upload',
   'code',
   'cog',
-  'color-picker',
   'credit-card',
   'cursor-click',
   'database',
@@ -72,13 +71,11 @@ export const iconOptions: Array<string> = [
   'globe',
   'hashtag',
   'heart',
-  'heart-solid',
   'home',
   'inbox',
   'info-circle',
   'lightning-bolt',
   'link',
-  'list',
   'location-marker',
   'lock-closed',
   'lock-open',
@@ -91,7 +88,6 @@ export const iconOptions: Array<string> = [
   'minus',
   'minus-circle',
   'moon',
-  'move',
   'music-note',
   'navigation',
   'package',
@@ -137,7 +133,6 @@ export const iconOptions: Array<string> = [
   'trending-down',
   'trending-up',
   'truck',
-  'type',
   'upload',
   'user',
   'user-remove',
@@ -148,9 +143,10 @@ export const iconOptions: Array<string> = [
   'view-list',
   'volume-off',
   'volume-up',
+  'vuesion',
   'wifi',
   'zoom-in',
   'zoom-out',
-];
+] as const;
 
 export type Icon = (typeof iconOptions)[number];

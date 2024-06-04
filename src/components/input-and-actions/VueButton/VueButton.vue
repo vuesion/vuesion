@@ -1,9 +1,8 @@
 <template>
-  <component
-    :is="as"
+  <nuxt-link
+    v-if="isRouterLink"
     ref="buttonRef"
-    :to="isRouterLink && to"
-    :href="isRegularLink && to"
+    :to="to"
     :disabled="isDisabled"
     :class="[
       $style.button,
@@ -16,6 +15,47 @@
     ]"
     :style="{ width: actualWidth }"
     :event="!isDisabled && isRouterLink ? 'click' : null"
+    :tabindex="isDisabled ? -1 : 0"
+    :aria-hidden="isDisabled"
+    :type="type"
+    v-bind="$attrs"
+  >
+    <component
+      :is="`vue-icon-${leadingIcon}`"
+      v-if="leadingIcon && loading === false"
+      aria-hidden="true"
+      :class="[$style.leadingIcon, $slots.default && $style.addSpace]"
+    />
+
+    <vue-text v-if="loading === false" :class="$style.text" look="button" weight="semi-bold" as="span">
+      <slot />
+    </vue-text>
+
+    <component
+      :is="`vue-icon-${trailingIcon}`"
+      v-if="trailingIcon && loading === false"
+      aria-hidden="true"
+      :class="[$style.trailingIcon, $slots.default && $style.addSpace]"
+    />
+
+    <vue-loader v-if="loading === true" :class="$style.loader" />
+  </nuxt-link>
+  <component
+    :is="as"
+    v-else
+    ref="buttonRef"
+    :href="isRegularLink && href"
+    :disabled="isDisabled"
+    :class="[
+      $style.button,
+      $style[look],
+      $style[size],
+      isDisabled && $style.disabled,
+      block && $style.block,
+      leadingIcon && $style.hasLeadingIcon,
+      trailingIcon && $style.hasTrailingIcon,
+    ]"
+    :style="{ width: actualWidth }"
     :tabindex="isDisabled ? -1 : 0"
     :aria-hidden="isDisabled"
     :type="type"
@@ -59,6 +99,7 @@ interface ButtonProps {
   block?: boolean;
   disabled?: boolean;
   to?: string;
+  href?: string;
   leadingIcon?: Icon;
   loading?: boolean;
   look?: ButtonStyle;
@@ -74,6 +115,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   block: false,
   disabled: false,
   to: undefined,
+  href: undefined,
   leadingIcon: undefined,
   loading: false,
   look: 'secondary',
@@ -93,7 +135,9 @@ const actualWidth = computed(() => {
     return null;
   }
 
-  return props.loading ? `${buttonRef.value.getBoundingClientRect().width}px` : null;
+  return props.loading && buttonRef.value && buttonRef.value.getBoundingClientRect
+    ? `${buttonRef.value.getBoundingClientRect().width}px`
+    : null;
 });
 const isDisabled = computed(() => props.disabled || props.loading);
 const isRouterLink = computed(() => props.as === 'nuxt-link');
