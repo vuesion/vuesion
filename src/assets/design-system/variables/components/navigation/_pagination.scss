@@ -2,10 +2,10 @@ $pagination-border: 1px solid var(--border-default-medium);
 $pagination-padding-top: $space-8;
 
 // buttons
-$pagination-button-size: $space-48;
+$pagination-button-size: $space-32;
 $pagination-button-border: 1px solid var(--border-default-low);
 $pagination-button-border-radius: 50%;
-$pagination-button-shadow: var(--elevation-2);
+$pagination-button-shadow: none;
 $pagination-button-disabled-opacity: 0.3;
 $pagination-button-icon-size: $space-20;
 $pagination-button-pages-gap: $space-24;

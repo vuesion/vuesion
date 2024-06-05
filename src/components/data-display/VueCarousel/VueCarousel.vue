@@ -9,12 +9,12 @@
     <fade-animation v-for="(image, idx) in preloadedImages" :key="'image-' + idx">
       <div
         v-if="isActiveSlide(idx)"
-        :title="image.getAttribute('alt')"
+        :title="image.getAttribute('alt') || ''"
         :style="{ backgroundImage: `url(${image.getAttribute('src')})` }"
         :class="$style.image"
         data-testid="carousel-image"
       >
-        <div v-show="image.getAttribute('title').length > 0" class="sr-only" data-testid="carousel-copyright">
+        <div v-if="image.getAttribute('title')" class="sr-only" data-testid="carousel-copyright">
           &copy; {{ image.getAttribute('title') }}
         </div>
       </div>

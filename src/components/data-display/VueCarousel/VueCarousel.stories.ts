@@ -5,6 +5,7 @@ import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.
 const images: any[] = [
   {
     alt: 'Slide 1',
+    title: 'Slide 1',
     copyright: 'unsplash.com/@hahnbo',
     url: 'https://images.unsplash.com/photo-1485932465394-d20cc595f08b?ixlib=rb-0.3.5&s=e8798191cfef2e78f4ac91e71c92ea57&auto=format&fit=crop&w=3750&q=80',
   },
