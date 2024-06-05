@@ -1,18 +1,16 @@
 <template>
-  <vue-inline space="12">
+  <vue-inline space="16" no-wrap>
     <div :class="[$style.color, $style[`elevation${elevation}`], focused && $style.focused]">
       <div :style="{ background: `var(--${circleColor || css})` }" />
       <div :style="{ background: `var(--${smallCircleColor || css})`, opacity: smallCircleColor ? 1 : 0 }" />
     </div>
     <vue-stack space="0">
-      <vue-text look="h6" :color="inverse ? 'text-inverse-high' : 'text-high'">
+      <vue-text look="label" weight="semi-bold" :color="inverse ? 'text-inverse-high' : 'text-high'">
         {{ figma }}
       </vue-text>
-      <vue-text :color="inverse ? 'text-inverse-high' : 'text-high'">
-        {{ css }}
-      </vue-text>
-      <vue-text :color="inverse ? 'text-inverse-low' : 'text-low'">
-        {{ palette }}
+      <vue-text look="support" :color="inverse ? 'text-inverse-low' : 'text-low'"> --{{ css }} </vue-text>
+      <vue-text look="support" :color="inverse ? 'text-inverse-low' : 'text-low'">
+        {{ palette.replace(' ', '-') }}
       </vue-text>
     </vue-stack>
   </vue-inline>

@@ -45,18 +45,24 @@
   --surface-success-low: #{palette-color-level('success', 10)};
 
   /* Border Colors */
+  --border-default-high: #{palette-color-level('neutral', 6)};
   --border-default-medium: #{palette-color-level('neutral', 7)};
   --border-default-low: #{palette-color-level('neutral', 8)};
-  --border-inverse-medium: #{palette-color-level('neutral', 9)};
+  --border-inverse-high: #{palette-color-level('neutral', 9)};
+  --border-inverse-medium: #{palette-color-level('neutral', 8)};
   --border-inverse-low: #{palette-color-level('neutral', 7)};
-  --border-info-high: #{palette-color-level('info', 7)};
-  --border-info-low: #{palette-color-level('info', 9)};
-  --border-danger-high: #{palette-color-level('danger', 7)};
-  --border-danger-low: #{palette-color-level('danger', 9)};
-  --border-warning-high: #{palette-color-level('warning', 7)};
-  --border-warning-low: #{palette-color-level('warning', 9)};
-  --border-success-high: #{palette-color-level('success', 7)};
-  --border-success-low: #{palette-color-level('success', 9)};
+  --border-info-high: #{palette-color-level('info', 6)};
+  --border-info-medium: #{palette-color-level('info', 7)};
+  --border-info-low: #{palette-color-level('info', 8)};
+  --border-danger-high: #{palette-color-level('danger', 6)};
+  --border-danger-medium: #{palette-color-level('danger', 7)};
+  --border-danger-low: #{palette-color-level('danger', 8)};
+  --border-warning-high: #{palette-color-level('warning', 6)};
+  --border-warning-medium: #{palette-color-level('warning', 7)};
+  --border-warning-low: #{palette-color-level('warning', 8)};
+  --border-success-high: #{palette-color-level('success', 6)};
+  --border-success-medium: #{palette-color-level('success', 7)};
+  --border-success-low: #{palette-color-level('success', 8)};
 
   /* Text Colors */
   --text-default-high: #{palette-color-level('neutral', 0)};
@@ -97,11 +103,6 @@
   --interaction-secondary-activated: #{palette-color-level('info', 3)};
 
   // UTILS
-  /* Border radius */
-  --border-radius-xs: #{$space-2};
-  --border-radius-sm: #{$space-4};
-  --border-radius-md: #{$space-8};
-  --border-radius-lg: #{$space-16};
 
   /* Elevation */
   --elevation-1: 0px 1px 2px -1px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.1);

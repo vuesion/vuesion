@@ -4,9 +4,7 @@
       <vue-stack space="16">
         <vue-stack v-if="componentName && usage" space="0">
           <vue-inline align-y="center" :space="[8, 24]">
-            <vue-text color="text-high" look="large-title" weight="semi-bold">
-              {{ componentName }} {{ suffix }}
-            </vue-text>
+            <vue-text color="text-high" look="large-title" weight="black"> {{ componentName }} {{ suffix }} </vue-text>
             <vue-button
               v-if="showDisclaimer"
               look="primary"

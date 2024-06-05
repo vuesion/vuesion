@@ -30,7 +30,7 @@ const Template = () => ({
       <br/>
       <br/>
       We are aware that not everyone has to implement their own Design System.<br/>
-      If this is the case for you, you might be interested in <a href="https://github.com/nuxt-community/vuetify-module" target="_blank" rel="noopener">Vuetify</a> or <a href="https://tailwindcss.nuxtjs.org/" target="_blank" rel="noopener">tailwind</a>
+      If this is the case for you, you might be interested in <a href="https://github.com/nuxt-community/vuetify-module" target="_blank" rel="noopener">Vuetify</a> or <a href="https://tailwindcss.nuxtjs.org/" target="_blank" rel="noopener">Tailwind</a>
     </vue-text>
   </vue-stack>
   </vue-card>`,

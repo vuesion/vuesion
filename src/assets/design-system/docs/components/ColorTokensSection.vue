@@ -1,10 +1,10 @@
 <template>
   <vue-stack space="16" :class="$style.colorTokensSection">
     <vue-stack space="10">
-      <vue-text color="text-high" look="h3" weight="semi-bold">
+      <vue-text color="text-high" look="h1" weight="black">
         {{ title }}
       </vue-text>
-      <vue-text look="description">
+      <vue-text look="large-description" color="text-medium">
         {{ description }}
       </vue-text>
     </vue-stack>
@@ -47,7 +47,7 @@ export default {
   props: {
     title: { type: String, default: null },
     description: { type: String, default: null },
-    columns: { type: Array, default: null },
+    columns: { type: Array, default: () => [] },
   },
 };
 </script>
@@ -57,7 +57,7 @@ export default {
 
 .colorTokensSection {
   .dark {
-    border-radius: var(--border-radius-lg);
+    border-radius: $card-border-radius;
     background: var(--bg-inverse-high);
     height: max-content;
     box-shadow: var(--elevation-4);

@@ -36,7 +36,7 @@ const updateViewPortHeight = () => {
   viewportHeight.value = Math.max(window.innerHeight, 0);
 };
 const onScroll = () => {
-  const scrollPosition = window.pageYOffset;
+  const scrollPosition = window.scrollY;
   show.value = scrollPosition > viewportHeight.value * 2 && scrollPosition < lastScrollPosition.value;
   if (scrollPosition === 0) {
     show.value = false;

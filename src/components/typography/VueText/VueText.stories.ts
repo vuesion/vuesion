@@ -76,7 +76,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
         <tbody>
         <tr>
           <td width="300px"><vue-text look="h1" weight="black">Hero</vue-text></td>
-          <td width="30px">h1</td>
+          <td width="30px">hero</td>
           <td width="300px">Used in Hero Sections to really make a message stand out.</td>
           <td>48 px</td>
           <td>56 px</td>
@@ -85,7 +85,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td>inter</td>
         </tr>
         <tr>
-          <td width="300px"><vue-text look="h1">Headline 1</vue-text></td>
+          <td width="300px"><vue-text look="h1" weight="black">Headline 1</vue-text></td>
           <td width="30px">h1</td>
           <td width="300px">Used for title of screen & entire feature flow. Naming of title is often after the function of the screen or feature flow.</td>
           <td>48 px</td>
@@ -95,7 +95,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td>inter</td>
         </tr>
         <tr>
-          <td width="300px"><vue-text look="h2">Headline 2</vue-text></td>
+          <td width="300px"><vue-text look="h2" weight="black">Headline 2</vue-text></td>
           <td width="30px">h2</td>
           <td width="300px">Used for large groups of related components & information that have a lot of functionality. For example, cards should use Section title.</td>
           <td>36 px</td>
@@ -105,7 +105,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td>inter</td>
         </tr>
         <tr>
-          <td width="300px"><vue-text look="h3">Headline 3</vue-text></td>
+          <td width="300px"><vue-text look="h3" weight="black">Headline 3</vue-text></td>
           <td width="30px">h3</td>
           <td width="300px">Sometimes a section will further divide information into subsections.</td>
           <td>30 px</td>
@@ -115,7 +115,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td>inter</td>
         </tr>
         <tr>
-          <td width="300px"><vue-text look="h4">Headline 4</vue-text></td>
+          <td width="300px"><vue-text look="h4" weight="black">Headline 4</vue-text></td>
           <td width="30px">h4</td>
           <td width="300px">If necessary use for headers for layouts</td>
           <td>24 px</td>
@@ -125,7 +125,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td>inter</td>
         </tr>
         <tr>
-          <td width="300px"><vue-text look="h5">Headline 5</vue-text></td>
+          <td width="300px"><vue-text look="h5" weight="black">Headline 5</vue-text></td>
           <td width="30px">h5</td>
           <td width="300px">If necessary use for headers for layouts</td>
           <td>20 px</td>
@@ -135,7 +135,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
           <td>inter</td>
         </tr>
         <tr>
-          <td width="300px"><vue-text look="h6">Headline 6</vue-text></td>
+          <td width="300px"><vue-text look="h6" weight="black">Headline 6</vue-text></td>
           <td width="30px">h6</td>
           <td width="300px">If necessary use for headers for layouts</td>
           <td>18 px</td>
@@ -321,22 +321,22 @@ const TextColorsTemplate: StoryFn = (args) => ({
               figmaVar: 'Text - Default - High',
               cssVar: 'text-high',
               paletteColor: 'neutral 10',
-              circleColor:'brand-text-default-high',
-              smallCircleColor:'brand-text-default-high',
+              circleColor:'text-default-high',
+              smallCircleColor:'text-default-high',
             },
             {
               figmaVar: 'Text - Default - Medium',
               cssVar: 'text-medium',
               paletteColor: 'neutral 8',
-              circleColor:'brand-text-default-medium',
-              smallCircleColor:'brand-text-default-medium',
+              circleColor:'text-default-medium',
+              smallCircleColor:'text-default-medium',
             },
             {
               figmaVar: 'Text - Default - Low',
               cssVar: 'text-low',
               paletteColor: 'neutral 6',
-              circleColor:'brand-text-default-low',
-              smallCircleColor:'brand-text-default-low',
+              circleColor:'text-default-low',
+              smallCircleColor:'text-default-low',
             },
           ],
         },
@@ -347,22 +347,22 @@ const TextColorsTemplate: StoryFn = (args) => ({
               figmaVar: 'Text - Inverse - High',
               cssVar: 'text-inverse-high',
               paletteColor: 'neutral 0',
-              circleColor:'brand-text-inverse-high',
-              smallCircleColor:'brand-text-inverse-high',
+              circleColor:'text-inverse-high',
+              smallCircleColor:'text-inverse-high',
             },
             {
               figmaVar: 'Text - Inverse - Medium',
               cssVar: 'text-inverse-medium',
               paletteColor: 'neutral 2',
-              circleColor:'brand-text-inverse-medium',
-              smallCircleColor:'brand-text-inverse-medium',
+              circleColor:'text-inverse-medium',
+              smallCircleColor:'text-inverse-medium',
             },
             {
               figmaVar: 'Text - Inverse - Low',
               cssVar: 'text-inverse-low',
               paletteColor: 'neutral 4',
-              circleColor:'brand-text-inverse-low',
-              smallCircleColor:'brand-text-inverse-low',
+              circleColor:'text-inverse-low',
+              smallCircleColor:'text-inverse-low',
             },
           ],
         },
@@ -373,36 +373,36 @@ const TextColorsTemplate: StoryFn = (args) => ({
               figmaVar: 'Text - Info',
               cssVar: 'info',
               paletteColor: 'primary 7',
-              circleColor:'brand-text-info',
-              smallCircleColor:'brand-text-info',
+              circleColor:'text-info',
+              smallCircleColor:'text-info',
             },
             {
               figmaVar: 'Text - Success',
               cssVar: 'success',
               paletteColor: 'success 7',
-              circleColor:'brand-text-success',
-              smallCircleColor:'brand-text-success',
+              circleColor:'text-success',
+              smallCircleColor:'text-success',
             },
             {
               figmaVar: 'Text - Warning',
               cssVar: 'warning',
               paletteColor: 'warning 7',
-              circleColor:'brand-text-warning',
-              smallCircleColor:'brand-text-warning',
+              circleColor:'text-warning',
+              smallCircleColor:'text-warning',
             },
             {
               figmaVar: 'Text - Danger',
               cssVar: 'danger',
               paletteColor: 'danger 7',
-              circleColor:'brand-text-danger',
-              smallCircleColor:'brand-text-danger',
+              circleColor:'text-danger',
+              smallCircleColor:'text-danger',
             },
                         {
               figmaVar: 'Text - Link',
               cssVar: 'link',
               paletteColor: 'info 4',
-              circleColor:'brand-text-link',
-              smallCircleColor:'brand-text-link',
+              circleColor:'text-link',
+              smallCircleColor:'text-link',
             },
           ],
         },

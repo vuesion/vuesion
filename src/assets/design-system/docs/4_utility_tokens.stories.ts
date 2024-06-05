@@ -33,24 +33,24 @@ const Template = () => ({
       <vue-stack>
         <token-item
             figma="Elevation 1"
-            css="brand-elevation-1"
+            css="elevation-1"
             palette="neutral 10"
             :elevation="1"
-            circle-color="brand-surface-default-high"
+            circle-color="surface-default-high"
         />
         <token-item
             figma="Elevation 2"
-            css="brand-elevation-2"
+            css="elevation-2"
             palette="neutral 10"
             :elevation="2"
-            circle-color="brand-surface-default-high"
+            circle-color="surface-default-high"
         />
         <token-item
             figma="Elevation 3"
-            css="brand-elevation-3"
+            css="elevation-3"
             palette="neutral 10"
             :elevation="3"
-            circle-color="brand-surface-default-high"
+            circle-color="surface-default-high"
         />
       </vue-stack>
     </utility-token-section>
@@ -58,9 +58,9 @@ const Template = () => ({
       <vue-stack>
         <token-item
             figma="Interaction - Focused"
-            css="brand-focused"
+            css="focused"
             palette="primary 3"
-            circle-color="brand-surface-default-high"
+            circle-color="surface-default-high"
             focused
         />
       </vue-stack>

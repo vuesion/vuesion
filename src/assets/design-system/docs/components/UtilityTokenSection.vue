@@ -1,7 +1,7 @@
 <template>
   <vue-stack space="16">
     <vue-stack space="10">
-      <vue-text color="text-high" look="h3" weight="semi-bold">
+      <vue-text color="text-high" look="h3" weight="black">
         {{ title }}
       </vue-text>
       <vue-text look="description">

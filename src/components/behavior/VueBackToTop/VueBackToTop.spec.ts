@@ -9,7 +9,7 @@ describe('VueBackToTop.vue', () => {
 
   beforeEach(() => {
     (global as any).innerHeight = 100;
-    (global as any).pageYOffset = 400;
+    (global as any).scrollY = 400;
 
     harness = render(VueBackToTop, {});
   });
@@ -37,7 +37,7 @@ describe('VueBackToTop.vue', () => {
 
     triggerWindow.scroll();
 
-    (global as any).pageYOffset = 300;
+    (global as any).scrollY = 300;
 
     triggerWindow.scroll();
 
@@ -45,7 +45,7 @@ describe('VueBackToTop.vue', () => {
 
     expect(html()).toMatch('show');
 
-    (global as any).pageYOffset = 0;
+    (global as any).scrollY = 0;
 
     triggerWindow.scroll();
 
