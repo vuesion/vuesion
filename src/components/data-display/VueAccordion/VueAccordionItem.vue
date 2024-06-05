@@ -1,28 +1,29 @@
 <template>
-  <div :class="$style.vueAccordionItem">
-    <div
+  <vue-stack space="0" :class="$style.vueAccordionItem">
+    <vue-columns
+      space="8"
+      padding="12"
       :class="$style.header"
       tabindex="0"
       role="button"
       :aria-label="title"
       @click.prevent.stop="onClick"
-      @keypress.enter.space.prevent.stop="onClick"
+      @keydown.enter.space.prevent.stop="onClick"
     >
-      <div :class="$style.iconContainer">
+      <vue-column no-grow>
         <vue-icon-chevron-up v-if="open" />
         <vue-icon-chevron-right v-else />
-      </div>
-      <vue-text color="text-high" as="div">{{ title }}</vue-text>
-    </div>
-
+      </vue-column>
+      <vue-column>
+        <vue-text color="text-high" weight="semi-bold" as="div">{{ title }}</vue-text>
+      </vue-column>
+    </vue-columns>
     <vue-collapse :show="open" :duration="duration">
-      <vue-box padding="16 0 16 16 0" :class="$style.body" :aria-expanded="open" as="section">
-        <vue-text color="text-high" as="div">
-          <slot />
-        </vue-text>
+      <vue-box padding="8" :aria-expanded="open" as="section">
+        <slot />
       </vue-box>
     </vue-collapse>
-  </div>
+  </vue-stack>
 </template>
 
 <script setup lang="ts">
@@ -33,6 +34,9 @@ import VueIconChevronRight from '~/components/icons/VueIconChevronRight.vue';
 import VueIconChevronUp from '~/components/icons/VueIconChevronUp.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
 // Interface
 const props = defineProps({
@@ -71,41 +75,26 @@ onMounted(() => {
 @import 'assets/_design-system.scss';
 
 .vueAccordionItem {
-  display: flex;
-  flex-direction: column;
+  background: $accordion-item-bg;
 
   .header {
-    display: flex;
-    align-items: center;
-    position: relative;
     z-index: 1;
     cursor: pointer;
-    background: $accordion-item-header-bg;
-    height: $accordion-item-header-height;
-    border-top: $accordion-item-header-border;
     user-select: none;
+    outline: none !important;
 
     &:hover {
       background: $accordion-item-header-bg-hover;
     }
 
-    .iconContainer {
-      flex: 0 0 $accordion-item-header-icon-container-size;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      i {
-        width: $accordion-item-header-icon-size;
-        height: $accordion-item-header-icon-size;
-      }
+    &:focus {
+      box-shadow: var(--focused);
     }
-  }
 
-  .body {
-    background: $accordion-item-header-bg;
-    border-top: $accordion-item-header-border;
-    padding-left: $accordion-item-header-icon-container-size;
+    i {
+      width: $accordion-item-header-icon-size;
+      height: $accordion-item-header-icon-size;
+    }
   }
 }
 </style>

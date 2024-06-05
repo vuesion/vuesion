@@ -25,7 +25,7 @@ $toggle-handle-bg-error: var(--text-danger);
 
 $toggle-width: $space-32;
 $toggle-height: $space-16;
-$toggle-border-radius: var(--border-radius-md);
+$toggle-border-radius: 8px;
 
 $toggle-handle-width: $toggle-height - $space-4;
 $toggle-handle-height: $toggle-height - $space-4;

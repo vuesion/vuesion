@@ -1,12 +1,13 @@
 <template>
-  <div :class="$style.vueAccordion">
+  <vue-stack space="0" :class="$style.vueAccordion">
     <slot />
-  </div>
+  </vue-stack>
 </template>
 
 <script setup lang="ts">
 import type { Ref } from 'vue';
 import { onBeforeUnmount, provide, shallowRef, ref } from 'vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
 
 // Interface
 interface AccordionItem {
@@ -67,6 +68,5 @@ onBeforeUnmount(() => {
 @import 'assets/_design-system.scss';
 
 .vueAccordion {
-  border-bottom: $accordion-item-header-border;
 }
 </style>
