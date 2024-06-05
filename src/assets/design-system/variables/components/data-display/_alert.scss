@@ -1,0 +1,18 @@
+$alert-border-radius: 8px;
+$alert-icons-size: $space-20;
+
+// info
+$alert-info-bg: var(--surface-info-low);
+$alert-info-border: 1px solid var(--border-info-medium);
+
+// warning
+$alert-warning-bg: var(--surface-warning-low);
+$alert-warning-border: 1px solid var(--border-warning-medium);
+
+// danger
+$alert-danger-bg: var(--surface-danger-low);
+$alert-danger-border: 1px solid var(--border-danger-medium);
+
+// success
+$alert-success-bg: var(--surface-success-low);
+$alert-success-border: 1px solid var(--border-success-medium);
