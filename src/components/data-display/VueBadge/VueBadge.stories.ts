@@ -27,7 +27,7 @@ const Template: StoryFn = (args) => ({
       component-name="Badge"
       usage="Badges are used to inform users of the status of an object or action."
   >
-  <vue-badge v-bind="args">Badge</vue-badge>
+  <vue-badge v-bind="args">Label</vue-badge>
   </component-docs>`,
 });
 

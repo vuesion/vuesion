@@ -1,32 +1,31 @@
-$badge-padding: $space-2 $space-12;
-$badge-with-icon-padding: $space-2 $space-8 $space-2 $space-12;
-$badge-height: $space-20;
+$badge-padding: $space-4 $space-8;
+$badge-with-icon-padding: $space-4 $space-4 $space-4 $space-8;
 $badge-border-radius: 6px;
 
 $badge-variations: (
   'info': (
     'color': var(--text-info),
     'bg': var(--surface-info-low),
-    'border': 1px solid var(--border-info-low),
+    'border': 1px solid var(--border-info-medium),
   ),
   'warning': (
     'color': var(--text-warning),
     'bg': var(--surface-warning-low),
-    'border': 1px solid var(--border-warning-low),
+    'border': 1px solid var(--border-warning-medium),
   ),
   'success': (
     'color': var(--text-success),
     'bg': var(--surface-success-low),
-    'border': 1px solid var(--border-success-low),
+    'border': 1px solid var(--border-success-medium),
   ),
   'danger': (
     'color': var(--text-danger),
     'bg': var(--surface-danger-low),
-    'border': 1px solid var(--border-danger-low),
+    'border': 1px solid var(--border-danger-medium),
   ),
   'neutral': (
     'color': var(--text-default-medium),
     'bg': var(--surface-default-medium),
-    'border': 1px solid var(--border-default-medium),
+    'border': 1px solid var(--border-default-high),
   ),
 );

@@ -55,6 +55,11 @@ const $style = useCssModule();
     }
   }
 
+  i {
+    width: $space-12;
+    height: $space-12;
+  }
+
   &.hasIcon {
     padding: $badge-with-icon-padding;
     cursor: pointer;
