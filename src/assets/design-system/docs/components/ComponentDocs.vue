@@ -1,5 +1,5 @@
 <template>
-  <vue-card>
+  <vue-card :class="[noBg && $style.noBg]">
     <vue-stack space="80">
       <vue-stack space="16">
         <vue-stack v-if="componentName && usage" space="0">
@@ -57,6 +57,7 @@ interface ComponentDocsProps {
   suffix?: string | null;
   showDisclaimer?: boolean;
   buyLink?: string | null;
+  noBg?: boolean;
 }
 
 withDefaults(defineProps<ComponentDocsProps>(), {
@@ -71,6 +72,10 @@ withDefaults(defineProps<ComponentDocsProps>(), {
 
 <style lang="scss" module>
 @import 'assets/_design-system.scss';
+
+.noBg {
+  background-color: transparent;
+}
 
 .body {
   width: 100%;

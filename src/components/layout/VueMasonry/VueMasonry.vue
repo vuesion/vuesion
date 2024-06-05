@@ -110,7 +110,7 @@ onBeforeUnmount(() => {
 .vueMasonry {
   display: flex;
   flex-direction: column;
-  row-gap: $space-24;
+  row-gap: $space-16;
 
   @include mediaMax(phone) {
     height: auto !important;

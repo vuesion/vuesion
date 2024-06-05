@@ -24,7 +24,7 @@ interface TilesProps {
 const props = withDefaults(defineProps<TilesProps>(), {
   as: 'div',
   padding: () => [0],
-  space: () => [24],
+  space: () => [16],
   verticalSpace: null,
   horizontalSpace: null,
   columns: () => [1, 2, 3, 4],

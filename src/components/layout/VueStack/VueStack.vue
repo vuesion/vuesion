@@ -27,7 +27,7 @@ interface StackProps {
 const props = withDefaults(defineProps<StackProps>(), {
   as: 'div',
   padding: () => [0],
-  space: () => [24],
+  space: () => [16],
   alignX: null,
   alignY: null,
 });

@@ -41,48 +41,41 @@ const Template: StoryFn = (args) => ({
       component-name="Card"
       usage="Cards are used to group similar concepts and tasks together."
       story="Display different variations of the card component."
+      no-bg
   >
   <vue-tiles :columns="[1, 2, 3, 4]">
-    <vue-card padding="0" v-for="id in [1, 2, 3, 4]" :key="id" v-bind="args">
-      <vue-stack space="0">
-        <vue-box padding="16 16 12 16">
-          <vue-columns space="12" align-y="center">
-            <vue-column width="56px" no-grow v-if="id === 1 || id === 3">
-              <vue-avatar name="avatar" size="md" src="https://via.placeholder.com/56"/>
-            </vue-column>
-            <vue-column>
-              <vue-stack space="0">
-                <vue-text look="h4" color="text-high">
-                  Heading
-                </vue-text>
-                <vue-text look="h6" color="text-medium">
-                  {{ id === 1 || id === 4 ? 'Subheading' : '&nbsp;' }}
-                </vue-text>
-              </vue-stack>
-            </vue-column>
-          </vue-columns>
-        </vue-box>
+    <vue-card v-for="id in [1, 2, 3, 4]" :key="id" v-bind="args">
+      <vue-columns space="16" align-y="center">
+        <vue-column width="56px" no-grow v-if="id === 1 || id === 3">
+          <vue-avatar
+            name="avatar"
+            size="md"
+            src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3150&q=80"
+          />
+        </vue-column>
+        <vue-column>
+          <vue-stack space="0" align-y="between">
+            <vue-text look="medium-title" color="text-high" weight="semi-bold">
+              Heading
+            </vue-text>
+            <vue-text color="text-medium">
+              {{ id === 1 || id === 4 ? 'Subheading' : null }}
+              {{id === 2 ? '&nbsp;' : null }}
+            </vue-text>
+          </vue-stack>
+        </vue-column>
+      </vue-columns>
 
-        <hr v-if="id === 1 || id === 4" />
+      <vue-text>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+        sed diam nonumy eirmod tempor invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+        et justo duo dolores et ea rebum. Stet clita kasd gubergren.
+      </vue-text>
 
-        <vue-box padding="12 16 16 16">
-          <vue-text>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-            sed diam nonumy eirmod tempor invidunt ut labore et dolore
-            magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-            et justo duo dolores et ea rebum. Stet clita kasd gubergren.
-          </vue-text>
-        </vue-box>
-
-        <hr v-if="id === 3 || id === 4" />
-
-        <vue-box padding="16">
-          <vue-inline space="8" revert>
-            <vue-button look="primary">Submit</vue-button>
-            <vue-button look="secondary">Cancel</vue-button>
-          </vue-inline>
-        </vue-box>
-      </vue-stack>
+      <vue-inline space="8" revert>
+        <vue-button look="primary" trailing-icon="arrow-right">Read more</vue-button>
+      </vue-inline>
     </vue-card>
   </vue-tiles>
   </component-docs>`,
@@ -92,6 +85,7 @@ export const Default = {
   render: Template,
 
   args: {
-    padding: '0',
+    padding: 16,
+    space: 24,
   },
 };

@@ -116,6 +116,6 @@ describe('VueColumns.vue', () => {
       reverse: [true, true, true],
     });
 
-    expect(html()).toMatch('gap-24 flex-row-reverse flex-row-reverse-tp flex-row-reverse-tl');
+    expect(html()).toMatch('gap-16 flex-row-reverse flex-row-reverse-tp flex-row-reverse-tl');
   });
 });

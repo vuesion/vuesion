@@ -28,7 +28,7 @@ interface InlineProps {
 const props = withDefaults(defineProps<InlineProps>(), {
   as: 'div',
   padding: () => [0],
-  space: () => [24],
+  space: () => [16],
   alignX: null,
   alignY: null,
   reverse: null,
