@@ -33,7 +33,9 @@ const Template: StoryFn = (args) => ({
       usage="Used to put long sections of information under a block that users can expand or collapse."
       story="Display button that triggers the collapse to show or hide text."
   >
-    <vue-button @click="show = !show" look="outline">Show content</vue-button>
+    <vue-button @click="show = !show" :leading-icon="show ? 'eye-off' : 'eye'" look="outline">
+      {{ show ? 'Hide' : 'Show' }} Content
+    </vue-button>
     <vue-collapse :show="show" v-bind="args">
       <vue-box padding="16 0 0 0">
         <vue-text color="text-high">
