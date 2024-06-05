@@ -2,22 +2,21 @@ $menu-z-index: 1000;
 $menu-bg: var(--surface-default-high);
 $menu-min-width: $space-120;
 $menu-max-height: $space-120 * 1.65;
-$menu-padding: $space-4 0;
 $menu-shadow: var(--elevation-3);
 $menu-border-radius: 6px;
-$menu-border: 1px solid var(--border-default-medium);
+$menu-border: none;
 
 // item
 $menu-item-color: var(--text-default-high);
 $menu-item-padding: $space-8 $space-12;
-$menu-item-bg-active: var(--surface-info-low);
+$menu-item-bg-active: var(--interaction-neutral-hovered);
 $menu-item-color-active: var(--text-default-high);
 $menu-item-icon-size: $space-20;
-$menu-item-icon-size-gap: $space-4;
+$menu-item-icon-size-gap: $space-8;
 $menu-item-disabled-opacity: 0.6;
 
 // separator
-$menu-separator-border: 1px solid var(--border-default-medium);
+$menu-separator-border: 1px solid var(--border-default-low);
 
 // Used by other components
 $menu-control-gap: $space-4;

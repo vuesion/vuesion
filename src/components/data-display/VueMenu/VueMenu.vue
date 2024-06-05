@@ -1,5 +1,14 @@
 <template>
-  <ul ref="menuRef" data-testid="menu" :class="$style.vueMenu" @keydown="onKeyDown" @focus="focus">
+  <vue-stack
+    :ref="(el: any) => (menuRef = el?.$el)"
+    as="ul"
+    space="0"
+    padding="4 0"
+    data-testid="menu"
+    :class="$style.vueMenu"
+    @keydown="onKeyDown"
+    @focus="focus"
+  >
     <li
       v-for="(item, idx) in items"
       :key="`${item.value}-${idx}`"
@@ -33,7 +42,7 @@
         </div>
       </slot>
     </li>
-  </ul>
+  </vue-stack>
 </template>
 
 <script setup lang="ts">
@@ -42,6 +51,7 @@ import debounce from 'lodash-es/debounce.js';
 import type { IItem } from '~/interfaces/IItem';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
 
 // Interface
 interface MenuProps {
@@ -139,8 +149,8 @@ const focus = (selectedItem: IItem | null = null) => {
   }
 
   const item = menuRef.value
-    .querySelectorAll('li')
-    .item(selectedItemIndex.value === -1 ? 0 : selectedItemIndex.value) as HTMLUListElement;
+    ?.querySelectorAll('li')
+    ?.item(selectedItemIndex.value === -1 ? 0 : selectedItemIndex.value) as HTMLUListElement;
   item?.focus();
   menuRef.value?.scrollTo({ top: item?.offsetTop });
 };
@@ -154,12 +164,9 @@ defineExpose({ focus });
 
 .vueMenu {
   position: absolute;
-  display: inline-flex;
-  flex-direction: column;
   background: $menu-bg;
   min-width: $menu-min-width;
   max-height: $menu-max-height;
-  padding: $menu-padding;
   box-shadow: $menu-shadow;
   border-radius: $menu-border-radius;
   border: $menu-border;
@@ -175,6 +182,7 @@ defineExpose({ focus });
     color: $menu-item-color;
     cursor: pointer;
     outline: none;
+    gap: $menu-item-icon-size-gap;
 
     .leading,
     .trailing {
@@ -185,14 +193,6 @@ defineExpose({ focus });
         width: $menu-item-icon-size;
         height: $menu-item-icon-size;
       }
-    }
-
-    .leading {
-      padding-right: $menu-item-icon-size-gap;
-    }
-
-    .trailing {
-      padding-left: $menu-item-icon-size-gap;
     }
 
     .value {
