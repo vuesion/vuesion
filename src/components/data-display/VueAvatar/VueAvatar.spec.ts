@@ -40,10 +40,10 @@ describe('VueAvatar.vue', () => {
   test('renders different text sizes based on the size prop', async () => {
     const { html, rerender } = harness;
 
-    expect(html()).toMatch('support');
+    expect(html()).toMatch('label');
 
     await rerender({ size: 'md' });
-    expect(html()).toMatch('h6');
+    expect(html()).toMatch('description');
 
     await rerender({ size: 'lg' });
     expect(html()).toMatch('h4');

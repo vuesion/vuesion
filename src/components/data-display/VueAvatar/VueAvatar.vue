@@ -2,12 +2,14 @@
   <div
     :title="name"
     :class="[$style.vueAvatar, $style[size], src && $style.hasSource, !src && icon?.length > 0 && $style.hasIcon]"
-    :style="{ backgroundImage: src && `url(${src})` }"
+    :style="{ backgroundImage: src ? `url(${src})` : undefined }"
   >
     <vue-text
       v-if="!src && icon?.length === 0"
-      color="text-inverse-high"
-      :look="size === 'sm' ? 'support' : size === 'md' ? 'h6' : 'h4'"
+      color="text-high"
+      :look="size === 'sm' ? 'label' : size === 'md' ? 'description' : 'h4'"
+      :weight="size === 'lg' ? 'black' : 'semi-bold'"
+      uppercase
     >
       {{ initials }}
     </vue-text>
@@ -56,7 +58,7 @@ const initials = computed(() => {
   align-items: center;
   background: $avatar-background;
   border-radius: $avatar-border-radius;
-  text-transform: uppercase;
+  border: $avatar-border;
 
   &.sm {
     height: $avatar-sm-size;
@@ -80,6 +82,7 @@ const initials = computed(() => {
     background-size: cover;
     background-position: 50% 50%;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    border: none;
   }
 
   &.hasIcon {
@@ -92,13 +95,13 @@ const initials = computed(() => {
     }
 
     &.md i {
-      height: $space-24;
-      width: $space-24;
+      height: $space-32;
+      width: $space-32;
     }
 
     &.lg i {
-      height: $space-40;
-      width: $space-40;
+      height: $space-48;
+      width: $space-48;
     }
   }
 }
