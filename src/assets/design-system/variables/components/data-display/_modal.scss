@@ -1,12 +1,12 @@
 $modal-bg: var(--surface-default-high);
-$modal-border-radius: 8px;
-$modal-border: 1px solid var(--border-default-low);
+$modal-border-radius: 16px;
+$modal-border: none;
 $modal-close-button-gap: $space-8;
-$modal-close-button-size: $space-24;
-$modal-close-button-border-radius: var(--border-radius-sm);
+$modal-close-button-size: $space-20;
+$modal-close-button-border-radius: 6px;
 $modal-close-button-outline: var(--focused);
 $modal-close-button-color: var(--text-default-low);
-$modal-close-button-color-hover: var(--text-default-medium);
+$modal-close-button-color-hover: var(--text-default-high);
 $modal-shadow: var(--elevation-4);
 $modal-index: 2001;
 $modal-max-width: 50%;

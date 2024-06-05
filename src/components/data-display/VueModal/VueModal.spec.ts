@@ -1,8 +1,8 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { nextTick } from 'vue';
-import { fireEvent, render, type RenderResult } from '@testing-library/vue';
+import { render, type RenderResult } from '@testing-library/vue';
 import VueModal from './VueModal.vue';
-import { sleep } from '~/test/test-utils';
+import { sleep, triggerWindow } from '~/test/test-utils';
 
 describe('VueModal.vue', () => {
   let harness: RenderResult;
@@ -28,19 +28,39 @@ describe('VueModal.vue', () => {
   });
 
   test('should close on outside click', async () => {
-    const { getByText, getByTestId, emitted, rerender } = harness;
+    const { queryByText, getByTestId, emitted, rerender } = harness;
 
     await rerender({ show: true });
 
     const modal = getByTestId('modal');
-    const paragraph = getByText('TEST');
+    const paragraph = queryByText('TEST');
 
     await nextTick();
 
-    await fireEvent.click(paragraph);
+    triggerWindow.click({ target: paragraph, composedPath: () => [modal] });
     expect(emitted().close).toBeFalsy();
 
-    await fireEvent.click(modal);
+    triggerWindow.click({ target: null, composedPath: () => [] });
+    expect(emitted().close).toBeTruthy();
+  });
+
+  test('should close on ESC press', async () => {
+    const { emitted, rerender } = harness;
+
+    await rerender({ closeOnEscape: false, backdrop: false });
+
+    triggerWindow.keydown({ key: 'Enter' });
+    expect(emitted().close).toBeFalsy();
+
+    triggerWindow.keydown({ key: 'Escape' });
+    expect(emitted().close).toBeFalsy();
+
+    await rerender({ show: true });
+    triggerWindow.keydown({ key: 'Escape' });
+    expect(emitted().close).toBeFalsy();
+
+    await rerender({ show: true, closeOnEscape: true });
+    triggerWindow.keydown({ key: 'Escape' });
     expect(emitted().close).toBeTruthy();
   });
 

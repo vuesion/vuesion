@@ -2,27 +2,27 @@
   <vue-box
     v-if="show"
     ref="modalRef"
-    as="dialog"
     data-testid="modal"
     :padding="padding"
     :class="[$style.vueModal, show && $style.show, backdrop && $style.backdrop]"
-    @click="onDialogClick"
+    :aria-modal="show"
   >
     <vue-icon-times
       v-if="hideCloseButton === false"
       tabindex="0"
       :class="$style.closeButton"
       @click="onClose"
-      @keypress.space.enter.stop.prevent="onClose"
+      @keydown.space.enter.stop.prevent="onClose"
     />
-    <form method="dialog">
-      <slot />
-    </form>
+    <slot />
   </vue-box>
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, useCssModule, watch } from 'vue';
+import type { WatchStopHandle } from 'vue';
+import { computed, ref, useCssModule, watch } from 'vue';
+import { onClickOutside, onKeyDown } from '@vueuse/core';
+import { useBackdrop } from '~/composables/use-backdrop';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueIconTimes from '~/components/icons/VueIconTimes.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
@@ -30,11 +30,12 @@ import type { SpacingWithDirections } from '~/components/prop-types';
 
 // Interface
 interface ModalProps {
-  padding?: string | SpacingWithDirections | Array<SpacingWithDirections>;
+  padding?: SpacingWithDirections | Array<SpacingWithDirections>;
   show?: boolean;
   backdrop?: boolean;
   disablePageScroll?: boolean;
   closeOnOutsideClick?: boolean;
+  closeOnEscape?: boolean;
   hideCloseButton?: boolean;
 }
 interface ModalEmits {
@@ -46,6 +47,7 @@ const props = withDefaults(defineProps<ModalProps>(), {
   backdrop: true,
   disablePageScroll: false,
   closeOnOutsideClick: true,
+  closeOnEscape: true,
   hideCloseButton: false,
 });
 const emit = defineEmits<ModalEmits>();
@@ -53,35 +55,34 @@ const emit = defineEmits<ModalEmits>();
 // Deps
 const $style = useCssModule();
 
+// Methods
+const onClose = () => emit('close');
+
 // Data
 const modalRef = getDomRef<any>(null);
 const show = computed(() => props.show);
+let backDropWatcher: WatchStopHandle;
 
 // Event Handler
-const onClose = () => {
-  document.body.style.overflow = 'initial';
-  emit('close');
-};
-const onDialogClick = (event: Event) => {
-  if (event.target === modalRef.value?.$el && props.closeOnOutsideClick) {
+onKeyDown('Escape', () => {
+  if (props.show === true && props.closeOnEscape === true) {
     onClose();
   }
-};
+});
+onClickOutside(modalRef, () => onClose());
 
 // Watchers
-watch(show, async () => {
-  if (show.value === true) {
-    await nextTick();
-
-    modalRef.value?.$el?.showModal();
-
-    if (props.disablePageScroll) {
-      document.body.style.overflow = 'hidden';
+watch(
+  () => props.backdrop,
+  () => {
+    if (props.backdrop === true) {
+      backDropWatcher = useBackdrop(show, { scrollable: ref(props.disablePageScroll) });
+    } else if (backDropWatcher) {
+      backDropWatcher();
     }
-  } else {
-    modalRef.value?.$el?.close();
-  }
-});
+  },
+  { immediate: true },
+);
 </script>
 
 <style lang="scss" module>

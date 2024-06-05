@@ -104,8 +104,9 @@ img:not([alt]) {
   height: 100%;
   background: rgba(0, 0, 0, 0.25);
   opacity: 0;
-  transition: var(--fade-animation-transition);
   z-index: -1;
+  backdrop-filter: blur(4px);
+  transition: backdrop-filter var(--brand-transition-duration) var(--brand-easing-curve);
 
   &.show {
     opacity: 1;
