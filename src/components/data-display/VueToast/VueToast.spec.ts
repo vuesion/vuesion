@@ -29,7 +29,7 @@ describe('VueToast.vue', () => {
   test('displays toast for until user clicks close icon', async () => {
     const { queryAllByText, getByTestId } = harness;
 
-    addToast({ title: 'warning', text: 'this is a test', type: 'warning' });
+    addToast({ title: 'warning', text: 'this is a test', type: 'success' });
     await sleep(50);
 
     expect(queryAllByText('warning')).toHaveLength(1);

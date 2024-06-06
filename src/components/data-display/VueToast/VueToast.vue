@@ -1,36 +1,43 @@
 <template>
   <div :class="$style.vueToast">
     <transition-group name="list" tag="div">
-      <vue-box v-for="toast in orderedToasts" :key="toast.id" padding="16" :class="[$style.toast, $style[toast.type]]">
-        <vue-columns space="12" align-y="start">
-          <vue-column width="fit" no-grow>
-            <vue-text :color="toast.type">
-              <vue-icon-info v-if="['info', 'success'].includes(toast.type)" />
-              <vue-icon-exclamation v-if="['warning', 'danger'].includes(toast.type)" />
-            </vue-text>
-          </vue-column>
-          <vue-column>
-            <vue-stack space="4">
-              <vue-text :color="toast.type" weight="semi-bold">{{ toast.title }}</vue-text>
-              <vue-text look="label" :color="toast.type">{{ toast.text }}</vue-text>
-            </vue-stack>
-          </vue-column>
+      <vue-columns
+        v-for="toast in orderedToasts"
+        :key="toast.id"
+        padding="16"
+        :class="[$style.toast, $style[toast.type]]"
+        space="12"
+        align-y="start"
+      >
+        <vue-column no-grow>
+          <vue-text :color="toast.type">
+            <vue-icon-checkmark v-if="['success'].includes(toast.type)" />
+            <vue-icon-info v-if="['info'].includes(toast.type)" />
+            <vue-icon-question-mark-circle v-if="['warning'].includes(toast.type)" />
+            <vue-icon-exclamation v-if="['danger'].includes(toast.type)" />
+          </vue-text>
+        </vue-column>
+        <vue-column>
+          <vue-stack space="4">
+            <vue-text :color="toast.type" weight="semi-bold">{{ toast.title }}</vue-text>
+            <vue-text look="label" :color="toast.type">{{ toast.text }}</vue-text>
+          </vue-stack>
+        </vue-column>
 
-          <vue-column width="fit" no-grow>
-            <vue-text
-              tabindex="0"
-              aria-label="close"
-              :color="toast.type"
-              data-testid="toast-close-button"
-              as="a"
-              href="#"
-              @click.stop.prevent="onRemoveToast(toast)"
-            >
-              <vue-icon-times />
-            </vue-text>
-          </vue-column>
-        </vue-columns>
-      </vue-box>
+        <vue-column no-grow>
+          <vue-text
+            tabindex="0"
+            aria-label="close"
+            :color="toast.type"
+            data-testid="toast-close-button"
+            as="a"
+            href="#"
+            @click.stop.prevent="onRemoveToast(toast)"
+          >
+            <vue-icon-times />
+          </vue-text>
+        </vue-column>
+      </vue-columns>
     </transition-group>
   </div>
 </template>
@@ -40,7 +47,6 @@ import { computed, onMounted, ref, useCssModule } from 'vue';
 import { EventBus } from '~/services/EventBus';
 import type { IToast } from '~/interfaces/IToast';
 import { getGUID } from '~/components/utils';
-import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -48,6 +54,8 @@ import VueText from '~/components/typography/VueText/VueText.vue';
 import VueIconInfo from '~/components/icons/VueIconInfoCircle.vue';
 import VueIconTimes from '~/components/icons/VueIconTimes.vue';
 import VueIconExclamation from '~/components/icons/VueIconExclamation.vue';
+import VueIconCheckmark from '~/components/icons/VueIconCheckmark.vue';
+import VueIconQuestionMarkCircle from '~/components/icons/VueIconQuestionMarkCircle.vue';
 
 // Deps
 const $style = useCssModule();
