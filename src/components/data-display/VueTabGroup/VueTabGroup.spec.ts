@@ -15,8 +15,10 @@ describe('VueTabGroup.vue', () => {
       },
       slots: {
         default: [
-          '<vue-tab-item name="Tab 1" icon="cog">Tab Content 1</vue-tab-item>',
+          '<vue-tab-item name="Tab 1" icon="cog" badge-content="badge-1">Tab Content 1</vue-tab-item>',
           '<vue-tab-item name="Tab 2" is-active>Tab Content 2</vue-tab-item>',
+          '<vue-tab-item name="Tab 3">Tab Content 3</vue-tab-item>',
+          // this should not show up because it is a duplicate
           '<vue-tab-item name="Tab 3">Tab Content 3</vue-tab-item>',
         ],
       },
@@ -30,6 +32,7 @@ describe('VueTabGroup.vue', () => {
     getByText('Tab 2');
     getByText('Tab 3');
     getByText('Tab Content 2');
+    getByText('badge-1');
   });
 
   test('should change tab with clicking', async () => {
@@ -46,7 +49,7 @@ describe('VueTabGroup.vue', () => {
   test('should change tab with keyboard', async () => {
     const { getByText } = harness;
 
-    await fireEvent.keyPress(getByText('Tab 1'), { key: 'Enter', code: 'Enter', charCode: 13 });
+    await fireEvent.keyDown(getByText('Tab 1'), { key: 'Enter', code: 'Enter', charCode: 13 });
 
     getByText('Tab 1');
     getByText('Tab 2');

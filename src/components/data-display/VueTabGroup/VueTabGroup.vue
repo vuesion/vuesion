@@ -8,16 +8,19 @@
         :class="currentTab === tab.idx ? $style.active : ''"
         role="tab"
         @click="onTabChange(tab.idx)"
-        @keypress.space.enter.stop.prevent="onTabChange(tab.idx)"
+        @keydown.space.enter.stop.prevent="onTabChange(tab.idx)"
       >
         <component :is="`vue-icon-${tab.icon}`" v-if="tab.icon" />
         <vue-text weight="semi-bold">
           {{ tab.name }}
         </vue-text>
+        <vue-badge v-if="tab.badgeContent">
+          {{ tab.badgeContent }}
+        </vue-badge>
       </li>
     </ul>
 
-    <vue-box padding="16 0">
+    <vue-box padding="8 0">
       <slot />
     </vue-box>
   </div>
@@ -28,6 +31,7 @@ import type { Ref } from 'vue';
 import { ref, provide, onBeforeUnmount, shallowRef, useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueBox from '~/components/layout/VueBox/VueBox.vue';
+import VueBadge from '~/components/data-display/VueBadge/VueBadge.vue';
 
 // Interface
 interface TabItem {
@@ -43,7 +47,7 @@ const $style = useCssModule();
 // Data
 const tabs = shallowRef<Array<TabItem>>([]);
 const currentTab = ref(0);
-const tabHeader = ref<Array<{ idx: number; name: string; icon: string | null }>>([]);
+const tabHeader = ref<Array<{ idx: number; name: string; icon: string | null; badgeContent: string | null }>>([]);
 
 // Event Handlers
 const onTabChange = (idx: number) => {
@@ -57,7 +61,17 @@ const handleTabs = () => {
     tab.active.value = tab.idx.value === currentTab.value;
   });
 };
-const register = (idx: Ref<number>, active: Ref<boolean>, name: string, icon: string | null) => {
+const register = (
+  idx: Ref<number>,
+  active: Ref<boolean>,
+  name: string,
+  icon: string | null,
+  badgeContent: string | null,
+) => {
+  if (tabHeader.value.find((item) => item.name === name)) {
+    return;
+  }
+
   idx.value = tabs.value.length;
 
   if (active.value) {
@@ -70,6 +84,7 @@ const register = (idx: Ref<number>, active: Ref<boolean>, name: string, icon: st
     idx: idx.value,
     name,
     icon,
+    badgeContent,
   });
 
   handleTabs();
@@ -100,7 +115,6 @@ onBeforeUnmount(() => {
     i {
       width: $tab-icon-size;
       height: $tab-icon-size;
-      margin-right: $tab-icon-gap;
     }
 
     li {
@@ -108,11 +122,17 @@ onBeforeUnmount(() => {
       display: inline-flex;
       height: $tab-height;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       padding: $tab-padding;
       border-bottom: $tab-border;
       color: $tab-color;
       cursor: pointer;
+      outline: none !important;
+      gap: $tab-icon-gap;
+
+      &:focus {
+        box-shadow: var(--focused);
+      }
 
       &:hover {
         border-bottom: $tab-border-hover;

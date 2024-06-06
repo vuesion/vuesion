@@ -27,7 +27,7 @@ const Template: StoryFn = (args) => ({
       story="Display tabs."
   >
   <vue-tab-group>
-    <vue-tab-item name="Profile" icon="github">
+    <vue-tab-item name="Profile" icon="github" badge-content="3">
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
       labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
       et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.

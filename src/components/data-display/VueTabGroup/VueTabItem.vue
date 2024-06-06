@@ -7,28 +7,35 @@
 <script lang="ts" setup>
 // Interface
 import type { Ref } from 'vue';
-import { onMounted, ref, useCssModule, watch, inject } from 'vue';
+import { ref, useCssModule, watch, inject } from 'vue';
 
 interface TabItemProps {
   name: string;
   icon?: string | null;
+  badgeContent?: string | number | null;
   isActive?: boolean;
 }
 const props = withDefaults(defineProps<TabItemProps>(), {
   icon: null,
   isActive: false,
+  badgeContent: null,
 });
 
 // Deps
 const $style = useCssModule();
 
-// DI
-const register =
-  inject<(idx: Ref<number>, active: Ref<boolean>, name: string, icon: string | null) => void>('register');
-
 // Data
 const idx = ref<number>(-1);
-const active = ref<boolean>(false);
+const active = ref<boolean>(props.isActive);
+
+// DI
+const register =
+  inject<
+    (idx: Ref<number>, active: Ref<boolean>, name: string, icon: string | null, badgeContent: string | null) => void
+  >('register');
+if (register) {
+  register(idx, active, props.name, props.icon, props.badgeContent ? props.badgeContent.toString() : null);
+}
 
 // Watcher
 watch(
@@ -36,13 +43,6 @@ watch(
   () => (active.value = props.isActive),
   { immediate: true },
 );
-
-// Lifecycle
-onMounted(() => {
-  if (register) {
-    register(idx, active, props.name, props.icon);
-  }
-});
 </script>
 
 <style lang="scss" module>
