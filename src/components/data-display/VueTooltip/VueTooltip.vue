@@ -5,7 +5,7 @@
       $style.vueTooltip,
       show && $style.show,
       $style[direction],
-      !disabled && $slots.default && $slots.default()[0].el !== null && $style.highlight,
+      !disabled && $slots.default && typeof $slots.default()[0].type === 'symbol' && $style.highlight,
     ]"
     :data-tip="tip"
     @mouseenter.stop.prevent="onEnter"
@@ -106,7 +106,7 @@ const onTouchEnd = () => {
   }
 
   &.highlight {
-    border-bottom: 1px dashed $tooltip-highlight-color;
+    border-bottom: 1px dashed currentColor;
   }
 }
 </style>
