@@ -1,4 +1,4 @@
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect, vi } from 'vitest';
 import { render, fireEvent } from '@testing-library/vue';
 import { defineRule } from 'vee-validate';
 import { required, email } from '@vee-validate/rules';
@@ -179,5 +179,36 @@ describe('VueInput.vue', () => {
     await fireEvent.click(getByTestId('id-trailing-icon'));
 
     expect(emitted()['trailing-icon-click']).toBeTruthy();
+  });
+
+  test('should autofocus input element', () => {
+    const entry = {
+      target: {
+        focus: vi.fn(),
+      },
+    };
+
+    (global as any).IntersectionObserver = class {
+      constructor(callback: any) {
+        // eslint-disable-next-line n/no-callback-literal
+        callback([entry]);
+      }
+
+      observe() {
+        return false;
+      }
+    };
+
+    render(VueInput, {
+      props: {
+        label: 'this is the label',
+        name: 'test',
+        id: 'test',
+        modelValue: 'this is the value',
+        autofocus: true,
+      },
+    });
+
+    expect(entry.target.focus).toHaveBeenCalled();
   });
 });

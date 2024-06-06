@@ -1,5 +1,6 @@
 <template>
-  <div
+  <vue-stack
+    space="4"
     :class="[
       $style.vueInput,
       disabled && $style.disabled,
@@ -19,58 +20,62 @@
       <sup v-if="required">*</sup>
     </vue-text>
 
-    <div
+    <vue-columns
+      space="0"
+      padding="0 8"
+      align-y="center"
       :class="[
-        $style.inputWrapper,
+        'w-full',
+        $style.baseInput,
         (leadingIcon || $slots.leadingIcon) && $style.hasLeadingContent,
         (trailingIcon || $slots.trailingIcon) && $style.hasTrailingContent,
         $style[size],
       ]"
     >
-      <div
-        v-if="leadingIcon || $slots.leadingIcon"
-        :data-testid="`${id}-leading-icon`"
-        :class="$style.leading"
-        @click="$emit('leading-icon-click', $event)"
-      >
-        <slot name="leadingIcon">
-          <component :is="`vue-icon-${leadingIcon}`" />
-        </slot>
-      </div>
+      <vue-column v-if="leadingIcon || $slots.leadingIcon" no-grow>
+        <div :data-testid="`${id}-leading-icon`" :class="$style.leading" @click="$emit('leading-icon-click', $event)">
+          <slot name="leadingIcon">
+            <component :is="`vue-icon-${leadingIcon}`" />
+          </slot>
+        </div>
+      </vue-column>
 
-      <div :class="$style.input">
-        <slot name="selection" />
+      <vue-column>
+        <vue-inline space="4" class="w-full">
+          <slot name="selection" />
 
-        <input
-          :id="id"
-          ref="inputRef"
-          :name="name"
-          :value="value"
-          :placeholder="placeholder"
-          :required="required"
-          :type="type"
-          :autocomplete="autocomplete"
-          :disabled="disabled"
-          :readonly="readonly"
-          :autofocus="autofocus"
-          :size="sizeAttribute || 150"
-          v-bind="$attrs"
-          @input="onInput"
-          @blur="onBlur"
-        />
-      </div>
+          <input
+            :id="id"
+            ref="inputRef"
+            :name="name"
+            :value="value"
+            :placeholder="placeholder"
+            :required="required"
+            :type="type"
+            :autocomplete="autocomplete"
+            :disabled="disabled"
+            :readonly="readonly"
+            :autofocus="autofocus"
+            :size="sizeAttribute || 150"
+            v-bind="$attrs"
+            @input="onInput"
+            @blur="onBlur"
+          />
+        </vue-inline>
+      </vue-column>
 
-      <div
-        v-if="trailingIcon || $slots.trailingIcon"
-        :data-testid="`${id}-trailing-icon`"
-        :class="$style.trailing"
-        @click="$emit('trailing-icon-click', $event)"
-      >
-        <slot name="trailingIcon">
-          <component :is="`vue-icon-${trailingIcon}`" />
-        </slot>
-      </div>
-    </div>
+      <vue-column v-if="trailingIcon || $slots.trailingIcon" no-grow>
+        <div
+          :data-testid="`${id}-trailing-icon`"
+          :class="$style.trailing"
+          @click="$emit('trailing-icon-click', $event)"
+        >
+          <slot name="trailingIcon">
+            <component :is="`vue-icon-${trailingIcon}`" />
+          </slot>
+        </div>
+      </vue-column>
+    </vue-columns>
 
     <vue-text
       look="support"
@@ -79,16 +84,21 @@
     >
       {{ errors.length > 0 || hasError ? errorMessage : description }}
     </vue-text>
-  </div>
+  </vue-stack>
 </template>
 
 <script setup lang="ts">
 import { computed, useCssModule, watch } from 'vue';
-import { useField } from 'vee-validate';
+import { type RuleExpression, useField } from 'vee-validate';
 import _debounce from 'lodash-es/debounce.js';
 import { getDomRef } from '~/composables/get-dom-ref';
-import VueText from '~/components/typography/VueText/VueText.vue';
 import type { ShirtSize } from '~/components/prop-types';
+import { useIntersectionObserver } from '~/composables/use-intersection-observer';
+import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
 // Interface
 interface InputProps {
@@ -98,7 +108,7 @@ interface InputProps {
   hideLabel?: boolean;
   hideDescription?: boolean;
   required?: boolean;
-  validation?: string | object;
+  validation?: RuleExpression<string | number | null | undefined>;
   modelValue?: string | number;
   disabled?: boolean;
   placeholder?: string;
@@ -116,14 +126,14 @@ interface InputProps {
   hasError?: boolean;
 }
 interface InputEmits {
-  (event: 'debounced-input', value: string, e: InputEvent): void;
-  (event: 'update:modelValue', value: string, e: InputEvent): void;
+  (event: 'debounced-input', value: string, e: Event): void;
+  (event: 'update:modelValue', value: string, e: Event): void;
   (event: 'leading-icon-click', e: MouseEvent): void;
   (event: 'trailing-icon-click', e: MouseEvent): void;
   (event: 'blur', e: FocusEvent): void;
 }
 const props = withDefaults(defineProps<InputProps>(), {
-  validation: null,
+  validation: undefined,
   modelValue: undefined,
   placeholder: undefined,
   type: 'text',
@@ -143,11 +153,8 @@ const $style = useCssModule();
 
 // Data
 const inputRef = getDomRef<HTMLInputElement>(null);
-const debouncedInput = _debounce(
-  (value: string, e: InputEvent) => emit('debounced-input', value, e),
-  props.debounce || 0,
-);
-const localValidation = computed(() => props.validation);
+const debouncedInput = _debounce((value: string, e: Event) => emit('debounced-input', value, e), props.debounce || 0);
+const localValidation = computed<RuleExpression<string | number | null | undefined>>(() => props.validation);
 const { errors, value, handleChange } = useField<string | number | null | undefined>(props.id, localValidation, {
   initialValue: props.modelValue,
   validateOnValueUpdate: false,
@@ -156,7 +163,7 @@ const { errors, value, handleChange } = useField<string | number | null | undefi
 });
 
 // Event Handlers
-const onInput = (e: InputEvent) => {
+const onInput = (e: Event) => {
   const value = (e.target as HTMLInputElement).value;
 
   if (errors.value.length > 0) {
@@ -176,6 +183,12 @@ const onBlur = (e: FocusEvent) => {
 
   emit('blur', e);
 };
+
+useIntersectionObserver(inputRef, (entries: IntersectionObserverEntry[]) => {
+  if (props.autofocus) {
+    entries.forEach((entry) => (entry.target as HTMLInputElement).focus());
+  }
+});
 
 // Watchers
 watch(
@@ -202,88 +215,75 @@ export default {
 
 .vueInput {
   position: relative;
-  display: flex;
-  flex-direction: column;
 
-  .inputWrapper {
-    position: relative;
+  &.error {
+    .baseInput {
+      background: $input-bg-error;
+      border: $input-border-error;
+    }
+  }
+
+  &.disabled {
+    opacity: $input-disabled-disabled-opacity;
+  }
+
+  .label {
     display: flex;
-    align-items: flex-start;
+    white-space: nowrap;
+  }
+
+  .baseInput {
+    position: relative;
     width: 100%;
+    background: $input-background-color;
+    border: $input-border;
+    border-radius: $input-border-radius;
+
+    &:hover {
+      outline: none;
+      border: $input-border-hover;
+    }
+
+    &:focus-within {
+      outline: none;
+      box-shadow: $input-outline;
+    }
+
+    &:active {
+      outline: none;
+    }
 
     &.hasLeadingContent {
-      .leading {
-        cursor: pointer;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        height: auto;
-        width: $input-leading-width;
-        color: $input-leading-color;
+      padding-left: 0;
+    }
+    .leading {
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      color: $input-leading-color;
 
-        i {
-          padding-top: $space-2;
-          width: $input-leading-icon-size;
-          height: $input-leading-icon-size;
-        }
-      }
-
-      input {
-        padding-left: $input-leading-width;
+      i {
+        padding-top: $space-2;
+        width: $input-leading-icon-size;
+        height: $input-leading-icon-size;
       }
     }
 
     &.hasTrailingContent {
-      .trailing {
-        cursor: pointer;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        height: auto;
-        width: $input-trailing-width;
-        color: $input-trailing-color;
-
-        i {
-          padding-top: $space-2;
-          width: $input-trailing-icon-size;
-          height: $input-trailing-icon-size;
-        }
-      }
-
-      input {
-        padding-right: $input-trailing-width;
-      }
+      padding-right: 0;
     }
+    .trailing {
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      color: $input-trailing-color;
 
-    .input {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      width: 100%;
-      background: $input-background-color;
-      border: $input-border;
-      border-radius: $input-border-radius;
-
-      &:hover {
-        outline: none;
-        border: $input-border-hover;
-      }
-
-      &:focus-within {
-        outline: none;
-        box-shadow: $input-outline;
-      }
-
-      &:active {
-        outline: none;
+      i {
+        padding-top: $space-2;
+        width: $input-trailing-icon-size;
+        height: $input-trailing-icon-size;
       }
     }
 
@@ -296,7 +296,6 @@ export default {
       font-weight: $input-font-weight;
       border: none;
       background: transparent;
-      padding: $input-padding;
       line-height: $input-line-height;
       width: 100%;
     }
@@ -313,7 +312,11 @@ export default {
       height: $input-control-sm-height;
 
       .leading,
-      .trailing,
+      .trailing {
+        width: $input-control-sm-height;
+        height: $input-control-sm-height;
+      }
+
       input {
         height: $input-control-sm-height;
       }
@@ -323,7 +326,11 @@ export default {
       height: $input-control-md-height;
 
       .leading,
-      .trailing,
+      .trailing {
+        width: $input-control-md-height;
+        height: $input-control-md-height;
+      }
+
       input {
         height: $input-control-md-height;
       }
@@ -333,37 +340,19 @@ export default {
       height: $input-control-lg-height;
 
       .leading,
-      .trailing,
+      .trailing {
+        width: $input-control-lg-height;
+        height: $input-control-lg-height;
+      }
+
       input {
         height: $input-control-lg-height;
       }
     }
   }
 
-  &.error {
-    .inputWrapper {
-      .input {
-        background: $input-bg-error;
-        border: $input-border-error;
-      }
-    }
-  }
-
-  &.disabled {
-    opacity: $input-disabled-disabled-opacity;
-  }
-
-  .label {
-    display: flex;
-    height: $input-label-height;
-    margin-bottom: $input-label-gap;
-    white-space: nowrap;
-  }
-
   .description {
     display: flex;
-    height: $input-description-height;
-    margin-top: $input-description-gap;
     white-space: nowrap;
   }
 }

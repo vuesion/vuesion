@@ -187,15 +187,11 @@ watch(
 
   .label {
     display: flex;
-    height: $input-label-height;
-    margin-bottom: $input-label-gap;
     white-space: nowrap;
   }
 
   .description {
     display: flex;
-    height: $input-description-height;
-    margin-top: $input-description-gap;
     white-space: nowrap;
   }
 }

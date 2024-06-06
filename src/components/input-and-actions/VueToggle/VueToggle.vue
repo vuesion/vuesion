@@ -164,7 +164,7 @@ export default {
   }
 
   .description {
-    padding-left: $toggle-width + $checkbox-label-gap;
+    padding-left: $toggle-width;
     line-height: $space-20;
   }
 
