@@ -1,5 +1,6 @@
 <template>
-  <div
+  <vue-columns
+    :space="16"
     role="slider"
     :aria-valuemax="max"
     :aria-valuemin="min"
@@ -7,55 +8,55 @@
     :aria-label="label"
     :class="[$style.vueSlider, disabled && $style.disabled]"
   >
-    <vue-columns :space="0" :class="$style.slider">
-      <vue-column align-y="center" no-grow>
-        <vue-text :class="[$style.label, $style.min]">{{ formatValue(currentMin) }}</vue-text>
-      </vue-column>
+    <vue-column align-y="center" no-grow>
+      <vue-text align-x="end" :class="[$style.label, $style.min]">
+        {{ formatValue(currentMin) }}
+      </vue-text>
+    </vue-column>
 
-      <vue-column align-y="center" width="10/12" :data-testid="id" @mousedown="moveStart" @touchstart="moveStart">
-        <div ref="sliderRef" :class="$style.track">
-          <div :class="$style.progress" :style="{ width: progressWidth, marginLeft: progressLeft }" />
+    <vue-column align-y="center" width="10/12" :data-testid="id" @mousedown="moveStart" @touchstart="moveStart">
+      <div ref="sliderRef" :class="$style.track">
+        <div :class="$style.progress" :style="{ width: progressWidth, marginLeft: progressLeft }" />
 
-          <button
-            v-if="isMultiRange"
-            ref="leftHandleRef"
-            :data-testid="`handle-${id}-0`"
-            :class="$style.handle"
-            :style="{ left: handleLeftPosition }"
-            :disabled="disabled"
-            :aria-disabled="disabled"
-            tabindex="0"
-            type="button"
-            aria-label="left handle"
-            @focus.prevent.stop="currentSlider = 0"
-            @keydown.left.right.prevent.stop="onKeyDown"
-            @keyup.left.right.prevent.stop="onKeyUp"
-            @focusout.prevent.stop="currentSlider = null"
-          />
+        <button
+          v-if="isMultiRange"
+          ref="leftHandleRef"
+          :data-testid="`handle-${id}-0`"
+          :class="$style.handle"
+          :style="{ left: handleLeftPosition }"
+          :disabled="disabled"
+          :aria-disabled="disabled"
+          tabindex="0"
+          type="button"
+          aria-label="left handle"
+          @focus.prevent.stop="currentSlider = 0"
+          @keydown.left.right.prevent.stop="onKeyDown"
+          @keyup.left.right.prevent.stop="onKeyUp"
+          @focusout.prevent.stop="currentSlider = null"
+        />
 
-          <button
-            ref="rightHandleRef"
-            :data-testid="`handle-${id}-1`"
-            :class="$style.handle"
-            :style="{ left: handleRightPosition }"
-            :disabled="disabled"
-            :aria-disabled="disabled"
-            tabindex="0"
-            type="button"
-            aria-label="right handle"
-            @focus.prevent.stop="currentSlider = 1"
-            @keydown.left.right.prevent.stop="onKeyDown"
-            @keyup.left.right.prevent.stop="onKeyUp"
-            @focusout.prevent.stop="currentSlider = null"
-          />
-        </div>
-      </vue-column>
+        <button
+          ref="rightHandleRef"
+          :data-testid="`handle-${id}-1`"
+          :class="$style.handle"
+          :style="{ left: handleRightPosition }"
+          :disabled="disabled"
+          :aria-disabled="disabled"
+          tabindex="0"
+          type="button"
+          aria-label="right handle"
+          @focus.prevent.stop="currentSlider = 1"
+          @keydown.left.right.prevent.stop="onKeyDown"
+          @keyup.left.right.prevent.stop="onKeyUp"
+          @focusout.prevent.stop="currentSlider = null"
+        />
+      </div>
+    </vue-column>
 
-      <vue-column align-y="center" no-grow>
-        <vue-text :class="[$style.label, $style.max]">{{ formatValue(currentMax) }}</vue-text>
-      </vue-column>
-    </vue-columns>
-  </div>
+    <vue-column align-y="center" no-grow>
+      <vue-text :class="[$style.label, $style.max]">{{ formatValue(currentMax) }}</vue-text>
+    </vue-column>
+  </vue-columns>
 </template>
 
 <script setup lang="ts">
@@ -150,7 +151,7 @@ const getClosestHandle = (percentageDiff: number) => {
     return challenger < current ? idx : closestIdx;
   }, startIndex);
 };
-const calculatePercentageDiff = (e: any) => {
+const calculatePercentageDiff = (e: any): number => {
   /* c8 ignore start */
   const positionX: number =
     e.changedTouches && e.changedTouches.length > 0 ? e.changedTouches[e.changedTouches.length - 1].clientX : e.clientX;
@@ -158,6 +159,8 @@ const calculatePercentageDiff = (e: any) => {
   if (sliderBox.value?.left !== undefined && sliderBox.value?.width !== undefined) {
     return ((positionX - sliderBox.value.left) / sliderBox.value.width) * 100;
   }
+
+  return 0;
   /* c8 ignore end */
 };
 const bindEvents = () => {
@@ -268,81 +271,63 @@ onMounted(() => {
 @import 'assets/_design-system.scss';
 
 .vueSlider {
+  position: relative;
   user-select: none;
   height: $slider-height;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: $space-8;
 
   &.disabled {
     cursor: not-allowed;
+    opacity: $slider-disabled-opacity;
 
-    .slider {
-      .track {
-        opacity: $slider-disabled-opacity;
-
-        .handle {
-          cursor: not-allowed;
-          &:hover {
-            width: $slider-handle-size;
-            height: $slider-handle-size;
-          }
+    .track {
+      .handle {
+        cursor: not-allowed;
+        &:hover {
+          width: $slider-handle-size;
+          height: $slider-handle-size;
         }
       }
     }
   }
 
-  .slider {
+  .label {
+    width: $slider-label-width;
+  }
+
+  .track {
     position: relative;
+    width: 100%;
+    height: $slider-track-height;
+    background-color: $slider-track-bg;
+    border-radius: $slider-track-border-radius;
 
-    .label {
-      width: $slider-label-width;
-
-      &.min {
-        text-align: left;
-      }
-
-      &.max {
-        text-align: right;
-      }
+    .progress {
+      height: $slider-track-height;
+      background: $slider-progress-bg;
+      border-radius: $slider-progress-border-radius;
     }
 
-    .track {
-      position: relative;
-      width: 100%;
-      height: $slider-track-height;
-      background-color: $slider-track-bg;
-      border-radius: $slider-track-border-radius;
+    .handle {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: $slider-handle-size;
+      height: $slider-handle-size;
+      padding: 0;
+      cursor: pointer;
+      user-select: none;
+      border-radius: $slider-handle-border-radius;
+      background-color: $slider-handle-bg;
+      border: none;
+      outline: none;
 
-      .progress {
-        height: $slider-track-height;
-        background: $slider-progress-bg;
-        border-radius: $slider-progress-border-radius;
+      &:hover {
+        width: $slider-handle-size-hover;
+        height: $slider-handle-size-hover;
       }
 
-      .handle {
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: $slider-handle-size;
-        height: $slider-handle-size;
-        padding: 0;
-        cursor: pointer;
-        user-select: none;
-        border-radius: $slider-handle-border-radius;
-        background-color: $slider-handle-bg;
-        border: none;
-        outline: none;
-
-        &:hover {
-          width: $slider-handle-size-hover;
-          height: $slider-handle-size-hover;
-        }
-
-        &:focus {
-          box-shadow: $slider-handle-active-shadow;
-        }
+      &:focus {
+        box-shadow: $slider-handle-active-shadow;
       }
     }
   }
