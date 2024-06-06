@@ -1,26 +1,28 @@
 <template>
-  <div
-    :tabindex="disabled ? null : 0"
+  <vue-inline
+    space="8"
+    no-wrap
+    :tabindex="disabled ? -1 : 0"
     :class="[$style.vueCheckbox, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]"
     @click.stop.prevent="onClick"
-    @keypress.space.stop.prevent="onClick"
+    @keydown.space.stop.prevent="onClick"
   >
-    <div :class="$style.wrapper">
-      <input
-        :id="id"
-        :name="name"
-        :value="value"
-        :checked="value"
-        type="checkbox"
-        :required="required"
-        :disabled="disabled"
-        v-bind="$attrs"
-        tabindex="-1"
-        data-testid="checkbox-input"
-      />
-      <div :class="$style.checkmark">
-        <vue-icon-checkmark />
-      </div>
+    <input
+      :id="id"
+      :name="name"
+      :value="value"
+      :checked="value"
+      type="checkbox"
+      :required="required"
+      :disabled="disabled"
+      v-bind="$attrs"
+      tabindex="-1"
+      data-testid="checkbox-input"
+    />
+    <div :class="$style.checkmark">
+      <vue-icon-checkmark />
+    </div>
+    <vue-stack space="0">
       <vue-text
         :for="id"
         as="label"
@@ -34,19 +36,19 @@
           {{ label }}
         </slot>
       </vue-text>
-    </div>
-    <vue-text
-      v-if="description"
-      look="support"
-      color="text-low"
-      :class="[$style.description, hideLabel && 'sr-only']"
-      as="div"
-    >
-      <slot name="description">
-        {{ description }}
-      </slot>
-    </vue-text>
-  </div>
+      <vue-text
+        v-if="description"
+        look="support"
+        color="text-low"
+        :class="[$style.description, hideLabel && 'sr-only']"
+        as="div"
+      >
+        <slot name="description">
+          {{ description }}
+        </slot>
+      </vue-text>
+    </vue-stack>
+  </vue-inline>
 </template>
 
 <script setup lang="ts">
@@ -54,6 +56,8 @@ import { computed, useCssModule, watch } from 'vue';
 import { useField } from 'vee-validate';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueIconCheckmark from '~/components/icons/VueIconCheckmark.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
 
 // Interface
 interface CheckboxProps {
@@ -67,7 +71,7 @@ interface CheckboxProps {
   modelValue?: boolean;
 }
 interface CheckboxEmits {
-  (event: 'click', value: boolean, e: MouseEvent): void;
+  (event: 'click', value: boolean, e: Event): void;
   (event: 'update:modelValue', value: boolean): void;
 }
 const props = withDefaults(defineProps<CheckboxProps>(), {
@@ -86,7 +90,7 @@ const { errors, value, validate } = useField<boolean>(props.id, rules, {
 });
 
 // Event Handler
-const onClick = (e: MouseEvent) => {
+const onClick = (e: Event) => {
   if (!props.disabled) {
     emit('update:modelValue', !value.value);
     emit('click', value.value, e);
@@ -113,64 +117,54 @@ export default {
 <style lang="scss" module>
 @import 'assets/_design-system.scss';
 .vueCheckbox {
-  display: inline-block;
   position: relative;
   cursor: pointer;
   user-select: none;
   outline: none;
 
-  .wrapper {
-    display: inline-flex;
-    align-items: center;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
 
-    input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-      height: 0;
-      width: 0;
-
-      &:checked ~ .checkmark {
-        background-color: $checkbox-checkmark-bg-checked !important;
-        border: $checkbox-checkmark-border-checked !important;
-        color: $checkbox-checkmark-color !important;
-      }
-
-      &:checked ~ .checkmark > svg {
-        display: block;
-      }
+    &:checked ~ .checkmark {
+      background-color: $checkbox-checkmark-bg-checked !important;
+      border: $checkbox-checkmark-border-checked !important;
+      color: $checkbox-checkmark-color !important;
     }
 
-    .checkmark {
-      height: $checkbox-checkmark-size;
-      width: $checkbox-checkmark-size;
-      background-color: $checkbox-checkmark-bg;
-      color: $checkbox-checkmark-bg;
-      border-radius: $checkbox-checkmark-border-radius;
-      border: $checkbox-checkmark-border;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      > i {
-        width: $checkbox-checkmark-size;
-        height: $checkbox-checkmark-size;
-
-        path {
-          stroke-width: 2;
-        }
-      }
-    }
-
-    label {
-      cursor: pointer;
-      padding-left: $checkbox-label-gap;
+    &:checked ~ .checkmark > svg {
+      display: block;
     }
   }
 
-  .description {
-    padding-left: $checkbox-checkmark-size + $checkbox-label-gap;
-    line-height: $space-20;
+  .checkmark {
+    position: relative;
+    top: $space-2;
+    height: $checkbox-checkmark-size;
+    width: $checkbox-checkmark-size;
+    background-color: $checkbox-checkmark-bg;
+    color: $checkbox-checkmark-bg;
+    border-radius: $checkbox-checkmark-border-radius;
+    border: $checkbox-checkmark-border;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > i {
+      width: $checkbox-checkmark-size;
+      height: $checkbox-checkmark-size;
+
+      path {
+        stroke-width: 2;
+      }
+    }
+  }
+
+  label {
+    cursor: pointer;
   }
 
   &:hover {
