@@ -1,5 +1,8 @@
 <template>
-  <div :class="[$style.vueTextarea, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]">
+  <vue-stack
+    space="4"
+    :class="[$style.vueTextarea, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]"
+  >
     <vue-text
       :for="id"
       look="label"
@@ -34,7 +37,7 @@
     >
       {{ errors.length > 0 ? errorMessage : description }}
     </vue-text>
-  </div>
+  </vue-stack>
 </template>
 
 <script setup lang="ts">
@@ -43,6 +46,7 @@ import { useField } from 'vee-validate';
 import _debounce from 'lodash-es/debounce.js';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
 
 // Interface
 interface TextareaProps {
@@ -63,8 +67,8 @@ interface TextareaProps {
   debounce?: number;
 }
 interface TextareaEmits {
-  (event: 'debounced-input', value: string, e: InputEvent): void;
-  (event: 'update:modelValue', value: string, e: InputEvent): void;
+  (event: 'debounced-input', value: string, e: Event): void;
+  (event: 'update:modelValue', value: string, e: Event): void;
   (event: 'blur', e: FocusEvent): void;
 }
 const props = withDefaults(defineProps<TextareaProps>(), {
@@ -93,13 +97,10 @@ const { errors, value, handleChange } = useField<string | number | null | undefi
 
 // Data
 const inputRef = getDomRef<HTMLElement>(null);
-const debouncedInput = _debounce(
-  (value: string, e: InputEvent) => emit('debounced-input', value, e),
-  props.debounce || 0,
-);
+const debouncedInput = _debounce((value: string, e: Event) => emit('debounced-input', value, e), props.debounce || 0);
 
 // Event Handlers
-const onInput = (e: InputEvent) => {
+const onInput = (e: Event) => {
   const value = (e.target as HTMLInputElement).value;
 
   if (errors.value.length > 0) {
@@ -109,7 +110,7 @@ const onInput = (e: InputEvent) => {
   emit('update:modelValue', value, e);
 
   if (props.debounce !== undefined) {
-    debouncedInput(value);
+    debouncedInput(value, e);
   }
 };
 const onBlur = (e: FocusEvent) => {
@@ -137,6 +138,22 @@ watch(
   flex-direction: column;
   width: 100%;
 
+  &.error {
+    textarea {
+      background: $textarea-bg-error;
+      border: $textarea-border-error;
+    }
+  }
+
+  &.disabled {
+    opacity: $textarea-disabled-disabled-opacity;
+  }
+
+  .label {
+    display: flex;
+    white-space: nowrap;
+  }
+
   textarea {
     outline: none !important;
     color: $textarea-color;
@@ -150,6 +167,7 @@ watch(
     line-height: $textarea-line-height;
     height: $textarea-height;
     width: 100%;
+    resize: none;
 
     &:hover {
       outline: none !important;
@@ -172,22 +190,6 @@ watch(
     font-family: $textarea-font-family;
     font-weight: $textarea-font-weight;
     opacity: 1;
-  }
-
-  &.error {
-    textarea {
-      background: $textarea-bg-error;
-      border: $textarea-border-error;
-    }
-  }
-
-  &.disabled {
-    opacity: $textarea-disabled-disabled-opacity;
-  }
-
-  .label {
-    display: flex;
-    white-space: nowrap;
   }
 
   .description {

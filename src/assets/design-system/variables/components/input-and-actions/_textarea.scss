@@ -1,23 +1,15 @@
-// label
-$textarea-label-height: $space-16;
-$textarea-label-gap: $space-4;
-
 // input default
 $textarea-border-radius: 6px;
 $textarea-border: 1px solid var(--border-default-medium);
 $textarea-height: $space-120;
-$textarea-padding: ($space-12 - $space-2) $space-12;
+$textarea-padding: $space-8;
 $textarea-color: var(--text-default-high);
 $textarea-placeholder-color: var(--text-default-low);
-$textarea-background-color: transparent;
+$textarea-background-color: var(--surface-default-high);
 $textarea-font-family: $font-family;
 $textarea-font-size: $text-3;
 $textarea-font-weight: $font-weight-regular;
 $textarea-line-height: $line-height-3;
-
-// description
-$textarea-description-gap: $space-4;
-$textarea-description-height: $space-16;
 
 // utils
 $textarea-disabled-disabled-opacity: 0.3;
