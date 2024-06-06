@@ -32,7 +32,6 @@ describe('VueCheckbox.vue', () => {
     const { getByText, emitted } = harness;
 
     await fireEvent.click(getByText('Test'));
-    await sleep(1);
 
     expect(emitted().click).toBeTruthy();
   });
@@ -43,7 +42,7 @@ describe('VueCheckbox.vue', () => {
 
     expect(input.checked).toBeFalsy();
 
-    await rerender({ checked: true });
+    await rerender({ modelValue: true });
 
     expect(input.checked).toBeTruthy();
   });

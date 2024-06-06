@@ -1,30 +1,34 @@
 <template>
-  <div
-    :tabindex="disabled ? null : 0"
+  <vue-inline
+    space="8"
+    no-wrap
+    :tabindex="disabled ? -1 : 0"
     :class="[$style.VueRadio, disabled && $style.disabled, $attrs.class]"
     @click.stop.prevent="onClick"
-    @keypress.space.stop.prevent="onClick"
+    @keydown.space.stop.prevent="onClick"
   >
-    <div :class="$style.wrapper">
-      <input
-        :id="id"
-        :name="name"
-        type="radio"
-        :checked="modelValue === id ? 'checked' : null"
-        :required="required"
-        :disabled="disabled"
-        v-bind="$attrs"
-        :value="id"
-        tabindex="-1"
-      />
-      <div :class="$style.checkmark">
-        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 6">
-          <circle cx="3" cy="3" r="3" fill="currentColor" />
-        </svg>
-      </div>
+    <input
+      :id="id"
+      :name="name"
+      :value="id"
+      :checked="modelValue === id"
+      type="radio"
+      :required="required"
+      :disabled="disabled"
+      v-bind="$attrs"
+      tabindex="-1"
+      data-testid="radio-input"
+    />
+    <div :class="$style.checkmark">
+      <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 6">
+        <circle cx="3" cy="3" r="3" fill="currentColor" />
+      </svg>
+    </div>
+    <vue-stack space="0">
       <vue-text
         :for="id"
         as="label"
+        look="label"
         weight="semi-bold"
         color="text-medium"
         tabindex="-1"
@@ -34,18 +38,26 @@
           {{ label }}
         </slot>
       </vue-text>
-    </div>
-    <vue-text :class="[$style.description, hideLabel && 'sr-only']" as="div">
-      <slot name="description">
-        {{ description }}
-      </slot>
-    </vue-text>
-  </div>
+      <vue-text
+        v-if="description"
+        look="support"
+        color="text-low"
+        :class="[$style.description, hideLabel && 'sr-only']"
+        as="div"
+      >
+        <slot name="description">
+          {{ description }}
+        </slot>
+      </vue-text>
+    </vue-stack>
+  </vue-inline>
 </template>
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
 
 // Interface
 interface RadioProps {
@@ -91,21 +103,10 @@ export default {
 <style lang="scss" module>
 @import 'assets/_design-system.scss';
 .VueRadio {
-  display: inline-block;
   position: relative;
   cursor: pointer;
   user-select: none;
   outline: none;
-
-  .wrapper {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .description {
-    padding-left: $radio-checkmark-size + $radio-label-gap;
-    line-height: $space-20;
-  }
 
   input {
     position: absolute;
@@ -126,8 +127,12 @@ export default {
   }
 
   .checkmark {
+    position: relative;
+    top: $space-2;
     height: $radio-checkmark-size;
+    min-height: $radio-checkmark-size;
     width: $radio-checkmark-size;
+    min-width: $radio-checkmark-size;
     background-color: $radio-checkmark-bg;
     color: $radio-checkmark-bg;
     border-radius: $radio-checkmark-border-radius;
@@ -137,14 +142,13 @@ export default {
     align-items: center;
 
     > svg {
-      width: $radio-checkmark-size - ($space-8 + $space-2);
-      height: $radio-checkmark-size - ($space-4 + $space-2);
+      width: $radio-checkmark-size - $space-10;
+      height: $radio-checkmark-size - $space-10;
     }
   }
 
   label {
     cursor: pointer;
-    padding-left: $space-8;
   }
 
   &:hover {
@@ -153,8 +157,8 @@ export default {
       border: $radio-checkmark-border-hover;
     }
   }
-
-  &:focus {
+  &:focus,
+  &:focus-within {
     .checkmark {
       box-shadow: $radio-checkmark-outline;
     }

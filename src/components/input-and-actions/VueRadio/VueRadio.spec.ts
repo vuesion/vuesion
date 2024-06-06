@@ -8,8 +8,8 @@ describe('VueRadio.vue', () => {
   beforeEach(() => {
     harness = render(VueRadio, {
       props: {
-        name: 'foo',
         id: 'foo',
+        name: 'foo',
         label: 'Test',
         description: 'Description',
       },
@@ -33,7 +33,7 @@ describe('VueRadio.vue', () => {
 
   test('should set checked attribute', async () => {
     const { rerender, getByText } = harness;
-    const input: any = getByText('Test').parentElement?.querySelector('#foo');
+    const input: any = getByText('Test').parentElement?.parentElement?.querySelector('#foo');
 
     expect(input.checked).toBeFalsy();
 
@@ -45,7 +45,7 @@ describe('VueRadio.vue', () => {
   test('should disable radio button', async () => {
     const { getByText, emitted, rerender } = harness;
 
-    await rerender({ disabled: true });
+    await rerender({ disabled: true, description: null });
 
     await fireEvent.click(getByText('Test'));
 

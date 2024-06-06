@@ -182,8 +182,8 @@ export default {
       }
     }
   }
-
-  &:focus {
+  &:focus,
+  &:focus-within {
     .checkmark {
       box-shadow: $checkbox-checkmark-outline;
     }
@@ -192,7 +192,6 @@ export default {
   &.disabled {
     opacity: $checkbox-disabled-disabled-opacity;
   }
-
   &.error {
     .description,
     label {

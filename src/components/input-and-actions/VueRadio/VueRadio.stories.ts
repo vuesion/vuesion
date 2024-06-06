@@ -41,6 +41,7 @@ const Template: StoryFn = (args) => ({
         v-for="n in 3"
         :key="n"
         :label="'Radio button enabled ' + n"
+        :description="'Radio button description ' + n"
         name="groupOne"
         :id="'radio' + n"
         @click="action"
