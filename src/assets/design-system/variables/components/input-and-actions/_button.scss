@@ -1,21 +1,18 @@
 // small
-$button-sm-padding: ($space-4 + $space-2) $space-8;
-$button-sm-has-icon-space: $space-8;
+$button-sm-padding: 0 $space-8;
 
 // medium
-$button-md-padding: $space-10;
-$button-md-has-icon-space: $space-12;
+$button-md-padding: 0 $space-10;
 
 // large
-$button-lg-padding: ($space-12 + $space-2) $space-20;
-$button-lg-has-icon-space: $space-16;
+$button-lg-padding: 0 $space-20;
 
 // common
 $button-min-width: $space-32;
 $button-border-radius: 6px;
 $button-disabled-opacity: 0.3;
-$button-icon-size: $space-24;
-$button-icon-gap: $space-4;
+$button-icon-size: $space-20;
+$button-gap: $space-4;
 $button-outline: var(--focused);
 
 $button-variations: (

@@ -24,7 +24,7 @@
       :is="`vue-icon-${leadingIcon}`"
       v-if="leadingIcon && loading === false"
       aria-hidden="true"
-      :class="[$style.leadingIcon, $slots.default && $style.addSpace]"
+      :class="[$style.leadingIcon]"
     />
 
     <vue-text v-if="loading === false" :class="$style.text" look="button" weight="semi-bold" as="span">
@@ -35,7 +35,7 @@
       :is="`vue-icon-${trailingIcon}`"
       v-if="trailingIcon && loading === false"
       aria-hidden="true"
-      :class="[$style.trailingIcon, $slots.default && $style.addSpace]"
+      :class="[$style.trailingIcon]"
     />
 
     <vue-loader v-if="loading === true" :class="$style.loader" />
@@ -176,57 +176,22 @@ const onClick = (e: Event) => {
   border: none;
   outline: none;
   text-decoration: none;
+  gap: $button-gap;
 
   // Sizes
   &.sm {
     padding: $button-sm-padding;
     height: $input-control-sm-height;
-
-    &.hasLeadingIcon {
-      &.addSpace {
-        padding-left: $button-sm-has-icon-space;
-      }
-    }
-
-    &.hasTrailingIcon {
-      &.addSpace {
-        padding-right: $button-sm-has-icon-space;
-      }
-    }
   }
 
   &.md {
     padding: $button-md-padding;
     height: $input-control-md-height;
-
-    &.hasLeadingIcon {
-      &.addSpace {
-        padding-left: $button-md-has-icon-space;
-      }
-    }
-
-    &.hasTrailingIcon {
-      &.addSpace {
-        padding-right: $button-md-has-icon-space;
-      }
-    }
   }
 
   &.lg {
     padding: $button-lg-padding;
     height: $input-control-lg-height;
-
-    &.hasLeadingIcon {
-      &.addSpace {
-        padding-left: $button-lg-has-icon-space;
-      }
-    }
-
-    &.hasTrailingIcon {
-      &.addSpace {
-        padding-right: $button-lg-has-icon-space;
-      }
-    }
   }
 
   // Styles
@@ -301,17 +266,6 @@ const onClick = (e: Event) => {
   .trailingIcon {
     height: $button-icon-size;
     width: $button-icon-size;
-  }
-
-  .leadingIcon {
-    &.addSpace {
-      margin-right: $button-icon-gap;
-    }
-  }
-  .trailingIcon {
-    &.addSpace {
-      margin-left: $button-icon-gap;
-    }
   }
 }
 </style>
