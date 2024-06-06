@@ -1,65 +1,42 @@
 <template>
-  <div ref="selectRef" :class="[$style.vueSelect, $attrs.class]">
-    <div :class="[disabled && $style.disabled, errors.length > 0 && $style.error]" @keydown="onKeyDown">
-      <vue-text
-        :for="id"
-        look="label"
-        weight="semi-bold"
-        :color="errors.length > 0 ? 'danger' : 'text-medium'"
-        :class="[$style.label, hideLabel && 'sr-only']"
-        as="label"
-      >
-        {{ label }}
-        <sup v-if="required">*</sup>
-      </vue-text>
+  <vue-stack
+    :ref="(el: any) => (selectRef = el?.$el)"
+    space="4"
+    :class="[$style.vueSelect, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]"
+    @keydown="onKeyDown"
+  >
+    <vue-text
+      :for="id"
+      look="label"
+      weight="semi-bold"
+      :color="errors.length > 0 ? 'danger' : 'text-medium'"
+      :class="[$style.label, hideLabel && 'sr-only']"
+      as="label"
+    >
+      {{ label }}
+      <sup v-if="required">*</sup>
+    </vue-text>
 
-      <div :class="$style.selectWrapper">
-        <select
-          :id="id"
-          :data-testid="'native-' + id"
-          :name="name"
-          :title="label"
-          :required="required"
-          :disabled="disabled"
-          :multiple="multiSelect"
-          :class="[
-            $style.nativeSelect,
-            placeholder && inputValue.length === 0 && $style.hasPlaceholder,
-            multiSelect && inputValue.length > 1 && $style.hasCount,
-            $style[size],
-          ]"
-          v-bind="$attrs"
-          @input="onInput"
-        >
-          <option v-if="placeholder && inputValue.length === 0" value="" disabled selected>{{ placeholder }}</option>
-          <option
-            v-for="(option, idx) in options"
-            :key="`${option.value}-${idx}`"
-            :value="option.value"
-            :selected="inputValue.includes(option.value)"
-          >
-            {{ option.label }}
-          </option>
-        </select>
-        <div
-          :id="'custom-' + id"
-          :data-testid="'custom-' + id"
-          role="combobox"
-          :aria-expanded="show"
-          :aria-label="label"
-          :class="[
-            $style.customSelect,
-            placeholder && inputValue.length === 0 && $style.hasPlaceholder,
-            multiSelect && inputValue.length > 1 && $style.hasCount,
-            $style[size],
-          ]"
-          :tabindex="disabled ? -1 : 0"
-          aria-haspopup="listbox"
-          @click.stop.prevent="toggleMenu"
-        >
+    <vue-columns
+      :id="'custom-' + id"
+      space="0"
+      padding="0 0 0 8"
+      align-y="center"
+      :data-testid="'custom-' + id"
+      role="combobox"
+      :aria-expanded="show"
+      :aria-label="label"
+      :class="[$style.customSelect, $style[size]]"
+      :tabindex="disabled ? -1 : 0"
+      aria-haspopup="listbox"
+      @click.stop.prevent="toggleMenu"
+    >
+      <vue-column>
+        <vue-text :color="placeholder && inputValue.length === 0 ? 'text-low' : 'text-high'">
           {{ displayItem ? displayItem.label : placeholder }}
-        </div>
-
+        </vue-text>
+      </vue-column>
+      <vue-column no-grow>
         <vue-badge
           v-if="multiSelect && inputValue.length > 1"
           :status="badgeStatus"
@@ -68,42 +45,37 @@
         >
           +{{ inputValue.length - 1 }}
         </vue-badge>
-
+      </vue-column>
+      <vue-column no-grow>
         <div :class="$style.icon" :data-testid="'toggle-' + id" @click.stop.prevent="toggleMenu">
           <vue-icon-chevron-down />
         </div>
-      </div>
+      </vue-column>
+      <vue-collapse :show="show" :duration="duration">
+        <vue-menu
+          ref="menuRef"
+          :items="options"
+          :class="[$style.menu, $style[alignXMenu], $style[alignYMenu]]"
+          @click="onItemClick"
+          @close="toggleMenu"
+        />
+      </vue-collapse>
+    </vue-columns>
 
-      <vue-text
-        look="support"
-        :color="errors.length > 0 ? 'danger' : 'text-low'"
-        :class="[$style.description, hideDescription && 'sr-only']"
-      >
-        {{ errors.length > 0 ? errorMessage : description }}
-      </vue-text>
-    </div>
-    <vue-collapse :show="show" :duration="duration">
-      <vue-menu
-        ref="menuRef"
-        :items="options"
-        :class="[
-          $style.menu,
-          $style[alignXMenu],
-          $style[alignYMenu],
-          $style[size],
-          /* c8 ignore start */ hideLabel && $style.hideLabel /* c8 ignore end */,
-        ]"
-        @click="onItemClick"
-        @close="toggleMenu"
-      />
-    </vue-collapse>
-  </div>
+    <vue-text
+      look="support"
+      :color="errors.length > 0 ? 'danger' : 'text-low'"
+      :class="[$style.description, hideDescription && 'sr-only']"
+    >
+      {{ errors.length > 0 ? errorMessage : description }}
+    </vue-text>
+  </vue-stack>
 </template>
 
 <script setup lang="ts">
 import { computed, ref, nextTick, useCssModule } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import { useField } from 'vee-validate';
+import { type RuleExpression, useField } from 'vee-validate';
 import type { IItem } from '~/interfaces/IItem';
 import { getDomRef } from '~/composables/get-dom-ref';
 import type { BadgeStatus, HorizontalDirection, ShirtSize, VerticalDirection } from '~/components/prop-types';
@@ -112,6 +84,9 @@ import VueText from '~/components/typography/VueText/VueText.vue';
 import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
 import VueMenu from '~/components/data-display/VueMenu/VueMenu.vue';
 import VueBadge from '~/components/data-display/VueBadge/VueBadge.vue';
+import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
 // Interface
 interface SelectProps {
@@ -122,7 +97,7 @@ interface SelectProps {
   hideLabel?: boolean;
   hideDescription?: boolean;
   required?: boolean;
-  validation?: string | null;
+  validation?: RuleExpression<string | number | null | undefined>;
   modelValue?: string | boolean | number | IItem | Array<string | boolean | number | IItem> | object | unknown;
   disabled?: boolean;
   placeholder?: string;
@@ -139,8 +114,8 @@ interface SelectEmits {
   (event: 'update:modelValue', selected: Array<IItem> | IItem): void;
 }
 const props = withDefaults(defineProps<SelectProps>(), {
-  validation: null,
-  modelValue: () => undefined as Array<string | boolean | number | IItem>,
+  validation: undefined,
+  modelValue: undefined,
   placeholder: '',
   description: '',
   errorMessage: '',
@@ -154,39 +129,7 @@ const emit = defineEmits<SelectEmits>();
 
 // Deps
 const $style = useCssModule();
-const { errors, resetField, handleChange } = useField(props.id, props.validation, {
-  initialValue: props.modelValue,
-  validateOnValueUpdate: false,
-  type: 'default',
-  syncVModel: false,
-});
-
-// Data
-const selectRef = getDomRef<HTMLElement>(null);
-const menuRef = getDomRef<{ focus: (selectedItem?: IItem) => void }>(null);
-const show = ref(false);
-const inputValue = computed<Array<any>>(() => {
-  if (Array.isArray(props.modelValue)) {
-    return props.modelValue.map((v: any | IItem) => getValue(v));
-  } else {
-    const value = getValue(props.modelValue);
-
-    return /* c8 ignore start */ value !== undefined ? [value] : /* c8 ignore end */ [];
-  }
-});
-const options = computed<Array<IItem>>(() =>
-  props.items.map((item: IItem) => ({
-    ...item,
-    trailingIcon: inputValue.value.includes(item.value) ? 'checkmark' : null,
-  })),
-);
-const displayItem = computed(() => {
-  if (inputValue.value.length > 0) {
-    return options.value.find((option) => option.value === inputValue.value[0]);
-  } else {
-    return undefined;
-  }
-});
+const localValidation = computed<RuleExpression<string | number | null | undefined>>(() => props.validation);
 
 // Methods
 const getValue = (valueOrItem: any | IItem) => {
@@ -239,26 +182,40 @@ const toggleMenu = () => {
   }
 };
 
-// Event Handler
-const onInput = (e: Event) => {
-  resetField();
+// Data
+const selectRef = getDomRef<HTMLElement>(null);
+const menuRef = getDomRef<{ focus: (selectedItem?: IItem) => void }>(null);
+const show = ref(false);
+const inputValue = computed<Array<any>>(() => {
+  if (Array.isArray(props.modelValue)) {
+    return props.modelValue.map((v: any | IItem) => getValue(v));
+  } else {
+    const value = getValue(props.modelValue);
 
-  const selected: Array<IItem> = [];
-  const target = e.target as HTMLSelectElement;
-  const length: number = target.options.length;
-
-  for (let i = 0; i < length; i++) {
-    const option: any = target.options[i];
-
-    if (option.selected && option.disabled === false) {
-      selected.push({ label: option.text, value: option.value });
-    }
+    return /* c8 ignore start */ value !== undefined ? [value] : /* c8 ignore end */ [];
   }
+});
+const { errors, resetField, handleChange } = useField<string | number | null | undefined>(props.id, localValidation, {
+  initialValue: inputValue.value.join(''),
+  validateOnValueUpdate: false,
+  type: 'default',
+  syncVModel: false,
+});
+const options = computed<Array<IItem>>(() => {
+  return props.items.map((item: IItem) => ({
+    ...item,
+    trailingIcon: inputValue.value.includes(item.value) ? 'checkmark' : null,
+  }));
+});
+const displayItem = computed(() => {
+  if (inputValue.value.length > 0) {
+    return options.value.find((option) => option.value === inputValue.value[0]);
+  } else {
+    return undefined;
+  }
+});
 
-  handleChange(props.multiSelect ? selected : selected[0]);
-
-  emit('update:modelValue', props.multiSelect ? selected : selected[0]);
-};
+// Event Handler
 const onItemClick = (item: IItem) => {
   resetField();
 
@@ -293,10 +250,8 @@ const onKeyDown = (e: KeyboardEvent) => {
   }
 };
 
-onClickOutside(selectRef, async () => {
-  show.value = false;
-
-  await nextTick();
+onClickOutside(selectRef, () => {
+  close();
 });
 </script>
 
@@ -310,61 +265,24 @@ export default {
 @import 'assets/_design-system.scss';
 .vueSelect {
   position: relative;
-  display: flex;
-  flex-direction: column;
   min-width: $select-min-width;
 
-  select::-ms-expand {
-    display: none;
-  }
-
-  .selectWrapper {
-    position: relative;
+  .label {
     display: flex;
-    flex-direction: column;
-
-    .count {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      right: $space-40;
-      transform: translateY(-50%);
-    }
-
-    .icon {
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      right: $space-12;
-      bottom: 0;
-      display: inline-flex;
-      align-items: center;
-      color: $select-color;
-
-      i {
-        width: $select-icon-size;
-        height: $select-icon-size;
-      }
-    }
+    white-space: nowrap;
   }
 
-  .nativeSelect,
   .customSelect {
-    align-items: center;
+    position: relative;
     outline: none;
-    color: $select-color;
     font-size: $select-font-size;
     font-family: $select-font-family;
     font-weight: $select-font-weight;
     background: $select-background-color;
     border: $select-border;
     border-radius: $select-border-radius;
-    padding: $select-padding;
     line-height: $select-line-height;
     width: 100%;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     cursor: pointer;
 
     &:hover {
@@ -381,28 +299,99 @@ export default {
       outline: none;
     }
 
+    .menu {
+      &.left {
+        left: 0;
+      }
+
+      &.center {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &.right {
+        right: 0;
+      }
+
+      &.top {
+        top: -$space-4 !important;
+        transform: translateY(-100%);
+
+        &.center {
+          transform: translate(-50%, -100%);
+        }
+      }
+    }
+
+    .count {
+      cursor: pointer;
+    }
+
+    .icon {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $select-trailing-color;
+
+      i {
+        width: $select-trailing-icon-size;
+        height: $select-trailing-icon-size;
+      }
+    }
+
     &.sm {
-      height: $input-control-sm-height;
+      .customSelect {
+        height: $input-control-sm-height;
+      }
+
+      .menu {
+        top: $input-control-sm-height + $space-4;
+      }
+
+      .icon {
+        width: $input-control-sm-height;
+        height: $input-control-sm-height;
+      }
     }
 
     &.md {
-      height: $input-control-md-height;
+      .customSelect {
+        height: $input-control-md-height;
+      }
+
+      .menu {
+        top: $input-control-md-height + $space-4;
+      }
+
+      .icon {
+        width: $input-control-md-height;
+        height: $input-control-md-height;
+      }
     }
 
     &.lg {
-      height: $input-control-lg-height;
-    }
+      .customSelect {
+        height: $input-control-lg-height;
+      }
 
-    &.hasCount {
-      padding-right: $space-16 + $select-icon-size + $space-52;
+      .menu {
+        top: $input-control-lg-height + $space-4;
+      }
+
+      .icon {
+        width: $input-control-lg-height;
+        height: $input-control-lg-height;
+      }
     }
   }
 
-  .hasPlaceholder {
-    color: $select-placeholder-color;
+  .description {
+    display: flex;
+    white-space: nowrap;
   }
 
-  .error {
+  &.error {
     select {
       background: $select-bg-error;
       border: $select-border-error;
@@ -415,87 +404,14 @@ export default {
     }
   }
 
-  .disabled {
+  &.disabled {
     opacity: $select-disabled-disabled-opacity;
-  }
-
-  .label {
-    display: flex;
-    height: $select-label-height;
-    margin-bottom: $select-label-gap;
-  }
-
-  .description {
-    display: flex;
-    height: $select-description-height;
-    margin-top: $select-description-gap;
   }
 
   .customSelect,
   .menu {
-    display: none;
+    display: flex;
     width: 100%;
-
-    &.sm {
-      top: $select-label-height + $select-label-gap + $input-control-sm-height + $select-description-gap;
-
-      &.hideLabel {
-        top: $input-control-sm-height + $select-description-gap;
-      }
-    }
-
-    &.md {
-      top: $select-label-height + $select-label-gap + $input-control-md-height + $select-description-gap;
-
-      &.hideLabel {
-        top: $input-control-md-height + $select-description-gap;
-      }
-    }
-
-    &.lg {
-      top: $select-label-height + $select-label-gap + $input-control-lg-height + $select-description-gap;
-
-      &.hideLabel {
-        top: $input-control-lg-height + $select-description-gap;
-      }
-    }
-
-    &.left {
-      left: 0;
-    }
-
-    &.center {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    &.right {
-      right: 0;
-    }
-
-    &.top {
-      top: $select-label-height;
-      transform: translateY(-100%);
-
-      &.hideLabel {
-        top: -$select-description-gap;
-      }
-
-      &.center {
-        transform: translate(-50%, -100%);
-      }
-    }
-  }
-
-  @media (hover: hover) {
-    .nativeSelect {
-      display: none;
-    }
-
-    .customSelect,
-    .menu {
-      display: flex;
-    }
   }
 }
 </style>

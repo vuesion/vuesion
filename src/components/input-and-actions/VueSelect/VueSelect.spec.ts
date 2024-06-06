@@ -1,7 +1,6 @@
 import { describe, test, expect } from 'vitest';
 import flushPromises from 'flush-promises';
 import { fireEvent, render, type RenderResult } from '@testing-library/vue';
-import userEvent from '@testing-library/user-event';
 import { defineRule } from 'vee-validate';
 import { required } from '@vee-validate/rules';
 import VueSelect from './VueSelect.vue';
@@ -37,31 +36,7 @@ describe('VueSelect.vue', () => {
     const { getByText, queryAllByText } = harness;
 
     getByText('Select-Label');
-    expect(queryAllByText('Placeholder')).toHaveLength(2);
-  });
-
-  test('should emit update:modelValue event of the native select', async () => {
-    const { getByTestId, emitted } = harness;
-
-    await userEvent.selectOptions(getByTestId('native-select'), ['Value 2']);
-
-    expect(emitted()['update:modelValue']).toEqual([
-      [
-        {
-          label: 'Value 2',
-          value: 'Value 2',
-        },
-      ],
-    ]);
-  });
-
-  test('should not emit update:modelValue event of the native select is disabled', async () => {
-    const { getByTestId, rerender, emitted } = harness;
-
-    await rerender({ disabled: true });
-    await userEvent.selectOptions(getByTestId('native-select'), ['Value 2']);
-
-    expect(emitted()['update:modelValue']).toBeFalsy();
+    expect(queryAllByText('Placeholder')).toHaveLength(1);
   });
 
   test('should emit update:modelValue event of the custom select', async () => {
@@ -99,30 +74,30 @@ describe('VueSelect.vue', () => {
     await fireEvent.keyDown(select, { key: 'ShiftLeft', code: 'ShiftLeft' });
     await fireEvent.keyDown(select, { key: 'ShiftRight', code: 'ShiftRight' });
 
-    expect(queryAllByText('Value 1')).toHaveLength(1);
+    expect(queryAllByText('Value 1')).toHaveLength(0);
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
-    expect(queryAllByText('Value 1')).toHaveLength(2);
+    expect(queryAllByText('Value 1')).toHaveLength(1);
 
     await fireEvent.keyDown(select, { key: 'Escape', code: 'Escape' });
 
-    expect(queryAllByText('Value 1')).toHaveLength(1);
+    expect(queryAllByText('Value 1')).toHaveLength(0);
   });
 
   test('should open menu on toggle icon click', async () => {
     const { getByTestId, queryAllByText } = harness;
     const toggle = getByTestId('toggle-select');
 
-    expect(queryAllByText('Value 1')).toHaveLength(1);
-
-    await fireEvent.click(toggle);
-
-    expect(queryAllByText('Value 1')).toHaveLength(2);
+    expect(queryAllByText('Value 1')).toHaveLength(0);
 
     await fireEvent.click(toggle);
 
     expect(queryAllByText('Value 1')).toHaveLength(1);
+
+    await fireEvent.click(toggle);
+
+    expect(queryAllByText('Value 1')).toHaveLength(0);
   });
 
   test('should open menu and close it via outside click', async () => {
@@ -131,13 +106,13 @@ describe('VueSelect.vue', () => {
 
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
-    expect(queryAllByText('Value 1')).toHaveLength(2);
+    expect(queryAllByText('Value 1')).toHaveLength(1);
 
     triggerWindow.click({ target: null, composedPath: () => [] });
 
     await sleep(10);
 
-    expect(queryAllByText('Value 1')).toHaveLength(1);
+    expect(queryAllByText('Value 1')).toHaveLength(0);
   });
 
   test('should support string as input value', async () => {
@@ -168,7 +143,7 @@ describe('VueSelect.vue', () => {
     const { getByText, rerender, html } = harness;
     const select = getByText('Select-Label').parentElement as HTMLElement;
 
-    await rerender({ alignMenu: 'right', alignYMenu: 'top' });
+    await rerender({ alignXMenu: 'right', alignYMenu: 'top' });
     await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
 
     const markup = html();
