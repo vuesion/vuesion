@@ -28,13 +28,14 @@
 
     <vue-pagination
       v-if="showPagination"
-      slim
+      button-look="outline"
+      buttons-only
       infinite
-      :pages="preloadedImages.length"
+      :items-per-page="1"
+      :result-count="preloadedImages.length"
       :selected-page="currentSlide + 1"
       :class="$style.pagination"
-      @next="changeSlide(currentSlide + 1, true)"
-      @prev="changeSlide(currentSlide - 1, true)"
+      @update:selected-page="changeSlide($event, true)"
     />
   </div>
 </template>
@@ -75,7 +76,6 @@ const images = computed<Array<ICarouselImage>>(() => props.images as Array<ICaro
 const interval = computed<number>(() => props.intervalInSeconds * 1000);
 const selectedSlide = computed<number>(() => props.selectedSlide);
 const currentSlide = ref<number>(props.selectedSlide - 1);
-const maxSlides = computed<number>(() => images.value.length);
 const intervalInstance = ref<any>(null);
 const pause = ref(false);
 const preloadedImages = ref<Array<HTMLImageElement>>([]);
@@ -87,15 +87,13 @@ const changeSlide = (newSlide: number, fromPagination = false) => {
     return;
   }
 
-  if (newSlide === maxSlides.value) {
-    currentSlide.value = 0;
-  } else if (newSlide < 0) {
-    currentSlide.value = maxSlides.value - 1;
+  if (fromPagination) {
+    currentSlide.value = newSlide - 1;
   } else {
     currentSlide.value = newSlide;
   }
 
-  emit('update:selectedSlide', currentSlide.value + 1);
+  emit('update:selectedSlide', newSlide);
 };
 const createIntervalInstance = () => {
   if (images.value.length <= 1) {

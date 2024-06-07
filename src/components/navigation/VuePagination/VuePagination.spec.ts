@@ -8,78 +8,103 @@ describe('VuePagination.vue', () => {
   beforeEach(() => {
     harness = render(VuePagination, {
       props: {
-        pages: 10,
+        resultCount: 133,
+        itemsPerPage: 5,
         selectedPage: 1,
-        displayPages: 5,
+        slim: false,
+        buttonsOnly: false,
+        buttonLook: 'primary',
+        infinite: false,
       },
     });
   });
 
-  test('should render component', async () => {
-    const { getByTestId, queryAllByTestId, rerender } = harness;
+  test('should render component in full mode', () => {
+    const { getByTestId, queryAllByTestId, getByText } = harness;
 
-    await rerender({ displayPages: 'sdflkjnbaksvfkasc89hq3fvcs d' });
-
-    expect(queryAllByTestId('pagination-active-page')).toHaveLength(1);
-    expect(queryAllByTestId('pagination-page')).toHaveLength(4);
+    expect(queryAllByTestId('custom-page')).toHaveLength(1);
+    expect(queryAllByTestId('custom-itemsPerPage')).toHaveLength(1);
     expect(getByTestId('pagination-prev')).toHaveAttribute('disabled');
     expect(getByTestId('pagination-next')).not.toHaveAttribute('disabled');
+    getByText('133 common.Results');
+    getByText('common.of 27');
   });
 
-  test('should render slim version of component', async () => {
-    const { getByTestId, queryAllByTestId, rerender } = harness;
+  test('should render component in slim mode', async () => {
+    const { getByTestId, queryAllByTestId, queryAllByText, rerender } = harness;
 
     await rerender({ slim: true });
 
-    expect(queryAllByTestId('pagination-active-page')).toHaveLength(0);
-    expect(queryAllByTestId('pagination-page')).toHaveLength(0);
+    expect(queryAllByTestId('custom-page')).toHaveLength(1);
+    expect(queryAllByTestId('custom-itemsPerPage')).toHaveLength(0);
     expect(getByTestId('pagination-prev')).toHaveAttribute('disabled');
     expect(getByTestId('pagination-next')).not.toHaveAttribute('disabled');
+    expect(queryAllByText('133 common.Results')).toHaveLength(0);
+    expect(queryAllByText('common.of 27')).toHaveLength(1);
   });
 
-  test('should have disabled next button when last page is reached', async () => {
-    const { getByTestId, rerender } = harness;
+  test('should render component in buttonsOnly mode', async () => {
+    const { getByTestId, queryAllByTestId, queryAllByText, rerender } = harness;
 
-    await rerender({ selectedPage: 5 });
+    await rerender({ buttonsOnly: true });
 
+    expect(queryAllByTestId('custom-page')).toHaveLength(0);
+    expect(queryAllByTestId('custom-itemsPerPage')).toHaveLength(0);
+    expect(getByTestId('pagination-prev')).toHaveAttribute('disabled');
+    expect(getByTestId('pagination-next')).not.toHaveAttribute('disabled');
+    expect(queryAllByText('133 common.Results')).toHaveLength(0);
+    expect(queryAllByText('common.of 27')).toHaveLength(0);
+  });
+
+  test('should render component without disabled buttons when set infinite to true', async () => {
+    const { getByTestId, queryAllByTestId, queryAllByText, rerender } = harness;
+
+    await rerender({ buttonsOnly: true, infinite: true });
+
+    expect(queryAllByTestId('custom-page')).toHaveLength(0);
+    expect(queryAllByTestId('custom-itemsPerPage')).toHaveLength(0);
     expect(getByTestId('pagination-prev')).not.toHaveAttribute('disabled');
     expect(getByTestId('pagination-next')).not.toHaveAttribute('disabled');
+    expect(queryAllByText('133 common.Results')).toHaveLength(0);
+    expect(queryAllByText('common.of 27')).toHaveLength(0);
+  });
 
-    await rerender({ selectedPage: 10 });
+  test('should render disable next button when page is last page', async () => {
+    const { getByTestId, rerender } = harness;
+
+    await rerender({ buttonsOnly: true, selectedPage: 27 });
 
     expect(getByTestId('pagination-prev')).not.toHaveAttribute('disabled');
     expect(getByTestId('pagination-next')).toHaveAttribute('disabled');
   });
 
-  test('should not disable buttons when infinite property is set', async () => {
-    const { getByTestId, rerender } = harness;
+  test('should update items per page', async () => {
+    const { getByTestId, emitted } = harness;
 
-    await rerender({ infinite: true });
+    await fireEvent.click(getByTestId('custom-itemsPerPage'));
+    await fireEvent.click(getByTestId('100-4'));
 
-    expect(getByTestId('pagination-prev')).not.toHaveAttribute('disabled');
-    expect(getByTestId('pagination-next')).not.toHaveAttribute('disabled');
-
-    await rerender({ selectedPage: 10 });
-
-    expect(getByTestId('pagination-prev')).not.toHaveAttribute('disabled');
-    expect(getByTestId('pagination-next')).not.toHaveAttribute('disabled');
+    expect(emitted<any>()['update:itemsPerPage'][0][0]).toEqual(100);
   });
 
-  test('should emit prev/next event', async () => {
-    const { getByTestId, queryAllByTestId, rerender, emitted } = harness;
+  test('should update selected page with select', async () => {
+    const { getByTestId, emitted } = harness;
 
-    await rerender({ selectedPage: 5 });
+    await fireEvent.click(getByTestId('custom-page'));
+    await fireEvent.click(getByTestId('13-12'));
+
+    expect(emitted<any>()['update:selectedPage'][0][0]).toEqual(13);
+  });
+
+  test('should update selected page with buttons', async () => {
+    const { getByTestId, rerender, emitted } = harness;
+
+    await rerender({ buttonsOnly: true, infinite: true });
 
     await fireEvent.click(getByTestId('pagination-prev'));
-    expect(emitted<any>().prev[0][0]).toEqual(1);
+    expect(emitted<any>()['update:selectedPage'][0][0]).toEqual(27);
 
     await fireEvent.click(getByTestId('pagination-next'));
-    expect(emitted<any>().next[0][0]).toEqual(1);
-
-    await fireEvent.click(queryAllByTestId('pagination-page')[0]);
-    expect(emitted<any>().prev[1][0]).toEqual(2);
-
-    await fireEvent.keyPress(queryAllByTestId('pagination-page')[1]);
-    expect(emitted<any>().prev[2][0]).toEqual(1);
+    expect(emitted<any>()['update:selectedPage'][1][0]).toEqual(2);
   });
 });

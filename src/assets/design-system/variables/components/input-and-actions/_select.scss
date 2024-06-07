@@ -3,7 +3,7 @@ $select-min-width: $space-120;
 // input default
 $select-border-radius: 6px;
 $select-border: 1px solid var(--border-default-medium);
-$select-background-color: transparent;
+$select-background-color: var(--surface-default-high);
 $select-font-family: $font-family;
 $select-font-size: $text-3;
 $select-font-weight: $font-weight-regular;

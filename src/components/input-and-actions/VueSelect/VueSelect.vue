@@ -98,7 +98,7 @@ interface SelectProps {
   hideDescription?: boolean;
   required?: boolean;
   validation?: RuleExpression<string | number | null | undefined>;
-  modelValue?: string | boolean | number | IItem | Array<string | boolean | number | IItem> | object | unknown;
+  modelValue?: string | boolean | number | IItem | Array<string | boolean | number | IItem>;
   disabled?: boolean;
   placeholder?: string;
   description?: string;
@@ -251,7 +251,7 @@ const onKeyDown = (e: KeyboardEvent) => {
 };
 
 onClickOutside(selectRef, () => {
-  close();
+  close(false);
 });
 </script>
 

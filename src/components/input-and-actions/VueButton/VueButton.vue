@@ -27,7 +27,13 @@
       :class="[$style.leadingIcon]"
     />
 
-    <vue-text v-if="loading === false" :class="$style.text" look="button" weight="semi-bold" as="span">
+    <vue-text
+      v-if="$slots.default && loading === false"
+      :class="$style.text"
+      look="button"
+      weight="semi-bold"
+      as="span"
+    >
       <slot />
     </vue-text>
 
@@ -70,7 +76,13 @@
       :class="[$style.leadingIcon, $slots.default && $style.addSpace]"
     />
 
-    <vue-text v-if="loading === false" :class="$style.text" look="button" weight="semi-bold" as="span">
+    <vue-text
+      v-if="$slots.default && loading === false"
+      :class="$style.text"
+      look="button"
+      weight="semi-bold"
+      as="span"
+    >
       <slot />
     </vue-text>
 

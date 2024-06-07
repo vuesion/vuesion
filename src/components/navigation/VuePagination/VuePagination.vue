@@ -1,233 +1,144 @@
 <template>
-  <div :class="[$style.vuePagination, slim && $style.slim]">
-    <button
-      :class="[infinite === false && selectedPage <= 1 && $style.disabled]"
-      :aria-label="previousButtonLabel"
-      :disabled="infinite === false && selectedPage <= 1"
-      type="button"
-      data-testid="pagination-prev"
-      @click.prevent.stop="emit('prev', 1)"
-    >
-      <vue-icon-chevron-left />
-    </button>
-
-    <ul v-if="slim === false" :class="$style.pages">
-      <li
-        v-for="(item, idx) in pageItems"
-        :key="`${item.label}-${idx}`"
-        :tabindex="item.active ? -1 : 0"
-        :class="item.active && $style.active"
-        :data-testid="item.active ? 'pagination-active-page' : 'pagination-page'"
-        @click.prevent.stop="item.event && emit(item.event, item.amount)"
-        @keypress.prevent.stop="item.event && emit(item.event, item.amount)"
-      >
-        <vue-text class="sr-only">{{ selectedPageLabel }}</vue-text>
-        <vue-text>{{ item.label }}</vue-text>
-      </li>
-    </ul>
-
-    <button
-      :class="[infinite === false && selectedPage >= pages && $style.disabled]"
-      :aria-label="nextButtonLabel"
-      :disabled="infinite === false && selectedPage >= pages"
-      type="button"
-      data-testid="pagination-next"
-      @click="emit('next', 1)"
-    >
-      <vue-icon-chevron-right />
-    </button>
-  </div>
+  <vue-columns padding="4 8" align-x="between" :class="[$style.vuePagination, slim && $style.slim]">
+    <vue-column no-grow>
+      <vue-inline :space="buttonsOnly ? 8 : 16" no-wrap align-y="center">
+        <vue-button
+          :look="buttonLook"
+          leading-icon="chevron-left"
+          size="sm"
+          :aria-label="$t('common.PreviousPage' /* Previous Page */)"
+          :disabled="!infinite && selectedPage <= 1"
+          data-testid="pagination-prev"
+          @click="onSelectedPageChange(selectedPage - 1)"
+        ></vue-button>
+        <vue-inline v-if="!buttonsOnly" space="8" no-wrap align-y="center">
+          <vue-select
+            id="page"
+            :label="$t('common.SelectPage' /* Select Page */)"
+            name="page"
+            :items="Array.from({ length: pages }, (_, index): IItem => ({ label: `${index + 1}`, value: index + 1 }))"
+            size="sm"
+            hide-label
+            hide-description
+            :model-value="selectedPage"
+            align-y-menu="top"
+            align-x-menu="right"
+            :class="$style.select"
+            @update:model-value="$emit('update:selectedPage', ($event as IItem).value)"
+          />
+          <vue-text look="support" color="text-low"> {{ $t('common.of' /* of */) }}&nbsp;{{ pages }} </vue-text>
+        </vue-inline>
+        <vue-button
+          :look="buttonLook"
+          leading-icon="chevron-right"
+          size="sm"
+          :aria-label="$t('common.NextPage' /* Next Page */)"
+          :disabled="!infinite && selectedPage >= pages"
+          data-testid="pagination-next"
+          @click="onSelectedPageChange(selectedPage + 1)"
+        ></vue-button>
+      </vue-inline>
+    </vue-column>
+    <vue-column v-if="!slim && !buttonsOnly" no-grow>
+      <vue-inline space="12" no-wrap align-y="center">
+        <vue-text look="support" color="text-low">
+          {{ resultCount }}&nbsp;{{ $t('common.Results' /* Results */) }}
+        </vue-text>
+        <vue-select
+          id="itemsPerPage"
+          label=""
+          name="itemsPerPage"
+          :items="[
+            { label: '5', value: 5 },
+            { label: '10', value: 10 },
+            { label: '25', value: 25 },
+            { label: '50', value: 50 },
+            { label: '100', value: 100 },
+          ]"
+          hide-label
+          hide-description
+          :model-value="itemsPerPage"
+          size="sm"
+          align-y-menu="top"
+          align-x-menu="right"
+          :class="$style.select"
+          @update:model-value="
+            $emit('update:selectedPage', 1);
+            $emit('update:itemsPerPage', ($event as IItem).value);
+          "
+        />
+      </vue-inline>
+    </vue-column>
+  </vue-columns>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import VueIconChevronLeft from '~/components/icons/VueIconChevronLeft.vue';
-import VueIconChevronRight from '~/components/icons/VueIconChevronRight.vue';
+import type { IItem } from '~/interfaces/IItem';
+import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import VueSelect from '~/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
-// TODO: re-design
-interface IPaginationItem {
-  label: string;
-  active: boolean;
-  event: 'prev' | 'next';
-  amount: number;
-}
+import type { ButtonStyle } from '~/components/prop-types';
 
+// Interface
 interface PaginationProps {
-  pages: string | number;
-  selectedPage: string | number;
-  displayPages?: string | number;
+  resultCount?: number;
+  itemsPerPage?: number;
+  selectedPage?: number;
   slim?: boolean;
+  buttonsOnly?: boolean;
   infinite?: boolean;
-  previousButtonLabel?: string;
-  nextButtonLabel?: string;
-  selectedPageLabel?: string;
+  buttonLook?: ButtonStyle;
 }
 
 const props = withDefaults(defineProps<PaginationProps>(), {
-  displayPages: 5,
-  slim: false,
-  infinite: false,
-  previousButtonLabel: 'Previous',
-  nextButtonLabel: 'Next',
-  selectedPageLabel: "You're on page",
+  resultCount: 0,
+  itemsPerPage: 5,
+  selectedPage: 1,
+  buttonLook: 'primary',
 });
-const emit = defineEmits(['prev', 'next']);
-const displayPages = computed(() => {
-  const dp = parseInt(props.displayPages.toString(), 10);
+const emits = defineEmits(['update:itemsPerPage', 'update:selectedPage']);
 
-  if (isNaN(dp)) {
-    return 5;
+// Data
+const pages = computed(() => Math.ceil(props.resultCount / props.itemsPerPage));
+
+// Event Handlers
+const onSelectedPageChange = (newSelectedPage: number) => {
+  if (newSelectedPage < 1) {
+    newSelectedPage = pages.value;
+  } else if (newSelectedPage > pages.value) {
+    newSelectedPage = 1;
   }
 
-  return dp;
-});
-const pages = computed(() => parseInt(props.pages.toString(), 10));
-const selectedPage = computed(() => parseInt(props.selectedPage.toString(), 10));
-const pageItems = computed<Array<IPaginationItem>>(() => {
-  const half = (displayPages.value - 1) / 2;
-  const smallerHalf = Math.floor(half);
-  const largerHalf = Math.ceil(half);
-  const pageCount = Math.min(displayPages.value, pages.value);
-
-  let minPage = selectedPage.value - smallerHalf;
-
-  if (selectedPage.value - smallerHalf <= 1) {
-    minPage = 1;
-  } else if (selectedPage.value + largerHalf >= pages.value) {
-    minPage = Math.max(1, pages.value - displayPages.value + 1);
-  }
-
-  return Array.from(Array(pageCount).keys()).map((p) => {
-    const newPage = p + minPage;
-
-    return {
-      label: newPage.toString(),
-      active: newPage === selectedPage.value,
-      event: selectedPage.value < newPage ? 'next' : 'prev',
-      amount: selectedPage.value < newPage ? newPage - selectedPage.value : selectedPage.value - newPage,
-    };
-  });
-});
+  emits('update:selectedPage', newSelectedPage);
+};
 </script>
 
 <style lang="scss" module>
 @import 'assets/_design-system.scss';
 
 .vuePagination {
-  display: inline-flex;
-  user-select: none;
-  align-items: center;
-  border-top: $pagination-border;
-  padding-top: $pagination-padding-top;
-
   &.slim {
-    border-top: none;
-    padding-top: 0;
+    display: inline-flex;
+    width: min-content;
+  }
 
-    button {
-      &:first-child {
-        margin-right: $pagination-button-slim-gap;
-      }
-    }
+  .select {
+    min-width: unset;
+    width: $space-64;
   }
 
   button {
-    display: inline-flex;
-    height: $pagination-button-size;
     width: $pagination-button-size;
-    border: $pagination-button-border;
+    height: $pagination-button-size;
     border-radius: $pagination-button-border-radius;
-    box-shadow: $pagination-button-shadow;
-    background: $pagination-button-bg;
-    color: $pagination-button-color;
+    display: flex;
     align-items: center;
     justify-content: center;
-    outline: none;
-    cursor: pointer;
-
-    &:focus {
-      box-shadow: $pagination-button-outline;
-      background: $pagination-button-bg-focus;
-      color: $pagination-button-color-focus;
-    }
-
-    &:hover {
-      background: $pagination-button-bg-hover;
-      color: $pagination-button-color-hover;
-    }
-
-    &:active {
-      background: $pagination-button-bg-active;
-      color: $pagination-button-color-active;
-    }
-
-    i {
-      width: $pagination-button-icon-size;
-      height: $pagination-button-icon-size;
-    }
-
-    &.disabled {
-      opacity: $pagination-button-disabled-opacity;
-      box-shadow: none;
-    }
-  }
-
-  .pages {
-    padding: 0 $pagination-button-pages-gap;
-    margin-top: -($pagination-padding-top + 0.1rem);
-    display: inline-flex;
-
-    li {
-      display: inline-flex;
-      padding: $pagination-item-padding;
-      border-top: $pagination-item-border;
-      color: $pagination-item-color;
-      background: $pagination-item-bg;
-      cursor: pointer;
-      outline: none;
-      min-width: $pagination-item-min-width;
-      justify-content: center;
-
-      &:focus {
-        box-shadow: $pagination-item-outline;
-        border-top: $pagination-item-border-focus;
-        color: $pagination-item-color-focus;
-        background: $pagination-item-bg-focus;
-      }
-
-      &:hover {
-        border-top: $pagination-item-border-hover;
-        color: $pagination-item-color-hover;
-        background: $pagination-item-bg-hover;
-      }
-
-      &.active {
-        border-top: $pagination-item-border-active;
-        color: $pagination-item-color-active;
-        background: $pagination-item-bg-active;
-        cursor: default;
-        box-shadow: none;
-
-        > span {
-          margin-top: -1px;
-        }
-      }
-    }
-  }
-
-  @include mediaMax(phone) {
-    display: flex;
-    justify-content: space-between;
-
-    .pages {
-      li {
-        display: none;
-
-        &.active {
-          display: inline-flex;
-        }
-      }
-    }
+    padding: 0;
   }
 }
 </style>
