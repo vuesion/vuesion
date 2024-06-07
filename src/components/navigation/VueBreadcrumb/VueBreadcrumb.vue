@@ -2,7 +2,7 @@
   <nav aria-label="Breadcrumb" :class="$style.vueBreadcrumb">
     <ol :class="$style.list">
       <li :class="$style.itemWrapper">
-        <nuxt-link :to="localePath('/')" :class="[$style.item, $style.homeItem]" aria-label="Home">
+        <nuxt-link :to="'/'" :class="[$style.item, $style.homeItem]" aria-label="Home">
           <vue-text look="label" color="text-medium" weight="semi-bold">
             <vue-icon-home :class="$style.home" />
           </vue-text>
@@ -10,7 +10,7 @@
       </li>
       <li v-if="items.length > 2" :class="[$style.itemWrapper, $style.ellipsis]">...</li>
       <li v-for="(item, idx) in items" :key="`${item.value}-${idx}`" :class="[$style.itemWrapper, $style.link]">
-        <nuxt-link :to="localePath(item.value)" :aria-current="idx === items.length - 1 && 'page'" :class="$style.item">
+        <nuxt-link :to="item.value" :aria-current="idx === items.length - 1 && 'page'" :class="$style.item">
           <vue-text look="label" color="text-medium" weight="semi-bold">
             {{ item.label }}
           </vue-text>
@@ -69,10 +69,6 @@ const $style = useCssModule();
         padding: $breadcrumb-home-padding;
       }
 
-      &.ellipsis {
-        display: none;
-      }
-
       .item {
         outline: none;
         display: inline-flex;
@@ -110,20 +106,12 @@ const $style = useCssModule();
           }
         }
       }
-    }
 
-    @include mediaMax(phone) {
-      .itemWrapper {
-        &.ellipsis {
+      &.link {
+        display: none;
+
+        &:nth-last-child(-n + 2) {
           display: inline-block;
-        }
-
-        &.link {
-          display: none;
-
-          &:nth-last-child(-n + 2) {
-            display: inline-block;
-          }
         }
       }
     }
