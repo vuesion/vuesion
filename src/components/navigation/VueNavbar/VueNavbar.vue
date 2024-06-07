@@ -85,6 +85,7 @@ const $style = useCssModule();
       height: $navbar-menu-icon-size;
       outline: none;
       cursor: pointer;
+      border-radius: 2px;
 
       &:focus {
         box-shadow: $navbar-menu-outline;
