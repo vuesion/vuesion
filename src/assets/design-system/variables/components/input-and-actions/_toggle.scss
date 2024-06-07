@@ -11,11 +11,11 @@ $toggle-handle-bg-hover: var(--surface-inverse-low);
 
 // CHECKED
 // ENABLED
-$toggle-bg-checked: var(--surface-info-low);
+$toggle-bg-checked: var(--surface-default-low);
 $toggle-handle-bg-checked: var(--interaction-primary-enabled);
 
 // HOVERED
-$toggle-bg-checked-hover: var(--surface-info-low);
+$toggle-bg-checked-hover: var(--surface-default-low);
 $toggle-handle-bg-checked-hover: var(--interaction-primary-hovered);
 
 // error
@@ -31,6 +31,5 @@ $toggle-handle-width: $toggle-height - $space-4;
 $toggle-handle-height: $toggle-height - $space-4;
 $toggle-handle-border-radius: 50%;
 
-$toggle-label-gap: $space-8;
 $toggle-outline: var(--focused);
 $toggle-disabled-opacity: 0.3;

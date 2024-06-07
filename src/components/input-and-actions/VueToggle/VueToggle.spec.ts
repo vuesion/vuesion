@@ -39,7 +39,7 @@ describe('VueToggle.vue', () => {
 
   test('should set checked attribute', async () => {
     const { rerender, getByText } = harness;
-    const input: any = getByText('Test').parentElement?.querySelector('#foo');
+    const input: any = getByText('Test')?.parentElement?.parentElement?.querySelector('#foo');
 
     expect(input.checked).toBeFalsy();
 
