@@ -18,12 +18,12 @@ describe('VueSidebar.vue', () => {
       slots: {
         default: [
           `<vue-sidebar-group label="Navigation" icon="plus-circle">
-        <vue-sidebar-group-item leading-icon="home" label="Vuex Example" to="/" exact />
+        <vue-sidebar-group-item leading-icon="home" label="Vuex Example" to="/" exact active />
         <vue-sidebar-group-item trailing-icon="home" label="Apollo Example" href="/" />
-        <vue-sidebar-group-item label="Form Example" />
+        <vue-sidebar-group-item label="Form Example" active />
       </vue-sidebar-group>
       <vue-sidebar-group label="Navigation2">
-        <vue-sidebar-group-item label="Vuex Example2" to="/" exact />
+        <vue-sidebar-group-item label="Vuex Example2" to="/" exact badge-content="badge-content" />
       </vue-sidebar-group>`,
         ],
       },
@@ -39,5 +39,6 @@ describe('VueSidebar.vue', () => {
     getByText('Vuex Example2');
     getByText('Apollo Example');
     getByText('Form Example');
+    getByText('badge-content');
   });
 });

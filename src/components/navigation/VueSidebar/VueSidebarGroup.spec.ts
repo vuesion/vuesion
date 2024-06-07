@@ -20,6 +20,15 @@ describe('VueSidebarGroup.vue', () => {
     getByText('Group 1');
   });
 
+  test('should emit click event when clicked', async () => {
+    const { getByTestId, emitted } = harness;
+
+    await fireEvent.click(getByTestId('sidebar-group'));
+    await fireEvent.keyDown(getByTestId('sidebar-group'), { key: 'Enter' });
+
+    expect(emitted().click).toBeTruthy();
+  });
+
   test('should emit icon-click event when clicked', async () => {
     const { getByTestId, emitted } = harness;
 

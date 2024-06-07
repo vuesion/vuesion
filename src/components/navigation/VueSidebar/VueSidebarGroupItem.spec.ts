@@ -9,8 +9,8 @@ describe('VueSidebarGroupItem.vue', () => {
     harness = render(VueSidebarGroupItem, {
       props: {
         label: 'Item 1',
-        leadingIcon: 'user',
-        trailingIcon: 'times',
+        icon: 'user',
+        badgeContent: 'badge-content',
       },
     });
   });
@@ -19,6 +19,7 @@ describe('VueSidebarGroupItem.vue', () => {
     const { getByText } = harness;
 
     getByText('Item 1');
+    getByText('badge-content');
   });
 
   test('should emit click event when clicked', async () => {

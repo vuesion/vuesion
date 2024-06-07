@@ -6,22 +6,22 @@
       :exact="exact"
       :active-class="$style.active"
       :exact-active-class="$style.active"
-      :class="[$style.vueSidebarGroupItem]"
+      :class="[$style.vueSidebarGroupItem, active && $style.active]"
       tabindex="0"
       @keydown.space.enter="$emit('click', $event)"
       @click="$emit('click', $event)"
     >
-      <vue-columns :space="16">
-        <vue-column v-if="leadingIcon" width="content" align-y="center">
-          <component :is="`vue-icon-${leadingIcon}`" />
+      <vue-columns space="8" padding="4 12" align-y="center">
+        <vue-column v-if="icon" no-grow>
+          <component :is="`vue-icon-${icon}`" />
         </vue-column>
 
         <vue-column align-y="center">
-          <vue-text weight="semi-bold">{{ label }}</vue-text>
+          <vue-text weight="semi-bold" look="label">{{ label }}</vue-text>
         </vue-column>
 
-        <vue-column v-if="trailingIcon" width="content" align-y="center">
-          <component :is="`vue-icon-${trailingIcon}`" />
+        <vue-column v-if="badgeContent" no-grow align-y="center">
+          <vue-badge :status="badgeStatus">{{ badgeContent }}</vue-badge>
         </vue-column>
       </vue-columns>
     </nuxt-link>
@@ -31,22 +31,22 @@
       :href="href && href"
       :target="href && '_blank'"
       :rel="href && 'noopener'"
-      :class="$style.vueSidebarGroupItem"
+      :class="[$style.vueSidebarGroupItem, active && $style.active]"
       tabindex="0"
       @click="!href && $emit('click', $event)"
       @keydown.space.enter="!href && $emit('click', $event)"
     >
-      <vue-columns :space="16">
-        <vue-column v-if="leadingIcon" width="content" align-y="center">
-          <component :is="`vue-icon-${leadingIcon}`" />
+      <vue-columns space="8" padding="4 12" align-y="center">
+        <vue-column v-if="icon" no-grow>
+          <component :is="`vue-icon-${icon}`" />
         </vue-column>
 
         <vue-column align-y="center">
-          <vue-text weight="semi-bold">{{ label }}</vue-text>
+          <vue-text weight="semi-bold" look="label">{{ label }}</vue-text>
         </vue-column>
 
-        <vue-column v-if="trailingIcon" width="content" align-y="center">
-          <component :is="`vue-icon-${trailingIcon}`" />
+        <vue-column v-if="badgeContent" no-grow align-y="center">
+          <vue-badge :status="badgeStatus">{{ badgeContent }}</vue-badge>
         </vue-column>
       </vue-columns>
     </component>
@@ -58,22 +58,28 @@ import { useCssModule, withDefaults } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import type { Icon } from '~/components/icon-options';
+import VueBadge from '~/components/data-display/VueBadge/VueBadge.vue';
+import type { BadgeStatus } from '~/components/prop-types';
 
 // Interface
 interface SidebarGroupItemProps {
   label: string;
-  leadingIcon?: string | null;
-  trailingIcon?: string | null;
+  icon?: Icon;
+  badgeContent?: string;
+  badgeStatus?: BadgeStatus;
   to?: string | object | null;
   exact?: boolean;
+  active?: boolean;
   href?: string | null;
 }
 interface SidebarGroupItemEmits {
   (event: 'click', e: MouseEvent): void;
 }
 withDefaults(defineProps<SidebarGroupItemProps>(), {
-  leadingIcon: null,
-  trailingIcon: null,
+  icon: undefined,
+  badgeContent: undefined,
+  badgeStatus: 'neutral',
   to: null,
   exact: true,
   href: null,
@@ -88,20 +94,22 @@ const $style = useCssModule();
 @import 'assets/_design-system.scss';
 
 .vueSidebarGroupItem {
-  display: flex;
-  height: $sidebar-group-item-height;
-  align-items: center;
+  display: block;
   cursor: pointer;
   color: $sidebar-group-item-color;
   background: $sidebar-group-item-bg;
   border-radius: $sidebar-group-item-border-radius;
   outline: none;
   text-decoration: none;
-  padding: $sidebar-group-item-padding;
 
   &.active {
     color: $sidebar-group-item-color-active;
     background: $sidebar-group-item-bg-active;
+
+    &:hover {
+      color: $sidebar-group-item-color-active-hover;
+      background: $sidebar-group-item-bg-active-hover;
+    }
   }
 
   &:hover {

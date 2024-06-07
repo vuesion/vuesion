@@ -1,13 +1,10 @@
 <template>
-  <vue-box padding="20 12" as="aside" :class="$style.vueSidebar">
-    <vue-stack space="4">
-      <slot />
-    </vue-stack>
-  </vue-box>
+  <vue-stack padding="20 12" as="aside" space="24" :class="$style.vueSidebar">
+    <slot />
+  </vue-stack>
 </template>
 
 <script setup lang="ts">
-import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 </script>
 

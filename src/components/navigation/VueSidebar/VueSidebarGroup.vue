@@ -1,25 +1,32 @@
 <template>
-  <vue-stack space="4" :class="$style.vueSidebarGroup">
-    <vue-box padding="48 0 10 12">
-      <vue-columns :class="$style.header" @click.prevent.stop="$emit('click', $event)">
-        <vue-column>
-          <vue-text color="text-inverse-low" look="support" weight="semi-bold" uppercase>{{ label }}</vue-text>
-        </vue-column>
+  <vue-stack space="8" :class="$style.vueSidebarGroup">
+    <vue-columns
+      padding="8 12"
+      align-y="center"
+      align-x="between"
+      :class="$style.header"
+      tabindex="0"
+      data-testid="sidebar-group"
+      @click.prevent.stop="$emit('click', $event)"
+      @keydown.space.enter.prevent.stop="$emit('click', $event)"
+    >
+      <vue-column>
+        <vue-text color="text-low" look="support" weight="semi-bold" uppercase>{{ label }}</vue-text>
+      </vue-column>
 
-        <vue-column v-if="icon" width="content">
-          <vue-text
-            color="text-low"
-            data-testid="sidebar-group-icon"
-            @click.prevent.stop="$emit('icon-click', $event)"
-            @keydown.space.enter.prevent.stop="$emit('icon-click', $event)"
-          >
-            <component :is="`vue-icon-${icon}`" tabindex="0" />
-          </vue-text>
-        </vue-column>
-      </vue-columns>
-    </vue-box>
+      <vue-column v-if="icon" no-grow>
+        <vue-text
+          color="text-low"
+          data-testid="sidebar-group-icon"
+          @click.prevent.stop="$emit('icon-click', $event)"
+          @keydown.space.enter.prevent.stop="$emit('icon-click', $event)"
+        >
+          <component :is="`vue-icon-${icon}`" tabindex="0" />
+        </vue-text>
+      </vue-column>
+    </vue-columns>
 
-    <vue-stack :space="itemSpace" :as="as">
+    <vue-stack :space="itemSpace" :as="as" :class="$style.items">
       <slot />
     </vue-stack>
   </vue-stack>
@@ -27,18 +34,18 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import VueBox from '~/components/layout/VueBox/VueBox.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import type { Spacing } from '~/components/prop-types';
+import type { Icon } from '~/components/icon-options';
 
 // Interface
 interface SidebarGroupProps {
   label: string;
   as?: string;
-  icon?: string | null;
+  icon?: Icon;
   itemSpace?: Spacing;
 }
 interface SidebarGroupEmits {
@@ -47,8 +54,8 @@ interface SidebarGroupEmits {
 }
 withDefaults(defineProps<SidebarGroupProps>(), {
   as: 'ol',
-  icon: null,
-  itemSpace: 0,
+  icon: undefined,
+  itemSpace: 4,
 });
 defineEmits<SidebarGroupEmits>();
 
@@ -62,13 +69,19 @@ const $style = useCssModule();
 .vueSidebarGroup {
   .header {
     cursor: pointer;
+    border-radius: $sidebar-group-header-border-radius;
+    outline: none !important;
+
+    &:focus {
+      box-shadow: $sidebar-outline;
+    }
 
     i {
       width: $sidebar-group-icon-size;
       height: $sidebar-group-icon-size;
       cursor: pointer;
       outline: none;
-      border-radius: $sidebar-group-icon-border-radius;
+      border-radius: $space-2;
 
       &:focus {
         box-shadow: $sidebar-outline;
@@ -76,15 +89,8 @@ const $style = useCssModule();
     }
   }
 
-  ol {
-    padding: 0;
-    margin: 0;
+  .items {
     list-style: none;
-
-    li {
-      display: flex;
-      margin-bottom: $sidebar-group-item-gap;
-    }
   }
 }
 </style>
