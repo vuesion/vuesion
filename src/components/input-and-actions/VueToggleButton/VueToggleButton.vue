@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.vueToggleButton, $style[size]]">
+  <vue-inline space="0" :class="[$style.vueToggleButton, $style[size]]">
     <vue-button
       v-for="(item, idx) in items"
       :key="`${item.value}-${idx}`"
@@ -13,7 +13,7 @@
     >
       <component :is="`vue-icon-${item.leadingIcon}`" />
     </vue-button>
-  </div>
+  </vue-inline>
 </template>
 
 <script setup lang="ts">
@@ -21,6 +21,7 @@ import { useCssModule } from 'vue';
 import type { IItem } from '~/interfaces/IItem';
 import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 import type { ShirtSize } from '~/components/prop-types';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
 
 // Interface
 interface ToggleButtonProps {
@@ -56,8 +57,6 @@ const isChecked = (item: IItem) => {
 @import 'assets/_design-system.scss';
 
 .vueToggleButton {
-  display: inline-flex;
-
   .button {
     aspect-ratio: 1 / 1;
     border-radius: 0;
