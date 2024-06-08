@@ -32,7 +32,7 @@
       buttons-only
       infinite
       :items-per-page="1"
-      :result-count="preloadedImages.length"
+      :number-of-records="preloadedImages.length"
       :selected-page="currentSlide + 1"
       :class="$style.pagination"
       @update:selected-page="changeSlide($event, true)"

@@ -13,8 +13,16 @@
             >
               Get Early Access
             </vue-button>
-            <vue-button v-if="buyLink" look="primary" as="a" target="_blank" rel="noopener" :href="buyLink">
-              Buy
+            <vue-button
+              v-if="buyLink"
+              look="primary"
+              as="a"
+              target="_blank"
+              rel="noopener"
+              trailing-icon="external-link"
+              :href="buyLink"
+            >
+              Pre-order
             </vue-button>
           </vue-inline>
 

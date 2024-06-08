@@ -8,13 +8,14 @@ describe('VuePagination.vue', () => {
   beforeEach(() => {
     harness = render(VuePagination, {
       props: {
-        resultCount: 133,
+        numberOfRecords: 133,
         itemsPerPage: 5,
         selectedPage: 1,
         slim: false,
         buttonsOnly: false,
         buttonLook: 'primary',
         infinite: false,
+        debounce: 0,
       },
     });
   });
@@ -106,5 +107,18 @@ describe('VuePagination.vue', () => {
 
     await fireEvent.click(getByTestId('pagination-next'));
     expect(emitted<any>()['update:selectedPage'][1][0]).toEqual(2);
+  });
+
+  test('should use text box for large numbers of pages', async () => {
+    const { getByText, getByLabelText, rerender, emitted } = harness;
+
+    await rerender({ numberOfRecords: 50000000 });
+
+    getByText('50000000 common.Results');
+    getByText('common.of 10000000');
+
+    await fireEvent.update(getByLabelText('common.SelectPage'), '1337');
+    await fireEvent.blur(getByLabelText('common.SelectPage'));
+    expect(emitted<any>()['update:selectedPage'][0][0]).toEqual(1337);
   });
 });

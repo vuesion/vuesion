@@ -1,5 +1,5 @@
 <template>
-  <vue-columns padding="4 8" align-x="between" :class="[$style.vuePagination, slim && $style.slim]">
+  <vue-columns padding="0" align-x="between" :class="[$style.vuePagination, slim && $style.slim]">
     <vue-column no-grow>
       <vue-inline :space="buttonsOnly ? 8 : 16" no-wrap align-y="center">
         <vue-button
@@ -13,6 +13,7 @@
         ></vue-button>
         <vue-inline v-if="!buttonsOnly" space="8" no-wrap align-y="center">
           <vue-select
+            v-if="pages <= 500"
             id="page"
             :label="$t('common.SelectPage' /* Select Page */)"
             name="page"
@@ -21,12 +22,35 @@
             hide-label
             hide-description
             :model-value="selectedPage"
+            :duration="duration"
             align-y-menu="top"
             align-x-menu="right"
             :class="$style.select"
             @update:model-value="$emit('update:selectedPage', ($event as IItem).value)"
           />
-          <vue-text look="support" color="text-low"> {{ $t('common.of' /* of */) }}&nbsp;{{ pages }} </vue-text>
+          <vue-input
+            v-else
+            id="selectedPage"
+            v-model="localSelectedPage"
+            :label="$t('common.SelectPage' /* Select Page */)"
+            name="selectedPage"
+            size="sm"
+            type="number"
+            hide-label
+            hide-description
+            min="1"
+            :max="pages"
+            :size-attribute="
+              localSelectedPage.toString().length && localSelectedPage.toString().length > 2
+                ? localSelectedPage.toString().length
+                : 2
+            "
+            :debounce="debounce"
+            @blur="onDebouncedInput"
+          />
+          <vue-text look="support" color="text-low">
+            {{ $t('common.of' /* of */) }}&nbsp;{{ $n(pages, 'integer') }}
+          </vue-text>
         </vue-inline>
         <vue-button
           :look="buttonLook"
@@ -42,7 +66,7 @@
     <vue-column v-if="!slim && !buttonsOnly" no-grow>
       <vue-inline space="12" no-wrap align-y="center">
         <vue-text look="support" color="text-low">
-          {{ resultCount }}&nbsp;{{ $t('common.Results' /* Results */) }}
+          {{ $n(numberOfRecords, 'integer') }}&nbsp;{{ $t('common.Results' /* Results */) }}
         </vue-text>
         <vue-select
           id="itemsPerPage"
@@ -58,6 +82,7 @@
           hide-label
           hide-description
           :model-value="itemsPerPage"
+          :duration="duration"
           size="sm"
           align-y-menu="top"
           align-x-menu="right"
@@ -73,7 +98,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
 import type { IItem } from '~/interfaces/IItem';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
@@ -82,28 +107,34 @@ import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 import VueSelect from '~/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import type { ButtonStyle } from '~/components/prop-types';
+import VueInput from '~/components/input-and-actions/VueInput/VueInput.vue';
 
 // Interface
 interface PaginationProps {
-  resultCount?: number;
+  numberOfRecords?: number;
   itemsPerPage?: number;
   selectedPage?: number;
   slim?: boolean;
   buttonsOnly?: boolean;
   infinite?: boolean;
   buttonLook?: ButtonStyle;
+  debounce?: number;
+  duration?: number;
 }
 
 const props = withDefaults(defineProps<PaginationProps>(), {
-  resultCount: 0,
+  numberOfRecords: 0,
   itemsPerPage: 5,
   selectedPage: 1,
-  buttonLook: 'primary',
+  buttonLook: 'outline',
+  debounce: 300,
+  duration: 250,
 });
 const emits = defineEmits(['update:itemsPerPage', 'update:selectedPage']);
 
 // Data
-const pages = computed(() => Math.ceil(props.resultCount / props.itemsPerPage));
+const pages = computed(() => Math.max(Math.ceil(props.numberOfRecords / props.itemsPerPage), 1));
+const localSelectedPage = ref(props.selectedPage.toString(10));
 
 // Event Handlers
 const onSelectedPageChange = (newSelectedPage: number) => {
@@ -115,6 +146,17 @@ const onSelectedPageChange = (newSelectedPage: number) => {
 
   emits('update:selectedPage', newSelectedPage);
 };
+const onDebouncedInput = () => {
+  emits('update:selectedPage', parseInt(localSelectedPage.value, 10));
+};
+
+// Watcher
+watch(
+  () => props.selectedPage,
+  () => {
+    localSelectedPage.value = props.selectedPage.toString(10);
+  },
+);
 </script>
 
 <style lang="scss" module>

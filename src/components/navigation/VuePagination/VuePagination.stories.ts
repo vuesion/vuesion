@@ -53,12 +53,12 @@ export const Default = {
   render: Template,
 
   args: {
-    resultCount: 133,
+    numberOfRecords: 133,
     itemsPerPage: 5,
     selectedPage: 1,
     slim: false,
     buttonsOnly: false,
-    buttonLook: 'primary',
+    buttonLook: 'outline',
     infinite: false,
   },
 };

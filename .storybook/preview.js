@@ -40,7 +40,14 @@ setup(async (app) => {
     created() {
       this.localePath = (path) => path;
       this.$t = (key) => messages[key] || key;
-      this.$n = (key) => key;
+      this.$n = (number) =>
+        new Intl.NumberFormat('de-DE', {
+          style: 'decimal',
+          useGrouping: true,
+          minimumIntegerDigits: 2,
+          maximumFractionDigits: 0,
+          minimumFractionDigits: 0,
+        }).format(number);
       this.$d = (key) => key.toISOString();
       this.t = (key) => messages[key] || key;
       this.n = (key) => key;
