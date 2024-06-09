@@ -4,6 +4,7 @@ import { defineRule } from 'vee-validate';
 import { required, email } from '@vee-validate/rules';
 import flushPromises from 'flush-promises';
 import VueInput from './VueInput.vue';
+import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
 import { sleep } from '~/test/test-utils';
 
 defineRule('required', required);
@@ -210,5 +211,47 @@ describe('VueInput.vue', () => {
     });
 
     expect(entry.target.focus).toHaveBeenCalled();
+  });
+
+  test('should display collapse with menu', () => {
+    const { queryAllByText } = render(VueInput, {
+      global: {
+        stubs: {
+          VueCollapse,
+        },
+      },
+      props: {
+        label: 'this is the label',
+        name: 'test',
+        id: 'test',
+        modelValue: 'this is the value',
+        autofocus: true,
+      },
+      slots: {
+        menu: `<vue-collapse :show="false"><span>MENU</span></vue-collapse>`,
+      },
+    });
+
+    expect(queryAllByText('MENU')).toHaveLength(0);
+
+    const { queryAllByText: queryAllByText2 } = render(VueInput, {
+      global: {
+        stubs: {
+          VueCollapse,
+        },
+      },
+      props: {
+        label: 'this is the label',
+        name: 'test',
+        id: 'test',
+        modelValue: 'this is the value',
+        autofocus: true,
+      },
+      slots: {
+        menu: `<vue-collapse :show="true"><span>MENU</span></vue-collapse>`,
+      },
+    });
+
+    expect(queryAllByText2('MENU')).toHaveLength(1);
   });
 });

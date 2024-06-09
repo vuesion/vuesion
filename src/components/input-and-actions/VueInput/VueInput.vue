@@ -41,7 +41,7 @@
       </vue-column>
 
       <vue-column>
-        <vue-inline space="4" class="w-full">
+        <vue-inline space="4" class="w-full" no-wrap>
           <slot name="selection" />
 
           <input
@@ -77,6 +77,12 @@
       </vue-column>
     </vue-columns>
 
+    <div v-if="hasMenuSlot" :class="$style.menu">
+      <div>
+        <slot name="menu" />
+      </div>
+    </div>
+
     <vue-text
       look="support"
       :color="errors.length > 0 || hasError ? 'danger' : 'text-low'"
@@ -88,7 +94,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useCssModule, watch } from 'vue';
+import { computed, useCssModule, watch, useSlots } from 'vue';
 import { type RuleExpression, useField } from 'vee-validate';
 import _debounce from 'lodash-es/debounce.js';
 import { getDomRef } from '~/composables/get-dom-ref';
@@ -150,6 +156,7 @@ const emit = defineEmits<InputEmits>();
 
 // Deps
 const $style = useCssModule();
+const $slots = useSlots();
 
 // Data
 const inputRef = getDomRef<HTMLInputElement>(null);
@@ -160,6 +167,12 @@ const { errors, value, handleChange } = useField<string | number | null | undefi
   validateOnValueUpdate: false,
   type: 'default',
   syncVModel: false,
+});
+const hasMenuSlot = computed(() => {
+  if ($slots.menu && $slots.menu().length > 0 && $slots.menu()[0].props) {
+    return $slots.menu()[0].props?.show;
+  }
+  return false;
 });
 
 // Event Handlers
@@ -348,6 +361,16 @@ export default {
       input {
         height: $input-control-lg-height;
       }
+    }
+  }
+
+  .menu {
+    position: relative;
+
+    > div {
+      position: absolute;
+      display: flex;
+      width: 100%;
     }
   }
 
