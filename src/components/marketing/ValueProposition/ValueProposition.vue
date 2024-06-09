@@ -330,7 +330,7 @@ const onTabChange = (tab: number) => {
       max-width: 430px;
       display: flex;
       flex-direction: column;
-      align-items: start;
+      align-items: flex-start;
     }
   }
 
