@@ -52,12 +52,19 @@ const $style = useCssModule();
       color: map-get($values, 'color');
       background: map-get($values, 'bg');
       border: map-get($values, 'border');
+
+      i {
+        color: map-get($values, 'color');
+      }
     }
   }
 
   i {
     width: $space-12;
     height: $space-12;
+    path {
+      stroke-width: 2;
+    }
   }
 
   &.hasIcon {
