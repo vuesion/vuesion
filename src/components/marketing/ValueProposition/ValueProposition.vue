@@ -327,14 +327,10 @@ const onTabChange = (tab: number) => {
 
   @include mediaMax(tabletLandscape) {
     .valueProp {
-      position: relative;
       max-width: 430px;
-
-      .mobileBadge {
-        position: absolute;
-        left: 0;
-        top: -$space-20;
-      }
+      display: flex;
+      flex-direction: column;
+      align-items: start;
     }
   }
 
