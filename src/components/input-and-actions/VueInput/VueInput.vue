@@ -75,13 +75,11 @@
           </slot>
         </div>
       </vue-column>
-    </vue-columns>
 
-    <div v-if="hasMenuSlot" :class="$style.menu">
-      <div>
+      <div v-if="hasMenuSlot" :class="[$style.menu, $style[size]]">
         <slot name="menu" />
       </div>
-    </div>
+    </vue-columns>
 
     <vue-text
       look="support"
@@ -260,6 +258,7 @@ export default {
     &:focus-within {
       outline: none;
       box-shadow: $input-outline;
+      z-index: 1;
     }
 
     &:active {
@@ -365,12 +364,18 @@ export default {
   }
 
   .menu {
-    position: relative;
+    position: absolute;
 
-    > div {
-      position: absolute;
-      display: flex;
-      width: 100%;
+    &.sm {
+      top: $input-control-sm-height + $space-4;
+    }
+
+    &.md {
+      top: $input-control-md-height + $space-4;
+    }
+
+    &.lg {
+      top: $input-control-lg-height + $space-4;
     }
   }
 
