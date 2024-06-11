@@ -34,4 +34,11 @@ COPY --from=build ./build/package*.json ./
 COPY --from=build ./build/.env ./
 
 EXPOSE 3000
+
+## script to show large node modules directories
+# CMD du -sh ./node_modules/* | sort -nr | grep '\dM.*'
+## script to reset and seed the database
+# CMD ./node_modules/.bin/prisma migrate reset --force && npm run db:migrate-deploy && npm run db:seed && npm start
+## script to use to set up and sync the database in the production environment
+# CMD npm run db:migrate-deploy && npm run db:seed && npm start
 CMD npm start
