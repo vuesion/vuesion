@@ -7,9 +7,10 @@ sh: prisma format
 ---
 model <%= h.inflection.singularize(h.inflection.camelize(name)) %> {
   id      String  @id @default(dbgenerated("gen_random_uuid()"))
-  ownerId String
-  owner   Account @relation(fields: [ownerId], references: [id])
   name    String
+
+  account Account? @relation(fields: [accountId], references: [id])
+  accountId String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

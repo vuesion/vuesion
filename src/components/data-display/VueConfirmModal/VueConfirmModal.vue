@@ -11,8 +11,12 @@
     <vue-stack>
       <vue-text>{{ text }}</vue-text>
       <vue-inline space="8" align-x="start" reverse>
-        <vue-button size="sm" look="primary" @click="$emit('confirm')">{{ confirmText }}</vue-button>
-        <vue-button size="sm" look="ghost" @click="$emit('abort')">{{ abortText }}</vue-button>
+        <vue-button size="sm" look="primary" :loading="loading" @click="$emit('confirm')">
+          {{ confirmText }}
+        </vue-button>
+        <vue-button size="sm" look="ghost" :disabled="loading" @click="$emit('abort')">
+          {{ abortText }}
+        </vue-button>
       </vue-inline>
     </vue-stack>
   </vue-modal>
@@ -32,6 +36,7 @@ interface ConfirmModalProps {
   padding?: string | SpacingWithDirections | Array<SpacingWithDirections>;
   show?: boolean;
   backdrop?: boolean;
+  loading?: boolean;
   disablePageScroll?: boolean;
   text?: string;
   confirmText?: string;

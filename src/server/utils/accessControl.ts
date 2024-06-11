@@ -1,19 +1,17 @@
-import { type Session } from 'next-auth';
+import { NotAuthorizedError } from '~/server/utils/errors';
 
-export const checkUserSession = (session: Session | null) => {
-  if (!session || !session.user || !session.user.id) {
-    throw createError({
-      statusCode: 401,
-      statusMessage: 'authentication required',
-    });
-  }
-};
+export const mustBeRelatedToEntity = (sessionUserId?: string | null, recordUserId?: string | null | string[]) => {
+  const checkAuthorization = (userId?: string | null) => {
+    if (sessionUserId !== userId) {
+      throw NotAuthorizedError;
+    }
+  };
 
-export const checkUserAuthorization = (sessionUserId?: string | null, recordUserId?: string | null) => {
-  if (sessionUserId !== recordUserId) {
-    throw createError({
-      statusCode: 403,
-      statusMessage: 'you are not authorized',
-    });
+  if (Array.isArray(recordUserId)) {
+    if (!recordUserId.includes(sessionUserId || '')) {
+      throw NotAuthorizedError;
+    }
+  } else {
+    checkAuthorization(recordUserId);
   }
 };
