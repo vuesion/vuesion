@@ -365,6 +365,8 @@ export default {
 
   .menu {
     position: absolute;
+    left: 0;
+    width: 100%;
 
     &.sm {
       top: $input-control-sm-height + $space-4;

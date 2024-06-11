@@ -6,7 +6,6 @@
     @keydown="onKeyDown"
   >
     <vue-text
-      :for="id"
       look="label"
       weight="semi-bold"
       :color="errors.length > 0 ? 'danger' : 'text-medium'"
