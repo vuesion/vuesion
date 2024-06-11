@@ -76,6 +76,8 @@
   --text-warning: #{palette-color-level('warning', 7)};
   --text-success: #{palette-color-level('success', 7)};
   --text-link: #{palette-color-level('info', 4)};
+  --text-light: #{palette-color-level('neutral', 0)};
+  --text-dark: #{palette-color-level('neutral', 10)};
 
   /* Interaction Colors */
   --interaction-primary-enabled: #{palette-color-level('primary', 6)};

@@ -298,6 +298,11 @@
               cssVar: 'text-default-low',
               paletteColor: 'neutral 6',
             },
+            {
+              figmaVar: 'Text - Dark',
+              cssVar: 'text-dark',
+              paletteColor: 'neutral 10',
+            },
           ],
         },
         {
@@ -317,6 +322,11 @@
               figmaVar: 'Text - Inverse - Low',
               cssVar: 'text-inverse-low',
               paletteColor: 'neutral 4',
+            },
+            {
+              figmaVar: 'Text - Light',
+              cssVar: 'text-light',
+              paletteColor: 'neutral 0',
             },
           ],
         },

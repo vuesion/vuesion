@@ -18,9 +18,9 @@ $button-outline: var(--focused);
 $button-variations: (
   'primary': (
     'bg': var(--interaction-primary-enabled),
-    'color': palette-color-level('neutral', 0),
+    'color': var(--text-light),
     'hover-bg': var(--interaction-primary-hovered),
-    'hover-color': palette-color-level('neutral', 0),
+    'hover-color': var(--text-light),
     'active-bg': var(--interaction-primary-activated),
     'active-color': var(--text-inverse-high),
   ),
@@ -51,9 +51,9 @@ $button-variations: (
   ),
   'danger': (
     'bg': var(--interaction-danger-enabled),
-    'color': palette-color-level('neutral', 0),
+    'color': var(--text-light),
     'hover-bg': var(--interaction-danger-hovered),
-    'hover-color': palette-color-level('neutral', 0),
+    'hover-color': var(--text-light),
     'active-bg': var(--interaction-danger-activated),
     'active-color': var(--text-inverse-high),
   ),
