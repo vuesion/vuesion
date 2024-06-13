@@ -2,17 +2,9 @@
   <vue-card :class="[noBg && $style.noBg]">
     <vue-stack space="80">
       <vue-stack space="16">
-        <vue-stack v-if="componentName && usage" space="0">
+        <vue-stack v-if="componentName && usage" space="8">
           <vue-inline align-y="center" :space="[8, 24]">
             <vue-text color="text-high" look="large-title" weight="black"> {{ componentName }} {{ suffix }} </vue-text>
-            <vue-button
-              v-if="showDisclaimer"
-              look="primary"
-              as="a"
-              href="mailto:johannes.werner@hey.com?subject=Vuesion%2B Early Access Request&body=Hey! I want to get early access to the Vuesion%2B components. Here is what I want to build: "
-            >
-              Get Early Access
-            </vue-button>
             <vue-button
               v-if="buyLink"
               look="primary"
@@ -22,7 +14,7 @@
               trailing-icon="external-link"
               :href="buyLink"
             >
-              Pre-order
+              Buy License
             </vue-button>
           </vue-inline>
 
@@ -63,7 +55,6 @@ interface ComponentDocsProps {
   usage?: string | null;
   story?: string | null;
   suffix?: string | null;
-  showDisclaimer?: boolean;
   buyLink?: string | null;
   noBg?: boolean;
 }
@@ -73,7 +64,6 @@ withDefaults(defineProps<ComponentDocsProps>(), {
   usage: null,
   story: null,
   suffix: 'Usage',
-  showDisclaimer: false,
   buyLink: null,
 });
 </script>
