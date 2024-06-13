@@ -52,7 +52,7 @@
             :placeholder="placeholder"
             :required="required"
             :type="type"
-            :autocomplete="autocomplete"
+            :autocomplete="autocomplete === 'custom' ? 'off' : autocomplete"
             :disabled="disabled"
             :readonly="readonly"
             :autofocus="autofocus"
@@ -206,6 +206,9 @@ watch(
   () => props.modelValue,
   (newModelValue) => {
     value.value = newModelValue;
+    if (props.autocomplete !== 'custom') {
+      handleChange(newModelValue);
+    }
   },
 );
 
@@ -226,6 +229,7 @@ export default {
 
 .vueInput {
   position: relative;
+  width: 100%;
 
   &.error {
     .baseInput {
@@ -366,7 +370,6 @@ export default {
   .menu {
     position: absolute;
     left: 0;
-    width: 100%;
 
     &.sm {
       top: $input-control-sm-height + $space-4;

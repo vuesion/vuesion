@@ -76,6 +76,7 @@ describe('VueInput.vue', () => {
         modelValue: 'this is the value',
         name: 'name',
         id: 'id',
+        autocomplete: 'custom',
       },
     });
 
