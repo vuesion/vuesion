@@ -141,6 +141,7 @@ export default defineNuxtConfig({
       cleanupOutdatedCaches: true,
       navigateFallback: '/en-US',
       globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+      globIgnores: ['storybook/**.*', 'storybook/**/**.*'],
     },
     client: {
       installPrompt: true,
