@@ -2,6 +2,7 @@
   <vue-stack space="0" as="main">
     <landing-page-hero-section />
     <key-features-section />
+    <vuesion-plus-section />
     <benefits-section />
     <testimonials-section />
     <support-section />
@@ -16,6 +17,7 @@ import KeyFeaturesSection from '~/components/demo/KeyFeaturesSection/KeyFeatures
 import BenefitsSection from '~/components/demo/BenefitsSection/BenefitsSection.vue';
 import TestimonialsSection from '~/components/demo/TestimonialsSection/TestimonialsSection.vue';
 import SupportSection from '~/components/demo/SupportSection/SupportSection.vue';
+import VuesionPlusSection from '~/components/demo/VuesionPlusSection/VuesionPlusSection.vue';
 
 // Deps
 const { t } = useI18n();
