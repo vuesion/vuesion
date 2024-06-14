@@ -1,4 +1,6 @@
-<img width="256px" height="256px" src="./src/public/logo.png" alt="vuesion logo" style="border-radius: 16px;"/>
+<div style="width:256px;height:256px;border-radius: 16px;overflow:hidden;">
+  <img width="256px" height="256px" src="./src/public/logo.png" alt="vuesion logo"/>
+</div>
 
 # Vuesion
 
@@ -49,17 +51,16 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 - [100% customizable Design-system with 35+ components including](https://vuesion.herokuapp.com/storybook)
   - layout, typography, button, input, select, checkbox, radio, (range-)slider, toggle, ...
   - theming/whitelabel support
-- [Figma UIKit](https://www.figma.com/file/DvP4EE7gAJH3fsc4RFqZYc/Vuesion-Core?node-id=1686%3A4660)
-- [SEO support](https://github.com/nuxt/vue-meta)
+- [Figma UIKit](https://www.figma.com/community/file/1080868611324978249)
+- [SEO support](https://nuxt.com/docs/getting-started/seo-meta)
 - [i18n support](https://i18n.nuxtjs.org/)
 - [Authentication module](https://sidebase.io/nuxt-auth/getting-started)
-- [Axios module](https://axios.nuxtjs.org/)
 - [PWA module](https://pwa.nuxtjs.org/)
 - Code generators for
   - components
   - pages
-  - interfaces and fixtures
-  - vuex modules
+  - RESTful APIs
+  - pinia stores
 - [Storybook](https://storybook.js.org/) with the following add-ons
   - [a11y](https://storybook.js.org/addons/@storybook/addon-a11y/)
   - [actions](https://storybook.js.org/addons/@storybook/addon-actions/)
@@ -140,7 +141,7 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 
 # References
 
-- [nuxt](https://nuxtjs.org/)
+- [nuxt](https://nuxt.com/)
 - [@sidebase/nuxt-auth](https://sidebase.io/nuxt-auth/getting-started)
 - [nuxt/pwa](https://pwa.nuxtjs.org/)
 - [nuxt/i18n](https://i18n.nuxtjs.org/)
@@ -154,7 +155,7 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 # Contact
 
 - [Discord](https://discord.gg/59x5cg2)
-- [Twitter](https://twitter.com/vuesion1)
+- [x.com](https://x.com/vuesion1)
 
 # License
 
