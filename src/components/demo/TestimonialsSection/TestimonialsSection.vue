@@ -16,7 +16,7 @@
               quality="80"
               loading="lazy"
             />
-            <vue-stack :space="0">
+            <vue-stack :space="0" :class="$style.nameAndTitle">
               <vue-text look="label" weight="semi-bold">Björn Schmidt</vue-text>
               <vue-text look="support" color="text-low">CTO</vue-text>
             </vue-stack>
@@ -40,7 +40,7 @@
               quality="80"
               loading="lazy"
             />
-            <vue-stack :space="0">
+            <vue-stack :space="0" :class="$style.nameAndTitle">
               <vue-text look="label" weight="semi-bold">Abby Graham</vue-text>
               <vue-text look="support" color="text-low">Software Engineer</vue-text>
             </vue-stack>
@@ -64,7 +64,7 @@
               quality="80"
               loading="lazy"
             />
-            <vue-stack :space="0">
+            <vue-stack :space="0" :class="$style.nameAndTitle">
               <vue-text look="label" weight="semi-bold">Emily Chen</vue-text>
               <vue-text look="support">UX Designer</vue-text>
             </vue-stack>
@@ -88,7 +88,7 @@
               quality="80"
               loading="lazy"
             />
-            <vue-stack :space="0">
+            <vue-stack :space="0" :class="$style.nameAndTitle">
               <vue-text look="label" weight="semi-bold">Carlos Garcia</vue-text>
               <vue-text look="support" color="text-low">UX Designer</vue-text>
             </vue-stack>
@@ -133,6 +133,10 @@ const $style = useCssModule();
     &.primary {
       background-color: var(--primary);
       color: palette-color-level('neutral', 0);
+    }
+
+    .nameAndTitle {
+      max-width: 40%;
     }
 
     img {

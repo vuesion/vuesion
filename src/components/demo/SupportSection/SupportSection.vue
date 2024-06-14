@@ -12,12 +12,12 @@
               <vue-column no-grow no-shrink :padding="[16, 16, 0]">
                 <nuxt-img alt="Discord" src="/demo/discord.png" preload format="webp" quality="80" loading="lazy" />
               </vue-column>
-              <vue-column padding="16 16 16 24">
+              <vue-column padding="0 0 0 24">
                 <vue-text :align-x="['center', 'center', 'start']">
                   {{ $t('SupportSection.chanel1.description' /* Engage with other users on our Discord server. */) }}
                 </vue-text>
               </vue-column>
-              <vue-column padding="16" align-x="end">
+              <vue-column padding="0" align-x="end">
                 <vue-button
                   as="a"
                   href="https://discord.gg/59x5cg2"
@@ -34,12 +34,12 @@
               <vue-column no-grow no-shrink :padding="[16, 16, 0]">
                 <nuxt-img alt="Github" src="/demo/github.png" preload format="webp" quality="80" loading="lazy" />
               </vue-column>
-              <vue-column padding="16 16 16 24">
+              <vue-column padding="0 0 0 24">
                 <vue-text :align-x="['center', 'center', 'start']">
                   {{ $t('SupportSection.chanel2.description' /* Contribute to the project on GitHub. */) }}
                 </vue-text>
               </vue-column>
-              <vue-column padding="16" align-x="end">
+              <vue-column padding="0" align-x="end">
                 <vue-button
                   as="a"
                   href="https://github.com/vuesion/vuesion"
@@ -56,12 +56,12 @@
               <vue-column no-grow no-shrink :padding="[16, 16, 0]">
                 <nuxt-img alt="WRLD" src="/demo/wrld.png" preload format="webp" quality="80" loading="lazy" />
               </vue-column>
-              <vue-column padding="16 16 16 24">
+              <vue-column padding="0 0 0 24">
                 <vue-text :align-x="['center', 'center', 'start']">
                   {{ $t('SupportSection.chanel3.description' /* Engage with other users in our WRLD. */) }}
                 </vue-text>
               </vue-column>
-              <vue-column padding="16" align-x="end">
+              <vue-column padding="0" align-x="end">
                 <vue-button
                   as="a"
                   href="https://wrld-app.com/w/vuesion"
@@ -85,12 +85,12 @@
                   loading="lazy"
                 />
               </vue-column>
-              <vue-column padding="16 16 16 24">
+              <vue-column padding="0 0 0 24">
                 <vue-text :align-x="['center', 'center', 'start']">
                   {{ $t('SupportSection.chanel4.description' /* Access detailed Documentation and Tutorials. */) }}
                 </vue-text>
               </vue-column>
-              <vue-column padding="16" align-x="end">
+              <vue-column padding="0" align-x="end">
                 <vue-button
                   as="a"
                   href="https://vuesion.github.io/docs/en/v5/"
@@ -141,7 +141,7 @@ const $style = useCssModule();
   }
 
   img {
-    height: 100%;
+    object-fit: contain;
   }
 }
 </style>

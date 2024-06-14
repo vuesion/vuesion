@@ -24,11 +24,11 @@ withDefaults(defineProps<{ as?: string; padding?: SpacingWithDirections | Array<
   position: relative;
 
   @include mediaMin(tabletPortrait) {
-    max-width: calc($screen-tablet-portrait-min - ($space-24 * 2));
+    max-width: calc(100% - ($space-24 * 2));
   }
 
   @include mediaMin(tabletLandscape) {
-    max-width: calc($screen-tablet-landscape-min - ($space-24 * 2));
+    max-width: calc(100% - ($space-24 * 2));
   }
 
   @include mediaMin(smallDesktop) {
