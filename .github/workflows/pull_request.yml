@@ -10,13 +10,17 @@ jobs:
   build_and_test:
     name: Build and test application
     runs-on: ubuntu-latest
-
+    env:
+      BASE_URL: http://localhost:3000
+      NUXT_AUTH_SECRET: ${{secrets.NUXT_AUTH_SECRET}}
+      NEXTAUTH_URL: http://localhost:3000/api/auth
+      AUTH_ORIGIN: http://localhost:3000
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Checkout Vuesion+ Datatable
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: vuesion/vuesion-plus-datatable
           path: ./src/components/a-datatable
@@ -24,36 +28,51 @@ jobs:
         if: github.actor == 'devCrossNet'
 
       - name: Checkout Vuesion+ Calendar and Date picker
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: vuesion/vuesion-plus-calander-datepicker
-          path: ./src/components/b-calender-datepicke
+          path: ./src/components/b-calender-datepicker
           token: ${{ secrets.VUESION_PAT }}
         if: github.actor == 'devCrossNet'
 
       - name: Checkout Vuesion+ Currency input
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: vuesion/vuesion-plus-currency-input
           path: ./src/components/c-currency-input
           token: ${{ secrets.VUESION_PAT }}
         if: github.actor == 'devCrossNet'
 
-      - name: Setup node
-        uses: actions/setup-node@v2
+      - name: Checkout Vuesion+ Autocomplete
+        uses: actions/checkout@v4
         with:
-          node-version: 18
+          repository: vuesion/vuesion-plus-autocomplete
+          path: ./src/components/d-autocomplete
+          token: ${{ secrets.VUESION_PAT }}
+        if: github.actor == 'devCrossNet'
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
       - name: Install dependencies
-        uses: cypress-io/github-action@v2
-        with:
-          runTests: false
+        run: npm install
 
-      - name: Build and test application
-        run: npm run ci
+      - name: Build application
+        run: npm run build
 
-      - name: Run e2e tests
-        uses: cypress-io/github-action@v2
+      - name: Build Storybook
+        run: npm run storybook:build
+
+      - name: Unit test application
+        run: npm run test
+
+      - name: Lint the code base
+        run: npm run lint
+
+      - name: E2e test application
+        uses: cypress-io/github-action@v6
         with:
           install: false
           start: npm start
