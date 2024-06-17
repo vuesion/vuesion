@@ -20,9 +20,9 @@ Please visit the **[vuesion app on heroku!](https://vuesion.herokuapp.com/)**
 
 Or have a look into the future and visit the **[vuesion-next app on heroku!](https://vuesion-next.herokuapp.com/)**
 
-# [Get started](https://vuesion.github.io/docs/en/v5/guide/install.html)
+# [Get started](https://vuesion.github.io/docs/en/v5/guide/getting-started.html)
 
-# [Documentation](https://vuesion.github.io/docs/en/v4/)
+# [Documentation](https://vuesion.github.io/docs/en/v5/)
 
 # Features
 
