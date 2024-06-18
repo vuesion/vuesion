@@ -13,12 +13,14 @@ const props = defineProps({
     default: 250,
   },
 });
-const beforeEnter = (el: HTMLElement) => {
-  el.style.height = '0';
-  el.style.opacity = '0';
-  el.style.overflow = 'hidden';
+const beforeEnter = (el: Element) => {
+  const hel = el as HTMLElement;
+  hel.style.height = '0';
+  hel.style.opacity = '0';
+  hel.style.overflow = 'hidden';
 };
-const enter = (el: HTMLElement, done: any) => {
+const enter = (el: Element, done: any) => {
+  const hel = el as HTMLElement;
   anime({
     targets: el,
     height: {
@@ -32,16 +34,17 @@ const enter = (el: HTMLElement, done: any) => {
     round: 1,
     easing: 'easeInOutCirc',
     complete: () => {
-      el.style.height = '';
-      el.style.overflow = '';
+      hel.style.height = '';
+      hel.style.overflow = '';
       done();
     },
   });
 };
-const beforeLeave = (el: HTMLElement) => {
-  el.style.overflow = 'hidden';
+const beforeLeave = (el: Element) => {
+  const hel = el as HTMLElement;
+  hel.style.overflow = 'hidden';
 };
-const leave = (el: HTMLElement, done: any) => {
+const leave = (el: Element, done: any) => {
   anime({
     targets: el,
     height: {
