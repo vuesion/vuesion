@@ -212,6 +212,10 @@ const onClick = (e: Event) => {
       color: map-get($values, 'color');
       background: map-get($values, 'bg');
 
+      > span {
+        color: map-get($values, 'color');
+      }
+
       @if map-get($values, 'border') {
         border: map-get($values, 'border');
       } @else {
