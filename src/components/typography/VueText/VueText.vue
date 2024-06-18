@@ -1,6 +1,7 @@
 <template>
   <component
     :is="as"
+    v-if="as !== 'nuxt-link'"
     :class="[
       $style.vueText,
       color && $style[color],
@@ -10,12 +11,34 @@
       underline && $style.underline,
       uppercase && $style.uppercase,
       gradient && $style.gradient,
+      noWrap && $style.noWrap,
       alignX && $style.block,
+      alignX && 'w-full',
       ...alignCssClasses,
     ]"
   >
     <slot />
   </component>
+  <nuxt-link
+    v-else
+    :to="to"
+    :class="[
+      $style.vueText,
+      color && $style[color],
+      $style[look],
+      $style[weight],
+      serifs && $style.serifs,
+      underline && $style.underline,
+      uppercase && $style.uppercase,
+      gradient && $style.gradient,
+      noWrap && $style.noWrap,
+      alignX && $style.block,
+      alignX && 'w-full',
+      ...alignCssClasses,
+    ]"
+  >
+    <slot />
+  </nuxt-link>
 </template>
 
 <script setup lang="ts">
@@ -33,7 +56,9 @@ interface TextProps {
   underline?: boolean;
   uppercase?: boolean;
   gradient?: boolean;
+  noWrap?: boolean;
   alignX?: Alignment | Array<Alignment> | string;
+  to?: string;
 }
 const props = withDefaults(defineProps<TextProps>(), {
   as: 'span',
@@ -43,7 +68,10 @@ const props = withDefaults(defineProps<TextProps>(), {
   serifs: false,
   underline: false,
   uppercase: false,
+  gradient: false,
+  noWrap: false,
   alignX: undefined,
+  to: undefined,
 });
 
 // Deps
@@ -88,6 +116,10 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 
   &.block {
     display: block;
+  }
+
+  &.noWrap {
+    white-space: nowrap;
   }
 
   // Weights

@@ -27,10 +27,10 @@ describe('VueText.vue', () => {
   });
 
   test('renders color variations', () => {
-    textColorVariations.forEach((variation: string) => {
+    textColorVariations.forEach((variation) => {
       const { html } = render(VueText, {
         props: {
-          color: variation,
+          color: variation as any,
         },
       });
 
@@ -53,5 +53,22 @@ describe('VueText.vue', () => {
     expect(renderedHtml).toMatch('align-start');
     expect(renderedHtml).toMatch('align-tp-center');
     expect(renderedHtml).toMatch('align-tl-end');
+  });
+
+  test('renders as nuxt link with no-wrap', () => {
+    const { html } = render(VueText, {
+      slots: {
+        default: 'VueText',
+      },
+      props: {
+        as: 'nuxt-link',
+        to: '/test',
+        noWrap: true,
+      },
+    });
+    const renderedHtml = html();
+
+    expect(renderedHtml).toMatch('<a ');
+    expect(renderedHtml).toMatch('noWrap');
   });
 });
