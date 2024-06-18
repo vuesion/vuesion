@@ -52,6 +52,13 @@ const Template = () => ({
             :elevation="3"
             circle-color="surface-default-high"
         />
+        <token-item
+            figma="Elevation 4"
+            css="elevation-4"
+            palette="neutral 10"
+            :elevation="4"
+            circle-color="surface-default-high"
+        />
       </vue-stack>
     </utility-token-section>
     <utility-token-section title="Accessibility" description="Tokens used for accessibility such as focus.">

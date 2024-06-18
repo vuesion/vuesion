@@ -47,17 +47,23 @@ export default {
 
   &.elevation1 {
     div {
-      box-shadow: var(--elevation-2);
+      box-shadow: var(--elevation-1);
     }
   }
 
   &.elevation2 {
     div {
-      box-shadow: var(--elevation-3);
+      box-shadow: var(--elevation-2);
     }
   }
 
   &.elevation3 {
+    div {
+      box-shadow: var(--elevation-3);
+    }
+  }
+
+  &.elevation4 {
     div {
       box-shadow: var(--elevation-4);
     }
