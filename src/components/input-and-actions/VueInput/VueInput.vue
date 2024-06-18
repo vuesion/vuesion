@@ -103,6 +103,7 @@ import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import type { Icon } from '~/components/icon-options';
 
 // Interface
 interface InputProps {
@@ -122,8 +123,8 @@ interface InputProps {
   description?: string;
   errorMessage?: string;
   autocomplete?: string;
-  leadingIcon?: string;
-  trailingIcon?: string;
+  leadingIcon?: Icon;
+  trailingIcon?: Icon;
   size?: ShirtSize;
   sizeAttribute?: number;
   debounce?: number | null;
