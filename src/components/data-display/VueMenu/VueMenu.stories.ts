@@ -26,7 +26,7 @@ const Template: StoryFn = (args) => ({
       story="Display menu with all interaction states. Please interact with the menu to see all states."
       no-bg
   >
-  <vue-menu :items="args.items" @click="onClick" @close="onClose" style="width: 250px" />
+  <vue-menu :items="args.items" @click="onClick" @close="onClose" />
   </component-docs>`,
 });
 
@@ -38,7 +38,7 @@ export const Default = {
       { label: 'Value 1', value: 'Value 1', description: 'Description 1', leadingIcon: 'cog' },
       { label: 'Value 2', value: 'Value 2', description: 'Description 2', trailingIcon: 'times', disabled: true },
       { label: '', value: 'separator' },
-      { label: 'Value 3', value: 'Value 3', leadingIcon: 'cog' },
+      { label: 'Value 3 with a longer label', value: 'Value 3', leadingIcon: 'cog' },
       { label: 'Value 4', value: 'Value 4', trailingIcon: 'times' },
     ],
   },

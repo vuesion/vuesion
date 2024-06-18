@@ -31,7 +31,7 @@
         </div>
 
         <div :class="$style.value">
-          <vue-text>{{ item.label }}</vue-text>
+          <vue-text no-wrap>{{ item.label }}</vue-text>
           <vue-text v-if="item.description" look="support" color="text-medium">
             {{ item.description }}
           </vue-text>
@@ -165,6 +165,7 @@ defineExpose({ focus });
 .vueMenu {
   position: absolute;
   background: $menu-bg;
+  width: min-content;
   min-width: $menu-min-width;
   max-height: $menu-max-height;
   box-shadow: $menu-shadow;
