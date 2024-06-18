@@ -24,7 +24,7 @@
             :model-value="selectedPage"
             :duration="duration"
             align-y-menu="top"
-            align-x-menu="right"
+            align-x-menu="left"
             :class="$style.select"
             @update:model-value="$emit('update:selectedPage', ($event as IItem).value)"
           />
