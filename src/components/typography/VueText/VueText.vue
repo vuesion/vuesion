@@ -3,7 +3,7 @@
     :is="as"
     :class="[
       $style.vueText,
-      $style[color],
+      color && $style[color],
       $style[look],
       $style[weight],
       serifs && $style.serifs,
@@ -208,6 +208,14 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 
   &.link {
     color: var(--text-link);
+  }
+
+  &.light {
+    color: var(--text-light);
+  }
+
+  &.dark {
+    color: var(--text-dark);
   }
 
   &.text-high {

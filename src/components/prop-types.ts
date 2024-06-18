@@ -37,6 +37,8 @@ export const TextColorValues = [
   'text-inverse-high',
   'text-inverse-medium',
   'text-inverse-low',
+  'light',
+  'dark',
 ] as const;
 
 export type TextColor = (typeof TextColorValues)[number];
