@@ -111,14 +111,14 @@ export const ShirtSizeValues = ['sm', 'md', 'lg'] as const;
 
 export type ShirtSize = (typeof ShirtSizeValues)[number];
 
-export const BadgeStatusValues = ['info', 'warning', 'success', 'danger', 'neutral'];
+export const BadgeStatusValues = ['info', 'warning', 'success', 'danger', 'neutral'] as const;
 
 export type BadgeStatus = (typeof BadgeStatusValues)[number];
 
-export const VerticalDirectionValues = ['top', 'bottom'];
+export const VerticalDirectionValues = ['top', 'bottom'] as const;
 
 export type VerticalDirection = (typeof VerticalDirectionValues)[number];
 
-export const HorizontalDirectionValues = ['left', 'right'];
+export const HorizontalDirectionValues = ['left', 'right'] as const;
 
 export type HorizontalDirection = (typeof HorizontalDirectionValues)[number];
