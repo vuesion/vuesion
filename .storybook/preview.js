@@ -8,7 +8,9 @@ import camelCase from 'lodash/camelCase';
 import upperFirst from 'lodash/upperFirst';
 import { defineRule } from 'vee-validate';
 import { email, integer, min, min_value as minValue, regex, required } from '@vee-validate/rules';
-import messages from '../i18n/en-US.json';
+import { createI18n } from 'vue-i18n';
+import messagesEN from '../i18n/en-US.json';
+import messagesDE from '../i18n/de-DE.json';
 
 // define global vee-validate rules
 defineRule('required', required);
@@ -19,6 +21,20 @@ defineRule('min_value', minValue);
 defineRule('regex', regex);
 
 setup(async (app) => {
+  const i18n = createI18n({
+    legacy: false,
+    allowComposition: true,
+    locale: 'en-US',
+    fallbackLocale: 'en-US',
+    formatFallbackMessages: true,
+    messages: {
+      'en-US': messagesEN,
+      'de-DE': messagesDE,
+    },
+  });
+
+  app.use(i18n);
+
   // Mocks
   // NuxtLink
   app.component('nuxt-link', {
@@ -38,20 +54,8 @@ setup(async (app) => {
   });
   app.mixin({
     created() {
-      this.localePath = (path) => path;
-      this.$t = (key) => messages[key] || key;
-      this.$n = (number) =>
-        new Intl.NumberFormat('de-DE', {
-          style: 'decimal',
-          useGrouping: true,
-          minimumIntegerDigits: 2,
-          maximumFractionDigits: 0,
-          minimumFractionDigits: 0,
-        }).format(number);
-      this.$d = (key) => key.toISOString();
-      this.t = (key) => messages[key] || key;
-      this.n = (key) => key;
-      this.d = (key) => key.toISOString();
+      this.$n = (n) => n;
+      this.n = (n) => n;
     },
   });
   app.mixin({
