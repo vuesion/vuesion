@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { useCssModule, withDefaults } from 'vue';
+import { useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
