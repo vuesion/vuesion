@@ -121,4 +121,13 @@ describe('VuePagination.vue', () => {
     await fireEvent.blur(getByLabelText('common.SelectPage'));
     expect(emitted<any>()['update:selectedPage'][0][0]).toEqual(1337);
   });
+
+  test('should jump from last to first page when infinite', async () => {
+    const { getByTestId, rerender, emitted } = harness;
+
+    await rerender({ infinite: true, numberOfRecords: 50, itemsPerPage: 10, selectedPage: 10 });
+    await fireEvent.click(getByTestId('pagination-next'));
+
+    expect(emitted<any>()['update:selectedPage'][0][0]).toEqual(1);
+  });
 });
