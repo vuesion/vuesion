@@ -1,13 +1,13 @@
-import type { DateTimeFormatOptions } from '@intlify/core-base';
+import type { DateTimeFormatOptions, NumberFormatOptions } from '@intlify/core-base';
 
-export const dateFormats: Record<string, DateTimeFormatOptions> = {
+export const datetimeFormatsDefinition: Record<string, DateTimeFormatOptions> = {
   dayMonthYearNumeric: {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
   },
 };
-export const decimalFormats = {
+export const decimalFormatsDefinition: Record<string, NumberFormatOptions> = {
   integer: {
     style: 'decimal',
     useGrouping: true,
@@ -25,16 +25,17 @@ export const decimalFormats = {
   },
 };
 export const datetimeFormats = {
-  'en-US': dateFormats,
-  'de-DE': dateFormats,
+  'en-US': datetimeFormatsDefinition,
+  'de-DE': datetimeFormatsDefinition,
 };
 export const numberFormats = {
-  'en-US': decimalFormats,
-  'de-DE': decimalFormats,
+  'en-US': decimalFormatsDefinition,
+  'de-DE': decimalFormatsDefinition,
 };
 
 export default defineI18nConfig(() => {
   return {
+    legacy: false,
     datetimeFormats,
     numberFormats,
     fallbackLocale: 'en-US',

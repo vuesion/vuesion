@@ -28,6 +28,7 @@ export default defineConfig({
         functions: 100,
         lines: 100,
       },
+      skipFull: true,
       exclude: ['**/test-utils.ts', '**/CollapseAnimation.vue', '**/*.spec.ts', '**/*.stories.ts', '**/*dummy*'],
     },
     environment: 'jsdom',
