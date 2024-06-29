@@ -64,6 +64,7 @@
     "bcrypt": "5.1.1",
     "cross-env": "7.0.3",
     "full-icu": "1.5.0",
+    "h3-compression": "0.3.2",
     "lodash-es": "4.17.21",
     "marked": "13.0.1",
     "mitt": "3.0.1",
