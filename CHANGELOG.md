@@ -1,3 +1,37 @@
+### 5.1.0 (2024-06-29)
+
+##### Chores
+
+- update dependencies ([56924e13](https://github.com/vuesion/vuesion/commit/56924e13db27115c39c87882ec118ca223416ee3))
+- update dependencies ([e99f92fe](https://github.com/vuesion/vuesion/commit/e99f92fedefdef89385093fb5fe7626d194d4854))
+- **vue-sidebar-group-item:** remove withDefaults from import ([7c817ce7](https://github.com/vuesion/vuesion/commit/7c817ce70ef53c2ebd512f92e7622ec08648c525))
+
+##### Documentation Changes
+
+- update links to v5 documentation ([8f0f913b](https://github.com/vuesion/vuesion/commit/8f0f913b3fb303a56e3781a6a2419cec7c94d8a7))
+
+##### New Features
+
+- **storybook:** add i18n plugin ([90f0426b](https://github.com/vuesion/vuesion/commit/90f0426b5172581e74c9e7f359f5d0fe7ae8251b))
+- **vue-test:** support nuxt-link and no-wrap ([af677011](https://github.com/vuesion/vuesion/commit/af677011d930a9a944d7a55ad0c3d40b9a1d883b))
+- **collapse-animation:** clean up typescript usage ([8c9f1558](https://github.com/vuesion/vuesion/commit/8c9f155869442de4acbad9c60f5d8f59b9f3719a))
+- **vue-text:** add support for light/dark color tokens ([68d6a22e](https://github.com/vuesion/vuesion/commit/68d6a22e96729473b3723cae21357b7381200664))
+
+##### Bug Fixes
+
+- **vue-input:**
+  - give menu z-index 1 ([4a4de7d4](https://github.com/vuesion/vuesion/commit/4a4de7d4807d99e951ad550a6762a9888bc6d1e8))
+  - add proper types for icons ([fa128588](https://github.com/vuesion/vuesion/commit/fa128588a8f9050154a9cda5f8e71db2c598eb59))
+- **vue-pagination:** adjust menu position for selected page ([b3412c13](https://github.com/vuesion/vuesion/commit/b3412c13a61fcc979202328eb11b3ae5b9d8f539))
+- **vue-button:** add color to span inside button ([21b88407](https://github.com/vuesion/vuesion/commit/21b88407f0d9491d92a725d37ecaae855128df8e))
+- **vue-menu:** wrap to child width ([93aa828c](https://github.com/vuesion/vuesion/commit/93aa828cbfbd6e9a54170b43d3cae0352da5d4cf))
+- **prop-types:** use const to fix TS ([e54659c7](https://github.com/vuesion/vuesion/commit/e54659c71441fe387bff3b1cdbc39341c7051881))
+- add correct values for elevation in utility tokens ([8412b7cc](https://github.com/vuesion/vuesion/commit/8412b7ccefe2379300686008d798cf7adf7cd856))
+
+##### Tests
+
+- **vue-pagination:** test infinite carousel pagination ([869df1db](https://github.com/vuesion/vuesion/commit/869df1dbec62e8c9c622b6fb21cfe6ca163d9945))
+
 ## 5.0.0 (2024-06-14)
 
 ##### Chores
