@@ -6,11 +6,11 @@
 
 <script setup lang="ts">
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
-import type { Spacing } from '~/components/prop-types';
+import type { Spacing, SpacingWithDirections } from '~/components/prop-types';
 
 // Interface
 interface CardProps {
-  padding?: Spacing | Array<Spacing>;
+  padding?: SpacingWithDirections | Array<SpacingWithDirections>;
   space?: Spacing | Array<Spacing>;
 }
 withDefaults(defineProps<CardProps>(), {
