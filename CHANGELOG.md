@@ -1,3 +1,19 @@
+#### 5.1.1 (2024-07-21)
+
+##### Chores
+
+*  add resolutions for html-validate ([13e176bf](https://github.com/vuesion/vuesion/commit/13e176bf100423d56806c7dc76330a686506d181))
+*  update dependencies ([410656bd](https://github.com/vuesion/vuesion/commit/410656bd70cd1458f53e4e790ae7d0afd6ca51a3))
+
+##### New Features
+
+*  add h3-compression plugin ([2fc75b4f](https://github.com/vuesion/vuesion/commit/2fc75b4fdc2a8aae87b9abc5e87862202831ab5f))
+
+##### Bug Fixes
+
+* **vue-avatar:**  change icon prop type ([e23ba515](https://github.com/vuesion/vuesion/commit/e23ba5155a08abc7f1fd64d49ea87ce634211d97))
+* **vue-card:**  change padding prop type ([67816e4e](https://github.com/vuesion/vuesion/commit/67816e4e5cd6120946a1f68e83a85eafbb0dfdd3))
+
 ### 5.1.0 (2024-06-29)
 
 ##### Chores
