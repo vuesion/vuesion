@@ -43,7 +43,7 @@ export const Default = {
 
   args: {
     name: 'Isabella-Maria Del Campo',
-    icon: '',
+    icon: undefined,
     src: undefined,
     size: 'sm',
   },

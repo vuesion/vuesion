@@ -1,11 +1,11 @@
 <template>
   <div
     :title="name"
-    :class="[$style.vueAvatar, $style[size], src && $style.hasSource, !src && icon?.length > 0 && $style.hasIcon]"
+    :class="[$style.vueAvatar, $style[size], src && $style.hasSource, !src && icon && $style.hasIcon]"
     :style="{ backgroundImage: src ? `url(${src})` : undefined }"
   >
     <vue-text
-      v-if="!src && icon?.length === 0"
+      v-if="!src && !icon"
       color="text-high"
       :look="size === 'sm' ? 'label' : size === 'md' ? 'description' : 'h4'"
       :weight="size === 'lg' ? 'black' : 'semi-bold'"
@@ -14,7 +14,7 @@
       {{ initials }}
     </vue-text>
 
-    <component :is="`vue-icon-${icon}`" v-if="!src && icon?.length > 0" />
+    <component :is="`vue-icon-${icon}`" v-if="!src && icon" />
   </div>
 </template>
 
@@ -22,17 +22,18 @@
 import { computed, useCssModule } from 'vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import type { ShirtSize } from '~/components/prop-types';
+import type { Icon } from '~/components/icon-options';
 
 // Interface
 interface AvatarProps {
   name: string;
   src?: string | null;
-  icon?: string;
+  icon?: Icon;
   size?: ShirtSize;
 }
 const props = withDefaults(defineProps<AvatarProps>(), {
   src: undefined,
-  icon: '',
+  icon: undefined,
   size: 'sm',
 });
 
@@ -43,9 +44,9 @@ const $style = useCssModule();
 const initials = computed(() => {
   return props.name
     .split(/[, -]/)
-    .map((w) => w.substr(0, 1))
+    .map((w) => w.substring(0, 1))
     .join('')
-    .substr(0, 3);
+    .substring(0, 3);
 });
 </script>
 
