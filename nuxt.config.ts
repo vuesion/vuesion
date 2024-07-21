@@ -17,6 +17,7 @@ export default defineNuxtConfig({
       meta: [{ name: 'theme-color', content: themeColor }],
     },
   },
+
   auth: {
     isEnabled: true,
     provider: {
@@ -24,9 +25,11 @@ export default defineNuxtConfig({
       trustHost: false,
     },
   },
+
   components: {
     dirs: [],
   },
+
   colorMode: {
     preference: 'system',
     fallback: 'light',
@@ -37,8 +40,11 @@ export default defineNuxtConfig({
     classSuffix: '',
     storageKey: 'nuxt-color-mode',
   },
+
+  compatibilityDate: '2024-07-21',
   css: ['@/assets/global.scss'],
   devtools: { enabled: true },
+
   i18n: {
     baseUrl: process.env.BASE_URL,
     strategy: 'no_prefix',
@@ -60,6 +66,7 @@ export default defineNuxtConfig({
       cookieSecure: true,
     },
   },
+
   image: {
     densities: [1, 2, 3],
     screens: {
@@ -72,9 +79,11 @@ export default defineNuxtConfig({
       '2xl': 1440,
     },
   },
+
   imports: {
     dirs: ['store'],
   },
+
   modules: [
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
@@ -110,6 +119,7 @@ export default defineNuxtConfig({
     '@nuxt/devtools',
     '@nuxtjs/eslint-module',
   ],
+
   nitro: {
     compressPublicAssets: true,
     publicAssets: isProd
@@ -122,6 +132,7 @@ export default defineNuxtConfig({
         ]
       : [],
   },
+
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
@@ -152,9 +163,11 @@ export default defineNuxtConfig({
       type: 'module',
     },
   },
+
   runtimeConfig: {
     public: {},
   },
+
   robots: {
     rules: {
       UserAgent: '*',
@@ -162,6 +175,7 @@ export default defineNuxtConfig({
       Allow: '/',
     },
   },
+
   routeRules: {
     // Homepage pre-rendered at build time
     // '/en-US': { prerender: true },
@@ -175,7 +189,9 @@ export default defineNuxtConfig({
     // Add cors headers on API routes
     // '/api/**': { cors: true },
   },
+
   rootDir: '.',
+
   security: {
     headers: {
       crossOriginResourcePolicy: 'cross-origin',
@@ -238,7 +254,9 @@ export default defineNuxtConfig({
     enabled: true,
     csrf: false,
   },
+
   srcDir: './src',
+
   typescript: {
     shim: true,
   },

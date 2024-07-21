@@ -341,10 +341,11 @@ const $style = useCssModule();
   }
 
   @include mediaMin(tabletLandscape) {
+    padding-bottom: 560px;
+
     .discount {
       max-width: 800px;
     }
-    padding-bottom: 560px;
   }
 }
 </style>

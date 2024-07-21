@@ -26,11 +26,11 @@ if (typeof beforeEach !== 'undefined') {
       delete triggerDocument[event];
     });
 
-    window.addEventListener = vi.fn((event, cb) => {
+    (window as any).addEventListener = vi.fn((event, cb) => {
       triggerWindow[event] = cb;
     });
 
-    window.removeEventListener = vi.fn((event) => {
+    (window as any).removeEventListener = vi.fn((event) => {
       delete triggerWindow[event];
     });
   });
