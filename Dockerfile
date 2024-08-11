@@ -4,7 +4,7 @@
 # Run locally without Docker: npm run build && DATABASE_URL='postgresql://postgres:postgres@localhost:5432/vuesion?schema=public' NUXT_AUTH_SECRET='f7c99101-b819-4e98-8477-9d345e0930f3' NEXTAUTH_URL='http://localhost:3000/api/auth' AUTH_ORIGIN='http://localhost:3000' npm start
 
 # Build step
-FROM node:20-alpine as build
+FROM node:22-alpine as build
 WORKDIR build
 
 COPY . .
@@ -19,7 +19,7 @@ RUN npm run build
 RUN rm -rf node_modules/ && npm pkg delete scripts.prepare && npm pkg delete scripts.postinstall && npm ci --force --omit=dev
 RUN wget https://gobinaries.com/tj/node-prune --output-document - | /bin/sh && node-prune
 
-FROM node:20-alpine as app
+FROM node:22-alpine as app
 ENV NODE_ENV='production'
 ENV HOST='0.0.0.0'
 ENV PORT='3000'
