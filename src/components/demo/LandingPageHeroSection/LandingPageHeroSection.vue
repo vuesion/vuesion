@@ -19,7 +19,7 @@
             <vue-inline space="16">
               <vue-button
                 as="a"
-                href="https://vuesion.github.io/docs/en/v5/guide/install.html"
+                href="https://vuesion.github.io/docs/en/v5/guide/getting-started.html"
                 target="_blank"
                 look="primary"
                 trailing-icon="code"
