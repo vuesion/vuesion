@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { marked } from 'marked';
 import { computed, onBeforeUnmount, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter as useVueRouter } from 'vue-router';
 import { getDomRef } from '~/composables/get-dom-ref';
 
 marked.setOptions({
@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<{ useRouter?: boolean; markdown: string }
 });
 
 // Deps
-const router = useRouter();
+const router = useVueRouter();
 
 // Data
 const content = getDomRef<HTMLElement>(null);

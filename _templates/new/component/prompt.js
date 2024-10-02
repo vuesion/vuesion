@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { startCase, camelCase, kebabCase } = require('lodash');
 
 module.exports = [

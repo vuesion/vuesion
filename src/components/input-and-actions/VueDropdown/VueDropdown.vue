@@ -80,7 +80,9 @@ const onKeyDown = async (e: KeyboardEvent) => {
     await nextTick();
 
     /* c8 ignore start */
-    menuRef.value.focus && menuRef.value.focus();
+    if (menuRef.value && menuRef.value.focus) {
+      menuRef.value.focus();
+    }
     /* c8 ignore end */
   }
 };

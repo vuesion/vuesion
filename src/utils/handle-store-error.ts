@@ -1,10 +1,14 @@
 import type { IFetchError } from 'ofetch';
+import type { Store } from 'pinia';
 
-export const handleStoreError = (store: any, error: IFetchError) => {
+interface StoreWithError extends Store {
+  error?: IFetchError;
+}
+
+export const handleStoreError = (store: StoreWithError, error: IFetchError) => {
   if (import.meta.client) {
     store.error = error;
   }
 
-  // eslint-disable-next-line
   console.log(error);
 };

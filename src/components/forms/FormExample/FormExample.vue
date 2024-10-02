@@ -219,7 +219,6 @@ const onSubmit = () => {
   isLoading.value = true;
   const submitValue = { ...model.value, country: model.value.country.value };
 
-  // eslint-disable-next-line no-console
   console.log(JSON.parse(JSON.stringify(submitValue)));
 
   emit('submit', submitValue);

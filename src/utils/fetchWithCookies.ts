@@ -10,7 +10,7 @@ export const setServerCookies = (cookies: string | null | undefined) => {
 export const $fetchWithCookies = <T>(
   url: string,
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
-  body: any = null,
+  body: Record<string, unknown> | string | null = null,
   headers: Record<string, string> = {},
 ) => {
   if (globalThis.serverCookies) {

@@ -76,7 +76,7 @@ const images = computed<Array<ICarouselImage>>(() => props.images as Array<ICaro
 const interval = computed<number>(() => props.intervalInSeconds * 1000);
 const selectedSlide = computed<number>(() => props.selectedSlide);
 const currentSlide = ref<number>(props.selectedSlide - 1);
-const intervalInstance = ref<any>(null);
+const intervalInstance = ref<number | null>(null);
 const pause = ref(false);
 const preloadedImages = ref<Array<HTMLImageElement>>([]);
 

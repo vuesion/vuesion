@@ -14,7 +14,6 @@ export const useIntersectionObserver = (
       });
       observer.value.observe(elementRef.value);
     } else {
-      // eslint-disable-next-line n/no-callback-literal
       callback([]);
     }
   });

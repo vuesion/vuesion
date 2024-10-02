@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { runProcess } from './utils';
 
 const versionArg = process.argv[2];

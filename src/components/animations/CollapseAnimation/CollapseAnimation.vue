@@ -19,7 +19,7 @@ const beforeEnter = (el: Element) => {
   hel.style.opacity = '0';
   hel.style.overflow = 'hidden';
 };
-const enter = (el: Element, done: any) => {
+const enter = (el: Element, done: () => void) => {
   const hel = el as HTMLElement;
   anime({
     targets: el,
@@ -44,7 +44,7 @@ const beforeLeave = (el: Element) => {
   const hel = el as HTMLElement;
   hel.style.overflow = 'hidden';
 };
-const leave = (el: Element, done: any) => {
+const leave = (el: Element, done: () => void) => {
   anime({
     targets: el,
     height: {

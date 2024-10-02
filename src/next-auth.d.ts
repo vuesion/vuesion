@@ -1,5 +1,4 @@
-import { DefaultSession } from 'next-auth';
-import { ISODateString } from 'next-auth/core/types';
+import type { ISODateString } from 'next-auth/core/types';
 
 declare module 'next-auth' {
   interface Session {

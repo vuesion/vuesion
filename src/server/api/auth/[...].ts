@@ -45,7 +45,7 @@ export default NuxtAuthHandler({
     },
   },
   providers: [
-    // @ts-ignore Import is exported on .default during SSR, so we need to call it this way. May be fixed via Vite at some point
+    // @ts-expect-error Import is exported on .default during SSR, so we need to call it this way. May be fixed via Vite at some point
     CredentialsProvider.default({
       async authorize(credentials: any) {
         const email = credentials.email;

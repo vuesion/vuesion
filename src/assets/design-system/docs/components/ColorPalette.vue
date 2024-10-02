@@ -27,8 +27,8 @@ export default {
   components: { VueStack, VueBox, VueTiles, VueText },
   computed: {
     colorSections() {
-      const sections: any = {};
-      const arr: any[] = [];
+      const sections: Record<string, string> = {};
+      const arr: Array<{ name: string; colors: Record<string, string> }> = [];
 
       Object.keys(this.$style).forEach((key) => {
         const split = key.split('-');

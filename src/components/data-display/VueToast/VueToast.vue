@@ -56,6 +56,7 @@ import VueIconTimes from '~/components/icons/VueIconTimes.vue';
 import VueIconExclamation from '~/components/icons/VueIconExclamation.vue';
 import VueIconCheckmark from '~/components/icons/VueIconCheckmark.vue';
 import VueIconQuestionMarkCircle from '~/components/icons/VueIconQuestionMarkCircle.vue';
+import type { WithRequiredProperty } from '~/custom-typings';
 
 // Deps
 const $style = useCssModule();

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const { camelCase } = require('lodash');
 const inflection = require('inflection');
 

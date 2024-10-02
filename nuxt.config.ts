@@ -110,7 +110,7 @@ export default defineNuxtConfig({
     'nuxt-security',
     '@vite-pwa/nuxt',
     '@nuxt/devtools',
-    '@nuxtjs/eslint-module',
+    '@nuxt/eslint',
   ],
   nitro: {
     compressPublicAssets: true,
