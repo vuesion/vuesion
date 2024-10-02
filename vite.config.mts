@@ -8,6 +8,13 @@ export default defineConfig({
       external: [],
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+      },
+    },
+  },
   plugins: [
     vue({
       template: {

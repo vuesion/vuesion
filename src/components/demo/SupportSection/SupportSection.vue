@@ -133,6 +133,7 @@ const $style = useCssModule();
   .item {
     background-color: var(--surface-default-high);
     border-radius: $card-border-radius;
+    padding-right: $space-8;
 
     img {
       width: $space-80;

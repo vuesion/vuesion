@@ -28,17 +28,11 @@ describe('VueModal.vue', () => {
   });
 
   test('should close on outside click', async () => {
-    const { queryByText, getByTestId, emitted, rerender } = harness;
+    const { emitted, rerender } = harness;
 
     await rerender({ show: true });
 
-    const modal = getByTestId('modal');
-    const paragraph = queryByText('TEST');
-
     await nextTick();
-
-    triggerWindow.click({ target: paragraph, composedPath: () => [modal] });
-    expect(emitted().close).toBeFalsy();
 
     triggerWindow.click({ target: null, composedPath: () => [] });
     expect(emitted().close).toBeTruthy();

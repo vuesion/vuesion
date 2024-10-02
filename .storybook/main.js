@@ -37,6 +37,13 @@ module.exports = {
       }),
     );
     return mergeConfig(config, {
+      css: {
+        preprocessorOptions: {
+          scss: {
+            api: 'modern-compiler',
+          },
+        },
+      },
       optimizeDeps: {
         include: [
           '@storybook/addon-links',
