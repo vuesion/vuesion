@@ -130,7 +130,7 @@
                 <vue-text>
                   {{
                     $t(
-                      'VuesionPlusSection.autocomplete.description' /* Improve your forms with our Autocomplete component, offering both single and multi-select options. Optimized for accessibility (a11y), it provides a smooth and intuitive user experience. Perfect for enhancing user interactions in search and selection tasks. */,
+                      'VuesionPlusSection.autocomplete.description' /* Improve your forms with our Autocomplete component, offering both single and multi-select options. Optimized for accessibility, it provides a smooth and intuitive user experience. Perfect for enhancing user interactions in search and selection tasks. */,
                     )
                   }}
                 </vue-text>

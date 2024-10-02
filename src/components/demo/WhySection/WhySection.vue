@@ -16,7 +16,7 @@
           <vue-text look="description" color="text-medium">
             {{
               $t(
-                'WhySection.paragraph2' /* With over 8 years of experience building ventures with top companies like Volkswagen, Airbus, Firmenich, Maersk, and Pfizer, we bring unparalleled expertise in engineering full-stack teams and optimizing productivity across engineering, design, and product management. */,
+                'WhySection.paragraph2' /* With over 15 years of experience in developing projects for leading global companies, we bring unmatched expertise in building full-stack teams and optimizing productivity across engineering, design, and product management. */,
               )
             }}
           </vue-text>

@@ -136,7 +136,7 @@
                 <vue-text color="text-medium">
                   {{
                     $t(
-                      'KeyFeaturesSection.services.description' /* Leverage our expertise in consulting, prototyping, PoCs, and MVP development. With over 8 years of experience working with industry giants like Volkswagen, Airbus, and Pfizer, we bring unparalleled knowledge to your projects. Whether you're looking to build prototypes, validate concepts, or launch a minimum viable product, we provide tailored solutions to meet your needs. Fluent in a wide range of technologies, Vuesion Services is your partner for success.*/,
+                      'KeyFeaturesSection.services.description' /* Leverage our expertise in consulting, prototyping, PoCs, and MVP development. With over 15 years of experience working with industry leaders, we bring unparalleled knowledge to your projects. Whether you're creating prototypes, validating concepts, or launching a Minimum Viable Product, we offer tailored solutions to meet your needs. With extensive knowledge across a wide range of technologies, Vuesion Services is your partner for success. */,
                     )
                   }}
                 </vue-text>
