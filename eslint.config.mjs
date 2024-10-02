@@ -12,6 +12,7 @@ export default [
       '**/i18n',
       '**/node_modules',
       '**/.nuxt',
+      '**/.output',
       '**/_templates',
       '**/.storybook',
       '**/storybook-static',
