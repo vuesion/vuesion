@@ -1,3 +1,16 @@
+#### 5.1.3 (2024-10-02)
+
+##### Chores
+
+- migrate eslint to v9 ([e04a1864](https://github.com/vuesion/vuesion/commit/e04a186417be4271192161731683da030114ea8c))
+- update dependencies ([b89c1f31](https://github.com/vuesion/vuesion/commit/b89c1f31754558fd1c518808a9667086a365679c))
+
+##### Bug Fixes
+
+- **support-section:** refine spacings and update copy ([f79d37d4](https://github.com/vuesion/vuesion/commit/f79d37d415e45a83dce93f69217ec66dbf75afc2))
+- **eslint:** exclude .output directory ([f366e211](https://github.com/vuesion/vuesion/commit/f366e211630d800f011f95e56878a123014a347e))
+- **landing-page:** update link to getting started docs ([57688dee](https://github.com/vuesion/vuesion/commit/57688deedfdd847515d1cd3e035d225b60553328))
+
 #### 5.1.2 (2024-08-11)
 
 ##### Chores
