@@ -1,3 +1,9 @@
+#### 5.1.4 (2024-11-08)
+
+##### Chores
+
+- update dependencies ([dca3377e](https://github.com/vuesion/vuesion/commit/dca3377e4742afd1aa2cf804766b7b18e184bc42))
+
 #### 5.1.3 (2024-10-02)
 
 ##### Chores
