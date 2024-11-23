@@ -6,8 +6,15 @@ interface StoreWithError extends Store {
 }
 
 export const handleStoreError = (store: StoreWithError, error: IFetchError) => {
+  store.error = {
+    name: error.name,
+    message: error.message,
+    statusCode: error.statusCode,
+    statusMessage: error.statusMessage,
+  };
+
   if (import.meta.client) {
-    store.error = error;
+    store.error.stack = error.stack;
   }
 
   console.log(error);
