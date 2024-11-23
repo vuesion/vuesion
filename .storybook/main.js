@@ -17,12 +17,8 @@ module.exports = {
     options: {},
   },
   core: { disableTelemetry: true },
-  docs: {
-    autodocs: false,
-  },
-  features: {
-    storyStoreV7: true,
-  },
+  docs: {},
+  features: {},
   async viteFinal(config, { configType }) {
     const vueIdx = config.plugins.findIndex((plugin) => plugin.name === 'vite:vue');
     config.plugins.splice(

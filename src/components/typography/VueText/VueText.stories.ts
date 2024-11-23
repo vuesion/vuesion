@@ -53,7 +53,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
         <vue-column>
           <vue-stack space="4">
             <vue-text look="large-title" color="text-high" weight="semi-bold">Font Families</vue-text>
-            <vue-text weight="semi-bold">Inter - Sans Serif</vue-text>
+            <vue-text weight="semi-bold">Inter - Lato</vue-text>
           </vue-stack>
         </vue-column>
       </vue-columns>

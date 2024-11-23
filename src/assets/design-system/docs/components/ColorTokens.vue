@@ -8,19 +8,22 @@
           dark: false,
           tokens: [
             { figmaVar: 'Primary', cssVar: 'primary', paletteColor: 'primary 7' },
-            { figmaVar: 'Warning', cssVar: 'warning', paletteColor: 'warning 7' },
+            { figmaVar: 'Info', cssVar: 'info', paletteColor: 'info 7' },
           ],
         },
         {
           dark: false,
           tokens: [
             { figmaVar: 'Neutral', cssVar: 'neutral', paletteColor: 'neutral 7' },
-            { figmaVar: 'Danger', cssVar: 'danger', paletteColor: 'danger 7' },
+            { figmaVar: 'Warning', cssVar: 'warning', paletteColor: 'warning 7' },
           ],
         },
         {
           dark: false,
-          tokens: [{ figmaVar: 'Success', cssVar: 'success', paletteColor: 'success 7' }],
+          tokens: [
+            { figmaVar: 'Success', cssVar: 'success', paletteColor: 'success 7' },
+            { figmaVar: 'Danger', cssVar: 'danger', paletteColor: 'danger 7' },
+          ],
         },
       ]"
     />
@@ -334,14 +337,14 @@
           dark: false,
           tokens: [
             {
-              figmaVar: 'Text - Info',
-              cssVar: 'text-info',
-              paletteColor: 'primary 7',
-            },
-            {
               figmaVar: 'Text - Success',
               cssVar: 'text-success',
               paletteColor: 'success 7',
+            },
+            {
+              figmaVar: 'Text - Info',
+              cssVar: 'text-info',
+              paletteColor: 'primary 7',
             },
             {
               figmaVar: 'Text - Warning',
@@ -387,12 +390,12 @@
             {
               figmaVar: 'Interaction - Secondary - Enabled',
               cssVar: 'interaction-secondary-enabled',
-              paletteColor: 'info 2',
+              paletteColor: 'info 1',
             },
             {
               figmaVar: 'Interaction - Secondary - Hovered',
               cssVar: 'interaction-secondary-hovered',
-              paletteColor: 'info 1',
+              paletteColor: 'info 2',
             },
             {
               figmaVar: 'Interaction - Secondary - Activated',
