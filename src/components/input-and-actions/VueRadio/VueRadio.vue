@@ -156,6 +156,14 @@ export default {
       background-color: $radio-checkmark-bg-hover;
       border: $radio-checkmark-border-hover;
     }
+
+    input {
+      &:checked ~ .checkmark {
+        background-color: $radio-checkmark-bg-checked-hover !important;
+        border: $radio-checkmark-border-checked-hover !important;
+        color: $radio-checkmark-color !important;
+      }
+    }
   }
   &:focus,
   &:focus-within {

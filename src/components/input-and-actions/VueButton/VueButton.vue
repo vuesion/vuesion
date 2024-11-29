@@ -225,6 +225,10 @@ const onClick = (e: Event) => {
       &:hover {
         background: map-get($values, 'hover-bg');
         color: map-get($values, 'hover-color');
+
+        > span {
+          color: map-get($values, 'hover-color');
+        }
       }
 
       &:focus {
@@ -234,6 +238,10 @@ const onClick = (e: Event) => {
       &:active {
         background: map-get($values, 'active-bg');
         color: map-get($values, 'active-color');
+
+        > span {
+          color: map-get($values, 'active-color');
+        }
       }
 
       .loader {

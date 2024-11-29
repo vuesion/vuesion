@@ -363,6 +363,76 @@
             },
           ],
         },
+        {
+          dark: false,
+          tokens: [
+            {
+              figmaVar: 'Text - Interaction - Primary - Enabled',
+              cssVar: 'text-interaction-primary-enabled',
+              paletteColor: 'neutral 0',
+            },
+            {
+              figmaVar: 'Text - Interaction - Primary - Hovered',
+              cssVar: 'text-interaction-primary-hovered',
+              paletteColor: 'neutral 0',
+            },
+            {
+              figmaVar: 'Text - Interaction - Primary - Activated',
+              cssVar: 'text-interaction-primary-activated',
+              paletteColor: 'neutral 0',
+            },
+            {
+              figmaVar: 'Text - Interaction - Secondary - Enabled',
+              cssVar: 'text-interaction-secondary-enabled',
+              paletteColor: 'info 7',
+            },
+            {
+              figmaVar: 'Text - Interaction - Secondary - Hovered',
+              cssVar: 'text-interaction-secondary-hovered',
+              paletteColor: 'info 7',
+            },
+            {
+              figmaVar: 'Text - Interaction - Secondary - Activated',
+              cssVar: 'text-interaction-secondary-activated',
+              paletteColor: 'info 7',
+            },
+          ],
+        },
+        {
+          dark: false,
+          tokens: [
+            {
+              figmaVar: 'Text - Interaction - Neutral - Enabled',
+              cssVar: 'text-interaction-neutral-enabled',
+              paletteColor: 'neutral 8',
+            },
+            {
+              figmaVar: 'Text - Interaction - Neutral - Hovered',
+              cssVar: 'text-interaction-neutral-hovered',
+              paletteColor: 'neutral 8',
+            },
+            {
+              figmaVar: 'Text - Interaction - Neutral - Activated',
+              cssVar: 'text-interaction-neutral-activated',
+              paletteColor: 'neutral 8',
+            },
+            {
+              figmaVar: 'Text - Interaction - Danger - Enabled',
+              cssVar: 'text-interaction-danger-enabled',
+              paletteColor: 'neutral 0',
+            },
+            {
+              figmaVar: 'Text - Interaction - Danger - Hovered',
+              cssVar: 'text-interaction-danger-hovered',
+              paletteColor: 'neutral 0',
+            },
+            {
+              figmaVar: 'Text - Interaction - Danger - Activated',
+              cssVar: 'text-interaction-danger-activated',
+              paletteColor: 'neutral 0',
+            },
+          ],
+        },
       ]"
     />
     <color-tokens-section
@@ -421,41 +491,6 @@
               figmaVar: 'Interaction - Neutral - Activated',
               cssVar: 'interaction-neutral-activated',
               paletteColor: 'neutral 3',
-            },
-            {
-              figmaVar: 'Interaction - Success - Enabled',
-              cssVar: 'interaction-success-enabled',
-              paletteColor: 'success 7',
-            },
-            {
-              figmaVar: 'Interaction - Success - Hovered',
-              cssVar: 'interaction-success-hovered',
-              paletteColor: 'success 6',
-            },
-            {
-              figmaVar: 'Interaction - Success - Activated',
-              cssVar: 'interaction-success-activated',
-              paletteColor: 'success 8',
-            },
-          ],
-        },
-        {
-          dark: false,
-          tokens: [
-            {
-              figmaVar: 'Interaction - Warning - Enabled',
-              cssVar: 'interaction-warning-enabled',
-              paletteColor: 'warning 7',
-            },
-            {
-              figmaVar: 'Interaction - Warning - Hovered',
-              cssVar: 'interaction-warning-hovered',
-              paletteColor: 'warning 6',
-            },
-            {
-              figmaVar: 'Interaction - Warning - Activated',
-              cssVar: 'interaction-warning-activated',
-              paletteColor: 'warning 8',
             },
             {
               figmaVar: 'Interaction - Danger - Enabled',

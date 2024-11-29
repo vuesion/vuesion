@@ -71,18 +71,34 @@
   --text-inverse-high: #{palette-color-level('neutral', 10)};
   --text-inverse-medium: #{palette-color-level('neutral', 7)};
   --text-inverse-low: #{palette-color-level('neutral', 6)};
-  --text-info: #{palette-color-level('info', 7)};
-  --text-danger: #{palette-color-level('danger', 7)};
-  --text-warning: #{palette-color-level('warning', 7)};
-  --text-success: #{palette-color-level('success', 7)};
-  --text-link: #{palette-color-level('info', 4)};
   --text-light: #{palette-color-level('neutral', 0)};
   --text-dark: #{palette-color-level('neutral', 10)};
+  --text-success: #{palette-color-level('success', 7)};
+  --text-info: #{palette-color-level('info', 7)};
+  --text-warning: #{palette-color-level('warning', 7)};
+  --text-danger: #{palette-color-level('danger', 7)};
+  --text-link: #{palette-color-level('info', 4)};
+  --text-interaction-primary-enabled: #{palette-color-level('neutral', 0)};
+  --text-interaction-primary-hovered: #{palette-color-level('neutral', 0)};
+  --text-interaction-primary-activated: #{palette-color-level('neutral', 0)};
+  --text-interaction-secondary-enabled: #{palette-color-level('info', 7)};
+  --text-interaction-secondary-hovered: #{palette-color-level('info', 7)};
+  --text-interaction-secondary-activated: #{palette-color-level('info', 7)};
+  --text-interaction-neutral-enabled: #{palette-color-level('neutral', 2)};
+  --text-interaction-neutral-hovered: #{palette-color-level('neutral', 2)};
+  --text-interaction-neutral-activated: #{palette-color-level('neutral', 2)};
+  --text-interaction-danger-enabled: #{palette-color-level('neutral', 0)};
+  --text-interaction-danger-hovered: #{palette-color-level('neutral', 0)};
+  --text-interaction-danger-activated: #{palette-color-level('neutral', 0)};
 
   /* Interaction Colors */
   --interaction-primary-enabled: #{palette-color-level('primary', 6)};
   --interaction-primary-hovered: #{palette-color-level('primary', 5)};
   --interaction-primary-activated: #{palette-color-level('primary', 7)};
+
+  --interaction-secondary-enabled: #{palette-color-level('info', 1)};
+  --interaction-secondary-hovered: #{palette-color-level('info', 2)};
+  --interaction-secondary-activated: #{palette-color-level('info', 3)};
 
   --interaction-neutral-enabled: #{palette-color-level('neutral', 9)};
   --interaction-neutral-hovered: #{palette-color-level('neutral', 8)};
@@ -91,18 +107,6 @@
   --interaction-danger-enabled: #{palette-color-level('danger', 6)};
   --interaction-danger-hovered: #{palette-color-level('danger', 5)};
   --interaction-danger-activated: #{palette-color-level('danger', 7)};
-
-  --interaction-warning-enabled: #{palette-color-level('warning', 6)};
-  --interaction-warning-hovered: #{palette-color-level('warning', 5)};
-  --interaction-warning-activated: #{palette-color-level('warning', 7)};
-
-  --interaction-success-enabled: #{palette-color-level('success', 6)};
-  --interaction-success-hovered: #{palette-color-level('success', 5)};
-  --interaction-success-activated: #{palette-color-level('success', 7)};
-
-  --interaction-secondary-enabled: #{palette-color-level('info', 1)};
-  --interaction-secondary-hovered: #{palette-color-level('info', 2)};
-  --interaction-secondary-activated: #{palette-color-level('info', 3)};
 
   // UTILS
 
