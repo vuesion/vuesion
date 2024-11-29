@@ -12,9 +12,8 @@ to: "src/pages/<%= path %>.vue"
 </template>
 
 <script setup lang="ts">
-import { <% if (store !== 'None') { -%>computed, <% } -%><% if (auth === true) { -%>definePageMeta, <% } %>useHead, useI18n } from '#imports';
+import { <% if (store !== 'None') { -%>computed, <% } -%><% if (auth === true) { -%>definePageMeta, <% } %><% if (store !== 'None') { -%>useAsyncData, <% } -%>useHead, useI18n } from '#imports';
 <% if (store !== 'None') { -%>
-import { usePrefillStoreAction } from '~/composables/use-prefill-store-action';
 import { use<%= store %>Store } from '~/store/<%= store.toLowerCase() %>';
 <% } -%>
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
@@ -36,7 +35,10 @@ const <%= h.inflection.pluralize(h.inflection.camelize(store, true)) %> = comput
 
 // Data fetching
 <% if (store !== 'None') { -%>
-usePrefillStoreAction(store.fetch<%= h.inflection.camelize(h.inflection.pluralize(store)) %>, store.get<%= h.inflection.camelize(h.inflection.pluralize(store)) %>);
+await useAsyncData(async () => {
+  await store.fetch<%= h.inflection.pluralize(h.inflection.camelize(store)) %>();
+  return store.get<%= h.inflection.pluralize(h.inflection.camelize(store)) %>;
+});
 <% } -%>
 
 // Head
