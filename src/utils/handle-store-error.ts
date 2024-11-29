@@ -2,7 +2,7 @@ import type { IFetchError } from 'ofetch';
 import type { Store } from 'pinia';
 
 interface StoreWithError extends Store {
-  error?: IFetchError;
+  error?: IFetchError | null | undefined;
 }
 
 export const handleStoreError = (store: StoreWithError, error: IFetchError) => {
