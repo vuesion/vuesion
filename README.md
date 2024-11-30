@@ -157,8 +157,8 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 
 # Contact
 
+- [WRLD](https://wrld-app.com/w/vuesion/board)
 - [Discord](https://discord.gg/59x5cg2)
-- [x.com](https://x.com/vuesion1)
 
 # License
 
