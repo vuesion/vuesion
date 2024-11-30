@@ -1,3 +1,22 @@
+### 5.2.0 (2024-11-30)
+
+##### Chores
+
+- update dependencies ([09504f74](https://github.com/vuesion/vuesion/commit/09504f74fbc12946b0671023227003e2e6eb2fe5))
+- update design system docs and storybook ([3fea64ae](https://github.com/vuesion/vuesion/commit/3fea64aea9fdee76fefb171ba8150ac7f525c50e))
+
+##### New Features
+
+- **hygen:**
+  - update page generator ([091455f0](https://github.com/vuesion/vuesion/commit/091455f0dbe55f36584a5a702e412eadfebeb793))
+  - update rest-api generator ([07e9cbb7](https://github.com/vuesion/vuesion/commit/07e9cbb7ce3ce469ee01be18273a0a76ca89e5dc))
+- **design-system:** add tokens for interaction text colors ([216d8229](https://github.com/vuesion/vuesion/commit/216d8229dc621169d95a0b035799a93ec2bdc6a2))
+
+##### Bug Fixes
+
+- **homepage:** make title and description reactive ([4598a8a3](https://github.com/vuesion/vuesion/commit/4598a8a394005b9028e1ef9962379f9c89f5adc2))
+- **handle-store-error:** prevent serialization issue on server ([8ed2c700](https://github.com/vuesion/vuesion/commit/8ed2c70020065bb51160f03e493c37aced67ae74))
+
 #### 5.1.4 (2024-11-08)
 
 ##### Chores
