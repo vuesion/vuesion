@@ -86,7 +86,8 @@ describe('VueDropdown.vue', () => {
 
     expect(queryAllByText('Value 1')).toHaveLength(1);
 
-    triggerWindow.click({ target: null, composedPath: () => [] });
+    const target = document.createElement('span');
+    triggerWindow.click({ target, composedPath: () => [] });
 
     await sleep(250);
 

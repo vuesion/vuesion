@@ -34,7 +34,8 @@ describe('VueModal.vue', () => {
 
     await nextTick();
 
-    triggerWindow.click({ target: null, composedPath: () => [] });
+    const target = document.createElement('span');
+    triggerWindow.click({ target, composedPath: () => [] });
     expect(emitted().close).toBeTruthy();
   });
 

@@ -158,11 +158,13 @@ export default defineNuxtConfig({
     public: {},
   },
   robots: {
-    rules: {
-      UserAgent: '*',
-      Disallow: '/*?*',
-      Allow: '/',
-    },
+    groups: [
+      {
+        userAgent: '*',
+        disallow: '/*?*',
+        allow: '/',
+      },
+    ],
   },
   routeRules: {
     // Homepage pre-rendered at build time

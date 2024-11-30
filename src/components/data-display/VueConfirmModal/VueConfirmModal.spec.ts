@@ -41,7 +41,8 @@ describe('VueConfirmModal.vue', () => {
   test('Emits close event', () => {
     const { emitted } = harness;
 
-    triggerWindow.click({ target: null, composedPath: () => [] });
+    const target = document.createElement('span');
+    triggerWindow.click({ target, composedPath: () => [] });
 
     expect(emitted().close).toBeTruthy();
   });
