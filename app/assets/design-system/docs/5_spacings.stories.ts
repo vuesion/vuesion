@@ -1,6 +1,6 @@
 import type { StoryFn } from '@storybook/vue3';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
-import UtilityTokenSection from '~/assets/design-system/docs/components/UtilityTokenSection.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
+import UtilityTokenSection from 'assets/design-system/docs/components/UtilityTokenSection.vue';
 import VueText from '~/app/components/typography/VueText/VueText.vue';
 import { SpacingValues } from '~/app/components/prop-types';
 

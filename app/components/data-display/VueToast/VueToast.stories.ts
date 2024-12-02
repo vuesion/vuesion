@@ -3,7 +3,7 @@ import VueToast from './VueToast.vue';
 import { addToast } from '~/app/components/utils';
 import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
 import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Data Display/Toast',

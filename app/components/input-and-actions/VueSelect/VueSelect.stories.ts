@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import VueSelect from './VueSelect.vue';
 import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
 import VueText from '~/app/components/typography/VueText/VueText.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 import {
   BadgeStatusValues,
   HorizontalDirectionValues,

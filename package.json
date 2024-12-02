@@ -1,59 +1,7 @@
 {
-  "name": "vuesion",
-  "private": true,
-  "version": "5.2.0",
-  "description": "Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vuesion/vuesion.git"
-  },
-  "keywords": [
-    "vue 3",
-    "vite",
-    "typescript",
-    "server-side-rendering",
-    "boilerplate",
-    "vitetest",
-    "enterprise",
-    "components",
-    "design-system",
-    "nuxt 3",
-    "composition-api"
-  ],
   "author": "Johannes Werner <johannes.werner@hey.com>",
-  "license": "MIT",
-  "homepage": "https://github.com/vuesion/vuesion",
   "bugs": {
     "url": "https://github.com/vuesion/vuesion/issues"
-  },
-  "scripts": {
-    "dev": "cross-env NODE_ICU_DATA=node_modules/full-icu nuxi dev",
-    "storybook:dev": "rm -rf ./node_modules/.cache && storybook dev -p 6006",
-    "test": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest run --coverage",
-    "lint": "eslint --fix --cache .",
-    "new:component": "hygen new component",
-    "new:store": "hygen new store",
-    "new:page": "hygen new page",
-    "new:rest-api": "hygen new rest-api",
-    "db:reset": "prisma migrate reset",
-    "db:seed": "ts-node --transpile-only ./prisma/seed.ts",
-    "db:migrate": "prisma migrate dev",
-    "db:migrate-deploy": "prisma migrate deploy",
-    "db:push": "prisma db push",
-    "db:generate-client": "prisma generate",
-    "extract-i18n-messages": "ts-node --transpile-only ./tools/extract-i18n-messages.ts",
-    "test:watch": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest",
-    "e2e": "cypress run --headless",
-    "storybook:build": "storybook build",
-    "release:major": "ts-node --transpile-only ./tools/release.ts --major",
-    "release:minor": "ts-node --transpile-only ./tools/release.ts --minor",
-    "release:patch": "ts-node --transpile-only ./tools/release.ts --patch",
-    "build": "nuxi build",
-    "build:analyze": "nuxi analyze",
-    "build:spa": "nuxi generate",
-    "start": "cross-env NODE_ICU_DATA=node_modules/full-icu node .output/server/index.mjs",
-    "prepare": "husky",
-    "pre-commit": "pretty-quick --staged && concurrently \"npm run lint\" \"npm test\""
   },
   "dependencies": {
     "@pinia/nuxt": "0.8.0",
@@ -73,6 +21,7 @@
     "prisma": "6.0.0",
     "vee-validate": "4.14.7"
   },
+  "description": "Vuesion is a boilerplate that helps product teams build faster than ever with fewer headaches and modern best practices across engineering & design.",
   "devDependencies": {
     "@babel/core": "7.26.0",
     "@commitlint/config-conventional": "19.6.0",
@@ -90,6 +39,7 @@
     "@storybook/addon-essentials": "^8.4.6",
     "@storybook/addon-interactions": "^8.4.6",
     "@storybook/addon-links": "^8.4.6",
+    "@storybook/builder-vite": "^8.4.6",
     "@storybook/test": "^8.4.6",
     "@storybook/testing-library": "0.2.2",
     "@storybook/vue3": "^8.4.6",
@@ -134,9 +84,60 @@
     "vitest": "2.1.6",
     "vue-loader": "17.4.2"
   },
+  "homepage": "https://github.com/vuesion/vuesion",
+  "keywords": [
+    "vue 3",
+    "vite",
+    "typescript",
+    "server-side-rendering",
+    "boilerplate",
+    "vitetest",
+    "enterprise",
+    "components",
+    "design-system",
+    "nuxt 3",
+    "composition-api"
+  ],
+  "license": "MIT",
+  "name": "vuesion",
   "overrides": {
-    "vue": "3.5.4",
     "vite": "6.0.1",
-    "vitest": "2.1.6"
-  }
+    "vitest": "2.1.6",
+    "vue": "3.5.4"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vuesion/vuesion.git"
+  },
+  "scripts": {
+    "build": "nuxi build",
+    "build:analyze": "nuxi analyze",
+    "build:spa": "nuxi generate",
+    "db:generate-client": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:migrate-deploy": "prisma migrate deploy",
+    "db:push": "prisma db push",
+    "db:reset": "prisma migrate reset",
+    "db:seed": "ts-node --transpile-only ./prisma/seed.ts",
+    "dev": "cross-env NODE_ICU_DATA=node_modules/full-icu nuxi dev",
+    "e2e": "cypress run --headless",
+    "extract-i18n-messages": "ts-node --transpile-only ./tools/extract-i18n-messages.ts",
+    "lint": "eslint --fix --cache .",
+    "new:component": "hygen new component",
+    "new:page": "hygen new page",
+    "new:rest-api": "hygen new rest-api",
+    "new:store": "hygen new store",
+    "pre-commit": "pretty-quick --staged && concurrently \"npm run lint\" \"npm test\"",
+    "prepare": "husky",
+    "release:major": "ts-node --transpile-only ./tools/release.ts --major",
+    "release:minor": "ts-node --transpile-only ./tools/release.ts --minor",
+    "release:patch": "ts-node --transpile-only ./tools/release.ts --patch",
+    "start": "cross-env NODE_ICU_DATA=node_modules/full-icu node .output/server/index.mjs",
+    "storybook:build": "storybook build",
+    "storybook:dev": "rm -rf ./node_modules/.cache && storybook dev -p 6006",
+    "test": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest run --coverage",
+    "test:watch": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest"
+  },
+  "version": "5.2.0"
 }

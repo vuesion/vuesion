@@ -1,7 +1,7 @@
 import type { StoryFn } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import VueNavbar from './VueNavbar.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Navigation/Navbar',

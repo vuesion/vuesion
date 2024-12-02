@@ -1,7 +1,7 @@
 import type { StoryFn } from '@storybook/vue3';
 import { ref } from 'vue';
 import VueCollapse from './VueCollapse.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
 import VueText from '~/app/components/typography/VueText/VueText.vue';
 import VueBox from '~/app/components/layout/VueBox/VueBox.vue';

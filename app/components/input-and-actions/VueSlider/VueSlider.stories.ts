@@ -1,6 +1,6 @@
 import type { StoryFn } from '@storybook/vue3';
 import VueSlider from './VueSlider.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
 import VueText from '~/app/components/typography/VueText/VueText.vue';
 

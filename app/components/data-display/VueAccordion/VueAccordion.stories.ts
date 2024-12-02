@@ -1,7 +1,7 @@
 import type { StoryFn } from '@storybook/vue3';
 import VueAccordion from './VueAccordion.vue';
 import VueAccordionItem from './VueAccordionItem.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
 import VueToggle from '~/app/components/input-and-actions/VueToggle/VueToggle.vue';
 

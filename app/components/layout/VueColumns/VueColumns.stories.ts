@@ -1,7 +1,7 @@
 import type { StoryFn } from '@storybook/vue3';
 import VueColumns from './VueColumns.vue';
 import VueColumn from './VueColumn/VueColumn.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Foundation/Layout',

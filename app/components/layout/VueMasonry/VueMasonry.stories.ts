@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import VueMasonry from './VueMasonry.vue';
 import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
 import VueSlider from '~/app/components/input-and-actions/VueSlider/VueSlider.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 import { getIntInRange } from '~/app/components/utils';
 
 export default {

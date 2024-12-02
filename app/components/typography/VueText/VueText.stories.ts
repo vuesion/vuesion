@@ -1,7 +1,7 @@
 import type { StoryFn } from '@storybook/vue3';
 import VueText from './VueText.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
-import UtilityTokenSection from '~/assets/design-system/docs/components/UtilityTokenSection.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
+import UtilityTokenSection from 'assets/design-system/docs/components/UtilityTokenSection.vue';
 import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
 import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';

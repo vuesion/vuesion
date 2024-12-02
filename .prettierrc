@@ -1,11 +1,12 @@
 {
-  "singleQuote": true,
-  "bracketSpacing": true,
   "arrowParens": "always",
-  "trailingComma": "all",
-  "tabWidth": 2,
-  "printWidth": 120,
+  "bracketSpacing": true,
   "endOfLine": "lf",
-  "vueIndentScriptAndStyle": false,
-  "plugins": ["prettier-plugin-prisma"]
+  "plugins": ["prettier-plugin-prisma"],
+  "printWidth": 120,
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "vueIndentScriptAndStyle": false
 }

@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import VueRadio from './VueRadio.vue';
 import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
 import VueText from '~/app/components/typography/VueText/VueText.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Input & Actions/Radio button',

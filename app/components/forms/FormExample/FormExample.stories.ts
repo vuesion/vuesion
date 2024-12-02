@@ -2,7 +2,7 @@ import type { StoryFn } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import FormExample from './FormExample.vue';
 import VueToast from '~/app/components/data-display/VueToast/VueToast.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Forms/FormExample',

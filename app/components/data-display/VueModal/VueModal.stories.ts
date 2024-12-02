@@ -6,7 +6,7 @@ import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
 import VueTiles from '~/app/components/layout/VueTiles/VueTiles.vue';
 import VueText from '~/app/components/typography/VueText/VueText.vue';
 import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Data Display/Modal',

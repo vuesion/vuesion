@@ -4,7 +4,7 @@ import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
 import VueText from '~/app/components/typography/VueText/VueText.vue';
 import VueIconInfo from '~/app/components/icons/VueIconInfoCircle.vue';
 import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 import { VerticalDirectionValues } from '~/app/components/prop-types';
 
 export default {

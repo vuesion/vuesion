@@ -1,6 +1,6 @@
 import type { StoryFn } from '@storybook/vue3';
 import VueButton from './VueButton.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 import { ButtonStyleValues, ShirtSizeValues } from '~/app/components/prop-types';
 
 export default {

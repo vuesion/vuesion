@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { action } from '@storybook/addon-actions';
 import VueInput from './VueInput.vue';
 import VueText from '~/app/components/typography/VueText/VueText.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 import { ShirtSizeValues } from '~/app/components/prop-types';
 import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
 

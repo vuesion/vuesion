@@ -1,6 +1,6 @@
 import type { StoryFn } from '@storybook/vue3';
 import ExpertiseSection from './ExpertiseSection.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Demo/ExpertiseSection',

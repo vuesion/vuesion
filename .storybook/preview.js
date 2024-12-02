@@ -1,7 +1,7 @@
-import 'assets/_design-system.scss';
-import 'assets/reset.scss';
-import 'assets/global.scss';
-import 'assets/typography.scss';
+import 'app/assets/_design-system.scss';
+import 'app/assets/reset.scss';
+import 'app/assets/global.scss';
+import 'app/assets/typography.scss';
 import { setup } from '@storybook/vue3';
 import { action } from '@storybook/addon-actions';
 import camelCase from 'lodash/camelCase';
@@ -41,6 +41,7 @@ setup(async (app) => {
     props: ['to'],
     methods: {
       log() {
+        // @ts-expect-error - action is a mock function
         action('link target')(this.to);
       },
     },
@@ -68,12 +69,14 @@ setup(async (app) => {
   });
 
   // import icons globally
+  // @ts-expect-error - import.meta will always be defined
   const icons = import.meta.glob('../app/components/icons/Vue*.vue');
 
   for (const path in icons) {
     const componentConfig = await icons[path]();
     const componentName = upperFirst(
       camelCase(
+        // @ts-expect-error - path will always be a string
         path
           .split('/')
           .pop()
