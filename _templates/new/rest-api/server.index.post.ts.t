@@ -1,5 +1,5 @@
 ---
-to: "src/server/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/index.post.ts"
+to: "server/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/index.post.ts"
 unless_exists: true
 ---
 import { defineEventHandler } from 'h3';

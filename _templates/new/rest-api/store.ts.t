@@ -1,5 +1,5 @@
 ---
-to: "src/store/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>.ts"
+to: "app/store/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>.ts"
 unless_exists: true
 ---
 import { acceptHMRUpdate, defineStore } from 'pinia';

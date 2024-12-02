@@ -1,5 +1,5 @@
 ---
-to: "src/components/<%= folder %>/<%= name %>/<%= name %>.stories.ts"
+to: "app/components/<%= folder %>/<%= name %>/<%= name %>.stories.ts"
 ---
 import type { StoryFn } from '@storybook/vue3';
 import <%= name %> from './<%= name %>.vue';
@@ -33,4 +33,3 @@ export const Default = {
 
   args: {},
 };
-

@@ -1,0 +1,42 @@
+<template>
+  <vue-box :as="as" :padding="padding" :align-x="alignX" :align-y="alignY" :class="cssClasses">
+    <slot></slot>
+  </vue-box>
+</template>
+
+<script setup lang="ts">
+import { computed } from 'vue';
+import type { HorizontalAlignment, SpacingWithDirections, VerticalAlignment, Width } from '~/app/components/prop-types';
+import { getResponsiveCssClasses, parseResponsivePropValue } from '~/app/components/utils';
+import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
+
+// Interface
+interface ColumnProps {
+  as?: string;
+  padding?: SpacingWithDirections | Array<SpacingWithDirections>;
+  alignX?: HorizontalAlignment | Array<HorizontalAlignment> | null;
+  alignY?: VerticalAlignment | Array<VerticalAlignment> | null;
+  width?: string | Width | Array<Width>;
+  noGrow?: boolean;
+  noShrink?: boolean;
+}
+const props = withDefaults(defineProps<ColumnProps>(), {
+  as: 'div',
+  padding: () => [0],
+  alignX: null,
+  alignY: null,
+  width: () => ['auto'],
+  noGrow: false,
+  noShrink: false,
+});
+
+// Data
+const responsiveWidth = computed(() => parseResponsivePropValue(props.width));
+const cssClasses = computed(() => [
+  'flex',
+  'no-wrap',
+  ...getResponsiveCssClasses(null, responsiveWidth.value, 'w'),
+  props.noGrow ? 'grow-0' : 'grow',
+  props.noShrink ? 'shrink-0' : 'shrink',
+]);
+</script>

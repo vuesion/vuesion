@@ -2,8 +2,8 @@ const { mergeConfig } = require('vite');
 const path = require('path');
 const vue = require('@vitejs/plugin-vue');
 module.exports = {
-  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  staticDirs: ['../src/public'],
+  stories: ['../app/**/*.stories.@(js|jsx|ts|tsx)'],
+  staticDirs: ['../public'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -52,9 +52,9 @@ module.exports = {
       resolve: {
         alias: {
           '~~': path.resolve(path.dirname(__dirname)),
-          '~': path.resolve(path.dirname(__dirname), 'src'),
-          assets: path.resolve(path.dirname(__dirname), 'src/assets'),
-          public: path.resolve(path.dirname(__dirname), 'src/public'),
+          '~': path.resolve(path.dirname(__dirname), 'app'),
+          assets: path.resolve(path.dirname(__dirname), 'app/assets'),
+          public: path.resolve(path.dirname(__dirname), 'public'),
         },
       },
     });

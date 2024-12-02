@@ -16,7 +16,7 @@ export default [
       '**/_templates',
       '**/.storybook',
       '**/storybook-static',
-      '**/src/test',
+      '**/test',
       '**/*.spec.ts',
       '**/*.stories.ts',
     ],

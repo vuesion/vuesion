@@ -10,7 +10,7 @@ WORKDIR build
 COPY . .
 
 # Build storybook before creating the docker image and copy it to the public folder so nuxt can pick it up during the build
-COPY ./storybook-static ./src/public/storybook
+COPY ./storybook-static ./public/storybook
 
 
 RUN npm install

@@ -5,5 +5,5 @@ coverage
 .nuxt
 .output
 dist
-src/interfaces/graphql
-src/interfaces/swagger.ts
+interfaces/graphql
+interfaces/swagger.ts

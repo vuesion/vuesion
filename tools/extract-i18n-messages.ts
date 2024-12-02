@@ -4,7 +4,7 @@ import { globSync } from 'glob';
 import { ensureDirectoryExists, getTranslationObject, getTranslationsFromString } from './utils';
 
 const run = (sort = true, update = true, defaultTranslation = true): void => {
-  const files = globSync('./src/**/*.*');
+  const files = globSync('./app/**/*.*');
 
   const basePath: string = path.resolve(process.cwd());
   const locales: Array<any> = [
@@ -14,7 +14,7 @@ const run = (sort = true, update = true, defaultTranslation = true): void => {
   const defaultLocale = 'en-US';
   let translations: any = {};
 
-  console.log('Scanning files in: ./src/**/*.*');
+  console.log('Scanning files in: ./app/**/*.*');
 
   console.log('');
 

@@ -68,7 +68,7 @@ setup(async (app) => {
   });
 
   // import icons globally
-  const icons = import.meta.glob('../src/components/icons/Vue*.vue');
+  const icons = import.meta.glob('../app/components/icons/Vue*.vue');
 
   for (const path in icons) {
     const componentConfig = await icons[path]();

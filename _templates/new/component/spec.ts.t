@@ -1,5 +1,5 @@
 ---
-to: "src/components/<%= folder %>/<%= name %>/<%= name %>.spec.ts"
+to: "app/components/<%= folder %>/<%= name %>/<%= name %>.spec.ts"
 ---
 import { describe, beforeEach, test } from 'vitest';
 import { render, type RenderResult } from '@testing-library/vue';

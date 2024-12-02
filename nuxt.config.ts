@@ -1,7 +1,17 @@
+import path from 'path';
+
 const themeColor = '#A38AE0';
 const isProd = process.env.NODE_ENV === 'production';
 
 export default defineNuxtConfig({
+  alias: {
+    '~~': path.resolve(__dirname, './'),
+    '~': path.resolve(__dirname, './'),
+    app: path.resolve(__dirname, './app'),
+    server: path.resolve(__dirname, './server'),
+    assets: path.resolve(__dirname, './app/assets'),
+    public: path.resolve(__dirname, './public'),
+  },
   app: {
     head: {
       link: [
@@ -38,21 +48,25 @@ export default defineNuxtConfig({
     storage: 'cookie',
     storageKey: 'nuxt-color-mode',
   },
-  compatibilityDate: '2024-07-21',
+  compatibilityDate: '2024-12-01',
   css: ['@/assets/global.scss'],
   devtools: { enabled: true },
+  future: {
+    compatibilityVersion: 4,
+  },
   i18n: {
     baseUrl: process.env.BASE_URL,
     strategy: 'no_prefix',
-    vueI18n: 'src/plugins/vue-i18n/vue-i18n',
+    vueI18n: 'app/plugins/vue-i18n/vue-i18n',
     // Don't forget to update the extract-i18n-script
     locales: [
       { code: 'en-US', iso: 'en-US', file: 'en-US.json', isCatchallLocale: true },
       { code: 'de-DE', iso: 'de-DE', file: 'de-DE.json' },
     ],
     defaultLocale: 'en-US',
+    langDir: '',
     lazy: true,
-    langDir: '../i18n/',
+    // langDir: './i18n/',
     detectBrowserLanguage: {
       useCookie: true,
       cookieDomain: null,
@@ -242,7 +256,6 @@ export default defineNuxtConfig({
     enabled: true,
     csrf: false,
   },
-  srcDir: './src',
   typescript: {
     shim: true,
   },
