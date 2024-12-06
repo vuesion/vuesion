@@ -75,7 +75,7 @@
 import { computed, ref, nextTick, useCssModule } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { type RuleExpression, useField } from 'vee-validate';
-import type { IItem } from '~~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 import { getDomRef } from '~/app/composables/get-dom-ref';
 import type { BadgeStatus, HorizontalDirection, ShirtSize, VerticalDirection } from '~/app/components/prop-types';
 import VueIconChevronDown from '~/app/components/icons/VueIconChevronDown.vue';

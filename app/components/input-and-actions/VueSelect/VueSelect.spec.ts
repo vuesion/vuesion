@@ -5,7 +5,7 @@ import { defineRule } from 'vee-validate';
 import { required } from '@vee-validate/rules';
 import VueSelect from './VueSelect.vue';
 import { sleep, triggerWindow } from '~/test/test-utils';
-import type { IItem } from '~~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 
 defineRule('required', required);
 

@@ -45,7 +45,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, useCssModule } from 'vue';
 import { EventBus } from '~/app/services/EventBus';
-import type { IToast } from '~~/interfaces/IToast';
+import type { IToast } from '~/interfaces/IToast';
 import { getGUID } from '~/app/components/utils';
 import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';

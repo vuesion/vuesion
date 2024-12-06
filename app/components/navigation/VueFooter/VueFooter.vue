@@ -144,7 +144,7 @@ import VueSelect from '~/app/components/input-and-actions/VueSelect/VueSelect.vu
 import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
 import VueIconTwitter from '~/app/components/icons/VueIconTwitter.vue';
 import VueIconGithub from '~/app/components/icons/VueIconGithub.vue';
-import type { IItem } from '~~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 import VueContentBlock from '~/app/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueIconVuesion from '~/app/components/icons/VueIconVuesion.vue';
 

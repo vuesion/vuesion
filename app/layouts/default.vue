@@ -14,7 +14,7 @@ import { useI18n, useLocaleHead, useSwitchLocalePath } from '#i18n';
 import VueBackToTop from '../components/behavior/VueBackToTop/VueBackToTop.vue';
 import VueFooter from '../components/navigation/VueFooter/VueFooter.vue';
 import { useHead } from '#imports';
-import type { IItem } from '~~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 
 // Deps
 const { locale, setLocale } = useI18n();

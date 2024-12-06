@@ -23,7 +23,7 @@
 import { nextTick, ref, useCssModule } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { getDomRef } from '~/app/composables/get-dom-ref';
-import type { IItem } from '~~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 import type { HorizontalDirection, ShirtSize, VerticalDirection } from '~/app/components/prop-types';
 import VueMenu from '~/app/components/data-display/VueMenu/VueMenu.vue';
 import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';

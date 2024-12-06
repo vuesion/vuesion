@@ -14,7 +14,7 @@ to: "app/pages/<%= path %>.vue"
 <script setup lang="ts">
 import { <% if (store !== 'None') { -%>computed, <% } -%><% if (auth === true) { -%>definePageMeta, <% } %><% if (store !== 'None') { -%>useAsyncData, <% } -%>useHead, useI18n } from '#imports';
 <% if (store !== 'None') { -%>
-import { use<%= store %>Store } from '~/store/<%= store.toLowerCase() %>';
+import { use<%= store %>Store } from '~/app/store/<%= store.toLowerCase() %>';
 <% } -%>
 import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
 

@@ -35,7 +35,7 @@ unless_exists: true
 
 <script setup lang="ts">
 import { computed, <% if (auth === true) { -%>definePageMeta, <% } %>onMounted, ref, useAsyncData, useHead, useRoute } from '#imports';
-import { use<%= h.inflection.camelize(name) %>Store } from '~/store/<%= h.inflection.camelize(name, true) %>';
+import { use<%= h.inflection.camelize(name) %>Store } from '~/app/store/<%= h.inflection.camelize(name, true) %>';
 import VueContentBlock from '~/app/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueText from '~/app/components/typography/VueText/VueText.vue';
 import VueStack from '~/app/components/layout/VueStack/VueStack.vue';

@@ -1,4 +1,4 @@
-import { BreakPoint } from '~~/enums/BreakPoint';
+import { BreakPoint } from '~/enums/BreakPoint';
 
 export const ButtonStyleValues = ['primary', 'secondary', 'outline', 'ghost', 'danger'] as const;
 

@@ -5,7 +5,7 @@ unless_exists: true
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import type { IFetchError } from 'ofetch';
 import type { I<%= h.inflection.camelize(name) %>, I<%= h.inflection.camelize(name) %>Create, I<%= h.inflection.camelize(name) %>Update } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
-import { $fetchWithCookies } from '~/utils/fetchWithCookies';
+import { $fetchWithCookies } from '~/utils/fetch-with-cookies';
 import { handleStoreError } from '~/utils/handle-store-error';
 
 export interface I<%= h.inflection.camelize(name) %>State {

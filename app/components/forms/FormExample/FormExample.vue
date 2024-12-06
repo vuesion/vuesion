@@ -161,7 +161,7 @@ import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueToggle from '~/app/components/input-and-actions/VueToggle/VueToggle.vue';
 import VueTextarea from '~/app/components/input-and-actions/VueTextarea/VueTextarea.vue';
-import type { IItem } from '~~/interfaces/IItem';
+import type { IItem } from '~/interfaces/IItem';
 
 // Interface
 interface FormExampleModel {
