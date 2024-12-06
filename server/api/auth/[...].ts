@@ -19,7 +19,8 @@ export const comparePasswords = (plainPassword: string, hashedPassword: string):
 
 export default NuxtAuthHandler({
   // secret needed to run nuxt-auth in production mode (used to encrypt data)
-  secret: process.env.NUXT_AUTH_SECRET,
+  // added default value to avoid warning when running in development/ test mode
+  secret: process.env.NUXT_AUTH_SECRET || 'bc466c9d-ae48-4dd9-b96e-4fd179e12ffe',
   pages: {
     signIn: '/',
   },
