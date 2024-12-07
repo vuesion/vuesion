@@ -1,5 +1,5 @@
 ---
-to: "src/pages/<%= path %>.vue"
+to: "app/pages/<%= path %>.vue"
 ---
 <template>
   <vue-stack space="0" as="main" :class="$style.page">
@@ -14,9 +14,9 @@ to: "src/pages/<%= path %>.vue"
 <script setup lang="ts">
 import { <% if (store !== 'None') { -%>computed, <% } -%><% if (auth === true) { -%>definePageMeta, <% } %><% if (store !== 'None') { -%>useAsyncData, <% } -%>useHead, useI18n } from '#imports';
 <% if (store !== 'None') { -%>
-import { use<%= store %>Store } from '~/store/<%= store.toLowerCase() %>';
+import { use<%= store %>Store } from '~/app/store/<%= store.toLowerCase() %>';
 <% } -%>
-import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
 
 // Deps
 const { t } = useI18n();
@@ -35,7 +35,7 @@ const <%= h.inflection.pluralize(h.inflection.camelize(store, true)) %> = comput
 
 // Data fetching
 <% if (store !== 'None') { -%>
-await useAsyncData(async () => {
+await useAsyncData('<%= h.inflection.pluralize(h.inflection.camelize(store)) %>', async () => {
   await store.fetch<%= h.inflection.pluralize(h.inflection.camelize(store)) %>();
   return store.get<%= h.inflection.pluralize(h.inflection.camelize(store)) %>;
 });
@@ -72,4 +72,3 @@ useHead({
   // this class is only applied if you add css properties
 }
 </style>
-

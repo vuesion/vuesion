@@ -1,5 +1,5 @@
 ---
-to: "src/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service.ts"
+to: "server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service.ts"
 unless_exists: true
 ---
 import type { PrismaClient } from "@prisma/client";

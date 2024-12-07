@@ -1,5 +1,5 @@
 <div style="width:256px;height:256px;border-radius: 16px;overflow:hidden;">
-  <img width="256px" height="256px" src="./src/public/logo.png" alt="vuesion logo"/>
+  <img width="256px" height="256px" src="./public/logo.png" alt="vuesion logo"/>
 </div>
 
 # Vuesion

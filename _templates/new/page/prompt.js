@@ -2,7 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const { startCase, camelCase } = require('lodash');
 
-const storeFiles = glob.sync('./src/store/*.ts').map((file) => {
+const storeFiles = glob.sync('./app/store/*.ts').map((file) => {
   const fileObj = path.parse(file);
   const storeName = fileObj.name;
 
