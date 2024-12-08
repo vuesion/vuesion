@@ -76,6 +76,7 @@ export default [
       'vue/no-v-html': 0,
       'import/no-duplicates': 0,
       '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/no-empty-object-type': 0,
     },
   },
   ...storybook.configs['flat/recommended'],

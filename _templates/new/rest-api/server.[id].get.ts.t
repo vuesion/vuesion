@@ -7,7 +7,7 @@ import { prisma } from '~/server/services/use-prisma';
 import { MissingIdError, NotFoundError<% if(auth === true) { -%>,  NotAuthorizedError<% } %>} from "~/server/utils/errors";
 <% if(auth === true) { -%>
 import { getServerSession } from '#auth';
-// import { mustBeRelatedToEntity } from '~/server/utils/accessControl';
+// import { mustBeRelatedToEntity } from '~/server/utils/access-control';
 <% } %>import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
 
 export default defineEventHandler(async (event) => {

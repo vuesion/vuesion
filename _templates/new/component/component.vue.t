@@ -1,5 +1,5 @@
 ---
-to: "src/components/<%= folder %>/<%= name %>/<%= name %>.vue"
+to: "src/app/components/<%= folder %>/<%= name %>/<%= name %>.vue"
 ---
 <template>
   <div :class="$style.<%= name %>"><%= name %></div>

@@ -4,7 +4,8 @@
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS",
-      "moduleResolution": "Node"
+      "moduleResolution": "Node",
+      "types": ["vitest/globals", "@testing-library/jest-dom"]
     }
   },
   "exclude": ["./coverage"]

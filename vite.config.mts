@@ -54,7 +54,7 @@ export default defineConfig({
     alias: {
       '~~': path.resolve(__dirname, './'),
       '~': path.resolve(__dirname, './src'),
-      assets: path.resolve(__dirname, './src/assets'),
+      assets: path.resolve(__dirname, './src/app/assets'),
       public: path.resolve(__dirname, './src/public'),
       '@vue/test-utils': '/node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js',
     },

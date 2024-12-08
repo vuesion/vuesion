@@ -1,12 +1,12 @@
 ---
-to: "src/store/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>.ts"
+to: "src/app/store/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>.ts"
 unless_exists: true
 ---
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import type { IFetchError } from 'ofetch';
 import type { I<%= h.inflection.camelize(name) %>, I<%= h.inflection.camelize(name) %>Create, I<%= h.inflection.camelize(name) %>Update } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
-import { $fetchWithCookies } from '~/utils/fetchWithCookies';
-import { handleStoreError } from '~/utils/handle-store-error';
+import { $fetchWithCookies } from '~/app/utils/fetch-with-cookies';
+import { handleStoreError } from '~/app/utils/handle-store-error';
 
 export interface I<%= h.inflection.camelize(name) %>State {
   <%= h.inflection.pluralize(name) %>: Array<I<%= h.inflection.camelize(name) %>>;
