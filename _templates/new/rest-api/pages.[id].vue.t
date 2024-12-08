@@ -1,9 +1,9 @@
 ---
-to: "src/pages/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/[id]/index.vue"
+to: "src/app/pages/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/[id]/index.vue"
 unless_exists: true
 ---
 <template>
-  <vue-content-block padding="32 0" :class="$style.bookDetailsPage">
+  <vue-content-block padding="32 0" :class="$style.<%= h.inflection.camelize(name, true) %>DetailsPage">
     <vue-stack space="64">
       <vue-columns>
         <vue-column width="5/12" no-grow>
@@ -35,17 +35,17 @@ unless_exists: true
 
 <script setup lang="ts">
 import { computed, <% if (auth === true) { -%>definePageMeta, <% } %>onMounted, ref, useAsyncData, useHead, useRoute } from '#imports';
-import { use<%= h.inflection.camelize(name) %>Store } from '~/store/<%= h.inflection.camelize(name, true) %>';
-import VueContentBlock from '~/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueText from '~/components/typography/VueText/VueText.vue';
-import VueStack from '~/components/layout/VueStack/VueStack.vue';
-import VueInput from '~/components/input-and-actions/VueInput/VueInput.vue';
-import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
+import { use<%= h.inflection.camelize(name) %>Store } from '~/app/store/<%= h.inflection.camelize(name, true) %>';
+import VueContentBlock from '~/app/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueText from '~/app/components/typography/VueText/VueText.vue';
+import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
+import VueInput from '~/app/components/input-and-actions/VueInput/VueInput.vue';
+import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
 import type { I<%= h.inflection.camelize(name) %>Update } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
-import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueCard from '~/components/data-display/VueCard/VueCard.vue';
-import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueCard from '~/app/components/data-display/VueCard/VueCard.vue';
+import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
 
 // Deps
 const store = use<%= h.inflection.camelize(name) %>Store();

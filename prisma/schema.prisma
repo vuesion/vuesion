@@ -17,9 +17,20 @@ model Account {
   password String
 
   // generated model relations
+  offers Offer[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 // generated models
+model Offer {
+  id   String @id @default(dbgenerated("gen_random_uuid()"))
+  name String
+
+  account   Account? @relation(fields: [accountId], references: [id])
+  accountId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

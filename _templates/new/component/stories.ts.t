@@ -1,9 +1,9 @@
 ---
-to: "src/components/<%= folder %>/<%= name %>/<%= name %>.stories.ts"
+to: "src/app/components/<%= folder %>/<%= name %>/<%= name %>.stories.ts"
 ---
 import type { StoryFn } from '@storybook/vue3';
 import <%= name %> from './<%= name %>.vue';
-import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: '<%= h.inflection.humanize(folder) %>/<%= name %>',

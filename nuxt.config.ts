@@ -1,7 +1,14 @@
+import path from 'path';
 const themeColor = '#A38AE0';
 const isProd = process.env.NODE_ENV === 'production';
 
 export default defineNuxtConfig({
+  alias: {
+    '~~': path.resolve(__dirname, './'),
+    '~': path.resolve(__dirname, './src'),
+    assets: path.resolve(__dirname, './src/app/assets'),
+    public: path.resolve(__dirname, './src/public'),
+  },
   app: {
     head: {
       link: [
@@ -38,9 +45,18 @@ export default defineNuxtConfig({
     storage: 'cookie',
     storageKey: 'nuxt-color-mode',
   },
-  compatibilityDate: '2024-07-21',
+  compatibilityDate: '2024-12-08',
   css: ['@/assets/global.scss'],
   devtools: { enabled: true },
+  dir: {
+    modules: 'src/modules',
+    public: 'src/public',
+    shared: 'src/shared',
+    static: 'src/public',
+  },
+  future: {
+    compatibilityVersion: 4,
+  },
   i18n: {
     baseUrl: process.env.BASE_URL,
     strategy: 'no_prefix',
@@ -179,7 +195,6 @@ export default defineNuxtConfig({
     // Add cors headers on API routes
     // '/api/**': { cors: true },
   },
-  rootDir: '.',
   security: {
     headers: {
       crossOriginResourcePolicy: 'cross-origin',
@@ -242,7 +257,8 @@ export default defineNuxtConfig({
     enabled: true,
     csrf: false,
   },
-  srcDir: './src',
+  serverDir: 'src/server',
+  srcDir: 'src/app',
   typescript: {
     shim: true,
   },

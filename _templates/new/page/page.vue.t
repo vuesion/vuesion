@@ -1,8 +1,8 @@
 ---
-to: "src/pages/<%= path %>.vue"
+to: "src/app/pages/<%= path %>.vue"
 ---
 <template>
-  <vue-stack space="0" as="main" :class="$style.page">
+  <vue-stack space="0" as="main" :class="$style.Page">
     <%= path %>
 <% if (store !== 'None') { -%>
 
@@ -14,9 +14,9 @@ to: "src/pages/<%= path %>.vue"
 <script setup lang="ts">
 import { <% if (store !== 'None') { -%>computed, <% } -%><% if (auth === true) { -%>definePageMeta, <% } %><% if (store !== 'None') { -%>useAsyncData, <% } -%>useHead, useI18n } from '#imports';
 <% if (store !== 'None') { -%>
-import { use<%= store %>Store } from '~/store/<%= store.toLowerCase() %>';
+import { use<%= store %>Store } from '~/app/store/<%= store.toLowerCase() %>';
 <% } -%>
-import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
 
 // Deps
 const { t } = useI18n();
@@ -68,7 +68,7 @@ useHead({
 <style lang="scss" module>
 @import 'assets/_design-system.scss';
 
-.page {
+.Page {
   // this class is only applied if you add css properties
 }
 </style>
