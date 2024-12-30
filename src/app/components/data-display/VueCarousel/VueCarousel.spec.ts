@@ -2,7 +2,7 @@ import { describe, beforeEach, expect } from 'vitest';
 import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueCarousel from './VueCarousel.vue';
 import type { ICarouselImage } from '~/app/components/data-display/VueCarousel/ICarouselImage';
-import { sleep } from '~/test/test-utils';
+import { sleep } from '~~/test/test-utils';
 
 const images: ICarouselImage[] = [
   { alt: 'foo1', copyright: 'foo1', url: 'foo1' },

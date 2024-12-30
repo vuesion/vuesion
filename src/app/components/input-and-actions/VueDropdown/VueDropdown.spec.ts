@@ -1,7 +1,7 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueDropdown from './VueDropdown.vue';
-import { sleep, triggerWindow } from '~/test/test-utils';
+import { sleep, triggerWindow } from '~~/test/test-utils';
 
 describe('VueDropdown.vue', () => {
   let harness: RenderResult;

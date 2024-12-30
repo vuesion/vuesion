@@ -2,7 +2,7 @@ import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueToast from './VueToast.vue';
 import { addToast } from '~/app/components/utils';
-import { sleep } from '~/test/test-utils';
+import { sleep } from '~~/test/test-utils';
 
 describe('VueToast.vue', () => {
   let harness: RenderResult;

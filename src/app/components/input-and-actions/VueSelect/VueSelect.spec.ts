@@ -4,7 +4,7 @@ import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import { defineRule } from 'vee-validate';
 import { required } from '@vee-validate/rules';
 import VueSelect from './VueSelect.vue';
-import { sleep, triggerWindow } from '~/test/test-utils';
+import { sleep, triggerWindow } from '~~/test/test-utils';
 import type { IItem } from '~/interfaces/IItem';
 
 defineRule('required', required);

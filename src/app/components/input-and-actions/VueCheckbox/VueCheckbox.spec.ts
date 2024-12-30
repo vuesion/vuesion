@@ -3,7 +3,7 @@ import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import { defineRule } from 'vee-validate';
 import { required } from '@vee-validate/rules';
 import VueCheckbox from './VueCheckbox.vue';
-import { sleep } from '~/test/test-utils';
+import { sleep } from '~~/test/test-utils';
 
 defineRule('required', required);
 

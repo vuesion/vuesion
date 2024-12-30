@@ -58,6 +58,7 @@ export default defineConfig({
       server: path.resolve(__dirname, './src/server'),
       assets: path.resolve(__dirname, './src/app/assets'),
       public: path.resolve(__dirname, './src/public'),
+      test: path.resolve(__dirname, './test'),
       '@vue/test-utils': '/node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js',
     },
   },

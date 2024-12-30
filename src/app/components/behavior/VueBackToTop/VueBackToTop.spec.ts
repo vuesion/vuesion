@@ -2,7 +2,7 @@ import { nextTick } from 'vue';
 import { describe, beforeEach, test, expect, vi } from 'vitest';
 import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueBackToTop from './VueBackToTop.vue';
-import { triggerWindow } from '~/test/test-utils';
+import { triggerWindow } from '~~/test/test-utils';
 
 describe('VueBackToTop.vue', () => {
   let harness: RenderResult;
