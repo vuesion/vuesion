@@ -50,7 +50,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-12-01',
   css: ['./src/app/assets/global.scss'],
-  devtools: { enabled: true },
+  devtools: { enabled: !isProd },
   future: {
     compatibilityVersion: 4,
   },
@@ -180,16 +180,16 @@ export default defineNuxtConfig({
   },
   routeRules: {
     // Homepage pre-rendered at build time
-    // '/en-US': { prerender: true },
-    // '/de-DE': { prerender: true },
+    '/en-US': { prerender: true },
+    '/de-DE': { prerender: true },
     // Product page generated on-demand, revalidates in background
-    // '/products/**': { swr: 3600 },
+    '/products/**': { swr: 3600 },
     // Blog post generated on-demand once until next deploy
-    // '/blog/*': { isr: true },
+    '/blog/*': { isr: true },
     // Admin dashboard renders only on client-side
-    // '/admin/**': { ssr: false },
+    '/admin/**': { ssr: false },
     // Add cors headers on API routes
-    // '/api/**': { cors: true },
+    '/api/**': { cors: true },
   },
   rootDir: '.',
   security: {
@@ -251,12 +251,10 @@ export default defineNuxtConfig({
     allowedMethodsRestricter: { methods: '*' },
     hidePoweredBy: true,
     basicAuth: false,
-    enabled: true,
+    enabled: isProd,
     csrf: false,
   },
-  typescript: {
-    shim: true,
-  },
+  typescript: {},
   vite: {
     css: {
       preprocessorOptions: {

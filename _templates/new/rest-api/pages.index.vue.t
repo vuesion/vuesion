@@ -1,5 +1,5 @@
 ---
-to: "app/pages/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/index.vue"
+to: "src/app/pages/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/index.vue"
 unless_exists: true
 ---
 <template>

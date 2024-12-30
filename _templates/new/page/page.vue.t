@@ -1,5 +1,5 @@
 ---
-to: "app/pages/<%= path %>.vue"
+to: "src/app/pages/<%= path %>.vue"
 ---
 <template>
   <vue-stack space="0" as="main" :class="$style.page">

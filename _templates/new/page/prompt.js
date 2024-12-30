@@ -1,13 +1,13 @@
-const path = require('path');
-const glob = require('glob');
-const { startCase, camelCase } = require('lodash');
+const path = require('path')
+const glob = require('glob')
+const { startCase, camelCase } = require('lodash')
 
-const storeFiles = glob.sync('./app/store/*.ts').map((file) => {
-  const fileObj = path.parse(file);
-  const storeName = fileObj.name;
+const storeFiles = glob.sync('./src/app/store/*.ts').map((file) => {
+  const fileObj = path.parse(file)
+  const storeName = fileObj.name
 
-  return startCase(camelCase(storeName));
-});
+  return startCase(camelCase(storeName))
+})
 
 module.exports = [
   {
@@ -16,9 +16,9 @@ module.exports = [
     message: 'Route path:',
     validate(value) {
       if (!value.length) {
-        return 'Page must have a route path.';
+        return 'Page must have a route path.'
       }
-      return true;
+      return true
     },
   },
   {
@@ -33,4 +33,4 @@ module.exports = [
     message: 'Please select a store?',
     choices: ['None', ...storeFiles],
   },
-];
+]
