@@ -4,6 +4,12 @@ const themeColor = '#A38AE0';
 const isProd = process.env.NODE_ENV === 'production';
 
 export default defineNuxtConfig({
+  srcDir: 'src/app',
+  serverDir: 'src/server',
+  dir: {
+    public: 'src/public',
+    plugins: 'src/app/plugins',
+  },
   alias: {
     '~~': path.resolve(__dirname, './'),
     '~': path.resolve(__dirname, './src/'),
@@ -11,6 +17,7 @@ export default defineNuxtConfig({
     server: path.resolve(__dirname, './src/server'),
     assets: path.resolve(__dirname, './src/app/assets'),
     public: path.resolve(__dirname, './src/public'),
+    test: path.resolve(__dirname, './test'),
   },
   app: {
     head: {
@@ -53,11 +60,12 @@ export default defineNuxtConfig({
   devtools: { enabled: !isProd },
   future: {
     compatibilityVersion: 4,
+    typescriptBundlerResolution: true,
   },
   i18n: {
     baseUrl: process.env.BASE_URL,
     strategy: 'no_prefix',
-    vueI18n: './src/app/plugins/vue-i18n/vue-i18n',
+    vueI18n: './src/app/plugins/vue-i18n/vue-i18n.ts',
     // Don't forget to update the extract-i18n-script
     locales: [
       { code: 'en-US', iso: 'en-US', file: 'en-US.json', isCatchallLocale: true },
@@ -75,7 +83,7 @@ export default defineNuxtConfig({
     },
   },
   image: {
-    densities: [1, 2, 3],
+    densities: [1, 2],
     screens: {
       xs: 320,
       sm: 640,
@@ -179,19 +187,18 @@ export default defineNuxtConfig({
     ],
   },
   routeRules: {
-    // Homepage pre-rendered at build time
-    '/en-US': { prerender: true },
-    '/de-DE': { prerender: true },
-    // Product page generated on-demand, revalidates in background
-    '/products/**': { swr: 3600 },
-    // Blog post generated on-demand once until next deploy
-    '/blog/*': { isr: true },
-    // Admin dashboard renders only on client-side
-    '/admin/**': { ssr: false },
-    // Add cors headers on API routes
-    '/api/**': { cors: true },
+    // // Homepage pre-rendered at build time
+    // '/en-US': { prerender: true },
+    // '/de-DE': { prerender: true },
+    // // Product page generated on-demand, revalidates in background
+    // '/products/**': { swr: 3600 },
+    // // Blog post generated on-demand once until next deploy
+    // '/blog/*': { isr: true },
+    // // Admin dashboard renders only on client-side
+    // '/admin/**': { ssr: false },
+    // // Add cors headers on API routes
+    // '/api/**': { cors: true },
   },
-  rootDir: '.',
   security: {
     headers: {
       crossOriginResourcePolicy: 'cross-origin',
@@ -254,7 +261,8 @@ export default defineNuxtConfig({
     enabled: isProd,
     csrf: false,
   },
-  typescript: {},
+  ssr: true,
+  // typescript: {},
   vite: {
     css: {
       preprocessorOptions: {
