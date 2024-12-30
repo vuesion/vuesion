@@ -120,6 +120,7 @@
     "db:push": "prisma db push",
     "db:reset": "prisma migrate reset",
     "db:seed": "ts-node --transpile-only ./prisma/seed.ts",
+    "debug": "cross-env NODE_ICU_DATA=node_modules/full-icu nuxi dev --inspect",
     "dev": "cross-env NODE_ICU_DATA=node_modules/full-icu nuxi dev",
     "e2e": "cypress run --headless",
     "extract-i18n-messages": "ts-node --transpile-only ./tools/extract-i18n-messages.ts",
