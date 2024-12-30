@@ -6,11 +6,11 @@ const isProd = process.env.NODE_ENV === 'production';
 export default defineNuxtConfig({
   alias: {
     '~~': path.resolve(__dirname, './'),
-    '~': path.resolve(__dirname, './'),
-    app: path.resolve(__dirname, './app'),
-    server: path.resolve(__dirname, './server'),
-    assets: path.resolve(__dirname, './app/assets'),
-    public: path.resolve(__dirname, './public'),
+    '~': path.resolve(__dirname, './src/'),
+    app: path.resolve(__dirname, './src/app'),
+    server: path.resolve(__dirname, './src/server'),
+    assets: path.resolve(__dirname, './src/app/assets'),
+    public: path.resolve(__dirname, './src/public'),
   },
   app: {
     head: {
@@ -49,7 +49,7 @@ export default defineNuxtConfig({
     storageKey: 'nuxt-color-mode',
   },
   compatibilityDate: '2024-12-01',
-  css: ['@/assets/global.scss'],
+  css: ['./src/app/assets/global.scss'],
   devtools: { enabled: true },
   future: {
     compatibilityVersion: 4,
@@ -57,16 +57,14 @@ export default defineNuxtConfig({
   i18n: {
     baseUrl: process.env.BASE_URL,
     strategy: 'no_prefix',
-    vueI18n: 'app/plugins/vue-i18n/vue-i18n',
+    vueI18n: './src/app/plugins/vue-i18n/vue-i18n',
     // Don't forget to update the extract-i18n-script
     locales: [
       { code: 'en-US', iso: 'en-US', file: 'en-US.json', isCatchallLocale: true },
       { code: 'de-DE', iso: 'de-DE', file: 'de-DE.json' },
     ],
     defaultLocale: 'en-US',
-    langDir: '',
     lazy: true,
-    // langDir: './i18n/',
     detectBrowserLanguage: {
       useCookie: true,
       cookieDomain: null,
