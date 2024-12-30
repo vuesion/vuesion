@@ -53,11 +53,11 @@ export default defineConfig({
   resolve: {
     alias: {
       '~~': path.resolve(__dirname, './'),
-      '~': path.resolve(__dirname, './'),
-      app: path.resolve(__dirname, './app'),
-      server: path.resolve(__dirname, './server'),
-      assets: path.resolve(__dirname, './app/assets'),
-      public: path.resolve(__dirname, './public'),
+      '~': path.resolve(__dirname, './src/'),
+      app: path.resolve(__dirname, './src/app'),
+      server: path.resolve(__dirname, './src/server'),
+      assets: path.resolve(__dirname, './src/app/assets'),
+      public: path.resolve(__dirname, './src/public'),
       '@vue/test-utils': '/node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js',
     },
   },
