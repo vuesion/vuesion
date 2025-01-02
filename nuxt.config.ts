@@ -258,7 +258,7 @@ export default defineNuxtConfig({
     allowedMethodsRestricter: { methods: '*' },
     hidePoweredBy: true,
     basicAuth: false,
-    enabled: isProd,
+    enabled: true,
     csrf: false,
   },
   ssr: true,
