@@ -65,7 +65,11 @@ const Template: StoryFn = (args) => ({
   >
   <vue-stack>
     <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
-    <vue-select v-bind="args" v-model="model" />
+    <vue-select v-bind="args" v-model="model">
+      <template #info>
+        This is a test with a <a href="#">link.</a>
+      </template>
+    </vue-select>
   </vue-stack>
   </component-docs>`,
 });

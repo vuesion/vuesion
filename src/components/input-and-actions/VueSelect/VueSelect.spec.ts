@@ -1,4 +1,4 @@
-import { describe, test, expect } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import flushPromises from 'flush-promises';
 import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import { defineRule } from 'vee-validate';
@@ -235,7 +235,35 @@ describe('VueSelect.vue', () => {
 
     getByText('+1');
 
-    const target = document.createElement('span');
-    triggerWindow.click({ target, composedPath: () => [] });
+    triggerWindow.click({ target: null, composedPath: () => [] });
+  });
+
+  test('should display popover content', async () => {
+    const { getByTestId, queryAllByText, rerender } = render(VueSelect, {
+      props: {
+        id: 'select',
+        name: 'select',
+        label: 'Select-Label',
+        placeholder: 'Placeholder',
+        items: [
+          { label: 'Value 1', value: 'Value 1', description: 'Description 1' },
+          { label: 'Value 2', value: 'Value 2', description: 'Description 2' },
+          { label: 'Value 3', value: 'Value 3', description: 'Description 3' },
+          { label: 'Value 4', value: 'Value 4', description: 'Description 4' },
+        ],
+        duration: 0,
+        required: true,
+        validation: 'required',
+      },
+      slots: {
+        info: 'popover content',
+      },
+    });
+
+    expect(queryAllByText('popover content')).toHaveLength(0);
+
+    await fireEvent.click(getByTestId('popover-trigger'));
+
+    expect(queryAllByText('popover content')).toHaveLength(1);
   });
 });

@@ -5,16 +5,29 @@
     :class="[$style.vueSelect, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]"
     @keydown="onKeyDown"
   >
-    <vue-text
-      look="label"
-      weight="semi-bold"
-      :color="errors.length > 0 ? 'danger' : 'text-medium'"
-      :class="[$style.label, hideLabel && 'sr-only']"
-      as="label"
-    >
-      {{ label }}
-      <sup v-if="required">*</sup>
-    </vue-text>
+    <vue-inline space="4" align-y="center" no-wrap>
+      <vue-text
+        look="label"
+        weight="semi-bold"
+        :color="errors.length > 0 ? 'danger' : 'text-medium'"
+        :class="[$style.label, hideLabel && 'sr-only']"
+        as="label"
+      >
+        {{ label }}
+        <sup v-if="required">*</sup>
+      </vue-text>
+
+      <vue-popover v-if="$slots.info">
+        <template #trigger>
+          <vue-text :color="errors.length > 0 ? 'danger' : 'text-medium'">
+            <vue-icon-info-circle data-testid="popover-trigger" />
+          </vue-text>
+        </template>
+        <template #content>
+          <slot name="info" />
+        </template>
+      </vue-popover>
+    </vue-inline>
 
     <vue-columns
       :id="'custom-' + id"
@@ -72,7 +85,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, nextTick, useCssModule } from 'vue';
+import { computed, nextTick, ref, useCssModule } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { type RuleExpression, useField } from 'vee-validate';
 import type { IItem } from '~/interfaces/IItem';
@@ -86,6 +99,9 @@ import VueBadge from '~/components/data-display/VueBadge/VueBadge.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueIconInfoCircle from '~/components/icons/VueIconInfoCircle.vue';
+import VuePopover from '~/components/data-display/VuePopover/VuePopover.vue';
 
 // Interface
 interface SelectProps {
