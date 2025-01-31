@@ -8,17 +8,30 @@
       $attrs.class,
     ]"
   >
-    <vue-text
-      :for="id"
-      look="label"
-      weight="semi-bold"
-      :color="errors.length > 0 || hasError ? 'danger' : 'text-medium'"
-      :class="[$style.label, hideLabel && 'sr-only']"
-      as="label"
-    >
-      {{ label }}
-      <sup v-if="required">*</sup>
-    </vue-text>
+    <vue-inline space="4" align-y="center" no-wrap>
+      <vue-text
+        :for="id"
+        look="label"
+        weight="semi-bold"
+        :color="errors.length > 0 || hasError ? 'danger' : 'text-medium'"
+        :class="[$style.label, hideLabel && 'sr-only']"
+        as="label"
+      >
+        {{ label }}
+        <sup v-if="required">*</sup>
+      </vue-text>
+
+      <vue-popover v-if="$slots.info">
+        <template #trigger>
+          <vue-text :color="errors.length > 0 || hasError ? 'danger' : 'text-medium'">
+            <vue-icon-info-circle data-testid="popover-trigger" />
+          </vue-text>
+        </template>
+        <template #content>
+          <slot name="info" />
+        </template>
+      </vue-popover>
+    </vue-inline>
 
     <vue-columns
       space="0"
@@ -92,7 +105,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useCssModule, watch, useSlots } from 'vue';
+import { computed, useCssModule, useSlots, watch } from 'vue';
 import { type RuleExpression, useField } from 'vee-validate';
 import _debounce from 'lodash-es/debounce.js';
 import { getDomRef } from '~/composables/get-dom-ref';
@@ -104,6 +117,8 @@ import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import type { Icon } from '~/components/icon-options';
+import VuePopover from '~/components/data-display/VuePopover/VuePopover.vue';
+import VueIconInfoCircle from '~/components/icons/VueIconInfoCircle.vue'; // Interface
 
 // Interface
 interface InputProps {
@@ -207,7 +222,7 @@ watch(
   () => props.modelValue,
   (newModelValue) => {
     value.value = newModelValue;
-    if (props.autocomplete !== 'custom') {
+    if (props.autocomplete !== 'custom' && errors.value.length > 0) {
       handleChange(newModelValue);
     }
   },

@@ -1,7 +1,7 @@
-import { describe, test, expect, vi } from 'vitest';
-import { render, fireEvent } from '@testing-library/vue';
+import { describe, expect, test, vi } from 'vitest';
+import { fireEvent, render } from '@testing-library/vue';
 import { defineRule } from 'vee-validate';
-import { required, email } from '@vee-validate/rules';
+import { email, required } from '@vee-validate/rules';
 import flushPromises from 'flush-promises';
 import VueInput from './VueInput.vue';
 import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
@@ -109,7 +109,7 @@ describe('VueInput.vue', () => {
   });
 
   test('should display error state', async () => {
-    const { getByText, getByLabelText } = render(VueInput, {
+    const { getByText, queryAllByText, getByLabelText, rerender } = render(VueInput, {
       props: {
         label: 'this is the label',
         errorMessage: 'this is the error',
@@ -130,6 +130,10 @@ describe('VueInput.vue', () => {
     getByText('this is the error');
 
     await fireEvent.update(getByLabelText('this is the label'), 'example@example.com');
+    await rerender({ modelValue: 'example@example.com' });
+    await flushPromises();
+
+    expect(queryAllByText('this is the error')).toHaveLength(0);
   });
 
   test('should handle new modelValue', async () => {
@@ -157,7 +161,7 @@ describe('VueInput.vue', () => {
         name: 'name',
         id: 'id',
         required: true,
-        leadingIcon: 'email',
+        leadingIcon: 'mail',
       },
     });
 
@@ -174,7 +178,7 @@ describe('VueInput.vue', () => {
         name: 'name',
         id: 'id',
         required: true,
-        trailingIcon: 'email',
+        trailingIcon: 'mail',
       },
     });
 
@@ -254,5 +258,25 @@ describe('VueInput.vue', () => {
     });
 
     expect(queryAllByText2('MENU')).toHaveLength(1);
+  });
+
+  test('should display popover content', async () => {
+    const { getByTestId, queryAllByText } = render(VueInput, {
+      props: {
+        label: 'this is the label',
+        name: 'test',
+        id: 'test',
+        modelValue: 'initial value',
+      },
+      slots: {
+        info: 'popover content',
+      },
+    });
+
+    expect(queryAllByText('popover content')).toHaveLength(0);
+
+    await fireEvent.click(getByTestId('popover-trigger'));
+
+    expect(queryAllByText('popover content')).toHaveLength(1);
   });
 });
