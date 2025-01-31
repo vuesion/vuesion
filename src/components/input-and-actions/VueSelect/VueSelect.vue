@@ -31,6 +31,7 @@
 
     <vue-columns
       :id="'custom-' + id"
+      ref="triggerRef"
       space="0"
       padding="0 0 0 8"
       align-y="center"
@@ -67,7 +68,9 @@
         <vue-menu
           ref="menuRef"
           :items="options"
-          :class="[$style.menu, $style[alignXMenu], $style[alignYMenu]]"
+          :class="[$style.menu]"
+          :style="floatingStyles"
+          :data-placement="placement"
           @click="onItemClick"
           @close="toggleMenu"
         />
@@ -90,7 +93,7 @@ import { onClickOutside } from '@vueuse/core';
 import { type RuleExpression, useField } from 'vee-validate';
 import type { IItem } from '~/interfaces/IItem';
 import { getDomRef } from '~/composables/get-dom-ref';
-import type { BadgeStatus, HorizontalDirection, ShirtSize, VerticalDirection } from '~/components/prop-types';
+import type { BadgeStatus, ShirtSize } from '~/components/prop-types';
 import VueIconChevronDown from '~/components/icons/VueIconChevronDown.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
@@ -102,6 +105,7 @@ import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueIconInfoCircle from '~/components/icons/VueIconInfoCircle.vue';
 import VuePopover from '~/components/data-display/VuePopover/VuePopover.vue';
+import { autoUpdate, flip, useFloating } from '@floating-ui/vue';
 
 // Interface
 interface SelectProps {
@@ -119,8 +123,6 @@ interface SelectProps {
   description?: string;
   errorMessage?: string;
   duration?: number;
-  alignXMenu?: HorizontalDirection;
-  alignYMenu?: VerticalDirection;
   size?: ShirtSize;
   multiSelect?: boolean;
   badgeStatus?: BadgeStatus;
@@ -135,8 +137,6 @@ const props = withDefaults(defineProps<SelectProps>(), {
   description: '',
   errorMessage: '',
   duration: 250,
-  alignXMenu: 'left',
-  alignYMenu: 'bottom',
   size: 'md',
   badgeStatus: 'info',
 });
@@ -169,7 +169,7 @@ const open = async () => {
 
   await nextTick();
 
-  if (typeof menuRef.value.focus !== 'undefined') {
+  if (typeof menuRef.value?.focus !== 'undefined') {
     menuRef.value?.focus(displayItem.value);
   }
 };
@@ -198,8 +198,9 @@ const toggleMenu = () => {
 };
 
 // Data
-const selectRef = getDomRef<HTMLElement>(null);
-const menuRef = getDomRef<{ focus: (selectedItem?: IItem) => void }>(null);
+const selectRef = getDomRef(null);
+const triggerRef = getDomRef(null);
+const menuRef = getDomRef<HTMLElement & { focus: (selectedItem?: IItem) => void }>(null);
 const show = ref(false);
 const inputValue = computed<Array<any>>(() => {
   if (Array.isArray(props.modelValue)) {
@@ -268,6 +269,13 @@ const onKeyDown = (e: KeyboardEvent) => {
 onClickOutside(selectRef, () => {
   close(false);
 });
+
+// Floating UI Setup
+const { floatingStyles, placement } = useFloating(selectRef, menuRef, {
+  placement: 'bottom',
+  middleware: [flip({ fallbackPlacements: ['top'] })],
+  whileElementsMounted: autoUpdate,
+});
 </script>
 
 <script lang="ts">
@@ -315,26 +323,16 @@ export default {
     }
 
     .menu {
-      &.left {
-        left: 0;
+      position: absolute;
+      left: 0;
+      width: 100%;
+
+      &[data-placement^='top'] {
+        top: $space-24 !important;
       }
 
-      &.center {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      &.right {
-        right: 0;
-      }
-
-      &.top {
-        top: -$space-4 !important;
-        transform: translateY(-100%);
-
-        &.center {
-          transform: translate(-50%, -100%);
-        }
+      &[data-placement^='bottom'] {
+        top: $space-20 * -1 !important;
       }
     }
 
@@ -360,10 +358,6 @@ export default {
         height: $input-control-sm-height;
       }
 
-      .menu {
-        top: $input-control-sm-height + $space-4;
-      }
-
       .icon {
         width: $input-control-sm-height;
         height: $input-control-sm-height;
@@ -375,10 +369,6 @@ export default {
         height: $input-control-md-height;
       }
 
-      .menu {
-        top: $input-control-md-height + $space-4;
-      }
-
       .icon {
         width: $input-control-md-height;
         height: $input-control-md-height;
@@ -388,10 +378,6 @@ export default {
     &.lg {
       .customSelect {
         height: $input-control-lg-height;
-      }
-
-      .menu {
-        top: $input-control-lg-height + $space-4;
       }
 
       .icon {
@@ -423,8 +409,7 @@ export default {
     opacity: $select-disabled-disabled-opacity;
   }
 
-  .customSelect,
-  .menu {
+  .customSelect {
     display: flex;
     width: 100%;
   }

@@ -21,14 +21,6 @@ export default {
       options: ShirtSizeValues,
       control: { type: 'select' },
     },
-    alignXMenu: {
-      options: HorizontalDirectionValues,
-      control: { type: 'select' },
-    },
-    alignYMenu: {
-      options: VerticalDirectionValues,
-      control: { type: 'select' },
-    },
     badgeStatus: {
       options: BadgeStatusValues,
       control: { type: 'select' },
@@ -103,8 +95,6 @@ export const Default = {
     description: 'Description',
     errorMessage: 'Error message',
     duration: 250,
-    alignXMenu: 'left',
-    alignYMenu: 'bottom',
     size: 'md',
     multiSelect: false,
     badgeStatus: 'neutral',

@@ -140,19 +140,6 @@ describe('VueSelect.vue', () => {
     expect(getByTestId('Value 1-0').innerHTML).toMatch('Value 1');
   });
 
-  test('renders component with different menu alignment', async () => {
-    const { getByText, rerender, html } = harness;
-    const select = getByText('Select-Label').parentElement as HTMLElement;
-
-    await rerender({ alignXMenu: 'right', alignYMenu: 'top' });
-    await fireEvent.keyDown(select, { key: 'Enter', code: 'Enter' });
-
-    const markup = html();
-
-    expect(markup).toMatch('right');
-    expect(markup).toMatch('top');
-  });
-
   test('custom select should support multi-select', async () => {
     const { getByTestId, rerender, emitted } = harness;
 
