@@ -3,17 +3,30 @@
     space="4"
     :class="[$style.vueTextarea, disabled && $style.disabled, errors.length > 0 && $style.error, $attrs.class]"
   >
-    <vue-text
-      :for="id"
-      look="label"
-      weight="semi-bold"
-      :color="errors.length > 0 ? 'danger' : 'text-medium'"
-      :class="[$style.label, hideLabel && 'sr-only']"
-      as="label"
-    >
-      {{ label }}
-      <sup v-if="required">*</sup>
-    </vue-text>
+    <vue-inline space="4" align-y="center" no-wrap>
+      <vue-text
+        :for="id"
+        look="label"
+        weight="semi-bold"
+        :color="errors.length > 0 ? 'danger' : 'text-medium'"
+        :class="[$style.label, hideLabel && 'sr-only']"
+        as="label"
+      >
+        {{ label }}
+        <sup v-if="required">*</sup>
+      </vue-text>
+
+      <vue-popover v-if="$slots.info">
+        <template #trigger>
+          <vue-text :color="errors.length > 0 ? 'danger' : 'text-medium'">
+            <vue-icon-info-circle data-testid="popover-trigger" />
+          </vue-text>
+        </template>
+        <template #content>
+          <slot name="info" />
+        </template>
+      </vue-popover>
+    </vue-inline>
 
     <textarea
       :id="id"
@@ -47,6 +60,9 @@ import _debounce from 'lodash-es/debounce.js';
 import { getDomRef } from '~/composables/get-dom-ref';
 import VueText from '~/components/typography/VueText/VueText.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
+import VueInline from '~/components/layout/VueInline/VueInline.vue';
+import VueIconInfoCircle from '~/components/icons/VueIconInfoCircle.vue';
+import VuePopover from '~/components/data-display/VuePopover/VuePopover.vue';
 
 // Interface
 interface TextareaProps {

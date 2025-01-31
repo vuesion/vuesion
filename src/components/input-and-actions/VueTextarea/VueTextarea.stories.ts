@@ -43,7 +43,11 @@ const Template: StoryFn = (args) => ({
         @leading-icon-click="onLeadingIconClick"
         @trailing-icon-click="onTrailingIconClick"
         @debounced-input="onDebouncedInput"
-    />
+    >
+      <template #info>
+        This is a test with a <a href="#">link.</a>
+      </template>
+    </vue-textarea>
   </vue-stack>
   </component-docs>`,
 });

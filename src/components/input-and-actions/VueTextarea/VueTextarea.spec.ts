@@ -1,8 +1,8 @@
-import { describe, test, expect } from 'vitest';
-import { render, fireEvent } from '@testing-library/vue';
+import { describe, expect, test } from 'vitest';
+import { fireEvent, render } from '@testing-library/vue';
 import flushPromises from 'flush-promises';
 import { defineRule } from 'vee-validate';
-import { required, integer } from '@vee-validate/rules';
+import { integer, required } from '@vee-validate/rules';
 import VueTextarea from './VueTextarea.vue';
 import { sleep } from '~/test/test-utils';
 
@@ -132,5 +132,25 @@ describe('VueTextarea.vue', () => {
     await rerender({ modelValue: 'new value' });
 
     getByDisplayValue('new value');
+  });
+
+  test('should display popover content', async () => {
+    const { getByTestId, queryAllByText } = render(VueTextarea, {
+      props: {
+        label: 'this is the label',
+        name: 'test',
+        id: 'test',
+        modelValue: 'initial value',
+      },
+      slots: {
+        info: 'popover content',
+      },
+    });
+
+    expect(queryAllByText('popover content')).toHaveLength(0);
+
+    await fireEvent.click(getByTestId('popover-trigger'));
+
+    expect(queryAllByText('popover content')).toHaveLength(1);
   });
 });
