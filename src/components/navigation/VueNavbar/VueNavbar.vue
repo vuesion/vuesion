@@ -25,7 +25,6 @@
               { label: 'Logout', value: 'logout', leadingIcon: 'logout' },
             ]"
             :duration="dropdownDuration"
-            align-x-menu="right"
             @item-click="$emit('menu-item-click', $event)"
           >
             <vue-avatar :name="userName" :src="userImage" size="sm" />

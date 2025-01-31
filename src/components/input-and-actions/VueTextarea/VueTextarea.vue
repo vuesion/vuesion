@@ -16,7 +16,7 @@
         <sup v-if="required">*</sup>
       </vue-text>
 
-      <vue-popover v-if="$slots.info">
+      <vue-popover v-if="$slots.info && hideLabel === false">
         <template #trigger>
           <vue-text :color="errors.length > 0 ? 'danger' : 'text-medium'">
             <vue-icon-info-circle data-testid="popover-trigger" />

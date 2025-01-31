@@ -14,14 +14,6 @@ export default {
       options: ShirtSizeValues,
       control: { type: 'select' },
     },
-    alignXMenu: {
-      options: HorizontalDirectionValues,
-      control: { type: 'select' },
-    },
-    alignYMenu: {
-      options: VerticalDirectionValues,
-      control: { type: 'select' },
-    },
   },
 };
 
@@ -59,8 +51,6 @@ export const Default = {
     ],
     buttonText: 'Dropdown Button',
     duration: 250,
-    alignXMenu: 'left',
-    alignYMenu: 'bottom',
     size: 'md',
   },
 };

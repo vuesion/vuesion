@@ -93,18 +93,4 @@ describe('VueDropdown.vue', () => {
 
     expect(queryAllByText('Value 1')).toHaveLength(0);
   });
-
-  test('renders component with different menu alignment', async () => {
-    const { getByText, html, rerender } = harness;
-
-    await rerender({ alignMenu: 'right', alignYMenu: 'top' });
-
-    getByText('Dropdown');
-
-    await fireEvent.click(getByText('Dropdown'));
-    const markup = html();
-
-    expect(markup).toMatch('right');
-    expect(markup).toMatch('top');
-  });
 });

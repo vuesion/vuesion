@@ -23,8 +23,6 @@
             hide-description
             :model-value="selectedPage"
             :duration="duration"
-            align-y-menu="top"
-            align-x-menu="left"
             :class="$style.select"
             @update:model-value="$emit('update:selectedPage', ($event as IItem).value)"
           />
@@ -84,8 +82,6 @@
           :model-value="itemsPerPage"
           :duration="duration"
           size="sm"
-          align-y-menu="top"
-          align-x-menu="right"
           :class="$style.select"
           @update:model-value="
             $emit('update:selectedPage', 1);

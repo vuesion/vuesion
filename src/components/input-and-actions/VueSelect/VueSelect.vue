@@ -17,7 +17,7 @@
         <sup v-if="required">*</sup>
       </vue-text>
 
-      <vue-popover v-if="$slots.info">
+      <vue-popover v-if="$slots.info && hideLabel === false">
         <template #trigger>
           <vue-text :color="errors.length > 0 ? 'danger' : 'text-medium'">
             <vue-icon-info-circle data-testid="popover-trigger" />
@@ -68,7 +68,7 @@
         <vue-menu
           ref="menuRef"
           :items="options"
-          :class="[$style.menu]"
+          :class="[$style.menu, !hideLabel && $style.withLabel, !hideDescription && $style.withDescription]"
           :style="floatingStyles"
           :data-placement="placement"
           @click="onItemClick"
@@ -105,7 +105,7 @@ import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueIconInfoCircle from '~/components/icons/VueIconInfoCircle.vue';
 import VuePopover from '~/components/data-display/VuePopover/VuePopover.vue';
-import { autoUpdate, flip, useFloating } from '@floating-ui/vue';
+import { autoUpdate, flip, offset, useFloating } from '@floating-ui/vue';
 
 // Interface
 interface SelectProps {
@@ -272,8 +272,8 @@ onClickOutside(selectRef, () => {
 
 // Floating UI Setup
 const { floatingStyles, placement } = useFloating(selectRef, menuRef, {
-  placement: 'bottom',
-  middleware: [flip({ fallbackPlacements: ['top'] })],
+  placement: 'bottom-start',
+  middleware: [offset(4), flip({ fallbackPlacements: ['bottom-end', 'top-start', 'top-end'] })],
   whileElementsMounted: autoUpdate,
 });
 </script>
@@ -327,12 +327,16 @@ export default {
       left: 0;
       width: 100%;
 
-      &[data-placement^='top'] {
-        top: $space-24 !important;
+      &.withLabel {
+        &[data-placement^='top'] {
+          top: $space-24 !important;
+        }
       }
 
-      &[data-placement^='bottom'] {
-        top: $space-20 * -1 !important;
+      &.withDescription {
+        &[data-placement^='bottom'] {
+          top: $space-24 * -1 !important;
+        }
       }
     }
 

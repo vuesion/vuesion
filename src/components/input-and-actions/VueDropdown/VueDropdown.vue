@@ -12,7 +12,9 @@
       <vue-menu
         ref="menuRef"
         :items="items"
-        :class="[$style.menu, $style[alignXMenu], $style[alignYMenu], $style[size]]"
+        :class="[$style.menu]"
+        :style="floatingStyles"
+        :data-placement="placement"
         @click="onItemClick"
       />
     </vue-collapse>
@@ -24,18 +26,17 @@ import { nextTick, ref, useCssModule } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { getDomRef } from '~/composables/get-dom-ref';
 import type { IItem } from '~/interfaces/IItem';
-import type { HorizontalDirection, ShirtSize, VerticalDirection } from '~/components/prop-types';
+import type { ShirtSize } from '~/components/prop-types';
 import VueMenu from '~/components/data-display/VueMenu/VueMenu.vue';
 import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
 import VueCollapse from '~/components/behavior/VueCollapse/VueCollapse.vue';
+import { autoUpdate, flip, offset, useFloating } from '@floating-ui/vue';
 
 // Interface
 interface DropdownProps {
   items: Array<IItem>;
   buttonText?: string;
   duration?: number;
-  alignXMenu?: HorizontalDirection;
-  alignYMenu?: VerticalDirection;
   size?: ShirtSize;
 }
 interface DropdownEmits {
@@ -45,8 +46,6 @@ interface DropdownEmits {
 withDefaults(defineProps<DropdownProps>(), {
   buttonText: '',
   duration: 250,
-  alignXMenu: 'left',
-  alignYMenu: 'bottom',
   size: 'md',
 });
 const emit = defineEmits<DropdownEmits>();
@@ -56,7 +55,7 @@ const $style = useCssModule();
 
 // Data
 const dropdownRef = getDomRef<HTMLDivElement>(null);
-const menuRef = getDomRef<{ focus: () => void }>(null);
+const menuRef = getDomRef<HTMLDivElement & { focus: () => void }>(null);
 const show = ref(false);
 
 // Methods
@@ -88,6 +87,13 @@ const onKeyDown = async (e: KeyboardEvent) => {
 };
 
 onClickOutside(dropdownRef, () => close());
+
+// Floating UI Setup
+const { floatingStyles, placement } = useFloating(dropdownRef, menuRef, {
+  placement: 'bottom-start',
+  middleware: [offset(8), flip({ fallbackPlacements: ['bottom-end', 'top-start', 'top-end'] })],
+  whileElementsMounted: autoUpdate,
+});
 </script>
 
 <style lang="scss" module>
@@ -102,38 +108,16 @@ onClickOutside(dropdownRef, () => close());
   }
 
   .menu {
-    &.sm {
-      top: $input-control-sm-height + $dropdown-button-menu-gap;
+    position: absolute;
+    left: 0;
+    width: 100%;
+
+    &[data-placement^='top'] {
+      // top: $space-24 !important;
     }
 
-    &.md {
-      top: $input-control-md-height + $dropdown-button-menu-gap;
-    }
-
-    &.lg {
-      top: $input-control-lg-height + $dropdown-button-menu-gap;
-    }
-
-    &.left {
-      left: 0;
-    }
-
-    &.center {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    &.right {
-      right: 0;
-    }
-
-    &.top {
-      top: -$dropdown-button-menu-gap;
-      transform: translateY(-100%);
-
-      &.center {
-        transform: translate(-50%, -100%);
-      }
+    &[data-placement^='bottom'] {
+      // top: $space-20 * -1 !important;
     }
   }
 }
