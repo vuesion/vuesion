@@ -12,8 +12,7 @@ jobs:
     env:
       BASE_URL: http://localhost:3000
       NUXT_AUTH_SECRET: ${{secrets.NUXT_AUTH_SECRET}}
-      NEXTAUTH_URL: http://localhost:3000/api/auth
-      AUTH_ORIGIN: http://localhost:3000
+      AUTH_ORIGIN: http://localhost:3000/api/auth
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -91,8 +90,7 @@ jobs:
       HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
       BASE_URL: https://vuesion-next.herokuapp.com
       NUXT_AUTH_SECRET: ${{secrets.NUXT_AUTH_SECRET}}
-      NEXTAUTH_URL: https://vuesion-next.herokuapp.com/api/auth
-      AUTH_ORIGIN: https://vuesion-next.herokuapp.com
+      AUTH_ORIGIN: https://vuesion-next.herokuapp.com/api/auth
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -108,7 +106,6 @@ jobs:
         with:
           envkey_BASE_URL: ${{env.BASE_URL}}
           envkey_NUXT_AUTH_SECRET: ${{env.NUXT_AUTH_SECRET}}
-          envkey_NEXTAUTH_URL: ${{env.NEXTAUTH_URL}}
           envkey_AUTH_ORIGIN: ${{env.AUTH_ORIGIN}}
           file_name: .env
           fail_on_empty: false

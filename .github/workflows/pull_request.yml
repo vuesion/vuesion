@@ -13,8 +13,7 @@ jobs:
     env:
       BASE_URL: http://localhost:3000
       NUXT_AUTH_SECRET: ${{secrets.NUXT_AUTH_SECRET}}
-      NEXTAUTH_URL: http://localhost:3000/api/auth
-      AUTH_ORIGIN: http://localhost:3000
+      AUTH_ORIGIN: http://localhost:3000/api/auth
     steps:
       - name: Checkout
         uses: actions/checkout@v4

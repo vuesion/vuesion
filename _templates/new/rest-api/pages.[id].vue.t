@@ -54,7 +54,7 @@ const route = useRoute();
 // Config
 useHead({ title: '<%= h.inflection.camelize(name) %> Details Page' });
 <% if (auth === true) { -%>
-definePageMeta({ middleware: 'auth' });
+definePageMeta({ middleware: 'sidebase-auth' });
 <% } %>
 // Data
 const current<%= h.inflection.camelize(name) %> = computed(() => store.getCurrent<%= h.inflection.camelize(name) %>);

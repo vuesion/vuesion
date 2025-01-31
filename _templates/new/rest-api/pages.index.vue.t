@@ -97,7 +97,7 @@ const store = use<%= h.inflection.camelize(name) %>Store();
 // Config
 useHead({ title: 'All <%= h.inflection.pluralize(h.inflection.camelize(name)) %>' });
 <% if (auth === true) { -%>
-definePageMeta({ middleware: 'auth' });
+definePageMeta({ middleware: 'sidebase-auth' });
 <% } %>
 // Data
 const <%= h.inflection.pluralize(h.inflection.camelize(name, true)) %> = computed(() => store.get<%= h.inflection.pluralize(h.inflection.camelize(name)) %>);

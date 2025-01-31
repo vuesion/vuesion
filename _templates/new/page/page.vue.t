@@ -25,7 +25,7 @@ const store = use<%= store %>Store();
 <% } %>
 // Config
 <% if (auth === true) { -%>
-definePageMeta({ middleware: 'auth' });
+definePageMeta({ middleware: 'sidebase-auth' });
 <% } %>
 // Data
 <% if (store !== 'None') { -%>
