@@ -69,7 +69,7 @@ const togglePopover = () => {
   isVisible.value = !isVisible.value;
 };
 
-onClickOutside(popoverRef, () => hidePopover());
+onClickOutside(triggerRef, () => hidePopover());
 
 // Floating UI Setup
 const { floatingStyles, placement, middlewareData } = useFloating(triggerRef, popoverRef, {
