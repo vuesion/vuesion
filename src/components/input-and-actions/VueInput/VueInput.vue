@@ -34,6 +34,7 @@
     </vue-inline>
 
     <vue-columns
+      ref="triggerRef"
       space="0"
       padding="0 8"
       align-y="center"
@@ -89,7 +90,13 @@
         </div>
       </vue-column>
 
-      <div v-if="hasMenuSlot" :class="[$style.menu, $style[size]]">
+      <div
+        v-if="hasMenuSlot"
+        ref="menuRef"
+        :class="[$style.menu, !hideLabel && $style.withLabel, !hideDescription && $style.withDescription]"
+        :style="floatingStyles"
+        :data-placement="placement"
+      >
         <slot name="menu" />
       </div>
     </vue-columns>
@@ -118,7 +125,8 @@ import VueColumns from '~/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import type { Icon } from '~/components/icon-options';
 import VuePopover from '~/components/data-display/VuePopover/VuePopover.vue';
-import VueIconInfoCircle from '~/components/icons/VueIconInfoCircle.vue'; // Interface
+import VueIconInfoCircle from '~/components/icons/VueIconInfoCircle.vue';
+import { autoUpdate, flip, offset, useFloating } from '@floating-ui/vue';
 
 // Interface
 interface InputProps {
@@ -174,6 +182,8 @@ const $slots = useSlots();
 
 // Data
 const inputRef = getDomRef<HTMLInputElement>(null);
+const triggerRef = getDomRef(null);
+const menuRef = getDomRef(null);
 const debouncedInput = _debounce((value: string, e: Event) => emit('debounced-input', value, e), props.debounce || 0);
 const localValidation = computed<RuleExpression<string | number | null | undefined>>(() => props.validation);
 const { errors, value, handleChange } = useField<string | number | null | undefined>(props.id, localValidation, {
@@ -231,6 +241,13 @@ watch(
 // Exports
 defineExpose({
   handleChange,
+});
+
+// Floating UI Setup
+const { floatingStyles, placement } = useFloating(triggerRef, menuRef, {
+  placement: 'bottom-start',
+  middleware: [offset(4), flip({ fallbackPlacements: ['bottom-end', 'top-start', 'top-end'] })],
+  whileElementsMounted: autoUpdate,
 });
 </script>
 
@@ -386,19 +403,7 @@ export default {
   .menu {
     position: absolute;
     left: 0;
-    z-index: 1;
-
-    &.sm {
-      top: $input-control-sm-height + $space-4;
-    }
-
-    &.md {
-      top: $input-control-md-height + $space-4;
-    }
-
-    &.lg {
-      top: $input-control-lg-height + $space-4;
-    }
+    width: max-content;
   }
 
   .description {

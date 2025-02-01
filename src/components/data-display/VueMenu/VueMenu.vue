@@ -150,7 +150,7 @@ const focus = (selectedItem: IItem | null = null) => {
 
   const item = menuRef.value
     ?.querySelectorAll('li')
-    ?.item(selectedItemIndex.value === -1 ? 0 : selectedItemIndex.value) as HTMLUListElement;
+    ?.item(selectedItemIndex.value === -1 ? 0 : selectedItemIndex.value) as HTMLUListElement | undefined;
   item?.focus();
   menuRef.value?.scrollTo({ top: item?.offsetTop });
 };
@@ -163,7 +163,6 @@ defineExpose({ focus });
 @import 'assets/_design-system.scss';
 
 .vueMenu {
-  position: absolute;
   background: $menu-bg;
   width: min-content;
   min-width: $menu-min-width;
