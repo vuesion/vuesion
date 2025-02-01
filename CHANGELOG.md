@@ -1,3 +1,27 @@
+### 5.3.0 (2025-02-01)
+
+##### Chores
+
+- update major dependency versions ([dd4e07a9](https://github.com/vuesion/vuesion/commit/dd4e07a947095369d7d4f6badbc6eeec34282b11))
+- update minor dependency versions ([d6090a44](https://github.com/vuesion/vuesion/commit/d6090a44eea2af69bd848a6fd51656f5c67ae9c3))
+- update README.md ([ce6f467d](https://github.com/vuesion/vuesion/commit/ce6f467df72258af5baaa7476c5f5acc8c7debd3))
+
+##### New Features
+
+- **vue-input:**
+  - position menu automatically ([ed3c01b7](https://github.com/vuesion/vuesion/commit/ed3c01b791919d069c5c3afc87644a1af83713a3))
+  - add info popover ([b94aeb6a](https://github.com/vuesion/vuesion/commit/b94aeb6ab92ad83440ad062f8d9148302f2df744))
+- **vue-dropdown:** position menu automatically ([6cced421](https://github.com/vuesion/vuesion/commit/6cced421fc7cce74945b9e0eebe05bace1015362))
+- **vue-select:**
+  - position menu automatically ([5febf3de](https://github.com/vuesion/vuesion/commit/5febf3de496e4a9f993209489400cf1cf2b1df4e))
+  - add info popover ([69386120](https://github.com/vuesion/vuesion/commit/69386120e527b94ae85e2c2de6fccc905acc381e))
+- **vue-textarea:** add info popover ([7195f1de](https://github.com/vuesion/vuesion/commit/7195f1de8abba72ee71849bd9751ed494010d522))
+- **components:** add vue-popover ([1c6ddf50](https://github.com/vuesion/vuesion/commit/1c6ddf505601f8b91573dda7334c96be872ac6a3))
+
+##### Bug Fixes
+
+- **vue-popover:** use trigger to determine outside click ([ae7ee2f3](https://github.com/vuesion/vuesion/commit/ae7ee2f37b90f7f2cb9225cee2749f6aeed70991))
+
 ### 5.2.0 (2024-11-30)
 
 ##### Chores
