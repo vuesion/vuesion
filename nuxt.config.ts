@@ -45,15 +45,13 @@ export default defineNuxtConfig({
   i18n: {
     baseUrl: process.env.BASE_URL,
     strategy: 'no_prefix',
-    vueI18n: 'src/plugins/vue-i18n/vue-i18n',
     // Don't forget to update the extract-i18n-script
     locales: [
-      { code: 'en-US', iso: 'en-US', file: 'en-US.json', isCatchallLocale: true },
-      { code: 'de-DE', iso: 'de-DE', file: 'de-DE.json' },
+      { code: 'en-US', file: 'en-US.json', isCatchallLocale: true },
+      { code: 'de-DE', file: 'de-DE.json' },
     ],
     defaultLocale: 'en-US',
     lazy: true,
-    langDir: '../i18n/',
     detectBrowserLanguage: {
       useCookie: true,
       cookieDomain: null,

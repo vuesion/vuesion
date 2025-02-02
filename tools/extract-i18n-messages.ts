@@ -7,9 +7,9 @@ const run = (sort = true, update = true, defaultTranslation = true): void => {
   const files = globSync('./src/**/*.*');
 
   const basePath: string = path.resolve(process.cwd());
-  const locales: Array<any> = [
-    { code: 'en-US', iso: 'en-US', file: 'en-US.json' },
-    { code: 'de-DE', iso: 'de-DE', file: 'de-DE.json' },
+  const locales = [
+    { code: 'en-US', file: 'en-US.json' },
+    { code: 'de-DE', file: 'de-DE.json' },
   ];
   const defaultLocale = 'en-US';
   let translations: any = {};
@@ -35,7 +35,7 @@ const run = (sort = true, update = true, defaultTranslation = true): void => {
    */
   locales.forEach((locale: any) => {
     try {
-      const i18nFilePath: string = path.join(basePath, 'i18n', `${locale.file}`);
+      const i18nFilePath: string = path.join(basePath, 'i18n', 'locales', `${locale.file}`);
       const i18nFileContent: string | null = fs.existsSync(i18nFilePath)
         ? fs.readFileSync(i18nFilePath).toString()
         : null;
@@ -78,7 +78,7 @@ const run = (sort = true, update = true, defaultTranslation = true): void => {
 
       fs.writeFileSync(i18nFilePath, `{\n  ${entries.join(',\n  ')}\n}\n`);
 
-      console.log(`Updated locale ${locale.code}: ./i18n/${locale.file}.`);
+      console.log(`Updated locale ${locale.code}: ./i18n/locales/${locale.file}.`);
     } catch (e) {
       console.error(`Error in ./i18n/${locale.file}.: ${e}`);
     }

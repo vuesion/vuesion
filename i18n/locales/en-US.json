@@ -71,6 +71,7 @@
   "TestimonialsSection.testimonial3": "As a designer, I love how Vuesion's design system is 100% customizable and consistent across Storybook and Figma. It makes collaboration seamless.",
   "TestimonialsSection.testimonial4": "Vuesion's integration with Figma and pre-built components have streamlined our design process, saving us days of work.",
   "TestimonialsSection.title": "What Our Users Say",
+  "VuePopover.trigger.label": "Show additional information",
   "VuesionPlusSection.autocomplete.description": "Improve your forms with our Autocomplete component, offering both single and multi-select options. Optimized for accessibility, it provides a smooth and intuitive user experience. Perfect for enhancing user interactions in search and selection tasks.",
   "VuesionPlusSection.autocomplete.title": "Autocomplete",
   "VuesionPlusSection.bundle.description": "Unlock the full potential of your projects with the Vuesion+ Component Bundle. Get all our powerful components in one bundle and save 20%. This comprehensive package offers the best value for enhancing your Vue.js applications with advanced, user-friendly features.",

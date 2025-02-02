@@ -83,7 +83,7 @@
     "@nuxt/image": "1.9.0",
     "@nuxtjs/color-mode": "3.5.2",
     "@nuxtjs/html-validator": "1.8.2",
-    "@nuxtjs/i18n": "8.5.6",
+    "@nuxtjs/i18n": "9.1.5",
     "@nuxtjs/robots": "5.2.2",
     "@sidebase/nuxt-auth": "0.10.0",
     "@storybook/addon-a11y": "^8.5.2",

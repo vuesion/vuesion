@@ -9,8 +9,8 @@ import upperFirst from 'lodash/upperFirst';
 import { defineRule } from 'vee-validate';
 import { email, integer, min, min_value as minValue, regex, required } from '@vee-validate/rules';
 import { createI18n } from 'vue-i18n';
-import messagesEN from '../i18n/en-US.json';
-import messagesDE from '../i18n/de-DE.json';
+import messagesEN from '../i18n/locales/en-US.json';
+import messagesDE from '../i18n/locales/de-DE.json';
 
 // define global vee-validate rules
 defineRule('required', required);

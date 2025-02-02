@@ -67,6 +67,8 @@
                   :model-value="$colorMode.preference"
                   @update:model-value="$colorMode.preference = $event.value"
                 />
+                <!-- Date Time Test -->
+                <vue-text>{{ $d(new Date(), 'dayMonthYearNumericWithTime') }}</vue-text>
               </vue-stack>
             </vue-column>
           </vue-columns>
