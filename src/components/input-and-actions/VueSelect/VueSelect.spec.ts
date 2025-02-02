@@ -28,6 +28,7 @@ describe('VueSelect.vue', () => {
         duration: 0,
         required: true,
         validation: 'required',
+        leadingIcon: 'user',
       },
     });
   });

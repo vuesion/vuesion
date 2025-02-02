@@ -57,7 +57,7 @@ const Template: StoryFn = (args) => ({
   >
   <vue-stack>
     <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
-    <vue-select v-bind="args" v-model="model">
+    <vue-select v-bind="args" v-model="model" :leading-icon="model?.leadingIcon">
       <template #info>
         This is a test with a <a href="#">link.</a>
       </template>
@@ -80,12 +80,12 @@ export const Default = {
     disabled: false,
     items: [
       { label: 'Trigger validation', value: '' },
-      { label: 'Option 1', value: '1' },
-      { label: 'Option 2', value: '2' },
-      { label: 'Option 3', value: '3' },
+      { leadingIcon: 'user', label: 'Option 1', value: '1' },
+      { leadingIcon: 'mail', label: 'Option 2', value: '2' },
+      { leadingIcon: 'times', label: 'Option 3', value: '3' },
       { label: 'Option 4', value: '4' },
       { label: 'Option 5', value: '5' },
-      { label: 'Option 6', value: '6' },
+      { leadingIcon: 'login', label: 'Option 6', value: '6' },
       { label: 'Option 7', value: '7' },
       { label: 'Option 8', value: '8' },
       { label: 'Option 9', value: '9' },

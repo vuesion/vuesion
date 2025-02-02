@@ -33,7 +33,7 @@
       :id="'custom-' + id"
       ref="triggerRef"
       space="0"
-      padding="0 0 0 8"
+      :padding="leadingIcon ? 0 : '0 0 0 8'"
       align-y="center"
       :data-testid="'custom-' + id"
       role="combobox"
@@ -44,6 +44,9 @@
       aria-haspopup="listbox"
       @click.stop.prevent="toggleMenu"
     >
+      <vue-column v-if="leadingIcon" no-grow :class="$style.icon">
+        <component :is="`vue-icon-${leadingIcon}`" />
+      </vue-column>
       <vue-column>
         <vue-text :color="placeholder && inputValue.length === 0 ? 'text-low' : 'text-high'">
           {{ displayItem ? displayItem.label : placeholder }}
@@ -106,6 +109,7 @@ import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueIconInfoCircle from '~/components/icons/VueIconInfoCircle.vue';
 import VuePopover from '~/components/data-display/VuePopover/VuePopover.vue';
 import { autoUpdate, flip, offset, useFloating } from '@floating-ui/vue';
+import type { Icon } from '~/components/icon-options';
 
 // Interface
 interface SelectProps {
@@ -126,6 +130,7 @@ interface SelectProps {
   size?: ShirtSize;
   multiSelect?: boolean;
   badgeStatus?: BadgeStatus;
+  leadingIcon?: Icon;
 }
 interface SelectEmits {
   (event: 'update:modelValue', selected: Array<IItem> | IItem): void;
@@ -139,6 +144,7 @@ const props = withDefaults(defineProps<SelectProps>(), {
   duration: 250,
   size: 'md',
   badgeStatus: 'info',
+  leadingIcon: undefined,
 });
 const emit = defineEmits<SelectEmits>();
 
