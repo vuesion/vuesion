@@ -80,7 +80,7 @@ const run = (sort = true, update = true, defaultTranslation = true): void => {
 
       console.log(`Updated locale ${locale.code}: ./i18n/locales/${locale.file}.`);
     } catch (e) {
-      console.error(`Error in ./i18n/${locale.file}.: ${e}`);
+      console.error(`Error in ./i18n/locales/${locale.file}.: ${e}`);
     }
   });
 
