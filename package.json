@@ -32,6 +32,7 @@
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest run --coverage",
     "lint": "eslint --fix --cache . && tsc --project ./tsconfig.json --noEmit",
     "new:component": "hygen new component",
+    "new:form": "hygen new form",
     "new:store": "hygen new store",
     "new:page": "hygen new page",
     "new:rest-api": "hygen new rest-api",
