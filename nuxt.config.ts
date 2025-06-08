@@ -190,7 +190,7 @@ export default defineNuxtConfig({
         'frame-ancestors': ["'self'"],
         'img-src': ['*', "'self'", 'data:', 'https://d21tg1j9k9a9uf.cloudfront.net'],
         'object-src': ["'none'"],
-        'script-src-attr': ["'none'"],
+        'script-src-attr': [isProd ? "'none'" : "'unsafe-inline'"],
         'style-src': ["'self'", 'https:', "'unsafe-inline'", 'fonts.bunny.net'],
         'upgrade-insecure-requests': true,
         'script-src': [

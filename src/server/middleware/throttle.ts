@@ -1,5 +1,8 @@
-import { sleep } from '@antfu/utils';
 import { getIntInRange } from '~/components/utils';
+
+export const sleep = (ms: number): Promise<unknown> => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
 
 export default defineEventHandler(async () => {
   // Simulate slow hardware, because this app runs in the cheapest hardware on AWS

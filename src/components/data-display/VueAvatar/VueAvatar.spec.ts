@@ -26,7 +26,7 @@ describe('VueAvatar.vue', () => {
 
     await rerender({ src: 'src.jpg' });
 
-    expect(html()).toMatch('url(src.jpg)');
+    expect(html()).toMatch('url(&quot;src.jpg&quot;)');
   });
 
   test('renders component with icon', async () => {
