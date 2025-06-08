@@ -5,12 +5,13 @@
 </template>
 
 <script setup lang="ts">
-import anime from 'animejs';
+import { animate, utils } from 'animejs';
+import { TRANSITION_DURATION } from '~/constants/transition-duration';
 
 const props = defineProps({
   duration: {
     type: Number,
-    default: 250,
+    default: TRANSITION_DURATION,
   },
 });
 const beforeEnter = (el: Element) => {
@@ -21,19 +22,19 @@ const beforeEnter = (el: Element) => {
 };
 const enter = (el: Element, done: () => void) => {
   const hel = el as HTMLElement;
-  anime({
-    targets: el,
+  animate(hel, {
     height: {
-      value: `${el.scrollHeight}px`,
+      to: `${el.scrollHeight}px`,
       duration: props.duration,
+      modifier: utils.round(2),
     },
     opacity: {
-      value: 1,
+      to: 1,
       duration: props.duration,
+      modifier: utils.round(2),
     },
-    round: 1,
-    easing: 'easeInOutCirc',
-    complete: () => {
+    ease: 'easeInOutCirc',
+    onComplete: () => {
       hel.style.height = '';
       hel.style.overflow = '';
       done();
@@ -45,35 +46,41 @@ const beforeLeave = (el: Element) => {
   hel.style.overflow = 'hidden';
 };
 const leave = (el: Element, done: () => void) => {
-  anime({
-    targets: el,
+  const hel = el as HTMLElement;
+
+  animate(hel, {
     height: {
-      value: `0`,
+      to: `0`,
       duration: props.duration,
+      modifier: utils.round(2),
     },
     opacity: {
-      value: 0,
+      to: 0,
       duration: props.duration,
+      modifier: utils.round(2),
     },
     paddingTop: {
-      value: 0,
+      to: 0,
       duration: props.duration,
+      modifier: utils.round(2),
     },
     paddingBottom: {
-      value: 0,
+      to: 0,
       duration: props.duration,
+      modifier: utils.round(2),
     },
     marginTop: {
-      value: 0,
+      to: 0,
       duration: props.duration,
+      modifier: utils.round(2),
     },
     marginBottom: {
-      value: 0,
+      to: 0,
       duration: props.duration,
+      modifier: utils.round(2),
     },
-    round: 1,
-    easing: 'easeInOutCirc',
-    complete: done,
+    ease: 'easeInOutCirc',
+    onComplete: done,
   });
 };
 </script>
