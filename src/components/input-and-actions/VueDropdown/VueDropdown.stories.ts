@@ -1,5 +1,5 @@
-import type { StoryFn } from '@storybook/vue3';
-import { action } from '@storybook/addon-actions';
+import type { StoryFn } from '@storybook/vue3-vite';
+import { action } from 'storybook/actions';
 import VueDropdown from './VueDropdown.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 import { HorizontalDirectionValues, ShirtSizeValues, VerticalDirectionValues } from '~/components/prop-types';

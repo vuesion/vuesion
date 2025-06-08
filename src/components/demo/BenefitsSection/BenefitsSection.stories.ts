@@ -1,4 +1,4 @@
-import type { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3-vite';
 import BenefitsSection from './BenefitsSection.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 

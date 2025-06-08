@@ -1,4 +1,4 @@
-import type { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import VueToggleButton from './VueToggleButton.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';

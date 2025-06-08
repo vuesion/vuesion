@@ -1,4 +1,4 @@
-import type { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3-vite';
 import VueToast from './VueToast.vue';
 import { addToast } from '~/components/utils';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';

@@ -1,6 +1,6 @@
-import type { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3-vite';
 import { ref } from 'vue';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import VueTextarea from './VueTextarea.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';

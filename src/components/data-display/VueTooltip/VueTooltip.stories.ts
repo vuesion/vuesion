@@ -1,4 +1,4 @@
-import type { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3-vite';
 import VueTooltip from './VueTooltip.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';

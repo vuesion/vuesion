@@ -1,5 +1,5 @@
-import type { StoryFn } from '@storybook/vue3';
-import { action } from '@storybook/addon-actions';
+import type { StoryFn } from '@storybook/vue3-vite';
+import { action } from 'storybook/actions';
 import FormExample from './FormExample.vue';
 import VueToast from '~/components/data-display/VueToast/VueToast.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';

@@ -1,5 +1,5 @@
-import type { StoryFn } from '@storybook/vue3';
-import { action } from '@storybook/addon-actions';
+import type { StoryFn } from '@storybook/vue3-vite';
+import { action } from 'storybook/actions';
 import VueRadio from './VueRadio.vue';
 import VueInline from '~/components/layout/VueInline/VueInline.vue';
 import VueText from '~/components/typography/VueText/VueText.vue';

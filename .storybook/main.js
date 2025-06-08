@@ -4,14 +4,7 @@ const vue = require('@vitejs/plugin-vue');
 module.exports = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   staticDirs: ['../src/public'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@vuesion/storybook-theme-switcher',
-    '@storybook/addon-mdx-gfm',
-    '@storybook/addon-a11y',
-  ],
+  addons: ['@storybook/addon-links', '@storybook/addon-themes', '@storybook/addon-a11y', '@storybook/addon-docs'],
   framework: {
     name: '@storybook/vue3-vite',
     options: {},
@@ -44,8 +37,8 @@ module.exports = {
         include: [
           '@storybook/addon-links',
           '@storybook/addon-interactions',
-          '@storybook/addon-actions',
-          '@storybook/addon-backgrounds',
+          'storybook/actions',
+          'storybook/backgrounds',
           '@storybook/addon-a11y',
         ],
       },

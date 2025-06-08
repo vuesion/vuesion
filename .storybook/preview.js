@@ -2,8 +2,9 @@ import 'assets/_design-system.scss';
 import 'assets/reset.scss';
 import 'assets/global.scss';
 import 'assets/typography.scss';
-import { setup } from '@storybook/vue3';
-import { action } from '@storybook/addon-actions';
+import { setup } from '@storybook/vue3-vite';
+import { action } from 'storybook/actions';
+import { withThemeByClassName } from '@storybook/addon-themes';
 import camelCase from 'lodash/camelCase';
 import upperFirst from 'lodash/upperFirst';
 import { defineRule } from 'vee-validate';
@@ -93,12 +94,6 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  themeSwitcher: {
-    themes: [
-      { label: 'Light Theme', value: 'light' },
-      { label: 'Dark Theme', value: 'dark' },
-    ],
-  },
   viewport: {
     viewports: {
       phone: {
@@ -139,3 +134,14 @@ export const parameters = {
     },
   },
 };
+
+export const decorators = [
+  withThemeByClassName({
+    themes: {
+      light: 'light',
+      dark: 'dark',
+      halloween: 'halloween',
+    },
+    defaultTheme: 'light',
+  }),
+];

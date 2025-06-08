@@ -1,6 +1,6 @@
 import { ref } from 'vue';
-import type { StoryFn } from '@storybook/vue3';
-import { action } from '@storybook/addon-actions';
+import type { StoryFn } from '@storybook/vue3-vite';
+import { action } from 'storybook/actions';
 import VueModal from './VueModal.vue';
 import VueStack from '~/components/layout/VueStack/VueStack.vue';
 import VueTiles from '~/components/layout/VueTiles/VueTiles.vue';
