@@ -1,3 +1,23 @@
+### 5.4.0 (2025-06-09)
+
+##### Chores
+
+- upgrade to animjs 4 ([ae6765ea](https://github.com/vuesion/vuesion/commit/ae6765eaf749f30971415c170116adc64438a58a))
+- upgrade to Storybook 9 ([1478bf1a](https://github.com/vuesion/vuesion/commit/1478bf1a721436e8d4f56a087c001d1e378d5200))
+- update minor dependencies ([8741d977](https://github.com/vuesion/vuesion/commit/8741d977c3b8f19206b7b8bc67e9260643a95d47))
+- update dependencies ([9f557590](https://github.com/vuesion/vuesion/commit/9f557590a0cc07b906df030019c53098ca393ebf))
+
+##### New Features
+
+- add form generator ([18219cf3](https://github.com/vuesion/vuesion/commit/18219cf33955c11e84d00df7371f590b4837529c))
+- add middleware to prevent timing-attacks ([bc7b6efc](https://github.com/vuesion/vuesion/commit/bc7b6efcdc8987020020b78f449455d2980a8bf1))
+- **i18n:** update nuxtjs/i18n to v9 ([806d2eee](https://github.com/vuesion/vuesion/commit/806d2eee0f9d616b1d71caccb44f31839302442b))
+- **vue-select:** add leading icon ([d9d66d78](https://github.com/vuesion/vuesion/commit/d9d66d78947ee217ef3fc9b2591a7cc1a9d422e1))
+
+##### Bug Fixes
+
+- downgrade i18n package to v8 ([ed316fbd](https://github.com/vuesion/vuesion/commit/ed316fbd285f571a354abd3588fbedb320dd6efb))
+
 ### 5.3.0 (2025-02-01)
 
 ##### Chores
