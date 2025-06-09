@@ -2,8 +2,8 @@
 to: "src/components/forms/<%= h.capitalize(name) %>Form/<%= h.capitalize(name) %>Form.stories.ts"
 unless_exists: true
 ---
-import { action } from '@storybook/addon-actions';
-import type { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3-vite';
+import { action } from 'storybook/actions';
 import <%= h.capitalize(name) %>Form from './<%= h.capitalize(name) %>Form.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 

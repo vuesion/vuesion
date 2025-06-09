@@ -1,7 +1,7 @@
 ---
 to: "src/components/<%= folder %>/<%= name %>/<%= name %>.stories.ts"
 ---
-import type { StoryFn } from '@storybook/vue3';
+import type { StoryFn } from '@storybook/vue3-vite';
 import <%= name %> from './<%= name %>.vue';
 import ComponentDocs from '~/assets/design-system/docs/components/ComponentDocs.vue';
 
