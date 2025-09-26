@@ -1,7 +1,7 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import VueTabGroup from './VueTabGroup.vue';
 import VueTabItem from './VueTabItem.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Data Display/TabGroup',

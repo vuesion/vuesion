@@ -20,9 +20,9 @@
 
 <script setup lang="ts">
 import { computed, useCssModule } from 'vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import type { ShirtSize } from '~/app/components/prop-types';
-import type { Icon } from '~/app/components/icon-options';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import type { ShirtSize } from '@/components/utils/prop-types';
+import type { Icon } from '@/components/utils/icon-options';
 
 // Interface
 interface AvatarProps {

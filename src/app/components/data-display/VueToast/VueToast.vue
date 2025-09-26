@@ -44,39 +44,41 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref, useCssModule } from 'vue';
-import { EventBus } from '~/app/services/EventBus';
-import type { IToast } from '~/interfaces/IToast';
-import { getGUID } from '~/app/components/utils';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueIconInfo from '~/app/components/icons/VueIconInfoCircle.vue';
-import VueIconTimes from '~/app/components/icons/VueIconTimes.vue';
-import VueIconExclamation from '~/app/components/icons/VueIconExclamation.vue';
-import VueIconCheckmark from '~/app/components/icons/VueIconCheckmark.vue';
-import VueIconQuestionMarkCircle from '~/app/components/icons/VueIconQuestionMarkCircle.vue';
-import type { WithRequiredProperty } from '~/app/custom-typings';
+import { EventBus } from '@/services/EventBus';
+import { createId } from '@/components/utils/create-id';
+import type { IToastNotification } from '~/interfaces/IToastNotification';
+import type { WithRequiredProperty } from '@/custom-typings';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueIconInfo from '@/components/icons/VueIconInfoCircle.vue';
+import VueIconTimes from '@/components/icons/VueIconTimes.vue';
+import VueIconExclamation from '@/components/icons/VueIconExclamation.vue';
+import VueIconCheckmark from '@/components/icons/VueIconCheckmark.vue';
+import VueIconQuestionMarkCircle from '@/components/icons/VueIconQuestionMarkCircle.vue';
 
 // Deps
 const $style = useCssModule();
 
 // Data
-const toasts = ref<Array<WithRequiredProperty<IToast, 'type'>>>([]);
-const orderedToasts = computed<Array<WithRequiredProperty<IToast, 'type'>>>(() => toasts.value.slice(0).reverse());
+const toasts = ref<Array<WithRequiredProperty<IToastNotification, 'type'>>>([]);
+const orderedToasts = computed<Array<WithRequiredProperty<IToastNotification, 'type'>>>(() =>
+  toasts.value.slice(0).reverse(),
+);
 
 // Event Handlers
-const onRemoveToast = (n: IToast) => {
+const onRemoveToast = (n: IToastNotification) => {
   toasts.value = toasts.value.filter((toast) => toast.id !== n.id);
 };
 
 // Methods
-const addToast = (n: IToast) => {
-  n.id = getGUID();
+const addToast = (n: IToastNotification) => {
+  n.id = createId();
   n.type = n.type || 'info';
   n.displayTimeInMs = n.displayTimeInMs || 10000;
 
-  toasts.value.push(n as WithRequiredProperty<IToast, 'type'>);
+  toasts.value.push(n as WithRequiredProperty<IToastNotification, 'type'>);
 
   setTimeout(() => onRemoveToast(n), n.displayTimeInMs);
 };

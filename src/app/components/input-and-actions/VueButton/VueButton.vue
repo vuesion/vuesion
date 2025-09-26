@@ -99,11 +99,11 @@
 
 <script setup lang="ts">
 import { computed, useCssModule } from 'vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueLoader from '~/app/components/data-display/VueLoader/VueLoader.vue';
-import type { ButtonStyle, ShirtSize } from '~/app/components/prop-types';
-import { getDomRef } from '~/app/composables/get-dom-ref';
-import type { Icon } from '~/app/components/icon-options';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueLoader from '@/components/data-display/VueLoader/VueLoader.vue';
+import type { ButtonStyle, ShirtSize } from '@/components/utils/prop-types';
+import { getDomRef } from '@/composables/get-dom-ref';
+import type { Icon } from '@/components/utils/icon-options';
 
 // Interface
 interface ButtonProps {

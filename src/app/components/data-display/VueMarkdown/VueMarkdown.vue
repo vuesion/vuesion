@@ -6,7 +6,7 @@
 import { marked } from 'marked';
 import { computed, onBeforeUnmount, onMounted } from 'vue';
 import { useRouter as useVueRouter } from 'vue-router';
-import { getDomRef } from '~/app/composables/get-dom-ref';
+import { getDomRef } from '@/composables/get-dom-ref';
 
 marked.setOptions({
   renderer: new marked.Renderer(),

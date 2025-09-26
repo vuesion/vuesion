@@ -1,9 +1,9 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import { action } from 'storybook/actions';
 import VueRadio from './VueRadio.vue';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Input & Actions/Radio button',

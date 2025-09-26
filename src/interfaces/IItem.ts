@@ -1,4 +1,4 @@
-import type { Icon } from '~/app/components/icon-options';
+import type { Icon } from '@/components/utils/icon-options';
 
 export interface IItem<T = any> {
   [key: string]: any;

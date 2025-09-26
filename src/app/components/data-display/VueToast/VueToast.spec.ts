@@ -1,8 +1,8 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueToast from './VueToast.vue';
-import { addToast } from '~/app/components/utils';
 import { sleep } from '~/test/test-utils';
+import { emitToastNotification } from '@/components/utils/emit-toast-notification';
 
 describe('VueToast.vue', () => {
   let harness: RenderResult;
@@ -14,7 +14,7 @@ describe('VueToast.vue', () => {
   test('displays toast for a user specified time (100ms)', async () => {
     const { queryAllByText } = harness;
 
-    addToast({ title: 'info', text: 'this is a test', displayTimeInMs: 100 });
+    emitToastNotification({ title: 'info', text: 'this is a test', displayTimeInMs: 100 });
     await sleep(10);
 
     expect(queryAllByText('info')).toHaveLength(1);
@@ -29,7 +29,7 @@ describe('VueToast.vue', () => {
   test('displays toast for until user clicks close icon', async () => {
     const { queryAllByText, getByTestId } = harness;
 
-    addToast({ title: 'warning', text: 'this is a test', type: 'success' });
+    emitToastNotification({ title: 'warning', text: 'this is a test', type: 'success' });
     await sleep(50);
 
     expect(queryAllByText('warning')).toHaveLength(1);

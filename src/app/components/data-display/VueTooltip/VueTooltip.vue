@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { ref, useCssModule } from 'vue';
-import type { VerticalDirection } from '~/app/components/prop-types';
+import type { VerticalDirection } from '@/components/utils/prop-types';
 
 // Interface
 interface TooltipProps {

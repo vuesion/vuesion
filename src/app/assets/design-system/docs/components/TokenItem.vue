@@ -17,9 +17,9 @@
 </template>
 
 <script lang="ts">
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
 
 export default {
   name: 'TokenItem',

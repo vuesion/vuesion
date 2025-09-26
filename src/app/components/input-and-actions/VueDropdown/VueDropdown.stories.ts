@@ -1,8 +1,8 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import { action } from 'storybook/actions';
 import VueDropdown from './VueDropdown.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
-import { HorizontalDirectionValues, ShirtSizeValues, VerticalDirectionValues } from '~/app/components/prop-types';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import { HorizontalDirectionValues, ShirtSizeValues, VerticalDirectionValues } from '@/components/utils/prop-types';
 
 export default {
   title: 'Input & Actions/Dropdown',

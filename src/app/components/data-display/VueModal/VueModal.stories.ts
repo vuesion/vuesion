@@ -2,11 +2,11 @@ import { ref } from 'vue';
 import type { StoryFn } from '@storybook/vue3-vite';
 import { action } from 'storybook/actions';
 import VueModal from './VueModal.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueTiles from '~/app/components/layout/VueTiles/VueTiles.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Data Display/Modal',

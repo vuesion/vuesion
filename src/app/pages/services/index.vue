@@ -10,12 +10,12 @@
 
 <script setup lang="ts">
 import { useHead, useI18n } from '#imports';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import ServicesHeroSection from '~/app/components/demo/ServicesHeroSection/ServicesHeroSection.vue';
-import WhySection from '~/app/components/demo/WhySection/WhySection.vue';
-import ServicesSection from '~/app/components/demo/ServicesSection/ServicesSection.vue';
-import ExpertiseSection from '~/app/components/demo/ExpertiseSection/ExpertiseSection.vue';
-import ContactSection from '~/app/components/demo/ContactSection/ContactSection.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import ServicesHeroSection from '@/components/demo/ServicesHeroSection/ServicesHeroSection.vue';
+import WhySection from '@/components/demo/WhySection/WhySection.vue';
+import ServicesSection from '@/components/demo/ServicesSection/ServicesSection.vue';
+import ExpertiseSection from '@/components/demo/ExpertiseSection/ExpertiseSection.vue';
+import ContactSection from '@/components/demo/ContactSection/ContactSection.vue';
 
 // Deps
 const { t } = useI18n();

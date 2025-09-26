@@ -12,7 +12,7 @@ import {
   ShirtSizeValues,
   VerticalDirectionValues,
   HorizontalDirectionValues,
-} from '~/app/components/prop-types';
+} from '@/components/utils/prop-types';
 
 describe('prop-types', () => {
   test('All type values should be present', () => {

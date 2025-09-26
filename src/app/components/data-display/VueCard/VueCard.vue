@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import type { Spacing, SpacingWithDirections } from '~/app/components/prop-types';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import type { Spacing, SpacingWithDirections } from '@/components/utils/prop-types';
 
 // Interface
 interface CardProps {

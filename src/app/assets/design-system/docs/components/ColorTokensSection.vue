@@ -35,11 +35,11 @@
 </template>
 
 <script lang="ts">
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueTiles from '~/app/components/layout/VueTiles/VueTiles.vue';
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
-import TokenItem from '~/app/assets/design-system/docs/components/TokenItem.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import TokenItem from '@/assets/design-system/docs/components/TokenItem.vue';
 
 export default {
   name: 'ColorTokensSection',

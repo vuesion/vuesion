@@ -19,14 +19,14 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueIconExclamation from '~/app/components/icons/VueIconExclamation.vue';
-import VueIconInfo from '~/app/components/icons/VueIconInfoCircle.vue';
-import VueIconCheckmark from '~/app/components/icons/VueIconCheckmark.vue';
-import VueIconQuestionMarkCircle from '~/app/components/icons/VueIconQuestionMarkCircle.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueIconExclamation from '@/components/icons/VueIconExclamation.vue';
+import VueIconInfo from '@/components/icons/VueIconInfoCircle.vue';
+import VueIconCheckmark from '@/components/icons/VueIconCheckmark.vue';
+import VueIconQuestionMarkCircle from '@/components/icons/VueIconQuestionMarkCircle.vue';
 
 // Interface
 interface AlertProps {

@@ -45,13 +45,13 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import type { IItem } from '~/interfaces/IItem';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
-import VueIconCheckmark from '~/app/components/icons/VueIconCheckmark.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueIconCheckmark from '@/components/icons/VueIconCheckmark.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
 
 // Interface
 export interface StepperProps {

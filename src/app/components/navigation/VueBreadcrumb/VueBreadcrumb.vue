@@ -23,8 +23,8 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
 import type { IItem } from '~/interfaces/IItem';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueIconHome from '~/app/components/icons/VueIconHome.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueIconHome from '@/components/icons/VueIconHome.vue';
 
 // Interface
 defineProps<{ items: Array<IItem> }>();

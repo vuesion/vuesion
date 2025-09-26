@@ -17,9 +17,10 @@ import type {
   Spacing,
   SpacingWithDirections,
   VerticalAlignment,
-} from '~/app/components/prop-types';
-import { getResponsiveCssClasses, parseResponsivePropValue } from '~/app/components/utils';
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
+} from '@/components/utils/prop-types';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
+import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
 
 // Interface
 interface StackProps {
@@ -38,7 +39,7 @@ const props = withDefaults(defineProps<StackProps>(), {
 });
 
 // Data
-const responsiveSpace = computed(() => parseResponsivePropValue(props.space));
+const responsiveSpace = computed(() => mapPropToBreakpoints(props.space));
 const cssClasses = computed(() => [...getResponsiveCssClasses(null, responsiveSpace.value, 'gap')]);
 </script>
 

@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import { ref, onMounted, useCssModule } from 'vue';
 import { useEventListener } from '@vueuse/core';
-import VueIconArrowUp from '~/app/components/icons/VueIconArrowUp.vue';
+import VueIconArrowUp from '@/components/icons/VueIconArrowUp.vue';
 
 // Interface
 defineProps({

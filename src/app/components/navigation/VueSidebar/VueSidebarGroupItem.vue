@@ -55,12 +55,12 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import type { Icon } from '~/app/components/icon-options';
-import VueBadge from '~/app/components/data-display/VueBadge/VueBadge.vue';
-import type { BadgeStatus } from '~/app/components/prop-types';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import type { Icon } from '@/components/utils/icon-options';
+import VueBadge from '@/components/data-display/VueBadge/VueBadge.vue';
+import type { BadgeStatus } from '@/components/utils/prop-types';
 
 // Interface
 interface SidebarGroupItemProps {

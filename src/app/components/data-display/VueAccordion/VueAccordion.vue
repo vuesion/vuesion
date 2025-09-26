@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import type { Ref } from 'vue';
 import { onBeforeUnmount, provide, shallowRef, ref } from 'vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
 
 // Interface
 interface AccordionItem {

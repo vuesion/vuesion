@@ -12,18 +12,18 @@
 <script setup lang="ts">
 /* istanbul ignore file */
 import { ref, useCssModule, watch } from 'vue';
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
-import VueTiles from '~/app/components/layout/VueTiles/VueTiles.vue';
-import { iconOptions } from '~/app/components/icon-options';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import { type Icon, iconOptions } from '@/components/utils/icon-options';
 
 const props = defineProps({
   showIcons: { type: Boolean, default: true },
 });
 
 const $style = useCssModule();
-const icons = ref<Array<string>>([]);
+const icons = ref<Array<Icon>>([]);
 const loadIcons = () => {
-  icons.value = iconOptions;
+  icons.value = [...iconOptions];
 };
 loadIcons();
 

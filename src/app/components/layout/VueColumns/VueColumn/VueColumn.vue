@@ -6,9 +6,15 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { HorizontalAlignment, SpacingWithDirections, VerticalAlignment, Width } from '~/app/components/prop-types';
-import { getResponsiveCssClasses, parseResponsivePropValue } from '~/app/components/utils';
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
+import type {
+  HorizontalAlignment,
+  SpacingWithDirections,
+  VerticalAlignment,
+  Width,
+} from '@/components/utils/prop-types';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
+import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
 
 // Interface
 interface ColumnProps {
@@ -31,7 +37,7 @@ const props = withDefaults(defineProps<ColumnProps>(), {
 });
 
 // Data
-const responsiveWidth = computed(() => parseResponsivePropValue(props.width));
+const responsiveWidth = computed(() => mapPropToBreakpoints(props.width));
 const cssClasses = computed(() => [
   'flex',
   'no-wrap',

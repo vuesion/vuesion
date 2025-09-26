@@ -115,17 +115,17 @@
 import { computed, useCssModule, useSlots, watch } from 'vue';
 import { type RuleExpression, useField } from 'vee-validate';
 import _debounce from 'lodash-es/debounce.js';
-import { getDomRef } from '~/app/composables/get-dom-ref';
-import type { ShirtSize } from '~/app/components/prop-types';
-import { useIntersectionObserver } from '~/app/composables/use-intersection-observer';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import type { Icon } from '~/app/components/icon-options';
-import VuePopover from '~/app/components/data-display/VuePopover/VuePopover.vue';
-import VueIconInfoCircle from '~/app/components/icons/VueIconInfoCircle.vue';
+import { getDomRef } from '@/composables/get-dom-ref';
+import type { ShirtSize } from '@/components/utils/prop-types';
+import { useIntersectionObserver } from '@/composables/use-intersection-observer';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import type { Icon } from '@/components/utils/icon-options';
+import VuePopover from '@/components/data-display/VuePopover/VuePopover.vue';
+import VueIconInfoCircle from '@/components/icons/VueIconInfoCircle.vue';
 import { autoUpdate, flip, offset, useFloating } from '@floating-ui/vue';
 
 // Interface

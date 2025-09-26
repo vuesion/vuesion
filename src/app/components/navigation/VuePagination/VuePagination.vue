@@ -96,14 +96,14 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import type { IItem } from '~/interfaces/IItem';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
-import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
-import VueSelect from '~/app/components/input-and-actions/VueSelect/VueSelect.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import type { ButtonStyle } from '~/app/components/prop-types';
-import VueInput from '~/app/components/input-and-actions/VueInput/VueInput.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import type { ButtonStyle } from '@/components/utils/prop-types';
+import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
 
 // Interface
 interface PaginationProps {

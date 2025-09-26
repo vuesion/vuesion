@@ -24,12 +24,12 @@
 <script setup lang="ts">
 import { nextTick, ref, useCssModule } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import { getDomRef } from '~/app/composables/get-dom-ref';
+import { getDomRef } from '@/composables/get-dom-ref';
 import type { IItem } from '~/interfaces/IItem';
-import type { ShirtSize } from '~/app/components/prop-types';
-import VueMenu from '~/app/components/data-display/VueMenu/VueMenu.vue';
-import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
-import VueCollapse from '~/app/components/behavior/VueCollapse/VueCollapse.vue';
+import type { ShirtSize } from '@/components/utils/prop-types';
+import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
 import { autoUpdate, flip, offset, useFloating } from '@floating-ui/vue';
 
 // Interface

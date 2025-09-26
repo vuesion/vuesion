@@ -29,9 +29,9 @@
 <script setup lang="ts">
 import type { Ref } from 'vue';
 import { ref, provide, onBeforeUnmount, shallowRef, useCssModule } from 'vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
-import VueBadge from '~/app/components/data-display/VueBadge/VueBadge.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueBadge from '@/components/data-display/VueBadge/VueBadge.vue';
 
 // Interface
 interface TabItem {

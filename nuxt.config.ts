@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   alias: {
     '~~': path.resolve(__dirname, './'),
     '~': path.resolve(__dirname, './src'),
+    '@': path.resolve(__dirname, './src/app'),
     assets: path.resolve(__dirname, './src/app/assets'),
     public: path.resolve(__dirname, './src/public'),
   },

@@ -1,9 +1,9 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import VuePagination from './VuePagination.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 
 export default {
   components: { VueText },

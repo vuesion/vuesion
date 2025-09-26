@@ -19,9 +19,9 @@
 <script setup lang="ts">
 import { useCssModule } from 'vue';
 import type { IItem } from '~/interfaces/IItem';
-import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
-import type { ShirtSize } from '~/app/components/prop-types';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import type { ShirtSize } from '@/components/utils/prop-types';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
 
 // Interface
 interface ToggleButtonProps {

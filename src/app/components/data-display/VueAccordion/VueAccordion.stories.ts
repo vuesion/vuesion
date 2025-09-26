@@ -1,9 +1,9 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import VueAccordion from './VueAccordion.vue';
 import VueAccordionItem from './VueAccordionItem.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueToggle from '~/app/components/input-and-actions/VueToggle/VueToggle.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueToggle from '@/components/input-and-actions/VueToggle/VueToggle.vue';
 
 export default {
   title: 'Data Display/Accordion',

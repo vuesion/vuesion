@@ -29,14 +29,14 @@
 <script setup lang="ts">
 import type { Ref } from 'vue';
 import { inject, ref, onMounted, useCssModule } from 'vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueIconChevronRight from '~/app/components/icons/VueIconChevronRight.vue';
-import VueIconChevronUp from '~/app/components/icons/VueIconChevronUp.vue';
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
-import VueCollapse from '~/app/components/behavior/VueCollapse/VueCollapse.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueIconChevronRight from '@/components/icons/VueIconChevronRight.vue';
+import VueIconChevronUp from '@/components/icons/VueIconChevronUp.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 
 // Interface
 const props = defineProps({

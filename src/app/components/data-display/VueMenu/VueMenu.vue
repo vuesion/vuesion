@@ -49,9 +49,9 @@
 import { computed, ref, useCssModule } from 'vue';
 import debounce from 'lodash-es/debounce.js';
 import type { IItem } from '~/interfaces/IItem';
-import { getDomRef } from '~/app/composables/get-dom-ref';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
+import { getDomRef } from '@/composables/get-dom-ref';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
 
 // Interface
 interface MenuProps {

@@ -6,13 +6,11 @@
 
 <script setup lang="ts">
 import { computed, useCssModule, useAttrs } from 'vue';
-import type { SpacingWithDirections, HorizontalAlignment, VerticalAlignment } from '~/app/components/prop-types';
-import {
-  getCssSpacingClasses,
-  getResponsiveCssClasses,
-  parseCssSpacingProp,
-  parseResponsivePropValue,
-} from '~/app/components/utils';
+import type { SpacingWithDirections, HorizontalAlignment, VerticalAlignment } from '@/components/utils/prop-types';
+import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
+import { parseSpacingShorthand } from '@/components/utils/parse-spacing-shorthand';
+import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
+import { getCssSpacingClasses } from '@/components/utils/get-css-spacing-classes';
 
 // Interface
 interface BoxProps {
@@ -33,17 +31,17 @@ const $style = useCssModule();
 const attrs = useAttrs();
 
 // Data
-const responsivePaddings = computed(() => parseResponsivePropValue(props.padding));
-const responsiveAlignX = computed(() => parseResponsivePropValue(props.alignX));
-const responsiveAlignY = computed(() => parseResponsivePropValue(props.alignY));
+const responsivePaddings = computed(() => mapPropToBreakpoints(props.padding));
+const responsiveAlignX = computed(() => mapPropToBreakpoints(props.alignX));
+const responsiveAlignY = computed(() => mapPropToBreakpoints(props.alignY));
 const hasAlignment = computed(() => props.alignX !== null || props.alignY !== null);
 const cssClasses = computed(() => {
   let classes = [
-    ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.phone), 'p'),
-    ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.tabletPortrait), 'p', 'tp'),
-    ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.tabletLandscape), 'p', 'tl'),
-    ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.smallDesktop), 'p', 'sd'),
-    ...getCssSpacingClasses(null, parseCssSpacingProp(responsivePaddings.value.largeDesktop), 'p', 'ld'),
+    ...getCssSpacingClasses(null, parseSpacingShorthand(responsivePaddings.value.phone), 'p'),
+    ...getCssSpacingClasses(null, parseSpacingShorthand(responsivePaddings.value.tabletPortrait), 'p', 'tp'),
+    ...getCssSpacingClasses(null, parseSpacingShorthand(responsivePaddings.value.tabletLandscape), 'p', 'tl'),
+    ...getCssSpacingClasses(null, parseSpacingShorthand(responsivePaddings.value.smallDesktop), 'p', 'sd'),
+    ...getCssSpacingClasses(null, parseSpacingShorthand(responsivePaddings.value.largeDesktop), 'p', 'ld'),
   ];
   if (hasAlignment.value === true) {
     if (attrs.class) {

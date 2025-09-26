@@ -43,8 +43,9 @@
 
 <script setup lang="ts">
 import { computed, useCssModule } from 'vue';
-import { getResponsiveCssClasses, parseResponsivePropValue } from '~/app/components/utils';
-import type { FontWeight, Alignment, TextColor, TextStyle } from '~/app/components/prop-types';
+import type { FontWeight, Alignment, TextColor, TextStyle } from '@/components/utils/prop-types';
+import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
+import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
 
 // Interface
 interface TextProps {
@@ -78,7 +79,7 @@ const props = withDefaults(defineProps<TextProps>(), {
 const $style = useCssModule();
 
 // Data
-const responsiveAlignments = computed(() => parseResponsivePropValue(props.alignX));
+const responsiveAlignments = computed(() => mapPropToBreakpoints(props.alignX));
 const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiveAlignments.value, 'align'));
 </script>
 

@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
 </script>
 
 <style lang="scss" module>

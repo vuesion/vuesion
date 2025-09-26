@@ -2,9 +2,9 @@ import { ref } from 'vue';
 import type { StoryFn } from '@storybook/vue3-vite';
 import { getIntInRange } from '~/utils/random-numbers';
 import VueMasonry from './VueMasonry.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueSlider from '~/app/components/input-and-actions/VueSlider/VueSlider.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueSlider from '@/components/input-and-actions/VueSlider/VueSlider.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Foundation/Layout',

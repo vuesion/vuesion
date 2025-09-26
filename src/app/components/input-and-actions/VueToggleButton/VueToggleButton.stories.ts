@@ -1,10 +1,10 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import VueToggleButton from './VueToggleButton.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
-import { ShirtSizeValues } from '~/app/components/prop-types';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import { ShirtSizeValues } from '@/components/utils/prop-types';
 
 export default {
   title: 'Input & Actions/ToggleButton',

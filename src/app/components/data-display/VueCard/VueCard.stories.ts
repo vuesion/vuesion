@@ -1,15 +1,15 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import VueCard from './VueCard.vue';
 import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
-import VueTiles from '~/app/components/layout/VueTiles/VueTiles.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueAvatar from '~/app/components/data-display/VueAvatar/VueAvatar.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
-import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
+import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueAvatar from '@/components/data-display/VueAvatar/VueAvatar.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 
 export default {
   title: 'Data Display/Card',

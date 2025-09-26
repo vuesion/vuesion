@@ -24,12 +24,12 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import type { SpacingWithDirections } from '~/app/components/prop-types';
-import VueModal from '~/app/components/data-display/VueModal/VueModal.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
-import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
+import type { SpacingWithDirections } from '@/components/utils/prop-types';
+import VueModal from '@/components/data-display/VueModal/VueModal.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 
 // Interface
 interface ConfirmModalProps {

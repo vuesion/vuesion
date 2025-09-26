@@ -6,9 +6,10 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { Spacing, SpacingWithDirections } from '~/app/components/prop-types';
-import { getResponsiveCssClasses, parseResponsivePropValue } from '~/app/components/utils';
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
+import type { Spacing, SpacingWithDirections } from '@/components/utils/prop-types';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
+import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
 
 type ColumnRange = 'none' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
@@ -29,9 +30,9 @@ const props = withDefaults(defineProps<TilesProps>(), {
   horizontalSpace: null,
   columns: () => [1, 2, 3, 4],
 });
-const responsiveVerticalSpace = computed(() => parseResponsivePropValue(props.verticalSpace || props.space));
-const responsiveHorizontalSpace = computed(() => parseResponsivePropValue(props.horizontalSpace || props.space));
-const responsiveColumns = computed(() => parseResponsivePropValue(props.columns));
+const responsiveVerticalSpace = computed(() => mapPropToBreakpoints(props.verticalSpace || props.space));
+const responsiveHorizontalSpace = computed(() => mapPropToBreakpoints(props.horizontalSpace || props.space));
+const responsiveColumns = computed(() => mapPropToBreakpoints(props.columns));
 const cssClasses = computed(() => [
   'grid',
   ...getResponsiveCssClasses(null, responsiveVerticalSpace.value, 'gap-y'),

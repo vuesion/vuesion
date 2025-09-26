@@ -34,12 +34,12 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import type { Spacing } from '~/app/components/prop-types';
-import type { Icon } from '~/app/components/icon-options';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import type { Spacing } from '@/components/utils/prop-types';
+import type { Icon } from '@/components/utils/icon-options';
 
 // Interface
 interface SidebarGroupProps {

@@ -140,7 +140,6 @@ export const decorators = [
     themes: {
       light: 'light',
       dark: 'dark',
-      halloween: 'halloween',
     },
     defaultTheme: 'light',
   }),

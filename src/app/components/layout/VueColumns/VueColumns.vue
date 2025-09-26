@@ -11,13 +11,11 @@ import type {
   Spacing,
   SpacingWithDirections,
   VerticalAlignment,
-} from '~/app/components/prop-types';
-import {
-  getFlexDirectionForBreakpoint,
-  getResponsiveCssClasses,
-  parseResponsivePropValue,
-} from '~/app/components/utils';
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
+} from '@/components/utils/prop-types';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
+import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
+import { getFlexDirectionForBreakpoint } from '@/components/utils/get-flex-direction-for-breakpoint';
 
 // Interface
 interface ColumnsProps {
@@ -48,8 +46,8 @@ const props = withDefaults(defineProps<ColumnsProps>(), {
 });
 
 // Data
-const responsiveSpace = computed(() => parseResponsivePropValue(props.space));
-const responsiveReverse = computed(() => parseResponsivePropValue(props.reverse, true));
+const responsiveSpace = computed(() => mapPropToBreakpoints(props.space));
+const responsiveReverse = computed(() => mapPropToBreakpoints(props.reverse, true));
 const cssClasses = computed(() => [
   'flex',
   ...getResponsiveCssClasses(null, responsiveSpace.value, 'gap'),

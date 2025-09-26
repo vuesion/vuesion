@@ -1,7 +1,7 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import VueAvatar from './VueAvatar.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
-import { ShirtSizeValues } from '~/app/components/prop-types';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import { ShirtSizeValues } from '@/components/utils/prop-types';
 
 export default {
   title: 'Data Display/Avatar',

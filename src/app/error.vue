@@ -17,10 +17,10 @@
 
 <script setup lang="ts">
 import { useHead } from '#imports';
-import VueContentBlock from '~/app/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
+import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 
 const props = defineProps({
   error: {

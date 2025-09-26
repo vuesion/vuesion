@@ -41,7 +41,7 @@
 import { ref, useCssModule } from 'vue';
 import { arrow, autoUpdate, flip, offset, type Placement, useFloating } from '@floating-ui/vue';
 import { onClickOutside } from '@vueuse/core';
-import { getDomRef } from '~/app/composables/get-dom-ref';
+import { getDomRef } from '@/composables/get-dom-ref';
 
 interface PopoverProps {
   placement?: Placement;

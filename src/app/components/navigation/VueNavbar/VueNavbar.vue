@@ -41,13 +41,13 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueIconMenu from '~/app/components/icons/VueIconMenu.vue';
-import VueAvatar from '~/app/components/data-display/VueAvatar/VueAvatar.vue';
-import VueDropdown from '~/app/components/input-and-actions/VueDropdown/VueDropdown.vue';
-import VueContentBlock from '~/app/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueIconMenu from '@/components/icons/VueIconMenu.vue';
+import VueAvatar from '@/components/data-display/VueAvatar/VueAvatar.vue';
+import VueDropdown from '@/components/input-and-actions/VueDropdown/VueDropdown.vue';
+import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
 import type { IItem } from '~/interfaces/IItem';
 
 // Interface

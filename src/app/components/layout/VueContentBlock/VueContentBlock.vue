@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
-import type { SpacingWithDirections } from '~/app/components/prop-types';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import type { SpacingWithDirections } from '@/components/utils/prop-types';
 
 withDefaults(defineProps<{ as?: string; padding?: SpacingWithDirections | Array<SpacingWithDirections> }>(), {
   as: 'div',

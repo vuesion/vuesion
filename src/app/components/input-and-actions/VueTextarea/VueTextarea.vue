@@ -57,12 +57,12 @@
 import { useCssModule, watch } from 'vue';
 import { useField } from 'vee-validate';
 import _debounce from 'lodash-es/debounce.js';
-import { getDomRef } from '~/app/composables/get-dom-ref';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
-import VueIconInfoCircle from '~/app/components/icons/VueIconInfoCircle.vue';
-import VuePopover from '~/app/components/data-display/VuePopover/VuePopover.vue';
+import { getDomRef } from '@/composables/get-dom-ref';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueIconInfoCircle from '@/components/icons/VueIconInfoCircle.vue';
+import VuePopover from '@/components/data-display/VuePopover/VuePopover.vue';
 
 // Interface
 interface TextareaProps {

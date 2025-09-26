@@ -11,13 +11,13 @@
 
 <script setup lang="ts">
 import { computed, useHead, useI18n } from '#imports';
-import LandingPageHeroSection from '~/app/components/demo/LandingPageHeroSection/LandingPageHeroSection.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import KeyFeaturesSection from '~/app/components/demo/KeyFeaturesSection/KeyFeaturesSection.vue';
-import BenefitsSection from '~/app/components/demo/BenefitsSection/BenefitsSection.vue';
-import TestimonialsSection from '~/app/components/demo/TestimonialsSection/TestimonialsSection.vue';
-import SupportSection from '~/app/components/demo/SupportSection/SupportSection.vue';
-import VuesionPlusSection from '~/app/components/demo/VuesionPlusSection/VuesionPlusSection.vue';
+import LandingPageHeroSection from '@/components/demo/LandingPageHeroSection/LandingPageHeroSection.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import KeyFeaturesSection from '@/components/demo/KeyFeaturesSection/KeyFeaturesSection.vue';
+import BenefitsSection from '@/components/demo/BenefitsSection/BenefitsSection.vue';
+import TestimonialsSection from '@/components/demo/TestimonialsSection/TestimonialsSection.vue';
+import SupportSection from '@/components/demo/SupportSection/SupportSection.vue';
+import VuesionPlusSection from '@/components/demo/VuesionPlusSection/VuesionPlusSection.vue';
 
 // Deps
 const { t } = useI18n();

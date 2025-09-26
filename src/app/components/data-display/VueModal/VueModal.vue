@@ -22,11 +22,11 @@
 import type { WatchStopHandle } from 'vue';
 import { computed, ref, useCssModule, watch } from 'vue';
 import { onClickOutside, onKeyDown } from '@vueuse/core';
-import { useBackdrop } from '~/app/composables/use-backdrop';
-import { getDomRef } from '~/app/composables/get-dom-ref';
-import VueIconTimes from '~/app/components/icons/VueIconTimes.vue';
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
-import type { SpacingWithDirections } from '~/app/components/prop-types';
+import { useBackdrop } from '@/composables/use-backdrop';
+import { getDomRef } from '@/composables/get-dom-ref';
+import VueIconTimes from '@/components/icons/VueIconTimes.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import type { SpacingWithDirections } from '@/components/utils/prop-types';
 
 // Interface
 interface ModalProps {

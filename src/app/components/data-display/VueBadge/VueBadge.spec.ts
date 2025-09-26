@@ -1,7 +1,7 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueBadge from './VueBadge.vue';
-import { BadgeStatusValues } from '~/app/components/prop-types';
+import { BadgeStatusValues } from '@/components/utils/prop-types';
 
 describe('VueBadge.vue', () => {
   let harness: RenderResult;

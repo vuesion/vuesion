@@ -1,6 +1,6 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import ServicesHeroSection from './ServicesHeroSection.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
   title: 'Demo/ServicesHeroSection',

@@ -31,11 +31,11 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import VueContentBlock from '~/app/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
+import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
 
 // Deps
 const $style = useCssModule();

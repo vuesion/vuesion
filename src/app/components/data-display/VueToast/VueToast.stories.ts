@@ -1,9 +1,9 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import VueToast from './VueToast.vue';
-import { addToast } from '~/app/components/utils';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
-import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import { emitToastNotification } from '@/components/utils/emit-toast-notification';
 
 export default {
   title: 'Data Display/Toast',
@@ -24,20 +24,20 @@ const Template: StoryFn = (args) => ({
     return {
       args,
       onSuccessToastClick() {
-        addToast({
+        emitToastNotification({
           title: 'This is a success message!',
           type: 'success',
           text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
         });
       },
       onInfoToastClick() {
-        addToast({
+        emitToastNotification({
           title: 'This is an information!',
           text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
         });
       },
       onWarningToastClick() {
-        addToast({
+        emitToastNotification({
           title: 'This is a warning!',
           text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
           type: 'warning',
@@ -45,7 +45,7 @@ const Template: StoryFn = (args) => ({
         });
       },
       onDangerToastClick() {
-        addToast({
+        emitToastNotification({
           title: 'This is an error!',
           text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
           type: 'danger',

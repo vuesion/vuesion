@@ -147,21 +147,21 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { useForm } from 'vee-validate';
-import { addToast } from '~/app/components/utils';
-import VueInput from '~/app/components/input-and-actions/VueInput/VueInput.vue';
-import VueSelect from '~/app/components/input-and-actions/VueSelect/VueSelect.vue';
-import VueCheckbox from '~/app/components/input-and-actions/VueCheckbox/VueCheckbox.vue';
-import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueTiles from '~/app/components/layout/VueTiles/VueTiles.vue';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
-import VueCard from '~/app/components/data-display/VueCard/VueCard.vue';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueToggle from '~/app/components/input-and-actions/VueToggle/VueToggle.vue';
-import VueTextarea from '~/app/components/input-and-actions/VueTextarea/VueTextarea.vue';
+import { emitToastNotification } from '@/components/utils/emit-toast-notification';
 import type { IItem } from '~/interfaces/IItem';
+import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
+import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
+import VueCheckbox from '@/components/input-and-actions/VueCheckbox/VueCheckbox.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueCard from '@/components/data-display/VueCard/VueCard.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueToggle from '@/components/input-and-actions/VueToggle/VueToggle.vue';
+import VueTextarea from '@/components/input-and-actions/VueTextarea/VueTextarea.vue';
 
 // Interface
 interface FormExampleModel {
@@ -227,7 +227,7 @@ const onSubmit = () => {
   setTimeout(() => {
     isLoading.value = false;
 
-    addToast({
+    emitToastNotification({
       title: 'Data has been saved!',
       text: 'Have a look at the console!',
       type: 'success',

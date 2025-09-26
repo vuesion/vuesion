@@ -1,7 +1,7 @@
 import { describe, beforeEach, expect, test } from 'vitest';
 import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueCarousel from './VueCarousel.vue';
-import type { ICarouselImage } from '~/app/components/data-display/VueCarousel/ICarouselImage';
+import type { ICarouselImage } from '@/components/data-display/VueCarousel/ICarouselImage';
 import { sleep } from '~/test/test-utils';
 
 const images: ICarouselImage[] = [

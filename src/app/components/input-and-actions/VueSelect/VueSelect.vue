@@ -95,21 +95,21 @@ import { computed, nextTick, ref, useCssModule } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { type RuleExpression, useField } from 'vee-validate';
 import type { IItem } from '~/interfaces/IItem';
-import { getDomRef } from '~/app/composables/get-dom-ref';
-import type { BadgeStatus, ShirtSize } from '~/app/components/prop-types';
-import VueIconChevronDown from '~/app/components/icons/VueIconChevronDown.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueCollapse from '~/app/components/behavior/VueCollapse/VueCollapse.vue';
-import VueMenu from '~/app/components/data-display/VueMenu/VueMenu.vue';
-import VueBadge from '~/app/components/data-display/VueBadge/VueBadge.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
-import VueIconInfoCircle from '~/app/components/icons/VueIconInfoCircle.vue';
-import VuePopover from '~/app/components/data-display/VuePopover/VuePopover.vue';
+import { getDomRef } from '@/composables/get-dom-ref';
+import type { BadgeStatus, ShirtSize } from '@/components/utils/prop-types';
+import VueIconChevronDown from '@/components/icons/VueIconChevronDown.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
+import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
+import VueBadge from '@/components/data-display/VueBadge/VueBadge.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueIconInfoCircle from '@/components/icons/VueIconInfoCircle.vue';
+import VuePopover from '@/components/data-display/VuePopover/VuePopover.vue';
 import { autoUpdate, flip, offset, useFloating } from '@floating-ui/vue';
-import type { Icon } from '~/app/components/icon-options';
+import type { Icon } from '@/components/utils/icon-options';
 
 // Interface
 interface SelectProps {

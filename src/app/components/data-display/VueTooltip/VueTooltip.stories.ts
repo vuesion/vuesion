@@ -1,11 +1,11 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import VueTooltip from './VueTooltip.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueIconInfo from '~/app/components/icons/VueIconInfoCircle.vue';
-import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
-import { VerticalDirectionValues } from '~/app/components/prop-types';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueIconInfo from '@/components/icons/VueIconInfoCircle.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
+import { VerticalDirectionValues } from '@/components/utils/prop-types';
 
 export default {
   title: 'Data Display/Tooltip',

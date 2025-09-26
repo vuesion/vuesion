@@ -1,4 +1,4 @@
-export interface IToast {
+export interface IToastNotification {
   id?: number | string;
   title: string;
   text: string;

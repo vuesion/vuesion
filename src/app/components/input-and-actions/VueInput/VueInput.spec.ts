@@ -6,7 +6,7 @@ import { defineRule } from 'vee-validate';
 import { email, required } from '@vee-validate/rules';
 import { sleep } from '~/test/test-utils';
 import VueInput from './VueInput.vue';
-import VueCollapse from '~/app/components/behavior/VueCollapse/VueCollapse.vue';
+import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
 
 defineRule('required', required);
 defineRule('email', email);

@@ -137,18 +137,18 @@
 
 <script setup lang="ts">
 import { computed, useCssModule } from 'vue';
-import VueBox from '~/app/components/layout/VueBox/VueBox.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueSelect from '~/app/components/input-and-actions/VueSelect/VueSelect.vue';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
-import VueIconTwitter from '~/app/components/icons/VueIconTwitter.vue';
-import VueIconGithub from '~/app/components/icons/VueIconGithub.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueIconTwitter from '@/components/icons/VueIconTwitter.vue';
+import VueIconGithub from '@/components/icons/VueIconGithub.vue';
 import type { IItem } from '~/interfaces/IItem';
-import VueContentBlock from '~/app/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueIconVuesion from '~/app/components/icons/VueIconVuesion.vue';
+import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueIconVuesion from '@/components/icons/VueIconVuesion.vue';
 
 // Interface
 interface FooterProps {
