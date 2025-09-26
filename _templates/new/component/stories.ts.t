@@ -3,10 +3,10 @@ to: "src/app/components/<%= folder %>/<%= name %>/<%= name %>.stories.ts"
 ---
 import type { StoryFn } from '@storybook/vue3-vite';
 import <%= name %> from './<%= name %>.vue';
-import ComponentDocs from '~/app/assets/design-system/docs/components/ComponentDocs.vue';
+import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
-  title: '<%= h.inflection.humanize(folder) %>/<%= name %>',
+  title: '<%= h.inflection.titleize(folder.replace(/-/g, " ")) %>/<%= name.replace(/Vue/g, "") %>',
   component: <%= name %>,
   argTypes: {},
 };
@@ -21,8 +21,8 @@ const Template: StoryFn = (args) => ({
     return { args };
   },
   template: `<component-docs
-      component-name="<%= name %>"
-      usage="TBD"
+      component-name="<%= name.replace(/Vue/g, "") %>"
+      usage="TODO: describe component usage."
   >
       <<%= h.inflection.dasherize(h.inflection.underscore(name)) %> v-bind="args" />
   </component-docs>`,

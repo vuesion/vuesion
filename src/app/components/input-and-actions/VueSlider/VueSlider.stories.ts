@@ -5,7 +5,7 @@ import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 
 export default {
-  title: 'Input & Actions/Slider',
+  title: 'Input and Actions/Slider',
   component: VueSlider,
   argTypes: {},
 };

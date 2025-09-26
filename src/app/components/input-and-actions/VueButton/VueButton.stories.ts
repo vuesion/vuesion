@@ -4,7 +4,7 @@ import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.
 import { ButtonStyleValues, ShirtSizeValues } from '@/components/utils/prop-types';
 
 export default {
-  title: 'Input & Actions/Button',
+  title: 'Input and Actions/Button',
   component: VueButton,
   argTypes: {
     as: {

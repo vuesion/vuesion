@@ -5,7 +5,7 @@ import VueText from '@/components/typography/VueText/VueText.vue';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
-  title: 'Input & Actions/Checkbox',
+  title: 'Input and Actions/Checkbox',
   component: VueCheckbox,
   argTypes: {
     modelValue: { table: { disable: true } },

@@ -8,7 +8,6 @@ to: "src/app/components/<%= folder %>/<%= name %>/<%= name %>.vue"
 <script setup lang="ts">
 import { useCssModule } from 'vue';
 
-// Deps
 const $style = useCssModule();
 </script>
 

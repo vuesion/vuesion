@@ -7,7 +7,7 @@ import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.
 import { ShirtSizeValues } from '@/components/utils/prop-types';
 
 export default {
-  title: 'Input & Actions/ToggleButton',
+  title: 'Input and Actions/ToggleButton',
   component: VueToggleButton,
   argTypes: {
     modelValue: { table: { disable: true } },

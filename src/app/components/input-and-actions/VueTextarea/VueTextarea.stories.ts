@@ -7,7 +7,7 @@ import VueText from '@/components/typography/VueText/VueText.vue';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
-  title: 'Input & Actions/Textarea',
+  title: 'Input and Actions/Textarea',
   component: VueTextarea,
   argTypes: {},
 };

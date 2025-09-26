@@ -6,7 +6,7 @@ import VueText from '@/components/typography/VueText/VueText.vue';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
-  title: 'Input & Actions/Radio button',
+  title: 'Input and Actions/Radio button',
   component: VueRadio,
   argTypes: {
     modelValue: { table: { disable: true } },

@@ -4,13 +4,10 @@ import VueSelect from './VueSelect.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
-import {
-  BadgeStatusValues,
-  ShirtSizeValues,
-} from '@/components/utils/prop-types';
+import { BadgeStatusValues, ShirtSizeValues } from '@/components/utils/prop-types';
 
 export default {
-  title: 'Input & Actions/Select',
+  title: 'Input and Actions/Select',
   component: VueSelect,
   argTypes: {
     modelValue: { table: { disable: true } },

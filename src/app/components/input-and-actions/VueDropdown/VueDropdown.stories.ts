@@ -5,7 +5,7 @@ import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.
 import { HorizontalDirectionValues, ShirtSizeValues, VerticalDirectionValues } from '@/components/utils/prop-types';
 
 export default {
-  title: 'Input & Actions/Dropdown',
+  title: 'Input and Actions/Dropdown',
   component: VueDropdown,
   argTypes: {
     modelValue: { table: { disable: true } },

@@ -5,7 +5,7 @@ import VueText from '@/components/typography/VueText/VueText.vue';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
-  title: 'Input & Actions/Toggle',
+  title: 'Input and Actions/Toggle',
   component: VueToggle,
   argTypes: {
     modelValue: { table: { disable: true } },

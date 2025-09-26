@@ -9,7 +9,7 @@ import VueStack from '@/components/layout/VueStack/VueStack.vue';
 
 export default {
   components: { VueStack },
-  title: 'Input & Actions/Input',
+  title: 'Input and Actions/Input',
   component: VueInput,
   argTypes: {
     modelValue: { table: { disable: true } },
