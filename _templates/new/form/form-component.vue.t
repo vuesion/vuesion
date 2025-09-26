@@ -1,5 +1,5 @@
 ---
-to: "src/components/forms/<%= h.capitalize(name) %>Form/<%= h.capitalize(name) %>Form.vue"
+to: "src/app/components/forms/<%= h.capitalize(name) %>Form/<%= h.capitalize(name) %>Form.vue"
 unless_exists: true
 ---
 <template>
@@ -30,13 +30,13 @@ unless_exists: true
 
 <script setup lang="ts">
 import { computed, ref, type UnwrapRef, useCssModule, watch } from 'vue';
+import { useForm } from 'vee-validate';
 import type { I<%= h.capitalize(name) %> } from '~/interfaces/I<%= h.capitalize(name) %>';
 import type { I<%= h.capitalize(name) %>FormModel } from '~/interfaces/forms/<%= h.capitalize(name) %>FormModel';
-import VueStack from '~/components/layout/VueStack/VueStack.vue';
-import VueInput from '~/components/input-and-actions/VueInput/VueInput.vue';
-import VueButton from '~/components/input-and-actions/VueButton/VueButton.vue';
-import VueInline from '~/components/layout/VueInline/VueInline.vue';
-import { useForm } from 'vee-validate';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
 
 // Interface
 interface <%= h.capitalize(name) %>FormProps {

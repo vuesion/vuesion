@@ -1,5 +1,5 @@
 ---
-to: "src/components/forms/<%= h.capitalize(name) %>Form/<%= h.capitalize(name) %>Form.spec.ts"
+to: "src/app/components/forms/<%= h.capitalize(name) %>Form/<%= h.capitalize(name) %>Form.spec.ts"
 unless_exists: true
 ---
 import { beforeEach, describe, expect, test } from 'vitest';
@@ -30,7 +30,7 @@ describe('<%= h.capitalize(name) %>Form.vue', () => {
     await flushPromises();
     await fireEvent.click(getByText('common.Submit'));
 
-    expect(emitted<any>().create[0][0]).toEqual({ name: 'name' });
+    expect(emitted<any>().create?.[0]?.[0]).toEqual({ name: 'name' });
   });
 
   test('should emit update event', async () => {
@@ -47,7 +47,7 @@ describe('<%= h.capitalize(name) %>Form.vue', () => {
     await flushPromises();
     await fireEvent.click(getByText('common.Submit'));
 
-    expect(emitted<any>().update[0][0]).toEqual({
+    expect(emitted<any>().update?.[0]?.[0]).toEqual({
       id: '<%= name %>-1',
       name: 'name 2',
     });
