@@ -1,27 +1,27 @@
 <template>
   <div :class="$style.VuePopover">
     <div
-      :class="$style.trigger"
-      @click="togglePopover"
-      @mouseover="showPopover"
-      @mouseleave="hidePopover"
       ref="triggerRef"
       role="button"
       aria-haspopup="true"
       :aria-expanded="isVisible"
       :aria-label="$t('VuePopover.trigger.label' /* Show additional information */)"
+      :class="$style.trigger"
+      @click="togglePopover"
+      @mouseover="showPopover"
+      @mouseleave="hidePopover"
     >
       <slot name="trigger">Trigger</slot>
     </div>
 
     <div
+      ref="popoverRef"
       v-if="isVisible"
       :style="floatingStyles"
-      :class="$style.content"
       :data-placement="placement"
+      :class="$style.content"
       @mouseover="showPopover"
       @mouseleave="hidePopover"
-      ref="popoverRef"
     >
       <div
         :style="{
@@ -38,20 +38,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref, useCssModule } from 'vue';
+import { ref, useCssModule, watch } from 'vue';
 import { arrow, autoUpdate, flip, offset, type Placement, useFloating } from '@floating-ui/vue';
 import { onClickOutside } from '@vueuse/core';
-import { getDomRef } from '@/composables/get-dom-ref';
+import { getDomRef } from '@/composables/components/get-dom-ref';
 
 interface PopoverProps {
+  show?: boolean;
   placement?: Placement;
   fallbackPlacements?: Array<Placement>;
+  preventCloseOnClick?: boolean;
 }
 
 const props = withDefaults(defineProps<PopoverProps>(), {
+  show: undefined,
   placement: 'top',
   fallbackPlacements: () => ['bottom', 'right', 'left'] as Array<Placement>,
+  preventCloseOnClick: false,
 });
+const emit = defineEmits<{
+  (event: 'close'): void;
+}>();
 
 const $style = useCssModule();
 const triggerRef = getDomRef(null);
@@ -60,14 +67,33 @@ const arrowRef = getDomRef(null);
 const isVisible = ref(false);
 
 const showPopover = () => {
-  isVisible.value = true;
+  if (props.show === undefined) {
+    isVisible.value = true;
+  }
 };
 const hidePopover = () => {
-  isVisible.value = false;
+  if (!isVisible.value) {
+    return;
+  }
+
+  if (props.show === undefined) {
+    isVisible.value = false;
+    emit('close');
+  }
 };
 const togglePopover = () => {
-  isVisible.value = !isVisible.value;
+  if (props.show === undefined && props.preventCloseOnClick === false) {
+    isVisible.value = !isVisible.value;
+  }
 };
+
+watch(
+  () => props.show,
+  (value) => {
+    isVisible.value = !!value;
+  },
+  { immediate: true },
+);
 
 onClickOutside(triggerRef, () => hidePopover());
 

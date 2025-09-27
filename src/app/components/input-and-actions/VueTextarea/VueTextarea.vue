@@ -57,7 +57,7 @@
 import { useCssModule, watch } from 'vue';
 import { useField } from 'vee-validate';
 import _debounce from 'lodash-es/debounce.js';
-import { getDomRef } from '@/composables/get-dom-ref';
+import { getDomRef } from '@/composables/components/get-dom-ref';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';

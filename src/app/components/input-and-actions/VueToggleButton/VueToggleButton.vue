@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import type { IItem } from '~/interfaces/IItem';
+import type { IItem } from '#shared/interfaces/IItem';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import type { ShirtSize } from '@/components/utils/prop-types';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';

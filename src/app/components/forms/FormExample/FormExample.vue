@@ -148,7 +148,7 @@
 import { computed, ref } from 'vue';
 import { useForm } from 'vee-validate';
 import { emitToastNotification } from '@/components/utils/emit-toast-notification';
-import type { IItem } from '~/interfaces/IItem';
+import type { IItem } from '#shared/interfaces/IItem';
 import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
 import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueCheckbox from '@/components/input-and-actions/VueCheckbox/VueCheckbox.vue';

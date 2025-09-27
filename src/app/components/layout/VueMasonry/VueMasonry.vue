@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, onUpdated, ref } from 'vue';
-import { getDomRef } from '@/composables/get-dom-ref';
+import { getDomRef } from '@/composables/components/get-dom-ref';
 
 // Interface
 const props = defineProps({

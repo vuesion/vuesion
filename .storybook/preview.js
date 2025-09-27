@@ -12,6 +12,8 @@ import { email, integer, min, min_value as minValue, regex, required } from '@ve
 import { createI18n } from 'vue-i18n';
 import messagesEN from '../i18n/locales/en-US.json';
 import messagesDE from '../i18n/locales/de-DE.json';
+import { datetimeFormats } from '../i18n/date-formats';
+import { numberFormats } from '../i18n/number-formats';
 
 // define global vee-validate rules
 defineRule('required', required);
@@ -32,6 +34,8 @@ setup(async (app) => {
       'en-US': messagesEN,
       'de-DE': messagesDE,
     },
+    datetimeFormats,
+    numberFormats,
   });
 
   app.use(i18n);

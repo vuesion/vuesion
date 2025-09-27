@@ -94,8 +94,8 @@
 import { computed, nextTick, ref, useCssModule } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { type RuleExpression, useField } from 'vee-validate';
-import type { IItem } from '~/interfaces/IItem';
-import { getDomRef } from '@/composables/get-dom-ref';
+import type { IItem } from '#shared/interfaces/IItem';
+import { getDomRef } from '@/composables/components/get-dom-ref';
 import type { BadgeStatus, ShirtSize } from '@/components/utils/prop-types';
 import VueIconChevronDown from '@/components/icons/VueIconChevronDown.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';

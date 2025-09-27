@@ -115,9 +115,9 @@
 import { computed, useCssModule, useSlots, watch } from 'vue';
 import { type RuleExpression, useField } from 'vee-validate';
 import _debounce from 'lodash-es/debounce.js';
-import { getDomRef } from '@/composables/get-dom-ref';
+import { getDomRef } from '@/composables/components/get-dom-ref';
 import type { ShirtSize } from '@/components/utils/prop-types';
-import { useIntersectionObserver } from '@/composables/use-intersection-observer';
+import { useIntersectionObserver } from '@/composables/components/use-intersection-observer';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';

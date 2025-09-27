@@ -1,4 +1,4 @@
-import type { IBreakpoints } from '~/interfaces/IBreakpoints';
+import type { IBreakpoints } from '#shared/interfaces/IBreakpoints';
 import { isNilLike } from '@/components/utils/is-nil-like';
 
 export const getResponsiveCssClasses = (

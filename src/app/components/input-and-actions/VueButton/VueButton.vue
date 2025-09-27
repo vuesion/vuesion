@@ -102,7 +102,7 @@ import { computed, useCssModule } from 'vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueLoader from '@/components/data-display/VueLoader/VueLoader.vue';
 import type { ButtonStyle, ShirtSize } from '@/components/utils/prop-types';
-import { getDomRef } from '@/composables/get-dom-ref';
+import { getDomRef } from '@/composables/components/get-dom-ref';
 import type { Icon } from '@/components/utils/icon-options';
 
 // Interface

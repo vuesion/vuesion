@@ -46,9 +46,10 @@ module.exports = {
         alias: {
           '~~': path.resolve(path.dirname(__dirname)),
           '~': path.resolve(path.dirname(__dirname), 'src'),
-          '@': path.resolve(path.dirname(__dirname), 'src', 'app'),
+          '@': path.resolve(path.dirname(__dirname), 'src/app'),
           assets: path.resolve(path.dirname(__dirname), 'src/app/assets'),
           public: path.resolve(path.dirname(__dirname), 'src/public'),
+          '#shared': path.resolve(path.dirname(__dirname), 'src/shared'),
         },
       },
     });

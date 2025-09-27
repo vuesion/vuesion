@@ -115,8 +115,8 @@ describe('VuePagination.vue', () => {
 
     await rerender({ numberOfRecords: 50000000 });
 
-    getByText('50000000 common.Results');
-    getByText('common.of 10000000');
+    getByText('50,000,000 common.Results');
+    getByText('common.of 10,000,000');
 
     await fireEvent.update(getByLabelText('common.SelectPage'), '1337');
     await fireEvent.blur(getByLabelText('common.SelectPage'));

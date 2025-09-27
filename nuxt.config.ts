@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@': path.resolve(__dirname, './src/app'),
     assets: path.resolve(__dirname, './src/app/assets'),
     public: path.resolve(__dirname, './src/public'),
+    '#shared': path.resolve(__dirname, './src/shared'),
   },
   app: {
     head: {
@@ -79,7 +80,7 @@ export default defineNuxtConfig({
     },
   },
   image: {
-    densities: [1, 2, 3],
+    densities: [1, 2],
     screens: {
       xs: 320,
       sm: 640,

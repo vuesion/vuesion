@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { animate, utils } from 'animejs';
-import { TRANSITION_DURATION } from '~/constants/transition-duration';
+import { TRANSITION_DURATION } from '#shared/constants/transition-duration';
 
 const props = defineProps({
   duration: {

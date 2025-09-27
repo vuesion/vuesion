@@ -1,4 +1,4 @@
-import type { IToastNotification } from '~/interfaces/IToastNotification';
+import type { IToastNotification } from '#shared/interfaces/IToastNotification';
 import { EventBus } from '@/services/EventBus';
 
 export const emitToastNotification = (n: IToastNotification): void => {

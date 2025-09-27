@@ -64,7 +64,7 @@ import { computed, onMounted, ref, useCssModule, watch } from 'vue';
 import { useEventListener } from '@vueuse/core';
 import type { IAlgorithm } from './algorithms';
 import { linear } from './algorithms';
-import { getDomRef } from '@/composables/get-dom-ref';
+import { getDomRef } from '@/composables/components/get-dom-ref';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';

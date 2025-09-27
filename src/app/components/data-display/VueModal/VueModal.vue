@@ -22,8 +22,8 @@
 import type { WatchStopHandle } from 'vue';
 import { computed, ref, useCssModule, watch } from 'vue';
 import { onClickOutside, onKeyDown } from '@vueuse/core';
-import { useBackdrop } from '@/composables/use-backdrop';
-import { getDomRef } from '@/composables/get-dom-ref';
+import { useBackdrop } from '@/composables/components/use-backdrop';
+import { getDomRef } from '@/composables/components/get-dom-ref';
 import VueIconTimes from '@/components/icons/VueIconTimes.vue';
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import type { SpacingWithDirections } from '@/components/utils/prop-types';

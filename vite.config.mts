@@ -57,6 +57,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src/app'),
       assets: path.resolve(__dirname, './src/app/assets'),
       public: path.resolve(__dirname, './src/public'),
+      '#shared': path.resolve(__dirname, './src/shared'),
       '@vue/test-utils': '/node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js',
     },
   },

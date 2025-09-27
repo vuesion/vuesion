@@ -47,7 +47,7 @@
 import { useCssModule } from 'vue';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import type { IItem } from '~/interfaces/IItem';
+import type { IItem } from '#shared/interfaces/IItem';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
 import VueIconCheckmark from '@/components/icons/VueIconCheckmark.vue';

@@ -2,15 +2,15 @@
   <vue-columns padding="0" align-x="between" :class="[$style.vuePagination, slim && $style.slim]">
     <vue-column no-grow>
       <vue-inline :space="buttonsOnly ? 8 : 16" no-wrap align-y="center">
-        <vue-button
+        <vue-icon-button
           :look="buttonLook"
-          leading-icon="chevron-left"
+          icon="chevron-left"
           size="sm"
-          :aria-label="$t('common.PreviousPage' /* Previous Page */)"
+          :label="$t('common.PreviousPage' /* Previous Page */)"
           :disabled="!infinite && selectedPage <= 1"
           data-testid="pagination-prev"
           @click="onSelectedPageChange(selectedPage - 1)"
-        ></vue-button>
+        ></vue-icon-button>
         <vue-inline v-if="!buttonsOnly" space="8" no-wrap align-y="center">
           <vue-select
             v-if="pages <= 500"
@@ -47,24 +47,24 @@
             @blur="onDebouncedInput"
           />
           <vue-text look="support" color="text-low">
-            {{ $t('common.of' /* of */) }}&nbsp;{{ $n(pages, 'integer') }}
+            {{ $t('common.of' /* of */) }}&nbsp;{{ $n(pages, 'integerSingle') }}
           </vue-text>
         </vue-inline>
-        <vue-button
+        <vue-icon-button
           :look="buttonLook"
-          leading-icon="chevron-right"
+          :label="$t('common.NextPage' /* Next Page */)"
+          icon="chevron-right"
           size="sm"
-          :aria-label="$t('common.NextPage' /* Next Page */)"
           :disabled="!infinite && selectedPage >= pages"
           data-testid="pagination-next"
           @click="onSelectedPageChange(selectedPage + 1)"
-        ></vue-button>
+        />
       </vue-inline>
     </vue-column>
     <vue-column v-if="!slim && !buttonsOnly" no-grow>
       <vue-inline space="12" no-wrap align-y="center">
         <vue-text look="support" color="text-low">
-          {{ $n(numberOfRecords, 'integer') }}&nbsp;{{ $t('common.Results' /* Results */) }}
+          {{ $n(numberOfRecords, 'integerSingle') }}&nbsp;{{ $t('common.Results' /* Results */) }}
         </vue-text>
         <vue-select
           id="itemsPerPage"
@@ -83,10 +83,7 @@
           :duration="duration"
           size="sm"
           :class="$style.select"
-          @update:model-value="
-            $emit('update:selectedPage', 1);
-            $emit('update:itemsPerPage', ($event as IItem).value);
-          "
+          @update:model-value="$emit('update:itemsPerPage', ($event as IItem).value)"
         />
       </vue-inline>
     </vue-column>
@@ -95,15 +92,15 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import type { IItem } from '~/interfaces/IItem';
+import type { IItem } from '#shared/interfaces/IItem';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
 import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import type { ButtonStyle } from '@/components/utils/prop-types';
 import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
+import VueIconButton from '@/components/input-and-actions/VueIconButton/VueIconButton.vue';
 
 // Interface
 interface PaginationProps {
@@ -167,16 +164,6 @@ watch(
   .select {
     min-width: unset;
     width: $space-64;
-  }
-
-  button {
-    width: $pagination-button-size;
-    height: $pagination-button-size;
-    border-radius: $pagination-button-border-radius;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
   }
 }
 </style>

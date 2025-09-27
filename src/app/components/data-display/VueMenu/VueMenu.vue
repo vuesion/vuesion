@@ -48,8 +48,8 @@
 <script setup lang="ts">
 import { computed, ref, useCssModule } from 'vue';
 import debounce from 'lodash-es/debounce.js';
-import type { IItem } from '~/interfaces/IItem';
-import { getDomRef } from '@/composables/get-dom-ref';
+import type { IItem } from '#shared/interfaces/IItem';
+import { getDomRef } from '@/composables/components/get-dom-ref';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 
