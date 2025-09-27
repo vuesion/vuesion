@@ -2,65 +2,70 @@
 to: "src/app/pages/<%= path %>.vue"
 ---
 <template>
-  <vue-stack space="0" as="main" :class="$style.Page">
-    <%= path %>
-<% if (store !== 'None') { -%>
-
-    {{ <%= h.inflection.pluralize(h.inflection.camelize(store, true)) %> }}
+  <vue-content-block padding="32 0" :class="$style.page">
+    <vue-stack space="0" as="main">
+      <%= path %>
+<% if (stores.length > 0) { -%>
+<%  for (let store of stores){ -%>
+      <pre>{{ <%= h.inflection.pluralize(h.inflection.camelize(store, true)) -%> }}</pre>
 <% } -%>
-  </vue-stack>
+<% } -%>
+    </vue-stack>
+  </vue-content-block>
 </template>
 
 <script setup lang="ts">
-import { <% if (store !== 'None') { -%>computed, <% } -%><% if (auth === true) { -%>definePageMeta, <% } %><% if (store !== 'None') { -%>useAsyncData, <% } -%>useHead, useI18n } from '#imports';
-<% if (store !== 'None') { -%>
-import { use<%= store %>Store } from '~/app/store/<%= store.toLowerCase() %>';
+import { computed, <% if (auth === true) { -%>definePageMeta, <% } %><% if (stores.length > 0) { -%>useAsyncData, <% } -%>useHead, useI18n } from '#imports';
+<% if (stores.length > 0) { -%>
+<%  for (let store of stores){ -%>
+import { use<%= h.inflection.camelize(store, false) %>Actions } from '@/composables/actions/use-<%= h.inflection.dasherize(h.inflection.underscore(store)) %>-actions';
 <% } -%>
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
+<% } -%>
+import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
 
-// Deps
-const { t } = useI18n();
-<% if (store !== 'None') { -%>
-const store = use<%= store %>Store();
-<% } %>
-// Config
 <% if (auth === true) { -%>
-definePageMeta({ middleware: 'sidebase-auth' });
-<% } %>
-// Data
-<% if (store !== 'None') { -%>
-const <%= h.inflection.pluralize(h.inflection.camelize(store, true)) %> = computed(() => store.get<%= h.inflection.camelize(h.inflection.pluralize(store)) %>);
-<% } %>
-// Event Handler
+definePageMeta({ middleware: 'sidebase-auth', auth: { unauthenticatedOnly: false, navigateUnauthenticatedTo: '/' } });
+<% } -%>
 
-// Data fetching
-<% if (store !== 'None') { -%>
+const { t } = useI18n();
+<% if (stores.length > 0) { -%>
+<%  for (let store of stores){ -%>
+const { <%= h.inflection.pluralize(h.inflection.camelize(store, true)) %>, fetch<%= h.inflection.pluralize(h.inflection.camelize(store, false)) %> } = use<%= h.inflection.camelize(store, false) %>Actions();
+<% } -%>
+<% } -%>
+
+<% if (stores.length === 1) { -%>
+// Initial Data Fetching
 await useAsyncData(async () => {
-  await store.fetch<%= h.inflection.pluralize(h.inflection.camelize(store)) %>();
-  return store.get<%= h.inflection.pluralize(h.inflection.camelize(store)) %>;
+  await fetch<%= h.inflection.pluralize(h.inflection.camelize(stores[0], false)) %>({ selectedPage: 1, itemsPerPage: 25 });
+
+  return <%= h.inflection.pluralize(h.inflection.camelize(stores[0], true)) %>.value;
+});
+<% } -%>
+<% if (stores.length > 1) { -%>
+// Initial Data Fetching
+await useAsyncData(async () => {
+  await Promise.all([
+  <%  for (let store of stores){ -%>
+  fetch<%= h.inflection.pluralize(h.inflection.camelize(store, false)) %>({ selectedPage: 1, itemsPerPage: 25 }),
+  <% } %>]);
+
+  return [
+  <%  for (let store of stores){ -%>
+  <%= h.inflection.pluralize(h.inflection.camelize(store, true)) %>.value,
+  <% } %>];
 });
 <% } -%>
 
-// Head
-const url = 'https://vuesion.herokuapp.com/';
-const logo = '/logo.png';
-const title = t('pages.<%= h.pathToKey(path) %>.title' /* Title */);
-const description = t(
-  'pages.<%= h.pathToKey(path) %>.description' /* Description */,
-);
+// Seo Information
+const title = computed(() => t('pages.<%= h.pathToKey(path) %>.title' /* Title */));
+const description = computed(() => t('pages.<%= h.pathToKey(path) %>.description' /* Description */));
 
 useHead({
   title,
   meta: [
     { name: 'description', content: description },
-    { name: 'robots', content: 'INDEX,FOLLOW' },
-    { name: 'og:url', content: url },
-    { name: 'og:site_name', content: 'vuesion' },
-    { name: 'og:type', content: 'website' },
-    { name: 'og:locale', content: 'en' },
-    { name: 'og:title', content: title },
-    { name: 'og:description', content: description },
-    { name: 'og:image:url', content: logo },
   ],
 });
 </script>
@@ -68,7 +73,7 @@ useHead({
 <style lang="scss" module>
 @import 'assets/_design-system.scss';
 
-.Page {
+.page {
   // this class is only applied if you add css properties
 }
 </style>
