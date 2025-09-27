@@ -4,20 +4,15 @@ unless_exists: true
 ---
 import { defineEventHandler } from 'h3';
 import { prisma } from '~/server/services/use-prisma';
-import { MissingIdError, NotFoundError<% if(auth === true) { -%>,  NotAuthorizedError<% } %>} from "~/server/utils/errors";
+import { MissingIdError, NotFoundError } from "~/server/utils/errors";
 <% if(auth === true) { -%>
-import { getServerSession } from '#auth';
+import { getAuthorizedServerSession } from '~/server/utils/get-authorized-server-session';
 // import { mustBeRelatedToEntity } from '~/server/utils/access-control';
 <% } %>import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
 
 export default defineEventHandler(async (event) => {
 <% if(auth === true) { -%>
-  const session = await getServerSession(event);
-
-  if (!session || !session.user || !session.user.id) {
-    throw NotAuthorizedError;
-  }
-
+  const session = await getAuthorizedServerSession(event);
 <% } -%>
   const <%= h.inflection.camelize(name, true) %>Id = event.context.params?.id;
 
@@ -25,15 +20,14 @@ export default defineEventHandler(async (event) => {
     throw MissingIdError;
   }
 
-
-  const { get<%= h.inflection.camelize(name) %> } = use<%= h.inflection.camelize(name) %>Service(prisma);
-  const current<%= h.inflection.camelize(name) %> = await get<%= h.inflection.camelize(name) %>(<%= h.inflection.camelize(name, true) %>Id);
+  const { get<%= h.inflection.camelize(name) %>Details } = use<%= h.inflection.camelize(name) %>Service(prisma);
+  const current<%= h.inflection.camelize(name) %> = await get<%= h.inflection.camelize(name) %>Details(<%= h.inflection.camelize(name, true) %>Id);
 
   if(!current<%= h.inflection.camelize(name) %>){
     throw NotFoundError;
   }
 
-  // mustBeRelatedToEntity(session?.user?.id, current<%= h.inflection.camelize(name) %>?.accountId);
+  // mustBeRelatedToEntity(session.user.id, current<%= h.inflection.camelize(name) %>.accountId);
 
   return current<%= h.inflection.camelize(name) %>;
 });

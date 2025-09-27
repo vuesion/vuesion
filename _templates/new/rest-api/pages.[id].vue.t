@@ -9,85 +9,118 @@ unless_exists: true
         <vue-column width="5/12" no-grow>
           <form @submit.prevent="onUpdate<%= h.inflection.camelize(name) %>">
             <vue-stack space="24">
-              <vue-text look="h1">Update <%= h.inflection.camelize(name) %></vue-text>
-              <vue-inline space="8" align-y="end" no-wrap>
+              <vue-inline space="8" align-y="center">
+                <vue-icon-button label="Back" look="ghost" icon="arrow-left" as="nuxt-link" to="/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>" />
+                <vue-text look="large-title" weight="semi-bold"> Update <%= h.inflection.camelize(name) %> </vue-text>
+              </vue-inline>
+              <vue-inline space="16" align-y="end" no-wrap>
                 <vue-input
                   id="name"
                   v-model="update<%= h.inflection.camelize(name) %>Model.name as string"
                   label="Name"
                   name="name"
                   hide-description
+                  autofocus
+                  required
+                  validation="required"
                 />
-                <vue-button look="primary" type="submit" trailing-icon="save" :loading="loading">Update</vue-button>
+                <vue-button
+                  look="primary"
+                  type="submit"
+                  trailing-icon="save"
+                  :loading="isUpdating"
+                  :disabled="!meta.valid"
+                >
+                  Update
+                </vue-button>
               </vue-inline>
             </vue-stack>
           </form>
         </vue-column>
       </vue-columns>
 
-      <vue-card space="16">
-        <vue-text look="h2" weight="black"> Current <%= h.inflection.camelize(name) %> </vue-text>
-        <pre>{{ current<%= h.inflection.camelize(name) %> }}</pre>
-      </vue-card>
+      <vue-stack>
+        <vue-text look="medium-title" weight="semi-bold"> Current <%= h.inflection.camelize(name) %> </vue-text>
+
+        <vue-card v-if="current<%= h.inflection.camelize(name) %>" space="32" padding="24" class="w-fit">
+          <vue-stack space="8">
+            <vue-text look="support" color="text-low">ID: {{ current<%= h.inflection.camelize(name) %>.id }}</vue-text>
+            <vue-text look="small-title" weight="semi-bold">
+              {{ current<%= h.inflection.camelize(name) %>.name }}
+            </vue-text>
+          </vue-stack>
+          <vue-columns>
+            <vue-column>
+              <vue-text look="support" color="text-low">
+                Created at:
+                <vue-formatted-date :date="current<%= h.inflection.camelize(name) %>.createdAt" format="dayMonthYearNumericWithTime" />
+              </vue-text>
+            </vue-column>
+            <vue-column>
+              <vue-text look="support" color="text-low">
+                Updated at:
+                <vue-formatted-date :date="current<%= h.inflection.camelize(name) %>.updatedAt" format="dayMonthYearNumericWithTime" />
+              </vue-text>
+            </vue-column>
+          </vue-columns>
+        </vue-card>
+      </vue-stack>
     </vue-stack>
   </vue-content-block>
 </template>
 
 <script setup lang="ts">
-import { computed, <% if (auth === true) { -%>definePageMeta, <% } %>onMounted, ref, useAsyncData, useHead, useRoute } from '#imports';
-import { use<%= h.inflection.camelize(name) %>Store } from '~/app/store/<%= h.inflection.camelize(name, true) %>';
+import { computed, ref, useAsyncData, useHead, useRoute, watch } from '#imports';
+import { useForm } from 'vee-validate';
+import { use<%= h.inflection.camelize(name) %>Actions } from '@/composables/actions/use-user-settings-actions';
+import type { I<%= h.inflection.camelize(name) %>Update } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
 import VueContentBlock from '~/app/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueText from '~/app/components/typography/VueText/VueText.vue';
 import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
 import VueInput from '~/app/components/input-and-actions/VueInput/VueInput.vue';
 import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
-import type { I<%= h.inflection.camelize(name) %>Update } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
 import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueCard from '~/app/components/data-display/VueCard/VueCard.vue';
 import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
+import VueIconButton from '@/components/input-and-actions/VueIconButton/VueIconButton.vue';
+import VueFormattedDate from '@/components/data-display/VueFormattedDate/VueFormattedDate.vue';
 
 // Deps
-const store = use<%= h.inflection.camelize(name) %>Store();
-const route = useRoute();
-
-// Config
 useHead({ title: '<%= h.inflection.camelize(name) %> Details Page' });
-<% if (auth === true) { -%>
-definePageMeta({ middleware: 'sidebase-auth' });
-<% } %>
-// Data
-const current<%= h.inflection.camelize(name) %> = computed(() => store.getCurrent<%= h.inflection.camelize(name) %>);
+const route = useRoute();
+const { meta } = useForm();
+const { isUpdating, current<%= h.inflection.camelize(name) %>, update<%= h.inflection.camelize(name) %>, fetch<%= h.inflection.camelize(name) %>Details } = use<%= h.inflection.camelize(name) %>Actions();
+
+const <%= h.inflection.camelize(name, true) %>Id = computed(() => route.params.id?.toString() || '');
+
+// update <%= h.inflection.camelize(name) %>
 const update<%= h.inflection.camelize(name) %>Model = ref<I<%= h.inflection.camelize(name) %>Update>({
   name: '',
   id: '',
 });
-const loading = ref(false);
-
-// Event Handler
 const onUpdate<%= h.inflection.camelize(name) %> = async () => {
   if (update<%= h.inflection.camelize(name) %>Model.value) {
-    loading.value = true;
-
-    await store.update<%= h.inflection.camelize(name) %>(update<%= h.inflection.camelize(name) %>Model.value);
-
-    loading.value = false;
+    await update<%= h.inflection.camelize(name) %>(<%= h.inflection.camelize(name, true) %>Id.value, update<%= h.inflection.camelize(name) %>Model.value);
   }
 };
 
-// Data fetching
+// display <%= h.inflection.camelize(name) %>
 await useAsyncData(async () => {
-  await store.fetch<%= h.inflection.camelize(name) %>(route.params.id.toString());
-  return store.getCurrent<%= h.inflection.camelize(name) %>;
+  await fetch<%= h.inflection.camelize(name) %>Details(<%= h.inflection.camelize(name, true) %>Id.value);
+  return current<%= h.inflection.camelize(name) %>.value;
 });
 
-// Life Cycle
-onMounted(() => {
-  update<%= h.inflection.camelize(name) %>Model.value = {
-    name: current<%= h.inflection.camelize(name) %>.value.name,
-    id: current<%= h.inflection.camelize(name) %>.value.id,
-  };
-});
+watch(
+  current<%= h.inflection.camelize(name) %>,
+  () => {
+    update<%= h.inflection.camelize(name) %>Model.value = {
+      name: current<%= h.inflection.camelize(name) %>.value?.name || '',
+      id: current<%= h.inflection.camelize(name) %>.value?.id || '',
+    };
+  },
+  { immediate: true },
+);
 </script>
 
 <style lang="scss" module>

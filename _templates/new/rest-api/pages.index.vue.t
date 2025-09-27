@@ -9,66 +9,85 @@ unless_exists: true
         <vue-column width="5/12" no-grow>
           <form @submit.prevent="onCreate<%= h.inflection.camelize(name) %>">
             <vue-inline space="24">
-              <vue-text look="h1">Create <%= h.inflection.camelize(name) %></vue-text>
-              <vue-inline space="8" no-wrap align-y="end">
+              <vue-text look="large-title" weight="semi-bold">Create <%= h.inflection.camelize(name) %></vue-text>
+              <vue-inline space="16" no-wrap align-y="end">
                 <vue-input
                   id="name"
                   v-model="create<%= h.inflection.camelize(name) %>Model.name"
                   label="Name"
                   name="name"
-                  placeholder="Choose a unique name"
+                  placeholder="Choose a Name"
                   hide-description
+                  autofocus
+                  required
+                  validation="required"
                 />
-                <vue-button look="primary" type="submit" trailing-icon="save" :loading="loading"> Create </vue-button>
+                <vue-button
+                  look="primary"
+                  type="submit"
+                  trailing-icon="save"
+                  :loading="isCreating"
+                  :disabled="!meta.valid"
+                >
+                  Create
+                </vue-button>
               </vue-inline>
             </vue-inline>
           </form>
         </vue-column>
       </vue-columns>
 
-      <vue-card v-if="<%= h.inflection.pluralize(h.inflection.camelize(name, true)) %>.length > 0" space="16">
-        <vue-text look="h2" weight="black">All <%= h.inflection.pluralize(h.inflection.camelize(name)) %></vue-text>
+      <vue-card v-if="<%= h.inflection.camelize(name, true) %>Count === 0" padding="64" align-x="center" align-y="center">
+        <vue-text>No Records, Please use the Form above to add one.</vue-text>
+      </vue-card>
 
-        <vue-stack space="8">
+      <vue-card v-else padding="24" space="24">
+        <vue-text look="medium-title" weight="semi-bold"> {{ <%= h.inflection.camelize(name, true) %>Count }} <%= h.inflection.camelize(name) %> </vue-text>
+
+        <vue-box v-if="isReading" align-y="center" align-x="center" padding="64">
+          <vue-loader />
+        </vue-box>
+        <vue-stack v-else space="8">
           <vue-columns>
-            <vue-column width="4/12" no-grow>
-              <vue-text weight="semi-bold">ID</vue-text>
-            </vue-column>
-            <vue-column width="4/12" no-grow>
+            <vue-column>
               <vue-text weight="semi-bold">Name</vue-text>
             </vue-column>
-            <vue-column width="4/12" no-grow align-x="end">
+            <vue-column no-grow>
               <vue-text weight="semi-bold"></vue-text>
             </vue-column>
           </vue-columns>
-          <vue-columns v-for="<%= h.inflection.camelize(name, true) %> in <%= h.inflection.pluralize(h.inflection.camelize(name, true)) %>" :key="<%= h.inflection.camelize(name, true) %>.id" align-y="center">
-            <vue-column width="4/12" no-grow>
-              <vue-text>{{ <%= h.inflection.camelize(name, true) %>.id }}</vue-text>
-            </vue-column>
-            <vue-column width="4/12" no-grow>
-              <nuxt-link :to="`/<%= h.inflection.camelize(name, true) %>/${<%= h.inflection.camelize(name, true) %>.id}`">
+          <vue-columns v-for="<%= h.inflection.camelize(name, true) %> in <%= h.inflection.camelize(name, true) %>" :key="<%= h.inflection.camelize(name, true) %>.id" align-y="center">
+            <vue-column>
+              <nuxt-link :to="`/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${<%= h.inflection.camelize(name, true) %>.id}`">
                 <vue-text>{{ <%= h.inflection.camelize(name, true) %>.name }}</vue-text>
               </nuxt-link>
             </vue-column>
-            <vue-column width="4/12" no-grow align-x="end">
+            <vue-column no-grow>
               <vue-inline space="8">
-                <vue-button
-                  look="danger"
-                  trailing-icon="trash"
-                  size="sm"
-                  :class="$style.button"
+                <vue-icon-button
+                  label="Delete"
+                  icon="trash"
+                  look="ghost"
                   @click="onDelete<%= h.inflection.camelize(name) %>Click(<%= h.inflection.camelize(name, true) %>.id)"
                 />
               </vue-inline>
             </vue-column>
           </vue-columns>
         </vue-stack>
+
+        <vue-pagination
+          :selected-page="selectedPage"
+          :items-per-page="itemsPerPage"
+          :number-of-records="<%= h.inflection.camelize(name, true) %>Count"
+          @update:selected-page="onSelectedPageChange"
+          @update:items-per-page="onItemsPerPageChange"
+        />
       </vue-card>
     </vue-stack>
 
     <vue-confirm-modal
       :show="showDialog"
-      :loading="loading"
+      :loading="isDeleting"
       @close="onCloseModal"
       @confirm="onDelete<%= h.inflection.camelize(name) %>"
       @abort="onCloseModal"
@@ -77,64 +96,74 @@ unless_exists: true
 </template>
 
 <script setup lang="ts">
-import { computed, <% if (auth === true) { -%>definePageMeta, <% } %>ref, useAsyncData, useHead } from '#imports';
-import { use<%= h.inflection.camelize(name) %>Store } from '~/app/store/<%= h.inflection.camelize(name, true) %>';
-import VueContentBlock from '~/app/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueText from '~/app/components/typography/VueText/VueText.vue';
-import VueStack from '~/app/components/layout/VueStack/VueStack.vue';
-import VueInput from '~/app/components/input-and-actions/VueInput/VueInput.vue';
-import VueButton from '~/app/components/input-and-actions/VueButton/VueButton.vue';
-import type { I<%= h.inflection.camelize(name) %>Create } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
-import VueColumns from '~/app/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '~/app/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueInline from '~/app/components/layout/VueInline/VueInline.vue';
-import VueConfirmModal from '~/app/components/data-display/VueConfirmModal/VueConfirmModal.vue';
-import VueCard from '~/app/components/data-display/VueCard/VueCard.vue';
+import { ref, useAsyncData, useHead } from '#imports';
+import { useForm } from 'vee-validate';
+import { use<%= h.inflection.camelize(name) %>Actions } from '@/composables/actions/use-user-settings-actions';
+import { usePagination } from '@/composables/components/use-pagination';
+import type { I<%= h.inflection.camelize(name) %>Create } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
+import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
+import VueText from '@/components/typography/VueText/VueText.vue';
+import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
+import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueInline from '@/components/layout/VueInline/VueInline.vue';
+import VueConfirmModal from '@/components/data-display/VueConfirmModal/VueConfirmModal.vue';
+import VueCard from '@/components/data-display/VueCard/VueCard.vue';
+import VuePagination from '@/components/navigation/VuePagination/VuePagination.vue';
+import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueLoader from '@/components/data-display/VueLoader/VueLoader.vue';
+import VueIconButton from '@/components/input-and-actions/VueIconButton/VueIconButton.vue';
 
 // Deps
-const store = use<%= h.inflection.camelize(name) %>Store();
+useHead({ title: 'All <%= h.inflection.camelize(name) %>' });
+const { meta } = useForm();
+const {
+  isReading,
+  isCreating,
+  isDeleting,
+  <%= h.inflection.camelize(name, true) %>,
+  <%= h.inflection.camelize(name, true) %>Count,
+  create<%= h.inflection.camelize(name) %>,
+  delete<%= h.inflection.camelize(name) %>,
+  fetch<%= h.inflection.camelize(name) %>,
+} = use<%= h.inflection.camelize(name) %>Actions();
 
-// Config
-useHead({ title: 'All <%= h.inflection.pluralize(h.inflection.camelize(name)) %>' });
-<% if (auth === true) { -%>
-definePageMeta({ middleware: 'sidebase-auth' });
-<% } %>
-// Data
-const <%= h.inflection.pluralize(h.inflection.camelize(name, true)) %> = computed(() => store.get<%= h.inflection.pluralize(h.inflection.camelize(name)) %>);
+// create <%= h.inflection.camelize(name) %>
 const create<%= h.inflection.camelize(name) %>Model = ref<I<%= h.inflection.camelize(name) %>Create>({
   name: '',
 });
+const onCreate<%= h.inflection.camelize(name) %> = async () => {
+  await create<%= h.inflection.camelize(name) %>(create<%= h.inflection.camelize(name) %>Model.value);
+  await fetch<%= h.inflection.camelize(name) %>({ selectedPage: selectedPage.value, itemsPerPage: itemsPerPage.value });
+  create<%= h.inflection.camelize(name) %>Model.value.name = '';
+};
+
+// delete <%= h.inflection.camelize(name) %>
 const selected<%= h.inflection.camelize(name) %>Id = ref('');
 const showDialog = ref(false);
-const loading = ref(false);
-
-// Event Handler
 const onCloseModal = () => (showDialog.value = false);
-const onCreate<%= h.inflection.camelize(name) %> = async () => {
-  loading.value = true;
-
-  await store.create<%= h.inflection.camelize(name) %>(create<%= h.inflection.camelize(name) %>Model.value);
-
-  create<%= h.inflection.camelize(name) %>Model.value.name = '';
-  loading.value = false;
-};
 const onDelete<%= h.inflection.camelize(name) %>Click = (<%= h.inflection.camelize(name, true) %>Id: string) => {
   selected<%= h.inflection.camelize(name) %>Id.value = <%= h.inflection.camelize(name, true) %>Id;
   showDialog.value = true;
 };
 const onDelete<%= h.inflection.camelize(name) %> = async () => {
-  loading.value = true;
+  await delete<%= h.inflection.camelize(name) %>(selected<%= h.inflection.camelize(name) %>Id.value);
 
-  await store.delete<%= h.inflection.camelize(name) %>(selected<%= h.inflection.camelize(name) %>Id.value);
-
-    loading.value = false;
   onCloseModal();
+
+  await fetch<%= h.inflection.camelize(name) %>({ selectedPage: selectedPage.value, itemsPerPage: itemsPerPage.value });
 };
 
-// Data fetching
+// display <%= h.inflection.camelize(name) %>
+const { selectedPage, itemsPerPage, onSelectedPageChange, onItemsPerPageChange } = usePagination(
+  ({ selectedPage, itemsPerPage }) => fetch<%= h.inflection.camelize(name) %>({ selectedPage, itemsPerPage }),
+  5,
+);
 await useAsyncData(async () => {
-  await store.fetch<%= h.inflection.pluralize(h.inflection.camelize(name)) %>();
-  return store.get<%= h.inflection.pluralize(h.inflection.camelize(name)) %>;
+  await fetch<%= h.inflection.camelize(name) %>({ selectedPage: selectedPage.value, itemsPerPage: itemsPerPage.value });
+  return <%= h.inflection.camelize(name, true) %>.value;
 });
 </script>
 
@@ -142,10 +171,5 @@ await useAsyncData(async () => {
 @import 'assets/_design-system.scss';
 
 .<%= h.inflection.camelize(name, true) %>Page {
-  padding-top: $navbar-height;
-
-  .button {
-    padding: 0;
-  }
 }
 </style>

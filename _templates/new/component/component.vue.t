@@ -8,6 +8,15 @@ to: "src/app/components/<%= folder %>/<%= name %>/<%= name %>.vue"
 <script setup lang="ts">
 import { useCssModule } from 'vue';
 
+interface <%= name %>Props {
+
+}
+
+withDefaults(defineProps<<%= name %>Props>(), {});
+defineEmits<{
+  (e: 'event'): void;
+}>();
+
 const $style = useCssModule();
 </script>
 

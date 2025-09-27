@@ -5,20 +5,14 @@ unless_exists: true
 import { defineEventHandler } from 'h3';
 import { prisma } from '~/server/services/use-prisma';
 <% if(auth === true) { -%>
-import { getServerSession } from '#auth';
-import { NotAuthorizedError } from "~/server/utils/errors";
+import { getAuthorizedServerSession } from '~/server/utils/get-authorized-server-session';
 <% } -%>
-import type { I<%= h.inflection.camelize(name) %>Create } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
+import type { I<%= h.inflection.camelize(name) %>Create } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
 import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
 
 export default defineEventHandler(async (event) => {
 <% if(auth === true) { -%>
-  const session = await getServerSession(event);
-
-  if (!session || !session.user || !session.user.id) {
-    throw NotAuthorizedError;
-  }
-
+  const session = await getAuthorizedServerSession(event);
 <% } -%>
   const data = await readBody<I<%= h.inflection.camelize(name) %>Create>(event);
   const { create<%= h.inflection.camelize(name) %> } = use<%= h.inflection.camelize(name) %>Service(prisma);

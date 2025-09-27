@@ -4,13 +4,16 @@ unless_exists: true
 ---
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import type { IFetchError } from 'ofetch';
-import type { I<%= h.inflection.camelize(name) %>, I<%= h.inflection.camelize(name) %>Create, I<%= h.inflection.camelize(name) %>Update } from '~/interfaces/I<%= h.inflection.camelize(name) %>';
+import type { I<%= h.inflection.camelize(name) %>, I<%= h.inflection.camelize(name) %>Create, I<%= h.inflection.camelize(name) %>Update } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
+import type { IPaginationQueryParameters } from '#shared/interfaces/IPaginationQueryParameters';
+import type { IPaginatedResponse } from '#shared/interfaces/IPaginatedResponse';
 import { $fetchWithCookies } from '@/utils/fetch-with-cookies';
 import { handleStoreError } from '@/utils/handle-store-error';
 import { getQueryParams } from '@/utils/get-query-params';
 
 export interface I<%= h.inflection.camelize(name) %>State {
   <%= h.inflection.pluralize(name) %>: Array<I<%= h.inflection.camelize(name) %>>;
+  <%= h.inflection.pluralize(name) %>Count: number;
   current<%= h.inflection.camelize(name) %>?: I<%= h.inflection.camelize(name) %>;
   error: IFetchError | null | undefined;
 }
@@ -19,6 +22,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
   state: (): I<%= h.inflection.camelize(name) %>State => {
     return {
       <%= h.inflection.pluralize(name) %>: [],
+      <%= h.inflection.pluralize(name) %>Count: 0,
       current<%= h.inflection.camelize(name) %>: undefined,
       error: null,
     };
@@ -26,6 +30,9 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
   getters: {
     get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>(state: I<%= h.inflection.camelize(name) %>State) {
       return state.<%= h.inflection.pluralize(name) %>;
+    },
+    get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>Count(state: I<%= h.inflection.camelize(name) %>State) {
+      return state.<%= h.inflection.pluralize(name) %>Count;
     },
     getCurrent<%= h.inflection.camelize(name) %>(state: I<%= h.inflection.camelize(name) %>State) {
       return state.current<%= h.inflection.camelize(name) %>;
@@ -35,10 +42,15 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
     },
   },
   actions: {
-    async fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %>(params: Record<string, any>) {
+    async fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %>(params: IPaginationQueryParameters) {
       try {
         this.error = null;
-        this.<%= h.inflection.pluralize(name) %> = await $fetchWithCookies<Array<I<%= h.inflection.camelize(name) %>>>(`/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>${getQueryParams(params)}`);
+        const res = await $fetchWithCookies<IPaginatedResponse<I<%= h.inflection.camelize(name) %>>>(
+          `/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>${getQueryParams(params)}`
+        );
+
+        this.<%= h.inflection.pluralize(name) %> = res.records;
+        this.<%= h.inflection.pluralize(name) %>Count = res.totalRecords;
       } catch (e: any) {
         handleStoreError(this, e);
       }
