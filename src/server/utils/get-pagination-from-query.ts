@@ -1,8 +1,22 @@
 import type { IPaginationQueryParameters } from '#shared/interfaces/IPaginationQueryParameters';
 
-export const getPaginationFromQuery = (query: IPaginationQueryParameters, selectedPage = 1, itemsPerPage = 5) => {
-  selectedPage = parseInt(query?.selectedPage?.toString() || selectedPage.toString(10), 10);
-  itemsPerPage = parseInt(query?.itemsPerPage?.toString() || itemsPerPage.toString(10), 10);
+export const getPaginationFromQuery = (
+  query: IPaginationQueryParameters,
+  selectedPageDefault = 1,
+  itemsPerPageDefault = 5,
+) => {
+  const rawPage = query?.selectedPage?.toString();
+  const rawSize = query?.itemsPerPage?.toString();
+
+  let selectedPage = parseInt(rawPage ?? '', 10);
+  if (Number.isNaN(selectedPage)) {
+    selectedPage = selectedPageDefault;
+  }
+
+  let itemsPerPage = parseInt(rawSize ?? '', 10);
+  if (Number.isNaN(itemsPerPage)) {
+    itemsPerPage = itemsPerPageDefault;
+  }
 
   return {
     take: itemsPerPage,

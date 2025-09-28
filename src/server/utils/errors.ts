@@ -1,3 +1,5 @@
+import { createError } from 'h3';
+
 export const NotAuthorizedError = createError({
   statusCode: 403,
   statusMessage: 'Not Authorized',

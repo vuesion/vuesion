@@ -9,10 +9,10 @@ import { getAuthorizedServerSession } from '~/server/utils/get-authorized-server
 <% } -%>
 import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
 import type { IPaginatedResponse } from '#shared/interfaces/IPaginatedResponse';
-import type { I<%= h.inflection.camelize(h.inflection.pluralize(name)) %> } from '#shared/interfaces/I<%= h.inflection.camelize(h.inflection.pluralize(name)) %>';
+import type { I<%= h.inflection.camelize(name) %> } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
 import type { IListQuery } from '#shared/interfaces/IListQuery';
 
-export default defineEventHandler(async (event): Promise<IPaginatedResponse<I<%= h.inflection.camelize(h.inflection.pluralize(name)) %>>> => {
+export default defineEventHandler(async (event): Promise<IPaginatedResponse<I<%= h.inflection.camelize(name) %>>> => {
 <% if(auth === true) { -%>
   const session = await getAuthorizedServerSession(event);
 <% } -%>

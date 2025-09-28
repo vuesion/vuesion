@@ -1,6 +1,10 @@
 import { NotAuthorizedError } from '~/server/utils/errors';
 
 export const mustBeRelatedToEntity = (sessionUserId?: string | null, recordUserId?: string | null | string[]) => {
+  if (!sessionUserId) {
+    throw NotAuthorizedError;
+  }
+
   const checkAuthorization = (userId?: string | null) => {
     if (sessionUserId !== userId) {
       throw NotAuthorizedError;
@@ -8,7 +12,7 @@ export const mustBeRelatedToEntity = (sessionUserId?: string | null, recordUserI
   };
 
   if (Array.isArray(recordUserId)) {
-    if (!recordUserId.includes(sessionUserId || '')) {
+    if (!recordUserId.includes(sessionUserId)) {
       throw NotAuthorizedError;
     }
   } else {

@@ -14,7 +14,7 @@ const deleteSpy = vi.fn().mockResolvedValue(undefined);
 vi.mock('@/store/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>', () => ({
   use<%= h.inflection.camelize(name) %>Store: () => ({
     getError: null,
-    get<%= h.inflection.camelize(name) %>: [{ id: '1' }],
+    get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>: [{ id: '1' }],
     get<%= h.inflection.camelize(name) %>Count: 1,
     getCurrent<%= h.inflection.camelize(name) %>: { id: '1' },
     fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %>: fetchSpy,
