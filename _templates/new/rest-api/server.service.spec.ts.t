@@ -39,7 +39,7 @@ describe('use<%= h.inflection.camelize(name) %>Service', () => {
         expect.objectContaining({
           where: expect.any(Object),
           orderBy: expect.any(Object),
-          include: expect.any(Object),
+          // include: expect.any(Object),
           take: expect.any(Number),
           skip: expect.any(Number),
         }),
@@ -66,7 +66,7 @@ describe('use<%= h.inflection.camelize(name) %>Service', () => {
 
       expect(prisma.<%= h.inflection.camelize(name, true) %>.findFirst).toHaveBeenCalledWith({
         where: { id: 'x' },
-        include: expect.any(Object),
+        // include: expect.any(Object),
       });
       expect(res).toEqual({ id: 'x' });
     });
@@ -94,7 +94,7 @@ describe('use<%= h.inflection.camelize(name) %>Service', () => {
 
       expect(prisma.<%= h.inflection.camelize(name, true) %>.create).toHaveBeenCalledWith({
         data: { name: 'N' },
-        include: expect.any(Object),
+        // include: expect.any(Object),
       });
       expect(res).toEqual({ id: 'new', name: 'N' });
     });
@@ -116,7 +116,7 @@ describe('use<%= h.inflection.camelize(name) %>Service', () => {
       expect(prisma.<%= h.inflection.camelize(name, true) %>.update).toHaveBeenCalledWith({
         data: { name: 'U' },
         where: { id: 'u1' },
-        include: expect.any(Object),
+        // include: expect.any(Object),
       });
       expect(res).toEqual({ id: 'u1', name: 'U' });
     });

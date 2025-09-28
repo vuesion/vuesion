@@ -1,7 +1,7 @@
 ---
 to: "prisma/schema.prisma"
 inject: true
-after: EOF
+append: true
 skip_if: model <%= h.inflection.camelize(name) %>
 sh: prisma format
 ---

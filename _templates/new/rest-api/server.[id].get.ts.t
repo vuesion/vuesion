@@ -3,7 +3,6 @@ to: "src/server/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>
 unless_exists: true
 ---
 import { defineEventHandler } from 'h3';
-import { prisma } from '~/server/services/use-prisma';
 import { MissingIdError, NotFoundError } from "~/server/utils/errors";
 <% if(auth === true) { -%>
 import { getAuthorizedServerSession } from '~/server/utils/get-authorized-server-session';
@@ -20,7 +19,7 @@ export default defineEventHandler(async (event) => {
     throw MissingIdError;
   }
 
-  const { get<%= h.inflection.camelize(name) %>Details } = use<%= h.inflection.camelize(name) %>Service(prisma);
+  const { get<%= h.inflection.camelize(name) %>Details } = use<%= h.inflection.camelize(name) %>Service();
   const current<%= h.inflection.camelize(name) %> = await get<%= h.inflection.camelize(name) %>Details(<%= h.inflection.camelize(name, true) %>Id);
 
   if(!current<%= h.inflection.camelize(name) %>){

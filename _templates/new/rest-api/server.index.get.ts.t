@@ -3,7 +3,6 @@ to: "src/server/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>
 unless_exists: true
 ---
 import { defineEventHandler, getQuery } from 'h3';
-import { prisma } from '~/server/services/use-prisma';
 <% if(auth === true) { -%>
 import { getAuthorizedServerSession } from '~/server/utils/get-authorized-server-session';
 <% } -%>
@@ -16,7 +15,7 @@ export default defineEventHandler(async (event): Promise<IPaginatedResponse<I<%=
 <% if(auth === true) { -%>
   const session = await getAuthorizedServerSession(event);
 <% } -%>
-  const { get<%= h.inflection.camelize(h.inflection.pluralize(name)) %> } = use<%= h.inflection.camelize(name) %>Service(prisma);
+  const { get<%= h.inflection.camelize(h.inflection.pluralize(name)) %> } = use<%= h.inflection.camelize(name) %>Service();
   const query = getQuery<IListQuery>(event);
   const { records, selectedPage, itemsPerPage, totalRecords } = await get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>(query);
 
