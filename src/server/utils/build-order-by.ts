@@ -1,4 +1,4 @@
-import type { IListQuery } from '#shared/interfaces/IListQuery';
+import type { IListQuery } from '#shared/interfaces/api/IListQuery';
 
 type Direction = 'asc' | 'desc';
 

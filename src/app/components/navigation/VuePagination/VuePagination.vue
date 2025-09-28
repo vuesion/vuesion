@@ -92,7 +92,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import type { IItem } from '#shared/interfaces/IItem';
+import type { IItem } from '#shared/interfaces/ui/IItem';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueInline from '@/components/layout/VueInline/VueInline.vue';

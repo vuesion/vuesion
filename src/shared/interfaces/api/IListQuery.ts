@@ -1,4 +1,4 @@
-import type { IPaginationQueryParameters } from '#shared/interfaces/IPaginationQueryParameters';
+import type { IPaginationQueryParameters } from '#shared/interfaces/api/IPaginationQueryParameters';
 
 type DefaultListFields = 'createdAt' | 'updatedAt' | 'name';
 type SortDir = 'asc' | 'desc';

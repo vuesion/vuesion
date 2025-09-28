@@ -38,7 +38,7 @@ unless_exists: true
       </vue-columns>
 
       <vue-card padding="24" space="24">
-        <vue-text look="medium-title" weight="semi-bold"> {{ <%= h.inflection.camelize(name, true) %>Count }} <%= h.inflection.camelize(name) %> </vue-text>
+        <vue-text look="medium-title" weight="semi-bold"> {{ <%= h.inflection.camelize(name, true) %>Count }} <%= h.inflection.pluralize(name) %> </vue-text>
 
         <vue-columns>
           <vue-column>
@@ -127,9 +127,9 @@ import { computed, ref, useAsyncData, useHead } from '#imports';
 import { useForm } from 'vee-validate';
 import { usePagination } from '@/composables/components/use-pagination';
 import { use<%= h.inflection.camelize(name) %>Actions } from '@/composables/actions/use-<%= h.inflection.dasherize(h.inflection.underscore(name)) %>-actions';
-import type { IItem } from '#shared/interfaces/IItem';
-import type { IListQuery } from '#shared/interfaces/IListQuery';
-import type { I<%= h.inflection.camelize(name) %>Create } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
+import type { IItem } from '#shared/interfaces/ui/IItem';
+import type { IListQuery } from '#shared/interfaces/api/IListQuery';
+import type { I<%= h.inflection.camelize(name) %>Create } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
 import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
@@ -147,7 +147,7 @@ import VueIconButton from '@/components/input-and-actions/VueIconButton/VueIconB
 import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 
 // Deps
-useHead({ title: 'All <%= h.inflection.camelize(name) %>' });
+useHead({ title: 'All <%= h.inflection.pluralize(name) %>' });
 const { meta } = useForm();
 const {
   isReading,

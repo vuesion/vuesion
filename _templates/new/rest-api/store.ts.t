@@ -4,9 +4,9 @@ unless_exists: true
 ---
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import type { IFetchError } from 'ofetch';
-import type { I<%= h.inflection.camelize(name) %>, I<%= h.inflection.camelize(name) %>Create, I<%= h.inflection.camelize(name) %>Update } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
-import type { IListQuery } from '#shared/interfaces/IListQuery';
-import type { IPaginatedResponse } from '#shared/interfaces/IPaginatedResponse';
+import type { I<%= h.inflection.camelize(name) %>, I<%= h.inflection.camelize(name) %>Create, I<%= h.inflection.camelize(name) %>Update } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
+import type { IListQuery } from '#shared/interfaces/api/IListQuery';
+import type { IPaginatedResponse } from '#shared/interfaces/api/IPaginatedResponse';
 import { $fetchWithCookies } from '@/utils/fetch-with-cookies';
 import { handleStoreError } from '@/utils/handle-store-error';
 import { getQueryParams } from '@/utils/get-query-params';

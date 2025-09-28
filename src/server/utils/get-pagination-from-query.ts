@@ -1,4 +1,4 @@
-import type { IPaginationQueryParameters } from '#shared/interfaces/IPaginationQueryParameters';
+import type { IPaginationQueryParameters } from '#shared/interfaces/api/IPaginationQueryParameters';
 
 export const getPaginationFromQuery = (
   query: IPaginationQueryParameters,

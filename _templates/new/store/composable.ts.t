@@ -3,8 +3,8 @@ to: "src/app/composables/actions/use-<%= h.inflection.dasherize(h.inflection.und
 unless_exists: true
 ---
 import { computed, ref } from 'vue';
-import type { I<%= h.inflection.camelize(name) %>Create, I<%= h.inflection.camelize(name) %>Update } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
-import type { IListQuery } from '#shared/interfaces/IListQuery';
+import type { I<%= h.inflection.camelize(name) %>Create, I<%= h.inflection.camelize(name) %>Update } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
+import type { IListQuery } from '#shared/interfaces/api/IListQuery';
 import { use<%= h.inflection.camelize(name) %>Store } from '@/store/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>';
 
 export const use<%= h.inflection.camelize(name) %>Actions = () => {

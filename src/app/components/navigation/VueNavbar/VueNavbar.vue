@@ -48,7 +48,7 @@ import VueIconMenu from '@/components/icons/VueIconMenu.vue';
 import VueAvatar from '@/components/data-display/VueAvatar/VueAvatar.vue';
 import VueDropdown from '@/components/input-and-actions/VueDropdown/VueDropdown.vue';
 import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import type { IItem } from '#shared/interfaces/IItem';
+import type { IItem } from '#shared/interfaces/ui/IItem';
 
 // Interface
 

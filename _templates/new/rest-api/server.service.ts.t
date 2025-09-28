@@ -8,14 +8,14 @@ import type {
   I<%= h.inflection.camelize(name) %>,
   I<%= h.inflection.camelize(name) %>Create,
   I<%= h.inflection.camelize(name) %>Update,
-} from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
-// import { <%= h.inflection.camelize(name) %>Args } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
+} from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
+// import { <%= h.inflection.camelize(name) %>Args } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
 import { getPaginationFromQuery } from '~/server/utils/get-pagination-from-query';
 import { cleanUndefined } from '~/server/utils/object-clean';
 import { buildSearchWhere } from '~/server/utils/build-search-where';
 import { buildOrderBy } from '~/server/utils/build-order-by';
-import type { IListQuery } from '#shared/interfaces/IListQuery';
-import type { IPaginatedResponse } from '#shared/interfaces/IPaginatedResponse';
+import type { IListQuery } from '#shared/interfaces/api/IListQuery';
+import type { IPaginatedResponse } from '#shared/interfaces/api/IPaginatedResponse';
 
 export const use<%= h.inflection.camelize(name) %>Service = (prisma: PrismaClient = getPrisma()) => {
   // const include = <%= h.inflection.camelize(name) %>Args.include;

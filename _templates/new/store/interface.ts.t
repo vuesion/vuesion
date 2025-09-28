@@ -1,5 +1,5 @@
 ---
-to: "src/shared/interfaces/I<%= h.inflection.camelize(name) %>.ts"
+to: "src/shared/interfaces/domain/I<%= h.inflection.camelize(name) %>.ts"
 unless_exists: true
 ---
 import { Prisma } from '@prisma/client';

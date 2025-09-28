@@ -1,5 +1,5 @@
 import { isNilLike } from '@/components/utils/is-nil-like';
-import type { IBreakpoints } from '#shared/interfaces/IBreakpoints';
+import type { IBreakpoints } from '#shared/interfaces/ui/IBreakpoints';
 import { BreakpointValues } from '@/components/utils/prop-types';
 
 export const mapPropToBreakpoints = (

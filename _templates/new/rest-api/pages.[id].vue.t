@@ -73,7 +73,7 @@ unless_exists: true
 import { computed, ref, useAsyncData, useHead, useRoute, watch } from '#imports';
 import { useForm } from 'vee-validate';
 import { use<%= h.inflection.camelize(name) %>Actions } from '@/composables/actions/use-<%= h.inflection.dasherize(h.inflection.underscore(name)) %>-actions';
-import type { I<%= h.inflection.camelize(name) %>Update } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
+import type { I<%= h.inflection.camelize(name) %>Update } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
 import VueContentBlock from '~/app/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueText from '~/app/components/typography/VueText/VueText.vue';
 import VueStack from '~/app/components/layout/VueStack/VueStack.vue';

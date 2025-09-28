@@ -25,7 +25,7 @@
 import { nextTick, ref, useCssModule } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { getDomRef } from '@/composables/components/get-dom-ref';
-import type { IItem } from '#shared/interfaces/IItem';
+import type { IItem } from '#shared/interfaces/ui/IItem';
 import type { ShirtSize } from '@/components/utils/prop-types';
 import VueMenu from '@/components/data-display/VueMenu/VueMenu.vue';
 import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';

@@ -46,7 +46,7 @@
 import { computed, onMounted, ref, useCssModule } from 'vue';
 import { EventBus } from '@/services/EventBus';
 import { createId } from '@/components/utils/create-id';
-import type { IToastNotification } from '#shared/interfaces/IToastNotification';
+import type { IToastNotification } from '#shared/interfaces/ui/IToastNotification';
 import type { WithRequiredProperty } from '@/custom-typings';
 import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';

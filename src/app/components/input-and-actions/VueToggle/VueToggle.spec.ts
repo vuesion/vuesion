@@ -28,6 +28,15 @@ describe('VueToggle.vue', () => {
     getByText('Description');
   });
 
+  test('renders component without description', async () => {
+    const { getByText, queryByText, rerender } = harness;
+
+    await rerender({ description: undefined });
+
+    getByText('Test');
+    expect(queryByText('Description')).toBeNull();
+  });
+
   test('should emit click event', async () => {
     const { getByText, emitted } = harness;
 

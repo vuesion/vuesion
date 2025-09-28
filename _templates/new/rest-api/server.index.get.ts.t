@@ -7,9 +7,9 @@ import { defineEventHandler, getQuery } from 'h3';
 import { getAuthorizedServerSession } from '~/server/utils/get-authorized-server-session';
 <% } -%>
 import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
-import type { IPaginatedResponse } from '#shared/interfaces/IPaginatedResponse';
-import type { I<%= h.inflection.camelize(name) %> } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
-import type { IListQuery } from '#shared/interfaces/IListQuery';
+import type { IPaginatedResponse } from '#shared/interfaces/api/IPaginatedResponse';
+import type { IListQuery } from '#shared/interfaces/api/IListQuery';
+import type { I<%= h.inflection.camelize(name) %> } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
 
 export default defineEventHandler(async (event): Promise<IPaginatedResponse<I<%= h.inflection.camelize(name) %>>> => {
 <% if(auth === true) { -%>

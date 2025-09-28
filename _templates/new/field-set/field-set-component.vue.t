@@ -22,7 +22,7 @@ unless_exists: true
 <script setup lang="ts">
 import { computed, ref, type UnwrapRef, useCssModule, watch } from 'vue';
 import { useForm } from 'vee-validate';
-import type { <%= h.capitalize(name) %>FieldSetModel } from '#shared/interfaces/field-sets/<%= h.capitalize(name) %>FieldSetModel';
+import type { <%= h.capitalize(name) %>FieldSetModel } from '#shared/interfaces/ui/field-sets/<%= h.capitalize(name) %>FieldSetModel';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
 

@@ -7,7 +7,7 @@ import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/
 <% if(auth === true) { -%>
 import { getAuthorizedServerSession } from '~/server/utils/get-authorized-server-session';
 <% } -%>
-import type { I<%= h.inflection.camelize(name) %>Create } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
+import type { I<%= h.inflection.camelize(name) %>Create } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
 
 export default defineEventHandler(async (event) => {
 <% if(auth === true) { -%>
