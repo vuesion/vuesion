@@ -37,12 +37,39 @@ unless_exists: true
         </vue-column>
       </vue-columns>
 
-      <vue-card v-if="<%= h.inflection.camelize(name, true) %>Count === 0" padding="64" align-x="center" align-y="center">
-        <vue-text>No Records, Please use the Form above to add one.</vue-text>
-      </vue-card>
-
-      <vue-card v-else padding="24" space="24">
+      <vue-card padding="24" space="24">
         <vue-text look="medium-title" weight="semi-bold"> {{ <%= h.inflection.camelize(name, true) %>Count }} <%= h.inflection.camelize(name) %> </vue-text>
+
+        <vue-columns>
+          <vue-column>
+            <vue-input
+              id="search"
+              v-model="searchQuery"
+              name="search"
+              label="Search"
+              placeholder="Search by name..."
+              hide-label
+              hide-description
+              leading-icon="search"
+              :trailing-icon="searchQuery.trim().length > 0 ? 'times-circle' : undefined"
+              :debounce="500"
+              @debounced-input="onSearch"
+              @trailing-icon-click="clearSearch"
+            />
+          </vue-column>
+          <vue-column width="2/10" no-shrink>
+            <vue-select
+              id="order"
+              v-model="selectedOrder"
+              name="order"
+              label="Order"
+              :items="orderOptions"
+              hide-label
+              hide-description
+              @update:model-value="onOrderChange"
+            />
+          </vue-column>
+        </vue-columns>
 
         <vue-box v-if="isReading" align-y="center" align-x="center" padding="64">
           <vue-loader />
@@ -56,7 +83,7 @@ unless_exists: true
               <vue-text weight="semi-bold"></vue-text>
             </vue-column>
           </vue-columns>
-          <vue-columns v-for="<%= h.inflection.camelize(name, true) %> in <%= h.inflection.camelize(name, true) %>" :key="<%= h.inflection.camelize(name, true) %>.id" align-y="center">
+          <vue-columns v-for="<%= h.inflection.camelize(name, true) %> in <%= h.inflection.pluralize(h.inflection.camelize(name, true)) %>" :key="<%= h.inflection.camelize(name, true) %>.id" align-y="center">
             <vue-column>
               <nuxt-link :to="`/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/${<%= h.inflection.camelize(name, true) %>.id}`">
                 <vue-text>{{ <%= h.inflection.camelize(name, true) %>.name }}</vue-text>
@@ -96,10 +123,12 @@ unless_exists: true
 </template>
 
 <script setup lang="ts">
-import { ref, useAsyncData, useHead } from '#imports';
+import { computed, ref, useAsyncData, useHead } from '#imports';
 import { useForm } from 'vee-validate';
-import { use<%= h.inflection.camelize(name) %>Actions } from '@/composables/actions/use-user-settings-actions';
 import { usePagination } from '@/composables/components/use-pagination';
+import { use<%= h.inflection.camelize(name) %>Actions } from '@/composables/actions/use-<%= h.inflection.dasherize(h.inflection.underscore(name)) %>-actions';
+import type { IItem } from '#shared/interfaces/IItem';
+import type { IListQuery } from '#shared/interfaces/IListQuery';
 import type { I<%= h.inflection.camelize(name) %>Create } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
 import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
 import VueText from '@/components/typography/VueText/VueText.vue';
@@ -115,6 +144,7 @@ import VuePagination from '@/components/navigation/VuePagination/VuePagination.v
 import VueBox from '@/components/layout/VueBox/VueBox.vue';
 import VueLoader from '@/components/data-display/VueLoader/VueLoader.vue';
 import VueIconButton from '@/components/input-and-actions/VueIconButton/VueIconButton.vue';
+import VueSelect from '@/components/input-and-actions/VueSelect/VueSelect.vue';
 
 // Deps
 useHead({ title: 'All <%= h.inflection.camelize(name) %>' });
@@ -123,11 +153,11 @@ const {
   isReading,
   isCreating,
   isDeleting,
-  <%= h.inflection.camelize(name, true) %>,
+  <%= h.inflection.pluralize(h.inflection.camelize(name, true)) %>,
   <%= h.inflection.camelize(name, true) %>Count,
   create<%= h.inflection.camelize(name) %>,
   delete<%= h.inflection.camelize(name) %>,
-  fetch<%= h.inflection.camelize(name) %>,
+  fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %>,
 } = use<%= h.inflection.camelize(name) %>Actions();
 
 // create <%= h.inflection.camelize(name) %>
@@ -136,7 +166,7 @@ const create<%= h.inflection.camelize(name) %>Model = ref<I<%= h.inflection.came
 });
 const onCreate<%= h.inflection.camelize(name) %> = async () => {
   await create<%= h.inflection.camelize(name) %>(create<%= h.inflection.camelize(name) %>Model.value);
-  await fetch<%= h.inflection.camelize(name) %>({ selectedPage: selectedPage.value, itemsPerPage: itemsPerPage.value });
+  await fetch<%= h.inflection.camelize(name) %>List();
   create<%= h.inflection.camelize(name) %>Model.value.name = '';
 };
 
@@ -153,17 +183,52 @@ const onDelete<%= h.inflection.camelize(name) %> = async () => {
 
   onCloseModal();
 
-  await fetch<%= h.inflection.camelize(name) %>({ selectedPage: selectedPage.value, itemsPerPage: itemsPerPage.value });
+  await fetch<%= h.inflection.camelize(name) %>List();
+};
+
+// search <%= h.inflection.camelize(name) %>
+const searchQuery = ref('');
+const onSearch = async () => {
+  selectedPage.value = 1;
+
+  await fetch<%= h.inflection.camelize(name) %>List();
+};
+const clearSearch = async () => {
+  searchQuery.value = '';
+
+  await onSearch();
+};
+
+// sort <%= h.inflection.camelize(name) %>
+const selectedOrder = ref<IItem<IListQuery['sort']>>({
+  label: 'Created By',
+  value: 'createdAt:desc',
+  leadingIcon: 'arrow-down',
+});
+const orderOptions = computed<Array<IItem<IListQuery['sort']>>>(() => [
+  { label: 'Created Desc', value: 'createdAt:desc', leadingIcon: 'arrow-down' },
+  { label: 'Created Asc', value: 'createdAt:asc', leadingIcon: 'arrow-up' },
+  { label: 'Updated Desc', value: 'updatedAt:desc', leadingIcon: 'arrow-down' },
+  { label: 'Updated Asc', value: 'updatedAt:asc', leadingIcon: 'arrow-up' },
+  { label: 'Name Desc', value: 'name:desc', leadingIcon: 'arrow-down' },
+  { label: 'Name Asc', value: 'name:asc', leadingIcon: 'arrow-up' },
+]);
+const onOrderChange = async () => {
+  await fetch<%= h.inflection.camelize(name) %>List();
 };
 
 // display <%= h.inflection.camelize(name) %>
-const { selectedPage, itemsPerPage, onSelectedPageChange, onItemsPerPageChange } = usePagination(
-  ({ selectedPage, itemsPerPage }) => fetch<%= h.inflection.camelize(name) %>({ selectedPage, itemsPerPage }),
-  5,
-);
+const fetch<%= h.inflection.camelize(name) %>List = () =>
+  fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %>({
+    q: searchQuery.value,
+    sort: selectedOrder.value?.value,
+    selectedPage: selectedPage.value,
+    itemsPerPage: itemsPerPage.value,
+  });
+const { selectedPage, itemsPerPage, onSelectedPageChange, onItemsPerPageChange } = usePagination(fetch<%= h.inflection.camelize(name) %>List, 5);
 await useAsyncData(async () => {
-  await fetch<%= h.inflection.camelize(name) %>({ selectedPage: selectedPage.value, itemsPerPage: itemsPerPage.value });
-  return <%= h.inflection.camelize(name, true) %>.value;
+  await fetch<%= h.inflection.camelize(name) %>List();
+  return <%= h.inflection.pluralize(h.inflection.camelize(name, true)) %>.value;
 });
 </script>
 

@@ -30,7 +30,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
   it('initial state & getters', () => {
     const store = use<%= h.inflection.camelize(name) %>Store();
 
-    expect(store.get<%= h.inflection.camelize(name) %>).toEqual([]);
+    expect(store.get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>).toEqual([]);
     expect(store.get<%= h.inflection.camelize(name) %>Count).toBe(0);
     expect(store.getCurrent<%= h.inflection.camelize(name) %>).toBeUndefined();
     expect(store.getError).toBeNull();
@@ -49,7 +49,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
       expect(getQueryParams).toHaveBeenCalledWith({ page: 1, size: 10 });
       expect($fetchWithCookies).toHaveBeenCalledWith('/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>?selectedPage=1&itemsPerPage=10');
 
-      expect(store.get<%= h.inflection.camelize(name) %>).toEqual([{ id: 'a1' }, { id: 'a2' }]);
+      expect(store.get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>).toEqual([{ id: 'a1' }, { id: 'a2' }]);
       expect(store.get<%= h.inflection.camelize(name) %>Count).toBe(2);
       expect(store.getError).toBeNull();
     });
@@ -73,7 +73,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
       await store.create<%= h.inflection.camelize(name) %>({ any: 'payload' } as any);
 
       expect($fetchWithCookies).toHaveBeenCalledWith('/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>', 'POST', { any: 'payload' });
-      expect(store.get<%= h.inflection.camelize(name) %>).toEqual([created]);
+      expect(store.get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>).toEqual([created]);
       expect(store.getCurrent<%= h.inflection.camelize(name) %>).toEqual(created);
       expect(store.getError).toBeNull();
     });
@@ -89,7 +89,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
       await store.update<%= h.inflection.camelize(name) %>('x2', { patched: true } as any);
 
       expect($fetchWithCookies).toHaveBeenCalledWith('/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/x2', 'PUT', { patched: true });
-      expect(store.get<%= h.inflection.camelize(name) %>).toEqual([{ id: 'x1' }, updated]);
+      expect(store.get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>).toEqual([{ id: 'x1' }, updated]);
       expect(store.getCurrent<%= h.inflection.camelize(name) %>).toEqual(updated);
       expect(store.getError).toBeNull();
     });
@@ -104,7 +104,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
       await store.delete<%= h.inflection.camelize(name) %>('x2');
 
       expect($fetchWithCookies).toHaveBeenCalledWith('/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/x2', 'DELETE');
-      expect(store.get<%= h.inflection.camelize(name) %>).toEqual([{ id: 'x1' }]);
+      expect(store.get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>).toEqual([{ id: 'x1' }]);
       expect(store.getCurrent<%= h.inflection.camelize(name) %>).toBeUndefined();
       expect(store.getError).toBeNull();
     });
@@ -125,7 +125,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
       expect(handleStoreError).toHaveBeenCalled();
       expect(store.getError).toBe(err);
 
-      expect(store.get<%= h.inflection.camelize(name) %>).toEqual([{ id: 'keep' }]);
+      expect(store.get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>).toEqual([{ id: 'keep' }]);
       expect(store.get<%= h.inflection.camelize(name) %>Count).toBe(1);
     });
 
@@ -154,7 +154,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
 
       expect(handleStoreError).toHaveBeenCalled();
       expect(store.getError).toBe(err);
-      expect(store.get<%= h.inflection.camelize(name) %>).toEqual([{ id: 'keep' }]);
+      expect(store.get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>).toEqual([{ id: 'keep' }]);
       expect(store.getCurrent<%= h.inflection.camelize(name) %>).toBeUndefined();
     });
 
@@ -170,7 +170,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
 
       expect(handleStoreError).toHaveBeenCalled();
       expect(store.getError).toBe(err);
-      expect(store.get<%= h.inflection.camelize(name) %>).toEqual([{ id: 'x1' }, { id: 'x2' }]);
+      expect(store.get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>).toEqual([{ id: 'x1' }, { id: 'x2' }]);
       expect(store.getCurrent<%= h.inflection.camelize(name) %>).toEqual({ id: 'x1' });
     });
 
@@ -186,7 +186,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
 
       expect(handleStoreError).toHaveBeenCalled();
       expect(store.getError).toBe(err);
-      expect(store.get<%= h.inflection.camelize(name) %>).toEqual([{ id: 'x1' }, { id: 'x2' }]);
+      expect(store.get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>).toEqual([{ id: 'x1' }, { id: 'x2' }]);
       expect(store.getCurrent<%= h.inflection.camelize(name) %>).toEqual({ id: 'x2' });
     });
   });

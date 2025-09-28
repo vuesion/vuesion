@@ -17,7 +17,7 @@ vi.mock('@/store/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>', 
     get<%= h.inflection.camelize(name) %>: [{ id: '1' }],
     get<%= h.inflection.camelize(name) %>Count: 1,
     getCurrent<%= h.inflection.camelize(name) %>: { id: '1' },
-    fetch<%= h.inflection.camelize(name) %>: fetchSpy,
+    fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %>: fetchSpy,
     fetch<%= h.inflection.camelize(name) %>Details: fetchDetailsSpy,
     create<%= h.inflection.camelize(name) %>: createSpy,
     update<%= h.inflection.camelize(name) %>: updateSpy,
@@ -39,10 +39,10 @@ describe('use<%= h.inflection.camelize(name) %>Actions', () => {
     expect(api.error.value).toBeNull();
   });
 
-  it('fetch<%= h.inflection.camelize(name) %> toggles isReading and delegates to store', async () => {
+  it('fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %> toggles isReading and delegates to store', async () => {
     const api = use<%= h.inflection.camelize(name) %>Actions();
     const params = { page: 1, size: 10 } as any;
-    const func = api.fetch<%= h.inflection.camelize(name) %>(params);
+    const func = api.fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %>(params);
 
     expect(api.isReading.value).toBe(true);
 

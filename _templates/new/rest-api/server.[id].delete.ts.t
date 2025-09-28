@@ -2,7 +2,7 @@
 to: "src/server/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>/[id]/index.delete.ts"
 unless_exists: true
 ---
-import { defineEventHandler } from 'h3';
+import { defineEventHandler, setResponseStatus } from 'h3';
 import { prisma } from '~/server/services/use-prisma';
 import { MissingIdError, NotFoundError } from "~/server/utils/errors";
 <% if(auth === true) { -%>
@@ -28,6 +28,8 @@ export default defineEventHandler(async (event) => {
   }
 
   // mustBeRelatedToEntity(session.user.id, current<%= h.inflection.camelize(name) %>.accountId);
+
+  setResponseStatus(event, 204);
 
   return delete<%= h.inflection.camelize(name) %>(current<%= h.inflection.camelize(name) %>.id);
 });

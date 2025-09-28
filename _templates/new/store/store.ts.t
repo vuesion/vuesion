@@ -5,7 +5,7 @@ unless_exists: true
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import type { IFetchError } from 'ofetch';
 import type { I<%= h.inflection.camelize(name) %>, I<%= h.inflection.camelize(name) %>Create, I<%= h.inflection.camelize(name) %>Update } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
-import type { IPaginationQueryParameters } from '#shared/interfaces/IPaginationQueryParameters';
+import type { IListQuery } from '#shared/interfaces/IListQuery';
 import type { IPaginatedResponse } from '#shared/interfaces/IPaginatedResponse';
 import { $fetchWithCookies } from '@/utils/fetch-with-cookies';
 import { handleStoreError } from '@/utils/handle-store-error';
@@ -13,7 +13,7 @@ import { getQueryParams } from '@/utils/get-query-params';
 
 export interface I<%= h.inflection.camelize(name) %>State {
   <%= h.inflection.pluralize(name) %>: Array<I<%= h.inflection.camelize(name) %>>;
-  <%= h.inflection.pluralize(name) %>Count: number;
+  <%= h.inflection.camelize(name, true) %>Count: number;
   current<%= h.inflection.camelize(name) %>?: I<%= h.inflection.camelize(name) %>;
   error: IFetchError | null | undefined;
 }
@@ -31,8 +31,8 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
     get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>(state: I<%= h.inflection.camelize(name) %>State) {
       return state.<%= h.inflection.pluralize(name) %>;
     },
-    get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>Count(state: I<%= h.inflection.camelize(name) %>State) {
-      return state.<%= h.inflection.pluralize(name) %>Count;
+    get<%= h.inflection.camelize(name) %>Count(state: I<%= h.inflection.camelize(name) %>State) {
+      return state.<%= h.inflection.camelize(name, true) %>Count;
     },
     getCurrent<%= h.inflection.camelize(name) %>(state: I<%= h.inflection.camelize(name) %>State) {
       return state.current<%= h.inflection.camelize(name) %>;
@@ -42,7 +42,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
     },
   },
   actions: {
-    async fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %>(params: IPaginationQueryParameters) {
+    async fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %>(params: IListQuery) {
       try {
         this.error = null;
         const res = await $fetchWithCookies<IPaginatedResponse<I<%= h.inflection.camelize(name) %>>>(

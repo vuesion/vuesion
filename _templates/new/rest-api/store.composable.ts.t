@@ -4,7 +4,7 @@ unless_exists: true
 ---
 import { computed, ref } from 'vue';
 import type { I<%= h.inflection.camelize(name) %>Create, I<%= h.inflection.camelize(name) %>Update } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
-import type { IPaginationQueryParameters } from '#shared/interfaces/IPaginationQueryParameters';
+import type { IListQuery } from '#shared/interfaces/IListQuery';
 import { use<%= h.inflection.camelize(name) %>Store } from '@/store/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>';
 
 export const use<%= h.inflection.camelize(name) %>Actions = () => {
@@ -14,7 +14,7 @@ export const use<%= h.inflection.camelize(name) %>Actions = () => {
   const isUpdating = ref(false);
   const isDeleting = ref(false);
 
-  const fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %> = async (params: IPaginationQueryParameters) => {
+  const fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %> = async (params: IListQuery) => {
     isReading.value = true;
 
     await store.fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %>(params);
@@ -53,7 +53,7 @@ export const use<%= h.inflection.camelize(name) %>Actions = () => {
   return {
     error: computed(() => store.getError),
     <%= h.inflection.pluralize(h.inflection.camelize(name, true)) %>: computed(() => store.get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>),
-    <%= h.inflection.pluralize(h.inflection.camelize(name, true)) %>Count: computed(() => store.get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>Count),
+    <%= h.inflection.camelize(name, true) %>Count: computed(() => store.get<%= h.inflection.camelize(name) %>Count),
     current<%= h.inflection.camelize(name) %>: computed(() => store.getCurrent<%= h.inflection.camelize(name) %>),
     isReading,
     isCreating,
