@@ -33,7 +33,7 @@ describe('use<%= h.inflection.camelize(name) %>Actions', () => {
   it('exposes computed getters from store', () => {
     const api = use<%= h.inflection.camelize(name) %>Actions();
 
-    expect(api.<%= h.inflection.camelize(name, true) %>.value).toEqual([{ id: '1' }]);
+    expect(api.<%= h.inflection.pluralize(h.inflection.camelize(name, true)) %>.value).toEqual([{ id: '1' }]);
     expect(api.<%= h.inflection.camelize(name, true) %>Count.value).toBe(1);
     expect(api.current<%= h.inflection.camelize(name) %>.value).toEqual({ id: '1' });
     expect(api.error.value).toBeNull();

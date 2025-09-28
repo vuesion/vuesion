@@ -22,7 +22,7 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
   state: (): I<%= h.inflection.camelize(name) %>State => {
     return {
       <%= h.inflection.pluralize(name) %>: [],
-      <%= h.inflection.pluralize(name) %>Count: 0,
+      <%= h.inflection.camelize(name, true) %>Count: 0,
       current<%= h.inflection.camelize(name) %>: undefined,
       error: null,
     };
@@ -46,11 +46,11 @@ export const use<%= h.inflection.camelize(name) %>Store = defineStore('<%= h.inf
       try {
         this.error = null;
         const res = await $fetchWithCookies<IPaginatedResponse<I<%= h.inflection.camelize(name) %>>>(
-          `/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>${getQueryParams(params)}`
+          `/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>${getQueryParams(params)}`,
         );
 
         this.<%= h.inflection.pluralize(name) %> = res.records;
-        this.<%= h.inflection.pluralize(name) %>Count = res.totalRecords;
+        this.<%= h.inflection.camelize(name, true) %>Count = res.totalRecords;
       } catch (e: any) {
         handleStoreError(this, e);
       }

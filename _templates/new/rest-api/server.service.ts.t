@@ -19,7 +19,7 @@ import type { IPaginatedResponse } from '#shared/interfaces/IPaginatedResponse';
 export const use<%= h.inflection.camelize(name) %>Service = (prisma: PrismaClient) => {
   const include = <%= h.inflection.camelize(name) %>Args.include;
 
-  const get<%= h.inflection.camelize(name) %> = async (query: IListQuery): Promise<IPaginatedResponse<I<%= h.inflection.camelize(name) %>>> => {
+  const get<%= h.inflection.camelize(h.inflection.pluralize(name)) %> = async (query: IListQuery): Promise<IPaginatedResponse<I<%= h.inflection.camelize(name) %>>> => {
     const where = buildSearchWhere<Prisma.<%= h.inflection.camelize(name) %>WhereInput>(query as Partial<IListQuery>, ['name']);
     const orderBy = buildOrderBy<Prisma.<%= h.inflection.camelize(name) %>OrderByWithRelationInput>(query as Partial<IListQuery>, {
       defaultField: 'createdAt',
@@ -73,7 +73,7 @@ export const use<%= h.inflection.camelize(name) %>Service = (prisma: PrismaClien
   };
 
   return {
-    get<%= h.inflection.camelize(name) %>,
+    get<%= h.inflection.camelize(h.inflection.pluralize(name)) %>,
     get<%= h.inflection.camelize(name) %>Details,
     create<%= h.inflection.camelize(name) %>,
     update<%= h.inflection.camelize(name) %>,

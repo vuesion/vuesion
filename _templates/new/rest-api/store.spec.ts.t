@@ -81,7 +81,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
     it('update<%= h.inflection.camelize(name) %> → replaces item by id & sets current', async () => {
       const store = use<%= h.inflection.camelize(name) %>Store();
 
-      store.<%= h.inflection.camelize(name, true) %> = [{ id: 'x1' }, { id: 'x2' }] as any;
+      store.<%= h.inflection.pluralize(name) %> = [{ id: 'x1' }, { id: 'x2' }] as any;
 
       const updated = { id: 'x2', patched: true };
       ($fetchWithCookies as any).mockResolvedValueOnce(updated);
@@ -96,7 +96,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
 
     it('delete<%= h.inflection.camelize(name) %> → removes item & clears current', async () => {
       const store = use<%= h.inflection.camelize(name) %>Store();
-      store.<%= h.inflection.camelize(name, true) %> = [{ id: 'x1' }, { id: 'x2' }] as any;
+      store.<%= h.inflection.pluralize(name) %> = [{ id: 'x1' }, { id: 'x2' }] as any;
       store.current<%= h.inflection.camelize(name) %> = { id: 'x2' } as any;
 
       ($fetchWithCookies as any).mockResolvedValueOnce(undefined);
@@ -117,7 +117,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
 
       const store = use<%= h.inflection.camelize(name) %>Store();
 
-      store.<%= h.inflection.camelize(name, true) %> = [{ id: 'keep' }] as any;
+      store.<%= h.inflection.pluralize(name) %> = [{ id: 'keep' }] as any;
       store.<%= h.inflection.camelize(name, true) %>Count = 1;
 
       await store.fetch<%= h.inflection.camelize(h.inflection.pluralize(name)) %>({ page: 1, size: 10 } as any);
@@ -148,7 +148,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
       ($fetchWithCookies as any).mockRejectedValueOnce(err);
 
       const store = use<%= h.inflection.camelize(name) %>Store();
-      store.<%= h.inflection.camelize(name, true) %> = [{ id: 'keep' }] as any;
+      store.<%= h.inflection.pluralize(name) %> = [{ id: 'keep' }] as any;
 
       await store.create<%= h.inflection.camelize(name) %>({ foo: 'bar' } as any);
 
@@ -163,7 +163,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
       ($fetchWithCookies as any).mockRejectedValueOnce(err);
 
       const store = use<%= h.inflection.camelize(name) %>Store();
-      store.<%= h.inflection.camelize(name, true) %> = [{ id: 'x1' }, { id: 'x2' }] as any;
+      store.<%= h.inflection.pluralize(name) %> = [{ id: 'x1' }, { id: 'x2' }] as any;
       store.current<%= h.inflection.camelize(name) %> = { id: 'x1' } as any;
 
       await store.update<%= h.inflection.camelize(name) %>('x2', { patched: true } as any);
@@ -179,7 +179,7 @@ describe('use<%= h.inflection.camelize(name) %>Store', () => {
       ($fetchWithCookies as any).mockRejectedValueOnce(err);
 
       const store = use<%= h.inflection.camelize(name) %>Store();
-      store.<%= h.inflection.camelize(name, true) %> = [{ id: 'x1' }, { id: 'x2' }] as any;
+      store.<%= h.inflection.pluralize(name) %> = [{ id: 'x1' }, { id: 'x2' }] as any;
       store.current<%= h.inflection.camelize(name) %> = { id: 'x2' } as any;
 
       await store.delete<%= h.inflection.camelize(name) %>('x2');
