@@ -53,7 +53,6 @@ export default [
       'array-bracket-spacing': ['error', 'never'],
       '@typescript-eslint/no-explicit-any': 0,
       'vue/multi-word-component-names': 0,
-
       'vue/attribute-hyphenation': [
         'error',
         'always',
@@ -61,7 +60,6 @@ export default [
           ignore: ['modelValue'],
         },
       ],
-
       'vue/v-on-event-hyphenation': [
         'error',
         'always',
@@ -70,13 +68,19 @@ export default [
           ignore: ['modelValue'],
         },
       ],
-
       'import/no-named-as-default': 0,
       'vue/no-v-text-v-html-on-component': 0,
       'vue/no-v-html': 0,
       'import/no-duplicates': 0,
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/no-empty-object-type': 0,
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_+$',
+          varsIgnorePattern: '^_+$',
+        },
+      ],
     },
   },
   ...storybook.configs['flat/recommended'],

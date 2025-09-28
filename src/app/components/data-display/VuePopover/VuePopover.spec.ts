@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, test } from 'vitest';
 import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VuePopover from './VuePopover.vue';
-import { triggerWindow } from '~/test/test-utils';
+import { triggerWindow } from '@/test/test-utils';
 import { nextTick } from 'vue';
 
 describe('VuePopover.vue', () => {

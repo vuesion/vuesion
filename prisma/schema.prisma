@@ -10,16 +10,3 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
-model Account {
-  id       String @id @default(ulid())
-  email    String @unique
-  password String
-
-  // generated model relations
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-// generated models

@@ -4,8 +4,8 @@ import '@testing-library/jest-dom';
 import { vi } from 'vitest';
 import { defineRule } from 'vee-validate';
 import { required, email, integer, min, min_value as minValue, regex } from '@vee-validate/rules';
-import { datetimeFormats } from '../../i18n/date-formats';
-import { numberFormats } from '../../i18n/number-formats';
+import { datetimeFormats } from '../../../i18n/date-formats';
+import { numberFormats } from '../../../i18n/number-formats';
 
 process.env.TZ = 'UTC';
 
@@ -23,7 +23,7 @@ const i18n = createI18n({
   locale: 'en-US',
   fallbackLocale: 'en-US',
   formatFallbackMessages: true,
-  messages: { en: {} },
+  messages: { 'en-US': {} },
   missingWarn: false,
   fallbackWarn: false,
   datetimeFormats,

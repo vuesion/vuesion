@@ -30,6 +30,8 @@
     "dev": "cross-env NODE_ICU_DATA=node_modules/full-icu nuxi dev",
     "storybook:dev": "rm -rf ./node_modules/.cache && storybook dev -p 6006",
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest run --coverage",
+    "test:app": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest run --project app --coverage",
+    "test:server": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest run --project server --coverage",
     "lint": "eslint --fix --cache . && tsc --project ./tsconfig.json --noEmit",
     "new:component": "hygen new component",
     "new:field-set": "hygen new field-set",
@@ -55,6 +57,7 @@
     "build:spa": "nuxi generate",
     "start": "cross-env NODE_ICU_DATA=node_modules/full-icu node .output/server/index.mjs",
     "prepare": "husky",
+    "postinstall": "prisma generate || true",
     "pre-commit": "pretty-quick --staged && concurrently \"npm run lint\" \"npm test\""
   },
   "dependencies": {
@@ -94,6 +97,7 @@
     "@storybook/addon-themes": "9.0.6",
     "@storybook/testing-library": "0.2.2",
     "@storybook/vue3-vite": "^9.0.6",
+    "@testcontainers/postgresql": "11.6.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/vue": "8.1.0",
     "@types/bcrypt": "5.0.2",

@@ -4,7 +4,7 @@ import flushPromises from 'flush-promises';
 import { fireEvent, render } from '@testing-library/vue';
 import { defineRule } from 'vee-validate';
 import { email, required } from '@vee-validate/rules';
-import { sleep } from '~/test/test-utils';
+import { sleep } from '@/test/test-utils';
 import VueInput from './VueInput.vue';
 import VueCollapse from '@/components/behavior/VueCollapse/VueCollapse.vue';
 

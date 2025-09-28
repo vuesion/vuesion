@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/vue';
 import flushPromises from 'flush-promises';
 import { defineRule } from 'vee-validate';
 import { integer, required } from '@vee-validate/rules';
-import { sleep } from '~/test/test-utils';
+import { sleep } from '@/test/test-utils';
 import VueTextarea from './VueTextarea.vue';
 
 defineRule('required', required);

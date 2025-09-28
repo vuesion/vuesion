@@ -1,14 +1,28 @@
-import { PrismaClient } from '@prisma/client';
+import type { PrismaClient as PrismaClientType } from '@prisma/client';
 
-const prismaClientSingleton = () => {
-  return new PrismaClient({ log: ['error'] });
-};
+let prisma: PrismaClientType | null = null;
 
 declare global {
   // eslint-disable-next-line no-var
-  var prismaGlobal: undefined | ReturnType<typeof prismaClientSingleton>;
+  var __PRISMA__: PrismaClientType | undefined;
 }
 
-export const prisma = globalThis.prismaGlobal ?? prismaClientSingleton();
+export function getPrisma(): PrismaClientType {
+  if (prisma) return prisma;
 
-if (process.env.NODE_ENV !== 'production') globalThis.prismaGlobal = prisma;
+  if (globalThis.__PRISMA__) {
+    prisma = globalThis.__PRISMA__;
+    return prisma;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-require-imports,@typescript-eslint/consistent-type-imports
+  const { PrismaClient } = require('@prisma/client') as typeof import('@prisma/client');
+
+  prisma = new PrismaClient({ log: ['error'] });
+
+  if (process.env.NODE_ENV !== 'production') {
+    globalThis.__PRISMA__ = prisma;
+  }
+
+  return prisma;
+}

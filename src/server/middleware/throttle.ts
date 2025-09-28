@@ -1,8 +1,5 @@
 import { getIntInRange } from '#shared/utils/random-numbers';
-
-export const sleep = (ms: number): Promise<unknown> => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-};
+import { sleep } from '#shared/utils/sleep';
 
 export default defineEventHandler(async () => {
   // Simulate slow hardware, because this app runs in the cheapest hardware on AWS

@@ -1,7 +1,7 @@
 import { describe, beforeEach, test, expect } from 'vitest';
 import { fireEvent, render, type RenderResult } from '@testing-library/vue';
 import VueToast from './VueToast.vue';
-import { sleep } from '~/test/test-utils';
+import { sleep } from '@/test/test-utils';
 import { emitToastNotification } from '@/components/utils/emit-toast-notification';
 
 describe('VueToast.vue', () => {

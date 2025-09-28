@@ -44,11 +44,37 @@ export default defineConfig({
         '**/*dummy*',
         '**/docs/**',
         '**/*Example*',
+        '**/use-prisma.ts',
       ],
     },
-    environment: 'jsdom',
-    globals: true,
-    setupFiles: ['./src/test/setup.ts'],
+    projects: [
+      {
+        extends: true,
+        test: {
+          name: 'app',
+          environment: 'jsdom',
+          globals: true,
+          setupFiles: ['./src/app/test/setup.ts'],
+          include: ['./src/app/**/*.spec.ts'],
+          pool: { threads: { singleThread: true } },
+          sequence: { concurrent: false },
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: 'server',
+          environment: 'node',
+          globals: true,
+          globalSetup: ['./src/server/test/global-setup.ts'],
+          include: ['./src/server/**/*.spec.ts', './src/shared/**/*.spec.ts'],
+          testTimeout: 20000,
+          hookTimeout: 50000,
+          pool: { threads: { singleThread: true } },
+          sequence: { concurrent: false },
+        },
+      },
+    ],
   },
   resolve: {
     alias: {
