@@ -4,11 +4,11 @@ unless_exists: true
 ---
 import { defineEventHandler, setResponseStatus } from 'h3';
 import { prisma } from '~/server/services/use-prisma';
+import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
 <% if(auth === true) { -%>
 import { getAuthorizedServerSession } from '~/server/utils/get-authorized-server-session';
 <% } -%>
 import type { I<%= h.inflection.camelize(name) %>Create } from '#shared/interfaces/I<%= h.inflection.camelize(name) %>';
-import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
 
 export default defineEventHandler(async (event) => {
 <% if(auth === true) { -%>

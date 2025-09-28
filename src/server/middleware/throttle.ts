@@ -1,4 +1,4 @@
-import { getIntInRange } from '~~/src/utils/random-numbers';
+import { getIntInRange } from '#shared/utils/random-numbers';
 
 export const sleep = (ms: number): Promise<unknown> => {
   return new Promise((resolve) => setTimeout(resolve, ms));

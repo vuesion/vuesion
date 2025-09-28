@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import type { StoryFn } from '@storybook/vue3-vite';
-import { getIntInRange } from '~/utils/random-numbers';
+import { getIntInRange } from '#shared/utils/random-numbers';
 import VueMasonry from './VueMasonry.vue';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueSlider from '@/components/input-and-actions/VueSlider/VueSlider.vue';
