@@ -31,7 +31,7 @@ unless_exists: true
 <script setup lang="ts">
 import { computed, ref, type UnwrapRef, useCssModule, watch } from 'vue';
 import { useForm } from 'vee-validate';
-import type { I<%= h.capitalize(name) %> } from '#shared/interfaces/domain/I<%= h.capitalize(name) %>';
+import type { I<%= h.capitalize(name) %>ListView } from '#shared/interfaces/domain/I<%= h.capitalize(name) %>';
 import type { I<%= h.capitalize(name) %>FormModel } from '#shared/interfaces/ui/forms/<%= h.capitalize(name) %>FormModel';
 import VueStack from '@/components/layout/VueStack/VueStack.vue';
 import VueInput from '@/components/input-and-actions/VueInput/VueInput.vue';
@@ -40,7 +40,7 @@ import VueInline from '@/components/layout/VueInline/VueInline.vue';
 
 // Interface
 interface <%= h.capitalize(name) %>FormProps {
-  <%= name %>?: I<%= h.capitalize(name) %> | null;
+  <%= name %>?: I<%= h.capitalize(name) %>ListView | null;
   loading?: boolean;
 }
 const props = withDefaults(defineProps<<%= h.capitalize(name) %>FormProps>(), {

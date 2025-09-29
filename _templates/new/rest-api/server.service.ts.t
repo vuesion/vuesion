@@ -5,11 +5,12 @@ unless_exists: true
 import type { Prisma, PrismaClient } from '@prisma/client';
 import { getPrisma } from '~/server/services/use-prisma';
 import type {
-  I<%= h.inflection.camelize(name) %>,
+  I<%= h.inflection.camelize(name) %>ListView,
+  I<%= h.inflection.camelize(name) %>DetailView,
   I<%= h.inflection.camelize(name) %>Create,
   I<%= h.inflection.camelize(name) %>Update,
 } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
-// import { <%= h.inflection.camelize(name) %>Args } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
+// import { I<%= h.inflection.camelize(name) %>ListViewArgs, I<%= h.inflection.camelize(name) %>DetailViewArgs } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
 import { getPaginationFromQuery } from '~/server/utils/get-pagination-from-query';
 import { cleanUndefined } from '~/server/utils/object-clean';
 import { buildSearchWhere } from '~/server/utils/build-search-where';
@@ -18,9 +19,12 @@ import type { IListQuery } from '#shared/interfaces/api/IListQuery';
 import type { IPaginatedResponse } from '#shared/interfaces/api/IPaginatedResponse';
 
 export const use<%= h.inflection.camelize(name) %>Service = (prisma: PrismaClient = getPrisma()) => {
-  // const include = <%= h.inflection.camelize(name) %>Args.include;
+  // const listInclude = I<%= h.inflection.camelize(name) %>ListViewArgs.include;
+  // const listSelect = I<%= h.inflection.camelize(name) %>ListViewArgs.select;
+  // const detailInclude = I<%= h.inflection.camelize(name) %>DetailViewArgs.select;
+  // const detailSelect = I<%= h.inflection.camelize(name) %>DetailViewArgs.select;
 
-  const get<%= h.inflection.camelize(h.inflection.pluralize(name)) %> = async (query: IListQuery): Promise<IPaginatedResponse<I<%= h.inflection.camelize(name) %>>> => {
+  const get<%= h.inflection.camelize(h.inflection.pluralize(name)) %> = async (query: IListQuery): Promise<IPaginatedResponse<I<%= h.inflection.camelize(name) %>ListView>> => {
     const where = buildSearchWhere<Prisma.<%= h.inflection.camelize(name) %>WhereInput>(query as Partial<IListQuery>, ['name']);
     const orderBy = buildOrderBy<Prisma.<%= h.inflection.camelize(name) %>OrderByWithRelationInput>(query as Partial<IListQuery>, {
       defaultField: 'createdAt',
@@ -31,7 +35,8 @@ export const use<%= h.inflection.camelize(name) %>Service = (prisma: PrismaClien
     const [records, totalRecords] = await Promise.all([
       prisma.<%= h.inflection.camelize(name, true) %>.findMany({
         where,
-        // include,
+        // include: listInclude,
+        // select: listSelect,
         orderBy,
         take,
         skip,
@@ -46,27 +51,30 @@ export const use<%= h.inflection.camelize(name) %>Service = (prisma: PrismaClien
       totalRecords,
     };
   };
-  const get<%= h.inflection.camelize(name) %>Details = (id: string) => {
+  const get<%= h.inflection.camelize(name) %>Details = (id: string): Promise<I<%= h.inflection.camelize(name) %>DetailView | null> => {
     return prisma.<%= h.inflection.camelize(name, true) %>.findFirst({
       where: { id },
-      // include,
+      // include: detailInclude,
+      // select: detailSelect,
     });
   };
-  const create<%= h.inflection.camelize(name) %> = (data: I<%= h.inflection.camelize(name) %>Create) => {
+  const create<%= h.inflection.camelize(name) %> = (data: I<%= h.inflection.camelize(name) %>Create): Promise<I<%= h.inflection.camelize(name) %>DetailView> => {
     data = cleanUndefined(data);
 
     return prisma.<%= h.inflection.camelize(name, true) %>.create({
       data,
-      // include,
+      // include: detailInclude,
+      // select: detailSelect,
     });
   };
-  const update<%= h.inflection.camelize(name) %> = (id: string, data: I<%= h.inflection.camelize(name) %>Update) => {
+  const update<%= h.inflection.camelize(name) %> = (id: string, data: I<%= h.inflection.camelize(name) %>Update): Promise<I<%= h.inflection.camelize(name) %>DetailView> => {
     data = cleanUndefined(data);
 
     return prisma.<%= h.inflection.camelize(name, true) %>.update({
       data,
       where: { id },
-      // include,
+      // include: detailInclude,
+      // select: detailSelect,
     });
   };
   const delete<%= h.inflection.camelize(name) %> = (id: string) => {
