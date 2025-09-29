@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Swagger Docs</title>
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css" />
+  </head>
+  <body>
+    <div id="swagger-ui"></div>
+    <script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
+    <script>
+      async function init() {
+        try {
+          const res = await fetch('./openapi.json');
+          const spec = await res.json();
+
+          if (spec.error) {
+            document.getElementById('swagger-ui').innerHTML =
+              '<h2 style="font-family:sans-serif;color:#c00;">⚠️ OpenAPI spec not found</h2>' +
+              '<p style="font-family:sans-serif;">Please run <code>npm run generate:swagger</code> to generate <code>src/public/swaggger/openapi.json</code>.</p>';
+            return;
+          }
+
+          SwaggerUIBundle({
+            spec,
+            dom_id: '#swagger-ui',
+          });
+        } catch (err) {
+          document.getElementById('swagger-ui').innerHTML =
+            '<h2 style="font-family:sans-serif;color:#c00;">⚠️ Failed to load OpenAPI spec</h2>' +
+            '<p style="font-family:sans-serif;">Error: ' +
+            (err.message || err) +
+            '</p>';
+        }
+      }
+      init();
+    </script>
+  </body>
+</html>

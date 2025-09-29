@@ -7,10 +7,10 @@ import { MissingIdError, NotFoundError } from "~/server/utils/errors";
 <% if(auth === true) { -%>
 import { getAuthorizedServerSession } from '~/server/utils/get-authorized-server-session';
 // import { mustBeRelatedToEntity } from '~/server/utils/access-control';
-<% } %>import type { I<%= h.inflection.camelize(name) %>Update } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
-import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
+<% } %>import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
+import type { I<%= h.inflection.camelize(name) %>Update, I<%= h.inflection.camelize(name) %>DetailView } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event): Promise<I<%= h.inflection.camelize(name) %>DetailView> => {
 <% if(auth === true) { -%>
   const session = await getAuthorizedServerSession(event);
 <% } -%>

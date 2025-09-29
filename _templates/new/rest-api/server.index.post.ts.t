@@ -3,13 +3,12 @@ to: "src/server/api/<%= h.inflection.dasherize(h.inflection.underscore(name)) %>
 unless_exists: true
 ---
 import { defineEventHandler, setResponseStatus, readBody } from 'h3';
-import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
 <% if(auth === true) { -%>
 import { getAuthorizedServerSession } from '~/server/utils/get-authorized-server-session';
-<% } -%>
-import type { I<%= h.inflection.camelize(name) %>Create } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
+<% } -%>import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
+import type { I<%= h.inflection.camelize(name) %>Create, I<%= h.inflection.camelize(name) %>DetailView } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event): Promise<I<%= h.inflection.camelize(name) %>DetailView> => {
 <% if(auth === true) { -%>
   const session = await getAuthorizedServerSession(event);
 <% } -%>

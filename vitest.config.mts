@@ -51,7 +51,7 @@ export default defineConfig({
       {
         extends: true,
         test: {
-          name: 'app',
+          name: { label: 'app', color: 'green' },
           environment: 'jsdom',
           globals: true,
           setupFiles: ['./src/app/test/setup.ts'],
@@ -63,11 +63,24 @@ export default defineConfig({
       {
         extends: true,
         test: {
-          name: 'server',
+          name: { label: 'server', color: 'blue' },
           environment: 'node',
           globals: true,
           globalSetup: ['./src/server/test/global-setup.ts'],
           include: ['./src/server/**/*.spec.ts', './src/shared/**/*.spec.ts'],
+          testTimeout: 20000,
+          hookTimeout: 50000,
+          pool: { threads: { singleThread: true } },
+          sequence: { concurrent: false },
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: { label: 'tools', color: 'white' },
+          environment: 'node',
+          globals: true,
+          include: ['./tools/**/*.spec.ts'],
           testTimeout: 20000,
           hookTimeout: 50000,
           pool: { threads: { singleThread: true } },

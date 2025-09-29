@@ -1,10 +1,6 @@
-import type { IPaginationQueryParameters } from '#shared/interfaces/api/IPaginationQueryParameters';
+import type { IListQuery } from '#shared/interfaces/api/IListQuery';
 
-export const getPaginationFromQuery = (
-  query: IPaginationQueryParameters,
-  selectedPageDefault = 1,
-  itemsPerPageDefault = 5,
-) => {
+export const getPaginationFromQuery = (query: IListQuery, selectedPageDefault = 1, itemsPerPageDefault = 5) => {
   const rawPage = query?.selectedPage?.toString();
   const rawSize = query?.itemsPerPage?.toString();
 

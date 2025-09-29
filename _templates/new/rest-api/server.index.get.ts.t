@@ -5,8 +5,7 @@ unless_exists: true
 import { defineEventHandler, getQuery } from 'h3';
 <% if(auth === true) { -%>
 import { getAuthorizedServerSession } from '~/server/utils/get-authorized-server-session';
-<% } -%>
-import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
+<% } -%>import { use<%= h.inflection.camelize(name) %>Service } from '~/server/services/use-<%= h.inflection.dasherize(h.inflection.underscore(name, true)) %>-service';
 import type { IPaginatedResponse } from '#shared/interfaces/api/IPaginatedResponse';
 import type { IListQuery } from '#shared/interfaces/api/IListQuery';
 import type { I<%= h.inflection.camelize(name) %>ListView } from '#shared/interfaces/domain/I<%= h.inflection.camelize(name) %>';

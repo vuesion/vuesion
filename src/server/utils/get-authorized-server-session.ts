@@ -1,6 +1,7 @@
 import type { Session } from 'next-auth';
 import type { H3Event } from 'h3';
 import { getServerSession } from '#auth';
+import { UnauthorizedError } from '~/server/utils/errors';
 
 interface AuthorizedSession extends Session {
   user: {
@@ -15,7 +16,7 @@ export const getAuthorizedServerSession = async (event: H3Event) => {
   const session = await getServerSession(event);
 
   if (!session || !session.user || !session.user.id) {
-    throw NotAuthorizedError;
+    throw UnauthorizedError;
   }
 
   return session as AuthorizedSession;

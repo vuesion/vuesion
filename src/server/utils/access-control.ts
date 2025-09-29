@@ -1,19 +1,19 @@
-import { NotAuthorizedError } from '~/server/utils/errors';
+import { ForbiddenError } from '~/server/utils/errors';
 
 export const mustBeRelatedToEntity = (sessionUserId?: string | null, recordUserId?: string | null | string[]) => {
   if (!sessionUserId) {
-    throw NotAuthorizedError;
+    throw ForbiddenError;
   }
 
   const checkAuthorization = (userId?: string | null) => {
     if (sessionUserId !== userId) {
-      throw NotAuthorizedError;
+      throw ForbiddenError;
     }
   };
 
   if (Array.isArray(recordUserId)) {
     if (!recordUserId.includes(sessionUserId)) {
-      throw NotAuthorizedError;
+      throw ForbiddenError;
     }
   } else {
     checkAuthorization(recordUserId);
