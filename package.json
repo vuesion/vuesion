@@ -93,7 +93,7 @@
     "@nuxtjs/i18n": "10.1.0",
     "@nuxtjs/robots": "5.5.5",
     "@prisma/internals": "6.16.3",
-    "@sidebase/nuxt-auth": "0.10.1",
+    "@sidebase/nuxt-auth": "1.1.0",
     "@storybook/addon-a11y": "^9.1.9",
     "@storybook/addon-docs": "9.1.9",
     "@storybook/addon-links": "^9.1.9",
