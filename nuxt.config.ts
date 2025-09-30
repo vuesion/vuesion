@@ -262,13 +262,4 @@ export default defineNuxtConfig({
   typescript: {
     shim: true,
   },
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          api: 'modern-compiler',
-        },
-      },
-    },
-  },
 });
