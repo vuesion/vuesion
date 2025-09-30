@@ -44,20 +44,20 @@ unless_exists: true
 
         <vue-card v-if="current<%= h.inflection.camelize(name) %>" space="32" padding="24" class="w-fit">
           <vue-stack space="8">
-            <vue-text look="support" color="text-low">ID: {{ current<%= h.inflection.camelize(name) %>.id }}</vue-text>
+            <vue-text look="support" color="low">ID: {{ current<%= h.inflection.camelize(name) %>.id }}</vue-text>
             <vue-text look="small-title" weight="semi-bold">
               {{ current<%= h.inflection.camelize(name) %>.name }}
             </vue-text>
           </vue-stack>
           <vue-columns>
             <vue-column>
-              <vue-text look="support" color="text-low">
+              <vue-text look="support" color="low">
                 Created at:
                 <vue-formatted-date :date="current<%= h.inflection.camelize(name) %>.createdAt" format="dayMonthYearNumericWithTime" />
               </vue-text>
             </vue-column>
             <vue-column>
-              <vue-text look="support" color="text-low">
+              <vue-text look="support" color="low">
                 Updated at:
                 <vue-formatted-date :date="current<%= h.inflection.camelize(name) %>.updatedAt" format="dayMonthYearNumericWithTime" />
               </vue-text>

@@ -21,15 +21,10 @@
               <component :is="`vue-icon-${step.leadingIcon}`" v-else />
             </div>
             <vue-stack space="0" :class="$style.labelAndDescription">
-              <vue-text
-                look="label"
-                weight="semi-bold"
-                :color="isInActive(idx) ? 'text-low' : 'text-high'"
-                :class="$style.label"
-              >
+              <vue-text look="label" weight="semi-bold" :color="isInActive(idx) ? 'low' : 'high'" :class="$style.label">
                 {{ step.label }}
               </vue-text>
-              <vue-text look="support" color="text-low" :class="$style.description">
+              <vue-text look="support" color="low" :class="$style.description">
                 {{ step.description }}
               </vue-text>
             </vue-stack>

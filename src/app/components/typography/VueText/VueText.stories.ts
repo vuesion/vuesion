@@ -29,7 +29,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
       <vue-columns>
         <vue-column>
           <vue-stack space="4">
-            <vue-text look="large-title" color="text-high" weight="semi-bold">Scale</vue-text>
+            <vue-text look="large-title" color="high" weight="semi-bold">Scale</vue-text>
             <vue-text look="support" uppercase weight="semi-bold">FONT SIZE (PX) / LINE HEIGHT (PX)</vue-text>
             <vue-text weight="semi-bold">12/16</vue-text>
             <vue-text weight="semi-bold">14/20</vue-text>
@@ -44,7 +44,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
         </vue-column>
         <vue-column>
           <vue-stack space="4">
-            <vue-text look="large-title" color="text-high" weight="semi-bold">Font Weights</vue-text>
+            <vue-text look="large-title" color="high" weight="semi-bold">Font Weights</vue-text>
             <vue-text weight="semi-bold">Regular - 400</vue-text>
             <vue-text weight="semi-bold">Semibold - 600</vue-text>
             <vue-text weight="semi-bold">Black - 900</vue-text>
@@ -52,7 +52,7 @@ const TextStylesTemplate: StoryFn = (args) => ({
         </vue-column>
         <vue-column>
           <vue-stack space="4">
-            <vue-text look="large-title" color="text-high" weight="semi-bold">Font Families</vue-text>
+            <vue-text look="large-title" color="high" weight="semi-bold">Font Families</vue-text>
             <vue-text weight="semi-bold">Inter - Lato</vue-text>
           </vue-stack>
         </vue-column>

@@ -129,7 +129,7 @@
       <vue-text look="hero" weight="black" gradient :align-x="['start', 'start', 'end']">
         {{ $t('ServicesHeroSection.title' /* Transform Your Ideas into Reality with Vuesion Services. */) }}
       </vue-text>
-      <vue-text look="large-description" color="text-inverse-high" :align-x="['start', 'start', 'end']">
+      <vue-text look="large-description" color="inverse-high" :align-x="['start', 'start', 'end']">
         {{ $t('ServicesHeroSection.description' /* Expert Consulting, Prototyping, PoCs, and MVP Development. */) }}
       </vue-text>
 

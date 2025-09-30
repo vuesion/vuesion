@@ -25,7 +25,7 @@
                 <vue-text weight="semi-bold">
                   {{ $t('KeyFeaturesSection.Feature1.title' /* Comprehensive Design System */) }}
                 </vue-text>
-                <vue-text color="text-medium">
+                <vue-text color="medium">
                   {{
                     $t(
                       'KeyFeaturesSection.Feature1.description' /* Pre-built with 35+ customizable components, Figma UIKit integration, and theming support. */,
@@ -56,7 +56,7 @@
                       <vue-text weight="semi-bold">
                         {{ $t('KeyFeaturesSection.Feature2.title' /* Developer Experience */) }}
                       </vue-text>
-                      <vue-text color="text-medium">
+                      <vue-text color="medium">
                         {{
                           $t(
                             'KeyFeaturesSection.Feature2.description' /* TypeScript, ESLint, Prettier, Husky hooks, and semantic releases ensure high code quality and maintainability. */,
@@ -93,10 +93,10 @@
                   loading="lazy"
                 />
                 <vue-stack padding="8 8 16 8" space="8">
-                  <vue-text weight="semi-bold" color="text-inverse-high">
+                  <vue-text weight="semi-bold" color="inverse-high">
                     {{ $t('KeyFeaturesSection.Feature4.title' /* Robust Testing Setup */) }}
                   </vue-text>
-                  <vue-text color="text-inverse-medium">
+                  <vue-text color="inverse-medium">
                     {{
                       $t(
                         'KeyFeaturesSection.Feature4.description' /* E2E testing with Cypress, Vitest, and Testing-library with 250+ example tests. */,
@@ -133,7 +133,7 @@
                 <vue-text weight="semi-bold">
                   {{ $t('KeyFeaturesSection.services.title' /* Unlock the Power of Vuesion Services */) }}
                 </vue-text>
-                <vue-text color="text-medium">
+                <vue-text color="medium">
                   {{
                     $t(
                       'KeyFeaturesSection.services.description' /* Leverage our expertise in consulting, prototyping, PoCs, and MVP development. With over 15 years of experience working with industry leaders, we bring unparalleled knowledge to your projects. Whether you're creating prototypes, validating concepts, or launching a Minimum Viable Product, we offer tailored solutions to meet your needs. With extensive knowledge across a wide range of technologies, Vuesion Services is your partner for success. */,
@@ -166,10 +166,10 @@
                   loading="lazy"
                 />
                 <vue-stack padding="8 8 16 8" space="8">
-                  <vue-text weight="semi-bold" color="text-inverse-high">
+                  <vue-text weight="semi-bold" color="inverse-high">
                     {{ $t('KeyFeaturesSection.Feature5.title' /* Internationalization (i18n) */) }}
                   </vue-text>
-                  <vue-text color="text-inverse-medium">
+                  <vue-text color="inverse-medium">
                     {{
                       $t(
                         'KeyFeaturesSection.Feature5.description' /* Scripts included to simplify translation management, making it easier to build multilingual applications. */,
@@ -201,7 +201,7 @@
                       <vue-text weight="semi-bold">
                         {{ $t('KeyFeaturesSection.Feature7.title' /* Versatile Core */) }}
                       </vue-text>
-                      <vue-text color="text-medium">
+                      <vue-text color="medium">
                         {{
                           $t(
                             'KeyFeaturesSection.Feature7.description' /* Nuxt.js support for server-side rendering, static site generation, and single-page applications. */,
@@ -228,7 +228,7 @@
                 <vue-text weight="semi-bold">
                   {{ $t('KeyFeaturesSection.Feature8.title' /* Fully Set Up and Ready-to-Go */) }}
                 </vue-text>
-                <vue-text color="text-medium">
+                <vue-text color="medium">
                   {{
                     $t(
                       'KeyFeaturesSection.Feature8.description' /* Storybook, Authentication, Security, PWA, Color Mode, and Libraries for Animations and Form Validation. */,

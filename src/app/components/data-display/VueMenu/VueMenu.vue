@@ -32,7 +32,7 @@
 
         <div :class="$style.value">
           <vue-text no-wrap>{{ item.label }}</vue-text>
-          <vue-text v-if="item.description" look="support" color="text-medium">
+          <vue-text v-if="item.description" look="support" color="medium">
             {{ item.description }}
           </vue-text>
         </div>

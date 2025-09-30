@@ -6,14 +6,14 @@
           <vue-text look="h3" weight="black">
             {{ $t('WhySection.title' /* Why Choose Vuesion Services? */) }}
           </vue-text>
-          <vue-text look="description" color="text-medium">
+          <vue-text look="description" color="medium">
             {{
               $t(
                 'WhySection.paragraph1' /* Vuesion Services is your partner in developing innovative business models and technological solutions. With deep expertise in frontend and backend web development, product management, and UI/UX design, we offer tailored solutions that drive your business forward. */,
               )
             }}
           </vue-text>
-          <vue-text look="description" color="text-medium">
+          <vue-text look="description" color="medium">
             {{
               $t(
                 'WhySection.paragraph2' /* With over 15 years of experience in developing projects for leading global companies, we bring unmatched expertise in building full-stack teams and optimizing productivity across engineering, design, and product management. */,

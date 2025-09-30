@@ -7,7 +7,7 @@
             <vue-text look="hero" weight="black" gradient>
               {{ $t('LandingPageHeroSection.headline' /* Build Faster, Collaborate Better with Vuesion. */) }}
             </vue-text>
-            <vue-text look="large-description" color="text-inverse-high">
+            <vue-text look="large-description" color="inverse-high">
               {{
                 $t(
                   'LandingPageHeroSection.subheadline' /* Empower your Product Team with a powerful Boilerplate designed for seamless Collaboration and unmatched Efficiency. */,

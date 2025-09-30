@@ -15,7 +15,7 @@
         <vue-icon-chevron-right v-else />
       </vue-column>
       <vue-column>
-        <vue-text color="text-high" weight="semi-bold" as="div">{{ title }}</vue-text>
+        <vue-text color="high" weight="semi-bold" as="div">{{ title }}</vue-text>
       </vue-column>
     </vue-columns>
     <vue-collapse :show="open" :duration="duration">

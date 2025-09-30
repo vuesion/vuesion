@@ -5,7 +5,7 @@
         <vue-text look="hero" weight="black" gradient>
           {{ $t('ContactSection.title' /* Ready to Elevate Your Project? */) }}
         </vue-text>
-        <vue-text look="description" color="text-inverse-high">
+        <vue-text look="description" color="inverse-high">
           {{
             $t(
               'ContactSection.description' /* Get in touch with us today to discuss how we can help you achieve your project goals. */,

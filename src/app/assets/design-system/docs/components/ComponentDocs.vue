@@ -4,7 +4,7 @@
       <vue-stack space="16">
         <vue-stack v-if="componentName && usage" space="8">
           <vue-inline align-y="center" :space="[8, 24]">
-            <vue-text color="text-high" look="large-title" weight="black"> {{ componentName }} {{ suffix }} </vue-text>
+            <vue-text color="high" look="large-title" weight="black"> {{ componentName }} {{ suffix }} </vue-text>
             <vue-button
               v-if="buyLink"
               look="primary"
@@ -20,15 +20,15 @@
 
           <vue-columns>
             <vue-column no-grow>
-              <vue-text color="text-medium" look="description" style="white-space: pre-wrap">
+              <vue-text color="medium" look="description" style="white-space: pre-wrap">
                 {{ usage }}
               </vue-text>
             </vue-column>
           </vue-columns>
         </vue-stack>
         <vue-stack v-if="story" space="0">
-          <vue-text color="text-high" look="medium-title" weight="semi-bold"> Story </vue-text>
-          <vue-text color="text-high" look="description">
+          <vue-text color="high" look="medium-title" weight="semi-bold"> Story </vue-text>
+          <vue-text color="high" look="description">
             {{ story }}
           </vue-text>
         </vue-stack>

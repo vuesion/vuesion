@@ -6,47 +6,47 @@
           <vue-columns :space="[24, 24, 64]" stack-phone stack-tablet-portrait align-x="end">
             <!--            <vue-column>-->
             <!--              <vue-stack :space="[4, 8, 16]">-->
-            <!--                <vue-text look="h6" color="text-medium" weight="semi-bold">Solutions</vue-text>-->
-            <!--                <vue-text color="text-low">Marketing</vue-text>-->
-            <!--                <vue-text color="text-low">Analytics</vue-text>-->
-            <!--                <vue-text color="text-low">Commerce</vue-text>-->
-            <!--                <vue-text color="text-low">Insights</vue-text>-->
+            <!--                <vue-text look="h6" color="medium" weight="semi-bold">Solutions</vue-text>-->
+            <!--                <vue-text color="low">Marketing</vue-text>-->
+            <!--                <vue-text color="low">Analytics</vue-text>-->
+            <!--                <vue-text color="low">Commerce</vue-text>-->
+            <!--                <vue-text color="low">Insights</vue-text>-->
             <!--              </vue-stack>-->
             <!--            </vue-column>-->
 
             <!--            <vue-column>-->
             <!--              <vue-stack :space="[4, 8, 16]">-->
-            <!--                <vue-text look="h6" color="text-medium" weight="semi-bold">Support</vue-text>-->
-            <!--                <vue-text color="text-low">Pricing</vue-text>-->
-            <!--                <vue-text color="text-low">Documentation</vue-text>-->
-            <!--                <vue-text color="text-low">Guides</vue-text>-->
-            <!--                <vue-text color="text-low">API Status</vue-text>-->
+            <!--                <vue-text look="h6" color="medium" weight="semi-bold">Support</vue-text>-->
+            <!--                <vue-text color="low">Pricing</vue-text>-->
+            <!--                <vue-text color="low">Documentation</vue-text>-->
+            <!--                <vue-text color="low">Guides</vue-text>-->
+            <!--                <vue-text color="low">API Status</vue-text>-->
             <!--              </vue-stack>-->
             <!--            </vue-column>-->
 
             <!--            <vue-column>-->
             <!--              <vue-stack :space="[4, 8, 16]">-->
-            <!--                <vue-text look="h6" color="text-medium" weight="semi-bold">Company</vue-text>-->
-            <!--                <vue-text color="text-low">About</vue-text>-->
-            <!--                <vue-text color="text-low">Blog</vue-text>-->
-            <!--                <vue-text color="text-low">Jobs</vue-text>-->
-            <!--                <vue-text color="text-low">Press</vue-text>-->
+            <!--                <vue-text look="h6" color="medium" weight="semi-bold">Company</vue-text>-->
+            <!--                <vue-text color="low">About</vue-text>-->
+            <!--                <vue-text color="low">Blog</vue-text>-->
+            <!--                <vue-text color="low">Jobs</vue-text>-->
+            <!--                <vue-text color="low">Press</vue-text>-->
             <!--              </vue-stack>-->
             <!--            </vue-column>-->
 
             <!--            <vue-column>-->
             <!--              <vue-stack :space="[4, 8, 16]">-->
-            <!--                <vue-text look="h6" color="text-medium" weight="semi-bold">Legal</vue-text>-->
-            <!--                <vue-text color="text-low">Claim</vue-text>-->
-            <!--                <vue-text color="text-low">Privacy</vue-text>-->
-            <!--                <vue-text color="text-low">Terms</vue-text>-->
-            <!--                <vue-text color="text-low">Insights</vue-text>-->
+            <!--                <vue-text look="h6" color="medium" weight="semi-bold">Legal</vue-text>-->
+            <!--                <vue-text color="low">Claim</vue-text>-->
+            <!--                <vue-text color="low">Privacy</vue-text>-->
+            <!--                <vue-text color="low">Terms</vue-text>-->
+            <!--                <vue-text color="low">Insights</vue-text>-->
             <!--              </vue-stack>-->
             <!--            </vue-column>-->
 
             <vue-column :width="['full', 'full', '2/10']" no-grow>
               <vue-stack space="16">
-                <vue-text look="h6" color="text-medium" weight="semi-bold"> Language & Theme </vue-text>
+                <vue-text look="h6" color="medium" weight="semi-bold"> Language & Theme </vue-text>
                 <vue-select
                   id="lang"
                   label="Language"
@@ -81,7 +81,7 @@
             <vue-inline space="8" align-y="center" no-wrap>
               <vue-icon-vuesion :class="$style.logo" />
 
-              <vue-text color="text-medium" :align-x="['center', 'center', 'end']">
+              <vue-text color="medium" :align-x="['center', 'center', 'end']">
                 © {{ year }} Werner-Most Ideen GmbH. All rights reserved.
               </vue-text>
             </vue-inline>
@@ -91,10 +91,10 @@
             <vue-column>
               <vue-inline :align-x="['center']" space="48">
                 <nuxt-link to="/services">
-                  <vue-text color="text-medium" weight="semi-bold"> Services </vue-text>
+                  <vue-text color="medium" weight="semi-bold"> Services </vue-text>
                 </nuxt-link>
                 <vue-text
-                  color="text-medium"
+                  color="medium"
                   weight="semi-bold"
                   as="a"
                   href="https://vuesion.github.io/docs/en/v5/"
@@ -107,7 +107,7 @@
             <vue-column :align-x="['center', 'center', 'end']" no-grow>
               <vue-inline space="24">
                 <vue-text
-                  color="text-medium"
+                  color="medium"
                   as="a"
                   aria-label="Twitter"
                   href="https://twitter.com/vuesion1"
@@ -117,7 +117,7 @@
                   <vue-icon-twitter />
                 </vue-text>
                 <vue-text
-                  color="text-medium"
+                  color="medium"
                   as="a"
                   aria-label="Github"
                   href="https://github.com/vuesion/vuesion"

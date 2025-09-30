@@ -7,12 +7,12 @@ const textColorVariations = [
   'danger',
   'warning',
   'success',
-  'text-high',
-  'text-medium',
-  'text-low',
-  'text-inverse-high',
-  'text-inverse-medium',
-  'text-inverse-low',
+  'high',
+  'medium',
+  'low',
+  'inverse-high',
+  'inverse-medium',
+  'inverse-low',
 ];
 
 describe('VueText.vue', () => {

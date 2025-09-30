@@ -8,7 +8,7 @@
         :for="id"
         look="label"
         weight="semi-bold"
-        :color="errors.length > 0 ? 'danger' : 'text-medium'"
+        :color="errors.length > 0 ? 'danger' : 'medium'"
         :class="[$style.label, hideLabel && 'sr-only']"
         as="label"
       >
@@ -18,7 +18,7 @@
 
       <vue-popover v-if="$slots.info && hideLabel === false">
         <template #trigger>
-          <vue-text :color="errors.length > 0 ? 'danger' : 'text-medium'">
+          <vue-text :color="errors.length > 0 ? 'danger' : 'medium'">
             <vue-icon-info-circle data-testid="popover-trigger" />
           </vue-text>
         </template>
@@ -45,7 +45,7 @@
 
     <vue-text
       look="support"
-      :color="errors.length > 0 ? 'danger' : 'text-low'"
+      :color="errors.length > 0 ? 'danger' : 'low'"
       :class="[$style.description, hideDescription && 'sr-only']"
     >
       {{ errors.length > 0 ? errorMessage : description }}

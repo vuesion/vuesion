@@ -1,10 +1,10 @@
 <template>
   <vue-stack space="16" :class="$style.colorTokensSection">
     <vue-stack space="10">
-      <vue-text color="text-high" look="h1" weight="black">
+      <vue-text color="high" look="h1" weight="black">
         {{ title }}
       </vue-text>
-      <vue-text look="large-description" color="text-medium">
+      <vue-text look="large-description" color="medium">
         {{ description }}
       </vue-text>
     </vue-stack>

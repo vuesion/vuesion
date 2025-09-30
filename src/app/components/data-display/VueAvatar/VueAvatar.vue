@@ -6,7 +6,7 @@
   >
     <vue-text
       v-if="!src && !icon"
-      color="text-high"
+      color="high"
       :look="size === 'sm' ? 'label' : size === 'md' ? 'description' : 'h4'"
       :weight="size === 'lg' ? 'black' : 'semi-bold'"
       uppercase

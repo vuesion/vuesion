@@ -29,7 +29,7 @@
         as="label"
         look="label"
         weight="semi-bold"
-        color="text-medium"
+        color="medium"
         tabindex="-1"
         :class="[hideLabel && 'sr-only']"
       >
@@ -40,7 +40,7 @@
       <vue-text
         v-if="description"
         look="support"
-        color="text-low"
+        color="low"
         :class="[$style.description, hideLabel && 'sr-only']"
         as="div"
       >

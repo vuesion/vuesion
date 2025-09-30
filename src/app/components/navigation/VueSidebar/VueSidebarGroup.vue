@@ -11,12 +11,12 @@
       @keydown.space.enter.prevent.stop="$emit('click', $event)"
     >
       <vue-column>
-        <vue-text color="text-low" look="support" weight="semi-bold" uppercase>{{ label }}</vue-text>
+        <vue-text color="low" look="support" weight="semi-bold" uppercase>{{ label }}</vue-text>
       </vue-column>
 
       <vue-column v-if="icon" no-grow>
         <vue-text
-          color="text-low"
+          color="low"
           data-testid="sidebar-group-icon"
           @click.prevent.stop="$emit('icon-click', $event)"
           @keydown.space.enter.prevent.stop="$emit('icon-click', $event)"

@@ -43,8 +43,8 @@ const Template: StoryFn = (args) => ({
       @close="onClose();show = false">
     <vue-stack space="32">
       <vue-stack space="8">
-        <vue-text look="h4" color="text-high" align-x="center">Heading</vue-text>
-        <vue-text color="text-low" align-x="center">
+        <vue-text look="h4" color="high" align-x="center">Heading</vue-text>
+        <vue-text color="low" align-x="center">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
           sed diam nonumy eirmod.
         </vue-text>

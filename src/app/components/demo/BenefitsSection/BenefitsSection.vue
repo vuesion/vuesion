@@ -26,10 +26,10 @@
         <vue-column :width="['full', 'full', '5/10']" no-grow>
           <vue-stack padding="0 16 0 0" align-y="between">
             <vue-stack space="10">
-              <vue-text color="text-inverse-high" weight="semi-bold" look="large-title">
+              <vue-text color="inverse-high" weight="semi-bold" look="large-title">
                 {{ $t('BenefitsSection.Benefit1.title' /* Accelerate Development */) }}
               </vue-text>
-              <vue-text color="text-inverse-medium">
+              <vue-text color="inverse-medium">
                 {{
                   $t(
                     'BenefitsSection.Benefit1.description' /* Boilerplate setup lets you focus on building features rather than configuring tools. */,
@@ -38,10 +38,10 @@
               </vue-text>
             </vue-stack>
             <vue-stack space="10">
-              <vue-text color="text-inverse-high" weight="semi-bold" look="large-title">
+              <vue-text color="inverse-high" weight="semi-bold" look="large-title">
                 {{ $t('BenefitsSection.Benefit2.title' /* Improve Collaboration */) }}
               </vue-text>
-              <vue-text color="text-inverse-medium">
+              <vue-text color="inverse-medium">
                 {{
                   $t(
                     'BenefitsSection.Benefit2.description' /* Integrated design system is 100% customizable, ensuring all components are consistent across Storybook and Figma, bridging the gap between designers and developers. */,
@@ -50,10 +50,10 @@
               </vue-text>
             </vue-stack>
             <vue-stack space="10">
-              <vue-text color="text-inverse-high" weight="semi-bold" look="large-title">
+              <vue-text color="inverse-high" weight="semi-bold" look="large-title">
                 {{ $t('BenefitsSection.Benefit3.title' /* Reduce Maintenance Overhead */) }}
               </vue-text>
-              <vue-text color="text-inverse-medium">
+              <vue-text color="inverse-medium">
                 {{
                   $t(
                     'BenefitsSection.Benefit3.description' /* Best practices and pre-configured tools ensure a stable and scalable codebase. */,
@@ -62,10 +62,10 @@
               </vue-text>
             </vue-stack>
             <vue-stack space="10">
-              <vue-text color="text-inverse-high" weight="semi-bold" look="large-title">
+              <vue-text color="inverse-high" weight="semi-bold" look="large-title">
                 {{ $t('BenefitsSection.Benefit4.title' /* Boost Team Productivity */) }}
               </vue-text>
-              <vue-text color="text-inverse-medium">
+              <vue-text color="inverse-medium">
                 {{
                   $t(
                     'BenefitsSection.Benefit4.description' /* Automated testing and code quality tools catch issues early and streamline development. */,

@@ -5,11 +5,11 @@
       <div :style="{ background: `var(--${smallCircleColor || css})`, opacity: smallCircleColor ? 1 : 0 }" />
     </div>
     <vue-stack space="0">
-      <vue-text look="label" weight="semi-bold" :color="inverse ? 'text-inverse-high' : 'text-high'">
+      <vue-text look="label" weight="semi-bold" :color="inverse ? 'inverse-high' : 'high'">
         {{ figma }}
       </vue-text>
-      <vue-text look="support" :color="inverse ? 'text-inverse-low' : 'text-low'"> --{{ css }} </vue-text>
-      <vue-text look="support" :color="inverse ? 'text-inverse-low' : 'text-low'">
+      <vue-text look="support" :color="inverse ? 'inverse-low' : 'low'"> --{{ css }} </vue-text>
+      <vue-text look="support" :color="inverse ? 'inverse-low' : 'low'">
         {{ palette.replace(' ', '-') }}
       </vue-text>
     </vue-stack>

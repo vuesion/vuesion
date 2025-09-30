@@ -18,7 +18,7 @@
             />
             <vue-stack :space="0" :class="$style.nameAndTitle">
               <vue-text look="label" weight="semi-bold">Björn Schmidt</vue-text>
-              <vue-text look="support" color="text-low">CTO</vue-text>
+              <vue-text look="support" color="low">CTO</vue-text>
             </vue-stack>
 
             <vue-text align-x="center" look="medium-title">
@@ -42,7 +42,7 @@
             />
             <vue-stack :space="0" :class="$style.nameAndTitle">
               <vue-text look="label" weight="semi-bold">Abby Graham</vue-text>
-              <vue-text look="support" color="text-low">Software Engineer</vue-text>
+              <vue-text look="support" color="low">Software Engineer</vue-text>
             </vue-stack>
 
             <vue-text align-x="center" look="description">
@@ -90,7 +90,7 @@
             />
             <vue-stack :space="0" :class="$style.nameAndTitle">
               <vue-text look="label" weight="semi-bold">Carlos Garcia</vue-text>
-              <vue-text look="support" color="text-low">UX Designer</vue-text>
+              <vue-text look="support" color="low">UX Designer</vue-text>
             </vue-stack>
 
             <vue-text align-x="center">

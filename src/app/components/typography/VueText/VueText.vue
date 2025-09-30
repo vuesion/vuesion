@@ -251,27 +251,27 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     color: var(--text-dark);
   }
 
-  &.text-high {
+  &.high {
     color: var(--text-default-high);
   }
 
-  &.text-medium {
+  &.medium {
     color: var(--text-default-medium);
   }
 
-  &.text-low {
+  &.low {
     color: var(--text-default-low);
   }
 
-  &.text-inverse-high {
+  &.inverse-high {
     color: var(--text-inverse-high);
   }
 
-  &.text-inverse-medium {
+  &.inverse-medium {
     color: var(--text-inverse-medium);
   }
 
-  &.text-inverse-low {
+  &.inverse-low {
     color: var(--text-inverse-low);
   }
 

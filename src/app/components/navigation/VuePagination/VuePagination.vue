@@ -46,7 +46,7 @@
             :debounce="debounce"
             @blur="onDebouncedInput"
           />
-          <vue-text look="support" color="text-low">
+          <vue-text look="support" color="low">
             {{ $t('common.of' /* of */) }}&nbsp;{{ $n(pages, 'integerSingle') }}
           </vue-text>
         </vue-inline>
@@ -63,7 +63,7 @@
     </vue-column>
     <vue-column v-if="!slim && !buttonsOnly" no-grow>
       <vue-inline space="12" no-wrap align-y="center">
-        <vue-text look="support" color="text-low">
+        <vue-text look="support" color="low">
           {{ $n(numberOfRecords, 'integerSingle') }}&nbsp;{{ $t('common.Results' /* Results */) }}
         </vue-text>
         <vue-select
