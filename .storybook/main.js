@@ -38,7 +38,6 @@ module.exports = {
           '@storybook/addon-links',
           '@storybook/addon-interactions',
           'storybook/actions',
-          'storybook/backgrounds',
           '@storybook/addon-a11y',
         ],
       },

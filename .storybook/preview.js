@@ -91,7 +91,6 @@ setup(async (app) => {
 });
 
 export const parameters = {
-  backgrounds: { disable: true },
   controls: {
     matchers: {
       color: /(background|color)$/i,
