@@ -55,7 +55,6 @@ export default defineNuxtConfig({
     modules: 'src/modules',
     public: 'src/public',
     shared: 'src/shared',
-    static: 'src/public',
   },
   future: {
     compatibilityVersion: 4,
