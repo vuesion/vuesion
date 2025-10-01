@@ -153,7 +153,7 @@ watch(
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vuePagination {
   &.slim {
@@ -163,7 +163,7 @@ watch(
 
   .select {
     min-width: unset;
-    width: $space-64;
+    width: ds.$space-64;
   }
 }
 </style>

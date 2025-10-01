@@ -91,39 +91,39 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueSidebarGroupItem {
   display: block;
   cursor: pointer;
-  color: $sidebar-group-item-color;
-  background: $sidebar-group-item-bg;
-  border-radius: $sidebar-group-item-border-radius;
+  color: ds.$sidebar-group-item-color;
+  background: ds.$sidebar-group-item-bg;
+  border-radius: ds.$sidebar-group-item-border-radius;
   outline: none;
   text-decoration: none;
 
   &.active {
-    color: $sidebar-group-item-color-active;
-    background: $sidebar-group-item-bg-active;
+    color: ds.$sidebar-group-item-color-active;
+    background: ds.$sidebar-group-item-bg-active;
 
     &:hover {
-      color: $sidebar-group-item-color-active-hover;
-      background: $sidebar-group-item-bg-active-hover;
+      color: ds.$sidebar-group-item-color-active-hover;
+      background: ds.$sidebar-group-item-bg-active-hover;
     }
   }
 
   &:hover {
-    color: $sidebar-group-item-color-hover;
-    background: $sidebar-group-item-bg-hover;
+    color: ds.$sidebar-group-item-color-hover;
+    background: ds.$sidebar-group-item-bg-hover;
   }
 
   &:focus {
-    box-shadow: $sidebar-outline;
+    box-shadow: ds.$sidebar-outline;
   }
 
   i {
-    width: $sidebar-group-item-icon-size;
-    height: $sidebar-group-item-icon-size;
+    width: ds.$sidebar-group-item-icon-size;
+    height: ds.$sidebar-group-item-icon-size;
   }
 }
 </style>

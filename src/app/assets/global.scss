@@ -1,10 +1,9 @@
-@import 'design-system/mixins/default';
-@import 'design-system/variables/variables';
-@import 'alignment';
-@import 'layout';
-@import 'spacing';
-@import 'design-system/themes/light';
-@import 'design-system/themes/dark';
+@use 'design-system/index' as ds;
+@use 'alignment';
+@use 'layout';
+@use 'spacing';
+@use 'design-system/themes/light';
+@use 'design-system/themes/dark';
 
 body {
   background-color: var(--bg-default-high);
@@ -12,14 +11,14 @@ body {
 
 code {
   background: var(--bg-default-medium);
-  padding: $space-2 $space-4;
+  padding: ds.$space-2 ds.$space-4;
 }
 
 // vue-icon global style
 i {
   display: inline-flex;
-  height: $text-2;
-  width: $text-2;
+  height: ds.$text-2;
+  width: ds.$text-2;
   justify-content: center;
   align-items: center;
 
@@ -43,7 +42,7 @@ table {
 
       td,
       th {
-        padding: $space-24;
+        padding: ds.$space-24;
         text-align: left;
       }
     }
@@ -71,7 +70,6 @@ img:not([alt]) {
 }
 
 // Only display content to screen readers
-//
 // See: https://a11yproject.com/posts/how-to-hide-content/
 // See: https://hugogiraudel.com/2016/10/13/css-hide-and-seek/
 .sr-only {
@@ -80,13 +78,12 @@ img:not([alt]) {
   height: 1px;
   padding: 0;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
 }
 
 // cut off text if too long
-//
 // See: https://www.w3schools.com/cssref/css3_pr_text-overflow.asp
 .ellipsis {
   white-space: nowrap;
@@ -101,7 +98,7 @@ img:not([alt]) {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgb(0 0 0 / 25%);
   opacity: 0;
   z-index: -1;
   backdrop-filter: blur(4px);
@@ -114,10 +111,10 @@ img:not([alt]) {
 }
 
 // TODO: demo, please remove
-@include add-theme-variable(
+@include ds.add-theme-variable(
   'landing-hero-link-color',
   (
-    'light': palette-color-level('info', 4),
-    'dark': palette-color-level('info', 6),
+    'light': ds.palette-color-level('info', 4),
+    'dark': ds.palette-color-level('info', 6),
   )
 );

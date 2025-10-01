@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.VuePopover">
+  <div :class="$style.vuePopover">
     <div
       ref="triggerRef"
       role="button"
@@ -110,9 +110,9 @@ const { floatingStyles, placement, middlewareData } = useFloating(triggerRef, po
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.VuePopover {
+.vuePopover {
   position: relative;
   display: inline-block;
 
@@ -122,69 +122,69 @@ const { floatingStyles, placement, middlewareData } = useFloating(triggerRef, po
   }
 
   .content {
-    background-color: $popover-bg;
-    border: $popover-border;
-    border-radius: $popover-border-radius;
-    box-shadow: $popover-elevation;
+    background-color: ds.$popover-bg;
+    border: ds.$popover-border;
+    border-radius: ds.$popover-border-radius;
+    box-shadow: ds.$popover-elevation;
     z-index: 1000;
     width: max-content;
     position: absolute;
     top: 0;
     left: 0;
-    padding: $popover-padding;
+    padding: ds.$popover-padding;
 
     .arrow {
       position: absolute;
-      width: $popover-arrow-size;
-      height: $popover-arrow-size;
+      width: ds.$popover-arrow-size;
+      height: ds.$popover-arrow-size;
       z-index: -1;
 
-      &:before {
+      &::before {
         content: '';
         transform: rotate(45deg);
         background: var(--surface-default-high);
         position: absolute;
-        width: $popover-arrow-size;
-        height: $popover-arrow-size;
+        width: ds.$popover-arrow-size;
+        height: ds.$popover-arrow-size;
         z-index: -1;
       }
     }
 
-    $arrow-center: calc((($popover-arrow-size / 2) + 0.1rem) * -1);
+    $arrow-center: calc(((ds.$popover-arrow-size / 2) + 0.1rem) * -1);
 
     &[data-placement^='top'] .arrow {
       bottom: $arrow-center;
 
-      &:before {
-        border-right: $popover-border;
-        border-bottom: $popover-border;
+      &::before {
+        border-right: ds.$popover-border;
+        border-bottom: ds.$popover-border;
       }
     }
 
     &[data-placement^='bottom'] .arrow {
       top: $arrow-center;
 
-      &:before {
-        border-left: $popover-border;
-        border-top: $popover-border;
+      &::before {
+        border-left: ds.$popover-border;
+        border-top: ds.$popover-border;
       }
     }
 
     &[data-placement^='left'] .arrow {
       right: $arrow-center;
 
-      &:before {
-        border-right: $popover-border;
-        border-top: $popover-border;
+      &::before {
+        border-right: ds.$popover-border;
+        border-top: ds.$popover-border;
       }
     }
 
     &[data-placement^='right'] .arrow {
       left: $arrow-center;
 
-      &:before {
-        border-left: $popover-border;
-        border-bottom: $popover-border;
+      &::before {
+        border-left: ds.$popover-border;
+        border-bottom: ds.$popover-border;
       }
     }
   }

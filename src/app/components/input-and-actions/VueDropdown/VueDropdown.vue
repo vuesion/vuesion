@@ -97,7 +97,7 @@ const { floatingStyles, placement } = useFloating(dropdownRef, menuRef, {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueDropdown {
   display: inline-flex;
@@ -113,11 +113,11 @@ const { floatingStyles, placement } = useFloating(dropdownRef, menuRef, {
     width: 100%;
 
     &[data-placement^='top'] {
-      // top: $space-24 !important;
+      // top: ds.$space-24 !important;
     }
 
     &[data-placement^='bottom'] {
-      // top: $space-20 * -1 !important;
+      // top: ds.$space-20 * -1 !important;
     }
   }
 }

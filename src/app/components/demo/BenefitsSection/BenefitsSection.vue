@@ -2,7 +2,7 @@
   <vue-content-block
     as="section"
     :padding="['32 16 16 16', '32 16 16 16', '64 32 32 32']"
-    :class="$style.BenefitsSection"
+    :class="$style.benefitsSection"
   >
     <vue-stack space="32">
       <vue-columns stack-phone stack-tablet-portrait :space="[32, 32, 80]">
@@ -106,27 +106,27 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.BenefitsSection {
+.benefitsSection {
   background-color: var(--surface-inverse-high);
   box-shadow:
-    -490px 911px 290px 0px rgba(102, 60, 202, 0) inset,
-    -314px 583px 265px 0px rgba(102, 60, 202, 0.01) inset,
-    -177px 328px 224px 0px rgba(102, 60, 202, 0.05) inset,
-    -78px 146px 166px 0px rgba(102, 60, 202, 0.09) inset,
-    -20px 36px 91px 0px rgba(102, 60, 202, 0.1) inset;
+    -490px 911px 290px 0 rgb(102 60 202 / 0%) inset,
+    -314px 583px 265px 0 rgb(102 60 202 / 1%) inset,
+    -177px 328px 224px 0 rgb(102 60 202 / 5%) inset,
+    -78px 146px 166px 0 rgb(102 60 202 / 9%) inset,
+    -20px 36px 91px 0 rgb(102 60 202 / 10%) inset;
 
   img {
-    border-radius: $space-16;
+    border-radius: ds.$space-16;
     width: 100%;
     object-fit: cover;
     box-shadow:
-      255px 225px 95px 0px rgba(102, 60, 202, 0),
-      163px 144px 87px 0px rgba(102, 60, 202, 0.01),
-      92px 81px 73px 0px rgba(102, 60, 202, 0.05),
-      41px 36px 54px 0px rgba(102, 60, 202, 0.09),
-      10px 9px 30px 0px rgba(102, 60, 202, 0.1);
+      255px 225px 95px 0 rgb(102 60 202 / 0%),
+      163px 144px 87px 0 rgb(102 60 202 / 1%),
+      92px 81px 73px 0 rgb(102 60 202 / 5%),
+      41px 36px 54px 0 rgb(102 60 202 / 9%),
+      10px 9px 30px 0 rgb(102 60 202 / 10%);
   }
 }
 </style>

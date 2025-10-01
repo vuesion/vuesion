@@ -77,7 +77,7 @@ watch(
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/_design-system.scss';
 
 .<%= h.capitalize(name) %>FieldSet {
 }

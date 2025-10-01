@@ -1,5 +1,5 @@
 <template>
-  <vue-popover prevent-close-on-click :class="$style.VueIconButton">
+  <vue-popover prevent-close-on-click :class="$style.vueIconButton">
     <template #trigger>
       <vue-button
         :as="as"
@@ -66,9 +66,9 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.VueIconButton {
+.vueIconButton {
   width: min-content;
   height: min-content;
 

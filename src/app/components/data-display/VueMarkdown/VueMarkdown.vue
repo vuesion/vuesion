@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueMarkdown {
   h1,
@@ -62,53 +62,53 @@ onBeforeUnmount(() => {
   h4,
   h5,
   h6 {
-    font-family: $font-family;
+    font-family: ds.$font-family;
   }
 
   h1 {
-    font-size: $text-9;
-    font-weight: $font-weight-semi-bold;
-    letter-spacing: $letter-spacing-1;
-    line-height: $line-height-9;
+    font-size: ds.$text-9;
+    font-weight: ds.$font-weight-semi-bold;
+    letter-spacing: ds.$letter-spacing-1;
+    line-height: ds.$line-height-9;
   }
 
   h2 {
-    font-size: $text-7;
-    font-weight: $font-weight-semi-bold;
-    letter-spacing: $letter-spacing-1;
-    line-height: $line-height-7;
+    font-size: ds.$text-7;
+    font-weight: ds.$font-weight-semi-bold;
+    letter-spacing: ds.$letter-spacing-1;
+    line-height: ds.$line-height-7;
   }
 
   h3 {
-    font-size: $text-6;
-    font-weight: $font-weight-semi-bold;
-    letter-spacing: $letter-spacing-1;
-    line-height: $line-height-6;
+    font-size: ds.$text-6;
+    font-weight: ds.$font-weight-semi-bold;
+    letter-spacing: ds.$letter-spacing-1;
+    line-height: ds.$line-height-6;
   }
 
   h4 {
-    font-size: $text-5;
-    font-weight: $font-weight-semi-bold;
-    letter-spacing: $letter-spacing-1;
-    line-height: $line-height-5;
+    font-size: ds.$text-5;
+    font-weight: ds.$font-weight-semi-bold;
+    letter-spacing: ds.$letter-spacing-1;
+    line-height: ds.$line-height-5;
   }
 
   h5 {
-    font-size: $text-3;
-    font-weight: $font-weight-semi-bold;
-    letter-spacing: $letter-spacing-1;
-    line-height: $line-height-3;
+    font-size: ds.$text-3;
+    font-weight: ds.$font-weight-semi-bold;
+    letter-spacing: ds.$letter-spacing-1;
+    line-height: ds.$line-height-3;
   }
 
   h6 {
-    font-size: $text-2;
-    font-weight: $font-weight-semi-bold;
-    letter-spacing: $letter-spacing-1;
-    line-height: $line-height-2;
+    font-size: ds.$text-2;
+    font-weight: ds.$font-weight-semi-bold;
+    letter-spacing: ds.$letter-spacing-1;
+    line-height: ds.$line-height-2;
   }
 
   table {
-    padding-bottom: $space-12;
+    padding-bottom: ds.$space-12;
     width: 100%;
     table-layout: fixed;
   }
@@ -119,11 +119,11 @@ onBeforeUnmount(() => {
 
   table td,
   table th {
-    padding: $space-8 $space-12;
+    padding: ds.$space-8 ds.$space-12;
   }
 
   p {
-    padding: $space-12 0;
+    padding: ds.$space-12 0;
   }
 }
 </style>

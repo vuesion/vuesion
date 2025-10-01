@@ -178,19 +178,19 @@ const year = computed(() => new Date().getFullYear());
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueFooter {
-  background: $footer-bg;
+  background: ds.$footer-bg;
 
   i {
-    width: $footer-icon-size;
-    height: $footer-icon-size;
+    width: ds.$footer-icon-size;
+    height: ds.$footer-icon-size;
   }
 
   .logo {
-    width: $space-32;
-    height: $space-32;
+    width: ds.$space-32;
+    height: ds.$space-32;
   }
 }
 </style>

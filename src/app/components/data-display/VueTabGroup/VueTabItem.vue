@@ -44,10 +44,3 @@ watch(
   { immediate: true },
 );
 </script>
-
-<style lang="scss" module>
-@import 'assets/_design-system.scss';
-
-.vueTab {
-}
-</style>

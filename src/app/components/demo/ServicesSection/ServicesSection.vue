@@ -1,5 +1,5 @@
 <template>
-  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.ServicesSection">
+  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.servicesSection">
     <vue-stack space="64">
       <vue-text look="h3" weight="black">
         {{ $t('ServicesSection.title' /* Vuesion Services for every Stage of your Business */) }}
@@ -836,13 +836,13 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.ServicesSection {
+.servicesSection {
   background-color: var(--surface-default-high);
 
   .benefit {
-    @include mediaMax(phone) {
+    @include ds.media-max(phone) {
       svg {
         transform: scale(0.8);
       }

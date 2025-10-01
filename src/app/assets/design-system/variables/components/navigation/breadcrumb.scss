@@ -1,0 +1,19 @@
+@use '../../spacings';
+
+$breadcrumb-separator: '/';
+$breadcrumb-separator-padding: spacings.$space-8;
+
+// home
+$breadcrumb-home-icon-size: spacings.$space-20;
+$breadcrumb-home-padding: spacings.$space-2 spacings.$space-8;
+
+// item
+$breadcrumb-item-padding: spacings.$space-4 spacings.$space-8;
+$breadcrumb-item-height: spacings.$space-24;
+$breadcrumb-item-text-decoration: none;
+$breadcrumb-item-border: none;
+$breadcrumb-item-border-radius: 6px;
+$breadcrumb-item-outline: var(--focused);
+
+// hover
+$breadcrumb-item-bg-hover: var(--interaction-neutral-hovered);

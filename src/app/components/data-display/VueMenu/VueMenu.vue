@@ -160,17 +160,17 @@ defineExpose({ focus });
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueMenu {
-  background: $menu-bg;
+  background: ds.$menu-bg;
   width: min-content;
-  min-width: $menu-min-width;
-  max-height: $menu-max-height;
-  box-shadow: $menu-shadow;
-  border-radius: $menu-border-radius;
-  border: $menu-border;
-  z-index: $menu-z-index;
+  min-width: ds.$menu-min-width;
+  max-height: ds.$menu-max-height;
+  box-shadow: ds.$menu-shadow;
+  border-radius: ds.$menu-border-radius;
+  border: ds.$menu-border;
+  z-index: ds.$menu-z-index;
   overflow-y: scroll !important;
   -webkit-overflow-scrolling: touch;
 
@@ -178,20 +178,20 @@ defineExpose({ focus });
     position: relative;
     display: flex;
     align-items: flex-start;
-    padding: $menu-item-padding;
-    color: $menu-item-color;
+    padding: ds.$menu-item-padding;
+    color: ds.$menu-item-color;
     cursor: pointer;
     outline: none;
-    gap: $menu-item-icon-size-gap;
+    gap: ds.$menu-item-icon-size-gap;
 
     .leading,
     .trailing {
-      padding-top: $space-2;
-      height: $menu-item-icon-size;
+      padding-top: ds.$space-2;
+      height: ds.$menu-item-icon-size;
 
       i {
-        width: $menu-item-icon-size;
-        height: $menu-item-icon-size;
+        width: ds.$menu-item-icon-size;
+        height: ds.$menu-item-icon-size;
       }
     }
 
@@ -202,18 +202,18 @@ defineExpose({ focus });
     }
 
     &.active {
-      background: $menu-item-bg-active;
-      color: $menu-item-color-active;
+      background: ds.$menu-item-bg-active;
+      color: ds.$menu-item-color-active;
     }
 
     &.separator {
       padding: 0;
       height: 0;
-      border-top: $menu-separator-border;
+      border-top: ds.$menu-separator-border;
     }
 
     &.disabled {
-      opacity: $menu-item-disabled-opacity;
+      opacity: ds.$menu-item-disabled-opacity;
       cursor: not-allowed;
     }
   }

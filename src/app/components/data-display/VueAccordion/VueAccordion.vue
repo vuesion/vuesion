@@ -1,5 +1,5 @@
 <template>
-  <vue-stack space="0" :class="$style.vueAccordion">
+  <vue-stack space="0">
     <slot />
   </vue-stack>
 </template>
@@ -63,10 +63,3 @@ onBeforeUnmount(() => {
   openItems.value = [];
 });
 </script>
-
-<style lang="scss" module>
-@import 'assets/_design-system.scss';
-
-.vueAccordion {
-}
-</style>

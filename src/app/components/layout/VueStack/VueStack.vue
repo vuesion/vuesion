@@ -44,7 +44,7 @@ const cssClasses = computed(() => [...getResponsiveCssClasses(null, responsiveSp
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueStack {
   display: flex;

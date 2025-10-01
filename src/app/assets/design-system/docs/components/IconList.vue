@@ -34,7 +34,7 @@ watch(
 </script>
 
 <style lang="scss" module>
-@import 'assets/design-system';
+@use 'assets/design-system/index' as ds;
 
 .icons {
   .icon {
@@ -44,8 +44,8 @@ watch(
     text-align: center;
 
     i {
-      width: $space-32;
-      height: $space-32;
+      width: ds.$space-32;
+      height: ds.$space-32;
     }
   }
 }

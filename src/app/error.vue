@@ -34,14 +34,14 @@ useHead({ title: `${props.error.statusCode} ${props.error.message}` });
 </script>
 
 <style lang="scss" module>
-@import 'assets/design-system';
+@use 'assets/design-system/index' as ds;
 
 .page {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: $space-24;
+  padding: ds.$space-24;
 
   img {
     width: 100%;
@@ -54,11 +54,11 @@ useHead({ title: `${props.error.statusCode} ${props.error.message}` });
     overflow: scroll;
   }
 
-  @include mediaMin(tabletLandscape) {
-  }
-  img {
-    max-width: 600px;
-    max-height: 600px;
+  @include ds.media-min(tablet-landscape) {
+    img {
+      max-width: 600px;
+      max-height: 600px;
+    }
   }
 }
 </style>

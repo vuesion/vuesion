@@ -14,15 +14,15 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueLoader {
   display: inline-block;
   position: relative;
-  width: $loader-size;
-  height: $loader-size;
+  width: ds.$loader-size;
+  height: ds.$loader-size;
 
-  &:before {
+  &::before {
     content: '';
     display: block;
     padding-top: 100%;
@@ -34,16 +34,14 @@ const $style = useCssModule();
     transform-origin: center center;
     width: 100%;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
     margin: auto;
 
     @keyframes rotate {
       0% {
         transform: rotate(0deg);
       }
+
       100% {
         transform: rotate(360deg);
       }
@@ -55,17 +53,19 @@ const $style = useCssModule();
     stroke-dashoffset: 0;
     animation: dash 1.5s ease-in-out infinite;
     stroke-linecap: round;
-    stroke: currentColor;
+    stroke: currentcolor;
 
     @keyframes dash {
       0% {
         stroke-dasharray: 1, 200;
         stroke-dashoffset: 0;
       }
+
       50% {
         stroke-dasharray: 89, 200;
         stroke-dashoffset: -35px;
       }
+
       100% {
         stroke-dasharray: 89, 200;
         stroke-dashoffset: -124px;

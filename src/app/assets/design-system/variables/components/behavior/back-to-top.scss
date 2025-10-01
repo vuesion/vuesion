@@ -1,0 +1,26 @@
+@use '../../spacings';
+
+$back-to-top-size: spacings.$space-48;
+$back-to-top-icon-size: spacings.$space-20;
+$back-to-top-bottom-space: spacings.$space-24;
+$back-to-top-right-space: spacings.$space-24;
+$back-to-top-border-radius: 50%;
+$back-to-top-shadow: var(--elevation-2);
+$back-to-top-index: 2000;
+$back-to-top-outline: var(--focused);
+
+// enabled
+$back-to-top-color: var(--text-inverse-high);
+$back-to-top-bg: var(--surface-inverse-medium);
+
+// hover
+$back-to-top-color-hover: var(--text-inverse-high);
+$back-to-top-bg-hover: var(--surface-inverse-low);
+
+// focus
+$back-to-top-color-focus: var(--text-inverse-high);
+$back-to-top-bg-focus: var(--surface-inverse-low);
+
+// active
+$back-to-top-color-active: var(--text-inverse-high);
+$back-to-top-bg-active: var(--surface-inverse-high);

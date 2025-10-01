@@ -37,38 +37,40 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
+@use 'sass:map';
 
 .vueBadge {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: $badge-padding;
-  border-radius: $badge-border-radius;
+  padding: ds.$badge-padding;
+  border-radius: ds.$badge-border-radius;
   white-space: nowrap;
 
-  @each $variation, $values in $badge-variations {
+  @each $variation, $values in ds.$badge-variations {
     &.#{$variation} {
-      color: map-get($values, 'color');
-      background: map-get($values, 'bg');
-      border: map-get($values, 'border');
+      color: map.get($values, 'color');
+      background: map.get($values, 'bg');
+      border: map.get($values, 'border');
 
       i {
-        color: map-get($values, 'color');
+        color: map.get($values, 'color');
       }
     }
   }
 
   i {
-    width: $space-12;
-    height: $space-12;
+    width: ds.$space-12;
+    height: ds.$space-12;
+
     path {
       stroke-width: 2;
     }
   }
 
   &.hasIcon {
-    padding: $badge-with-icon-padding;
+    padding: ds.$badge-with-icon-padding;
     cursor: pointer;
   }
 

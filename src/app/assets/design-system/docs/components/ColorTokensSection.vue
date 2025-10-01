@@ -53,11 +53,11 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import 'assets/design-system';
+@use 'assets/design-system/index' as ds;
 
 .colorTokensSection {
   .dark {
-    border-radius: $card-border-radius;
+    border-radius: ds.$card-border-radius;
     background: var(--bg-inverse-high);
     height: max-content;
     box-shadow: var(--elevation-4);

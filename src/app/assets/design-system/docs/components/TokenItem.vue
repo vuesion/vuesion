@@ -38,12 +38,13 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import 'assets/design-system';
+@use 'assets/design-system/index' as ds;
 
+/* stylelint-disable no-descending-specificity */
 .color {
   position: relative;
-  width: $space-72;
-  height: $space-64;
+  width: ds.$space-72;
+  height: ds.$space-64;
 
   &.elevation1 {
     div {
@@ -82,16 +83,16 @@ export default {
       position: absolute;
       left: 0;
       top: 0;
-      width: $space-64;
-      height: $space-64;
+      width: ds.$space-64;
+      height: ds.$space-64;
     }
 
     &:last-child {
       position: absolute;
       right: 0;
       bottom: 0;
-      width: $space-32;
-      height: $space-32;
+      width: ds.$space-32;
+      height: ds.$space-32;
     }
   }
 }

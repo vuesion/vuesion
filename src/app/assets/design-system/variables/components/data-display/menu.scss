@@ -1,0 +1,24 @@
+@use '../../spacings';
+
+$menu-z-index: 1000;
+$menu-bg: var(--surface-default-high);
+$menu-min-width: spacings.$space-192;
+$menu-max-height: spacings.$space-120 * 1.65;
+$menu-shadow: var(--elevation-3);
+$menu-border-radius: 6px;
+$menu-border: none;
+
+// item
+$menu-item-color: var(--text-default-high);
+$menu-item-padding: spacings.$space-8 spacings.$space-12;
+$menu-item-bg-active: var(--interaction-neutral-hovered);
+$menu-item-color-active: var(--text-default-high);
+$menu-item-icon-size: spacings.$space-20;
+$menu-item-icon-size-gap: spacings.$space-8;
+$menu-item-disabled-opacity: 0.6;
+
+// separator
+$menu-separator-border: 1px solid var(--border-default-low);
+
+// Used by other components
+$menu-control-gap: spacings.$space-4;

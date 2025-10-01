@@ -130,19 +130,16 @@ onBeforeUnmount(() => clearInterval(intervalInstance.value));
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueCarousel {
   position: relative;
   overflow: hidden;
-  border-radius: $carousel-border-radius;
+  border-radius: ds.$carousel-border-radius;
 
   .image {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     background-size: cover;
     background-position: 50% 50%;
   }
@@ -152,34 +149,34 @@ onBeforeUnmount(() => clearInterval(intervalInstance.value));
     position: absolute;
     padding: 0;
     margin: 0;
-    bottom: $carousel-indicator-bottom;
-    left: $carousel-pagination-right;
-    height: $carousel-indicator-height;
+    bottom: ds.$carousel-indicator-bottom;
+    left: ds.$carousel-pagination-right;
+    height: ds.$carousel-indicator-height;
 
     li {
       display: inline-block;
-      width: $carousel-indicator-width;
-      height: $carousel-indicator-height;
-      margin-right: $carousel-indicator-space;
-      border-radius: $carousel-indicator-border-radius;
-      background-color: $carousel-indicator-bg;
-      opacity: $carousel-indicator-opacity;
+      width: ds.$carousel-indicator-width;
+      height: ds.$carousel-indicator-height;
+      margin-right: ds.$carousel-indicator-space;
+      border-radius: ds.$carousel-indicator-border-radius;
+      background-color: ds.$carousel-indicator-bg;
+      opacity: ds.$carousel-indicator-opacity;
 
       &.active {
-        background-color: $carousel-indicator-bg-active;
-        opacity: $carousel-indicator-opacity-active;
-        width: $carousel-indicator-width-active;
+        background-color: ds.$carousel-indicator-bg-active;
+        opacity: ds.$carousel-indicator-opacity-active;
+        width: ds.$carousel-indicator-width-active;
       }
     }
   }
 
   .pagination {
     position: absolute;
-    bottom: $carousel-pagination-bottom;
-    right: $carousel-pagination-right;
+    bottom: ds.$carousel-pagination-bottom;
+    right: ds.$carousel-pagination-right;
   }
 
-  @include mediaMin(tabletPortrait) {
+  @include ds.media-min(tablet-portrait) {
     .indicator {
       left: 50%;
       transform: translateX(-50%);

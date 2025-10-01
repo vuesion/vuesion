@@ -34,7 +34,7 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueBreadcrumb {
   .list {
@@ -46,46 +46,47 @@ const $style = useCssModule();
 
     .itemWrapper {
       display: inline-block;
-      $breadcrumb-item-height: $space-24;
 
-      &:before {
-        padding: $breadcrumb-separator-padding;
-        content: $breadcrumb-separator;
+      $breadcrumb-item-height: ds.$space-24;
+
+      &::before {
+        padding: ds.$breadcrumb-separator-padding;
+        content: ds.$breadcrumb-separator;
       }
 
       &:first-child {
-        &:before {
+        &::before {
           padding: 0;
           content: '';
         }
       }
 
       .home {
-        width: $breadcrumb-home-icon-size;
-        height: $breadcrumb-home-icon-size;
+        width: ds.$breadcrumb-home-icon-size;
+        height: ds.$breadcrumb-home-icon-size;
       }
 
       .homeItem {
-        padding: $breadcrumb-home-padding;
+        padding: ds.$breadcrumb-home-padding;
       }
 
       .item {
         outline: none;
         display: inline-flex;
         align-items: center;
-        padding: $breadcrumb-item-padding;
-        height: $breadcrumb-item-height;
-        text-decoration: $breadcrumb-item-text-decoration;
-        border: $breadcrumb-item-border;
-        border-radius: $breadcrumb-item-border-radius;
+        padding: ds.$breadcrumb-item-padding;
+        height: ds.$breadcrumb-item-height;
+        text-decoration: ds.$breadcrumb-item-text-decoration;
+        border: ds.$breadcrumb-item-border;
+        border-radius: ds.$breadcrumb-item-border-radius;
         cursor: pointer;
 
         &:focus {
-          box-shadow: $breadcrumb-item-outline;
+          box-shadow: ds.$breadcrumb-item-outline;
         }
 
         &:hover {
-          background: $breadcrumb-item-bg-hover;
+          background: ds.$breadcrumb-item-bg-hover;
         }
 
         > span {

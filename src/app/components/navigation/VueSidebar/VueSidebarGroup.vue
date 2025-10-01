@@ -64,27 +64,27 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueSidebarGroup {
   .header {
     cursor: pointer;
-    border-radius: $sidebar-group-header-border-radius;
+    border-radius: ds.$sidebar-group-header-border-radius;
     outline: none !important;
 
     &:focus {
-      box-shadow: $sidebar-outline;
+      box-shadow: ds.$sidebar-outline;
     }
 
     i {
-      width: $sidebar-group-icon-size;
-      height: $sidebar-group-icon-size;
+      width: ds.$sidebar-group-icon-size;
+      height: ds.$sidebar-group-icon-size;
       cursor: pointer;
       outline: none;
-      border-radius: $space-2;
+      border-radius: ds.$space-2;
 
       &:focus {
-        box-shadow: $sidebar-outline;
+        box-shadow: ds.$sidebar-outline;
       }
     }
   }

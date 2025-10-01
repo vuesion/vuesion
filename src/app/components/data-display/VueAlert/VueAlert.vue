@@ -1,5 +1,5 @@
 <template>
-  <vue-columns space="12" padding="16" :class="[$style.VueAlert, $style[type]]">
+  <vue-columns space="12" padding="16" :class="[$style.vueAlert, $style[type]]">
     <vue-column no-grow>
       <vue-text :color="type">
         <vue-icon-checkmark v-if="['success'].includes(type)" />
@@ -44,34 +44,34 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.VueAlert {
-  border-radius: $alert-border-radius;
+.vueAlert {
+  border-radius: ds.$alert-border-radius;
 
   i {
-    width: $alert-icons-size;
-    height: $alert-icons-size;
+    width: ds.$alert-icons-size;
+    height: ds.$alert-icons-size;
   }
 
   &.info {
-    background: $alert-info-bg;
-    border: $alert-info-border;
+    background: ds.$alert-info-bg;
+    border: ds.$alert-info-border;
   }
 
   &.warning {
-    background: $alert-warning-bg;
-    border: $alert-warning-border;
+    background: ds.$alert-warning-bg;
+    border: ds.$alert-warning-border;
   }
 
   &.danger {
-    background: $alert-danger-bg;
-    border: $alert-danger-border;
+    background: ds.$alert-danger-bg;
+    border: ds.$alert-danger-border;
   }
 
   &.success {
-    background: $alert-success-bg;
-    border: $alert-success-border;
+    background: ds.$alert-success-bg;
+    border: ds.$alert-success-border;
   }
 }
 </style>

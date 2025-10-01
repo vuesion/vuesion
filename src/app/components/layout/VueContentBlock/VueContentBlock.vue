@@ -15,7 +15,7 @@ withDefaults(defineProps<{ as?: string; padding?: SpacingWithDirections | Array<
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueContentBlock {
   width: 100%;
@@ -23,20 +23,20 @@ withDefaults(defineProps<{ as?: string; padding?: SpacingWithDirections | Array<
   margin: 0 auto;
   position: relative;
 
-  @include mediaMin(tabletPortrait) {
-    max-width: calc(100% - ($space-24 * 2));
+  @include ds.media-min(tablet-portrait) {
+    max-width: calc(100% - (ds.$space-24 * 2));
   }
 
-  @include mediaMin(tabletLandscape) {
-    max-width: calc(100% - ($space-24 * 2));
+  @include ds.media-min(tablet-landscape) {
+    max-width: calc(100% - (ds.$space-24 * 2));
   }
 
-  @include mediaMin(smallDesktop) {
-    max-width: calc($screen-small-desktop-min - ($space-32 * 2));
+  @include ds.media-min(small-desktop) {
+    max-width: calc(ds.$screen-small-desktop-min - (ds.$space-32 * 2));
   }
 
-  @include mediaMin(largeDesktop) {
-    max-width: calc($screen-large-desktop-min - ($space-64 * 2));
+  @include ds.media-min(large-desktop) {
+    max-width: calc(ds.$screen-large-desktop-min - (ds.$space-64 * 2));
   }
 }
 </style>

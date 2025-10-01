@@ -1,100 +1,129 @@
-@import 'design-system/mixins/default';
+@use 'design-system/mixins/mixins';
 
 // justify
 .justify-start {
   justify-content: flex-start;
 }
+
 .justify-center {
   justify-content: center;
 }
+
 .justify-end {
   justify-content: flex-end;
 }
+
 .justify-between {
   justify-content: space-between;
 }
+
 .justify-around {
   justify-content: space-around;
 }
+
 .justify-evenly {
   justify-content: space-evenly;
 }
-@include mediaMin(tabletPortrait) {
+
+@include mixins.media-min(tablet-portrait) {
   .justify-tp-start {
     justify-content: flex-start;
   }
+
   .justify-tp-center {
     justify-content: center;
   }
+
   .justify-tp-end {
     justify-content: flex-end;
   }
+
   .justify-between {
     justify-content: space-between;
   }
+
   .justify-around {
     justify-content: space-around;
   }
+
   .justify-evenly {
     justify-content: space-evenly;
   }
 }
-@include mediaMin(tabletLandscape) {
+
+@include mixins.media-min(tablet-landscape) {
   .justify-tl-start {
     justify-content: flex-start;
   }
+
   .justify-tl-center {
     justify-content: center;
   }
+
   .justify-tl-end {
     justify-content: flex-end;
   }
+
   .justify-between {
     justify-content: space-between;
   }
+
   .justify-around {
     justify-content: space-around;
   }
+
   .justify-evenly {
     justify-content: space-evenly;
   }
 }
-@include mediaMin(smallDesktop) {
+
+@include mixins.media-min(small-desktop) {
   .justify-sd-start {
     justify-content: flex-start;
   }
+
   .justify-sd-center {
     justify-content: center;
   }
+
   .justify-sd-end {
     justify-content: flex-end;
   }
+
   .justify-between {
     justify-content: space-between;
   }
+
   .justify-around {
     justify-content: space-around;
   }
+
   .justify-evenly {
     justify-content: space-evenly;
   }
 }
-@include mediaMin(largeDesktop) {
+
+@include mixins.media-min(large-desktop) {
   .justify-ld-start {
     justify-content: flex-start;
   }
+
   .justify-ld-center {
     justify-content: center;
   }
+
   .justify-ld-end {
     justify-content: flex-end;
   }
+
   .justify-between {
     justify-content: space-between;
   }
+
   .justify-around {
     justify-content: space-around;
   }
+
   .justify-evenly {
     justify-content: space-evenly;
   }
@@ -104,82 +133,106 @@
 .items-start {
   align-items: flex-start;
 }
+
 .items-center {
   align-items: center;
 }
+
 .items-end {
   align-items: flex-end;
 }
+
 .items-baseline {
   align-items: baseline;
 }
+
 .items-stretch {
   align-items: stretch;
 }
-@include mediaMin(tabletPortrait) {
+
+@include mixins.media-min(tablet-portrait) {
   .items-tp-start {
     align-items: flex-start;
   }
+
   .items-tp-center {
     align-items: center;
   }
+
   .items-tp-end {
     align-items: flex-end;
   }
+
   .items-baseline {
     align-items: baseline;
   }
+
   .items-stretch {
     align-items: stretch;
   }
 }
-@include mediaMin(tabletLandscape) {
+
+@include mixins.media-min(tablet-landscape) {
   .items-tl-start {
     align-items: flex-start;
   }
+
   .items-tl-center {
     align-items: center;
   }
+
   .items-tl-end {
     align-items: flex-end;
   }
+
   .items-baseline {
     align-items: baseline;
   }
+
   .items-stretch {
     align-items: stretch;
   }
 }
-@include mediaMin(smallDesktop) {
+
+@include mixins.media-min(small-desktop) {
   .items-sd-start {
     align-items: flex-start;
   }
+
   .items-sd-center {
     align-items: center;
   }
+
   .items-sd-end {
     align-items: flex-end;
   }
+
   .items-baseline {
     align-items: baseline;
   }
+
   .items-stretch {
     align-items: stretch;
   }
 }
-@include mediaMin(largeDesktop) {
+
+@include mixins.media-min(large-desktop) {
   .items-ld-start {
     align-items: flex-start;
   }
+
   .items-ld-center {
     align-items: center;
   }
+
   .items-ld-end {
     align-items: flex-end;
   }
+
   .items-baseline {
     align-items: baseline;
   }
+
   .items-stretch {
     align-items: stretch;
   }

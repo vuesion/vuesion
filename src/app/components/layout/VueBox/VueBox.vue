@@ -64,10 +64,3 @@ const cssClasses = computed(() => {
   return classes;
 });
 </script>
-
-<style lang="scss" module>
-@import 'assets/_design-system.scss';
-
-.vueBox {
-}
-</style>

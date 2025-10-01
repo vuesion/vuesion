@@ -1,23 +1,30 @@
-@import 'design-system/mixins/default';
+@use 'design-system/mixins/mixins';
+
 // Display
 .block {
   display: block;
 }
+
 .inline-block {
   display: inline-block;
 }
+
 .inline {
   display: inline;
 }
+
 .flex {
   display: flex;
 }
+
 .inline-flex {
   display: inline-flex;
 }
+
 .grid {
   display: grid;
 }
+
 .inline-grid {
   display: inline-grid;
 }
@@ -26,89 +33,113 @@
 .wrap {
   flex-wrap: wrap;
 }
+
 .no-wrap {
   flex-wrap: nowrap;
 }
+
 .shrink {
   flex-shrink: 1;
 }
+
 .shrink-0 {
   flex-shrink: 0;
 }
+
 .grow {
   flex-grow: 1;
 }
+
 .grow-0 {
   flex-grow: 0;
 }
 
 // flex direction
-@include mediaMinMax(phone) {
+@include mixins.media-min-max(phone) {
   .flex-row {
     flex-direction: row;
   }
+
   .flex-row-reverse {
     flex-direction: row-reverse;
   }
+
   .flex-col {
     flex-direction: column;
   }
+
   .flex-col-reverse {
     flex-direction: column-reverse;
   }
 }
-@include mediaMinMax(tabletPortrait) {
+
+@include mixins.media-min-max(tablet-portrait) {
   .flex-row-tp {
     flex-direction: row;
   }
+
   .flex-row-reverse-tp {
     flex-direction: row-reverse;
   }
+
   .flex-col-tp {
     flex-direction: column;
   }
+
   .flex-col-reverse-tp {
     flex-direction: column-reverse;
   }
 }
-@include mediaMinMax(tabletLandscape) {
+
+@include mixins.media-min-max(tablet-landscape) {
   .flex-row-tl {
     flex-direction: row;
   }
+
   .flex-row-reverse-tl {
     flex-direction: row-reverse;
   }
+
   .flex-col-tl {
     flex-direction: column;
   }
+
   .flex-col-reverse-tl {
     flex-direction: column-reverse;
   }
 }
-@include mediaMinMax(smallDesktop) {
+
+@include mixins.media-min-max(small-desktop) {
   .flex-row-sd {
     flex-direction: row;
   }
+
   .flex-row-reverse-sd {
     flex-direction: row-reverse;
   }
+
   .flex-col-sd {
     flex-direction: column;
   }
+
   .flex-col-reverse-sd {
     flex-direction: column-reverse;
   }
 }
-@include mediaMin(largeDesktop) {
+
+@include mixins.media-min(large-desktop) {
   .flex-row-ld {
     flex-direction: row;
   }
+
   .flex-row-reverse-ld {
     flex-direction: row-reverse;
   }
+
   .flex-col-ld {
     flex-direction: column;
   }
+
   .flex-col-reverse-ld {
     flex-direction: column-reverse;
   }
@@ -118,146 +149,184 @@
 .w-auto {
   width: auto;
 }
+
 .w-full {
   width: 100%;
 }
+
 .w-screen {
   width: 100vh;
 }
+
 .w-min {
   width: min-content;
 }
+
 .w-max {
   width: max-content;
 }
+
 .w-fit {
   width: fit-content;
 }
+
 @for $i from 1 through 10 {
   .w-#{$i}\/#{10} {
     width: #{calc(100 * $i / 10) + '%'};
   }
 }
+
 @for $i from 1 through 12 {
   .w-#{$i}\/#{12} {
     width: #{calc(100 * $i / 12) + '%'};
   }
 }
 
-@include mediaMin(tabletPortrait) {
+@include mixins.media-min(tablet-portrait) {
   .w-tp-auto {
     width: auto;
   }
+
   .w-tp-full {
     width: 100%;
   }
+
   .w-tp-screen {
     width: 100vh;
   }
+
   .w-tp-min {
     width: min-content;
   }
+
   .w-tp-max {
     width: max-content;
   }
+
   .w-tp-fit {
     width: fit-content;
   }
+
   @for $i from 1 through 10 {
     .w-tp-#{$i}\/#{10} {
       width: #{calc(100 * $i / 10) + '%'};
     }
   }
+
   @for $i from 1 through 12 {
     .w-tp-#{$i}\/#{12} {
       width: #{calc(100 * $i / 12) + '%'};
     }
   }
 }
-@include mediaMin(tabletLandscape) {
+
+@include mixins.media-min(tablet-landscape) {
   .w-tl-auto {
     width: auto;
   }
+
   .w-tl-full {
     width: 100%;
   }
+
   .w-tl-screen {
     width: 100vh;
   }
+
   .w-tl-min {
     width: min-content;
   }
+
   .w-tl-max {
     width: max-content;
   }
+
   .w-tl-fit {
     width: fit-content;
   }
+
   @for $i from 1 through 10 {
     .w-tl-#{$i}\/#{10} {
       width: #{calc(100 * $i / 10) + '%'};
     }
   }
+
   @for $i from 1 through 12 {
     .w-tl-#{$i}\/#{12} {
       width: #{calc(100 * $i / 12) + '%'};
     }
   }
 }
-@include mediaMin(smallDesktop) {
+
+@include mixins.media-min(small-desktop) {
   .w-sd-auto {
     width: auto;
   }
+
   .w-sd-full {
     width: 100%;
   }
+
   .w-sd-screen {
     width: 100vh;
   }
+
   .w-sd-min {
     width: min-content;
   }
+
   .w-sd-max {
     width: max-content;
   }
+
   .w-sd-fit {
     width: fit-content;
   }
+
   @for $i from 1 through 10 {
     .w-sd-#{$i}\/#{10} {
       width: #{calc(100 * $i / 10) + '%'};
     }
   }
+
   @for $i from 1 through 12 {
     .w-sd-#{$i}\/#{12} {
       width: #{calc(100 * $i / 12) + '%'};
     }
   }
 }
-@include mediaMin(largeDesktop) {
+
+@include mixins.media-min(large-desktop) {
   .w-ld-auto {
     width: auto;
   }
+
   .w-ld-full {
     width: 100%;
   }
+
   .w-ld-screen {
     width: 100vh;
   }
+
   .w-ld-min {
     width: min-content;
   }
+
   .w-ld-max {
     width: max-content;
   }
+
   .w-ld-fit {
     width: fit-content;
   }
+
   @for $i from 1 through 10 {
     .w-ld-#{$i}\/#{10} {
       width: #{calc(100 * $i / 10) + '%'};
     }
   }
+
   @for $i from 1 through 12 {
     .w-ld-#{$i}\/#{12} {
       width: #{calc(100 * $i / 12) + '%'};
@@ -274,46 +343,54 @@
 .grid-cols-none {
   width: fit-content;
 }
+
 @for $i from 1 through 12 {
   .grid-cols-#{$i} {
     grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
   }
 }
 
-@include mediaMin(tabletPortrait) {
+@include mixins.media-min(tablet-portrait) {
   .grid-cols-tp-none {
     width: fit-content;
   }
+
   @for $i from 1 through 12 {
     .grid-cols-tp-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
     }
   }
 }
-@include mediaMin(tabletLandscape) {
+
+@include mixins.media-min(tablet-landscape) {
   .grid-cols-tl-none {
     width: fit-content;
   }
+
   @for $i from 1 through 12 {
     .grid-cols-tl-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
     }
   }
 }
-@include mediaMin(smallDesktop) {
+
+@include mixins.media-min(small-desktop) {
   .grid-cols-sd-none {
     width: fit-content;
   }
+
   @for $i from 1 through 12 {
     .grid-cols-sd-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
     }
   }
 }
-@include mediaMin(largeDesktop) {
+
+@include mixins.media-min(large-desktop) {
   .grid-cols-ld-none {
     width: fit-content;
   }
+
   @for $i from 1 through 12 {
     .grid-cols-ld-#{$i} {
       grid-template-columns: repeat(#{$i}, minmax(min-content, 1fr));
@@ -328,36 +405,36 @@
   height: 1px;
   padding: 0;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
 }
 
-@include mediaMax(phone) {
+@include mixins.media-max(phone) {
   .hidden-p {
     display: none;
   }
 }
 
-@include mediaMinMax(tabletPortrait) {
+@include mixins.media-min-max(tablet-portrait) {
   .hidden-tp {
     display: none;
   }
 }
 
-@include mediaMinMax(tabletLandscape) {
+@include mixins.media-min-max(tablet-landscape) {
   .hidden-tl {
     display: none;
   }
 }
 
-@include mediaMinMax(smallDesktop) {
+@include mixins.media-min-max(small-desktop) {
   .hidden-sd {
     display: none;
   }
 }
 
-@include mediaMin(largeDesktop) {
+@include mixins.media-min(large-desktop) {
   .hidden-ld {
     display: none;
   }

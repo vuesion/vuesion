@@ -71,7 +71,7 @@ useHead({
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/_design-system.scss';
 
 .page {
   // this class is only applied if you add css properties

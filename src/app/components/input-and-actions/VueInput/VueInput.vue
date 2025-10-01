@@ -258,43 +258,27 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueInput {
   position: relative;
   width: 100%;
 
-  &.error {
-    .baseInput {
-      background: $input-bg-error;
-      border: $input-border-error;
-    }
-  }
-
-  &.disabled {
-    opacity: $input-disabled-disabled-opacity;
-  }
-
-  .label {
-    display: flex;
-    white-space: nowrap;
-  }
-
   .baseInput {
     position: relative;
     width: 100%;
-    background: $input-background-color;
-    border: $input-border;
-    border-radius: $input-border-radius;
+    background: ds.$input-background-color;
+    border: ds.$input-border;
+    border-radius: ds.$input-border-radius;
 
     &:hover {
       outline: none;
-      border: $input-border-hover;
+      border: ds.$input-border-hover;
     }
 
     &:focus-within {
       outline: none;
-      box-shadow: $input-outline;
+      box-shadow: ds.$input-outline;
       z-index: 1;
     }
 
@@ -305,99 +289,106 @@ export default {
     &.hasLeadingContent {
       padding-left: 0;
     }
+
     .leading {
       cursor: pointer;
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      color: $input-leading-color;
+      color: ds.$input-leading-color;
 
       i {
-        padding-top: $space-2;
-        width: $input-leading-icon-size;
-        height: $input-leading-icon-size;
+        padding-top: ds.$space-2;
+        width: ds.$input-leading-icon-size;
+        height: ds.$input-leading-icon-size;
       }
     }
 
     &.hasTrailingContent {
       padding-right: 0;
     }
+
     .trailing {
       cursor: pointer;
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      color: $input-trailing-color;
+      color: ds.$input-trailing-color;
 
       i {
-        padding-top: $space-2;
-        width: $input-trailing-icon-size;
-        height: $input-trailing-icon-size;
+        padding-top: ds.$space-2;
+        width: ds.$input-trailing-icon-size;
+        height: ds.$input-trailing-icon-size;
       }
     }
 
     input {
+      background: transparent;
       background-clip: padding-box !important; // remove box shadow on iOS
       outline: none;
-      color: $input-color;
-      font-size: $input-font-size;
-      font-family: $input-font-family;
-      font-weight: $input-font-weight;
+      color: ds.$input-color;
+      font-size: ds.$input-font-size;
+      font-family: ds.$input-font-family;
+      font-weight: ds.$input-font-weight;
       border: none;
-      background: transparent;
-      line-height: $input-line-height;
+      line-height: ds.$input-line-height;
       width: 100%;
     }
 
     input::placeholder {
-      color: $input-placeholder-color;
-      font-size: $input-font-size;
-      font-family: $input-font-family;
-      font-weight: $input-font-weight;
+      color: ds.$input-placeholder-color;
+      font-size: ds.$input-font-size;
+      font-family: ds.$input-font-family;
+      font-weight: ds.$input-font-weight;
       opacity: 1;
     }
 
     &.sm {
-      height: $input-control-sm-height;
+      height: ds.$input-control-sm-height;
 
       .leading,
       .trailing {
-        width: $input-control-sm-height;
-        height: $input-control-sm-height;
+        width: ds.$input-control-sm-height;
+        height: ds.$input-control-sm-height;
       }
 
       input {
-        height: $input-control-sm-height;
+        height: ds.$input-control-sm-height;
       }
     }
 
     &.md {
-      height: $input-control-md-height;
+      height: ds.$input-control-md-height;
 
       .leading,
       .trailing {
-        width: $input-control-md-height;
-        height: $input-control-md-height;
+        width: ds.$input-control-md-height;
+        height: ds.$input-control-md-height;
       }
 
       input {
-        height: $input-control-md-height;
+        height: ds.$input-control-md-height;
       }
     }
 
     &.lg {
-      height: $input-control-lg-height;
+      height: ds.$input-control-lg-height;
 
       .leading,
       .trailing {
-        width: $input-control-lg-height;
-        height: $input-control-lg-height;
+        width: ds.$input-control-lg-height;
+        height: ds.$input-control-lg-height;
       }
 
       input {
-        height: $input-control-lg-height;
+        height: ds.$input-control-lg-height;
       }
     }
+  }
+
+  .label {
+    display: flex;
+    white-space: nowrap;
   }
 
   .menu {
@@ -409,6 +400,17 @@ export default {
   .description {
     display: flex;
     white-space: nowrap;
+  }
+
+  &.error {
+    .baseInput {
+      background: ds.$input-bg-error;
+      border: ds.$input-border-error;
+    }
+  }
+
+  &.disabled {
+    opacity: ds.$input-disabled-disabled-opacity;
   }
 }
 </style>

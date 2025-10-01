@@ -90,28 +90,62 @@ onMounted(() => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueToast {
   position: fixed;
-  top: $toast-position-top;
-  right: $space-16;
-  z-index: $toast-index;
-  width: calc(100% - #{$space-32});
-  max-width: $toast-max-width;
+  top: ds.$toast-position-top;
+  right: ds.$space-16;
+  z-index: ds.$toast-index;
+  width: calc(100% - #{ds.$space-32});
+  max-width: ds.$toast-max-width;
 
+  .toast {
+    border-radius: ds.$toast-border-radius;
+    box-shadow: ds.$toast-elevation;
+    margin-bottom: ds.$toast-gap;
+
+    i {
+      width: ds.$toast-icons-size;
+      height: ds.$toast-icons-size;
+    }
+
+    &.info {
+      background: ds.$toast-info-bg;
+      border: ds.$toast-info-border;
+    }
+
+    &.warning {
+      background: ds.$toast-warning-bg;
+      border: ds.$toast-warning-border;
+    }
+
+    &.danger {
+      background: ds.$toast-danger-bg;
+      border: ds.$toast-danger-border;
+    }
+
+    &.success {
+      background: ds.$toast-success-bg;
+      border: ds.$toast-success-border;
+    }
+  }
+
+  /* stylelint-disable selector-class-pattern */
   :global {
     .list-move {
-      transition: $toast-transition;
+      transition: ds.$toast-transition;
     }
 
     .list-enter {
       opacity: 0;
       transform: translateY(-100%);
     }
+
     .list-enter-active {
-      transition: $toast-transition;
+      transition: ds.$toast-transition;
     }
+
     .list-enter-to {
       opacity: 1;
       transform: translateY(0);
@@ -121,43 +155,14 @@ onMounted(() => {
       opacity: 1;
       transform: translateY(0);
     }
+
     .list-leave-active {
-      transition: $toast-transition;
+      transition: ds.$toast-transition;
     }
+
     .list-leave-to {
       opacity: 0;
       transform: translateY(100%);
-    }
-  }
-
-  .toast {
-    border-radius: $toast-border-radius;
-    box-shadow: $toast-elevation;
-    margin-bottom: $toast-gap;
-
-    i {
-      width: $toast-icons-size;
-      height: $toast-icons-size;
-    }
-
-    &.info {
-      background: $toast-info-bg;
-      border: $toast-info-border;
-    }
-
-    &.warning {
-      background: $toast-warning-bg;
-      border: $toast-warning-border;
-    }
-
-    &.danger {
-      background: $toast-danger-bg;
-      border: $toast-danger-border;
-    }
-
-    &.success {
-      background: $toast-success-bg;
-      border: $toast-success-border;
     }
   }
 }

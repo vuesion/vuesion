@@ -69,7 +69,7 @@ withDefaults(defineProps<ComponentDocsProps>(), {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .noBg {
   background-color: transparent;

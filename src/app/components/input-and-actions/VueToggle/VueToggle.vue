@@ -115,7 +115,9 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
+
+/* stylelint-disable no-descending-specificity */
 .vueToggle {
   position: relative;
   cursor: pointer;
@@ -130,33 +132,33 @@ export default {
     width: 0;
 
     &:checked ~ .toggle {
-      background-color: $toggle-bg-checked !important;
+      background-color: ds.$toggle-bg-checked !important;
 
       .handle {
-        background: $toggle-handle-bg-checked !important;
+        background: ds.$toggle-handle-bg-checked !important;
         left: unset;
-        right: $space-2;
+        right: ds.$space-2;
       }
     }
   }
 
   .toggle {
     position: relative;
-    top: $space-2;
-    width: $toggle-width;
-    height: $toggle-height;
-    border-radius: $toggle-border-radius;
-    background: $toggle-bg;
+    top: ds.$space-2;
+    width: ds.$toggle-width;
+    height: ds.$toggle-height;
+    border-radius: ds.$toggle-border-radius;
+    background: ds.$toggle-bg;
     display: inline-flex;
     align-items: center;
 
     .handle {
       position: absolute;
-      width: $toggle-handle-width;
-      height: $toggle-handle-height;
-      border-radius: $toggle-handle-border-radius;
-      background: $toggle-handle-bg;
-      left: $space-2;
+      width: ds.$toggle-handle-width;
+      height: ds.$toggle-handle-height;
+      border-radius: ds.$toggle-handle-border-radius;
+      background: ds.$toggle-handle-bg;
+      left: ds.$space-2;
     }
   }
 
@@ -166,51 +168,57 @@ export default {
 
   &:hover {
     input ~ .toggle {
-      background-color: $toggle-bg-hover;
+      background-color: ds.$toggle-bg-hover;
 
       .handle {
-        background: $toggle-handle-bg-hover;
+        background: ds.$toggle-handle-bg-hover;
       }
     }
 
     input {
       &:checked ~ .toggle {
-        background-color: $toggle-bg-checked-hover !important;
+        background-color: ds.$toggle-bg-checked-hover !important;
 
         .handle {
-          background: $toggle-handle-bg-checked-hover !important;
+          background: ds.$toggle-handle-bg-checked-hover !important;
           left: unset;
-          right: $space-2;
+          right: ds.$space-2;
         }
       }
     }
   }
+
   &:focus,
   &:focus-within {
     .toggle {
-      box-shadow: $toggle-outline;
+      box-shadow: ds.$toggle-outline;
     }
   }
 
   &.disabled {
-    opacity: $toggle-disabled-opacity;
+    opacity: ds.$toggle-disabled-opacity;
   }
+
   &.error {
     .description,
     label {
-      color: $toggle-error-color;
+      color: ds.$toggle-error-color;
     }
+
     .toggle {
-      background: $toggle-bg-error;
+      background: ds.$toggle-bg-error;
+
       .handle {
-        background: $toggle-handle-bg-error;
+        background: ds.$toggle-handle-bg-error;
       }
     }
+
     &:hover {
       input ~ .toggle {
-        background: $toggle-bg-error;
+        background: ds.$toggle-bg-error;
+
         .handle {
-          background: $toggle-handle-bg-error;
+          background: ds.$toggle-handle-bg-error;
         }
       }
     }

@@ -168,7 +168,8 @@ const onClick = (e: Event) => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
+@use 'sass:map';
 
 .button {
   display: inline-flex;
@@ -179,89 +180,89 @@ const onClick = (e: Event) => {
   touch-action: manipulation;
   cursor: pointer;
   white-space: nowrap;
-  min-width: $button-min-width;
+  min-width: ds.$button-min-width;
   position: relative;
   overflow: hidden;
-  border-radius: $button-border-radius;
+  border-radius: ds.$button-border-radius;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   border: none;
   outline: none;
   text-decoration: none;
-  gap: $button-gap;
+  gap: ds.$button-gap;
 
   // Sizes
   &.sm {
-    padding: $button-sm-padding;
-    height: $input-control-sm-height;
+    padding: ds.$button-sm-padding;
+    height: ds.$input-control-sm-height;
   }
 
   &.md {
-    padding: $button-md-padding;
-    height: $input-control-md-height;
+    padding: ds.$button-md-padding;
+    height: ds.$input-control-md-height;
   }
 
   &.lg {
-    padding: $button-lg-padding;
-    height: $input-control-lg-height;
+    padding: ds.$button-lg-padding;
+    height: ds.$input-control-lg-height;
   }
 
   // Styles
-  @each $variation, $values in $button-variations {
+  @each $variation, $values in ds.$button-variations {
     &.#{$variation} {
-      color: map-get($values, 'color');
-      background: map-get($values, 'bg');
+      color: map.get($values, 'color');
+      background: map.get($values, 'bg');
 
-      @if map-get($values, 'border') {
-        border: map-get($values, 'border');
+      @if map.get($values, 'border') {
+        border: map.get($values, 'border');
       } @else {
         border: 1px solid transparent;
       }
 
       > span {
-        color: map-get($values, 'color');
+        color: map.get($values, 'color');
       }
 
       &:hover {
-        background: map-get($values, 'hover-bg');
-        color: map-get($values, 'hover-color');
+        background: map.get($values, 'hover-bg');
+        color: map.get($values, 'hover-color');
 
         > span {
-          color: map-get($values, 'hover-color');
+          color: map.get($values, 'hover-color');
         }
       }
 
       &:focus {
-        box-shadow: $button-outline;
+        box-shadow: ds.$button-outline;
       }
 
       &:active {
-        background: map-get($values, 'active-bg');
-        color: map-get($values, 'active-color');
+        background: map.get($values, 'active-bg');
+        color: map.get($values, 'active-color');
 
         > span {
-          color: map-get($values, 'active-color');
+          color: map.get($values, 'active-color');
         }
       }
 
       .loader {
         circle {
-          stroke: map-get($values, 'color');
+          stroke: map.get($values, 'color');
         }
       }
 
       &.disabled,
       &[disabled],
       fieldset[disabled] & {
-        color: map-get($values, 'color');
-        background: map-get($values, 'bg');
+        color: map.get($values, 'color');
+        background: map.get($values, 'bg');
       }
     }
   }
 
   &.disabled,
   &[disabled] fieldset[disabled] & {
-    opacity: $button-disabled-opacity;
+    opacity: ds.$button-disabled-opacity;
     cursor: not-allowed;
   }
 
@@ -274,8 +275,8 @@ const onClick = (e: Event) => {
 
   .loader {
     position: initial;
-    width: $text-2;
-    height: $text-2;
+    width: ds.$text-2;
+    height: ds.$text-2;
   }
 
   .text {
@@ -288,8 +289,8 @@ const onClick = (e: Event) => {
 
   .leadingIcon,
   .trailingIcon {
-    height: $button-icon-size;
-    width: $button-icon-size;
+    height: ds.$button-icon-size;
+    width: ds.$button-icon-size;
   }
 }
 </style>

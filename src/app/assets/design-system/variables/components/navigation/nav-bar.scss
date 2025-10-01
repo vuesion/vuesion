@@ -1,0 +1,11 @@
+@use '../../spacings';
+
+$navbar-bg: var(--surface-default-high);
+$navbar-height: spacings.$space-64;
+$navbar-index: 100;
+$navbar-elevation: var(--elevation-1);
+$navbar-border: none;
+
+// menu
+$navbar-menu-icon-size: spacings.$space-20;
+$navbar-menu-outline: var(--focused);

@@ -54,8 +54,9 @@ const isChecked = (item: IItem) => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
+/* stylelint-disable no-descending-specificity */
 .vueToggleButton {
   .button {
     aspect-ratio: 1 / 1;
@@ -67,11 +68,11 @@ const isChecked = (item: IItem) => {
     }
 
     &:first-child {
-      border-radius: $button-border-radius 0 0 $button-border-radius;
+      border-radius: ds.$button-border-radius 0 0 ds.$button-border-radius;
     }
 
     &:last-child {
-      border-radius: 0 $button-border-radius $button-border-radius 0;
+      border-radius: 0 ds.$button-border-radius ds.$button-border-radius 0;
       border-right-width: 1px;
     }
   }

@@ -291,10 +291,12 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
+
+/* stylelint-disable no-descending-specificity */
 .vueSelect {
   position: relative;
-  min-width: $select-min-width;
+  min-width: ds.$select-min-width;
 
   .label {
     display: flex;
@@ -302,31 +304,18 @@ export default {
   }
 
   .customSelect {
+    display: flex;
+    width: 100%;
     position: relative;
     outline: none;
-    font-size: $select-font-size;
-    font-family: $select-font-family;
-    font-weight: $select-font-weight;
-    background: $select-background-color;
-    border: $select-border;
-    border-radius: $select-border-radius;
-    line-height: $select-line-height;
-    width: 100%;
+    font-size: ds.$select-font-size;
+    font-family: ds.$select-font-family;
+    font-weight: ds.$select-font-weight;
+    background: ds.$select-background-color;
+    border: ds.$select-border;
+    border-radius: ds.$select-border-radius;
+    line-height: ds.$select-line-height;
     cursor: pointer;
-
-    &:hover {
-      outline: none;
-      border: $select-border-hover;
-    }
-
-    &:focus {
-      outline: none;
-      box-shadow: $select-outline;
-    }
-
-    &:active {
-      outline: none;
-    }
 
     .menu {
       position: absolute;
@@ -335,13 +324,13 @@ export default {
 
       &.withLabel {
         &[data-placement^='top'] {
-          top: $space-24 !important;
+          top: ds.$space-24 !important;
         }
       }
 
       &.withDescription {
         &[data-placement^='bottom'] {
-          top: $space-24 * -1 !important;
+          top: ds.$space-24 * -1 !important;
         }
       }
     }
@@ -355,44 +344,58 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: $select-trailing-color;
+      color: ds.$select-trailing-color;
 
       i {
-        width: $select-trailing-icon-size;
-        height: $select-trailing-icon-size;
+        width: ds.$select-trailing-icon-size;
+        height: ds.$select-trailing-icon-size;
       }
+    }
+
+    &:hover {
+      outline: none;
+      border: ds.$select-border-hover;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: ds.$select-outline;
+    }
+
+    &:active {
+      outline: none;
     }
 
     &.sm {
       .customSelect {
-        height: $input-control-sm-height;
+        height: ds.$input-control-sm-height;
       }
 
       .icon {
-        width: $input-control-sm-height;
-        height: $input-control-sm-height;
+        width: ds.$input-control-sm-height;
+        height: ds.$input-control-sm-height;
       }
     }
 
     &.md {
       .customSelect {
-        height: $input-control-md-height;
+        height: ds.$input-control-md-height;
       }
 
       .icon {
-        width: $input-control-md-height;
-        height: $input-control-md-height;
+        width: ds.$input-control-md-height;
+        height: ds.$input-control-md-height;
       }
     }
 
     &.lg {
       .customSelect {
-        height: $input-control-lg-height;
+        height: ds.$input-control-lg-height;
       }
 
       .icon {
-        width: $input-control-lg-height;
-        height: $input-control-lg-height;
+        width: ds.$input-control-lg-height;
+        height: ds.$input-control-lg-height;
       }
     }
   }
@@ -404,24 +407,18 @@ export default {
 
   &.error {
     select {
-      background: $select-bg-error;
-      border: $select-border-error;
+      background: ds.$select-bg-error;
+      border: ds.$select-border-error;
     }
 
-    .nativeSelect,
     .customSelect {
-      background: $select-bg-error;
-      border: $select-border-error;
+      background: ds.$select-bg-error;
+      border: ds.$select-border-error;
     }
   }
 
   &.disabled {
-    opacity: $select-disabled-disabled-opacity;
-  }
-
-  .customSelect {
-    display: flex;
-    width: 100%;
+    opacity: ds.$select-disabled-disabled-opacity;
   }
 }
 </style>

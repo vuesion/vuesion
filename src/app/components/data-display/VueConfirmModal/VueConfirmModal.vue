@@ -61,11 +61,3 @@ defineEmits<ConfirmModalEmits>();
 // Deps
 const $style = useCssModule();
 </script>
-
-<style lang="scss" module>
-@import 'assets/_design-system.scss';
-
-.VueConfirmModal {
-  // this class is only applied if you add css properties
-}
-</style>

@@ -17,5 +17,3 @@ export default {
   name: 'VueIconAddUser',
 };
 </script>
-
-<style lang="scss" module></style>

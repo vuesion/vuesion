@@ -72,10 +72,10 @@ onMounted(() => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueAccordionItem {
-  background: $accordion-item-bg;
+  background: ds.$accordion-item-bg;
 
   .header {
     z-index: 1;
@@ -84,7 +84,7 @@ onMounted(() => {
     outline: none !important;
 
     &:hover {
-      background: $accordion-item-header-bg-hover;
+      background: ds.$accordion-item-header-bg-hover;
     }
 
     &:focus {
@@ -92,8 +92,8 @@ onMounted(() => {
     }
 
     i {
-      width: $accordion-item-header-icon-size;
-      height: $accordion-item-header-icon-size;
+      width: ds.$accordion-item-header-icon-size;
+      height: ds.$accordion-item-header-icon-size;
     }
   }
 }

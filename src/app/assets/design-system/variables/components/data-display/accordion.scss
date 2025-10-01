@@ -1,0 +1,5 @@
+@use '../../spacings';
+
+$accordion-item-bg: var(--surface-default-high);
+$accordion-item-header-bg-hover: var(--interaction-neutral-hovered);
+$accordion-item-header-icon-size: spacings.$space-24;

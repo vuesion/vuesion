@@ -102,7 +102,7 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueTabGroup {
   .tabs {
@@ -113,39 +113,39 @@ onBeforeUnmount(() => {
     flex-direction: row;
 
     i {
-      width: $tab-icon-size;
-      height: $tab-icon-size;
+      width: ds.$tab-icon-size;
+      height: ds.$tab-icon-size;
     }
 
     li {
-      flex: 1 1 $tab-width;
+      flex: 1 1 ds.$tab-width;
       display: inline-flex;
-      height: $tab-height;
+      height: ds.$tab-height;
       justify-content: center;
       align-items: center;
-      padding: $tab-padding;
-      border-bottom: $tab-border;
-      color: $tab-color;
+      padding: ds.$tab-padding;
+      border-bottom: ds.$tab-border;
+      color: ds.$tab-color;
       cursor: pointer;
       outline: none !important;
-      gap: $tab-icon-gap;
+      gap: ds.$tab-icon-gap;
 
       &:focus {
         box-shadow: var(--focused);
       }
 
       &:hover {
-        border-bottom: $tab-border-hover;
-        color: $tab-color-hover;
+        border-bottom: ds.$tab-border-hover;
+        color: ds.$tab-color-hover;
       }
 
       &.active {
-        border-bottom: $tab-border-active;
-        color: $tab-color-active;
+        border-bottom: ds.$tab-border-active;
+        color: ds.$tab-color-active;
 
         &:hover {
-          border-bottom: $tab-border-active-hover;
-          color: $tab-color-active-hover;
+          border-bottom: ds.$tab-border-active-hover;
+          color: ds.$tab-color-active-hover;
         }
       }
     }

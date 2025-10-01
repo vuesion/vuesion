@@ -1,5 +1,5 @@
 <template>
-  <vue-content-block as="section" :class="$style.ServicesHeroSection">
+  <vue-content-block as="section" :class="$style.servicesHeroSection">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1112"
@@ -156,9 +156,9 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.ServicesHeroSection {
+.servicesHeroSection {
   position: relative;
   background-color: var(--surface-inverse-high);
   display: flex;
@@ -176,15 +176,15 @@ const $style = useCssModule();
 
   .logo {
     position: absolute;
-    left: $space-12;
-    top: $space-16;
-    width: $space-24;
-    height: $space-24;
+    left: ds.$space-12;
+    top: ds.$space-16;
+    width: ds.$space-24;
+    height: ds.$space-24;
     z-index: 2;
-    color: palette-color-level('neutral', 0);
+    color: ds.palette-color-level('neutral', 0);
   }
 
-  @include mediaMin(tabletLandscape) {
+  @include ds.media-min(tablet-landscape) {
     height: 600px;
   }
 }

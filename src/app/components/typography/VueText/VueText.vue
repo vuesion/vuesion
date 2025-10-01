@@ -84,15 +84,16 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
+/* stylelint-disable selector-class-pattern */
 .vueText {
-  font-family: $font-family;
+  font-family: ds.$font-family;
   text-decoration: none;
 
   // Utils
   &.serifs {
-    font-family: $font-family-serif;
+    font-family: ds.$font-family-serif;
   }
 
   &.underline {
@@ -104,14 +105,15 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
   }
 
   &.gradient {
+    /* stylelint-disable declaration-property-value-no-unknown */
     background: linear-gradient(
       286deg,
-      palette-color-level('primary', 4) 22.03%,
-      palette-color-level('success', 4) 40.14%,
-      palette-color-level('info', 4) 79.02%
+      ds.palette-color-level('primary', 4) 22.03%,
+      ds.palette-color-level('success', 4) 40.14%,
+      ds.palette-color-level('info', 4) 79.02%
     );
+    /* stylelint-enable declaration-property-value-no-unknown */
     background-clip: text;
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
@@ -125,101 +127,102 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 
   // Weights
   &.semi-bold {
-    font-weight: $font-weight-semi-bold;
+    font-weight: ds.$font-weight-semi-bold;
   }
+
   &.black {
-    font-weight: $font-weight-black;
+    font-weight: ds.$font-weight-black;
   }
 
   // Styles
   &.hero {
-    font-size: $text-9;
-    line-height: $line-height-9;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-9;
+    line-height: ds.$line-height-9;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.h1 {
-    font-size: $text-9;
-    line-height: $line-height-9;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-9;
+    line-height: ds.$line-height-9;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.h2 {
-    font-size: $text-8;
-    line-height: $line-height-8;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-8;
+    line-height: ds.$line-height-8;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.h3 {
-    font-size: $text-7;
-    line-height: $line-height-7;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-7;
+    line-height: ds.$line-height-7;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.h4 {
-    font-size: $text-6;
-    line-height: $line-height-6;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-6;
+    line-height: ds.$line-height-6;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.h5 {
-    font-size: $text-5;
-    line-height: $line-height-5;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-5;
+    line-height: ds.$line-height-5;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.h6 {
-    font-size: $text-4;
-    line-height: $line-height-4;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-4;
+    line-height: ds.$line-height-4;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.description {
-    font-size: $text-4;
-    line-height: $line-height-4;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-4;
+    line-height: ds.$line-height-4;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.large-description {
-    font-size: $text-6;
-    line-height: $line-height-6;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-6;
+    line-height: ds.$line-height-6;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.large-title {
-    font-size: $text-6;
-    line-height: $line-height-6;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-6;
+    line-height: ds.$line-height-6;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.medium-title {
-    font-size: $text-5;
-    line-height: $line-height-5;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-5;
+    line-height: ds.$line-height-5;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.small-title {
-    font-size: $text-4;
-    line-height: $line-height-4;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-4;
+    line-height: ds.$line-height-4;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.label {
-    font-size: $text-2;
-    line-height: $line-height-2;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-2;
+    line-height: ds.$line-height-2;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.button {
-    font-size: $text-2;
-    line-height: $line-height-2;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-2;
+    line-height: ds.$line-height-2;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   &.support {
-    font-size: $text-2;
-    line-height: $line-height-2;
-    letter-spacing: $letter-spacing-1;
+    font-size: ds.$text-2;
+    line-height: ds.$line-height-2;
+    letter-spacing: ds.$letter-spacing-1;
   }
 
   // Colors
@@ -292,7 +295,7 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     text-align: justify;
   }
 
-  @include mediaMin(tabletPortrait) {
+  @include ds.media-min(tablet-portrait) {
     &.align-tp-start {
       text-align: left;
     }
@@ -310,7 +313,7 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     }
   }
 
-  @include mediaMin(tabletLandscape) {
+  @include ds.media-min(tablet-landscape) {
     &.align-tl-start {
       text-align: left;
     }
@@ -328,7 +331,7 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     }
   }
 
-  @include mediaMin(smallDesktop) {
+  @include ds.media-min(small-desktop) {
     &.align-sd-start {
       text-align: left;
     }
@@ -346,7 +349,7 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     }
   }
 
-  @include mediaMin(largeDesktop) {
+  @include ds.media-min(large-desktop) {
     &.align-ld-start {
       text-align: left;
     }

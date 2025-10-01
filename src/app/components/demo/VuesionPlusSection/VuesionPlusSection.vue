@@ -1,5 +1,5 @@
 <template>
-  <vue-content-block as="section" :padding="['32 16 16 16', '32 16', '64 32']" :class="$style.VuesionPlusSection">
+  <vue-content-block as="section" :padding="['32 16 16 16', '32 16', '64 32']" :class="$style.vuesionPlusSection">
     <vue-stack :space="[32, 32, 64]" align-x="center">
       <vue-text look="h3" weight="black">
         {{ $t('VuesionPlusSection.title' /* Discover Vuesion+ Components */) }}
@@ -317,9 +317,9 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.VuesionPlusSection {
+.vuesionPlusSection {
   position: relative;
   background-color: var(--surface-default-high);
 
@@ -340,7 +340,7 @@ const $style = useCssModule();
     width: 100%;
   }
 
-  @include mediaMin(tabletLandscape) {
+  @include ds.media-min(tablet-landscape) {
     padding-bottom: 560px;
 
     .discount {

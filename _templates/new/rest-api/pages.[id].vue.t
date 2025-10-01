@@ -124,7 +124,7 @@ watch(
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/_design-system.scss';
 
 .<%= h.inflection.camelize(name, true) %>DetailsPage {
   padding-top: $navbar-height;

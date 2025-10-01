@@ -1,0 +1,32 @@
+@use '../../spacings';
+@use '../../typography';
+
+// input default
+$input-border-radius: 6px;
+$input-border: 1px solid var(--border-default-medium);
+$input-color: var(--text-default-high);
+$input-placeholder-color: var(--text-default-low);
+$input-background-color: var(--surface-default-high);
+$input-font-family: typography.$font-family;
+$input-font-size: typography.$text-3;
+$input-font-weight: typography.$font-weight-regular;
+$input-line-height: typography.$line-height-3;
+
+// utils
+$input-disabled-disabled-opacity: 0.3;
+$input-outline: var(--focused);
+
+// hover
+$input-border-hover: 1px solid var(--border-default-medium);
+
+// error
+$input-bg-error: var(--surface-danger-low);
+$input-border-error: 1px solid var(--border-danger-high);
+
+// leading icon
+$input-leading-icon-size: spacings.$space-20;
+$input-leading-color: var(--text-default-low);
+
+// trailing icon
+$input-trailing-icon-size: spacings.$space-20;
+$input-trailing-color: var(--text-default-low);

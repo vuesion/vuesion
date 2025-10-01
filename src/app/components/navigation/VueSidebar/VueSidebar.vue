@@ -9,14 +9,14 @@ import VueStack from '@/components/layout/VueStack/VueStack.vue';
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueSidebar {
-  z-index: $sidebar-index;
-  height: $sidebar-height;
-  background: $sidebar-bg;
+  z-index: ds.$sidebar-index;
+  height: ds.$sidebar-height;
+  background: ds.$sidebar-bg;
   overflow-y: scroll;
-  width: $sidebar-width;
+  width: ds.$sidebar-width;
   -webkit-overflow-scrolling: touch;
 }
 </style>

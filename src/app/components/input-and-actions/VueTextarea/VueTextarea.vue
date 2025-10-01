@@ -147,8 +147,9 @@ watch(
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
+/* stylelint-disable no-descending-specificity */
 .vueTextarea {
   display: flex;
   flex-direction: column;
@@ -156,13 +157,13 @@ watch(
 
   &.error {
     textarea {
-      background: $textarea-bg-error;
-      border: $textarea-border-error;
+      background: ds.$textarea-bg-error;
+      border: ds.$textarea-border-error;
     }
   }
 
   &.disabled {
-    opacity: $textarea-disabled-disabled-opacity;
+    opacity: ds.$textarea-disabled-disabled-opacity;
   }
 
   .label {
@@ -172,27 +173,27 @@ watch(
 
   textarea {
     outline: none !important;
-    color: $textarea-color;
-    font-size: $textarea-font-size;
-    font-family: $textarea-font-family;
-    font-weight: $textarea-font-weight;
-    background: $textarea-background-color;
-    border: $textarea-border;
-    border-radius: $textarea-border-radius;
-    padding: $textarea-padding;
-    line-height: $textarea-line-height;
-    height: $textarea-height;
+    color: ds.$textarea-color;
+    font-size: ds.$textarea-font-size;
+    font-family: ds.$textarea-font-family;
+    font-weight: ds.$textarea-font-weight;
+    background: ds.$textarea-background-color;
+    border: ds.$textarea-border;
+    border-radius: ds.$textarea-border-radius;
+    padding: ds.$textarea-padding;
+    line-height: ds.$textarea-line-height;
+    height: ds.$textarea-height;
     width: 100%;
     resize: none;
 
     &:hover {
       outline: none !important;
-      border: $textarea-border-hover;
+      border: ds.$textarea-border-hover;
     }
 
     &:focus {
       outline: none !important;
-      box-shadow: $textarea-outline;
+      box-shadow: ds.$textarea-outline;
     }
 
     &:active {
@@ -201,10 +202,10 @@ watch(
   }
 
   textarea::placeholder {
-    color: $textarea-placeholder-color;
-    font-size: $textarea-font-size;
-    font-family: $textarea-font-family;
-    font-weight: $textarea-font-weight;
+    color: ds.$textarea-placeholder-color;
+    font-size: ds.$textarea-font-size;
+    font-family: ds.$textarea-font-family;
+    font-weight: ds.$textarea-font-weight;
     opacity: 1;
   }
 

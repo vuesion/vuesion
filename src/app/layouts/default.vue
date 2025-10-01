@@ -48,9 +48,9 @@ const onLocaleChange = async (newLocale: IItem) => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
-@import 'assets/reset.scss';
-@import 'assets/typography.scss';
+@use 'assets/design-system/index';
+@use 'assets/reset';
+@use 'assets/typography';
 
 .app {
   min-height: 100vh;

@@ -1,0 +1,23 @@
+@use '../../spacings';
+
+$carousel-border-radius: 16px;
+
+// indicator
+$carousel-indicator-bottom: spacings.$space-32;
+$carousel-indicator-width: spacings.$space-8;
+$carousel-indicator-height: spacings.$space-4;
+$carousel-indicator-border-radius: var(--border-radius-xs);
+$carousel-indicator-space: spacings.$space-4;
+
+// default
+$carousel-indicator-bg: var(--surface-default-high);
+$carousel-indicator-opacity: 0.6;
+$carousel-indicator-width-active: spacings.$space-16;
+
+// active
+$carousel-indicator-bg-active: var(--surface-default-high);
+$carousel-indicator-opacity-active: 1;
+
+// pagination
+$carousel-pagination-bottom: spacings.$space-16;
+$carousel-pagination-right: spacings.$space-16;

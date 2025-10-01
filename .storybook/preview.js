@@ -1,4 +1,4 @@
-import 'assets/_design-system.scss';
+import 'assets/design-system/index.scss';
 import 'assets/reset.scss';
 import 'assets/global.scss';
 import 'assets/typography.scss';

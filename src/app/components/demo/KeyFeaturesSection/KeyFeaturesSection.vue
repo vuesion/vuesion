@@ -2,7 +2,7 @@
   <vue-content-block
     as="section"
     :padding="['32 16 16 16', '32 16 16 16', '64 32 32 32']"
-    :class="$style.KeyFeaturesSection"
+    :class="$style.keyFeaturesSection"
   >
     <vue-stack space="32">
       <vue-text look="h3" weight="black">
@@ -273,19 +273,19 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.KeyFeaturesSection {
+.keyFeaturesSection {
   background-color: var(--surface-default-high);
 
   .feature {
     background-color: var(--surface-default-medium);
-    border-radius: $card-border-radius;
+    border-radius: ds.$card-border-radius;
     height: 100%;
 
     &.primary {
       background-color: var(--primary);
-      color: palette-color-level('neutral', 0);
+      color: ds.palette-color-level('neutral', 0);
     }
 
     &.dark {
@@ -304,13 +304,13 @@ const $style = useCssModule();
       width: 100%;
       height: 350px;
       object-fit: cover;
-      border-radius: $card-border-radius;
+      border-radius: ds.$card-border-radius;
     }
 
     .linkIcon {
       color: var(--text-link);
-      width: $space-20;
-      height: $space-20;
+      width: ds.$space-20;
+      height: ds.$space-20;
     }
   }
 }

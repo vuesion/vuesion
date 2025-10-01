@@ -1,5 +1,5 @@
 <template>
-  <vue-content-block id="contact" as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.ContactSection">
+  <vue-content-block id="contact" as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.contactSection">
     <vue-stack space="32">
       <vue-stack space="8">
         <vue-text look="hero" weight="black" gradient>
@@ -36,15 +36,15 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.ContactSection {
+.contactSection {
   background-color: var(--surface-inverse-high);
   box-shadow:
-    -490px 911px 290px 0px rgba(102, 60, 202, 0) inset,
-    -314px 583px 265px 0px rgba(102, 60, 202, 0.01) inset,
-    -177px 328px 224px 0px rgba(102, 60, 202, 0.05) inset,
-    -78px 146px 166px 0px rgba(102, 60, 202, 0.09) inset,
-    -20px 36px 91px 0px rgba(102, 60, 202, 0.1) inset;
+    -490px 911px 290px 0 rgb(102 60 202 / 0%) inset,
+    -314px 583px 265px 0 rgb(102 60 202 / 1%) inset,
+    -177px 328px 224px 0 rgb(102 60 202 / 5%) inset,
+    -78px 146px 166px 0 rgb(102 60 202 / 9%) inset,
+    -20px 36px 91px 0 rgb(102 60 202 / 10%) inset;
 }
 </style>

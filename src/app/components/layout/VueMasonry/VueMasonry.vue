@@ -105,30 +105,33 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueMasonry {
   display: flex;
   flex-direction: column;
-  row-gap: $space-16;
+  row-gap: ds.$space-16;
 
-  @include mediaMax(phone) {
+  @include ds.media-max(phone) {
     height: auto !important;
   }
 
-  @include mediaMin(tabletPortrait) {
+  @include ds.media-min(tablet-portrait) {
     flex-flow: column wrap;
     align-content: space-between;
 
     > * {
       width: 32%;
     }
+
     > *:nth-child(3n + 1) {
       order: 1;
     }
+
     > *:nth-child(3n + 2) {
       order: 2;
     }
+
     > *:nth-child(3n) {
       order: 3;
     }

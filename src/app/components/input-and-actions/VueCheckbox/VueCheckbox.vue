@@ -115,47 +115,35 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
+
+/* stylelint-disable no-descending-specificity */
 .vueCheckbox {
   position: relative;
   cursor: pointer;
   user-select: none;
   outline: none;
 
-  input {
-    position: absolute;
-    opacity: 0;
+  label {
     cursor: pointer;
-    height: 0;
-    width: 0;
-
-    &:checked ~ .checkmark {
-      background-color: $checkbox-checkmark-bg-checked !important;
-      border: $checkbox-checkmark-border-checked !important;
-      color: $checkbox-checkmark-color !important;
-    }
-
-    &:checked ~ .checkmark > svg {
-      display: block;
-    }
   }
 
   .checkmark {
     position: relative;
-    top: $space-2;
-    height: $checkbox-checkmark-size;
-    width: $checkbox-checkmark-size;
-    background-color: $checkbox-checkmark-bg;
-    color: $checkbox-checkmark-bg;
-    border-radius: $checkbox-checkmark-border-radius;
-    border: $checkbox-checkmark-border;
+    top: ds.$space-2;
+    height: ds.$checkbox-checkmark-size;
+    width: ds.$checkbox-checkmark-size;
+    background-color: ds.$checkbox-checkmark-bg;
+    color: ds.$checkbox-checkmark-bg;
+    border-radius: ds.$checkbox-checkmark-border-radius;
+    border: ds.$checkbox-checkmark-border;
     display: flex;
     justify-content: center;
     align-items: center;
 
     > i {
-      width: $checkbox-checkmark-size;
-      height: $checkbox-checkmark-size;
+      width: ds.$checkbox-checkmark-size;
+      height: ds.$checkbox-checkmark-size;
 
       path {
         stroke-width: 2;
@@ -163,48 +151,64 @@ export default {
     }
   }
 
-  label {
-    cursor: pointer;
-  }
-
-  &:hover {
-    input ~ .checkmark {
-      color: $checkbox-checkmark-color-hover;
-      background-color: $checkbox-checkmark-bg-hover;
-      border: $checkbox-checkmark-border-hover;
-    }
-
-    input {
-      &:checked ~ .checkmark {
-        background-color: $checkbox-checkmark-bg-checked-hover !important;
-        border: $checkbox-checkmark-border-checked-hover !important;
-        color: $checkbox-checkmark-color !important;
-      }
-    }
-  }
   &:focus,
   &:focus-within {
     .checkmark {
-      box-shadow: $checkbox-checkmark-outline;
+      box-shadow: ds.$checkbox-checkmark-outline;
     }
   }
 
   &.disabled {
-    opacity: $checkbox-disabled-disabled-opacity;
+    opacity: ds.$checkbox-disabled-disabled-opacity;
   }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
   &.error {
     .description,
     label {
-      color: $checkbox-error-color;
+      color: ds.$checkbox-error-color;
     }
+
     .checkmark {
-      border-color: $checkbox-error-color;
+      border-color: ds.$checkbox-error-color;
     }
+
     &:hover {
       input ~ .checkmark {
-        border-color: $checkbox-error-color;
+        border-color: ds.$checkbox-error-color;
       }
     }
+  }
+
+  &:hover {
+    input ~ .checkmark {
+      color: ds.$checkbox-checkmark-color-hover;
+      background-color: ds.$checkbox-checkmark-bg-hover;
+      border: ds.$checkbox-checkmark-border-hover;
+    }
+  }
+
+  input:checked ~ .checkmark {
+    background-color: ds.$checkbox-checkmark-bg-checked !important;
+    border: ds.$checkbox-checkmark-border-checked !important;
+    color: ds.$checkbox-checkmark-color !important;
+  }
+
+  input:checked ~ .checkmark > svg {
+    display: block;
+  }
+
+  &:hover input:checked ~ .checkmark {
+    background-color: ds.$checkbox-checkmark-bg-checked-hover !important;
+    border: ds.$checkbox-checkmark-border-checked-hover !important;
+    color: ds.$checkbox-checkmark-color !important;
   }
 }
 </style>

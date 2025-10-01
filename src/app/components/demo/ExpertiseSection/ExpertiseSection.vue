@@ -1,5 +1,5 @@
 <template>
-  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.ExpertiseSection">
+  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.expertiseSection">
     <vue-columns stack-phone stack-tablet-portrait :reverse="[true, true, false]" space="64">
       <vue-column :width="['full', 'full', '5/10']" no-grow>
         <nuxt-img
@@ -42,13 +42,13 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.ExpertiseSection {
+.expertiseSection {
   background-color: var(--surface-inverse-high);
 
   .title {
-    word-break: break-word;
+    overflow-wrap: anywhere;
     white-space: break-spaces;
   }
 }

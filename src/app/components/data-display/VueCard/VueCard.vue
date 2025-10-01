@@ -29,12 +29,12 @@ withDefaults(defineProps<CardProps>(), {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueCard {
-  background-color: $card-bg;
-  box-shadow: $card-shadow;
-  border: $card-border;
-  border-radius: $card-border-radius;
+  background-color: ds.$card-bg;
+  box-shadow: ds.$card-shadow;
+  border: ds.$card-border;
+  border-radius: ds.$card-border-radius;
 }
 </style>

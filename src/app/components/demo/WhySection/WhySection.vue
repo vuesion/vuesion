@@ -1,5 +1,5 @@
 <template>
-  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.WhySection">
+  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.whySection">
     <vue-columns stack-phone stack-tablet-portrait :space="[32, 32, 64]">
       <vue-column :width="['full', 'full', '5/10']" no-grow>
         <vue-stack space="32">
@@ -49,13 +49,13 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.WhySection {
+.whySection {
   background-color: var(--surface-default-high);
 
   img {
-    border-radius: $card-border-radius;
+    border-radius: ds.$card-border-radius;
   }
 }
 </style>

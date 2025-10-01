@@ -1,8 +1,8 @@
-@import 'design-system/mixins/default';
-@import 'design-system/variables/spacings';
+@use 'design-system/mixins/mixins';
+@use 'design-system/variables/spacings';
 
 // padding
-@each $name, $space in $spacings {
+@each $name, $space in spacings.$spacings {
   .pt-#{$name} {
     padding-top: $space;
   }
@@ -19,8 +19,9 @@
     padding-left: $space;
   }
 }
-@include mediaMin(tabletPortrait) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(tablet-portrait) {
+  @each $name, $space in spacings.$spacings {
     .pt-tp-#{$name} {
       padding-top: $space;
     }
@@ -38,8 +39,9 @@
     }
   }
 }
-@include mediaMin(tabletLandscape) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(tablet-landscape) {
+  @each $name, $space in spacings.$spacings {
     .pt-tl-#{$name} {
       padding-top: $space;
     }
@@ -57,8 +59,9 @@
     }
   }
 }
-@include mediaMin(smallDesktop) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(small-desktop) {
+  @each $name, $space in spacings.$spacings {
     .pt-sd-#{$name} {
       padding-top: $space;
     }
@@ -76,8 +79,9 @@
     }
   }
 }
-@include mediaMin(largeDesktop) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(large-desktop) {
+  @each $name, $space in spacings.$spacings {
     .pt-ld-#{$name} {
       padding-top: $space;
     }
@@ -97,34 +101,38 @@
 }
 
 // gap
-@each $name, $space in $spacings {
+@each $name, $space in spacings.$spacings {
   .gap-#{$name} {
     gap: $space;
   }
 }
-@include mediaMin(tabletPortrait) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(tablet-portrait) {
+  @each $name, $space in spacings.$spacings {
     .gap-tp-#{$name} {
       gap: $space;
     }
   }
 }
-@include mediaMin(tabletLandscape) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(tablet-landscape) {
+  @each $name, $space in spacings.$spacings {
     .gap-tl-#{$name} {
       gap: $space;
     }
   }
 }
-@include mediaMin(smallDesktop) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(small-desktop) {
+  @each $name, $space in spacings.$spacings {
     .gap-sd-#{$name} {
       gap: $space;
     }
   }
 }
-@include mediaMin(largeDesktop) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(large-desktop) {
+  @each $name, $space in spacings.$spacings {
     .gap-ld-#{$name} {
       gap: $space;
     }
@@ -132,34 +140,38 @@
 }
 
 // row-gap
-@each $name, $space in $spacings {
+@each $name, $space in spacings.$spacings {
   .gap-x-#{$name} {
     row-gap: $space;
   }
 }
-@include mediaMin(tabletPortrait) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(tablet-portrait) {
+  @each $name, $space in spacings.$spacings {
     .gap-x-tp-#{$name} {
       row-gap: $space;
     }
   }
 }
-@include mediaMin(tabletLandscape) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(tablet-landscape) {
+  @each $name, $space in spacings.$spacings {
     .gap-x-tl-#{$name} {
       row-gap: $space;
     }
   }
 }
-@include mediaMin(smallDesktop) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(small-desktop) {
+  @each $name, $space in spacings.$spacings {
     .gap-x-sd-#{$name} {
       row-gap: $space;
     }
   }
 }
-@include mediaMin(largeDesktop) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(large-desktop) {
+  @each $name, $space in spacings.$spacings {
     .gap-x-ld-#{$name} {
       row-gap: $space;
     }
@@ -167,34 +179,38 @@
 }
 
 // column-gap
-@each $name, $space in $spacings {
+@each $name, $space in spacings.$spacings {
   .gap-y-#{$name} {
     column-gap: $space;
   }
 }
-@include mediaMin(tabletPortrait) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(tablet-portrait) {
+  @each $name, $space in spacings.$spacings {
     .gap-y-tp-#{$name} {
       column-gap: $space;
     }
   }
 }
-@include mediaMin(tabletLandscape) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(tablet-landscape) {
+  @each $name, $space in spacings.$spacings {
     .gap-y-tl-#{$name} {
       column-gap: $space;
     }
   }
 }
-@include mediaMin(smallDesktop) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(small-desktop) {
+  @each $name, $space in spacings.$spacings {
     .gap-y-sd-#{$name} {
       column-gap: $space;
     }
   }
 }
-@include mediaMin(largeDesktop) {
-  @each $name, $space in $spacings {
+
+@include mixins.media-min(large-desktop) {
+  @each $name, $space in spacings.$spacings {
     .gap-y-ld-#{$name} {
       column-gap: $space;
     }

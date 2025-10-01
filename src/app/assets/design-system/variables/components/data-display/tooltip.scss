@@ -1,0 +1,12 @@
+@use '../../spacings';
+@use '../../typography';
+
+$tooltip-bg: var(--surface-inverse-high);
+$tooltip-color: var(--text-inverse-high);
+$tooltip-padding: spacings.$space-4 spacings.$space-8;
+$tooltip-border-radius: 4px;
+$tooltip-font-size: typography.$text-2;
+$tooltip-line-height: typography.$line-height-2;
+$tooltip-font-weight: typography.$font-weight-regular;
+$tooltip-elevation: var(--elevation-3);
+$tooltip-transition-duration: 0;

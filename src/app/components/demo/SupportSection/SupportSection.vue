@@ -1,5 +1,5 @@
 <template>
-  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.SupportSection">
+  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.supportSection">
     <vue-stack space="64">
       <vue-text look="h3" weight="black">
         {{ $t('SupportSection.title' /* Join Our Community */) }}
@@ -155,21 +155,21 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.SupportSection {
-  .item {
-    background-color: var(--surface-default-high);
-    border-radius: $card-border-radius;
-
-    img {
-      width: $space-80;
-      height: $space-80;
-    }
-  }
-
+.supportSection {
   img {
     object-fit: contain;
+  }
+
+  .item {
+    background-color: var(--surface-default-high);
+    border-radius: ds.$card-border-radius;
+
+    img {
+      width: ds.$space-80;
+      height: ds.$space-80;
+    }
   }
 }
 </style>

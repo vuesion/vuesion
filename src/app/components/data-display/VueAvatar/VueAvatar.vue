@@ -51,58 +51,57 @@ const initials = computed(() => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueAvatar {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $avatar-background;
-  border-radius: $avatar-border-radius;
-  border: $avatar-border;
+  background: ds.$avatar-background;
+  border-radius: ds.$avatar-border-radius;
+  border: ds.$avatar-border;
 
   &.sm {
-    height: $avatar-sm-size;
-    width: $avatar-sm-size;
+    height: ds.$avatar-sm-size;
+    width: ds.$avatar-sm-size;
   }
 
   &.md {
-    height: $avatar-md-size;
-    width: $avatar-md-size;
+    height: ds.$avatar-md-size;
+    width: ds.$avatar-md-size;
   }
 
   &.lg {
-    height: $avatar-lg-size;
-    width: $avatar-lg-size;
+    height: ds.$avatar-lg-size;
+    width: ds.$avatar-lg-size;
   }
 
   &.hasSource {
-    border: $avatar-border;
     background: transparent;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 2px 4px rgb(0 0 0 / 30%);
     border: none;
   }
 
   &.hasIcon {
-    border: $avatar-border;
+    border: ds.$avatar-border;
     background: var(--surface-default-medium);
 
     &.sm i {
-      height: $space-16;
-      width: $space-16;
+      height: ds.$space-16;
+      width: ds.$space-16;
     }
 
     &.md i {
-      height: $space-32;
-      width: $space-32;
+      height: ds.$space-32;
+      width: ds.$space-32;
     }
 
     &.lg i {
-      height: $space-48;
-      width: $space-48;
+      height: ds.$space-48;
+      width: ds.$space-48;
     }
   }
 }

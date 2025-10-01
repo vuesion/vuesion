@@ -1,5 +1,5 @@
 <template>
-  <vue-content-block as="section" :class="$style.LandingPageHeroSection">
+  <vue-content-block as="section" :class="$style.landingPageHeroSection">
     <vue-columns stack-phone stack-tablet-portrait class="h-full">
       <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink>
         <vue-stack :padding="['32 16', '32 16', '64 32']" align-y="between" :class="$style.leftCol">
@@ -270,9 +270,9 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.LandingPageHeroSection {
+.landingPageHeroSection {
   background-color: var(--surface-default-high);
 
   .leftCol {
@@ -282,9 +282,9 @@ const $style = useCssModule();
     .deco {
       position: absolute;
       top: 0;
-      right: -$space-128;
-      width: $space-128;
-      height: $space-128;
+      right: ds.$space-128 * -1;
+      width: ds.$space-128;
+      height: ds.$space-128;
       background-color: var(--surface-inverse-high);
 
       &::before {
@@ -292,9 +292,9 @@ const $style = useCssModule();
         position: absolute;
         bottom: 0;
         right: 0;
-        width: $space-128;
-        height: $space-128;
-        border-radius: $space-128 0 0 0;
+        width: ds.$space-128;
+        height: ds.$space-128;
+        border-radius: ds.$space-128 0 0 0;
         background-color: var(--surface-default-high);
       }
     }
@@ -302,8 +302,8 @@ const $style = useCssModule();
 
   .linkIcon {
     color: var(--landing-hero-link-color);
-    width: $space-20;
-    height: $space-20;
+    width: ds.$space-20;
+    height: ds.$space-20;
   }
 
   .logo {
@@ -314,11 +314,11 @@ const $style = useCssModule();
     color: var(--landing-hero-link-color);
   }
 
-  @include mediaMin(tabletLandscape) {
+  @include ds.media-min(tablet-landscape) {
     height: 600px;
 
     .leftCol {
-      border-radius: 0 0 $space-128 0;
+      border-radius: 0 0 ds.$space-128 0;
     }
   }
 }

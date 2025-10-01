@@ -67,27 +67,27 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueNavBar {
-  height: $navbar-height;
-  background: $navbar-bg;
-  z-index: $navbar-index;
-  box-shadow: $navbar-elevation;
-  border-bottom: $navbar-border;
+  height: ds.$navbar-height;
+  background: ds.$navbar-bg;
+  z-index: ds.$navbar-index;
+  box-shadow: ds.$navbar-elevation;
+  border-bottom: ds.$navbar-border;
 
   .layout {
     height: 100%;
 
     .menu {
-      width: $navbar-menu-icon-size;
-      height: $navbar-menu-icon-size;
+      width: ds.$navbar-menu-icon-size;
+      height: ds.$navbar-menu-icon-size;
       outline: none;
       cursor: pointer;
       border-radius: 2px;
 
       &:focus {
-        box-shadow: $navbar-menu-outline;
+        box-shadow: ds.$navbar-menu-outline;
       }
     }
   }

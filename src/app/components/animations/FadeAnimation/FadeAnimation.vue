@@ -14,8 +14,6 @@
 <script setup lang="ts"></script>
 
 <style lang="scss" module>
-@import 'assets/design-system';
-
 .enterActive,
 .leaveActive {
   transition: var(--fade-animation-transition);

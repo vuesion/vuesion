@@ -3,7 +3,7 @@
     space="8"
     no-wrap
     :tabindex="disabled ? -1 : 0"
-    :class="[$style.VueRadio, disabled && $style.disabled, $attrs.class]"
+    :class="[$style.vueRadio, disabled && $style.disabled, $attrs.class]"
     @click.stop.prevent="onClick"
     @keydown.space.stop.prevent="onClick"
   >
@@ -101,8 +101,10 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
-.VueRadio {
+@use 'assets/design-system/index' as ds;
+
+/* stylelint-disable no-descending-specificity */
+.vueRadio {
   position: relative;
   cursor: pointer;
   user-select: none;
@@ -116,9 +118,9 @@ export default {
     width: 0;
 
     &:checked ~ .checkmark {
-      background-color: $radio-checkmark-bg-checked !important;
-      border: $radio-checkmark-border-checked !important;
-      color: $radio-checkmark-color !important;
+      background-color: ds.$radio-checkmark-bg-checked !important;
+      border: ds.$radio-checkmark-border-checked !important;
+      color: ds.$radio-checkmark-color !important;
     }
 
     &:checked ~ .checkmark > svg {
@@ -128,22 +130,22 @@ export default {
 
   .checkmark {
     position: relative;
-    top: $space-2;
-    height: $radio-checkmark-size;
-    min-height: $radio-checkmark-size;
-    width: $radio-checkmark-size;
-    min-width: $radio-checkmark-size;
-    background-color: $radio-checkmark-bg;
-    color: $radio-checkmark-bg;
-    border-radius: $radio-checkmark-border-radius;
-    border: $radio-checkmark-border;
+    top: ds.$space-2;
+    height: ds.$radio-checkmark-size;
+    min-height: ds.$radio-checkmark-size;
+    width: ds.$radio-checkmark-size;
+    min-width: ds.$radio-checkmark-size;
+    background-color: ds.$radio-checkmark-bg;
+    color: ds.$radio-checkmark-bg;
+    border-radius: ds.$radio-checkmark-border-radius;
+    border: ds.$radio-checkmark-border;
     display: flex;
     justify-content: center;
     align-items: center;
 
     > svg {
-      width: $radio-checkmark-size - $space-10;
-      height: $radio-checkmark-size - $space-10;
+      width: ds.$radio-checkmark-size - ds.$space-10;
+      height: ds.$radio-checkmark-size - ds.$space-10;
     }
   }
 
@@ -153,27 +155,28 @@ export default {
 
   &:hover {
     input ~ .checkmark {
-      background-color: $radio-checkmark-bg-hover;
-      border: $radio-checkmark-border-hover;
+      background-color: ds.$radio-checkmark-bg-hover;
+      border: ds.$radio-checkmark-border-hover;
     }
 
     input {
       &:checked ~ .checkmark {
-        background-color: $radio-checkmark-bg-checked-hover !important;
-        border: $radio-checkmark-border-checked-hover !important;
-        color: $radio-checkmark-color !important;
+        background-color: ds.$radio-checkmark-bg-checked-hover !important;
+        border: ds.$radio-checkmark-border-checked-hover !important;
+        color: ds.$radio-checkmark-color !important;
       }
     }
   }
+
   &:focus,
   &:focus-within {
     .checkmark {
-      box-shadow: $radio-checkmark-outline;
+      box-shadow: ds.$radio-checkmark-outline;
     }
   }
 
   &.disabled {
-    opacity: $radio-disabled-disabled-opacity;
+    opacity: ds.$radio-disabled-disabled-opacity;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.TestimonialsSection">
+  <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.testimonialsSection">
     <vue-stack space="32">
       <vue-text look="h3" weight="black">
         {{ $t('TestimonialsSection.title' /* What Our Users Say */) }}
@@ -120,19 +120,19 @@ const $style = useCssModule();
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.TestimonialsSection {
+.testimonialsSection {
   background-color: var(--surface-default-high);
 
   .testimonial {
     position: relative;
-    border-radius: $card-border-radius;
+    border-radius: ds.$card-border-radius;
     box-shadow: var(--elevation-4);
 
     &.primary {
       background-color: var(--primary);
-      color: palette-color-level('neutral', 0);
+      color: ds.palette-color-level('neutral', 0);
     }
 
     .nameAndTitle {
@@ -143,7 +143,7 @@ const $style = useCssModule();
       position: absolute;
       top: 0;
       right: 0;
-      width: $space-128;
+      width: ds.$space-128;
     }
   }
 }

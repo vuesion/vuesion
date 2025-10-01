@@ -55,7 +55,7 @@ useHead({
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .page {
   // this class is only applied if you add css properties

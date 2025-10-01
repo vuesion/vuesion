@@ -59,21 +59,21 @@ onMounted(() => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueBackToTop {
   position: fixed;
-  height: $back-to-top-size;
-  width: $back-to-top-size;
+  height: ds.$back-to-top-size;
+  width: ds.$back-to-top-size;
   align-items: center;
   justify-content: center;
-  bottom: $back-to-top-bottom-space;
-  right: $back-to-top-right-space;
+  bottom: ds.$back-to-top-bottom-space;
+  right: ds.$back-to-top-right-space;
   border: none;
-  border-radius: $back-to-top-border-radius;
-  background-color: $back-to-top-bg;
-  color: $back-to-top-color;
-  box-shadow: $back-to-top-shadow;
+  border-radius: ds.$back-to-top-border-radius;
+  background-color: ds.$back-to-top-bg;
+  color: ds.$back-to-top-color;
+  box-shadow: ds.$back-to-top-shadow;
   cursor: pointer;
   display: flex;
   opacity: 0;
@@ -82,28 +82,28 @@ onMounted(() => {
   outline: none;
 
   i {
-    width: $back-to-top-icon-size;
-    height: $back-to-top-icon-size;
+    width: ds.$back-to-top-icon-size;
+    height: ds.$back-to-top-icon-size;
   }
 
   &:hover {
-    color: $back-to-top-color-hover;
-    background: $back-to-top-bg-hover;
+    color: ds.$back-to-top-color-hover;
+    background: ds.$back-to-top-bg-hover;
   }
 
   &:focus {
-    color: $back-to-top-color-focus;
-    background: $back-to-top-bg-focus;
-    box-shadow: $back-to-top-outline;
+    color: ds.$back-to-top-color-focus;
+    background: ds.$back-to-top-bg-focus;
+    box-shadow: ds.$back-to-top-outline;
   }
 
   &:active {
-    color: $back-to-top-color-active;
-    background: $back-to-top-bg-active;
+    color: ds.$back-to-top-color-active;
+    background: ds.$back-to-top-bg-active;
   }
 
   &.show {
-    z-index: $back-to-top-index;
+    z-index: ds.$back-to-top-index;
     opacity: 1;
   }
 }

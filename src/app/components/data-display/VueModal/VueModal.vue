@@ -86,22 +86,22 @@ watch(
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
 .vueModal {
   position: fixed;
   top: 50%;
-  left: $space-8;
-  right: $space-8;
-  z-index: $modal-index;
-  background: $modal-bg;
-  box-shadow: $modal-shadow;
+  left: ds.$space-8;
+  right: ds.$space-8;
+  z-index: ds.$modal-index;
+  background: ds.$modal-bg;
+  box-shadow: ds.$modal-shadow;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   opacity: 0;
-  transition: $modal-transition;
-  border-radius: $modal-border-radius;
-  border: $modal-border;
+  transition: ds.$modal-transition;
+  border-radius: ds.$modal-border-radius;
+  border: ds.$modal-border;
   transform: translateY(-50%);
   height: auto;
 
@@ -111,38 +111,38 @@ watch(
 
   &.backdrop {
     &::backdrop {
-      background: rgba(0, 0, 0, 0.25);
+      background: rgb(0 0 0 / 25%);
       opacity: 1;
     }
   }
 
   &.show {
-    z-index: $modal-index;
+    z-index: ds.$modal-index;
     opacity: 1;
   }
 
   .closeButton {
     outline: none;
     position: absolute;
-    top: $modal-close-button-gap;
-    right: $modal-close-button-gap;
-    width: $modal-close-button-size;
-    height: $modal-close-button-size;
+    top: ds.$modal-close-button-gap;
+    right: ds.$modal-close-button-gap;
+    width: ds.$modal-close-button-size;
+    height: ds.$modal-close-button-size;
     cursor: pointer;
-    border-radius: $modal-close-button-border-radius;
-    color: $modal-close-button-color;
+    border-radius: ds.$modal-close-button-border-radius;
+    color: ds.$modal-close-button-color;
 
     &:focus {
-      box-shadow: $modal-close-button-outline;
+      box-shadow: ds.$modal-close-button-outline;
     }
 
     &:hover {
-      color: $modal-close-button-color-hover;
+      color: ds.$modal-close-button-color-hover;
     }
   }
 
-  @include mediaMin(tabletPortrait) {
-    max-width: $modal-max-width;
+  @include ds.media-min(tablet-portrait) {
+    max-width: ds.$modal-max-width;
     max-height: 100%;
     position: fixed;
     top: 50%;

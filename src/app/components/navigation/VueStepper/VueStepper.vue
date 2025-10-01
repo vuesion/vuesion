@@ -1,5 +1,5 @@
 <template>
-  <vue-columns space="12" :class="$style.VueStepper">
+  <vue-columns space="12" :class="$style.vueStepper">
     <vue-column v-for="(step, idx) in steps" :key="idx" align-y="center" :no-grow="idx >= steps.length - 1">
       <vue-columns
         space="12"
@@ -73,9 +73,10 @@ const isInActive = (idx: number) => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
+@use 'assets/design-system/index' as ds;
 
-.VueStepper {
+/* stylelint-disable no-descending-specificity */
+.vueStepper {
   .stepAndLine {
     width: 100%;
 
@@ -83,27 +84,27 @@ const isInActive = (idx: number) => {
       outline: none !important;
       cursor: pointer;
 
-      &:focus {
-        .indicator {
-          box-shadow: var(--focused);
-        }
-      }
-
-      i {
-        width: $space-20;
-        height: $space-20;
-      }
-
       .indicator {
-        height: $space-32;
-        width: $space-32;
-        min-width: $space-32;
-        border-radius: $space-16;
+        height: ds.$space-32;
+        width: ds.$space-32;
+        min-width: ds.$space-32;
+        border-radius: ds.$space-16;
         background: transparent;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--text-default-low);
+      }
+
+      i {
+        width: ds.$space-20;
+        height: ds.$space-20;
+      }
+
+      &:focus {
+        .indicator {
+          box-shadow: var(--focused);
+        }
       }
     }
 
@@ -118,7 +119,7 @@ const isInActive = (idx: number) => {
         background: var(--surface-default-medium);
       }
 
-      @include mediaMax(tabletPortrait) {
+      @include ds.media-max(tablet-portrait) {
         .label,
         .labelAndDescription {
           display: flex;
@@ -137,7 +138,7 @@ const isInActive = (idx: number) => {
       }
     }
 
-    @include mediaMax(tabletPortrait) {
+    @include ds.media-max(tablet-portrait) {
       .labelAndDescription,
       .description {
         display: none;

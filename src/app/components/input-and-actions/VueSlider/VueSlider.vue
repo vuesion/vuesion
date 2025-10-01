@@ -268,66 +268,67 @@ onMounted(() => {
 </script>
 
 <style lang="scss" module>
-@import 'assets/_design-system.scss';
-
+@use 'assets/design-system/index' as ds;
+/* stylelint-disable no-descending-specificity */
 .vueSlider {
   position: relative;
   user-select: none;
-  height: $slider-height;
+  height: ds.$slider-height;
 
   &.disabled {
     cursor: not-allowed;
-    opacity: $slider-disabled-opacity;
+    opacity: ds.$slider-disabled-opacity;
 
     .track {
       .handle {
         cursor: not-allowed;
+
         &:hover {
-          width: $slider-handle-size;
-          height: $slider-handle-size;
+          width: ds.$slider-handle-size;
+          height: ds.$slider-handle-size;
         }
       }
     }
   }
 
   .label {
-    width: $slider-label-width;
+    width: ds.$slider-label-width;
   }
 
   .track {
     position: relative;
     width: 100%;
-    height: $slider-track-height;
-    background-color: $slider-track-bg;
-    border-radius: $slider-track-border-radius;
+    height: ds.$slider-track-height;
+    background-color: ds.$slider-track-bg;
+    border-radius: ds.$slider-track-border-radius;
 
     .progress {
-      height: $slider-track-height;
-      background: $slider-progress-bg;
-      border-radius: $slider-progress-border-radius;
+      height: ds.$slider-track-height;
+      background: ds.$slider-progress-bg;
+      border-radius: ds.$slider-progress-border-radius;
     }
 
     .handle {
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
-      width: $slider-handle-size;
-      height: $slider-handle-size;
+      width: ds.$slider-handle-size;
+      height: ds.$slider-handle-size;
       padding: 0;
       cursor: pointer;
       user-select: none;
-      border-radius: $slider-handle-border-radius;
-      background-color: $slider-handle-bg;
+      border-radius: ds.$slider-handle-border-radius;
+      background-color: ds.$slider-handle-bg;
       border: none;
       outline: none;
 
       &:hover {
-        width: $slider-handle-size-hover;
-        height: $slider-handle-size-hover;
+        width: ds.$slider-handle-size-hover;
+        height: ds.$slider-handle-size-hover;
       }
 
       &:focus {
-        box-shadow: $slider-handle-active-shadow;
+        box-shadow: ds.$slider-handle-active-shadow;
       }
     }
   }

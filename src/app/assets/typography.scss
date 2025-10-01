@@ -1,25 +1,25 @@
-@import 'design-system/variables/variables';
+@use 'design-system/index' as ds;
 
 html {
   font-size: 62.5%;
 }
 
 body {
-  font-family: $font-family;
-  font-size: $text-3;
-  font-weight: $font-weight-regular;
-  letter-spacing: $letter-spacing-1;
-  line-height: $line-height-3;
+  font-family: ds.$font-family;
+  font-size: ds.$text-3;
+  font-weight: ds.$font-weight-regular;
+  letter-spacing: ds.$letter-spacing-1;
+  line-height: ds.$line-height-3;
   font-display: swap;
   color: var(--text-default-high);
 }
 
 small {
-  font-size: $text-1;
+  font-size: ds.$text-1;
 }
 
 strong {
-  font-weight: $font-weight-semi-bold;
+  font-weight: ds.$font-weight-semi-bold;
 }
 
 a {
