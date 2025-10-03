@@ -515,7 +515,7 @@
 </template>
 
 <script lang="ts">
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
 import ColorTokensSection from '@/assets/design-system/docs/components/ColorTokensSection.vue';
 
 export default {

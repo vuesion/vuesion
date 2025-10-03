@@ -1,5 +1,5 @@
 ---
-to: "src/app/components/field-sets/<%= h.capitalize(name) %>FieldSet/<%= h.capitalize(name) %>FieldSet.vue"
+to: "src/app/components/domain/field-sets/<%= h.capitalize(name) %>FieldSet/<%= h.capitalize(name) %>FieldSet.vue"
 unless_exists: true
 ---
 <template>

@@ -1,5 +1,5 @@
 ---
-to: "src/app/components/forms/<%= h.capitalize(name) %>Form/<%= h.capitalize(name) %>Form.vue"
+to: "src/app/components/domain/forms/<%= h.capitalize(name) %>Form/<%= h.capitalize(name) %>Form.vue"
 unless_exists: true
 ---
 <template>

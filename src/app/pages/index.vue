@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { computed, useHead, useI18n } from '#imports';
 import LandingPageHeroSection from '@/components/demo/LandingPageHeroSection/LandingPageHeroSection.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
 import KeyFeaturesSection from '@/components/demo/KeyFeaturesSection/KeyFeaturesSection.vue';
 import BenefitsSection from '@/components/demo/BenefitsSection/BenefitsSection.vue';
 import TestimonialsSection from '@/components/demo/TestimonialsSection/TestimonialsSection.vue';

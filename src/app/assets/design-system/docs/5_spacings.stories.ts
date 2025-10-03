@@ -1,11 +1,11 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 import UtilityTokenSection from '@/assets/design-system/docs/components/UtilityTokenSection.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
+import VueText from '@/components/design-system/typography/VueText/VueText.vue';
 import { SpacingValues } from '@/components/utils/prop-types';
 
 export default {
-  title: 'Foundation/General',
+  title: 'Design System Foundation',
   component: null,
   argTypes: {},
   parameters: { controls: { disabled: true } },

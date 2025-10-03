@@ -1,0 +1,57 @@
+import type { StoryFn } from '@storybook/vue3-vite';
+import { action } from 'storybook/actions';
+import VueRadio from './VueRadio.vue';
+import VueInline from '@/components/design-system/layout/VueInline/VueInline.vue';
+import VueText from '@/components/design-system/typography/VueText/VueText.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
+
+export default {
+  title: 'Design System Components/Forms and Actions/Radio button',
+  component: VueRadio,
+  argTypes: {
+    modelValue: { table: { disable: true } },
+    'update:modelValue': { table: { disable: true } },
+  },
+};
+
+const Template: StoryFn = (args) => ({
+  components: {
+    VueRadio,
+    ComponentDocs,
+    VueInline,
+    VueText,
+  },
+  data(): any {
+    return {
+      model: null,
+    };
+  },
+  inheritAttrs: false,
+  setup() {
+    return { args, action: action('@click') };
+  },
+  template: `<component-docs
+      component-name="Radio"
+      usage="Allows users to select exactly one option from a list of 2+, mutually exclusive options."
+      story="Show default radio button. Please interact with the radio buttons to see different states."
+  >
+  <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
+    <vue-text weight="semi-bold">v-model: {{ model }}</vue-text>
+    <vue-radio
+        v-for="n in 3"
+        :key="n"
+        :label="'Radio button enabled ' + n"
+        :description="'Radio button description ' + n"
+        name="groupOne"
+        :id="'radio' + n"
+        @click="action"
+        v-model="model" />
+    <vue-radio disabled label="Radio button disabled" name="groupOne" id="radio" @click="action" v-model="model" />
+  </vue-inline>
+  </component-docs>`,
+});
+
+export const Default = {
+  render: Template,
+  args: {},
+};

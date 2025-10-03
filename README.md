@@ -163,3 +163,94 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 # License
 
 [MIT](http://opensource.org/licenses/MIT)
+
+src/app/components
+├── ds
+│ ├── typography
+│ │ ├── VueHeading
+│ │ ├── VueText
+│ │ └── VueLink
+│ │
+│ ├── layout
+│ │ ├── VueStack
+│ │ ├── VueInline
+│ │ ├── VueColumns
+│ │ │ └── VueColumn
+│ │ ├── VueTiles
+│ │ ├── VueMasonry
+│ │ └── VueBox
+│ │
+│ ├── forms-and-actions
+│ │ ├── VueButton
+│ │ ├── VueIconButton
+│ │ ├── VueInput
+│ │ ├── VueTextarea
+│ │ ├── VueSelect
+│ │ ├── VueCheckbox
+│ │ ├── VueRadio
+│ │ ├── VueSlider
+│ │ ├── VueToggle
+│ │ └── VueToggleButton
+│ │
+│ ├── overlays
+│ │ ├── VueDropdown # Trigger + positioning + open state
+│ │ ├── VueMenu # list primitive w/ keyboard nav
+│ │ ├── VueDialog
+│ │ ├── VuePopover
+│ │ └── VueTooltip (optional)
+│ │
+│ ├── surfaces-and-feedback
+│ │ ├── VueCard
+│ │ ├── VueToast
+│ │ ├── VueAlert
+│ │ ├── VueBadge
+│ │ ├── VueAvatar
+│ │ └── VueLoader
+│ │
+│ ├── content
+│ │ ├── VueMarkdown
+│ │ └── VueFormattedDate
+│ │
+│ ├── disclosure
+│ │ └── VueAccordion
+│ │
+│ ├── media
+│ │ └── VueCarousel
+│ │
+│ └── utilities
+│ ├── behavior
+│ │ ├── VueBackToTop
+│ │ └── VueCollapse
+│ │
+│ └── motion
+│ ├── FadeAnimation
+│ └── CollapseAnimation
+│
+├── domains
+│ ├── offer
+│ │ └── components
+│ │ ├── OfferForm
+│ │ │ ├── OfferForm.vue
+│ │ │ ├── OfferFieldSetBasic.vue
+│ │ │ ├── OfferFieldSetPricing.vue
+│ │ │ ├── OfferFieldSetPublishing.vue
+│ │ │ └── schema.ts
+│ │ ├── OfferTable
+│ │ │ ├── OfferTable.vue
+│ │ │ ├── columns.ts
+│ │ │ ├── formatters.ts
+│ │ │ └── types.ts
+│ │ └── OfferCard
+│ │ └── OfferCard.vue
+│ │
+│ ├── company
+│ │ └── components
+│ │ └── CompanyForm
+│ │
+│ └── …
+│
+└── icons
+├── IconAdd.vue
+├── IconEdit.vue
+├── IconTrash.vue
+└── …

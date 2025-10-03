@@ -256,13 +256,13 @@
 
 <script setup lang="ts">
 import { useCssModule } from 'vue';
-import VueContentBlock from '@/components/layout/VueContentBlock/VueContentBlock.vue';
-import VueColumns from '@/components/layout/VueColumns/VueColumns.vue';
-import VueColumn from '@/components/layout/VueColumns/VueColumn/VueColumn.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueInline from '@/components/layout/VueInline/VueInline.vue';
-import VueButton from '@/components/input-and-actions/VueButton/VueButton.vue';
+import VueContentBlock from '@/components/design-system/layout/VueContentBlock/VueContentBlock.vue';
+import VueColumns from '@/components/design-system/layout/VueColumns/VueColumns.vue';
+import VueColumn from '@/components/design-system/layout/VueColumns/VueColumn/VueColumn.vue';
+import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
+import VueText from '@/components/design-system/typography/VueText/VueText.vue';
+import VueInline from '@/components/design-system/layout/VueInline/VueInline.vue';
+import VueButton from '@/components/design-system/forms-and-actions/VueButton/VueButton.vue';
 import VueIconArrowRight from '@/components/icons/VueIconArrowRight.vue';
 
 // Deps

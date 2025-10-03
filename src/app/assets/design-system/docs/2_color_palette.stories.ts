@@ -2,7 +2,7 @@ import Palette from './components/ColorPalette.vue';
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
-  title: 'Foundation/General',
+  title: 'Design System Foundation',
   component: null,
   argTypes: {},
   parameters: { controls: { disabled: true } },

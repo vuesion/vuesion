@@ -12,8 +12,8 @@
 <script setup lang="ts">
 /* istanbul ignore file */
 import { ref, useCssModule, watch } from 'vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
-import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
+import VueBox from '@/components/design-system/layout/VueBox/VueBox.vue';
+import VueTiles from '@/components/design-system/layout/VueTiles/VueTiles.vue';
 import { type Icon, iconOptions } from '@/components/utils/icon-options';
 
 const props = defineProps({

@@ -11,8 +11,8 @@
 import { useRouter } from 'vue-router';
 import { computed } from 'vue';
 import { useI18n, useLocaleHead, useSwitchLocalePath } from '#i18n';
-import VueBackToTop from '../components/behavior/VueBackToTop/VueBackToTop.vue';
-import VueFooter from '../components/navigation/VueFooter/VueFooter.vue';
+import VueBackToTop from '@/components/design-system/behavior/VueBackToTop/VueBackToTop.vue';
+import VueFooter from '@/components/design-system/navigation/VueFooter/VueFooter.vue';
 import { useHead } from '#imports';
 import type { IItem } from '#shared/interfaces/ui/IItem';
 

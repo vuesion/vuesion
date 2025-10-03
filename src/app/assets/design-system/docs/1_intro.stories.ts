@@ -1,9 +1,9 @@
-import VueCard from '@/components/data-display/VueCard/VueCard.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
+import VueCard from '@/components/design-system/surfaces-and-feedback/VueCard/VueCard.vue';
+import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
+import VueText from '@/components/design-system/typography/VueText/VueText.vue';
 
 export default {
-  title: 'Foundation/Intro',
+  title: 'Design System Foundation',
   component: null,
   argTypes: {},
   parameters: { controls: { disabled: true } },

@@ -1,5 +1,5 @@
 ---
-to: "src/app/components/forms/<%= h.capitalize(name) %>Form/<%= h.capitalize(name) %>Form.spec.ts"
+to: "src/app/components/domain/forms/<%= h.capitalize(name) %>Form/<%= h.capitalize(name) %>Form.spec.ts"
 unless_exists: true
 ---
 import { beforeEach, describe, expect, test } from 'vitest';

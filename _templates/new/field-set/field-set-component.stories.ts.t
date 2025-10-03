@@ -1,5 +1,5 @@
 ---
-to: "src/app/components/field-sets/<%= h.capitalize(name) %>FieldSet/<%= h.capitalize(name) %>FieldSet.stories.ts"
+to: "src/app/components/domain/field-sets/<%= h.capitalize(name) %>FieldSet/<%= h.capitalize(name) %>FieldSet.stories.ts"
 unless_exists: true
 ---
 import { ref } from 'vue';
@@ -8,7 +8,7 @@ import <%= h.capitalize(name) %>FieldSet from './<%= h.capitalize(name) %>FieldS
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 
 export default {
-  title: 'Field Sets/<%= h.capitalize(name) %>FieldSet',
+  title: 'Domain/Field Sets/<%= h.capitalize(name) %>FieldSet',
   component: <%= h.capitalize(name) %>FieldSet,
   argTypes: {},
 };

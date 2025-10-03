@@ -1,0 +1,78 @@
+import type { StoryFn } from '@storybook/vue3-vite';
+import VueToast from './VueToast.vue';
+import VueInline from '@/components/design-system/layout/VueInline/VueInline.vue';
+import VueButton from '@/components/design-system/forms-and-actions/VueButton/VueButton.vue';
+import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
+import { emitToastNotification } from '@/components/utils/emit-toast-notification';
+
+export default {
+  title: 'Design System Components/Surfaces and Feedback/Toast',
+  component: VueToast,
+  argTypes: {},
+};
+
+const Template: StoryFn = (args) => ({
+  components: {
+    VueToast,
+    VueButton,
+    ComponentDocs,
+    VueInline,
+  },
+
+  inheritAttrs: false,
+  setup() {
+    return {
+      args,
+      onSuccessToastClick() {
+        emitToastNotification({
+          title: 'This is a success message!',
+          type: 'success',
+          text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+        });
+      },
+      onInfoToastClick() {
+        emitToastNotification({
+          title: 'This is an information!',
+          text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+        });
+      },
+      onWarningToastClick() {
+        emitToastNotification({
+          title: 'This is a warning!',
+          text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+          type: 'warning',
+          displayTimeInMs: 15000,
+        });
+      },
+      onDangerToastClick() {
+        emitToastNotification({
+          title: 'This is an error!',
+          text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod',
+          type: 'danger',
+          displayTimeInMs: 30000,
+        });
+      },
+    };
+  },
+
+  template: `<component-docs
+      component-name="Toast"
+      usage="Used to communicate messages from the system to the user."
+      story="Show toast messages with their different properties."
+  >
+  <vue-toast />
+
+  <vue-inline stack-phone stack-tablet-portrait stack-tablet-landscape stack-small-desktop stack-large-desktop>
+    <vue-button look="primary" @click="onSuccessToastClick">add success toast</vue-button>
+    <vue-button look="secondary" @click="onInfoToastClick">add info toast</vue-button>
+    <vue-button look="outline" @click="onWarningToastClick">add warning toast</vue-button>
+    <vue-button look="danger" @click="onDangerToastClick">add danger toast</vue-button>
+  </vue-inline>
+
+  </component-docs>`,
+});
+
+export const Default = {
+  render: Template,
+  args: {},
+};

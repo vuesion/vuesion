@@ -1,13 +1,13 @@
 import ComponentDocs from '@/assets/design-system/docs/components/ComponentDocs.vue';
 import UtilityTokenSection from '@/assets/design-system/docs/components/UtilityTokenSection.vue';
-import VueStack from '@/components/layout/VueStack/VueStack.vue';
+import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
 import TokenItem from '@/assets/design-system/docs/components/TokenItem.vue';
-import VueTiles from '@/components/layout/VueTiles/VueTiles.vue';
-import VueText from '@/components/typography/VueText/VueText.vue';
-import VueBox from '@/components/layout/VueBox/VueBox.vue';
+import VueTiles from '@/components/design-system/layout/VueTiles/VueTiles.vue';
+import VueText from '@/components/design-system/typography/VueText/VueText.vue';
+import VueBox from '@/components/design-system/layout/VueBox/VueBox.vue';
 
 export default {
-  title: 'Foundation/General',
+  title: 'Design System Foundation',
   component: null,
   argTypes: {},
   parameters: { controls: { disabled: true } },
