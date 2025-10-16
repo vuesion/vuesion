@@ -68,7 +68,7 @@
             :type="type"
             :autocomplete="autocomplete === 'custom' ? 'off' : autocomplete"
             :disabled="disabled"
-            :readonly="readonly"
+            :readonly="!!readonly"
             :autofocus="autofocus"
             :size="sizeAttribute || 150"
             v-bind="$attrs"
@@ -193,8 +193,8 @@ const { errors, value, handleChange } = useField<string | number | null | undefi
   syncVModel: false,
 });
 const hasMenuSlot = computed(() => {
-  if ($slots.menu && $slots.menu().length > 0 && $slots.menu()[0].props) {
-    return $slots.menu()[0].props?.show;
+  if ($slots.menu && $slots.menu().length > 0 && $slots.menu()[0]?.props) {
+    return $slots.menu()![0]!.props?.show;
   }
   return false;
 });

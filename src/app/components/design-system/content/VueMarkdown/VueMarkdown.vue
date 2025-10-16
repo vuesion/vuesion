@@ -10,8 +10,6 @@ import { getDomRef } from '@/composables/components/get-dom-ref';
 
 marked.setOptions({
   renderer: new marked.Renderer(),
-  mangle: false,
-  headerIds: false,
 });
 
 // Interface
@@ -41,12 +39,12 @@ const handleClick = (event: MouseEvent) => {
 
 // Lifecycle
 onMounted(() => {
-  content.value.querySelectorAll('a').forEach((anchor) => {
+  content.value?.querySelectorAll('a').forEach((anchor) => {
     anchor.addEventListener('click', handleClick);
   });
 });
 onBeforeUnmount(() => {
-  content.value.querySelectorAll('a').forEach((anchor) => {
+  content.value?.querySelectorAll('a').forEach((anchor) => {
     anchor.addEventListener('click', handleClick);
   });
 });

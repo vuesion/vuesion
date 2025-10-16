@@ -5,7 +5,6 @@
     :backdrop="backdrop"
     :disable-page-scroll="disablePageScroll"
     hide-close-button
-    :class="$style.VueConfirmModal"
     @close="$emit('close')"
   >
     <vue-stack>
@@ -23,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-import { useCssModule } from 'vue';
 import type { SpacingWithDirections } from '@/components/utils/prop-types';
 import VueModal from '@/components/design-system/overlays/VueModal/VueModal.vue';
 import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
@@ -33,7 +31,7 @@ import VueButton from '@/components/design-system/forms-and-actions/VueButton/Vu
 
 // Interface
 interface ConfirmModalProps {
-  padding?: string | SpacingWithDirections | Array<SpacingWithDirections>;
+  padding?: SpacingWithDirections | Array<SpacingWithDirections>;
   show?: boolean;
   backdrop?: boolean;
   loading?: boolean;
@@ -57,7 +55,4 @@ withDefaults(defineProps<ConfirmModalProps>(), {
   abortText: 'No',
 });
 defineEmits<ConfirmModalEmits>();
-
-// Deps
-const $style = useCssModule();
 </script>

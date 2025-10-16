@@ -21,7 +21,7 @@ const actualHeight = ref(props.height);
 // Methods
 const getColumnHeight = (col = 0) => {
   let height = 0;
-  const children = wrapper.value.children;
+  const children = wrapper.value!.children;
   const max = children.length;
 
   for (let i = col; i < max; i += 3) {
@@ -46,7 +46,7 @@ const calculateHeight = () => {
 };
 const checkForImages = () => {
   let loadedImages = 0;
-  const images = wrapper.value.querySelectorAll('img');
+  const images = wrapper.value!.querySelectorAll('img');
   const imageCount = images.length;
   const imageLoaded = () => {
     loadedImages += 1;
@@ -92,7 +92,7 @@ onMounted(() => {
   window.addEventListener('resize', calculateHeight);
 
   observer = new MutationObserver(calculateHeight);
-  observer.observe(wrapper.value, { attributes: true, childList: true, characterData: true, subtree: true });
+  observer.observe(wrapper.value!, { attributes: true, childList: true, characterData: true, subtree: true });
 
   checkForImages();
 });

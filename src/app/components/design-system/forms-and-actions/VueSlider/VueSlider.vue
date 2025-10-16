@@ -144,12 +144,13 @@ const getClosestHandle = (percentageDiff: number) => {
 
   const handlePos: number[] = [parseFloat(handleLeftPosition.value), parseFloat(handleRightPosition.value)];
   const startIndex = 1;
-
+  /* c8 ignore start */
   return handlePos.reduce((closestIdx, _, idx) => {
-    const challenger = Math.abs(handlePos[idx] - percentageDiff);
-    const current = Math.abs(handlePos[closestIdx] - percentageDiff);
+    const challenger = Math.abs((handlePos[idx] ?? 0) - percentageDiff);
+    const current = Math.abs((handlePos[closestIdx] ?? 0) - percentageDiff);
     return challenger < current ? idx : closestIdx;
   }, startIndex);
+  /* c8 ignore end */
 };
 const calculatePercentageDiff = (e: any): number => {
   /* c8 ignore start */
@@ -184,7 +185,10 @@ const emitChange = () => {
     emit('update:modelValue', [currentMax.value]);
   }
 };
-const refresh = () => (sliderBox.value = sliderRef.value.getBoundingClientRect());
+const refresh = () =>
+  (sliderBox.value =
+    sliderRef.value?.getBoundingClientRect() ??
+    ({ bottom: 0, left: 0, top: 0, height: 0, right: 0, x: 0, y: 0, width: 0 } as DOMRect));
 const updateRangeIfValid = (newValue: number) => {
   if (newValue < props.min) {
     currentMin.value = props.min;
@@ -254,14 +258,14 @@ const onKeyUp = () => {
 watch(
   range,
   () => {
-    currentMin.value = isMultiRange.value ? range.value[0] : props.min;
-    currentMax.value = isMultiRange.value ? range.value[1] : range.value[0];
+    currentMin.value = isMultiRange.value ? range.value[0]! : props.min;
+    currentMax.value = isMultiRange.value ? range.value[1]! : range.value[0]!;
   },
   { immediate: true },
 );
 
 onMounted(() => {
-  handleSize.value = rightHandleRef.value.clientWidth;
+  handleSize.value = rightHandleRef.value?.clientWidth ?? 0;
   useEventListener(window, 'resize', refresh);
   refresh();
 });

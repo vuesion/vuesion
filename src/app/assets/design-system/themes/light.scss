@@ -12,12 +12,12 @@
 
 :root.light {
   /* Brand Variations */
-  --primary: #{color-palette.palette-color-level('primary', 7)};
-  --neutral: #{color-palette.palette-color-level('neutral', 7)};
-  --success: #{color-palette.palette-color-level('success', 7)};
-  --info: #{color-palette.palette-color-level('info', 7)};
-  --warning: #{color-palette.palette-color-level('warning', 7)};
-  --danger: #{color-palette.palette-color-level('danger', 7)};
+  --primary: #{color-palette.palette-color-level('primary', 5)};
+  --neutral: #{color-palette.palette-color-level('neutral', 5)};
+  --success: #{color-palette.palette-color-level('success', 5)};
+  --info: #{color-palette.palette-color-level('info', 5)};
+  --warning: #{color-palette.palette-color-level('warning', 5)};
+  --danger: #{color-palette.palette-color-level('danger', 5)};
 
   /* Background Colors */
   --bg-default-high: #{color-palette.palette-color-level('neutral', 1)};
@@ -34,38 +34,38 @@
   --surface-inverse-high: #{color-palette.palette-color-level('neutral', 9)};
   --surface-inverse-medium: #{color-palette.palette-color-level('neutral', 8)};
   --surface-inverse-low: #{color-palette.palette-color-level('neutral', 7)};
-  --surface-info-high: #{color-palette.palette-color-level('info', 3)};
-  --surface-info-medium: #{color-palette.palette-color-level('info', 2)};
-  --surface-info-low: #{color-palette.palette-color-level('info', 1)};
-  --surface-danger-high: #{color-palette.palette-color-level('danger', 3)};
-  --surface-danger-medium: #{color-palette.palette-color-level('danger', 2)};
-  --surface-danger-low: #{color-palette.palette-color-level('danger', 1)};
-  --surface-warning-high: #{color-palette.palette-color-level('warning', 3)};
-  --surface-warning-medium: #{color-palette.palette-color-level('warning', 2)};
-  --surface-warning-low: #{color-palette.palette-color-level('warning', 1)};
   --surface-success-high: #{color-palette.palette-color-level('success', 3)};
   --surface-success-medium: #{color-palette.palette-color-level('success', 2)};
   --surface-success-low: #{color-palette.palette-color-level('success', 1)};
+  --surface-info-high: #{color-palette.palette-color-level('info', 3)};
+  --surface-info-medium: #{color-palette.palette-color-level('info', 2)};
+  --surface-info-low: #{color-palette.palette-color-level('info', 1)};
+  --surface-warning-high: #{color-palette.palette-color-level('warning', 3)};
+  --surface-warning-medium: #{color-palette.palette-color-level('warning', 2)};
+  --surface-warning-low: #{color-palette.palette-color-level('warning', 1)};
+  --surface-danger-high: #{color-palette.palette-color-level('danger', 3)};
+  --surface-danger-medium: #{color-palette.palette-color-level('danger', 2)};
+  --surface-danger-low: #{color-palette.palette-color-level('danger', 1)};
 
   /* Border Colors */
-  --border-default-high: #{color-palette.palette-color-level('neutral', 5)};
-  --border-default-medium: #{color-palette.palette-color-level('neutral', 3)};
-  --border-default-low: #{color-palette.palette-color-level('neutral', 2)};
+  --border-default-high: #{color-palette.palette-color-level('neutral', 6)};
+  --border-default-medium: #{color-palette.palette-color-level('neutral', 4)};
+  --border-default-low: #{color-palette.palette-color-level('neutral', 3)};
   --border-inverse-high: #{color-palette.palette-color-level('neutral', 8)};
   --border-inverse-medium: #{color-palette.palette-color-level('neutral', 7)};
   --border-inverse-low: #{color-palette.palette-color-level('neutral', 6)};
-  --border-info-high: #{color-palette.palette-color-level('info', 7)};
-  --border-info-medium: #{color-palette.palette-color-level('info', 5)};
-  --border-info-low: #{color-palette.palette-color-level('info', 2)};
-  --border-danger-high: #{color-palette.palette-color-level('danger', 7)};
-  --border-danger-medium: #{color-palette.palette-color-level('danger', 5)};
-  --border-danger-low: #{color-palette.palette-color-level('danger', 2)};
-  --border-warning-high: #{color-palette.palette-color-level('warning', 7)};
-  --border-warning-medium: #{color-palette.palette-color-level('warning', 5)};
-  --border-warning-low: #{color-palette.palette-color-level('warning', 2)};
-  --border-success-high: #{color-palette.palette-color-level('success', 7)};
-  --border-success-medium: #{color-palette.palette-color-level('success', 5)};
-  --border-success-low: #{color-palette.palette-color-level('success', 2)};
+  --border-info-high: #{color-palette.palette-color-level('info', 5)};
+  --border-info-medium: #{color-palette.palette-color-level('info', 4)};
+  --border-info-low: #{color-palette.palette-color-level('info', 3)};
+  --border-danger-high: #{color-palette.palette-color-level('danger', 5)};
+  --border-danger-medium: #{color-palette.palette-color-level('danger', 4)};
+  --border-danger-low: #{color-palette.palette-color-level('danger', 3)};
+  --border-warning-high: #{color-palette.palette-color-level('warning', 5)};
+  --border-warning-medium: #{color-palette.palette-color-level('warning', 4)};
+  --border-warning-low: #{color-palette.palette-color-level('warning', 3)};
+  --border-success-high: #{color-palette.palette-color-level('success', 5)};
+  --border-success-medium: #{color-palette.palette-color-level('success', 4)};
+  --border-success-low: #{color-palette.palette-color-level('success', 3)};
 
   /* Text Colors */
   --text-default-high: #{color-palette.palette-color-level('neutral', 10)};
@@ -76,17 +76,17 @@
   --text-inverse-low: #{color-palette.palette-color-level('neutral', 4)};
   --text-light: #{color-palette.palette-color-level('neutral', 0)};
   --text-dark: #{color-palette.palette-color-level('neutral', 10)};
-  --text-success: #{color-palette.palette-color-level('success', 7)};
-  --text-info: #{color-palette.palette-color-level('info', 7)};
-  --text-warning: #{color-palette.palette-color-level('warning', 7)};
-  --text-danger: #{color-palette.palette-color-level('danger', 7)};
+  --text-success: #{color-palette.palette-color-level('success', 5)};
+  --text-info: #{color-palette.palette-color-level('info', 5)};
+  --text-warning: #{color-palette.palette-color-level('warning', 5)};
+  --text-danger: #{color-palette.palette-color-level('danger', 5)};
   --text-link: #{color-palette.palette-color-level('info', 6)};
   --text-interaction-primary-enabled: #{color-palette.palette-color-level('neutral', 0)};
   --text-interaction-primary-hovered: #{color-palette.palette-color-level('neutral', 0)};
   --text-interaction-primary-activated: #{color-palette.palette-color-level('neutral', 0)};
-  --text-interaction-secondary-enabled: #{color-palette.palette-color-level('info', 7)};
-  --text-interaction-secondary-hovered: #{color-palette.palette-color-level('info', 7)};
-  --text-interaction-secondary-activated: #{color-palette.palette-color-level('info', 7)};
+  --text-interaction-secondary-enabled: #{color-palette.palette-color-level('neutral', 0)};
+  --text-interaction-secondary-hovered: #{color-palette.palette-color-level('neutral', 0)};
+  --text-interaction-secondary-activated: #{color-palette.palette-color-level('neutral', 0)};
   --text-interaction-neutral-enabled: #{color-palette.palette-color-level('neutral', 8)};
   --text-interaction-neutral-hovered: #{color-palette.palette-color-level('neutral', 8)};
   --text-interaction-neutral-activated: #{color-palette.palette-color-level('neutral', 8)};
@@ -95,18 +95,18 @@
   --text-interaction-danger-activated: #{color-palette.palette-color-level('neutral', 0)};
 
   /* Interaction Colors */
-  --interaction-primary-enabled: #{color-palette.palette-color-level('primary', 7)};
+  --interaction-primary-enabled: #{color-palette.palette-color-level('primary', 5)};
   --interaction-primary-hovered: #{color-palette.palette-color-level('primary', 6)};
-  --interaction-primary-activated: #{color-palette.palette-color-level('primary', 8)};
-  --interaction-secondary-enabled: #{color-palette.palette-color-level('info', 1)};
-  --interaction-secondary-hovered: #{color-palette.palette-color-level('info', 2)};
-  --interaction-secondary-activated: #{color-palette.palette-color-level('info', 3)};
+  --interaction-primary-activated: #{color-palette.palette-color-level('primary', 7)};
+  --interaction-secondary-enabled: #{color-palette.palette-color-level('info', 5)};
+  --interaction-secondary-hovered: #{color-palette.palette-color-level('info', 6)};
+  --interaction-secondary-activated: #{color-palette.palette-color-level('info', 7)};
   --interaction-neutral-enabled: #{color-palette.palette-color-level('neutral', 0)};
   --interaction-neutral-hovered: #{color-palette.palette-color-level('neutral', 1)};
   --interaction-neutral-activated: #{color-palette.palette-color-level('neutral', 3)};
-  --interaction-danger-enabled: #{color-palette.palette-color-level('danger', 7)};
+  --interaction-danger-enabled: #{color-palette.palette-color-level('danger', 5)};
   --interaction-danger-hovered: #{color-palette.palette-color-level('danger', 6)};
-  --interaction-danger-activated: #{color-palette.palette-color-level('danger', 8)};
+  --interaction-danger-activated: #{color-palette.palette-color-level('danger', 7)};
 
   // UTILS
 

@@ -1,8 +1,9 @@
 import type { StoryFn } from '@storybook/vue3-vite';
 import VueIconButton from './VueIconButton.vue';
 import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vue';
-import { ButtonStyleValues, ShirtSizeValues } from '@/components/utils/prop-types';
+import { type ButtonStyle, ButtonStyleValues, type ShirtSize, ShirtSizeValues } from '@/components/utils/prop-types';
 import { action } from 'storybook/actions';
+import type { Icon } from '@/components/utils/icon-options';
 
 export default {
   title: 'Design System Components/Forms and Actions/IconButton',
@@ -47,10 +48,10 @@ export const Default = {
     label: 'Label',
     as: 'button',
     disabled: false,
-    icon: 'dots-horizontal',
+    icon: 'dots-horizontal' as Icon,
     loading: false,
-    look: 'outline',
-    size: 'md',
+    look: 'outline' as ButtonStyle,
+    size: 'md' as ShirtSize,
     type: 'button',
   },
 };

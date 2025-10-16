@@ -1,5 +1,5 @@
 <template>
-  <section v-if="active" :class="[$style.vueTab, active && $style.active]" role="tabpanel">
+  <section v-if="active" role="tabpanel">
     <slot />
   </section>
 </template>
@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 // Interface
 import type { Ref } from 'vue';
-import { ref, useCssModule, watch, inject } from 'vue';
+import { ref, watch, inject } from 'vue';
 
 interface TabItemProps {
   name: string;
@@ -20,9 +20,6 @@ const props = withDefaults(defineProps<TabItemProps>(), {
   isActive: false,
   badgeContent: null,
 });
-
-// Deps
-const $style = useCssModule();
 
 // Data
 const idx = ref<number>(-1);

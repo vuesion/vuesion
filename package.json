@@ -34,7 +34,7 @@
     "test:server": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest run --project server --coverage",
     "test:tools": "cross-env NODE_ICU_DATA=node_modules/full-icu vitest run --project tools --coverage",
     "lint": "concurrently \"npm run lint:code\" \"npm run lint:style\"",
-    "lint:code": "eslint --fix --cache . && tsc --project ./tsconfig.json --noEmit",
+    "lint:code": "concurrently \"eslint --fix --cache .\" \"vue-tsc --project ./tsconfig.json --noEmit\"",
     "lint:style": "stylelint './src/app/**/*.{vue,scss,sass,css}' --fix",
     "new:component": "hygen new component",
     "new:field-set": "hygen new field-set",
@@ -72,6 +72,7 @@
     "@vueuse/core": "13.9.0",
     "animejs": "4.2.0",
     "bcrypt": "6.0.0",
+    "colorjs.io": "0.5.2",
     "cross-env": "10.1.0",
     "full-icu": "1.5.0",
     "h3-compression": "0.3.2",
@@ -81,7 +82,8 @@
     "next-auth": "4.21.1",
     "pinia": "3.0.3",
     "prisma": "6.16.3",
-    "vee-validate": "4.15.1"
+    "vee-validate": "4.15.1",
+    "vue-tsc": "3.1.1"
   },
   "devDependencies": {
     "@babel/core": "7.28.4",

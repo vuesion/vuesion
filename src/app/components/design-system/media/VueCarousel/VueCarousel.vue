@@ -76,7 +76,7 @@ const images = computed<Array<ICarouselImage>>(() => props.images as Array<ICaro
 const interval = computed<number>(() => props.intervalInSeconds * 1000);
 const selectedSlide = computed<number>(() => props.selectedSlide);
 const currentSlide = ref<number>(props.selectedSlide - 1);
-const intervalInstance = ref<number | null>(null);
+const intervalInstance = ref<ReturnType<typeof setTimeout> | null>(null);
 const pause = ref(false);
 const preloadedImages = ref<Array<HTMLImageElement>>([]);
 
@@ -99,7 +99,11 @@ const createIntervalInstance = () => {
   if (images.value.length <= 1) {
     return;
   }
-  clearInterval(intervalInstance.value);
+
+  if (intervalInstance.value) {
+    clearInterval(intervalInstance.value);
+  }
+
   intervalInstance.value = setInterval(() => changeSlide(currentSlide.value + 1), interval.value);
 };
 const preloadImages = () => {
@@ -119,14 +123,17 @@ const preloadImages = () => {
 watch(images, () => preloadImages());
 watch(interval, () => createIntervalInstance());
 watch(selectedSlide, () => {
-  clearInterval(intervalInstance.value);
   currentSlide.value = selectedSlide.value - 1;
   createIntervalInstance();
 });
 
 // Lifecycle
 onMounted(() => preloadImages());
-onBeforeUnmount(() => clearInterval(intervalInstance.value));
+onBeforeUnmount(() => {
+  if (intervalInstance.value) {
+    clearInterval(intervalInstance.value);
+  }
+});
 </script>
 
 <style lang="scss" module>

@@ -68,9 +68,9 @@ export type Spacing = NumericSpacing | StringSpacing;
 
 export type SpacingWithDirections =
   | Spacing
-  | `${Spacing} ${Spacing}`
-  | `${Spacing} ${Spacing} ${Spacing}`
-  | `${Spacing} ${Spacing} ${Spacing} ${number}`;
+  | `${Spacing} ${string | number}`
+  | `${Spacing} ${string | number} ${string | number}`
+  | `${Spacing} ${string | number} ${string | number} ${string | number}`;
 
 export const WidthValues = [
   '1/10',

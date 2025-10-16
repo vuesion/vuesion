@@ -34,22 +34,21 @@
   </vue-stack>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { defineProps } from 'vue';
 import VueText from '@/components/design-system/typography/VueText/VueText.vue';
 import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
 import VueTiles from '@/components/design-system/layout/VueTiles/VueTiles.vue';
 import VueBox from '@/components/design-system/layout/VueBox/VueBox.vue';
 import TokenItem from '@/assets/design-system/docs/components/TokenItem.vue';
 
-export default {
-  name: 'ColorTokensSection',
-  components: { TokenItem, VueBox, VueTiles, VueStack, VueText },
-  props: {
-    title: { type: String, default: null },
-    description: { type: String, default: null },
-    columns: { type: Array, default: () => [] },
-  },
-};
+interface Props {
+  title?: string | null;
+  description?: string | null;
+  columns?: Array<any>;
+}
+
+defineProps<Props>();
 </script>
 
 <style lang="scss" module>

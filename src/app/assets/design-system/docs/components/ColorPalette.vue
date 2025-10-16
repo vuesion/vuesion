@@ -1,59 +1,64 @@
 <template>
   <vue-stack space="0" align-x="start">
     <vue-tiles v-for="section in colorSections" :key="section.name" space="0" :columns="11">
-      <vue-box v-if="section.name !== 'neutral'" />
+      <vue-box v-if="section.name !== 'neutral'" :style="{ width: '90px', aspectRatio: '1' }" />
       <vue-box
         v-for="color in section.colors"
         :key="color.hex"
         align-y="center"
         align-x="center"
-        :style="{ background: color.hex, color: color.color, width: '80px', height: '80px' }"
+        padding="0"
+        :style="{ background: color.hex, color: color.color, width: '90px', aspectRatio: '1' }"
       >
-        <vue-text look="support" align-x="center"> {{ color.name }}<br />({{ color.hex }}) </vue-text>
+        <vue-text look="support" align-x="center">
+          {{ color.name }}
+          <br />
+          ({{ color.hex }})
+        </vue-text>
       </vue-box>
     </vue-tiles>
   </vue-stack>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { computed, useCssModule } from 'vue';
+import Color from 'colorjs.io';
+
 import VueText from '@/components/design-system/typography/VueText/VueText.vue';
 import VueTiles from '@/components/design-system/layout/VueTiles/VueTiles.vue';
 import VueBox from '@/components/design-system/layout/VueBox/VueBox.vue';
 import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
 
-export default {
-  name: 'ColorPalette',
-  components: { VueStack, VueBox, VueTiles, VueText },
-  computed: {
-    colorSections() {
-      const sections: Record<string, string> = {};
-      const arr: Array<{ name: string; colors: Record<string, string> }> = [];
+const style = useCssModule();
 
-      Object.keys(this.$style).forEach((key) => {
-        const split = key.split('-');
-        const section = split.shift();
-        const name = split.join('-');
-        const idx = parseInt(name.split('-')[1], 10);
-        const hex = this.$style[key];
-        const color = idx < 6 ? '#000' : '#fff';
+const colorSections = computed(() => {
+  const sections: Record<string, Array<{ name: string; hex: string; color: string }>> = {};
+  const arr: Array<{ name: string; colors: Array<{ name: string; hex: string; color: string }> }> = [];
 
-        if (!sections[section]) {
-          sections[section] = [];
-        }
+  Object.keys(style).forEach((key) => {
+    const split = key.split('-');
+    const section = split.shift() ?? '';
+    const name = split.join('-');
+    const idx = parseInt(name.split('-')[1] ?? '', 10);
+    const c = new Color(style[key] ?? '');
+    const hex = c.to('srgb').toString({ format: 'hex' });
+    const color = idx < 5 ? '#000' : '#fff';
 
-        sections[section].push({ name, hex, color });
-      });
+    if (!sections[section]) {
+      sections[section] = [];
+    }
 
-      Object.keys(sections).forEach((key: string) => {
-        if (!['color', 'light', 'dark'].includes(key)) {
-          arr.push({ name: key, colors: sections[key] });
-        }
-      });
+    sections[section].push({ name, hex, color });
+  });
 
-      return arr;
-    },
-  },
-};
+  Object.keys(sections).forEach((key: string) => {
+    if (!['color', 'light', 'dark'].includes(key)) {
+      arr.push({ name: key, colors: sections[key] ?? [] });
+    }
+  });
+
+  return arr;
+});
 </script>
 
 <style lang="scss" module>

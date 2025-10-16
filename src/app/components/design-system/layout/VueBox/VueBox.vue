@@ -1,11 +1,11 @@
 <template>
-  <component :is="as" :class="[$style.vueBox, ...cssClasses]">
+  <component :is="as" :class="cssClasses">
     <slot />
   </component>
 </template>
 
 <script setup lang="ts">
-import { computed, useCssModule, useAttrs } from 'vue';
+import { computed, useAttrs } from 'vue';
 import type { SpacingWithDirections, HorizontalAlignment, VerticalAlignment } from '@/components/utils/prop-types';
 import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
 import { parseSpacingShorthand } from '@/components/utils/parse-spacing-shorthand';
@@ -27,7 +27,6 @@ const props = withDefaults(defineProps<BoxProps>(), {
 });
 
 // Deps
-const $style = useCssModule();
 const attrs = useAttrs();
 
 // Data

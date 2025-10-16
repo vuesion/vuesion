@@ -110,7 +110,7 @@ const handleSearch = debounce(() => {
 const getNewIndex = (direction: string) => {
   let newIndex: number = direction === 'down' ? selectedItemIndex.value + 1 : selectedItemIndex.value - 1;
 
-  if (items.value[newIndex] && items.value[newIndex].value === 'separator') {
+  if (items.value[newIndex] && items.value[newIndex]!.value === 'separator') {
     newIndex = direction === 'down' ? newIndex + 1 : newIndex - 1;
   }
 
@@ -120,12 +120,10 @@ const onKeyDown = (e: KeyboardEvent) => {
   e.stopPropagation();
   e.preventDefault();
 
-  if (
-    ['Enter', 'Space'].includes(e.code) &&
-    selectedItemIndex.value > -1 &&
-    !items.value[selectedItemIndex.value].disabled
-  ) {
-    onItemClick(items.value[selectedItemIndex.value]);
+  const selectedItem = items.value[selectedItemIndex.value];
+
+  if (['Enter', 'Space'].includes(e.code) && selectedItemIndex.value > -1 && selectedItem && !selectedItem.disabled) {
+    onItemClick(selectedItem);
   } else if (e.code === 'Tab' || e.code === 'Escape') {
     emit('close');
   } else if (e.code === 'ArrowDown') {

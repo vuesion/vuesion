@@ -55,7 +55,7 @@
                   hide-label
                   hide-description
                   :model-value="selectedLocale"
-                  @update:modelValue="$emit('locale-change', $event)"
+                  @update:modelValue="$emit('locale-change', $event as IItem)"
                 />
                 <vue-select
                   id="theme"
@@ -65,7 +65,7 @@
                   hide-label
                   hide-description
                   :model-value="$colorMode.preference"
-                  @update:model-value="$colorMode.preference = $event.value"
+                  @update:model-value="$colorMode.preference = ($event as IItem).value"
                 />
                 <!-- Date Time Test -->
                 <vue-text>{{ $d(new Date(), 'dayMonthYearNumericWithTime') }}</vue-text>

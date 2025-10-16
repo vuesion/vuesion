@@ -6,7 +6,7 @@ import ComponentDocs from 'assets/design-system/docs/components/ComponentDocs.vu
 import { emitToastNotification } from '@/components/utils/emit-toast-notification';
 
 export default {
-  title: 'Design System Components/Surfaces and Feedback/Toast',
+  title: 'Design System Components/Overlays/Toast',
   component: VueToast,
   argTypes: {},
 };
