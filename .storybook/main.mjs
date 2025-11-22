@@ -1,7 +1,13 @@
-const { mergeConfig } = require('vite');
-const path = require('path');
-const vue = require('@vitejs/plugin-vue');
-module.exports = {
+import { mergeConfig } from 'vite';
+import path from 'path';
+import vue from '@vitejs/plugin-vue';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default {
   stories: ['../src/app/**/*.stories.@(js|jsx|ts|tsx)'],
   staticDirs: ['../src/public'],
   addons: ['@storybook/addon-links', '@storybook/addon-themes', '@storybook/addon-a11y', '@storybook/addon-docs'],
@@ -34,12 +40,7 @@ module.exports = {
         },
       },
       optimizeDeps: {
-        include: [
-          '@storybook/addon-links',
-          '@storybook/addon-interactions',
-          'storybook/actions',
-          '@storybook/addon-a11y',
-        ],
+        include: ['@storybook/addon-links', '@storybook/addon-a11y'],
       },
       resolve: {
         alias: {

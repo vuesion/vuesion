@@ -35,7 +35,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import VueText from '@/components/design-system/typography/VueText/VueText.vue';
 import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
 import VueTiles from '@/components/design-system/layout/VueTiles/VueTiles.vue';

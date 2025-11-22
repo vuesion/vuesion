@@ -98,7 +98,7 @@ export const parameters = {
     },
   },
   viewport: {
-    viewports: {
+    options: {
       phone: {
         name: 'Phone',
         styles: {
