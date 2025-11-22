@@ -1,17 +1,18 @@
 export const TextColorValues = [
-  'info',
-  'danger',
-  'warning',
-  'success',
-  'link',
   'high',
   'medium',
   'low',
+  'dark',
   'inverse-high',
   'inverse-medium',
   'inverse-low',
   'light',
-  'dark',
+  'primary',
+  'success',
+  'info',
+  'warning',
+  'danger',
+  'link',
 ] as const;
 export type TextColor = (typeof TextColorValues)[number];
 

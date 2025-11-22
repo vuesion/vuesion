@@ -1,44 +1,10 @@
 <template>
-  <component
-    :is="as"
-    v-if="as !== 'nuxt-link'"
-    :class="[
-      $style.vueText,
-      color && $style[color],
-      $style[look],
-      $style[weight],
-      serifs && $style.serifs,
-      underline && $style.underline,
-      uppercase && $style.uppercase,
-      gradient && $style.gradient,
-      noWrap && $style.noWrap,
-      alignX && $style.block,
-      alignX && 'w-full',
-      ...alignCssClasses,
-    ]"
-  >
-    <slot />
-  </component>
-  <nuxt-link
-    v-else
-    :to="to"
-    :class="[
-      $style.vueText,
-      color && $style[color],
-      $style[look],
-      $style[weight],
-      serifs && $style.serifs,
-      underline && $style.underline,
-      uppercase && $style.uppercase,
-      gradient && $style.gradient,
-      noWrap && $style.noWrap,
-      alignX && $style.block,
-      alignX && 'w-full',
-      ...alignCssClasses,
-    ]"
-  >
+  <nuxt-link v-if="isLink" :to="to" :class="[...classes, ...alignCssClasses]">
     <slot />
   </nuxt-link>
+  <component v-else :is="as" :class="[...classes, ...alignCssClasses]">
+    <slot />
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -47,26 +13,27 @@ import type { FontWeight, Alignment, TextColor, TextStyle } from '@/components/u
 import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
 import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
 
-// Interface
+type TextTag = 'span' | 'p' | 'label' | 'strong' | 'em' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'a';
+
 interface TextProps {
-  as?: string;
+  as?: TextTag;
   look?: TextStyle;
   color?: TextColor;
   weight?: FontWeight;
-  serifs?: boolean;
   underline?: boolean;
+  italic?: boolean;
   uppercase?: boolean;
   gradient?: boolean;
   noWrap?: boolean;
   alignX?: Alignment | Array<Alignment> | string;
   to?: string;
 }
+
 const props = withDefaults(defineProps<TextProps>(), {
   as: 'span',
   look: 'default',
   color: undefined,
   weight: 'regular',
-  serifs: false,
   underline: false,
   uppercase: false,
   gradient: false,
@@ -74,11 +41,21 @@ const props = withDefaults(defineProps<TextProps>(), {
   alignX: undefined,
   to: undefined,
 });
-
-// Deps
 const $style = useCssModule();
-
-// Data
+const isLink = computed(() => !!props.to);
+const classes = computed(() => [
+  $style.vueText,
+  props.color && $style[props.color],
+  $style[props.look],
+  $style[props.weight],
+  props.underline && $style.underline,
+  props.italic && $style.italic,
+  props.uppercase && $style.uppercase,
+  props.gradient && $style.gradient,
+  props.noWrap && $style.noWrap,
+  props.alignX && $style.block,
+  props.alignX && 'w-full',
+]);
 const responsiveAlignments = computed(() => mapPropToBreakpoints(props.alignX));
 const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiveAlignments.value, 'align'));
 </script>
@@ -92,12 +69,12 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
   text-decoration: none;
 
   // Utils
-  &.serifs {
-    font-family: ds.$font-family-serif;
-  }
-
   &.underline {
     text-decoration: underline;
+  }
+
+  &.italic {
+    font-style: italic;
   }
 
   &.uppercase {
@@ -130,138 +107,136 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     font-weight: ds.$font-weight-semi-bold;
   }
 
-  &.black {
-    font-weight: ds.$font-weight-black;
+  &.bold {
+    font-weight: ds.$font-weight-bold;
+  }
+
+  &.extra-bold {
+    font-weight: ds.$font-weight-extra-bold;
   }
 
   // Styles
   &.hero {
-    font-size: ds.$text-9;
-    line-height: ds.$line-height-9;
-    letter-spacing: ds.$letter-spacing-1;
+    font-size: ds.$font-size-61;
+    line-height: ds.$line-height-74;
+    letter-spacing: ds.$letter-spacing-tightest;
   }
 
   &.h1 {
-    font-size: ds.$text-9;
-    line-height: ds.$line-height-9;
-    letter-spacing: ds.$letter-spacing-1;
+    font-size: ds.$font-size-49;
+    line-height: ds.$line-height-59;
+    letter-spacing: ds.$letter-spacing-tightest;
   }
 
   &.h2 {
-    font-size: ds.$text-8;
-    line-height: ds.$line-height-8;
-    letter-spacing: ds.$letter-spacing-1;
+    font-size: ds.$font-size-39;
+    line-height: ds.$line-height-47;
+    letter-spacing: ds.$letter-spacing-tightest;
   }
 
   &.h3 {
-    font-size: ds.$text-7;
-    line-height: ds.$line-height-7;
-    letter-spacing: ds.$letter-spacing-1;
+    font-size: ds.$font-size-31;
+    line-height: ds.$line-height-38;
+    letter-spacing: ds.$letter-spacing-tightest;
   }
 
   &.h4 {
-    font-size: ds.$text-6;
-    line-height: ds.$line-height-6;
-    letter-spacing: ds.$letter-spacing-1;
+    font-size: ds.$font-size-25;
+    line-height: ds.$line-height-30;
+    letter-spacing: ds.$letter-spacing-tightest;
   }
 
   &.h5 {
-    font-size: ds.$text-5;
-    line-height: ds.$line-height-5;
-    letter-spacing: ds.$letter-spacing-1;
+    font-size: ds.$font-size-20;
+    line-height: ds.$line-height-24;
+    letter-spacing: ds.$letter-spacing-tightest;
   }
 
   &.h6 {
-    font-size: ds.$text-4;
-    line-height: ds.$line-height-4;
-    letter-spacing: ds.$letter-spacing-1;
+    font-size: ds.$font-size-16;
+    line-height: ds.$line-height-20;
+    letter-spacing: ds.$letter-spacing-tightest;
   }
 
-  &.description {
-    font-size: ds.$text-4;
-    line-height: ds.$line-height-4;
-    letter-spacing: ds.$letter-spacing-1;
+  &.description-lg {
+    font-size: ds.$font-size-24;
+    line-height: ds.$line-height-34;
+    letter-spacing: ds.$letter-spacing-normal;
   }
 
-  &.large-description {
-    font-size: ds.$text-6;
-    line-height: ds.$line-height-6;
-    letter-spacing: ds.$letter-spacing-1;
+  &.description-md {
+    font-size: ds.$font-size-20;
+    line-height: ds.$line-height-30;
+    letter-spacing: ds.$letter-spacing-normal;
   }
 
-  &.large-title {
-    font-size: ds.$text-6;
-    line-height: ds.$line-height-6;
-    letter-spacing: ds.$letter-spacing-1;
+  &.description-sm {
+    font-size: ds.$font-size-18;
+    line-height: ds.$line-height-28;
+    letter-spacing: ds.$letter-spacing-normal;
   }
 
-  &.medium-title {
-    font-size: ds.$text-5;
-    line-height: ds.$line-height-5;
-    letter-spacing: ds.$letter-spacing-1;
+  &.title-lg {
+    font-size: ds.$font-size-25;
+    line-height: ds.$line-height-32;
+    letter-spacing: ds.$letter-spacing-tight;
   }
 
-  &.small-title {
-    font-size: ds.$text-4;
-    line-height: ds.$line-height-4;
-    letter-spacing: ds.$letter-spacing-1;
+  &.title-md {
+    font-size: ds.$font-size-20;
+    line-height: ds.$line-height-26;
+    letter-spacing: ds.$letter-spacing-tight;
+  }
+
+  &.title-sm {
+    font-size: ds.$font-size-18;
+    line-height: ds.$line-height-24;
+    letter-spacing: ds.$letter-spacing-tight;
   }
 
   &.label {
-    font-size: ds.$text-2;
-    line-height: ds.$line-height-2;
-    letter-spacing: ds.$letter-spacing-1;
+    font-size: ds.$font-size-14;
+    line-height: ds.$line-height-20;
+    letter-spacing: ds.$letter-spacing-wide;
   }
 
-  &.button {
-    font-size: ds.$text-2;
-    line-height: ds.$line-height-2;
-    letter-spacing: ds.$letter-spacing-1;
+  &.button-lg {
+    font-size: ds.$font-size-18;
+    line-height: ds.$line-height-20;
+    letter-spacing: ds.$letter-spacing-wider;
   }
 
-  &.support {
-    font-size: ds.$text-2;
-    line-height: ds.$line-height-2;
-    letter-spacing: ds.$letter-spacing-1;
+  &.button-md {
+    font-size: ds.$font-size-16;
+    line-height: ds.$line-height-20;
+    letter-spacing: ds.$letter-spacing-wider;
   }
 
-  /* NEW Styles */
+  &.button-sm {
+    font-size: ds.$font-size-14;
+    line-height: ds.$line-height-20;
+    letter-spacing: ds.$letter-spacing-wider;
+  }
 
-  &.description-md {
-    font-size: 2rem;
-    line-height: 3rem;
-    letter-spacing: 0;
+  &.support-lg {
+    font-size: ds.$font-size-14;
+    line-height: ds.$line-height-20;
+    letter-spacing: ds.$letter-spacing-wide;
+  }
+
+  &.support-md {
+    font-size: ds.$font-size-13;
+    line-height: ds.$line-height-18;
+    letter-spacing: ds.$letter-spacing-wide;
+  }
+
+  &.support-sm {
+    font-size: ds.$font-size-12;
+    line-height: ds.$line-height-16;
+    letter-spacing: ds.$letter-spacing-wide;
   }
 
   // Colors
-  &.info {
-    color: var(--text-info);
-  }
-
-  &.danger {
-    color: var(--text-danger);
-  }
-
-  &.warning {
-    color: var(--text-warning);
-  }
-
-  &.success {
-    color: var(--text-success);
-  }
-
-  &.link {
-    color: var(--text-link);
-  }
-
-  &.light {
-    color: var(--text-light);
-  }
-
-  &.dark {
-    color: var(--text-dark);
-  }
-
   &.high {
     color: var(--text-default-high);
   }
@@ -274,6 +249,10 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     color: var(--text-default-low);
   }
 
+  &.dark {
+    color: var(--text-dark);
+  }
+
   &.inverse-high {
     color: var(--text-inverse-high);
   }
@@ -284,6 +263,34 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 
   &.inverse-low {
     color: var(--text-inverse-low);
+  }
+
+  &.light {
+    color: var(--text-light);
+  }
+
+  &.primary {
+    color: var(--text-primary);
+  }
+
+  &.success {
+    color: var(--text-success);
+  }
+
+  &.info {
+    color: var(--text-info);
+  }
+
+  &.warning {
+    color: var(--text-warning);
+  }
+
+  &.danger {
+    color: var(--text-danger);
+  }
+
+  &.link {
+    color: var(--text-link);
   }
 
   // Responsive Styles

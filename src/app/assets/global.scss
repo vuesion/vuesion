@@ -30,7 +30,7 @@ i {
 
 hr {
   border: none;
-  border-top: 1px solid var(--border-default-low);
+  border-top: 1px solid var(--border-default-medium);
   margin-top: -1px;
 }
 
@@ -38,18 +38,14 @@ table {
   thead,
   tbody {
     tr {
-      border-bottom: 1px solid var(--border-default-low);
+      border-bottom: 1px solid var(--border-default-medium);
 
       td,
       th {
-        padding: ds.$space-24;
+        padding: ds.$space-24 ds.$space-8;
         text-align: left;
       }
     }
-  }
-
-  thead {
-    background: var(--bg-default-medium);
   }
 
   tbody {

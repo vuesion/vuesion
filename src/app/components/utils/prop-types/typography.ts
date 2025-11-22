@@ -6,21 +6,24 @@ export const TextStyleValues = [
   'h4',
   'h5',
   'h6',
-  'description',
-  'large-description',
-  'large-title',
-  'medium-title',
-  'small-title',
+  'description-lg',
+  'description-md',
+  'description-sm',
+  'title-lg',
+  'title-md',
+  'title-sm',
   'default',
   'label',
-  'button',
-  'support',
-  /*new*/
-  'description-md',
+  'button-lg',
+  'button-md',
+  'button-sm',
+  'support-lg',
+  'support-md',
+  'support-sm',
 ] as const;
 export type TextStyle = (typeof TextStyleValues)[number];
 
-export const FontWeightValues = ['regular', 'semi-bold', 'black'] as const;
+export const FontWeightValues = ['regular', 'semi-bold', 'bold', 'extra-bold'] as const;
 export type FontWeight = (typeof FontWeightValues)[number];
 
 export const AlignmentValues = ['start', 'center', 'end', 'inherit', 'initial', 'justify'] as const;

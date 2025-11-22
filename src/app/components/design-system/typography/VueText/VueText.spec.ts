@@ -1,19 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import { render } from '@testing-library/vue';
 import VueText from './VueText.vue';
-
-const textColorVariations = [
-  'info',
-  'danger',
-  'warning',
-  'success',
-  'high',
-  'medium',
-  'low',
-  'inverse-high',
-  'inverse-medium',
-  'inverse-low',
-];
+import { TextColorValues } from '@/components/utils/prop-types/colors';
 
 describe('VueText.vue', () => {
   test('renders component', () => {
@@ -27,10 +15,10 @@ describe('VueText.vue', () => {
   });
 
   test('renders color variations', () => {
-    textColorVariations.forEach((variation) => {
+    TextColorValues.forEach((variation) => {
       const { html } = render(VueText, {
         props: {
-          color: variation as any,
+          color: variation,
         },
       });
 
@@ -61,7 +49,6 @@ describe('VueText.vue', () => {
         default: 'VueText',
       },
       props: {
-        as: 'nuxt-link',
         to: '/test',
         noWrap: true,
       },
@@ -70,5 +57,22 @@ describe('VueText.vue', () => {
 
     expect(renderedHtml).toMatch('<a ');
     expect(renderedHtml).toMatch('noWrap');
+  });
+
+  test('renders underline and italic styles', () => {
+    const { html } = render(VueText, {
+      slots: {
+        default: 'VueText',
+      },
+      props: {
+        underline: true,
+        italic: true,
+      },
+    });
+
+    const renderedHtml = html();
+
+    expect(renderedHtml).toMatch('underline');
+    expect(renderedHtml).toMatch('italic');
   });
 });

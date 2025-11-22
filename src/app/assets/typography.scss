@@ -6,10 +6,10 @@ html {
 
 body {
   font-family: ds.$font-family;
-  font-size: ds.$text-3;
+  font-size: ds.$font-size-16;
+  line-height: ds.$line-height-24;
   font-weight: ds.$font-weight-regular;
-  letter-spacing: ds.$letter-spacing-1;
-  line-height: ds.$line-height-3;
+  letter-spacing: ds.$letter-spacing-normal;
   color: var(--text-default-high);
 }
 
