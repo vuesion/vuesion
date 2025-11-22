@@ -13,10 +13,10 @@
       </vue-column>
       <vue-column :width="['full', 'full', '5/10']" no-grow>
         <vue-stack align-y="between">
-          <vue-text look="h3" weight="black" color="inverse-high" :class="$style.title">
+          <vue-text look="h3" weight="bold" color="inverse-high" :class="$style.title">
             {{ $t('ExpertiseSection.title' /* Technology Agnostic Expertise */) }}
           </vue-text>
-          <vue-text look="description" color="inverse-medium">
+          <vue-text look="description-md" color="inverse-medium">
             {{
               $t(
                 'ExpertiseSection.description' /* While Vuesion is our preferred tech stack, we are fluent in a wide range of technologies including Angular, React, Next.js, Nest.js, Express.js, Postgres, MongoDB, Spring Boot, Swift, AWS, and many more. This allows us to provide the best solutions tailored to your specific needs, regardless of the technology. */,

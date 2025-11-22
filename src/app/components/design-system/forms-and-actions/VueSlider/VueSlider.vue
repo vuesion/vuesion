@@ -1,6 +1,6 @@
 <template>
   <vue-columns
-    :space="16"
+    space="16"
     role="slider"
     :aria-valuemax="max"
     :aria-valuemin="min"

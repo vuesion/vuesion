@@ -23,7 +23,7 @@ interface ColumnProps {
 }
 const props = withDefaults(defineProps<ColumnProps>(), {
   as: 'div',
-  padding: () => [0],
+  padding: () => ['0'] as Array<SpacingWithDirections>,
   alignX: null,
   alignY: null,
   width: () => ['auto'],

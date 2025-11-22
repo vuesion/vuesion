@@ -2,10 +2,10 @@
   <vue-content-block id="contact" as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.contactSection">
     <vue-stack space="32">
       <vue-stack space="8">
-        <vue-text look="hero" weight="black" gradient>
+        <vue-text look="hero" weight="extra-bold" gradient>
           {{ $t('ContactSection.title' /* Ready to Elevate Your Project? */) }}
         </vue-text>
-        <vue-text look="description" color="inverse-high">
+        <vue-text look="description-md" color="inverse-high">
           {{
             $t(
               'ContactSection.description' /* Get in touch with us today to discuss how we can help you achieve your project goals. */,

@@ -30,7 +30,7 @@
     <vue-text
       v-if="$slots.default && loading === false"
       :class="$style.text"
-      look="button"
+      :look="`button-${size}`"
       weight="semi-bold"
       as="span"
     >
@@ -79,7 +79,7 @@
     <vue-text
       v-if="$slots.default && loading === false"
       :class="$style.text"
-      look="button"
+      :look="`button-${size}`"
       weight="semi-bold"
       as="span"
     >

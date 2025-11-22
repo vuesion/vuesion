@@ -38,7 +38,7 @@
       </vue-text>
       <vue-text
         v-if="description"
-        look="support"
+        look="support-md"
         color="low"
         :class="[$style.description, hideLabel && 'sr-only']"
         as="div"

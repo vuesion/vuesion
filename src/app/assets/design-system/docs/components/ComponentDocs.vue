@@ -1,5 +1,5 @@
 <template>
-  <vue-card surface-color="low" padding="24" space="32" :class="[$style.ComponentDocs]">
+  <vue-card surface-color="low" padding="24" space="32" :class="[$style.componentDocs]">
     <vue-stack space="48">
       <vue-stack space="16">
         <vue-stack v-if="componentName || usage">
@@ -13,7 +13,7 @@
         </vue-stack>
       </vue-stack>
 
-      <vue-card surface-color="high">
+      <vue-card :surface-color="bodySurfaceColor" :space="bodySpace">
         <slot />
       </vue-card>
     </vue-stack>
@@ -24,24 +24,27 @@
 import VueText from '@/components/design-system/typography/VueText/VueText.vue';
 import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
 import VueCard from '@/components/design-system/surfaces-and-feedback/VueCard/VueCard.vue';
+import type { SurfaceColor } from '@/components/utils/prop-types/colors';
+import type { Spacing } from '@/components/utils/prop-types/spacings';
 
 interface ComponentDocsProps {
-  componentName?: string | null;
-  usage?: string | null;
-  suffix?: string | null;
+  componentName?: string;
+  usage?: string;
+  suffix?: string;
+  bodySurfaceColor?: SurfaceColor;
+  bodySpace?: Spacing | Array<Spacing>;
 }
 
 withDefaults(defineProps<ComponentDocsProps>(), {
-  componentName: null,
-  usage: null,
-  suffix: 'Usage',
+  bodySurfaceColor: 'high',
+  bodySpace: () => ['24'],
 });
 </script>
 
 <style lang="scss" module>
 @use 'assets/design-system/index' as ds;
 
-.ComponentDocs {
+.componentDocs {
   border-radius: ds.$space-24;
 }
 </style>

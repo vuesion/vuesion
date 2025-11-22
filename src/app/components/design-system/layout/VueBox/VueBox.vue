@@ -21,7 +21,7 @@ interface BoxProps {
 }
 const props = withDefaults(defineProps<BoxProps>(), {
   as: 'div',
-  padding: () => [0],
+  padding: () => ['0'] as Array<SpacingWithDirections>,
   alignX: null,
   alignY: null,
 });

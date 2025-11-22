@@ -1,7 +1,7 @@
 <template>
   <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.supportSection">
     <vue-stack space="64">
-      <vue-text look="h3" weight="black">
+      <vue-text look="h3" weight="bold">
         {{ $t('SupportSection.title' /* Join Our Community */) }}
       </vue-text>
 
@@ -11,12 +11,12 @@
             <vue-columns
               space="16"
               align-y="center"
-              :padding="['0 0 8 0', '0 0 8 0', 0]"
+              :padding="['0 0 8 0', '0 0 8 0', '0']"
               stack-phone
               stack-tablet-portrait
               :class="$style.item"
             >
-              <vue-column no-grow no-shrink :padding="[16, 16, 0]">
+              <vue-column no-grow no-shrink :padding="['16', '16', '0']">
                 <nuxt-img alt="Discord" src="/demo/discord.png" preload format="webp" quality="80" loading="lazy" />
               </vue-column>
               <vue-column :padding="['0 8', '0 8', '0 0 0 8']">
@@ -40,12 +40,12 @@
             <vue-columns
               space="16"
               align-y="center"
-              :padding="['0 0 8 0', '0 0 8 0', 0]"
+              :padding="['0 0 8 0', '0 0 8 0', '0']"
               stack-phone
               stack-tablet-portrait
               :class="$style.item"
             >
-              <vue-column no-grow no-shrink :padding="[16, 16, 0]">
+              <vue-column no-grow no-shrink :padding="['16', '16', '0']">
                 <nuxt-img alt="Github" src="/demo/github.png" preload format="webp" quality="80" loading="lazy" />
               </vue-column>
               <vue-column :padding="['0 8', '0 8', '0 0 0 8']">
@@ -69,12 +69,12 @@
             <vue-columns
               space="16"
               align-y="center"
-              :padding="['0 0 8 0', '0 0 8 0', 0]"
+              :padding="['0 0 8 0', '0 0 8 0', '0']"
               stack-phone
               stack-tablet-portrait
               :class="$style.item"
             >
-              <vue-column no-grow no-shrink :padding="[16, 16, 0]">
+              <vue-column no-grow no-shrink :padding="['16', '16', '0']">
                 <nuxt-img alt="WRLD" src="/demo/wrld.png" preload format="webp" quality="80" loading="lazy" />
               </vue-column>
               <vue-column :padding="['0 8', '0 8', '0 0 0 8']">
@@ -98,12 +98,12 @@
             <vue-columns
               space="16"
               align-y="center"
-              :padding="['0 0 8 0', '0 0 8 0', 0]"
+              :padding="['0 0 8 0', '0 0 8 0', '0']"
               stack-phone
               stack-tablet-portrait
               :class="$style.item"
             >
-              <vue-column no-grow no-shrink :padding="[16, 16, 0]">
+              <vue-column no-grow no-shrink :padding="['16', '16', '0']">
                 <nuxt-img
                   alt="vuesion docus"
                   src="/demo/vuesion.png"

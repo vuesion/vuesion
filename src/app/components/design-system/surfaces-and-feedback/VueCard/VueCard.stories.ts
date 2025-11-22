@@ -74,7 +74,7 @@ const Template: StoryFn = (args) => ({
         </vue-column>
         <vue-column>
           <vue-stack space="0" align-y="between">
-            <vue-text look="medium-title" color="high" weight="semi-bold">
+            <vue-text look="title-md" color="high" weight="semi-bold">
               Heading
             </vue-text>
             <vue-text color="medium">

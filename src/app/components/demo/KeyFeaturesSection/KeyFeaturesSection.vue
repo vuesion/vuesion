@@ -5,7 +5,7 @@
     :class="$style.keyFeaturesSection"
   >
     <vue-stack space="32">
-      <vue-text look="h3" weight="black">
+      <vue-text look="h3" weight="bold">
         {{ $t('KeyFeaturesSection.title' /* Key Features */) }}
       </vue-text>
 

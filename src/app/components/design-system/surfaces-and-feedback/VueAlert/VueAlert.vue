@@ -10,8 +10,8 @@
     </vue-column>
     <vue-column>
       <vue-stack space="4">
-        <vue-text look="support" weight="semi-bold" :color="type">{{ title }}</vue-text>
-        <vue-text look="support" :color="type">{{ text }}</vue-text>
+        <vue-text look="support-md" weight="semi-bold" :color="type">{{ title }}</vue-text>
+        <vue-text look="support-md" :color="type">{{ text }}</vue-text>
       </vue-stack>
     </vue-column>
   </vue-columns>

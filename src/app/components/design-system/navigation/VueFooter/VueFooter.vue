@@ -3,7 +3,7 @@
     <vue-box as="footer" :padding="slim ? ['48 0', '48 0', '48 0'] : ['24 0', '24 0', '64 0']">
       <vue-stack space="32" :padding="['0 16', '0 16', '0 32']">
         <vue-stack v-if="slim === false" space="48">
-          <vue-columns :space="[24, 24, 64]" stack-phone stack-tablet-portrait align-x="end">
+          <vue-columns :space="['24', '24', '64']" stack-phone stack-tablet-portrait align-x="end">
             <!--            <vue-column>-->
             <!--              <vue-stack :space="[4, 8, 16]">-->
             <!--                <vue-text look="h6" color="medium" weight="semi-bold">Solutions</vue-text>-->
@@ -87,7 +87,7 @@
             </vue-inline>
           </vue-column>
 
-          <vue-columns :space="[24, 24, 64]" align-y="center" stack-phone stack-tablet-portrait>
+          <vue-columns :space="['24', '24', '64']" align-y="center" stack-phone stack-tablet-portrait>
             <vue-column>
               <vue-inline :align-x="['center']" space="48">
                 <nuxt-link to="/services">

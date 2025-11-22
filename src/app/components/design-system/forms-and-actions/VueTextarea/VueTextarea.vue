@@ -44,7 +44,7 @@
     />
 
     <vue-text
-      look="support"
+      look="support-md"
       :color="errors.length > 0 ? 'danger' : 'low'"
       :class="[$style.description, hideDescription && 'sr-only']"
     >

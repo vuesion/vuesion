@@ -17,18 +17,12 @@ const Template: StoryFn = (args) => ({
   setup() {
     return { args };
   },
-  template: `<component-docs
-      component-name="Hero Icons"
-      usage="Filled ( 20 x 20 )"
-      suffix=""
-  >
+  template: `<component-docs component-name="Iconography" usage="Feather Icons.">
       <icon-list v-bind="args"/>
   </component-docs>`,
 });
 
 export const Iconography = {
   render: Template,
-  args: {
-    showIcons: false,
-  },
+  args: {},
 };

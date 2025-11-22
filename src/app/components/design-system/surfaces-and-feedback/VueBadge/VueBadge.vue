@@ -1,7 +1,7 @@
 <template>
   <vue-text
     :class="[$style.vueBadge, $style[status], icon && $style.hasIcon]"
-    look="support"
+    look="support-md"
     weight="semi-bold"
     @click="$emit('click', $event)"
   >

@@ -33,16 +33,12 @@ const Template: StoryFn = () => ({
         <tr>
           <th>SPACING TOKEN</th>
           <th>PIXEL</th>
-          <th>PURPOSE</th>
-          <th></th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="spacing in spacings">
           <td width="300px">space-{{spacing}}</td>
-          <td>{{spacing}} px</td>
-          <td></td>
-          <td><div :style="{ width: spacing+'px', height: spacing+'px', background: 'var(--surface-inverse-high)' }" /></td>
+          <td>{{spacing}}px</td>
         </tr>
         </tbody>
       </table>

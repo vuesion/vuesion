@@ -10,7 +10,7 @@
         :style="{ background: color.hex, color: color.color }"
         :class="$style.colorTile"
       >
-        <vue-text look="support" align-x="center">
+        <vue-text look="support-md" align-x="center">
           {{ color.name }}
           <br />
           ({{ color.hex }})

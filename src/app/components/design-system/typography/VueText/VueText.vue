@@ -13,7 +13,7 @@ import type { FontWeight, Alignment, TextColor, TextStyle } from '@/components/u
 import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
 import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
 
-type TextTag = 'span' | 'p' | 'label' | 'strong' | 'em' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'a';
+type TextTag = 'span' | 'p' | 'label' | 'strong' | 'pre' | 'em' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'a';
 
 interface TextProps {
   as?: TextTag;
@@ -380,6 +380,10 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     &.align-ld-justify {
       text-align: justify;
     }
+  }
+
+  i {
+    vertical-align: middle;
   }
 }
 </style>

@@ -1,16 +1,16 @@
 <template>
   <vue-content-block as="section" :padding="['32 16 16 16', '32 16', '64 32']" :class="$style.vuesionPlusSection">
-    <vue-stack :space="[32, 32, 64]" align-x="center">
-      <vue-text look="h3" weight="black">
+    <vue-stack :space="['32', '32', '64']" align-x="center">
+      <vue-text look="h3" weight="bold">
         {{ $t('VuesionPlusSection.title' /* Discover Vuesion+ Components */) }}
       </vue-text>
 
-      <vue-stack :space="[32]">
-        <vue-columns stack-phone stack-tablet-portrait :space="[32]">
+      <vue-stack space="32">
+        <vue-columns stack-phone stack-tablet-portrait space="32">
           <vue-column :width="['full', 'full', '5/10']" no-grow>
             <vue-stack space="12" :class="$style.component">
               <vue-stack space="4">
-                <vue-text look="h5" weight="black">
+                <vue-text look="h5" weight="bold">
                   {{ $t('VuesionPlusSection.datatable.title' /* Datatable */) }}.
                 </vue-text>
 
@@ -47,7 +47,7 @@
           <vue-column :width="['full', 'full', '5/10']" no-grow>
             <vue-stack space="12" :class="$style.component">
               <vue-stack space="4">
-                <vue-text look="h5" weight="black">
+                <vue-text look="h5" weight="bold">
                   {{ $t('VuesionPlusSection.dateComponents.title' /* Date Components */) }}.
                 </vue-text>
 
@@ -82,11 +82,11 @@
             </vue-stack>
           </vue-column>
         </vue-columns>
-        <vue-columns stack-phone stack-tablet-portrait :space="[32]">
+        <vue-columns stack-phone stack-tablet-portrait space="32">
           <vue-column :width="['full', 'full', '5/10']" no-grow>
             <vue-stack space="12" :class="$style.component">
               <vue-stack space="4">
-                <vue-text look="h5" weight="black">
+                <vue-text look="h5" weight="bold">
                   {{ $t('VuesionPlusSection.currencyInput.title' /* Currency Input */) }}.
                 </vue-text>
 
@@ -123,7 +123,7 @@
           <vue-column :width="['full', 'full', '5/10']" no-grow>
             <vue-stack space="12" :class="$style.component">
               <vue-stack space="4">
-                <vue-text look="h5" weight="black">
+                <vue-text look="h5" weight="bold">
                   {{ $t('VuesionPlusSection.autocomplete.title' /* Autocomplete */) }}.
                 </vue-text>
 
@@ -254,7 +254,7 @@
 
         <vue-stack space="12" :class="$style.component">
           <vue-stack space="4">
-            <vue-text look="h5" weight="black">
+            <vue-text look="h5" weight="bold">
               {{ $t('VuesionPlusSection.bundle.title' /* Vuesion+ Component Bundle */) }}.
             </vue-text>
 

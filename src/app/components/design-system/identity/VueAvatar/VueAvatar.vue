@@ -7,8 +7,8 @@
     <vue-text
       v-if="!src && !icon"
       color="high"
-      :look="size === 'sm' ? 'label' : size === 'md' ? 'description' : 'h4'"
-      :weight="size === 'lg' ? 'black' : 'semi-bold'"
+      :look="size === 'sm' ? 'label' : size === 'md' ? 'description-md' : 'h4'"
+      :weight="size === 'lg' ? 'extra-bold' : 'semi-bold'"
       uppercase
     >
       {{ initials }}

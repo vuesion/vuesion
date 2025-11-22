@@ -1,64 +1,32 @@
 <template>
-  <vue-stack space="16" :class="$style.colorTokensSection">
-    <vue-stack space="10">
-      <vue-text color="high" look="h1" weight="black">
-        {{ title }}
-      </vue-text>
-      <vue-text look="large-description" color="medium">
-        {{ description }}
-      </vue-text>
-    </vue-stack>
-
-    <vue-tiles space="0" :columns="[1, 2, 3]">
-      <vue-box
-        v-for="(column, idx) in columns"
-        :key="idx"
-        :padding="['16', '48 24']"
-        :class="column.dark && $style.dark"
-      >
-        <vue-stack>
-          <token-item
-            v-for="(token, tokenidx) in column.tokens"
-            :key="`${token.cssVar}-${tokenidx}`"
-            :figma="token.figmaVar"
-            :css="token.cssVar"
-            :circle-color="token.circleColor"
-            :small-circle-color="token.smallCircleColor"
-            :palette="token.paletteColor"
-            :inverse="column.dark"
-            :elevation="1"
-          />
-        </vue-stack>
-      </vue-box>
+  <vue-stack space="16">
+    <vue-tiles space="8" :columns="[1, 2]">
+      <vue-stack v-for="(column, idx) in columns" :key="idx" space="8">
+        <token-item
+          v-for="(token, tokenidx) in column.tokens"
+          :key="`${token.cssVar}-${tokenidx}`"
+          :figma="token.figmaVar"
+          :css="token.cssVar"
+          :circle-color="token.circleColor"
+          :small-circle-color="token.smallCircleColor"
+          :palette="token.paletteColor"
+          :inverse="column.dark"
+          :elevation="token.elevation"
+          :focused="token.focused"
+        />
+      </vue-stack>
     </vue-tiles>
   </vue-stack>
 </template>
 
 <script setup lang="ts">
-import VueText from '@/components/design-system/typography/VueText/VueText.vue';
 import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
 import VueTiles from '@/components/design-system/layout/VueTiles/VueTiles.vue';
-import VueBox from '@/components/design-system/layout/VueBox/VueBox.vue';
 import TokenItem from '@/assets/design-system/docs/components/TokenItem.vue';
 
 interface Props {
-  title?: string | null;
-  description?: string | null;
   columns?: Array<any>;
 }
 
 defineProps<Props>();
 </script>
-
-<style lang="scss" module>
-@use 'assets/design-system/index' as ds;
-
-.colorTokensSection {
-  .dark {
-    border-radius: ds.$card-border-radius;
-    background: var(--bg-inverse-high);
-    height: max-content;
-    box-shadow: var(--elevation-4);
-  }
-}
-</style>

@@ -17,10 +17,11 @@ code {
 // vue-icon global style
 i {
   display: inline-flex;
-  height: ds.$text-2;
-  width: ds.$text-2;
+  height: ds.$font-size-16;
+  width: ds.$font-size-16;
   justify-content: center;
   align-items: center;
+  aspect-ratio: 1;
 
   svg {
     height: inherit;
@@ -85,6 +86,33 @@ img:not([alt]) {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.line-clamp-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 }
 
 // MODAL-BACKDROP

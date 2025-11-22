@@ -33,7 +33,7 @@
       :id="'custom-' + id"
       ref="triggerRef"
       space="0"
-      :padding="leadingIcon ? 0 : '0 0 0 8'"
+      :padding="leadingIcon ? '0' : '0 0 0 8'"
       align-y="center"
       :data-testid="'custom-' + id"
       role="combobox"
@@ -81,7 +81,7 @@
     </vue-columns>
 
     <vue-text
-      look="support"
+      look="support-md"
       :color="errors.length > 0 ? 'danger' : 'low'"
       :class="[$style.description, hideDescription && 'sr-only']"
     >

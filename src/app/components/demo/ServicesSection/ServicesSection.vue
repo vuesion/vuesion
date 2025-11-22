@@ -1,12 +1,12 @@
 <template>
   <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.servicesSection">
     <vue-stack space="64">
-      <vue-text look="h3" weight="black">
+      <vue-text look="h3" weight="bold">
         {{ $t('ServicesSection.title' /* Vuesion Services for every Stage of your Business */) }}
       </vue-text>
 
       <vue-stack space="32">
-        <vue-columns :space="[16, 16, 0]" stack-phone stack-tablet-portrait :class="$style.benefit">
+        <vue-columns :space="['16', '16', '0']" stack-phone stack-tablet-portrait :class="$style.benefit">
           <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-x="center">
             <svg xmlns="http://www.w3.org/2000/svg" width="442" height="300" viewBox="0 0 442 300" fill="none">
               <g clip-path="url(#a)">
@@ -107,11 +107,11 @@
             </svg>
           </vue-column>
           <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-y="center">
-            <vue-stack space="4" :padding="[0, 0, '0 0 0 24']">
-              <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
+            <vue-stack space="4" :padding="['0', '0', '0 0 0 24']">
+              <vue-text look="h4" weight="bold" :align-x="['start', 'start', 'justify']">
                 {{ $t('ServicesSection.Benefit1.title' /* Tailored strategies to generate and screen ideas. */) }}
               </vue-text>
-              <vue-text look="description" color="medium" :align-x="['start', 'start', 'justify']">
+              <vue-text look="description-md" color="medium" :align-x="['start', 'start', 'justify']">
                 {{
                   $t(
                     'ServicesSection.Benefit1.description' /* We help identify innovative ideas and evaluate their feasibility and alignment with business goals, ensuring a solid foundation for product development. */,
@@ -122,7 +122,7 @@
           </vue-column>
         </vue-columns>
         <vue-columns
-          :space="[16, 16, 0]"
+          :space="['16', '16', '0']"
           stack-phone
           stack-tablet-portrait
           :reverse="[true, true, false]"
@@ -130,10 +130,10 @@
         >
           <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-y="center">
             <vue-stack space="4" padding="0 24 0 0">
-              <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
+              <vue-text look="h4" weight="bold" :align-x="['start', 'start', 'justify']">
                 {{ $t('ServicesSection.Benefit2.title' /* User research and feasibility studies. */) }}
               </vue-text>
-              <vue-text look="description" color="medium" :align-x="['start', 'start', 'justify']">
+              <vue-text look="description-md" color="medium" :align-x="['start', 'start', 'justify']">
                 {{
                   $t(
                     'ServicesSection.Benefit2.description' /* We conduct thorough user research to understand customer needs and preferences, providing a comprehensive feasibility study for your product concept. */,
@@ -270,7 +270,7 @@
             </svg>
           </vue-column>
         </vue-columns>
-        <vue-columns :space="[16, 16, 0]" stack-phone stack-tablet-portrait :class="$style.benefit">
+        <vue-columns :space="['16', '16', '0']" stack-phone stack-tablet-portrait :class="$style.benefit">
           <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-x="center">
             <svg xmlns="http://www.w3.org/2000/svg" width="408" height="300" viewBox="0 0 408 300" fill="none">
               <g clip-path="url(#a)">
@@ -400,11 +400,11 @@
             </svg>
           </vue-column>
           <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-y="center">
-            <vue-stack space="4" :padding="[0, 0, '0 0 0 24']">
-              <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
+            <vue-stack space="4" :padding="['0', '0', '0 0 0 24']">
+              <vue-text look="h4" weight="bold" :align-x="['start', 'start', 'justify']">
                 {{ $t('ServicesSection.Benefit3.title' /* Fully functional concept validation. */) }}
               </vue-text>
-              <vue-text look="description" color="medium" :align-x="['start', 'start', 'justify']">
+              <vue-text look="description-md" color="medium" :align-x="['start', 'start', 'justify']">
                 {{
                   $t(
                     'ServicesSection.Benefit3.description' /* We create fully functional prototypes to validate concepts and ensure they meet user needs and technical requirements. */,
@@ -415,7 +415,7 @@
           </vue-column>
         </vue-columns>
         <vue-columns
-          :space="[16, 16, 0]"
+          :space="['16', '16', '0']"
           stack-phone
           stack-tablet-portrait
           :reverse="[true, true, false]"
@@ -423,10 +423,10 @@
         >
           <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-y="center">
             <vue-stack space="4" padding="0 24 0 0">
-              <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
+              <vue-text look="h4" weight="bold" :align-x="['start', 'start', 'justify']">
                 {{ $t('ServicesSection.Benefit4.title' /* Risk assessment. */) }}
               </vue-text>
-              <vue-text look="description" color="medium" :align-x="['start', 'start', 'justify']">
+              <vue-text look="description-md" color="medium" :align-x="['start', 'start', 'justify']">
                 {{
                   $t(
                     'ServicesSection.Benefit4.description' /* We perform detailed risk assessments to identify potential challenges and develop mitigation strategies, ensuring a smoother product development journey. */,
@@ -525,7 +525,7 @@
             </svg>
           </vue-column>
         </vue-columns>
-        <vue-columns :space="[16, 16, 0]" stack-phone stack-tablet-portrait :class="$style.benefit">
+        <vue-columns :space="['16', '16', '0']" stack-phone stack-tablet-portrait :class="$style.benefit">
           <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-x="center" align-y="center">
             <svg xmlns="http://www.w3.org/2000/svg" width="388" height="258" viewBox="0 0 388 258" fill="none">
               <g clip-path="url(#a)">
@@ -644,12 +644,12 @@
             </svg>
           </vue-column>
           <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-y="center">
-            <vue-stack space="32" :padding="[0, 0, '16 0 16 24']">
+            <vue-stack space="32" :padding="['0', '0', '16 0 16 24']">
               <vue-stack space="4">
-                <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
+                <vue-text look="h4" weight="bold" :align-x="['start', 'start', 'justify']">
                   {{ $t('ServicesSection.Benefit5.title' /* Minimum viable products. */) }}
                 </vue-text>
-                <vue-text look="description" color="medium" :align-x="['start', 'start', 'justify']">
+                <vue-text look="description-md" color="medium" :align-x="['start', 'start', 'justify']">
                   {{
                     $t(
                       'ServicesSection.Benefit5.description' /* We develop MVPs to test the market with a functional product that includes only the core features, allowing for faster feedback and iteration. */,
@@ -658,10 +658,10 @@
                 </vue-text>
               </vue-stack>
               <vue-stack space="4">
-                <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
+                <vue-text look="h4" weight="bold" :align-x="['start', 'start', 'justify']">
                   {{ $t('ServicesSection.Benefit6.title' /* Enhancing productivity through process optimization. */) }}
                 </vue-text>
-                <vue-text look="description" color="medium" :align-x="['start', 'start', 'justify']">
+                <vue-text look="description-md" color="medium" :align-x="['start', 'start', 'justify']">
                   {{
                     $t(
                       'ServicesSection.Benefit6.description' /* We facilitate effective communication and collaboration across different teams, optimizing workflows and enhancing productivity. */,
@@ -673,7 +673,7 @@
           </vue-column>
         </vue-columns>
         <vue-columns
-          :space="[16, 16, 0]"
+          :space="['16', '16', '0']"
           stack-phone
           stack-tablet-portrait
           :reverse="[true, true, false]"
@@ -681,14 +681,14 @@
         >
           <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink align-y="center">
             <vue-stack space="4" padding="0 24 0 0">
-              <vue-text look="h4" weight="black" :align-x="['start', 'start', 'justify']">
+              <vue-text look="h4" weight="bold" :align-x="['start', 'start', 'justify']">
                 {{
                   $t(
                     'ServicesSection.Benefit7.title' /* Technical SEO, performance optimization, and security best practices. */,
                   )
                 }}
               </vue-text>
-              <vue-text look="description" color="medium" :align-x="['start', 'start', 'justify']">
+              <vue-text look="description-md" color="medium" :align-x="['start', 'start', 'justify']">
                 {{
                   $t(
                     'ServicesSection.Benefit7.description' /* We ensure your product is ready for market launch with optimized performance, robust security measures, and enhanced visibility through technical SEO. */,

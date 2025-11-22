@@ -1,9 +1,9 @@
 <template>
   <vue-content-block as="main" :class="$style.page">
-    <vue-stack align-x="center" :space="48">
+    <vue-stack align-x="center" space="48">
       <vue-stack align-x="center">
-        <vue-stack :space="4" align-x="center">
-          <vue-text look="h1" weight="semi-bold">{{ error.statusCode }}</vue-text>
+        <vue-stack space="4" align-x="center">
+          <vue-text look="h1" weight="bold">{{ error.statusCode }}</vue-text>
           <vue-text weight="semi-bold" align-x="center">{{ error.message }}</vue-text>
           <DevOnly>
             <vue-text as="pre" align-x="center" :class="$style.stack">{{ error.stack }}</vue-text>
@@ -35,6 +35,12 @@ useHead({ title: `${props.error.statusCode} ${props.error.message}` });
 
 <style lang="scss" module>
 @use 'assets/design-system/index' as ds;
+@use 'assets/alignment';
+@use 'assets/global';
+@use 'assets/layout';
+@use 'assets/reset';
+@use 'assets/spacing';
+@use 'assets/typography';
 
 .page {
   height: 100vh;

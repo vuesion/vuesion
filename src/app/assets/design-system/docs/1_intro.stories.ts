@@ -17,9 +17,9 @@ const Template = () => ({
   },
   template: `<vue-card>
   <vue-stack space="16">
-    <vue-text look="large-title" weight="semi-bold">Design System</vue-text>
-    <vue-text look="description">All necessary files are located under <vue-text look="description" weight="semi-bold">./src/assets/design-system.</vue-text></vue-text>
-    <vue-text as="p" look="description">
+    <vue-text look="title-lg" weight="semi-bold">Design System</vue-text>
+    <vue-text color="low" italic>All necessary files are located under <vue-text look="description-sm" weight="semi-bold">./src/assets/design-system.</vue-text></vue-text>
+    <vue-text>
       Achieving a unique Brand Identity with a UI toolkit that is already build on top of<br/>
       another Design System (e.g. Material Design, Bootstrap, Ant) isn't easy and<br/>
       the same applies to consistency, especially by combining multiple UI libraries.
@@ -36,6 +36,6 @@ const Template = () => ({
   </vue-card>`,
 });
 
-export const DesignSystem = {
+export const Intro = {
   render: Template,
 };

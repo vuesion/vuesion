@@ -11,7 +11,7 @@
       @keydown.space.enter.prevent.stop="$emit('click', $event)"
     >
       <vue-column>
-        <vue-text color="low" look="support" weight="semi-bold" uppercase>{{ label }}</vue-text>
+        <vue-text color="low" look="support-md" weight="semi-bold" uppercase>{{ label }}</vue-text>
       </vue-column>
 
       <vue-column v-if="icon" no-grow>
@@ -55,7 +55,7 @@ interface SidebarGroupEmits {
 withDefaults(defineProps<SidebarGroupProps>(), {
   as: 'ol',
   icon: undefined,
-  itemSpace: 4,
+  itemSpace: '4',
 });
 defineEmits<SidebarGroupEmits>();
 

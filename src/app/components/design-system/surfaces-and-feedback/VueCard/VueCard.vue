@@ -7,7 +7,7 @@
     :align-y="alignY"
     :tabindex="isInteractive ? 0 : undefined"
     :aria-disabled="disabled || undefined"
-    :class="[$style.VueCard, $style[surfaceColor], isInteractive && $style.interactive, disabled && $style.disabled]"
+    :class="[$style.vueCard, $style[surfaceColor], isInteractive && $style.interactive, disabled && $style.disabled]"
     @click="isInteractive && !disabled && undefined"
   >
     <slot />
@@ -39,8 +39,8 @@ interface VueCardProps {
 const props = withDefaults(defineProps<VueCardProps>(), {
   as: 'article',
   surfaceColor: 'high',
-  padding: () => [16],
-  space: () => [0],
+  padding: () => ['16'] as Array<SpacingWithDirections>,
+  space: () => ['0'] as Array<Spacing>,
 });
 
 const isInteractive = computed(() => props.interactive && !props.disabled);
@@ -49,7 +49,7 @@ const isInteractive = computed(() => props.interactive && !props.disabled);
 <style lang="scss" module>
 @use 'assets/design-system/index' as ds;
 
-.VueCard {
+.vueCard {
   border-radius: ds.$space-16;
 
   &.high {

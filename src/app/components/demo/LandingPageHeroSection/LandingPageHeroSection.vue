@@ -4,10 +4,10 @@
       <vue-column :width="['full', 'full', '5/10']" no-grow no-shrink>
         <vue-stack :padding="['32 16', '32 16', '64 32']" align-y="between" :class="$style.leftCol">
           <vue-stack space="32" padding="0 32 0 0">
-            <vue-text look="hero" weight="black" gradient>
+            <vue-text look="hero" weight="extra-bold" gradient>
               {{ $t('LandingPageHeroSection.headline' /* Build Faster, Collaborate Better with Vuesion. */) }}
             </vue-text>
-            <vue-text look="large-description" color="inverse-high">
+            <vue-text look="description-lg" color="inverse-high">
               {{
                 $t(
                   'LandingPageHeroSection.subheadline' /* Empower your Product Team with a powerful Boilerplate designed for seamless Collaboration and unmatched Efficiency. */,
@@ -271,6 +271,7 @@ const $style = useCssModule();
 
 <style lang="scss" module>
 @use 'assets/design-system/index' as ds;
+
 :global {
   @include ds.add-theme-variable(
     'landing-hero-link-color',

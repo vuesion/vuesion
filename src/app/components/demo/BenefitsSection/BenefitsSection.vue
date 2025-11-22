@@ -5,10 +5,10 @@
     :class="$style.benefitsSection"
   >
     <vue-stack space="32">
-      <vue-columns stack-phone stack-tablet-portrait :space="[32, 32, 80]">
+      <vue-columns stack-phone stack-tablet-portrait :space="['32', '32', '80']">
         <vue-column :width="['full', 'full', '5/10']" no-grow>
           <vue-stack space="64">
-            <vue-text look="hero" weight="black" gradient>
+            <vue-text look="hero" weight="extra-bold" gradient>
               {{ $t('BenefitsSection.title' /* Designed for Teams and Solopreneurs */) }}
             </vue-text>
 
@@ -26,7 +26,7 @@
         <vue-column :width="['full', 'full', '5/10']" no-grow>
           <vue-stack padding="0 16 0 0" align-y="between">
             <vue-stack space="10">
-              <vue-text color="inverse-high" weight="semi-bold" look="large-title">
+              <vue-text color="inverse-high" weight="semi-bold" look="title-lg">
                 {{ $t('BenefitsSection.Benefit1.title' /* Accelerate Development */) }}
               </vue-text>
               <vue-text color="inverse-medium">
@@ -38,7 +38,7 @@
               </vue-text>
             </vue-stack>
             <vue-stack space="10">
-              <vue-text color="inverse-high" weight="semi-bold" look="large-title">
+              <vue-text color="inverse-high" weight="semi-bold" look="title-lg">
                 {{ $t('BenefitsSection.Benefit2.title' /* Improve Collaboration */) }}
               </vue-text>
               <vue-text color="inverse-medium">
@@ -50,7 +50,7 @@
               </vue-text>
             </vue-stack>
             <vue-stack space="10">
-              <vue-text color="inverse-high" weight="semi-bold" look="large-title">
+              <vue-text color="inverse-high" weight="semi-bold" look="title-lg">
                 {{ $t('BenefitsSection.Benefit3.title' /* Reduce Maintenance Overhead */) }}
               </vue-text>
               <vue-text color="inverse-medium">
@@ -62,7 +62,7 @@
               </vue-text>
             </vue-stack>
             <vue-stack space="10">
-              <vue-text color="inverse-high" weight="semi-bold" look="large-title">
+              <vue-text color="inverse-high" weight="semi-bold" look="title-lg">
                 {{ $t('BenefitsSection.Benefit4.title' /* Boost Team Productivity */) }}
               </vue-text>
               <vue-text color="inverse-medium">

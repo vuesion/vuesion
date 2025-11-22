@@ -1,11 +1,11 @@
 <template>
   <vue-content-block as="section" :padding="['32 16', '32 16', '64 32']" :class="$style.testimonialsSection">
     <vue-stack space="32">
-      <vue-text look="h3" weight="black">
+      <vue-text look="h3" weight="bold">
         {{ $t('TestimonialsSection.title' /* What Our Users Say */) }}
       </vue-text>
 
-      <vue-columns stack-phone stack-tablet-portrait :space="[24, 24, 16]">
+      <vue-columns stack-phone stack-tablet-portrait :space="['24', '24', '16']">
         <vue-column :width="['full', 'full', '4/12']" no-grow>
           <vue-stack space="96" padding="16 16 48 16" :class="$style.testimonial">
             <nuxt-img
@@ -16,12 +16,12 @@
               quality="80"
               loading="lazy"
             />
-            <vue-stack :space="0" :class="$style.nameAndTitle">
+            <vue-stack :class="$style.nameAndTitle">
               <vue-text look="label" weight="semi-bold">Björn Schmidt</vue-text>
-              <vue-text look="support" color="low">CTO</vue-text>
+              <vue-text look="support-md" color="low">CTO</vue-text>
             </vue-stack>
 
-            <vue-text align-x="center" look="medium-title">
+            <vue-text align-x="center" look="title-md">
               “{{
                 $t(
                   'TestimonialsSection.testimonial1' /* Vuesion has drastically reduced our setup time and improved team collaboration. */,
@@ -40,12 +40,12 @@
               quality="80"
               loading="lazy"
             />
-            <vue-stack :space="0" :class="$style.nameAndTitle">
+            <vue-stack :class="$style.nameAndTitle">
               <vue-text look="label" weight="semi-bold">Abby Graham</vue-text>
-              <vue-text look="support" color="low">Software Engineer</vue-text>
+              <vue-text look="support-md" color="low">Software Engineer</vue-text>
             </vue-stack>
 
-            <vue-text align-x="center" look="description">
+            <vue-text align-x="center" look="description-md">
               “{{
                 $t(
                   'TestimonialsSection.testimonial2' /* The comprehensive feature set and robust testing framework make it our go-to boilerplate. */,
@@ -64,9 +64,9 @@
               quality="80"
               loading="lazy"
             />
-            <vue-stack :space="0" :class="$style.nameAndTitle">
+            <vue-stack :class="$style.nameAndTitle">
               <vue-text look="label" weight="semi-bold">Emily Chen</vue-text>
-              <vue-text look="support">UX Designer</vue-text>
+              <vue-text look="support-md">UX Designer</vue-text>
             </vue-stack>
 
             <vue-text align-x="center">
@@ -88,9 +88,9 @@
               quality="80"
               loading="lazy"
             />
-            <vue-stack :space="0" :class="$style.nameAndTitle">
+            <vue-stack :class="$style.nameAndTitle">
               <vue-text look="label" weight="semi-bold">Carlos Garcia</vue-text>
-              <vue-text look="support" color="low">UX Designer</vue-text>
+              <vue-text look="support-md" color="low">UX Designer</vue-text>
             </vue-stack>
 
             <vue-text align-x="center">

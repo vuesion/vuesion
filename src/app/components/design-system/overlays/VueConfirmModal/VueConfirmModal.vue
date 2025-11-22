@@ -46,7 +46,7 @@ interface ConfirmModalEmits {
   (e: 'close'): void;
 }
 withDefaults(defineProps<ConfirmModalProps>(), {
-  padding: () => [16],
+  padding: () => ['16'] as Array<SpacingWithDirections>,
   show: false,
   backdrop: true,
   disablePageScroll: false,

@@ -1,7 +1,7 @@
 <template>
   <vue-columns padding="0" align-x="between" :class="[$style.vuePagination, slim && $style.slim]">
     <vue-column no-grow>
-      <vue-inline :space="buttonsOnly ? 8 : 16" no-wrap align-y="center">
+      <vue-inline :space="buttonsOnly ? '8' : '16'" no-wrap align-y="center">
         <vue-icon-button
           :look="buttonLook"
           icon="chevron-left"
@@ -46,7 +46,7 @@
             :debounce="debounce"
             @blur="onDebouncedInput"
           />
-          <vue-text look="support" color="low">
+          <vue-text look="support-md" color="low">
             {{ $t('common.of' /* of */) }}&nbsp;{{ $n(pages, 'integerSingle') }}
           </vue-text>
         </vue-inline>
@@ -63,7 +63,7 @@
     </vue-column>
     <vue-column v-if="!slim && !buttonsOnly" no-grow>
       <vue-inline space="12" no-wrap align-y="center">
-        <vue-text look="support" color="low">
+        <vue-text look="support-md" color="low">
           {{ $n(numberOfRecords, 'integerSingle') }}&nbsp;{{ $t('common.Results' /* Results */) }}
         </vue-text>
         <vue-select

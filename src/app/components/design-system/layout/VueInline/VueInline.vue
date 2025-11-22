@@ -29,8 +29,8 @@ interface InlineProps {
 }
 const props = withDefaults(defineProps<InlineProps>(), {
   as: 'div',
-  padding: () => [0],
-  space: () => [0],
+  padding: () => ['0'] as Array<SpacingWithDirections>,
+  space: () => ['0'] as Array<Spacing>,
   alignX: null,
   alignY: null,
   reverse: null,
