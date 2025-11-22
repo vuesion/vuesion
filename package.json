@@ -69,7 +69,7 @@
     "@pinia/nuxt": "0.11.3",
     "@prisma/client": "6.16.3",
     "@vee-validate/rules": "4.15.1",
-    "@vueuse/core": "13.9.0",
+    "@vueuse/core": "14.0.0",
     "animejs": "4.2.2",
     "bcrypt": "6.0.0",
     "colorjs.io": "0.5.2",
