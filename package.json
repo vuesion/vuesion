@@ -91,7 +91,7 @@
     "@eslint/js": "9.39.1",
     "@nuxt/devtools": "3.1.0",
     "@nuxt/eslint": "1.10.0",
-    "@nuxt/image": "1.11.0",
+    "@nuxt/image": "2.0.0",
     "@nuxtjs/color-mode": "3.5.2",
     "@nuxtjs/html-validator": "2.1.0",
     "@nuxtjs/i18n": "10.2.1",
