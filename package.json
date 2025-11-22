@@ -80,7 +80,7 @@
     "full-icu": "1.5.0",
     "h3-compression": "0.3.2",
     "lodash-es": "4.17.21",
-    "marked": "16.3.0",
+    "marked": "17.0.1",
     "mitt": "3.0.1",
     "next-auth": "4.21.1",
     "pg": "8.16.3",
