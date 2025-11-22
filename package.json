@@ -89,7 +89,7 @@
     "@babel/core": "7.28.5",
     "@commitlint/config-conventional": "20.0.0",
     "@eslint/js": "9.39.1",
-    "@nuxt/devtools": "2.6.5",
+    "@nuxt/devtools": "3.1.0",
     "@nuxt/eslint": "1.10.0",
     "@nuxt/image": "1.11.0",
     "@nuxtjs/color-mode": "3.5.2",
