@@ -109,12 +109,3 @@ img:not([alt]) {
     z-index: 999;
   }
 }
-
-// TODO: demo, please remove
-@include ds.add-theme-variable(
-  'landing-hero-link-color',
-  (
-    'light': ds.palette-color-level('info', 4),
-    'dark': ds.palette-color-level('info', 6),
-  )
-);

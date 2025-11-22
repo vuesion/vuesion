@@ -10,12 +10,31 @@ import VueText from '@/components/design-system/typography/VueText/VueText.vue';
 import VueBox from '@/components/design-system/layout/VueBox/VueBox.vue';
 import VueInline from '@/components/design-system/layout/VueInline/VueInline.vue';
 import VueButton from '@/components/design-system/forms-and-actions/VueButton/VueButton.vue';
+import { BadgeStatusValues } from '@/components/utils/prop-types/components';
+import { SurfaceColorValues } from '@/components/utils/prop-types/colors';
+import { SpacingValues } from '@/components/utils/prop-types/spacings';
+import { FlexAlignValues, FlexJustifyValues } from '@/components/utils/prop-types/layout';
 
 export default {
   title: 'Design System Components/Surfaces and Feedback/Card',
   component: VueCard,
   argTypes: {
-    default: { table: { disable: true } },
+    surfaceColor: {
+      control: { type: 'select' },
+      options: SurfaceColorValues,
+    },
+    space: {
+      control: { type: 'select' },
+      options: SpacingValues,
+    },
+    alignX: {
+      control: { type: 'select' },
+      options: FlexAlignValues,
+    },
+    alignY: {
+      control: { type: 'select' },
+      options: FlexJustifyValues,
+    },
   },
 };
 
@@ -43,7 +62,7 @@ const Template: StoryFn = (args) => ({
       story="Display different variations of the card component."
       no-bg
   >
-  <vue-tiles :columns="[1, 2, 3, 4]">
+  <vue-tiles :columns="[1, 2, 3, 4]" space="16">
     <vue-card v-for="id in [1, 2, 3, 4]" :key="id" v-bind="args">
       <vue-columns space="16" align-y="center">
         <vue-column width="56px" no-grow v-if="id === 1 || id === 3">
@@ -85,7 +104,12 @@ export const Default = {
   render: Template,
 
   args: {
+    surfaceColor: 'high',
     padding: 16,
-    space: 24,
+    space: 8,
+    alignX: 'start',
+    alignY: 'between',
+    interactive: false,
+    disabled: false,
   },
 };

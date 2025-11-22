@@ -1,4 +1,4 @@
-@use 'design-system/mixins/mixins';
+@use 'design-system/index' as ds;
 
 // Display
 .block {
@@ -55,7 +55,7 @@
 }
 
 // flex direction
-@include mixins.media-min-max(phone) {
+@include ds.media-min-max(phone) {
   .flex-row {
     flex-direction: row;
   }
@@ -73,7 +73,7 @@
   }
 }
 
-@include mixins.media-min-max(tablet-portrait) {
+@include ds.media-min-max(tablet-portrait) {
   .flex-row-tp {
     flex-direction: row;
   }
@@ -91,7 +91,7 @@
   }
 }
 
-@include mixins.media-min-max(tablet-landscape) {
+@include ds.media-min-max(tablet-landscape) {
   .flex-row-tl {
     flex-direction: row;
   }
@@ -109,7 +109,7 @@
   }
 }
 
-@include mixins.media-min-max(small-desktop) {
+@include ds.media-min-max(small-desktop) {
   .flex-row-sd {
     flex-direction: row;
   }
@@ -127,7 +127,7 @@
   }
 }
 
-@include mixins.media-min(large-desktop) {
+@include ds.media-min(large-desktop) {
   .flex-row-ld {
     flex-direction: row;
   }
@@ -182,7 +182,7 @@
   }
 }
 
-@include mixins.media-min(tablet-portrait) {
+@include ds.media-min(tablet-portrait) {
   .w-tp-auto {
     width: auto;
   }
@@ -220,7 +220,7 @@
   }
 }
 
-@include mixins.media-min(tablet-landscape) {
+@include ds.media-min(tablet-landscape) {
   .w-tl-auto {
     width: auto;
   }
@@ -258,7 +258,7 @@
   }
 }
 
-@include mixins.media-min(small-desktop) {
+@include ds.media-min(small-desktop) {
   .w-sd-auto {
     width: auto;
   }
@@ -296,7 +296,7 @@
   }
 }
 
-@include mixins.media-min(large-desktop) {
+@include ds.media-min(large-desktop) {
   .w-ld-auto {
     width: auto;
   }
@@ -350,7 +350,7 @@
   }
 }
 
-@include mixins.media-min(tablet-portrait) {
+@include ds.media-min(tablet-portrait) {
   .grid-cols-tp-none {
     width: fit-content;
   }
@@ -362,7 +362,7 @@
   }
 }
 
-@include mixins.media-min(tablet-landscape) {
+@include ds.media-min(tablet-landscape) {
   .grid-cols-tl-none {
     width: fit-content;
   }
@@ -374,7 +374,7 @@
   }
 }
 
-@include mixins.media-min(small-desktop) {
+@include ds.media-min(small-desktop) {
   .grid-cols-sd-none {
     width: fit-content;
   }
@@ -386,7 +386,7 @@
   }
 }
 
-@include mixins.media-min(large-desktop) {
+@include ds.media-min(large-desktop) {
   .grid-cols-ld-none {
     width: fit-content;
   }
@@ -410,31 +410,31 @@
   border: 0;
 }
 
-@include mixins.media-max(phone) {
+@include ds.media-max(phone) {
   .hidden-p {
     display: none;
   }
 }
 
-@include mixins.media-min-max(tablet-portrait) {
+@include ds.media-min-max(tablet-portrait) {
   .hidden-tp {
     display: none;
   }
 }
 
-@include mixins.media-min-max(tablet-landscape) {
+@include ds.media-min-max(tablet-landscape) {
   .hidden-tl {
     display: none;
   }
 }
 
-@include mixins.media-min-max(small-desktop) {
+@include ds.media-min-max(small-desktop) {
   .hidden-sd {
     display: none;
   }
 }
 
-@include mixins.media-min(large-desktop) {
+@include ds.media-min(large-desktop) {
   .hidden-ld {
     display: none;
   }

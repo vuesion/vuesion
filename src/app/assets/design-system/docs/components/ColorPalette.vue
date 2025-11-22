@@ -1,14 +1,14 @@
 <template>
   <vue-stack space="0" align-x="start">
     <vue-tiles v-for="section in colorSections" :key="section.name" space="0" :columns="11">
-      <vue-box v-if="section.name !== 'neutral'" :style="{ width: '90px', aspectRatio: '1' }" />
+      <vue-box v-if="section.name !== 'neutral'" :class="$style.colorTile" />
       <vue-box
         v-for="color in section.colors"
         :key="color.hex"
         align-y="center"
         align-x="center"
-        padding="0"
-        :style="{ background: color.hex, color: color.color, width: '90px', aspectRatio: '1' }"
+        :style="{ background: color.hex, color: color.color }"
+        :class="$style.colorTile"
       >
         <vue-text look="support" align-x="center">
           {{ color.name }}
@@ -29,18 +29,22 @@ import VueTiles from '@/components/design-system/layout/VueTiles/VueTiles.vue';
 import VueBox from '@/components/design-system/layout/VueBox/VueBox.vue';
 import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
 
-const style = useCssModule();
+const $style = useCssModule();
 
 const colorSections = computed(() => {
   const sections: Record<string, Array<{ name: string; hex: string; color: string }>> = {};
   const arr: Array<{ name: string; colors: Array<{ name: string; hex: string; color: string }> }> = [];
 
-  Object.keys(style).forEach((key) => {
+  Object.keys($style).forEach((key) => {
+    if (['colorTile'].includes(key)) {
+      return;
+    }
+
     const split = key.split('-');
     const section = split.shift() ?? '';
     const name = split.join('-');
     const idx = parseInt(name.split('-')[1] ?? '', 10);
-    const c = new Color(style[key] ?? '');
+    const c = new Color($style[key] ?? '');
     const hex = c.to('srgb').toString({ format: 'hex' });
     const color = idx < 5 ? '#000' : '#fff';
 
@@ -127,5 +131,10 @@ const colorSections = computed(() => {
   danger-danger-8: ds.palette-color-level('danger', 8);
   danger-danger-9: ds.palette-color-level('danger', 9);
   danger-danger-10: ds.palette-color-level('danger', 10);
+}
+
+.colorTile {
+  aspect-ratio: 16/9;
+  padding: ds.$space-4 0;
 }
 </style>

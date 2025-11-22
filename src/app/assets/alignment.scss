@@ -1,4 +1,4 @@
-@use 'design-system/mixins/mixins';
+@use 'design-system/index' as ds;
 
 // justify
 .justify-start {
@@ -25,7 +25,7 @@
   justify-content: space-evenly;
 }
 
-@include mixins.media-min(tablet-portrait) {
+@include ds.media-min(tablet-portrait) {
   .justify-tp-start {
     justify-content: flex-start;
   }
@@ -51,7 +51,7 @@
   }
 }
 
-@include mixins.media-min(tablet-landscape) {
+@include ds.media-min(tablet-landscape) {
   .justify-tl-start {
     justify-content: flex-start;
   }
@@ -77,7 +77,7 @@
   }
 }
 
-@include mixins.media-min(small-desktop) {
+@include ds.media-min(small-desktop) {
   .justify-sd-start {
     justify-content: flex-start;
   }
@@ -103,7 +103,7 @@
   }
 }
 
-@include mixins.media-min(large-desktop) {
+@include ds.media-min(large-desktop) {
   .justify-ld-start {
     justify-content: flex-start;
   }
@@ -150,7 +150,7 @@
   align-items: stretch;
 }
 
-@include mixins.media-min(tablet-portrait) {
+@include ds.media-min(tablet-portrait) {
   .items-tp-start {
     align-items: flex-start;
   }
@@ -172,7 +172,7 @@
   }
 }
 
-@include mixins.media-min(tablet-landscape) {
+@include ds.media-min(tablet-landscape) {
   .items-tl-start {
     align-items: flex-start;
   }
@@ -194,7 +194,7 @@
   }
 }
 
-@include mixins.media-min(small-desktop) {
+@include ds.media-min(small-desktop) {
   .items-sd-start {
     align-items: flex-start;
   }
@@ -216,7 +216,7 @@
   }
 }
 
-@include mixins.media-min(large-desktop) {
+@include ds.media-min(large-desktop) {
   .items-ld-start {
     align-items: flex-start;
   }

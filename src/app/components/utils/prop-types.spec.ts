@@ -2,8 +2,8 @@ import { describe, test, expect } from 'vitest';
 import {
   FontWeightValues,
   AlignmentValues,
-  HorizontalAlignmentValues,
-  VerticalAlignmentValues,
+  FlexJustifyValues,
+  FlexAlignValues,
   SpacingValues,
   TextColorValues,
   TextStyleValues,
@@ -20,8 +20,8 @@ describe('prop-types', () => {
     expect(TextColorValues).not.toBeUndefined();
     expect(FontWeightValues).not.toBeUndefined();
     expect(AlignmentValues).not.toBeUndefined();
-    expect(HorizontalAlignmentValues).not.toBeUndefined();
-    expect(VerticalAlignmentValues).not.toBeUndefined();
+    expect(FlexJustifyValues).not.toBeUndefined();
+    expect(FlexAlignValues).not.toBeUndefined();
     expect(SpacingValues).not.toBeUndefined();
     expect(WidthValues).not.toBeUndefined();
     expect(ButtonStyleValues).not.toBeUndefined();

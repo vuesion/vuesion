@@ -116,10 +116,15 @@
   --elevation-3: 0px 4px 6px -4px rgb(0 0 0 / 10%), 0px 10px 15px -3px rgb(0 0 0 / 10%);
   --elevation-4: 0px 8px 10px -6px rgb(0 0 0 / 10%), 0px 20px 25px -5px rgb(0 0 0 / 10%);
 
+  --elevation-1-box: 0 1px 2px 0 rgba(255, 255, 255, 0.30) inset;
+  --elevation-1-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.10)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.20));
+  --elevation-2-box: 0 1px 2px 0 rgba(255, 255, 255, 0.30) inset;
+  --elevation-2-filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.10)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.20));
+  --elevation-3-box: 0 1px 2px 0 rgba(255, 255, 255, 0.30) inset;
+  --elevation-3-filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.10)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.20));
+
   /* A11y */
-  --focused:
-    0 0 0 #{spacings.$space-2} #{color-palette.palette-color-level('neutral', 0)},
-    0 0 0 #{spacings.$space-4} #{color-palette.palette-color-level('info', 3)};
+  --focused: 2px solid #{color-palette.palette-color-level('info', 3)};
 
   /* Animation Language */
   --transition-duration: 250ms;

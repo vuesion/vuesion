@@ -25,7 +25,7 @@ interface TilesProps {
 const props = withDefaults(defineProps<TilesProps>(), {
   as: 'div',
   padding: () => [0],
-  space: () => [16],
+  space: () => [0],
   verticalSpace: null,
   horizontalSpace: null,
   columns: () => [1, 2, 3, 4],
@@ -35,6 +35,7 @@ const responsiveHorizontalSpace = computed(() => mapPropToBreakpoints(props.hori
 const responsiveColumns = computed(() => mapPropToBreakpoints(props.columns));
 const cssClasses = computed(() => [
   'grid',
+  'w-full',
   ...getResponsiveCssClasses(null, responsiveVerticalSpace.value, 'gap-y'),
   ...getResponsiveCssClasses(null, responsiveHorizontalSpace.value, 'gap-x'),
   ...getResponsiveCssClasses(null, responsiveColumns.value, 'grid-cols'),

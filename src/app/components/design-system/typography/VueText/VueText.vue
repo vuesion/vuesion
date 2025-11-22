@@ -225,6 +225,14 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
     letter-spacing: ds.$letter-spacing-1;
   }
 
+  /* NEW Styles */
+
+  &.description-md {
+    font-size: 2rem;
+    line-height: 3rem;
+    letter-spacing: 0;
+  }
+
   // Colors
   &.info {
     color: var(--text-info);

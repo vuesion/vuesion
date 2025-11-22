@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import type { SpacingWithDirections, HorizontalAlignment, VerticalAlignment } from '@/components/utils/prop-types';
+import type { SpacingWithDirections, FlexJustify, FlexAlign } from '@/components/utils/prop-types';
 import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
 import { parseSpacingShorthand } from '@/components/utils/parse-spacing-shorthand';
 import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
@@ -16,12 +16,12 @@ import { getCssSpacingClasses } from '@/components/utils/get-css-spacing-classes
 interface BoxProps {
   as?: string;
   padding?: SpacingWithDirections | Array<SpacingWithDirections>;
-  alignX?: HorizontalAlignment | Array<HorizontalAlignment> | null;
-  alignY?: VerticalAlignment | Array<VerticalAlignment> | null;
+  alignX?: FlexJustify | Array<FlexJustify> | null;
+  alignY?: FlexAlign | Array<FlexAlign> | null;
 }
 const props = withDefaults(defineProps<BoxProps>(), {
   as: 'div',
-  padding: () => [16],
+  padding: () => [0],
   alignX: null,
   alignY: null,
 });

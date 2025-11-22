@@ -6,12 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type {
-  HorizontalAlignment,
-  SpacingWithDirections,
-  VerticalAlignment,
-  Width,
-} from '@/components/utils/prop-types';
+import type { FlexJustify, SpacingWithDirections, FlexAlign, Width } from '@/components/utils/prop-types';
 import VueBox from '@/components/design-system/layout/VueBox/VueBox.vue';
 import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
 import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
@@ -20,8 +15,8 @@ import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-c
 interface ColumnProps {
   as?: string;
   padding?: SpacingWithDirections | Array<SpacingWithDirections>;
-  alignX?: HorizontalAlignment | Array<HorizontalAlignment> | null;
-  alignY?: VerticalAlignment | Array<VerticalAlignment> | null;
+  alignX?: FlexJustify | Array<FlexJustify> | null;
+  alignY?: FlexAlign | Array<FlexAlign> | null;
   width?: string | Width | Array<Width>;
   noGrow?: boolean;
   noShrink?: boolean;

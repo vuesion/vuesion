@@ -271,6 +271,15 @@ const $style = useCssModule();
 
 <style lang="scss" module>
 @use 'assets/design-system/index' as ds;
+:global {
+  @include ds.add-theme-variable(
+    'landing-hero-link-color',
+    (
+      'light': ds.palette-color-level('info', 4),
+      'dark': ds.palette-color-level('info', 6),
+    )
+  );
+}
 
 .landingPageHeroSection {
   background-color: var(--surface-default-high);

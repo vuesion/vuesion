@@ -12,12 +12,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type {
-  HorizontalAlignment,
-  Spacing,
-  SpacingWithDirections,
-  VerticalAlignment,
-} from '@/components/utils/prop-types';
+import type { FlexJustify, Spacing, SpacingWithDirections, FlexAlign } from '@/components/utils/prop-types';
 import VueBox from '@/components/design-system/layout/VueBox/VueBox.vue';
 import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
 import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
@@ -27,13 +22,13 @@ interface StackProps {
   as?: string;
   padding?: SpacingWithDirections | Array<SpacingWithDirections>;
   space?: Spacing | Array<Spacing>;
-  alignX?: VerticalAlignment | Array<VerticalAlignment> | null;
-  alignY?: HorizontalAlignment | Array<HorizontalAlignment> | null;
+  alignX?: FlexAlign | Array<FlexAlign> | null;
+  alignY?: FlexJustify | Array<FlexJustify> | null;
 }
 const props = withDefaults(defineProps<StackProps>(), {
   as: 'div',
   padding: () => [0],
-  space: () => [16],
+  space: () => [0],
   alignX: null,
   alignY: null,
 });

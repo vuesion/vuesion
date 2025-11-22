@@ -1,40 +1,21 @@
 <template>
-  <vue-card :class="[noBg && $style.noBg]">
-    <vue-stack space="80">
+  <vue-card surface-color="low" padding="24" space="32" :class="[$style.ComponentDocs]">
+    <vue-stack space="48">
       <vue-stack space="16">
-        <vue-stack v-if="componentName && usage" space="8">
-          <vue-inline align-y="center" :space="[8, 24]">
-            <vue-text color="high" look="large-title" weight="black"> {{ componentName }} {{ suffix }} </vue-text>
-            <vue-button
-              v-if="buyLink"
-              look="primary"
-              as="a"
-              target="_blank"
-              rel="noopener"
-              trailing-icon="external-link"
-              :href="buyLink"
-            >
-              Buy License
-            </vue-button>
-          </vue-inline>
+        <vue-stack v-if="componentName && usage">
+          <vue-text look="large-title" weight="semi-bold"> {{ componentName }} {{ suffix }} </vue-text>
 
           <vue-columns>
             <vue-column no-grow>
-              <vue-text color="medium" look="description" style="white-space: pre-wrap">
+              <vue-text color="low" look="description-md" style="white-space: pre-wrap">
                 {{ usage }}
               </vue-text>
             </vue-column>
           </vue-columns>
         </vue-stack>
-        <vue-stack v-if="story" space="0">
-          <vue-text color="high" look="medium-title" weight="semi-bold"> Story </vue-text>
-          <vue-text color="high" look="description">
-            {{ story }}
-          </vue-text>
-        </vue-stack>
       </vue-stack>
 
-      <div :class="$style.body">
+      <div class="w-full">
         <slot />
       </div>
     </vue-stack>
@@ -44,8 +25,6 @@
 <script setup lang="ts">
 import VueText from '@/components/design-system/typography/VueText/VueText.vue';
 import VueStack from '@/components/design-system/layout/VueStack/VueStack.vue';
-import VueInline from '@/components/design-system/layout/VueInline/VueInline.vue';
-import VueButton from '@/components/design-system/forms-and-actions/VueButton/VueButton.vue';
 import VueColumns from '@/components/design-system/layout/VueColumns/VueColumns.vue';
 import VueColumn from '@/components/design-system/layout/VueColumns/VueColumn/VueColumn.vue';
 import VueCard from '@/components/design-system/surfaces-and-feedback/VueCard/VueCard.vue';
@@ -53,29 +32,20 @@ import VueCard from '@/components/design-system/surfaces-and-feedback/VueCard/Vu
 interface ComponentDocsProps {
   componentName?: string | null;
   usage?: string | null;
-  story?: string | null;
   suffix?: string | null;
-  buyLink?: string | null;
-  noBg?: boolean;
 }
 
 withDefaults(defineProps<ComponentDocsProps>(), {
   componentName: null,
   usage: null,
-  story: null,
   suffix: 'Usage',
-  buyLink: null,
 });
 </script>
 
 <style lang="scss" module>
 @use 'assets/design-system/index' as ds;
 
-.noBg {
-  background-color: transparent;
-}
-
-.body {
-  width: 100%;
+.ComponentDocs {
+  border-radius: ds.$space-24;
 }
 </style>
