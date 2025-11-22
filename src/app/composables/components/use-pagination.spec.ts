@@ -3,7 +3,7 @@ import { nextTick } from 'vue';
 import { usePagination } from './use-pagination';
 
 describe('usePagination', () => {
-  let cb: ReturnType<typeof vi.fn>;
+  let cb: () => Promise<void>;
 
   beforeEach(() => {
     cb = vi.fn().mockResolvedValue(undefined);

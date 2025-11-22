@@ -9,8 +9,12 @@ describe('use-intersection-observer.ts', () => {
   test('should create an observer and call the call back function', async () => {
     let testObserver: Ref<IntersectionObserver> = null as any;
 
-    (global as any).IntersectionObserver = vi.fn().mockImplementation(() => {
-      return { observe: vi.fn() };
+    (global as any).IntersectionObserver = vi.fn().mockImplementation(function (callback) {
+      return {
+        observe: vi.fn(),
+        disconnect: vi.fn(),
+        unobserve: vi.fn(),
+      };
     });
 
     const { unmount } = render(

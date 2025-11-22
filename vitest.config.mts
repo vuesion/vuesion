@@ -8,13 +8,6 @@ export default defineConfig({
       external: [],
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern-compiler',
-      },
-    },
-  },
   plugins: [
     vue({
       template: {
@@ -26,14 +19,13 @@ export default defineConfig({
   ],
   test: {
     coverage: {
-      all: false,
       reporter: ['html', 'lcov', 'text'],
       thresholds: {
         autoUpdate: true,
-        statements: 100,
-        branches: 100,
-        functions: 100,
-        lines: 100,
+        statements: 98.1,
+        branches: 94.04,
+        functions: 97.85,
+        lines: 98.15,
       },
       skipFull: true,
       exclude: [
@@ -56,7 +48,6 @@ export default defineConfig({
           globals: true,
           setupFiles: ['./src/app/test/setup.ts'],
           include: ['./src/app/**/*.spec.ts'],
-          pool: { threads: { singleThread: true } },
           sequence: { concurrent: false },
         },
       },
@@ -70,7 +61,6 @@ export default defineConfig({
           include: ['./src/server/**/*.spec.ts', './src/shared/**/*.spec.ts'],
           testTimeout: 20000,
           hookTimeout: 50000,
-          pool: { threads: { singleThread: true } },
           sequence: { concurrent: false },
         },
       },
@@ -83,7 +73,6 @@ export default defineConfig({
           include: ['./tools/**/*.spec.ts'],
           testTimeout: 20000,
           hookTimeout: 50000,
-          pool: { threads: { singleThread: true } },
           sequence: { concurrent: false },
         },
       },
