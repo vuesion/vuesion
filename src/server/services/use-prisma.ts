@@ -1,33 +1,18 @@
-import { createRequire } from 'node:module';
-import type { PrismaClient as PrismaClientType } from '@prisma/client';
+import 'dotenv/config';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { PrismaClient } from '~/shared/prisma/client';
 
-let prisma: PrismaClientType | null = null;
+const prismaClientSingleton = () => {
+  const connectionString = `${process.env.DATABASE_URL}`;
+  const adapter = new PrismaPg({ connectionString });
+
+  return new PrismaClient({ adapter, log: ['error'] });
+};
 
 declare global {
-  var __PRISMA__: PrismaClientType | undefined;
+  var prismaGlobal: undefined | ReturnType<typeof prismaClientSingleton>;
 }
 
-/**
- * Returns a singleton PrismaClient instance (lazy).
- * Works in ESM (Nuxt/Nitro) and CJS by using createRequire.
- */
-export function getPrisma(): PrismaClientType {
-  if (prisma) return prisma;
+export const prisma = globalThis.prismaGlobal ?? prismaClientSingleton();
 
-  if (globalThis.__PRISMA__) {
-    prisma = globalThis.__PRISMA__;
-    return prisma;
-  }
-
-  const _require = createRequire(import.meta.url);
-  // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-  const { PrismaClient } = _require('@prisma/client') as typeof import('@prisma/client');
-
-  prisma = new PrismaClient({ log: ['error'] });
-
-  if (process.env.NODE_ENV !== 'production') {
-    globalThis.__PRISMA__ = prisma;
-  }
-
-  return prisma;
-}
+if (process.env.NODE_ENV !== 'production') globalThis.prismaGlobal = prisma;

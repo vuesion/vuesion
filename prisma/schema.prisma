@@ -2,11 +2,22 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider      = "prisma-client-js"
+  provider      = "prisma-client"
+  output        = "../src/shared/prisma"
   binaryTargets = ["native"]
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id       String @id @default(ulid())
+  email    String @unique
+  password String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email, password])
 }
