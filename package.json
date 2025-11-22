@@ -127,7 +127,7 @@
     "eslint-plugin-vue": "10.6.0",
     "flush-promises": "1.0.2",
     "generate-changelog": "1.8.0",
-    "glob": "11.0.3",
+    "glob": "13.0.0",
     "globals": "16.5.0",
     "husky": "9.1.7",
     "hygen": "6.2.11",
