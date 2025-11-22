@@ -14,7 +14,6 @@
     9: 25%,
     10: 20%,
   );
-
   $chroma: (
     1: 0.019,
     2: 0.06,
@@ -27,7 +26,6 @@
     9: 0.119,
     10: 0.088,
   );
-
   $map: ();
 
   @for $i from 1 through 10 {
@@ -60,7 +58,6 @@
     9: 25%,
     10: 20%,
   );
-
   $map: ();
 
   @for $i from 0 through 10 {
@@ -80,7 +77,6 @@
 }
 
 $palette-colors: ();
-
 $palette-colors: map.merge($palette-colors, create-variation-for('primary', 290.11));
 $palette-colors: map.merge($palette-colors, create-neutral-variation('neutral', 0.005, 290.11));
 $palette-colors: map.merge($palette-colors, create-variation-for('success', 145));

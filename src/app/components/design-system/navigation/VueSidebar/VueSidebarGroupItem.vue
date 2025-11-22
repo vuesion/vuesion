@@ -74,7 +74,7 @@ interface SidebarGroupItemProps {
   href?: string | null;
 }
 interface SidebarGroupItemEmits {
-  (event: 'click', e: MouseEvent): void;
+  (event: 'click', e: MouseEvent | KeyboardEvent): void;
 }
 withDefaults(defineProps<SidebarGroupItemProps>(), {
   icon: undefined,

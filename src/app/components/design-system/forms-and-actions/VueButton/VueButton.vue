@@ -144,12 +144,12 @@ const $style = useCssModule();
 const buttonRef = getDomRef<HTMLButtonElement | HTMLAnchorElement | null>(null);
 const actualWidth = computed(() => {
   if (buttonRef.value === null) {
-    return null;
+    return 'auto';
   }
 
   return props.loading && buttonRef.value && buttonRef.value.getBoundingClientRect
     ? `${buttonRef.value.getBoundingClientRect().width}px`
-    : null;
+    : 'auto';
 });
 const isDisabled = computed(() => props.disabled || props.loading);
 const isRouterLink = computed(() => props.as === 'nuxt-link');
