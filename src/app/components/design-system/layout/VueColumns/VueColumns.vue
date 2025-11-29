@@ -1,18 +1,17 @@
 <template>
   <vue-box :as="as" :padding="padding" :align-x="alignX" :align-y="alignY" :class="cssClasses">
-    <slot></slot>
+    <slot />
   </vue-box>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { FlexJustify, Spacing, SpacingWithDirections, FlexAlign } from '@/components/utils/prop-types';
 import VueBox from '@/components/design-system/layout/VueBox/VueBox.vue';
 import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
-import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
-import { getFlexDirectionForBreakpoint } from '@/components/utils/get-flex-direction-for-breakpoint';
+import { buildResponsiveClasses } from '@/components/utils/build-responsive-classes';
+import { buildResponsiveFlexDirectionClasses } from '@/components/utils/build-responsive-flex-direction-classes';
+import type { FlexJustify, FlexAlign, Spacing, SpacingWithDirections } from '@/components/utils/prop-types';
 
-// Interface
 interface ColumnsProps {
   as?: string;
   padding?: SpacingWithDirections | Array<SpacingWithDirections>;
@@ -26,6 +25,7 @@ interface ColumnsProps {
   stackSmallDesktop?: boolean;
   stackLargeDesktop?: boolean;
 }
+
 const props = withDefaults(defineProps<ColumnsProps>(), {
   as: 'div',
   padding: () => ['0'] as Array<SpacingWithDirections>,
@@ -40,16 +40,23 @@ const props = withDefaults(defineProps<ColumnsProps>(), {
   stackLargeDesktop: false,
 });
 
-// Data
 const responsiveSpace = computed(() => mapPropToBreakpoints(props.space));
 const responsiveReverse = computed(() => mapPropToBreakpoints<boolean>(props.reverse, true));
-const cssClasses = computed(() => [
-  'flex',
-  ...getResponsiveCssClasses(null, responsiveSpace.value, 'gap'),
-  getFlexDirectionForBreakpoint(responsiveReverse.value.phone, props.stackPhone),
-  getFlexDirectionForBreakpoint(responsiveReverse.value.tabletPortrait, props.stackTabletPortrait, 'tp'),
-  getFlexDirectionForBreakpoint(responsiveReverse.value.tabletLandscape, props.stackTabletLandscape, 'tl'),
-  getFlexDirectionForBreakpoint(responsiveReverse.value.smallDesktop, props.stackSmallDesktop, 'sd'),
-  getFlexDirectionForBreakpoint(responsiveReverse.value.largeDesktop, props.stackLargeDesktop, 'ld'),
-]);
+const gapClasses = computed(() =>
+  buildResponsiveClasses({
+    prefix: 'gap',
+    values: responsiveSpace.value,
+  }),
+);
+const directionClasses = computed(() =>
+  buildResponsiveFlexDirectionClasses(responsiveReverse.value, {
+    phone: props.stackPhone,
+    tabletPortrait: props.stackTabletPortrait,
+    tabletLandscape: props.stackTabletLandscape,
+    smallDesktop: props.stackSmallDesktop,
+    largeDesktop: props.stackLargeDesktop,
+  }),
+);
+
+const cssClasses = computed(() => ['flex', ...gapClasses.value, ...directionClasses.value]);
 </script>

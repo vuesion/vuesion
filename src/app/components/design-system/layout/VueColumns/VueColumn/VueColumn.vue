@@ -6,12 +6,11 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { FlexJustify, SpacingWithDirections, FlexAlign, Width } from '@/components/utils/prop-types';
 import VueBox from '@/components/design-system/layout/VueBox/VueBox.vue';
 import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
-import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
+import { buildResponsiveClasses } from '@/components/utils/build-responsive-classes';
+import type { FlexJustify, FlexAlign, SpacingWithDirections, Width } from '@/components/utils/prop-types';
 
-// Interface
 interface ColumnProps {
   as?: string;
   padding?: SpacingWithDirections | Array<SpacingWithDirections>;
@@ -21,6 +20,7 @@ interface ColumnProps {
   noGrow?: boolean;
   noShrink?: boolean;
 }
+
 const props = withDefaults(defineProps<ColumnProps>(), {
   as: 'div',
   padding: () => ['0'] as Array<SpacingWithDirections>,
@@ -31,12 +31,18 @@ const props = withDefaults(defineProps<ColumnProps>(), {
   noShrink: false,
 });
 
-// Data
 const responsiveWidth = computed(() => mapPropToBreakpoints(props.width));
+const widthClasses = computed(() =>
+  buildResponsiveClasses({
+    prefix: 'w',
+    values: responsiveWidth.value,
+  }),
+);
+
 const cssClasses = computed(() => [
   'flex',
   'no-wrap',
-  ...getResponsiveCssClasses(null, responsiveWidth.value, 'w'),
+  ...widthClasses.value,
   props.noGrow ? 'grow-0' : 'grow',
   props.noShrink ? 'shrink-0' : 'shrink',
 ]);
