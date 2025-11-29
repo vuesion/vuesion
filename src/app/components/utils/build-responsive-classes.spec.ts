@@ -102,38 +102,6 @@ describe('buildResponsiveClasses', () => {
     expect(result).toEqual(['mt-', 'mr-']);
   });
 
-  test('uses $style class mapping when provided (scalar)', () => {
-    const result = buildResponsiveClasses({
-      prefix: 'p',
-      values: {
-        phone: '8',
-      },
-      $style: {
-        'p-8': 'hashed_p_8',
-      },
-    });
-
-    expect(result).toEqual(['hashed_p_8']);
-  });
-
-  test('uses $style class mapping when provided (vector)', () => {
-    const result = buildResponsiveClasses({
-      prefix: 'p',
-      values: {
-        phone: { top: '2', right: '4', bottom: '6', left: '8' },
-      },
-      directions: { top: 't', right: 'r', bottom: 'b', left: 'l' },
-      $style: {
-        'pt-2': 'x1',
-        'pr-4': 'x2',
-        'pb-6': 'x3',
-        'pl-8': 'x4',
-      },
-    });
-
-    expect(result).toEqual(['x1', 'x2', 'x3', 'x4']);
-  });
-
   test('vector mode: direction order must follow directions object order', () => {
     const result = buildResponsiveClasses({
       prefix: 'p',

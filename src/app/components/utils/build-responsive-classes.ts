@@ -6,11 +6,10 @@ export interface BuildResponsiveClassesOptions {
   values: ResponsiveValues;
   directions?: Record<string, string>;
   applyValueToClassName?: boolean;
-  $style?: Record<string, string>;
 }
 
 export const buildResponsiveClasses = (options: BuildResponsiveClassesOptions): string[] => {
-  const { prefix, values, directions, applyValueToClassName = true, $style } = options;
+  const { prefix, values, directions, applyValueToClassName = true } = options;
 
   const classes: string[] = [];
 
@@ -29,7 +28,7 @@ export const buildResponsiveClasses = (options: BuildResponsiveClassesOptions): 
           ? `${prefix}${short}-${bpPrefix ? bpPrefix + '-' : ''}${directionalValue}`
           : `${prefix}${short}-${bpPrefix}`;
 
-        classes.push($style?.[className] ?? className);
+        classes.push(className);
       }
 
       return;
@@ -41,7 +40,7 @@ export const buildResponsiveClasses = (options: BuildResponsiveClassesOptions): 
       ? `${prefix}${bpPrefix ? '-' + bpPrefix : ''}-${scalar}`
       : `${prefix}${bpPrefix ? '-' + bpPrefix : ''}`;
 
-    classes.push($style?.[className] ?? className);
+    classes.push(className);
   });
 
   return classes;

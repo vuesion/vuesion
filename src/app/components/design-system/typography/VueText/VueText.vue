@@ -11,7 +11,7 @@
 import { computed, useCssModule } from 'vue';
 import type { FontWeight, Alignment, TextColor, TextStyle } from '@/components/utils/prop-types';
 import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
-import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
+import { buildResponsiveClasses } from '@/components/utils/build-responsive-classes';
 
 type TextTag = 'span' | 'p' | 'label' | 'strong' | 'pre' | 'em' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'a';
 
@@ -57,7 +57,13 @@ const classes = computed(() => [
   props.alignX && 'w-full',
 ]);
 const responsiveAlignments = computed(() => mapPropToBreakpoints(props.alignX));
-const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiveAlignments.value, 'align'));
+
+const alignCssClasses = computed(() =>
+  buildResponsiveClasses({
+    prefix: 'align',
+    values: responsiveAlignments.value,
+  }),
+);
 </script>
 
 <style lang="scss" module>
@@ -291,95 +297,6 @@ const alignCssClasses = computed(() => getResponsiveCssClasses($style, responsiv
 
   &.link {
     color: var(--text-link);
-  }
-
-  // Responsive Styles
-  &.align-start {
-    text-align: left;
-  }
-
-  &.align-center {
-    text-align: center;
-  }
-
-  &.align-end {
-    text-align: right;
-  }
-
-  &.align-justify {
-    text-align: justify;
-  }
-
-  @include ds.media-min(tablet-portrait) {
-    &.align-tp-start {
-      text-align: left;
-    }
-
-    &.align-tp-center {
-      text-align: center;
-    }
-
-    &.align-tp-end {
-      text-align: right;
-    }
-
-    &.align-tp-justify {
-      text-align: justify;
-    }
-  }
-
-  @include ds.media-min(tablet-landscape) {
-    &.align-tl-start {
-      text-align: left;
-    }
-
-    &.align-tl-center {
-      text-align: center;
-    }
-
-    &.align-tl-end {
-      text-align: right;
-    }
-
-    &.align-tl-justify {
-      text-align: justify;
-    }
-  }
-
-  @include ds.media-min(small-desktop) {
-    &.align-sd-start {
-      text-align: left;
-    }
-
-    &.align-sd-center {
-      text-align: center;
-    }
-
-    &.align-sd-end {
-      text-align: right;
-    }
-
-    &.align-sd-justify {
-      text-align: justify;
-    }
-  }
-
-  @include ds.media-min(large-desktop) {
-    &.align-ld-start {
-      text-align: left;
-    }
-
-    &.align-ld-center {
-      text-align: center;
-    }
-
-    &.align-ld-end {
-      text-align: right;
-    }
-
-    &.align-ld-justify {
-      text-align: justify;
-    }
   }
 
   i {
