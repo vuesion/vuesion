@@ -1,6 +1,7 @@
-import { describe, test, expect } from 'vitest';
+import { beforeEach, describe, test, expect, vi } from 'vitest';
 import { buildResponsiveClasses } from './build-responsive-classes';
 import { BreakPoint } from '#shared/enums/BreakPoint';
+import type { ResponsiveValues } from '@/components/utils/types';
 
 describe('buildResponsiveClasses', () => {
   test('scalar mode: generates classes for all breakpoints', () => {
@@ -134,5 +135,239 @@ describe('buildResponsiveClasses', () => {
     });
 
     expect(result).toEqual([]);
+  });
+
+  describe('buildResponsiveClasses (memo behavior)', () => {
+    beforeEach(() => {
+      // Fully reload module between tests to clear internal memo caches
+      vi.resetModules();
+    });
+
+    const valuesScalar: ResponsiveValues = {
+      phone: '8',
+      tabletPortrait: '16',
+      tabletLandscape: '24',
+      smallDesktop: null,
+      largeDesktop: '64',
+    };
+
+    const valuesVector: ResponsiveValues = {
+      phone: { top: '1', right: '2', bottom: '3', left: '4' },
+      tabletPortrait: { top: '5', right: '6', bottom: '7', left: '8' },
+      tabletLandscape: null,
+      smallDesktop: null,
+      largeDesktop: null,
+    };
+
+    // ------------------------------------------------------------
+    // SCALAR MODE
+    // ------------------------------------------------------------
+    test('builds scalar classes per breakpoint', () => {
+      const result = buildResponsiveClasses({
+        prefix: 'gap',
+        values: valuesScalar,
+      });
+
+      expect(result).toEqual(
+        [
+          'gap-8', // phone
+          'gap-tp-16', // tabletPortrait
+          'gap-tl-24', // tabletLandscape
+          'gap-ld-64', // largeDesktop
+        ].filter(Boolean),
+      );
+    });
+
+    test('skips null and undefined scalar values', () => {
+      const values: ResponsiveValues = {
+        phone: null,
+        tabletPortrait: undefined,
+        tabletLandscape: '8',
+        smallDesktop: null,
+        largeDesktop: undefined,
+      };
+
+      const result = buildResponsiveClasses({
+        prefix: 'gap',
+        values,
+      });
+
+      expect(result).toEqual(['gap-tl-8']);
+    });
+
+    // ------------------------------------------------------------
+    // VECTOR MODE
+    // ------------------------------------------------------------
+    test('builds vector classes respecting direction order', () => {
+      const result = buildResponsiveClasses({
+        prefix: 'p',
+        values: valuesVector,
+        directions: { bottom: 'b', top: 't', left: 'l', right: 'r' },
+      });
+
+      // Only phone & tabletPortrait have vector values
+      expect(result).toEqual([
+        // phone
+        'pb-3',
+        'pt-1',
+        'pl-4',
+        'pr-2',
+
+        // tabletPortrait
+        'pb-tp-7',
+        'pt-tp-5',
+        'pl-tp-8',
+        'pr-tp-6',
+      ]);
+    });
+
+    test('skips null vector values', () => {
+      const values: ResponsiveValues = {
+        phone: { top: '1', right: null, bottom: '2', left: undefined as any },
+        tabletPortrait: null,
+        tabletLandscape: null,
+        smallDesktop: null,
+        largeDesktop: null,
+      };
+
+      const result = buildResponsiveClasses({
+        prefix: 'm',
+        values,
+        directions: { top: 't', right: 'r', bottom: 'b', left: 'l' },
+      });
+
+      expect(result).toEqual(['mt-1', 'mb-2']);
+    });
+
+    // ------------------------------------------------------------
+    // APPLY VALUE FLAG
+    // ------------------------------------------------------------
+    test('supports applyValueToClassName = false', () => {
+      const result = buildResponsiveClasses({
+        prefix: 'foo',
+        values: {
+          phone: 'A',
+          tabletPortrait: 'B',
+          tabletLandscape: null,
+          smallDesktop: 'C',
+          largeDesktop: null,
+        },
+        applyValueToClassName: false,
+      });
+
+      expect(result).toEqual([
+        'foo', // phone
+        'foo-tp', // tabletPortrait
+        // skip tl
+        'foo-sd', // smallDesktop
+        // skip ld
+      ]);
+    });
+
+    // ------------------------------------------------------------
+    // MEMOIZATION
+    // ------------------------------------------------------------
+    test('returns same reference when called with identical params (cache hit)', () => {
+      const params = {
+        prefix: 'x',
+        values: valuesScalar,
+        directions: undefined,
+        applyValueToClassName: true,
+      };
+
+      const r1 = buildResponsiveClasses(params);
+      const r2 = buildResponsiveClasses(params);
+
+      expect(r1).toBe(r2);
+    });
+
+    test('returns different reference when values object changes', () => {
+      const params1 = {
+        prefix: 'x',
+        values: valuesScalar,
+        directions: undefined,
+        applyValueToClassName: true,
+      };
+
+      const params2 = {
+        ...params1,
+        values: { ...valuesScalar }, // new reference
+      };
+
+      const r1 = buildResponsiveClasses(params1);
+      const r2 = buildResponsiveClasses(params2);
+
+      expect(r1).not.toBe(r2);
+    });
+
+    test('returns different reference when directions differ', () => {
+      const baseValues = { ...valuesScalar };
+
+      const r1 = buildResponsiveClasses({
+        prefix: 'x',
+        values: baseValues,
+        directions: undefined,
+      });
+
+      const r2 = buildResponsiveClasses({
+        prefix: 'x',
+        values: baseValues,
+        directions: { top: 't' },
+      });
+
+      expect(r1).not.toBe(r2);
+    });
+
+    test('caches per (prefix → directions → values → flag)', () => {
+      const values = valuesScalar;
+      const d1 = { top: 't', bottom: 'b' };
+      const d2 = { left: 'l' };
+
+      const r1 = buildResponsiveClasses({ prefix: 'p', values, directions: d1 });
+      const r2 = buildResponsiveClasses({ prefix: 'p', values, directions: d1 });
+      const r3 = buildResponsiveClasses({ prefix: 'p', values, directions: d2 });
+      const r4 = buildResponsiveClasses({ prefix: 'p', values, directions: d2 });
+
+      expect(r1).toBe(r2); // same directions
+      expect(r3).toBe(r4); // same directions #2
+      expect(r1).not.toBe(r3); // different directions set
+    });
+
+    // ------------------------------------------------------------
+    // BREAKPOINT ORDER VALIDATION
+    // ------------------------------------------------------------
+    test('calls breakpoints in the proper order', () => {
+      const calls: Array<BreakPoint> = [];
+
+      const mockValues: ResponsiveValues = {
+        phone: 'a',
+        tabletPortrait: 'b',
+        tabletLandscape: 'c',
+        smallDesktop: 'd',
+        largeDesktop: 'e',
+      };
+
+      const result = buildResponsiveClasses({
+        prefix: 'x',
+        values: mockValues,
+      });
+
+      // Extract breakpoints from result for sanity
+      const bpOrder = result.map((cls) => {
+        if (cls.includes('-tp-')) return BreakPoint.tabletPortrait;
+        if (cls.includes('-tl-')) return BreakPoint.tabletLandscape;
+        if (cls.includes('-sd-')) return BreakPoint.smallDesktop;
+        if (cls.includes('-ld-')) return BreakPoint.largeDesktop;
+        return BreakPoint.phone;
+      });
+
+      expect(bpOrder).toEqual([
+        BreakPoint.phone,
+        BreakPoint.tabletPortrait,
+        BreakPoint.tabletLandscape,
+        BreakPoint.smallDesktop,
+        BreakPoint.largeDesktop,
+      ]);
+    });
   });
 });
