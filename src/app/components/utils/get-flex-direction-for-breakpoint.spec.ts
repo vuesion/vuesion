@@ -35,12 +35,10 @@ describe('getFlexDirectionForBreakpoint', () => {
   });
 
   test('returns null when reverse === null and stacked === false', () => {
-    // @ts-expect-error: intentional to test runtime branch
     expect(getFlexDirectionForBreakpoint(null, false)).toBeNull();
   });
 
   test('ignores the null-check when stacked !== false (reverse === null, stacked === true)', () => {
-    // @ts-expect-error: intentional to test runtime branch
     expect(getFlexDirectionForBreakpoint(null, true)).toBe('flex-col');
   });
 

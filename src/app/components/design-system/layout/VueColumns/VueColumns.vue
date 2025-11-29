@@ -42,7 +42,7 @@ const props = withDefaults(defineProps<ColumnsProps>(), {
 
 // Data
 const responsiveSpace = computed(() => mapPropToBreakpoints(props.space));
-const responsiveReverse = computed(() => mapPropToBreakpoints(props.reverse, true));
+const responsiveReverse = computed(() => mapPropToBreakpoints<boolean>(props.reverse, true));
 const cssClasses = computed(() => [
   'flex',
   ...getResponsiveCssClasses(null, responsiveSpace.value, 'gap'),

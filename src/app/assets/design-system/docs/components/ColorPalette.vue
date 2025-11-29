@@ -1,6 +1,6 @@
 <template>
-  <vue-stack space="0" align-x="start">
-    <vue-tiles v-for="section in colorSections" :key="section.name" space="0" :columns="11">
+  <vue-stack space="8" align-x="start">
+    <vue-tiles v-for="section in colorSections" :key="section.name" :columns="11">
       <vue-box v-if="section.name !== 'neutral'" :class="$style.colorTile" />
       <vue-box
         v-for="color in section.colors"
@@ -136,5 +136,13 @@ const colorSections = computed(() => {
 .colorTile {
   aspect-ratio: 16/9;
   padding: ds.$space-4 0;
+
+  &:nth-child(2) {
+    border-radius: ds.$space-8 0 0 ds.$space-8;
+  }
+
+  &:nth-child(11) {
+    border-radius: 0 ds.$space-8 ds.$space-8 0;
+  }
 }
 </style>

@@ -44,6 +44,27 @@ const Template = () => ({
     <color-tokens-section
       :columns="[
         {
+          dark: false,
+          tokens: [
+            { figmaVar: 'text-success', cssVar: 'text-success', paletteColor: 'success 5' },
+            { figmaVar: 'text-info', cssVar: 'text-info', paletteColor: 'info 5' },
+            { figmaVar: 'text-warning', cssVar: 'text-warning', paletteColor: 'warning 5' },
+          ],
+        },
+        {
+          dark: false,
+          tokens: [
+            { figmaVar: 'text-danger', cssVar: 'text-danger', paletteColor: 'danger 5' },
+            { figmaVar: 'text-primary', cssVar: 'text-primary', paletteColor: 'primary 5' },
+            { figmaVar: 'text-link', cssVar: 'text-link', paletteColor: 'info 6' },
+          ],
+        },
+      ]"
+    />
+
+    <color-tokens-section
+      :columns="[
+        {
           dark: true,
           tokens: [
             { figmaVar: 'text-interaction-primary-enabled', cssVar: 'text-interaction-primary-enabled', paletteColor: 'neutral 1' },

@@ -1,4 +1,8 @@
-export const getFlexDirectionForBreakpoint = (reverse: boolean, stacked: boolean, breakpoint?: string) => {
+export const getFlexDirectionForBreakpoint = (
+  reverse: boolean | null | undefined,
+  stacked: boolean,
+  breakpoint?: string,
+) => {
   if (reverse === null && stacked === false) {
     return null;
   }
