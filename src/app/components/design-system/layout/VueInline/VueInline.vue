@@ -9,10 +9,9 @@ import { computed } from 'vue';
 import type { FlexJustify, Spacing, SpacingWithDirections, FlexAlign } from '@/components/utils/prop-types';
 import VueBox from '@/components/design-system/layout/VueBox/VueBox.vue';
 import { mapPropToBreakpoints } from '@/components/utils/map-prop-to-breakpoints';
-import { getResponsiveCssClasses } from '@/components/utils/get-responsive-css-classes';
-import { getFlexDirectionForBreakpoint } from '@/components/utils/get-flex-direction-for-breakpoint';
+import { buildResponsiveClasses } from '@/components/utils/build-responsive-classes';
+import { buildResponsiveFlexDirectionClasses } from '@/components/utils/build-responsive-flex-direction-classes';
 
-// Interface
 interface InlineProps {
   as?: string;
   padding?: SpacingWithDirections | Array<SpacingWithDirections>;
@@ -42,17 +41,29 @@ const props = withDefaults(defineProps<InlineProps>(), {
   stackLargeDesktop: false,
 });
 
-// Data
-const responsiveSpace = computed(() => mapPropToBreakpoints(props.space));
-const responsiveReverse = computed(() => mapPropToBreakpoints(props.reverse, true));
+const responsiveSpace = computed(() => mapPropToBreakpoints<string | null>(props.space));
+const gapClasses = computed(() =>
+  buildResponsiveClasses({
+    prefix: 'gap',
+    values: responsiveSpace.value,
+  }),
+);
+
+const responsiveReverse = computed(() => mapPropToBreakpoints<boolean | null>(props.reverse, true));
+const directionClasses = computed(() =>
+  buildResponsiveFlexDirectionClasses(responsiveReverse.value, {
+    phone: props.stackPhone,
+    tabletPortrait: props.stackTabletPortrait,
+    tabletLandscape: props.stackTabletLandscape,
+    smallDesktop: props.stackSmallDesktop,
+    largeDesktop: props.stackLargeDesktop,
+  }),
+);
+
 const cssClasses = computed(() => [
   'inline-flex',
   props.noWrap ? 'no-wrap' : 'wrap',
-  ...getResponsiveCssClasses(null, responsiveSpace.value, 'gap'),
-  getFlexDirectionForBreakpoint(responsiveReverse.value.phone, props.stackPhone),
-  getFlexDirectionForBreakpoint(responsiveReverse.value.tabletPortrait, props.stackTabletPortrait, 'tp'),
-  getFlexDirectionForBreakpoint(responsiveReverse.value.tabletLandscape, props.stackTabletLandscape, 'tl'),
-  getFlexDirectionForBreakpoint(responsiveReverse.value.smallDesktop, props.stackSmallDesktop, 'sd'),
-  getFlexDirectionForBreakpoint(responsiveReverse.value.largeDesktop, props.stackLargeDesktop, 'ld'),
+  ...gapClasses.value,
+  ...directionClasses.value,
 ]);
 </script>
