@@ -18,7 +18,7 @@ const Template: StoryFn = (args) => ({
       usage="The Stack component covers the most common use case - stacking elements
 and provide whitespace between them.
 You can nest multiple stacks to achieve full flexibility."
-  ><vue-stack v-bind="args" style="border: 1px solid var(--border-default-medium);">
+  ><vue-stack v-bind="args" style="border: 1px solid var(--border-default-medium); min-height: 300px;">
     <span>Lorem Ipsum</span>
     <span>Lorem Ipsum</span>
     <span>Lorem Ipsum</span>
@@ -33,7 +33,9 @@ export const Stack = {
 
   args: {
     as: 'div',
-    space: [8, 16, 24, 48, 192],
+    padding: ['8', '16'],
+    space: ['8', '16', '24', '48', '192'],
     alignX: ['start', 'center', 'end'],
+    alignY: ['start', 'start', 'between'],
   },
 };
