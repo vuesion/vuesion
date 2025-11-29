@@ -22,10 +22,10 @@ export default defineConfig({
       reporter: ['html', 'lcov', 'text'],
       thresholds: {
         autoUpdate: true,
-        statements: 98.16,
-        branches: 94.46,
-        functions: 97.72,
-        lines: 98.19,
+        statements: 98.17,
+        branches: 94.51,
+        functions: 97.67,
+        lines: 98.2,
       },
       skipFull: true,
       exclude: [
