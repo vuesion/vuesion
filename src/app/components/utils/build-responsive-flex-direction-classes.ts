@@ -11,11 +11,14 @@ export interface ResponsiveStackFlags {
   largeDesktop: boolean;
 }
 
-export const buildResponsiveFlexDirectionClasses = (
+/**
+ * Non-memoized internal implementation.
+ */
+const _buildResponsiveFlexDirectionClasses = (
   reverse: ResponsiveValue<boolean | null>,
   stacked: ResponsiveStackFlags,
-): string[] => {
-  const classes: string[] = [];
+): Array<string> => {
+  const classes: Array<string> = [];
 
   forEachBreakpoint((bp: BreakPoint, bpPrefix: string) => {
     const reverseValue = reverse[bp] ?? null;
@@ -29,4 +32,34 @@ export const buildResponsiveFlexDirectionClasses = (
   });
 
   return classes;
+};
+
+/**
+ * Memo cache:
+ * reverse → WeakMap
+ *   stacked → Map → result
+ */
+const reverseCache = new WeakMap<object, Map<object, Array<string>>>();
+
+export const buildResponsiveFlexDirectionClasses = (
+  reverse: ResponsiveValue<boolean | null>,
+  stacked: ResponsiveStackFlags,
+): Array<string> => {
+  // level 1: reverse object
+  let stackedCache = reverseCache.get(reverse);
+  if (!stackedCache) {
+    stackedCache = new Map();
+    reverseCache.set(reverse, stackedCache);
+  }
+
+  // level 2: stacked object
+  const existing = stackedCache.get(stacked);
+  if (existing) {
+    return existing;
+  }
+
+  // compute → cache → return
+  const result = _buildResponsiveFlexDirectionClasses(reverse, stacked);
+  stackedCache.set(stacked, result);
+  return result;
 };

@@ -1,4 +1,4 @@
-import { beforeEach, describe, it, expect, vi, type Mock } from 'vitest';
+import { beforeEach, describe, test, expect, vi, type Mock } from 'vitest';
 import { buildResponsiveFlexDirectionClasses } from './build-responsive-flex-direction-classes';
 import { getFlexDirectionForBreakpoint } from '@/components/utils/get-flex-direction-for-breakpoint';
 
@@ -10,36 +10,36 @@ vi.mock('@/components/utils/get-flex-direction-for-breakpoint', () => ({
 describe('buildResponsiveFlexDirectionClasses', () => {
   const mockGet = getFlexDirectionForBreakpoint as unknown as Mock;
 
-  const baseReverse = {
-    phone: null,
-    tabletPortrait: null,
-    tabletLandscape: null,
-    smallDesktop: null,
-    largeDesktop: null,
-  };
+  const mkBaseReverse = () => ({
+    phone: true,
+    tabletPortrait: true,
+    tabletLandscape: true,
+    smallDesktop: true,
+    largeDesktop: true,
+  });
 
-  const baseStack = {
+  const mkBaseStack = () => ({
     phone: false,
     tabletPortrait: false,
     tabletLandscape: false,
     smallDesktop: false,
     largeDesktop: false,
-  };
+  });
 
   beforeEach(() => {
     mockGet.mockReset();
   });
 
-  it('returns empty list when all breakpoints produce null', () => {
+  test('returns empty list when all breakpoints produce null', () => {
     mockGet.mockReturnValue(null);
 
-    const result = buildResponsiveFlexDirectionClasses(baseReverse, baseStack);
+    const result = buildResponsiveFlexDirectionClasses(mkBaseReverse(), mkBaseStack());
 
     expect(result).toEqual([]);
     expect(mockGet).toHaveBeenCalledTimes(5);
   });
 
-  it('passes correct params per breakpoint', () => {
+  test('passes correct params per breakpoint', () => {
     mockGet.mockReturnValue('X');
 
     buildResponsiveFlexDirectionClasses(
@@ -73,7 +73,7 @@ describe('buildResponsiveFlexDirectionClasses', () => {
     ]);
   });
 
-  it('collects only non-null classes', () => {
+  test('collects only non-null classes', () => {
     mockGet
       .mockReturnValueOnce(null)
       .mockReturnValueOnce('A')
@@ -81,12 +81,12 @@ describe('buildResponsiveFlexDirectionClasses', () => {
       .mockReturnValueOnce('B')
       .mockReturnValueOnce('C');
 
-    const result = buildResponsiveFlexDirectionClasses(baseReverse, baseStack);
+    const result = buildResponsiveFlexDirectionClasses(mkBaseReverse(), mkBaseStack());
 
     expect(result).toEqual(['A', 'B', 'C']);
   });
 
-  it('integration case: reverse + stacked combinations', () => {
+  test('integration case: reverse + stacked combinations', () => {
     mockGet
       .mockReturnValueOnce('flex-row')
       .mockReturnValueOnce('flex-col-tp')
@@ -121,7 +121,7 @@ describe('buildResponsiveFlexDirectionClasses', () => {
     ]);
   });
 
-  it('ensures output order matches breakpoint order', () => {
+  test('ensures output order matches breakpoint order', () => {
     mockGet
       .mockReturnValueOnce('1')
       .mockReturnValueOnce('2')
@@ -129,12 +129,12 @@ describe('buildResponsiveFlexDirectionClasses', () => {
       .mockReturnValueOnce('4')
       .mockReturnValueOnce('5');
 
-    const result = buildResponsiveFlexDirectionClasses(baseReverse, baseStack);
+    const result = buildResponsiveFlexDirectionClasses(mkBaseReverse(), mkBaseStack());
 
     expect(result).toEqual(['1', '2', '3', '4', '5']);
   });
 
-  it('uses false when stacked flag is missing for a breakpoint', () => {
+  test('uses false when stacked flag is missing for a breakpoint', () => {
     mockGet.mockReturnValue('X');
 
     const reverse = {
@@ -165,5 +165,40 @@ describe('buildResponsiveFlexDirectionClasses', () => {
 
     // result is irrelevant — only branch coverage matters
     expect(result.length).toBe(5);
+  });
+
+  test('memoization: returns cached array on second call (existing branch)', () => {
+    mockGet.mockReturnValue('cached');
+
+    const reverse = {
+      phone: true,
+      tabletPortrait: true,
+      tabletLandscape: true,
+      smallDesktop: true,
+      largeDesktop: true,
+    };
+
+    const stacked = {
+      phone: false,
+      tabletPortrait: false,
+      tabletLandscape: false,
+      smallDesktop: false,
+      largeDesktop: false,
+    };
+
+    // first call → triggers computation
+    const first = buildResponsiveFlexDirectionClasses(reverse, stacked);
+
+    // reset mock so we can detect if second call recomputes
+    mockGet.mockClear();
+
+    // second call → MUST hit memo branch and NOT call mocked function
+    const second = buildResponsiveFlexDirectionClasses(reverse, stacked);
+
+    // 1) same reference → memo returned cached value
+    expect(second).toBe(first);
+
+    // 2) no calls → ensures branch short-circuited via "existing" branch
+    expect(mockGet).not.toHaveBeenCalled();
   });
 });
