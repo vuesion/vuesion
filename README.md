@@ -4,25 +4,37 @@
 
 # Vuesion
 
-> Vuesion is a boilerplate that empowers product teams to build faster with modern best practices across engineering and design. It features a full-stack framework, comprehensive design system, robust testing, and seamless internationalization.
+> **This repository contains the original open-source version of Vuesion (Vuesion 5).**
+>
+> Vuesion has evolved into a commercial product foundation, and active development now continues at [vuesion.dev](https://www.vuesion.dev).
+>
+> This repository will remain available as an open-source reference under the MIT license, but it will no longer receive new features or ongoing maintenance.
 
-[![GitHub release](https://img.shields.io/github/release/vuesion/vuesion.svg)](https://GitHub.com/vuesion/vuesion/releases/)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/c8e3979ea94da8e9d683/test_coverage)](https://codeclimate.com/github/vuesion/vuesion/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/c8e3979ea94da8e9d683/maintainability)](https://codeclimate.com/github/vuesion/vuesion/maintainability)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/vuesion/vuesion/graphs/commit-activity)
-[![GitHub issues-closed](https://img.shields.io/github/issues-closed/vuesion/vuesion.svg)](https://GitHub.com/vuesion/vuesion/issues?q=is%3Aissue+is%3Aclosed)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fvuesion%2Fvuesion.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fvuesion%2Fvuesion?ref=badge_shield)
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+## Vuesion today
 
-# Live demo
+Vuesion started as an open-source foundation for building production applications with Vue and Nuxt.
 
-Please visit the **[vuesion app on heroku!](https://vuesion.herokuapp.com/)**
+Over more than eight years, it evolved alongside real products, teams and projects. The lessons from those projects shaped a new generation of Vuesion: a complete product foundation that brings together architecture, a fully tested design system, authentication, workspaces, tooling, documentation, Figma and AI-assisted development.
 
-Or have a look into the future and visit the **[vuesion-next app on heroku!](https://vuesion-next.herokuapp.com/)**
+**→ [Explore the current Vuesion](https://www.vuesion.dev)**  
+**→ [Read the documentation](https://www.vuesion.dev/docs)**  
+**→ [Why Vuesion is no longer open source](https://www.vuesion.dev/blog/why-vuesion-is-no-longer-open-source)**
 
-# [Get started](https://vuesion.github.io/docs/en/v5/guide/getting-started.html)
+## About this repository
 
-# [Documentation](https://vuesion.github.io/docs/en/v5/)
+Vuesion 5 is the last open-source generation of Vuesion.
+
+It represents years of development and contributions from the community and will remain publicly available for existing users and as a reference for anyone interested in the project's history.
+
+The code remains available under the MIT license.
+
+For the actively developed version of Vuesion, visit [vuesion.dev](https://www.vuesion.dev).
+
+---
+
+## Vuesion 5
+
+Vuesion 5 is a Vue and Nuxt boilerplate that provides a foundation for building production applications.
 
 # Features
 
@@ -48,7 +60,7 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 ## Core
 
 - server-side-rendering, single-page-app or statically generated HTML with [Nuxt.js](https://nuxtjs.org/)
-- [100% customizable Design-system with 35+ components including](https://vuesion.herokuapp.com/storybook)
+- 100% customizable Design-system with 35+ components including
   - layout, typography, button, input, select, checkbox, radio, (range-)slider, toggle, ...
   - theming/whitelabel support
 - [Figma UIKit](https://www.figma.com/community/file/1080868611324978249)
@@ -72,16 +84,12 @@ Or have a look into the future and visit the **[vuesion-next app on heroku!](htt
 - Form validation with [vee-validate](https://vee-validate.logaretm.com/v3)
 - [Anime.js](https://animejs.com/) integration
 
-# Support this project
+# Support & Community
 
-- [Give a :star:!](https://github.com/vuesion/vuesion/stargazers)
-- [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=flat)](https://twitter.com/intent/tweet?text=Vuesion%20an%20enterprise%20ready%20boilerplate%20for%20isomorphic,%20progressive%20web%20apps%20with%20Vue.JS&url=https://github.com/vuesion/vuesion&via=vuesion1&hashtags=Vuesion,VueJS,SEO,Enterprise) it!
-- Join the <a href="https://discord.gg/59x5cg2" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/square-logo-buttons/512/discord-1-128.png" height="20px" /> Discord community</a>!
-- [Contribute!](https://github.com/vuesion/vuesion/blob/master/CONTRIBUTING.md)
-
-# Contribute
-
-Contributions are always welcome! Please read the [contribution guidelines](https://github.com/vuesion/vuesion/blob/master/CONTRIBUTING.md) first.
+- Give Vuesion a ⭐ if you found the project useful.
+- Join the [Vuesion Discord community](https://discord.gg/59x5cg2).
+- Explore the actively developed Vuesion at [vuesion.dev](https://www.vuesion.dev).
+  
 
 Thanks goes to these wonderful people:
 
@@ -140,7 +148,9 @@ Thanks goes to these wonderful people:
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification.
+
+Thank you to everyone who contributed to Vuesion over the years. ❤️
 
 # References
 
@@ -157,7 +167,6 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 
 # Contact
 
-- [WRLD](https://wrld-app.com/w/vuesion/board)
 - [Discord](https://discord.gg/59x5cg2)
 
 # License
